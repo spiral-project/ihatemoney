@@ -51,6 +51,7 @@ class BillOwer(db.Model):
 
     bill = db.relationship(Bill, backref=db.backref('owers', order_by=name))
 
+db.create_all()
 
 # define forms
 class BillForm(Form):
@@ -126,5 +127,4 @@ def reset_bills():
 
 
 if __name__ == '__main__':
-    db.create_all()
     app.run(host="0.0.0.0", debug=True)
