@@ -12,7 +12,7 @@
 </div>
 
 <div class="container span-6 last">
-    <a class="awesome large green button" href="{{ url_for("reset_bills") }}">Mark this as payed / processed</a>
+    <a class="awesome large green button" onclick = "if (! confirm('Are you sure ?')) return false;" href="{{ url_for("reset_bills") }}">Mark this as payed / processed</a>
 </div>
 
 <table>
