@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Let's add a bill</h2>
+
+{% if form.errors %}
+	<p class=error><strong>Your form contains errors.</strong></p>
+	<ul>{% for error in form.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+{% endif %}
+
+    <form action="{{ url_for('add_bill') }}" method=post class="container span-24 add-bill">
+        {{ form.hidden_tag() }}
+        
+        <p>{{ form.payer.label }}<br /> {{ form.payer }}</p>
+        <p>{{ form.what.label }}<br /> {{ form.what }}</p>
+        <p>{{ form.amount.label }}<br />{{ form.amount }}</p>
+        <p>{{ form.payed_for.label }}<br /> {{ form.payed_for(multiple=True) }}</p>
+        <p>{{ form.submit }}</p>
+    </form>
+{% endblock %}

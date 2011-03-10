@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Account manager</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+
+<div class="container" class="span-24">
+    <div id="title">
+        <div class="span-18">
+            <a href="/"><h1>Account manager ! <span class="small">Manage your shared expenses.</span></h1></a>
+        </div>
+        <div class="span-6 last" id="topmenu">
+            <ul>
+                <li><a class="awesome large orange button" href="{{ url_for("add_bill") }}">Add a bill !</a></li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <div id="content" class="span-24">
+
+	{% for message in get_flashed_messages() %}
+	    <div class=info>{{ message }}</div>
+	{% endfor %}
+
+	{% block content %}
+	{% endblock %}
+
+    </div>
+    <div id="footer"></div>
+</div>
+</body>
+</html>

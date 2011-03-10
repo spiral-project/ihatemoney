@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if bills.count() > 0 %}
+<table>
+<thead><tr><th>When ?</th><th>Who paid?</th><th>for what ?</th><th>Owers</th><th>How much ?</th></tr></thead>
+<tbody>
+{% for bill in bills %}
+<tr class="{{ loop.cycle("odd", "even") }}">
+	<td>{{ bill.date }}</td>
+	<td>{{ bill.payer }}</td>
+	<td>{{ bill.what }}</td>
+	<td>{% for ower in bill.owers %}{{ ower.name }} {% endfor %}</td>
+	<td>{{ bill.amount }} ({{ bill.pay_each() }} each)</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+<a class="awesome large green button fleft" href="{{ url_for("compute_bills") }}">Compute bills</a>
+<p> Periodically (probably at the end of each month, you can compute the balance of each people, in order to reset all the debts. You can also let this "as-is" and try to find a good balance, that's up to you</p>
+
+{% else %}
+<p>Nothing to list yet. You probably want to <a href="{{ url_for("add_bill") }}">add a bill</a> ?</p>
+{% endif %}
+{% endblock %}
