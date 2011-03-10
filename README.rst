@@ -25,8 +25,14 @@ Deploy it
 
 To deploy it, I'm using gunicorn and supervisord::
 
+    $ virtualenv venv
+    $ source venv/bin/activate
+    $ pip install flask flask-wtf flask-sqlalchemy gunicorn --upgrade
+
 1. Add the lines in conf/supervisord.conf to your supervisord.conf file.
    **adapt them to your paths!**
 2. Copy and paste the content of conf/nginx.conf in your nginx conf file.
    **adapt them to your paths!**
 3. reload both nginx and supervisord. It should be working ;)
+
+Don't forget to set the right permission for your files !
