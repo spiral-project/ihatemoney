@@ -15,7 +15,7 @@ Make it run!
 To make it run, you just have to do something like::
 
     $ virtualenv venv
-    $ source budget/bin/activate
+    $ source venv/bin/activate
     $ pip install flask flask-wtf flask-sqlalchemy
     $ cd budget
     $ python budget.py
