@@ -34,7 +34,7 @@ class Bill(db.Model):
     processed = db.Column(db.Boolean, default=False)
 
     def pay_each(self):
-        """Compute what each person have to pay"""
+        """Compute what each person has to pay"""
         return round(self.amount / len(self.owers), 2)
 
     def __repr__(self):
@@ -58,7 +58,7 @@ class BillForm(Form):
     what = TextField("What?", validators=[Required()])
     payer = SelectField("Payer", validators=[Required()], choices=PAYER_CHOICES)
     amount = DecimalField("Amount payed", validators=[Required()])
-    payed_for = SelectMultipleField("Who have to pay for this?", validators=[Required()], choices=PAYER_CHOICES)
+    payed_for = SelectMultipleField("Who has to pay for this?", validators=[Required()], choices=PAYER_CHOICES)
     submit = SubmitField("Add the bill")
 
 
