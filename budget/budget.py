@@ -125,6 +125,14 @@ def reset_bills():
     return redirect(url_for('list_bills'))
 
 
+@app.route("/delete/<int:bill_id>")
+def delete_bill(bill_id):
+    Bill.query.filter(Bill.id == bill_id).delete() 
+    BillOwer.query.filter(BillOwer.bill_id == bill_id).delete()
+    db.session.commit()
+    flash("the bill was deleted")
+
+    return redirect(url_for('list_bills'))
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)

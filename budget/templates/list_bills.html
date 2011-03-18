@@ -2,7 +2,7 @@
 {% block content %}
 {% if bills.count() > 0 %}
 <table>
-<thead><tr><th>When ?</th><th>Who paid?</th><th>for what ?</th><th>Owers</th><th>How much ?</th></tr></thead>
+    <thead><tr><th>When ?</th><th>Who paid?</th><th>for what ?</th><th>Owers</th><th>How much ?</th><th>Actions</th></tr></thead>
 <tbody>
 {% for bill in bills %}
 <tr class="{{ loop.cycle("odd", "even") }}">
@@ -11,6 +11,7 @@
 	<td>{{ bill.what }}</td>
 	<td>{% for ower in bill.owers %}{{ ower.name }} {% endfor %}</td>
 	<td>{{ bill.amount }} ({{ bill.pay_each() }} each)</td>
+        <td><a href="{{ url_for("delete_bill", bill_id=bill.id) }}">delete</a></td>
 </tr>
 {% endfor %}
 </tbody>
