@@ -8,31 +8,6 @@ from utils import get_billform_for, requires_auth
 # create the application, initialize stuff
 app = Flask(__name__)
 
-@app.route("/")
-def home():
-    return "this is the homepage"
-
-@app.route("/create")
-def create_project():
-    form = CreationForm()
-    if 'project_id' in request.values:
-        form.name.data = request.values['project_id']
-
-    if request.method == "POST":
-        if form.validate():
-            # populate object & redirect
-            pass
-
-    return render_template("create_project.html", form=form)
-
-@app.route("/<string:project_id>/")
-@requires_auth
-def list_bills(project):
-    bills = Bill.query.order_by(Bill.id.asc())
-    return render_template("list_bills.html", 
-            bills=bills, project=project)
-
-
 @app.route("/<string:project_id>/authenticate", methods=["GET", "POST"])
 def authenticate(project_id, redirect_url=None):
     project = Project.query.get(project_id)
@@ -56,10 +31,52 @@ def authenticate(project_id, redirect_url=None):
 
     return render_template("authenticate.html", form=form, project=project)
 
+@app.route("/")
+def home():
+    # FIXME create a real homepage
+    return "this is the homepage"
+
+@app.route("/create", methods=["GET", "POST"])
+def create_project():
+    from ipdb import set_trace; set_trace()
+    form = CreationForm()
+    if request.method == "GET" and 'project_id' in request.values:
+        form.name.data = request.values['project_id']
+
+    if request.method == "POST":
+        if form.validate():
+            # save the object in the db
+            project = form.save()
+            db.session.add(project)
+            db.session.commit()
+
+            # create the session object (authenticate)
+            session[project.id] = project.password
+            session.update()
+
+            # redirect the user to the next step (invite)
+            return redirect(url_for("invite", project_id=project.id))
+
+    return render_template("create_project.html", form=form)
+
+@app.route("/<string:project_id>/invite")
+@requires_auth
+def invite(project):
+    # FIXME create a real page: form + send emails
+    return "invite ppl"
+
+@app.route("/<string:project_id>/")
+@requires_auth
+def list_bills(project):
+    # FIXME filter to only get the bills for this particular project
+    bills = Bill.query.order_by(Bill.id.asc())
+    return render_template("list_bills.html", 
+            bills=bills, project=project)
 
 @app.route("/<string:project_id>/add", methods=["GET", "POST"])
 @requires_auth
 def add_bill(project):
+    # FIXME: make it work.
     form = get_billform_for(project.id)
     if request.method == 'POST':
         if form.validate():
@@ -72,8 +89,6 @@ def add_bill(project):
                 bill.owers.append(ower)
 
             db.session.add(bill)
-
-
             db.session.commit()
             flash("The bill have been added")
             return redirect(url_for('list_bills'))
@@ -85,6 +100,7 @@ def add_bill(project):
 @requires_auth
 def compute_bills(project):
     """Compute the sum each one have to pay to each other and display it"""
+    # FIXME make it work
 
     balances, should_pay, should_receive = {}, {}, {}
     # for each person, get the list of should_pay other have for him
@@ -108,6 +124,7 @@ def compute_bills(project):
 @requires_auth
 def reset_bills(project):
     """Reset the list of bills"""
+    # FIXME replace with the archive feature
     # get all the bills which are not processed
     bills = Bill.query.filter(Bill.processed == False)
     for bill in bills:

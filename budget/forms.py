@@ -1,4 +1,5 @@
 from flaskext.wtf import *
+from models import Project
 
 # define forms
 class CreationForm(Form):
@@ -7,6 +8,16 @@ class CreationForm(Form):
     password = PasswordField("Password", validators=[Required()])
     contact_email = TextField("Email", validators=[Required(), Email()])
     submit = SubmitField("Get in")
+
+    def save(self):
+        """Create a new project with the information given by this form.
+
+        Returns the created instance
+        """
+        project = Project(name=self.name.data, id=self.id.data, 
+                password=self.password.data, 
+                contact_email=self.contact_email.data)
+        return project
 
 
 class AuthenticationForm(Form):
