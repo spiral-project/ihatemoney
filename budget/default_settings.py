@@ -1,0 +1,4 @@
+DEBUG = True
+SQLALCHEMY_DATABASE_URI = 'sqlite:///budget.db'
+SQLACHEMY_ECHO = DEBUG
+SECRET_KEY = "tralala"
