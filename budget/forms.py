@@ -1,5 +1,5 @@
 from flaskext.wtf import *
-from models import Project
+from models import Project, Person
 
 # define forms
 class CreationForm(Form):
@@ -33,3 +33,16 @@ class BillForm(Form):
             validators=[Required()])
     submit = SubmitField("Add the bill")
 
+
+class MemberForm(Form):
+    def __init__(self, project, *args, **kwargs):
+        super(MemberForm, self).__init__(*args, **kwargs)
+        self.project = project
+
+    name = TextField("Name", validators=[Required()])
+    submit = SubmitField("Add a member")
+
+    def validate_name(form, field):
+        if Person.query.filter(
+                Person.name == field.data and Person.project == self.project).all():
+            raise ValidationError("This project already have this member")

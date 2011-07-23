@@ -16,16 +16,11 @@
         </div>
     </div>
     <hr>
-    <div id="content" class="span-24">
-
-	{% for message in get_flashed_messages() %}
-	    <div class=info>{{ message }}</div>
-	{% endfor %}
-
-	{% block content %}
-	{% endblock %}
-
-    </div>
+    {% for message in get_flashed_messages() %}
+        <div class=info>{{ message }}</div>
+    {% endfor %}
+    {% block content %}
+    {% endblock %}
     <div id="footer"></div>
 </div>
 </body>

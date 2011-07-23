@@ -22,7 +22,7 @@ class Person(db.Model):
     bills = db.relationship("Bill", backref="payer")
 
     name = db.Column(db.UnicodeText)
-    status = db.Column(db.Boolean)
+    # activated = db.Column(db.Boolean, default=True)
 
     def __repr__(self):
         return "<Person %s for project %s>" % (self.name, self.project.name)

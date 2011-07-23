@@ -2,7 +2,7 @@ from flask import Flask, session, request, redirect, url_for, render_template
 
 # local modules
 from models import db, Project, Person, Bill
-from forms import CreationForm, AuthenticationForm, BillForm
+from forms import CreationForm, AuthenticationForm, BillForm, MemberForm
 from utils import get_billform_for, requires_auth
 
 # create the application, initialize stuff
@@ -26,7 +26,6 @@ def authenticate(project_id, redirect_url=None):
             else:
                 session[project_id] = form.password.data
                 session.update()
-                from ipdb import set_trace; set_trace()
                 return redirect(redirect_url)
 
     return render_template("authenticate.html", form=form, project=project)
@@ -38,7 +37,6 @@ def home():
 
 @app.route("/create", methods=["GET", "POST"])
 def create_project():
-    from ipdb import set_trace; set_trace()
     form = CreationForm()
     if request.method == "GET" and 'project_id' in request.values:
         form.name.data = request.values['project_id']
@@ -71,7 +69,19 @@ def list_bills(project):
     # FIXME filter to only get the bills for this particular project
     bills = Bill.query.order_by(Bill.id.asc())
     return render_template("list_bills.html", 
-            bills=bills, project=project)
+            bills=bills, project=project, member_form=MemberForm(project))
+
+@app.route("/<string:project_id>/members/add", methods=["GET", "POST"])
+@requires_auth
+def add_member(project):
+    # FIXME manage form errors on the list_bills page
+    form = MemberForm(project)
+    if request.method == "POST":
+        if form.validate():
+            db.session.add(Person(name=form.name.data, project=project))
+            db.session.commit()
+            return redirect(url_for("list_bills", project_id=project.id))
+    return render_template("add_member.html", form=form, project=project)
 
 @app.route("/<string:project_id>/add", methods=["GET", "POST"])
 @requires_auth

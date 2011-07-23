@@ -1,26 +1,37 @@
 {% extends "layout.html" %}
 {% block content %}
-{% if bills.count() > 0 %}
-<table>
-    <thead><tr><th>When ?</th><th>Who paid?</th><th>for what ?</th><th>Owers</th><th>How much ?</th><th>Actions</th></tr></thead>
-<tbody>
-{% for bill in bills %}
-<tr class="{{ loop.cycle("odd", "even") }}">
-	<td>{{ bill.date }}</td>
-	<td>{{ bill.payer }}</td>
-	<td>{{ bill.what }}</td>
-	<td>{% for ower in bill.owers %}{{ ower.name }} {% endfor %}</td>
-	<td>{{ bill.amount }} ({{ bill.pay_each() }} each)</td>
-        <td><a href="{{ url_for("delete_bill", bill_id=bill.id, project_id=project.id) }}">delete</a></td>
-</tr>
-{% endfor %}
-</tbody>
-</table>
+<div id="leftmenu" class="span-6">
+    <ul>
+    {% for member in project.members %}
+        <li>{{ member.name }}</li>
+    {% endfor %}
+    </ul>
+    {% set form=member_form %}
+    {% include "member_form.html" %}
+</div>
+<div id="content" class="span-18 last">
+    {% if bills.count() > 0 %}
+    <table>
+        <thead><tr><th>When ?</th><th>Who paid?</th><th>for what ?</th><th>Owers</th><th>How much ?</th><th>Actions</th></tr></thead>
+    <tbody>
+    {% for bill in bills %}
+    <tr class="{{ loop.cycle("odd", "even") }}">
+            <td>{{ bill.date }}</td>
+            <td>{{ bill.payer }}</td>
+            <td>{{ bill.what }}</td>
+            <td>{% for ower in bill.owers %}{{ ower.name }} {% endfor %}</td>
+            <td>{{ bill.amount }} ({{ bill.pay_each() }} each)</td>
+            <td><a href="{{ url_for("delete_bill", bill_id=bill.id, project_id=project.id) }}">delete</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
 
-<a class="awesome large green button fleft" href="{{ url_for("compute_bills", project_id=project.id) }}">Compute bills</a>
-<p> Periodically (probably at the end of each month, you can compute the balance of each people, in order to reset all the debts. You can also let this "as-is" and try to find a good balance, that's up to you</p>
+    <a class="awesome large green button fleft" href="{{ url_for("compute_bills", project_id=project.id) }}">Compute bills</a>
+    <p> Periodically (probably at the end of each month, you can compute the balance of each people, in order to reset all the debts. You can also let this "as-is" and try to find a good balance, that's up to you</p>
 
-{% else %}
-<p>Nothing to list yet. You probably want to <a href="{{ url_for("add_bill", project_id=project.id) }}">add a bill</a> ?</p>
-{% endif %}
+    {% else %}
+    <p>Nothing to list yet. You probably want to <a href="{{ url_for("add_bill", project_id=project.id) }}">add a bill</a> ?</p>
+    {% endif %}
+</div>
 {% endblock %}
