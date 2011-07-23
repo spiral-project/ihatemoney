@@ -11,16 +11,16 @@
 	<td>{{ bill.what }}</td>
 	<td>{% for ower in bill.owers %}{{ ower.name }} {% endfor %}</td>
 	<td>{{ bill.amount }} ({{ bill.pay_each() }} each)</td>
-        <td><a href="{{ url_for("delete_bill", bill_id=bill.id) }}">delete</a></td>
+        <td><a href="{{ url_for("delete_bill", bill_id=bill.id, project_id=project.id) }}">delete</a></td>
 </tr>
 {% endfor %}
 </tbody>
 </table>
 
-<a class="awesome large green button fleft" href="{{ url_for("compute_bills") }}">Compute bills</a>
+<a class="awesome large green button fleft" href="{{ url_for("compute_bills", project_id=project.id) }}">Compute bills</a>
 <p> Periodically (probably at the end of each month, you can compute the balance of each people, in order to reset all the debts. You can also let this "as-is" and try to find a good balance, that's up to you</p>
 
 {% else %}
-<p>Nothing to list yet. You probably want to <a href="{{ url_for("add_bill") }}">add a bill</a> ?</p>
+<p>Nothing to list yet. You probably want to <a href="{{ url_for("add_bill", project_id=project.id) }}">add a bill</a> ?</p>
 {% endif %}
 {% endblock %}

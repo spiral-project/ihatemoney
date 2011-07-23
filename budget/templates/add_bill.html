@@ -8,7 +8,7 @@
 	<ul>{% for error in form.errors %}<li>{{ error }}</li>{% endfor %}</ul>
 {% endif %}
 
-    <form action="{{ url_for('add_bill') }}" method=post class="container span-24 add-bill">
+    <form action="{{ url_for('add_bill', project_id=project.id) }}" method=post class="container span-24 add-bill">
         {{ form.hidden_tag() }}
         
         <p>{{ form.payer.label }}<br /> {{ form.payer }}</p>

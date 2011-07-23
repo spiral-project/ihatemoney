@@ -12,9 +12,7 @@
             <a href="/"><h1>Account manager ! <span class="small">Manage your shared expenses.</span></h1></a>
         </div>
         <div class="span-6 last" id="topmenu">
-            <ul>
-                <li><a class="awesome large orange button" href="{{ url_for("add_bill") }}">Add a bill !</a></li>
-            </ul>
+            {% block top_menu %}{% endblock %}
         </div>
     </div>
     <hr>
