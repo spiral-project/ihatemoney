@@ -1,3 +1,2 @@
 * Find a way to make the couple (name, project) unique.
 * use a psql backend rather than sqlite
-* put the settings in an ini file ?
