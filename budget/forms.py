@@ -2,7 +2,7 @@ from flaskext.wtf import *
 from models import Project, Person
 
 # define forms
-class CreationForm(Form):
+class ProjectForm(Form):
     name = TextField("Project name", validators=[Required()])
     id = TextField("Project identifier", validators=[Required()])
     password = PasswordField("Password", validators=[Required()])

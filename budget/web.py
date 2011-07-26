@@ -2,7 +2,7 @@ from flask import Flask, session, request, redirect, url_for, render_template
 
 # local modules
 from models import db, Project, Person, Bill
-from forms import CreationForm, AuthenticationForm, BillForm, MemberForm
+from forms import ProjectForm, AuthenticationForm, BillForm, MemberForm
 from utils import get_billform_for, requires_auth
 
 # create the application, initialize stuff
@@ -10,8 +10,10 @@ app = Flask(__name__)
 
 @app.route("/<string:project_id>/authenticate", methods=["GET", "POST"])
 def authenticate(project_id, redirect_url=None):
-    project = Project.query.get(project_id)
     redirect_url = redirect_url or url_for("list_bills", project_id=project_id)
+    project = Project.query.get(project_id)
+    if not project:
+        return redirect(url_for("create_project", project_id=project_id))
 
     # if credentials are already in session, redirect
     if project_id in session and project.password == session[project_id]:
@@ -37,7 +39,7 @@ def home():
 
 @app.route("/create", methods=["GET", "POST"])
 def create_project():
-    form = CreationForm()
+    form = ProjectForm()
     if request.method == "GET" and 'project_id' in request.values:
         form.name.data = request.values['project_id']
 
