@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Welcome on the budget manager</h2>
+
+<form action="{{ url_for('authenticate') }}" method="post" accept-charset="utf-8">
+    <h3>Log to an existing project...</h3>
+    
+    {{ auth_form.hidden_tag() }}
+    
+    <p>{{ auth_form.id.label }}<br /> {{ auth_form.id }}</p>
+    <p>{{ auth_form.password.label }}<br /> {{ auth_form.password }}</p>
+    <p>{{ auth_form.submit }}</p>
+</form>
+
+<form action="{{ url_for('create_project') }}" method="post" class="container span-24 add-bill">
+    <h3>...or create a new project</h3>
+    
+    {{ project_form.hidden_tag() }}
+    
+    <p>{{ project_form.name.label }}<br /> {{ project_form.name }}</p>
+    <p>{{ project_form.id.label }}<br /> {{ project_form.id }}</p>
+    <p>{{ project_form.password.label }}<br /> {{ project_form.password }}</p>
+    <p>{{ project_form.contact_email.label }}<br /> {{ project_form.contact_email }}</p>
+    <p>{{ project_form.submit }}</p>
+</form>
+
+{% endblock %}

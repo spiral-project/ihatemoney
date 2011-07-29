@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<h2>Login to "{{ project.name }}"</h2>
+<h2>Authentication</h2>
 
 {% for errors in form.errors.values() %}
 <p class=error>{{ ", ".join(errors) }}</p>
@@ -8,7 +8,9 @@
 
 <form action="" method="POST" accept-charset="utf-8">
     {{ form.hidden_tag() }}
-    Password: <input type="password" name="password" value="">
+    
+    <p>{{ form.id.label }}<br /> {{ form.id }}</p>
+    <p>{{ form.password.label }}<br /> {{ form.password }}</p>
     <p>{{ form.submit }}</p>
 </form>
 {% endblock %}

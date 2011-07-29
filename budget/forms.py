@@ -21,6 +21,7 @@ class ProjectForm(Form):
 
 
 class AuthenticationForm(Form):
+    id = TextField("Project identifier", validators=[Required()])
     password = TextField("Password", validators=[Required()])
     submit = SubmitField("Get in")
 
