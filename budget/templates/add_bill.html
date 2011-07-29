@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
 
+{% block top_menu %}
+<a href="{{ url_for('list_bills', project_id=project.id) }}">Back to the list</a>
+{% endblock %}
+
 {% block content %}
 <h2>Let's add a bill</h2>
 

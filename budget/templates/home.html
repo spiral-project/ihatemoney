@@ -3,7 +3,7 @@
 {% block content %}
 <h2>Welcome on the budget manager</h2>
 
-<form action="{{ url_for('authenticate') }}" method="post" accept-charset="utf-8">
+<form action="{{ url_for('authenticate') }}" method="post" accept-charset="utf-8" style="float:left; width: 50%;">
     <h3>Log to an existing project...</h3>
     
     {{ auth_form.hidden_tag() }}
@@ -13,7 +13,7 @@
     <p>{{ auth_form.submit }}</p>
 </form>
 
-<form action="{{ url_for('create_project') }}" method="post" class="container span-24 add-bill">
+<form action="{{ url_for('create_project') }}" method="post" class="container span-24 add-bill" style="float:right; width: 50%;">
     <h3>...or create a new project</h3>
     
     {{ project_form.hidden_tag() }}

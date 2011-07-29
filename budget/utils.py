@@ -7,7 +7,7 @@ from forms import BillForm
 def get_billform_for(project_id):
     """Return an instance of BillForm configured for a particular project."""
     form = BillForm()
-    payers = [(m.id, m.name) for m in Project.query.get("blah").members]
+    payers = [(m.id, m.name) for m in Project.query.get(project_id).members]
     form.payed_for.choices = form.payer.choices = payers
     return form
 

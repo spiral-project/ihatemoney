@@ -100,7 +100,6 @@ def add_member(project):
 @app.route("/<string:project_id>/add", methods=["GET", "POST"])
 @requires_auth
 def add_bill(project):
-    # FIXME: make it work.
     form = get_billform_for(project.id)
     if request.method == 'POST':
         if form.validate():
