@@ -15,7 +15,7 @@
     {% endfor %}
     </ul>
     {% set form=member_form %}
-    {#% include "member_form.html" %#}
+    {% include "member_form.html" %}
 </div>
 <div id="content" class="span-18 last">
     {% if bills.count() > 0 %}
