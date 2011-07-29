@@ -18,28 +18,26 @@ def home():
 def authenticate(redirect_url=None):
     form = AuthenticationForm()
     
-    if form.id.validate():
-    
-        project_id = form.id.data
-    
-        redirect_url = redirect_url or url_for("list_bills", project_id=project_id)
-        project = Project.query.get(project_id)
-        if not project:
-            return redirect(url_for("create_project", project_id=project_id))
+    project_id = form.id.data
 
-        # if credentials are already in session, redirect
-        if project_id in session and project.password == session[project_id]:
-            return redirect(redirect_url)
+    redirect_url = redirect_url or url_for("list_bills", project_id=project_id)
+    project = Project.query.get(project_id)
+    if not project:
+        return redirect(url_for("create_project", project_id=project_id))
 
-        # else process the form
-        if request.method == "POST":
-            if form.validate():
-                if not form.password.data == project.password:
-                    form.errors['password'] = ["The password is not the right one"]
-                else:
-                    session[project_id] = form.password.data
-                    session.update()
-                    return redirect(redirect_url)
+    # if credentials are already in session, redirect
+    if project_id in session and project.password == session[project_id]:
+        return redirect(redirect_url)
+
+    # else process the form
+    if request.method == "POST":
+        if form.validate():
+            if not form.password.data == project.password:
+                form.errors['password'] = ["The password is not the right one"]
+            else:
+                session[project_id] = form.password.data
+                session.update()
+                return redirect(redirect_url)
 
     return render_template("authenticate.html", form=form)
 
@@ -68,8 +66,8 @@ def create_project():
 @app.route("/quit")
 def quit():
     # delete the session
-    session = None
-    return redirect( url_for("home") )
+    session.clear()
+    return redirect(url_for("home"))
 
 @app.route("/<string:project_id>/invite")
 @requires_auth
