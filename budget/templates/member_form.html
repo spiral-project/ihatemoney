@@ -1,8 +1,4 @@
-{% for errors in form.errors.values() %}
-    {% for error in errors %}
-        <p class="error">{{error}}</p>
-    {% endfor %}
-{% endfor %}
+{% include "display_errors.html" %}
 <form action="{{ url_for("add_member", project_id=project.id) }}" method="post">
     {{ form.hidden_tag() }}
     <p>{{ form.name.label }}<br /> {{ form.name }}</p>
