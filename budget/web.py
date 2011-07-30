@@ -15,7 +15,8 @@ mail = Mail()
 def home():
     project_form = ProjectForm()
     auth_form = AuthenticationForm()
-    return render_template("home.html", project_form=project_form, auth_form=auth_form)
+    return render_template("home.html", project_form=project_form, 
+            auth_form=auth_form, session=session)
 
 @app.route("/authenticate", methods=["GET", "POST"])
 def authenticate(redirect_url=None):
@@ -40,7 +41,10 @@ def authenticate(redirect_url=None):
                 form.errors['password'] = ["The password is not the right one"]
             else:
                 # maintain a list of visited projects
-                session["projects"].append(project_id)
+                if "projects" not in session:
+                    session["projects"] = []
+                # add the project on the top of the list
+                session["projects"].insert(0, (project_id, project.name))
                 session[project_id] = form.password.data
                 session.update()
                 return redirect(redirect_url)

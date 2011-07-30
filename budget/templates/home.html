@@ -12,12 +12,14 @@
         <p>{{ auth_form.password.label }}<br /> {{ auth_form.password }}</p>
         <p>{{ auth_form.submit }}</p>
     </form>
-    <h3>Recently visisted projects</h3>
-    <ul>
-    {% for project in session['projects'] %}
-        <li>{{ project }}</li>
-    {% endfor %}
-    </ul>
+    {% if 'projects' in session %}
+        <h3>Recently visisted projects</h3>
+        <ul>
+        {% for id, name in session['projects'] %}
+        <li><a href="{{ url_for("list_bills", project_id=id) }}">{{ name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
 </div>
 
 <form class="span-10 last" action="{{ url_for('create_project') }}" method="post" class="container span-24 add-bill">
