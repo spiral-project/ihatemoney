@@ -1,0 +1,10 @@
+Hi, 
+
+Someone using the email adress {{ email }} invited you to share your expenses for {{ project.name }} on our application.
+
+It's as simple as saying what did you paid for, for who, and how much did it cost you, we are caring about the rest.
+
+You can access it here: {{ SITE_URL }}{{ url_for("list_bills", project_id=project.id) }}, the password is "{{ project.password }}".
+
+Enjoy,
+Some weird guys

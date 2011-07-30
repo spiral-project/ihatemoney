@@ -1,12 +1,15 @@
-from flask import Flask, session, request, redirect, url_for, render_template
+from flask import (Flask, session, request, redirect, url_for, render_template, 
+        flash)
+from flaskext.mail import Mail, Message
 
 # local modules
 from models import db, Project, Person, Bill
-from forms import ProjectForm, AuthenticationForm, BillForm, MemberForm
+from forms import ProjectForm, AuthenticationForm, BillForm, MemberForm, InviteForm
 from utils import get_billform_for, requires_auth
 
 # create the application, initialize stuff
 app = Flask(__name__)
+mail = Mail()
 
 @app.route("/")
 def home():
@@ -23,6 +26,7 @@ def authenticate(redirect_url=None):
     redirect_url = redirect_url or url_for("list_bills", project_id=project_id)
     project = Project.query.get(project_id)
     if not project:
+        flash("This project doesn't exist (yet). You can create it by filling this form")
         return redirect(url_for("create_project", project_id=project_id))
 
     # if credentials are already in session, redirect
@@ -35,6 +39,8 @@ def authenticate(redirect_url=None):
             if not form.password.data == project.password:
                 form.errors['password'] = ["The password is not the right one"]
             else:
+                # maintain a list of visited projects
+                session["projects"].append(project_id)
                 session[project_id] = form.password.data
                 session.update()
                 return redirect(redirect_url)
@@ -69,11 +75,27 @@ def quit():
     session.clear()
     return redirect(url_for("home"))
 
-@app.route("/<string:project_id>/invite")
+@app.route("/<string:project_id>/invite", methods=["GET", "POST"])
 @requires_auth
 def invite(project):
-    # FIXME create a real page: form + send emails
-    return "invite ppl"
+
+    form = InviteForm()
+
+    if request.method == "POST": 
+        if form.validate():
+            # send the email
+
+            message_body = render_template("invitation_mail", 
+                    email=project.contact_email, project=project)
+
+            message_title = "You have been invited to share your expenses for %s" % project.name
+            msg = Message(message_title, 
+                body=message_body, 
+                recipients=[email.strip() for email in form.emails.data.split(",")])
+            mail.send(msg)
+            return redirect(url_for("list_bills", project_id=project.id))
+
+    return render_template("send_invites.html", form=form, project=project)
 
 @app.route("/<string:project_id>/")
 @requires_auth
@@ -173,9 +195,13 @@ def debug():
 
 def main():
     app.config.from_object("default_settings")
+    # db
     db.init_app(app)
     db.app = app
     db.create_all()
+
+    # mail
+    mail.init_app(app)
 
     app.run(host="0.0.0.0", debug=True)
 

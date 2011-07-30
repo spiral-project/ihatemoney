@@ -1,0 +1,5 @@
+{% for errors in form.errors.values() %}
+    {% for error in errors %}
+        <p class="error">{{error}}</p>
+    {% endfor %}
+{% endfor %}

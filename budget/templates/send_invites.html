@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Invite people to join this project</h2>
+<p>Specify a (coma separated) list of email adresses you want to notify about the 
+creation of this budget management project and we will send them an email for you.</p>
+<p>If you prefer, you can <a href="{{ url_for("list_bills", project_id=project.id) }}">skip this step</a> and notify them yourself</p>
+
+{% include "display_errors.html" %}
+<form method="post" accept-charset="utf-8">
+    {{ form.hidden_tag() }}
+    <p>{{ form.emails.label }}<br /> {{ form.emails }}</p>
+    <p>{{ form.submit }} <a href="{{ url_for("list_bills", project_id=project.id) }}">No, thanks</a></p>
+</form>
+{% endblock %}

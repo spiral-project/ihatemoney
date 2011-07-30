@@ -47,3 +47,13 @@ class MemberForm(Form):
         if Person.query.filter(Person.name == field.data)\
                 .filter(Person.project == form.project).all():
             raise ValidationError("This project already have this member")
+
+class InviteForm(Form):
+    emails = TextAreaField("People to notify")
+    submit = SubmitField("Send invites")
+
+    def validate_emails(form, field):
+        validator = Email()
+        for email in [email.strip() for email in form.emails.data.split(",")]:
+            if not validator.regex.match(email):
+                raise ValidationError("The email %s is not valid" % email)
