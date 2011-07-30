@@ -16,7 +16,7 @@ To make it run, you just have to do something like::
 
     $ virtualenv venv
     $ source venv/bin/activate
-    $ pip install flask flask-wtf flask-sqlalchemy
+    $ pip install -r requirements.txt
     $ cd budget
     $ python budget.py
 
@@ -27,7 +27,7 @@ To deploy it, I'm using gunicorn and supervisord::
 
     $ virtualenv venv
     $ source venv/bin/activate
-    $ pip install flask flask-wtf flask-sqlalchemy gunicorn --upgrade
+    $ pip install -r requirements.txt
 
 1. Add the lines in conf/supervisord.conf to your supervisord.conf file.
    **adapt them to your paths!**
