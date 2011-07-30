@@ -24,6 +24,9 @@ class Person(db.Model):
     name = db.Column(db.UnicodeText)
     # activated = db.Column(db.Boolean, default=True)
 
+    def __str__(self):
+        return self.name
+
     def __repr__(self):
         return "<Person %s for project %s>" % (self.name, self.project.name)
 

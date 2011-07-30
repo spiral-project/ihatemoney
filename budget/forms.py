@@ -1,7 +1,6 @@
 from flaskext.wtf import *
-from models import Project, Person
+from models import Project, Person, Bill
 
-# define forms
 class ProjectForm(Form):
     name = TextField("Project name", validators=[Required()])
     id = TextField("Project identifier", validators=[Required()])
@@ -34,6 +33,15 @@ class BillForm(Form):
             validators=[Required()])
     submit = SubmitField("Add the bill")
 
+    def save(self):
+        bill = Bill(payer_id=self.payer.data, amount=self.amount.data,
+                what=self.what.data)
+        # set the owers
+        for ower in self.payed_for.data:
+            bill.owers.append(Person.query.get(ower))
+
+        return bill
+
 
 class MemberForm(Form):
     def __init__(self, project, *args, **kwargs):
@@ -47,6 +55,7 @@ class MemberForm(Form):
         if Person.query.filter(Person.name == field.data)\
                 .filter(Person.project == form.project).all():
             raise ValidationError("This project already have this member")
+
 
 class InviteForm(Form):
     emails = TextAreaField("People to notify")

@@ -9,7 +9,13 @@
 
 {% if form.errors %}
 	<p class=error><strong>Your form contains errors.</strong></p>
-	<ul>{% for error in form.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+        <ul>
+            {% for field, errors in form.errors.items() %}
+                {% for error in errors %}
+                    <li>{{ field }} : {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
 {% endif %}
 
     <form action="{{ url_for('add_bill', project_id=project.id) }}" method=post class="container span-24 add-bill">

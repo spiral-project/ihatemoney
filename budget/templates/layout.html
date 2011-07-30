@@ -9,11 +9,11 @@
 <div class="container" class="span-24">
     <div id="title">
             <a href="/"><h1>Account manager ! <span class="small">Manage your shared expenses.</span></h1></a>
+    <hr>
         <div class="fright" id="topmenu">
             {% block top_menu %}{% endblock %}
         </div>
     </div>
-    <hr>
     {% for message in get_flashed_messages() %}
         <div class=info>{{ message }}</div>
     {% endfor %}

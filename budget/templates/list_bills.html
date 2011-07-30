@@ -2,8 +2,7 @@
 
 {% block top_menu %}
 <ul>
-    <li><a href="{{ url_for('add_bill', project_id=project.id) }}">Add a bill</a></li>
-    <li><a href="{{ url_for('add_member', project_id=project.id) }}">Add a member</a></li>
+    <li><a class="awesome button" href="{{ url_for('add_bill', project_id=project.id) }}">Add a bill</a></li>
 </ul>
 {% endblock %}
 

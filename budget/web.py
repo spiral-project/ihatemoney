@@ -123,18 +123,11 @@ def add_bill(project):
     form = get_billform_for(project.id)
     if request.method == 'POST':
         if form.validate():
-            bill = Bill()
-            form.populate_obj(bill)
-
-            for ower in form.payed_for.data:
-                ower = BillOwer(name=ower)
-                db.session.add(ower)
-                bill.owers.append(ower)
-
-            db.session.add(bill)
+            db.session.add(form.save())
             db.session.commit()
+
             flash("The bill have been added")
-            return redirect(url_for('list_bills'))
+            return redirect(url_for('list_bills', project_id=project.id))
 
     return render_template("add_bill.html", form=form, project=project)
 

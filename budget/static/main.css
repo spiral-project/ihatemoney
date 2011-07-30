@@ -37,7 +37,9 @@
     float: right;
 }
 #topmenu ul li{
+    float: right;
     list-style-type: none;
+    margin-left: 10px;
 }
 
 /** links **/
