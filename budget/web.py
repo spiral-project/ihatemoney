@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 from flask import (Flask, session, request, redirect, url_for, render_template, 
         flash)
 from flaskext.mail import Mail, Message
@@ -107,7 +109,10 @@ def list_bills(project):
     # FIXME filter to only get the bills for this particular project
     bills = Bill.query.order_by(Bill.id.asc())
     return render_template("list_bills.html", 
-            bills=bills, project=project, member_form=MemberForm(project))
+            bills=bills, project=project, 
+            member_form=MemberForm(project),
+            bill_form=get_billform_for(project)
+    )
 
 @app.route("/<string:project_id>/members/add", methods=["GET", "POST"])
 @requires_auth
@@ -121,10 +126,20 @@ def add_member(project):
             return redirect(url_for("list_bills", project_id=project.id))
     return render_template("add_member.html", form=form, project=project)
 
+@app.route("/<string:project_id>/members/<int:member_id>/delete", methods=["GET", "POST"])
+@requires_auth
+def remove_member(project, member_id):
+    person = Person.query.get_or_404(member_id)
+    if person.project == project:
+        person.activated = False
+        db.session.commit()
+        flash("%s has been removed" % person.name)
+    return redirect(url_for("list_bills", project_id=project.id))
+
 @app.route("/<string:project_id>/add", methods=["GET", "POST"])
 @requires_auth
 def add_bill(project):
-    form = get_billform_for(project.id)
+    form = get_billform_for(project)
     if request.method == 'POST':
         if form.validate():
             db.session.add(form.save())
@@ -140,24 +155,7 @@ def add_bill(project):
 @requires_auth
 def compute_bills(project):
     """Compute the sum each one have to pay to each other and display it"""
-    # FIXME make it work
-
-    balances, should_pay, should_receive = {}, {}, {}
-    # for each person, get the list of should_pay other have for him
-    for name, void in PAYER_CHOICES:
-        bills = Bill.query.join(BillOwer).filter(Bill.processed==False)\
-                .filter(BillOwer.name==name)
-        for bill in bills.all():
-            if name != bill.payer:
-                should_pay.setdefault(name, 0)
-                should_pay[name] += bill.pay_each()
-                should_receive.setdefault(bill.payer, 0)
-                should_receive[bill.payer] += bill.pay_each()
-
-    for name, void in PAYER_CHOICES:
-        balances[name] = should_receive.get(name, 0) - should_pay.get(name, 0)
-
-    return render_template("compute_bills.html", balances=balances, project=project)
+    return render_template("compute_bills.html", project=project)
 
 
 @app.route("/<string:project_id>/reset")

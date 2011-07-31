@@ -7,16 +7,22 @@
 {% endblock %}
 
 {% block content %}
-<div id="leftmenu" class="span-6">
+<div id="leftmenu" class="span-4">
     <ul>
-    {% for member in project.members %}
-        <li>{{ member.name }}</li>
+    {% set balance = project.get_balance() %}
+    {% for member in project.active_members %}
+    <li> {{ member.name }} {{ balance[member] }} <a href="{{ url_for("remove_member", project_id=project.id, member_id=member.id) }}">x</a></li>
     {% endfor %}
     </ul>
-    {% set form=member_form %}
-    {% include "member_form.html" %}
+    <form action="{{ url_for("add_member", project_id=project.id) }}" method="post">
+        {{ forms.add_member(member_form) }}
+    </form>
 </div>
-<div id="content" class="span-18 last">
+<div id="content" class="uniForm span-20 last">
+    <form id="add_bill" action="{{ url_for('add_bill', project_id=project.id) }}" method="post" style="width: 400px; display: none">
+        {{ forms.add_bill(bill_form) }}
+    </form>
+
     {% if bills.count() > 0 %}
     <table>
         <thead><tr><th>When ?</th><th>Who paid?</th><th>for what ?</th><th>Owers</th><th>How much ?</th><th>Actions</th></tr></thead>

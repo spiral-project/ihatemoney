@@ -1,4 +1,9 @@
 {% extends "layout.html" %}
+
+{% block top_menu %}
+<a href="{{ url_for('list_bills', project_id=project.id) }}">Back to the list</a>
+{% endblock %}
+
 {% block content %}
 <h2>Computations</h2>
 
@@ -12,14 +17,14 @@
 </div>
 
 <div class="container span-6 last">
-    <a class="awesome large green button" onclick = "if (! confirm('Are you sure ?')) return false;" href="{{ url_for("reset_bills") }}">Mark this as payed / processed</a>
+    <a class="awesome large green button" onclick = "if (! confirm('Are you sure ?')) return false;" href="">Mark this as payed / processed</a>
 </div>
 
 <table>
     <thead><tr><th>Name</th><th>Balance</th></tr></thead>
     <tbody>
-{% for name, balance in balances.items() %}
-        <tr><td>{{ name }}</td><td>{{ balance }}</td></tr>
+{% for person, balance in balances.items() %}
+        <tr><td>{{ person.name }}</td><td>{{ balance }}</td></tr>
 {% endfor %}
     </tbody>
 </table>

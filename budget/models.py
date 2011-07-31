@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 from datetime import datetime
 from flaskext.sqlalchemy import SQLAlchemy
 
@@ -12,6 +14,28 @@ class Project(db.Model):
     contact_email = db.Column(db.String)
     members = db.relationship("Person", backref="project")
 
+    @property
+    def active_members(self):
+        return [m for m in self.members if m.activated]
+
+    def get_balance(self):
+
+        balances, should_pay, should_receive = defaultdict(int), defaultdict(int), defaultdict(int)
+
+        # for each person
+        for person in self.members:
+            # get the list of bills he has to pay
+            bills = Bill.query.filter(Bill.owers.contains(person))
+            for bill in bills.all():
+                if person != bill.payer: 
+                    should_pay[person] += bill.pay_each()
+                    should_receive[bill.payer] += bill.pay_each()
+
+        for person in self.members:
+            balances[person] = should_receive[person] - should_pay[person]
+
+        return balances
+
     def __repr__(self):
         return "<Project %s>" % self.name
 
@@ -22,7 +46,7 @@ class Person(db.Model):
     bills = db.relationship("Bill", backref="payer")
 
     name = db.Column(db.UnicodeText)
-    # activated = db.Column(db.Boolean, default=True)
+    activated = db.Column(db.Boolean, default=True)
 
     def __str__(self):
         return self.name
