@@ -1,0 +1,13 @@
+{% macro input(field, multiple=False) -%}
+    <div class="ctrlHolder">
+        {{ field.label }}
+        {% if multiple == True %}
+            {{ field(multiple=True) }}
+        {% else %}
+            {{ field }}
+        {% endif %}
+        {% if field.description %}
+            <p class="formHint">{{ field.description }}</p>
+        {% endif %}
+    </div>
+{% endmacro %}

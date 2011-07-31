@@ -1,5 +1,6 @@
 @import url('blueprint/screen.css');
-@import url('awesome.css');
+@import url('awesome/awesome.css');
+@import url('uniform/blue.uni-form.css');
 
 /** CSS3 fonts **/
 @import url(http://fonts.googleapis.com/css?family=Lobster);
@@ -18,10 +19,6 @@
 .fleft{
     float: left;
     margin-right: 20px;
-}
-
-#share{
-    float:right;
 }
 
 #content h2 {
@@ -45,46 +42,4 @@
 /** links **/
 a {
     color: #a45900;
-}
-
-/** Recipe **/
-.recipe-title{
-    font-family: 'Vibur', arial, serif;
-    font-size: 2.5em;
-}
-
-.recipe-ingredients{
-    float: right;
-    width: 24em;
-    margin: 0 40px;
-    margin-top: -60px;
-}
-
-dl.recipe-ingredients
-{
-    width: 24em;
-    margin: 2em 0;
-    padding: 0;
-    font-family: georgia, times, serif;
-}
-
-.recipe-ingredients dt
-{
-    width: 7em;
-    float: left;
-    margin: 0 0 0 0;
-    padding: .5em;
-    border-top: 1px solid #999;
-    font-weight: bold;
-}
-
-dt { clear: both; }
-
-.recipe-ingredients dd
-{
-    float: left;
-    width: 13em;
-    margin: 0 0 0 0;
-    padding: .5em;
-    border-top: 1px solid #999;
 }
