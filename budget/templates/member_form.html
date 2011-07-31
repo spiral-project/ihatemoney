@@ -1,6 +1,0 @@
-{% include "display_errors.html" %}
-<form action="{{ url_for("add_member", project_id=project.id) }}" method="post">
-    {{ form.hidden_tag() }}
-    <p>{{ form.name.label }}<br /> {{ form.name }}</p>
-    <p>{{ form.submit }}</p>
-</form>

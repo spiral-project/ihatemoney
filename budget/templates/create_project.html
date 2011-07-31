@@ -2,20 +2,10 @@
 
 {% block content %}
 <h2>Create a new project</h2>
-
-{% if form.errors %}
-	<p class=error><strong>Your form contains errors.</strong></p>
-	<ul>{% for error in form.errors %}<li>{{ error }}</li>{% endfor %}</ul>
-{% endif %}
-
+<div class="uniForm">
     <form method="post" class="container span-24 add-bill">
-        {{ form.hidden_tag() }}
-        
-        <p>{{ form.name.label }}<br /> {{ form.name }}</p>
-        <p>{{ form.id.label }}<br /> {{ form.id }}</p>
-        <p>{{ form.password.label }}<br /> {{ form.password }}</p>
-        <p>{{ form.contact_email.label }}<br /> {{ form.contact_email }}</p>
-        <p>{{ form.submit }}</p>
+        {{ forms.create_project(form) }}
     </form>
+</div>
 {% endblock %}
 

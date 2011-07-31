@@ -1,37 +1,21 @@
 {% extends "layout.html" %}
 
 {% block content %}
+
 <h2>Welcome on the budget manager</h2>
-<div class="span-12 prepend-2">
-    <form action="{{ url_for('authenticate') }}" method="post" accept-charset="utf-8">
+<div class="span-12 prepend-2 uniForm" >
+    <form action="{{ url_for('authenticate') }}" method="post" style="width: 300px">
         <h3>Log to an existing project...</h3>
-        
-        {{ auth_form.hidden_tag() }}
-        
-        <p>{{ auth_form.id.label }}<br /> {{ auth_form.id }}</p>
-        <p>{{ auth_form.password.label }}<br /> {{ auth_form.password }}</p>
-        <p>{{ auth_form.submit }}</p>
+        {{ forms.authenticate(auth_form) }}
     </form>
-    {% if 'projects' in session %}
-        <h3>Recently visisted projects</h3>
-        <ul>
-        {% for id, name in session['projects'] %}
-        <li><a href="{{ url_for("list_bills", project_id=id) }}">{{ name }}</a></li>
-        {% endfor %}
-        </ul>
-    {% endif %}
+    {% include "recent_projects.html" %}
 </div>
 
-<form class="span-10 last" action="{{ url_for('create_project') }}" method="post" class="container span-24 add-bill">
-    <h3>...or create a new one</h3>
-    
-    {{ project_form.hidden_tag() }}
-    
-    <p>{{ project_form.name.label }}<br /> {{ project_form.name }}</p>
-    <p>{{ project_form.id.label }}<br /> {{ project_form.id }}</p>
-    <p>{{ project_form.password.label }}<br /> {{ project_form.password }}</p>
-    <p>{{ project_form.contact_email.label }}<br /> {{ project_form.contact_email }}</p>
-    <p>{{ project_form.submit }}</p>
-</form>
+<div class="span-10 last uniForm" >
+    <form action="{{ url_for('create_project') }}" method="post" style="width: 300px">
+        <h3>...or create a new one</h3>
+        {{ forms.create_project(project_form) }}</div>
+    </form>
+</div>
 
 {% endblock %}

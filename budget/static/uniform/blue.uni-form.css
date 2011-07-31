@@ -35,8 +35,10 @@
     
     .uniForm legend{ font-weight: bold; font-size: 100%; margin: 0; padding: 1.5em 0; }
   
-    .uniForm .ctrlHolder{ padding: 1em; }
     .uniForm .ctrlHolder.focused{ background: #e1f0f6; }
+
+        .uniForm label { float: left; line-height: 300%;}
+        .uniForm input, .uniForm select { float: right }
     
     .uniForm .buttonHolder{ background: #c4ced1; text-align: right; margin: 1.5em 0 0 0; padding: 1.5em;
                             /* CSS3 */

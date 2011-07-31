@@ -5,26 +5,11 @@
 {% endblock %}
 
 {% block content %}
-<h2>Let's add a bill</h2>
+<h2>Add a new bill</h2>
 
-{% if form.errors %}
-	<p class=error><strong>Your form contains errors.</strong></p>
-        <ul>
-            {% for field, errors in form.errors.items() %}
-                {% for error in errors %}
-                    <li>{{ field }} : {{ error }}</li>
-                {% endfor %}
-            {% endfor %}
-        </ul>
-{% endif %}
-
-    <form action="{{ url_for('add_bill', project_id=project.id) }}" method=post class="container span-24 add-bill">
-        {{ form.hidden_tag() }}
-        
-        <p>{{ form.payer.label }}<br /> {{ form.payer }}</p>
-        <p>{{ form.what.label }}<br /> {{ form.what }}</p>
-        <p>{{ form.amount.label }}<br />{{ form.amount }}</p>
-        <p>{{ form.payed_for.label }}<br /> {{ form.payed_for(multiple=True) }}</p>
-        <p>{{ form.submit }}</p>
+<div class="container span-24 add-bill uniForm" style="width: 400px">
+    <form action="{{ url_for('add_bill', project_id=project.id) }}" method="post" class=uniForm">
+        {{ forms.add_bill(form) }}
     </form>
+</div>
 {% endblock %}

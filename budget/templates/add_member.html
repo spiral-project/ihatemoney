@@ -1,4 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-{% include "member_form.html" %}
+    <form action="{{ url_for("add_member", project_id=project.id) }}" method="post">
+        {{ forms.add_member(form) }}
+    </form>
 {% endblock %}

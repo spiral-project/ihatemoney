@@ -11,3 +11,46 @@
         {% endif %}
     </div>
 {% endmacro %}
+
+{% macro authenticate(form) %}
+
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }}
+    {{ input(form.id) }}
+    {{ input(form.password) }}
+    {{ input(form.submit) }}
+
+{% endmacro %}
+
+{% macro create_project(form) %}
+
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }}
+    {{ input(form.name) }}
+    {{ input(form.id) }}
+    {{ input(form.password) }}
+    {{ input(form.contact_email) }}
+    {{ input(form.submit) }}
+
+{% endmacro %}
+
+{% macro add_bill(form) %}
+
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }} 
+    {{ input(form.what) }} 
+    {{ input(form.payer) }} 
+    {{ input(form.amount) }} 
+    {{ input(form.payed_for, multiple=True) }} 
+    {{ input(form.submit) }}
+
+{% endmacro %}
+
+{% macro add_member(form) %}
+
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }}
+    {{ input(form.name) }}
+    {{ input(form.submit) }}
+
+{% endmacro %}
