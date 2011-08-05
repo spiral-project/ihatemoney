@@ -6,7 +6,7 @@ class ProjectForm(Form):
     id = TextField("Project identifier", validators=[Required()])
     password = PasswordField("Password", validators=[Required()])
     contact_email = TextField("Email", validators=[Required(), Email()])
-    submit = SubmitField("Get in")
+    submit = SubmitField("Create the project")
 
     def save(self):
         """Create a new project with the information given by this form.
