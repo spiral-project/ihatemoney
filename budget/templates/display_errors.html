@@ -1,5 +1,5 @@
-{% for errors in form.errors.values() %}
-    {% for error in errors %}
-        <p class="error">{{error}}</p>
+{% for field_name, field_errors in form.errors.items() if field_errors %}
+    {% for error in field_errors %}
+        <p class="error">{{ form[field_name].label.text }}: {{ error }}</p>
     {% endfor %}
 {% endfor %}
