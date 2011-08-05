@@ -1,6 +1,8 @@
 {% macro input(field, multiple=False) -%}
     <div class="ctrlHolder">
-        {{ field.label }}
+        {% if field.type != "SubmitField" %}
+            {{ field.label }}
+        {% endif %}
         {% if multiple == True %}
             {{ field(multiple=True) }}
         {% else %}
