@@ -1,5 +1,6 @@
 from flaskext.wtf import *
 from models import Project, Person, Bill
+from datetime import datetime
 
 class ProjectForm(Form):
     name = TextField("Project name", validators=[Required()])
@@ -26,6 +27,7 @@ class AuthenticationForm(Form):
 
 
 class BillForm(Form):
+    date = DateField("Date", validators=[Required()], default=datetime.now)
     what = TextField("What?", validators=[Required()])
     payer = SelectField("Payer", validators=[Required()])
     amount = DecimalField("Amount payed", validators=[Required()])
@@ -35,7 +37,7 @@ class BillForm(Form):
 
     def save(self):
         bill = Bill(payer_id=self.payer.data, amount=self.amount.data,
-                what=self.what.data)
+                what=self.what.data, date=self.date.data)
         # set the owers
         for ower in self.payed_for.data:
             bill.owers.append(Person.query.get(ower))

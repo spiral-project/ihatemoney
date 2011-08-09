@@ -40,6 +40,7 @@
 
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }} 
+    {{ input(form.date) }} 
     {{ input(form.what) }} 
     {{ input(form.payer) }} 
     {{ input(form.amount) }} 
