@@ -134,9 +134,14 @@ def add_member(project):
 def remove_member(project, member_id):
     person = Person.query.get_or_404(member_id)
     if person.project == project:
-        person.activated = False
-        db.session.commit()
-        flash("%s has been removed" % person.name)
+        if not person.is_used():
+            db.session.delete(person)
+            db.session.commit()
+            flash("User '%s' has been removed" % person.name)
+        else:
+            person.activated = False
+            db.session.commit()
+            flash("User '%s' has been desactivated" % person.name)
     return redirect(url_for("list_bills", project_id=project.id))
 
 @app.route("/<string:project_id>/add", methods=["GET", "POST"])

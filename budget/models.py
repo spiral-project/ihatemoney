@@ -48,6 +48,14 @@ class Person(db.Model):
     name = db.Column(db.UnicodeText)
     activated = db.Column(db.Boolean, default=True)
 
+    def is_used(self):
+        bills_as_ower_number = db.session.query(Bill).join(billowers, Person)\
+            .filter("Bill.id == billowers.bill_id")\
+            .filter("Person.id == billowers.person_id")\
+            .filter(Person.id == self.id)\
+            .count()
+        return bills_as_ower_number != 0 or len(self.bills) != 0
+
     def __str__(self):
         return self.name
 
