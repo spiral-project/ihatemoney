@@ -80,8 +80,8 @@ def create_project():
 
     return render_template("create_project.html", form=form)
 
-@app.route("/quit")
-def quit():
+@app.route("/exit")
+def exit():
     # delete the session
     session.clear()
     return redirect(url_for("home"))
@@ -99,10 +99,12 @@ def invite(project):
             message_body = render_template("invitation_mail", 
                     email=project.contact_email, project=project)
 
-            message_title = "You have been invited to share your expenses for %s" % project.name
+            message_title = "You have been invited to share your"\
+                    + " expenses for %s" % project.name
             msg = Message(message_title, 
                 body=message_body, 
-                recipients=[email.strip() for email in form.emails.data.split(",")])
+                recipients=[email.strip() 
+                    for email in form.emails.data.split(",")])
             mail.send(msg)
             return redirect(url_for("list_bills", project_id=project.id))
 
