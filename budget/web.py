@@ -197,11 +197,6 @@ def delete_bill(project, bill_id):
 
     return redirect(url_for('list_bills'))
 
-@app.route("/debug/")
-def debug():
-    from ipdb import set_trace; set_trace()
-    return render_template("debug.html")
-
 
 def main():
     # db
