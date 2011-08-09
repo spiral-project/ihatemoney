@@ -106,8 +106,11 @@ def invite(project):
 @app.route("/<string:project_id>/")
 @requires_auth
 def list_bills(project):
-    # FIXME filter to only get the bills for this particular project
-    bills = Bill.query.order_by(Bill.id.asc())
+    bills = Bill.query.join(Person, Project)\
+        .filter(Bill.payer_id == Person.id)\
+        .filter(Person.project_id == Project.id)\
+        .filter(Project.id == project.id)\
+        .order_by(Bill.date.desc())
     return render_template("list_bills.html", 
             bills=bills, project=project, 
             member_form=MemberForm(project),
