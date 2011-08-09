@@ -2,23 +2,27 @@
 
 {% block top_menu %}
 <ul>
-    <li><a class="awesome button" href="{{ url_for('add_bill', project_id=project.id) }}">Add a bill</a></li>
+    <li><a href="{{ url_for("exit") }}">logout</a></li>
 </ul>
 {% endblock %}
 
 {% block content %}
-<div id="leftmenu" class="span-4">
-    <ul>
+<div id="leftmenu" class="span-6">
+    <ul class="members">
     {% set balance = project.get_balance() %}
     {% for member in project.active_members %}
-    <li> {{ member.name }} {{ balance[member] }} <a href="{{ url_for("remove_member", project_id=project.id, member_id=member.id) }}">x</a></li>
+    <li class="{{ loop.cycle("even", "odd") }}">
+    <span class="balance {% if balance[member] < 0 %}positive{% elif balance[member] > 0 %}negative{% endif %}">{{ balance[member] }}</span>
+    {{ member.name }}
+    <a class="remove" href="{{ url_for("remove_member", project_id=project.id, member_id=member.id) }}">delete</a></li>
     {% endfor %}
     </ul>
     <form action="{{ url_for("add_member", project_id=project.id) }}" method="post">
         {{ forms.add_member(member_form) }}
     </form>
 </div>
-<div id="content" class="uniForm span-20 last">
+<div id="content" class="uniForm span-18 last">
+<a class="awesome button fright" href="{{ url_for('add_bill', project_id=project.id) }}">Add a bill</a>
     <form id="add_bill" action="{{ url_for('add_bill', project_id=project.id) }}" method="post" style="width: 400px; display: none">
         {{ forms.add_bill(bill_form) }}
     </form>

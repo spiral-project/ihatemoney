@@ -7,39 +7,64 @@
 @import url(http://fonts.googleapis.com/css?family=Just+Me+Again+Down+Here);
 
 
+a {
+    color: #a45900;
+}
+
 #title{
     margin-top: 10px;
 }
 
-.container h1{
-    text-align: center;
-    font-family: 'Lobster', arial, serif;
-}
-
-.fleft{
-    float: left;
-    margin-right: 20px;
-}
-
-#content h2 {
-    font-weight: bold;
-    text-shadow:  #DDD 2px 5px 2px;
-}
+    #title h1{
+        font-family: 'Lobster', arial, serif;
+    }
 
 #topmenu{
-    margin-top: 15px;
+    margin-top: 30px;
 }
 
-#topmenu ul{
-    float: right;
+    #topmenu ul{
+        float: right;
+    }
+
+    #topmenu ul li{
+        float: right;
+        list-style-type: none;
+        margin-left: 10px;
+    }
+
+
+#leftmenu input{
+    width: 150px;
 }
-#topmenu ul li{
-    float: right;
+
+.members {
     list-style-type: none;
-    margin-left: 10px;
+    margin: 0;
+    padding: 0;
+    width: 80%;
 }
 
-/** links **/
-a {
-    color: #a45900;
-}
+    .members li{
+        padding: 5px;
+    }
+
+    .members .odd{
+        background-color: #efefef;
+    }
+
+    .members .remove{
+        float: right;
+    }
+
+    .members .balance{
+        margin-right: 10px;
+        font-weight: bold;
+    }
+
+        .positive{
+            color: green;
+        }
+        .negative{
+            color: red;
+        }
