@@ -151,3 +151,7 @@
     /* Use .first and .last classes to control the layout/spacing of your columns */
     .uniForm .col.first{ width: 49%; float: left; clear: none;                   }
     .uniForm .col.last { width: 49%; float: right; clear: none; margin-right: 0; }
+
+.ctrlHolder ul{
+        float: right;
+}

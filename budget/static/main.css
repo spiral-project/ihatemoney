@@ -11,6 +11,14 @@ a {
     color: #a45900;
 }
 
+.fright{
+    float: right;
+}
+
+.fleft{
+    float: left;
+}
+
 #title{
     margin-top: 10px;
 }

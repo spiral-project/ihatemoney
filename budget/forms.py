@@ -1,6 +1,23 @@
 from flaskext.wtf import *
+from wtforms.widgets import html_params
 from models import Project, Person, Bill
 from datetime import datetime
+
+
+def select_multi_checkbox(field, ul_class='', **kwargs):
+    kwargs.setdefault('type', 'checkbox')
+    field_id = kwargs.pop('id', field.id)
+    html = [u'<ul %s>' % html_params(id=field_id, class_=ul_class)]
+    for value, label, checked in field.iter_choices():
+        choice_id = u'%s-%s' % (field_id, value)
+        options = dict(kwargs, name=field.name, value=value, id=choice_id)
+        if checked:
+            options['checked'] = 'checked'
+        html.append(u'<li><input %s /> ' % html_params(**options))
+        html.append(u'<label for="%s">%s</label></li>' % (field_id, label))
+    html.append(u'</ul>')
+    return u''.join(html)
+
 
 class ProjectForm(Form):
     name = TextField("Project name", validators=[Required()])
@@ -32,7 +49,7 @@ class BillForm(Form):
     payer = SelectField("Payer", validators=[Required()])
     amount = DecimalField("Amount payed", validators=[Required()])
     payed_for = SelectMultipleField("Who has to pay for this?", 
-            validators=[Required()])
+            validators=[Required()], widget=select_multi_checkbox)
     submit = SubmitField("Add the bill")
 
     def save(self):
@@ -68,3 +85,4 @@ class InviteForm(Form):
         for email in [email.strip() for email in form.emails.data.split(",")]:
             if not validator.regex.match(email):
                 raise ValidationError("The email %s is not valid" % email)
+
