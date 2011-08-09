@@ -11,6 +11,7 @@ from utils import get_billform_for, requires_auth
 
 # create the application, initialize stuff
 app = Flask(__name__)
+app.config.from_object("default_settings")
 mail = Mail()
 
 @app.route("/")
@@ -200,7 +201,6 @@ def debug():
 
 
 def main():
-    app.config.from_object("default_settings")
     # db
     db.init_app(app)
     db.app = app
