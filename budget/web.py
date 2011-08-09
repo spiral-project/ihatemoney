@@ -35,24 +35,25 @@ def authenticate(redirect_url=None):
         # propose him a link to the creation form.
         create_project = project_id
 
-    # if credentials are already in session, redirect
-    if project_id in session and project.password == session[project_id]:
-        return redirect(redirect_url)
+    else:
+        # if credentials are already in session, redirect
+        if project_id in session and project.password == session[project_id]:
+            return redirect(redirect_url)
 
-    # else process the form
-    if project and request.method == "POST":
-        if form.validate():
-            if not form.password.data == project.password:
-                form.errors['password'] = ["The password is not the right one"]
-            else:
-                # maintain a list of visited projects
-                if "projects" not in session:
-                    session["projects"] = []
-                # add the project on the top of the list
-                session["projects"].insert(0, (project_id, project.name))
-                session[project_id] = form.password.data
-                session.update()
-                return redirect(redirect_url)
+        # else process the form
+        if request.method == "POST":
+            if form.validate():
+                if not form.password.data == project.password:
+                    form.errors['password'] = ["The password is not the right one"]
+                else:
+                    # maintain a list of visited projects
+                    if "projects" not in session:
+                        session["projects"] = []
+                    # add the project on the top of the list
+                    session["projects"].insert(0, (project_id, project.name))
+                    session[project_id] = form.password.data
+                    session.update()
+                    return redirect(redirect_url)
 
     return render_template("authenticate.html", form=form, 
             create_project=create_project)
