@@ -12,7 +12,7 @@
     {% set balance = project.get_balance() %}
     {% for member in project.active_members %}
     <li class="{{ loop.cycle("even", "odd") }}">
-    <span class="balance {% if balance[member] < 0 %}positive{% elif balance[member] > 0 %}negative{% endif %}">{{ balance[member] }}</span>
+    <span class="balance {% if balance[member] > 0 %}positive{% elif balance[member] < 0 %}negative{% endif %}">{{ balance[member] }}</span>
     {{ member.name }}
     <a class="remove" href="{{ url_for("remove_member", project_id=project.id, member_id=member.id) }}">delete</a></li>
     {% endfor %}
@@ -43,9 +43,6 @@
     {% endfor %}
     </tbody>
     </table>
-
-    <a class="awesome large green button fleft" href="{{ url_for("compute_bills", project_id=project.id) }}">Compute bills</a>
-    <p> Periodically (probably at the end of each month, you can compute the balance of each people, in order to reset all the debts. You can also let this "as-is" and try to find a good balance, that's up to you</p>
 
     {% else %}
     <p>Nothing to list yet. You probably want to <a href="{{ url_for("add_bill", project_id=project.id) }}">add a bill</a> ?</p>

@@ -169,7 +169,7 @@ def add_bill(project):
             db.session.add(form.save())
             db.session.commit()
 
-            flash("The bill have been added")
+            flash("The bill has been added")
             return redirect(url_for('list_bills', project_id=project.id))
 
     return render_template("add_bill.html", form=form, project=project)
