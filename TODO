@@ -1,3 +1,0 @@
-* Find a way to make the couple (name, project) unique.
-* Use a psql backend rather than sqlite
-* Deal with spammers. If our system is able to send invitation emails easily, it should'n be used by spammers. (Is this really a concern? Do we need to put a captcha in place?)
