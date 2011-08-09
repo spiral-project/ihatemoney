@@ -28,16 +28,18 @@ def authenticate(redirect_url=None):
 
     redirect_url = redirect_url or url_for("list_bills", project_id=project_id)
     project = Project.query.get(project_id)
+    create_project = False # We don't want to create the project by default
     if not project:
-        flash("This project doesn't exist (yet). You can create it by filling this form")
-        return redirect(url_for("create_project", project_id=project_id))
+        # But if the user try to connect to an unexisting project, we will 
+        # propose him a link to the creation form.
+        create_project = project_id
 
     # if credentials are already in session, redirect
     if project_id in session and project.password == session[project_id]:
         return redirect(redirect_url)
 
     # else process the form
-    if request.method == "POST":
+    if project and request.method == "POST":
         if form.validate():
             if not form.password.data == project.password:
                 form.errors['password'] = ["The password is not the right one"]
@@ -51,7 +53,8 @@ def authenticate(redirect_url=None):
                 session.update()
                 return redirect(redirect_url)
 
-    return render_template("authenticate.html", form=form)
+    return render_template("authenticate.html", form=form, 
+            create_project=create_project)
 
 @app.route("/create", methods=["GET", "POST"])
 def create_project():

@@ -6,6 +6,11 @@
 <p class=error>{{ ", ".join(errors) }}</p>
 {% endfor %}
 
+{% if create_project %}
+<p class="info">The project you are trying to access do not exist, do you want 
+to <a href="{{ url_for("create_project", project_id=create_project) }}">create it</a>?
+</p>
+{% endif %}
 <form action="" method="POST" accept-charset="utf-8">
     {{ form.hidden_tag() }}
     
