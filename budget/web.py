@@ -166,14 +166,44 @@ def add_bill(project):
     form = get_billform_for(project)
     if request.method == 'POST':
         if form.validate():
-            db.session.add(form.save())
+            bill = Bill()
+            db.session.add(form.save(bill))
             db.session.commit()
 
             flash("The bill has been added")
             return redirect(url_for('list_bills', project_id=project.id))
 
+    form.set_default()
     return render_template("add_bill.html", form=form, project=project)
 
+
+@app.route("/<string:project_id>/delete/<int:bill_id>")
+@requires_auth
+def delete_bill(project, bill_id):
+    bill = Bill.query.get_or_404(bill_id)
+    db.session.delete(bill)
+    # FIXME Delete also billowers relations
+    db.session.commit()
+    flash("The bill has been deleted")
+
+    return redirect(url_for('list_bills', project_id=project.id))
+
+
+@app.route("/<string:project_id>/edit/<int:bill_id>", methods=["GET", "POST"])
+@requires_auth
+def edit_bill(project, bill_id):
+    bill = Bill.query.get_or_404(bill_id)
+    form = get_billform_for(project)
+    if request.method == 'POST' and form.validate():
+        # FIXME Edit also billowers relations
+        form.save(bill)
+        db.session.commit()
+
+        flash("The bill has been modified")
+        return redirect(url_for('list_bills', project_id=project.id))
+
+    form.fill(bill)
+    return render_template("edit_bill.html", form=form, project=project, bill_id=bill_id)
 
 @app.route("/<string:project_id>/compute")
 @requires_auth
@@ -192,17 +222,6 @@ def reset_bills(project):
     for bill in bills:
         bill.processed = True
         db.session.commit()
-
-    return redirect(url_for('list_bills'))
-
-
-@app.route("/<string:project_id>/delete/<int:bill_id>")
-@requires_auth
-def delete_bill(project, bill_id):
-    Bill.query.filter(Bill.id == bill_id).delete()
-    BillOwer.query.filter(BillOwer.bill_id == bill_id).delete()
-    db.session.commit()
-    flash("the bill was deleted")
 
     return redirect(url_for('list_bills'))
 

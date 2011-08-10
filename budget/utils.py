@@ -6,14 +6,9 @@ from forms import BillForm
 
 def get_billform_for(project):
     """Return an instance of BillForm configured for a particular project."""
-    payers = []
-    ids = []
-    for m in project.active_members:
-        payers.append( (str(m.id), m.name) )
-        ids.append( str(m.id) )
     form = BillForm()
-    form.payed_for.choices = form.payer.choices = payers
-    form.payed_for.data = ids
+    form.payed_for.choices = form.payer.choices = [(str(m.id), m.name) for m in project.active_members]
+    form.payed_for.default = [ str(m.id) for m in project.active_members]
     return form
 
 def requires_auth(f):

@@ -50,16 +50,27 @@ class BillForm(Form):
     amount = DecimalField("Amount payed", validators=[Required()])
     payed_for = SelectMultipleField("Who has to pay for this?", 
             validators=[Required()], widget=select_multi_checkbox)
-    submit = SubmitField("Add the bill")
+    submit = SubmitField("Send the bill")
 
-    def save(self):
-        bill = Bill(payer_id=self.payer.data, amount=self.amount.data,
-                what=self.what.data, date=self.date.data)
-        # set the owers
-        for ower in self.payed_for.data:
-            bill.owers.append(Person.query.get(ower))
+    def save(self, bill):
+        bill.payer_id=self.payer.data
+        bill.amount=self.amount.data
+        bill.what=self.what.data
+        bill.date=self.date.data
+        bill.owers = [Person.query.get(ower) for ower in self.payed_for.data]
+        print self.payed_for.data
 
         return bill
+
+    def fill(self, bill):
+        self.payer.data = bill.payer_id
+        self.amount.data = bill.amount
+        self.what.data = bill.what
+        self.date.data = bill.date
+        self.payed_for.data = [str(ower.id) for ower in bill.owers]
+
+    def set_default(self):
+        self.payed_for.data = self.payed_for.default
 
 
 class MemberForm(Form):
