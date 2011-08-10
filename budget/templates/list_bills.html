@@ -1,5 +1,41 @@
 {% extends "layout.html" %}
 
+{% block js %}
+$(document).ready(function(){
+
+    // display the form when clicking on the "add bill" button
+    $('#add_bill_button').click(function(){
+        $('#add_bill').show(200);
+        $(this).hide();
+        $('#hide_bill_form').show();
+        return false;
+    });
+
+    // and provide a mechanism to hide it back
+    $('#hide_bill_form').click(function(){
+        $('#add_bill').hide(200);
+        $(this).hide();
+        $('#add_bill_button').show();
+        return false;
+    });
+
+    // ask for confirmation before removing an user
+    $('a.remove').each(function(){
+        $(this).hide();
+        $(this).click(function(){
+            return confirm("are you sure?");
+        });
+    });
+
+    // display the remove button on mouse over (and hide them per default)
+    $('.members li').hover(function(){
+        $(this).children('a.remove').show();
+    }, function(){
+        $(this).children('a.remove').hide();
+    });
+});
+{% endblock %}
+
 {% block top_menu %}
 <ul>
     <li><a href="{{ url_for("exit") }}">logout</a></li>
@@ -22,7 +58,11 @@
     </form>
 </div>
 <div id="content" class="uniForm span-18 last">
-    <a class="awesome button fright" href="{{ url_for('add_bill', project_id=project.id) }}">Add a bill</a>
+    <a id="add_bill_button" class="awesome large green button fright" href="{{ url_for('add_bill', project_id=project.id) }}">Add a bill</a>
+
+    <a id="hide_bill_form" class="awesome button fright" style="display: none;" href="#">Hide form</a>
+
+<form id="add_bill" action="{{ url_for('add_bill', project_id=project.id) }}" method="post" style="width: 400px; display: none">{{ forms.add_bill(bill_form) }}</form>
 
     {% if bills.count() > 0 %}
     <table class="list_bills">
