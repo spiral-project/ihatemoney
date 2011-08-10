@@ -4,11 +4,19 @@ from flask import redirect, url_for, session, request
 from models import Bill, Project
 from forms import BillForm
 
-def get_billform_for(project):
-    """Return an instance of BillForm configured for a particular project."""
+def get_billform_for(project, set_default=True):
+    """Return an instance of BillForm configured for a particular project.
+
+    :set_default: if set to True, on GET methods (usually when we want to 
+                  display the default form, it will call set_default on it.
+    
+    """
     form = BillForm()
     form.payed_for.choices = form.payer.choices = [(str(m.id), m.name) for m in project.active_members]
-    form.payed_for.default = [ str(m.id) for m in project.active_members]
+    form.payed_for.default = [str(m.id) for m in project.active_members]
+
+    if set_default and request.method == "GET":
+        form.set_default()
     return form
 
 def requires_auth(f):

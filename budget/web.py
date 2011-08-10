@@ -173,7 +173,6 @@ def add_bill(project):
             flash("The bill has been added")
             return redirect(url_for('list_bills', project_id=project.id))
 
-    form.set_default()
     return render_template("add_bill.html", form=form, project=project)
 
 
@@ -192,7 +191,7 @@ def delete_bill(project, bill_id):
 @requires_auth
 def edit_bill(project, bill_id):
     bill = Bill.query.get_or_404(bill_id)
-    form = get_billform_for(project)
+    form = get_billform_for(project, set_default=False)
     if request.method == 'POST' and form.validate():
         form.save(bill)
         db.session.commit()
