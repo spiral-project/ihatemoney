@@ -14,7 +14,7 @@ def select_multi_checkbox(field, ul_class='', **kwargs):
         if checked:
             options['checked'] = 'checked'
         html.append(u'<li><input %s /> ' % html_params(**options))
-        html.append(u'<label for="%s">%s</label></li>' % (field_id, label))
+        html.append(u'<label for="%s">%s</label></li>' % (choice_id, label))
     html.append(u'</ul>')
     return u''.join(html)
 
