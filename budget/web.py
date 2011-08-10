@@ -182,7 +182,6 @@ def add_bill(project):
 def delete_bill(project, bill_id):
     bill = Bill.query.get_or_404(bill_id)
     db.session.delete(bill)
-    # FIXME Delete also billowers relations
     db.session.commit()
     flash("The bill has been deleted")
 
@@ -195,7 +194,6 @@ def edit_bill(project, bill_id):
     bill = Bill.query.get_or_404(bill_id)
     form = get_billform_for(project)
     if request.method == 'POST' and form.validate():
-        # FIXME Edit also billowers relations
         form.save(bill)
         db.session.commit()
 
