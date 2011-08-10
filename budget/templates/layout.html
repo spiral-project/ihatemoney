@@ -5,7 +5,17 @@
 <title>Account manager</title>
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='main.css') }}">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script type="text/javascript" charset="utf-8">{% block js %}{% endblock %}</script>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function(){
+    setTimeout(function(){
+        $(".flash").fadeOut("slow", function () {
+            $(".flash").remove();
+        });
+    }, 2000);
+
+    {% block js %}{% endblock %}
+});
+</script>
 </head>
 <body>
 
@@ -17,7 +27,7 @@
     </div>
     <hr>
     {% for message in get_flashed_messages() %}
-        <div class=info>{{ message }}</div>
+        <div class="flash">{{ message }}</div>
     {% endfor %}
     {% block content %}
     {% endblock %}

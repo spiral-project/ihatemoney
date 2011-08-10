@@ -80,3 +80,10 @@ a {
         .negative{
             color: red;
         }
+
+.flash{
+    padding:8px;
+    background-color: #ffc;
+    font-weight: bold;
+    font-size:15px;-moz-border-radius: 6px;-webkit-border-radius: 6px;
+}
