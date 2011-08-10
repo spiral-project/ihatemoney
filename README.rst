@@ -1,7 +1,7 @@
 Budget-manager
 ##############
 
-:author: Alexis Métaireau
+:author: Alexis Métaireau, Frédéric Sureau
 :date: 10/03/2010
 :technologies: Python, Flask, SQLAlchemy, WTForm
 
