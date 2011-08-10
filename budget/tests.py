@@ -1,3 +1,4 @@
+ # -*- coding: utf-8 -*-
 import os
 import tempfile
 import unittest
@@ -119,7 +120,7 @@ class BudgetTestCase(TestCase):
             # no new project added
             self.assertEqual(len(models.Project.query.all()), 1)
 
-    def test_add_member(self):
+    def test_membership(self):
         self.create_project("raclette")
         self.login("raclette")
 
@@ -131,6 +132,50 @@ class BudgetTestCase(TestCase):
         result = self.app.post("/raclette/members/add", data={'name': 'alexis' })
         # should not accept him
         self.assertEqual(len(models.Project.query.get("raclette").members), 1)
+
+        # add fred
+        self.app.post("/raclette/members/add", data={'name': 'fred' })
+        self.assertEqual(len(models.Project.query.get("raclette").members), 2)
+
+        # check fred is present in the bills page
+        result = self.app.get("/raclette/")
+        self.assertIn("fred", result.data)
+        
+        # remove fred
+        self.app.post("/raclette/members/%s/delete" % 
+                models.Project.query.get("raclette").members[-1].id)
+
+        # as fred is not bound to any bill, he is removed
+        self.assertEqual(len(models.Project.query.get("raclette").members), 1)
+
+        # add fred again
+        self.app.post("/raclette/members/add", data={'name': 'fred' })
+        fred_id = models.Project.query.get("raclette").members[-1].id
+
+        # bound him to a bill
+        result = self.app.post("/raclette/add", data={
+            'date': '2011-08-10',
+            'what': u'fromage à raclette',
+            'payer': fred_id,
+            'payed_for': [fred_id,],
+            'amount': '25',
+        })
+
+        # remove fred
+        self.app.post("/raclette/members/%s/delete" % fred_id)
+
+        # he is still in the database, but is deactivated
+        self.assertEqual(len(models.Project.query.get("raclette").members), 2)
+        self.assertEqual(
+                len(models.Project.query.get("raclette").active_members), 1)
+
+        # as fred is now deactivated, check that he is not listed when adding
+        # a bill or displaying the balance
+        result = self.app.get("/raclette/")
+        self.assertNotIn("/raclette/members/%s/delete" % fred_id, result.data)
+
+        result = self.app.get("/raclette/add")
+        self.assertNotIn("fred", result.data)
 
 
 if __name__ == "__main__":

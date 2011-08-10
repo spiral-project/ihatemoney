@@ -48,7 +48,7 @@ class Person(db.Model):
     name = db.Column(db.UnicodeText)
     activated = db.Column(db.Boolean, default=True)
 
-    def is_used(self):
+    def has_bills(self):
         bills_as_ower_number = db.session.query(Bill).join(billowers, Person)\
             .filter("Bill.id == billowers.bill_id")\
             .filter("Person.id == billowers.person_id")\

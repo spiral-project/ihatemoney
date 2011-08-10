@@ -150,7 +150,7 @@ def add_member(project):
 def remove_member(project, member_id):
     person = Person.query.get_or_404(member_id)
     if person.project == project:
-        if not person.is_used():
+        if not person.has_bills():
             db.session.delete(person)
             db.session.commit()
             flash("User '%s' has been removed" % person.name)

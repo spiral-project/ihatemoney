@@ -62,7 +62,6 @@ class BillForm(Form):
         bill.what=self.what.data
         bill.date=self.date.data
         bill.owers = [Person.query.get(ower) for ower in self.payed_for.data]
-        print self.payed_for.data
 
         return bill
 
