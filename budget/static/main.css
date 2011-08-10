@@ -46,6 +46,10 @@ a {
     width: 150px;
 }
 
+.list_bills{
+    margin-top: 10px;
+}
+
 .members {
     list-style-type: none;
     margin: 0;

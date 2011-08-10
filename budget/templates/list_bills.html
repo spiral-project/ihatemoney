@@ -22,13 +22,10 @@
     </form>
 </div>
 <div id="content" class="uniForm span-18 last">
-<a class="awesome button fright" href="{{ url_for('add_bill', project_id=project.id) }}">Add a bill</a>
-    <form id="add_bill" action="{{ url_for('add_bill', project_id=project.id) }}" method="post" style="width: 400px; display: none">
-        {{ forms.add_bill(bill_form) }}
-    </form>
+    <a class="awesome button fright" href="{{ url_for('add_bill', project_id=project.id) }}">Add a bill</a>
 
     {% if bills.count() > 0 %}
-    <table>
+    <table class="list_bills">
         <thead><tr><th>When?</th><th>Who paid?</th><th>For what?</th><th>Owers</th><th>How much?</th><th>Actions</th></tr></thead>
     <tbody>
     {% for bill in bills %}
