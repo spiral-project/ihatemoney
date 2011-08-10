@@ -26,6 +26,10 @@ class ProjectForm(Form):
     contact_email = TextField("Email", validators=[Required(), Email()])
     submit = SubmitField("Create the project")
 
+    def validate_id(form, field):
+        if Project.query.get(field.data):
+            raise ValidationError("This project id is already used")
+
     def save(self):
         """Create a new project with the information given by this form.
 

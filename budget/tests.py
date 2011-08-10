@@ -2,12 +2,12 @@ import os
 import tempfile
 import unittest
 
-from flask import g
+from flask import session
 
 import web
 import models
 
-class BudgetTestCase(unittest.TestCase):
+class TestCase(unittest.TestCase):
 
     def setUp(self):
         web.app.config['TESTING'] = True
@@ -38,24 +38,26 @@ class BudgetTestCase(unittest.TestCase):
     def create_project(self, name):
         """Create a fake project"""
         # create the project
-        project = models.Project(id=name, name=unicode(name), password=name, 
-                contact_email="%s@notmyidea.org" % name)
-        models.db.session.add(project)
-        models.db.session.commit()
+        self.app.post("/create", data={
+                'name': name,
+                'id': name,
+                'password': name,
+                'contact_email': '%s@notmyidea.org' % name
+        })
 
-        return project
+class BudgetTestCase(TestCase):
 
     def test_notifications(self):
         """Test that the notifications are sent, and that email adresses
         are checked properly.
         """
-        # create a project
-        self.create_project("raclette")
-
-        self.login("raclette")
-
         # sending a message to one person
         with web.mail.record_messages() as outbox:
+
+            # create a project
+            self.login("raclette")
+
+            self.create_project("raclette")
             self.app.post("/raclette/invite", data=
                     {"emails": 'alexis@notmyidea.org'})
 
@@ -85,6 +87,50 @@ class BudgetTestCase(unittest.TestCase):
 
             # only one message is sent to multiple persons
             self.assertEqual(len(outbox), 0)
+
+
+    def test_project_creation(self):
+        with web.app.test_client() as c:
+
+            # add a valid project
+            c.post("/create", data={
+                'name': 'The fabulous raclette party',
+                'id': 'raclette',
+                'password': 'party',
+                'contact_email': 'raclette@notmyidea.org'
+            })
+
+            # session is updated
+            self.assertEqual(session['raclette'], 'party')
+        
+            # project is created
+            self.assertEqual(len(models.Project.query.all()), 1)
+
+            # Add a second project with the same id
+            models.Project.query.get('raclette')
+
+            result = c.post("/create", data={
+                'name': 'Another raclette party',
+                'id': 'raclette', #already used !
+                'password': 'party',
+                'contact_email': 'raclette@notmyidea.org'
+            })
+
+            # no new project added
+            self.assertEqual(len(models.Project.query.all()), 1)
+
+    def test_add_member(self):
+        self.create_project("raclette")
+        self.login("raclette")
+
+        # adds a member to this project
+        self.app.post("/raclette/members/add", data={'name': 'alexis' })
+        self.assertEqual(len(models.Project.query.get("raclette").members), 1)
+
+        # adds him twice
+        result = self.app.post("/raclette/members/add", data={'name': 'alexis' })
+        # should not accept him
+        self.assertEqual(len(models.Project.query.get("raclette").members), 1)
 
 
 if __name__ == "__main__":
