@@ -42,24 +42,24 @@ $('.members li').hover(function(){
 {% block content %}
 <div id="leftmenu" class="span-6">
     <ul class="members">
-    {% set balance = project.get_balance() %}
-    {% for member in project.active_members %}
+    {% set balance = g.project.get_balance() %}
+    {% for member in g.project.active_members %}
     <li class="{{ loop.cycle("even", "odd") }}">
     <span class="balance {% if balance[member] > 0 %}positive{% elif balance[member] < 0 %}negative{% endif %}">{{ balance[member] }}</span>
     {{ member.name }}
-    <a class="remove" href="{{ url_for("remove_member", project_id=project.id, member_id=member.id) }}">delete</a></li>
+    <a class="remove" href="{{ url_for("remove_member", member_id=member.id) }}">delete</a></li>
     {% endfor %}
     </ul>
-    <form action="{{ url_for("add_member", project_id=project.id) }}" method="post">
+    <form action="{{ url_for("add_member") }}" method="post">
         {{ forms.add_member(member_form) }}
     </form>
 </div>
 <div id="content" class="uniForm span-18 last">
-    <a id="add_bill_button" class="awesome large green button fright" href="{{ url_for('add_bill', project_id=project.id) }}">Add a bill</a>
+    <a id="add_bill_button" class="awesome large green button fright" href="{{ url_for('add_bill') }}">Add a bill</a>
 
     <a id="hide_bill_form" class="awesome button fright" style="display: none;" href="#">Hide form</a>
 
-<form id="add_bill" action="{{ url_for('add_bill', project_id=project.id) }}" method="post" style="width: 400px; display: none">{{ forms.add_bill(bill_form) }}</form>
+<form id="add_bill" action="{{ url_for('add_bill') }}" method="post" style="width: 400px; display: none">{{ forms.add_bill(bill_form) }}</form>
 
     {% if bills.count() > 0 %}
     <table class="list_bills">
@@ -72,15 +72,15 @@ $('.members li').hover(function(){
             <td>{{ bill.what }}</td>
             <td>{% for ower in bill.owers %}{{ ower.name }} {% endfor %}</td>
             <td>{{ bill.amount }} ({{ bill.pay_each() }} each)</td>
-            <td><a href="{{ url_for("edit_bill", bill_id=bill.id, project_id=project.id) }}">edit</a>
-                <a href="{{ url_for("delete_bill", bill_id=bill.id, project_id=project.id) }}">delete</a></td>
+            <td><a href="{{ url_for("edit_bill", bill_id=bill.id) }}">edit</a>
+                <a href="{{ url_for("delete_bill", bill_id=bill.id) }}">delete</a></td>
     </tr>
     {% endfor %}
     </tbody>
     </table>
 
     {% else %}
-    <p>Nothing to list yet. You probably want to <a href="{{ url_for("add_bill", project_id=project.id) }}">add a bill</a> ?</p>
+    <p>Nothing to list yet. You probably want to <a href="{{ url_for("add_bill") }}">add a bill</a> ?</p>
     {% endif %}
 </div>
 {% endblock %}

@@ -1,8 +1,8 @@
 from collections import defaultdict
 
-from flask import (Flask, session, request, redirect, url_for, render_template, 
-        flash)
+from flask import *
 from flaskext.mail import Mail, Message
+from werkzeug.routing import RequestRedirect
 
 # local modules
 from models import db, Project, Person, Bill
@@ -35,8 +35,6 @@ def authenticate(redirect_url=None):
     form = AuthenticationForm()
     
     project_id = form.id.data
-
-    redirect_url = redirect_url or url_for("list_bills", project_id=project_id)
     project = Project.query.get(project_id)
     create_project = False # We don't want to create the project by default
     if not project:
@@ -47,6 +45,7 @@ def authenticate(redirect_url=None):
     else:
         # if credentials are already in session, redirect
         if project_id in session and project.password == session[project_id]:
+            redirect_url = redirect_url or url_for("list_bills")
             return redirect(redirect_url)
 
         # else process the form
@@ -62,6 +61,8 @@ def authenticate(redirect_url=None):
                     session["projects"].insert(0, (project_id, project.name))
                     session[project_id] = form.password.data
                     session.update()
+                    setattr(g, 'project', project)
+                    redirect_url = redirect_url or url_for("list_bills")
                     return redirect(redirect_url)
 
     return render_template("authenticate.html", form=form, 
@@ -95,9 +96,32 @@ def exit():
     session.clear()
     return redirect(url_for("home"))
 
-@app.route("/<string:project_id>/invite", methods=["GET", "POST"])
-@requires_auth
-def invite(project):
+@app.url_defaults
+def add_project_id(endpoint, values):
+    if 'project_id' in values or not hasattr(g, 'project'):
+        return
+    if app.url_map.is_endpoint_expecting(endpoint, 'project_id'):
+        values['project_id'] = g.project.id
+
+@app.url_value_preprocessor
+def pull_project(endpoint, values):
+    if not values:
+        values = {}
+    project_id = values.pop('project_id', None)
+    if project_id:
+        project = Project.query.get(project_id)
+        if not project:
+            raise RequestRedirect(url_for("create_project"))
+        if project.id in session and session[project.id] == project.password:
+            # add project into kwargs and call the original function
+            g.project = project
+        else:
+            # redirect to authentication page
+            raise RequestRedirect(
+                    url_for("authenticate", redirect_url=request.url))
+
+@app.route("/<project_id>/invite", methods=["GET", "POST"])
+def invite():
 
     form = InviteForm()
 
@@ -105,51 +129,46 @@ def invite(project):
         if form.validate():
             # send the email
 
-            message_body = render_template("invitation_mail", 
-                    email=project.contact_email, project=project)
+            message_body = render_template("invitation_mail")
 
             message_title = "You have been invited to share your"\
-                    + " expenses for %s" % project.name
+                    + " expenses for %s" % g.project.name
             msg = Message(message_title, 
                 body=message_body, 
                 recipients=[email.strip() 
                     for email in form.emails.data.split(",")])
             mail.send(msg)
-            return redirect(url_for("list_bills", project_id=project.id))
+            return redirect(url_for("list_bills"))
 
-    return render_template("send_invites.html", form=form, project=project)
+    return render_template("send_invites.html", form=form)
 
-@app.route("/<string:project_id>/")
-@requires_auth
-def list_bills(project):
+@app.route("/<project_id>/")
+def list_bills():
     bills = Bill.query.join(Person, Project)\
         .filter(Bill.payer_id == Person.id)\
         .filter(Person.project_id == Project.id)\
-        .filter(Project.id == project.id)\
+        .filter(Project.id == g.project.id)\
         .order_by(Bill.date.desc())
     return render_template("list_bills.html", 
-            bills=bills, project=project, 
-            member_form=MemberForm(project),
-            bill_form=get_billform_for(project)
+            bills=bills, member_form=MemberForm(g.project),
+            bill_form=get_billform_for(g.project)
     )
 
-@app.route("/<string:project_id>/members/add", methods=["GET", "POST"])
-@requires_auth
-def add_member(project):
+@app.route("/<project_id>/members/add", methods=["GET", "POST"])
+def add_member():
     # FIXME manage form errors on the list_bills page
-    form = MemberForm(project)
+    form = MemberForm(g.project)
     if request.method == "POST":
         if form.validate():
-            db.session.add(Person(name=form.name.data, project=project))
+            db.session.add(Person(name=form.name.data, project=g.project))
             db.session.commit()
-            return redirect(url_for("list_bills", project_id=project.id))
-    return render_template("add_member.html", form=form, project=project)
+            return redirect(url_for("list_bills"))
+    return render_template("add_member.html", form=form)
 
-@app.route("/<string:project_id>/members/<int:member_id>/delete", methods=["GET", "POST"])
-@requires_auth
-def remove_member(project, member_id):
+@app.route("/<project_id>/members/<member_id>/delete", methods=["GET", "POST"])
+def remove_member(member_id):
     person = Person.query.get_or_404(member_id)
-    if person.project == project:
+    if person.project == g.project:
         if not person.has_bills():
             db.session.delete(person)
             db.session.commit()
@@ -158,12 +177,11 @@ def remove_member(project, member_id):
             person.activated = False
             db.session.commit()
             flash("User '%s' has been desactivated" % person.name)
-    return redirect(url_for("list_bills", project_id=project.id))
+    return redirect(url_for("list_bills"))
 
-@app.route("/<string:project_id>/add", methods=["GET", "POST"])
-@requires_auth
-def add_bill(project):
-    form = get_billform_for(project)
+@app.route("/<project_id>/add", methods=["GET", "POST"])
+def add_bill():
+    form = get_billform_for(g.project)
     if request.method == 'POST':
         if form.validate():
             bill = Bill()
@@ -171,47 +189,43 @@ def add_bill(project):
             db.session.commit()
 
             flash("The bill has been added")
-            return redirect(url_for('list_bills', project_id=project.id))
+            return redirect(url_for('list_bills'))
 
-    return render_template("add_bill.html", form=form, project=project)
+    return render_template("add_bill.html", form=form)
 
 
-@app.route("/<string:project_id>/delete/<int:bill_id>")
-@requires_auth
-def delete_bill(project, bill_id):
+@app.route("/<project_id>/delete/<int:bill_id>")
+def delete_bill(bill_id):
     bill = Bill.query.get_or_404(bill_id)
     db.session.delete(bill)
     db.session.commit()
     flash("The bill has been deleted")
 
-    return redirect(url_for('list_bills', project_id=project.id))
+    return redirect(url_for('list_bills'))
 
 
-@app.route("/<string:project_id>/edit/<int:bill_id>", methods=["GET", "POST"])
-@requires_auth
-def edit_bill(project, bill_id):
+@app.route("/<project_id>/edit/<int:bill_id>", methods=["GET", "POST"])
+def edit_bill(bill_id):
     bill = Bill.query.get_or_404(bill_id)
-    form = get_billform_for(project, set_default=False)
+    form = get_billform_for(g.project, set_default=False)
     if request.method == 'POST' and form.validate():
         form.save(bill)
         db.session.commit()
 
         flash("The bill has been modified")
-        return redirect(url_for('list_bills', project_id=project.id))
+        return redirect(url_for('list_bills'))
 
     form.fill(bill)
-    return render_template("edit_bill.html", form=form, project=project, bill_id=bill_id)
+    return render_template("edit_bill.html", form=form, bill_id=bill_id)
 
-@app.route("/<string:project_id>/compute")
-@requires_auth
-def compute_bills(project):
+@app.route("/<project_id>/compute")
+def compute_bills():
     """Compute the sum each one have to pay to each other and display it"""
-    return render_template("compute_bills.html", project=project)
+    return render_template("compute_bills.html")
 
 
-@app.route("/<string:project_id>/reset")
-@requires_auth
-def reset_bills(project):
+@app.route("/<project_id>/reset")
+def reset_bills():
     """Reset the list of bills"""
     # FIXME replace with the archive feature
     # get all the bills which are not processed
