@@ -31,10 +31,9 @@ def home():
             auth_form=auth_form, session=session)
 
 @app.route("/authenticate", methods=["GET", "POST"])
-def authenticate(redirect_url=None):
+def authenticate(redirect_url=None, project_id=None):
     form = AuthenticationForm()
-    
-    project_id = form.id.data
+    project_id = form.id.data or request.args['project_id']
     project = Project.query.get(project_id)
     create_project = False # We don't want to create the project by default
     if not project:
@@ -111,14 +110,15 @@ def pull_project(endpoint, values):
     if project_id:
         project = Project.query.get(project_id)
         if not project:
-            raise RequestRedirect(url_for("create_project"))
+            raise RequestRedirect(url_for("create_project", project_id=project_id))
         if project.id in session and session[project.id] == project.password:
             # add project into kwargs and call the original function
             g.project = project
         else:
             # redirect to authentication page
             raise RequestRedirect(
-                    url_for("authenticate", redirect_url=request.url))
+                    url_for("authenticate", redirect_url=request.url, 
+                        project_id=project_id))
 
 @app.route("/<project_id>/invite", methods=["GET", "POST"])
 def invite():
