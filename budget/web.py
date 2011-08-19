@@ -44,6 +44,7 @@ def authenticate(redirect_url=None, project_id=None):
     else:
         # if credentials are already in session, redirect
         if project_id in session and project.password == session[project_id]:
+            setattr(g, 'project', project)
             redirect_url = redirect_url or url_for("list_bills")
             return redirect(redirect_url)
 
