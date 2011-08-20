@@ -1,21 +1,25 @@
 {% extends "layout.html" %}
 
+{% block sidebar %}
+{% include "recent_projects.html" %}
+{% endblock %}
+
 {% block content %}
 
 <h2>Welcome on the budget manager</h2>
-<div class="span-12 prepend-2 uniForm" >
-    <form action="{{ url_for('authenticate') }}" method="post" style="width: 300px">
-        <h3>Log to an existing project...</h3>
-        {{ forms.authenticate(auth_form) }}
-    </form>
-    {% include "recent_projects.html" %}
-</div>
-
-<div class="span-10 last uniForm" >
-    <form action="{{ url_for('create_project') }}" method="post" style="width: 300px">
-        <h3>...or create a new one</h3>
-        {{ forms.create_project(project_form) }}</div>
-    </form>
+<div class="row">
+    <div class="span8 columns">
+        <form action="{{ url_for('authenticate') }}" method="post">
+            <h3>Log to an existing project...</h3>
+            {{ forms.authenticate(auth_form) }}
+        </form>
+    </div>
+    <div class="span8 columns">
+        <form action="{{ url_for('create_project') }}" method="post">
+            <h3>...or create a new one</h3>
+            {{ forms.create_project(project_form) }}</div>
+        </form>
+    </div>
 </div>
 
 {% endblock %}
