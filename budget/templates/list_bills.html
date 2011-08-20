@@ -1,68 +1,71 @@
 {% extends "layout.html" %}
 
 {% block js %}
-// display the form when clicking on the "add bill" button
-$('#add_bill_button').click(function(){
-    $('#add_bill').show(200);
-    $(this).hide();
-    $('#hide_bill_form').show();
-    return false;
-});
+    // display the form when clicking on the "add bill" button
+    var show_form = function(){
+        $('#bill-form').show(70);
+        $("#new-bill").hide();
+        return false;
+    }
+     
+    // and provide a mechanism to hide it back
+    var hide_form = function(){
+        $("#bill-form").hide(70);
+        $("#new-bill").show();
+        return false;
+    }
 
-// and provide a mechanism to hide it back
-$('#hide_bill_form').click(function(){
-    $('#add_bill').hide(200);
-    $(this).hide();
-    $('#add_bill_button').show();
-    return false;
-});
+    $('#new-bill').click(show_form);
+    $('#empty-new-bill').click(show_form);
+    $('#hide-bill-form').click(hide_form);
+    $('#cancel-form').click(hide_form);
 
-// ask for confirmation before removing an user
-$('a.remove').each(function(){
-    $(this).hide();
-    $(this).click(function(){
-        return confirm("are you sure?");
+    // ask for confirmation before removing an user
+    $('a.remove').each(function(){
+        $(this).hide();
+        $(this).click(function(){
+            return confirm("are you sure?");
+        });
     });
-});
 
-// display the remove button on mouse over (and hide them per default)
-$('.members li').hover(function(){
-    $(this).children('a.remove').show();
-}, function(){
-    $(this).children('a.remove').hide();
-});
+    // display the remove button on mouse over (and hide them per default)
+    $('.balance tr').hover(function(){
+        $(this).find('.remove').show();
+    }, function(){
+        $(this).find('.remove').hide();
+    });
 {% endblock %}
 
-{% block top_menu %}
-<ul>
-    <li><a href="{{ url_for("exit") }}">logout</a></li>
-</ul>
-{% endblock %}
+{% block sidebar %}
+    <h2>Balance</h2>
 
-{% block content %}
-<div id="leftmenu" class="span-6">
-    <ul class="members">
+    <table class="balance">
     {% set balance = g.project.get_balance() %}
     {% for member in g.project.active_members %}
-    <li class="{{ loop.cycle("even", "odd") }}">
-    <span class="balance {% if balance[member] > 0 %}positive{% elif balance[member] < 0 %}negative{% endif %}">{{ balance[member] }}</span>
-    {{ member.name }}
-    <a class="remove" href="{{ url_for("remove_member", member_id=member.id) }}">delete</a></li>
+    <tr>
+        <td>{{ member.name }}</td>
+        <td class="{% if balance[member] > 0 %}positive{% elif balance[member] < 0 %}negative{% endif %}">
+            {% if balance[member] > 0 %}+{% endif %}{{ balance[member] }}
+        </td>
+        <td> <a class="remove" href="{{ url_for("remove_member", member_id=member.id) }}">delete</a></td>
+    </tr>
     {% endfor %}
-    </ul>
+    </table>
+
     <form action="{{ url_for("add_member") }}" method="post">
         {{ forms.add_member(member_form) }}
     </form>
-</div>
-<div id="content" class="uniForm span-18 last">
-    <a id="add_bill_button" class="awesome large green button fright" href="{{ url_for('add_bill') }}">Add a bill</a>
+{% endblock %}
 
-    <a id="hide_bill_form" class="awesome button fright" style="display: none;" href="#">Hide form</a>
-
-<form id="add_bill" action="{{ url_for('add_bill') }}" method="post" style="width: 400px; display: none">{{ forms.add_bill(bill_form) }}</form>
+{% block content %}
+    <a id="new-bill" href="" class="primary">Add a new bill</a>
+    <form id="bill-form" action="{{ url_for('add_bill') }}" method="post" style="display: none">
+        <a id="hide-bill-form" href="#">hide this form</a>
+        {{ forms.add_bill(bill_form) }}
+</form>
 
     {% if bills.count() > 0 %}
-    <table class="list_bills">
+    <table class="list_bills common-table zebra-striped">
         <thead><tr><th>When?</th><th>Who paid?</th><th>For what?</th><th>Owers</th><th>How much?</th><th>Actions</th></tr></thead>
     <tbody>
     {% for bill in bills %}
@@ -80,7 +83,7 @@ $('.members li').hover(function(){
     </table>
 
     {% else %}
-    <p>Nothing to list yet. You probably want to <a href="{{ url_for("add_bill") }}">add a bill</a> ?</p>
+    <p>Nothing to list yet. You probably want to <a id="empty-new-bill" href="{{ url_for("add_bill") }}">add a bill</a> ?</p>
     {% endif %}
 </div>
 {% endblock %}

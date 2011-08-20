@@ -1,89 +1,15 @@
-@import url('blueprint/screen.css');
-@import url('awesome/awesome.css');
-@import url('uniform/blue.uni-form.css');
-
-/** CSS3 fonts **/
+@import url(http://twitter.github.com/bootstrap/assets/css/bootstrap-1.0.0.min.css);
 @import url(http://fonts.googleapis.com/css?family=Lobster);
-@import url(http://fonts.googleapis.com/css?family=Just+Me+Again+Down+Here);
 
+.topbar h3{ margin-left: 75px; }
+.topbar ul{ padding-left: 75px; }
+div.topbar ul.secondary-nav { padding-right: 75px; }
+.logo{ font-family: 'Lobster', arial, serif; }
+.balance tr td { font-weight: bold; }
+.positive { color: green; }
+.negative { color: red; }
 
-a {
-    color: #a45900;
-}
+.sidebar h2 { text-align: center; }
+.sidebar button{ margin-top: 10px; float: right; }
 
-.fright{
-    float: right;
-}
-
-.fleft{
-    float: left;
-}
-
-#title{
-    margin-top: 10px;
-}
-
-    #title h1{
-        font-family: 'Lobster', arial, serif;
-    }
-
-#topmenu{
-    margin-top: 30px;
-}
-
-    #topmenu ul{
-        float: right;
-    }
-
-    #topmenu ul li{
-        float: right;
-        list-style-type: none;
-        margin-left: 10px;
-    }
-
-
-#leftmenu input{
-    width: 150px;
-}
-
-.list_bills{
-    margin-top: 10px;
-}
-
-.members {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 80%;
-}
-
-    .members li{
-        padding: 5px;
-    }
-
-    .members .odd{
-        background-color: #efefef;
-    }
-
-    .members .remove{
-        float: right;
-    }
-
-    .members .balance{
-        margin-right: 10px;
-        font-weight: bold;
-    }
-
-        .positive{
-            color: green;
-        }
-        .negative{
-            color: red;
-        }
-
-.flash{
-    padding:8px;
-    background-color: #ffc;
-    font-weight: bold;
-    font-size:15px;-moz-border-radius: 6px;-webkit-border-radius: 6px;
-}
+#bills { color: black; }

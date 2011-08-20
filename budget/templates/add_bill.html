@@ -5,11 +5,9 @@
 {% endblock %}
 
 {% block content %}
-<h2>Add a new bill</h2>
+<h2>{% if edit %}Edit a{% else %}Add a new{% endif %} bill</h2>
 
-<div class="container span-24 add-bill uniForm" style="width: 400px">
-    <form action="{{ url_for('add_bill') }}" method="post" class=uniForm">
-        {{ forms.add_bill(form) }}
-    </form>
-</div>
+<form method="post">
+    {{ forms.add_bill(form) }}
+</form>
 {% endblock %}

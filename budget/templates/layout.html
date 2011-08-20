@@ -2,36 +2,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Account manager</title>
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='main.css') }}">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script type="text/javascript" charset="utf-8">
-$(document).ready(function(){
-    setTimeout(function(){
-        $(".flash").fadeOut("slow", function () {
-            $(".flash").remove();
-        });
-    }, 2000);
+    <title>Account manager</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='main.css') }}">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function(){
+            setTimeout(function(){
+                $(".flash").fadeOut("slow", function () {
+                    $(".flash").remove();
+                });
+            }, 2000);
+            $("body").bind("click", function(e) {
+                $("ul.menu-dropdown").hide();
+                $('a.menu').parent("li").removeClass("open").children("ul.menu-dropdown").hide();
+            });
 
-    {% block js %}{% endblock %}
-});
-</script>
+            $("a.menu").click(function(e) {
+                var $target = $(this);
+                var $parent = $target.parent("li");
+                var $siblings = $target.siblings("ul.menu-dropdown");
+                var $parentSiblings = $parent.siblings("li");
+                if ($parent.hasClass("open")) {
+                    $parent.removeClass("open");
+                    $siblings.hide();
+                } else {
+                    $parent.addClass("open");
+                    $siblings.show();
+                }
+                $parentSiblings.children("ul.menu-dropdown").hide();
+                $parentSiblings.removeClass("open");
+                return false;
+            });
+
+            {% block js %}{% endblock %}
+        });
+    </script>
 </head>
 <body>
 
-<div class="container" class="span-24">
-    <div id="title" class="span-20">
-        <a href="/"><h1>Account manager ! <span class="small">Manage your shared expenses.</span></h1></a></div>
-    <div class="span-4 last" id="topmenu">
-        {% block top_menu %}{% endblock %}
-    </div>
-    <hr>
+<div class="topbar">
+    <h3><a class="logo" href="{% if g.project %}{{ url_for("list_bills") }}{% endif %}">#! money?</a></h3>
+    {% if g.project %}
+    <ul>
+      <li class="active"><a href="">Bills</a></li>
+      <li><a href="">Archives</a></li>
+    </ul>
+    <ul class="nav secondary-nav">
+      <li class="menu">
+        <a href="#" class="menu">Options</a>
+        <ul class="menu-dropdown" style="display: none; ">
+          <li><a href="">Project settings</a></li>
+          <li class="divider"></li>
+          <li><a href="{{ url_for("exit") }}">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+    {% endif %}
+</div>
+<div class="container-fluid" style="margin-top: 40px">
+    <div class="sidebar">{% block sidebar %}{% endblock %}</div>
+    <div class="content">
     {% for message in get_flashed_messages() %}
-        <div class="flash">{{ message }}</div>
+        <div class="flash alert-message info"><p>{{ message }}</p></div>
     {% endfor %}
     {% block content %}
     {% endblock %}
-    <div id="footer"></div>
+    </div>
 </div>
+
 </body>
 </html>

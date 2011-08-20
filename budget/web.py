@@ -23,12 +23,30 @@ db.create_all()
 mail.init_app(app)
 
 
-@app.route("/")
-def home():
-    project_form = ProjectForm()
-    auth_form = AuthenticationForm()
-    return render_template("home.html", project_form=project_form, 
-            auth_form=auth_form, session=session)
+@app.url_defaults
+def add_project_id(endpoint, values):
+    if 'project_id' in values or not hasattr(g, 'project'):
+        return
+    if app.url_map.is_endpoint_expecting(endpoint, 'project_id'):
+        values['project_id'] = g.project.id
+
+@app.url_value_preprocessor
+def pull_project(endpoint, values):
+    if not values:
+        values = {}
+    project_id = values.pop('project_id', None)
+    if project_id:
+        project = Project.query.get(project_id)
+        if not project:
+            raise RequestRedirect(url_for("create_project", project_id=project_id))
+        if project.id in session and session[project.id] == project.password:
+            # add project into kwargs and call the original function
+            g.project = project
+        else:
+            # redirect to authentication page
+            raise RequestRedirect(
+                    url_for("authenticate", redirect_url=request.url, 
+                        project_id=project_id))
 
 @app.route("/authenticate", methods=["GET", "POST"])
 def authenticate(redirect_url=None, project_id=None):
@@ -68,6 +86,13 @@ def authenticate(redirect_url=None, project_id=None):
     return render_template("authenticate.html", form=form, 
             create_project=create_project)
 
+@app.route("/")
+def home():
+    project_form = ProjectForm()
+    auth_form = AuthenticationForm()
+    return render_template("home.html", project_form=project_form, 
+            auth_form=auth_form, session=session)
+
 @app.route("/create", methods=["GET", "POST"])
 def create_project():
     form = ProjectForm()
@@ -95,31 +120,6 @@ def exit():
     # delete the session
     session.clear()
     return redirect(url_for("home"))
-
-@app.url_defaults
-def add_project_id(endpoint, values):
-    if 'project_id' in values or not hasattr(g, 'project'):
-        return
-    if app.url_map.is_endpoint_expecting(endpoint, 'project_id'):
-        values['project_id'] = g.project.id
-
-@app.url_value_preprocessor
-def pull_project(endpoint, values):
-    if not values:
-        values = {}
-    project_id = values.pop('project_id', None)
-    if project_id:
-        project = Project.query.get(project_id)
-        if not project:
-            raise RequestRedirect(url_for("create_project", project_id=project_id))
-        if project.id in session and session[project.id] == project.password:
-            # add project into kwargs and call the original function
-            g.project = project
-        else:
-            # redirect to authentication page
-            raise RequestRedirect(
-                    url_for("authenticate", redirect_url=request.url, 
-                        project_id=project_id))
 
 @app.route("/<project_id>/invite", methods=["GET", "POST"])
 def invite():
@@ -217,7 +217,7 @@ def edit_bill(bill_id):
         return redirect(url_for('list_bills'))
 
     form.fill(bill)
-    return render_template("edit_bill.html", form=form, bill_id=bill_id)
+    return render_template("add_bill.html", form=form, edit=True)
 
 @app.route("/<project_id>/compute")
 def compute_bills():

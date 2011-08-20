@@ -12,10 +12,6 @@ to <a href="{{ url_for("create_project", project_id=create_project) }}">create i
 </p>
 {% endif %}
 <form action="" method="POST" accept-charset="utf-8">
-    {{ form.hidden_tag() }}
-    
-    <p>{{ form.id.label }}<br /> {{ form.id }}</p>
-    <p>{{ form.password.label }}<br /> {{ form.password }}</p>
-    <p>{{ form.submit }}</p>
+    {{ forms.authenticate(form) }}
 </form>
 {% endblock %}

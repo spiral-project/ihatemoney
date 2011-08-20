@@ -1,7 +1,4 @@
 * use flask.instance_path to get/store configuration. See http://flask.pocoo.org/docs/config/#instance-folders
-* Attach the current projec to g and modify the url_for to use it. http://flask.pocoo.org/docs/patterns/urlprocessors/
 * Use class based views to factorize the code if there is some code to factorize, see http://flask.pocoo.org/docs/views/
-* Use request.args.get('next') to redirect when authenticating
-* Move the flask app to __init__.py (http://flask.pocoo.org/docs/patterns/packages/)
 * Eventually move the url definition into a specific section
 * Render templates automatically using a decorator. see http://stackoverflow.com/questions/7054099/using-flask-blueprint-for-some-static-pages/7056374#7056374

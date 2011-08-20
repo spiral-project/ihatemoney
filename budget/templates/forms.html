@@ -1,17 +1,29 @@
 {% macro input(field, multiple=False) -%}
-    <div class="ctrlHolder">
+      <div class="clearfix">
+
         {% if field.type != "SubmitField" %}
             {{ field.label }}
         {% endif %}
-        {% if multiple == True %}
-            {{ field(multiple=True) }}
-        {% else %}
-            {{ field }}
+        <div class="input">
+            {% if multiple == True %}
+                {{ field(multiple=True) }}
+            {% else %}
+                {{ field }}
+            {% endif %}
+            {% if field.description %}
+                <span class="help-inline">{{ field.description }}</span>
+            {% endif %}
+        </div>
+      </div> <!-- /clearfix -->
+{% endmacro %}
+
+{% macro submit(field, cancel=False) -%}
+    <div class="actions">
+        <button type="submit" class="btn primary">{{ field.name }}</button>
+        {% if cancel %}
+            <button id="cancel-form" type="reset" class="btn">Cancel</button>
         {% endif %}
-        {% if field.description %}
-            <p class="formHint">{{ field.description }}</p>
-        {% endif %}
-    </div>
+      </div>
 {% endmacro %}
 
 {% macro authenticate(form) %}
@@ -20,7 +32,7 @@
     {{ form.hidden_tag() }}
     {{ input(form.id) }}
     {{ input(form.password) }}
-    {{ input(form.submit) }}
+    {{ submit(form.submit) }}
 
 {% endmacro %}
 
@@ -32,12 +44,14 @@
     {{ input(form.id) }}
     {{ input(form.password) }}
     {{ input(form.contact_email) }}
-    {{ input(form.submit) }}
+    {{ submit(form.submit) }}
 
 {% endmacro %}
 
 {% macro add_bill(form) %}
 
+    <fieldset>
+    <legend>Add a bill</legend>
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }} 
     {{ input(form.date) }} 
@@ -45,15 +59,21 @@
     {{ input(form.payer) }} 
     {{ input(form.amount) }} 
     {{ input(form.payed_for) }} 
-    {{ input(form.submit) }}
+    </fieldset>
+    {{ submit(form.submit, cancel=True) }}
 
 {% endmacro %}
 
 {% macro add_member(form) %}
-
-    {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
-    {{ input(form.name) }}
-    {{ input(form.submit) }}
+    {{ form.name }}
+    <button class="btn">Add a new user</button>
 
+{% endmacro %}
+
+{% macro authenticate(form) %}
+    {{ form.hidden_tag() }}
+    {{ input(form.id) }}
+    {{ input(form.password) }}
+    {{ submit(form.submit) }}
 {% endmacro %}
