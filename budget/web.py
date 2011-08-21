@@ -123,6 +123,12 @@ def exit():
     session.clear()
     return redirect(url_for("home"))
 
+@app.route("/demo")
+def demo():
+    project = Project.query.get("demo")
+    session[project.id] = project.password
+    return redirect(url_for("list_bills", project_id=project.id))
+
 @app.route("/<project_id>/invite", methods=["GET", "POST"])
 def invite():
 
