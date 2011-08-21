@@ -32,6 +32,8 @@ def add_project_id(endpoint, values):
 
 @app.url_value_preprocessor
 def pull_project(endpoint, values):
+    if endpoint == "authenticate":
+        return
     if not values:
         values = {}
     project_id = values.pop('project_id', None)
