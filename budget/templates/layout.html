@@ -50,9 +50,16 @@
     </ul>
     <ul class="nav secondary-nav">
       <li class="menu">
-        <a href="#" class="menu">Options</a>
+      <a href="#" class="menu"><strong>{{ g.project.name }}</strong> options</a>
         <ul class="menu-dropdown" style="display: none; ">
           <li><a href="">Project settings</a></li>
+          <li class="divider"></li>
+           {% for id, name in session['projects'] %}
+           {% if id != g.project.id %}
+               <li><a href="{{ url_for("list_bills", project_id=id) }}">switch to {{ name }}</a></li>
+            {% endif %}
+           {% endfor %}
+           <li><a href="{{ url_for("create_project") }}">Start a new project</a></li>
           <li class="divider"></li>
           <li><a href="{{ url_for("exit") }}">Logout</a></li>
         </ul>
