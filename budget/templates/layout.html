@@ -67,6 +67,8 @@
     </ul>
     {% endif %}
 </div>
+{% block header %}{% endblock %}
+{% block container %}
 <div class="container-fluid" style="margin-top: 40px">
     <div class="sidebar">{% block sidebar %}{% endblock %}</div>
     <div class="content">
@@ -77,6 +79,7 @@
     {% endblock %}
     </div>
 </div>
+{% endblock %}
 
 </body>
 </html>

@@ -1,5 +1,5 @@
 @import url(http://twitter.github.com/bootstrap/assets/css/bootstrap-1.0.0.min.css);
-@import url(http://fonts.googleapis.com/css?family=Lobster);
+@import url(http://fonts.googleapis.com/css?family=Lobster|Comfortaa);
 
 .topbar h3{ margin-left: 75px; }
 .topbar ul{ padding-left: 75px; }
@@ -14,3 +14,33 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
 
 .right h3 { float: right; }
 #bills { color: black; }
+
+#header{ background-color: #ABE128; height: 180px; padding: 50px 0 0 0;}
+#header .slide {
+    font-family: 'Comfortaa', arial, serif;
+    height: 140px;
+    padding: 40px 0 0 0;
+    margin-top: -40px;
+    background-image: url("gradient.png");
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+#header .slide {
+    width: 750px;
+    margin: 0 auto;
+}
+
+.about_link:hover {
+    color: #ABE128;
+}
+
+#header .slide .about_link {
+    margin-left: 180px;
+    padding: 7px 15px;
+    background-color: #222;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    color: white;
+    text-decoration: none;
+}
