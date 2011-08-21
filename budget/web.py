@@ -2,12 +2,11 @@ from collections import defaultdict
 
 from flask import *
 from flaskext.mail import Mail, Message
-from werkzeug.routing import RequestRedirect
 
 # local modules
 from models import db, Project, Person, Bill
 from forms import ProjectForm, AuthenticationForm, BillForm, MemberForm, InviteForm
-from utils import get_billform_for, requires_auth
+from utils import get_billform_for, Redirect303
 
 # create the application, initialize stuff
 app = Flask(__name__)
@@ -40,13 +39,13 @@ def pull_project(endpoint, values):
     if project_id:
         project = Project.query.get(project_id)
         if not project:
-            raise RequestRedirect(url_for("create_project", project_id=project_id))
+            raise Redirect303(url_for("create_project", project_id=project_id))
         if project.id in session and session[project.id] == project.password:
             # add project into kwargs and call the original function
             g.project = project
         else:
             # redirect to authentication page
-            raise RequestRedirect(
+            raise Redirect303(
                     url_for("authenticate", project_id=project_id))
 
 @app.route("/authenticate", methods=["GET", "POST"])

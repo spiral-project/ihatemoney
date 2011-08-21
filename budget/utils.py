@@ -1,5 +1,6 @@
 from functools import wraps
 from flask import redirect, url_for, session, request
+from werkzeug.routing import HTTPException, RoutingException
 
 from models import Bill, Project
 from forms import BillForm
@@ -19,29 +20,17 @@ def get_billform_for(project, set_default=True):
         form.set_default()
     return form
 
-def requires_auth(f):
-    """Decorator checking that the user do have access to the given project id.
+class Redirect303(HTTPException, RoutingException):
+    """Raise if the map requests a redirect. This is for example the case if
+    `strict_slashes` are activated and an url that requires a trailing slash.
 
-    If not, redirects to an authentication page, otherwise display the requested
-    page.
+    The attribute `new_url` contains the absolute destination url.
     """
+    code = 303
 
-    @wraps(f)
-    def decorator(*args, **kwargs):
-        # if a project id is specified in kwargs, check we have access to it
-        # get the password matching this project id
-        # pop project_id out of the kwargs
-        project_id = kwargs.pop('project_id')
-        project = Project.query.get(project_id)
-        if not project:
-            return redirect(url_for("create_project", project_id=project_id))
+    def __init__(self, new_url):
+        RoutingException.__init__(self, new_url)
+        self.new_url = new_url
 
-        if project.id in session and session[project.id] == project.password:
-            # add project into kwargs and call the original function
-            kwargs['project'] = project
-            return f(*args, **kwargs)
-        else:
-            # redirect to authentication page
-            return redirect(url_for("authenticate",
-                project_id=project.id, redirect_url=request.url))
-    return decorator
+    def get_response(self, environ):
+        return redirect(self.new_url, 303)
