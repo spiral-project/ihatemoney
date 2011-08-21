@@ -1,4 +1,4 @@
-@import url(http://twitter.github.com/bootstrap/assets/css/bootstrap-1.0.0.min.css);
+@import "bootstrap-1.0.0.min.css";
 @import url(http://fonts.googleapis.com/css?family=Lobster|Comfortaa);
 
 .topbar h3{ margin-left: 75px; }
@@ -15,11 +15,16 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
 .right h3 { float: right; }
 #bills { color: black; }
 
-#header{ background-color: #ABE128; height: 180px; padding: 50px 0 0 0;}
+#header{ 
+    margin-top: -40px;
+    background-color: #ABE128; 
+    height: 180px; 
+    padding: 50px 0 0 0;
+}
+
 #header .slide {
     font-family: 'Comfortaa', arial, serif;
-    height: 140px;
-    padding: 40px 0 0 0;
+    height: 180px;
     margin-top: -40px;
     background-image: url("gradient.png");
     background-position: center top;
@@ -43,4 +48,13 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
     -moz-border-radius: 10px;
     color: white;
     text-decoration: none;
+}
+
+.footer{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    background-color: #fff;
+    opacity: 0.8;
 }
