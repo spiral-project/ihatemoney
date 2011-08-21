@@ -24,8 +24,8 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
 
 #header .slide {
     font-family: 'Comfortaa', arial, serif;
-    height: 180px;
-    margin-top: -40px;
+    height: 165px;
+    padding-top: 15px;
     background-image: url("gradient.png");
     background-position: center top;
     background-repeat: no-repeat;
@@ -36,18 +36,22 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
     margin: 0 auto;
 }
 
-.about_link:hover {
+#header .slide h1{
+    margin-bottom: 30px;
+}
+#header .slide .about_link:hover {
     color: #ABE128;
 }
 
 #header .slide .about_link {
-    margin-left: 180px;
+    margin-left: 220px;
     padding: 7px 15px;
     background-color: #222;
     border-radius: 10px;
     -moz-border-radius: 10px;
     color: white;
     text-decoration: none;
+    display: inline;
 }
 
 .footer{
