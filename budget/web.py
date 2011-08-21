@@ -14,15 +14,6 @@ app = Flask(__name__)
 app.config.from_object("default_settings")
 mail = Mail()
 
-# db
-db.init_app(app)
-db.app = app
-db.create_all()
-
-# mail
-mail.init_app(app)
-
-
 @app.url_defaults
 def add_project_id(endpoint, values):
     if 'project_id' in values or not hasattr(g, 'project'):
@@ -126,6 +117,11 @@ def exit():
 @app.route("/demo")
 def demo():
     project = Project.query.get("demo")
+    if not project:
+        project = Project(id="demo", name=u"demonstration", password="demo", 
+                contact_email="demo@notmyidea.org")
+        db.session.add(project)
+        db.session.commit()
     session[project.id] = project.password
     return redirect(url_for("list_bills", project_id=project.id))
 
@@ -247,6 +243,14 @@ def reset_bills():
 
 
 def main():
+    # db
+    db.init_app(app)
+    db.app = app
+    db.create_all()
+
+    # mail
+    mail.init_app(app)
+
     app.run(host="0.0.0.0", debug=True)
 
 if __name__ == '__main__':

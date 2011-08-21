@@ -13,8 +13,7 @@ class TestCase(unittest.TestCase):
     def setUp(self):
         web.app.config['TESTING'] = True
 
-        self.fd, self.fp = tempfile.mkstemp()
-        web.app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///%s" % self.fp
+        web.app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///memory" 
         web.app.config['CSRF_ENABLED'] = False # simplify the tests
         self.app = web.app.test_client()
 
@@ -26,8 +25,8 @@ class TestCase(unittest.TestCase):
 
     def tearDown(self):
         # clean after testing
-        os.close(self.fd)
-        os.unlink(self.fp)
+        models.db.session.remove()
+        models.db.drop_all()
 
     def login(self, project, password=None, test_client=None):
         password = password or project
@@ -176,6 +175,24 @@ class BudgetTestCase(TestCase):
 
         result = self.app.get("/raclette/add")
         self.assertNotIn("fred", result.data)
+
+    def test_demo(self):
+        # Test that it is possible to connect automatically by going onto /demo
+        with web.app.test_client() as c:
+            models.db.session.add(models.Project(id="demo", name=u"demonstration", 
+                password="demo", contact_email="demo@notmyidea.org"))
+            models.db.session.commit()
+            c.get("/demo")
+
+            # session is updated
+            self.assertEqual(session['demo'], 'demo')
+
+    def test_demo(self):
+        # test that a demo project is created if none is defined
+        with web.app.test_client() as c:
+            self.assertEqual([], models.Project.query.all())
+            c.get("/demo")
+            self.assertTrue(models.Project.query.get("demo") is not None)
 
 
 if __name__ == "__main__":

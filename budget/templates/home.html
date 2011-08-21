@@ -6,29 +6,33 @@
 {% block header %}
 <div id="header">
     <div class="slide">
-        <h1><span>Manage your shared <br>expenses easily</span></h1>
+        <h1><span>Manage your shared <br>expenses, easily</span></h1>
         <a href="{{ url_for("demo") }}" class="about_link">Try out the demo</a>
     </div>
+    <div class="additional-content">
+        <p>You're sharing a house?<br /> Going on holidays with friends?<br /> Simply sharing money with others? <br /><strong>We can help!</strong></p>
+    </div>
+
 </div>
 {% endblock %}
 
 {% block container %}
 <div class="container-fluid" style="margin-top: 20px">
-    <div class="content">
+    <div class="content home">
 
-    <h2>Welcome on your budget manager</h2>
-    <p>You're sharing a house? Going on holidays with friends? Simply sharing money with others? We can help!</p>
-    <div class="row">
+      <div class="row">
         <div class="span8 columns">
             <form action="{{ url_for('authenticate') }}" method="post">
                 <h3>Log to an existing project...</h3>
-                {{ forms.authenticate(auth_form) }}
+                {{ forms.authenticate(auth_form, home=True) }}
+                <button class="btn">log in</button>
             </form>
         </div>
         <div class="span8 columns">
-            <form action="{{ url_for('create_project') }}" method="post">
+            <form class="create" action="{{ url_for('create_project') }}" method="post">
                 <h3>...or create a new one</h3>
-                {{ forms.create_project(project_form) }}</div>
+                {{ forms.create_project(project_form, home=True) }}
+                <button class="btn">let's get started</button>
             </form>
         </div>
     </div>

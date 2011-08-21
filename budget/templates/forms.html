@@ -26,17 +26,19 @@
       </div>
 {% endmacro %}
 
-{% macro authenticate(form) %}
+{% macro authenticate(form, home=False) %}
 
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
     {{ input(form.id) }}
     {{ input(form.password) }}
+    {% if not home %}
     {{ submit(form.submit) }}
+    {% endif %}
 
 {% endmacro %}
 
-{% macro create_project(form) %}
+{% macro create_project(form, home=False) %}
 
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
@@ -44,7 +46,9 @@
     {{ input(form.id) }}
     {{ input(form.password) }}
     {{ input(form.contact_email) }}
+    {% if not home %}
     {{ submit(form.submit) }}
+    {% endif %}
 
 {% endmacro %}
 
@@ -69,11 +73,4 @@
     {{ form.name }}
     <button class="btn">Add a new user</button>
 
-{% endmacro %}
-
-{% macro authenticate(form) %}
-    {{ form.hidden_tag() }}
-    {{ input(form.id) }}
-    {{ input(form.password) }}
-    {{ submit(form.submit) }}
 {% endmacro %}

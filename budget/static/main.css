@@ -54,6 +54,25 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
     display: inline;
 }
 
+#header .additional-content{
+    font-family: 'Comfortaa', arial, serif;
+    float: right;
+    position: relative;
+    top: -150px;
+    margin-right: 200px;
+    margin-bottom: -100px;
+
+}
+
+.home form button{
+    float: right;
+    margin-right: 100px;
+}
+.home .create h3{
+    text-align: right;
+    margin-right: 100px;
+}
+
 .footer{
     position: absolute;
     bottom: 0px;
