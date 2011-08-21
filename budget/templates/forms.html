@@ -74,3 +74,12 @@
     <button class="btn">Add a new user</button>
 
 {% endmacro %}
+
+{% macro invites(form) %}
+    {{ form.hidden_tag() }}
+    {{ input(form.emails) }}
+    <div class="actions">
+        <button class="btn">Send the invitations</button>
+        <a href="{{ url_for("list_bills") }}">No, thanks</a>
+    </div>
+{% endmacro %}

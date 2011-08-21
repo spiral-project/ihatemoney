@@ -73,6 +73,11 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
     margin-right: 100px;
 }
 
+.invites textarea{
+    width: 800px;
+    height: 100px;
+}
+
 .footer{
     position: absolute;
     bottom: 0px;
