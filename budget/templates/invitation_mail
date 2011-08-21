@@ -1,6 +1,6 @@
 Hi, 
 
-Someone using the email adress {{ g.project.contact_email }} invited you to share your expenses for {{ g.project.name }} on our application.
+Someone using the email adress {{ g.project.contact_email }} invited you to share your expenses for "{{ g.project.name }}".
 
 It's as simple as saying what did you paid for, for who, and how much did it cost you, we are caring about the rest.
 

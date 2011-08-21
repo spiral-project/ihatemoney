@@ -47,13 +47,14 @@ def pull_project(endpoint, values):
         else:
             # redirect to authentication page
             raise RequestRedirect(
-                    url_for("authenticate", redirect_url=request.url, 
-                        project_id=project_id))
+                    url_for("authenticate", project_id=project_id))
 
 @app.route("/authenticate", methods=["GET", "POST"])
-def authenticate(redirect_url=None, project_id=None):
+def authenticate(project_id=None):
     form = AuthenticationForm()
-    project_id = form.id.data or request.args['project_id']
+    if not form.id.data and request.args['project_id']:
+        form.id.data = request.args['project_id']
+    project_id = form.id.data 
     project = Project.query.get(project_id)
     create_project = False # We don't want to create the project by default
     if not project:
@@ -65,8 +66,7 @@ def authenticate(redirect_url=None, project_id=None):
         # if credentials are already in session, redirect
         if project_id in session and project.password == session[project_id]:
             setattr(g, 'project', project)
-            redirect_url = redirect_url or url_for("list_bills")
-            return redirect(redirect_url)
+            return redirect(url_for("list_bills"))
 
         # else process the form
         if request.method == "POST":
@@ -82,8 +82,7 @@ def authenticate(redirect_url=None, project_id=None):
                     session[project_id] = form.password.data
                     session.update()
                     setattr(g, 'project', project)
-                    redirect_url = redirect_url or url_for("list_bills")
-                    return redirect(redirect_url)
+                    return redirect(url_for("list_bills"))
 
     return render_template("authenticate.html", form=form, 
             create_project=create_project)
