@@ -4,7 +4,7 @@ Someone using the email adress {{ g.project.contact_email }} invited you to shar
 
 It's as simple as saying what did you paid for, for who, and how much did it cost you, we are caring about the rest.
 
-You can access it here: {{ SITE_URL }}{{ url_for("list_bills") }}, the password is "{{ g.project.password }}".
+You can access it here: {{ config['SITE_URL'] }}{{ url_for("list_bills") }}, the password is "{{ g.project.password }}".
 
 Enjoy,
 Some weird guys

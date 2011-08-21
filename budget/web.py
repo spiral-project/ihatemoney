@@ -152,6 +152,7 @@ def invite():
                 recipients=[email.strip() 
                     for email in form.emails.data.split(",")])
             mail.send(msg)
+            flash("You invitations have been sent")
             return redirect(url_for("list_bills"))
 
     return render_template("send_invites.html", form=form)
