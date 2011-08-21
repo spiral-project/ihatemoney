@@ -14,6 +14,15 @@ app = Flask(__name__)
 app.config.from_object("default_settings")
 mail = Mail()
 
+# db
+db.init_app(app)
+db.app = app
+db.create_all()
+
+# mail
+mail.init_app(app)
+
+
 @app.url_defaults
 def add_project_id(endpoint, values):
     if 'project_id' in values or not hasattr(g, 'project'):
@@ -243,14 +252,6 @@ def reset_bills():
 
 
 def main():
-    # db
-    db.init_app(app)
-    db.app = app
-    db.create_all()
-
-    # mail
-    mail.init_app(app)
-
     app.run(host="0.0.0.0", debug=True)
 
 if __name__ == '__main__':
