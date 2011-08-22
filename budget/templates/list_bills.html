@@ -48,7 +48,7 @@
         <td class="{% if balance[member] > 0 %}positive{% elif balance[member] < 0 %}negative{% endif %}">
             {% if balance[member] > 0 %}+{% endif %}{{ balance[member] }}
         </td>
-        <td> <a class="remove" href="{{ url_for("remove_member", member_id=member.id) }}">delete</a></td>
+        <td> {% if member.activated %}<a class="remove" href="{{ url_for("remove_member", member_id=member.id) }}">delete</a>{% endif %}</td>
     </tr>
     {% endif %}
     {% endfor %}
