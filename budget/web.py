@@ -173,6 +173,14 @@ def add_member():
     form = MemberForm(g.project)
     if request.method == "POST":
         if form.validate():
+            # if the user is already bound to the project, just reactivate him
+            person = Person.query.filter(Person.name == form.name.data)\
+                        .filter(Project.id == g.project.id).all()
+            if person:
+                person[0].activated = True
+                db.session.commit()
+                return redirect(url_for("list_bills"))
+
             db.session.add(Person(name=form.name.data, project=g.project))
             db.session.commit()
             return redirect(url_for("list_bills"))

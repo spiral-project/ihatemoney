@@ -85,7 +85,8 @@ class MemberForm(Form):
 
     def validate_name(form, field):
         if Person.query.filter(Person.name == field.data)\
-                .filter(Person.project == form.project).all():
+                .filter(Person.project == form.project)\
+                .filter(Person.activated == True).all():
             raise ValidationError("This project already have this member")
 
 

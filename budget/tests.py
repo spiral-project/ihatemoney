@@ -35,7 +35,7 @@ class TestCase(unittest.TestCase):
         return test_client.post('/authenticate', data=dict(
             id=project, password=password), follow_redirects=True)
 
-    def create_project(self, name):
+    def post_project(self, name):
         """Create a fake project"""
         # create the project
         self.app.post("/create", data={
@@ -44,6 +44,11 @@ class TestCase(unittest.TestCase):
                 'password': name,
                 'contact_email': '%s@notmyidea.org' % name
         })
+
+    def create_project(self, name):
+        models.db.session.add(models.Project(id=name, name=unicode(name), 
+            password=name, contact_email="%s@notmyidea.org" % name))
+        models.db.session.commit()
 
 class BudgetTestCase(TestCase):
 
@@ -57,7 +62,7 @@ class BudgetTestCase(TestCase):
             # create a project
             self.login("raclette")
 
-            self.create_project("raclette")
+            self.post_project("raclette")
             self.app.post("/raclette/invite", data=
                     {"emails": 'alexis@notmyidea.org'})
 
@@ -120,7 +125,7 @@ class BudgetTestCase(TestCase):
             self.assertEqual(len(models.Project.query.all()), 1)
 
     def test_membership(self):
-        self.create_project("raclette")
+        self.post_project("raclette")
         self.login("raclette")
 
         # adds a member to this project
@@ -176,6 +181,11 @@ class BudgetTestCase(TestCase):
         result = self.app.get("/raclette/add")
         self.assertNotIn("fred", result.data)
 
+        # adding him again should reactivate him
+        self.app.post("/raclette/members/add", data={'name': 'fred' })
+        self.assertEqual(
+                len(models.Project.query.get("raclette").active_members), 2)
+
     def test_demo(self):
         # Test that it is possible to connect automatically by going onto /demo
         with web.app.test_client() as c:
@@ -189,10 +199,104 @@ class BudgetTestCase(TestCase):
 
     def test_demo(self):
         # test that a demo project is created if none is defined
+        self.assertEqual([], models.Project.query.all())
+        self.app.get("/demo")
+        self.assertTrue(models.Project.query.get("demo") is not None)
+
+    def test_authentication(self):
+        # raclette that the login / logout process works
+        self.create_project("raclette")
+
+        # try to see the project while not being authenticated should redirect 
+        # to the authentication page
+        resp = self.app.post("/raclette", follow_redirects=True)
+        self.assertIn("Authentication", resp.data)
+        
+        # try to connect with wrong credentials should not work
         with web.app.test_client() as c:
-            self.assertEqual([], models.Project.query.all())
-            c.get("/demo")
-            self.assertTrue(models.Project.query.get("demo") is not None)
+            resp = c.post("/authenticate", 
+                    data={'id': 'raclette', 'password': 'nope'})
+
+            self.assertIn("Authentication", resp.data)
+            self.assertNotIn('raclette', session)
+
+        # try to connect with the right credentials should work
+        with web.app.test_client() as c:
+            resp = c.post("/authenticate", 
+                    data={'id': 'raclette', 'password': 'raclette'})
+
+            self.assertNotIn("Authentication", resp.data)
+            self.assertIn('raclette', session)
+            self.assertEqual(session['raclette'], 'raclette')
+
+            # logout should wipe the session out
+            c.get("/exit")
+            self.assertNotIn('raclette', session)
+
+    def test_manage_bills(self):
+        self.post_project("raclette")
+
+        # add two persons
+        self.app.post("/raclette/members/add", data={'name': 'alexis' })
+        self.app.post("/raclette/members/add", data={'name': 'fred' })
+
+        members_ids = [m.id for m in models.Project.query.get("raclette").members]
+        
+        # create a bill
+        self.app.post("/raclette/add", data={
+            'date': '2011-08-10',
+            'what': u'fromage à raclette',
+            'payer': members_ids[0],
+            'payed_for': members_ids,
+            'amount': '25',
+        })
+        raclette = models.Project.query.get("raclette")
+        bill = models.Bill.query.one()
+        self.assertEqual(bill.amount, 25)
+
+        # edit the bill
+        resp = self.app.post("/raclette/edit/%s" % bill.id, data={
+            'date': '2011-08-10',
+            'what': u'fromage à raclette',
+            'payer': members_ids[0],
+            'payed_for': members_ids,
+            'amount': '10',
+        })
+
+        bill = models.Bill.query.one()
+        self.assertEqual(bill.amount, 10, "bill edition")
+
+        # delete the bill
+        self.app.get("/raclette/delete/%s" % bill.id)
+        self.assertEqual(0, len(models.Bill.query.all()), "bill deletion")
+
+        # test balance
+        self.app.post("/raclette/add", data={
+            'date': '2011-08-10',
+            'what': u'fromage à raclette',
+            'payer': members_ids[0],
+            'payed_for': members_ids,
+            'amount': '19',
+        })
+
+        self.app.post("/raclette/add", data={
+            'date': '2011-08-10',
+            'what': u'fromage à raclette',
+            'payer': members_ids[1],
+            'payed_for': members_ids[0],
+            'amount': '20',
+        })
+
+        self.app.post("/raclette/add", data={
+            'date': '2011-08-10',
+            'what': u'fromage à raclette',
+            'payer': members_ids[1],
+            'payed_for': members_ids,
+            'amount': '17',
+        })
+
+        balance = models.Project.query.get("raclette").get_balance()
+        self.assertEqual(set(balance.values()), set([19.0, -19.0]))
 
 
 if __name__ == "__main__":
