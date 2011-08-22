@@ -179,6 +179,7 @@ def add_member():
             if person:
                 person[0].activated = True
                 db.session.commit()
+                flash("%s is part of this project again" % person[0].name)
                 return redirect(url_for("list_bills"))
 
             db.session.add(Person(name=form.name.data, project=g.project))
