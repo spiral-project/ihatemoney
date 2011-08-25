@@ -187,6 +187,17 @@ def add_member():
             return redirect(url_for("list_bills"))
     return render_template("add_member.html", form=form)
 
+@app.route("/<project_id>/members/<member_id>/reactivate", methods=["GET",])
+def reactivate(member_id):
+    person = Person.query.filter(Person.id == member_id)\
+                .filter(Project.id == g.project.id).all()
+    if person:
+        person[0].activated = True
+        db.session.commit()
+        flash("%s is part of this project again" % person[0].name)
+    return redirect(url_for("list_bills"))
+
+
 @app.route("/<project_id>/members/<member_id>/delete", methods=["GET", "POST"])
 def remove_member(member_id):
     person = Person.query.get_or_404(member_id)

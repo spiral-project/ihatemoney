@@ -48,7 +48,7 @@
         <td class="{% if balance[member] > 0 %}positive{% elif balance[member] < 0 %}negative{% endif %}">
             {% if balance[member] > 0 %}+{% endif %}{{ balance[member] }}
         </td>
-        <td> {% if member.activated %}<a class="remove" href="{{ url_for("remove_member", member_id=member.id) }}">delete</a>{% endif %}</td>
+        <td> {% if member.activated %}<a class="remove" href="{{ url_for("remove_member", member_id=member.id) }}">delete</a>{% else %}<a href="{{ url_for("reactivate", member_id=member.id) }}">reactivate</a>{% endif %}</td>
     </tr>
     {% endif %}
     {% endfor %}
@@ -60,7 +60,7 @@
 {% endblock %}
 
 {% block content %}
-    <a id="new-bill" href="" class="primary">Add a new bill</a>
+<a id="new-bill" href="{{ url_for('add_bill') }}" class="primary">Add a new bill</a>
     <form id="bill-form" action="{{ url_for('add_bill') }}" method="post" style="display: none">
         <a id="hide-bill-form" href="#">hide this form</a>
         {{ forms.add_bill(bill_form) }}
