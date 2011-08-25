@@ -38,6 +38,7 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
 
 #header .slide h1{
     margin-bottom: 30px;
+    color: #000;
 }
 #header .slide .about_link:hover {
     color: #ABE128;
@@ -61,6 +62,7 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
     top: -150px;
     margin-right: 200px;
     margin-bottom: -100px;
+    color: #000;
 
 }
 
