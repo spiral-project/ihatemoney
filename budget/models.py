@@ -36,6 +36,33 @@ class Project(db.Model):
 
         return balances
 
+    def get_bills(self):
+        """Return the list of bills related to this project"""
+        return Bill.query.join(Person, Project)\
+            .filter(Bill.payer_id == Person.id)\
+            .filter(Person.project_id == Project.id)\
+            .filter(Project.id == self.id)\
+            .order_by(Bill.date.desc())
+
+    def remove_member(self, member_id):
+        """Remove a member from the project.
+
+        If the member is not bound to a bill, then he is deleted, otherwise
+        he is only deactivated.
+
+        This method returns the status DELETED or DEACTIVATED regarding the
+        changes made.
+        """
+        person = Person.query.get_or_404(member_id)
+        if person.project == self:
+            if not person.has_bills():
+                db.session.delete(person)
+                db.session.commit()
+            else:
+                person.activated = False
+                db.session.commit()
+        return person
+
     def __repr__(self):
         return "<Project %s>" % self.name
 

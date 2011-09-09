@@ -25,6 +25,10 @@ mail.init_app(app)
 
 @app.url_defaults
 def add_project_id(endpoint, values):
+    """Add the project id to the url calls if it is expected.
+
+    This is to not carry it everywhere in the templates.
+    """
     if 'project_id' in values or not hasattr(g, 'project'):
         return
     if app.url_map.is_endpoint_expecting(endpoint, 'project_id'):
@@ -32,6 +36,11 @@ def add_project_id(endpoint, values):
 
 @app.url_value_preprocessor
 def pull_project(endpoint, values):
+    """When a request contains a project_id value, transform it directly
+    into a project by checking the credentials are stored in session.
+
+    If not, redirect the user to an authentication form
+    """
     if endpoint == "authenticate":
         return
     if not values:
@@ -51,6 +60,7 @@ def pull_project(endpoint, values):
 
 @app.route("/authenticate", methods=["GET", "POST"])
 def authenticate(project_id=None):
+    """Authentication form"""
     form = AuthenticationForm()
     if not form.id.data and request.args['project_id']:
         form.id.data = request.args['project_id']
@@ -124,6 +134,12 @@ def exit():
 
 @app.route("/demo")
 def demo():
+    """
+    Authenticate the user for the demonstration project and redirect him to
+    the bills list for this project.
+
+    Create a demo project if it doesnt exists yet (or has been deleted)
+    """
     project = Project.query.get("demo")
     if not project:
         project = Project(id="demo", name=u"demonstration", password="demo", 
@@ -135,6 +151,7 @@ def demo():
 
 @app.route("/<project_id>/invite", methods=["GET", "POST"])
 def invite():
+    """Send invitations for this particular project"""
 
     form = InviteForm()
 
@@ -158,11 +175,7 @@ def invite():
 
 @app.route("/<project_id>/")
 def list_bills():
-    bills = Bill.query.join(Person, Project)\
-        .filter(Bill.payer_id == Person.id)\
-        .filter(Person.project_id == Project.id)\
-        .filter(Project.id == g.project.id)\
-        .order_by(Bill.date.desc())
+    bills = g.project.get_bills()
     return render_template("list_bills.html", 
             bills=bills, member_form=MemberForm(g.project),
             bill_form=get_billform_for(g.project)
@@ -201,16 +214,12 @@ def reactivate(member_id):
 
 @app.route("/<project_id>/members/<member_id>/delete", methods=["GET", "POST"])
 def remove_member(member_id):
-    person = Person.query.get_or_404(member_id)
-    if person.project == g.project:
-        if not person.has_bills():
-            db.session.delete(person)
-            db.session.commit()
-            flash("User '%s' has been removed" % person.name)
-        else:
-            person.activated = False
-            db.session.commit()
-            flash("User '%s' has been desactivated" % person.name)
+    member = g.project.remove_member(member_id)
+    if member.activated == False:
+        flash("User '%s' has been desactivated" % member.name)
+    else:
+        flash("User '%s' has been removed" % member.name)
+
     return redirect(url_for("list_bills"))
 
 @app.route("/<project_id>/add", methods=["GET", "POST"])
