@@ -9,21 +9,21 @@ from forms import (ProjectForm, AuthenticationForm, BillForm, MemberForm,
                    InviteForm, CreateArchiveForm)
 from utils import get_billform_for, Redirect303
 
-# create the application, initialize stuff
-app = Flask(__name__)
-app.config.from_object("default_settings")
+"""
+The blueprint for the web interface.
+
+Contains all the interaction logic with the end user (except forms which
+are directly handled in the forms module.
+
+Basically, this blueprint takes care of the authentication and provides
+some shortcuts to make your life better when coding (see `pull_project` 
+and `add_project_id` for a quick overview
+"""
+
+main = Blueprint("main", __name__)
 mail = Mail()
 
-# db
-db.init_app(app)
-db.app = app
-db.create_all()
-
-# mail
-mail.init_app(app)
-
-
-@app.url_defaults
+@main.url_defaults
 def add_project_id(endpoint, values):
     """Add the project id to the url calls if it is expected.
 
@@ -31,10 +31,10 @@ def add_project_id(endpoint, values):
     """
     if 'project_id' in values or not hasattr(g, 'project'):
         return
-    if app.url_map.is_endpoint_expecting(endpoint, 'project_id'):
+    if current_app.url_map.is_endpoint_expecting(endpoint, 'project_id'):
         values['project_id'] = g.project.id
 
-@app.url_value_preprocessor
+@main.url_value_preprocessor
 def pull_project(endpoint, values):
     """When a request contains a project_id value, transform it directly
     into a project by checking the credentials are stored in session.
@@ -49,16 +49,16 @@ def pull_project(endpoint, values):
     if project_id:
         project = Project.query.get(project_id)
         if not project:
-            raise Redirect303(url_for("create_project", project_id=project_id))
+            raise Redirect303(url_for(".create_project", project_id=project_id))
         if project.id in session and session[project.id] == project.password:
             # add project into kwargs and call the original function
             g.project = project
         else:
             # redirect to authentication page
             raise Redirect303(
-                    url_for("authenticate", project_id=project_id))
+                    url_for(".authenticate", project_id=project_id))
 
-@app.route("/authenticate", methods=["GET", "POST"])
+@main.route("/authenticate", methods=["GET", "POST"])
 def authenticate(project_id=None):
     """Authentication form"""
     form = AuthenticationForm()
@@ -76,7 +76,7 @@ def authenticate(project_id=None):
         # if credentials are already in session, redirect
         if project_id in session and project.password == session[project_id]:
             setattr(g, 'project', project)
-            return redirect(url_for("list_bills"))
+            return redirect(url_for(".list_bills"))
 
         # else process the form
         if request.method == "POST":
@@ -92,19 +92,19 @@ def authenticate(project_id=None):
                     session[project_id] = form.password.data
                     session.update()
                     setattr(g, 'project', project)
-                    return redirect(url_for("list_bills"))
+                    return redirect(url_for(".list_bills"))
 
     return render_template("authenticate.html", form=form, 
             create_project=create_project)
 
-@app.route("/")
+@main.route("/")
 def home():
     project_form = ProjectForm()
     auth_form = AuthenticationForm()
     return render_template("home.html", project_form=project_form, 
             auth_form=auth_form, session=session)
 
-@app.route("/create", methods=["GET", "POST"])
+@main.route("/create", methods=["GET", "POST"])
 def create_project():
     form = ProjectForm()
     if request.method == "GET" and 'project_id' in request.values:
@@ -122,17 +122,17 @@ def create_project():
             session.update()
 
             # redirect the user to the next step (invite)
-            return redirect(url_for("invite", project_id=project.id))
+            return redirect(url_for(".invite", project_id=project.id))
 
     return render_template("create_project.html", form=form)
 
-@app.route("/exit")
+@main.route("/exit")
 def exit():
     # delete the session
     session.clear()
-    return redirect(url_for("home"))
+    return redirect(url_for(".home"))
 
-@app.route("/demo")
+@main.route("/demo")
 def demo():
     """
     Authenticate the user for the demonstration project and redirect him to
@@ -147,9 +147,9 @@ def demo():
         db.session.add(project)
         db.session.commit()
     session[project.id] = project.password
-    return redirect(url_for("list_bills", project_id=project.id))
+    return redirect(url_for(".list_bills", project_id=project.id))
 
-@app.route("/<project_id>/invite", methods=["GET", "POST"])
+@main.route("/<project_id>/invite", methods=["GET", "POST"])
 def invite():
     """Send invitations for this particular project"""
 
@@ -169,11 +169,11 @@ def invite():
                     for email in form.emails.data.split(",")])
             mail.send(msg)
             flash("You invitations have been sent")
-            return redirect(url_for("list_bills"))
+            return redirect(url_for(".list_bills"))
 
     return render_template("send_invites.html", form=form)
 
-@app.route("/<project_id>/")
+@main.route("/<project_id>/")
 def list_bills():
     bills = g.project.get_bills()
     return render_template("list_bills.html", 
@@ -181,7 +181,7 @@ def list_bills():
             bill_form=get_billform_for(g.project)
     )
 
-@app.route("/<project_id>/members/add", methods=["GET", "POST"])
+@main.route("/<project_id>/members/add", methods=["GET", "POST"])
 def add_member():
     # FIXME manage form errors on the list_bills page
     form = MemberForm(g.project)
@@ -194,14 +194,14 @@ def add_member():
                 person[0].activated = True
                 db.session.commit()
                 flash("%s is part of this project again" % person[0].name)
-                return redirect(url_for("list_bills"))
+                return redirect(url_for(".list_bills"))
 
             db.session.add(Person(name=form.name.data, project=g.project))
             db.session.commit()
-            return redirect(url_for("list_bills"))
+            return redirect(url_for(".list_bills"))
     return render_template("add_member.html", form=form)
 
-@app.route("/<project_id>/members/<member_id>/reactivate", methods=["GET",])
+@main.route("/<project_id>/members/<member_id>/reactivate", methods=["GET",])
 def reactivate(member_id):
     person = Person.query.filter(Person.id == member_id)\
                 .filter(Project.id == g.project.id).all()
@@ -209,10 +209,10 @@ def reactivate(member_id):
         person[0].activated = True
         db.session.commit()
         flash("%s is part of this project again" % person[0].name)
-    return redirect(url_for("list_bills"))
+    return redirect(url_for(".list_bills"))
 
 
-@app.route("/<project_id>/members/<member_id>/delete", methods=["GET", "POST"])
+@main.route("/<project_id>/members/<member_id>/delete", methods=["GET", "POST"])
 def remove_member(member_id):
     member = g.project.remove_member(member_id)
     if member.activated == False:
@@ -220,9 +220,9 @@ def remove_member(member_id):
     else:
         flash("User '%s' has been removed" % member.name)
 
-    return redirect(url_for("list_bills"))
+    return redirect(url_for(".list_bills"))
 
-@app.route("/<project_id>/add", methods=["GET", "POST"])
+@main.route("/<project_id>/add", methods=["GET", "POST"])
 def add_bill():
     form = get_billform_for(g.project)
     if request.method == 'POST':
@@ -232,22 +232,22 @@ def add_bill():
             db.session.commit()
 
             flash("The bill has been added")
-            return redirect(url_for('list_bills'))
+            return redirect(url_for('.list_bills'))
 
     return render_template("add_bill.html", form=form)
 
 
-@app.route("/<project_id>/delete/<int:bill_id>")
+@main.route("/<project_id>/delete/<int:bill_id>")
 def delete_bill(bill_id):
     bill = Bill.query.get_or_404(bill_id)
     db.session.delete(bill)
     db.session.commit()
     flash("The bill has been deleted")
 
-    return redirect(url_for('list_bills'))
+    return redirect(url_for('.list_bills'))
 
 
-@app.route("/<project_id>/edit/<int:bill_id>", methods=["GET", "POST"])
+@main.route("/<project_id>/edit/<int:bill_id>", methods=["GET", "POST"])
 def edit_bill(bill_id):
     bill = Bill.query.get_or_404(bill_id)
     form = get_billform_for(g.project, set_default=False)
@@ -256,17 +256,17 @@ def edit_bill(bill_id):
         db.session.commit()
 
         flash("The bill has been modified")
-        return redirect(url_for('list_bills'))
+        return redirect(url_for('.list_bills'))
 
     form.fill(bill)
     return render_template("add_bill.html", form=form, edit=True)
 
-@app.route("/<project_id>/compute")
+@main.route("/<project_id>/compute")
 def compute_bills():
     """Compute the sum each one have to pay to each other and display it"""
     return render_template("compute_bills.html")
 
-@app.route("/<project_id>/archives/create")
+@main.route("/<project_id>/archives/create")
 def create_archive():
     form = CreateArchiveForm() 
     if request.method == "POST":
@@ -275,10 +275,3 @@ def create_archive():
             flash("The data from XX to XX has been archived")
 
     return render_template("create_archive.html", form=form)
-
-
-def main():
-    app.run(host="0.0.0.0", debug=True)
-
-if __name__ == '__main__':
-    main()

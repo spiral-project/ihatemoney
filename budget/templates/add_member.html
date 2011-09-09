@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-    <form action="{{ url_for("add_member") }}" method="post">
+    <form action="{{ url_for(".add_member") }}" method="post">
         {{ forms.add_member(form) }}
     </form>
 {% endblock %}

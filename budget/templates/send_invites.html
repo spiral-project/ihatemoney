@@ -4,14 +4,14 @@
 <ol>
     <li>Create the project</li>
     <li><strong>Invite people</strong></li>
-    <li><a href="{{ url_for("list_bills") }}">Use it!</a></li>
+    <li><a href="{{ url_for(".list_bills") }}">Use it!</a></li>
 </ol>
 {% endblock %}
 {% block content %}
 <h2>Invite people to join this project</h2>
 <p>Specify a (coma separated) list of email adresses you want to notify about the 
 creation of this budget management project and we will send them an email for you.</p>
-<p>If you prefer, you can <a href="{{ url_for("list_bills") }}">skip this step</a> and notify them yourself</p>
+<p>If you prefer, you can <a href="{{ url_for(".list_bills") }}">skip this step</a> and notify them yourself</p>
 
 {% include "display_errors.html" %}
 <form class="invites" method="post" accept-charset="utf-8">

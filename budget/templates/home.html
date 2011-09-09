@@ -7,7 +7,7 @@
 <div id="header">
     <div class="slide">
         <h1><span>Manage your shared <br>expenses, easily</span></h1>
-        <a href="{{ url_for("demo") }}" class="about_link">Try out the demo</a>
+        <a href="{{ url_for(".demo") }}" class="about_link">Try out the demo</a>
     </div>
     <div class="additional-content">
         <p>You're sharing a house?<br /> Going on holidays with friends?<br /> Simply sharing money with others? <br /><strong>We can help!</strong></p>
@@ -22,14 +22,14 @@
 
       <div class="row">
         <div class="span8 columns">
-            <form action="{{ url_for('authenticate') }}" method="post">
+            <form action="{{ url_for(".authenticate") }}" method="post">
                 <h3>Log to an existing project...</h3>
                 {{ forms.authenticate(auth_form, home=True) }}
                 <button class="btn">log in</button>
             </form>
         </div>
         <div class="span8 columns">
-            <form class="create" action="{{ url_for('create_project') }}" method="post">
+            <form class="create" action="{{ url_for(".create_project") }}" method="post">
                 <h3>...or create a new one</h3>
                 {{ forms.create_project(project_form, home=True) }}
                 <button class="btn">let's get started</button>

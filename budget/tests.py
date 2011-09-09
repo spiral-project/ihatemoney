@@ -5,22 +5,22 @@ import unittest
 
 from flask import session
 
-import web
+import run
 import models
 
 class TestCase(unittest.TestCase):
 
     def setUp(self):
-        web.app.config['TESTING'] = True
+        run.app.config['TESTING'] = True
 
-        web.app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///memory" 
-        web.app.config['CSRF_ENABLED'] = False # simplify the tests
-        self.app = web.app.test_client()
+        run.app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///memory" 
+        run.app.config['CSRF_ENABLED'] = False # simplify the tests
+        self.app = run.app.test_client()
 
-        models.db.init_app(web.app)
-        web.mail.init_app(web.app)
+        models.db.init_app(run.app)
+        run.mail.init_app(run.app)
 
-        models.db.app = web.app
+        models.db.app = run.app
         models.db.create_all()
 
     def tearDown(self):
@@ -57,7 +57,7 @@ class BudgetTestCase(TestCase):
         are checked properly.
         """
         # sending a message to one person
-        with web.mail.record_messages() as outbox:
+        with run.mail.record_messages() as outbox:
 
             # create a project
             self.login("raclette")
@@ -70,7 +70,7 @@ class BudgetTestCase(TestCase):
             self.assertEqual(outbox[0].recipients, ["alexis@notmyidea.org"])
 
         # sending a message to multiple persons
-        with web.mail.record_messages() as outbox:
+        with run.mail.record_messages() as outbox:
             self.app.post("/raclette/invite", data=
                     {"emails": 'alexis@notmyidea.org, toto@notmyidea.org'})
 
@@ -80,13 +80,13 @@ class BudgetTestCase(TestCase):
                     ["alexis@notmyidea.org", "toto@notmyidea.org"])
 
         # mail address checking
-        with web.mail.record_messages() as outbox:
+        with run.mail.record_messages() as outbox:
             response = self.app.post("/raclette/invite", data={"emails": "toto"})
             self.assertEqual(len(outbox), 0) # no message sent
             self.assertIn("The email toto is not valid", response.data)
 
         # mixing good and wrong adresses shouldn't send any messages
-        with web.mail.record_messages() as outbox:
+        with run.mail.record_messages() as outbox:
             self.app.post("/raclette/invite", data=
                     {"emails": 'alexis@notmyidea.org, alexis'}) # not valid
 
@@ -95,7 +95,7 @@ class BudgetTestCase(TestCase):
 
 
     def test_project_creation(self):
-        with web.app.test_client() as c:
+        with run.app.test_client() as c:
 
             # add a valid project
             c.post("/create", data={
@@ -188,7 +188,7 @@ class BudgetTestCase(TestCase):
 
     def test_demo(self):
         # Test that it is possible to connect automatically by going onto /demo
-        with web.app.test_client() as c:
+        with run.app.test_client() as c:
             models.db.session.add(models.Project(id="demo", name=u"demonstration", 
                 password="demo", contact_email="demo@notmyidea.org"))
             models.db.session.commit()
@@ -213,7 +213,7 @@ class BudgetTestCase(TestCase):
         self.assertIn("Authentication", resp.data)
         
         # try to connect with wrong credentials should not work
-        with web.app.test_client() as c:
+        with run.app.test_client() as c:
             resp = c.post("/authenticate", 
                     data={'id': 'raclette', 'password': 'nope'})
 
@@ -221,7 +221,7 @@ class BudgetTestCase(TestCase):
             self.assertNotIn('raclette', session)
 
         # try to connect with the right credentials should work
-        with web.app.test_client() as c:
+        with run.app.test_client() as c:
             resp = c.post("/authenticate", 
                     data={'id': 'raclette', 'password': 'raclette'})
 

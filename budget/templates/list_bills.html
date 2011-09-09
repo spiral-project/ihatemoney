@@ -48,20 +48,20 @@
         <td class="{% if balance[member] > 0 %}positive{% elif balance[member] < 0 %}negative{% endif %}">
             {% if balance[member] > 0 %}+{% endif %}{{ balance[member] }}
         </td>
-        <td> {% if member.activated %}<a class="remove" href="{{ url_for("remove_member", member_id=member.id) }}">delete</a>{% else %}<a href="{{ url_for("reactivate", member_id=member.id) }}">reactivate</a>{% endif %}</td>
+        <td> {% if member.activated %}<a class="remove" href="{{ url_for(".remove_member", member_id=member.id) }}">delete</a>{% else %}<a href="{{ url_for(".reactivate", member_id=member.id) }}">reactivate</a>{% endif %}</td>
     </tr>
     {% endif %}
     {% endfor %}
     </table>
 
-    <form action="{{ url_for("add_member") }}" method="post">
+    <form action="{{ url_for(".add_member") }}" method="post">
         {{ forms.add_member(member_form) }}
     </form>
 {% endblock %}
 
 {% block content %}
-<a id="new-bill" href="{{ url_for('add_bill') }}" class="primary">Add a new bill</a>
-    <form id="bill-form" action="{{ url_for('add_bill') }}" method="post" style="display: none">
+<a id="new-bill" href="{{ url_for(".add_bill") }}" class="primary">Add a new bill</a>
+    <form id="bill-form" action="{{ url_for(".add_bill") }}" method="post" style="display: none">
         <a id="hide-bill-form" href="#">hide this form</a>
         {{ forms.add_bill(bill_form) }}
 </form>
@@ -77,15 +77,15 @@
             <td>{{ bill.what }}</td>
             <td>{% for ower in bill.owers %}{{ ower.name }} {% endfor %}</td>
             <td>{{ bill.amount }} ({{ bill.pay_each() }} each)</td>
-            <td><a href="{{ url_for("edit_bill", bill_id=bill.id) }}">edit</a>
-                <a class="delete" href="{{ url_for("delete_bill", bill_id=bill.id) }}">delete</a></td>
+            <td><a href="{{ url_for(".edit_bill", bill_id=bill.id) }}">edit</a>
+                <a class="delete" href="{{ url_for(".delete_bill", bill_id=bill.id) }}">delete</a></td>
     </tr>
     {% endfor %}
     </tbody>
     </table>
 
     {% else %}
-    <p>Nothing to list yet. You probably want to <a id="empty-new-bill" href="{{ url_for("add_bill") }}">add a bill</a> ?</p>
+    <p>Nothing to list yet. You probably want to <a id="empty-new-bill" href="{{ url_for(".add_bill") }}">add a bill</a> ?</p>
     {% endif %}
 </div>
 {% endblock %}

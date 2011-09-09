@@ -4,7 +4,7 @@
 <head>
     <title>Account manager</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='main.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for("static", filename='main.css') }}">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function(){
@@ -42,7 +42,7 @@
 <body>
 
 <div class="topbar">
-    <h3><a class="logo" href="{% if g.project %}{{ url_for("list_bills") }}{% endif %}">#! money?</a></h3>
+    <h3><a class="logo" href="{% if g.project %}{{ url_for(".list_bills") }}{% endif %}">#! money?</a></h3>
     {% if g.project %}
     <ul>
       <li class="active"><a href="">Bills</a></li>
@@ -56,12 +56,12 @@
           <li class="divider"></li>
            {% for id, name in session['projects'] %}
            {% if id != g.project.id %}
-               <li><a href="{{ url_for("list_bills", project_id=id) }}">switch to {{ name }}</a></li>
+               <li><a href="{{ url_for(".list_bills", project_id=id) }}">switch to {{ name }}</a></li>
             {% endif %}
            {% endfor %}
-           <li><a href="{{ url_for("create_project") }}">Start a new project</a></li>
+           <li><a href="{{ url_for(".create_project") }}">Start a new project</a></li>
           <li class="divider"></li>
-          <li><a href="{{ url_for("exit") }}">Logout</a></li>
+          <li><a href="{{ url_for(".exit") }}">Logout</a></li>
         </ul>
       </li>
     </ul>

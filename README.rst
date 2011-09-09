@@ -1,10 +1,6 @@
 Budget-manager
 ##############
 
-:author: Alexis Métaireau, Frédéric Sureau
-:date: 10/03/2010
-:technologies: Python, Flask, SQLAlchemy, WTForm
-
 This is a really tiny app to ease the shared houses budget management. Keep
 track of who bought what, when, and for who to then compute the balance of each
 person.
@@ -18,7 +14,7 @@ To make it run, you just have to do something like::
     $ source venv/bin/activate
     $ pip install -r requirements.txt
     $ cd budget
-    $ python web.py
+    $ python run.py
 
 Deploy it
 =========
