@@ -5,9 +5,8 @@
 {% endblock %}
 
 {% block content %}
-<h2>{% if edit %}Edit a{% else %}Add a new{% endif %} bill</h2>
 
 <form method="post">
-    {{ forms.add_bill(form) }}
+    {{ forms.add_bill(form, edit) }}
 </form>
 {% endblock %}

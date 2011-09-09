@@ -100,3 +100,8 @@ class InviteForm(Form):
             if not validator.regex.match(email):
                 raise ValidationError("The email %s is not valid" % email)
 
+
+class CreateArchiveForm(Form):
+    start_date = DateField("Start date", validators=[Required(),])
+    end_date = DateField("End date", validators=[Required(),])
+    name = TextField("Name for this archive (optional)")

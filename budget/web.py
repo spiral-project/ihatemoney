@@ -5,7 +5,8 @@ from flaskext.mail import Mail, Message
 
 # local modules
 from models import db, Project, Person, Bill
-from forms import ProjectForm, AuthenticationForm, BillForm, MemberForm, InviteForm
+from forms import (ProjectForm, AuthenticationForm, BillForm, MemberForm, 
+                   InviteForm, CreateArchiveForm)
 from utils import get_billform_for, Redirect303
 
 # create the application, initialize stuff
@@ -256,18 +257,15 @@ def compute_bills():
     """Compute the sum each one have to pay to each other and display it"""
     return render_template("compute_bills.html")
 
+@app.route("/<project_id>/archives/create")
+def create_archive():
+    form = CreateArchiveForm() 
+    if request.method == "POST":
+        if form.validate():
+            pass
+            flash("The data from XX to XX has been archived")
 
-@app.route("/<project_id>/reset")
-def reset_bills():
-    """Reset the list of bills"""
-    # FIXME replace with the archive feature
-    # get all the bills which are not processed
-    bills = Bill.query.filter(Bill.processed == False)
-    for bill in bills:
-        bill.processed = True
-        db.session.commit()
-
-    return redirect(url_for('list_bills'))
+    return render_template("create_archive.html", form=form)
 
 
 def main():

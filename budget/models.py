@@ -78,6 +78,8 @@ class Bill(db.Model):
     date = db.Column(db.Date, default=datetime.now)
     what = db.Column(db.UnicodeText)
 
+    archive = db.Column(db.Integer, db.ForeignKey("archive.id"))
+
     def pay_each(self):
         """Compute what each person has to pay"""
         return round(self.amount / len(self.owers), 2)
@@ -87,3 +89,18 @@ class Bill(db.Model):
                 self.payer, ", ".join([o.name for o in self.owers]))
 
 
+class Archive(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    project_id = db.Column(db.Integer, db.ForeignKey("project.id"))
+    name = db.Column(db.UnicodeText)
+
+    @property
+    def start_date(self):
+        pass
+
+    @property
+    def end_date(self):
+        pass
+
+    def __repr__(self):
+        return "<Archive>"

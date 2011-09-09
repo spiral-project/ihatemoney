@@ -52,10 +52,10 @@
 
 {% endmacro %}
 
-{% macro add_bill(form) %}
+{% macro add_bill(form, edit=False) %}
 
     <fieldset>
-    <legend>Add a bill</legend>
+        <legend>{% if edit %}Edit this {% else %}Add a {% endif %}bill</legend>
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }} 
     {{ input(form.date) }} 
@@ -81,5 +81,17 @@
     <div class="actions">
         <button class="btn">Send the invitations</button>
         <a href="{{ url_for("list_bills") }}">No, thanks</a>
+    </div>
+{% endmacro %}
+
+{% macro create_archive(form) %}
+    <fieldset>
+        <legend>Create an archive</legend>
+    {{ form.hidden_tag() }}
+    {{ input(form.start_date) }}
+    {{ input(form.end_date) }}
+    </fieldset>
+    <div class="actions">
+        <button class="btn">Create the archive</button>
     </div>
 {% endmacro %}
