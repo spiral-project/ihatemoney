@@ -18,7 +18,7 @@ To make it run, you just have to do something like::
     $ source venv/bin/activate
     $ pip install -r requirements.txt
     $ cd budget
-    $ python budget.py
+    $ python web.py
 
 Deploy it
 =========
