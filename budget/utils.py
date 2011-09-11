@@ -1,24 +1,19 @@
+import re
 from functools import wraps
 from flask import redirect, url_for, session, request
 from werkzeug.routing import HTTPException, RoutingException
 
-from models import Bill, Project
-from forms import BillForm
+def slugify(value):
+    """Normalizes string, converts to lowercase, removes non-alpha characters,
+    and converts spaces to hyphens.
 
-def get_billform_for(project, set_default=True):
-    """Return an instance of BillForm configured for a particular project.
-
-    :set_default: if set to True, on GET methods (usually when we want to 
-                  display the default form, it will call set_default on it.
-    
+    Copy/Pasted from ametaireau/pelican/utils itself took from django sources.
     """
-    form = BillForm()
-    form.payed_for.choices = form.payer.choices = [(str(m.id), m.name) for m in project.active_members]
-    form.payed_for.default = [str(m.id) for m in project.active_members]
-
-    if set_default and request.method == "GET":
-        form.set_default()
-    return form
+    if type(value) == unicode:
+        import unicodedata
+        value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore')
+    value = unicode(re.sub('[^\w\s-]', '', value).strip().lower())
+    return re.sub('[-\s]+', '-', value)
 
 class Redirect303(HTTPException, RoutingException):
     """Raise if the map requests a redirect. This is for example the case if

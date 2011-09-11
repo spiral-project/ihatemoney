@@ -5,9 +5,9 @@ from flaskext.mail import Mail, Message
 
 # local modules
 from models import db, Project, Person, Bill
-from forms import (ProjectForm, AuthenticationForm, BillForm, MemberForm, 
-                   InviteForm, CreateArchiveForm)
-from utils import get_billform_for, Redirect303
+from forms import (get_billform_for, ProjectForm, AuthenticationForm, BillForm,
+                   MemberForm, InviteForm, CreateArchiveForm)
+from utils import Redirect303
 
 """
 The blueprint for the web interface.
@@ -111,6 +111,12 @@ def create_project():
         form.name.data = request.values['project_id']
 
     if request.method == "POST":
+        # At first, we don't want the user to bother with the identifier
+        # so it will automatically be missing because not displayed into the form
+        # Thus we fill it with the same value as the filled name, the validation will
+        # take care of the slug
+        if not form.id.data:
+            form.id.data = form.name.data
         if form.validate():
             # save the object in the db
             project = form.save()
@@ -178,7 +184,7 @@ def list_bills():
     bills = g.project.get_bills()
     return render_template("list_bills.html", 
             bills=bills, member_form=MemberForm(g.project),
-            bill_form=get_billform_for(g.project)
+            bill_form=get_billform_for(request, g.project)
     )
 
 @main.route("/<project_id>/members/add", methods=["GET", "POST"])
@@ -224,7 +230,7 @@ def remove_member(member_id):
 
 @main.route("/<project_id>/add", methods=["GET", "POST"])
 def add_bill():
-    form = get_billform_for(g.project)
+    form = get_billform_for(request, g.project)
     if request.method == 'POST':
         if form.validate():
             bill = Bill()
@@ -250,7 +256,7 @@ def delete_bill(bill_id):
 @main.route("/<project_id>/edit/<int:bill_id>", methods=["GET", "POST"])
 def edit_bill(bill_id):
     bill = Bill.query.get_or_404(bill_id)
-    form = get_billform_for(g.project, set_default=False)
+    form = get_billform_for(request, g.project, set_default=False)
     if request.method == 'POST' and form.validate():
         form.save(bill)
         db.session.commit()

@@ -1,5 +1,5 @@
 from web import main, db, mail
-import api
+#import api
 
 from flask import *
 

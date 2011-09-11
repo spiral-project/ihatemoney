@@ -17,8 +17,11 @@
       </div> <!-- /clearfix -->
 {% endmacro %}
 
-{% macro submit(field, cancel=False) -%}
+{% macro submit(field, cancel=False, home=False) -%}
     <div class="actions">
+        {% if home %}
+            <a href="{{ url_for(".home") }}" class="btn">Back Home</a>
+        {% endif %}
         <button type="submit" class="btn primary">{{ field.name }}</button>
         {% if cancel %}
             <button id="cancel-form" type="reset" class="btn">Cancel</button>
@@ -42,12 +45,14 @@
 
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
-    {{ input(form.name) }}
+    {% if not home %}
     {{ input(form.id) }}
+    {% endif %}
+    {{ input(form.name) }}
     {{ input(form.password) }}
     {{ input(form.contact_email) }}
     {% if not home %}
-    {{ submit(form.submit) }}
+    {{ submit(form.submit, home=True) }}
     {% endif %}
 
 {% endmacro %}

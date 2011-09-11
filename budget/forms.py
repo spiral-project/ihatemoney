@@ -2,6 +2,8 @@ from flaskext.wtf import *
 from wtforms.widgets import html_params
 from models import Project, Person, Bill
 from datetime import datetime
+from jinja2 import Markup
+from utils import slugify
 
 
 def select_multi_checkbox(field, ul_class='', **kwargs):
@@ -18,16 +20,41 @@ def select_multi_checkbox(field, ul_class='', **kwargs):
     return u''.join(html)
 
 
+def get_billform_for(request, project, set_default=True):
+    """Return an instance of BillForm configured for a particular project.
+
+    :set_default: if set to True, on GET methods (usually when we want to 
+                  display the default form, it will call set_default on it.
+    
+    """
+    form = BillForm()
+    form.payed_for.choices = form.payer.choices = [(str(m.id), m.name) for m in project.active_members]
+    form.payed_for.default = [str(m.id) for m in project.active_members]
+
+    if set_default and request.method == "GET":
+        form.set_default()
+    return form
+
+
 class ProjectForm(Form):
     name = TextField("Project name", validators=[Required()])
     id = TextField("Project identifier", validators=[Required()])
-    password = PasswordField("Password", validators=[Required()])
+    password = PasswordField("Private code", validators=[Required()])
     contact_email = TextField("Email", validators=[Required(), Email()])
     submit = SubmitField("Create the project")
 
     def validate_id(form, field):
-        if Project.query.get(field.data):
-            raise ValidationError("This project id is already used")
+        form.id.data = slugify(field.data)
+        if Project.query.get(form.id.data):
+            raise ValidationError(Markup("""The project identifier is used
+                                  to log in and for the URL of the project.
+                                  <br />
+                                  We tried to generate an identifier for you but
+                                  a projet with this identifier already exists.
+                                  <br />
+                                  Please create a new identifier you will be able
+                                  to remember.
+                                  """))
 
     def save(self):
         """Create a new project with the information given by this form.
@@ -42,7 +69,7 @@ class ProjectForm(Form):
 
 class AuthenticationForm(Form):
     id = TextField("Project identifier", validators=[Required()])
-    password = PasswordField("Password", validators=[Required()])
+    password = PasswordField("Private code", validators=[Required()])
     submit = SubmitField("Get in")
 
 
