@@ -1,4 +1,6 @@
 from functools import wraps
+import inspect
+
 from flask import redirect, url_for, session, request
 from werkzeug.routing import HTTPException, RoutingException
 
@@ -34,3 +36,12 @@ class Redirect303(HTTPException, RoutingException):
 
     def get_response(self, environ):
         return redirect(self.new_url, 303)
+
+def for_all_methods(decorator):
+    """Apply a decorator to all the methods of a class"""
+    def decorate(cls):
+        for name, method in inspect.getmembers(cls, inspect.ismethod):
+            setattr(cls, name, decorator(method))
+        return cls
+    return decorate
+

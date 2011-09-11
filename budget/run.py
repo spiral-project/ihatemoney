@@ -1,11 +1,12 @@
 from web import main, db, mail
-import api
+from api import api
 
 from flask import *
 
 app = Flask(__name__)
 app.config.from_object("default_settings")
 app.register_blueprint(main)
+app.register_blueprint(api)
 
 # db
 db.init_app(app)
