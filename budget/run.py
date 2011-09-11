@@ -8,6 +8,7 @@ app.config.from_object("default_settings")
 app.register_blueprint(main)
 app.register_blueprint(api)
 
+
 # db
 db.init_app(app)
 db.app = app

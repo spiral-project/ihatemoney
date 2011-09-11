@@ -7,7 +7,8 @@ class RESTResource(object):
               "list": "GET",
               "add": "POST",}
 
-    def __init__(self, name, route, app, actions, handler, authentifier):
+    def __init__(self, name, route, app, handler, authentifier=None,
+            actions=None, inject_name=None):
         """
         :name:
             name of the resource. This is being used when registering
@@ -21,7 +22,7 @@ class RESTResource(object):
             Application to register the routes onto
 
         :actions: 
-            Authorized actions.
+            Authorized actions. Optional. None means all.
 
         :handler:
             The handler instance which will handle the requests
@@ -30,12 +31,15 @@ class RESTResource(object):
             callable checking the authentication. If specified, all the 
             methods will be checked against it.
         """
+        if not actions:
+            actions = self._VERBS.keys()
 
         self._route = route
         self._handler = handler
         self._name = name
         self._identifier = "%s_id" % name
         self._authentifier = authentifier
+        self._inject_name = inject_name # FIXME
 
         for action in actions:
             self.add_url_rule(app, action)
@@ -63,7 +67,8 @@ class RESTResource(object):
 
         # decorate the view
         if self._authentifier:
-            method = need_auth(self._authentifier, self._name)(method)
+            method = need_auth(self._authentifier, 
+                    self._inject_name or self._name)(method)
 
         app.add_url_rule(
             self._get_route_for(action),
@@ -72,7 +77,7 @@ class RESTResource(object):
             methods=[self._VERBS.get(action, "GET")])
 
 
-def need_auth(authentifier, name=None):
+def need_auth(authentifier, name=None, remove_attr=True):
     """Decorator checking that the authentifier does not returns false in 
     the current context.
 
@@ -88,6 +93,10 @@ def need_auth(authentifier, name=None):
         **Optional**, name of the argument to put the object into.
         If it is not provided, nothing will be added to the kwargs
         of the decorated function
+
+    :remove_attr:
+        Remove or not the `*name*_id` from the kwargs before calling the 
+        function
     """
     def wrapper(func):
         def wrapped(*args, **kwargs):
@@ -95,26 +104,10 @@ def need_auth(authentifier, name=None):
             if result:
                 if name:
                     kwargs[name] = result
+                if remove_attr:
+                    del kwargs["%s_id" % name]
                 return func(*args, **kwargs)
             else:
                 raise werkzeug.exceptions.Forbidden()
         return wrapped
     return wrapper
-
-
-class DefaultHandler(object):
-
-    def add(self, *args, **kwargs):
-        pass
-
-    def update(self, *args, **kwargs):
-        pass
-
-    def delete(self, *args, **kwargs):
-        pass
-
-    def list(self, *args, **kwargs):
-        pass
-
-    def get(self, *args, **kwargs):
-        pass

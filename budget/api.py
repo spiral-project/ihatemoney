@@ -5,7 +5,7 @@ import werkzeug
 from models import db, Project, Person, Bill
 from utils import for_all_methods
 
-from rest import RESTResource, DefaultHandler, need_auth # FIXME make it an ext
+from rest import RESTResource, need_auth # FIXME make it an ext
 
 
 api = Blueprint("api", __name__, url_prefix="/api")
@@ -26,21 +26,82 @@ def check_project(*args, **kwargs):
     return False
 
 
-class ProjectHandler(DefaultHandler):
+class ProjectHandler(object):
 
-    def get(self, *args, **kwargs):
+    def add(self):
+        pass
+
+    @need_auth(check_project, "project")
+    def get(self, project):
         return "get"
 
-    def delete(self, *args, **kwargs):
+    @need_auth(check_project, "project")
+    def delete(self, project):
         return "delete"
+
+    @need_auth(check_project, "project")
+    def update(self, project):
+        return "update"
+
+
+class MemberHandler(object):
+
+    def get(self, project, member_id):
+        pass
+
+    def list(self, project):
+        pass
+
+    def add(self, project):
+        pass
+
+    def update(self, project, member_id):
+        pass
+
+    def delete(self, project, member_id):
+        pass
+
+
+class BillHandler(object):
+
+    def get(self, project, member_id):
+        pass
+
+    def list(self, project):
+        pass
+
+    def add(self, project):
+        pass
+
+    def update(self, project, member_id):
+        pass
+
+    def delete(self, project, member_id):
+        pass
+
 
 project_resource = RESTResource(
     name="project",
     route="/project", 
     app=api, 
     actions=["add", "update", "delete", "get"],
-    authentifier=check_project,
     handler=ProjectHandler())
+
+member_resource = RESTResource(
+    name="member",
+    inject_name="project",
+    route="/project/<project_id>/members",
+    app=api,
+    handler=MemberHandler(),
+    authentifier=check_project)
+
+bill_resource = RESTResource(
+    name="bill",
+    inject_name="project",
+    route="/project/<project_id>/bills",
+    app=api,
+    handler=BillHandler(),
+    authentifier=check_project)
 
 # projects: add, delete, edit, get
 # GET /project/<id> → get
