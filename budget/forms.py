@@ -1,6 +1,6 @@
 from flaskext.wtf import *
 from wtforms.widgets import html_params
-from models import Project, Person, Bill
+from models import Project, Person, Bill, db
 from datetime import datetime
 
 
@@ -37,6 +37,15 @@ class ProjectForm(Form):
         project = Project(name=self.name.data, id=self.id.data, 
                 password=self.password.data, 
                 contact_email=self.contact_email.data)
+        return project
+
+    def update(self, project):
+        """Update the project with the information from the form"""
+        project.name = self.name.data
+        project.id = self.id.data
+        project.password = self.password.data
+        project.contact_email = self.contact_email.data
+
         return project
 
 
@@ -76,12 +85,13 @@ class BillForm(Form):
 
 
 class MemberForm(Form):
-    def __init__(self, project, *args, **kwargs):
-        super(MemberForm, self).__init__(*args, **kwargs)
-        self.project = project
 
     name = TextField("Name", validators=[Required()])
     submit = SubmitField("Add a member")
+
+    def __init__(self, project, *args, **kwargs):
+        super(MemberForm, self).__init__(*args, **kwargs)
+        self.project = project
 
     def validate_name(form, field):
         if Person.query.filter(Person.name == field.data)\
@@ -89,6 +99,12 @@ class MemberForm(Form):
                 .filter(Person.activated == True).all():
             raise ValidationError("This project already have this member")
 
+    def save(self, project, person):
+        # if the user is already bound to the project, just reactivate him
+        person.name = self.name.data
+        person.project = project
+
+        return person
 
 class InviteForm(Form):
     emails = TextAreaField("People to notify")

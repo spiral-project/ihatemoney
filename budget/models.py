@@ -1,7 +1,8 @@
 from collections import defaultdict
 
 from datetime import datetime
-from flaskext.sqlalchemy import SQLAlchemy
+from flaskext.sqlalchemy import SQLAlchemy, BaseQuery
+from flask import g
 
 from sqlalchemy import orm
 
@@ -75,6 +76,20 @@ class Project(db.Model):
 
 class Person(db.Model):
 
+    class PersonQuery(BaseQuery):
+        def get_by_name(self, name, project):
+            return Person.query.filter(Person.name == name)\
+                .filter(Project.id == project.id).one()
+
+        def get(self, id, project=None):
+            if not project:
+                project = g.project
+            return Person.query.filter(Person.id == id)\
+                .filter(Project.id == project.id).one()
+
+
+    query_class = PersonQuery
+
     _to_serialize = ("id", "name", "activated")
 
     id = db.Column(db.Integer, primary_key=True)
@@ -106,7 +121,7 @@ billowers = db.Table('billowers',
 
 class Bill(db.Model):
 
-    class BillQuery(orm.query.Query):
+    class BillQuery(BaseQuery):
 
         def get(self, project, id):
             try:

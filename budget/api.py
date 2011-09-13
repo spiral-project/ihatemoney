@@ -2,6 +2,7 @@
 from flask import *
 
 from models import db, Project, Person, Bill
+from forms import ProjectForm
 from utils import for_all_methods
 
 from rest import RESTResource, need_auth# FIXME make it an ext
@@ -21,7 +22,7 @@ def check_project(*args, **kwargs):
     if auth and "project_id" in kwargs and \
             auth.username == kwargs["project_id"]:
         project = Project.query.get(auth.username)
-        if project.password == auth.password:
+        if project and project.password == auth.password:
             return project
     return False
 
@@ -29,7 +30,13 @@ def check_project(*args, **kwargs):
 class ProjectHandler(object):
 
     def add(self):
-        pass
+        form = ProjectForm(csrf_enabled=False)
+        if form.validate():
+            project = form.save(Project())
+            db.session.add(project)
+            db.session.commit()
+            return 201, project.id
+        return 400, form.errors
 
     @need_auth(check_project, "project")
     def get(self, project):
@@ -37,11 +44,18 @@ class ProjectHandler(object):
 
     @need_auth(check_project, "project")
     def delete(self, project):
-        return "delete"
+        db.session.delete(project)
+        db.session.commit()
+        return 200, "DELETED"
 
     @need_auth(check_project, "project")
     def update(self, project):
-        return "update"
+        form = ProjectForm(csrf_enabled=False)
+        if form.validate():
+            form.save(project)
+            db.session.commit()
+            return 200, "UPDATED"
+        return 400, form.errors
 
 
 class MemberHandler(object):
@@ -49,23 +63,34 @@ class MemberHandler(object):
     def get(self, project, member_id):
         member = Person.query.get(member_id)
         if not member or member.project != project:
-            return Response('Not Found', status=404)
+            return 404, "Not Found"
         return member
 
     def list(self, project):
         return project.members
 
     def add(self, project):
-        pass
+        form = MemberForm(csrf_enabled=False)
+        if form.validate():
+            member = Person()
+            form.save(project, member)
+            db.session.commit()
+            return 200, member.id
+        return 400, form.errors
 
     def update(self, project, member_id):
-        pass
+        form = MemberForm(csrf_enabled=False)
+        if form.validate():
+            member = Person.query.get(member_id, project)
+            form.save(project, member)
+            db.session.commit()
+            return 200, member
+        return 400, form.errors
 
     def delete(self, project, member_id):
         if project.remove_member(member_id):
-            return Response('OK', status=200)
-        else:
-            return Response('Not Found', status=404)
+            return 200, "OK"
+        return 404, "Not Found"
 
 
 class BillHandler(object):
@@ -73,22 +98,34 @@ class BillHandler(object):
     def get(self, project, bill_id):
         bill = Bill.query.get(project, bill_id)
         if not bill:
-            return Response('Not Found', status=404)
+            return 404, "Not Found"
         return bill
 
     def list(self, project):
         return project.get_bills().all()
 
     def add(self, project):
-        pass
+        form = BillForm(csrf_enabled=False)
+        if form.validate():
+            bill = Bill()
+            form.save(bill)
+            db.session.add(bill)
+            db.session.commit()
+            return 200, bill.id
+        return 400, form.errors
 
     def update(self, project, bill_id):
-        pass
+        form = BillForm(csrf_enabled=False)
+        if form.validate():
+            form.save(bill)
+            db.session.commit()
+            return 200, bill.id
+        return 400, form.errors
 
     def delete(self, project, bill_id):
         bill = Bill.query.delete(project, bill_id)
         if not bill:
-            return Response('Not Found', status=404)
+            return 404, "Not Found"
         return bill
 
 

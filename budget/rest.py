@@ -114,7 +114,7 @@ def need_auth(authentifier, name=None, remove_attr=True):
                     del kwargs["%s_id" % name]
                 return func(*args, **kwargs)
             else:
-                raise werkzeug.exceptions.Forbidden()
+                return 403, "Forbidden"
         return wrapped
     return wrapper
 
@@ -128,13 +128,15 @@ def serialize(func):
         # get the mimetype
         mime = request.accept_mimetypes.best_match(SERIALIZERS.keys())
         data = func(*args, **kwargs)
+        serializer = SERIALIZERS[mime]
 
-        if isinstance(data, werkzeug.Response):
-            return data
-        else:
-            # serialize it
-            return werkzeug.Response(SERIALIZERS[mime].encode(data), 
-                    status=200, mimetype=mime)
+        status = 200
+        if len(data) == 2:
+            status, data = data
+
+        # serialize it
+        return werkzeug.Response(serializer.encode(data), 
+                status=status, mimetype=mime)
 
     return wrapped
 
