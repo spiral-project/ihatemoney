@@ -1,4 +1,5 @@
 import json
+from flask import request
 
 class RESTResource(object):
     """Represents a REST resource, with the different HTTP verbs"""
@@ -23,14 +24,14 @@ class RESTResource(object):
         :app:
             Application to register the routes onto
 
-        :actions: 
+        :actions:
             Authorized actions. Optional. None means all.
 
         :handler:
             The handler instance which will handle the requests
 
         :authentifier:
-            callable checking the authentication. If specified, all the 
+            callable checking the authentication. If specified, all the
             methods will be checked against it.
         """
         if not actions:
@@ -45,12 +46,12 @@ class RESTResource(object):
 
         for action in actions:
             self.add_url_rule(app, action)
-    
+
     def _get_route_for(self, action):
         """Return the complete URL for this action.
 
         Basically:
-        
+
          - get, update and delete need an id
          - add and list does not
         """
@@ -58,22 +59,21 @@ class RESTResource(object):
 
         if action in self._NEED_ID:
             route += "/<%s>" % self._identifier
-        
+
         return route
 
     def add_url_rule(self, app, action):
-        """Registers a new url to the given application, regarding 
+        """Registers a new url to the given application, regarding
         the action.
         """
         method = getattr(self._handler, action)
 
         # decorate the view
         if self._authentifier:
-            method = need_auth(self._authentifier, 
+            method = need_auth(self._authentifier,
                     self._inject_name or self._name)(method)
 
-        # regarding the format, transform the response
-        method = serialize("json")(method) #FIXME handle headers
+        method = serialize(method)
 
         app.add_url_rule(
             self._get_route_for(action),
@@ -83,7 +83,7 @@ class RESTResource(object):
 
 
 def need_auth(authentifier, name=None, remove_attr=True):
-    """Decorator checking that the authentifier does not returns false in 
+    """Decorator checking that the authentifier does not returns false in
     the current context.
 
     If the request is authorized, the object returned by the authentifier
@@ -100,7 +100,7 @@ def need_auth(authentifier, name=None, remove_attr=True):
         of the decorated function
 
     :remove_attr:
-        Remove or not the `*name*_id` from the kwargs before calling the 
+        Remove or not the `*name*_id` from the kwargs before calling the
         function
     """
     def wrapper(func):
@@ -120,12 +120,12 @@ def need_auth(authentifier, name=None, remove_attr=True):
 
 # serializers
 
-def serialize(format):
-    def wrapper(func):
-        def wrapped(*args, **kwargs):
-            return SERIALIZERS[format].encode(func(*args, **kwargs))
-        return wrapped
-    return wrapper
+def serialize(func):
+    def wrapped(*args, **kwargs):
+        mime = request.accept_mimetypes.best_match(SERIALIZERS.keys())
+        return SERIALIZERS.get(mime, "text/json")\
+                .encode(func(*args, **kwargs))
+    return wrapped
 
 
 class JSONEncoder(json.JSONEncoder):
@@ -139,4 +139,4 @@ class JSONEncoder(json.JSONEncoder):
         else:
             return json.JSONEncoder.default(self, o)
 
-SERIALIZERS = {"json": JSONEncoder()}
+SERIALIZERS = {"text/json": JSONEncoder()}
