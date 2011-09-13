@@ -1,3 +1,5 @@
+import json
+
 class RESTResource(object):
     """Represents a REST resource, with the different HTTP verbs"""
     _NEED_ID = ["get", "update", "delete"]
@@ -70,6 +72,9 @@ class RESTResource(object):
             method = need_auth(self._authentifier, 
                     self._inject_name or self._name)(method)
 
+        # regarding the format, transform the response
+        method = serialize("json")(method) #FIXME handle headers
+
         app.add_url_rule(
             self._get_route_for(action),
             "%s_%s" % (self._name, action),
@@ -111,3 +116,27 @@ def need_auth(authentifier, name=None, remove_attr=True):
                 raise werkzeug.exceptions.Forbidden()
         return wrapped
     return wrapper
+
+
+# serializers
+
+def serialize(format):
+    def wrapper(func):
+        def wrapped(*args, **kwargs):
+            return SERIALIZERS[format].encode(func(*args, **kwargs))
+        return wrapped
+    return wrapper
+
+
+class JSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        if hasattr(o, "_to_serialize"):
+            # build up the object
+            data = {}
+            for attr in o._to_serialize:
+                data[attr] = getattr(o, attr)
+            return data
+        else:
+            return json.JSONEncoder.default(self, o)
+
+SERIALIZERS = {"json": JSONEncoder()}

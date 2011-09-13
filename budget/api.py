@@ -50,7 +50,7 @@ class MemberHandler(object):
         pass
 
     def list(self, project):
-        pass
+        return project.members
 
     def add(self, project):
         pass

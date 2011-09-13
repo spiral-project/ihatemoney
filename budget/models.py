@@ -7,6 +7,10 @@ db = SQLAlchemy()
 
 # define models
 class Project(db.Model):
+
+    _to_serialize = ("id", "name", "password", "contact_email", 
+            "members", "active_members")
+
     id = db.Column(db.String, primary_key=True)
 
     name = db.Column(db.UnicodeText)
@@ -68,6 +72,9 @@ class Project(db.Model):
 
 
 class Person(db.Model):
+
+    _to_serialize = ("id", "name", "activated")
+
     id = db.Column(db.Integer, primary_key=True)
     project_id = db.Column(db.Integer, db.ForeignKey("project.id"))
     bills = db.relationship("Bill", backref="payer")
