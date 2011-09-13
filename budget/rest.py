@@ -1,5 +1,6 @@
 import json
 from flask import request
+import werkzeug
 
 class RESTResource(object):
     """Represents a REST resource, with the different HTTP verbs"""
@@ -117,18 +118,28 @@ def need_auth(authentifier, name=None, remove_attr=True):
         return wrapped
     return wrapper
 
-
 # serializers
 
 def serialize(func):
+    """If the object returned by the view is not already a Response, serialize
+    it using the ACCEPT header and return it.
+    """
     def wrapped(*args, **kwargs):
+        # get the mimetype
         mime = request.accept_mimetypes.best_match(SERIALIZERS.keys())
-        return SERIALIZERS.get(mime, "text/json")\
-                .encode(func(*args, **kwargs))
+        data = func(*args, **kwargs)
+
+        if isinstance(data, werkzeug.Response):
+            return data
+        else:
+            # serialize it
+            return SERIALIZERS.get(mime, "text/json").encode(data)
+
     return wrapped
 
 
 class JSONEncoder(json.JSONEncoder):
+    """Subclass of the default encoder to support custom objects"""
     def default(self, o):
         if hasattr(o, "_to_serialize"):
             # build up the object
@@ -136,6 +147,8 @@ class JSONEncoder(json.JSONEncoder):
             for attr in o._to_serialize:
                 data[attr] = getattr(o, attr)
             return data
+        elif hasattr(o, "isoformat"):
+            return o.isoformat()
         else:
             return json.JSONEncoder.default(self, o)
 

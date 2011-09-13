@@ -3,6 +3,8 @@ from collections import defaultdict
 from datetime import datetime
 from flaskext.sqlalchemy import SQLAlchemy
 
+from sqlalchemy import orm
+
 db = SQLAlchemy()
 
 # define models
@@ -103,6 +105,29 @@ billowers = db.Table('billowers',
 )
 
 class Bill(db.Model):
+
+    class BillQuery(orm.query.Query):
+
+        def get(self, project, id):
+            try:
+                return self.join(Person, Project)\
+                    .filter(Bill.payer_id == Person.id)\
+                    .filter(Person.project_id == Project.id)\
+                    .filter(Project.id == project.id)\
+                    .filter(Bill.id == id).one()
+            except orm.exc.NoResultFound:
+                return None
+
+        def delete(self, project, id):
+            bill = self.get(project, id)
+            if bill:
+                db.session.delete(bill)
+            return bill
+
+    query_class = BillQuery
+
+    _to_serialize = ("id", "payer_id", "owers", "amount", "date", "what")
+
     id = db.Column(db.Integer, primary_key=True)
 
     payer_id = db.Column(db.Integer, db.ForeignKey("person.id"))
@@ -122,7 +147,6 @@ class Bill(db.Model):
         return "<Bill of %s from %s for %s>" % (self.amount,
                 self.payer, ", ".join([o.name for o in self.owers]))
 
-
 class Archive(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     project_id = db.Column(db.Integer, db.ForeignKey("project.id"))
@@ -138,3 +162,4 @@ class Archive(db.Model):
 
     def __repr__(self):
         return "<Archive>"
+

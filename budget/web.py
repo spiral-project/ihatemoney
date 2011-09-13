@@ -2,6 +2,7 @@ from collections import defaultdict
 
 from flask import *
 from flaskext.mail import Mail, Message
+import werkzeug
 
 # local modules
 from models import db, Project, Person, Bill
@@ -239,7 +240,11 @@ def add_bill():
 
 @main.route("/<project_id>/delete/<int:bill_id>")
 def delete_bill(bill_id):
-    bill = Bill.query.get_or_404(bill_id)
+    # fixme: everyone is able to delete a bill
+    bill = Bill.query.get(g.project, bill_id)
+    if not bill:
+        raise werkzeug.exceptions.NotFound()
+
     db.session.delete(bill)
     db.session.commit()
     flash("The bill has been deleted")
@@ -249,7 +254,11 @@ def delete_bill(bill_id):
 
 @main.route("/<project_id>/edit/<int:bill_id>", methods=["GET", "POST"])
 def edit_bill(bill_id):
-    bill = Bill.query.get_or_404(bill_id)
+    # FIXME: Test this bill belongs to this project !
+    bill = Bill.query.get(g.project, bill_id)
+    if not bill:
+        raise werkzeug.exceptions.NotFound()
+
     form = get_billform_for(g.project, set_default=False)
     if request.method == 'POST' and form.validate():
         form.save(bill)
