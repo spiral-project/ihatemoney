@@ -82,7 +82,7 @@ def authenticate(project_id=None):
         if request.method == "POST":
             if form.validate():
                 if not form.password.data == project.password:
-                    form.errors['password'] = ["The password is not the right one"]
+                    form.errors['password'] = ["This private code is not the right one"]
                 else:
                     # maintain a list of visited projects
                     if "projects" not in session:
@@ -127,7 +127,20 @@ def create_project():
             session[project.id] = project.password
             session.update()
 
+            # send reminder email
+            g.project = project
+            
+            message_title = "You have just created '%s' to share your expenses" % g.project.name
+
+            message_body = render_template("reminder_mail")
+
+            msg = Message(message_title, 
+                body=message_body, 
+                recipients=[project.contact_email])
+            mail.send(msg)
+
             # redirect the user to the next step (invite)
+            flash("The project identifier is %s" % project.id)
             return redirect(url_for(".invite", project_id=project.id))
 
     return render_template("create_project.html", form=form)

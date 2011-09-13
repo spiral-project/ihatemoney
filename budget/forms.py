@@ -50,7 +50,7 @@ class ProjectForm(Form):
                                   to log in and for the URL of the project.
                                   <br />
                                   We tried to generate an identifier for you but
-                                  a projet with this identifier already exists.
+                                  a project with this identifier already exists.
                                   <br />
                                   Please create a new identifier you will be able
                                   to remember.

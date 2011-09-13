@@ -19,10 +19,10 @@
 
 {% macro submit(field, cancel=False, home=False) -%}
     <div class="actions">
-        {% if home %}
-            <a href="{{ url_for(".home") }}" class="btn">Back Home</a>
-        {% endif %}
         <button type="submit" class="btn primary">{{ field.name }}</button>
+        {% if home %}
+            <a href="{{ url_for(".home") }}">Go back Home</a>
+        {% endif %}
         {% if cancel %}
             <button id="cancel-form" type="reset" class="btn">Cancel</button>
         {% endif %}
@@ -36,7 +36,7 @@
     {{ input(form.id) }}
     {{ input(form.password) }}
     {% if not home %}
-    {{ submit(form.submit) }}
+    {{ submit(form.submit, home=True) }}
     {% endif %}
 
 {% endmacro %}
@@ -84,7 +84,7 @@
     {{ form.hidden_tag() }}
     {{ input(form.emails) }}
     <div class="actions">
-        <button class="btn">Send the invitations</button>
+        <button class="btn primary">Send the invitations</button>
         <a href="{{ url_for(".list_bills") }}">No, thanks</a>
     </div>
 {% endmacro %}

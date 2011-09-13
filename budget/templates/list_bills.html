@@ -60,6 +60,8 @@
 {% endblock %}
 
 {% block content %}
+<div class="identifier">The project identifier is <a href="{{ url_for(".list_bills") }}">{{ g.project.id }}</a>, remember it or add this page to you bookmarks!</div>
+<br /><br />
 <a id="new-bill" href="{{ url_for(".add_bill") }}" class="primary">Add a new bill</a>
     <form id="bill-form" action="{{ url_for(".add_bill") }}" method="post" style="display: none">
         <a id="hide-bill-form" href="#">hide this form</a>

@@ -66,8 +66,9 @@ class BudgetTestCase(TestCase):
             self.app.post("/raclette/invite", data=
                     {"emails": 'alexis@notmyidea.org'})
 
-            self.assertEqual(len(outbox), 1)
-            self.assertEqual(outbox[0].recipients, ["alexis@notmyidea.org"])
+            self.assertEqual(len(outbox), 2)
+            self.assertEqual(outbox[0].recipients, ["raclette@notmyidea.org"])
+            self.assertEqual(outbox[1].recipients, ["alexis@notmyidea.org"])
 
         # sending a message to multiple persons
         with run.mail.record_messages() as outbox:

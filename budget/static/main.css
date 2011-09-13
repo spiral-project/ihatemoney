@@ -88,3 +88,8 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
     background-color: #fff;
     opacity: 0.8;
 }
+
+.identifier{
+    text-align: right;
+    margin-top: -15px;
+}

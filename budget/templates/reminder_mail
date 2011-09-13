@@ -1,0 +1,9 @@
+Hi, 
+
+You have just (or someone else using your email address) created the project "{{ g.project.name }}" to share your expenses.
+
+You can access it here: {{ config['SITE_URL'] }}{{ url_for(".list_bills") }} (the identifier is {{ g.project.id }}),
+and the private code is "{{ g.project.password }}".
+
+Enjoy,
+Some weird guys (with beards)
