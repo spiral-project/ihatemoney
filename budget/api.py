@@ -64,6 +64,8 @@ class MemberHandler(object):
     def delete(self, project, member_id):
         if project.remove_member(member_id):
             return Response('OK', status=200)
+        else:
+            return Response('Not Found', status=404)
 
 
 class BillHandler(object):

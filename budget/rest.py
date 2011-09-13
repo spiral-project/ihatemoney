@@ -133,7 +133,8 @@ def serialize(func):
             return data
         else:
             # serialize it
-            return SERIALIZERS.get(mime, "text/json").encode(data)
+            return werkzeug.Response(SERIALIZERS[mime].encode(data), 
+                    status=200, mimetype=mime)
 
     return wrapped
 
