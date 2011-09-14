@@ -1,6 +1,10 @@
 @import "bootstrap-1.0.0.min.css";
 @import url(http://fonts.googleapis.com/css?family=Lobster|Comfortaa);
 
+html body{
+    height: 100%;
+}
+
 .topbar h3{ margin-left: 75px; }
 .topbar ul{ padding-left: 75px; }
 div.topbar ul.secondary-nav { padding-right: 75px; }
@@ -80,8 +84,9 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
     height: 100px;
 }
 
-.footer{
-    position: absolute;
+#footer{
+    margin-top: 30px;
+    position: relative;
     bottom: 0px;
     width: 100%;
     text-align: center;
