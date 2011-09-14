@@ -186,6 +186,15 @@ class BudgetTestCase(TestCase):
         self.assertEqual(
                 len(models.Project.query.get("raclette").active_members), 2)
 
+        # adding an user with the same name as another user from a different 
+        # project should not cause any troubles
+        self.post_project("randomid")
+        self.login("randomid")
+        self.app.post("/randomid/members/add", data={'name': 'fred' })
+        self.assertEqual(
+                len(models.Project.query.get("randomid").active_members), 1)
+
+
     def test_demo(self):
         # Test that it is possible to connect automatically by going onto /demo
         with run.app.test_client() as c:
