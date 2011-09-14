@@ -52,7 +52,7 @@
       <li class="menu">
       <a href="#" class="menu"><strong>{{ g.project.name }}</strong> options</a>
         <ul class="menu-dropdown" style="display: none; ">
-          <li><a href="">Project settings</a></li>
+            <li><a href="{{ url_for(".edit_project") }}">Project settings</a></li>
           <li class="divider"></li>
            {% for id, name in session['projects'] %}
            {% if id != g.project.id %}

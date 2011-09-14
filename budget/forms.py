@@ -18,16 +18,11 @@ def select_multi_checkbox(field, ul_class='', **kwargs):
     return u''.join(html)
 
 
-class ProjectForm(Form):
+class EditProjectForm(Form):
     name = TextField("Project name", validators=[Required()])
-    id = TextField("Project identifier", validators=[Required()])
-    password = PasswordField("Password", validators=[Required()])
+    password = TextField("Password", validators=[Required()])
     contact_email = TextField("Email", validators=[Required(), Email()])
-    submit = SubmitField("Create the project")
-
-    def validate_id(form, field):
-        if Project.query.get(field.data):
-            raise ValidationError("This project id is already used")
+    submit = SubmitField("Edit the project")
 
     def save(self):
         """Create a new project with the information given by this form.
@@ -42,11 +37,20 @@ class ProjectForm(Form):
     def update(self, project):
         """Update the project with the information from the form"""
         project.name = self.name.data
-        project.id = self.id.data
         project.password = self.password.data
         project.contact_email = self.contact_email.data
 
         return project
+
+class ProjectForm(EditProjectForm):
+    id = TextField("Project identifier", validators=[Required()])
+    password = PasswordField("Password", validators=[Required()])
+    submit = SubmitField("Create the project")
+
+    def validate_id(form, field):
+        if Project.query.get(field.data):
+            raise ValidationError("This project id is already used")
+
 
 
 class AuthenticationForm(Form):

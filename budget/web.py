@@ -7,7 +7,7 @@ import werkzeug
 # local modules
 from models import db, Project, Person, Bill
 from forms import (ProjectForm, AuthenticationForm, BillForm, MemberForm, 
-                   InviteForm, CreateArchiveForm)
+                   InviteForm, CreateArchiveForm, EditProjectForm)
 from utils import get_billform_for, Redirect303
 
 """
@@ -129,6 +129,24 @@ def create_project():
             return redirect(url_for(".invite", project_id=project.id))
 
     return render_template("create_project.html", form=form)
+
+@main.route("/<project_id>/edit", methods=["GET", "POST"])
+def edit_project():
+    form = EditProjectForm()
+    if request.method == "POST":
+        if form.validate():
+            project = form.update(g.project)
+            db.session.commit()
+            session[project.id] = project.password
+
+            return redirect(url_for(".list_bills"))
+    else:
+        form.name.data = g.project.name
+        form.password.data = g.project.password
+        form.contact_email.data = g.project.contact_email
+
+    return render_template("edit_project.html", form=form)
+
 
 @main.route("/exit")
 def exit():

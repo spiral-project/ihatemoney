@@ -52,6 +52,17 @@
 
 {% endmacro %}
 
+{% macro edit_project(form) %}
+
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }}
+    {{ input(form.name) }}
+    {{ input(form.password) }}
+    {{ input(form.contact_email) }}
+    {{ submit(form.submit) }}
+
+{% endmacro %}
+
 {% macro add_bill(form, edit=False) %}
 
     <fieldset>
