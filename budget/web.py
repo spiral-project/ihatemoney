@@ -63,7 +63,7 @@ def pull_project(endpoint, values):
 def authenticate(project_id=None):
     """Authentication form"""
     form = AuthenticationForm()
-    if not form.id.data and request.args['project_id']:
+    if not form.id.data and request.args.get('project_id'):
         form.id.data = request.args['project_id']
     project_id = form.id.data 
     project = Project.query.get(project_id)
@@ -71,7 +71,11 @@ def authenticate(project_id=None):
     if not project:
         # But if the user try to connect to an unexisting project, we will 
         # propose him a link to the creation form.
-        create_project = project_id
+        if not project_id:
+            if request.method == "POST":
+                form.validate()
+        else:
+            create_project = project_id
 
     else:
         # if credentials are already in session, redirect
