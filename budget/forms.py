@@ -63,6 +63,7 @@ class EditProjectForm(Form):
 
 class ProjectForm(EditProjectForm):
     id = TextField("Project identifier", validators=[Required()])
+    password = PasswordField("Private code", validators=[Required()])
     submit = SubmitField("Create the project")
 
     def validate_id(form, field):
