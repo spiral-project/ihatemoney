@@ -2,11 +2,12 @@ from collections import defaultdict
 
 from flask import *
 from flaskext.mail import Mail, Message
+import werkzeug
 
 # local modules
 from models import db, Project, Person, Bill
 from forms import (get_billform_for, ProjectForm, AuthenticationForm, BillForm,
-                   MemberForm, InviteForm, CreateArchiveForm)
+                   MemberForm, InviteForm, CreateArchiveForm, EditProjectForm)
 from utils import Redirect303
 
 """
@@ -62,7 +63,7 @@ def pull_project(endpoint, values):
 def authenticate(project_id=None):
     """Authentication form"""
     form = AuthenticationForm()
-    if not form.id.data and request.args['project_id']:
+    if not form.id.data and request.args.get('project_id'):
         form.id.data = request.args['project_id']
     project_id = form.id.data 
     project = Project.query.get(project_id)
@@ -70,7 +71,10 @@ def authenticate(project_id=None):
     if not project:
         # But if the user try to connect to an unexisting project, we will 
         # propose him a link to the creation form.
-        create_project = project_id
+        if request.method == "POST":
+            form.validate()
+        else:
+            create_project = project_id
 
     else:
         # if credentials are already in session, redirect
@@ -145,6 +149,24 @@ def create_project():
 
     return render_template("create_project.html", form=form)
 
+@main.route("/<project_id>/edit", methods=["GET", "POST"])
+def edit_project():
+    form = EditProjectForm()
+    if request.method == "POST":
+        if form.validate():
+            project = form.update(g.project)
+            db.session.commit()
+            session[project.id] = project.password
+
+            return redirect(url_for(".list_bills"))
+    else:
+        form.name.data = g.project.name
+        form.password.data = g.project.password
+        form.contact_email.data = g.project.contact_email
+
+    return render_template("edit_project.html", form=form)
+
+
 @main.route("/exit")
 def exit():
     # delete the session
@@ -206,18 +228,11 @@ def add_member():
     form = MemberForm(g.project)
     if request.method == "POST":
         if form.validate():
-            # if the user is already bound to the project, just reactivate him
-            person = Person.query.filter(Person.name == form.name.data)\
-                        .filter(Project.id == g.project.id).all()
-            if person:
-                person[0].activated = True
-                db.session.commit()
-                flash("%s is part of this project again" % person[0].name)
-                return redirect(url_for(".list_bills"))
-
-            db.session.add(Person(name=form.name.data, project=g.project))
+            member = form.save(g.project, Person())
             db.session.commit()
+            flash("%s is had been added" % member.name)
             return redirect(url_for(".list_bills"))
+
     return render_template("add_member.html", form=form)
 
 @main.route("/<project_id>/members/<member_id>/reactivate", methods=["GET",])
@@ -258,7 +273,11 @@ def add_bill():
 
 @main.route("/<project_id>/delete/<int:bill_id>")
 def delete_bill(bill_id):
-    bill = Bill.query.get_or_404(bill_id)
+    # fixme: everyone is able to delete a bill
+    bill = Bill.query.get(g.project, bill_id)
+    if not bill:
+        raise werkzeug.exceptions.NotFound()
+
     db.session.delete(bill)
     db.session.commit()
     flash("The bill has been deleted")
@@ -268,8 +287,13 @@ def delete_bill(bill_id):
 
 @main.route("/<project_id>/edit/<int:bill_id>", methods=["GET", "POST"])
 def edit_bill(bill_id):
-    bill = Bill.query.get_or_404(bill_id)
+    # FIXME: Test this bill belongs to this project !
+    bill = Bill.query.get(g.project, bill_id)
+    if not bill:
+        raise werkzeug.exceptions.NotFound()
+
     form = get_billform_for(request, g.project, set_default=False)
+
     if request.method == 'POST' and form.validate():
         form.save(bill)
         db.session.commit()

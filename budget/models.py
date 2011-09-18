@@ -1,12 +1,19 @@
 from collections import defaultdict
 
 from datetime import datetime
-from flaskext.sqlalchemy import SQLAlchemy
+from flaskext.sqlalchemy import SQLAlchemy, BaseQuery
+from flask import g
+
+from sqlalchemy import orm
 
 db = SQLAlchemy()
 
 # define models
 class Project(db.Model):
+
+    _to_serialize = ("id", "name", "password", "contact_email", 
+            "members", "active_members")
+
     id = db.Column(db.String, primary_key=True)
 
     name = db.Column(db.UnicodeText)
@@ -68,6 +75,23 @@ class Project(db.Model):
 
 
 class Person(db.Model):
+
+    class PersonQuery(BaseQuery):
+        def get_by_name(self, name, project):
+            return Person.query.filter(Person.name == name)\
+                .filter(Project.id == project.id).one()
+
+        def get(self, id, project=None):
+            if not project:
+                project = g.project
+            return Person.query.filter(Person.id == id)\
+                .filter(Project.id == project.id).one()
+
+
+    query_class = PersonQuery
+
+    _to_serialize = ("id", "name", "activated")
+
     id = db.Column(db.Integer, primary_key=True)
     project_id = db.Column(db.Integer, db.ForeignKey("project.id"))
     bills = db.relationship("Bill", backref="payer")
@@ -96,6 +120,29 @@ billowers = db.Table('billowers',
 )
 
 class Bill(db.Model):
+
+    class BillQuery(BaseQuery):
+
+        def get(self, project, id):
+            try:
+                return self.join(Person, Project)\
+                    .filter(Bill.payer_id == Person.id)\
+                    .filter(Person.project_id == Project.id)\
+                    .filter(Project.id == project.id)\
+                    .filter(Bill.id == id).one()
+            except orm.exc.NoResultFound:
+                return None
+
+        def delete(self, project, id):
+            bill = self.get(project, id)
+            if bill:
+                db.session.delete(bill)
+            return bill
+
+    query_class = BillQuery
+
+    _to_serialize = ("id", "payer_id", "owers", "amount", "date", "what")
+
     id = db.Column(db.Integer, primary_key=True)
 
     payer_id = db.Column(db.Integer, db.ForeignKey("person.id"))
@@ -115,7 +162,6 @@ class Bill(db.Model):
         return "<Bill of %s from %s for %s>" % (self.amount,
                 self.payer, ", ".join([o.name for o in self.owers]))
 
-
 class Archive(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     project_id = db.Column(db.Integer, db.ForeignKey("project.id"))
@@ -131,3 +177,4 @@ class Archive(db.Model):
 
     def __repr__(self):
         return "<Archive>"
+

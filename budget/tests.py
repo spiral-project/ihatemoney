@@ -30,9 +30,8 @@ class TestCase(unittest.TestCase):
 
     def login(self, project, password=None, test_client=None):
         password = password or project
-        test_client = test_client or self.app
 
-        return test_client.post('/authenticate', data=dict(
+        return self.app.post('/authenticate', data=dict(
             id=project, password=password), follow_redirects=True)
 
     def post_project(self, name):
@@ -187,6 +186,15 @@ class BudgetTestCase(TestCase):
         self.assertEqual(
                 len(models.Project.query.get("raclette").active_members), 2)
 
+        # adding an user with the same name as another user from a different 
+        # project should not cause any troubles
+        self.post_project("randomid")
+        self.login("randomid")
+        self.app.post("/randomid/members/add", data={'name': 'fred' })
+        self.assertEqual(
+                len(models.Project.query.get("randomid").active_members), 1)
+
+
     def test_demo(self):
         # Test that it is possible to connect automatically by going onto /demo
         with run.app.test_client() as c:
@@ -298,6 +306,31 @@ class BudgetTestCase(TestCase):
 
         balance = models.Project.query.get("raclette").get_balance()
         self.assertEqual(set(balance.values()), set([19.0, -19.0]))
+
+    def test_edit_project(self):
+        # A project should be editable
+
+        self.post_project("raclette")
+        new_data = {
+            'name': 'Super raclette party!',
+            'contact_email': 'alexis@notmyidea.org',
+            'password': 'didoudida'
+        }
+
+        resp = self.app.post("/raclette/edit", data=new_data, 
+                follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+        project = models.Project.query.get("raclette")
+
+        for key, value in new_data.items():
+            self.assertEqual(getattr(project, key), value, key)
+
+        # Editing a project with a wrong email address should fail
+        new_data['contact_email'] = 'wrong_email'
+
+        resp = self.app.post("/raclette/edit", data=new_data,
+                follow_redirects=True)
+        self.assertIn("Invalid email address", resp.data)
 
 
 if __name__ == "__main__":

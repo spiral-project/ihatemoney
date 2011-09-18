@@ -2,10 +2,7 @@
 
 {% block content %}
 <h2>Create a new project</h2>
-<div class="uniForm">
-    <form method="post" class="container span-24 add-bill">
-        {{ forms.create_project(form) }}
-    </form>
-</div>
+<form method="post">
+    {{ forms.create_project(form) }}
+</form>
 {% endblock %}
-

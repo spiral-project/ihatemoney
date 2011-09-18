@@ -1,6 +1,6 @@
 from flaskext.wtf import *
 from wtforms.widgets import html_params
-from models import Project, Person, Bill
+from models import Project, Person, Bill, db
 from datetime import datetime
 from jinja2 import Markup
 from utils import slugify
@@ -36,11 +36,33 @@ def get_billform_for(request, project, set_default=True):
     return form
 
 
-class ProjectForm(Form):
+class EditProjectForm(Form):
     name = TextField("Project name", validators=[Required()])
-    id = TextField("Project identifier", validators=[Required()])
-    password = PasswordField("Private code", validators=[Required()])
+    password = TextField("Private code", validators=[Required()])
     contact_email = TextField("Email", validators=[Required(), Email()])
+    submit = SubmitField("Edit the project")
+
+    def save(self):
+        """Create a new project with the information given by this form.
+
+        Returns the created instance
+        """
+        project = Project(name=self.name.data, id=self.id.data, 
+                password=self.password.data, 
+                contact_email=self.contact_email.data)
+        return project
+
+    def update(self, project):
+        """Update the project with the information from the form"""
+        project.name = self.name.data
+        project.password = self.password.data
+        project.contact_email = self.contact_email.data
+
+        return project
+
+
+class ProjectForm(EditProjectForm):
+    id = TextField("Project identifier", validators=[Required()])
     submit = SubmitField("Create the project")
 
     def validate_id(form, field):
@@ -55,16 +77,6 @@ class ProjectForm(Form):
                                   Please create a new identifier you will be able
                                   to remember.
                                   """))
-
-    def save(self):
-        """Create a new project with the information given by this form.
-
-        Returns the created instance
-        """
-        project = Project(name=self.name.data, id=self.id.data, 
-                password=self.password.data, 
-                contact_email=self.contact_email.data)
-        return project
 
 
 class AuthenticationForm(Form):
@@ -103,12 +115,13 @@ class BillForm(Form):
 
 
 class MemberForm(Form):
-    def __init__(self, project, *args, **kwargs):
-        super(MemberForm, self).__init__(*args, **kwargs)
-        self.project = project
 
     name = TextField("Name", validators=[Required()])
     submit = SubmitField("Add a member")
+
+    def __init__(self, project, *args, **kwargs):
+        super(MemberForm, self).__init__(*args, **kwargs)
+        self.project = project
 
     def validate_name(form, field):
         if Person.query.filter(Person.name == field.data)\
@@ -116,6 +129,12 @@ class MemberForm(Form):
                 .filter(Person.activated == True).all():
             raise ValidationError("This project already have this member")
 
+    def save(self, project, person):
+        # if the user is already bound to the project, just reactivate him
+        person.name = self.name.data
+        person.project = project
+
+        return person
 
 class InviteForm(Form):
     emails = TextAreaField("People to notify")
