@@ -327,6 +327,45 @@ class BudgetTestCase(TestCase):
         balance = models.Project.query.get("raclette").get_balance()
         self.assertEqual(set(balance.values()), set([19.0, -19.0]))
 
+    def test_rounding(self):
+        self.post_project("raclette")
+
+        # add members
+        self.app.post("/raclette/members/add", data={'name': 'alexis' })
+        self.app.post("/raclette/members/add", data={'name': 'fred' })
+        self.app.post("/raclette/members/add", data={'name': 'tata' })
+
+        # create bills
+        req = self.app.post("/raclette/add", data={
+            'date': '2011-08-10',
+            'what': u'fromage à raclette',
+            'payer': 1,
+            'payed_for': [1, 2, 3],
+            'amount': '24.36',
+        })
+
+        req2 = self.app.post("/raclette/add", data={
+            'date': '2011-08-10',
+            'what': u'red wine',
+            'payer': 2,
+            'payed_for': [1],
+            'amount': '19.12',
+        })
+
+        req3 = self.app.post("/raclette/add", data={
+            'date': '2011-08-10',
+            'what': u'delicatessen',
+            'payer': 1,
+            'payed_for': [1, 2],
+            'amount': '22',
+        })
+
+        balance = models.Project.query.get("raclette").get_balance()
+        balance = dict([(user.name, bal) for user, bal in balance.items()])
+        self.assertDictEqual(balance, {u'tata': -8.12, u'alexis': 8.12, 
+            u'fred': 0.0})
+
+
     def test_edit_project(self):
         # A project should be editable
 

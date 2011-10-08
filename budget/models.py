@@ -39,7 +39,7 @@ class Project(db.Model):
                     should_receive[bill.payer] += bill.pay_each()
 
         for person in self.members:
-            balances[person] = should_receive[person] - should_pay[person]
+            balances[person] = round(should_receive[person] - should_pay[person], 2)
 
         return balances
 
