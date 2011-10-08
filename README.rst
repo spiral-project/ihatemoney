@@ -46,6 +46,13 @@ The best way to contribute code is to write it and to make a pull request on
 github. Please, think about updating and running the tests before asking for 
 a pull request as it will help us to maintain the code clean and running.
 
+To do so::
+
+    $ workon budget
+    (budget) $ python tests.py
+
+before pushing anything to master :)
+
 As a designer / Front-end developer
 -----------------------------------
 
