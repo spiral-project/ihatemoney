@@ -87,6 +87,16 @@ class AuthenticationForm(Form):
     submit = SubmitField("Get in")
 
 
+class PasswordReminder(Form):
+    id = TextField("Project identifier", validators=[Required()])
+    submit = SubmitField("Send me the code by email")
+
+    def validate_id(form, field):
+        if not Project.query.get(field.data):
+            raise ValidationError("This project does not exists")
+
+
+
 class BillForm(Form):
     date = DateField("Date", validators=[Required()], default=datetime.now)
     what = TextField("What?", validators=[Required()])

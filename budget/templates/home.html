@@ -26,6 +26,7 @@
                 <h3>Log to an existing project...</h3>
                 {{ forms.authenticate(auth_form, home=True) }}
                 <button class="btn">log in</button>
+                <a class="password-reminder" href="{{ url_for(".remind_password") }}">can't remember your password?</a>
             </form>
         </div>
         <div class="span8 columns">

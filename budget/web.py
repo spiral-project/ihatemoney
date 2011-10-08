@@ -6,8 +6,7 @@ import werkzeug
 
 # local modules
 from models import db, Project, Person, Bill
-from forms import (get_billform_for, ProjectForm, AuthenticationForm, BillForm,
-                   MemberForm, InviteForm, CreateArchiveForm, EditProjectForm)
+from forms import *
 from utils import Redirect303
 
 """
@@ -148,6 +147,23 @@ def create_project():
             return redirect(url_for(".invite", project_id=project.id))
 
     return render_template("create_project.html", form=form)
+
+@main.route("/password-reminder", methods=["GET", "POST"])
+def remind_password():
+    form = PasswordReminder()
+    if request.method == "POST":
+        if form.validate():
+            # get the project
+            project = Project.query.get(form.id.data)
+
+            # send the password reminder
+            mail.send(Message("password recovery", 
+                body=render_template("password_reminder", project=project), 
+                recipients=[project.contact_email]))
+            flash("a mail has been sent to you with the password")
+
+    return render_template("password_reminder.html", form=form)
+
 
 @main.route("/<project_id>/edit", methods=["GET", "POST"])
 def edit_project():

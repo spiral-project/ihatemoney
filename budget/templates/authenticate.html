@@ -2,10 +2,6 @@
 {% block content %}
 <h2>Authentication</h2>
 
-{% for errors in form.errors.values() %}
-<p class=error>{{ ", ".join(errors) }}</p>
-{% endfor %}
-
 {% if create_project %}
 <p class="info">The project you are trying to access do not exist, do you want 
 to <a href="{{ url_for(".create_project", project_id=create_project) }}">create it</a>?

@@ -21,7 +21,7 @@
     <div class="actions">
         <button type="submit" class="btn primary">{{ field.name }}</button>
         {% if home %}
-            <a href="{{ url_for(".home") }}">Go back Home</a>
+            <a href="{{ url_for(".remind_password") }}">Can't remember the password?</a>
         {% endif %}
         {% if cancel %}
             <button id="cancel-form" type="reset" class="btn">Cancel</button>
@@ -32,6 +32,7 @@
 {% macro authenticate(form, home=False) %}
 
     {% include "display_errors.html" %}
+
     {{ form.hidden_tag() }}
     {{ input(form.id) }}
     {{ input(form.password) }}
@@ -110,4 +111,13 @@
     <div class="actions">
         <button class="btn">Create the archive</button>
     </div>
+{% endmacro %}
+
+{% macro remind_password(form) %}
+
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }}
+    {{ input(form.id) }}
+    {{ submit(form.submit) }}
+
 {% endmacro %}

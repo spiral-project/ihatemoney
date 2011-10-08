@@ -98,3 +98,9 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
     text-align: right;
     margin-top: -15px;
 }
+
+.password-reminder{
+    float: right;
+    margin-right: 20px;
+    margin-top: 5px;
+}

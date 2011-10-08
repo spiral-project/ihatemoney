@@ -96,6 +96,24 @@ class BudgetTestCase(TestCase):
             self.assertEqual(len(outbox), 0)
 
 
+    def test_password_reminder(self):
+        # test that it is possible to have an email cotaining the password of a
+        # project in case people forget it (and it happens!)
+
+        self.create_project("raclette")
+
+        with run.mail.record_messages() as outbox:
+            # a nonexisting project should not send an email
+            self.app.post("/password-reminder", data={"id": "unexisting"})
+            self.assertEqual(len(outbox), 0)
+
+            # a mail should be sent when a project exists
+            self.app.post("/password-reminder", data={"id": "raclette"})
+            self.assertEqual(len(outbox), 1)
+            self.assertIn("raclette", outbox[0].body)
+            self.assertIn("raclette@notmyidea.org", outbox[0].recipients)
+
+
     def test_project_creation(self):
         with run.app.test_client() as c:
 
