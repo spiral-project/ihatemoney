@@ -24,7 +24,12 @@
     $('a.remove').each(function(){
         $(this).hide();
         $(this).click(function(){
-            return confirm("are you sure?");
+            if ($(this).hasClass("confirm")){
+                return true;
+            }
+            $(this).html("you sure?");
+            $(this).addClass("confirm");
+            return false;
         });
     });
 
