@@ -262,7 +262,7 @@ def add_bill():
     if request.method == 'POST':
         if form.validate():
             bill = Bill()
-            db.session.add(form.save(bill))
+            db.session.add(form.save(bill, g.project))
             db.session.commit()
 
             flash("The bill has been added")
@@ -295,7 +295,7 @@ def edit_bill(bill_id):
     form = get_billform_for(request, g.project, set_default=False)
 
     if request.method == 'POST' and form.validate():
-        form.save(bill)
+        form.save(bill, g.project)
         db.session.commit()
 
         flash("The bill has been modified")

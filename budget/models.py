@@ -60,14 +60,13 @@ class Project(db.Model):
         This method returns the status DELETED or DEACTIVATED regarding the
         changes made.
         """
-        person = Person.query.get_or_404(member_id)
-        if person.project == self:
-            if not person.has_bills():
-                db.session.delete(person)
-                db.session.commit()
-            else:
-                person.activated = False
-                db.session.commit()
+        person = Person.query.get(member_id, self)
+        if not person.has_bills():
+            db.session.delete(person)
+            db.session.commit()
+        else:
+            person.activated = False
+            db.session.commit()
         return person
 
     def __repr__(self):

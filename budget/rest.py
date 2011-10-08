@@ -90,7 +90,7 @@ def need_auth(authentifier, name=None, remove_attr=True):
     If the request is authorized, the object returned by the authentifier
     is added to the kwargs of the method.
 
-    If not, issue a 403 Forbidden error
+    If not, issue a 401 Unauthorized error
 
     :authentifier:
         The callable to check the context onto.
@@ -114,7 +114,7 @@ def need_auth(authentifier, name=None, remove_attr=True):
                     del kwargs["%s_id" % name]
                 return func(*args, **kwargs)
             else:
-                return 403, "Forbidden"
+                return 401, "Unauthorized"
         return wrapped
     return wrapper
 
@@ -126,7 +126,7 @@ def serialize(func):
     """
     def wrapped(*args, **kwargs):
         # get the mimetype
-        mime = request.accept_mimetypes.best_match(SERIALIZERS.keys())
+        mime = request.accept_mimetypes.best_match(SERIALIZERS.keys()) or "text/json"
         data = func(*args, **kwargs)
         serializer = SERIALIZERS[mime]
 

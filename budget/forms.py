@@ -95,12 +95,13 @@ class BillForm(Form):
             validators=[Required()], widget=select_multi_checkbox)
     submit = SubmitField("Send the bill")
 
-    def save(self, bill):
+    def save(self, bill, project):
         bill.payer_id=self.payer.data
         bill.amount=self.amount.data
         bill.what=self.what.data
         bill.date=self.date.data
-        bill.owers = [Person.query.get(ower) for ower in self.payed_for.data]
+        bill.owers = [Person.query.get(ower, project) 
+                for ower in self.payed_for.data]
 
         return bill
 
