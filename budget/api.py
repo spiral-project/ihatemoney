@@ -2,8 +2,9 @@
 from flask import *
 
 from models import db, Project, Person, Bill
-from forms import ProjectForm, EditProjectForm, MemberForm, BillForm
-from utils import for_all_methods, get_billform_for
+from forms import (ProjectForm, EditProjectForm, MemberForm, BillForm, 
+                   get_billform_for)
+from utils import for_all_methods
 
 from rest import RESTResource, need_auth# FIXME make it an ext
 from werkzeug import Response

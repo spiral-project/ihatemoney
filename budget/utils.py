@@ -18,21 +18,6 @@ def slugify(value):
     return re.sub('[-\s]+', '-', value)
 
 
-def get_billform_for(project, set_default=True, **kwargs):
-    """Return an instance of BillForm configured for a particular project.
-
-    :set_default: if set to True, on GET methods (usually when we want to 
-                  display the default form, it will call set_default on it.
-    
-    """
-    form = BillForm(**kwargs)
-    form.payed_for.choices = form.payer.choices = [(str(m.id), m.name) for m in project.active_members]
-    form.payed_for.default = [str(m.id) for m in project.active_members]
-
-    if set_default and request.method == "GET":
-        form.set_default()
-    return form
-
 class Redirect303(HTTPException, RoutingException):
     """Raise if the map requests a redirect. This is for example the case if
     `strict_slashes` are activated and an url that requires a trailing slash.

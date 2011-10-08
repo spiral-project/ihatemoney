@@ -1,4 +1,6 @@
 from flaskext.wtf import *
+from flask import request
+
 from wtforms.widgets import html_params
 from models import Project, Person, Bill, db
 from datetime import datetime
@@ -20,20 +22,21 @@ def select_multi_checkbox(field, ul_class='', **kwargs):
     return u''.join(html)
 
 
-def get_billform_for(request, project, set_default=True):
+def get_billform_for(project, set_default=True, **kwargs):
     """Return an instance of BillForm configured for a particular project.
 
     :set_default: if set to True, on GET methods (usually when we want to 
                   display the default form, it will call set_default on it.
     
     """
-    form = BillForm()
+    form = BillForm(**kwargs)
     form.payed_for.choices = form.payer.choices = [(str(m.id), m.name) for m in project.active_members]
     form.payed_for.default = [str(m.id) for m in project.active_members]
 
     if set_default and request.method == "GET":
         form.set_default()
     return form
+
 
 
 class EditProjectForm(Form):
@@ -71,10 +74,8 @@ class ProjectForm(EditProjectForm):
         if Project.query.get(form.id.data):
             raise ValidationError(Markup("""The project identifier is used
                                   to log in and for the URL of the project.
-                                  <br />
                                   We tried to generate an identifier for you but
                                   a project with this identifier already exists.
-                                  <br />
                                   Please create a new identifier you will be able
                                   to remember.
                                   """))

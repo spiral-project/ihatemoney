@@ -410,7 +410,8 @@ class APITestCase(TestCase):
         resp = self.api_create("raclette")
 
         self.assertTrue(400, resp.status_code)
-        self.assertEqual('{"id": ["This project id is already used"]}', resp.data)
+        self.assertIn('id', json.loads(resp.data))
+
         # get information about it
         resp = self.app.get("/api/projects/raclette",
                 headers=self.get_auth("raclette"))

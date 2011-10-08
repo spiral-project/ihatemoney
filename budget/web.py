@@ -219,7 +219,7 @@ def list_bills():
     bills = g.project.get_bills()
     return render_template("list_bills.html", 
             bills=bills, member_form=MemberForm(g.project),
-            bill_form=get_billform_for(request, g.project)
+            bill_form=get_billform_for(g.project)
     )
 
 @main.route("/<project_id>/members/add", methods=["GET", "POST"])
@@ -258,7 +258,7 @@ def remove_member(member_id):
 
 @main.route("/<project_id>/add", methods=["GET", "POST"])
 def add_bill():
-    form = get_billform_for(request, g.project)
+    form = get_billform_for(g.project)
     if request.method == 'POST':
         if form.validate():
             bill = Bill()
@@ -292,7 +292,7 @@ def edit_bill(bill_id):
     if not bill:
         raise werkzeug.exceptions.NotFound()
 
-    form = get_billform_for(request, g.project, set_default=False)
+    form = get_billform_for(g.project, set_default=False)
 
     if request.method == 'POST' and form.validate():
         form.save(bill, g.project)
