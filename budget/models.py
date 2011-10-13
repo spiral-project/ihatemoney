@@ -92,7 +92,7 @@ class Person(db.Model):
     _to_serialize = ("id", "name", "activated")
 
     id = db.Column(db.Integer, primary_key=True)
-    project_id = db.Column(db.Integer, db.ForeignKey("project.id"))
+    project_id = db.Column(db.String, db.ForeignKey("project.id"))
     bills = db.relationship("Bill", backref="payer")
 
     name = db.Column(db.UnicodeText)
@@ -163,7 +163,7 @@ class Bill(db.Model):
 
 class Archive(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    project_id = db.Column(db.Integer, db.ForeignKey("project.id"))
+    project_id = db.Column(db.String, db.ForeignKey("project.id"))
     name = db.Column(db.UnicodeText)
 
     @property

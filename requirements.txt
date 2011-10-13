@@ -1,4 +1,0 @@
-flask
-flask-wtf
-flask-sqlalchemy
-flask-mail

@@ -12,9 +12,16 @@ To make it run, you just have to do something like::
 
     $ virtualenv venv
     $ source venv/bin/activate
-    $ pip install -r requirements.txt
+    $ pip install -r budget/requirements.txt
     $ cd budget
     $ python run.py
+
+It is also better to actually turn the debugging mode on when you're
+developing. You can create a `settings.py` file in the `budget` directory, with
+the following content::
+
+    DEBUG = True
+    SQLACHEMY_ECHO = DEBUG
 
 Deploy it
 =========
@@ -32,6 +39,9 @@ To deploy it, I'm using gunicorn and supervisord::
 3. reload both nginx and supervisord. It should be working ;)
 
 Don't forget to set the right permission for your files !
+
+Also, create a `settings.py` file with the appropriate values if you need to
+use a different database for instance.
 
 How to contribute
 =================
