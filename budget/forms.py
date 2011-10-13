@@ -100,7 +100,7 @@ class PasswordReminder(Form):
 class BillForm(Form):
     date = DateField("Date", validators=[Required()], default=datetime.now)
     what = TextField("What?", validators=[Required()])
-    payer = SelectField("Payer", validators=[Required()])
+    payer = SelectField("Payer", validators=[Required()], coerce=int)
     amount = DecimalField("Amount payed", validators=[Required()])
     payed_for = SelectMultipleField("Who has to pay for this?", 
             validators=[Required()], widget=select_multi_checkbox)
