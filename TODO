@@ -1,4 +1,0 @@
-* use flask.instance_path to get/store configuration. See http://flask.pocoo.org/docs/config/#instance-folders
-* Use class based views to factorize the code if there is some code to factorize, see http://flask.pocoo.org/docs/views/
-* Eventually move the url definition into a specific section
-* Render templates automatically using a decorator. see http://stackoverflow.com/questions/7054099/using-flask-blueprint-for-some-static-pages/7056374#7056374
