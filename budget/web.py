@@ -2,6 +2,7 @@ from collections import defaultdict
 
 from flask import *
 from flaskext.mail import Mail, Message
+from flaskext.babel import Babel, get_locale, gettext as _
 import werkzeug
 
 # local modules
@@ -22,6 +23,8 @@ and `add_project_id` for a quick overview
 
 main = Blueprint("main", __name__)
 mail = Mail()
+babel = Babel()
+
 
 @main.url_defaults
 def add_project_id(endpoint, values):
@@ -85,7 +88,7 @@ def authenticate(project_id=None):
         if request.method == "POST":
             if form.validate():
                 if not form.password.data == project.password:
-                    form.errors['password'] = ["This private code is not the right one"]
+                    form.errors['password'] = [_("This private code is not the right one")]
                 else:
                     # maintain a list of visited projects
                     if "projects" not in session:
@@ -133,9 +136,10 @@ def create_project():
             # send reminder email
             g.project = project
             
-            message_title = "You have just created '%s' to share your expenses" % g.project.name
+            message_title = _("You have just created '%(project)s' to share your expenses",
+                    project=g.project.name)
 
-            message_body = render_template("reminder_mail")
+            message_body = render_template("reminder_mail.%s" % get_locale().language)
 
             msg = Message(message_title, 
                 body=message_body, 
@@ -143,7 +147,7 @@ def create_project():
             mail.send(msg)
 
             # redirect the user to the next step (invite)
-            flash("The project identifier is %s" % project.id)
+            flash(_("The project identifier is %(project)s", project=project.id))
             return redirect(url_for(".invite", project_id=project.id))
 
     return render_template("create_project.html", form=form)
@@ -158,9 +162,10 @@ def remind_password():
 
             # send the password reminder
             mail.send(Message("password recovery", 
-                body=render_template("password_reminder", project=project), 
+                body=render_template("password_reminder.%s" % get_locale().language,
+                    project=project), 
                 recipients=[project.contact_email]))
-            flash("a mail has been sent to you with the password")
+            flash(_("a mail has been sent to you with the password"))
 
     return render_template("password_reminder.html", form=form)
 
@@ -216,16 +221,16 @@ def invite():
         if form.validate():
             # send the email
 
-            message_body = render_template("invitation_mail")
+            message_body = render_template("invitation_mail.%s" % get_locale().language)
 
-            message_title = "You have been invited to share your"\
-                    + " expenses for %s" % g.project.name
+            message_title = _("You have been invited to share your expenses for %(project)s", 
+                    project=g.project.name)
             msg = Message(message_title, 
                 body=message_body, 
                 recipients=[email.strip() 
                     for email in form.emails.data.split(",")])
             mail.send(msg)
-            flash("You invitations have been sent")
+            flash(_("Your invitations have been sent"))
             return redirect(url_for(".list_bills"))
 
     return render_template("send_invites.html", form=form)
@@ -246,7 +251,7 @@ def add_member():
         if form.validate():
             member = form.save(g.project, Person())
             db.session.commit()
-            flash("%s is had been added" % member.name)
+            flash(_("%(member)s had been added", member=member.name))
             return redirect(url_for(".list_bills"))
 
     return render_template("add_member.html", form=form)
@@ -258,7 +263,7 @@ def reactivate(member_id):
     if person:
         person[0].activated = True
         db.session.commit()
-        flash("%s is part of this project again" % person[0].name)
+        flash(_("%(name)s is part of this project again", name=person[0].name))
     return redirect(url_for(".list_bills"))
 
 
@@ -266,9 +271,9 @@ def reactivate(member_id):
 def remove_member(member_id):
     member = g.project.remove_member(member_id)
     if member.activated == False:
-        flash("User '%s' has been desactivated" % member.name)
+        flash(_("User '%(name)s' has been deactivated", name=member.name))
     else:
-        flash("User '%s' has been removed" % member.name)
+        flash(_("User '%(name)s' has been removed", name=member.name))
 
     return redirect(url_for(".list_bills"))
 
@@ -281,7 +286,7 @@ def add_bill():
             db.session.add(form.save(bill, g.project))
             db.session.commit()
 
-            flash("The bill has been added")
+            flash(_("The bill has been added"))
             return redirect(url_for('.list_bills'))
 
     return render_template("add_bill.html", form=form)
@@ -296,7 +301,7 @@ def delete_bill(bill_id):
 
     db.session.delete(bill)
     db.session.commit()
-    flash("The bill has been deleted")
+    flash(_("The bill has been deleted"))
 
     return redirect(url_for('.list_bills'))
 
@@ -314,7 +319,7 @@ def edit_bill(bill_id):
         form.save(bill, g.project)
         db.session.commit()
 
-        flash("The bill has been modified")
+        flash(_("The bill has been modified"))
         return redirect(url_for('.list_bills'))
 
     form.fill(bill)
@@ -331,6 +336,6 @@ def create_archive():
     if request.method == "POST":
         if form.validate():
             pass
-            flash("The data from XX to XX has been archived")
+            flash(_("The data from XX to XX has been archived"))
 
     return render_template("create_archive.html", form=form)

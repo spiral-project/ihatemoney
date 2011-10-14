@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Account manager</title>
+    <title>{{ _("Account manager") }}</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link rel=stylesheet type=text/css href="{{ url_for("static", filename='main.css') }}">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
@@ -45,23 +45,23 @@
     <h3><a class="logo" href="{% if g.project %}{{ url_for(".list_bills") }}{% endif %}">#! money?</a></h3>
     {% if g.project %}
     <ul>
-      <li class="active"><a href="">Bills</a></li>
-      <li><a href="">Archives</a></li>
+        <li class="active"><a href="">{{ _("Bills") }}</a></li>
+        <li><a href="">{{ _("Archives") }}</a></li>
     </ul>
     <ul class="nav secondary-nav">
       <li class="menu">
-      <a href="#" class="menu"><strong>{{ g.project.name }}</strong> options</a>
+      <a href="#" class="menu"><strong>{{ g.project.name }}</strong> {{ _("options") }}</a>
         <ul class="menu-dropdown" style="display: none; ">
-            <li><a href="{{ url_for(".edit_project") }}">Project settings</a></li>
+            <li><a href="{{ url_for(".edit_project") }}">{{ _("Project settings") }}</a></li>
           <li class="divider"></li>
            {% for id, name in session['projects'] %}
            {% if id != g.project.id %}
-               <li><a href="{{ url_for(".list_bills", project_id=id) }}">switch to {{ name }}</a></li>
+           <li><a href="{{ url_for(".list_bills", project_id=id) }}">{{ _("switch to") }} {{ name }}</a></li>
             {% endif %}
            {% endfor %}
-           <li><a href="{{ url_for(".create_project") }}">Start a new project</a></li>
+           <li><a href="{{ url_for(".create_project") }}">{{ _("Start a new project") }}</a></li>
           <li class="divider"></li>
-          <li><a href="{{ url_for(".exit") }}">Logout</a></li>
+          <li><a href="{{ url_for(".exit") }}">{{ _("Logout") }}</a></li>
         </ul>
       </li>
     </ul>
@@ -82,7 +82,7 @@
 {% endblock %}
 {% block footer %}
 <div id="footer">
-    <p><a href="https://github.com/ametaireau/budget-manager">This is a free software</a>, you can contribute and improve it!</p>
+    <p><a href="https://github.com/ametaireau/budget-manager">{{ _("This is a free software") }}</a>, {{ _("you can contribute and improve it!") }}</p>
 </div>
 {% endblock %}
 

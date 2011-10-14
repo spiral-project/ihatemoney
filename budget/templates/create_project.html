@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h2>Create a new project</h2>
+<h2>{{ _("Create a new project") }}</h2>
 <form method="post">
     {{ forms.create_project(form) }}
 </form>

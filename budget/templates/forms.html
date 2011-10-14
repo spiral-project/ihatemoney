@@ -21,10 +21,10 @@
     <div class="actions">
         <button type="submit" class="btn primary">{{ field.name }}</button>
         {% if home %}
-            <a href="{{ url_for(".remind_password") }}">Can't remember the password?</a>
+        <a href="{{ url_for(".remind_password") }}">{{ _("Can't remember the password?") }}</a>
         {% endif %}
         {% if cancel %}
-            <button id="cancel-form" type="reset" class="btn">Cancel</button>
+        <button id="cancel-form" type="reset" class="btn">{{ _("Cancel") }}</button>
         {% endif %}
       </div>
 {% endmacro %}
@@ -72,7 +72,7 @@
 {% macro add_bill(form, edit=False) %}
 
     <fieldset>
-        <legend>{% if edit %}Edit this {% else %}Add a {% endif %}bill</legend>
+        <legend>{% if edit %}{{ _("Edit this bill") }} {% else %}{{ _("Add a bill") }} {% endif %}</legend>
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }} 
     {{ input(form.date) }} 
@@ -88,7 +88,7 @@
 {% macro add_member(form) %}
     {{ form.hidden_tag() }}
     {{ form.name }}
-    <button class="btn">Add a new user</button>
+    <button class="btn">{{ _("Add a new user") }}</button>
 
 {% endmacro %}
 
@@ -96,20 +96,20 @@
     {{ form.hidden_tag() }}
     {{ input(form.emails) }}
     <div class="actions">
-        <button class="btn primary">Send the invitations</button>
-        <a href="{{ url_for(".list_bills") }}">No, thanks</a>
+        <button class="btn primary">{{ _("Send the invitations") }}</button>
+        <a href="{{ url_for(".list_bills") }}">{{ _("No, thanks") }}</a>
     </div>
 {% endmacro %}
 
 {% macro create_archive(form) %}
     <fieldset>
-        <legend>Create an archive</legend>
+        <legend>{{ _("Create an archive") }}</legend>
     {{ form.hidden_tag() }}
     {{ input(form.start_date) }}
     {{ input(form.end_date) }}
     </fieldset>
     <div class="actions">
-        <button class="btn">Create the archive</button>
+        <button class="btn">{{ _("Create the archive") }}</button>
     </div>
 {% endmacro %}
 

@@ -6,11 +6,11 @@
 {% block header %}
 <div id="header">
     <div class="slide">
-        <h1><span>Manage your shared <br>expenses, easily</span></h1>
-        <a href="{{ url_for(".demo") }}" class="about_link">Try out the demo</a>
+        <h1><span>{{ _("Manage your shared <br>expenses, easily") }}</span></h1>
+        <a href="{{ url_for(".demo") }}" class="about_link">{{ _("Try out the demo")  }}</a>
     </div>
     <div class="additional-content">
-        <p>You're sharing a house?<br /> Going on holidays with friends?<br /> Simply sharing money with others? <br /><strong>We can help!</strong></p>
+        <p>{{ _("You're sharing a house?") }}<br /> {{ _("Going on holidays with friends?") }}<br /> {{ _("Simply sharing money with others?") }} <br /><strong>{{ _("We can help!") }}</strong></p>
     </div>
 
 </div>
@@ -23,17 +23,17 @@
       <div class="row">
         <div class="span8 columns">
             <form action="{{ url_for(".authenticate") }}" method="post">
-                <h3>Log to an existing project...</h3>
+                <h3>{{ _("Log to an existing project") }}...</h3>
                 {{ forms.authenticate(auth_form, home=True) }}
-                <button class="btn">log in</button>
-                <a class="password-reminder" href="{{ url_for(".remind_password") }}">can't remember your password?</a>
+                <button class="btn">{{ _("log in") }}</button>
+                <a class="password-reminder" href="{{ url_for(".remind_password") }}">{{ _("can't remember your password?") }}</a>
             </form>
         </div>
         <div class="span8 columns">
             <form class="create" action="{{ url_for(".create_project") }}" method="post">
-                <h3>...or create a new one</h3>
+                <h3>...{{ _("or create a new one") }}</h3>
                 {{ forms.create_project(project_form, home=True) }}
-                <button class="btn">let's get started</button>
+                <button class="btn">{{ _("let's get started") }}</button>
             </form>
         </div>
     </div>

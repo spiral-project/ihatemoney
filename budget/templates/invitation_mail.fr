@@ -1,0 +1,9 @@
+Salut,
+
+Quelqu'un avec l'addresse email "{{ g.project.contact_email }}" vuos à invité à partager vos dépenses pour "{{ g.project.name }}".
+
+C'est aussi simple que de dire qui à payé pour quoi, pour qui, et combien celà à coûté, on s'occuppe du reste.
+
+Vous pouvez accéder à la page ici: {{ config['SITE_URL'] }}{{ url_for(".list_bills") }}, le code est "{{ g.project.password }}".
+
+Have fun,

@@ -3,8 +3,8 @@
 <h2>Authentication</h2>
 
 {% if create_project %}
-<p class="info">The project you are trying to access do not exist, do you want 
-to <a href="{{ url_for(".create_project", project_id=create_project) }}">create it</a>?
+<p class="info">{{ _("The project you are trying to access do not exist, do you want 
+to") }} <a href="{{ url_for(".create_project", project_id=create_project) }}">{{ _("create it") }}</a>{{ _("?") }}
 </p>
 {% endif %}
 <form action="" method="POST" accept-charset="utf-8">

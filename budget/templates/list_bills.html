@@ -27,7 +27,7 @@
             if ($(this).hasClass("confirm")){
                 return true;
             }
-            $(this).html("you sure?");
+            $(this).html("{{_("you sure?")}}");
             $(this).addClass("confirm");
             return false;
         });
@@ -42,7 +42,7 @@
 {% endblock %}
 
 {% block sidebar %}
-    <h2>Balance</h2>
+<h2>{{ _("Balance") }}</h2>
 
     <table class="balance">
     {% set balance = g.project.get_balance() %}
@@ -53,7 +53,7 @@
         <td class="{% if balance[member] > 0 %}positive{% elif balance[member] < 0 %}negative{% endif %}">
             {% if balance[member] > 0 %}+{% endif %}{{ balance[member] }}
         </td>
-        <td> {% if member.activated %}<a class="remove" href="{{ url_for(".remove_member", member_id=member.id) }}">delete</a>{% else %}<a href="{{ url_for(".reactivate", member_id=member.id) }}">reactivate</a>{% endif %}</td>
+        <td> {% if member.activated %}<a class="remove" href="{{ url_for(".remove_member", member_id=member.id) }}">{{ _("delete") }}</a>{% else %}<a href="{{ url_for(".reactivate", member_id=member.id) }}">{{ _("reactivate") }}</a>{% endif %}</td>
     </tr>
     {% endif %}
     {% endfor %}
@@ -65,17 +65,17 @@
 {% endblock %}
 
 {% block content %}
-<div class="identifier">The project identifier is <a href="{{ url_for(".list_bills") }}">{{ g.project.id }}</a>, remember it or add this page to you bookmarks!</div>
+<div class="identifier">{{ _("The project identifier is") }} <a href="{{ url_for(".list_bills") }}">{{ g.project.id }}</a>, {{ _("remember it or add this page to you bookmarks!") }}</div>
 <br /><br />
-<a id="new-bill" href="{{ url_for(".add_bill") }}" class="primary">Add a new bill</a>
+<a id="new-bill" href="{{ url_for(".add_bill") }}" class="primary">{{ _("Add a new bill") }}</a>
     <form id="bill-form" action="{{ url_for(".add_bill") }}" method="post" style="display: none">
-        <a id="hide-bill-form" href="#">hide this form</a>
+        <a id="hide-bill-form" href="#">{{ _("hide this form") }}</a>
         {{ forms.add_bill(bill_form) }}
 </form>
 
     {% if bills.count() > 0 %}
     <table class="list_bills common-table zebra-striped">
-        <thead><tr><th>When?</th><th>Who paid?</th><th>For what?</th><th>Owers</th><th>How much?</th><th>Actions</th></tr></thead>
+        <thead><tr><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</th><th>{{ _("For what?") }}</th><th>{{ _("Owers") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Actions") }}</th></tr></thead>
     <tbody>
     {% for bill in bills %}
     <tr class="{{ loop.cycle("odd", "even") }}">
@@ -84,15 +84,15 @@
             <td>{{ bill.what }}</td>
             <td>{% for ower in bill.owers %}{{ ower.name }} {% endfor %}</td>
             <td>{{ bill.amount }} ({{ bill.pay_each() }} each)</td>
-            <td><a href="{{ url_for(".edit_bill", bill_id=bill.id) }}">edit</a>
-                <a class="delete" href="{{ url_for(".delete_bill", bill_id=bill.id) }}">delete</a></td>
+            <td><a href="{{ url_for(".edit_bill", bill_id=bill.id) }}">{{ _("edit") }}</a>
+                <a class="delete" href="{{ url_for(".delete_bill", bill_id=bill.id) }}">{{ _("delete") }}</a></td>
     </tr>
     {% endfor %}
     </tbody>
     </table>
 
     {% else %}
-    <p>Nothing to list yet. You probably want to <a id="empty-new-bill" href="{{ url_for(".add_bill") }}">add a bill</a> ?</p>
+    <p>{{ _("Nothing to list yet. You probably want to") }} <a id="empty-new-bill" href="{{ url_for(".add_bill") }}">{{ _("add a bill") }}</a> ?</p>
     {% endif %}
 </div>
 {% endblock %}

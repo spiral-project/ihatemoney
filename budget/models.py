@@ -176,4 +176,3 @@ class Archive(db.Model):
 
     def __repr__(self):
         return "<Archive>"
-

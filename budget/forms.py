@@ -1,4 +1,5 @@
 from flaskext.wtf import *
+from flaskext.babel import gettext as _
 from flask import request
 
 from wtforms.widgets import html_params
@@ -40,10 +41,10 @@ def get_billform_for(project, set_default=True, **kwargs):
 
 
 class EditProjectForm(Form):
-    name = TextField("Project name", validators=[Required()])
-    password = TextField("Private code", validators=[Required()])
-    contact_email = TextField("Email", validators=[Required(), Email()])
-    submit = SubmitField("Edit the project")
+    name = TextField(_("Project name"), validators=[Required()])
+    password = TextField(_("Private code"), validators=[Required()])
+    contact_email = TextField(_("Email"), validators=[Required(), Email()])
+    submit = SubmitField(_("Edit the project"))
 
     def save(self):
         """Create a new project with the information given by this form.
@@ -65,46 +66,39 @@ class EditProjectForm(Form):
 
 
 class ProjectForm(EditProjectForm):
-    id = TextField("Project identifier", validators=[Required()])
-    password = PasswordField("Private code", validators=[Required()])
-    submit = SubmitField("Create the project")
+    id = TextField(_("Project identifier"), validators=[Required()])
+    password = PasswordField(_("Private code"), validators=[Required()])
+    submit = SubmitField(_("Create the project"))
 
     def validate_id(form, field):
         form.id.data = slugify(field.data)
         if Project.query.get(form.id.data):
-            raise ValidationError(Markup("""The project identifier is used
-                                  to log in and for the URL of the project.
-                                  We tried to generate an identifier for you but
-                                  a project with this identifier already exists.
-                                  Please create a new identifier you will be able
-                                  to remember.
-                                  """))
+            raise ValidationError(Markup(_("The project identifier is used to log in and for the URL of the project. We tried to generate an identifier for you but a project with this identifier already exists. Please create a new identifier you will be able to remember.")))
 
 
 class AuthenticationForm(Form):
-    id = TextField("Project identifier", validators=[Required()])
-    password = PasswordField("Private code", validators=[Required()])
-    submit = SubmitField("Get in")
+    id = TextField(_("Project identifier"), validators=[Required()])
+    password = PasswordField(_("Private code"), validators=[Required()])
+    submit = SubmitField(_("Get in"))
 
 
 class PasswordReminder(Form):
-    id = TextField("Project identifier", validators=[Required()])
-    submit = SubmitField("Send me the code by email")
+    id = TextField(_("Project identifier"), validators=[Required()])
+    submit = SubmitField(_("Send me the code by email"))
 
     def validate_id(form, field):
         if not Project.query.get(field.data):
-            raise ValidationError("This project does not exists")
-
+            raise ValidationError(_("This project does not exists"))
 
 
 class BillForm(Form):
-    date = DateField("Date", validators=[Required()], default=datetime.now)
-    what = TextField("What?", validators=[Required()])
-    payer = SelectField("Payer", validators=[Required()], coerce=int)
-    amount = DecimalField("Amount payed", validators=[Required()])
-    payed_for = SelectMultipleField("Who has to pay for this?", 
+    date = DateField(_("Date"), validators=[Required()], default=datetime.now)
+    what = TextField(_("What?"), validators=[Required()])
+    payer = SelectField(_("Payer"), validators=[Required()], coerce=int)
+    amount = DecimalField(_("Amount payed"), validators=[Required()])
+    payed_for = SelectMultipleField(_("Who has to pay for this?"), 
             validators=[Required()], widget=select_multi_checkbox, coerce=int)
-    submit = SubmitField("Send the bill")
+    submit = SubmitField(_("Send the bill"))
 
     def save(self, bill, project):
         bill.payer_id=self.payer.data
@@ -129,8 +123,8 @@ class BillForm(Form):
 
 class MemberForm(Form):
 
-    name = TextField("Name", validators=[Required()])
-    submit = SubmitField("Add a member")
+    name = TextField(_("Name"), validators=[Required()])
+    submit = SubmitField(_("Add a member"))
 
     def __init__(self, project, *args, **kwargs):
         super(MemberForm, self).__init__(*args, **kwargs)
@@ -140,7 +134,7 @@ class MemberForm(Form):
         if Person.query.filter(Person.name == field.data)\
                 .filter(Person.project == form.project)\
                 .filter(Person.activated == True).all():
-            raise ValidationError("This project already have this member")
+            raise ValidationError(_("This project already have this member"))
 
     def save(self, project, person):
         # if the user is already bound to the project, just reactivate him
@@ -150,17 +144,18 @@ class MemberForm(Form):
         return person
 
 class InviteForm(Form):
-    emails = TextAreaField("People to notify")
-    submit = SubmitField("Send invites")
+    emails = TextAreaField(_("People to notify"))
+    submit = SubmitField(_("Send invites"))
 
     def validate_emails(form, field):
         validator = Email()
         for email in [email.strip() for email in form.emails.data.split(",")]:
             if not validator.regex.match(email):
-                raise ValidationError("The email %s is not valid" % email)
+                raise ValidationError(_("The email %(email)s is not valid", 
+                    email=email))
 
 
 class CreateArchiveForm(Form):
-    start_date = DateField("Start date", validators=[Required(),])
-    end_date = DateField("End date", validators=[Required(),])
-    name = TextField("Name for this archive (optional)")
+    start_date = DateField(_("Start date"), validators=[Required(),])
+    end_date = DateField(_("End date"), validators=[Required(),])
+    name = TextField(_("Name for this archive (optional)"))
