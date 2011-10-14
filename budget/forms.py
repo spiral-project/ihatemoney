@@ -30,8 +30,8 @@ def get_billform_for(project, set_default=True, **kwargs):
     
     """
     form = BillForm(**kwargs)
-    form.payed_for.choices = form.payer.choices = [(str(m.id), m.name) for m in project.active_members]
-    form.payed_for.default = [str(m.id) for m in project.active_members]
+    form.payed_for.choices = form.payer.choices = [(m.id, m.name) for m in project.active_members]
+    form.payed_for.default = [m.id for m in project.active_members]
 
     if set_default and request.method == "GET":
         form.set_default()
@@ -103,7 +103,7 @@ class BillForm(Form):
     payer = SelectField("Payer", validators=[Required()], coerce=int)
     amount = DecimalField("Amount payed", validators=[Required()])
     payed_for = SelectMultipleField("Who has to pay for this?", 
-            validators=[Required()], widget=select_multi_checkbox)
+            validators=[Required()], widget=select_multi_checkbox, coerce=int)
     submit = SubmitField("Send the bill")
 
     def save(self, bill, project):
