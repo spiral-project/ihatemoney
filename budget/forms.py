@@ -1,5 +1,5 @@
 from flaskext.wtf import *
-from flaskext.babel import gettext as _
+from flaskext.babel import lazy_gettext as _
 from flask import request
 
 from wtforms.widgets import html_params
