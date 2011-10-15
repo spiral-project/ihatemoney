@@ -448,3 +448,6 @@ msgstr "sauter cette étape"
 #: templates/send_invites.html:14
 msgid "and notify them yourself"
 msgstr "et les notifier vous même"
+
+msgid "each"
+msgstr "chacun"

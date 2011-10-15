@@ -443,3 +443,5 @@ msgstr ""
 msgid "and notify them yourself"
 msgstr ""
 
+msgid "each"
+msgstr ""
