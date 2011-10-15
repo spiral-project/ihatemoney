@@ -325,7 +325,7 @@ msgstr "aller à"
 
 #: templates/layout.html:62
 msgid "Start a new project"
-msgstr "Démarrer un nouveau projet"
+msgstr "Nouveau projet"
 
 #: templates/layout.html:64
 msgid "Logout"
