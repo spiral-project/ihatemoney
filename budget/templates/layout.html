@@ -42,7 +42,7 @@
 <body>
 
 <div class="topbar">
-    <h3><a class="logo" href="{% if g.project %}{{ url_for(".list_bills") }}{% endif %}">#! money?</a></h3>
+    <h3><a class="logo" href="{{ url_for(".home") }}">#! money?</a></h3>
     {% if g.project %}
     <ul>
         <li class="active"><a href="">{{ _("Bills") }}</a></li>
