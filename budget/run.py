@@ -1,8 +1,9 @@
-from web import main, db, mail, babel
+from web import main, db, mail
 from api import api
 import os
 
 from flask import *
+from flaskext.babel import Babel
 
 app = Flask(__name__)
 app.config.from_object("default_settings")
@@ -19,7 +20,7 @@ db.create_all()
 mail.init_app(app)
 
 # translations
-babel.init_app(app)
+babel = Babel(app)
 
 @babel.localeselector
 def get_locale():

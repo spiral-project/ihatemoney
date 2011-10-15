@@ -95,7 +95,7 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
 }
 
 .identifier{
-    text-align: right;
+    float: right;
     margin-top: -15px;
 }
 

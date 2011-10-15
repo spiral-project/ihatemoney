@@ -2,7 +2,7 @@ from collections import defaultdict
 
 from flask import *
 from flaskext.mail import Mail, Message
-from flaskext.babel import Babel, get_locale, gettext as _
+from flaskext.babel import get_locale, gettext as _
 import werkzeug
 
 # local modules
@@ -23,8 +23,6 @@ and `add_project_id` for a quick overview
 
 main = Blueprint("main", __name__)
 mail = Mail()
-babel = Babel()
-
 
 @main.url_defaults
 def add_project_id(endpoint, values):

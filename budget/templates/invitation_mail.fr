@@ -1,6 +1,6 @@
 Salut,
 
-Quelqu'un avec l'addresse email "{{ g.project.contact_email }}" vuos à invité à partager vos dépenses pour "{{ g.project.name }}".
+Quelqu'un avec l'addresse email "{{ g.project.contact_email }}" vous à invité à partager vos dépenses pour "{{ g.project.name }}".
 
 C'est aussi simple que de dire qui à payé pour quoi, pour qui, et combien celà à coûté, on s'occuppe du reste.
 
