@@ -1,5 +1,6 @@
 @import "bootstrap-1.0.0.min.css";
 @import url(http://fonts.googleapis.com/css?family=Lobster|Comfortaa);
+@import "jquery/jquery-ui.css";
 
 html body{
     height: 100%;

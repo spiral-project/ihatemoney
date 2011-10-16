@@ -1,6 +1,12 @@
 {% extends "layout.html" %}
 
 {% block title %}- {{ g.project.name }}{% endblock %}
+{% block head %}
+    <script src="{{ url_for("static", filename="jquery/js/jquery-ui.js") }}"></script>
+    {% if g.lang != "en" %}
+    <script src="{{ url_for("static", filename="jquery/i18n/jquery.ui.datepicker-%s.js" % g.lang ) }}"></script>
+    {% endif %}
+{% endblock %}
 {% block js %}
     // display the form when clicking on the "add bill" button
     var show_form = function(){
@@ -40,6 +46,9 @@
     }, function(){
         $(this).find('.remove').hide();
     });
+
+    $.datepicker.setDefaults({'dateFormat': 'yy-mm-dd'});
+    $(".datepicker").datepicker($.datepicker.regional['{{ g.lang }}']);
 {% endblock %}
 
 {% block sidebar %}

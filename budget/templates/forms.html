@@ -1,4 +1,4 @@
-{% macro input(field, multiple=False) -%}
+{% macro input(field, multiple=False, class=None) -%}
       <div class="clearfix">
 
         {% if field.type != "SubmitField" %}
@@ -6,9 +6,9 @@
         {% endif %}
         <div class="input">
             {% if multiple == True %}
-                {{ field(multiple=True) }}
+                {{ field(multiple=True, class=class) }}
             {% else %}
-                {{ field }}
+                {{ field(class=class) | safe }}
             {% endif %}
             {% if field.description %}
                 <span class="help-inline">{{ field.description }}</span>
@@ -75,7 +75,7 @@
         <legend>{% if edit %}{{ _("Edit this bill") }} {% else %}{{ _("Add a bill") }} {% endif %}</legend>
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }} 
-    {{ input(form.date) }} 
+    {{ input(form.date, class="datepicker") }} 
     {{ input(form.what) }} 
     {{ input(form.payer) }} 
     {{ input(form.amount) }} 

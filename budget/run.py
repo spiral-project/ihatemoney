@@ -24,8 +24,9 @@ babel = Babel(app)
 
 @babel.localeselector
 def get_locale():
-    return request.accept_languages.best_match(['fr', 'en'])
-
+    lang = request.accept_languages.best_match(['fr', 'en'])
+    setattr(g, 'lang', lang)
+    return lang
 
 def main():
     app.run(host="0.0.0.0", debug=True)
