@@ -24,7 +24,9 @@ babel = Babel(app)
 
 @babel.localeselector
 def get_locale():
-    lang = request.accept_languages.best_match(['fr', 'en'])
+    # get the lang from the session if defined, fallback on the browser "accept
+    # languages" header.
+    lang = session.get('lang', request.accept_languages.best_match(['fr', 'en']))
     setattr(g, 'lang', lang)
     return lang
 

@@ -41,7 +41,10 @@
     </script>
 </head>
 <body>
-
+{% macro translations() %}
+<li {% if g.lang == "fr" %}class="active"{% endif %}><a href="{{ url_for(".change_lang", lang="fr") }}">fr</a></li>
+<li {% if g.lang == "en" %}class="active"{% endif %}><a href="{{ url_for(".change_lang", lang="en") }}">en</a></li>
+{% endmacro %}
 <div class="topbar">
     <h3><a class="logo" href="{{ url_for(".home") }}">#! money?</a></h3>
     {% if g.project %}
@@ -64,6 +67,11 @@
           <li><a href="{{ url_for(".exit") }}">{{ _("Logout") }}</a></li>
         </ul>
       </li>
+    {{ translations() }}
+    </ul>
+    {% else %}
+    <ul class="nav secondary-nav">
+    {{ translations() }}
     </ul>
     {% endif %}
 </div>

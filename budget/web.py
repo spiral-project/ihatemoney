@@ -323,6 +323,13 @@ def edit_bill(bill_id):
     form.fill(bill)
     return render_template("add_bill.html", form=form, edit=True)
 
+@main.route("/lang/<lang>")
+def change_lang(lang):
+    session['lang'] = lang
+    session.update()
+
+    return redirect(request.headers.get('Referer') or url_for('.home'))
+
 @main.route("/<project_id>/compute")
 def compute_bills():
     """Compute the sum each one have to pay to each other and display it"""
