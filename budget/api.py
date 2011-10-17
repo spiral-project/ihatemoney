@@ -6,7 +6,7 @@ from forms import (ProjectForm, EditProjectForm, MemberForm, BillForm,
                    get_billform_for)
 from utils import for_all_methods
 
-from rest import RESTResource, need_auth# FIXME make it an ext
+from flask_rest import RESTResource, need_auth
 from werkzeug import Response
 
 

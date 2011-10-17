@@ -3,3 +3,4 @@ flask-wtf
 flask-sqlalchemy
 flask-mail
 flask-babel
+flask-rest
