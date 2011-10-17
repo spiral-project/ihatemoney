@@ -5,6 +5,10 @@ This is a really tiny app to ease the shared houses budget management. Keep
 track of who bought what, when, and for who to then compute the balance of each
 person.
 
+The code is distributed under a BSD beerware derivative: if you meet the people
+in person and you want to pay them a beer, you are encouraged to do so (see
+LICENSE for more details).
+
 Make it run!
 ============
 
@@ -42,6 +46,12 @@ Don't forget to set the right permission for your files !
 
 Also, create a `settings.py` file with the appropriate values if you need to
 use a different database for instance.
+
+How about the REST API?
+=======================
+
+Yep, you're right, there is a REST API with this. Head to the `api
+documentation` to know more.
 
 How to contribute
 =================
