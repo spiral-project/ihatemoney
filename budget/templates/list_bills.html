@@ -52,6 +52,7 @@
 {% endblock %}
 
 {% block sidebar %}
+<div class="sidebar">
 <h2>{{ _("Balance") }}</h2>
 
     <table class="balance">
@@ -72,6 +73,7 @@
     <form action="{{ url_for(".add_member") }}" method="post">
         {{ forms.add_member(member_form) }}
     </form>
+</div>
 {% endblock %}
 
 {% block content %}

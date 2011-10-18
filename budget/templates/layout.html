@@ -78,7 +78,7 @@
 {% block header %}{% endblock %}
 {% block container %}
 <div class="container-fluid" style="height: 100%; padding-left: 10px;">
-    <div class="sidebar">{% block sidebar %}{% endblock %}</div>
+    {% block sidebar %}{% endblock %}
     <div class="content" style="margin-left: 250px;">
     {% for message in get_flashed_messages() %}
         <div class="flash alert-message info"><p>{{ message }}</p></div>
