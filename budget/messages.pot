@@ -445,3 +445,6 @@ msgstr ""
 
 msgid "each"
 msgstr ""
+
+msgid "Bills can't be negative"
+msgstr ""

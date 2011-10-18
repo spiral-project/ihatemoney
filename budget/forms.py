@@ -120,6 +120,10 @@ class BillForm(Form):
     def set_default(self):
         self.payed_for.data = self.payed_for.default
 
+    def validate_amount(self, field):
+        if field.data < 0:
+            raise ValidationError(_("Bills can't be negative"))
+
 
 class MemberForm(Form):
 

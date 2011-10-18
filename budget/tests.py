@@ -283,6 +283,15 @@ class BudgetTestCase(TestCase):
         bill = models.Bill.query.one()
         self.assertEqual(bill.amount, 25)
 
+        self.app.post("/raclette/add", data={
+            'date': '2011-08-10',
+            'what': u'fromage à raclette',
+            'payer': members_ids[0],
+            'payed_for': members_ids,
+            'amount': '-25', # bill with a negative value is not possible
+        })
+        self.assertEqual(1, models.Bill.query.count())
+
         # edit the bill
         resp = self.app.post("/raclette/edit/%s" % bill.id, data={
             'date': '2011-08-10',

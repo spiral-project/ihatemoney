@@ -451,3 +451,6 @@ msgstr "et les notifier vous même"
 
 msgid "each"
 msgstr "chacun"
+
+msgid "Bills can't be negative"
+msgstr "Le montant d'une facture ne peut pas être négatif"
