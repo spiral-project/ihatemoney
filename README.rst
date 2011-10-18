@@ -51,7 +51,7 @@ How about the REST API?
 =======================
 
 Yep, you're right, there is a REST API with this. Head to the `api
-documentation` to know more.
+documentation <http://readthedocs.org/docs/ihatemoney/en/latest/api.html>`_ to know more.
 
 How to contribute
 =================

@@ -333,7 +333,7 @@ class BudgetTestCase(TestCase):
             'amount': '17',
         })
 
-        balance = models.Project.query.get("raclette").get_balance()
+        balance = models.Project.query.get("raclette").balance
         self.assertEqual(set(balance.values()), set([19.0, -19.0]))
 
     def test_rounding(self):
@@ -369,10 +369,8 @@ class BudgetTestCase(TestCase):
             'amount': '22',
         })
 
-        balance = models.Project.query.get("raclette").get_balance()
-        balance = dict([(user.name, bal) for user, bal in balance.items()])
-        self.assertDictEqual(balance, {u'tata': -8.12, u'alexis': 8.12, 
-            u'fred': 0.0})
+        balance = models.Project.query.get("raclette").balance
+        self.assertDictEqual(balance, {3: -8.12, 1: 8.12, 2: 0.0})
 
 
     def test_edit_project(self):
@@ -489,7 +487,8 @@ class APITestCase(TestCase):
             "contact_email": "raclette@notmyidea.org",
             "members": [],
             "password": "raclette",
-            "id": "raclette"
+            "id": "raclette",
+            "balance": {},
         }
         self.assertDictEqual(json.loads(resp.data), expected)
 
@@ -512,7 +511,8 @@ class APITestCase(TestCase):
             "contact_email": "yeah@notmyidea.org",
             "members": [],
             "password": "raclette",
-            "id": "raclette"
+            "id": "raclette",
+            "balance": {},
         }
         self.assertDictEqual(json.loads(resp.data), expected)
 

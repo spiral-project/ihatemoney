@@ -56,13 +56,13 @@
 <h2>{{ _("Balance") }}</h2>
 
     <table class="balance">
-    {% set balance = g.project.get_balance() %}
+    {% set balance = g.project.balance %}
     {% for member in g.project.members %}
-    {% if member.activated or balance[member] != 0 %}
+    {% if member.activated or balance[member.id] != 0 %}
     <tr>
         <td>{{ member.name }}</td>
-        <td class="{% if balance[member] > 0 %}positive{% elif balance[member] < 0 %}negative{% endif %}">
-            {% if balance[member] > 0 %}+{% endif %}{{ balance[member] }}
+        <td class="{% if balance[member.id] > 0 %}positive{% elif balance[member.id] < 0 %}negative{% endif %}">
+            {% if balance[member.id] > 0 %}+{% endif %}{{ balance[member.id] }}
         </td>
         <td> {% if member.activated %}<a class="remove" href="{{ url_for(".remove_member", member_id=member.id) }}">{{ _("delete") }}</a>{% else %}<a href="{{ url_for(".reactivate", member_id=member.id) }}">{{ _("reactivate") }}</a>{% endif %}</td>
     </tr>

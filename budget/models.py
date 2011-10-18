@@ -12,7 +12,7 @@ db = SQLAlchemy()
 class Project(db.Model):
 
     _to_serialize = ("id", "name", "password", "contact_email", 
-            "members", "active_members")
+            "members", "active_members", "balance")
 
     id = db.Column(db.String, primary_key=True)
 
@@ -25,7 +25,8 @@ class Project(db.Model):
     def active_members(self):
         return [m for m in self.members if m.activated]
 
-    def get_balance(self):
+    @property
+    def balance(self):
 
         balances, should_pay, should_receive = defaultdict(int), defaultdict(int), defaultdict(int)
 
@@ -39,7 +40,7 @@ class Project(db.Model):
                     should_receive[bill.payer] += bill.pay_each()
 
         for person in self.members:
-            balances[person] = round(should_receive[person] - should_pay[person], 2)
+            balances[person.id] = round(should_receive[person] - should_pay[person], 2)
 
         return balances
 
