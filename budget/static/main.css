@@ -2,7 +2,7 @@
 @import url(http://fonts.googleapis.com/css?family=Lobster|Comfortaa);
 @import "jquery/jquery-ui.css";
 
-html body{
+html, body{
     height: 100%;
 }
 
@@ -14,6 +14,18 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
 .positive { color: green; }
 .negative { color: red; }
 
+.sidebar {
+    background-color: #ABE128;
+    background-image: url("gradient.png");
+    background-position: center top;
+    background-position-x: 50%;
+    background-position-y: 0%;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 220px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 .sidebar h2 { text-align: center; }
 .sidebar button{ margin-top: 10px; float: right; }
 
@@ -87,7 +99,7 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
 
 #footer{
     margin-top: 30px;
-    position: relative;
+    position: fixed;
     bottom: 0px;
     width: 100%;
     text-align: center;
@@ -97,7 +109,6 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
 
 .identifier{
     float: right;
-    margin-top: -15px;
 }
 
 .password-reminder{

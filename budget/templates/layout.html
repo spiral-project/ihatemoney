@@ -40,7 +40,7 @@
         });
     </script>
 </head>
-<body>
+<body style="margin-top: 50px;">
 {% macro translations() %}
 <li {% if g.lang == "fr" %}class="active"{% endif %}><a href="{{ url_for(".change_lang", lang="fr") }}">fr</a></li>
 <li {% if g.lang == "en" %}class="active"{% endif %}><a href="{{ url_for(".change_lang", lang="en") }}">en</a></li>
@@ -77,9 +77,9 @@
 </div>
 {% block header %}{% endblock %}
 {% block container %}
-<div class="container-fluid" style="margin-top: 40px">
+<div class="container-fluid" style="height: 100%; padding-left: 10px;">
     <div class="sidebar">{% block sidebar %}{% endblock %}</div>
-    <div class="content">
+    <div class="content" style="margin-left: 250px;">
     {% for message in get_flashed_messages() %}
         <div class="flash alert-message info"><p>{{ message }}</p></div>
     {% endfor %}
