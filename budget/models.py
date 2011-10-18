@@ -99,10 +99,9 @@ class Person(db.Model):
     activated = db.Column(db.Boolean, default=True)
 
     def has_bills(self):
-        bills_as_ower_number = db.session.query(Bill).join(billowers, Person)\
-            .filter("Bill.id == billowers.bill_id")\
-            .filter("Person.id == billowers.person_id")\
-            .filter(Person.id == self.id)\
+        """return if the user do have bills or not"""
+        bills_as_ower_number = db.session.query(billowers)\
+            .filter(billowers.columns.get("bill_id") == self.id)\
             .count()
         return bills_as_ower_number != 0 or len(self.bills) != 0
 
