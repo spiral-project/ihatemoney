@@ -85,4 +85,4 @@ End-user
 
 You just wanted to have a look at the application and found a bug? Please tell
 us and go fill a new issue:
-https://github.com/ametaireau/budget-manager/issues/new
+https://github.com/spiral-project/ihatemoney/issues
