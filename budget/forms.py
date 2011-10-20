@@ -13,6 +13,13 @@ def select_multi_checkbox(field, ul_class='', **kwargs):
     kwargs.setdefault('type', 'checkbox')
     field_id = kwargs.pop('id', field.id)
     html = [u'<ul %s>' % html_params(id=field_id, class_="inputs-list")]
+
+    choice_id = u'toggleField'
+    js_function = u'toggle();'
+    options = dict(kwargs, id=choice_id, onclick=js_function)
+    label = _("Select All/None")
+    html.append(u'<li><label for="%s">%s<span>%s</span></label></li>' % (choice_id, '<input %s /> ' % html_params(**options), label))
+
     for value, label, checked in field.iter_choices():
         choice_id = u'%s-%s' % (field_id, value)
         options = dict(kwargs, name=field.name, value=value, id=choice_id)
@@ -96,7 +103,7 @@ class BillForm(Form):
     what = TextField(_("What?"), validators=[Required()])
     payer = SelectField(_("Payer"), validators=[Required()], coerce=int)
     amount = DecimalField(_("Amount payed"), validators=[Required()])
-    payed_for = SelectMultipleField(_("Who has to pay for this?"), 
+    payed_for = SelectMultipleField(_("For whom?"), 
             validators=[Required()], widget=select_multi_checkbox, coerce=int)
     submit = SubmitField(_("Send the bill"))
 

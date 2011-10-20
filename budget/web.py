@@ -235,10 +235,14 @@ def invite():
 
 @main.route("/<project_id>/")
 def list_bills():
+    bill_form=get_billform_for(g.project)
+    # set the last selected payer as default choice if exists
+    if 'last_selected_payer' in session:
+        bill_form.payer.data = session['last_selected_payer']
     bills = g.project.get_bills()
     return render_template("list_bills.html", 
             bills=bills, member_form=MemberForm(g.project),
-            bill_form=get_billform_for(g.project)
+            bill_form=bill_form
     )
 
 @main.route("/<project_id>/members/add", methods=["GET", "POST"])
@@ -280,6 +284,10 @@ def add_bill():
     form = get_billform_for(g.project)
     if request.method == 'POST':
         if form.validate():
+            # save last selected payer in session
+            session['last_selected_payer'] = form.payer.data
+            session.update()
+
             bill = Bill()
             db.session.add(form.save(bill, g.project))
             db.session.commit()

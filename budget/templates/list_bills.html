@@ -6,6 +6,7 @@
     {% if g.lang != "en" %}
     <script src="{{ url_for("static", filename="jquery/i18n/jquery.ui.datepicker-%s.js" % g.lang ) }}"></script>
     {% endif %}
+    <script src="{{ url_for("static", filename="ihatemoney/custom.js") }}"></script>
 {% endblock %}
 {% block js %}
     // display the form when clicking on the "add bill" button
@@ -77,7 +78,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="identifier">{{ _("The project identifier is") }} <a href="{{ url_for(".list_bills") }}">{{ g.project.id }}</a>, {{ _("remember it or add this page to you bookmarks!") }}</div>
+<div class="identifier">{{ _("The project identifier is") }} <a href="{{ url_for(".list_bills") }}">{{ g.project.id }}</a>, {{ _("remember it!") }}</div>
 <a id="new-bill" href="{{ url_for(".add_bill") }}" class="primary">{{ _("Add a new bill") }}</a>
     <form id="bill-form" action="{{ url_for(".add_bill") }}" method="post" style="display: none">
         <a id="hide-bill-form" href="#">{{ _("hide this form") }}</a>
@@ -86,7 +87,7 @@
 
     {% if bills.count() > 0 %}
     <table class="list_bills common-table zebra-striped">
-        <thead><tr><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</th><th>{{ _("For what?") }}</th><th>{{ _("Owers") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Actions") }}</th></tr></thead>
+        <thead><tr><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</th><th>{{ _("For what?") }}</th><th>{{ _("For whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Actions") }}</th></tr></thead>
     <tbody>
     {% for bill in bills %}
     <tr class="{{ loop.cycle("odd", "even") }}">
