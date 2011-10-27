@@ -27,6 +27,9 @@ the following content::
     DEBUG = True
     SQLACHEMY_ECHO = DEBUG
 
+You can also set the `TESTING` flag to `True` so no mails are sent 
+(and no exception is raised) while you're on development mode.
+
 Deploy it
 =========
 
