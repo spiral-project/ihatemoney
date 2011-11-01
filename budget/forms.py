@@ -135,7 +135,7 @@ class BillForm(Form):
 class MemberForm(Form):
 
     name = TextField(_("Name"), validators=[Required()])
-    submit = SubmitField(_("Add a member"))
+    submit = SubmitField(_("Add"))
 
     def __init__(self, project, *args, **kwargs):
         super(MemberForm, self).__init__(*args, **kwargs)

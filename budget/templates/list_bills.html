@@ -9,6 +9,11 @@
     <script src="{{ url_for("static", filename="ihatemoney/custom.js") }}"></script>
 {% endblock %}
 {% block js %}
+    $(window).resize(function() {
+        $("#sidebar").height( window.innerHeight-40 );
+        $("#table_overflow").height( $("#sidebar").height()-120 );
+    });
+
     // display the form when clicking on the "add bill" button
     var show_form = function(){
         $('#bill-form').show(70);
@@ -53,9 +58,14 @@
 {% endblock %}
 
 {% block sidebar %}
-<div class="sidebar">
-<h2>{{ _("Balance") }}</h2>
+<div id="sidebar" class="sidebar">
+    <h2>{{ _("Balance") }}</h2>
 
+    <form action="{{ url_for(".add_member") }}" method="post">
+        {{ forms.add_member(member_form) }}
+    </form>
+
+    <div id="table_overflow">
     <table class="balance">
     {% set balance = g.project.balance %}
     {% for member in g.project.members %}
@@ -70,10 +80,8 @@
     {% endif %}
     {% endfor %}
     </table>
+    </div>
 
-    <form action="{{ url_for(".add_member") }}" method="post">
-        {{ forms.add_member(member_form) }}
-    </form>
 </div>
 {% endblock %}
 
@@ -107,4 +115,8 @@
     <p>{{ _("Nothing to list yet. You probably want to") }} <a id="empty-new-bill" href="{{ url_for(".add_bill") }}">{{ _("add a bill") }}</a> ?</p>
     {% endif %}
 </div>
+<script>
+        $("#sidebar").height( window.innerHeight-40 );
+        $("#table_overflow").height( $("#sidebar").height()-120 );
+</script>
 {% endblock %}

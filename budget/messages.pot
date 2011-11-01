@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2011-10-20 02:32+0200\n"
+"POT-Creation-Date: 2011-11-01 12:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,7 +81,7 @@ msgstr ""
 msgid "Amount payed"
 msgstr ""
 
-#: forms.py:106 templates/list_bills.html:89
+#: forms.py:106 templates/list_bills.html:98
 msgid "For whom?"
 msgstr ""
 
@@ -97,8 +97,8 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: forms.py:138
-msgid "Add a member"
+#: forms.py:138 templates/forms.html:91
+msgid "Add"
 msgstr ""
 
 #: forms.py:148
@@ -157,43 +157,43 @@ msgstr ""
 msgid "Your invitations have been sent"
 msgstr ""
 
-#: web.py:252
+#: web.py:256
 #, python-format
 msgid "%(member)s had been added"
 msgstr ""
 
-#: web.py:264
+#: web.py:268
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr ""
 
-#: web.py:272
+#: web.py:276
 #, python-format
 msgid "User '%(name)s' has been deactivated"
 msgstr ""
 
-#: web.py:274
+#: web.py:278
 #, python-format
 msgid "User '%(name)s' has been removed"
 msgstr ""
 
-#: web.py:287
+#: web.py:295
 msgid "The bill has been added"
 msgstr ""
 
-#: web.py:302
+#: web.py:310
 msgid "The bill has been deleted"
 msgstr ""
 
-#: web.py:320
+#: web.py:328
 msgid "The bill has been modified"
 msgstr ""
 
-#: web.py:344
+#: web.py:352
 msgid "The data from XX to XX has been archived"
 msgstr ""
 
-#: templates/add_bill.html:23 templates/edit_bill.html:23
+#: templates/add_bill.html:4 templates/edit_bill.html:4
 msgid "Back to the list"
 msgstr ""
 
@@ -215,7 +215,7 @@ msgstr ""
 msgid "Create a new project"
 msgstr ""
 
-#: templates/edit_bill.html:27
+#: templates/edit_bill.html:8
 msgid "Edit a bill"
 msgstr ""
 
@@ -237,10 +237,6 @@ msgstr ""
 
 #: templates/forms.html:75
 msgid "Add a bill"
-msgstr ""
-
-#: templates/forms.html:91
-msgid "Add a new user"
 msgstr ""
 
 #: templates/forms.html:99
@@ -339,71 +335,71 @@ msgstr ""
 msgid "you can contribute and improve it!"
 msgstr ""
 
-#: templates/list_bills.html:37
+#: templates/list_bills.html:43
 msgid "you sure?"
 msgstr ""
 
-#: templates/list_bills.html:56
+#: templates/list_bills.html:62
 msgid "Balance"
 msgstr ""
 
-#: templates/list_bills.html:67 templates/list_bills.html:99
+#: templates/list_bills.html:78 templates/list_bills.html:108
 msgid "delete"
 msgstr ""
 
-#: templates/list_bills.html:67
+#: templates/list_bills.html:78
 msgid "reactivate"
 msgstr ""
 
-#: templates/list_bills.html:80
+#: templates/list_bills.html:89
 msgid "The project identifier is"
 msgstr ""
 
-#: templates/list_bills.html:80
+#: templates/list_bills.html:89
 msgid "remember it!"
 msgstr ""
 
-#: templates/list_bills.html:81
+#: templates/list_bills.html:90
 msgid "Add a new bill"
 msgstr ""
 
-#: templates/list_bills.html:83
+#: templates/list_bills.html:92
 msgid "hide this form"
 msgstr ""
 
-#: templates/list_bills.html:89
+#: templates/list_bills.html:98
 msgid "When?"
 msgstr ""
 
-#: templates/list_bills.html:89
+#: templates/list_bills.html:98
 msgid "Who paid?"
 msgstr ""
 
-#: templates/list_bills.html:89
+#: templates/list_bills.html:98
 msgid "For what?"
 msgstr ""
 
-#: templates/list_bills.html:89
+#: templates/list_bills.html:98
 msgid "How much?"
 msgstr ""
 
-#: templates/list_bills.html:89
+#: templates/list_bills.html:98
 msgid "Actions"
 msgstr ""
 
-#: templates/list_bills.html:97
+#: templates/list_bills.html:106
 msgid "each"
 msgstr ""
 
-#: templates/list_bills.html:98
+#: templates/list_bills.html:107
 msgid "edit"
 msgstr ""
 
-#: templates/list_bills.html:106
+#: templates/list_bills.html:115
 msgid "Nothing to list yet. You probably want to"
 msgstr ""
 
-#: templates/list_bills.html:106
+#: templates/list_bills.html:115
 msgid "add a bill"
 msgstr ""
 

@@ -87,8 +87,8 @@
 
 {% macro add_member(form) %}
     {{ form.hidden_tag() }}
-    {{ form.name }}
-    <button class="btn">{{ _("Add a new user") }}</button>
+    {{ form.name(style="width: 141px;") }}
+    <button class="btn">{{ _("Add") }}</button>
 
 {% endmacro %}
 
