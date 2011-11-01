@@ -102,7 +102,7 @@ class BillForm(Form):
     date = DateField(_("Date"), validators=[Required()], default=datetime.now)
     what = TextField(_("What?"), validators=[Required()])
     payer = SelectField(_("Payer"), validators=[Required()], coerce=int)
-    amount = DecimalField(_("Amount payed"), validators=[Required()])
+    amount = DecimalField(_("Amount paid"), validators=[Required()])
     payed_for = SelectMultipleField(_("For whom?"), 
             validators=[Required()], widget=select_multi_checkbox, coerce=int)
     submit = SubmitField(_("Send the bill"))
