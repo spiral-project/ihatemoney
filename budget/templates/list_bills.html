@@ -87,11 +87,12 @@
 
 {% block content %}
 <div class="identifier">{{ _("The project identifier is") }} <a href="{{ url_for(".list_bills") }}">{{ g.project.id }}</a>, {{ _("remember it!") }}</div>
-<a id="new-bill" href="{{ url_for(".add_bill") }}" class="primary">{{ _("Add a new bill") }}</a>
+    <a id="new-bill" href="{{ url_for(".add_bill") }}" class="btn primary">{{ _("Add a new bill") }}</a>
+
     <form id="bill-form" action="{{ url_for(".add_bill") }}" method="post" style="display: none">
         <a id="hide-bill-form" href="#">{{ _("hide this form") }}</a>
         {{ forms.add_bill(bill_form) }}
-</form>
+    </form>
 
     {% if bills.count() > 0 %}
     <table class="list_bills common-table zebra-striped">
