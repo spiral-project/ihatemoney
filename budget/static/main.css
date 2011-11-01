@@ -139,3 +139,17 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
 .delete img {
     height: 24px;
 }
+
+#overlay {
+    position:absolute;
+    background-color:#000000;
+    opacity:0.7;
+    display:none;
+    text-align: center;
+}
+
+#overlay-delete, #overlay-reactivate {
+    position:absolute;
+    cursor:pointer;
+    display:none;
+}

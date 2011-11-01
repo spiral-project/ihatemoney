@@ -33,24 +33,70 @@
     $('#hide-bill-form').click(hide_form);
     $('#cancel-form').click(hide_form);
 
-    // ask for confirmation before removing an user
-    $('a.remove').each(function(){
-        $(this).hide();
-        $(this).click(function(){
-            if ($(this).hasClass("confirm")){
-                return true;
-            }
-            $(this).html("{{_("you sure?")}}");
-            $(this).addClass("confirm");
-            return false;
-        });
-    });
+    var tr_id;
+    var id;
 
     // display the remove button on mouse over (and hide them per default)
-    $('.balance tr').hover(function(){
-        $(this).find('.remove').show();
-    }, function(){
-        $(this).find('.remove').hide();
+    $('.balance tr').hover(function()
+    {
+        tr_id = $(this).attr('id');
+
+        var index = tr_id.indexOf("-");
+        var action = tr_id.substring(0, index);
+        id = tr_id.substring(index+1);
+
+        var x = $(this).offset().left;
+        var y = $(this).offset().top;
+        var width = $(this).width();
+        var height = $(this).height();
+
+        $('#overlay').css({ "left":x+"px", "top":y+"px", "width":width+"px", "height":height+"px", "line-height":height+"px" }).show();
+
+        if(!$(this).hasClass("confirm"))
+        {
+            $('#overlay').html("");
+            if (action == 'delete')
+            {
+                $('#overlay-delete').css({ "left":(x+width/2-16)+"px", "top":(y+height/2-16)+"px" }).show();
+            }
+            else if (action == 'reactivate')
+            {
+                $('#overlay-reactivate').css({ "left":(x+width/2-16)+"px", "top":(y+height/2-16)+"px" }).show();
+            }
+        }
+        else
+        {
+            var url = "{{ url_for('.remove_member', member_id=id) }}";
+            url = url.substring(0, url.lastIndexOf('/'))+id+url.substring(url.lastIndexOf('/'));
+            $('#overlay').html("<a href='"+url+"' >{{_("you sure?")}}</a>");
+        }
+    });
+
+    // show confirm message before actually removing the member
+    $('#overlay-delete').click(function ()
+    {
+        $('#'+tr_id).addClass("confirm");
+        var url = "{{ url_for('.remove_member', member_id=id) }}";
+        url = url.substring(0, url.lastIndexOf('/'))+id+url.substring(url.lastIndexOf('/'));
+        $('#overlay').html("<a href='"+url+"' >{{_("you sure?")}}</a>");
+        $(this).hide();
+    });
+
+    // re-create reactivation url from hover-ed item and call it
+    $('#overlay-reactivate').click(function ()
+    {
+        var url = "{{ url_for('.reactivate', member_id=id) }}";
+        url = url.substring(0, url.lastIndexOf('/'))+id+url.substring(url.lastIndexOf('/'));
+        $(location).attr('href', url);
+    });
+
+    $('#overlay').hover(function()
+    {
+    }, function()
+    {
+        $('#overlay').hide();
+        $('#overlay-delete').hide();
+        $('#overlay-reactivate').hide();
     });
 
     $.datepicker.setDefaults({'dateFormat': 'yy-mm-dd'});
@@ -70,12 +116,11 @@
     {% set balance = g.project.balance %}
     {% for member in g.project.members %}
     {% if member.activated or balance[member.id] != 0 %}
-    <tr>
+    <tr id="{% if member.activated %}delete{% else %}reactivate{% endif %}-{{ member.id }}">
         <td>{{ member.name }}</td>
         <td class="{% if balance[member.id] > 0 %}positive{% elif balance[member.id] < 0 %}negative{% endif %}">
             {% if balance[member.id] > 0 %}+{% endif %}{{ balance[member.id] }}
         </td>
-        <td> {% if member.activated %}<a class="remove" href="{{ url_for(".remove_member", member_id=member.id) }}">{{ _("delete") }}</a>{% else %}<a href="{{ url_for(".reactivate", member_id=member.id) }}">{{ _("reactivate") }}</a>{% endif %}</td>
     </tr>
     {% endif %}
     {% endfor %}
@@ -83,6 +128,9 @@
     </div>
 
 </div>
+    <div id="overlay"></div>
+    <img id="overlay-delete" title="{{ _("delete") }}" src="{{ url_for("static", filename="delete.png") }}">
+    <img id="overlay-reactivate" title="{{ _("reactivate") }}" src="{{ url_for("static", filename="refresh.png") }}">
 {% endblock %}
 
 {% block content %}
@@ -121,6 +169,18 @@
     {% else %}
     <p>{{ _("Nothing to list yet. You probably want to") }} <a id="empty-new-bill" href="{{ url_for(".add_bill") }}">{{ _("add a bill") }}</a> ?</p>
     {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 <script>
         $("#sidebar").height( window.innerHeight-40 );
