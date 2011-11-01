@@ -126,3 +126,16 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
 .confirm, .confirm:hover {
     color: red;
 }
+
+.bill-actions {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.edit img {
+    height: 24px;
+}
+
+.delete img {
+    height: 24px;
+}

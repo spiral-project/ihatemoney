@@ -104,8 +104,14 @@
             <td>{{ bill.what }}</td>
             <td>{% for ower in bill.owers %}{{ ower.name }} {% endfor %}</td>
             <td>{{ "%0.2f"|format(bill.amount) }} ({{ "%0.2f"|format(bill.pay_each()) }} {{ _("each") }})</td>
-            <td><a href="{{ url_for(".edit_bill", bill_id=bill.id) }}">{{ _("edit") }}</a>
-                <a class="delete" href="{{ url_for(".delete_bill", bill_id=bill.id) }}">{{ _("delete") }}</a></td>
+            <td class="bill-actions">
+                <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">
+                    <img src="{{ url_for("static", filename="pen.png") }}" />
+                </a>
+                <a class="delete" href="{{ url_for(".delete_bill", bill_id=bill.id) }}" title="{{ _("delete") }}">
+                    <img src="{{ url_for("static", filename="scissors.png") }}" />
+                </a>
+            </td>
     </tr>
     {% endfor %}
     </tbody>
