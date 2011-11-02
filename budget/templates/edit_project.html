@@ -1,5 +1,12 @@
 {% extends "layout.html" %}
 
+{% block js %}
+    $('#delete-project').click(function ()
+    {
+        $(this).html("<a style='color:red; ' href='{{ url_for('.remove_project') }}' >{{_("you sure?")}}</a>");
+    });
+{% endblock %}
+
 {% block content %}
 <h2>{{ _("Edit this project") }}</h2>
 <form method="post">

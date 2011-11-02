@@ -56,7 +56,6 @@ class EditProjectForm(Form):
     name = TextField(_("Project name"), validators=[Required()])
     password = TextField(_("Private code"), validators=[Required()])
     contact_email = TextField(_("Email"), validators=[Required(), Email()])
-    submit = SubmitField(_("Edit the project"))
 
     def save(self):
         """Create a new project with the information given by this form.

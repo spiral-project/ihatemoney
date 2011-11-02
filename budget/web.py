@@ -185,6 +185,11 @@ def edit_project():
 
     return render_template("edit_project.html", form=form)
 
+@main.route("/<project_id>/delete", methods=["GET"])
+def remove_project():
+    g.project.remove_project()
+
+    return redirect(url_for(".home"))
 
 @main.route("/exit")
 def exit():
