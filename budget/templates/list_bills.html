@@ -16,15 +16,17 @@
 
     // display the form when clicking on the "add bill" button
     var show_form = function(){
-        $('#bill-form').show(70);
+        $('#bill-form').slideDown(1000);
+        $("#hide-bill-form").show();
         $("#new-bill").hide();
         return false;
     }
      
     // and provide a mechanism to hide it back
     var hide_form = function(){
-        $("#bill-form").hide(70);
+        $("#bill-form").slideUp(1000);
         $("#new-bill").show();
+        $("#hide-bill-form").hide();
         return false;
     }
 
@@ -138,7 +140,7 @@
     <a id="new-bill" href="{{ url_for(".add_bill") }}" class="btn primary">{{ _("Add a new bill") }}</a>
 
     <form id="bill-form" action="{{ url_for(".add_bill") }}" method="post" style="display: none">
-        <a id="hide-bill-form" href="#">{{ _("hide this form") }}</a>
+        <a class="btn primary" id="hide-bill-form" href="#">{{ _("hide this form") }}</a>
         {{ forms.add_bill(bill_form) }}
     </form>
 
