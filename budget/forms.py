@@ -45,6 +45,11 @@ def get_billform_for(project, set_default=True, **kwargs):
         form.set_default()
     return form
 
+class CommaDecimalField(DecimalField):
+    """A class to deal with comma in Decimal Field"""
+    def process_formdata(self, value):
+        value[0] = str(value[0]).replace(',', '.')
+        return super(CommaDecimalField, self).process_formdata(value)
 
 
 class EditProjectForm(Form):
@@ -102,7 +107,7 @@ class BillForm(Form):
     date = DateField(_("Date"), validators=[Required()], default=datetime.now)
     what = TextField(_("What?"), validators=[Required()])
     payer = SelectField(_("Payer"), validators=[Required()], coerce=int)
-    amount = DecimalField(_("Amount paid"), validators=[Required()])
+    amount = CommaDecimalField(_("Amount paid"), validators=[Required()])
     payed_for = SelectMultipleField(_("For whom?"), 
             validators=[Required()], widget=select_multi_checkbox, coerce=int)
     submit = SubmitField(_("Send the bill"))
@@ -129,7 +134,9 @@ class BillForm(Form):
 
     def validate_amount(self, field):
         if field.data < 0:
-            raise ValidationError(_("Bills can't be negative"))
+            field.data = abs(field.data)
+        elif field.data == 0:
+            raise ValidationError(_("Bills can't be null"))
 
 
 class MemberForm(Form):
