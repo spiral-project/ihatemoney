@@ -70,6 +70,10 @@ class Project(db.Model):
             db.session.commit()
         return person
 
+    def remove_project(self):
+        db.session.delete(self)
+        db.session.commit()
+
     def __repr__(self):
         return "<Project %s>" % self.name
 

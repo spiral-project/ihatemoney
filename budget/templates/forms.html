@@ -65,7 +65,10 @@
     {{ input(form.name) }}
     {{ input(form.password) }}
     {{ input(form.contact_email) }}
-    {{ submit(form.submit) }}
+    <div class="actions">
+        <button class="btn primary">{{ _("Edit the project") }}</button>
+        <a id="delete-project" style="color:red; margin-left:10px; cursor:pointer; ">{{ _("delete") }}</a>
+    </div>
 
 {% endmacro %}
 
