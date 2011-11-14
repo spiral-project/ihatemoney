@@ -1,7 +1,7 @@
  # -*- coding: utf-8 -*-
 import os
 import tempfile
-import unittest
+import unittest2 as unittest
 import base64
 import json
 
@@ -283,15 +283,6 @@ class BudgetTestCase(TestCase):
         bill = models.Bill.query.one()
         self.assertEqual(bill.amount, 25)
 
-        self.app.post("/raclette/add", data={
-            'date': '2011-08-10',
-            'what': u'fromage à raclette',
-            'payer': members_ids[0],
-            'payed_for': members_ids,
-            'amount': '-25', # bill with a negative value is not possible
-        })
-        self.assertEqual(1, models.Bill.query.count())
-
         # edit the bill
         resp = self.app.post("/raclette/edit/%s" % bill.id, data={
             'date': '2011-08-10',
@@ -335,6 +326,28 @@ class BudgetTestCase(TestCase):
 
         balance = models.Project.query.get("raclette").balance
         self.assertEqual(set(balance.values()), set([19.0, -19.0]))
+
+        #Bill with negative amount
+        self.app.post("/raclette/add", data={
+            'date': '2011-08-12',
+            'what': u'fromage à raclette',
+            'payer': members_ids[0],
+            'payed_for': members_ids,
+            'amount': '-25', # bill with a negative value should be converted to a positive value
+        })
+        bill = models.Bill.query.filter(models.Bill.date=='2011-08-12')[0]
+        self.assertEqual(bill.amount, 25)
+
+        #add a bill with a comma
+        self.app.post("/raclette/add", data={
+            'date': '2011-08-01',
+            'what': u'fromage à raclette',
+            'payer': members_ids[0],
+            'payed_for': members_ids,
+            'amount': '25,02',
+        })
+        bill = models.Bill.query.filter(models.Bill.date=='2011-08-01')[0]
+        self.assertEqual(bill.amount, 25.02)
 
     def test_rounding(self):
         self.post_project("raclette")
