@@ -1,4 +1,4 @@
-@import "bootstrap-1.0.0.min.css";
+	@import "bootstrap-1.0.0.min.css";
 @import url(http://fonts.googleapis.com/css?family=Lobster|Comfortaa);
 @import "jquery/jquery-ui.css";
 
@@ -149,6 +149,9 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
 }
 
 #overlay-delete, #overlay-reactivate {
+    width: 28px;
+    height: 28px;
+    margin-top: 2px;
     position:absolute;
     cursor:pointer;
     display:none;
