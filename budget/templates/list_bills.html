@@ -158,7 +158,7 @@
 			<td>{{ bill.date }}</td>
 			<td>{{ bill.payer }}</td>
 			<td>{{ bill.what }}</td>
-			<td>{% for ower in bill.owers %}{{ ower.name }} {% endfor %}</td>
+			<td>{{ bill.owers|join(', ', 'name') }} </td>
 			<td>{{ "%0.2f"|format(bill.amount) }} ({{ "%0.2f"|format(bill.pay_each()) }} {{ _("each") }})</td>
 			<td class="bill-actions">
 				<a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">
