@@ -1,16 +1,16 @@
 # Translations template for PROJECT.
 # Copyright (C) 2011 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# Alexis Métaireau <alexis@notmyidea.org>, 2011.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2011-11-01 13:04+0100\n"
+"POT-Creation-Date: 2011-11-20 14:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Quentin Roy <royque@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -21,31 +21,27 @@ msgstr ""
 msgid "Select All/None"
 msgstr ""
 
-#: forms.py:51
+#: forms.py:57
 msgid "Project name"
 msgstr ""
 
-#: forms.py:52 forms.py:77 forms.py:88
+#: forms.py:58 forms.py:82 forms.py:93
 msgid "Private code"
 msgstr ""
 
-#: forms.py:53
+#: forms.py:59
 msgid "Email"
 msgstr ""
 
-#: forms.py:54
-msgid "Edit the project"
-msgstr ""
-
-#: forms.py:76 forms.py:87 forms.py:93
+#: forms.py:81 forms.py:92 forms.py:98
 msgid "Project identifier"
 msgstr ""
 
-#: forms.py:78 templates/send_invites.html:5
+#: forms.py:83 templates/send_invites.html:5
 msgid "Create the project"
 msgstr ""
 
-#: forms.py:83
+#: forms.py:88
 msgid ""
 "The project identifier is used to log in and for the URL of the project. "
 "We tried to generate an identifier for you but a project with this "
@@ -53,80 +49,88 @@ msgid ""
 "able to remember."
 msgstr ""
 
-#: forms.py:89
+#: forms.py:94
 msgid "Get in"
 msgstr ""
 
-#: forms.py:94
+#: forms.py:99
 msgid "Send me the code by email"
 msgstr ""
 
-#: forms.py:98
+#: forms.py:103
 msgid "This project does not exists"
 msgstr ""
 
-#: forms.py:102
+#: forms.py:107
 msgid "Date"
 msgstr ""
 
-#: forms.py:103
+#: forms.py:108
 msgid "What?"
 msgstr ""
 
-#: forms.py:104
+#: forms.py:109
 msgid "Payer"
 msgstr ""
 
-#: forms.py:105
+#: forms.py:110
 msgid "Amount paid"
 msgstr ""
 
-#: forms.py:106 templates/list_bills.html:98
+#: forms.py:111 templates/list_bills.html:154
 msgid "For whom?"
 msgstr ""
 
-#: forms.py:108
+#: forms.py:113
 msgid "Send the bill"
 msgstr ""
 
-#: forms.py:132
-msgid "Bills can't be negative"
+#: forms.py:139
+msgid "Bills can't be null"
 msgstr ""
 
-#: forms.py:137
+#: forms.py:144
 msgid "Name"
 msgstr ""
 
-#: forms.py:138 templates/forms.html:91
+#: forms.py:144
+msgid "Type user name here"
+msgstr ""
+
+#: forms.py:145 templates/forms.html:94
 msgid "Add"
 msgstr ""
 
-#: forms.py:148
+#: forms.py:153
+msgid "User name incorrect"
+msgstr ""
+
+#: forms.py:157
 msgid "This project already have this member"
 msgstr ""
 
-#: forms.py:158
+#: forms.py:167
 msgid "People to notify"
 msgstr ""
 
-#: forms.py:159
+#: forms.py:168
 msgid "Send invites"
 msgstr ""
 
-#: forms.py:165
+#: forms.py:174
 #, python-format
 msgid "The email %(email)s is not valid"
 msgstr ""
 
-#: forms.py:170
+#: forms.py:179
 msgid "Start date"
 msgstr ""
 
-#: forms.py:171
+#: forms.py:180
 msgid "End date"
 msgstr ""
 
-#: forms.py:172
+#: forms.py:181
 msgid "Name for this archive (optional)"
 msgstr ""
 
@@ -148,52 +152,52 @@ msgstr ""
 msgid "a mail has been sent to you with the password"
 msgstr ""
 
-#: web.py:224
+#: web.py:229
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
 msgstr ""
 
-#: web.py:231
+#: web.py:236
 msgid "Your invitations have been sent"
 msgstr ""
 
-#: web.py:256
+#: web.py:261
 #, python-format
 msgid "%(member)s had been added"
 msgstr ""
 
-#: web.py:268
+#: web.py:273
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr ""
 
-#: web.py:276
+#: web.py:281
 #, python-format
 msgid "User '%(name)s' has been deactivated"
 msgstr ""
 
-#: web.py:278
+#: web.py:283
 #, python-format
 msgid "User '%(name)s' has been removed"
 msgstr ""
 
-#: web.py:295
+#: web.py:300
 msgid "The bill has been added"
 msgstr ""
 
-#: web.py:310
+#: web.py:315
 msgid "The bill has been deleted"
 msgstr ""
 
-#: web.py:328
+#: web.py:333
 msgid "The bill has been modified"
 msgstr ""
 
-#: web.py:352
+#: web.py:357
 msgid "The data from XX to XX has been archived"
 msgstr ""
 
-#: templates/add_bill.html:4 templates/edit_bill.html:4
+#: templates/add_bill.html:19
 msgid "Back to the list"
 msgstr ""
 
@@ -215,11 +219,12 @@ msgstr ""
 msgid "Create a new project"
 msgstr ""
 
-#: templates/edit_bill.html:8
-msgid "Edit a bill"
+#: templates/edit_project.html:6 templates/list_bills.html:77
+#: templates/list_bills.html:87
+msgid "you sure?"
 msgstr ""
 
-#: templates/edit_project.html:4
+#: templates/edit_project.html:11
 msgid "Edit this project"
 msgstr ""
 
@@ -231,27 +236,36 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: templates/forms.html:75
+#: templates/forms.html:69
+msgid "Edit the project"
+msgstr ""
+
+#: templates/forms.html:70 templates/list_bills.html:139
+#: templates/list_bills.html:167
+msgid "delete"
+msgstr ""
+
+#: templates/forms.html:78
 msgid "Edit this bill"
 msgstr ""
 
-#: templates/forms.html:75
+#: templates/forms.html:78
 msgid "Add a bill"
 msgstr ""
 
-#: templates/forms.html:99
+#: templates/forms.html:102
 msgid "Send the invitations"
 msgstr ""
 
-#: templates/forms.html:100
+#: templates/forms.html:103
 msgid "No, thanks"
 msgstr ""
 
-#: templates/forms.html:106
+#: templates/forms.html:109
 msgid "Create an archive"
 msgstr ""
 
-#: templates/forms.html:112
+#: templates/forms.html:115
 msgid "Create the archive"
 msgstr ""
 
@@ -303,103 +317,95 @@ msgstr ""
 msgid "Account manager"
 msgstr ""
 
-#: templates/layout.html:52
+#: templates/layout.html:54
 msgid "Bills"
 msgstr ""
 
-#: templates/layout.html:56
+#: templates/layout.html:58
 msgid "options"
 msgstr ""
 
-#: templates/layout.html:58
+#: templates/layout.html:60
 msgid "Project settings"
 msgstr ""
 
-#: templates/layout.html:62
+#: templates/layout.html:64
 msgid "switch to"
 msgstr ""
 
-#: templates/layout.html:65
+#: templates/layout.html:67
 msgid "Start a new project"
 msgstr ""
 
-#: templates/layout.html:67
+#: templates/layout.html:69
 msgid "Logout"
 msgstr ""
 
-#: templates/layout.html:93
+#: templates/layout.html:95
 msgid "This is a free software"
 msgstr ""
 
-#: templates/layout.html:93
+#: templates/layout.html:95
 msgid "you can contribute and improve it!"
 msgstr ""
 
-#: templates/list_bills.html:43
-msgid "you sure?"
-msgstr ""
-
-#: templates/list_bills.html:62
+#: templates/list_bills.html:115
 msgid "Balance"
 msgstr ""
 
-#: templates/list_bills.html:78 templates/list_bills.html:108
-msgid "delete"
-msgstr ""
-
-#: templates/list_bills.html:78
+#: templates/list_bills.html:140
 msgid "reactivate"
 msgstr ""
 
-#: templates/list_bills.html:89
+#: templates/list_bills.html:144
 msgid "The project identifier is"
 msgstr ""
 
-#: templates/list_bills.html:89
+#: templates/list_bills.html:144
 msgid "remember it!"
 msgstr ""
 
-#: templates/list_bills.html:90
+#: templates/list_bills.html:145
 msgid "Add a new bill"
 msgstr ""
 
-#: templates/list_bills.html:92
+#: templates/list_bills.html:148
 msgid "hide this form"
 msgstr ""
 
-#: templates/list_bills.html:98
+#: templates/list_bills.html:154
 msgid "When?"
 msgstr ""
 
-#: templates/list_bills.html:98
+#: templates/list_bills.html:154
 msgid "Who paid?"
 msgstr ""
 
-#: templates/list_bills.html:98
+#: templates/list_bills.html:154
 msgid "For what?"
 msgstr ""
 
-#: templates/list_bills.html:98
+#: templates/list_bills.html:154
 msgid "How much?"
 msgstr ""
 
-#: templates/list_bills.html:98
+#: templates/list_bills.html:154
 msgid "Actions"
 msgstr ""
 
-#: templates/list_bills.html:106
+#: templates/list_bills.html:162
 msgid "each"
 msgstr ""
 
-#: templates/list_bills.html:107
+#: templates/list_bills.html:164
 msgid "edit"
 msgstr ""
 
-#: templates/list_bills.html:115
+#: templates/list_bills.html:177
 msgid "Nothing to list yet. You probably want to"
 msgstr ""
 
-#: templates/list_bills.html:115
+#: templates/list_bills.html:177
 msgid "add a bill"
 msgstr ""
 
