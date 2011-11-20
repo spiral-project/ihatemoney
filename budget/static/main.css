@@ -1,4 +1,4 @@
-	@import "bootstrap-1.0.0.min.css";
+    @import "bootstrap-1.0.0.min.css";
 @import url(http://fonts.googleapis.com/css?family=Lobster|Comfortaa);
 @import "jquery/jquery-ui.css";
 
@@ -156,3 +156,24 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
     cursor:pointer;
     display:none;
 }
+
+.balance-value{
+    text-align:right;
+}
+
+tr.ower_line {
+    /* Fallback for web browsers that doesn't support RGBa */
+    background: rgb(255, 255, 255) transparent;
+    /* RGBa with 0.6 opacity */
+    background: rgba(255, 255, 255, 0.4);
+    /* For IE 5.5 - 7*/
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#66FFFFFF, endColorstr=#66FFFFFF);
+    /* For IE 8*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#66FFFFFF, endColorstr=#66FFFFFF)";
+}
+
+tr.payer_line .balance-name{
+    color:green;
+    text-indent:5px;
+}
+
