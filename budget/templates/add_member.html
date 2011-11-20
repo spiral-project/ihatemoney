@@ -1,4 +1,10 @@
 {% extends "layout.html" %}
+{% block head %}
+	<script src="{{ url_for("static", filename="ihatemoney/custom.js") }}"></script>
+{% endblock %}
+{% block js %}
+    auto_hide_default_text('#name');
+{% endblock %}
 {% block content %}
     <form action="{{ url_for(".add_member") }}" method="post">
         {{ forms.add_member(form) }}

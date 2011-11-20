@@ -141,7 +141,7 @@ class BillForm(Form):
 
 class MemberForm(Form):
 
-    name = TextField(_("Name"), validators=[Required()])
+    name = TextField(_("Name"), validators=[Required()], default=_("Type user name here"))
     submit = SubmitField(_("Add"))
 
     def __init__(self, project, *args, **kwargs):
@@ -149,6 +149,8 @@ class MemberForm(Form):
         self.project = project
 
     def validate_name(form, field):
+        if field.data == form.name.default:
+            raise ValidationError(_("User name incorrect"))
         if Person.query.filter(Person.name == field.data)\
                 .filter(Person.project == form.project)\
                 .filter(Person.activated == True).all():

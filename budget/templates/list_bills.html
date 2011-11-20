@@ -2,175 +2,180 @@
 
 {% block title %}- {{ g.project.name }}{% endblock %}
 {% block head %}
-    <script src="{{ url_for("static", filename="jquery/js/jquery-ui.js") }}"></script>
-    {% if g.lang != "en" %}
-    <script src="{{ url_for("static", filename="jquery/i18n/jquery.ui.datepicker-%s.js" % g.lang ) }}"></script>
-    {% endif %}
-    <script src="{{ url_for("static", filename="ihatemoney/custom.js") }}"></script>
+	<script src="{{ url_for("static", filename="jquery/js/jquery-ui.js") }}"></script>
+	{% if g.lang != "en" %}
+	<script src="{{ url_for("static", filename="jquery/i18n/jquery.ui.datepicker-%s.js" % g.lang ) }}"></script>
+	{% endif %}
+	<script src="{{ url_for("static", filename="ihatemoney/custom.js") }}"></script>
 {% endblock %}
 {% block js %}
-    $(window).resize(function() {
-        $("#sidebar").height( window.innerHeight-40 );
-        $("#table_overflow").height( $("#sidebar").height()-120 );
-    });
+	$(window).resize(function() {
+		$("#sidebar").height( window.innerHeight-40 );
+		$("#table_overflow").height( $("#sidebar").height()-120 );
+	});
 
-    // display the form when clicking on the "add bill" button
-    var show_form = function(){
-        $('#bill-form').slideDown(100);
-        $("#hide-bill-form").show();
-        $("#new-bill").hide();
-        return false;
-    }
-     
-    // and provide a mechanism to hide it back
-    var hide_form = function(){
-        $("#bill-form").slideUp(100);
-        $("#new-bill").show();
-        $("#hide-bill-form").hide();
-        return false;
-    }
+	// display the form when clicking on the "add bill" button
+	var show_form = function(){
+		$('#bill-form').slideDown(100);
+		$("#hide-bill-form").show();
+		$("#new-bill").hide();
+		return false;
+	}
+	 
+	// and provide a mechanism to hide it back
+	var hide_form = function(){
+		$("#bill-form").slideUp(100);
+		$("#new-bill").show();
+		$("#hide-bill-form").hide();
+		return false;
+	}
+	
+	
+	auto_hide_default_text('#name');
 
-    $('#new-bill').click(show_form);
-    $('#empty-new-bill').click(show_form);
-    $('#hide-bill-form').click(hide_form);
-    $('#cancel-form').click(hide_form);
+	$('#new-bill').click(show_form);
+	$('#empty-new-bill').click(show_form);
+	$('#hide-bill-form').click(hide_form);
+	$('#cancel-form').click(hide_form);
 
-    var tr_id;
-    var id;
 
-    // display the remove button on mouse over (and hide them per default)
-    $('.balance tr').hover(function()
-    {
-        tr_id = $(this).attr('id');
+	var tr_id;
+	var id;
 
-        var index = tr_id.indexOf("-");
-        var action = tr_id.substring(0, index);
-        id = tr_id.substring(index+1);
+	// display the remove button on mouse over (and hide them per default)
+	$('.balance tr').hover(function()
+	{
+		tr_id = $(this).attr('id');
 
-        var x = $(this).offset().left;
-        var y = $(this).offset().top;
-        var width = $(this).width();
-        var height = $(this).height();
+		var index = tr_id.indexOf("-");
+		var action = tr_id.substring(0, index);
+		id = tr_id.substring(index+1);
 
-        $('#overlay').css({ "left":x+"px", "top":y+"px", "width":width+"px", "height":height+"px", "line-height":height+"px" }).show();
+		var x = $(this).offset().left;
+		var y = $(this).offset().top;
+		var width = $(this).width();
+		var height = $(this).height();
 
-        if(!$(this).hasClass("confirm"))
-        {
-            $('#overlay').html("");
-            if (action == 'delete')
-            {
-                $('#overlay-delete').css({ "left":(x+width/2-16)+"px", "top":(y+height/2-16)+"px" }).show();
-            }
-            else if (action == 'reactivate')
-            {
-                $('#overlay-reactivate').css({ "left":(x+width/2-16)+"px", "top":(y+height/2-16)+"px" }).show();
-            }
-        }
-        else
-        {
-            var url = "{{ url_for('.remove_member', member_id=id) }}";
-            url = url.substring(0, url.lastIndexOf('/'))+id+url.substring(url.lastIndexOf('/'));
-            $('#overlay').html("<a href='"+url+"' >{{_("you sure?")}}</a>");
-        }
-    });
+		$('#overlay').css({ "left":x+"px", "top":y+"px", "width":width+"px", "height":height+"px", "line-height":height+"px" }).show();
 
-    // show confirm message before actually removing the member
-    $('#overlay-delete').click(function ()
-    {
-        $('#'+tr_id).addClass("confirm");
-        var url = "{{ url_for('.remove_member', member_id=id) }}";
-        url = url.substring(0, url.lastIndexOf('/'))+id+url.substring(url.lastIndexOf('/'));
-        $('#overlay').html("<a href='"+url+"' >{{_("you sure?")}}</a>");
-        $(this).hide();
-    });
+		if(!$(this).hasClass("confirm"))
+		{
+			$('#overlay').html("");
+			if (action == 'delete')
+			{
+				$('#overlay-delete').css({ "left":(x+width/2-16)+"px", "top":(y+height/2-16)+"px" }).show();
+			}
+			else if (action == 'reactivate')
+			{
+				$('#overlay-reactivate').css({ "left":(x+width/2-16)+"px", "top":(y+height/2-16)+"px" }).show();
+			}
+		}
+		else
+		{
+			var url = "{{ url_for('.remove_member', member_id=id) }}";
+			url = url.substring(0, url.lastIndexOf('/'))+id+url.substring(url.lastIndexOf('/'));
+			$('#overlay').html("<a href='"+url+"' >{{_("you sure?")}}</a>");
+		}
+	});
 
-    // re-create reactivation url from hover-ed item and call it
-    $('#overlay-reactivate').click(function ()
-    {
-        var url = "{{ url_for('.reactivate', member_id=id) }}";
-        url = url.substring(0, url.lastIndexOf('/'))+id+url.substring(url.lastIndexOf('/'));
-        $(location).attr('href', url);
-    });
+	// show confirm message before actually removing the member
+	$('#overlay-delete').click(function ()
+	{
+		$('#'+tr_id).addClass("confirm");
+		var url = "{{ url_for('.remove_member', member_id=id) }}";
+		url = url.substring(0, url.lastIndexOf('/'))+id+url.substring(url.lastIndexOf('/'));
+		$('#overlay').html("<a href='"+url+"' >{{_("you sure?")}}</a>");
+		$(this).hide();
+	});
 
-    $('#overlay').hover(function()
-    {
-    }, function()
-    {
-        $('#overlay').hide();
-        $('#overlay-delete').hide();
-        $('#overlay-reactivate').hide();
-    });
+	// re-create reactivation url from hover-ed item and call it
+	$('#overlay-reactivate').click(function ()
+	{
+		var url = "{{ url_for('.reactivate', member_id=id) }}";
+		url = url.substring(0, url.lastIndexOf('/'))+id+url.substring(url.lastIndexOf('/'));
+		$(location).attr('href', url);
+	});
 
-    $.datepicker.setDefaults({'dateFormat': 'yy-mm-dd'});
-    $(".datepicker").datepicker($.datepicker.regional['{{ g.lang }}']);
+	$('#overlay').hover(function()
+	{
+	}, function()
+	{
+		$('#overlay').hide();
+		$('#overlay-delete').hide();
+		$('#overlay-reactivate').hide();
+	});
+
+	$.datepicker.setDefaults({'dateFormat': 'yy-mm-dd'});
+	$(".datepicker").datepicker($.datepicker.regional['{{ g.lang }}']);
+	
 {% endblock %}
 
 {% block sidebar %}
 <div id="sidebar" class="sidebar">
-    <h2>{{ _("Balance") }}</h2>
+	<h2>{{ _("Balance") }}</h2>
 
-    <form action="{{ url_for(".add_member") }}" method="post">
-        {{ forms.add_member(member_form) }}
-    </form>
+	<form action="{{ url_for(".add_member") }}" method="post">
+		{{ forms.add_member(member_form) }}
+	</form>
 
-    <div id="table_overflow">
-    <table class="balance">
-    {% set balance = g.project.balance %}
-    {% for member in g.project.members %}
-    {% if member.activated or balance[member.id] != 0 %}
-    <tr id="{% if member.activated %}delete{% else %}reactivate{% endif %}-{{ member.id }}">
-        <td>{{ member.name }}</td>
-        <td class="{% if balance[member.id] > 0 %}positive{% elif balance[member.id] < 0 %}negative{% endif %}">
-            {% if balance[member.id] > 0 %}+{% endif %}{{ balance[member.id] }}
-        </td>
-    </tr>
-    {% endif %}
-    {% endfor %}
-    </table>
-    </div>
+	<div id="table_overflow">
+	<table class="balance">
+	{% set balance = g.project.balance %}
+	{% for member in g.project.members %}
+	{% if member.activated or balance[member.id] != 0 %}
+	<tr id="{% if member.activated %}delete{% else %}reactivate{% endif %}-{{ member.id }}">
+		<td>{{ member.name }}</td>
+		<td class="{% if balance[member.id] > 0 %}positive{% elif balance[member.id] < 0 %}negative{% endif %}">
+			{% if balance[member.id] > 0 %}+{% endif %}{{ balance[member.id] }}
+		</td>
+	</tr>
+	{% endif %}
+	{% endfor %}
+	</table>
+	</div>
 
 </div>
-    <div id="overlay"></div>
-    <img id="overlay-delete" title="{{ _("delete") }}" src="{{ url_for("static", filename="delete.png") }}">
-    <img id="overlay-reactivate" title="{{ _("reactivate") }}" src="{{ url_for("static", filename="refresh.png") }}">
+	<div id="overlay"></div>
+	<img id="overlay-delete" title="{{ _("delete") }}" src="{{ url_for("static", filename="delete.png") }}">
+	<img id="overlay-reactivate" title="{{ _("reactivate") }}" src="{{ url_for("static", filename="refresh.png") }}">
 {% endblock %}
 
 {% block content %}
 <div class="identifier">{{ _("The project identifier is") }} <a href="{{ url_for(".list_bills") }}">{{ g.project.id }}</a>, {{ _("remember it!") }}</div>
-    <a id="new-bill" href="{{ url_for(".add_bill") }}" class="btn primary">{{ _("Add a new bill") }}</a>
+	<a id="new-bill" href="{{ url_for(".add_bill") }}" class="btn primary">{{ _("Add a new bill") }}</a>
 
-    <form id="bill-form" action="{{ url_for(".add_bill") }}" method="post" style="display: none">
-        <a class="btn primary" id="hide-bill-form" href="#">{{ _("hide this form") }}</a>
-        {{ forms.add_bill(bill_form) }}
-    </form>
+	<form id="bill-form" action="{{ url_for(".add_bill") }}" method="post" style="display: none">
+		<a class="btn primary" id="hide-bill-form" href="#">{{ _("hide this form") }}</a>
+		{{ forms.add_bill(bill_form) }}
+	</form>
 
-    {% if bills.count() > 0 %}
-    <table class="list_bills common-table zebra-striped">
-        <thead><tr><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</th><th>{{ _("For what?") }}</th><th>{{ _("For whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Actions") }}</th></tr></thead>
-    <tbody>
-    {% for bill in bills %}
-    <tr class="{{ loop.cycle("odd", "even") }}">
-            <td>{{ bill.date }}</td>
-            <td>{{ bill.payer }}</td>
-            <td>{{ bill.what }}</td>
-            <td>{% for ower in bill.owers %}{{ ower.name }} {% endfor %}</td>
-            <td>{{ "%0.2f"|format(bill.amount) }} ({{ "%0.2f"|format(bill.pay_each()) }} {{ _("each") }})</td>
-            <td class="bill-actions">
-                <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">
-                    <img src="{{ url_for("static", filename="pen.png") }}" />
-                </a>
-                <a class="delete" href="{{ url_for(".delete_bill", bill_id=bill.id) }}" title="{{ _("delete") }}">
-                    <img src="{{ url_for("static", filename="scissors.png") }}" />
-                </a>
-            </td>
-    </tr>
-    {% endfor %}
-    </tbody>
-    </table>
+	{% if bills.count() > 0 %}
+	<table class="list_bills common-table zebra-striped">
+		<thead><tr><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</th><th>{{ _("For what?") }}</th><th>{{ _("For whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Actions") }}</th></tr></thead>
+	<tbody>
+	{% for bill in bills %}
+	<tr class="{{ loop.cycle("odd", "even") }}">
+			<td>{{ bill.date }}</td>
+			<td>{{ bill.payer }}</td>
+			<td>{{ bill.what }}</td>
+			<td>{% for ower in bill.owers %}{{ ower.name }} {% endfor %}</td>
+			<td>{{ "%0.2f"|format(bill.amount) }} ({{ "%0.2f"|format(bill.pay_each()) }} {{ _("each") }})</td>
+			<td class="bill-actions">
+				<a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">
+					<img src="{{ url_for("static", filename="pen.png") }}" />
+				</a>
+				<a class="delete" href="{{ url_for(".delete_bill", bill_id=bill.id) }}" title="{{ _("delete") }}">
+					<img src="{{ url_for("static", filename="scissors.png") }}" />
+				</a>
+			</td>
+	</tr>
+	{% endfor %}
+	</tbody>
+	</table>
 
-    {% else %}
-    <p>{{ _("Nothing to list yet. You probably want to") }} <a id="empty-new-bill" href="{{ url_for(".add_bill") }}">{{ _("add a bill") }}</a> ?</p>
-    {% endif %}
+	{% else %}
+	<p>{{ _("Nothing to list yet. You probably want to") }} <a id="empty-new-bill" href="{{ url_for(".add_bill") }}">{{ _("add a bill") }}</a> ?</p>
+	{% endif %}
 
 
 
@@ -185,7 +190,7 @@
 
 </div>
 <script>
-        $("#sidebar").height( window.innerHeight-40 );
-        $("#table_overflow").height( $("#sidebar").height()-120 );
+		$("#sidebar").height( window.innerHeight-40 );
+		$("#table_overflow").height( $("#sidebar").height()-120 );
 </script>
 {% endblock %}
