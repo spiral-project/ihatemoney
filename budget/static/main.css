@@ -1,4 +1,4 @@
-    @import "bootstrap-1.0.0.min.css";
+@import "bootstrap-1.0.0.min.css";
 @import url(http://fonts.googleapis.com/css?family=Lobster|Comfortaa);
 @import "jquery/jquery-ui.css";
 
@@ -140,23 +140,6 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
     height: 24px;
 }
 
-#overlay {
-    position:absolute;
-    background-color:#000000;
-    opacity:0.7;
-    display:none;
-    text-align: center;
-}
-
-#overlay-delete, #overlay-reactivate {
-    width: 28px;
-    height: 28px;
-    margin-top: 2px;
-    position:absolute;
-    cursor:pointer;
-    display:none;
-}
-
 .balance-value{
     text-align:right;
 }
@@ -176,4 +159,3 @@ tr.payer_line .balance-name{
     color:green;
     text-indent:5px;
 }
-
