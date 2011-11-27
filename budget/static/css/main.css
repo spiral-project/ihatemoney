@@ -1,6 +1,6 @@
 @import "bootstrap.min.css";
 @import url(http://fonts.googleapis.com/css?family=Lobster|Comfortaa);
-@import "jquery/jquery-ui.css";
+@import "jquery-ui.css";
 
 html, body{
     margin-top: 25px;
@@ -48,7 +48,7 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
     font-family: 'Comfortaa', arial, serif;
     height: 165px;
     padding-top: 15px;
-    background-image: url("gradient.png");
+    background-image: url("images/gradient.png");
     background-position: center top;
     background-repeat: no-repeat;
 }
@@ -135,9 +135,22 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
     text-align: center;
 }
 
-.edit img, .delete img{
+.bill-actions > .delete, .bill-actions > .edit {
+    font-size: 0px;
+    display: block;
+    width: 16px;
     height: 16px;
-    margin-right: 5px;
+    margin: 2px;
+    margin-left: 5px;
+    float: left;
+}
+
+.bill-actions > .delete{
+    background: url('images/delete.png') no-repeat right;
+}
+
+.bill-actions > .edit{
+    background: url('images/edit.png') no-repeat right;
 }
 
 .balance-value{
@@ -174,12 +187,12 @@ tr.payer_line .balance-name{
 }
 
 .delete a, .delete a:hover {
-    background: url('deleter.png') left no-repeat;
+    background: url('images/deleter.png') left no-repeat;
     color: red;
 }
 
 .reactivate a, .reactivate a:hover {
-    background: url('reactivate.png') left no-repeat;
+    background: url('images/reactivate.png') left no-repeat;
     color: white;
 }
 

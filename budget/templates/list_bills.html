@@ -2,11 +2,10 @@
 
 {% block title %}- {{ g.project.name }}{% endblock %}
 {% block head %}
-    <script src="{{ url_for("static", filename="jquery/js/jquery-ui.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/jquery-ui.js") }}"></script>
     {% if g.lang != "en" %}
-    <script src="{{ url_for("static", filename="jquery/i18n/jquery.ui.datepicker-%s.js" % g.lang ) }}"></script>
+    <script src="{{ url_for("static", filename="js/i18n/jquery.ui.datepicker-%s.js" % g.lang ) }}"></script>
     {% endif %}
-    <script src="{{ url_for("static", filename="ihatemoney/custom.js") }}"></script>
 {% endblock %}
 {% block js %}
 
