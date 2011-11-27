@@ -4,3 +4,4 @@ flask-sqlalchemy
 flask-mail
 flask-babel
 flask-rest
+jinja2==2.6
