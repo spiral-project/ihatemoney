@@ -72,10 +72,10 @@
 
 {% endmacro %}
 
-{% macro add_bill(form, edit=False) %}
+{% macro add_bill(form, edit=False, title=True) %}
 
     <fieldset>
-        <legend>{% if edit %}{{ _("Edit this bill") }} {% else %}{{ _("Add a bill") }} {% endif %}</legend>
+        {% if title %}<legend>{% if edit %}{{ _("Edit this bill") }} {% else %}{{ _("Add a bill") }} {% endif %}</legend>{% endif %}
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }} 
     {{ input(form.date, class="datepicker") }} 

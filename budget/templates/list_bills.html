@@ -3,6 +3,7 @@
 {% block title %}- {{ g.project.name }}{% endblock %}
 {% block head %}
     <script src="{{ url_for("static", filename="js/jquery-ui.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/bootstrap-modal.js") }}"></script>
     {% if g.lang != "en" %}
     <script src="{{ url_for("static", filename="js/i18n/jquery.ui.datepicker-%s.js" % g.lang ) }}"></script>
     {% endif %}
@@ -17,26 +18,9 @@
         $("#table_overflow").height( $("#sidebar").height()-120 );
     });
 
-    // display the form when clicking on the "add bill" button
-    var show_form = function(){
-        $('#bill-form').slideDown(100);
-        $("#hide-bill-form").show();
-        $("#new-bill").hide();
-        return false;
-    }
-     
-    // and provide a mechanism to hide it back
-    var hide_form = function(){
-        $("#bill-form").slideUp(100);
-        $("#new-bill").show();
-        $("#hide-bill-form").hide();
-        return false;
-    }
-
-    $('#new-bill').click(show_form);
-    $('#empty-new-bill').click(show_form);
-    $('#hide-bill-form').click(hide_form);
-    $('#cancel-form').click(hide_form);
+    $('#cancel-form').click(function(){
+        $('#bill-form').modal('hide');
+    });
 
     // ask for confirmation before removing an user
     $('.action').each(function(){
@@ -111,12 +95,17 @@
 
 {% block content %}
 <div class="identifier">{{ _("The project identifier is") }} <a href="{{ url_for(".list_bills") }}">{{ g.project.id }}</a>, {{ _("remember it!") }}</div>
-    <a id="new-bill" href="{{ url_for(".add_bill") }}" class="btn primary">{{ _("Add a new bill") }}</a>
+<a id="new-bill" href="{{ url_for(".add_bill") }}" class="btn primary" data-controls-modal="bill-form" data-backdrop="true" data-keyboard="true">{{ _("Add a new bill") }}</a>
 
-    <form id="bill-form" action="{{ url_for(".add_bill") }}" method="post" style="display: none">
-        <a class="btn primary" id="hide-bill-form" href="#">{{ _("hide this form") }}</a>
-        {{ forms.add_bill(bill_form) }}
+    <div id="bill-form" class="modal hide fade">
+        <div class="modal-header">
+            <a href="#" class="close">&times;</a>
+            <h3>{{ _('Add a bill') }}</h3>
+        </div>
+    <form action="{{ url_for(".add_bill") }}" method="post" >
+        {{ forms.add_bill(bill_form, title=False) }}
     </form>
+    </div>
 
     {% if bills.count() > 0 %}
     <table id="bill_table" class="list_bills common-table zebra-striped">
@@ -130,12 +119,8 @@
             <td>{{ bill.owers|join(', ', 'name') }} </td>
             <td>{{ "%0.2f"|format(bill.amount) }} ({{ "%0.2f"|format(bill.pay_each()) }} {{ _("each") }})</td>
             <td class="bill-actions">
-                <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">
-                    <img src="{{ url_for("static", filename="edit.png") }}" />
-                </a>
-                <a class="delete" href="{{ url_for(".delete_bill", bill_id=bill.id) }}" title="{{ _("delete") }}">
-                    <img src="{{ url_for("static", filename="delete.png") }}" />
-                </a>
+                <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">{{ _('edit') }}</a>
+                <a class="delete" href="{{ url_for(".delete_bill", bill_id=bill.id) }}" title="{{ _("delete") }}">{{ _('delete') }}</a>
             </td>
     </tr>
     {% endfor %}
