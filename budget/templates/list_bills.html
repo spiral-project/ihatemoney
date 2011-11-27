@@ -92,9 +92,8 @@
     <div id="table_overflow">
     <table class="balance">
     {% set balance = g.project.balance %}
-    {% for member in g.project.members %}
-    {% if member.activated or balance[member.id] != 0 %}
-<tr id="bal-member-{{ member.id }}">
+    {% for member in g.project.members | sort(attribute='name') if member.activated or balance[member.id] != 0 %}
+    <tr id="bal-member-{{ member.id }}" action={% if member.activated %}delete{% else %}reactivate{% endif %}>
         <td class="balance-name">{{ member.name }}</td>
         <td class="balance-value {% if balance[member.id] > 0 %}positive{% elif balance[member.id] < 0 %}negative{% endif %}">
             {% if balance[member.id] > 0 %}+{% endif %}{{ balance[member.id] }}
@@ -105,7 +104,6 @@
         <td class="action reactivate"> <a href="{{ url_for(".reactivate", member_id=member.id) }}">{{ _("reactivate") }}</a></td>
         {% endif %}
     </tr>
-    {% endif %}
     {% endfor %}
     </table>
     </div>
