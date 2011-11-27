@@ -90,7 +90,7 @@
 
 {% macro add_member(form) %}
     {{ form.hidden_tag() }}
-    {{ form.name(style="width: 141px;") }}
+    {{ form.name(class="menu-input") }}
     <button class="btn">{{ _("Add") }}</button>
 
 {% endmacro %}

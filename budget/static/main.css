@@ -1,9 +1,9 @@
-@import "bootstrap-1.0.0.min.css";
+@import "bootstrap.min.css";
 @import url(http://fonts.googleapis.com/css?family=Lobster|Comfortaa);
 @import "jquery/jquery-ui.css";
 
 html, body{
-    height: 100%;
+    margin-top: 25px;
 }
 
 .topbar h3{ margin-left: 75px; }
@@ -21,9 +21,9 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
     height: 100%;
     width: 230px;
     padding-left: 10px;
-    padding-right: 10px;
+    padding-right: 20px;
     padding-top: 10px;
-    margin-left: -10px;
+    margin-left: -20px;
     margin-top: -10px;
     margin-right: 15px;
     color: black;
@@ -87,6 +87,9 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
     color: #000;
 
 }
+.home {
+    padding-top: 20px;
+}
 
 .home form button{
     float: right;
@@ -128,8 +131,7 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
 }
 
 .bill-actions {
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding-top: 10px;
     text-align: center;
 }
 
@@ -181,6 +183,14 @@ tr.payer_line .balance-name{
     color: white;
 }
 
+.menu-input {
+    width: 131px;
+}
+
 #bill-form > fieldset {
     margin-top: 10px;
+}
+
+.flash {
+    position: absolute;
 }

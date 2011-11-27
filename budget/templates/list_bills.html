@@ -14,7 +14,7 @@
     auto_hide_default_text('#name');
 
     $(window).resize(function() {
-        $("#sidebar").height( window.innerHeight-40 );
+        $("#sidebar").height( window.innerHeight-50 );
         $("#table_overflow").height( $("#sidebar").height()-120 );
     });
 
@@ -83,7 +83,6 @@
 
 {% block sidebar %}
 <div id="sidebar" class="sidebar">
-    <h2>{{ _("Balance") }}</h2>
 
     <form action="{{ url_for(".add_member") }}" method="post">
         {{ forms.add_member(member_form) }}
