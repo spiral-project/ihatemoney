@@ -2,7 +2,7 @@
 from flask import *
 
 from models import db, Project, Person, Bill
-from forms import (ProjectForm, EditProjectForm, MemberForm, BillForm, 
+from forms import (ProjectForm, EditProjectForm, MemberForm, BillForm,
                    get_billform_for)
 from utils import for_all_methods
 
@@ -11,6 +11,7 @@ from werkzeug import Response
 
 
 api = Blueprint("api", __name__, url_prefix="/api")
+
 
 def check_project(*args, **kwargs):
     """Check the request for basic authentication for a given project.
@@ -134,8 +135,8 @@ class BillHandler(object):
 
 project_resource = RESTResource(
     name="project",
-    route="/projects", 
-    app=api, 
+    route="/projects",
+    app=api,
     actions=["add", "update", "delete", "get"],
     handler=ProjectHandler())
 

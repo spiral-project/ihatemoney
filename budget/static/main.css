@@ -130,14 +130,12 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
 .bill-actions {
     padding-top: 2px;
     padding-bottom: 2px;
+    text-align: center;
 }
 
-.edit img {
-    height: 24px;
-}
-
-.delete img {
-    height: 24px;
+.edit img, .delete img{
+    height: 16px;
+    margin-right: 5px;
 }
 
 .balance-value{
@@ -158,4 +156,31 @@ tr.ower_line {
 tr.payer_line .balance-name{
     color:green;
     text-indent:5px;
+}
+
+.action {
+    position: absolute;
+    left: 10px;
+    width: 220px;
+    background: #000 ;
+    opacity: 0.6;
+    text-align: center;
+}
+.action a, .action a:hover {
+    height: 16px;
+    padding-left: 20px;
+}
+
+.delete a, .delete a:hover {
+    background: url('deleter.png') left no-repeat;
+    color: red;
+}
+
+.reactivate a, .reactivate a:hover {
+    background: url('reactivate.png') left no-repeat;
+    color: white;
+}
+
+#bill-form > fieldset {
+    margin-top: 10px;
 }

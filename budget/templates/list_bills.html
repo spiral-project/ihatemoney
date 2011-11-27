@@ -40,9 +40,10 @@
     $('#cancel-form').click(hide_form);
 
     // ask for confirmation before removing an user
-    $('a.remove').each(function(){
+    $('.action').each(function(){
         $(this).hide();
-        $(this).click(function(){
+        var link = $(this).find('a');
+        link.click(function(){
             if ($(this).hasClass("confirm")){
                 return true;
             }
@@ -54,9 +55,9 @@
 
     // display the remove button on mouse over (and hide them per default)
     $('.balance tr').hover(function(){
-        $(this).find('.remove').show();
+        $(this).find('.action').show();
     }, function(){
-        $(this).find('.remove').hide();
+        $(this).find('.action').hide();
     });
 
     $.datepicker.setDefaults({'dateFormat': 'yy-mm-dd'});
@@ -98,7 +99,11 @@
         <td class="balance-value {% if balance[member.id] > 0 %}positive{% elif balance[member.id] < 0 %}negative{% endif %}">
             {% if balance[member.id] > 0 %}+{% endif %}{{ balance[member.id] }}
         </td>
-        <td> {% if member.activated %}<a class="remove" href="{{ url_for(".remove_member", member_id=member.id) }}">{{ _("delete") }}</a>{% else %}<a href="{{ url_for(".reactivate", member_id=member.id) }}">{{ _("reactivate") }}</a>{% endif %}</td>
+        {% if member.activated %}
+        <td class="action delete"> <a href="{{ url_for(".remove_member", member_id=member.id) }}">{{ _("delete") }}</a></td>
+        {% else %}
+        <td class="action reactivate"> <a href="{{ url_for(".reactivate", member_id=member.id) }}">{{ _("reactivate") }}</a></td>
+        {% endif %}
     </tr>
     {% endif %}
     {% endfor %}
@@ -130,7 +135,7 @@
             <td>{{ "%0.2f"|format(bill.amount) }} ({{ "%0.2f"|format(bill.pay_each()) }} {{ _("each") }})</td>
             <td class="bill-actions">
                 <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">
-                    <img src="{{ url_for("static", filename="pen.png") }}" />
+                    <img src="{{ url_for("static", filename="edit.png") }}" />
                 </a>
                 <a class="delete" href="{{ url_for(".delete_bill", bill_id=bill.id) }}" title="{{ _("delete") }}">
                     <img src="{{ url_for("static", filename="delete.png") }}" />

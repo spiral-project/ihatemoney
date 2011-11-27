@@ -18,7 +18,7 @@ are directly handled in the forms module.
 
 Basically, this blueprint takes care of the authentication and provides
 some shortcuts to make your life better when coding (see `pull_project` 
-and `add_project_id` for a quick overview
+and `add_project_id` for a quick overview)
 """
 
 main = Blueprint("main", __name__)
