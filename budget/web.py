@@ -357,3 +357,7 @@ def create_archive():
             flash(_("The data from XX to XX has been archived"))
 
     return render_template("create_archive.html", form=form)
+
+@main.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html", projects=Project.query.all())
