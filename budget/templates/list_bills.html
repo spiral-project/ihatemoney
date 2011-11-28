@@ -22,6 +22,8 @@
         $('#bill-form').modal('hide');
     });
 
+    {% if add_bill %} $('#new-bill').click(); {% endif %}
+
     // ask for confirmation before removing an user
     $('.action').each(function(){
         $(this).hide();

@@ -84,7 +84,10 @@
     {{ input(form.amount) }} 
     {{ input(form.payed_for) }} 
     </fieldset>
-    {{ submit(form.submit, cancel=True) }}
+    <div class="actions">
+        {{ form.submit(class="btn primary") }}
+        {% if not edit %} {{ form.submit2(class="btn") }}{% endif %}
+    </div>
 
 {% endmacro %}
 

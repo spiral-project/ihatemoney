@@ -245,9 +245,11 @@ def list_bills():
     if 'last_selected_payer' in session:
         bill_form.payer.data = session['last_selected_payer']
     bills = g.project.get_bills()
+
     return render_template("list_bills.html", 
             bills=bills, member_form=MemberForm(g.project),
-            bill_form=bill_form
+            bill_form=bill_form,
+            add_bill='add_bill' in request.values
     )
 
 @main.route("/<project_id>/members/add", methods=["GET", "POST"])
@@ -298,7 +300,7 @@ def add_bill():
             db.session.commit()
 
             flash(_("The bill has been added"))
-            return redirect(url_for('.list_bills'))
+            return redirect(url_for('.list_bills', add_bill=form.submit2.data))
 
     return render_template("add_bill.html", form=form)
 

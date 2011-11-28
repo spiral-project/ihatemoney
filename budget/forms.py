@@ -110,7 +110,8 @@ class BillForm(Form):
     amount = CommaDecimalField(_("Amount paid"), validators=[Required()])
     payed_for = SelectMultipleField(_("For whom?"), 
             validators=[Required()], widget=select_multi_checkbox, coerce=int)
-    submit = SubmitField(_("Send the bill"))
+    submit = SubmitField(_("Submit"))
+    submit2 = SubmitField(_("Submit and add a new one"))
 
     def save(self, bill, project):
         bill.payer_id=self.payer.data
