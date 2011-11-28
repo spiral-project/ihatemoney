@@ -7,7 +7,8 @@ html, body{
 }
 
 .topbar h3{ margin-left: 75px; }
-.topbar ul{ padding-left: 75px; }
+ul.menu{ padding-left: 75px; }
+
 div.topbar ul.secondary-nav { padding-right: 75px; }
 .logo{ font-family: 'Lobster', arial, serif; }
 .balance tr td { font-weight: bold; }
