@@ -333,7 +333,9 @@ def edit_bill(bill_id):
         flash(_("The bill has been modified"))
         return redirect(url_for('.list_bills'))
 
-    form.fill(bill)
+    if not form.errors:
+        form.fill(bill)
+
     return render_template("add_bill.html", form=form, edit=True)
 
 @main.route("/lang/<lang>")

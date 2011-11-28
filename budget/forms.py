@@ -117,8 +117,7 @@ class BillForm(Form):
         bill.amount=self.amount.data
         bill.what=self.what.data
         bill.date=self.date.data
-        bill.owers = [Person.query.get(ower, project) 
-                for ower in self.payed_for.data]
+        bill.owers = [Person.query.get(ower, project) for ower in self.payed_for.data]
 
         return bill
 
@@ -127,7 +126,7 @@ class BillForm(Form):
         self.amount.data = bill.amount
         self.what.data = bill.what
         self.date.data = bill.date
-        self.payed_for.data = [str(ower.id) for ower in bill.owers]
+        self.payed_for.data = [int(ower.id) for ower in bill.owers]
 
     def set_default(self):
         self.payed_for.data = self.payed_for.default
