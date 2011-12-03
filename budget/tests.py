@@ -411,6 +411,10 @@ class BudgetTestCase(TestCase):
                 follow_redirects=True)
         self.assertIn("Invalid email address", resp.data)
 
+    def test_dashboard(self):
+        response = self.app.get("/dashboard")
+        self.assertEqual(response.status_code, 200)
+
 
 class APITestCase(TestCase):
     """Tests the API"""
