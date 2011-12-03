@@ -7,8 +7,8 @@
         <tr>
 <td>{{ project.name }}</td><td>{{ project.members | count }}</td><td>{{ project.get_bills().count() }}</td>
 {% if project.has_bills() %}
-<td>{{ project.get_bills()[0].date }}</td>
-<td>{{ project.get_bills()[-1].date }}</td>
+<td>{{ project.get_bills().all()[0].date }}</td>
+<td>{{ project.get_bills().all()[-1].date }}</td>
 {% else %}
 <td></td>
 <td></td>
