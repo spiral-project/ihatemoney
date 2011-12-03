@@ -44,6 +44,10 @@ class Project(db.Model):
 
         return balances
 
+    def has_bills(self):
+        """return if the project do have bills or not"""
+        return self.get_bills().count() != 0
+
     def get_bills(self):
         """Return the list of bills related to this project"""
         return Bill.query.join(Person, Project)\
