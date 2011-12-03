@@ -4,7 +4,16 @@
 <table id="bill_table" class="list_bills common-table zebra-striped">
     <thead><tr><th>{{ _("Project") }}</th><th>{{ _("Number of members") }}</th><th>{{ _("Number of bills") }}</th><th>{{_("Newest bill")}}</th><th>{{_("Oldest bill")}}</th></tr></thead>
     <tbody>{% for project in projects %}
-        <tr><td>{{ project.name }}</td><td>{{ project.members | count }}</td><td>{{ project.get_bills().count() }}</td><td>{{ project.get_bills()[1].date }}</td><td>{{ project.get_bills()[-1].date }}</tr>
+        <tr>
+<td>{{ project.name }}</td><td>{{ project.members | count }}</td><td>{{ project.get_bills().count() }}</td>
+{% if project.has_bills() %}
+<td>{{ project.get_bills()[0].date }}</td>
+<td>{{ project.get_bills()[-1].date }}</td>
+{% else %}
+<td></td>
+<td></td>
+{% endif %}
+</tr>
     {% endfor %}</tbody>
 </table>
 {% endblock %}
