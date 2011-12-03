@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<table id="bill_table" class="list_bills common-table zebra-striped">
+    <thead><tr><th>{{ _("Project") }}</th><th>{{ _("Number of members") }}</th><th>{{ _("Number of bills") }}</th></tr></thead>
+    <tbody>{% for project in projects %}
+        <tr><td>{{ project.name }}</td><td>{{ project.members | count }}</td><td>{{ project.get_bills().count() }}</td></tr>
+    {% endfor %}</tbody>
+</table>
+{% endblock %}
+
