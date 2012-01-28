@@ -214,6 +214,16 @@ class BudgetTestCase(TestCase):
         self.assertEqual(
                 len(models.Project.query.get("randomid").active_members), 1)
 
+    def test_member_delete_method(self):
+        self.post_project("raclette")
+        self.login("raclette")
+
+        # adds a member to this project
+        self.app.post("/raclette/members/add", data={'name': 'alexis' })
+        
+        # try to remove the member using GET method
+        response = self.app.get("/raclette/members/1/delete")
+        self.assertEqual(response.status_code, 405)
 
     def test_demo(self):
         # Test that it is possible to connect automatically by going onto /demo

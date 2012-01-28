@@ -27,7 +27,7 @@
     // ask for confirmation before removing an user
     $('.action').each(function(){
         $(this).hide();
-        var link = $(this).find('a');
+        var link = $(this).find('button');
         link.click(function(){
             if ($(this).hasClass("confirm")){
                 return true;
@@ -83,9 +83,13 @@
             {% if balance[member.id] > 0 %}+{% endif %}{{ balance[member.id] }}
         </td>
         {% if member.activated %}
-        <td class="action delete"> <a href="{{ url_for(".remove_member", member_id=member.id) }}">{{ _("delete") }}</a></td>
+        <td class="action delete">
+            <form action="{{ url_for(".remove_member", member_id=member.id) }}" method="POST">
+                <button type="submit">{{ _("delete") }}</button></form></td>
         {% else %}
-        <td class="action reactivate"> <a href="{{ url_for(".reactivate", member_id=member.id) }}">{{ _("reactivate") }}</a></td>
+        <td class="action reactivate">
+            <form action="{{ url_for(".reactivate", member_id=member.id) }}" method="POST">
+                <button type="submit">{{ _("reactivate") }}</button></form></td>
         {% endif %}
     </tr>
     {% endfor %}
