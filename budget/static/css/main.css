@@ -182,17 +182,22 @@ tr.payer_line .balance-name{
     opacity: 0.6;
     text-align: center;
 }
-.action a, .action a:hover {
-    height: 16px;
-    padding-left: 20px;
+.action form {
+    margin: 0;
+    padding: 0;
+}
+.action button, .action button:hover {
+    width: auto;
+    margin: 0;
+    padding: 0 0 0 20px;
 }
 
-.delete a, .delete a:hover {
+.delete button, .delete button:hover {
     background: url('images/deleter.png') left no-repeat;
     color: red;
 }
 
-.reactivate a, .reactivate a:hover {
+.reactivate button, .reactivate button:hover {
     background: url('images/reactivate.png') left no-repeat;
     color: white;
 }
