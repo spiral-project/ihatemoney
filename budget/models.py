@@ -110,7 +110,7 @@ class Person(db.Model):
     def has_bills(self):
         """return if the user do have bills or not"""
         bills_as_ower_number = db.session.query(billowers)\
-            .filter(billowers.columns.get("bill_id") == self.id)\
+            .filter(billowers.columns.get("person_id") == self.id)\
             .count()
         return bills_as_ower_number != 0 or len(self.bills) != 0
 
