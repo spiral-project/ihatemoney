@@ -185,7 +185,7 @@ def edit_project():
 
     return render_template("edit_project.html", form=form)
 
-@main.route("/<project_id>/delete", methods=["GET"])
+@main.route("/<project_id>/delete", methods=["POST"])
 def remove_project():
     g.project.remove_project()
 
@@ -265,7 +265,7 @@ def add_member():
 
     return render_template("add_member.html", form=form)
 
-@main.route("/<project_id>/members/<member_id>/reactivate", methods=["GET",])
+@main.route("/<project_id>/members/<member_id>/reactivate", methods=["POST"])
 def reactivate(member_id):
     person = Person.query.filter(Person.id == member_id)\
                 .filter(Project.id == g.project.id).all()
@@ -276,7 +276,7 @@ def reactivate(member_id):
     return redirect(url_for(".list_bills"))
 
 
-@main.route("/<project_id>/members/<member_id>/delete", methods=["GET", "POST"])
+@main.route("/<project_id>/members/<member_id>/delete", methods=["POST"])
 def remove_member(member_id):
     member = g.project.remove_member(member_id)
     if member.activated == False:
