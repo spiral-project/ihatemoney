@@ -1,5 +1,5 @@
 @import "bootstrap.min.css";
-@import url(http://fonts.googleapis.com/css?family=Lobster|Comfortaa);
+@import "../fonts/fontfaces.css";
 @import "jquery-ui.css";
 
 html, body{
