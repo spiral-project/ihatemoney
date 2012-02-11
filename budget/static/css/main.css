@@ -1,6 +1,7 @@
 @import "bootstrap.min.css";
 @import "../fonts/fontfaces.css";
 @import "jquery-ui.css";
+@import "jquery.qtip.min.css";
 
 html, body{
     margin-top: 25px;
