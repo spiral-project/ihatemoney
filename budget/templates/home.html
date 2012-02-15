@@ -39,4 +39,25 @@
     </div>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $('form.create #password').qtip({
+            content: '{{ _("This access code will be sent to your friends. It is stored as-is by the server, so don\\'t reuse a personal password here!") }}',
+            show: {
+                event: 'focus'
+            },
+            hide: {
+                event: 'focusout'
+            },
+            position: {
+                my: "bottom center",
+                at: "top center",
+                adjust: {
+                    method: 'shift'
+                }
+               
+            }
+        });
+    });
+</script>
 {% endblock %}
