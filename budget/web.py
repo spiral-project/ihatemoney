@@ -3,6 +3,7 @@ from collections import defaultdict
 from flask import *
 from flaskext.mail import Mail, Message
 from flaskext.babel import get_locale, gettext as _
+from smtplib import SMTPRecipientsRefused
 import werkzeug
 
 # local modules
@@ -142,10 +143,17 @@ def create_project():
             msg = Message(message_title,
                 body=message_body,
                 recipients=[project.contact_email])
-            mail.send(msg)
+            try:
+                mail.send(msg)
+            except SMTPRecipientsRefused:
+                msg_compl = 'Problem sending mail. '
+                # TODO: destroy the project and cancel instead?
+            else:
+                msg_compl = ''
 
             # redirect the user to the next step (invite)
-            flash(_("The project identifier is %(project)s", project=project.id))
+            flash(_("%(msg_compl)sThe project identifier is %(project)s",
+                msg_compl=msg_compl, project=project.id))
             return redirect(url_for(".invite", project_id=project.id))
 
     return render_template("create_project.html", form=form)
