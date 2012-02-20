@@ -17,7 +17,7 @@ Contains all the interaction logic with the end user (except forms which
 are directly handled in the forms module.
 
 Basically, this blueprint takes care of the authentication and provides
-some shortcuts to make your life better when coding (see `pull_project` 
+some shortcuts to make your life better when coding (see `pull_project`
 and `add_project_id` for a quick overview)
 """
 
@@ -65,11 +65,11 @@ def authenticate(project_id=None):
     form = AuthenticationForm()
     if not form.id.data and request.args.get('project_id'):
         form.id.data = request.args['project_id']
-    project_id = form.id.data 
+    project_id = form.id.data
     project = Project.query.get(project_id)
     create_project = False # We don't want to create the project by default
     if not project:
-        # But if the user try to connect to an unexisting project, we will 
+        # But if the user try to connect to an unexisting project, we will
         # propose him a link to the creation form.
         if request.method == "POST":
             form.validate()
@@ -98,14 +98,14 @@ def authenticate(project_id=None):
                     setattr(g, 'project', project)
                     return redirect(url_for(".list_bills"))
 
-    return render_template("authenticate.html", form=form, 
+    return render_template("authenticate.html", form=form,
             create_project=create_project)
 
 @main.route("/")
 def home():
     project_form = ProjectForm()
     auth_form = AuthenticationForm()
-    return render_template("home.html", project_form=project_form, 
+    return render_template("home.html", project_form=project_form,
             auth_form=auth_form, session=session)
 
 @main.route("/create", methods=["GET", "POST"])
@@ -133,14 +133,14 @@ def create_project():
 
             # send reminder email
             g.project = project
-            
+
             message_title = _("You have just created '%(project)s' to share your expenses",
                     project=g.project.name)
 
             message_body = render_template("reminder_mail.%s" % get_locale().language)
 
-            msg = Message(message_title, 
-                body=message_body, 
+            msg = Message(message_title,
+                body=message_body,
                 recipients=[project.contact_email])
             mail.send(msg)
 
@@ -159,9 +159,9 @@ def remind_password():
             project = Project.query.get(form.id.data)
 
             # send the password reminder
-            mail.send(Message("password recovery", 
+            mail.send(Message("password recovery",
                 body=render_template("password_reminder.%s" % get_locale().language,
-                    project=project), 
+                    project=project),
                 recipients=[project.contact_email]))
             flash(_("a mail has been sent to you with the password"))
 
@@ -207,7 +207,7 @@ def demo():
     """
     project = Project.query.get("demo")
     if not project:
-        project = Project(id="demo", name=u"demonstration", password="demo", 
+        project = Project(id="demo", name=u"demonstration", password="demo",
                 contact_email="demo@notmyidea.org")
         db.session.add(project)
         db.session.commit()
@@ -220,17 +220,17 @@ def invite():
 
     form = InviteForm()
 
-    if request.method == "POST": 
+    if request.method == "POST":
         if form.validate():
             # send the email
 
             message_body = render_template("invitation_mail.%s" % get_locale().language)
 
-            message_title = _("You have been invited to share your expenses for %(project)s", 
+            message_title = _("You have been invited to share your expenses for %(project)s",
                     project=g.project.name)
-            msg = Message(message_title, 
-                body=message_body, 
-                recipients=[email.strip() 
+            msg = Message(message_title,
+                body=message_body,
+                recipients=[email.strip()
                     for email in form.emails.data.split(",")])
             mail.send(msg)
             flash(_("Your invitations have been sent"))
@@ -246,7 +246,7 @@ def list_bills():
         bill_form.payer.data = session['last_selected_payer']
     bills = g.project.get_bills()
 
-    return render_template("list_bills.html", 
+    return render_template("list_bills.html",
             bills=bills, member_form=MemberForm(g.project),
             bill_form=bill_form,
             add_bill=request.values.get('add_bill', False)
@@ -359,7 +359,7 @@ def compute_bills():
 
 @main.route("/<project_id>/archives/create")
 def create_archive():
-    form = CreateArchiveForm() 
+    form = CreateArchiveForm()
     if request.method == "POST":
         if form.validate():
             pass
