@@ -1,9 +1,9 @@
+from flask import Flask, g, request, session
+from flaskext.babel import Babel
+
 from web import main, db, mail
 from api import api
-import os
 
-from flask import *
-from flaskext.babel import Babel
 
 app = Flask(__name__)
 app.config.from_object("default_settings")
