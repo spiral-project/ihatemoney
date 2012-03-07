@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
-from flask import *
+from flask import Blueprint, request
+from flask_rest import RESTResource, need_auth
 
 from models import db, Project, Person, Bill
-from forms import (ProjectForm, EditProjectForm, MemberForm, BillForm,
+from forms import (ProjectForm, EditProjectForm, MemberForm,
                    get_billform_for)
-from utils import for_all_methods
-
-from flask_rest import RESTResource, need_auth
-from werkzeug import Response
 
 
 api = Blueprint("api", __name__, url_prefix="/api")
