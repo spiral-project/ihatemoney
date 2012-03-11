@@ -54,7 +54,10 @@
     <h3><a class="logo" href="{{ url_for(".home") }}">#! money?</a></h3>
     {% if g.project %}
     <ul class="menu">
+    {% block navbar %}
         <li class="active"><a href="{{ url_for(".list_bills") }}">{{ _("Bills") }}</a></li>
+        <li><a href="{{ url_for(".settle_bill") }}">{{ _("Settle") }}</a></li>
+    {% endblock %}
     </ul>
     <ul class="nav secondary-nav">
       <li class="menu">
