@@ -214,6 +214,31 @@ class BudgetTestCase(TestCase):
         self.assertEqual(
                 len(models.Project.query.get("randomid").active_members), 1)
 
+    def test_person_model(self):
+        self.post_project("raclette")
+        self.login("raclette")
+
+        # adds a member to this project
+        self.app.post("/raclette/members/add", data={'name': 'alexis' })
+        alexis = models.Project.query.get("raclette").members[-1]
+
+        # should not have any bills
+        self.assertFalse(alexis.has_bills())
+    
+        # bound him to a bill
+        self.app.post("/raclette/add", data={
+            'date': '2011-08-10',
+            'what': u'fromage à raclette',
+            'payer': alexis.id,
+            'payed_for': [alexis.id,],
+            'amount': '25',
+        })
+        
+        # should have a bill now
+        alexis = models.Project.query.get("raclette").members[-1]
+        self.assertTrue(alexis.has_bills())
+    
+        
     def test_member_delete_method(self):
         self.post_project("raclette")
         self.login("raclette")
