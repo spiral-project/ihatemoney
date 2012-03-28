@@ -8,10 +8,13 @@ from sqlalchemy import orm
 
 db = SQLAlchemy()
 
+
 # define models
+
+
 class Project(db.Model):
 
-    _to_serialize = ("id", "name", "password", "contact_email", 
+    _to_serialize = ("id", "name", "password", "contact_email",
             "members", "active_members", "balance")
 
     id = db.Column(db.String, primary_key=True)
@@ -28,25 +31,27 @@ class Project(db.Model):
     @property
     def balance(self):
 
-        balances, should_pay, should_receive = defaultdict(int), defaultdict(int), defaultdict(int)
+        balances, should_pay, should_receive = (defaultdict(int)
+            for time in (1, 2, 3))
 
         # for each person
         for person in self.members:
             # get the list of bills he has to pay
             bills = Bill.query.filter(Bill.owers.contains(person))
             for bill in bills.all():
-                if person != bill.payer: 
+                if person != bill.payer:
                     should_pay[person] += bill.pay_each()
                     should_receive[bill.payer] += bill.pay_each()
 
         for person in self.members:
-            balances[person.id] = round(should_receive[person] - should_pay[person], 2)
+            balance = should_receive[person] - should_pay[person]
+            balances[person.id] = round(balance, 2)
 
         return balances
 
     def has_bills(self):
         """return if the project do have bills or not"""
-        return self.get_bills().count() != 0
+        return self.get_bills().count() > 0
 
     def get_bills(self):
         """Return the list of bills related to this project"""
@@ -95,7 +100,6 @@ class Person(db.Model):
             return Person.query.filter(Person.id == id)\
                 .filter(Project.id == project.id).one()
 
-
     query_class = PersonQuery
 
     _to_serialize = ("id", "name", "activated")
@@ -125,6 +129,7 @@ billowers = db.Table('billowers',
     db.Column('bill_id', db.Integer, db.ForeignKey('bill.id')),
     db.Column('person_id', db.Integer, db.ForeignKey('person.id')),
 )
+
 
 class Bill(db.Model):
 
@@ -168,6 +173,7 @@ class Bill(db.Model):
     def __repr__(self):
         return "<Bill of %s from %s for %s>" % (self.amount,
                 self.payer, ", ".join([o.name for o in self.owers]))
+
 
 class Archive(db.Model):
     id = db.Column(db.Integer, primary_key=True)
