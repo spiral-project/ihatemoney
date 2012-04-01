@@ -1,7 +1,9 @@
  # -*- coding: utf-8 -*-
-import os
-import tempfile
-import unittest2 as unittest
+try:
+    import unittest2 as unittest
+except ImportError:
+    import unittest  # NOQA
+
 import base64
 import json
 
@@ -10,13 +12,14 @@ from flask import session
 import run
 import models
 
+
 class TestCase(unittest.TestCase):
 
     def setUp(self):
         run.app.config['TESTING'] = True
 
         run.app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///memory"
-        run.app.config['CSRF_ENABLED'] = False # simplify the tests
+        run.app.config['CSRF_ENABLED'] = False  # simplify the tests
         self.app = run.app.test_client()
 
         models.db.init_app(run.app)
@@ -50,6 +53,7 @@ class TestCase(unittest.TestCase):
         models.db.session.add(models.Project(id=name, name=unicode(name),
             password=name, contact_email="%s@notmyidea.org" % name))
         models.db.session.commit()
+
 
 class BudgetTestCase(TestCase):
 
