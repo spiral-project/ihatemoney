@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <script src="{{ url_for("static", filename="js/jquery-ui.js") }}"></script>
+    {% if g.lang != "en" %}
+    <script src="{{ url_for("static", filename="js/i18n/jquery.ui.datepicker-%s.js" % g.lang ) }}"></script>
+    {% endif %}
+{% endblock %}
+{% block js %}
+    $('#cancel-form').click(function(){location.href={{ url_for(".list_bills") }};});
+    $.datepicker.setDefaults({'dateFormat': 'yy-mm-dd'});
+    $(".datepicker").datepicker($.datepicker.regional['{{ g.lang }}']);
+
+{% endblock %}
+{% block navbar %}
+    <li><a href="{{ url_for(".list_bills") }}">{{ _("Bills") }}</a></li>
+    <li class="active"><a href="{{ url_for(".settle_bill") }}">{{ _("Settle") }}</a></li>
+{% endblock %}
+
+
+{% block content %}
+    <table id="bill_table" class="split_bills common-table zebra-striped">
+        <thead><tr><th>{{ _("Who pays?") }}</th><th>{{ _("To whom?") }}</th><th>{{ _("How much?") }}</th></tr></thead>
+    <tbody>
+    {% for bill in bills %}
+    <tr class="{{ loop.cycle("odd", "even") }}" owers={{bill.owers|join(',','id')}} payer={{bill.payer.id}}>
+            <td>{{ bill.ower }}</td>
+            <td>{{ bill.payer }}</td>
+            <td>{{ "%0.2f"|format(bill.amount) }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+{% endblock %}
