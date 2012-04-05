@@ -14,7 +14,7 @@ creation of this budget management project and we will send them an email for yo
 <p>{{ _("If you prefer, you can") }} <a href="{{ url_for(".list_bills") }}">{{ _("skip this step") }}</a> {{ _("and notify them yourself") }}</p>
 
 {% include "display_errors.html" %}
-<form class="invites" method="post" accept-charset="utf-8">
+<form class="invites form-horizontal" method="post" accept-charset="utf-8">
     {{ forms.invites(form) }}
 </form>
 {% endblock %}

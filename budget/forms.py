@@ -153,8 +153,7 @@ class BillForm(Form):
 
 class MemberForm(Form):
 
-    name = TextField(_("Name"), validators=[Required()],
-        default=_("Type user name here"))
+    name = TextField(_("Name"), validators=[Required()])
     submit = SubmitField(_("Add"))
 
     def __init__(self, project, *args, **kwargs):

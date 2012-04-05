@@ -1,17 +1,51 @@
 @import "bootstrap.min.css";
+@import "datepicker.css";
 @import "../fonts/fontfaces.css";
-@import "jquery-ui.css";
-@import "jquery.qtip.min.css";
 
-html, body{
-    margin-top: 25px;
+/* General */
+
+body {
+    margin-top: 40px;
 }
 
-.topbar h3{ margin-left: 75px; }
-ul.menu{ padding-left: 75px; }
+/* Navbar */
 
-div.topbar ul.secondary-nav { padding-right: 75px; }
-.logo{ font-family: 'Lobster', arial, serif; }
+.navbar h1{ margin-left: 75px; }
+.navbar .primary-nav { padding-left: 75px; }
+.navbar .secondary-nav { padding-right: 75px; }
+.brand{ font-family: 'Lobster', arial, serif; }
+
+/* Header */
+
+#header {
+    padding-bottom: 2em;
+    margin-bottom: 1em;
+    background-color: #ABE128;
+    background-image: url("../images/gradient.png");
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+#header h2 {
+    font-family: 'Comfortaa', arial, serif;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    color: #000;
+    font-size: 2.4em;
+}
+
+#header .tryout {
+    margin-right: 10em;
+}
+
+#header .additional-content {
+    margin-top: 5em;
+    font-family: 'Comfortaa', arial, serif;
+    color: #000;
+}
+
+/* Sidebar */
+
 .balance tr td { font-weight: bold; }
 .positive { color: green; }
 .negative { color: red; }
@@ -31,76 +65,29 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
     color: black;
     position: fixed;
 }
-.sidebar h2 { text-align: center; }
-.sidebar button { margin-top: 10px; width: 75px;}
+
+#add-member-form { padding-top: 1em; padding-bottom: 1em; }
+#add-member-form input[type="text"] { width: 60%; }
+#add-member-form button { width: 35%; }
 
 #table_overflow { overflow-y: auto; overflow-x: hidden; width: 235px; }
 
-.right h3 { float: right; }
-#bills { color: black; }
+/* Content */
 
-#header{ 
-    margin-top: -40px;
-    background-color: #ABE128; 
-    height: 180px; 
-    padding: 50px 0 0 0;
+.content {
+    padding-top: 1em;
+    padding-left: 250px;
 }
 
-#header .slide {
-    font-family: 'Comfortaa', arial, serif;
-    height: 165px;
-    padding-top: 15px;
-    background-image: url("images/gradient.png");
-    background-position: center top;
-    background-repeat: no-repeat;
-}
+/* Home */
 
-#header .slide {
-    width: 750px;
-    margin: 0 auto;
-}
-
-#header .slide h1{
-    margin-bottom: 30px;
-    color: #000;
-}
-#header .slide .about_link:hover {
-    color: #ABE128;
-}
-
-#header .slide .about_link {
-    margin-left: 220px;
-    padding: 7px 15px;
-    background-color: #222;
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    color: white;
-    text-decoration: none;
-    display: inline;
-}
-
-#header .additional-content{
-    font-family: 'Comfortaa', arial, serif;
-    float: right;
-    position: relative;
-    top: -150px;
-    margin-right: 200px;
-    margin-bottom: -100px;
-    color: #000;
-
-}
-.home {
-    padding-top: 20px;
-}
-
-.home form button{
-    float: right;
-    margin-right: 100px;
-}
-.home .create h3{
+#authentication-form legend {
     text-align: right;
-    margin-right: 100px;
 }
+
+/* Other */
+
+#bills { color: black; }
 
 .invites textarea{
     width: 800px;
@@ -148,26 +135,23 @@ div.topbar ul.secondary-nav { padding-right: 75px; }
 }
 
 .bill-actions > .delete{
-    background: url('images/delete.png') no-repeat right;
+    background: url('../images/delete.png') no-repeat right;
 }
 
 .bill-actions > .edit{
-    background: url('images/edit.png') no-repeat right;
+    background: url('../images/edit.png') no-repeat right;
 }
 
-.balance-value{
+.balance .balance-value{
     text-align:right;
 }
 
+#sidebar .balance tr:hover td {
+    background-color: #9BD118;
+}
+
 tr.ower_line {
-    /* Fallback for web browsers that doesn't support RGBa */
-    background: rgb(255, 255, 255) transparent;
-    /* RGBa with 0.6 opacity */
-    background: rgba(255, 255, 255, 0.4);
-    /* For IE 5.5 - 7*/
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#66FFFFFF, endColorstr=#66FFFFFF);
-    /* For IE 8*/
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#66FFFFFF, endColorstr=#66FFFFFF)";
+    background-color: #CBEF68;
 }
 
 tr.payer_line .balance-name{
@@ -176,37 +160,27 @@ tr.payer_line .balance-name{
 }
 
 .action {
-    position: absolute;
-    left: 10px;
-    width: 220px;
-    background: #000 ;
-    opacity: 0.6;
-    text-align: center;
-}
-.action form {
     margin: 0;
     padding: 0;
 }
+
 .action button, .action button:hover {
+    border-width: 0;
     width: auto;
     margin: 0;
     padding: 0 0 0 20px;
 }
 
 .delete button, .delete button:hover {
-    background: url('images/deleter.png') left no-repeat;
+    background: url('../images/deleter.png') left no-repeat;
     color: red;
 }
 
 .reactivate button, .reactivate button:hover {
-    background: url('images/reactivate.png') left no-repeat;
+    background: url('../images/reactivate.png') left no-repeat;
     color: white;
 }
-
-.menu-input {
-    width: 131px;
-}
-
+    
 #bill-form > fieldset {
     margin-top: 10px;
 }
@@ -214,3 +188,20 @@ tr.payer_line .balance-name{
 .flash {
     position: absolute;
 }
+
+/* Fluid Offsets for Boostrap */
+
+.row-fluid > [class*="span"]:not([class*="offset"]):first-child{margin-left:0;}
+.row-fluid > .offset12{margin-left:100%;}
+.row-fluid > .offset11{margin-left:93.5%;}
+.row-fluid > .offset10{margin-left:85%;}
+.row-fluid > .offset9{margin-left:76.5%;}
+.row-fluid > .offset8{margin-left:68%;}
+.row-fluid > .offset7{margin-left:59.5%;}
+.row-fluid > .offset6{margin-left:51%;}
+.row-fluid > .offset5{margin-left:42.5%;}
+.row-fluid > .offset4{margin-left:34%;}
+.row-fluid > .offset3{margin-left:25.5%;}
+.row-fluid > .offset2{margin-left:17%;}
+.row-fluid > .offset1{margin-left:8.5%;}
+

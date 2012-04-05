@@ -1,30 +1,29 @@
 {% macro input(field, multiple=False, class=None) -%}
-      <div class="clearfix">
-
-        {% if field.type != "SubmitField" %}
-            {{ field.label }}
+    <div class="control-group">
+    {% if field.type != "SubmitField" %}
+        {{ field.label(class="control-label") }}
+    {% endif %}
+        <div class="controls">
+        {% if multiple == True %}
+            {{ field(multiple=True, class=class) }}
+        {% else %}
+            {{ field(class=class) | safe }}
         {% endif %}
-        <div class="input">
-            {% if multiple == True %}
-                {{ field(multiple=True, class=class) }}
-            {% else %}
-                {{ field(class=class) | safe }}
-            {% endif %}
-            {% if field.description %}
-                <span class="help-inline">{{ field.description }}</span>
-            {% endif %}
+        {% if field.description %}
+            <p class="help-inline">{{ field.description }}</p>
+        {% endif %}
         </div>
-      </div> <!-- /clearfix -->
+    </div>
 {% endmacro %}
 
 {% macro submit(field, cancel=False, home=False) -%}
     <div class="actions">
-        <button type="submit" class="btn primary">{{ field.name }}</button>
+        <button type="submit" class="btn btn-primary">{{ field.name }}</button>
         {% if home %}
         <a href="{{ url_for(".remind_password") }}">{{ _("Can't remember the password?") }}</a>
         {% endif %}
         {% if cancel %}
-        <button id="cancel-form" type="reset" class="btn">{{ _("Cancel") }}</button>
+        <button type="reset" class="btn">{{ _("Cancel") }}</button>
         {% endif %}
       </div>
 {% endmacro %}
@@ -66,7 +65,7 @@
     {{ input(form.password) }}
     {{ input(form.contact_email) }}
     <div class="actions">
-        <button class="btn primary">{{ _("Edit the project") }}</button>
+        <button class="btn btn-primary">{{ _("Edit the project") }}</button>
         <a id="delete-project" style="color:red; margin-left:10px; cursor:pointer; ">{{ _("delete") }}</a>
     </div>
 
@@ -85,24 +84,22 @@
     {{ input(form.payed_for) }} 
     </fieldset>
     <div class="actions">
-        {{ form.submit(class="btn primary") }}
+        {{ form.submit(class="btn btn-primary") }}
         {% if not edit %} {{ form.submit2(class="btn") }}{% endif %}
     </div>
 
 {% endmacro %}
 
 {% macro add_member(form) %}
-    {{ form.hidden_tag() }}
-    {{ form.name(class="menu-input") }}
-    <button class="btn">{{ _("Add") }}</button>
-
+{{ form.hidden_tag() }}
+{{ form.name(placeholder=_("Type user name here")) }}<button class="btn">{{ _("Add") }}</button>
 {% endmacro %}
 
 {% macro invites(form) %}
     {{ form.hidden_tag() }}
     {{ input(form.emails) }}
     <div class="actions">
-        <button class="btn primary">{{ _("Send the invitations") }}</button>
+        <button class="btn btn-primary">{{ _("Send the invitations") }}</button>
         <a href="{{ url_for(".list_bills") }}">{{ _("No, thanks") }}</a>
     </div>
 {% endmacro %}
