@@ -1,25 +1,14 @@
 {% extends "layout.html" %}
 
-{% block title %}- {{ g.project.name }}{% endblock %}
+{% block title %} - {{ g.project.name }}{% endblock %}
 {% block head %}
-    <script src="{{ url_for("static", filename="js/jquery-ui.js") }}"></script>
-    <script src="{{ url_for("static", filename="js/bootstrap-modal.js") }}"></script>
-    {% if g.lang != "en" %}
-    <script src="{{ url_for("static", filename="js/i18n/jquery.ui.datepicker-%s.js" % g.lang ) }}"></script>
-    {% endif %}
+    <script src="{{ url_for("static", filename="js/bootstrap-datepicker.js") }}"></script>
 {% endblock %}
 {% block js %}
-
-    // specifies that the text in #name text field has to be hidden on user typing
-    auto_hide_default_text('#name');
 
     $(window).resize(function() {
         $("#sidebar").height( window.innerHeight-50 );
         $("#table_overflow").height( $("#sidebar").height()-120 );
-    });
-
-    $('#cancel-form').click(function(){
-        $('#bill-form').modal('hide');
     });
 
     {% if add_bill %} $('#new-bill').click(); {% endif %}
@@ -45,10 +34,13 @@
         $(this).find('.action').hide();
     });
 
-    $.datepicker.setDefaults({'dateFormat': 'yy-mm-dd'});
-    $(".datepicker").datepicker($.datepicker.regional['{{ g.lang }}']);
-    
-    
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+        weekStart: 1,
+        autoclose: true,
+        language: '{{ g.lang }}'
+    });
+
     var highlight_owers = function(){
         var ower_ids = $(this).attr("owers").split(',');
         var payer_id = $(this).attr("payer");
@@ -69,28 +61,28 @@
 {% block sidebar %}
 <div id="sidebar" class="sidebar">
 
-    <form action="{{ url_for(".add_member") }}" method="post">
+    <form id="add-member-form" action="{{ url_for(".add_member") }}" method="post" class="form-inline input-append">
         {{ forms.add_member(member_form) }}
     </form>
 
     <div id="table_overflow">
-    <table class="balance">
+    <table class="balance table">
     {% set balance = g.project.balance %}
     {% for member in g.project.members | sort(attribute='name') if member.activated or balance[member.id] != 0 %}
     <tr id="bal-member-{{ member.id }}" action={% if member.activated %}delete{% else %}reactivate{% endif %}>
         <td class="balance-name">{{ member.name }}</td>
+        {% if member.activated %}
+        <td>
+            <form class="action delete" action="{{ url_for(".remove_member", member_id=member.id) }}" method="POST">
+                <button type="submit">{{ _("delete") }}</button></form></td>
+        {% else %}
+        <td>
+            <form class="action reactivate" action="{{ url_for(".reactivate", member_id=member.id) }}" method="POST">
+                <button type="submit">{{ _("reactivate") }}</button></form></td>
+        {% endif %}
         <td class="balance-value {% if balance[member.id] > 0 %}positive{% elif balance[member.id] < 0 %}negative{% endif %}">
             {% if balance[member.id] > 0 %}+{% endif %}{{ balance[member.id] }}
         </td>
-        {% if member.activated %}
-        <td class="action delete">
-            <form action="{{ url_for(".remove_member", member_id=member.id) }}" method="POST">
-                <button type="submit">{{ _("delete") }}</button></form></td>
-        {% else %}
-        <td class="action reactivate">
-            <form action="{{ url_for(".reactivate", member_id=member.id) }}" method="POST">
-                <button type="submit">{{ _("reactivate") }}</button></form></td>
-        {% endif %}
     </tr>
     {% endfor %}
     </table>
@@ -101,20 +93,20 @@
 
 {% block content %}
 <div class="identifier">{{ _("The project identifier is") }} <a href="{{ url_for(".list_bills") }}">{{ g.project.id }}</a>, {{ _("remember it!") }}</div>
-<a id="new-bill" href="{{ url_for(".add_bill") }}" class="btn primary" data-controls-modal="bill-form" data-backdrop="true" data-keyboard="true">{{ _("Add a new bill") }}</a>
+<a href="{{ url_for(".add_bill") }}" class="btn btn-primary" data-toggle="modal" data-target="#bill-form">{{ _("Add a new bill") }}</a>
 
-    <div id="bill-form" class="modal hide fade">
+    <div id="bill-form" class="modal hide">
         <div class="modal-header">
-            <a href="#" class="close">&times;</a>
+            <a href="#" class="close" data-dismiss="modal">&times;</a>
             <h3>{{ _('Add a bill') }}</h3>
         </div>
-    <form action="{{ url_for(".add_bill") }}" method="post" >
-        {{ forms.add_bill(bill_form, title=False) }}
-    </form>
+        <form action="{{ url_for(".add_bill") }}" method="post" class="modal-body form-horizontal">
+            {{ forms.add_bill(bill_form, title=False) }}
+        </form>
     </div>
 
     {% if bills.count() > 0 %}
-    <table id="bill_table" class="list_bills common-table zebra-striped">
+    <table id="bill_table" class="table table-striped">
         <thead><tr><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</th><th>{{ _("For what?") }}</th><th>{{ _("For whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Actions") }}</th></tr></thead>
     <tbody>
     {% for bill in bills %}
@@ -134,12 +126,6 @@
     </table>
 
     {% else %}
-    <p>{{ _("Nothing to list yet. You probably want to") }} <a id="empty-new-bill" href="{{ url_for(".add_bill") }}">{{ _("add a bill") }}</a> ?</p>
+    <p>{{ _("Nothing to list yet. You probably want to") }} <a href="{{ url_for(".add_bill") }}" data-toggle="modal" data-target="#bill-form">{{ _("add a bill") }}</a> ?</p>
     {% endif %}
-</div>
-<script>
-        $("#sidebar").height( window.innerHeight-40 );
-        $("#table_overflow").height( $("#sidebar").height()-120 );
-        
-</script>
 {% endblock %}

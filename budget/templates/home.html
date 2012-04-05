@@ -1,63 +1,56 @@
 {% extends "layout.html" %}
 
 
-{% block sidebar_wrapper %}{% endblock %}
-
 {% block header %}
-<div id="header">
-    <div class="slide">
-        <h1><span>{{ _("Manage your shared <br>expenses, easily") }}</span></h1>
-        <a href="{{ url_for(".demo") }}" class="about_link">{{ _("Try out the demo")  }}</a>
+<div id="header" class="container-fluid">
+    <div class="row-fluid">
+        <div class="span5 offset2">
+            <h2>{{ _("Manage your shared <br>expenses, easily") }}</h2>
+            <a href="{{ url_for(".demo") }}" class="tryout btn btn-inverse pull-right">{{ _("Try out the demo")  }}</a>
+        </div>
+        <div class="span4">
+            <p class="additional-content">{{ _("You're sharing a house?") }}<br /> {{ _("Going on holidays with friends?") }}<br /> {{ _("Simply sharing money with others?") }} <br /><strong>{{ _("We can help!") }}</strong></p>
+        </div>
     </div>
-    <div class="additional-content">
-        <p>{{ _("You're sharing a house?") }}<br /> {{ _("Going on holidays with friends?") }}<br /> {{ _("Simply sharing money with others?") }} <br /><strong>{{ _("We can help!") }}</strong></p>
-    </div>
-
 </div>
 {% endblock %}
 
-{% block container %}
+{% block body %}
 <div class="container-fluid">
-    <div class="content home">
-
-      <div class="row">
-        <div class="span8 columns">
-            <form action="{{ url_for(".authenticate") }}" method="post">
-                <h3>{{ _("Log to an existing project") }}...</h3>
-                {{ forms.authenticate(auth_form, home=True) }}
-                <button class="btn">{{ _("log in") }}</button>
-                <a class="password-reminder" href="{{ url_for(".remind_password") }}">{{ _("can't remember your password?") }}</a>
+    <div class="row-fluid home">
+        <div class="span4 offset2">
+            <form id="authentication-form" class="form-horizontal" action="{{ url_for(".authenticate") }}" method="post">
+                <fieldset>
+                    <legend>{{ _("Log to an existing project") }}...</legend>
+                    {{ forms.authenticate(auth_form, home=True) }}
+                </fieldset>
+                <div class="controls">
+                    <button class="btn" type="submit">{{ _("log in") }}</button>
+                    <a class="password-reminder" href="{{ url_for(".remind_password") }}">{{ _("can't remember your password?") }}</a>
+                </div>
             </form>
         </div>
-        <div class="span8 columns">
-            <form class="create" action="{{ url_for(".create_project") }}" method="post">
-                <h3>...{{ _("or create a new one") }}</h3>
-                {{ forms.create_project(project_form, home=True) }}
-                <button class="btn">{{ _("let's get started") }}</button>
+        <div class="span4">
+            <form id="creation-form" class="form-horizontal" action="{{ url_for(".create_project") }}" method="post">
+                <fieldset>
+                    <legend>...{{ _("or create a new one") }}</legend>
+                    {{ forms.create_project(project_form, home=True) }}
+                </fieldset>
+                <div class="controls">
+                    <button class="btn" type="submit">{{ _("let's get started") }}</button>
+                </div>
             </form>
         </div>
-    </div>
     </div>
 </div>
-<script>
-    $(document).ready(function(){
-        $('form.create #password').qtip({
-            content: '{{ _("This access code will be sent to your friends. It is stored as-is by the server, so don\\'t reuse a personal password here!") }}',
-            show: {
-                event: 'focus'
-            },
-            hide: {
-                event: 'focusout'
-            },
-            position: {
-                my: "bottom center",
-                at: "top center",
-                adjust: {
-                    method: 'shift'
-                }
-               
-            }
-        });
-    });
-</script>
+{% endblock %}
+
+{% block js %}
+
+$('#creation-form #password').tooltip({
+    title: '{{ _("This access code will be sent to your friends. It is stored as-is by the server, so don\\'t reuse a personal password!") }}',
+    trigger: 'focus',
+    placement: 'right'
+});
+
 {% endblock %}

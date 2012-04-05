@@ -7,7 +7,7 @@
 to") }} <a href="{{ url_for(".create_project", project_id=create_project) }}">{{ _("create it") }}</a>{{ _("?") }}
 </p>
 {% endif %}
-<form action="" method="POST" accept-charset="utf-8">
+<form class="form-horizontal" method="POST" accept-charset="utf-8">
     {{ forms.authenticate(form) }}
 </form>
 {% endblock %}
