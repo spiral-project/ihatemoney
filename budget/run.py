@@ -1,5 +1,6 @@
 from flask import Flask, g, request, session
 from flaskext.babel import Babel
+from raven.contrib.flask import Sentry
 
 from web import main, db, mail
 from api import api
@@ -21,6 +22,9 @@ mail.init_app(app)
 
 # translations
 babel = Babel(app)
+
+# sentry
+sentry = Sentry(app)
 
 @babel.localeselector
 def get_locale():
