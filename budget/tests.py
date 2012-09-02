@@ -68,8 +68,8 @@ class BudgetTestCase(TestCase):
             self.login("raclette")
 
             self.post_project("raclette")
-            self.app.post("/raclette/invite", data=
-                    {"emails": 'alexis@notmyidea.org'})
+            self.app.post("/raclette/invite",
+                          data={"emails": 'alexis@notmyidea.org'})
 
             self.assertEqual(len(outbox), 2)
             self.assertEqual(outbox[0].recipients, ["raclette@notmyidea.org"])
@@ -77,8 +77,8 @@ class BudgetTestCase(TestCase):
 
         # sending a message to multiple persons
         with run.mail.record_messages() as outbox:
-            self.app.post("/raclette/invite", data=
-                    {"emails": 'alexis@notmyidea.org, toto@notmyidea.org'})
+            self.app.post("/raclette/invite",
+                data={"emails": 'alexis@notmyidea.org, toto@notmyidea.org'})
 
             # only one message is sent to multiple persons
             self.assertEqual(len(outbox), 1)
@@ -87,18 +87,18 @@ class BudgetTestCase(TestCase):
 
         # mail address checking
         with run.mail.record_messages() as outbox:
-            response = self.app.post("/raclette/invite", data={"emails": "toto"})
-            self.assertEqual(len(outbox), 0) # no message sent
+            response = self.app.post("/raclette/invite",
+                                     data={"emails": "toto"})
+            self.assertEqual(len(outbox), 0)  # no message sent
             self.assertIn("The email toto is not valid", response.data)
 
         # mixing good and wrong adresses shouldn't send any messages
         with run.mail.record_messages() as outbox:
-            self.app.post("/raclette/invite", data=
-                    {"emails": 'alexis@notmyidea.org, alexis'}) # not valid
+            self.app.post("/raclette/invite",
+              data={"emails": 'alexis@notmyidea.org, alexis'})  # not valid
 
             # only one message is sent to multiple persons
             self.assertEqual(len(outbox), 0)
-
 
     def test_password_reminder(self):
         # test that it is possible to have an email cotaining the password of a
@@ -116,7 +116,6 @@ class BudgetTestCase(TestCase):
             self.assertEqual(len(outbox), 1)
             self.assertIn("raclette", outbox[0].body)
             self.assertIn("raclette@notmyidea.org", outbox[0].recipients)
-
 
     def test_project_creation(self):
         with run.app.test_client() as c:
@@ -138,9 +137,9 @@ class BudgetTestCase(TestCase):
             # Add a second project with the same id
             models.Project.query.get('raclette')
 
-            result = c.post("/create", data={
+            c.post("/create", data={
                 'name': 'Another raclette party',
-                'id': 'raclette', #already used !
+                'id': 'raclette',  # already used !
                 'password': 'party',
                 'contact_email': 'raclette@notmyidea.org'
             })
@@ -153,16 +152,18 @@ class BudgetTestCase(TestCase):
         self.login("raclette")
 
         # adds a member to this project
-        self.app.post("/raclette/members/add", data={'name': 'alexis' })
+        self.app.post("/raclette/members/add", data={'name': 'alexis'})
         self.assertEqual(len(models.Project.query.get("raclette").members), 1)
 
         # adds him twice
-        result = self.app.post("/raclette/members/add", data={'name': 'alexis' })
+        result = self.app.post("/raclette/members/add",
+                               data={'name': 'alexis'})
+
         # should not accept him
         self.assertEqual(len(models.Project.query.get("raclette").members), 1)
 
         # add fred
-        self.app.post("/raclette/members/add", data={'name': 'fred' })
+        self.app.post("/raclette/members/add", data={'name': 'fred'})
         self.assertEqual(len(models.Project.query.get("raclette").members), 2)
 
         # check fred is present in the bills page
@@ -177,7 +178,7 @@ class BudgetTestCase(TestCase):
         self.assertEqual(len(models.Project.query.get("raclette").members), 1)
 
         # add fred again
-        self.app.post("/raclette/members/add", data={'name': 'fred' })
+        self.app.post("/raclette/members/add", data={'name': 'fred'})
         fred_id = models.Project.query.get("raclette").members[-1].id
 
         # bound him to a bill
@@ -185,7 +186,7 @@ class BudgetTestCase(TestCase):
             'date': '2011-08-10',
             'what': u'fromage à raclette',
             'payer': fred_id,
-            'payed_for': [fred_id,],
+            'payed_for': [fred_id, ],
             'amount': '25',
         })
 
@@ -206,7 +207,7 @@ class BudgetTestCase(TestCase):
         self.assertNotIn("fred", result.data)
 
         # adding him again should reactivate him
-        self.app.post("/raclette/members/add", data={'name': 'fred' })
+        self.app.post("/raclette/members/add", data={'name': 'fred'})
         self.assertEqual(
                 len(models.Project.query.get("raclette").active_members), 2)
 
@@ -214,7 +215,7 @@ class BudgetTestCase(TestCase):
         # project should not cause any troubles
         self.post_project("randomid")
         self.login("randomid")
-        self.app.post("/randomid/members/add", data={'name': 'fred' })
+        self.app.post("/randomid/members/add", data={'name': 'fred'})
         self.assertEqual(
                 len(models.Project.query.get("randomid").active_members), 1)
 
@@ -223,47 +224,35 @@ class BudgetTestCase(TestCase):
         self.login("raclette")
 
         # adds a member to this project
-        self.app.post("/raclette/members/add", data={'name': 'alexis' })
+        self.app.post("/raclette/members/add", data={'name': 'alexis'})
         alexis = models.Project.query.get("raclette").members[-1]
 
         # should not have any bills
         self.assertFalse(alexis.has_bills())
-    
+
         # bound him to a bill
         self.app.post("/raclette/add", data={
             'date': '2011-08-10',
             'what': u'fromage à raclette',
             'payer': alexis.id,
-            'payed_for': [alexis.id,],
+            'payed_for': [alexis.id, ],
             'amount': '25',
         })
-        
+
         # should have a bill now
         alexis = models.Project.query.get("raclette").members[-1]
         self.assertTrue(alexis.has_bills())
-    
-        
+
     def test_member_delete_method(self):
         self.post_project("raclette")
         self.login("raclette")
 
         # adds a member to this project
-        self.app.post("/raclette/members/add", data={'name': 'alexis' })
-        
+        self.app.post("/raclette/members/add", data={'name': 'alexis'})
+
         # try to remove the member using GET method
         response = self.app.get("/raclette/members/1/delete")
         self.assertEqual(response.status_code, 405)
-
-    def test_demo(self):
-        # Test that it is possible to connect automatically by going onto /demo
-        with run.app.test_client() as c:
-            models.db.session.add(models.Project(id="demo", name=u"demonstration",
-                password="demo", contact_email="demo@notmyidea.org"))
-            models.db.session.commit()
-            c.get("/demo")
-
-            # session is updated
-            self.assertEqual(session['demo'], 'demo')
 
     def test_demo(self):
         # test that a demo project is created if none is defined
@@ -305,10 +294,11 @@ class BudgetTestCase(TestCase):
         self.post_project("raclette")
 
         # add two persons
-        self.app.post("/raclette/members/add", data={'name': 'alexis' })
-        self.app.post("/raclette/members/add", data={'name': 'fred' })
+        self.app.post("/raclette/members/add", data={'name': 'alexis'})
+        self.app.post("/raclette/members/add", data={'name': 'fred'})
 
-        members_ids = [m.id for m in models.Project.query.get("raclette").members]
+        members_ids = [m.id for m in
+                       models.Project.query.get("raclette").members]
 
         # create a bill
         self.app.post("/raclette/add", data={
@@ -318,12 +308,12 @@ class BudgetTestCase(TestCase):
             'payed_for': members_ids,
             'amount': '25',
         })
-        raclette = models.Project.query.get("raclette")
+        models.Project.query.get("raclette")
         bill = models.Bill.query.one()
         self.assertEqual(bill.amount, 25)
 
         # edit the bill
-        resp = self.app.post("/raclette/edit/%s" % bill.id, data={
+        self.app.post("/raclette/edit/%s" % bill.id, data={
             'date': '2011-08-10',
             'what': u'fromage à raclette',
             'payer': members_ids[0],
@@ -372,9 +362,11 @@ class BudgetTestCase(TestCase):
             'what': u'fromage à raclette',
             'payer': members_ids[0],
             'payed_for': members_ids,
-            'amount': '-25', # bill with a negative value should be converted to a positive value
+            # bill with a negative value should be converted to a positive
+            # value
+            'amount': '-25'
         })
-        bill = models.Bill.query.filter(models.Bill.date=='2011-08-12')[0]
+        bill = models.Bill.query.filter(models.Bill.date == '2011-08-12')[0]
         self.assertEqual(bill.amount, 25)
 
         #add a bill with a comma
@@ -385,19 +377,19 @@ class BudgetTestCase(TestCase):
             'payed_for': members_ids,
             'amount': '25,02',
         })
-        bill = models.Bill.query.filter(models.Bill.date=='2011-08-01')[0]
+        bill = models.Bill.query.filter(models.Bill.date == '2011-08-01')[0]
         self.assertEqual(bill.amount, 25.02)
 
     def test_rounding(self):
         self.post_project("raclette")
 
         # add members
-        self.app.post("/raclette/members/add", data={'name': 'alexis' })
-        self.app.post("/raclette/members/add", data={'name': 'fred' })
-        self.app.post("/raclette/members/add", data={'name': 'tata' })
+        self.app.post("/raclette/members/add", data={'name': 'alexis'})
+        self.app.post("/raclette/members/add", data={'name': 'fred'})
+        self.app.post("/raclette/members/add", data={'name': 'tata'})
 
         # create bills
-        req = self.app.post("/raclette/add", data={
+        self.app.post("/raclette/add", data={
             'date': '2011-08-10',
             'what': u'fromage à raclette',
             'payer': 1,
@@ -405,7 +397,7 @@ class BudgetTestCase(TestCase):
             'amount': '24.36',
         })
 
-        req2 = self.app.post("/raclette/add", data={
+        self.app.post("/raclette/add", data={
             'date': '2011-08-10',
             'what': u'red wine',
             'payer': 2,
@@ -413,7 +405,7 @@ class BudgetTestCase(TestCase):
             'amount': '19.12',
         })
 
-        req3 = self.app.post("/raclette/add", data={
+        self.app.post("/raclette/add", data={
             'date': '2011-08-10',
             'what': u'delicatessen',
             'payer': 1,
@@ -423,7 +415,6 @@ class BudgetTestCase(TestCase):
 
         balance = models.Project.query.get("raclette").balance
         self.assertDictEqual(balance, {3: -8.12, 1: 8.12, 2: 0.0})
-
 
     def test_edit_project(self):
         # A project should be editable
@@ -520,7 +511,8 @@ class APITestCase(TestCase):
         })
 
         self.assertTrue(400, resp.status_code)
-        self.assertEqual('{"contact_email": ["Invalid email address."]}', resp.data)
+        self.assertEqual('{"contact_email": ["Invalid email address."]}',
+                         resp.data)
 
         # create it
         resp = self.api_create("raclette")
@@ -549,7 +541,7 @@ class APITestCase(TestCase):
         self.assertDictEqual(json.loads(resp.data), expected)
 
         # edit should work
-        resp = self.app.put("/api/projects/raclette", data = {
+        resp = self.app.put("/api/projects/raclette", data={
             "contact_email": "yeah@notmyidea.org",
             "password": "raclette",
             "name": "The raclette party",
@@ -694,7 +686,7 @@ class APITestCase(TestCase):
 
         # edit with errors should return an error
         req = self.app.put("/api/projects/raclette/bills/1", data={
-            'date': '201111111-08-10', # not a date
+            'date': '201111111-08-10',  # not a date
             'what': u'fromage',
             'payer': "1",
             'payed_for': ["1", "2"],
