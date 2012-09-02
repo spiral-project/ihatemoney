@@ -205,9 +205,10 @@ def edit_project():
     return render_template("edit_project.html", form=form)
 
 
-@main.route("/<project_id>/delete", methods=["POST"])
-def remove_project():
+@main.route("/<project_id>/delete")
+def delete_project():
     g.project.remove_project()
+    flash(_('Project successfully deleted'))
 
     return redirect(url_for(".home"))
 

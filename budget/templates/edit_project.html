@@ -3,7 +3,7 @@
 {% block js %}
     $('#delete-project').click(function ()
     {
-        $(this).html("<a style='color:red; ' href='{{ url_for('.remove_project') }}' >{{_("you sure?")}}</a>");
+        $(this).html("<a style='color:red; ' href='{{ url_for('.delete_project') }}' >{{_("you sure?")}}</a>");
     });
 {% endblock %}
 

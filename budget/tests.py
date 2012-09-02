@@ -147,6 +147,24 @@ class BudgetTestCase(TestCase):
             # no new project added
             self.assertEqual(len(models.Project.query.all()), 1)
 
+    def test_project_deletion(self):
+
+        with run.app.test_client() as c:
+            c.post("/create", data={
+                'name': 'raclette party',
+                'id': 'raclette',
+                'password': 'party',
+                'contact_email': 'raclette@notmyidea.org'
+            })
+
+            # project added
+            self.assertEqual(len(models.Project.query.all()), 1)
+
+            c.get('/raclette/delete')
+
+            # project removed
+            self.assertEqual(len(models.Project.query.all()), 0)
+
     def test_membership(self):
         self.post_project("raclette")
         self.login("raclette")
