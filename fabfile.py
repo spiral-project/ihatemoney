@@ -1,13 +1,13 @@
-from fabric.api import *
+from fabric.api import env, cd, sudo, run
 
-env.hosts = ['lolnet.org:20002']
-env.shell = "/usr/local/bin/bash -c"
-env.path = "/usr/local/bin/:/usr/bin/"
+env.hosts = ['sites.lolnet.lan']
+
 
 def deploy():
-    with cd('/usr/local/www/notmyidea.org/ihatemoney'):
-        sudo('git pull', user="www")
-    sudo('supervisorctl restart ihatemoney')
+    with cd('/home//www/ihatemoney.org/code'):
+        sudo('git pull', user="www-data")
+    sudo('supervisorctl restart ihatemoney.org')
+
 
 def whoami():
     run('/usr/bin/whoami')
