@@ -86,7 +86,7 @@
 
 {% block content %}
 <div class="identifier">{{ _("The project identifier is") }} <a href="{{ url_for(".list_bills") }}">{{ g.project.id }}</a>, {{ _("remember it!") }}</div>
-<a href="{{ url_for(".add_bill") }}" class="btn btn-primary" data-toggle="modal" data-target="#bill-form">{{ _("Add a new bill") }}</a>
+<a id="new-bill" href="{{ url_for(".add_bill") }}" class="btn btn-primary" data-toggle="modal" data-target="#bill-form">{{ _("Add a new bill") }}</a>
 
     <div id="bill-form" class="modal hide">
         <div class="modal-header">
