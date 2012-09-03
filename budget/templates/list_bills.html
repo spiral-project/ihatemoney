@@ -34,13 +34,6 @@
         $(this).find('.action').hide();
     });
 
-    $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd',
-        weekStart: 1,
-        autoclose: true,
-        language: '{{ g.lang }}'
-    });
-
     var highlight_owers = function(){
         var ower_ids = $(this).attr("owers").split(',');
         var payer_id = $(this).attr("payer");

@@ -2,9 +2,6 @@
 
 {% block js %}
     $('#cancel-form').click(function(){location.href={{ url_for(".list_bills") }};});
-    $.datepicker.setDefaults({'dateFormat': 'yy-mm-dd'});
-    $(".datepicker").datepicker($.datepicker.regional['{{ g.lang }}']);
-
 {% endblock %}
 
 
