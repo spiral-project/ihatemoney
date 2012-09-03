@@ -8,6 +8,7 @@
     <script src="{{ url_for("static", filename="js/jquery-1.7.2.min.js") }}"></script>
     <script src="{{ url_for("static", filename="js/ihatemoney.js") }}"></script>
     <script src="{{ url_for("static", filename="js/bootstrap.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/bootstrap-datepicker.js") }}"></script>
     {% block head %}{% endblock %}
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function(){
@@ -19,7 +20,14 @@
                 });
             }, 4000);
 
-            $('.dropdown-toggle').dropdown()
+            $('.datepicker').datepicker({
+                format: 'yyyy-mm-dd',
+                weekStart: 1,
+                autoclose: true,
+                language: '{{ g.lang }}'
+            });
+
+            $('.dropdown-toggle').dropdown();
 
             {% block js %}{% endblock %}
         });
