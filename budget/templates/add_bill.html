@@ -1,16 +1,7 @@
 {% extends "layout.html" %}
 
-{% block head %}
-    <script src="{{ url_for("static", filename="js/jquery-ui.js") }}"></script>
-    {% if g.lang != "en" %}
-    <script src="{{ url_for("static", filename="js/i18n/jquery.ui.datepicker-%s.js" % g.lang ) }}"></script>
-    {% endif %}
-{% endblock %}
 {% block js %}
     $('#cancel-form').click(function(){location.href={{ url_for(".list_bills") }};});
-    $.datepicker.setDefaults({'dateFormat': 'yy-mm-dd'});
-    $(".datepicker").datepicker($.datepicker.regional['{{ g.lang }}']);
-
 {% endblock %}
 
 
