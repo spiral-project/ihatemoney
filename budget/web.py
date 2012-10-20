@@ -11,8 +11,13 @@ and `add_project_id` for a quick overview)
 
 from flask import Blueprint, current_app, flash, g, redirect, \
     render_template, request, session, url_for
-from flaskext.mail import Mail, Message
-from flaskext.babel import get_locale, gettext as _
+    
+# activate flask.ext compatibility module
+import flaskext_compat
+flaskext_compat.activate()
+
+from flask.ext.mail import Message, Mail
+from flask.ext.babel import get_locale, gettext as _
 from smtplib import SMTPRecipientsRefused
 import werkzeug
 

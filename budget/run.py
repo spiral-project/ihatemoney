@@ -1,5 +1,10 @@
 from flask import Flask, g, request, session
-from flaskext.babel import Babel
+
+# load flask.ext compatibility module
+import flaskext_compat
+flaskext_compat.activate()
+
+from flask.ext.babel import Babel
 from raven.contrib.flask import Sentry
 
 from web import main, db, mail

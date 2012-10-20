@@ -1,7 +1,10 @@
-from collections import defaultdict
+# activate flask.ext compatibility module
+import flaskext_compat
+flaskext_compat.activate()
 
+from collections import defaultdict
 from datetime import datetime
-from flask_sqlalchemy import SQLAlchemy, BaseQuery
+from flask.ext.sqlalchemy import SQLAlchemy, BaseQuery
 from flask import g
 
 from sqlalchemy import orm
