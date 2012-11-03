@@ -6,6 +6,7 @@ except ImportError:
 
 import base64
 import json
+from collections import defaultdict
 
 from flask import session
 
@@ -432,7 +433,11 @@ class BudgetTestCase(TestCase):
         })
 
         balance = models.Project.query.get("raclette").balance
-        self.assertDictEqual(balance, {3: -8.12, 1: 8.12, 2: 0.0})
+        result = {}
+        result[models.Project.query.get("raclette").members[0]] = 8.12
+        result[models.Project.query.get("raclette").members[1]] = 0.0
+        result[models.Project.query.get("raclette").members[2]] = -8.12
+        self.assertDictEqual(balance, result)
 
     def test_edit_project(self):
         # A project should be editable
@@ -462,6 +467,58 @@ class BudgetTestCase(TestCase):
     def test_dashboard(self):
         response = self.app.get("/dashboard")
         self.assertEqual(response.status_code, 200)
+
+    def test_settle_page(self):
+        self.post_project("raclette")
+        response = self.app.get("/raclette/settle_bill")
+        self.assertEqual(response.status_code, 200)
+
+    def test_settle(self):
+        self.post_project("raclette")
+
+        # add members
+        self.app.post("/raclette/members/add", data={'name': 'alexis'})
+        self.app.post("/raclette/members/add", data={'name': 'fred'})
+        self.app.post("/raclette/members/add", data={'name': 'tata'})
+        #Add a member with a balance=0 :
+        self.app.post("/raclette/members/add", data={'name': 'toto'})
+
+        # create bills
+        self.app.post("/raclette/add", data={
+            'date': '2011-08-10',
+            'what': u'fromage à raclette',
+            'payer': 1,
+            'payed_for': [1, 2, 3],
+            'amount': '10.0',
+        })
+
+        self.app.post("/raclette/add", data={
+            'date': '2011-08-10',
+            'what': u'red wine',
+            'payer': 2,
+            'payed_for': [1],
+            'amount': '20',
+        })
+
+        self.app.post("/raclette/add", data={
+            'date': '2011-08-10',
+            'what': u'delicatessen',
+            'payer': 1,
+            'payed_for': [1, 2],
+            'amount': '10',
+        })
+        project  = models.Project.query.get('raclette')
+        transactions = project.settle_bill()
+        members = defaultdict(int)
+        #We should have the same values between transactions and project balances
+        for t in transactions:
+            members[t['ower']]-=t['amount']
+            members[t['payer']]+=t['amount']
+        balance = models.Project.query.get("raclette").balance
+        for m, a in members.items():
+            self.assertEqual(a, balance[m])
+        return
+        
 
 
 class APITestCase(TestCase):

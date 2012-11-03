@@ -1,25 +1,36 @@
 {% extends "layout.html" %}
 
-{% block head %}
-    <script src="{{ url_for("static", filename="js/jquery-ui.js") }}"></script>
-    {% if g.lang != "en" %}
-    <script src="{{ url_for("static", filename="js/i18n/jquery.ui.datepicker-%s.js" % g.lang ) }}"></script>
-    {% endif %}
-{% endblock %}
 {% block js %}
     $('#cancel-form').click(function(){location.href={{ url_for(".list_bills") }};});
-    $.datepicker.setDefaults({'dateFormat': 'yy-mm-dd'});
-    $(".datepicker").datepicker($.datepicker.regional['{{ g.lang }}']);
-
 {% endblock %}
 {% block navbar %}
     <li><a href="{{ url_for(".list_bills") }}">{{ _("Bills") }}</a></li>
     <li class="active"><a href="{{ url_for(".settle_bill") }}">{{ _("Settle") }}</a></li>
 {% endblock %}
 
+{% block sidebar %}
+<div id="sidebar" class="sidebar">
+
+    <div id="table_overflow">
+    <table class="balance table">
+    {% set balance = g.project.balance %}
+    {% for member in g.project.members | sort(attribute='name') if member.activated or balance[member] != 0 %}
+    <tr id="bal-member-{{ member }}" action={% if member.activated %}delete{% else %}reactivate{% endif %}>
+        <td class="balance-name">{{ member.name }}</td>
+        <td class="balance-value {% if balance[member] > 0 %}positive{% elif balance[member] < 0 %}negative{% endif %}">
+            {% if balance[member] > 0 %}+{% endif %}{{ balance[member] }}
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
+    </div>
+
+</div>
+{% endblock %}
+
 
 {% block content %}
-    <table id="bill_table" class="split_bills common-table zebra-striped">
+    <table id="bill_table" class="split_bills table table-striped">
         <thead><tr><th>{{ _("Who pays?") }}</th><th>{{ _("To whom?") }}</th><th>{{ _("How much?") }}</th></tr></thead>
     <tbody>
     {% for bill in bills %}
