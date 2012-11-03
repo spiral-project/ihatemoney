@@ -45,9 +45,56 @@ class Project(db.Model):
 
         for person in self.members:
             balance = should_receive[person] - should_pay[person]
-            balances[person.id] = round(balance, 2)
+            balances[person] = round(balance, 2)
 
         return balances
+
+    def settle_bill(self):
+        """Return a list of transactions that could be made to settle the bill"""
+        balances = self.balance
+        credits, debts = list(), list()
+        transactions = list()
+        # Create lists of credits and debts
+        for person in balances.keys():
+            if balances[person] > 0:
+                credits.append({"person": person, "balance": balances[person]})
+            elif balances[person] < 0:
+                debts.append({"person": person, "balance": -balances[person]})
+        # Try and find exact matches
+        for credit in credits:
+            match = self.exactmatch(credit["balance"], debts)
+            if match:
+                for m in match:
+                    transactions.append({"ower": m["person"], "payer": credit["person"], "amount": m["balance"]})
+                    debts.remove(m)
+                credits.remove(credit)
+        # Split any remaining debts & credits
+        while credits and debts:
+            if credits[0]["balance"] > debts[0]["balance"]:
+                transactions.append({"ower": debts[0]["person"], "payer": credits[0]["person"], "amount": debts[0]["balance"]})
+                credits[0]["balance"] = credits[0]["balance"] - debts[0]["balance"]
+                del debts[0]
+            else:
+                transactions.append({"ower": debts[0]["person"], "payer": credits[0]["person"], "amount": credits[0]["balance"]})
+                debts[0]["balance"] = debts[0]["balance"] - credits[0]["balance"]
+                del credits[0]
+        return transactions
+
+    def exactmatch(self, credit, debts):
+        """Recursively try and find subsets of 'debts' whose sum is equal to credit"""
+        if not debts:
+            return []
+        if debts[0]["balance"] > credit:
+            return self.exactmatch(credit, debts[1:])
+        elif debts[0]["balance"] == credit:
+            return [debts[0]]
+        else:
+            match = self.exactmatch(credit-debts[0]["balance"], debts[1:])
+            if match:
+                match.append(debts[0])
+            else:
+                match = self.exactmatch(credit, debts[1:])
+            return match
 
     def has_bills(self):
         """return if the project do have bills or not"""

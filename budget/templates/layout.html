@@ -42,6 +42,7 @@
             {% if g.project %}
             <ul class="nav primary-nav">
                 <li class="active"><a href="{{ url_for(".list_bills") }}">{{ _("Bills") }}</a></li>
+                <li><a href="{{ url_for(".settle_bill") }}">{{ _("Settle") }}</a></li>
             </ul>
             {% endif %}
             <ul class="nav pull-right secondary-nav">

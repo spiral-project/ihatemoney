@@ -61,20 +61,20 @@
     <div id="table_overflow">
     <table class="balance table">
     {% set balance = g.project.balance %}
-    {% for member in g.project.members | sort(attribute='name') if member.activated or balance[member.id] != 0 %}
-    <tr id="bal-member-{{ member.id }}" action={% if member.activated %}delete{% else %}reactivate{% endif %}>
+    {% for member in g.project.members | sort(attribute='name') if member.activated or balance[member] != 0 %}
+    <tr id="bal-member-{{ member }}" action={% if member.activated %}delete{% else %}reactivate{% endif %}>
         <td class="balance-name">{{ member.name }}</td>
         {% if member.activated %}
         <td>
-            <form class="action delete" action="{{ url_for(".remove_member", member_id=member.id) }}" method="POST">
+            <form class="action delete" action="{{ url_for(".remove_member", member_id=member) }}" method="POST">
                 <button type="submit">{{ _("delete") }}</button></form></td>
         {% else %}
         <td>
-            <form class="action reactivate" action="{{ url_for(".reactivate", member_id=member.id) }}" method="POST">
+            <form class="action reactivate" action="{{ url_for(".reactivate", member_id=member) }}" method="POST">
                 <button type="submit">{{ _("reactivate") }}</button></form></td>
         {% endif %}
-        <td class="balance-value {% if balance[member.id] > 0 %}positive{% elif balance[member.id] < 0 %}negative{% endif %}">
-            {% if balance[member.id] > 0 %}+{% endif %}{{ balance[member.id] }}
+        <td class="balance-value {% if balance[member] > 0 %}positive{% elif balance[member] < 0 %}negative{% endif %}">
+            {% if balance[member] > 0 %}+{% endif %}{{ balance[member] }}
         </td>
     </tr>
     {% endfor %}
