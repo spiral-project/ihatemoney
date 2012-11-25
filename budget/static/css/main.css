@@ -189,6 +189,10 @@ tr.payer_line .balance-name{
     position: absolute;
 }
 
+.modal-body {
+    max-height:455px;
+}
+
 /* Fluid Offsets for Boostrap */
 
 .row-fluid > [class*="span"]:not([class*="offset"]):first-child{margin-left:0;}
