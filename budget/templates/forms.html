@@ -108,6 +108,7 @@
     <fieldset>
         <legend>{{ _("Create an archive") }}</legend>
     {{ form.hidden_tag() }}
+    {{ input(form.name) }}
     {{ input(form.start_date) }}
     {{ input(form.end_date) }}
     </fieldset>

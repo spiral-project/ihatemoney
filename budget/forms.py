@@ -187,6 +187,6 @@ class InviteForm(Form):
 
 
 class CreateArchiveForm(Form):
-    start_date = DateField(_("Start date"), validators=[Required(), ])
-    end_date = DateField(_("End date"), validators=[Required(), ])
-    name = TextField(_("Name for this archive (optional)"))
+    name = TextField(_("Name for this archive (optional)"), validators=[])
+    start_date = DateField(_("Start date"), validators=[Required()])
+    end_date = DateField(_("End date"), validators=[Required()], default=datetime.now)
