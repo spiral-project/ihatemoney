@@ -389,7 +389,7 @@ def compute_bills():
     return render_template("compute_bills.html")
 
 
-@main.route("/<project_id>/archives/create")
+@main.route("/<project_id>/archives/create", methods=["GET", "POST"])
 def create_archive():
     form = CreateArchiveForm()
     if request.method == "POST":
