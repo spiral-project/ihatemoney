@@ -1,5 +1,5 @@
 from flask import Flask, g, request, session
-from flaskext.babel import Babel
+from flask.ext.babel import Babel
 from raven.contrib.flask import Sentry
 
 from web import main, db, mail

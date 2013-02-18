@@ -1,7 +1,7 @@
-from flaskext.wtf import DateField, DecimalField, Email, Form, PasswordField, \
+from flask.ext.wtf import DateField, DecimalField, Email, Form, PasswordField, \
     Required, SelectField, SelectMultipleField, SubmitField, TextAreaField, \
     TextField, ValidationError
-from flaskext.babel import lazy_gettext as _
+from flask.ext.babel import lazy_gettext as _
 from flask import request
 
 from wtforms.widgets import html_params
