@@ -1,7 +1,7 @@
-from flaskext.wtf import DateField, DecimalField, Email, Form, PasswordField, \
+from flask.ext.wtf import DateField, DecimalField, Email, Form, PasswordField, \
     Required, SelectField, SelectMultipleField, SubmitField, TextAreaField, \
     TextField, ValidationError
-from flaskext.babel import lazy_gettext as _
+from flask.ext.babel import lazy_gettext as _
 from flask import request
 
 from wtforms.widgets import html_params
@@ -19,16 +19,14 @@ def select_multi_checkbox(field, ul_class='', **kwargs):
     choice_id = u'toggleField'
     js_function = u'toggle();'
     options = dict(kwargs, id=choice_id, onclick=js_function)
-    label = _("Select All/None")
-    html.append(u'<li><label for="%s">%s<span>%s</span></label></li>'
-        % (choice_id, '<input %s /> ' % html_params(**options), label))
+    html.append(u'<p><a id="selectall" onclick="selectall()">%s</a> | <a id="selectnone" onclick="selectnone()">%s</a></p>'% (_("Select all"), _("Select none")))
 
     for value, label, checked in field.iter_choices():
         choice_id = u'%s-%s' % (field_id, value)
         options = dict(kwargs, name=field.name, value=value, id=choice_id)
         if checked:
             options['checked'] = 'checked'
-        html.append(u'<li><label for="%s">%s<span>%s</span></label></li>'
+        html.append(u'<p><label for="%s">%s<span>%s</span></label></p>'
             % (choice_id, '<input %s /> ' % html_params(**options), label))
     html.append(u'</ul>')
     return u''.join(html)
@@ -189,6 +187,6 @@ class InviteForm(Form):
 
 
 class CreateArchiveForm(Form):
-    start_date = DateField(_("Start date"), validators=[Required(), ])
-    end_date = DateField(_("End date"), validators=[Required(), ])
-    name = TextField(_("Name for this archive (optional)"))
+    name = TextField(_("Name for this archive (optional)"), validators=[])
+    start_date = DateField(_("Start date"), validators=[Required()])
+    end_date = DateField(_("End date"), validators=[Required()], default=datetime.now)

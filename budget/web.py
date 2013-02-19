@@ -11,8 +11,8 @@ and `add_project_id` for a quick overview)
 
 from flask import Blueprint, current_app, flash, g, redirect, \
     render_template, request, session, url_for
-from flaskext.mail import Mail, Message
-from flaskext.babel import get_locale, gettext as _
+from flask.ext.mail import Mail, Message
+from flask.ext.babel import get_locale, gettext as _
 from smtplib import SMTPRecipientsRefused
 import werkzeug
 
@@ -390,7 +390,7 @@ def settle_bill():
     return render_template("settle_bill.html", bills=bills)
 
 
-@main.route("/<project_id>/archives/create")
+@main.route("/<project_id>/archives/create", methods=["GET", "POST"])
 def create_archive():
     form = CreateArchiveForm()
     if request.method == "POST":
