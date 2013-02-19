@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import Blueprint, request
-from flask_rest import RESTResource, need_auth
+from flask.ext.rest import RESTResource, need_auth
 
 from models import db, Project, Person, Bill
 from forms import (ProjectForm, EditProjectForm, MemberForm,

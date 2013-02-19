@@ -1,7 +1,7 @@
 from collections import defaultdict
 
 from datetime import datetime
-from flask_sqlalchemy import SQLAlchemy, BaseQuery
+from flask.ext.sqlalchemy import SQLAlchemy, BaseQuery
 from flask import g
 
 from sqlalchemy import orm
