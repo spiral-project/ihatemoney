@@ -21,9 +21,11 @@ class TestCase(unittest.TestCase):
         run.app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///memory"
         run.app.config['CSRF_ENABLED'] = False  # simplify the tests
         self.app = run.app.test_client()
-
-        models.db.init_app(run.app)
-        run.mail.init_app(run.app)
+        try:
+            models.db.init_app(run.app)
+            run.mail.init_app(run.app)
+        except:
+            pass
 
         models.db.app = run.app
         models.db.create_all()
