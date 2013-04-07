@@ -386,7 +386,7 @@ def change_lang(lang):
 @main.route("/<project_id>/settle_bills")
 def settle_bill():
     """Compute the sum each one have to pay to each other and display it"""
-    bills = g.project.settle_bills()
+    bills = g.project.get_transactions_to_settle_bill()
     return render_template("settle_bills.html", bills=bills)
 
 

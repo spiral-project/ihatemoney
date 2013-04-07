@@ -510,12 +510,12 @@ class BudgetTestCase(TestCase):
             'amount': '10',
         })
         project  = models.Project.query.get('raclette')
-        transactions = project.settle_bills()
+        transactions = project.get_transactions_to_settle_bill()
         members = defaultdict(int)
         #We should have the same values between transactions and project balances
         for t in transactions:
             members[t['ower']]-=t['amount']
-            members[t['payer']]+=t['amount']
+            members[t['receiver']]+=t['amount']
         balance = models.Project.query.get("raclette").balance
         for m, a in members.items():
             self.assertEqual(a, balance[m.id])
