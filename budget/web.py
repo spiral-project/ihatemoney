@@ -383,11 +383,11 @@ def change_lang(lang):
     return redirect(request.headers.get('Referer') or url_for('.home'))
 
 
-@main.route("/<project_id>/settle_bill")
+@main.route("/<project_id>/settle_bills")
 def settle_bill():
     """Compute the sum each one have to pay to each other and display it"""
-    bills = g.project.settle_bill()
-    return render_template("settle_bill.html", bills=bills)
+    bills = g.project.settle_bills()
+    return render_template("settle_bills.html", bills=bills)
 
 
 @main.route("/<project_id>/archives/create", methods=["GET", "POST"])

@@ -5,7 +5,7 @@
 {% endblock %}
 {% block navbar %}
     <li><a href="{{ url_for(".list_bills") }}">{{ _("Bills") }}</a></li>
-    <li class="active"><a href="{{ url_for(".settle_bill") }}">{{ _("Settle") }}</a></li>
+    <li class="active"><a href="{{ url_for(".settle_bills") }}">{{ _("Settle") }}</a></li>
 {% endblock %}
 
 {% block sidebar %}
@@ -14,11 +14,11 @@
     <div id="table_overflow">
     <table class="balance table">
     {% set balance = g.project.balance %}
-    {% for member in g.project.members | sort(attribute='name') if member.activated or balance[member] != 0 %}
-    <tr id="bal-member-{{ member }}" action={% if member.activated %}delete{% else %}reactivate{% endif %}>
+    {% for member in g.project.members | sort(attribute='name') if member.activated or balance[member.id] != 0 %}
+    <tr id="bal-member-{{ member.id }}" action={% if member.activated %}delete{% else %}reactivate{% endif %}>
         <td class="balance-name">{{ member.name }}</td>
-        <td class="balance-value {% if balance[member] > 0 %}positive{% elif balance[member] < 0 %}negative{% endif %}">
-            {% if balance[member] > 0 %}+{% endif %}{{ balance[member] }}
+        <td class="balance-value {% if balance[member.id] > 0 %}positive{% elif balance[member.id] < 0 %}negative{% endif %}">
+            {% if balance[member.id] > 0 %}+{% endif %}{{ balance[member.id] }}
         </td>
     </tr>
     {% endfor %}

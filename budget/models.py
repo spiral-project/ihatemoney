@@ -45,21 +45,19 @@ class Project(db.Model):
 
         for person in self.members:
             balance = should_receive[person] - should_pay[person]
-            balances[person] = round(balance, 2)
+            balances[person.id] = round(balance, 2)
 
         return balances
 
-    def settle_bill(self):
+    def settle_bills(self):
         """Return a list of transactions that could be made to settle the bill"""
-        balances = self.balance
-        credits, debts = list(), list()
-        transactions = list()
+        credits, debts, transactions = [],[],[]
         # Create lists of credits and debts
-        for person in balances.keys():
-            if balances[person] > 0:
-                credits.append({"person": person, "balance": balances[person]})
-            elif balances[person] < 0:
-                debts.append({"person": person, "balance": -balances[person]})
+        for person in self.members:
+            if self.balance[person.id] > 0:
+                credits.append({"person": person, "balance": self.balance[person.id]})
+            elif self.balance[person.id] < 0:
+                debts.append({"person": person, "balance": -self.balance[person.id]})
         # Try and find exact matches
         for credit in credits:
             match = self.exactmatch(credit["balance"], debts)
@@ -83,7 +81,7 @@ class Project(db.Model):
     def exactmatch(self, credit, debts):
         """Recursively try and find subsets of 'debts' whose sum is equal to credit"""
         if not debts:
-            return []
+            return None
         if debts[0]["balance"] > credit:
             return self.exactmatch(credit, debts[1:])
         elif debts[0]["balance"] == credit:

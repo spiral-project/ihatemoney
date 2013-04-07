@@ -436,9 +436,9 @@ class BudgetTestCase(TestCase):
 
         balance = models.Project.query.get("raclette").balance
         result = {}
-        result[models.Project.query.get("raclette").members[0]] = 8.12
-        result[models.Project.query.get("raclette").members[1]] = 0.0
-        result[models.Project.query.get("raclette").members[2]] = -8.12
+        result[models.Project.query.get("raclette").members[0].id] = 8.12
+        result[models.Project.query.get("raclette").members[1].id] = 0.0
+        result[models.Project.query.get("raclette").members[2].id] = -8.12
         self.assertDictEqual(balance, result)
 
     def test_edit_project(self):
@@ -472,7 +472,7 @@ class BudgetTestCase(TestCase):
 
     def test_settle_page(self):
         self.post_project("raclette")
-        response = self.app.get("/raclette/settle_bill")
+        response = self.app.get("/raclette/settle_bills")
         self.assertEqual(response.status_code, 200)
 
     def test_settle(self):
@@ -510,7 +510,7 @@ class BudgetTestCase(TestCase):
             'amount': '10',
         })
         project  = models.Project.query.get('raclette')
-        transactions = project.settle_bill()
+        transactions = project.settle_bills()
         members = defaultdict(int)
         #We should have the same values between transactions and project balances
         for t in transactions:
@@ -518,7 +518,7 @@ class BudgetTestCase(TestCase):
             members[t['payer']]+=t['amount']
         balance = models.Project.query.get("raclette").balance
         for m, a in members.items():
-            self.assertEqual(a, balance[m])
+            self.assertEqual(a, balance[m.id])
         return
         
 
