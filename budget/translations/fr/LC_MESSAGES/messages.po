@@ -498,18 +498,9 @@ msgstr "et les notifier vous même"
 
 #: budget/templates/settle_bills.html:31
 msgid "Who pays?"
-msgstr "Qui a payé ?"
+msgstr "Qui doit payer ?"
 
 #: budget/templates/settle_bills.html:31
 msgid "To whom?"
 msgstr "Pour qui ?"
-
-msgid "Send the bill"
-msgstr "Envoyer la facture"
-
-msgid "Balance"
-msgstr "Balance"
-
-msgid "hide this form"
-msgstr "cacher ce formulaire"
 
