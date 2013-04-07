@@ -41,8 +41,10 @@
             <h1><a class="brand" href="{{ url_for(".home") }}">#! money?</a></h1>
             {% if g.project %}
             <ul class="nav primary-nav">
+                {% block navbar %}
                 <li class="active"><a href="{{ url_for(".list_bills") }}">{{ _("Bills") }}</a></li>
                 <li><a href="{{ url_for(".settle_bill") }}">{{ _("Settle") }}</a></li>
+                {% endblock %}
             </ul>
             {% endif %}
             <ul class="nav pull-right secondary-nav">

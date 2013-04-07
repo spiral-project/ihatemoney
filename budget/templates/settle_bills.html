@@ -1,11 +1,8 @@
 {% extends "layout.html" %}
 
-{% block js %}
-    $('#cancel-form').click(function(){location.href={{ url_for(".list_bills") }};});
-{% endblock %}
 {% block navbar %}
-    <li><a href="{{ url_for(".list_bills") }}">{{ _("Bills") }}</a></li>
-    <li class="active"><a href="{{ url_for(".settle_bills") }}">{{ _("Settle") }}</a></li>
+<li><a href="{{ url_for(".list_bills") }}">{{ _("Bills") }}</a></li>
+<li class="active"><a href="{{ url_for(".settle_bill") }}">{{ _("Settle") }}</a></li>
 {% endblock %}
 
 {% block sidebar %}
