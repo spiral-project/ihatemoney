@@ -242,20 +242,20 @@ msgstr "Vos projets"
 
 #: budget/templates/dashboard.html:5
 msgid "Number of members"
-msgstr ""
+msgstr "Nombre de membres"
 
 #: budget/templates/dashboard.html:5
 msgid "Number of bills"
-msgstr ""
+msgstr "Nombre de factures"
 
 #: budget/templates/dashboard.html:5
 #, fuzzy
 msgid "Newest bill"
-msgstr "Plus récente"
+msgstr "Facture la plus récente"
 
 #: budget/templates/dashboard.html:5
 msgid "Oldest bill"
-msgstr "Plus vieille"
+msgstr "Facture la plus ancienne"
 
 #: budget/templates/edit_project.html:6 budget/templates/list_bills.html:24
 msgid "you sure?"
@@ -359,6 +359,8 @@ msgid ""
 "This access code will be sent to your friends. It is stored as-is by the "
 "server, so don\\'t reuse a personal password!"
 msgstr ""
+"Ce code d'accès va être envoyé à vos amis et stocké en clair sur le serveur."
+"N'utilisez pas un mot de passe personnel !"
 
 #: budget/templates/layout.html:5
 msgid "Account manager"
