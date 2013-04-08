@@ -307,11 +307,11 @@ def reactivate(member_id):
 @main.route("/<project_id>/members/<member_id>/delete", methods=["POST"])
 def remove_member(member_id):
     member = g.project.remove_member(member_id)
-    if member.activated == False:
-        flash(_("User '%(name)s' has been deactivated", name=member.name))
-    else:
-        flash(_("User '%(name)s' has been removed", name=member.name))
-
+    if member:
+        if member.activated == False:
+            flash(_("User '%(name)s' has been deactivated", name=member.name))
+        else:
+            flash(_("User '%(name)s' has been removed", name=member.name))
     return redirect(url_for(".list_bills"))
 
 
