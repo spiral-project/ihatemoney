@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-04-07 23:23+0200\n"
+"POT-Creation-Date: 2013-05-09 22:24+0200\n"
 "PO-Revision-Date: 2011-10-14 23:51+0200\n"
 "Last-Translator: Quentin Roy <royque@gmail.com>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -17,464 +17,458 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: budget/forms.py:22
-#, fuzzy
+#: forms.py:22
 msgid "Select all"
 msgstr "Tout cocher"
 
-#: budget/forms.py:22
-#, fuzzy
+#: forms.py:22
 msgid "Select none"
 msgstr "Tout décocher"
 
-#: budget/forms.py:61
+#: forms.py:61
 msgid "Project name"
 msgstr "Nom de projet"
 
-#: budget/forms.py:62 budget/forms.py:86 budget/forms.py:102
+#: forms.py:62 forms.py:86 forms.py:102
 msgid "Private code"
 msgstr "Code d'accès"
 
-#: budget/forms.py:63
+#: forms.py:63
 msgid "Email"
 msgstr "Email"
 
-#: budget/forms.py:85 budget/forms.py:101 budget/forms.py:107
+#: forms.py:85 forms.py:101 forms.py:107
 msgid "Project identifier"
 msgstr "Identifiant du projet"
 
-#: budget/forms.py:87 budget/templates/send_invites.html:5
+#: forms.py:87 templates/send_invites.html:5
 msgid "Create the project"
 msgstr "Créer le projet"
 
-#: budget/forms.py:92
-#, fuzzy
+#: forms.py:92
 msgid ""
 "The project identifier is used to log in and for the URL of the project. "
 "We tried to generate an identifier for you but a project with this "
 "identifier already exists. Please create a new identifier that you will "
 "be able to remember."
 msgstr ""
-"L'identifiant de projet est utilisé pour se connecter et dans l'URL du "
-"projet. Nous avons essayé de générer une identifiant pour ce projet mais "
+"L'identifiant du projet est utilisé pour se connecter."
+"Nous avons essayé de générer un identifiant mais "
 "celui ci existe déjà. Merci de créer un nouvel identifiant que vous serez"
 " capable de retenir"
 
-#: budget/forms.py:103
+#: forms.py:103
 msgid "Get in"
 msgstr "Entrer"
 
-#: budget/forms.py:108
+#: forms.py:108
 msgid "Send me the code by email"
 msgstr "Envoyez moi le code par email"
 
-#: budget/forms.py:112
+#: forms.py:112
 msgid "This project does not exists"
 msgstr "Ce projet n'existe pas"
 
-#: budget/forms.py:116
+#: forms.py:116
 msgid "Date"
 msgstr "Date"
 
-#: budget/forms.py:117
+#: forms.py:117
 msgid "What?"
 msgstr "Quoi ?"
 
-#: budget/forms.py:118
+#: forms.py:118
 msgid "Payer"
 msgstr "Payeur"
 
-#: budget/forms.py:119
+#: forms.py:119
 msgid "Amount paid"
 msgstr "Montant"
 
-#: budget/forms.py:120 budget/templates/list_bills.html:103
+#: forms.py:120 templates/list_bills.html:103
 msgid "For whom?"
 msgstr "Pour qui ?"
 
-#: budget/forms.py:122
+#: forms.py:122
 msgid "Submit"
 msgstr "Valider"
 
-#: budget/forms.py:123
+#: forms.py:123
 msgid "Submit and add a new one"
 msgstr "Valider et ajouter une autre facture"
 
-#: budget/forms.py:149
-#, fuzzy
+#: forms.py:149
 msgid "Bills can't be null"
-msgstr "Le montant d'une facture ne peut pas être négatif"
+msgstr "Le montant d'une facture ne peut pas être nul."
 
-#: budget/forms.py:154
+#: forms.py:154
 msgid "Name"
 msgstr "Nom"
 
-#: budget/forms.py:155 budget/templates/forms.html:95
+#: forms.py:155 templates/forms.html:95
 msgid "Add"
 msgstr "Ajouter"
 
-#: budget/forms.py:163
+#: forms.py:163
 msgid "User name incorrect"
 msgstr "Nom d'utilisateur incorrect"
 
-#: budget/forms.py:167
+#: forms.py:167
 msgid "This project already have this member"
 msgstr "Ce membre existe déjà pour ce projet"
 
-#: budget/forms.py:178
+#: forms.py:178
 msgid "People to notify"
 msgstr "Personnes à prévenir"
 
-#: budget/forms.py:179
+#: forms.py:179
 msgid "Send invites"
 msgstr "Envoyer les invitations"
 
-#: budget/forms.py:185
+#: forms.py:185
 #, python-format
 msgid "The email %(email)s is not valid"
 msgstr "L'email %(email)s est invalide"
 
-#: budget/forms.py:190
+#: forms.py:190
 msgid "Name for this archive (optional)"
 msgstr "Nom pour cette archive (optionnel)"
 
-#: budget/forms.py:191
+#: forms.py:191
 msgid "Start date"
 msgstr "Date de départ"
 
-#: budget/forms.py:192
+#: forms.py:192
 msgid "End date"
 msgstr "Date de fin"
 
-#: budget/web.py:95
+#: web.py:95
 msgid "This private code is not the right one"
 msgstr "Le code que vous avez entré n'est pas correct"
 
-#: budget/web.py:147
+#: web.py:147
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr "Vous venez de créer '%(project)s' pour partager vos dépenses"
 
-#: budget/web.py:165
-#, fuzzy, python-format
+#: web.py:165
+#, python-format
 msgid "%(msg_compl)sThe project identifier is %(project)s"
 msgstr "L'identifiant de ce projet est '%(project)s'"
 
-#: budget/web.py:185
+#: web.py:185
 msgid "a mail has been sent to you with the password"
 msgstr "Un email vous a été envoyé avec le mot de passe"
 
-#: budget/web.py:211
+#: web.py:211
 msgid "Project successfully deleted"
 msgstr "Projet supprimé"
 
-#: budget/web.py:254
+#: web.py:254
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
 msgstr "Vous avez été invité à partager vos dépenses pour %(project)s"
 
-#: budget/web.py:261
+#: web.py:261
 msgid "Your invitations have been sent"
 msgstr "Vos invitations ont bien été envoyées"
 
-#: budget/web.py:290
+#: web.py:290
 #, python-format
 msgid "%(member)s had been added"
 msgstr "%(member)s a bien été ajouté"
 
-#: budget/web.py:303
+#: web.py:303
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr "%(name)s a rejoint le projet"
 
-#: budget/web.py:311
+#: web.py:311
 #, python-format
 msgid "User '%(name)s' has been deactivated"
 msgstr "Le membre '%(name)s' a été désactivé"
 
-#: budget/web.py:313
+#: web.py:313
 #, python-format
 msgid "User '%(name)s' has been removed"
 msgstr "Le membre '%(name)s' a été supprimé"
 
-#: budget/web.py:331
+#: web.py:331
 msgid "The bill has been added"
 msgstr "La facture a bien été ajoutée"
 
-#: budget/web.py:351
+#: web.py:351
 msgid "The bill has been deleted"
 msgstr "La facture a été supprimée"
 
-#: budget/web.py:369
+#: web.py:369
 msgid "The bill has been modified"
 msgstr "La facture a été modifiée"
 
-#: budget/web.py:399
+#: web.py:399
 msgid "The data from XX to XX has been archived"
 msgstr "Les données de XX à XX ont été archivées"
 
-#: budget/templates/add_bill.html:9
+#: templates/add_bill.html:9
 msgid "Back to the list"
 msgstr "Retourner à la liste"
 
-#: budget/templates/authenticate.html:6
+#: templates/authenticate.html:6
 msgid ""
 "The project you are trying to access do not exist, do you want \n"
 "to"
 msgstr "Le projet auquel vous essayez d'acceder n'existe pas. Souhaitez vous"
 
-#: budget/templates/authenticate.html:7
+#: templates/authenticate.html:7
 msgid "create it"
 msgstr "le créer"
 
-#: budget/templates/authenticate.html:7
+#: templates/authenticate.html:7
 msgid "?"
 msgstr " ?"
 
-#: budget/templates/create_project.html:4
+#: templates/create_project.html:4
 msgid "Create a new project"
 msgstr "Créer un nouveau projet"
 
-#: budget/templates/dashboard.html:5
-#, fuzzy
+#: templates/dashboard.html:5
 msgid "Project"
-msgstr "Vos projets"
+msgstr "Projets"
 
-#: budget/templates/dashboard.html:5
+#: templates/dashboard.html:5
 msgid "Number of members"
 msgstr "Nombre de membres"
 
-#: budget/templates/dashboard.html:5
+#: templates/dashboard.html:5
 msgid "Number of bills"
 msgstr "Nombre de factures"
 
-#: budget/templates/dashboard.html:5
-#, fuzzy
+#: templates/dashboard.html:5
 msgid "Newest bill"
 msgstr "Facture la plus récente"
 
-#: budget/templates/dashboard.html:5
+#: templates/dashboard.html:5
 msgid "Oldest bill"
 msgstr "Facture la plus ancienne"
 
-#: budget/templates/edit_project.html:6 budget/templates/list_bills.html:24
+#: templates/edit_project.html:6 templates/list_bills.html:24
 msgid "you sure?"
 msgstr "c'est sûr ?"
 
-#: budget/templates/edit_project.html:11
+#: templates/edit_project.html:11
 msgid "Edit this project"
 msgstr "Éditer ce projet"
 
-#: budget/templates/forms.html:23
+#: templates/forms.html:23
 msgid "Can't remember the password?"
 msgstr "Vous ne vous souvenez plus du code d'accès ?"
 
-#: budget/templates/forms.html:26
+#: templates/forms.html:26
 msgid "Cancel"
 msgstr "Annuler"
 
-#: budget/templates/forms.html:68
+#: templates/forms.html:68
 msgid "Edit the project"
 msgstr "Éditer le projet"
 
-#: budget/templates/forms.html:69 budget/templates/list_bills.html:70
-#: budget/templates/list_bills.html:114
+#: templates/forms.html:69 templates/list_bills.html:70
+#: templates/list_bills.html:114
 msgid "delete"
 msgstr "supprimer"
 
-#: budget/templates/forms.html:77
+#: templates/forms.html:77
 msgid "Edit this bill"
 msgstr "Éditer cette facture"
 
-#: budget/templates/forms.html:77 budget/templates/list_bills.html:94
+#: templates/forms.html:77 templates/list_bills.html:94
 msgid "Add a bill"
 msgstr "Ajouter une facture"
 
-#: budget/templates/forms.html:95
+#: templates/forms.html:95
 msgid "Type user name here"
 msgstr "Nouveau participant"
 
-#: budget/templates/forms.html:102
+#: templates/forms.html:102
 msgid "Send the invitations"
 msgstr "Envoyer les invitations"
 
-#: budget/templates/forms.html:103
+#: templates/forms.html:103
 msgid "No, thanks"
 msgstr "Non merci"
 
-#: budget/templates/forms.html:109
+#: templates/forms.html:109
 msgid "Create an archive"
 msgstr "Créer une archive"
 
-#: budget/templates/forms.html:116
+#: templates/forms.html:116
 msgid "Create the archive"
 msgstr "Créer l'archive"
 
-#: budget/templates/home.html:8
+#: templates/home.html:8
 msgid "Manage your shared <br>expenses, easily"
 msgstr "Gérez vos dépenses<br> partagées, facilement"
 
-#: budget/templates/home.html:9
+#: templates/home.html:9
 msgid "Try out the demo"
 msgstr "Essayez la démo"
 
-#: budget/templates/home.html:12
+#: templates/home.html:12
 msgid "You're sharing a house?"
 msgstr "Vous êtes en colocation ?"
 
-#: budget/templates/home.html:12
+#: templates/home.html:12
 msgid "Going on holidays with friends?"
 msgstr "Partez en vacances avec des amis ?"
 
-#: budget/templates/home.html:12
+#: templates/home.html:12
 msgid "Simply sharing money with others?"
 msgstr "Ça vous arrive de partager de l'argent avec d'autres ?"
 
-#: budget/templates/home.html:12
+#: templates/home.html:12
 msgid "We can help!"
 msgstr "On peut vous aider !"
 
-#: budget/templates/home.html:24
+#: templates/home.html:24
 msgid "Log to an existing project"
 msgstr "Se connecter à un projet existant"
 
-#: budget/templates/home.html:28
+#: templates/home.html:28
 msgid "log in"
 msgstr "se connecter"
 
-#: budget/templates/home.html:29
+#: templates/home.html:29
 msgid "can't remember your password?"
 msgstr "vous ne vous souvenez plus du code d'accès ?"
 
-#: budget/templates/home.html:36
+#: templates/home.html:36
 msgid "or create a new one"
 msgstr "ou créez en un nouveau"
 
-#: budget/templates/home.html:40
+#: templates/home.html:40
 msgid "let's get started"
 msgstr "c'est parti !"
 
-#: budget/templates/home.html:51
+#: templates/home.html:51
 msgid ""
 "This access code will be sent to your friends. It is stored as-is by the "
 "server, so don\\'t reuse a personal password!"
 msgstr ""
-"Ce code d'accès va être envoyé à vos amis et stocké en clair sur le serveur."
-"N'utilisez pas un mot de passe personnel !"
+"Ce code d'accès va être envoyé à vos amis et stocké en clair sur le "
+"serveur.N'utilisez pas un mot de passe personnel !"
 
-#: budget/templates/layout.html:5
+#: templates/layout.html:5
 msgid "Account manager"
 msgstr "Gestion de comptes"
 
-#: budget/templates/layout.html:45 budget/templates/settle_bills.html:4
+#: templates/layout.html:45 templates/settle_bills.html:4
 msgid "Bills"
 msgstr "Factures"
 
-#: budget/templates/layout.html:46 budget/templates/settle_bills.html:5
+#: templates/layout.html:46 templates/settle_bills.html:5
 msgid "Settle"
 msgstr "Remboursements"
 
-#: budget/templates/layout.html:53
+#: templates/layout.html:53
 msgid "options"
 msgstr "options"
 
-#: budget/templates/layout.html:55
+#: templates/layout.html:55
 msgid "Project settings"
 msgstr "Options du projet"
 
-#: budget/templates/layout.html:59
+#: templates/layout.html:59
 msgid "switch to"
 msgstr "aller à"
 
-#: budget/templates/layout.html:62
+#: templates/layout.html:62
 msgid "Start a new project"
 msgstr "Nouveau projet"
 
-#: budget/templates/layout.html:64
+#: templates/layout.html:64
 msgid "Logout"
 msgstr "Se déconnecter"
 
-#: budget/templates/layout.html:92
+#: templates/layout.html:92
 msgid "This is a free software"
 msgstr "Ceci est un logiciel libre"
 
-#: budget/templates/layout.html:92
+#: templates/layout.html:92
 msgid "you can contribute and improve it!"
 msgstr "vous pouvez y contribuer et l'améliorer"
 
-#: budget/templates/list_bills.html:74
+#: templates/list_bills.html:74
 msgid "reactivate"
 msgstr "ré-activer"
 
-#: budget/templates/list_bills.html:88
+#: templates/list_bills.html:88
 msgid "The project identifier is"
 msgstr "L'identifiant de ce projet est"
 
-#: budget/templates/list_bills.html:88
+#: templates/list_bills.html:88
 msgid "remember it!"
 msgstr "souvenez vous en !"
 
-#: budget/templates/list_bills.html:89
+#: templates/list_bills.html:89
 msgid "Add a new bill"
 msgstr "Nouvelle facture"
 
-#: budget/templates/list_bills.html:103
+#: templates/list_bills.html:103
 msgid "When?"
 msgstr "Quand ?"
 
-#: budget/templates/list_bills.html:103
+#: templates/list_bills.html:103
 msgid "Who paid?"
 msgstr "Qui a payé ?"
 
-#: budget/templates/list_bills.html:103
+#: templates/list_bills.html:103
 msgid "For what?"
 msgstr "Pour quoi ?"
 
-#: budget/templates/list_bills.html:103 budget/templates/settle_bills.html:31
+#: templates/list_bills.html:103 templates/settle_bills.html:31
 msgid "How much?"
 msgstr "Combien ?"
 
-#: budget/templates/list_bills.html:103
+#: templates/list_bills.html:103
 msgid "Actions"
 msgstr "Actions"
 
-#: budget/templates/list_bills.html:111
+#: templates/list_bills.html:111
 msgid "each"
 msgstr "chacun"
 
-#: budget/templates/list_bills.html:113
+#: templates/list_bills.html:113
 msgid "edit"
 msgstr "éditer"
 
-#: budget/templates/list_bills.html:122
+#: templates/list_bills.html:122
 msgid "Nothing to list yet. You probably want to"
 msgstr "Rien à lister pour l'instant. Vous voulez surement"
 
-#: budget/templates/list_bills.html:122
+#: templates/list_bills.html:122
 msgid "add a bill"
 msgstr "ajouter une facture"
 
-#: budget/templates/password_reminder.html:4
+#: templates/password_reminder.html:4
 msgid "Password reminder"
 msgstr "Rappel du code d'accès"
 
-#: budget/templates/recent_projects.html:2
+#: templates/recent_projects.html:2
 msgid "Your projects"
 msgstr "Vos projets"
 
-#: budget/templates/send_invites.html:6
+#: templates/send_invites.html:6
 msgid "Invite people"
 msgstr "Invitez des gens"
 
-#: budget/templates/send_invites.html:7
+#: templates/send_invites.html:7
 msgid "Use it!"
 msgstr "Utilisez le !"
 
-#: budget/templates/send_invites.html:11
+#: templates/send_invites.html:11
 msgid "Invite people to join this project"
 msgstr "Invitez des personnes à rejoindre ce projet"
 
-#: budget/templates/send_invites.html:12
+#: templates/send_invites.html:12
 msgid ""
 "Specify a (coma separated) list of email adresses you want to notify "
 "about the \n"
@@ -484,23 +478,23 @@ msgstr ""
 "Entrez l'addresse des personnes que vous souhaitez inviter, séparée par "
 "des virgules. On s'occupe de leur envoyer un email."
 
-#: budget/templates/send_invites.html:14
+#: templates/send_invites.html:14
 msgid "If you prefer, you can"
 msgstr "Si vous préférez vous pouvez"
 
-#: budget/templates/send_invites.html:14
+#: templates/send_invites.html:14
 msgid "skip this step"
 msgstr "sauter cette étape"
 
-#: budget/templates/send_invites.html:14
+#: templates/send_invites.html:14
 msgid "and notify them yourself"
 msgstr "et les notifier vous même"
 
-#: budget/templates/settle_bills.html:31
+#: templates/settle_bills.html:31
 msgid "Who pays?"
 msgstr "Qui doit payer ?"
 
-#: budget/templates/settle_bills.html:31
+#: templates/settle_bills.html:31
 msgid "To whom?"
 msgstr "Pour qui ?"
 
