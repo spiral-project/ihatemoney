@@ -117,7 +117,10 @@ class Project(db.Model):
         This method returns the status DELETED or DEACTIVATED regarding the
         changes made.
         """
-        person = Person.query.get(member_id, self)
+        try:
+            person = Person.query.get(member_id, self)
+        except orm.exc.NoResultFound:
+            return None
         if not person.has_bills():
             db.session.delete(person)
             db.session.commit()

@@ -275,6 +275,13 @@ class BudgetTestCase(TestCase):
         response = self.app.get("/raclette/members/1/delete")
         self.assertEqual(response.status_code, 405)
 
+        #delete user using POST method
+        self.app.post("/raclette/members/1/delete")
+        self.assertEqual(
+                len(models.Project.query.get("raclette").active_members), 0)
+        #try to delete an user already deleted
+        self.app.post("/raclette/members/1/delete")
+
     def test_demo(self):
         # test that a demo project is created if none is defined
         self.assertEqual([], models.Project.query.all())
