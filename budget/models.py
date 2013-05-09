@@ -51,13 +51,15 @@ class Project(db.Model):
 
     def get_transactions_to_settle_bill(self):
         """Return a list of transactions that could be made to settle the bill"""
+        #cache value for better performance
+        balance = self.balance
         credits, debts, transactions = [],[],[]
         # Create lists of credits and debts
         for person in self.members:
-            if self.balance[person.id] > 0:
-                credits.append({"person": person, "balance": self.balance[person.id]})
-            elif self.balance[person.id] < 0:
-                debts.append({"person": person, "balance": -self.balance[person.id]})
+            if balance[person.id] > 0:
+                credits.append({"person": person, "balance": balance[person.id]})
+            elif balance[person.id] < 0:
+                debts.append({"person": person, "balance": -balance[person.id]})
         # Try and find exact matches
         for credit in credits:
             match = self.exactmatch(credit["balance"], debts)
