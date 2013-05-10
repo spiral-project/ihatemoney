@@ -73,7 +73,7 @@
             <form class="action reactivate" action="{{ url_for(".reactivate", member_id=member.id) }}" method="POST">
                 <button type="submit">{{ _("reactivate") }}</button></form></td>
         {% endif %}
-        <td class="balance-value {% if balance[member.id] > 0 %}positive{% elif balance[member.id] < 0 %}negative{% endif %}">
+        <td class="balance-value {% if balance[member] > 0 %}positive{% elif balance[member.id] < 0 %}negative{% endif %}">
             {% if balance[member.id] > 0 %}+{% endif %}{{ balance[member.id] }}
         </td>
     </tr>
