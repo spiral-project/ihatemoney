@@ -1,5 +1,5 @@
 flask>=0.9
-flask-wtf
+flask-wtf==0.8
 flask-sqlalchemy
 flask-mail
 flask-babel
