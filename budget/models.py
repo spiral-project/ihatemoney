@@ -218,7 +218,10 @@ class Bill(db.Model):
 
     def pay_each(self):
         """Compute what each person has to pay"""
-        return round(self.amount / len(self.owers), 2)
+	if self.owers:
+		return round(self.amount / len(self.owers), 2)
+	else:
+		return 0
 
     def __repr__(self):
         return "<Bill of %s from %s for %s>" % (self.amount,
