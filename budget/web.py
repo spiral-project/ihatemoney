@@ -72,12 +72,14 @@ def authenticate(project_id=None):
     if not form.id.data and request.args.get('project_id'):
         form.id.data = request.args['project_id']
     project_id = form.id.data
-    project = False
-    if project_id:
-        project = Project.query.get(project_id)
-    else:
+    if project_id is None:
+        #User doesn't provide project identifier, return to authenticate form
         msg = _("You need to enter a project identifier")
         form.errors["id"] = [msg]
+        return render_template("authenticate.html", form=form)
+    else:
+        project = Project.query.get(project_id)
+
     create_project = False  # We don't want to create the project by default
     if not project:
         # But if the user try to connect to an unexisting project, we will
