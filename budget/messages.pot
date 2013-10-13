@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-05-09 22:24+0200\n"
+"POT-Creation-Date: 2013-10-13 21:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -179,12 +179,12 @@ msgstr ""
 msgid "%(name)s is part of this project again"
 msgstr ""
 
-#: web.py:311
+#: web.py:312
 #, python-format
 msgid "User '%(name)s' has been deactivated"
 msgstr ""
 
-#: web.py:313
+#: web.py:314
 #, python-format
 msgid "User '%(name)s' has been removed"
 msgstr ""

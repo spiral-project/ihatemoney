@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-05-09 22:24+0200\n"
+"POT-Creation-Date: 2013-10-13 21:32+0200\n"
 "PO-Revision-Date: 2011-10-14 23:51+0200\n"
 "Last-Translator: Quentin Roy <royque@gmail.com>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -183,12 +183,12 @@ msgstr "%(member)s a bien été ajouté"
 msgid "%(name)s is part of this project again"
 msgstr "%(name)s a rejoint le projet"
 
-#: web.py:311
+#: web.py:312
 #, python-format
 msgid "User '%(name)s' has been deactivated"
 msgstr "Le membre '%(name)s' a été désactivé"
 
-#: web.py:313
+#: web.py:314
 #, python-format
 msgid "User '%(name)s' has been removed"
 msgstr "Le membre '%(name)s' a été supprimé"
@@ -353,8 +353,8 @@ msgid ""
 "This access code will be sent to your friends. It is stored as-is by the "
 "server, so don\\'t reuse a personal password!"
 msgstr ""
-"Ce code d'accès va être envoyé à vos amis et stocké en clair sur le "
-"serveur.N'utilisez pas un mot de passe personnel !"
+"Ce code d\\'accès va être envoyé à vos amis et stocké en clair sur le "
+"serveur.N\\'utilisez pas un mot de passe personnel !"
 
 #: templates/layout.html:5
 msgid "Account manager"
@@ -470,13 +470,13 @@ msgstr "Invitez des personnes à rejoindre ce projet"
 
 #: templates/send_invites.html:12
 msgid ""
-"Specify a (coma separated) list of email adresses you want to notify "
+"Specify a (comma separated) list of email adresses you want to notify "
 "about the \n"
 "creation of this budget management project and we will send them an email"
 " for you."
 msgstr ""
-"Entrez l'addresse des personnes que vous souhaitez inviter, séparée par "
-"des virgules. On s'occupe de leur envoyer un email."
+"Entrez les addresses des personnes que vous souhaitez inviter, séparées "
+"par des virgules. On s'occupe de leur envoyer un email."
 
 #: templates/send_invites.html:14
 msgid "If you prefer, you can"
@@ -488,7 +488,7 @@ msgstr "sauter cette étape"
 
 #: templates/send_invites.html:14
 msgid "and notify them yourself"
-msgstr "et les notifier vous même"
+msgstr "et les avertir vous même"
 
 #: templates/settle_bills.html:31
 msgid "Who pays?"
