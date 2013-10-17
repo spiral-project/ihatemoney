@@ -289,6 +289,11 @@ class BudgetTestCase(TestCase):
         self.assertTrue(models.Project.query.get("demo") is not None)
 
     def test_authentication(self):
+	# try to authenticate without credentials should redirect
+	# to the authentication page
+	resp = self.app.post("/authenticate")
+	self.assertIn("Authentication", resp.data)
+
         # raclette that the login / logout process works
         self.create_project("raclette")
 
