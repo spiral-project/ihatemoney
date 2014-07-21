@@ -219,7 +219,7 @@ class Bill(db.Model):
     def pay_each(self):
         """Compute what each person has to pay"""
 	if self.owers:
-		return round(self.amount / len(self.owers), 2)
+		return self.amount / len(self.owers)
 	else:
 		return 0
 
