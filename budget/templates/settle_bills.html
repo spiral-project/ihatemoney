@@ -15,7 +15,7 @@
     <tr id="bal-member-{{ member.id }}" action={% if member.activated %}delete{% else %}reactivate{% endif %}>
         <td class="balance-name">{{ member.name }}</td>
         <td class="balance-value {% if balance[member.id] > 0 %}positive{% elif balance[member.id] < 0 %}negative{% endif %}">
-            {% if balance[member.id] > 0 %}+{% endif %}{{ balance[member.id] }}
+            {% if balance[member.id] > 0 %}+{% endif %}{{ "%.2f" | format(balance[member.id]) }}
         </td>
     </tr>
     {% endfor %}
