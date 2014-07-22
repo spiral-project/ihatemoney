@@ -45,7 +45,7 @@ class Project(db.Model):
 
         for person in self.members:
             balance = should_receive[person] - should_pay[person]
-            balances[person.id] = round(balance, 2)
+            balances[person.id] = balance
 
         return balances
 
@@ -219,7 +219,7 @@ class Bill(db.Model):
     def pay_each(self):
         """Compute what each person has to pay"""
 	if self.owers:
-		return round(self.amount / len(self.owers), 2)
+		return self.amount / len(self.owers)
 	else:
 		return 0
 
