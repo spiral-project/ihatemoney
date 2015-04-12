@@ -88,7 +88,7 @@ class ProjectForm(EditProjectForm):
 
     def validate_id(form, field):
         form.id.data = slugify(field.data)
-        if Project.query.get(form.id.data):
+        if (form.id.data == "dashboard") or Project.query.get(form.id.data):
             raise ValidationError(Markup(_("The project identifier is used "
                 "to log in and for the URL of the project. "
                 "We tried to generate an identifier for you but a project "
