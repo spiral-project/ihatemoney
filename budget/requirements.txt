@@ -1,7 +1,7 @@
 flask>=0.9
 flask-wtf==0.8
 flask-sqlalchemy
-flask-mail
+flask-mail>=0.8
 flask-babel
 flask-rest
 jinja2==2.6
