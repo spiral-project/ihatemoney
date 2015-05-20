@@ -1,13 +1,14 @@
-{% macro input(field, multiple=False, class=None) -%}
+{% macro input(field, multiple=False) -%}
+    {# Additional arguments will be added as input properties (e.g. class="yourclass") #}
     <div class="control-group">
     {% if field.type != "SubmitField" %}
         {{ field.label(class="control-label") }}
     {% endif %}
         <div class="controls">
         {% if multiple == True %}
-            {{ field(multiple=True, class=class) }}
+            {{ field(multiple=True, **kwargs) }}
         {% else %}
-            {{ field(class=class) | safe }}
+            {{ field(**kwargs) | safe }}
         {% endif %}
         {% if field.description %}
             <p class="help-inline">{{ field.description }}</p>
@@ -80,7 +81,7 @@
     {{ input(form.date, class="datepicker") }} 
     {{ input(form.what) }} 
     {{ input(form.payer) }} 
-    {{ input(form.amount) }} 
+    {{ input(form.amount, autocomplete="off") }} 
     {{ input(form.payed_for) }} 
     </fieldset>
     <div class="actions">
