@@ -62,7 +62,7 @@ class Project(db.Model):
                 debts.append({"person": person, "balance": -balance[person.id]})
         # Try and find exact matches
         for credit in credits:
-            match = self.exactmatch(credit["balance"], debts)
+            match = self.exactmatch(round(credit["balance"], 2), debts)
             if match:
                 for m in match:
                     transactions.append({"ower": m["person"], "receiver": credit["person"], "amount": m["balance"]})
