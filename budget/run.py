@@ -1,3 +1,4 @@
+import os
 import warnings
 
 from flask import Flask, g, request, session
@@ -14,7 +15,8 @@ app = Flask(__name__)
 def configure():
     """ A way to (re)configure the app, specially reset the settings
     """
-    app.config.from_object("default_settings")
+    config_obj = os.environ.get('FLASK_SETTINGS_MODULE', 'merged_settings')
+    app.config.from_object(config_obj)
     app.wsgi_app = PrefixedWSGI(app)
 
     # Deprecations

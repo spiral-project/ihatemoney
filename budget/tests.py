@@ -5,8 +5,11 @@ except ImportError:
     import unittest  # NOQA
 
 import base64
+import os
 import json
 from collections import defaultdict
+
+os.environ['FLASK_SETTINGS_MODULE'] = 'default_settings'
 
 from flask import session
 
