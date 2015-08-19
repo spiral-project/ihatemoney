@@ -6,7 +6,7 @@ from raven.contrib.flask import Sentry
 
 from web import main, db, mail
 from api import api
-
+from utils import PrefixedWSGI
 
 app = Flask(__name__)
 
@@ -15,6 +15,7 @@ def configure():
     """ A way to (re)configure the app, specially reset the settings
     """
     app.config.from_object("default_settings")
+    app.wsgi_app = PrefixedWSGI(app)
 
     # Deprecations
     if 'DEFAULT_MAIL_SENDER' in app.config:
