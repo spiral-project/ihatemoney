@@ -532,7 +532,7 @@ class BudgetTestCase(TestCase):
         for m, a in members.items():
             self.assertEqual(a, balance[m.id])
         return
-        
+
 
 
 class APITestCase(TestCase):

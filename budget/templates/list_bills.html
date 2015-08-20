@@ -42,13 +42,13 @@
         });
         $("#bal-member-"+payer_id).addClass("payer_line");
     };
-    
+
     var unhighlight_owers = function(){
         $('[id^="bal-member-"]').removeClass("ower_line payer_line");
     };
-    
+
     $('#bill_table tbody tr').hover(highlight_owers, unhighlight_owers);
-    
+
 {% endblock %}
 
 {% block sidebar %}
