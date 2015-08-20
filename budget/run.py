@@ -9,6 +9,8 @@ from raven.contrib.flask import Sentry
 from web import main, db, mail
 from api import api
 from utils import PrefixedWSGI
+from utils import minimal_round
+
 
 app = Flask(__name__)
 
@@ -36,6 +38,9 @@ configure()
 
 app.register_blueprint(main)
 app.register_blueprint(api)
+
+# custom jinja2 filters
+app.jinja_env.filters['minimal_round'] = minimal_round
 
 # db
 db.init_app(app)
