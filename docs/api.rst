@@ -64,18 +64,18 @@ Getting information about the project::
 
     $ curl --basic -u demo:demo http://ihatemoney.notmyidea.org/api/projects/demo
     {
-        "name": "demonstration", 
-        "contact_email": "demo@notmyidea.org", 
-        "password": "demo", 
+        "name": "demonstration",
+        "contact_email": "demo@notmyidea.org",
+        "password": "demo",
         "id": "demo",
-        "active_members": [{"activated": true, "id": 31, "name": "Arnaud"}, 
-                            {"activated": true, "id": 32, "name": "Alexis"}, 
-                            {"activated": true, "id": 33, "name": "Olivier"}, 
-                            {"activated": true, "id": 34, "name": "Fred"}], 
-        "members": [{"activated": true, "id": 31, "name": "Arnaud"}, 
-                    {"activated": true, "id": 32, "name": "Alexis"}, 
-                    {"activated": true, "id": 33, "name": "Olivier"}, 
-                    {"activated": true, "id": 34, "name": "Fred"}], 
+        "active_members": [{"activated": true, "id": 31, "name": "Arnaud"},
+                            {"activated": true, "id": 32, "name": "Alexis"},
+                            {"activated": true, "id": 33, "name": "Olivier"},
+                            {"activated": true, "id": 34, "name": "Fred"}],
+        "members": [{"activated": true, "id": 31, "name": "Arnaud"},
+                    {"activated": true, "id": 32, "name": "Alexis"},
+                    {"activated": true, "id": 33, "name": "Olivier"},
+                    {"activated": true, "id": 34, "name": "Fred"}],
     }
 
 
@@ -101,15 +101,15 @@ Members
 You can get all the members with a `GET` on `/api/projects/<id>/members`::
 
     $ curl --basic -u demo:demo http://ihatemoney.notmyidea.org/api/projects/demo/members\
-    [{"activated": true, "id": 31, "name": "Arnaud"}, 
-     {"activated": true, "id": 32, "name": "Alexis"}, 
+    [{"activated": true, "id": 31, "name": "Arnaud"},
+     {"activated": true, "id": 32, "name": "Alexis"},
      {"activated": true, "id": 33, "name": "Olivier"},
      {"activated": true, "id": 34, "name": "Fred"}]
 
 Add a member with a `POST` request on `/api/projects/<id>/members`::
 
     $ curl --basic -u demo:demo -X POST\
-    http://ihatemoney.notmyidea.org/api/projects/demo/members -d 'name=tatayoyo' 
+    http://ihatemoney.notmyidea.org/api/projects/demo/members -d 'name=tatayoyo'
     35
 
 You can also `PUT` a new version of a member (changing its name)::
@@ -122,7 +122,7 @@ You can also `PUT` a new version of a member (changing its name)::
 Delete a member with a `DELETE` request on `/api/projects/<id>/members/<member-id>`::
 
     $ curl --basic -u demo:demo -X DELETE\
-    http://ihatemoney.notmyidea.org/api/projects/demo/members/35 
+    http://ihatemoney.notmyidea.org/api/projects/demo/members/35
     "OK
 
 Bills

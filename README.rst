@@ -27,7 +27,7 @@ the following content::
     DEBUG = True
     SQLACHEMY_ECHO = DEBUG
 
-You can also set the `TESTING` flag to `True` so no mails are sent 
+You can also set the `TESTING` flag to `True` so no mails are sent
 (and no exception is raised) while you're on development mode.
 
 Deploy it
@@ -66,7 +66,7 @@ As a developer
 --------------
 
 The best way to contribute code is to write it and to make a pull request on
-github. Please, think about updating and running the tests before asking for 
+github. Please, think about updating and running the tests before asking for
 a pull request as it will help us to maintain the code clean and running.
 
 To do so::
