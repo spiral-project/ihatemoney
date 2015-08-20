@@ -189,6 +189,10 @@ tr.payer_line .balance-name{
     position: absolute;
 }
 
+.light {
+    opacity: 0.3;
+}
+
 .modal-body {
     max-height:455px;
 }
