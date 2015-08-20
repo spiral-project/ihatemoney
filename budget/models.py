@@ -153,7 +153,7 @@ class Person(db.Model):
 
     query_class = PersonQuery
 
-    _to_serialize = ("id", "name", "activated")
+    _to_serialize = ("id", "name", "weight", "activated")
 
     id = db.Column(db.Integer, primary_key=True)
     project_id = db.Column(db.String(64), db.ForeignKey("project.id"))
@@ -219,7 +219,7 @@ class Bill(db.Model):
     archive = db.Column(db.Integer, db.ForeignKey("archive.id"))
 
     def pay_each(self):
-        """Compute what each person has to pay"""
+        """Compute what each share has to pay"""
 	if self.owers:
                 # FIXME: SQL might dot that more efficiently
 		return self.amount / sum(i.weight for i in self.owers)

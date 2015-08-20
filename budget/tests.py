@@ -583,9 +583,10 @@ class APITestCase(TestCase):
             'contact_email': contact
         })
 
-    def api_add_member(self, project, name):
+    def api_add_member(self, project, name, weight=1):
         self.app.post("/api/projects/%s/members" % project,
-                data={"name": name}, headers=self.get_auth(project))
+                      data={"name": name, "weight": weight},
+                      headers=self.get_auth(project))
 
     def get_auth(self, username, password=None):
         password = password or username
@@ -792,8 +793,8 @@ class APITestCase(TestCase):
             "what": "fromage",
             "payer_id": 1,
             "owers": [
-                {"activated": True, "id": 1, "name": "alexis"},
-                {"activated": True, "id": 2, "name": "fred"}],
+                {"activated": True, "id": 1, "name": "alexis", "weight": 1},
+                {"activated": True, "id": 2, "name": "fred", "weight": 1}],
             "amount": 25.0,
             "date": "2011-08-10",
             "id": 1}
@@ -835,8 +836,8 @@ class APITestCase(TestCase):
             "what": "beer",
             "payer_id": 2,
             "owers": [
-                {"activated": True, "id": 1, "name": "alexis"},
-                {"activated": True, "id": 2, "name": "fred"}],
+                {"activated": True, "id": 1, "name": "alexis", "weight": 1},
+                {"activated": True, "id": 2, "name": "fred", "weight": 1}],
             "amount": 25.0,
             "date": "2011-09-10",
             "id": 1}
@@ -853,6 +854,65 @@ class APITestCase(TestCase):
                 headers=self.get_auth("raclette"))
         self.assertStatus(404, req)
 
+    def test_weighted_bills(self):
+        # create a project
+        self.api_create("raclette")
+
+        # add members
+        self.api_add_member("raclette", "alexis")
+        self.api_add_member("raclette", "freddy familly", 4)
+        self.api_add_member("raclette", "arnaud")
+
+        # add a bill
+        req = self.app.post("/api/projects/raclette/bills", data={
+            'date': '2011-08-10',
+            'what': "fromage",
+            'payer': "1",
+            'payed_for': ["1", "2"],
+            'amount': '25',
+            }, headers=self.get_auth("raclette"))
+
+        # get this bill details
+        req = self.app.get("/api/projects/raclette/bills/1",
+                headers=self.get_auth("raclette"))
+
+        # compare with the added info
+        self.assertStatus(200, req)
+        expected = {
+            "what": "fromage",
+            "payer_id": 1,
+            "owers": [
+                {"activated": True, "id": 1, "name": "alexis", "weight": 1},
+                {"activated": True, "id": 2, "name": "freddy familly", "weight": 4}],
+            "amount": 25.0,
+            "date": "2011-08-10",
+            "id": 1}
+        self.assertDictEqual(expected, json.loads(req.data))
+
+        # getting it should return a 404
+        req = self.app.get("/api/projects/raclette",
+                headers=self.get_auth("raclette"))
+
+        expected = {
+            "active_members": [
+                {"activated": True, "id": 1, "name": "alexis", "weight": 1.0},
+                {"activated": True, "id": 2, "name": "freddy familly", "weight": 4.0},
+                {"activated": True, "id": 3, "name": "arnaud", "weight": 1.0}
+            ],
+            "balance": {"1": 20.0, "2": -20.0, "3": 0},
+            "contact_email": "raclette@notmyidea.org",
+            "id": "raclette",
+
+            "members": [
+                {"activated": True, "id": 1, "name": "alexis", "weight": 1.0},
+                {"activated": True, "id": 2, "name": "freddy familly", "weight": 4.0},
+                {"activated": True, "id": 3, "name": "arnaud", "weight": 1.0}
+            ],
+            "name": "raclette",
+            "password": "raclette"}
+
+        self.assertStatus(200, req)
+        self.assertEqual(expected, json.loads(req.data))
 
 class ServerTestCase(APITestCase):
     def setUp(self):
