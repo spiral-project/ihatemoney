@@ -416,6 +416,36 @@ class BudgetTestCase(TestCase):
         bill = models.Bill.query.filter(models.Bill.date == '2011-08-01')[0]
         self.assertEqual(bill.amount, 25.02)
 
+    def test_weighted_balance(self):
+        self.post_project("raclette")
+
+        # add two persons
+        self.app.post("/raclette/members/add", data={'name': 'alexis'})
+        self.app.post("/raclette/members/add", data={'name': 'freddy familly', 'weight': 4})
+
+        members_ids = [m.id for m in
+                       models.Project.query.get("raclette").members]
+
+        # test balance
+        self.app.post("/raclette/add", data={
+            'date': '2011-08-10',
+            'what': u'fromage à raclette',
+            'payer': members_ids[0],
+            'payed_for': members_ids,
+            'amount': '10',
+        })
+
+        self.app.post("/raclette/add", data={
+            'date': '2011-08-10',
+            'what': u'pommes de terre',
+            'payer': members_ids[1],
+            'payed_for': members_ids,
+            'amount': '10',
+        })
+
+        balance = models.Project.query.get("raclette").balance
+        self.assertEqual(set(balance.values()), set([6, -6]))
+
     def test_rounding(self):
         self.post_project("raclette")
 

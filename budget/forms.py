@@ -152,6 +152,7 @@ class BillForm(Form):
 class MemberForm(Form):
 
     name = TextField(_("Name"), validators=[Required()])
+    weight = CommaDecimalField(_("Weight"), default=1)
     submit = SubmitField(_("Add"))
 
     def __init__(self, project, *args, **kwargs):
@@ -170,6 +171,7 @@ class MemberForm(Form):
         # if the user is already bound to the project, just reactivate him
         person.name = self.name.data
         person.project = project
+        person.weight = self.weight.data
 
         return person
 

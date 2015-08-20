@@ -40,8 +40,9 @@ class Project(db.Model):
             bills = Bill.query.filter(Bill.owers.contains(person))
             for bill in bills.all():
                 if person != bill.payer:
-                    should_pay[person] += bill.pay_each()
-                    should_receive[bill.payer] += bill.pay_each()
+                    share = bill.pay_each() * person.weight
+                    should_pay[person] += share
+                    should_receive[bill.payer] += share
 
         for person in self.members:
             balance = should_receive[person] - should_pay[person]
@@ -159,6 +160,7 @@ class Person(db.Model):
     bills = db.relationship("Bill", backref="payer")
 
     name = db.Column(db.UnicodeText)
+    weight = db.Column(db.Float, default=1)
     activated = db.Column(db.Boolean, default=True)
 
     def has_bills(self):
@@ -219,7 +221,8 @@ class Bill(db.Model):
     def pay_each(self):
         """Compute what each person has to pay"""
 	if self.owers:
-		return self.amount / len(self.owers)
+                # FIXME: SQL might dot that more efficiently
+		return self.amount / sum(i.weight for i in self.owers)
 	else:
 		return 0
 
