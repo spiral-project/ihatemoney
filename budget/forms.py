@@ -155,16 +155,18 @@ class MemberForm(Form):
     weight = CommaDecimalField(_("Weight"), default=1)
     submit = SubmitField(_("Add"))
 
-    def __init__(self, project, *args, **kwargs):
+    def __init__(self, project, edit=False, *args, **kwargs):
         super(MemberForm, self).__init__(*args, **kwargs)
         self.project = project
+        self.edit = edit
 
     def validate_name(form, field):
         if field.data == form.name.default:
             raise ValidationError(_("User name incorrect"))
-        if Person.query.filter(Person.name == field.data)\
-                .filter(Person.project == form.project)\
-                .filter(Person.activated == True).all():
+        if (not form.edit and Person.query.filter(
+                Person.name == field.data,
+                Person.project == form.project,
+                Person.activated == True).all()):
             raise ValidationError(_("This project already have this member"))
 
     def save(self, project, person):
@@ -174,6 +176,10 @@ class MemberForm(Form):
         person.weight = self.weight.data
 
         return person
+
+    def fill(self, member):
+        self.name.data = member.name
+        self.weight.data = member.weight
 
 
 class InviteForm(Form):
