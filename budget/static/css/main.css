@@ -176,6 +176,11 @@ tr.payer_line .balance-name{
     color: red;
 }
 
+.edit button, .edit button:hover {
+    background: url('../images/edit.png') left no-repeat;
+
+}
+
 .reactivate button, .reactivate button:hover {
     background: url('../images/reactivate.png') left no-repeat;
     color: white;
