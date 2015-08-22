@@ -13,9 +13,13 @@
 
     {% if add_bill %} $('#new-bill').click(); {% endif %}
 
-    // ask for confirmation before removing an user
+    // Hide all members actions
     $('.action').each(function(){
         $(this).hide();
+    });
+
+    // ask for confirmation before removing an user
+    $('.action.delete').each(function(){
         var link = $(this).find('button');
         link.click(function(){
             if ($(this).hasClass("confirm")){
