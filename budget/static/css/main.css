@@ -198,6 +198,14 @@ tr.payer_line .balance-name{
     opacity: 0.3;
 }
 
+.extra-info {
+    display: none;
+}
+
+tr:hover .extra-info {
+    display: inline;
+}
+
 .modal-body {
     max-height:455px;
 }

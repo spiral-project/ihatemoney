@@ -446,6 +446,22 @@ class BudgetTestCase(TestCase):
         balance = models.Project.query.get("raclette").balance
         self.assertEqual(set(balance.values()), set([6, -6]))
 
+    def test_weighted_members_list(self):
+        self.post_project("raclette")
+
+        # add two persons
+        self.app.post("/raclette/members/add", data={'name': 'alexis'})
+        self.app.post("/raclette/members/add", data={'name': 'tata', 'weight': 1})
+
+        resp =  self.app.get("/raclette/")
+        self.assertIn('extra-info', resp.data)
+
+        self.app.post("/raclette/members/add", data={'name': 'freddy familly', 'weight': 4})
+
+        resp =  self.app.get("/raclette/")
+        self.assertNotIn('extra-info', resp.data)
+
+
     def test_rounding(self):
         self.post_project("raclette")
 

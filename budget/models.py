@@ -50,6 +50,10 @@ class Project(db.Model):
 
         return balances
 
+    @property
+    def uses_weights(self):
+        return len([i for i in self.members if i.weight != 1]) > 0
+
     def get_transactions_to_settle_bill(self):
         """Return a list of transactions that could be made to settle the bill"""
         #cache value for better performance
