@@ -48,7 +48,12 @@ To deploy it, I'm using gunicorn and supervisord::
 Don't forget to set the right permission for your files !
 
 Also, create a `settings.py` file with the appropriate values if you need to
-use a different database for instance.
+use a different database for instance. You can also set `APPLICATION_ROOT` if
+you want to prefix your URLs to serve ihatemonney in the *folder* of a domain,
+e.g:
+
+    APPLICATION_ROOT='/budget'
+
 
 How about the REST API?
 =======================

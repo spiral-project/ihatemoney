@@ -821,5 +821,20 @@ class APITestCase(TestCase):
         self.assertStatus(404, req)
 
 
+class ServerTestCase(APITestCase):
+    def setUp(self):
+        run.configure()
+        super(ServerTestCase, self).setUp()
+
+    def test_unprefixed(self):
+        req = self.app.get("/foo/")
+        self.assertStatus(303, req)
+
+    def test_prefixed(self):
+        run.app.config['APPLICATION_ROOT'] = '/foo'
+        req = self.app.get("/foo/")
+        self.assertStatus(200, req)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -4,6 +4,7 @@ SQLACHEMY_ECHO = DEBUG
 SECRET_KEY = "tralala"
 
 MAIL_DEFAULT_SENDER = ("Budget manager", "budget@notmyidea.org")
+APPLICATION_ROOT = '/'
 
 try:
     from settings import *

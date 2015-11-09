@@ -6,21 +6,29 @@ from raven.contrib.flask import Sentry
 
 from web import main, db, mail
 from api import api
-
+from utils import PrefixedWSGI
 
 app = Flask(__name__)
-app.config.from_object("default_settings")
 
-# Deprecations
-if 'DEFAULT_MAIL_SENDER' in app.config:
-    # Since flask-mail  0.8
-    warnings.warn(
-        "DEFAULT_MAIL_SENDER is deprecated in favor of MAIL_DEFAULT_SENDER"
-        +" and will be removed in further version",
-        UserWarning
-    )
-    if not 'MAIL_DEFAULT_SENDER' in app.config:
-        app.config['MAIL_DEFAULT_SENDER'] = DEFAULT_MAIL_SENDER
+
+def configure():
+    """ A way to (re)configure the app, specially reset the settings
+    """
+    app.config.from_object("default_settings")
+    app.wsgi_app = PrefixedWSGI(app)
+
+    # Deprecations
+    if 'DEFAULT_MAIL_SENDER' in app.config:
+        # Since flask-mail  0.8
+        warnings.warn(
+            "DEFAULT_MAIL_SENDER is deprecated in favor of MAIL_DEFAULT_SENDER"
+            +" and will be removed in further version",
+            UserWarning
+        )
+        if not 'MAIL_DEFAULT_SENDER' in app.config:
+            app.config['MAIL_DEFAULT_SENDER'] = DEFAULT_MAIL_SENDER
+
+configure()
 
 
 app.register_blueprint(main)
