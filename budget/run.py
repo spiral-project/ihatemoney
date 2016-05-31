@@ -3,6 +3,7 @@ import warnings
 
 from flask import Flask, g, request, session
 from flask.ext.babel import Babel
+from flask.ext.migrate import Migrate, upgrade
 from raven.contrib.flask import Sentry
 
 from web import main, db, mail
@@ -39,7 +40,13 @@ app.register_blueprint(api)
 # db
 db.init_app(app)
 db.app = app
-db.create_all()
+
+# db migrations
+migrate = Migrate(app, db)
+
+# auto-execute migrations on runtime
+with app.app_context():
+    upgrade()
 
 # mail
 mail.init_app(app)
