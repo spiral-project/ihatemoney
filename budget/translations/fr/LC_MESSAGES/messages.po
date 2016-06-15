@@ -105,6 +105,10 @@ msgstr "Le montant d'une facture ne peut pas être nul."
 msgid "Name"
 msgstr "Nom"
 
+#: forms.py:155
+msgid "Weight"
+msgstr "Poids"
+
 #: forms.py:155 templates/forms.html:95
 msgid "Add"
 msgstr "Ajouter"
@@ -497,4 +501,3 @@ msgstr "Qui doit payer ?"
 #: templates/settle_bills.html:31
 msgid "To whom?"
 msgstr "Pour qui ?"
-
