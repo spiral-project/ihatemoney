@@ -322,6 +322,24 @@ def remove_member(member_id):
     return redirect(url_for(".list_bills"))
 
 
+@main.route("/<project_id>/members/<member_id>/edit",
+            methods=["POST", "GET"])
+def edit_member(member_id):
+    member = Person.query.get(member_id, g.project)
+    if not member:
+        raise werkzeug.exceptions.NotFound()
+    form = MemberForm(g.project, edit=True)
+
+    if request.method == 'POST' and form.validate():
+        form.save(g.project, member)
+        db.session.commit()
+        flash(_("User '%(name)s' has been edited", name=member.name))
+        return redirect(url_for(".list_bills"))
+
+    form.fill(member)
+    return render_template("edit_member.html", form=form, edit=True)
+
+
 @main.route("/<project_id>/add", methods=["GET", "POST"])
 def add_bill():
     form = get_billform_for(g.project)

@@ -13,9 +13,13 @@
 
     {% if add_bill %} $('#new-bill').click(); {% endif %}
 
-    // ask for confirmation before removing an user
+    // Hide all members actions
     $('.action').each(function(){
         $(this).hide();
+    });
+
+    // ask for confirmation before removing an user
+    $('.action.delete').each(function(){
         var link = $(this).find('button');
         link.click(function(){
             if ($(this).hasClass("confirm")){
@@ -63,11 +67,16 @@
     {% set balance = g.project.balance %}
     {% for member in g.project.members | sort(attribute='name') if member.activated or balance[member.id] != 0 %}
     <tr id="bal-member-{{ member.id }}" action={% if member.activated %}delete{% else %}reactivate{% endif %}>
-        <td class="balance-name">{{ member.name }}</td>
+        <td class="balance-name">{{ member.name }}
+            <span class="light{% if not g.project.uses_weights %} extra-info{% endif %}">(x{{ member.weight|minimal_round(1) }})</span>
+        </td>
         {% if member.activated %}
         <td>
             <form class="action delete" action="{{ url_for(".remove_member", member_id=member.id) }}" method="POST">
-                <button type="submit">{{ _("delete") }}</button></form></td>
+                <button type="submit">{{ _("delete") }}</button></form>
+            <form class="action edit" action="{{ url_for(".edit_member", member_id=member.id) }}" method="GET">
+                <button type="submit">{{ _("edit") }}</button></form>
+        </td>
         {% else %}
         <td>
             <form class="action reactivate" action="{{ url_for(".reactivate", member_id=member.id) }}" method="POST">

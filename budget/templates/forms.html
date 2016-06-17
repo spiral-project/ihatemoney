@@ -95,6 +95,20 @@
 {{ form.name(placeholder=_("Type user name here")) }}<button class="btn">{{ _("Add") }}</button>
 {% endmacro %}
 
+{% macro edit_member(form, title=True) %}
+    <fieldset>
+        {% if title %}<legend>{{ _("Edit this member") }}</legend>{% endif %}
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }}
+    {{ input(form.name) }}
+    {{ input(form.weight) }}
+    </fieldset>
+    <div class="actions">
+        {{ form.submit(class="btn btn-primary") }}
+    </div>
+{% endmacro %}
+
+
 {% macro invites(form) %}
     {{ form.hidden_tag() }}
     {{ input(form.emails) }}

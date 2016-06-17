@@ -1,6 +1,7 @@
 import re
 import inspect
 
+from jinja2 import filters
 from flask import redirect
 from werkzeug.routing import HTTPException, RoutingException
 
@@ -63,3 +64,16 @@ class PrefixedWSGI(object):
         if scheme:
             environ['wsgi.url_scheme'] = scheme
         return self.wsgi_app(environ, start_response)
+
+
+def minimal_round(*args, **kw):
+    """ Jinja2 filter: rounds, but display only non-zero decimals
+
+    from http://stackoverflow.com/questions/28458524/
+    """
+    # Use the original round filter, to deal with the extra arguments
+    res = filters.do_round(*args, **kw)
+    # Test if the result is equivalent to an integer and
+    # return depending on it
+    ires = int(res)
+    return (res if res != ires else ires)

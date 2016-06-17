@@ -176,6 +176,11 @@ tr.payer_line .balance-name{
     color: red;
 }
 
+.edit button, .edit button:hover {
+    background: url('../images/edit.png') left no-repeat;
+
+}
+
 .reactivate button, .reactivate button:hover {
     background: url('../images/reactivate.png') left no-repeat;
     color: white;
@@ -187,6 +192,18 @@ tr.payer_line .balance-name{
 
 .flash {
     position: absolute;
+}
+
+.light {
+    opacity: 0.3;
+}
+
+.extra-info {
+    display: none;
+}
+
+tr:hover .extra-info {
+    display: inline;
 }
 
 .modal-body {
@@ -208,4 +225,3 @@ tr.payer_line .balance-name{
 .row-fluid > .offset3{margin-left:25.5%;}
 .row-fluid > .offset2{margin-left:17%;}
 .row-fluid > .offset1{margin-left:8.5%;}
-
