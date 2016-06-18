@@ -3,7 +3,7 @@ import warnings
 
 from flask import Flask, g, request, session
 from flask.ext.babel import Babel
-from flask.ext.migrate import Migrate, upgrade
+from flask.ext.migrate import Migrate, upgrade, stamp
 from raven.contrib.flask import Sentry
 
 from web import main, db, mail
@@ -13,6 +13,15 @@ from utils import minimal_round
 
 
 app = Flask(__name__)
+
+
+def pre_alembic_db():
+    """ Checks if we are migrating from a pre-alembic ihatemoney
+    """
+    con = db.engine.connect()
+    tables_exist = db.engine.dialect.has_table(con, 'project')
+    alembic_setup = db.engine.dialect.has_table(con, 'alembic_version')
+    return tables_exist and not alembic_setup
 
 
 def configure():
@@ -48,6 +57,11 @@ db.app = app
 
 # db migrations
 migrate = Migrate(app, db)
+
+if pre_alembic_db():
+    with app.app_context():
+        # fake the first migration
+        stamp(revision='b9a10d5d63ce')
 
 # auto-execute migrations on runtime
 with app.app_context():
