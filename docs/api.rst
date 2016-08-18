@@ -24,11 +24,11 @@ a project, you need to be authenticated. The only way to authenticate yourself
 currently is using the "basic" HTTP authentication.
 
 If you don't want your credentials to pass in clear trought the network, you
-can use the ssl endpoint at https://ihatemoney.notmyidea.org
+can use the ssl endpoint at https://ihatemoney.org
 
 For instance, here is how to see the what's in a project, using curl::
 
-    $ curl --basic -u demo:demo http://ihatemoney.notmyidea.org/api/projects/demo
+    $ curl --basic -u demo:demo http://ihatemoney.org/api/projects/demo
 
 Projects
 --------
@@ -50,7 +50,7 @@ A project needs the following arguments:
 
 ::
 
-    $ curl -X POST https://ihatemoney.notmyidea.org/api/projects \
+    $ curl -X POST https://ihatemoney.org/api/projects \
     -d 'name=yay&id=yay&password=yay&contact_email=yay@notmyidea.org'
     "yay"
 
@@ -62,7 +62,7 @@ Getting information about the project
 Getting information about the project::
 
 
-    $ curl --basic -u demo:demo http://ihatemoney.notmyidea.org/api/projects/demo
+    $ curl --basic -u demo:demo http://ihatemoney.org/api/projects/demo
     {
         "name": "demonstration",
         "contact_email": "demo@notmyidea.org",
@@ -85,7 +85,7 @@ Updating a project
 Updating a project is done with the `PUT` verb::
 
     $ curl --basic -u yay:yay -X PUT\
-    http://ihatemoney.notmyidea.org/api/projects/yay -d\
+    http://ihatemoney.org/api/projects/yay -d\
     'name=yay&id=yay&password=yay&contact_email=youpi@notmyidea.org'
 
 Deleting a project
@@ -93,14 +93,14 @@ Deleting a project
 
 Just send a DELETE request ont the project URI ::
 
-    $ curl --basic -u demo:demo -X DELETE http://ihatemoney.notmyidea.org/api/projects/demo
+    $ curl --basic -u demo:demo -X DELETE http://ihatemoney.org/api/projects/demo
 
 Members
 -------
 
 You can get all the members with a `GET` on `/api/projects/<id>/members`::
 
-    $ curl --basic -u demo:demo http://ihatemoney.notmyidea.org/api/projects/demo/members\
+    $ curl --basic -u demo:demo http://ihatemoney.org/api/projects/demo/members\
     [{"activated": true, "id": 31, "name": "Arnaud"},
      {"activated": true, "id": 32, "name": "Alexis"},
      {"activated": true, "id": 33, "name": "Olivier"},
@@ -109,20 +109,20 @@ You can get all the members with a `GET` on `/api/projects/<id>/members`::
 Add a member with a `POST` request on `/api/projects/<id>/members`::
 
     $ curl --basic -u demo:demo -X POST\
-    http://ihatemoney.notmyidea.org/api/projects/demo/members -d 'name=tatayoyo'
+    http://ihatemoney.org/api/projects/demo/members -d 'name=tatayoyo'
     35
 
 You can also `PUT` a new version of a member (changing its name)::
 
     $ curl --basic -u demo:demo -X PUT\
-    http://ihatemoney.notmyidea.org/api/projects/demo/members/36\
+    http://ihatemoney.org/api/projects/demo/members/36\
     -d 'name=yeaaaaah'
     {"activated": true, "id": 36, "name": "yeaaaaah"}
 
 Delete a member with a `DELETE` request on `/api/projects/<id>/members/<member-id>`::
 
     $ curl --basic -u demo:demo -X DELETE\
-    http://ihatemoney.notmyidea.org/api/projects/demo/members/35
+    http://ihatemoney.org/api/projects/demo/members/35
     "OK
 
 Bills
@@ -130,7 +130,7 @@ Bills
 
 You can get the list of bills by doing a `GET` on `/api/projects/<id>/bills` ::
 
-    $ curl --basic -u demo:demo http://ihatemoney.notmyidea.org/api/projects/demo/bills
+    $ curl --basic -u demo:demo http://ihatemoney.org/api/projects/demo/bills
 
 Add a bill with a `POST` query on `/api/projects/<id>/bills`. you need the
 following params:
@@ -144,7 +144,7 @@ following params:
 Returns the id of the created bill ::
 
     $ curl --basic -u demo:demo -X POST\
-    http://ihatemoney.notmyidea.org/api/projects/demo/bills\
+    http://ihatemoney.org/api/projects/demo/bills\
     -d "date=2011-09-10&what=raclette&payer=31&payed_for=31&amount=200"
     80
 
@@ -152,12 +152,12 @@ You can also `PUT` a new version of the bill at
 `/api/projects/<id>/bills/<bill-id>`::
 
     $ curl --basic -u demo:demo -X PUT\
-    http://ihatemoney.notmyidea.org/api/projects/demo/bills/80\
+    http://ihatemoney.org/api/projects/demo/bills/80\
     -d "date=2011-09-10&what=raclette&payer=31&payed_for=31&amount=250"
     80
 
 And you can of course `DELETE` them at `/api/projects/<id>/bills/<bill-id>`::
 
     $ curl --basic -u demo:demo -X DELETE\
-    http://ihatemoney.notmyidea.org/api/projects/demo/bills/80\
+    http://ihatemoney.org/api/projects/demo/bills/80\
     "OK"
