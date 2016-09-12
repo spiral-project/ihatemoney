@@ -135,17 +135,17 @@ You can get the list of bills by doing a `GET` on `/api/projects/<id>/bills` ::
 Add a bill with a `POST` query on `/api/projects/<id>/bills`. you need the
 following params:
 
-* `date`: the date of the bill. (yy-mm-dd)
+* `date`: the date of the bill; defaults to current date if not provided. (yy-mm-dd)
 * `what`: what have been payed
 * `payer`: by who ? (id)
-* `payed_for`: list of ids
+* `payed_for`: for who ? (id, repeat the parameter to set multiple id)
 * `amount`: amount payed
 
 Returns the id of the created bill ::
 
     $ curl --basic -u demo:demo -X POST\
     http://ihatemoney.notmyidea.org/api/projects/demo/bills\
-    -d "date=2011-09-10&what=raclette&payer=31&payed_for=31&amount=200"
+    -d "date=2011-09-10&what=raclette&payer=31&payed_for=31&payed_for=35&amount=200"
     80
 
 You can also `PUT` a new version of the bill at
@@ -153,7 +153,7 @@ You can also `PUT` a new version of the bill at
 
     $ curl --basic -u demo:demo -X PUT\
     http://ihatemoney.notmyidea.org/api/projects/demo/bills/80\
-    -d "date=2011-09-10&what=raclette&payer=31&payed_for=31&amount=250"
+    -d "date=2011-09-10&what=raclette&payer=31&payed_for=31&payed_for=35&amount=250"
     80
 
 And you can of course `DELETE` them at `/api/projects/<id>/bills/<bill-id>`::
