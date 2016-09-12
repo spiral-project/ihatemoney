@@ -398,12 +398,10 @@ class BudgetTestCase(TestCase):
             'what': u'fromage à raclette',
             'payer': members_ids[0],
             'payed_for': members_ids,
-            # bill with a negative value should be converted to a positive
-            # value
             'amount': '-25'
         })
         bill = models.Bill.query.filter(models.Bill.date == '2011-08-12')[0]
-        self.assertEqual(bill.amount, 25)
+        self.assertEqual(bill.amount, -25)
 
         #add a bill with a comma
         self.app.post("/raclette/add", data={
