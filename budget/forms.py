@@ -143,9 +143,7 @@ class BillForm(Form):
         self.payed_for.data = self.payed_for.default
 
     def validate_amount(self, field):
-        if field.data < 0:
-            field.data = abs(field.data)
-        elif field.data == 0:
+        if field.data == 0:
             raise ValidationError(_("Bills can't be null"))
 
 
