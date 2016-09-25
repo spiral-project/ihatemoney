@@ -35,10 +35,11 @@ class Project(db.Model):
             for time in (1, 2, 3))
 
         # for each person
+        bills_in_project = self.get_bills()
         for person in self.members:
             # get the list of bills he has to pay
-            bills = Bill.query.filter(Bill.owers.contains(person))
-            for bill in bills.all():
+            bills = bills_in_project.filter(Bill.owers.contains(person)).all()
+            for bill in bills:
                 if person != bill.payer:
                     share = bill.pay_each() * person.weight
                     should_pay[person] += share
