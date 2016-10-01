@@ -1,6 +1,10 @@
 Budget-manager
 ##############
 
+.. image:: https://travis-ci.org/spiral-project/ihatemoney.svg?branch=master
+   :target: https://travis-ci.org/spiral-project/ihatemoney
+   :alt: Travis CI Build Status
+
 This is a really tiny app to ease the shared houses budget management. Keep
 track of who bought what, when, and for who to then compute the balance of each
 person.
