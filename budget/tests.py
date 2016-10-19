@@ -56,7 +56,7 @@ class TestCase(unittest.TestCase):
         })
 
     def create_project(self, name):
-        models.db.session.add(models.Project(id=name, name=unicode(name),
+        models.db.session.add(models.Project(id=name, name=name,
             password=name, contact_email="%s@notmyidea.org" % name))
         models.db.session.commit()
 
