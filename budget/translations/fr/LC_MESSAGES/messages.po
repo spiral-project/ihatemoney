@@ -107,7 +107,7 @@ msgstr "Nom"
 
 #: forms.py:155
 msgid "Weight"
-msgstr "Poids"
+msgstr "Coéfficient"
 
 #: forms.py:155 templates/forms.html:95
 msgid "Add"
@@ -291,6 +291,10 @@ msgstr "Ajouter une facture"
 #: templates/forms.html:95
 msgid "Type user name here"
 msgstr "Nouveau participant"
+
+#: templates/forms.html:100
+msgid "Edit this member"
+msgstr "Éditer ce participant"
 
 #: templates/forms.html:102
 msgid "Send the invitations"
