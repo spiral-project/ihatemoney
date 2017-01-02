@@ -111,7 +111,8 @@ class Project(db.Model):
             .filter(Bill.payer_id == Person.id)\
             .filter(Person.project_id == Project.id)\
             .filter(Project.id == self.id)\
-            .order_by(Bill.date.desc())
+            .order_by(Bill.date.desc())\
+            .order_by(Bill.id.desc())
 
     def remove_member(self, member_id):
         """Remove a member from the project.
