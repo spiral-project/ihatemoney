@@ -580,6 +580,46 @@ class BudgetTestCase(TestCase):
             self.assertEqual(a, balance[m.id])
         return
 
+    def test_settle_zero(self):
+        self.post_project("raclette")
+
+        # add members
+        self.app.post("/raclette/members/add", data={'name': 'alexis'})
+        self.app.post("/raclette/members/add", data={'name': 'fred'})
+        self.app.post("/raclette/members/add", data={'name': 'tata'})
+
+        # create bills
+        self.app.post("/raclette/add", data={
+            'date': '2016-12-31',
+            'what': u'fromage à raclette',
+            'payer': 1,
+            'payed_for': [1, 2, 3],
+            'amount': '10.0',
+        })
+
+        self.app.post("/raclette/add", data={
+            'date': '2016-12-31',
+            'what': u'red wine',
+            'payer': 2,
+            'payed_for': [1, 3],
+            'amount': '20',
+        })
+
+        self.app.post("/raclette/add", data={
+            'date': '2017-01-01',
+            'what': u'refund',
+            'payer': 3,
+            'payed_for': [2],
+            'amount': '13.33',
+        })
+        project  = models.Project.query.get('raclette')
+        transactions = project.get_transactions_to_settle_bill()
+        members = defaultdict(int)
+        # There should not be any zero-amount transfer after rounding
+        for t in transactions:
+            rounded_amount = round(t['amount'], 2)
+            self.assertNotEqual(0.0, rounded_amount,
+                                msg='%f is equal to zero after rounding' % t['amount'])
 
 
 class APITestCase(TestCase):
