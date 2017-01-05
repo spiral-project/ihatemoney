@@ -107,7 +107,7 @@ msgstr "Nom"
 
 #: forms.py:155
 msgid "Weight"
-msgstr "Coéfficient"
+msgstr "Parts"
 
 #: forms.py:155 templates/forms.html:95
 msgid "Add"
