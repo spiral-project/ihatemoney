@@ -934,6 +934,7 @@ class ServerTestCase(APITestCase):
         super(ServerTestCase, self).setUp()
 
     def test_unprefixed(self):
+        run.app.config['APPLICATION_ROOT'] = '/'
         req = self.app.get("/foo/")
         self.assertStatus(303, req)
 
