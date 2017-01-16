@@ -15,6 +15,7 @@ from flask.ext.mail import Mail, Message
 from flask.ext.babel import get_locale, gettext as _
 from smtplib import SMTPRecipientsRefused
 import werkzeug
+from sqlalchemy import orm
 
 # local modules
 from models import db, Project, Person, Bill
@@ -277,7 +278,8 @@ def list_bills():
     # set the last selected payer as default choice if exists
     if 'last_selected_payer' in session:
         bill_form.payer.data = session['last_selected_payer']
-    bills = g.project.get_bills()
+    # Preload the "owers" relationship for all bills
+    bills = g.project.get_bills().options(orm.subqueryload(Bill.owers))
 
     return render_template("list_bills.html",
             bills=bills, member_form=MemberForm(g.project),

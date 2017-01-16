@@ -37,7 +37,7 @@ class Project(db.Model):
         # for each person
         for person in self.members:
             # get the list of bills he has to pay
-            bills = Bill.query.filter(Bill.owers.contains(person))
+            bills = Bill.query.options(orm.subqueryload(Bill.owers)).filter(Bill.owers.contains(person))
             for bill in bills.all():
                 if person != bill.payer:
                     share = bill.pay_each() * person.weight
