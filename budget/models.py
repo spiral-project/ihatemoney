@@ -61,9 +61,9 @@ class Project(db.Model):
         credits, debts, transactions = [],[],[]
         # Create lists of credits and debts
         for person in self.members:
-            if balance[person.id] > 0:
+            if round(balance[person.id], 2) > 0:
                 credits.append({"person": person, "balance": balance[person.id]})
-            elif balance[person.id] < 0:
+            elif round(balance[person.id], 2) < 0:
                 debts.append({"person": person, "balance": -balance[person.id]})
         # Try and find exact matches
         for credit in credits:

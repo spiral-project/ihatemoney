@@ -65,7 +65,7 @@
     <div id="table_overflow">
     <table class="balance table">
     {% set balance = g.project.balance %}
-    {% for member in g.project.members | sort(attribute='name') if member.activated or balance[member.id] != 0 %}
+    {% for member in g.project.members | sort(attribute='name') if member.activated or balance[member.id]|round(2) != 0 %}
     <tr id="bal-member-{{ member.id }}" action={% if member.activated %}delete{% else %}reactivate{% endif %}>
         <td class="balance-name">{{ member.name }}
             <span class="light{% if not g.project.uses_weights %} extra-info{% endif %}">(x{{ member.weight|minimal_round(1) }})</span>
@@ -82,8 +82,8 @@
             <form class="action reactivate" action="{{ url_for(".reactivate", member_id=member.id) }}" method="POST">
                 <button type="submit">{{ _("reactivate") }}</button></form></td>
         {% endif %}
-        <td class="balance-value {% if balance[member.id] > 0 %}positive{% elif balance[member.id] < 0 %}negative{% endif %}">
-            {% if balance[member.id] > 0 %}+{% endif %}{{ "%.2f" | format(balance[member.id]) }}
+        <td class="balance-value {% if balance[member.id]|round(2) > 0 %}positive{% elif balance[member.id]|round(2) < 0 %}negative{% endif %}">
+            {% if balance[member.id]|round(2) > 0 %}+{% endif %}{{ "%.2f" | format(balance[member.id]) }}
         </td>
     </tr>
     {% endfor %}
