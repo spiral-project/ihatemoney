@@ -12,10 +12,10 @@ def slugify(value):
 
     Copy/Pasted from ametaireau/pelican/utils itself took from django sources.
     """
-    if type(value) == unicode:
+    if type(value) == str:
         import unicodedata
-        value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore')
-    value = unicode(re.sub('[^\w\s-]', '', value).strip().lower())
+        value = unicodedata.normalize('NFKD', value)
+    value = re.sub('[^\w\s-]', '', value).strip().lower()
     return re.sub('[-\s]+', '-', value)
 
 

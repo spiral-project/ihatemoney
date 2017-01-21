@@ -1,7 +1,7 @@
 from collections import defaultdict
 
 from datetime import datetime
-from flask.ext.sqlalchemy import SQLAlchemy, BaseQuery
+from flask_sqlalchemy import SQLAlchemy, BaseQuery
 from flask import g
 
 from sqlalchemy import orm
@@ -225,11 +225,11 @@ class Bill(db.Model):
 
     def pay_each(self):
         """Compute what each share has to pay"""
-	if self.owers:
+        if self.owers:
                 # FIXME: SQL might dot that more efficiently
-		return self.amount / sum(i.weight for i in self.owers)
-	else:
-		return 0
+                return self.amount / sum(i.weight for i in self.owers)
+        else:
+                return 0
 
     def __repr__(self):
         return "<Bill of %s from %s for %s>" % (self.amount,

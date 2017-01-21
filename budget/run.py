@@ -2,8 +2,8 @@ import os
 import warnings
 
 from flask import Flask, g, request, session
-from flask.ext.babel import Babel
-from flask.ext.migrate import Migrate, upgrade, stamp
+from flask_babel import Babel
+from flask_migrate import Migrate, upgrade, stamp
 from raven.contrib.flask import Sentry
 
 from web import main, db, mail
