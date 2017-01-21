@@ -498,7 +498,10 @@ class BudgetTestCase(TestCase):
         result[models.Project.query.get("raclette").members[0].id] = 8.12
         result[models.Project.query.get("raclette").members[1].id] = 0.0
         result[models.Project.query.get("raclette").members[2].id] = -8.12
-        self.assertDictEqual(balance, result)
+        # Since we're using floating point to store currency, we can have some rounding issues that prevent test from working.
+        # However, we should obtain the same values as the theorical ones if we round to 2 decimals, like in the UI.
+        for key, value in balance.iteritems():
+            self.assertEqual(round(value, 2), result[key])
 
     def test_edit_project(self):
         # A project should be editable
