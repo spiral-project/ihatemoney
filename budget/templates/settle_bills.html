@@ -1,10 +1,5 @@
 {% extends "layout.html" %}
 
-{% block navbar %}
-<li><a href="{{ url_for(".list_bills") }}">{{ _("Bills") }}</a></li>
-<li class="active"><a href="{{ url_for(".settle_bill") }}">{{ _("Settle") }}</a></li>
-{% endblock %}
-
 {% block sidebar %}
 <div id="sidebar" class="sidebar">
 
