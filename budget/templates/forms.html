@@ -1,9 +1,13 @@
-{% macro input(field, multiple=False, class=None) -%}
-    <div class="control-group">
+{% macro input(field, multiple=False, class='form-control', inline=False) -%}
+    <div class="form-group{% if inline %} row{% endif %}">
     {% if field.type != "SubmitField" %}
-        {{ field.label(class="control-label") }}
+        {% if inline %}
+          {{ field.label(class="col-3") }}
+        {% else %}
+          {{ field.label() }}
+        {% endif %}
     {% endif %}
-        <div class="controls">
+        <div class="controls{% if inline %} col-9{% endif %}">
         {% if multiple == True %}
             {{ field(multiple=True, class=class) }}
         {% else %}
@@ -77,11 +81,11 @@
         {% if title %}<legend>{% if edit %}{{ _("Edit this bill") }} {% else %}{{ _("Add a bill") }} {% endif %}</legend>{% endif %}
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
-    {{ input(form.date, class="datepicker") }}
-    {{ input(form.what) }}
-    {{ input(form.payer) }}
-    {{ input(form.amount) }}
-    {{ input(form.payed_for) }}
+    {{ input(form.date, class="form-control datepicker", inline=True) }}
+    {{ input(form.what, inline=True) }}
+    {{ input(form.payer, inline=True, class="form-control custom-select") }}
+    {{ input(form.amount, inline=True) }}
+    {{ input(form.payed_for, inline=True, class="form-check-input") }}
     </fieldset>
     <div class="actions">
         {{ form.submit(class="btn btn-primary") }}

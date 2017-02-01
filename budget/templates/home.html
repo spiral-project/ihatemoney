@@ -20,7 +20,7 @@
     <div class="row-fluid home">
         <div class="span4 offset2">
             <form id="authentication-form" class="form-horizontal" action="{{ url_for(".authenticate") }}" method="post">
-                <fieldset>
+                <fieldset class="form-group">
                     <legend>{{ _("Log to an existing project") }}...</legend>
                     {{ forms.authenticate(auth_form, home=True) }}
                 </fieldset>
@@ -32,7 +32,7 @@
         </div>
         <div class="span4">
             <form id="creation-form" class="form-horizontal" action="{{ url_for(".create_project") }}" method="post">
-                <fieldset>
+                <fieldset class="form-group">
                     <legend>...{{ _("or create a new one") }}</legend>
                     {{ forms.create_project(project_form, home=True) }}
                 </fieldset>
