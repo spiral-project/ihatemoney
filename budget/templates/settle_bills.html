@@ -1,8 +1,6 @@
-{% extends "layout.html" %}
+{% extends "sidebar_table_layout.html" %}
 
 {% block sidebar %}
-<div id="sidebar" class="sidebar">
-
     <div id="table_overflow">
     <table class="balance table">
     {% set balance = g.project.balance %}
@@ -16,8 +14,6 @@
     {% endfor %}
     </table>
     </div>
-
-</div>
 {% endblock %}
 
 

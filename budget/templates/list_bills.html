@@ -1,16 +1,10 @@
-{% extends "layout.html" %}
+{% extends "sidebar_table_layout.html" %}
 
 {% block title %} - {{ g.project.name }}{% endblock %}
 {% block head %}
     <script src="{{ url_for("static", filename="js/bootstrap-datepicker.js") }}"></script>
 {% endblock %}
 {% block js %}
-
-    $(window).resize(function() {
-        $("#sidebar").height( window.innerHeight-50 );
-        $("#table_overflow").height( $("#sidebar").height()-120 );
-    });
-
     {% if add_bill %} $('#new-bill').click(); {% endif %}
 
     // Hide all members actions
@@ -56,8 +50,6 @@
 {% endblock %}
 
 {% block sidebar %}
-<div id="sidebar" class="sidebar">
-
     <form id="add-member-form" action="{{ url_for(".add_member") }}" method="post" class="form-inline">
         {{ forms.add_member(member_form) }}
     </form>
@@ -89,8 +81,6 @@
     {% endfor %}
     </table>
     </div>
-
-</div>
 {% endblock %}
 
 {% block content %}

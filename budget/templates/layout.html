@@ -73,25 +73,26 @@
     </div>
 </div>
 
-{% block header %}{% endblock %}
 
-{% block body %}
+</nav>
+
 <div class="container-fluid">
+{% block body %}
     {% block sidebar %}{% endblock %}
-    <div class="content">
+    <main class="content offset-1 col-10">
     {% block content %}{% endblock %}
-    </div>
+    </main>
 </div>
 {% endblock %}
 
 {% for message in get_flashed_messages() %}
-<div class="flash alert alert-success"><p>{{ message }}</p></div>
+<div class="flash alert alert-success">{{ message }}</div>
 {% endfor %}
 
 {% block footer %}
-<div id="footer">
+<footer>
     <p><a href="https://github.com/spiral-project/ihatemoney">{{ _("This is a free software") }}</a>, {{ _("you can contribute and improve it!") }}</p>
-</div>
+</footer>
 {% endblock %}
 
 </body>
