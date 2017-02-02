@@ -96,7 +96,11 @@
 
 {% macro add_member(form) %}
 {{ form.hidden_tag() }}
-{{ form.name(placeholder=_("Type user name here")) }}<button class="btn">{{ _("Add") }}</button>
+    <div class="input-group">
+        <label class="sr-only" for="name">_("Type user name here")</label>
+        {{ form.name(placeholder=_("Type user name here"), class="form-control") }}
+        <button class=" input-group-addon btn">{{ _("Add") }}</button>
+    </div>
 {% endmacro %}
 
 {% macro edit_member(form, title=True) %}
