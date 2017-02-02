@@ -79,7 +79,6 @@ body {
 
 #add-member-form { padding-top: 1em; padding-bottom: 1em; }
 #add-member-form input[type="text"] { width: 60%; }
-#add-member-form button { width: 35%; }
 
 #table_overflow { overflow-y: auto; overflow-x: hidden;}
 
