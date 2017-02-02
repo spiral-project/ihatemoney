@@ -46,6 +46,14 @@ body {
 
 #header .tryout {
     margin-right: 10em;
+    color: #fff;
+    background-color: #414141;
+    border-color: #414141;
+}
+
+#header .tryout:hover {
+    background-color: #606060;
+    border-color: #606060;
 }
 
 #header .additional-content {
