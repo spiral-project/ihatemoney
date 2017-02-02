@@ -5,15 +5,25 @@
 /* General */
 
 body {
-    margin-top: 40px;
+    /* For fixed navbar */
+    padding-top: 3.5rem;
+    padding-bottom: 2rem;
 }
 
 /* Navbar */
 
-.navbar h1{ margin-left: 75px; }
+.navbar h1 {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+}
 .navbar .primary-nav { padding-left: 75px; }
-.navbar .secondary-nav { padding-right: 75px; }
-.brand{ font-family: 'Lobster', arial, serif; }
+.navbar .secondary-nav {
+    text-align: right;
+    flex-direction: row-reverse;
+
+}
+.navbar-brand{ font-family: 'Lobster', arial, serif; }
 
 /* Header */
 
