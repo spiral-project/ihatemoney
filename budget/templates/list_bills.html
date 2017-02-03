@@ -87,22 +87,26 @@
 <div class="identifier">{{ _("The project identifier is") }} <a href="{{ url_for(".list_bills") }}">{{ g.project.id }}</a>, {{ _("remember it!") }}</div>
 <a id="new-bill" href="{{ url_for(".add_bill") }}" class="btn btn-primary" data-toggle="modal" data-target="#bill-form">{{ _("Add a new bill") }}</a>
 
-    <div id="bill-form" class="modal hide">
-        <div class="modal-header">
-            <a href="#" class="close" data-dismiss="modal">&times;</a>
-            <h3>{{ _('Add a bill') }}</h3>
+    <div id="bill-form" class="modal fade show" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">{{ _('Add a bill') }}</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <form action="{{ url_for(".add_bill") }}" method="post" class="modal-body container">
+                {{ forms.add_bill(bill_form, title=False) }}
+                </form>
+            </div>
         </div>
-        <form action="{{ url_for(".add_bill") }}" method="post" class="modal-body form-horizontal">
-            {{ forms.add_bill(bill_form, title=False) }}
-        </form>
     </div>
 
     {% if bills.count() > 0 %}
-    <table id="bill_table" class="table table-striped">
+    <table id="bill_table" class="col table table-striped table-hover">
         <thead><tr><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</th><th>{{ _("For what?") }}</th><th>{{ _("For whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Actions") }}</th></tr></thead>
     <tbody>
     {% for bill in bills %}
-    <tr class="{{ loop.cycle("odd", "even") }}" owers={{bill.owers|join(',','id')}} payer={{bill.payer.id}}>
+    <tr owers={{bill.owers|join(',','id')}} payer={{bill.payer.id}}>
             <td>{{ bill.date }}</td>
             <td>{{ bill.payer }}</td>
             <td>{{ bill.what }}</td>

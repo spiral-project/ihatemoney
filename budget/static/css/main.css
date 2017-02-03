@@ -121,6 +121,11 @@ footer{
     float: right;
 }
 
+#new-bill, .identifier {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
 .password-reminder{
     float: right;
     margin-right: 20px;
