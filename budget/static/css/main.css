@@ -126,6 +126,11 @@ footer{
     margin-bottom: 16px;
 }
 
+/* Avoid text color flickering when it loose focus as the modal appears */
+.btn-primary[data-toggle="modal"] {
+    color: #fff;
+}
+
 .password-reminder{
     float: right;
     margin-right: 20px;
