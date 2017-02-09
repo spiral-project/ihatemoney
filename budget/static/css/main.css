@@ -203,6 +203,10 @@ tr.payer_line .balance-name{
     color: white;
 }
 
+.balance.table {
+    table-layout: fixed;
+}
+
 #bill-form > fieldset {
     margin-top: 10px;
 }
