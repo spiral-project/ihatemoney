@@ -284,7 +284,8 @@ def list_bills():
     return render_template("list_bills.html",
             bills=bills, member_form=MemberForm(g.project),
             bill_form=bill_form,
-            add_bill=request.values.get('add_bill', False)
+            add_bill=request.values.get('add_bill', False),
+            current_view="list_bills",
     )
 
 
@@ -414,7 +415,11 @@ def change_lang(lang):
 def settle_bill():
     """Compute the sum each one have to pay to each other and display it"""
     bills = g.project.get_transactions_to_settle_bill()
-    return render_template("settle_bills.html", bills=bills)
+    return render_template(
+        "settle_bills.html",
+        bills=bills,
+        current_view='settle_bill',
+    )
 
 
 @main.route("/<project_id>/archives/create", methods=["GET", "POST"])

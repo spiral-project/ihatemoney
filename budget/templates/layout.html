@@ -5,15 +5,15 @@
     <title>{{ _("Account manager") }}{% block title %}{% endblock %}</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link rel=stylesheet type=text/css href="{{ url_for("static", filename='css/main.css') }}">
-    <script src="{{ url_for("static", filename="js/jquery-1.7.2.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/jquery-3.1.1.min.js") }}"></script>
     <script src="{{ url_for("static", filename="js/ihatemoney.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/tether.min.js") }}"></script>
     <script src="{{ url_for("static", filename="js/bootstrap.min.js") }}"></script>
-    <script src="{{ url_for("static", filename="js/bootstrap-datepicker.js") }}"></script>
     {% block head %}{% endblock %}
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function(){
             var left = window.innerWidth/2-$('.flash').width()/2;
-            $(".flash").css({ "left": left+"px", "top":"45px" });
+            $(".flash").css({ "left": left+"px", "top":"0.6rem" });
             setTimeout(function(){
                 $(".flash").fadeOut("slow", function () {
                     $(".flash").remove();
@@ -35,62 +35,58 @@
 </head>
 <body>
 
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container-fluid">
-            <h1><a class="brand" href="{{ url_for(".home") }}">#! money?</a></h1>
+  <nav class="navbar navbar-toggleable-md navbar fixed-top navbar-inverse bg-inverse">
+  <h1 class="col-2"><a class="navbar-brand" href="{{ url_for(".home") }}">#! money?</a></h1>
+            <ul class="navbar-nav col-5 offset-md-1">
             {% if g.project %}
-            <ul class="nav primary-nav">
                 {% block navbar %}
-                <li class="active"><a href="{{ url_for(".list_bills") }}">{{ _("Bills") }}</a></li>
-                <li><a href="{{ url_for(".settle_bill") }}">{{ _("Settle") }}</a></li>
+                <li class="nav-item{% if current_view == 'list_bills' %} active{% endif %}"><a class="nav-link" href="{{ url_for(".list_bills") }}">{{ _("Bills") }}</a></li>
+                <li class="nav-item{% if current_view == 'settle_bill' %} active{% endif %}"><a class="nav-link" href="{{ url_for(".settle_bill") }}">{{ _("Settle") }}</a></li>
                 {% endblock %}
-            </ul>
             {% endif %}
-            <ul class="nav pull-right secondary-nav">
+            </ul>
+            <ul class="navbar-nav secondary-nav col-4">
             {% if g.project %}
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>{{ g.project.name }}</strong> {{ _("options") }} <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ url_for(".edit_project") }}">{{ _("Project settings") }}</a></li>
-                        <li class="divider"></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>{{ g.project.name }}</strong> {{ _("options") }} <b class="caret"></b></a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{{ url_for(".edit_project") }}">{{ _("Project settings") }}</a></li>
+                        <li class="dropdown-divider"></li>
                         {% for id, name in session['projects'] %}
                         {% if id != g.project.id %}
-                        <li><a href="{{ url_for(".list_bills", project_id=id) }}">{{ _("switch to") }} {{ name }}</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for(".list_bills", project_id=id) }}">{{ _("switch to") }} {{ name }}</a></li>
                         {% endif %}
                         {% endfor %}
-                        <li><a href="{{ url_for(".create_project") }}">{{ _("Start a new project") }}</a></li>
-                        <li class="divider"></li>
-                        <li><a href="{{ url_for(".exit") }}">{{ _("Logout") }}</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for(".create_project") }}">{{ _("Start a new project") }}</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{ url_for(".exit") }}">{{ _("Logout") }}</a></li>
                     </ul>
                 </li>
             {% endif %}
-                <li{% if g.lang == "fr" %} class="active"{% endif %}><a href="{{ url_for(".change_lang", lang="fr") }}">fr</a></li>
-                <li{% if g.lang == "en" %} class="active"{% endif %}><a href="{{ url_for(".change_lang", lang="en") }}">en</a></li>
+                <li class="nav-item{% if g.lang == "fr" %} active{% endif %}"><a class="nav-link" href="{{ url_for(".change_lang", lang="fr") }}">fr</a></li>
+                <li class="nav-item{% if g.lang == "en" %} active{% endif %}"><a class="nav-link" href="{{ url_for(".change_lang", lang="en") }}">en</a></li>
             </ul>
-        </div>
-    </div>
-</div>
 
-{% block header %}{% endblock %}
 
-{% block body %}
+</nav>
+
 <div class="container-fluid">
+{% block body %}
     {% block sidebar %}{% endblock %}
-    <div class="content">
+    <main class="content offset-1 col-10">
     {% block content %}{% endblock %}
-    </div>
+    </main>
 </div>
 {% endblock %}
 
 {% for message in get_flashed_messages() %}
-<div class="flash alert alert-success"><p>{{ message }}</p></div>
+<div class="flash alert alert-success">{{ message }}</div>
 {% endfor %}
 
 {% block footer %}
-<div id="footer">
+<footer>
     <p><a href="https://github.com/spiral-project/ihatemoney">{{ _("This is a free software") }}</a>, {{ _("you can contribute and improve it!") }}</p>
-</div>
+</footer>
 {% endblock %}
 
 </body>

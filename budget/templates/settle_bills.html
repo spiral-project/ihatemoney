@@ -1,13 +1,6 @@
-{% extends "layout.html" %}
-
-{% block navbar %}
-<li><a href="{{ url_for(".list_bills") }}">{{ _("Bills") }}</a></li>
-<li class="active"><a href="{{ url_for(".settle_bill") }}">{{ _("Settle") }}</a></li>
-{% endblock %}
+{% extends "sidebar_table_layout.html" %}
 
 {% block sidebar %}
-<div id="sidebar" class="sidebar">
-
     <div id="table_overflow">
     <table class="balance table">
     {% set balance = g.project.balance %}
@@ -21,8 +14,6 @@
     {% endfor %}
     </table>
     </div>
-
-</div>
 {% endblock %}
 
 

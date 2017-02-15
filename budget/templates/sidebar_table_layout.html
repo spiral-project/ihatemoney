@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="row" style="height: 100%">
+<aside id="sidebar" class="sidebar col-3 " style="height: 100%">
+  {% block sidebar %}{% endblock %}
+</aside>
+
+<main class="offset-md-3 col-9">
+  {% block content %}{% endblock %}
+</main>
+
+</div>
+{% endblock %}

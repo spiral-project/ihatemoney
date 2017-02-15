@@ -1,19 +1,29 @@
 @import "bootstrap.min.css";
-@import "datepicker.css";
+@import "bootstrap-datepicker3.standalone.css";
 @import "../fonts/fontfaces.css";
 
 /* General */
 
 body {
-    margin-top: 40px;
+    /* For fixed navbar */
+    padding-top: 3.5rem;
+    padding-bottom: 2rem;
 }
 
 /* Navbar */
 
-.navbar h1{ margin-left: 75px; }
+.navbar h1 {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+}
 .navbar .primary-nav { padding-left: 75px; }
-.navbar .secondary-nav { padding-right: 75px; }
-.brand{ font-family: 'Lobster', arial, serif; }
+.navbar .secondary-nav {
+    text-align: right;
+    flex-direction: row-reverse;
+
+}
+.navbar-brand{ font-family: 'Lobster', arial, serif; }
 
 /* Header */
 
@@ -36,6 +46,14 @@ body {
 
 #header .tryout {
     margin-right: 10em;
+    color: #fff;
+    background-color: #414141;
+    border-color: #414141;
+}
+
+#header .tryout:hover {
+    background-color: #606060;
+    border-color: #606060;
 }
 
 #header .additional-content {
@@ -55,28 +73,20 @@ body {
     background-position: center bottom;
     background-repeat: no-repeat;
     height: 100%;
-    width: 230px;
-    padding-left: 10px;
-    padding-right: 20px;
-    padding-top: 10px;
-    margin-left: -20px;
-    margin-top: -10px;
-    margin-right: 15px;
     color: black;
     position: fixed;
 }
 
 #add-member-form { padding-top: 1em; padding-bottom: 1em; }
 #add-member-form input[type="text"] { width: 60%; }
-#add-member-form button { width: 35%; }
 
-#table_overflow { overflow-y: auto; overflow-x: hidden; width: 235px; }
+#table_overflow { overflow-y: auto; overflow-x: hidden;}
+
 
 /* Content */
 
 .content {
-    padding-top: 1em;
-    padding-left: 250px;
+    margin-top: 1rem;
 }
 
 /* Home */
@@ -94,7 +104,9 @@ body {
     height: 100px;
 }
 
-#footer{
+footer{
+    margin-left: -15px;
+    margin-right: -15px;
     margin-top: 30px;
     position: fixed;
     bottom: 0px;
@@ -107,6 +119,16 @@ body {
 
 .identifier{
     float: right;
+}
+
+#new-bill, .identifier {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+/* Avoid text color flickering when it loose focus as the modal appears */
+.btn-primary[data-toggle="modal"] {
+    color: #fff;
 }
 
 .password-reminder{
@@ -186,6 +208,10 @@ tr.payer_line .balance-name{
     color: white;
 }
 
+.balance.table {
+    table-layout: fixed;
+}
+
 #bill-form > fieldset {
     margin-top: 10px;
 }
@@ -204,10 +230,6 @@ tr.payer_line .balance-name{
 
 tr:hover .extra-info {
     display: inline;
-}
-
-.modal-body {
-    max-height:455px;
 }
 
 /* Fluid Offsets for Boostrap */

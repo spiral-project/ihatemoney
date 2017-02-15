@@ -19,14 +19,14 @@ def select_multi_checkbox(field, ul_class='', **kwargs):
     choice_id = u'toggleField'
     js_function = u'toggle();'
     options = dict(kwargs, id=choice_id, onclick=js_function)
-    html.append(u'<p><a id="selectall" onclick="selectall()">%s</a> | <a id="selectnone" onclick="selectnone()">%s</a></p>'% (_("Select all"), _("Select none")))
+    html.append(u'<p><a href="#" id="selectall" onclick="selectall()">%s</a> | <a href="#" id="selectnone" onclick="selectnone()">%s</a></p>'% (_("Select all"), _("Select none")))
 
     for value, label, checked in field.iter_choices():
         choice_id = u'%s-%s' % (field_id, value)
         options = dict(kwargs, name=field.name, value=value, id=choice_id)
         if checked:
             options['checked'] = 'checked'
-        html.append(u'<p><label for="%s">%s<span>%s</span></label></p>'
+        html.append(u'<p class="form-check"><label for="%s" class="form-check-label">%s<span>%s</span></label></p>'
             % (choice_id, '<input %s /> ' % html_params(**options), label))
     html.append(u'</ul>')
     return u''.join(html)
