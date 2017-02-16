@@ -107,7 +107,7 @@
         <thead><tr><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</th><th>{{ _("For what?") }}</th><th>{{ _("For whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Actions") }}</th></tr></thead>
     <tbody>
     {% for bill in bills %}
-    <tr owers={{bill.owers|join(',','id')}} payer={{bill.payer.id}}>
+    <tr owers="{{bill.owers|join(',','id')}}" payer="{{bill.payer.id}}">
             <td>{{ bill.date }}</td>
             <td>{{ bill.payer }}</td>
             <td>{{ bill.what }}</td>

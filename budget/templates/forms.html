@@ -85,7 +85,18 @@
     {{ input(form.what, inline=True) }}
     {{ input(form.payer, inline=True, class="form-control custom-select") }}
     {{ input(form.amount, inline=True) }}
-    {{ input(form.payed_for, inline=True, class="form-check-input") }}
+
+    <div class="form-group row">
+        <label class="col-3" for="payed_for">{{ _("For whom?") }}</label>
+        <div class="controls col-9">
+            <ul id="payed_for" class="inputs-list">
+                <p><a href="#" id="selectall" onclick="selectall()">{{ _("Select all") }}</a> | <a href="#" id="selectnone" onclick="selectnone()">{{_("Select none")}}</a></p>
+            {% for key, value, checked in form.payed_for.iter_choices() %}
+                <p class="form-check"><label for="payed_for-{{key}}" class="form-check-label"><input name="payed_for" type="checkbox" {% if checked %}checked{% endif %} class="form-check-input" value="{{key}}"/><span>{{value}}</span></label></p>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
     </fieldset>
     <div class="actions">
         {{ form.submit(class="btn btn-primary") }}

@@ -118,7 +118,7 @@ class BillForm(Form):
     payer = SelectField(_("Payer"), validators=[Required()], coerce=int)
     amount = CommaDecimalField(_("Amount paid"), validators=[Required()])
     payed_for = SelectMultipleField(_("For whom?"),
-            validators=[Required()], widget=select_multi_checkbox, coerce=int)
+            validators=[Required()], coerce=int)
     submit = SubmitField(_("Submit"))
     submit2 = SubmitField(_("Submit and add a new one"))
 
