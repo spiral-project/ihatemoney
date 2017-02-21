@@ -911,6 +911,18 @@ class APITestCase(TestCase):
                 headers=self.get_auth("raclette"))
         self.assertStatus(404, req)
 
+    def test_username_xss(self):
+        # create a project
+        #self.api_create("raclette")
+        self.post_project("raclette")
+        self.login("raclette")
+
+        # add members
+        self.api_add_member("raclette", "<script>")
+
+        result = self.app.get('/raclette/')
+        self.assertNotIn("<script>", result.data)
+
     def test_weighted_bills(self):
         # create a project
         self.api_create("raclette")
