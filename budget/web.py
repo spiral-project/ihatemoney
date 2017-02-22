@@ -10,7 +10,7 @@ and `add_project_id` for a quick overview)
 """
 
 from flask import Blueprint, current_app, flash, g, redirect, \
-    render_template, request, session, url_for
+    render_template, request, session, url_for, send_file
 from flask_mail import Mail, Message
 from flask_babel import get_locale, gettext as _
 from smtplib import SMTPRecipientsRefused
@@ -20,9 +20,9 @@ from sqlalchemy import orm
 # local modules
 from models import db, Project, Person, Bill
 from forms import AuthenticationForm, CreateArchiveForm, EditProjectForm, \
-    InviteForm, MemberForm, PasswordReminder, ProjectForm, get_billform_for
-from utils import Redirect303
-
+    InviteForm, MemberForm, PasswordReminder, ProjectForm, get_billform_for, \
+    ExportForm
+from utils import Redirect303, list_of_dicts2json, list_of_dicts2csv
 
 main = Blueprint("main", __name__)
 mail = Mail()
@@ -197,20 +197,43 @@ def remind_password():
 
 @main.route("/<project_id>/edit", methods=["GET", "POST"])
 def edit_project():
-    form = EditProjectForm()
+    edit_form = EditProjectForm()
+    export_form = ExportForm()
     if request.method == "POST":
-        if form.validate():
-            project = form.update(g.project)
+        if edit_form.validate():
+            project = edit_form.update(g.project)
             db.session.commit()
             session[project.id] = project.password
 
             return redirect(url_for(".list_bills"))
-    else:
-        form.name.data = g.project.name
-        form.password.data = g.project.password
-        form.contact_email.data = g.project.contact_email
 
-    return render_template("edit_project.html", form=form)
+        if export_form.validate():
+            export_format = export_form.export_format.data
+            export_type = export_form.export_type.data
+
+            if export_type == 'transactions':
+                export = g.project.get_transactions_to_settle_bill(
+                    pretty_output=True)
+            if export_type == "bills":
+                export = g.project.get_pretty_bills(
+                    export_format=export_format)
+
+            if export_format == "json":
+                file2export = list_of_dicts2json(export)
+            if export_format == "csv":
+                file2export = list_of_dicts2csv(export)
+
+            return send_file(file2export,
+                             attachment_filename="%s-%s.%s" %
+                             (g.project.name, export_type, export_format),
+                             as_attachment=True
+                            )
+    else:
+        edit_form.name.data = g.project.name
+        edit_form.password.data = g.project.password
+        edit_form.contact_email.data = g.project.contact_email
+
+    return render_template("edit_project.html", edit_form=edit_form, export_form=export_form)
 
 
 @main.route("/<project_id>/delete")

@@ -150,6 +150,17 @@
     </div>
 {% endmacro %}
 
+{% macro export_project(form) %}
+    <fieldset>
+    {{ form.hidden_tag() }}
+    {{ input(form.export_type) }}
+    {{ input(form.export_format) }}
+    </fieldset>
+    <div class="actions">
+        <button class="btn btn-primary">{{ _("Download") }}</button>
+    </div>
+{% endmacro %}
+
 {% macro remind_password(form) %}
 
     {% include "display_errors.html" %}

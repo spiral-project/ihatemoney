@@ -146,6 +146,22 @@ msgstr "Date de départ"
 msgid "End date"
 msgstr "Date de fin"
 
+#: forms.py:202
+msgid "What do you want to download ?"
+msgstr "Que voulez-vous télécharger ?"
+
+#: forms.py:205
+msgid "bills"
+msgstr "factures"
+
+#: forms.py:205
+msgid "transactions"
+msgstr "remboursements"
+
+#: forms.py:206
+msgid "Export file format"
+msgstr "Format du fichier d'export"
+
 #: web.py:95
 msgid "This private code is not the right one"
 msgstr "Le code que vous avez entré n'est pas correct"
@@ -311,6 +327,14 @@ msgstr "Créer une archive"
 #: templates/forms.html:116
 msgid "Create the archive"
 msgstr "Créer l'archive"
+
+#: templates/forms.html:136
+msgid "Download this project's data"
+msgstr "Télécharger les données de ce projet"
+
+#: templates/forms.html:136
+msgid "Download"
+msgstr "Télécharger"
 
 #: templates/home.html:8
 msgid "Manage your shared <br>expenses, easily"
