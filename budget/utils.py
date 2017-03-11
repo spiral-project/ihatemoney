@@ -2,8 +2,12 @@ import re
 import inspect
 
 from jinja2 import filters
+from json import dumps
 from flask import redirect
 from werkzeug.routing import HTTPException, RoutingException
+from io import BytesIO
+
+import csv
 
 
 def slugify(value):
@@ -77,3 +81,30 @@ def minimal_round(*args, **kw):
     # return depending on it
     ires = int(res)
     return (res if res != ires else ires)
+
+def list_of_dicts2json(dict_to_convert):
+    """Take a list of dictionnaries and turns it into
+    a json in-memory file
+    """
+    bytes_io = BytesIO()
+    bytes_io.write(dumps(dict_to_convert))
+    bytes_io.seek(0)
+    return bytes_io
+
+def list_of_dicts2csv(dict_to_convert):
+    """Take a list of dictionnaries and turns it into
+    a csv in-memory file, assume all dict have the same keys
+    """
+    bytes_io = BytesIO()
+    try:
+        csv_data = [dict_to_convert[0].keys()]
+        for dic in dict_to_convert:
+            csv_data.append([dic[h].encode('utf8')
+                             if isinstance(dic[h], unicode) else str(dic[h]).encode('utf8')
+                             for h in dict_to_convert[0].keys()])
+    except (KeyError, IndexError):
+        csv_data = []
+    writer = csv.writer(bytes_io)
+    writer.writerows(csv_data)
+    bytes_io.seek(0)
+    return bytes_io

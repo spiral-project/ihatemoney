@@ -10,6 +10,10 @@
 {% block content %}
 <h2>{{ _("Edit this project") }}</h2>
 <form class="form-horizontal" method="post">
-{{ forms.edit_project(form) }}
+{{ forms.edit_project(edit_form) }}
+</form></br>
+<h2>{{ _("Download this project's data") }}</h2>
+<form class="form-horizontal" method="post">
+{{ forms.export_project(export_form) }}
 </form>
 {% endblock %}

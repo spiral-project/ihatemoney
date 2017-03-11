@@ -54,8 +54,20 @@ class Project(db.Model):
     def uses_weights(self):
         return len([i for i in self.members if i.weight != 1]) > 0
 
-    def get_transactions_to_settle_bill(self):
+    def get_transactions_to_settle_bill(self, pretty_output=False):
         """Return a list of transactions that could be made to settle the bill"""
+        def prettify(transactions, pretty_output):
+            """ Return pretty transactions
+            """
+            if not pretty_output:
+                return transactions
+            pretty_transactions = []
+            for transaction in transactions:
+                pretty_transactions.append({'ower': transaction['ower'].name,
+                                            'receiver': transaction['receiver'].name,
+                                            'amount': round(transaction['amount'], 2)})
+            return pretty_transactions
+
         #cache value for better performance
         balance = self.balance
         credits, debts, transactions = [],[],[]
@@ -83,7 +95,8 @@ class Project(db.Model):
                 transactions.append({"ower": debts[0]["person"], "receiver": credits[0]["person"], "amount": credits[0]["balance"]})
                 debts[0]["balance"] = debts[0]["balance"] - credits[0]["balance"]
                 del credits[0]
-        return transactions
+
+        return prettify(transactions, pretty_output)
 
     def exactmatch(self, credit, debts):
         """Recursively try and find subsets of 'debts' whose sum is equal to credit"""
@@ -113,6 +126,23 @@ class Project(db.Model):
             .filter(Project.id == self.id)\
             .order_by(Bill.date.desc())\
             .order_by(Bill.id.desc())
+
+    def get_pretty_bills(self, export_format="json"):
+        """Return a list of project's bills with pretty formatting"""
+        bills = self.get_bills()
+        pretty_bills = []
+        for bill in bills:
+            if export_format == "json":
+                owers = [ower.name for ower in bill.owers]
+            else:
+                owers = ', '.join([ower.name for ower in bill.owers])
+            pretty_bills.append({"what": bill.what,
+                                 "amount": round(bill.amount, 2),
+                                 "date": str(bill.date),
+                                 "payer_name": Person.query.get(bill.payer_id).name,
+                                 "payer_weight": Person.query.get(bill.payer_id).weight,
+                                 "owers": owers})
+        return pretty_bills
 
     def remove_member(self, member_id):
         """Remove a member from the project.

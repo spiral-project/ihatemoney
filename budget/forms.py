@@ -174,3 +174,16 @@ class CreateArchiveForm(Form):
     name = TextField(_("Name for this archive (optional)"), validators=[])
     start_date = DateField(_("Start date"), validators=[Required()])
     end_date = DateField(_("End date"), validators=[Required()], default=datetime.now)
+
+
+class ExportForm(Form):
+    export_type = SelectField(_("What do you want to download ?"),
+                              validators=[Required()],
+                              coerce=str,
+                              choices=[("bills", _("bills")), ("transactions", _("transactions"))]
+                             )
+    export_format = SelectField(_("Export file format"),
+                                validators=[Required()],
+                                coerce=str,
+                                choices=[("csv", "csv"), ("json", "json")]
+                               )
