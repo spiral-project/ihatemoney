@@ -225,7 +225,7 @@ def edit_project():
 
             return send_file(file2export,
                              attachment_filename="%s-%s.%s" %
-                             (g.project.name, export_type, export_format),
+                             (g.project.id, export_type, export_format),
                              as_attachment=True
                             )
     else:
