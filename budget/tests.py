@@ -302,7 +302,7 @@ class BudgetTestCase(TestCase):
 
         # try to see the project while not being authenticated should redirect
         # to the authentication page
-        resp = self.app.post("/raclette", follow_redirects=True)
+        resp = self.app.get("/raclette", follow_redirects=True)
         self.assertIn("Authentication", resp.data)
 
         # try to connect with wrong credentials should not work
