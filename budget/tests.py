@@ -1,4 +1,5 @@
  # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 try:
     import unittest2 as unittest
 except ImportError:
@@ -8,6 +9,7 @@ import base64
 import os
 import json
 from collections import defaultdict
+import six
 
 os.environ['FLASK_SETTINGS_MODULE'] = 'default_settings'
 
@@ -23,7 +25,7 @@ class TestCase(unittest.TestCase):
         run.app.config['TESTING'] = True
 
         run.app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///memory"
-        run.app.config['CSRF_ENABLED'] = False  # simplify the tests
+        run.app.config['WTF_CSRF_ENABLED'] = False  # simplify the tests
         self.app = run.app.test_client()
         try:
             models.db.init_app(run.app)
@@ -56,7 +58,7 @@ class TestCase(unittest.TestCase):
         })
 
     def create_project(self, name):
-        models.db.session.add(models.Project(id=name, name=unicode(name),
+        models.db.session.add(models.Project(id=name, name=six.text_type(name),
             password=name, contact_email="%s@notmyidea.org" % name))
         models.db.session.commit()
 
@@ -96,7 +98,7 @@ class BudgetTestCase(TestCase):
             response = self.app.post("/raclette/invite",
                                      data={"emails": "toto"})
             self.assertEqual(len(outbox), 0)  # no message sent
-            self.assertIn("The email toto is not valid", response.data)
+            self.assertIn("The email toto is not valid", response.data.decode('utf-8'))
 
         # mixing good and wrong adresses shouldn't send any messages
         with run.mail.record_messages() as outbox:
@@ -192,7 +194,7 @@ class BudgetTestCase(TestCase):
 
         # check fred is present in the bills page
         result = self.app.get("/raclette/")
-        self.assertIn("fred", result.data)
+        self.assertIn("fred", result.data.decode('utf-8'))
 
         # remove fred
         self.app.post("/raclette/members/%s/delete" %
@@ -208,7 +210,7 @@ class BudgetTestCase(TestCase):
         # bound him to a bill
         result = self.app.post("/raclette/add", data={
             'date': '2011-08-10',
-            'what': u'fromage à raclette',
+            'what': 'fromage à raclette',
             'payer': fred_id,
             'payed_for': [fred_id, ],
             'amount': '25',
@@ -225,10 +227,10 @@ class BudgetTestCase(TestCase):
         # as fred is now deactivated, check that he is not listed when adding
         # a bill or displaying the balance
         result = self.app.get("/raclette/")
-        self.assertNotIn("/raclette/members/%s/delete" % fred_id, result.data)
+        self.assertNotIn(("/raclette/members/%s/delete" % fred_id), result.data.decode('utf-8'))
 
         result = self.app.get("/raclette/add")
-        self.assertNotIn("fred", result.data)
+        self.assertNotIn("fred", result.data.decode('utf-8'))
 
         # adding him again should reactivate him
         self.app.post("/raclette/members/add", data={'name': 'fred'})
@@ -257,7 +259,7 @@ class BudgetTestCase(TestCase):
         # bound him to a bill
         self.app.post("/raclette/add", data={
             'date': '2011-08-10',
-            'what': u'fromage à raclette',
+            'what': 'fromage à raclette',
             'payer': alexis.id,
             'payed_for': [alexis.id, ],
             'amount': '25',
@@ -292,25 +294,25 @@ class BudgetTestCase(TestCase):
         self.assertTrue(models.Project.query.get("demo") is not None)
 
     def test_authentication(self):
-	# try to authenticate without credentials should redirect
-	# to the authentication page
-	resp = self.app.post("/authenticate")
-	self.assertIn("Authentication", resp.data)
+        # try to authenticate without credentials should redirect
+        # to the authentication page
+        resp = self.app.post("/authenticate")
+        self.assertIn("Authentication", resp.data.decode('utf-8'))
 
         # raclette that the login / logout process works
         self.create_project("raclette")
 
         # try to see the project while not being authenticated should redirect
         # to the authentication page
-        resp = self.app.post("/raclette", follow_redirects=True)
-        self.assertIn("Authentication", resp.data)
+        resp = self.app.get("/raclette", follow_redirects=True)
+        self.assertIn("Authentication", resp.data.decode('utf-8'))
 
         # try to connect with wrong credentials should not work
         with run.app.test_client() as c:
             resp = c.post("/authenticate",
                     data={'id': 'raclette', 'password': 'nope'})
 
-            self.assertIn("Authentication", resp.data)
+            self.assertIn("Authentication", resp.data.decode('utf-8'))
             self.assertNotIn('raclette', session)
 
         # try to connect with the right credentials should work
@@ -318,7 +320,7 @@ class BudgetTestCase(TestCase):
             resp = c.post("/authenticate",
                     data={'id': 'raclette', 'password': 'raclette'})
 
-            self.assertNotIn("Authentication", resp.data)
+            self.assertNotIn("Authentication", resp.data.decode('utf-8'))
             self.assertIn('raclette', session)
             self.assertEqual(session['raclette'], 'raclette')
 
@@ -339,7 +341,7 @@ class BudgetTestCase(TestCase):
         # create a bill
         self.app.post("/raclette/add", data={
             'date': '2011-08-10',
-            'what': u'fromage à raclette',
+            'what': 'fromage à raclette',
             'payer': members_ids[0],
             'payed_for': members_ids,
             'amount': '25',
@@ -351,7 +353,7 @@ class BudgetTestCase(TestCase):
         # edit the bill
         self.app.post("/raclette/edit/%s" % bill.id, data={
             'date': '2011-08-10',
-            'what': u'fromage à raclette',
+            'what': 'fromage à raclette',
             'payer': members_ids[0],
             'payed_for': members_ids,
             'amount': '10',
@@ -367,7 +369,7 @@ class BudgetTestCase(TestCase):
         # test balance
         self.app.post("/raclette/add", data={
             'date': '2011-08-10',
-            'what': u'fromage à raclette',
+            'what': 'fromage à raclette',
             'payer': members_ids[0],
             'payed_for': members_ids,
             'amount': '19',
@@ -375,7 +377,7 @@ class BudgetTestCase(TestCase):
 
         self.app.post("/raclette/add", data={
             'date': '2011-08-10',
-            'what': u'fromage à raclette',
+            'what': 'fromage à raclette',
             'payer': members_ids[1],
             'payed_for': members_ids[0],
             'amount': '20',
@@ -383,7 +385,7 @@ class BudgetTestCase(TestCase):
 
         self.app.post("/raclette/add", data={
             'date': '2011-08-10',
-            'what': u'fromage à raclette',
+            'what': 'fromage à raclette',
             'payer': members_ids[1],
             'payed_for': members_ids,
             'amount': '17',
@@ -395,7 +397,7 @@ class BudgetTestCase(TestCase):
         #Bill with negative amount
         self.app.post("/raclette/add", data={
             'date': '2011-08-12',
-            'what': u'fromage à raclette',
+            'what': 'fromage à raclette',
             'payer': members_ids[0],
             'payed_for': members_ids,
             'amount': '-25'
@@ -406,7 +408,7 @@ class BudgetTestCase(TestCase):
         #add a bill with a comma
         self.app.post("/raclette/add", data={
             'date': '2011-08-01',
-            'what': u'fromage à raclette',
+            'what': 'fromage à raclette',
             'payer': members_ids[0],
             'payed_for': members_ids,
             'amount': '25,02',
@@ -427,7 +429,7 @@ class BudgetTestCase(TestCase):
         # test balance
         self.app.post("/raclette/add", data={
             'date': '2011-08-10',
-            'what': u'fromage à raclette',
+            'what': 'fromage à raclette',
             'payer': members_ids[0],
             'payed_for': members_ids,
             'amount': '10',
@@ -435,7 +437,7 @@ class BudgetTestCase(TestCase):
 
         self.app.post("/raclette/add", data={
             'date': '2011-08-10',
-            'what': u'pommes de terre',
+            'what': 'pommes de terre',
             'payer': members_ids[1],
             'payed_for': members_ids,
             'amount': '10',
@@ -452,12 +454,12 @@ class BudgetTestCase(TestCase):
         self.app.post("/raclette/members/add", data={'name': 'tata', 'weight': 1})
 
         resp =  self.app.get("/raclette/")
-        self.assertIn('extra-info', resp.data)
+        self.assertIn('extra-info', resp.data.decode('utf-8'))
 
         self.app.post("/raclette/members/add", data={'name': 'freddy familly', 'weight': 4})
 
         resp =  self.app.get("/raclette/")
-        self.assertNotIn('extra-info', resp.data)
+        self.assertNotIn('extra-info', resp.data.decode('utf-8'))
 
 
     def test_rounding(self):
@@ -471,7 +473,7 @@ class BudgetTestCase(TestCase):
         # create bills
         self.app.post("/raclette/add", data={
             'date': '2011-08-10',
-            'what': u'fromage à raclette',
+            'what': 'fromage à raclette',
             'payer': 1,
             'payed_for': [1, 2, 3],
             'amount': '24.36',
@@ -479,7 +481,7 @@ class BudgetTestCase(TestCase):
 
         self.app.post("/raclette/add", data={
             'date': '2011-08-10',
-            'what': u'red wine',
+            'what': 'red wine',
             'payer': 2,
             'payed_for': [1],
             'amount': '19.12',
@@ -487,7 +489,7 @@ class BudgetTestCase(TestCase):
 
         self.app.post("/raclette/add", data={
             'date': '2011-08-10',
-            'what': u'delicatessen',
+            'what': 'delicatessen',
             'payer': 1,
             'payed_for': [1, 2],
             'amount': '22',
@@ -500,7 +502,7 @@ class BudgetTestCase(TestCase):
         result[models.Project.query.get("raclette").members[2].id] = -8.12
         # Since we're using floating point to store currency, we can have some rounding issues that prevent test from working.
         # However, we should obtain the same values as the theorical ones if we round to 2 decimals, like in the UI.
-        for key, value in balance.iteritems():
+        for key, value in six.iteritems(balance):
             self.assertEqual(round(value, 2), result[key])
 
     def test_edit_project(self):
@@ -526,7 +528,7 @@ class BudgetTestCase(TestCase):
 
         resp = self.app.post("/raclette/edit", data=new_data,
                 follow_redirects=True)
-        self.assertIn("Invalid email address", resp.data)
+        self.assertIn("Invalid email address", resp.data.decode('utf-8'))
 
     def test_dashboard(self):
         response = self.app.get("/dashboard")
@@ -550,7 +552,7 @@ class BudgetTestCase(TestCase):
         # create bills
         self.app.post("/raclette/add", data={
             'date': '2011-08-10',
-            'what': u'fromage à raclette',
+            'what': 'fromage à raclette',
             'payer': 1,
             'payed_for': [1, 2, 3],
             'amount': '10.0',
@@ -558,7 +560,7 @@ class BudgetTestCase(TestCase):
 
         self.app.post("/raclette/add", data={
             'date': '2011-08-10',
-            'what': u'red wine',
+            'what': 'red wine',
             'payer': 2,
             'payed_for': [1],
             'amount': '20',
@@ -566,7 +568,7 @@ class BudgetTestCase(TestCase):
 
         self.app.post("/raclette/add", data={
             'date': '2011-08-10',
-            'what': u'delicatessen',
+            'what': 'delicatessen',
             'payer': 1,
             'payed_for': [1, 2],
             'amount': '10',
@@ -594,7 +596,7 @@ class BudgetTestCase(TestCase):
         # create bills
         self.app.post("/raclette/add", data={
             'date': '2016-12-31',
-            'what': u'fromage à raclette',
+            'what': 'fromage à raclette',
             'payer': 1,
             'payed_for': [1, 2, 3],
             'amount': '10.0',
@@ -602,7 +604,7 @@ class BudgetTestCase(TestCase):
 
         self.app.post("/raclette/add", data={
             'date': '2016-12-31',
-            'what': u'red wine',
+            'what': 'red wine',
             'payer': 2,
             'payed_for': [1, 3],
             'amount': '20',
@@ -610,7 +612,7 @@ class BudgetTestCase(TestCase):
 
         self.app.post("/raclette/add", data={
             'date': '2017-01-01',
-            'what': u'refund',
+            'what': 'refund',
             'payer': 3,
             'payed_for': [2],
             'amount': '13.33',
@@ -636,7 +638,7 @@ class BudgetTestCase(TestCase):
         # create bills
         self.app.post("/raclette/add", data={
             'date': '2016-12-31',
-            'what': u'fromage à raclette',
+            'what': 'fromage à raclette',
             'payer': 1,
             'payed_for': [1, 2, 3, 4],
             'amount': '10.0',
@@ -644,7 +646,7 @@ class BudgetTestCase(TestCase):
 
         self.app.post("/raclette/add", data={
             'date': '2016-12-31',
-            'what': u'red wine',
+            'what': 'red wine',
             'payer': 2,
             'payed_for': [1, 3],
             'amount': '200',
@@ -652,7 +654,7 @@ class BudgetTestCase(TestCase):
 
         self.app.post("/raclette/add", data={
             'date': '2017-01-01',
-            'what': u'refund',
+            'what': 'refund',
             'payer': 3,
             'payed_for': [2],
             'amount': '13.33',
@@ -663,13 +665,13 @@ class BudgetTestCase(TestCase):
             'export_format': 'json',
             'export_type': 'bills'
         })
-        expected = [{u'date': u'2017-01-01', u'what': u'refund',
-                     u'amount': 13.33, u'payer_name': u'tata', u'payer_weight': 1.0, u'owers': [u'fred']},
-                    {u'date': u'2016-12-31', u'what': u'red wine',
-                     u'amount': 200.0, u'payer_name': u'fred', u'payer_weight': 1.0, u'owers': [u'alexis', u'tata']},
-                    {u'date': u'2016-12-31', u'what': u'fromage \xe0 raclette',
-                     u'amount': 10.0, u'payer_name': u'alexis', u'payer_weight': 2.0, u'owers': [u'alexis', u'fred', u'tata', u'p\xe9p\xe9']}]
-        self.assertEqual(json.loads(resp.data), expected)
+        expected = [{'date': '2017-01-01', 'what': 'refund',
+                     'amount': 13.33, 'payer_name': 'tata', 'payer_weight': 1.0, 'owers': ['fred']},
+                    {'date': '2016-12-31', 'what': 'red wine',
+                     'amount': 200.0, 'payer_name': 'fred', 'payer_weight': 1.0, 'owers': ['alexis', 'tata']},
+                    {'date': '2016-12-31', 'what': 'fromage \xe0 raclette',
+                     'amount': 10.0, 'payer_name': 'alexis', 'payer_weight': 2.0, 'owers': ['alexis', 'fred', 'tata', 'p\xe9p\xe9']}]
+        self.assertEqual(json.loads(resp.data.decode('utf-8')), expected)
 
         # generate csv export of bills
         resp = self.app.post("/raclette/edit", data={
@@ -680,7 +682,7 @@ class BudgetTestCase(TestCase):
                     "2017-01-01,refund,13.33,tata,1.0,fred",
                     "2016-12-31,red wine,200.0,fred,1.0,\"alexis, tata\"",
                     "2016-12-31,fromage à raclette,10.0,alexis,2.0,\"alexis, fred, tata, pépé\""]
-        received_lines = resp.data.split("\n")
+        received_lines = resp.data.decode('utf-8').split("\n")
 
         for i, line in enumerate(expected):
             self.assertEqual(
@@ -693,10 +695,10 @@ class BudgetTestCase(TestCase):
             'export_format': 'json',
             'export_type': 'transactions'
         })
-        expected = [{u"amount": 127.33, u"receiver": u"fred", u"ower": u"alexis"},
-                    {u"amount": 55.34, u"receiver": u"fred", u"ower": u"tata"},
-                    {u"amount": 2.00, u"receiver": u"fred", u"ower": u"p\xe9p\xe9"}]
-        self.assertEqual(json.loads(resp.data), expected)
+        expected = [{"amount": 127.33, "receiver": "fred", "ower": "alexis"},
+                    {"amount": 55.34, "receiver": "fred", "ower": "tata"},
+                    {"amount": 2.00, "receiver": "fred", "ower": "p\xe9p\xe9"}]
+        self.assertEqual(json.loads(resp.data.decode('utf-8')), expected)
 
         # generate csv export of transactions
         resp = self.app.post("/raclette/edit", data={
@@ -708,7 +710,7 @@ class BudgetTestCase(TestCase):
                     "127.33,fred,alexis",
                     "55.34,fred,tata",
                     "2.0,fred,pépé"]
-        received_lines = resp.data.split("\n")
+        received_lines = resp.data.decode('utf-8').split("\n")
 
         for i, line in enumerate(expected):
             self.assertEqual(
@@ -723,7 +725,7 @@ class BudgetTestCase(TestCase):
         })
 
         self.assertEqual(resp.status_code, 200)
-        self.assertIn('id="export_format" name="export_format"', resp.data)
+        self.assertIn('id="export_format" name="export_format"', resp.data.decode('utf-8'))
 
         # wrong export_type should return a 200 and export form
         resp = self.app.post("/raclette/edit", data={
@@ -732,7 +734,7 @@ class BudgetTestCase(TestCase):
         })
 
         self.assertEqual(resp.status_code, 200)
-        self.assertIn('id="export_format" name="export_format"', resp.data)
+        self.assertIn('id="export_format" name="export_format"', resp.data.decode('utf-8'))
 
 
 class APITestCase(TestCase):
@@ -758,7 +760,7 @@ class APITestCase(TestCase):
     def get_auth(self, username, password=None):
         password = password or username
         base64string = base64.encodestring(
-                '%s:%s' % (username, password)).replace('\n', '')
+            ('%s:%s' % (username, password)).encode('utf-8')).decode('utf-8').replace('\n', '')
         return {"Authorization": "Basic %s" % base64string}
 
     def assertStatus(self, expected, resp, url=""):
@@ -802,7 +804,7 @@ class APITestCase(TestCase):
 
         self.assertTrue(400, resp.status_code)
         self.assertEqual('{"contact_email": ["Invalid email address."]}',
-                         resp.data)
+                         resp.data.decode('utf-8'))
 
         # create it
         resp = self.api_create("raclette")
@@ -812,7 +814,7 @@ class APITestCase(TestCase):
         resp = self.api_create("raclette")
 
         self.assertTrue(400, resp.status_code)
-        self.assertIn('id', json.loads(resp.data))
+        self.assertIn('id', json.loads(resp.data.decode('utf-8')))
 
         # get information about it
         resp = self.app.get("/api/projects/raclette",
@@ -828,7 +830,7 @@ class APITestCase(TestCase):
             "id": "raclette",
             "balance": {},
         }
-        self.assertDictEqual(json.loads(resp.data), expected)
+        self.assertDictEqual(json.loads(resp.data.decode('utf-8')), expected)
 
         # edit should work
         resp = self.app.put("/api/projects/raclette", data={
@@ -852,7 +854,7 @@ class APITestCase(TestCase):
             "id": "raclette",
             "balance": {},
         }
-        self.assertDictEqual(json.loads(resp.data), expected)
+        self.assertDictEqual(json.loads(resp.data.decode('utf-8')), expected)
 
         # delete should work
         resp = self.app.delete("/api/projects/raclette",
@@ -874,7 +876,7 @@ class APITestCase(TestCase):
                 headers=self.get_auth("raclette"))
 
         self.assertStatus(200, req)
-        self.assertEqual('[]', req.data)
+        self.assertEqual('[]', req.data.decode('utf-8'))
 
         # add a member
         req = self.app.post("/api/projects/raclette/members", data={
@@ -883,14 +885,14 @@ class APITestCase(TestCase):
 
         # the id of the new member should be returned
         self.assertStatus(201, req)
-        self.assertEqual("1", req.data)
+        self.assertEqual("1", req.data.decode('utf-8'))
 
         # the list of members should contain one member
         req = self.app.get("/api/projects/raclette/members",
                 headers=self.get_auth("raclette"))
 
         self.assertStatus(200, req)
-        self.assertEqual(len(json.loads(req.data)), 1)
+        self.assertEqual(len(json.loads(req.data.decode('utf-8'))), 1)
 
         # edit this member
         req = self.app.put("/api/projects/raclette/members/1", data={
@@ -904,7 +906,7 @@ class APITestCase(TestCase):
                 headers=self.get_auth("raclette"))
 
         self.assertStatus(200, req)
-        self.assertEqual("Fred", json.loads(req.data)["name"])
+        self.assertEqual("Fred", json.loads(req.data.decode('utf-8'))["name"])
 
         # delete a member
 
@@ -919,7 +921,7 @@ class APITestCase(TestCase):
                 headers=self.get_auth("raclette"))
 
         self.assertStatus(200, req)
-        self.assertEqual('[]', req.data)
+        self.assertEqual('[]', req.data.decode('utf-8'))
 
     def test_bills(self):
         # create a project
@@ -935,12 +937,12 @@ class APITestCase(TestCase):
                 headers=self.get_auth("raclette"))
         self.assertStatus(200, req)
 
-        self.assertEqual("[]", req.data)
+        self.assertEqual("[]", req.data.decode('utf-8'))
 
         # add a bill
         req = self.app.post("/api/projects/raclette/bills", data={
             'date': '2011-08-10',
-            'what': u'fromage',
+            'what': 'fromage',
             'payer': "1",
             'payed_for': ["1", "2"],
             'amount': '25',
@@ -948,7 +950,7 @@ class APITestCase(TestCase):
 
         # should return the id
         self.assertStatus(201, req)
-        self.assertEqual(req.data, "1")
+        self.assertEqual(req.data.decode('utf-8'), "1")
 
         # get this bill details
         req = self.app.get("/api/projects/raclette/bills/1",
@@ -966,30 +968,30 @@ class APITestCase(TestCase):
             "date": "2011-08-10",
             "id": 1}
 
-        self.assertDictEqual(expected, json.loads(req.data))
+        self.assertDictEqual(expected, json.loads(req.data.decode('utf-8')))
 
         # the list of bills should lenght 1
         req = self.app.get("/api/projects/raclette/bills",
                 headers=self.get_auth("raclette"))
         self.assertStatus(200, req)
-        self.assertEqual(1, len(json.loads(req.data)))
+        self.assertEqual(1, len(json.loads(req.data.decode('utf-8'))))
 
         # edit with errors should return an error
         req = self.app.put("/api/projects/raclette/bills/1", data={
             'date': '201111111-08-10',  # not a date
-            'what': u'fromage',
+            'what': 'fromage',
             'payer': "1",
             'payed_for': ["1", "2"],
             'amount': '25',
             }, headers=self.get_auth("raclette"))
 
         self.assertStatus(400, req)
-        self.assertEqual('{"date": ["This field is required."]}', req.data)
+        self.assertEqual('{"date": ["This field is required."]}', req.data.decode('utf-8'))
 
         # edit a bill
         req = self.app.put("/api/projects/raclette/bills/1", data={
             'date': '2011-09-10',
-            'what': u'beer',
+            'what': 'beer',
             'payer': "2",
             'payed_for': ["1", "2"],
             'amount': '25',
@@ -1009,7 +1011,7 @@ class APITestCase(TestCase):
             "date": "2011-09-10",
             "id": 1}
 
-        self.assertDictEqual(expected, json.loads(req.data))
+        self.assertDictEqual(expected, json.loads(req.data.decode('utf-8')))
 
         # delete a bill
         req = self.app.delete("/api/projects/raclette/bills/1",
@@ -1031,7 +1033,7 @@ class APITestCase(TestCase):
         self.api_add_member("raclette", "<script>")
 
         result = self.app.get('/raclette/')
-        self.assertNotIn("<script>", result.data)
+        self.assertNotIn("<script>", result.data.decode('utf-8'))
 
     def test_weighted_bills(self):
         # create a project
@@ -1066,7 +1068,7 @@ class APITestCase(TestCase):
             "amount": 25.0,
             "date": "2011-08-10",
             "id": 1}
-        self.assertDictEqual(expected, json.loads(req.data))
+        self.assertDictEqual(expected, json.loads(req.data.decode('utf-8')))
 
         # getting it should return a 404
         req = self.app.get("/api/projects/raclette",
@@ -1091,7 +1093,7 @@ class APITestCase(TestCase):
             "password": "raclette"}
 
         self.assertStatus(200, req)
-        self.assertEqual(expected, json.loads(req.data))
+        self.assertEqual(expected, json.loads(req.data.decode('utf-8')))
 
 class ServerTestCase(APITestCase):
     def setUp(self):
@@ -1107,7 +1109,6 @@ class ServerTestCase(APITestCase):
         run.app.config['APPLICATION_ROOT'] = '/foo'
         req = self.app.get("/foo/")
         self.assertStatus(200, req)
-
 
 if __name__ == "__main__":
     unittest.main()

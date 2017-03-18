@@ -1,11 +1,12 @@
 import re
 import inspect
 
+from io import BytesIO, StringIO
 from jinja2 import filters
 from json import dumps
 from flask import redirect
 from werkzeug.routing import HTTPException, RoutingException
-from io import BytesIO
+import six
 
 import csv
 
@@ -16,12 +17,13 @@ def slugify(value):
 
     Copy/Pasted from ametaireau/pelican/utils itself took from django sources.
     """
-    if type(value) == unicode:
+    if isinstance(value, six.text_type):
         import unicodedata
-        value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore')
-    value = unicode(re.sub('[^\w\s-]', '', value).strip().lower())
+        value = unicodedata.normalize('NFKD', value)
+        if six.PY2:
+            value = value.encode('ascii', 'ignore')
+    value = six.text_type(re.sub('[^\w\s-]', '', value).strip().lower())
     return re.sub('[-\s]+', '-', value)
-
 
 class Redirect303(HTTPException, RoutingException):
     """Raise if the map requests a redirect. This is for example the case if
@@ -86,25 +88,33 @@ def list_of_dicts2json(dict_to_convert):
     """Take a list of dictionnaries and turns it into
     a json in-memory file
     """
-    bytes_io = BytesIO()
-    bytes_io.write(dumps(dict_to_convert))
-    bytes_io.seek(0)
-    return bytes_io
+    return BytesIO(dumps(dict_to_convert).encode('utf-8'))
 
 def list_of_dicts2csv(dict_to_convert):
     """Take a list of dictionnaries and turns it into
     a csv in-memory file, assume all dict have the same keys
     """
-    bytes_io = BytesIO()
+    # CSV writer has a different behavior in PY2 and PY3
+    # http://stackoverflow.com/a/37974772
     try:
-        csv_data = [dict_to_convert[0].keys()]
-        for dic in dict_to_convert:
-            csv_data.append([dic[h].encode('utf8')
-                             if isinstance(dic[h], unicode) else str(dic[h]).encode('utf8')
-                             for h in dict_to_convert[0].keys()])
+        if six.PY3:
+            csv_file = StringIO()
+            csv_data = [dict_to_convert[0].keys()]
+            for dic in dict_to_convert:
+                csv_data.append([dic[h] for h in dict_to_convert[0].keys()])
+        else:
+            csv_file = BytesIO()
+            csv_data = []
+            csv_data.append([key.encode('utf-8') for key in dict_to_convert[0].keys()])
+            for dic in dict_to_convert:
+                csv_data.append([dic[h].encode('utf8')
+                                 if isinstance(dic[h], unicode) else str(dic[h]).encode('utf8')
+                                 for h in dict_to_convert[0].keys()])
     except (KeyError, IndexError):
         csv_data = []
-    writer = csv.writer(bytes_io)
+    writer = csv.writer(csv_file)
     writer.writerows(csv_data)
-    bytes_io.seek(0)
-    return bytes_io
+    csv_file.seek(0)
+    if six.PY3:
+        csv_file = BytesIO(csv_file.getvalue().encode('utf-8'))
+    return csv_file

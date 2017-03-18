@@ -1,6 +1,8 @@
-from flask_wtf import DateField, DecimalField, Email, Form, PasswordField, \
-    Required, SelectField, SelectMultipleField, SubmitField, TextAreaField, \
-    TextField, ValidationError
+from flask_wtf.form import FlaskForm
+from wtforms.fields.core import SelectField, SelectMultipleField
+from wtforms.fields.html5 import DateField, DecimalField
+from wtforms.fields.simple import PasswordField, SubmitField, TextAreaField, TextField
+from wtforms.validators import Email, Required, ValidationError
 from flask_babel import lazy_gettext as _
 from flask import request
 
@@ -35,7 +37,7 @@ class CommaDecimalField(DecimalField):
         return super(CommaDecimalField, self).process_formdata(value)
 
 
-class EditProjectForm(Form):
+class EditProjectForm(FlaskForm):
     name = TextField(_("Project name"), validators=[Required()])
     password = TextField(_("Private code"), validators=[Required()])
     contact_email = TextField(_("Email"), validators=[Required(), Email()])
@@ -75,13 +77,13 @@ class ProjectForm(EditProjectForm):
                 "that you will be able to remember.")))
 
 
-class AuthenticationForm(Form):
+class AuthenticationForm(FlaskForm):
     id = TextField(_("Project identifier"), validators=[Required()])
     password = PasswordField(_("Private code"), validators=[Required()])
     submit = SubmitField(_("Get in"))
 
 
-class PasswordReminder(Form):
+class PasswordReminder(FlaskForm):
     id = TextField(_("Project identifier"), validators=[Required()])
     submit = SubmitField(_("Send me the code by email"))
 
@@ -90,7 +92,7 @@ class PasswordReminder(Form):
             raise ValidationError(_("This project does not exists"))
 
 
-class BillForm(Form):
+class BillForm(FlaskForm):
     date = DateField(_("Date"), validators=[Required()], default=datetime.now)
     what = TextField(_("What?"), validators=[Required()])
     payer = SelectField(_("Payer"), validators=[Required()], coerce=int)
@@ -125,7 +127,7 @@ class BillForm(Form):
             raise ValidationError(_("Bills can't be null"))
 
 
-class MemberForm(Form):
+class MemberForm(FlaskForm):
 
     name = TextField(_("Name"), validators=[Required()])
     weight = CommaDecimalField(_("Weight"), default=1)
@@ -158,7 +160,7 @@ class MemberForm(Form):
         self.weight.data = member.weight
 
 
-class InviteForm(Form):
+class InviteForm(FlaskForm):
     emails = TextAreaField(_("People to notify"))
     submit = SubmitField(_("Send invites"))
 
@@ -170,13 +172,13 @@ class InviteForm(Form):
                     email=email))
 
 
-class CreateArchiveForm(Form):
+class CreateArchiveForm(FlaskForm):
     name = TextField(_("Name for this archive (optional)"), validators=[])
     start_date = DateField(_("Start date"), validators=[Required()])
     end_date = DateField(_("End date"), validators=[Required()], default=datetime.now)
 
 
-class ExportForm(Form):
+class ExportForm(FlaskForm):
     export_type = SelectField(_("What do you want to download ?"),
                               validators=[Required()],
                               coerce=str,
