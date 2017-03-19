@@ -126,10 +126,6 @@ msgstr ""
 msgid "The email %(email)s is not valid"
 msgstr ""
 
-#: forms.py:190
-msgid "Name for this archive (optional)"
-msgstr ""
-
 #: forms.py:191
 msgid "Start date"
 msgstr ""
@@ -199,10 +195,6 @@ msgstr ""
 
 #: web.py:369
 msgid "The bill has been modified"
-msgstr ""
-
-#: web.py:399
-msgid "The data from XX to XX has been archived"
 msgstr ""
 
 #: templates/add_bill.html:9
@@ -290,14 +282,6 @@ msgstr ""
 
 #: templates/forms.html:103
 msgid "No, thanks"
-msgstr ""
-
-#: templates/forms.html:109
-msgid "Create an archive"
-msgstr ""
-
-#: templates/forms.html:116
-msgid "Create the archive"
 msgstr ""
 
 #: templates/home.html:8
