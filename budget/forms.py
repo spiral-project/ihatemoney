@@ -172,12 +172,6 @@ class InviteForm(FlaskForm):
                     email=email))
 
 
-class CreateArchiveForm(FlaskForm):
-    name = TextField(_("Name for this archive (optional)"), validators=[])
-    start_date = DateField(_("Start date"), validators=[Required()])
-    end_date = DateField(_("End date"), validators=[Required()], default=datetime.now)
-
-
 class ExportForm(FlaskForm):
     export_type = SelectField(_("What do you want to download ?"),
                               validators=[Required()],

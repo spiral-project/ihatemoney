@@ -19,8 +19,8 @@ from sqlalchemy import orm
 
 # local modules
 from models import db, Project, Person, Bill
-from forms import AuthenticationForm, CreateArchiveForm, EditProjectForm, \
-    InviteForm, MemberForm, PasswordReminder, ProjectForm, get_billform_for, \
+from forms import AuthenticationForm, EditProjectForm, InviteForm, \
+    MemberForm, PasswordReminder, ProjectForm, get_billform_for, \
     ExportForm
 from utils import Redirect303, list_of_dicts2json, list_of_dicts2csv
 
@@ -443,17 +443,6 @@ def settle_bill():
         bills=bills,
         current_view='settle_bill',
     )
-
-
-@main.route("/<project_id>/archives/create", methods=["GET", "POST"])
-def create_archive():
-    form = CreateArchiveForm()
-    if request.method == "POST":
-        if form.validate():
-            pass
-            flash(_("The data from XX to XX has been archived"))
-
-    return render_template("create_archive.html", form=form)
 
 
 @main.route("/dashboard")
