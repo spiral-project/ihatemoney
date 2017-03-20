@@ -98,3 +98,33 @@ End-user
 You just wanted to have a look at the application and found a bug? Please tell
 us and go fill a new issue:
 https://github.com/spiral-project/ihatemoney/issues
+
+How to release?
+===============
+
+In order to prepare a new release, we are following the following steps.
+
+The `fullrelease` command comes from `zest.releaser
+<https://pypi.python.org/pypi/zest.releaser>`_.
+
+Install `zest.releaser`:
+
+.. code-block:: bash
+
+      $ pip install "zest.releaser"
+
+- Merge remaining pull requests
+- Update ``CHANGELOG.rst``
+- Update known good versions of dependencies in ``requirements.txt`` with this command (from inside the venv):
+
+.. code-block:: bash
+
+     $ pip freeze | grep -v -- '-e' > requirements.txt
+
+Once this is done, use the "fullrelease" command:
+
+.. code-block:: bash
+
+     $ fullrelease
+
+That's all folks!
