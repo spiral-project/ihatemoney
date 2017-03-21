@@ -114,7 +114,6 @@ Install `zest.releaser`:
       $ pip install "zest.releaser"
 
 - Merge remaining pull requests
-- Update ``CHANGELOG.rst``
 - Update :file:`CONTRIBUTORS`.
 - Update known good versions of dependencies in ``requirements.txt`` with this command (from inside the venv):
 
