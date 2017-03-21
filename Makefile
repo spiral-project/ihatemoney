@@ -27,7 +27,7 @@ serve: $(INSTALL_STAMP)
 	cd budget; ../$(PYTHON) run.py
 
 test: $(DEV_STAMP)
-	cd budget; ../$(PYTHON) tests.py
+	$(VENV)/bin/tox
 
 release: $(DEV_STAMP)
 	$(VENV)/bin/fullrelease
