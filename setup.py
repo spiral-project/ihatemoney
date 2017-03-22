@@ -17,7 +17,7 @@ README = read_file('README.rst')
 CHANGELOG = read_file('CHANGELOG.rst')
 
 REQUIREMENTS = [
-    'flask>=0.11'
+    'flask>=0.11',
     'flask-wtf>=0.13',
     'flask-sqlalchemy',
     'flask-mail>=0.8',
