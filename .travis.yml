@@ -4,5 +4,6 @@ install:
   - pip install tox
 env:
   - TOXENV=py27
+  - TOXENV=py34
   - TOXENV=py35
   - TOXENV=docs
