@@ -1,8 +1,8 @@
 language: python
-python:
-  - "2.7"
-  - "3.5"
-# command to install dependencies
-install: "pip install -r budget/requirements.txt"
-# command to run tests
-script: cd budget && python tests.py
+script: tox
+install:
+  - pip install tox
+env:
+  - TOXENV=py27
+  - TOXENV=py35
+  - TOXENV=docs

@@ -1,4 +1,5 @@
 import os
+import os.path
 import warnings
 
 from flask import Flask, g, request, session
@@ -11,6 +12,7 @@ from api import api
 from utils import PrefixedWSGI
 from utils import minimal_round
 
+__HERE__ = os.path.dirname(os.path.abspath(__file__))
 
 app = Flask(__name__)
 
@@ -65,7 +67,7 @@ if pre_alembic_db():
 
 # auto-execute migrations on runtime
 with app.app_context():
-    upgrade()
+    upgrade(os.path.join(__HERE__, 'migrations'))
 
 # mail
 mail.init_app(app)

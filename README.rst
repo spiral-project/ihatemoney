@@ -16,13 +16,9 @@ LICENSE for more details).
 Make it run!
 ============
 
-To make it run, you just have to do something like::
+To make it run, you just have to do use the serve command::
 
-    $ virtualenv venv
-    $ source venv/bin/activate
-    $ pip install -r budget/requirements.txt
-    $ cd budget
-    $ python run.py
+    $ make serve
 
 It is also better to actually turn the debugging mode on when you're
 developing. You can create a `settings.py` file in the `budget` directory, with
@@ -37,11 +33,7 @@ You can also set the `TESTING` flag to `True` so no mails are sent
 Deploy it
 =========
 
-To deploy it, I'm using gunicorn and supervisord::
-
-    $ virtualenv venv
-    $ source venv/bin/activate
-    $ pip install -r requirements.txt
+To deploy it, I'm using gunicorn and supervisord.
 
 1. Add the lines in conf/supervisord.conf to your supervisord.conf file.
    **adapt them to your paths!**
@@ -58,9 +50,8 @@ e.g:
 
     APPLICATION_ROOT='/budget'
 
-
-How about the REST API?
-=======================
+The REST API?
+=============
 
 Yep, you're right, there is a REST API with this. Head to the `api
 documentation <https://ihatemoney.readthedocs.io/en/latest/api.html>`_ to know more.
@@ -68,22 +59,22 @@ documentation <https://ihatemoney.readthedocs.io/en/latest/api.html>`_ to know m
 How to contribute
 =================
 
+You would like to contribute? First, thanks a bunch! This project is a small
+project with just a few people behind it, so any help is appreciated!
+
 There are different ways to help us, regarding if you are a designer,
-a developer or just an user.
+a developer or an user.
 
 As a developer
 --------------
 
-The best way to contribute code is to write it and to make a pull request on
+If you want to contribute code, you can write it and then issue a pull request on
 github. Please, think about updating and running the tests before asking for
 a pull request as it will help us to maintain the code clean and running.
 
 To do so::
 
-    $ workon budget
-    (budget) $ python tests.py
-
-before pushing anything to master :)
+    $ make tests
 
 As a designer / Front-end developer
 -----------------------------------
@@ -95,36 +86,31 @@ know how to implement them, feel free to fork and make a pull request.
 End-user
 --------
 
-You just wanted to have a look at the application and found a bug? Please tell
-us and go fill a new issue:
-https://github.com/spiral-project/ihatemoney/issues
+You are using the application and found a bug? You have some ideas about how to
+improve the project? Please tell us [by filling a new issue](https://github.com/spiral-project/ihatemoney/issues).
+Or, if you prefer, you can send me an email to `alexis@notmyidea.org` and I will
+update the issue tracker with your feedback.
+
+Thanks again!
 
 How to release?
 ===============
 
-In order to prepare a new release, we are following the following steps.
+In order to prepare a new release, we are following the following steps:
 
-The `fullrelease` command comes from `zest.releaser
-<https://pypi.python.org/pypi/zest.releaser>`_.
-
-Install `zest.releaser`:
-
-.. code-block:: bash
-
-      $ pip install "zest.releaser"
-
-- Merge remaining pull requests
-- Update ``CHANGELOG.rst``
+- Merge remaining pull requests;
+- Update :file:`CHANGELOG.rst` with the last changes;
+- Update :file:`CONTRIBUTORS`;
 - Update known good versions of dependencies in ``requirements.txt`` with this command (from inside the venv):
 
 .. code-block:: bash
 
      $ pip freeze | grep -v -- '-e' > requirements.txt
 
-Once this is done, use the "fullrelease" command:
+Once this is done, use the "release" instruction:
 
 .. code-block:: bash
 
-     $ fullrelease
+     $ make release 
 
-That's all folks!
+And the new version should be published on PyPI.
