@@ -1,3 +1,4 @@
+import base64
 import re
 import inspect
 
@@ -120,3 +121,6 @@ def list_of_dicts2csv(dict_to_convert):
     if six.PY3:
         csv_file = BytesIO(csv_file.getvalue().encode('utf-8'))
     return csv_file
+
+# base64 encoding that works with both py2 and py3 and yield no warning
+base64_encode =  base64.encodestring if six.PY2 else base64.encodebytes
