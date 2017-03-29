@@ -29,7 +29,7 @@ def check_project(*args, **kwargs):
 class ProjectHandler(object):
 
     def add(self):
-        form = ProjectForm(csrf_enabled=False)
+        form = ProjectForm(meta={'csrf': False})
         if form.validate():
             project = form.save()
             db.session.add(project)
@@ -49,7 +49,7 @@ class ProjectHandler(object):
 
     @need_auth(check_project, "project")
     def update(self, project):
-        form = EditProjectForm(csrf_enabled=False)
+        form = EditProjectForm(meta={'csrf': False})
         if form.validate():
             form.update(project)
             db.session.commit()
@@ -69,7 +69,7 @@ class MemberHandler(object):
         return 200, project.members
 
     def add(self, project):
-        form = MemberForm(project, csrf_enabled=False)
+        form = MemberForm(project, meta={'csrf': False})
         if form.validate():
             member = Person()
             form.save(project, member)
@@ -78,7 +78,7 @@ class MemberHandler(object):
         return 400, form.errors
 
     def update(self, project, member_id):
-        form = MemberForm(project, csrf_enabled=False)
+        form = MemberForm(project, meta={'csrf': False})
         if form.validate():
             member = Person.query.get(member_id, project)
             form.save(project, member)
@@ -104,7 +104,7 @@ class BillHandler(object):
         return project.get_bills().all()
 
     def add(self, project):
-        form = get_billform_for(project, True, csrf_enabled=False)
+        form = get_billform_for(project, True, meta={'csrf': False})
         if form.validate():
             bill = Bill()
             form.save(bill, project)
@@ -114,7 +114,7 @@ class BillHandler(object):
         return 400, form.errors
 
     def update(self, project, bill_id):
-        form = get_billform_for(project, True, csrf_enabled=False)
+        form = get_billform_for(project, True, meta={'csrf': False})
         if form.validate():
             bill = Bill.query.get(project, bill_id)
             form.save(bill, project)

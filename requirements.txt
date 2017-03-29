@@ -1,6 +1,6 @@
 flask>=0.11
-flask-wtf>=0.13
-flask-sqlalchemy
+flask-wtf>=0.14
+flask-sqlalchemy>=2.2,<3.0
 flask-mail>=0.8
 Flask-Migrate>=1.8.0
 flask-babel

@@ -5,7 +5,6 @@ try:
 except ImportError:
     import unittest  # NOQA
 
-import base64
 import os
 import json
 from collections import defaultdict
@@ -17,6 +16,7 @@ from flask import session
 
 import run
 import models
+import utils
 
 
 class TestCase(unittest.TestCase):
@@ -759,7 +759,7 @@ class APITestCase(TestCase):
 
     def get_auth(self, username, password=None):
         password = password or username
-        base64string = base64.encodestring(
+        base64string = utils.base64_encode(
             ('%s:%s' % (username, password)).encode('utf-8')).decode('utf-8').replace('\n', '')
         return {"Authorization": "Basic %s" % base64string}
 
