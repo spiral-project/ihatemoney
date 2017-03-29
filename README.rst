@@ -33,7 +33,31 @@ You can also set the `TESTING` flag to `True` so no mails are sent
 Deploy it
 =========
 
-To deploy it, I'm using gunicorn and supervisord.
+With Apache and mod_wsgi
+------------------------
+
+1. Install Apache and mod_wsgi::
+
+    $ sudo apt-get install apache2
+    # If you use Python3
+    $ sudo apt-get install libapache2-mod-wsgi-py3
+    # Or if you use Python2
+    $ sudo apt-get install libapache2-mod-wsgi
+
+2. Create an Apache virtual host based on the sample configuration file
+
+    $ sudo cp conf/apache-vhost.conf /etc/apache2/sites-available/ihatemoney.conf
+
+3. Adapt it to your paths and specify your virtualenv path if you use one
+
+4. Activate the virtual host and reload Apache ::
+
+    $ sudo a2ensite ihatemoney
+    $ sudo service apache2 restart
+
+
+With Nginx, Gunicorn and Supervisord
+------------------------------------
 
 1. Add the lines in conf/supervisord.conf to your supervisord.conf file.
    **adapt them to your paths!**
