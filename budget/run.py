@@ -12,7 +12,7 @@ from api import api
 from utils import PrefixedWSGI
 from utils import minimal_round
 
-app = Flask(__name__)
+app = Flask(__name__, instance_path='/etc/ihatemoney', instance_relative_config=True)
 
 
 def pre_alembic_db():
@@ -27,8 +27,18 @@ def pre_alembic_db():
 def configure():
     """ A way to (re)configure the app, specially reset the settings
     """
-    config_obj = os.environ.get('FLASK_SETTINGS_MODULE', 'merged_settings')
-    app.config.from_object(config_obj)
+    default_config_file = os.path.join(app.root_path, 'default_settings.py')
+    config_file = os.environ.get('IHATEMONEY_SETTINGS_FILE_PATH')
+
+    # Load default settings first
+    # Then load the settings from the path set in IHATEMONEY_SETTINGS_FILE_PATH var
+    # If not set, default to /etc/ihatemoney/ihatemoney.cfg
+    # If the latter doesn't exist no error is raised and the default settings are used
+    app.config.from_pyfile(default_config_file)
+    if config_file:
+        app.config.from_pyfile(config_file)
+    else:
+        app.config.from_pyfile('ihatemoney.cfg', silent=True)
     app.wsgi_app = PrefixedWSGI(app)
 
     # Deprecations

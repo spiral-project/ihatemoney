@@ -25,16 +25,6 @@ you just have to run the following command::
 
 This will run a Flask app available at `http://localhost:5000`.
 
-It is also better to actually turn the debugging mode on when you're
-developing. You can create a `settings.py` file in the `budget` directory, with
-the following content::
-
-    DEBUG = True
-    SQLACHEMY_ECHO = DEBUG
-
-You can also set the `TESTING` flag to `True` so no mails are sent
-(and no exception is raised) while you're on development mode.
-
 Deploy it
 =========
 
@@ -62,12 +52,42 @@ With Nginx, Gunicorn and Supervisord
 
 Don't forget to set the right permission for your files !
 
-Also, create a `settings.py` file with the appropriate values if you need to
-use a different database for instance. You can also set `APPLICATION_ROOT` if
-you want to prefix your URLs to serve ihatemonney in the *folder* of a domain,
-e.g:
+Configure it
+============
+
+In a production environment
+---------------------------
+
+Make a copy of ``budget/default_settings.py`` and name it ``ihatemoney.cfg``.
+Then adjust the settings to your needs and move this file to
+``/etc/ihatemoney/ihatemoney.cfg``.
+This is the default path of the settings but you can also place it
+elsewhere and pass the configuration file path to the application using
+the IHATEMONEY_SETTINGS_FILE_PATH environment variable.
+e.g.::
+
+    $ export IHATEMONEY_SETTINGS_FILE_PATH="/path/to/your/conf/file.cfg"
+
+Note that you can also pass additional flask parameters with this file.
+e.g. If you want to prefix your URLs to serve ihatemonney in the *folder*
+of a domain, use the following: ::
 
     APPLICATION_ROOT='/budget'
+
+In a dev environment
+--------------------
+
+It is better to actually turn the debugging mode on when you're developing.
+You can create a ``settings.cfg`` file, with the following content::
+
+    DEBUG = True
+    SQLACHEMY_ECHO = DEBUG
+
+You can also set the `TESTING` flag to `True` so no mails are sent
+(and no exception is raised) while you're on development mode.
+Then before running the application, declare its path with ::
+
+    $ export IHATEMONEY_SETTINGS_FILE_PATH="$(pwd)/settings.cfg"
 
 The REST API?
 =============
