@@ -1,7 +1,7 @@
 from flask_wtf.form import FlaskForm
 from wtforms.fields.core import SelectField, SelectMultipleField
 from wtforms.fields.html5 import DateField, DecimalField
-from wtforms.fields.simple import PasswordField, SubmitField, TextAreaField, TextField
+from wtforms.fields.simple import PasswordField, SubmitField, TextAreaField, StringField
 from wtforms.validators import Email, Required, ValidationError
 from flask_babel import lazy_gettext as _
 from flask import request
@@ -38,9 +38,9 @@ class CommaDecimalField(DecimalField):
 
 
 class EditProjectForm(FlaskForm):
-    name = TextField(_("Project name"), validators=[Required()])
-    password = TextField(_("Private code"), validators=[Required()])
-    contact_email = TextField(_("Email"), validators=[Required(), Email()])
+    name = StringField(_("Project name"), validators=[Required()])
+    password = StringField(_("Private code"), validators=[Required()])
+    contact_email = StringField(_("Email"), validators=[Required(), Email()])
 
     def save(self):
         """Create a new project with the information given by this form.
@@ -62,7 +62,7 @@ class EditProjectForm(FlaskForm):
 
 
 class ProjectForm(EditProjectForm):
-    id = TextField(_("Project identifier"), validators=[Required()])
+    id = StringField(_("Project identifier"), validators=[Required()])
     password = PasswordField(_("Private code"), validators=[Required()])
     submit = SubmitField(_("Create the project"))
 
@@ -78,13 +78,13 @@ class ProjectForm(EditProjectForm):
 
 
 class AuthenticationForm(FlaskForm):
-    id = TextField(_("Project identifier"), validators=[Required()])
+    id = StringField(_("Project identifier"), validators=[Required()])
     password = PasswordField(_("Private code"), validators=[Required()])
     submit = SubmitField(_("Get in"))
 
 
 class PasswordReminder(FlaskForm):
-    id = TextField(_("Project identifier"), validators=[Required()])
+    id = StringField(_("Project identifier"), validators=[Required()])
     submit = SubmitField(_("Send me the code by email"))
 
     def validate_id(form, field):
@@ -94,7 +94,7 @@ class PasswordReminder(FlaskForm):
 
 class BillForm(FlaskForm):
     date = DateField(_("Date"), validators=[Required()], default=datetime.now)
-    what = TextField(_("What?"), validators=[Required()])
+    what = StringField(_("What?"), validators=[Required()])
     payer = SelectField(_("Payer"), validators=[Required()], coerce=int)
     amount = CommaDecimalField(_("Amount paid"), validators=[Required()])
     payed_for = SelectMultipleField(_("For whom?"),
@@ -129,7 +129,7 @@ class BillForm(FlaskForm):
 
 class MemberForm(FlaskForm):
 
-    name = TextField(_("Name"), validators=[Required()])
+    name = StringField(_("Name"), validators=[Required()])
     weight = CommaDecimalField(_("Weight"), default=1)
     submit = SubmitField(_("Add"))
 
