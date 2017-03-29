@@ -99,7 +99,9 @@ def list_of_dicts2csv(dict_to_convert):
     try:
         if six.PY3:
             csv_file = StringIO()
-            csv_data = [dict_to_convert[0].keys()]
+            # using list() for py3.4 compat. Otherwise, writerows() fails
+            # (expecting a sequence getting a view)
+            csv_data = [list(dict_to_convert[0].keys())]
             for dic in dict_to_convert:
                 csv_data.append([dic[h] for h in dict_to_convert[0].keys()])
         else:
