@@ -12,8 +12,6 @@ from api import api
 from utils import PrefixedWSGI
 from utils import minimal_round
 
-__HERE__ = os.path.dirname(os.path.abspath(__file__))
-
 app = Flask(__name__)
 
 
@@ -59,15 +57,16 @@ db.app = app
 
 # db migrations
 migrate = Migrate(app, db)
+migrations_path = os.path.join(app.root_path, 'migrations')
 
 if pre_alembic_db():
     with app.app_context():
         # fake the first migration
-        stamp(revision='b9a10d5d63ce')
+        stamp(migrations_path, revision='b9a10d5d63ce')
 
 # auto-execute migrations on runtime
 with app.app_context():
-    upgrade(os.path.join(__HERE__, 'migrations'))
+    upgrade(migrations_path)
 
 # mail
 mail.init_app(app)
