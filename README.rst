@@ -33,28 +33,18 @@ You can also set the `TESTING` flag to `True` so no mails are sent
 Deploy it
 =========
 
+You have multiple options to deploy ihatemoney. Two of them are documented at the moment:
+
 With Apache and mod_wsgi
 ------------------------
 
-1. Install Apache and mod_wsgi::
+1. Install Apache and mod_wsgi - libapache2-mod-wsgi(-py3) for Debian based and mod_wsgi for RedHat based distributions -
 
-    $ sudo apt-get install apache2
-    # If you use Python3
-    $ sudo apt-get install libapache2-mod-wsgi-py3
-    # Or if you use Python2
-    $ sudo apt-get install libapache2-mod-wsgi
-
-2. Create an Apache virtual host based on the sample configuration file
-
-    $ sudo cp conf/apache-vhost.conf /etc/apache2/sites-available/ihatemoney.conf
+2. Create an Apache virtual host based on the sample configuration file in conf/apache-vhost.conf
 
 3. Adapt it to your paths and specify your virtualenv path if you use one
 
-4. Activate the virtual host and reload Apache ::
-
-    $ sudo a2ensite ihatemoney
-    $ sudo service apache2 restart
-
+4. Activate the virtual host if needed and restart Apache
 
 With Nginx, Gunicorn and Supervisord
 ------------------------------------
