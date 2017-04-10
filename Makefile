@@ -1,6 +1,6 @@
 VIRTUALENV = virtualenv --python=python3
 SPHINX_BUILDDIR = docs/_build
-VENV := $(shell echo $${VIRTUAL_ENV-.venv})
+VENV := $(shell realpath $${VIRTUAL_ENV-.venv})
 PYTHON = $(VENV)/bin/python3
 DEV_STAMP = $(VENV)/.dev_env_installed.stamp
 DOC_STAMP = $(VENV)/.doc_env_installed.stamp
@@ -24,7 +24,7 @@ $(DEV_STAMP): $(PYTHON) dev-requirements.txt
 	touch $(DEV_STAMP)
 
 serve: $(INSTALL_STAMP)
-	cd budget; ../$(PYTHON) run.py
+	cd budget; $(PYTHON) run.py
 
 test: $(DEV_STAMP)
 	$(VENV)/bin/tox
