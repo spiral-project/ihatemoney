@@ -33,7 +33,21 @@ You can also set the `TESTING` flag to `True` so no mails are sent
 Deploy it
 =========
 
-To deploy it, I'm using gunicorn and supervisord.
+You have multiple options to deploy ihatemoney. Two of them are documented at the moment:
+
+With Apache and mod_wsgi
+------------------------
+
+1. Install Apache and mod_wsgi - libapache2-mod-wsgi(-py3) for Debian based and mod_wsgi for RedHat based distributions -
+
+2. Create an Apache virtual host based on the sample configuration file in conf/apache-vhost.conf
+
+3. Adapt it to your paths and specify your virtualenv path if you use one
+
+4. Activate the virtual host if needed and restart Apache
+
+With Nginx, Gunicorn and Supervisord
+------------------------------------
 
 1. Add the lines in conf/supervisord.conf to your supervisord.conf file.
    **adapt them to your paths!**
