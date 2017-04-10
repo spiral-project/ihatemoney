@@ -8,7 +8,7 @@ INSTALL_STAMP = $(VENV)/.install.stamp
 TEMPDIR := $(shell mktemp -d)
 
 all: install
-install: $(INSTALL_STAMP)
+install: virtualenv $(INSTALL_STAMP)
 $(INSTALL_STAMP):
 	$(VENV)/bin/pip install -U pip
 	$(VENV)/bin/pip install -r requirements.txt
@@ -23,7 +23,7 @@ $(DEV_STAMP): $(PYTHON) dev-requirements.txt
 	$(VENV)/bin/pip install -Ur dev-requirements.txt
 	touch $(DEV_STAMP)
 
-serve: $(INSTALL_STAMP)
+serve: install
 	cd budget; $(PYTHON) run.py
 
 test: $(DEV_STAMP)
@@ -37,3 +37,6 @@ build-requirements:
 	$(TEMPDIR)/bin/pip install -U pip
 	$(TEMPDIR)/bin/pip install -Ue "."
 	$(TEMPDIR)/bin/pip freeze | grep -v -- '-e' > requirements.txt
+
+clean:
+	rm -rf .venv
