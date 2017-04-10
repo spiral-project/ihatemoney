@@ -9,7 +9,7 @@ TEMPDIR := $(shell mktemp -d)
 
 all: install
 install: $(INSTALL_STAMP)
-$(INSTALL_STAMP):
+$(INSTALL_STAMP): $(PYTHON)
 	$(VENV)/bin/pip install -U pip
 	$(VENV)/bin/pip install -r requirements.txt
 	touch $(INSTALL_STAMP)
