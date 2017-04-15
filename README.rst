@@ -16,9 +16,14 @@ LICENSE for more details).
 Make it run!
 ============
 
-To make it run, you just have to do use the serve command::
+With a `Python 3 <https://www.python.org/>` environment,
+`pip <https://pypi.python.org/pypi/pip/>` and
+`virtualenv <https://pypi.python.org/pypi/virtualenv>` installed,
+you just have to run the following command::
 
     $ make serve
+
+This will run a Flask app available at `http://localhost:5000`.
 
 It is also better to actually turn the debugging mode on when you're
 developing. You can create a `settings.py` file in the `budget` directory, with
