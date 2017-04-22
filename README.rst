@@ -93,7 +93,7 @@ a pull request as it will help us to maintain the code clean and running.
 
 To do so::
 
-    $ make tests
+    $ make test
 
 As a designer / Front-end developer
 -----------------------------------
