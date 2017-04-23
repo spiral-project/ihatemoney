@@ -10,13 +10,17 @@ import json
 from collections import defaultdict
 import six
 
-os.environ['FLASK_SETTINGS_MODULE'] = 'default_settings'
-
 from flask import session
+
+# Unset configuration file env var if previously set
+if 'IHATEMONEY_SETTINGS_FILE_PATH' in os.environ:
+    del os.environ['IHATEMONEY_SETTINGS_FILE_PATH']
 
 import run
 import models
 import utils
+
+__HERE__ = os.path.dirname(os.path.abspath(__file__))
 
 
 class TestCase(unittest.TestCase):
@@ -64,6 +68,40 @@ class TestCase(unittest.TestCase):
 
 
 class BudgetTestCase(TestCase):
+
+    def test_default_configuration(self):
+        """Test that default settings are loaded when no other configuration file is specified"""
+        run.configure()
+        self.assertFalse(run.app.config['DEBUG'])
+        self.assertEqual(run.app.config['SQLALCHEMY_DATABASE_URI'], 'sqlite:///budget.db')
+        self.assertFalse(run.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'])
+        self.assertEqual(run.app.config['SECRET_KEY'], 'tralala')
+        self.assertEqual(run.app.config['MAIL_DEFAULT_SENDER'],
+                         ("Budget manager", "budget@notmyidea.org"))
+
+    def test_env_var_configuration_file(self):
+        """Test that settings are loaded from the specified configuration file"""
+        os.environ['IHATEMONEY_SETTINGS_FILE_PATH'] = os.path.join(__HERE__,
+                                                                   "ihatemoney_envvar.cfg")
+        run.configure()
+        self.assertEqual(run.app.config['SECRET_KEY'], 'lalatra')
+
+        # Test that the specified configuration file is loaded
+        # even if the default configuration file ihatemoney.cfg exists
+        os.environ['IHATEMONEY_SETTINGS_FILE_PATH'] = os.path.join(__HERE__,
+                                                                   "ihatemoney_envvar.cfg")
+        run.app.config.root_path = __HERE__
+        run.configure()
+        self.assertEqual(run.app.config['SECRET_KEY'], 'lalatra')
+
+        if 'IHATEMONEY_SETTINGS_FILE_PATH' in os.environ:
+            del os.environ['IHATEMONEY_SETTINGS_FILE_PATH']
+
+    def test_default_configuration_file(self):
+        """Test that settings are loaded from the default configuration file"""
+        run.app.config.root_path = __HERE__
+        run.configure()
+        self.assertEqual(run.app.config['SECRET_KEY'], 'supersecret')
 
     def test_notifications(self):
         """Test that the notifications are sent, and that email adresses
