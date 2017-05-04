@@ -45,6 +45,16 @@
 
 {% endmacro %}
 
+{% macro admin(form) %}
+
+    {% include "display_errors.html" %}
+
+    {{ form.hidden_tag() }}
+    {{ input(form.admin_password) }}
+    {{ submit(form.submit) }}
+
+{% endmacro %}
+
 {% macro create_project(form, home=False) %}
 
     {% include "display_errors.html" %}

@@ -41,6 +41,10 @@ msgstr "Email"
 msgid "Project identifier"
 msgstr "Identifiant du projet"
 
+#: forms.py:87
+msgid "Admin password"
+msgstr "Mot de passe administrateur"
+
 #: forms.py:87 templates/send_invites.html:5
 msgid "Create the project"
 msgstr "Créer le projet"
@@ -157,6 +161,10 @@ msgstr "remboursements"
 #: forms.py:206
 msgid "Export file format"
 msgstr "Format du fichier d'export"
+
+#: web.py:95
+msgid "This admin password is not the right one"
+msgstr "Le mot de passe administrateur que vous avez entré n'est pas correct"
 
 #: web.py:95
 msgid "This private code is not the right one"
