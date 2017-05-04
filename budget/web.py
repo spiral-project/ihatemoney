@@ -16,16 +16,30 @@ from flask_babel import get_locale, gettext as _
 from smtplib import SMTPRecipientsRefused
 import werkzeug
 from sqlalchemy import orm
+from functools import wraps
 
 # local modules
 from models import db, Project, Person, Bill
-from forms import AuthenticationForm, EditProjectForm, InviteForm, \
-    MemberForm, PasswordReminder, ProjectForm, get_billform_for, \
+from forms import AdminAuthenticationForm, AuthenticationForm, EditProjectForm, \
+    InviteForm, MemberForm, PasswordReminder, ProjectForm, get_billform_for, \
     ExportForm
 from utils import Redirect303, list_of_dicts2json, list_of_dicts2csv
 
 main = Blueprint("main", __name__)
 mail = Mail()
+
+
+def require_admin(f):
+    """Require admin permissions for @require_admin decorated endpoints.
+       Has no effect if ADMIN_PASS is empty (default value)
+    """
+    @wraps(f)
+    def admin_auth(*args, **kws):
+        admin_pass = session.get('admin_pass', '')
+        if not admin_pass == current_app.config['ADMIN_PASS']:
+            raise Redirect303(url_for('.authenticate_admin', goto=request.path))
+        return f(*args, **kws)
+    return admin_auth
 
 
 @main.url_defaults
@@ -64,6 +78,23 @@ def pull_project(endpoint, values):
             # redirect to authentication page
             raise Redirect303(
                     url_for(".authenticate", project_id=project_id))
+
+
+@main.route("/authenticate_admin", methods=["GET", "POST"])
+def authenticate_admin():
+    """Admin authentication"""
+    form = AdminAuthenticationForm()
+    goto = request.args.get('goto', url_for('.home'))
+    if request.method == "POST":
+        if form.validate():
+            if form.admin_pass.data == current_app.config['ADMIN_PASS']:
+                session['admin_pass'] = form.admin_pass.data
+                session.update()
+                return redirect(goto)
+            else:
+                msg = _("This admin password is not the right one")
+                form.errors['admin_pass'] = [msg]
+    return render_template("authenticate.html", form=form, admin=True)
 
 
 @main.route("/authenticate", methods=["GET", "POST"])

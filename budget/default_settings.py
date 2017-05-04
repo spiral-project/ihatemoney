@@ -8,3 +8,5 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 SECRET_KEY = "tralala"
 
 MAIL_DEFAULT_SENDER = ("Budget manager", "budget@notmyidea.org")
+
+ADMIN_PASS = ""
