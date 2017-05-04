@@ -10,3 +10,5 @@ SECRET_KEY = "tralala"
 MAIL_DEFAULT_SENDER = ("Budget manager", "budget@notmyidea.org")
 
 ADMIN_PASS = ""
+
+PUBLIC_PROJECT_CREATION = True

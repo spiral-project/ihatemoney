@@ -150,13 +150,20 @@ def authenticate(project_id=None):
 
 @main.route("/")
 def home():
-    project_form = ProjectForm()
     auth_form = AuthenticationForm()
-    return render_template("home.html", project_form=project_form,
-            auth_form=auth_form, session=session)
+    public_project_creation = current_app.config['PUBLIC_PROJECT_CREATION']
+    if public_project_creation:
+        project_form = ProjectForm()
+        return render_template("home.html", project_form=project_form,
+                               public_project_creation=public_project_creation,
+                               auth_form=auth_form, session=session)
+    # If public_project_creation is False we don't need to pass a project form to home
+    return render_template("home.html", public_project_creation=public_project_creation,
+                           auth_form=auth_form, session=session)
 
 
 @main.route("/create", methods=["GET", "POST"])
+@require_admin
 def create_project():
     form = ProjectForm()
     if request.method == "GET" and 'project_id' in request.values:
@@ -290,8 +297,14 @@ def demo():
 
     Create a demo project if it doesnt exists yet (or has been deleted)
     """
+    public_project_creation = current_app.config['PUBLIC_PROJECT_CREATION']
     project = Project.query.get("demo")
-    if not project:
+
+    # Demo project is not automatically created if public project creation is disabled
+    if not project and not public_project_creation:
+        raise Redirect303(url_for(".create_project",
+                                  project_id='demo'))
+    if not project and public_project_creation:
         project = Project(id="demo", name=u"demonstration", password="demo",
                 contact_email="demo@notmyidea.org")
         db.session.add(project)
