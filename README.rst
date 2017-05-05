@@ -16,9 +16,9 @@ LICENSE for more details).
 Make it run!
 ============
 
-With a `Python 3 <https://www.python.org/>` environment,
-`pip <https://pypi.python.org/pypi/pip/>` and
-`virtualenv <https://pypi.python.org/pypi/virtualenv>` installed,
+With a `Python 3 <https://www.python.org/>`_ environment,
+`pip <https://pypi.python.org/pypi/pip/>`_ and
+`virtualenv <https://pypi.python.org/pypi/virtualenv>`_ installed,
 you just have to run the following command::
 
     $ make serve
