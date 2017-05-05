@@ -32,6 +32,9 @@ test: $(DEV_STAMP)
 release: $(DEV_STAMP)
 	$(VENV)/bin/fullrelease
 
+build-translations:
+	$(VENV)/bin/pybabel compile -d budget/translations
+
 build-requirements:
 	$(VIRTUALENV) $(TEMPDIR)
 	$(TEMPDIR)/bin/pip install -U pip
