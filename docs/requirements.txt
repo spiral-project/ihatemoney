@@ -1,3 +1,1 @@
-docutils<0.13
-Sphinx
-sphinx_rtd_theme
+Sphinx==1.5.5
