@@ -121,8 +121,11 @@ def authenticate(project_id=None):
 def home():
     project_form = ProjectForm()
     auth_form = AuthenticationForm()
+    is_demo_project_activated = current_app.config['ACTIVATE_DEMO_PROJECT']
+
     return render_template("home.html", project_form=project_form,
-            auth_form=auth_form, session=session)
+                           is_demo_project_activated=is_demo_project_activated,
+                           auth_form=auth_form, session=session)
 
 
 @main.route("/create", methods=["GET", "POST"])
@@ -258,9 +261,15 @@ def demo():
     the bills list for this project.
 
     Create a demo project if it doesnt exists yet (or has been deleted)
+    If the demo project is deactivated, one is redirected to the create project form
     """
+    is_demo_project_activated = current_app.config['ACTIVATE_DEMO_PROJECT']
     project = Project.query.get("demo")
-    if not project:
+
+    if not project and not is_demo_project_activated:
+        raise Redirect303(url_for(".create_project",
+                                  project_id='demo'))
+    if not project and is_demo_project_activated:
         project = Project(id="demo", name=u"demonstration", password="demo",
                 contact_email="demo@notmyidea.org")
         db.session.add(project)

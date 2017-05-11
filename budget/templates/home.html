@@ -5,7 +5,9 @@
     <header id="header" class="row">
       <div class="col-5  offset-md-2">
             <h2>{{ _("Manage your shared <br>expenses, easily") }}</h2>
+            {% if is_demo_project_activated %}
             <a href="{{ url_for(".demo") }}" class="tryout btn">{{ _("Try out the demo")  }}</a>
+            {% endif %}
         </div>
         <div class="col-4">
             <p class="additional-content">{{ _("You're sharing a house?") }}<br /> {{ _("Going on holidays with friends?") }}<br /> {{ _("Simply sharing money with others?") }} <br /><strong>{{ _("We can help!") }}</strong></p>
