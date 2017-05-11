@@ -152,14 +152,18 @@ def authenticate(project_id=None):
 def home():
     project_form = ProjectForm()
     auth_form = AuthenticationForm()
+    # If ADMIN_PASSWORD is empty we consider that admin mode is disabled
+    is_admin_mode_enabled = bool(current_app.config['ADMIN_PASSWORD'])
     is_demo_project_activated = current_app.config['ACTIVATE_DEMO_PROJECT']
 
     return render_template("home.html", project_form=project_form,
                            is_demo_project_activated=is_demo_project_activated,
+                           is_admin_mode_enabled=is_admin_mode_enabled,
                            auth_form=auth_form, session=session)
 
 
 @main.route("/create", methods=["GET", "POST"])
+@requires_admin
 def create_project():
     form = ProjectForm()
     if request.method == "GET" and 'project_id' in request.values:

@@ -44,6 +44,8 @@ class TestCase(unittest.TestCase):
         # clean after testing
         models.db.session.remove()
         models.db.drop_all()
+        # reconfigure app with default settings
+        run.configure()
 
     def login(self, project, password=None, test_client=None):
         password = password or project
@@ -372,6 +374,25 @@ class BudgetTestCase(TestCase):
             # logout should wipe the session out
             c.get("/exit")
             self.assertNotIn('raclette', session)
+
+    def test_admin_authentication(self):
+        run.app.config['ADMIN_PASSWORD'] = "pass"
+
+        # test the redirection to the authentication page when trying to access admin endpoints
+        resp = self.app.get("/create")
+        self.assertIn('<a href="/admin?goto=%2Fcreate">', resp.data.decode('utf-8'))
+
+        # test right password
+        resp = self.app.post("/admin?goto=%2Fcreate", data={'admin_password': 'pass'})
+        self.assertIn('<a href="/create">/create</a>', resp.data.decode('utf-8'))
+
+        # test wrong password
+        resp = self.app.post("/admin?goto=%2Fcreate", data={'admin_password': 'wrong'})
+        self.assertNotIn('<a href="/create">/create</a>', resp.data.decode('utf-8'))
+
+        # test empty password
+        resp = self.app.post("/admin?goto=%2Fcreate", data={'admin_password': ''})
+        self.assertNotIn('<a href="/create">/create</a>', resp.data.decode('utf-8'))
 
     def test_manage_bills(self):
         self.post_project("raclette")
