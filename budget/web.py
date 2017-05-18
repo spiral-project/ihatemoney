@@ -16,16 +16,30 @@ from flask_babel import get_locale, gettext as _
 from smtplib import SMTPRecipientsRefused
 import werkzeug
 from sqlalchemy import orm
+from functools import wraps
 
 # local modules
 from models import db, Project, Person, Bill
-from forms import AuthenticationForm, EditProjectForm, InviteForm, \
-    MemberForm, PasswordReminder, ProjectForm, get_billform_for, \
+from forms import AdminAuthenticationForm, AuthenticationForm, EditProjectForm, \
+    InviteForm, MemberForm, PasswordReminder, ProjectForm, get_billform_for, \
     ExportForm
 from utils import Redirect303, list_of_dicts2json, list_of_dicts2csv
 
 main = Blueprint("main", __name__)
 mail = Mail()
+
+
+def requires_admin(f):
+    """Require admin permissions for @requires_admin decorated endpoints.
+       Has no effect if ADMIN_PASSWORD is empty (default value)
+    """
+    @wraps(f)
+    def admin_auth(*args, **kws):
+        admin_password = session.get('admin_password', '')
+        if not admin_password == current_app.config['ADMIN_PASSWORD']:
+            raise Redirect303(url_for('.admin', goto=request.path))
+        return f(*args, **kws)
+    return admin_auth
 
 
 @main.url_defaults
@@ -64,6 +78,23 @@ def pull_project(endpoint, values):
             # redirect to authentication page
             raise Redirect303(
                     url_for(".authenticate", project_id=project_id))
+
+
+@main.route("/admin", methods=["GET", "POST"])
+def admin():
+    """Admin authentication"""
+    form = AdminAuthenticationForm()
+    goto = request.args.get('goto', url_for('.home'))
+    if request.method == "POST":
+        if form.validate():
+            if form.admin_password.data == current_app.config['ADMIN_PASSWORD']:
+                session['admin_password'] = form.admin_password.data
+                session.update()
+                return redirect(goto)
+            else:
+                msg = _("This admin password is not the right one")
+                form.errors['admin_password'] = [msg]
+    return render_template("authenticate.html", form=form, admin_auth=True)
 
 
 @main.route("/authenticate", methods=["GET", "POST"])
@@ -121,14 +152,18 @@ def authenticate(project_id=None):
 def home():
     project_form = ProjectForm()
     auth_form = AuthenticationForm()
+    # If ADMIN_PASSWORD is empty we consider that admin mode is disabled
+    is_admin_mode_enabled = bool(current_app.config['ADMIN_PASSWORD'])
     is_demo_project_activated = current_app.config['ACTIVATE_DEMO_PROJECT']
 
     return render_template("home.html", project_form=project_form,
                            is_demo_project_activated=is_demo_project_activated,
+                           is_admin_mode_enabled=is_admin_mode_enabled,
                            auth_form=auth_form, session=session)
 
 
 @main.route("/create", methods=["GET", "POST"])
+@requires_admin
 def create_project():
     form = ProjectForm()
     if request.method == "GET" and 'project_id' in request.values:

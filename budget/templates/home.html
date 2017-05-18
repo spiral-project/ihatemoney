@@ -28,6 +28,9 @@
             </form>
         </div>
         <div class="col-3 offset-md-1">
+            {% if is_admin_mode_enabled %}
+            <a href="{{ url_for(".create_project") }}">...{{ _("or create a new one") }}</a>
+            {% else %}
             <form id="creation-form" class="form-horizontal" action="{{ url_for(".create_project") }}" method="post">
                 <fieldset class="form-group">
                     <legend>...{{ _("or create a new one") }}</legend>
@@ -37,6 +40,7 @@
                     <button class="btn" type="submit">{{ _("let's get started") }}</button>
                 </div>
             </form>
+            {% endif %}
         </main>
     </div>
 {% endblock %}

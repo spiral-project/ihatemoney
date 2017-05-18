@@ -83,6 +83,11 @@ class AuthenticationForm(FlaskForm):
     submit = SubmitField(_("Get in"))
 
 
+class AdminAuthenticationForm(FlaskForm):
+    admin_password = PasswordField(_("Admin password"), validators=[Required()])
+    submit = SubmitField(_("Get in"))
+
+
 class PasswordReminder(FlaskForm):
     id = StringField(_("Project identifier"), validators=[Required()])
     submit = SubmitField(_("Send me the code by email"))
