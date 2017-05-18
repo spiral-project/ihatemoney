@@ -34,10 +34,15 @@
     </script>
 </head>
 <body>
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <nav class="navbar navbar-toggleable-md navbar fixed-top navbar-inverse bg-inverse">
-  <h1 class="col-2"><a class="navbar-brand" href="{{ url_for(".home") }}">#! money?</a></h1>
-            <ul class="navbar-nav col-5 offset-md-1">
+      <h1 class="navbar-brand col-2"><a class="navbar-brand" href="{{ url_for(".home") }}">#! money?</a></h1>
+
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav col-5 offset-md-1">
             {% if g.project %}
                 {% block navbar %}
                 <li class="nav-item{% if current_view == 'list_bills' %} active{% endif %}"><a class="nav-link" href="{{ url_for(".list_bills") }}">{{ _("Bills") }}</a></li>
@@ -66,8 +71,7 @@
                 <li class="nav-item{% if g.lang == "fr" %} active{% endif %}"><a class="nav-link" href="{{ url_for(".change_lang", lang="fr") }}">fr</a></li>
                 <li class="nav-item{% if g.lang == "en" %} active{% endif %}"><a class="nav-link" href="{{ url_for(".change_lang", lang="en") }}">en</a></li>
             </ul>
-
-
+      </div>
 </nav>
 
 <div class="container-fluid">
