@@ -3,19 +3,19 @@
 
 {% block body %}
     <header id="header" class="row">
-      <div class="col-5  offset-md-2">
+      <div class="col-xs-12 col-sm-5 offset-md-2">
             <h2>{{ _("Manage your shared <br>expenses, easily") }}</h2>
             {% if is_demo_project_activated %}
             <a href="{{ url_for(".demo") }}" class="tryout btn">{{ _("Try out the demo")  }}</a>
             {% endif %}
         </div>
-        <div class="col-4">
+        <div class="col-xs-12 col-sm-4">
             <p class="additional-content">{{ _("You're sharing a house?") }}<br /> {{ _("Going on holidays with friends?") }}<br /> {{ _("Simply sharing money with others?") }} <br /><strong>{{ _("We can help!") }}</strong></p>
         </div>
     </header>
 
     <main class="row home">
-        <div class="col-4 offset-md-2">
+        <div class="col-xs-12 col-sm-5 col-md-4 offset-md-2">
             <form id="authentication-form" class="form-horizontal" action="{{ url_for(".authenticate") }}" method="post">
                 <fieldset class="form-group">
                     <legend>{{ _("Log to an existing project") }}...</legend>
@@ -27,7 +27,7 @@
                 </div>
             </form>
         </div>
-        <div class="col-3 offset-md-1">
+        <div class="col-xs-12 col-sm-5 col-md-3 offset-sm-1">
             {% if is_admin_mode_enabled %}
             <a href="{{ url_for(".create_project") }}">...{{ _("or create a new one") }}</a>
             {% else %}
