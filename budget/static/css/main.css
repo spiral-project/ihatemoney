@@ -74,7 +74,12 @@ body {
     background-repeat: no-repeat;
     height: 100%;
     color: black;
-    position: fixed;
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        position: fixed;
+    }
 }
 
 #add-member-form { padding-top: 1em; padding-bottom: 1em; }
