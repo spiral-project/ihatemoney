@@ -12,6 +12,8 @@ from api import api
 from utils import PrefixedWSGI
 from utils import minimal_round
 
+import default_settings
+
 app = Flask(__name__, instance_path='/etc/ihatemoney', instance_relative_config=True)
 
 
@@ -41,12 +43,18 @@ def configure():
         app.config.from_pyfile('ihatemoney.cfg', silent=True)
     app.wsgi_app = PrefixedWSGI(app)
 
+    if app.config['SECRET_KEY'] == default_settings.SECRET_KEY:
+        warnings.warn(
+            "Running a server without changing the SECRET_KEY can lead to"
+            + " user impersonation. Please update your configuration file.",
+            UserWarning
+        )
     # Deprecations
     if 'DEFAULT_MAIL_SENDER' in app.config:
         # Since flask-mail  0.8
         warnings.warn(
             "DEFAULT_MAIL_SENDER is deprecated in favor of MAIL_DEFAULT_SENDER"
-            +" and will be removed in further version",
+            + " and will be removed in further version",
             UserWarning
         )
         if not 'MAIL_DEFAULT_SENDER' in app.config:
