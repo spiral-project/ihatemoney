@@ -18,11 +18,21 @@ We recommend to use `pip <https://pypi.python.org/pypi/pip/>`_ and
 `virtualenv <https://pypi.python.org/pypi/virtualenv>`_ but it will work
 without if you prefer.
 
-If you have everything installed, you can just issue
+If you have everything installed, you can just issue::
 
-    $ make serve
+    make serve
 
-And then you can point your browser at `http://localhost:5000`.
+Alternatively, you can also use the `requirements.txt` file to install the
+dependencies yourself (that's what the `make serve` does). That would be::
+
+     pip install -r requirements.txt
+
+And then run the application::
+
+    cd budget
+    python run.py
+
+In any case, you can point your browser at `http://localhost:5000 <http://localhost:5000>`_.
 It's as simple as that!
 
 Deploy it
