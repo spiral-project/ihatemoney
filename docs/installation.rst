@@ -35,6 +35,10 @@ And then run the application::
 In any case, you can point your browser at `http://localhost:5000 <http://localhost:5000>`_.
 It's as simple as that!
 
+In case you want to update to newer versions, you can just run the "update" command::
+
+  make update
+
 Deploy it
 =========
 

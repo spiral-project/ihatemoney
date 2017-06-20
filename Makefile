@@ -23,6 +23,11 @@ $(DEV_STAMP): $(PYTHON) dev-requirements.txt
 	$(VENV)/bin/pip install -Ur dev-requirements.txt
 	touch $(DEV_STAMP)
 
+remove-install-stamp:
+	rm $(INSTALL_STAMP)
+
+update: remove-install-stamp install
+
 serve: install
 	cd budget; $(PYTHON) run.py
 
