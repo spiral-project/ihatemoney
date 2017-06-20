@@ -4,7 +4,7 @@ Changelog
 This document describes changes between each past release.
 
 1.0 (2017-06-20)
------------------
+----------------
 
 ### Added
 
