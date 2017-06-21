@@ -37,6 +37,9 @@ ENTRY_POINTS = {
     'paste.app_factory': [
         'main = budget.run:main',
     ],
+    'console_scripts': [
+        'ihatemoney = budget.manage:main'
+    ]
 }
 
 
