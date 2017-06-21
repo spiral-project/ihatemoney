@@ -7,10 +7,10 @@ from flask_babel import Babel
 from flask_migrate import Migrate, upgrade, stamp
 from raven.contrib.flask import Sentry
 
-from web import main, db, mail
-from api import api
-from utils import PrefixedWSGI
-from utils import minimal_round
+from .web import main, db, mail
+from .api import api
+from .utils import PrefixedWSGI
+from .utils import minimal_round
 
 app = Flask(__name__, instance_path='/etc/ihatemoney', instance_relative_config=True)
 
