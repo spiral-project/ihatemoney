@@ -291,6 +291,10 @@ msgstr "Annuler"
 msgid "Edit the project"
 msgstr "Éditer le projet"
 
+#: templates/list_bills.html:70
+msgid "deactivate"
+msgstr "désactiver"
+
 #: templates/forms.html:69 templates/list_bills.html:70
 #: templates/list_bills.html:114
 msgid "delete"
