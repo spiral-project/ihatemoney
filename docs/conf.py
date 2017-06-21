@@ -12,8 +12,3 @@ release = '1.0'
 
 exclude_patterns = ['_build']
 pygments_style = 'sphinx'
-
-sys.path.append(os.path.abspath('_themes'))
-html_theme_path = ['_themes']
-html_theme = 'pelican'
-html_theme_options = { 'nosidebar': True }
