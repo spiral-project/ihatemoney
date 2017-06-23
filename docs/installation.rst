@@ -72,23 +72,23 @@ ihatemoney relies on a configuration file. If you run the application for the
 first time, you will need to take a few moments to configure the application
 properly.
 
-+----------------------------+---------------------------+-----------------------------------------------------------------------------+
-| Setting name               |  Default                  | What does it do?                                                            |
-+============================+===========================+=============================================================================+
-| SQLALCHEMY_DATABASE_URI    |  ``sqlite:///budget.db``  | Specifies the type of backend to use and its location. More information     |
-|                            |                           | on the format used can be found on `the SQLAlchemy documentation`.          |
-+----------------------------+---------------------------+-----------------------------------------------------------------------------+
-| SECRET_KEY                 |  ``tralala``              | The secret key used to encrypt the cookies. **This needs to be changed**.   |
-+----------------------------+---------------------------+-----------------------------------------------------------------------------+
-| MAIL_DEFAULT_SENDER        | ``("Budget manager",      | A python tuple describing the name and email adress to use when sending     |
-|                            | "budget@notmyidea.org")`` | emails.                                                                     |
-+----------------------------+---------------------------+-----------------------------------------------------------------------------+
-| ACTIVATE_DEMO_PROJECT      |  ``True``                 | If set to `True`, a demo project will be available on the frontpage.        |
-+----------------------------+---------------------------+-----------------------------------------------------------------------------+
-|                            |  ``""``                   | If not empty, the specified password must be entered to create new projects.|
-| ADMIN_PASSWORD             |                           | It needs to be hashed with the following command :                          |
-|                            |                           |     budget/manage.py generate_password_hash                                 |
-+----------------------------+---------------------------+-----------------------------------------------------------------------------+
++----------------------------+---------------------------+----------------------------------------------------------------------------------------+
+| Setting name               |  Default                  | What does it do?                                                                       |
++============================+===========================+========================================================================================+
+| SQLALCHEMY_DATABASE_URI    |  ``sqlite:///budget.db``  | Specifies the type of backend to use and its location. More information                |
+|                            |                           | on the format used can be found on `the SQLAlchemy documentation`.                     |
++----------------------------+---------------------------+----------------------------------------------------------------------------------------+
+| SECRET_KEY                 |  ``tralala``              | The secret key used to encrypt the cookies. **This needs to be changed**.              |
++----------------------------+---------------------------+----------------------------------------------------------------------------------------+
+| MAIL_DEFAULT_SENDER        | ``("Budget manager",      | A python tuple describing the name and email adress to use when sending                |
+|                            | "budget@notmyidea.org")`` | emails.                                                                                |
++----------------------------+---------------------------+----------------------------------------------------------------------------------------+
+| ACTIVATE_DEMO_PROJECT      |  ``True``                 | If set to `True`, a demo project will be available on the frontpage.                   |
++----------------------------+---------------------------+----------------------------------------------------------------------------------------+
+|                            |  ``""``                   | If not empty, the specified password must be entered to create new projects.           |
+| ADMIN_PASSWORD             |                           | To generate the proper password HASH, use ``./budget/manage.py generate_password_hash``|
+|                            |                           | and copy its output into the value of *ADMIN_PASSWORD*.                                |
++----------------------------+---------------------------+----------------------------------------------------------------------------------------+
 
 .. _`the SQLAlechemy documentation`: http://docs.sqlalchemy.org/en/latest/core/engines.html#database-urls
 
