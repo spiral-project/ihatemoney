@@ -6,7 +6,9 @@ This document describes changes between each past release.
 1.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+### Changed
+
+- Use a hashed ADMIN_PASSWORD instead of a clear text one (#236)
 
 
 1.0 (2017-06-20)
