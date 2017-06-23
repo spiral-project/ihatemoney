@@ -52,6 +52,15 @@ def configure():
         if not 'MAIL_DEFAULT_SENDER' in app.config:
             app.config['MAIL_DEFAULT_SENDER'] = DEFAULT_MAIL_SENDER
 
+    if "pbkdf2:sha256:" not in app.config['ADMIN_PASSWORD'] and app.config['ADMIN_PASSWORD']:
+        # Since v1.1
+        warnings.warn(
+            "You are using an unhashed ADMIN_PASSWORD, which is not supported anymore"
+            +" for safety reasons. Please follow the instructions in the installation"
+            +" documentation to update to a safer password mechanism.",
+            UserWarning
+        )
+
 configure()
 
 
