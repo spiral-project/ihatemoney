@@ -13,6 +13,8 @@ from flask import Blueprint, current_app, flash, g, redirect, \
     render_template, request, session, url_for, send_file
 from flask_mail import Mail, Message
 from flask_babel import get_locale, gettext as _
+from werkzeug.security import generate_password_hash, \
+     check_password_hash
 from smtplib import SMTPRecipientsRefused
 import werkzeug
 from sqlalchemy import orm
@@ -35,10 +37,10 @@ def requires_admin(f):
     """
     @wraps(f)
     def admin_auth(*args, **kws):
-        admin_password = session.get('admin_password', '')
-        if not admin_password == current_app.config['ADMIN_PASSWORD']:
-            raise Redirect303(url_for('.admin', goto=request.path))
-        return f(*args, **kws)
+        is_admin = session.get('is_admin')
+        if is_admin or not current_app.config['ADMIN_PASSWORD']:
+            return f(*args, **kws)
+        raise Redirect303(url_for('.admin', goto=request.path))
     return admin_auth
 
 
@@ -87,8 +89,8 @@ def admin():
     goto = request.args.get('goto', url_for('.home'))
     if request.method == "POST":
         if form.validate():
-            if form.admin_password.data == current_app.config['ADMIN_PASSWORD']:
-                session['admin_password'] = form.admin_password.data
+            if check_password_hash(current_app.config['ADMIN_PASSWORD'], form.admin_password.data):
+                session['is_admin'] = True
                 session.update()
                 return redirect(goto)
             else:

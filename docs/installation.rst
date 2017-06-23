@@ -85,7 +85,9 @@ properly.
 +----------------------------+---------------------------+-----------------------------------------------------------------------------+
 | ACTIVATE_DEMO_PROJECT      |  ``True``                 | If set to `True`, a demo project will be available on the frontpage.        |
 +----------------------------+---------------------------+-----------------------------------------------------------------------------+
-| ADMIN_PASSWORD             |  ``""``                   | If not empty, the specified password must be entered to create new projects |
+|                            |  ``""``                   | If not empty, the specified password must be entered to create new projects.|
+| ADMIN_PASSWORD             |                           | It needs to be hashed with the following command :                          |
+|                            |                           |     budget/manage.py generate_password_hash                                 |
 +----------------------------+---------------------------+-----------------------------------------------------------------------------+
 
 .. _`the SQLAlechemy documentation`: http://docs.sqlalchemy.org/en/latest/core/engines.html#database-urls
