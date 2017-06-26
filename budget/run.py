@@ -53,11 +53,13 @@ def configure():
             app.config['MAIL_DEFAULT_SENDER'] = DEFAULT_MAIL_SENDER
 
     if "pbkdf2:sha256:" not in app.config['ADMIN_PASSWORD'] and app.config['ADMIN_PASSWORD']:
-        # Since v1.1
+        # Since 2.0
         warnings.warn(
-            "You are using an unhashed ADMIN_PASSWORD, which is not supported anymore"
-            +" for safety reasons. Please follow the instructions in the installation"
-            +" documentation to update to a safer password mechanism.",
+            "The way Ihatemoney stores your ADMIN_PASSWORD has changed. You are using an unhashed"
+            +" ADMIN_PASSWORD, which is not supported anymore and won't let you access your admin"
+            +" endpoints. Please use the command './budget/manage.py generate_password_hash'"
+            +" to generate a proper password HASH and copy the output to the value of"
+            +" ADMIN_PASSWORD in your settings file.",
             UserWarning
         )
 
