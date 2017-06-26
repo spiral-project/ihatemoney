@@ -10,6 +10,7 @@ import json
 from collections import defaultdict
 import six
 
+from werkzeug.security import generate_password_hash
 from flask import session
 
 # Unset configuration file env var if previously set
@@ -376,7 +377,7 @@ class BudgetTestCase(TestCase):
             self.assertNotIn('raclette', session)
 
     def test_admin_authentication(self):
-        run.app.config['ADMIN_PASSWORD'] = "pass"
+        run.app.config['ADMIN_PASSWORD'] = generate_password_hash("pass")
 
         # test the redirection to the authentication page when trying to access admin endpoints
         resp = self.app.get("/create")
