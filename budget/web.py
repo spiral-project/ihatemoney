@@ -386,7 +386,9 @@ def remove_member(member_id):
     member = g.project.remove_member(member_id)
     if member:
         if member.activated == False:
-            flash(_("User '%(name)s' has been deactivated", name=member.name))
+            flash(_("User '%(name)s' has been deactivated. It will still "
+                    "appear in the users list until its balance "
+                    "becomes zero.", name=member.name))
         else:
             flash(_("User '%(name)s' has been removed", name=member.name))
     return redirect(url_for(".list_bills"))

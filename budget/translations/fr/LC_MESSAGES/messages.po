@@ -214,8 +214,8 @@ msgstr "Le membre '%(name)s' a été désactivé"
 
 #: web.py:314
 #, python-format
-msgid "User '%(name)s' has been removed"
-msgstr "Le membre '%(name)s' a été supprimé"
+msgid "User '%(name)s' has been deactivated. It will still appear in the users list until its balance becomes zero."
+msgstr "Le membre '%(name)s' a été désactivé. Il continuera d'apparaître jusqu'à ce que sa balance devienne égale à zéro."
 
 #: web.py:331
 msgid "The bill has been added"
