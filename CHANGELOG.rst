@@ -3,7 +3,7 @@ Changelog
 
 This document describes changes between each past release.
 
-1.1 (unreleased)
+2.0 (unreleased)
 ----------------
 
 ### Changed
