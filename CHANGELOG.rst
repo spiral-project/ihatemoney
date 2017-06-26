@@ -8,7 +8,7 @@ This document describes changes between each past release.
 
 ### Changed
 
-- Use a hashed ADMIN_PASSWORD instead of a clear text one (#236)
+- **BREAKING CHANGE** Use a hashed ADMIN_PASSWORD instead of a clear text one, see [doc](https://ihatemoney.readthedocs.io/en/latest/installation.html#configuration) for migration (#236)
 
 
 1.0 (2017-06-20)
