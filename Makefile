@@ -29,7 +29,7 @@ remove-install-stamp:
 update: remove-install-stamp install
 
 serve: install
-	cd budget; $(PYTHON) run.py
+	$(PYTHON) -m budget.manage runserver
 
 test: $(DEV_STAMP)
 	$(VENV)/bin/tox
