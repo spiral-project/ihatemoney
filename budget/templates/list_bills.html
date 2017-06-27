@@ -66,7 +66,7 @@
         {% if member.activated %}
         <td>
             <form class="action delete" action="{{ url_for(".remove_member", member_id=member.id) }}" method="POST">
-                <button type="submit">{{ _("delete") }}</button></form>
+                <button type="submit">{{ _("deactivate") }}</button></form>
             <form class="action edit" action="{{ url_for(".edit_member", member_id=member.id) }}" method="GET">
                 <button type="submit">{{ _("edit") }}</button></form>
         </td>
