@@ -9,7 +9,8 @@ This document describes changes between each past release.
 ### Changed
 
 - **BREAKING CHANGE** Use a hashed ``ADMIN_PASSWORD`` instead of a clear text one, ``./budget/manage.py generate_password_hash`` can be used to generate a proper password HASH (#236)
-
+- **BREAKING CHANGE** Turn the WSGI file into a python module, renamed from budget/ihatemoney.wsgi to budget/wsgi.py. Please update your Apache configuration !
+- Changed the recommended gunicorn configuration to use the wsgi module as an entrypoint
 
 1.0 (2017-06-20)
 ----------------
