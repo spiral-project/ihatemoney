@@ -21,7 +21,7 @@ migrate = Migrate(app, db)
 
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
-manager.add_command('generate_password_hash', GeneratePasswordHash)
+manager.add_command('generate_password_hash', GeneratePasswordHash)   
 
 def main():
     manager.run()

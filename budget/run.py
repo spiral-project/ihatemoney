@@ -12,7 +12,7 @@ from .api import api
 from .utils import PrefixedWSGI
 from .utils import minimal_round
 
-import default_settings
+from . import default_settings
 
 app = Flask(__name__, instance_path='/etc/ihatemoney', instance_relative_config=True)
 
