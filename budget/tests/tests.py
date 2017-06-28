@@ -58,7 +58,7 @@ class TestCase(unittest.TestCase):
         """Create a fake project"""
         # create the project
         self.app.post("/create", data={
-                'name': name,
+            'name': name,
                 'id': name,
                 'password': name,
                 'contact_email': '%s@notmyidea.org' % name
@@ -66,7 +66,7 @@ class TestCase(unittest.TestCase):
 
     def create_project(self, name):
         models.db.session.add(models.Project(id=name, name=six.text_type(name),
-            password=name, contact_email="%s@notmyidea.org" % name))
+                                             password=name, contact_email="%s@notmyidea.org" % name))
         models.db.session.commit()
 
 
@@ -127,12 +127,12 @@ class BudgetTestCase(TestCase):
         # sending a message to multiple persons
         with run.mail.record_messages() as outbox:
             self.app.post("/raclette/invite",
-                data={"emails": 'alexis@notmyidea.org, toto@notmyidea.org'})
+                          data={"emails": 'alexis@notmyidea.org, toto@notmyidea.org'})
 
             # only one message is sent to multiple persons
             self.assertEqual(len(outbox), 1)
             self.assertEqual(outbox[0].recipients,
-                    ["alexis@notmyidea.org", "toto@notmyidea.org"])
+                             ["alexis@notmyidea.org", "toto@notmyidea.org"])
 
         # mail address checking
         with run.mail.record_messages() as outbox:
@@ -144,7 +144,7 @@ class BudgetTestCase(TestCase):
         # mixing good and wrong adresses shouldn't send any messages
         with run.mail.record_messages() as outbox:
             self.app.post("/raclette/invite",
-              data={"emails": 'alexis@notmyidea.org, alexis'})  # not valid
+                          data={"emails": 'alexis@notmyidea.org, alexis'})  # not valid
 
             # only one message is sent to multiple persons
             self.assertEqual(len(outbox), 0)
@@ -239,7 +239,7 @@ class BudgetTestCase(TestCase):
 
         # remove fred
         self.app.post("/raclette/members/%s/delete" %
-                models.Project.query.get("raclette").members[-1].id)
+                      models.Project.query.get("raclette").members[-1].id)
 
         # as fred is not bound to any bill, he is removed
         self.assertEqual(len(models.Project.query.get("raclette").members), 1)
@@ -263,7 +263,7 @@ class BudgetTestCase(TestCase):
         # he is still in the database, but is deactivated
         self.assertEqual(len(models.Project.query.get("raclette").members), 2)
         self.assertEqual(
-                len(models.Project.query.get("raclette").active_members), 1)
+            len(models.Project.query.get("raclette").active_members), 1)
 
         # as fred is now deactivated, check that he is not listed when adding
         # a bill or displaying the balance
@@ -276,7 +276,7 @@ class BudgetTestCase(TestCase):
         # adding him again should reactivate him
         self.app.post("/raclette/members/add", data={'name': 'fred'})
         self.assertEqual(
-                len(models.Project.query.get("raclette").active_members), 2)
+            len(models.Project.query.get("raclette").active_members), 2)
 
         # adding an user with the same name as another user from a different
         # project should not cause any troubles
@@ -284,7 +284,7 @@ class BudgetTestCase(TestCase):
         self.login("randomid")
         self.app.post("/randomid/members/add", data={'name': 'fred'})
         self.assertEqual(
-                len(models.Project.query.get("randomid").active_members), 1)
+            len(models.Project.query.get("randomid").active_members), 1)
 
     def test_person_model(self):
         self.post_project("raclette")
@@ -321,11 +321,11 @@ class BudgetTestCase(TestCase):
         response = self.app.get("/raclette/members/1/delete")
         self.assertEqual(response.status_code, 405)
 
-        #delete user using POST method
+        # delete user using POST method
         self.app.post("/raclette/members/1/delete")
         self.assertEqual(
-                len(models.Project.query.get("raclette").active_members), 0)
-        #try to delete an user already deleted
+            len(models.Project.query.get("raclette").active_members), 0)
+        # try to delete an user already deleted
         self.app.post("/raclette/members/1/delete")
 
     def test_demo(self):
@@ -358,7 +358,7 @@ class BudgetTestCase(TestCase):
         # try to connect with wrong credentials should not work
         with run.app.test_client() as c:
             resp = c.post("/authenticate",
-                    data={'id': 'raclette', 'password': 'nope'})
+                          data={'id': 'raclette', 'password': 'nope'})
 
             self.assertIn("Authentication", resp.data.decode('utf-8'))
             self.assertNotIn('raclette', session)
@@ -366,7 +366,7 @@ class BudgetTestCase(TestCase):
         # try to connect with the right credentials should work
         with run.app.test_client() as c:
             resp = c.post("/authenticate",
-                    data={'id': 'raclette', 'password': 'raclette'})
+                          data={'id': 'raclette', 'password': 'raclette'})
 
             self.assertNotIn("Authentication", resp.data.decode('utf-8'))
             self.assertIn('raclette', session)
@@ -461,7 +461,7 @@ class BudgetTestCase(TestCase):
         balance = models.Project.query.get("raclette").balance
         self.assertEqual(set(balance.values()), set([19.0, -19.0]))
 
-        #Bill with negative amount
+        # Bill with negative amount
         self.app.post("/raclette/add", data={
             'date': '2011-08-12',
             'what': 'fromage à raclette',
@@ -472,7 +472,7 @@ class BudgetTestCase(TestCase):
         bill = models.Bill.query.filter(models.Bill.date == '2011-08-12')[0]
         self.assertEqual(bill.amount, -25)
 
-        #add a bill with a comma
+        # add a bill with a comma
         self.app.post("/raclette/add", data={
             'date': '2011-08-01',
             'what': 'fromage à raclette',
@@ -520,14 +520,13 @@ class BudgetTestCase(TestCase):
         self.app.post("/raclette/members/add", data={'name': 'alexis'})
         self.app.post("/raclette/members/add", data={'name': 'tata', 'weight': 1})
 
-        resp =  self.app.get("/raclette/")
+        resp = self.app.get("/raclette/")
         self.assertIn('extra-info', resp.data.decode('utf-8'))
 
         self.app.post("/raclette/members/add", data={'name': 'freddy familly', 'weight': 4})
 
-        resp =  self.app.get("/raclette/")
+        resp = self.app.get("/raclette/")
         self.assertNotIn('extra-info', resp.data.decode('utf-8'))
-
 
     def test_rounding(self):
         self.post_project("raclette")
@@ -568,7 +567,8 @@ class BudgetTestCase(TestCase):
         result[models.Project.query.get("raclette").members[1].id] = 0.0
         result[models.Project.query.get("raclette").members[2].id] = -8.12
         # Since we're using floating point to store currency, we can have some rounding issues that prevent test from working.
-        # However, we should obtain the same values as the theorical ones if we round to 2 decimals, like in the UI.
+        # However, we should obtain the same values as the theorical ones if we
+        # round to 2 decimals, like in the UI.
         for key, value in six.iteritems(balance):
             self.assertEqual(round(value, 2), result[key])
 
@@ -583,7 +583,7 @@ class BudgetTestCase(TestCase):
         }
 
         resp = self.app.post("/raclette/edit", data=new_data,
-                follow_redirects=True)
+                             follow_redirects=True)
         self.assertEqual(resp.status_code, 200)
         project = models.Project.query.get("raclette")
 
@@ -594,7 +594,7 @@ class BudgetTestCase(TestCase):
         new_data['contact_email'] = 'wrong_email'
 
         resp = self.app.post("/raclette/edit", data=new_data,
-                follow_redirects=True)
+                             follow_redirects=True)
         self.assertIn("Invalid email address", resp.data.decode('utf-8'))
 
     def test_dashboard(self):
@@ -613,7 +613,7 @@ class BudgetTestCase(TestCase):
         self.app.post("/raclette/members/add", data={'name': 'alexis'})
         self.app.post("/raclette/members/add", data={'name': 'fred'})
         self.app.post("/raclette/members/add", data={'name': 'tata'})
-        #Add a member with a balance=0 :
+        # Add a member with a balance=0 :
         self.app.post("/raclette/members/add", data={'name': 'toto'})
 
         # create bills
@@ -640,13 +640,13 @@ class BudgetTestCase(TestCase):
             'payed_for': [1, 2],
             'amount': '10',
         })
-        project  = models.Project.query.get('raclette')
+        project = models.Project.query.get('raclette')
         transactions = project.get_transactions_to_settle_bill()
         members = defaultdict(int)
-        #We should have the same values between transactions and project balances
+        # We should have the same values between transactions and project balances
         for t in transactions:
-            members[t['ower']]-=t['amount']
-            members[t['receiver']]+=t['amount']
+            members[t['ower']] -= t['amount']
+            members[t['receiver']] += t['amount']
         balance = models.Project.query.get("raclette").balance
         for m, a in members.items():
             self.assertEqual(a, balance[m.id])
@@ -684,7 +684,7 @@ class BudgetTestCase(TestCase):
             'payed_for': [2],
             'amount': '13.33',
         })
-        project  = models.Project.query.get('raclette')
+        project = models.Project.query.get('raclette')
         transactions = project.get_transactions_to_settle_bill()
         members = defaultdict(int)
         # There should not be any zero-amount transfer after rounding
@@ -805,6 +805,7 @@ class BudgetTestCase(TestCase):
 
 
 class APITestCase(TestCase):
+
     """Tests the API"""
 
     def api_create(self, name, id=None, password=None, contact=None):
@@ -833,7 +834,7 @@ class APITestCase(TestCase):
     def assertStatus(self, expected, resp, url=""):
 
         return self.assertEqual(expected, resp.status_code,
-                "%s expected %s, got %s" % (url, expected, resp.status_code))
+                                "%s expected %s, got %s" % (url, expected, resp.status_code))
 
     def test_basic_auth(self):
         # create a project
@@ -850,15 +851,15 @@ class APITestCase(TestCase):
             for resource in ("/raclette/members", "/raclette/bills"):
                 url = "/api/projects" + resource
                 self.assertStatus(401, getattr(self.app, verb)(url),
-                        verb + resource)
+                                  verb + resource)
 
         for verb in ('get', 'delete', 'put'):
             for resource in ("/raclette", "/raclette/members/1",
-                    "/raclette/bills/1"):
+                             "/raclette/bills/1"):
                 url = "/api/projects" + resource
 
                 self.assertStatus(401, getattr(self.app, verb)(url),
-                        verb + resource)
+                                  verb + resource)
 
     def test_project(self):
         # wrong email should return an error
@@ -885,7 +886,7 @@ class APITestCase(TestCase):
 
         # get information about it
         resp = self.app.get("/api/projects/raclette",
-                headers=self.get_auth("raclette"))
+                            headers=self.get_auth("raclette"))
 
         self.assertTrue(200, resp.status_code)
         expected = {
@@ -904,12 +905,12 @@ class APITestCase(TestCase):
             "contact_email": "yeah@notmyidea.org",
             "password": "raclette",
             "name": "The raclette party",
-            }, headers=self.get_auth("raclette"))
+        }, headers=self.get_auth("raclette"))
 
         self.assertEqual(200, resp.status_code)
 
         resp = self.app.get("/api/projects/raclette",
-                headers=self.get_auth("raclette"))
+                            headers=self.get_auth("raclette"))
 
         self.assertEqual(200, resp.status_code)
         expected = {
@@ -925,13 +926,13 @@ class APITestCase(TestCase):
 
         # delete should work
         resp = self.app.delete("/api/projects/raclette",
-                headers=self.get_auth("raclette"))
+                               headers=self.get_auth("raclette"))
 
         self.assertEqual(200, resp.status_code)
 
         # get should return a 401 on an unknown resource
         resp = self.app.get("/api/projects/raclette",
-                headers=self.get_auth("raclette"))
+                            headers=self.get_auth("raclette"))
         self.assertEqual(401, resp.status_code)
 
     def test_member(self):
@@ -940,15 +941,15 @@ class APITestCase(TestCase):
 
         # get the list of members (should be empty)
         req = self.app.get("/api/projects/raclette/members",
-                headers=self.get_auth("raclette"))
+                           headers=self.get_auth("raclette"))
 
         self.assertStatus(200, req)
         self.assertEqual('[]', req.data.decode('utf-8'))
 
         # add a member
         req = self.app.post("/api/projects/raclette/members", data={
-                "name": "Alexis"
-            }, headers=self.get_auth("raclette"))
+            "name": "Alexis"
+        }, headers=self.get_auth("raclette"))
 
         # the id of the new member should be returned
         self.assertStatus(201, req)
@@ -956,21 +957,21 @@ class APITestCase(TestCase):
 
         # the list of members should contain one member
         req = self.app.get("/api/projects/raclette/members",
-                headers=self.get_auth("raclette"))
+                           headers=self.get_auth("raclette"))
 
         self.assertStatus(200, req)
         self.assertEqual(len(json.loads(req.data.decode('utf-8'))), 1)
 
         # edit this member
         req = self.app.put("/api/projects/raclette/members/1", data={
-                "name": "Fred"
-            }, headers=self.get_auth("raclette"))
+            "name": "Fred"
+        }, headers=self.get_auth("raclette"))
 
         self.assertStatus(200, req)
 
         # get should return the new name
         req = self.app.get("/api/projects/raclette/members/1",
-                headers=self.get_auth("raclette"))
+                           headers=self.get_auth("raclette"))
 
         self.assertStatus(200, req)
         self.assertEqual("Fred", json.loads(req.data.decode('utf-8'))["name"])
@@ -978,14 +979,14 @@ class APITestCase(TestCase):
         # delete a member
 
         req = self.app.delete("/api/projects/raclette/members/1",
-                headers=self.get_auth("raclette"))
+                              headers=self.get_auth("raclette"))
 
         self.assertStatus(200, req)
 
         # the list of members should be empty
         # get the list of members (should be empty)
         req = self.app.get("/api/projects/raclette/members",
-                headers=self.get_auth("raclette"))
+                           headers=self.get_auth("raclette"))
 
         self.assertStatus(200, req)
         self.assertEqual('[]', req.data.decode('utf-8'))
@@ -1001,7 +1002,7 @@ class APITestCase(TestCase):
 
         # get the list of bills (should be empty)
         req = self.app.get("/api/projects/raclette/bills",
-                headers=self.get_auth("raclette"))
+                           headers=self.get_auth("raclette"))
         self.assertStatus(200, req)
 
         self.assertEqual("[]", req.data.decode('utf-8'))
@@ -1013,7 +1014,7 @@ class APITestCase(TestCase):
             'payer': "1",
             'payed_for': ["1", "2"],
             'amount': '25',
-            }, headers=self.get_auth("raclette"))
+        }, headers=self.get_auth("raclette"))
 
         # should return the id
         self.assertStatus(201, req)
@@ -1021,7 +1022,7 @@ class APITestCase(TestCase):
 
         # get this bill details
         req = self.app.get("/api/projects/raclette/bills/1",
-                headers=self.get_auth("raclette"))
+                           headers=self.get_auth("raclette"))
 
         # compare with the added info
         self.assertStatus(200, req)
@@ -1039,7 +1040,7 @@ class APITestCase(TestCase):
 
         # the list of bills should lenght 1
         req = self.app.get("/api/projects/raclette/bills",
-                headers=self.get_auth("raclette"))
+                           headers=self.get_auth("raclette"))
         self.assertStatus(200, req)
         self.assertEqual(1, len(json.loads(req.data.decode('utf-8'))))
 
@@ -1050,7 +1051,7 @@ class APITestCase(TestCase):
             'payer': "1",
             'payed_for': ["1", "2"],
             'amount': '25',
-            }, headers=self.get_auth("raclette"))
+        }, headers=self.get_auth("raclette"))
 
         self.assertStatus(400, req)
         self.assertEqual('{"date": ["This field is required."]}', req.data.decode('utf-8'))
@@ -1062,11 +1063,11 @@ class APITestCase(TestCase):
             'payer': "2",
             'payed_for': ["1", "2"],
             'amount': '25',
-            }, headers=self.get_auth("raclette"))
+        }, headers=self.get_auth("raclette"))
 
         # check its fields
         req = self.app.get("/api/projects/raclette/bills/1",
-                headers=self.get_auth("raclette"))
+                           headers=self.get_auth("raclette"))
 
         expected = {
             "what": "beer",
@@ -1082,17 +1083,17 @@ class APITestCase(TestCase):
 
         # delete a bill
         req = self.app.delete("/api/projects/raclette/bills/1",
-                headers=self.get_auth("raclette"))
+                              headers=self.get_auth("raclette"))
         self.assertStatus(200, req)
 
         # getting it should return a 404
         req = self.app.get("/api/projects/raclette/bills/1",
-                headers=self.get_auth("raclette"))
+                           headers=self.get_auth("raclette"))
         self.assertStatus(404, req)
 
     def test_username_xss(self):
         # create a project
-        #self.api_create("raclette")
+        # self.api_create("raclette")
         self.post_project("raclette")
         self.login("raclette")
 
@@ -1118,11 +1119,11 @@ class APITestCase(TestCase):
             'payer': "1",
             'payed_for': ["1", "2"],
             'amount': '25',
-            }, headers=self.get_auth("raclette"))
+        }, headers=self.get_auth("raclette"))
 
         # get this bill details
         req = self.app.get("/api/projects/raclette/bills/1",
-                headers=self.get_auth("raclette"))
+                           headers=self.get_auth("raclette"))
 
         # compare with the added info
         self.assertStatus(200, req)
@@ -1139,7 +1140,7 @@ class APITestCase(TestCase):
 
         # getting it should return a 404
         req = self.app.get("/api/projects/raclette",
-                headers=self.get_auth("raclette"))
+                           headers=self.get_auth("raclette"))
 
         expected = {
             "active_members": [
@@ -1162,7 +1163,9 @@ class APITestCase(TestCase):
         self.assertStatus(200, req)
         self.assertEqual(expected, json.loads(req.data.decode('utf-8')))
 
+
 class ServerTestCase(APITestCase):
+
     def setUp(self):
         run.configure()
         super(ServerTestCase, self).setUp()
