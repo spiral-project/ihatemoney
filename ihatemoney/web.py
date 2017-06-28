@@ -203,7 +203,7 @@ def create_project():
                 body=message_body,
                 recipients=[project.contact_email])
             try:
-                mail.send(msg)
+                current_app.mail.send(msg)
             except SMTPRecipientsRefused:
                 msg_compl = 'Problem sending mail. '
                 # TODO: destroy the project and cancel instead?
@@ -228,7 +228,7 @@ def remind_password():
 
             # send the password reminder
             password_reminder = "password_reminder.%s" % get_locale().language
-            mail.send(Message("password recovery",
+            current_app.mail.send(Message("password recovery",
                 body=render_template(password_reminder, project=project),
                 recipients=[project.contact_email]))
             flash(_("a mail has been sent to you with the password"))

@@ -10,7 +10,7 @@ from raven.contrib.flask import Sentry
 
 from ihatemoney.api import api
 from ihatemoney.models import db
-from ihatemoney.utils import PrefixedWSGI
+from ihatemoney.utils import PrefixedWSGI, minimal_round
 from ihatemoney.web import main as web_interface
 
 from ihatemoney import default_settings
@@ -43,22 +43,23 @@ def setup_database(app):
         upgrade(migrations_path)
 
 
-def load_configuration(app):
-    """ A way to (re)configure the app, specially reset the settings
-    """
-    default_config_file = os.path.join(app.root_path, 'default_settings.py')
-    config_file = os.environ.get('IHATEMONEY_SETTINGS_FILE_PATH')
+def load_configuration(app, configuration=None):
+    """ Find the right configuration file for the application and load it.
 
-    # Load default settings first
-    # Then load the settings from the path set in IHATEMONEY_SETTINGS_FILE_PATH var
-    # If not set, default to /etc/ihatemoney/ihatemoney.cfg
-    # If the latter doesn't exist no error is raised and the default settings are used
-    app.config.from_pyfile(default_config_file)
-    if config_file:
-        app.config.from_pyfile(config_file)
+    By order of preference:
+    - Use the IHATEMONEY_SETTINGS_FILE_PATH env var if defined ;
+    - If not, use /etc/ihatemoney/ihatemoney.cfg ;
+    - Otherwise, load the default settings.
+    """
+
+    env_var_config = os.environ.get('IHATEMONEY_SETTINGS_FILE_PATH')
+    app.config.from_object('ihatemoney.default_settings')
+    if configuration:
+        app.config.from_object(configuration)
+    elif env_var_config:
+        app.config.from_pyfile(env_var_config)
     else:
         app.config.from_pyfile('ihatemoney.cfg', silent=True)
-    app.wsgi_app = PrefixedWSGI(app)
 
 
 def validate_configuration(app):
@@ -92,10 +93,17 @@ def validate_configuration(app):
         )
 
 
-def create_app(instance_path='/etc/ihatemoney'):
-    app = Flask(__name__, instance_path=instance_path,
-                instance_relative_config=True)
-    load_configuration(app)
+def create_app(configuration=None, instance_path='/etc/ihatemoney',
+               instance_relative_config=True):
+    app = Flask(
+        __name__,
+        instance_path=instance_path,
+        instance_relative_config=instance_relative_config)
+
+    # If a configuration object is passed, use it. Otherwise try to find one.
+    load_configuration(app, configuration)
+    app.wsgi_app = PrefixedWSGI(app)
+
     validate_configuration(app)
     app.register_blueprint(web_interface)
     app.register_blueprint(api)
@@ -109,6 +117,9 @@ def create_app(instance_path='/etc/ihatemoney'):
 
     # Error reporting
     Sentry(app)
+
+    # Jinja filters
+    app.jinja_env.filters['minimal_round'] = minimal_round
 
     # Translations
     babel = Babel(app)

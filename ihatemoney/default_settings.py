@@ -1,5 +1,5 @@
 DEBUG = False
-SQLALCHEMY_DATABASE_URI = 'sqlite:///budget.db'
+SQLALCHEMY_DATABASE_URI = 'sqlite://'
 SQLACHEMY_ECHO = DEBUG
 # Will likely become the default value in flask-sqlalchemy >=3 ; could be removed
 # then:
