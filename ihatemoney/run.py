@@ -4,29 +4,46 @@ import warnings
 
 from flask import Flask, g, request, session
 from flask_babel import Babel
+from flask_mail import Mail
 from flask_migrate import Migrate, upgrade, stamp
 from raven.contrib.flask import Sentry
 
-from ihatemoney.web import main, db, mail
 from ihatemoney.api import api
+from ihatemoney.models import db
 from ihatemoney.utils import PrefixedWSGI
-from ihatemoney.utils import minimal_round
+from ihatemoney.web import main as web_interface
 
 from ihatemoney import default_settings
 
-app = Flask(__name__, instance_path='/etc/ihatemoney', instance_relative_config=True)
+
+def setup_database(app):
+    """Prepare the database. Create tables, run migrations etc."""
+
+    def _pre_alembic_db():
+        """ Checks if we are migrating from a pre-alembic ihatemoney
+        """
+        con = db.engine.connect()
+        tables_exist = db.engine.dialect.has_table(con, 'project')
+        alembic_setup = db.engine.dialect.has_table(con, 'alembic_version')
+        return tables_exist and not alembic_setup
+
+    db.init_app(app)
+    db.app = app
+
+    Migrate(app, db)
+    migrations_path = os.path.join(app.root_path, 'migrations')
+
+    if _pre_alembic_db():
+        with app.app_context():
+            # fake the first migration
+            stamp(migrations_path, revision='b9a10d5d63ce')
+
+    # auto-execute migrations on runtime
+    with app.app_context():
+        upgrade(migrations_path)
 
 
-def pre_alembic_db():
-    """ Checks if we are migrating from a pre-alembic ihatemoney
-    """
-    con = db.engine.connect()
-    tables_exist = db.engine.dialect.has_table(con, 'project')
-    alembic_setup = db.engine.dialect.has_table(con, 'alembic_version')
-    return tables_exist and not alembic_setup
-
-
-def configure():
+def load_configuration(app):
     """ A way to (re)configure the app, specially reset the settings
     """
     default_config_file = os.path.join(app.root_path, 'default_settings.py')
@@ -43,6 +60,9 @@ def configure():
         app.config.from_pyfile('ihatemoney.cfg', silent=True)
     app.wsgi_app = PrefixedWSGI(app)
 
+
+def validate_configuration(app):
+
     if app.config['SECRET_KEY'] == default_settings.SECRET_KEY:
         warnings.warn(
             "Running a server without changing the SECRET_KEY can lead to"
@@ -57,64 +77,55 @@ def configure():
             + " and will be removed in further version",
             UserWarning
         )
-        if not 'MAIL_DEFAULT_SENDER' in app.config:
-            app.config['MAIL_DEFAULT_SENDER'] = DEFAULT_MAIL_SENDER
+        if 'MAIL_DEFAULT_SENDER' not in app.config:
+            app.config['MAIL_DEFAULT_SENDER'] = default_settings.DEFAULT_MAIL_SENDER
 
     if "pbkdf2:sha256:" not in app.config['ADMIN_PASSWORD'] and app.config['ADMIN_PASSWORD']:
         # Since 2.0
         warnings.warn(
             "The way Ihatemoney stores your ADMIN_PASSWORD has changed. You are using an unhashed"
-            +" ADMIN_PASSWORD, which is not supported anymore and won't let you access your admin"
-            +" endpoints. Please use the command './budget/manage.py generate_password_hash'"
-            +" to generate a proper password HASH and copy the output to the value of"
-            +" ADMIN_PASSWORD in your settings file.",
+            + " ADMIN_PASSWORD, which is not supported anymore and won't let you access your admin"
+            + " endpoints. Please use the command './budget/manage.py generate_password_hash'"
+            + " to generate a proper password HASH and copy the output to the value of"
+            + " ADMIN_PASSWORD in your settings file.",
             UserWarning
         )
 
-configure()
 
+def create_app(instance_path='/etc/ihatemoney'):
+    app = Flask(__name__, instance_path=instance_path,
+                instance_relative_config=True)
+    load_configuration(app)
+    validate_configuration(app)
+    app.register_blueprint(web_interface)
+    app.register_blueprint(api)
 
-app.register_blueprint(main)
-app.register_blueprint(api)
+    # Configure the application
+    setup_database(app)
 
-# custom jinja2 filters
-app.jinja_env.filters['minimal_round'] = minimal_round
+    mail = Mail()
+    mail.init_app(app)
+    app.mail = mail
 
-# db
-db.init_app(app)
-db.app = app
+    # Error reporting
+    Sentry(app)
 
-# db migrations
-migrate = Migrate(app, db)
-migrations_path = os.path.join(app.root_path, 'migrations')
+    # Translations
+    babel = Babel(app)
 
-if pre_alembic_db():
-    with app.app_context():
-        # fake the first migration
-        stamp(migrations_path, revision='b9a10d5d63ce')
+    @babel.localeselector
+    def get_locale():
+        # get the lang from the session if defined, fallback on the browser "accept
+        # languages" header.
+        lang = session.get('lang', request.accept_languages.best_match(['fr', 'en']))
+        setattr(g, 'lang', lang)
+        return lang
 
-# auto-execute migrations on runtime
-with app.app_context():
-    upgrade(migrations_path)
+    return app
 
-# mail
-mail.init_app(app)
-
-# translations
-babel = Babel(app)
-
-# sentry
-sentry = Sentry(app)
-
-@babel.localeselector
-def get_locale():
-    # get the lang from the session if defined, fallback on the browser "accept
-    # languages" header.
-    lang = session.get('lang', request.accept_languages.best_match(['fr', 'en']))
-    setattr(g, 'lang', lang)
-    return lang
 
 def main():
+    app = create_app()
     app.run(host="0.0.0.0", debug=True)
 
 if __name__ == '__main__':

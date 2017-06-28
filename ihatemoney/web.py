@@ -13,10 +13,9 @@ from flask import (
     Blueprint, current_app, flash, g, redirect, render_template, request,
     session, url_for, send_file
 )
-from flask_mail import Mail, Message
+from flask_mail import Message
 from flask_babel import get_locale, gettext as _
-from werkzeug.security import generate_password_hash, \
-     check_password_hash
+from werkzeug.security import check_password_hash
 from smtplib import SMTPRecipientsRefused
 import werkzeug
 from sqlalchemy import orm
@@ -31,7 +30,6 @@ from ihatemoney.forms import (
 from ihatemoney.utils import Redirect303, list_of_dicts2json, list_of_dicts2csv
 
 main = Blueprint("main", __name__)
-mail = Mail()
 
 
 def requires_admin(f):
@@ -337,7 +335,7 @@ def invite():
                 body=message_body,
                 recipients=[email.strip()
                     for email in form.emails.data.split(",")])
-            mail.send(msg)
+            current_app.mail.send(msg)
             flash(_("Your invitations have been sent"))
             return redirect(url_for(".list_bills"))
 
