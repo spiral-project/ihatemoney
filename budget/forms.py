@@ -7,10 +7,11 @@ from flask_babel import lazy_gettext as _
 from flask import request
 
 from wtforms.widgets import html_params
-from models import Project, Person
 from datetime import datetime
 from jinja2 import Markup
-from utils import slugify
+
+from .models import Project, Person
+from .utils import slugify
 
 
 def get_billform_for(project, set_default=True, **kwargs):
