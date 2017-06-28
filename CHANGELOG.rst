@@ -11,7 +11,11 @@ This document describes changes between each past release.
 - **BREAKING CHANGE** Use a hashed ``ADMIN_PASSWORD`` instead of a clear text one, ``./budget/manage.py generate_password_hash`` can be used to generate a proper password HASH (#236)
 - **BREAKING CHANGE** Turn the WSGI file into a python module, renamed from budget/ihatemoney.wsgi to budget/wsgi.py. Please update your Apache configuration!
 - Changed the recommended gunicorn configuration to use the wsgi module as an entrypoint
+- **BREAKING CHANGE** The default value of ``ADMIN_PASSWORD`` has changed. If you have a custom settings file which set ``ADMIN_PASSWORD`` to an empty string (""), the application will use the default admin password until you update your settings.
 
+### Added
+
+- Add a new setting to allow public project creation (ALLOW_PUBLIC_PROJECT_CREATION)
 
 ### Removed
 

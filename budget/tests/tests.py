@@ -378,6 +378,8 @@ class BudgetTestCase(TestCase):
 
     def test_admin_authentication(self):
         run.app.config['ADMIN_PASSWORD'] = generate_password_hash("pass")
+        # Disable public project creation so we have an admin endpoint to test
+        run.app.config['ALLOW_PUBLIC_PROJECT_CREATION'] = False
 
         # test the redirection to the authentication page when trying to access admin endpoints
         resp = self.app.get("/create")
