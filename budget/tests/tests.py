@@ -376,6 +376,13 @@ class BudgetTestCase(TestCase):
             c.get("/exit")
             self.assertNotIn('raclette', session)
 
+        # test that whith admin credentials, one can access every project
+        run.app.config['ADMIN_PASSWORD'] = generate_password_hash("pass")
+        with run.app.test_client() as c:
+            resp = c.post("/admin?goto=%2Fraclette", data={'admin_password': 'pass'})
+            self.assertNotIn("Authentication", resp.data.decode('utf-8'))
+            self.assertTrue(session['is_admin'])
+
     def test_admin_authentication(self):
         run.app.config['ADMIN_PASSWORD'] = generate_password_hash("pass")
         # Disable public project creation so we have an admin endpoint to test

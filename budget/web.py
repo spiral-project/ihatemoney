@@ -72,6 +72,7 @@ def add_project_id(endpoint, values):
 def pull_project(endpoint, values):
     """When a request contains a project_id value, transform it directly
     into a project by checking the credentials are stored in session.
+    With admin credentials, one can access every project.
 
     If not, redirect the user to an authentication form
     """
@@ -85,7 +86,8 @@ def pull_project(endpoint, values):
         if not project:
             raise Redirect303(url_for(".create_project",
                 project_id=project_id))
-        if project.id in session and session[project.id] == project.password:
+        is_admin = session.get('is_admin')
+        if project.id in session and session[project.id] == project.password or is_admin:
             # add project into kwargs and call the original function
             g.project = project
         else:

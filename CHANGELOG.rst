@@ -16,6 +16,7 @@ This document describes changes between each past release.
 ### Added
 
 - Add a new setting to allow public project creation (ALLOW_PUBLIC_PROJECT_CREATION)
+- With admin credentials, one can access every project
 
 ### Removed
 
