@@ -17,9 +17,9 @@ from flask import session
 if 'IHATEMONEY_SETTINGS_FILE_PATH' in os.environ:
     del os.environ['IHATEMONEY_SETTINGS_FILE_PATH']
 
-from .. import run
-from .. import models
-from .. import utils
+from ihatemoney import run
+from ihatemoney import models
+from ihatemoney import utils
 
 __HERE__ = os.path.dirname(os.path.abspath(__file__))
 

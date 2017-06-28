@@ -29,7 +29,7 @@ remove-install-stamp:
 update: remove-install-stamp install
 
 serve: install
-	$(PYTHON) -m budget.manage runserver
+	$(PYTHON) -m ihatemoney.manage runserver
 
 test: $(DEV_STAMP)
 	$(VENV)/bin/tox
@@ -38,7 +38,7 @@ release: $(DEV_STAMP)
 	$(VENV)/bin/fullrelease
 
 build-translations:
-	$(VENV)/bin/pybabel compile -d budget/translations
+	$(VENV)/bin/pybabel compile -d ihatemoney/translations
 
 build-requirements:
 	$(VIRTUALENV) $(TEMPDIR)

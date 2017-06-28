@@ -22,13 +22,13 @@ import werkzeug
 from sqlalchemy import orm
 from functools import wraps
 
-from .models import db, Project, Person, Bill
-from .forms import (
+from ihatemoney.models import db, Project, Person, Bill
+from ihatemoney.forms import (
     AdminAuthenticationForm, AuthenticationForm, EditProjectForm,
     InviteForm, MemberForm, PasswordReminder, ProjectForm, get_billform_for,
     ExportForm
 )
-from .utils import Redirect303, list_of_dicts2json, list_of_dicts2csv
+from ihatemoney.utils import Redirect303, list_of_dicts2json, list_of_dicts2csv
 
 main = Blueprint("main", __name__)
 mail = Mail()

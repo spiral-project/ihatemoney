@@ -10,8 +10,8 @@ from wtforms.widgets import html_params
 from datetime import datetime
 from jinja2 import Markup
 
-from .models import Project, Person
-from .utils import slugify
+from ihatemoney.models import Project, Person
+from ihatemoney.utils import slugify
 
 def get_billform_for(project, set_default=True, **kwargs):
     """Return an instance of BillForm configured for a particular project.

@@ -2,9 +2,9 @@
 from flask import Blueprint, request
 from flask_rest import RESTResource, need_auth
 
-from .models import db, Project, Person, Bill
-from .forms import (ProjectForm, EditProjectForm, MemberForm,
-                    get_billform_for)
+from ihatemoney.models import db, Project, Person, Bill
+from ihatemoney.forms import (ProjectForm, EditProjectForm, MemberForm,
+                              get_billform_for)
 
 
 api = Blueprint("api", __name__, url_prefix="/api")
