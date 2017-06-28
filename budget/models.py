@@ -9,13 +9,10 @@ from sqlalchemy import orm
 db = SQLAlchemy()
 
 
-# define models
-
-
 class Project(db.Model):
 
     _to_serialize = ("id", "name", "password", "contact_email",
-            "members", "active_members", "balance")
+                     "members", "active_members", "balance")
 
     id = db.Column(db.String(64), primary_key=True)
 
@@ -32,12 +29,13 @@ class Project(db.Model):
     def balance(self):
 
         balances, should_pay, should_receive = (defaultdict(int)
-            for time in (1, 2, 3))
+                                                for time in (1, 2, 3))
 
         # for each person
         for person in self.members:
             # get the list of bills he has to pay
-            bills = Bill.query.options(orm.subqueryload(Bill.owers)).filter(Bill.owers.contains(person))
+            bills = Bill.query.options(orm.subqueryload(Bill.owers)).filter(
+                Bill.owers.contains(person))
             for bill in bills.all():
                 if person != bill.payer:
                     share = bill.pay_each() * person.weight
@@ -56,6 +54,7 @@ class Project(db.Model):
 
     def get_transactions_to_settle_bill(self, pretty_output=False):
         """Return a list of transactions that could be made to settle the bill"""
+
         def prettify(transactions, pretty_output):
             """ Return pretty transactions
             """
@@ -63,36 +62,52 @@ class Project(db.Model):
                 return transactions
             pretty_transactions = []
             for transaction in transactions:
-                pretty_transactions.append({'ower': transaction['ower'].name,
-                                            'receiver': transaction['receiver'].name,
-                                            'amount': round(transaction['amount'], 2)})
+                pretty_transactions.append({
+                    'ower': transaction['ower'].name,
+                    'receiver': transaction['receiver'].name,
+                    'amount': round(transaction['amount'], 2)
+                })
             return pretty_transactions
 
-        #cache value for better performance
+        # cache value for better performance
         balance = self.balance
-        credits, debts, transactions = [],[],[]
+        credits, debts, transactions = [], [], []
         # Create lists of credits and debts
         for person in self.members:
             if round(balance[person.id], 2) > 0:
                 credits.append({"person": person, "balance": balance[person.id]})
             elif round(balance[person.id], 2) < 0:
                 debts.append({"person": person, "balance": -balance[person.id]})
+
         # Try and find exact matches
         for credit in credits:
             match = self.exactmatch(round(credit["balance"], 2), debts)
             if match:
                 for m in match:
-                    transactions.append({"ower": m["person"], "receiver": credit["person"], "amount": m["balance"]})
+                    transactions.append({
+                        "ower": m["person"],
+                        "receiver": credit["person"],
+                        "amount": m["balance"]
+                    })
                     debts.remove(m)
                 credits.remove(credit)
         # Split any remaining debts & credits
         while credits and debts:
+
             if credits[0]["balance"] > debts[0]["balance"]:
-                transactions.append({"ower": debts[0]["person"], "receiver": credits[0]["person"], "amount": debts[0]["balance"]})
+                transactions.append({
+                    "ower": debts[0]["person"],
+                    "receiver": credits[0]["person"],
+                    "amount": debts[0]["balance"]
+                })
                 credits[0]["balance"] = credits[0]["balance"] - debts[0]["balance"]
                 del debts[0]
             else:
-                transactions.append({"ower": debts[0]["person"], "receiver": credits[0]["person"], "amount": credits[0]["balance"]})
+                transactions.append({
+                    "ower": debts[0]["person"],
+                    "receiver": credits[0]["person"],
+                    "amount": credits[0]["balance"]
+                })
                 debts[0]["balance"] = debts[0]["balance"] - credits[0]["balance"]
                 del credits[0]
 
@@ -107,7 +122,7 @@ class Project(db.Model):
         elif debts[0]["balance"] == credit:
             return [debts[0]]
         else:
-            match = self.exactmatch(credit-debts[0]["balance"], debts[1:])
+            match = self.exactmatch(credit - debts[0]["balance"], debts[1:])
             if match:
                 match.append(debts[0])
             else:
@@ -136,12 +151,15 @@ class Project(db.Model):
                 owers = [ower.name for ower in bill.owers]
             else:
                 owers = ', '.join([ower.name for ower in bill.owers])
-            pretty_bills.append({"what": bill.what,
-                                 "amount": round(bill.amount, 2),
-                                 "date": str(bill.date),
-                                 "payer_name": Person.query.get(bill.payer_id).name,
-                                 "payer_weight": Person.query.get(bill.payer_id).weight,
-                                 "owers": owers})
+
+            pretty_bills.append({
+                "what": bill.what,
+                "amount": round(bill.amount, 2),
+                "date": str(bill.date),
+                "payer_name": Person.query.get(bill.payer_id).name,
+                "payer_weight": Person.query.get(bill.payer_id).weight,
+                "owers": owers
+            })
         return pretty_bills
 
     def remove_member(self, member_id):
@@ -176,6 +194,7 @@ class Project(db.Model):
 class Person(db.Model):
 
     class PersonQuery(BaseQuery):
+
         def get_by_name(self, name, project):
             return Person.query.filter(Person.name == name)\
                 .filter(Project.id == project.id).one()
@@ -212,7 +231,8 @@ class Person(db.Model):
         return "<Person %s for project %s>" % (self.name, self.project.name)
 
 # We need to manually define a join table for m2m relations
-billowers = db.Table('billowers',
+billowers = db.Table(
+    'billowers',
     db.Column('bill_id', db.Integer, db.ForeignKey('bill.id')),
     db.Column('person_id', db.Integer, db.ForeignKey('person.id')),
 )
@@ -224,11 +244,11 @@ class Bill(db.Model):
 
         def get(self, project, id):
             try:
-                return self.join(Person, Project)\
-                    .filter(Bill.payer_id == Person.id)\
-                    .filter(Person.project_id == Project.id)\
-                    .filter(Project.id == project.id)\
-                    .filter(Bill.id == id).one()
+                return (self.join(Person, Project)
+                        .filter(Bill.payer_id == Person.id)
+                        .filter(Person.project_id == Project.id)
+                        .filter(Project.id == project.id)
+                        .filter(Bill.id == id).one())
             except orm.exc.NoResultFound:
                 return None
 
@@ -262,8 +282,10 @@ class Bill(db.Model):
             return 0
 
     def __repr__(self):
-        return "<Bill of %s from %s for %s>" % (self.amount,
-                self.payer, ", ".join([o.name for o in self.owers]))
+        return "<Bill of %s from %s for %s>" % (
+            self.amount,
+            self.payer, ", ".join([o.name for o in self.owers])
+        )
 
 
 class Archive(db.Model):
