@@ -13,6 +13,7 @@ from jinja2 import Markup
 from ihatemoney.models import Project, Person
 from ihatemoney.utils import slugify
 
+
 def get_billform_for(project, set_default=True, **kwargs):
     """Return an instance of BillForm configured for a particular project.
 
@@ -21,8 +22,9 @@ def get_billform_for(project, set_default=True, **kwargs):
 
     """
     form = BillForm(**kwargs)
-    form.payed_for.choices = form.payer.choices = [(m.id, m.name)
-        for m in project.active_members]
+    active_members = [(m.id, m.name) for m in project.active_members]
+
+    form.payed_for.choices = form.payer.choices = active_members
     form.payed_for.default = [m.id for m in project.active_members]
 
     if set_default and request.method == "GET":
@@ -31,7 +33,9 @@ def get_billform_for(project, set_default=True, **kwargs):
 
 
 class CommaDecimalField(DecimalField):
+
     """A class to deal with comma in Decimal Field"""
+
     def process_formdata(self, value):
         if value:
             value[0] = str(value[0]).replace(',', '.')
@@ -49,8 +53,8 @@ class EditProjectForm(FlaskForm):
         Returns the created instance
         """
         project = Project(name=self.name.data, id=self.id.data,
-                password=self.password.data,
-                contact_email=self.contact_email.data)
+                          password=self.password.data,
+                          contact_email=self.contact_email.data)
         return project
 
     def update(self, project):
@@ -70,12 +74,13 @@ class ProjectForm(EditProjectForm):
     def validate_id(form, field):
         form.id.data = slugify(field.data)
         if (form.id.data == "dashboard") or Project.query.get(form.id.data):
-            raise ValidationError(Markup(_("The project identifier is used "
-                "to log in and for the URL of the project. "
-                "We tried to generate an identifier for you but a project "
-                "with this identifier already exists. "
-                "Please create a new identifier "
-                "that you will be able to remember.")))
+            message = _("The project identifier is used to log in and for the "
+                        "URL of the project. "
+                        "We tried to generate an identifier for you but a "
+                        "project with this identifier already exists. "
+                        "Please create a new identifier that you will be able "
+                        "to remember")
+            raise ValidationError(Markup(message))
 
 
 class AuthenticationForm(FlaskForm):
@@ -104,7 +109,7 @@ class BillForm(FlaskForm):
     payer = SelectField(_("Payer"), validators=[Required()], coerce=int)
     amount = CommaDecimalField(_("Amount paid"), validators=[Required()])
     payed_for = SelectMultipleField(_("For whom?"),
-            validators=[Required()], coerce=int)
+                                    validators=[Required()], coerce=int)
     submit = SubmitField(_("Submit"))
     submit2 = SubmitField(_("Submit and add a new one"))
 
@@ -114,7 +119,7 @@ class BillForm(FlaskForm):
         bill.what = self.what.data
         bill.date = self.date.data
         bill.owers = [Person.query.get(ower, project)
-            for ower in self.payed_for.data]
+                      for ower in self.payed_for.data]
 
         return bill
 
@@ -175,17 +180,17 @@ class InviteForm(FlaskForm):
         for email in [email.strip() for email in form.emails.data.split(",")]:
             if not validator.regex.match(email):
                 raise ValidationError(_("The email %(email)s is not valid",
-                    email=email))
+                                        email=email))
 
 
 class ExportForm(FlaskForm):
-    export_type = SelectField(_("What do you want to download ?"),
-                              validators=[Required()],
-                              coerce=str,
-                              choices=[("bills", _("bills")), ("transactions", _("transactions"))]
-                             )
-    export_format = SelectField(_("Export file format"),
-                                validators=[Required()],
-                                coerce=str,
-                                choices=[("csv", "csv"), ("json", "json")]
-                               )
+    export_type = SelectField(
+        _("What do you want to download ?"),
+        validators=[Required()],
+        coerce=str,
+        choices=[("bills", _("bills")), ("transactions", _("transactions"))])
+    export_format = SelectField(
+        _("Export file format"),
+        validators=[Required()],
+        coerce=str,
+        choices=[("csv", "csv"), ("json", "json")])

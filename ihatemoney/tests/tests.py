@@ -84,7 +84,6 @@ class DefaultConfigurationTestCase(BaseTestCase):
                          ("Budget manager", "budget@notmyidea.org"))
 
 
-
 class BudgetTestCase(IhatemoneyTestCase):
 
     def test_notifications(self):

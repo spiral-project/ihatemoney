@@ -26,7 +26,9 @@ def slugify(value):
     value = six.text_type(re.sub('[^\w\s-]', '', value).strip().lower())
     return re.sub('[-\s]+', '-', value)
 
+
 class Redirect303(HTTPException, RoutingException):
+
     """Raise if the map requests a redirect. This is for example the case if
     `strict_slashes` are activated and an url that requires a trailing slash.
 
@@ -43,6 +45,7 @@ class Redirect303(HTTPException, RoutingException):
 
 
 class PrefixedWSGI(object):
+
     '''
     Wrap the application in this middleware and configure the
     front-end server to add these headers, to let you quietly bind
@@ -55,6 +58,7 @@ class PrefixedWSGI(object):
 
     :param app: the WSGI application
     '''
+
     def __init__(self, app):
         self.app = app
         self.wsgi_app = app.wsgi_app
@@ -85,11 +89,13 @@ def minimal_round(*args, **kw):
     ires = int(res)
     return (res if res != ires else ires)
 
+
 def list_of_dicts2json(dict_to_convert):
     """Take a list of dictionnaries and turns it into
     a json in-memory file
     """
     return BytesIO(dumps(dict_to_convert).encode('utf-8'))
+
 
 def list_of_dicts2csv(dict_to_convert):
     """Take a list of dictionnaries and turns it into
@@ -110,9 +116,10 @@ def list_of_dicts2csv(dict_to_convert):
             csv_data = []
             csv_data.append([key.encode('utf-8') for key in dict_to_convert[0].keys()])
             for dic in dict_to_convert:
-                csv_data.append([dic[h].encode('utf8')
-                                 if isinstance(dic[h], unicode) else str(dic[h]).encode('utf8')
-                                 for h in dict_to_convert[0].keys()])
+                csv_data.append(
+                    [dic[h].encode('utf8')
+                     if isinstance(dic[h], unicode) else str(dic[h]).encode('utf8')
+                     for h in dict_to_convert[0].keys()])
     except (KeyError, IndexError):
         csv_data = []
     writer = csv.writer(csv_file)
@@ -123,4 +130,4 @@ def list_of_dicts2csv(dict_to_convert):
     return csv_file
 
 # base64 encoding that works with both py2 and py3 and yield no warning
-base64_encode =  base64.encodestring if six.PY2 else base64.encodebytes
+base64_encode = base64.encodestring if six.PY2 else base64.encodebytes
