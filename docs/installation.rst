@@ -76,7 +76,8 @@ properly.
 | Setting name               |  Default                  | What does it do?                                                                       |
 +============================+===========================+========================================================================================+
 | SQLALCHEMY_DATABASE_URI    |  ``sqlite:///budget.db``  | Specifies the type of backend to use and its location. More information                |
-|                            |                           | on the format used can be found on `the SQLAlchemy documentation`.                     |
+|                            |                           | on the format used can be found on `the SQLAlchemy documentation                       |
+|                            |                           | <http://docs.sqlalchemy.org/en/latest/core/engines.html#database-urls>`_.              |
 +----------------------------+---------------------------+----------------------------------------------------------------------------------------+
 | SECRET_KEY                 |  ``tralala``              | The secret key used to encrypt the cookies. **This needs to be changed**.              |
 +----------------------------+---------------------------+----------------------------------------------------------------------------------------+
@@ -89,8 +90,6 @@ properly.
 | ADMIN_PASSWORD             |                           | To generate the proper password HASH, use ``./budget/manage.py generate_password_hash``|
 |                            |                           | and copy its output into the value of *ADMIN_PASSWORD*.                                |
 +----------------------------+---------------------------+----------------------------------------------------------------------------------------+
-
-.. _`the SQLAlechemy documentation`: http://docs.sqlalchemy.org/en/latest/core/engines.html#database-urls
 
 In a production environment
 ---------------------------

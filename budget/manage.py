@@ -10,7 +10,8 @@ from .models import db
 
 
 class GeneratePasswordHash(Command):
-    "Get password from user and hash it without printing it in clear text"
+
+    """Get password from user and hash it without printing it in clear text."""
 
     def run(self):
         password = getpass(prompt='Password: ')

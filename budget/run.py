@@ -64,10 +64,10 @@ def configure():
         # Since 2.0
         warnings.warn(
             "The way Ihatemoney stores your ADMIN_PASSWORD has changed. You are using an unhashed"
-            +" ADMIN_PASSWORD, which is not supported anymore and won't let you access your admin"
-            +" endpoints. Please use the command './budget/manage.py generate_password_hash'"
-            +" to generate a proper password HASH and copy the output to the value of"
-            +" ADMIN_PASSWORD in your settings file.",
+            + " ADMIN_PASSWORD, which is not supported anymore and won't let you access your admin"
+            + " endpoints. Please use the command './budget/manage.py generate_password_hash'"
+            + " to generate a proper password HASH and copy the output to the value of"
+            + " ADMIN_PASSWORD in your settings file.",
             UserWarning
         )
 
@@ -106,6 +106,7 @@ babel = Babel(app)
 # sentry
 sentry = Sentry(app)
 
+
 @babel.localeselector
 def get_locale():
     # get the lang from the session if defined, fallback on the browser "accept
@@ -113,6 +114,7 @@ def get_locale():
     lang = session.get('lang', request.accept_languages.best_match(['fr', 'en']))
     setattr(g, 'lang', lang)
     return lang
+
 
 def main():
     app.run(host="0.0.0.0", debug=True)

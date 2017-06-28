@@ -15,8 +15,7 @@ from flask import (
 )
 from flask_mail import Mail, Message
 from flask_babel import get_locale, gettext as _
-from werkzeug.security import generate_password_hash, \
-     check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 from smtplib import SMTPRecipientsRefused
 import werkzeug
 from sqlalchemy import orm
@@ -75,14 +74,14 @@ def pull_project(endpoint, values):
         project = Project.query.get(project_id)
         if not project:
             raise Redirect303(url_for(".create_project",
-                project_id=project_id))
+                                      project_id=project_id))
         if project.id in session and session[project.id] == project.password:
             # add project into kwargs and call the original function
             g.project = project
         else:
             # redirect to authentication page
             raise Redirect303(
-                    url_for(".authenticate", project_id=project_id))
+                url_for(".authenticate", project_id=project_id))
 
 
 @main.route("/admin", methods=["GET", "POST"])
@@ -110,7 +109,7 @@ def authenticate(project_id=None):
         form.id.data = request.args['project_id']
     project_id = form.id.data
     if project_id is None:
-        #User doesn't provide project identifier, return to authenticate form
+        # User doesn't provide project identifier, return to authenticate form
         msg = _("You need to enter a project identifier")
         form.errors["id"] = [msg]
         return render_template("authenticate.html", form=form)
@@ -150,7 +149,7 @@ def authenticate(project_id=None):
                     return redirect(url_for(".list_bills"))
 
     return render_template("authenticate.html", form=form,
-            create_project=create_project)
+                           create_project=create_project)
 
 
 @main.route("/")
@@ -196,14 +195,14 @@ def create_project():
             g.project = project
 
             message_title = _("You have just created '%(project)s' "
-                "to share your expenses", project=g.project.name)
+                              "to share your expenses", project=g.project.name)
 
             message_body = render_template("reminder_mail.%s" %
-                get_locale().language)
+                                           get_locale().language)
 
             msg = Message(message_title,
-                body=message_body,
-                recipients=[project.contact_email])
+                          body=message_body,
+                          recipients=[project.contact_email])
             try:
                 mail.send(msg)
             except SMTPRecipientsRefused:
@@ -214,7 +213,7 @@ def create_project():
 
             # redirect the user to the next step (invite)
             flash(_("%(msg_compl)sThe project identifier is %(project)s",
-                msg_compl=msg_compl, project=project.id))
+                    msg_compl=msg_compl, project=project.id))
             return redirect(url_for(".invite", project_id=project.id))
 
     return render_template("create_project.html", form=form)
@@ -231,8 +230,8 @@ def remind_password():
             # send the password reminder
             password_reminder = "password_reminder.%s" % get_locale().language
             mail.send(Message("password recovery",
-                body=render_template(password_reminder, project=project),
-                recipients=[project.contact_email]))
+                              body=render_template(password_reminder, project=project),
+                              recipients=[project.contact_email]))
             flash(_("a mail has been sent to you with the password"))
 
     return render_template("password_reminder.html", form=form)
@@ -270,7 +269,7 @@ def edit_project():
                              attachment_filename="%s-%s.%s" %
                              (g.project.id, export_type, export_format),
                              as_attachment=True
-                            )
+                             )
     else:
         edit_form.name.data = g.project.name
         edit_form.password.data = g.project.password
@@ -311,7 +310,7 @@ def demo():
                                   project_id='demo'))
     if not project and is_demo_project_activated:
         project = Project(id="demo", name=u"demonstration", password="demo",
-                contact_email="demo@notmyidea.org")
+                          contact_email="demo@notmyidea.org")
         db.session.add(project)
         db.session.commit()
     session[project.id] = project.password
@@ -329,14 +328,14 @@ def invite():
             # send the email
 
             message_body = render_template("invitation_mail.%s" %
-                get_locale().language)
+                                           get_locale().language)
 
             message_title = _("You have been invited to share your "
-                "expenses for %(project)s", project=g.project.name)
+                              "expenses for %(project)s", project=g.project.name)
             msg = Message(message_title,
-                body=message_body,
-                recipients=[email.strip()
-                    for email in form.emails.data.split(",")])
+                          body=message_body,
+                          recipients=[email.strip()
+                                      for email in form.emails.data.split(",")])
             mail.send(msg)
             flash(_("Your invitations have been sent"))
             return redirect(url_for(".list_bills"))
@@ -354,11 +353,11 @@ def list_bills():
     bills = g.project.get_bills().options(orm.subqueryload(Bill.owers))
 
     return render_template("list_bills.html",
-            bills=bills, member_form=MemberForm(g.project),
-            bill_form=bill_form,
-            add_bill=request.values.get('add_bill', False),
-            current_view="list_bills",
-    )
+                           bills=bills, member_form=MemberForm(g.project),
+                           bill_form=bill_form,
+                           add_bill=request.values.get('add_bill', False),
+                           current_view="list_bills",
+                           )
 
 
 @main.route("/<project_id>/members/add", methods=["GET", "POST"])
@@ -378,7 +377,7 @@ def add_member():
 @main.route("/<project_id>/members/<member_id>/reactivate", methods=["POST"])
 def reactivate(member_id):
     person = Person.query.filter(Person.id == member_id)\
-                .filter(Project.id == g.project.id).all()
+        .filter(Project.id == g.project.id).all()
     if person:
         person[0].activated = True
         db.session.commit()
