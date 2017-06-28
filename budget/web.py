@@ -9,8 +9,10 @@ some shortcuts to make your life better when coding (see `pull_project`
 and `add_project_id` for a quick overview)
 """
 
-from flask import Blueprint, current_app, flash, g, redirect, \
-    render_template, request, session, url_for, send_file
+from flask import (
+    Blueprint, current_app, flash, g, redirect, render_template, request,
+    session, url_for, send_file
+)
 from flask_mail import Mail, Message
 from flask_babel import get_locale, gettext as _
 from werkzeug.security import generate_password_hash, \
@@ -20,12 +22,13 @@ import werkzeug
 from sqlalchemy import orm
 from functools import wraps
 
-# local modules
-from models import db, Project, Person, Bill
-from forms import AdminAuthenticationForm, AuthenticationForm, EditProjectForm, \
-    InviteForm, MemberForm, PasswordReminder, ProjectForm, get_billform_for, \
+from .models import db, Project, Person, Bill
+from .forms import (
+    AdminAuthenticationForm, AuthenticationForm, EditProjectForm,
+    InviteForm, MemberForm, PasswordReminder, ProjectForm, get_billform_for,
     ExportForm
-from utils import Redirect303, list_of_dicts2json, list_of_dicts2csv
+)
+from .utils import Redirect303, list_of_dicts2json, list_of_dicts2csv
 
 main = Blueprint("main", __name__)
 mail = Mail()
