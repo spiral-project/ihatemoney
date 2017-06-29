@@ -69,6 +69,14 @@ def add_project_id(endpoint, values):
 
 
 @main.url_value_preprocessor
+def set_is_dashboard_activated(endpoint, values):
+    """Set is_dashboard_activated application wide
+    so this variable can be used in the layout template
+    """
+    g.is_dashboard_activated = current_app.config["ACTIVATE_DASHBOARD"]
+
+
+@main.url_value_preprocessor
 def pull_project(endpoint, values):
     """When a request contains a project_id value, transform it directly
     into a project by checking the credentials are stored in session.

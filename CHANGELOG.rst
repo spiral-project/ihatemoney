@@ -20,6 +20,7 @@ This document describes changes between each past release.
 - With admin credentials, one can access every project
 - Add delete and edit project actions in the dashboard
 - Add a new setting to activate the dashboard (ACTIVATE_DASHBOARD)
+- Add a link to the dashboard in the navigation bar when it is activated
 
 ### Removed
 
