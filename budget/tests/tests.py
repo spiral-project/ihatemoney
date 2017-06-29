@@ -607,8 +607,16 @@ class BudgetTestCase(TestCase):
         self.assertIn("Invalid email address", resp.data.decode('utf-8'))
 
     def test_dashboard(self):
-        response = self.app.get("/dashboard")
-        self.assertEqual(response.status_code, 200)
+        # test that the dashboard is deactivated by default
+        resp = self.app.post("/admin?goto=%2Fdashboard", data={'admin_password': 'adminpass'},
+                             follow_redirects=True)
+        self.assertIn('<div class="alert alert-danger">', resp.data.decode('utf-8'))
+
+        # test access to the dashboard when it is activated
+        run.app.config['ACTIVATE_DASHBOARD'] = True
+        resp = self.app.post("/admin?goto=%2Fdashboard", data={'admin_password': 'adminpass'},
+                             follow_redirects=True)
+        self.assertIn('<thead><tr><th>Project</th><th>Number of members', resp.data.decode('utf-8'))
 
     def test_settle_page(self):
         self.post_project("raclette")

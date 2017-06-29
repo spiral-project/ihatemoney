@@ -271,6 +271,10 @@ msgstr "Facture la plus récente"
 msgid "Oldest bill"
 msgstr "Facture la plus ancienne"
 
+#: templates/dashboard.html:25
+msgid "The Dashboard is currently deactivated."
+msgstr "La page d'administration est actuellement désactivée."
+
 #: templates/edit_project.html:6 templates/list_bills.html:24
 msgid "you sure?"
 msgstr "c'est sûr ?"

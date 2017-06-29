@@ -12,11 +12,14 @@ This document describes changes between each past release.
 - **BREAKING CHANGE** Turn the WSGI file into a python module, renamed from budget/ihatemoney.wsgi to budget/wsgi.py. Please update your Apache configuration!
 - Changed the recommended gunicorn configuration to use the wsgi module as an entrypoint
 - **BREAKING CHANGE** The default value of ``ADMIN_PASSWORD`` has changed. If you have a custom settings file which set ``ADMIN_PASSWORD`` to an empty string (""), the application will use the default admin password until you update your settings.
+- **BREAKING CHANGE** Admin privileges are required to access the dashboard
 
 ### Added
 
 - Add a new setting to allow public project creation (ALLOW_PUBLIC_PROJECT_CREATION)
 - With admin credentials, one can access every project
+- Add delete and edit project actions in the dashboard
+- Add a new setting to activate the dashboard (ACTIVATE_DASHBOARD)
 
 ### Removed
 

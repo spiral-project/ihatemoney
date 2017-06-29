@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 {% block content %}
-
+{% if is_dashboard_activated %}
 <table id="bill_table" class="table table-striped">
-    <thead><tr><th>{{ _("Project") }}</th><th>{{ _("Number of members") }}</th><th>{{ _("Number of bills") }}</th><th>{{_("Newest bill")}}</th><th>{{_("Oldest bill")}}</th></tr></thead>
+    <thead><tr><th>{{ _("Project") }}</th><th>{{ _("Number of members") }}</th><th>{{ _("Number of bills") }}</th><th>{{_("Newest bill")}}</th><th>{{_("Oldest bill")}}</th><th>{{_("Actions")}}</th></tr></thead>
     <tbody>{% for project in projects|sort(attribute='name') %}
         <tr class="{{ loop.cycle("odd", "even") }}">
         <td>{{ project.name }}</td><td>{{ project.members | count }}</td><td>{{ project.get_bills().count() }}</td>
@@ -13,9 +13,16 @@
         <td></td>
         <td></td>
         {% endif %}
+        <td class="project-actions">
+            <a class="edit" href="{{ url_for(".edit_project", project_id=project.id) }}" title="{{ _("edit") }}">{{ _('edit') }}</a>
+            <a class="delete" href="{{ url_for(".delete_project", project_id=project.id) }}" title="{{ _("delete") }}">{{ _('delete') }}</a>
+        </td>
         </tr>
     {% endfor %}
     </tbody>
 </table>
+{% else %}
+<div class="alert alert-danger">{{ _("The Dashboard is currently deactivated.") }}</div>
+{% endif %}
 {% endblock %}
 
