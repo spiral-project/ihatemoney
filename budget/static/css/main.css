@@ -169,6 +169,29 @@ footer{
     background: url('../images/edit.png') no-repeat right;
 }
 
+.project-actions {
+    padding-top: 10px;
+    text-align: center;
+}
+
+.project-actions > .delete, .project-actions > .edit {
+    font-size: 0px;
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin: 2px;
+    margin-left: 5px;
+    float: left;
+}
+
+.project-actions > .delete{
+    background: url('../images/delete.png') no-repeat right;
+}
+
+.project-actions > .edit{
+    background: url('../images/edit.png') no-repeat right;
+}
+
 .balance .balance-value{
     text-align:right;
 }
