@@ -70,7 +70,7 @@
           {% endif %}
           <li class="nav-item{% if g.lang == "fr" %} active{% endif %}"><a class="nav-link" href="{{ url_for(".change_lang", lang="fr") }}">fr</a></li>
           <li class="nav-item{% if g.lang == "en" %} active{% endif %}"><a class="nav-link" href="{{ url_for(".change_lang", lang="en") }}">en</a></li>
-          {% if g.is_dashboard_activated %}
+          {% if g.show_admin_dashboard_link %}
           <li class="nav-item{% if request.url_rule.endpoint == "main.dashboard" %} active{% endif %}"><a class="nav-link" href="{{ url_for(".dashboard") }}">{{ _("Dashboard") }}</a></li>
           {% endif %}
         </ul>

@@ -85,15 +85,16 @@ properly.
 +------------------------------+---------------------------+----------------------------------------------------------------------------------------+
 | ACTIVATE_DEMO_PROJECT        |  ``True``                 | If set to `True`, a demo project will be available on the frontpage.                   |
 +------------------------------+---------------------------+----------------------------------------------------------------------------------------+
-|                              |                           | Hashed password to access protected endpoints. The default password is ``adminpass``.  |
-|                              |                           | **This needs to be changed** when you disable public project creation or activate the  |
-| ADMIN_PASSWORD               |  ``"pbkdf2:sha256:50.."`` | dashboard.                                                                             |
+|                              |                           | Hashed password to access protected endpoints. When left empty, all administrative     |
+| ADMIN_PASSWORD               |  ``""``                   | tasks are disabled.                                                                    |
 |                              |                           | To generate the proper password HASH, use ``./budget/manage.py generate_password_hash``|
 |                              |                           | and copy its output into the value of *ADMIN_PASSWORD*.                                |
 +------------------------------+---------------------------+----------------------------------------------------------------------------------------+
 | ALLOW_PUBLIC_PROJECT_CREATION|  ``True``                 | If set to `True`, everyone can create a project without entering the admin password    |
+|                              |                           | If set to `False`, a non empty ADMIN_PASSWORD needs to be set                          |
 +------------------------------+---------------------------+----------------------------------------------------------------------------------------+
 | ACTIVATE_ADMIN_DASHBOARD     |  ``False``                | If set to `True`, the dashboard will become accessible entering the admin password     |
+|                              |                           | If set to `True`, a non empty ADMIN_PASSWORD needs to be set                           |
 +------------------------------+---------------------------+----------------------------------------------------------------------------------------+
 
 .. _`the SQLAlechemy documentation`: http://docs.sqlalchemy.org/en/latest/core/engines.html#database-urls

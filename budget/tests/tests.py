@@ -614,6 +614,7 @@ class BudgetTestCase(TestCase):
 
         # test access to the dashboard when it is activated
         run.app.config['ACTIVATE_ADMIN_DASHBOARD'] = True
+        run.app.config['ADMIN_PASSWORD'] = generate_password_hash("adminpass")
         resp = self.app.post("/admin?goto=%2Fdashboard", data={'admin_password': 'adminpass'},
                              follow_redirects=True)
         self.assertIn('<thead><tr><th>Project</th><th>Number of members', resp.data.decode('utf-8'))

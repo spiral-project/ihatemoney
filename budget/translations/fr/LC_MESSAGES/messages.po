@@ -247,6 +247,10 @@ msgstr "le créer"
 msgid "?"
 msgstr " ?"
 
+#: templates/authenticate.html:7
+msgid "Administration tasks are currently not activated."
+msgstr "Les tâches d'administration sont actuellement désactivées."
+
 #: templates/create_project.html:4
 msgid "Create a new project"
 msgstr "Créer un nouveau projet"

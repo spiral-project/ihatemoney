@@ -69,11 +69,13 @@ def add_project_id(endpoint, values):
 
 
 @main.url_value_preprocessor
-def set_is_dashboard_activated(endpoint, values):
-    """Set is_dashboard_activated application wide
+def set_show_admin_dashboard_link(endpoint, values):
+    """Set show_admin_dashboard_link application wide
     so this variable can be used in the layout template
     """
-    g.is_dashboard_activated = current_app.config["ACTIVATE_DASHBOARD"]
+
+    g.show_admin_dashboard_link = (current_app.config["ACTIVATE_ADMIN_DASHBOARD"] and
+                                   current_app.config["ADMIN_PASSWORD"])
 
 
 @main.url_value_preprocessor
@@ -106,9 +108,12 @@ def pull_project(endpoint, values):
 
 @main.route("/admin", methods=["GET", "POST"])
 def admin():
-    """Admin authentication"""
+    """Admin authentication
+    When ADMIN_PASSWORD is empty, admin authentication is deactivated
+    """
     form = AdminAuthenticationForm()
     goto = request.args.get('goto', url_for('.home'))
+    is_admin_auth_enabled = bool(current_app.config['ADMIN_PASSWORD'])
     if request.method == "POST":
         if form.validate():
             if check_password_hash(current_app.config['ADMIN_PASSWORD'], form.admin_password.data):
@@ -118,7 +123,8 @@ def admin():
             else:
                 msg = _("This admin password is not the right one")
                 form.errors['admin_password'] = [msg]
-    return render_template("authenticate.html", form=form, admin_auth=True)
+    return render_template("admin.html", form=form,
+                           is_admin_auth_enabled=is_admin_auth_enabled)
 
 
 @main.route("/authenticate", methods=["GET", "POST"])

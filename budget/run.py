@@ -71,19 +71,6 @@ def configure():
             UserWarning
         )
 
-    if not app.config['ADMIN_PASSWORD']:
-        app.config['ADMIN_PASSWORD'] = default_settings.ADMIN_PASSWORD
-        # Since 2.0
-        warnings.warn(
-            "The way Ihatemoney handles admin authentication has changed. You seem to be using "
-            + "an empty ADMIN_PASSWORD which is not supported anymore. Your ADMIN_PASWWORD has been"
-            + " automatically set to the default password to let you access your admin endpoints."
-            + " However this password is not secure and must be changed in your settings file. Use"
-            + " the command './budget/manage.py generate_password_hash' to generate a proper"
-            + " password hash and copy the output to the value of ADMIN_PASSWORD",
-            UserWarning
-        )
-
 configure()
 
 
