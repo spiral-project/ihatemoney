@@ -517,6 +517,6 @@ def settle_bill():
 @main.route("/dashboard")
 @requires_admin()
 def dashboard():
-    is_dashboard_activated = current_app.config['ACTIVATE_DASHBOARD']
+    is_admin_dashboard_activated = current_app.config['ACTIVATE_ADMIN_DASHBOARD']
     return render_template("dashboard.html", projects=Project.query.all(),
-                           is_dashboard_activated=is_dashboard_activated)
+                           is_admin_dashboard_activated=is_admin_dashboard_activated)

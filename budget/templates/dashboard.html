@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-{% if is_dashboard_activated %}
+{% if is_admin_dashboard_activated %}
 <table id="bill_table" class="table table-striped">
     <thead><tr><th>{{ _("Project") }}</th><th>{{ _("Number of members") }}</th><th>{{ _("Number of bills") }}</th><th>{{_("Newest bill")}}</th><th>{{_("Oldest bill")}}</th><th>{{_("Actions")}}</th></tr></thead>
     <tbody>{% for project in projects|sort(attribute='name') %}

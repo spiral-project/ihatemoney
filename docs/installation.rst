@@ -93,7 +93,7 @@ properly.
 +------------------------------+---------------------------+----------------------------------------------------------------------------------------+
 | ALLOW_PUBLIC_PROJECT_CREATION|  ``True``                 | If set to `True`, everyone can create a project without entering the admin password    |
 +------------------------------+---------------------------+----------------------------------------------------------------------------------------+
-| ACTIVATE_DASHBOARD           |  ``False``                | If set to `True`, the dashboard will become accessible entering the admin password     |
+| ACTIVATE_ADMIN_DASHBOARD     |  ``False``                | If set to `True`, the dashboard will become accessible entering the admin password     |
 +------------------------------+---------------------------+----------------------------------------------------------------------------------------+
 
 .. _`the SQLAlechemy documentation`: http://docs.sqlalchemy.org/en/latest/core/engines.html#database-urls

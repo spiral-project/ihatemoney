@@ -613,7 +613,7 @@ class BudgetTestCase(TestCase):
         self.assertIn('<div class="alert alert-danger">', resp.data.decode('utf-8'))
 
         # test access to the dashboard when it is activated
-        run.app.config['ACTIVATE_DASHBOARD'] = True
+        run.app.config['ACTIVATE_ADMIN_DASHBOARD'] = True
         resp = self.app.post("/admin?goto=%2Fdashboard", data={'admin_password': 'adminpass'},
                              follow_redirects=True)
         self.assertIn('<thead><tr><th>Project</th><th>Number of members', resp.data.decode('utf-8'))
