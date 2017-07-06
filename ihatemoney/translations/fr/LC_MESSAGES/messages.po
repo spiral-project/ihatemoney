@@ -247,6 +247,10 @@ msgstr "le créer"
 msgid "?"
 msgstr " ?"
 
+#: templates/authenticate.html:7
+msgid "Administration tasks are currently disabled."
+msgstr "Les tâches d'administration sont actuellement désactivées."
+
 #: templates/create_project.html:4
 msgid "Create a new project"
 msgstr "Créer un nouveau projet"
@@ -270,6 +274,10 @@ msgstr "Facture la plus récente"
 #: templates/dashboard.html:5
 msgid "Oldest bill"
 msgstr "Facture la plus ancienne"
+
+#: templates/dashboard.html:25
+msgid "The Dashboard is currently deactivated."
+msgstr "La page d'administration est actuellement désactivée."
 
 #: templates/edit_project.html:6 templates/list_bills.html:24
 msgid "you sure?"

@@ -29,3 +29,9 @@ ACTIVATE_DEMO_PROJECT = True
 # DO NOT enter the password in cleartext. Generate a password hash with
 # "ihatemoney generate_password_hash" instead.
 ADMIN_PASSWORD = ""
+
+# If set to True (default value) anyone can create a new project.
+ALLOW_PUBLIC_PROJECT_CREATION = True
+
+# If set to True, an administration dashboard is available.
+ACTIVATE_ADMIN_DASHBOARD = False

@@ -32,17 +32,30 @@ from ihatemoney.utils import Redirect303, list_of_dicts2json, list_of_dicts2csv
 main = Blueprint("main", __name__)
 
 
-def requires_admin(f):
+def requires_admin(bypass=None):
     """Require admin permissions for @requires_admin decorated endpoints.
-       Has no effect if ADMIN_PASSWORD is empty (default value)
+
+    This has no effect if ADMIN_PASSWORD is empty.
+
+    :param bypass: Used to conditionnaly bypass the admin authentication.
+                   It expects a tuple containing the name of an application
+                   setting and its expected value.
+                   e.g. if you use @require_admin(bypass=("ALLOW_PUBLIC_PROJECT_CREATION", True))
+                   Admin authentication will be bypassed when ALLOW_PUBLIC_PROJECT_CREATION is
+                   set to True.
     """
-    @wraps(f)
-    def admin_auth(*args, **kws):
-        is_admin = session.get('is_admin')
-        if is_admin or not current_app.config['ADMIN_PASSWORD']:
-            return f(*args, **kws)
-        raise Redirect303(url_for('.admin', goto=request.path))
-    return admin_auth
+    def check_admin(f):
+        @wraps(f)
+        def admin_auth(*args, **kws):
+            is_admin_auth_bypassed = False
+            if bypass is not None and current_app.config.get(bypass[0]) == bypass[1]:
+                is_admin_auth_bypassed = True
+            is_admin = session.get('is_admin')
+            if is_admin or is_admin_auth_bypassed:
+                return f(*args, **kws)
+            raise Redirect303(url_for('.admin', goto=request.path))
+        return admin_auth
+    return check_admin
 
 
 @main.url_defaults
@@ -58,9 +71,23 @@ def add_project_id(endpoint, values):
 
 
 @main.url_value_preprocessor
+def set_show_admin_dashboard_link(endpoint, values):
+    """Sets the "show_admin_dashboard_link" variable application wide
+    in order to use it in the layout template.
+    """
+
+    g.show_admin_dashboard_link = (
+        current_app.config["ACTIVATE_ADMIN_DASHBOARD"]
+        and current_app.config["ADMIN_PASSWORD"]
+    )
+
+
+@main.url_value_preprocessor
 def pull_project(endpoint, values):
     """When a request contains a project_id value, transform it directly
-    into a project by checking the credentials are stored in session.
+    into a project by checking the credentials stored in the session.
+
+    With administration credentials, one can access any project.
 
     If not, redirect the user to an authentication form
     """
@@ -74,7 +101,9 @@ def pull_project(endpoint, values):
         if not project:
             raise Redirect303(url_for(".create_project",
                                       project_id=project_id))
-        if project.id in session and session[project.id] == project.password:
+
+        is_admin = session.get('is_admin')
+        if (project.id in session and session[project.id] == project.password) or is_admin:
             # add project into kwargs and call the original function
             g.project = project
         else:
@@ -85,9 +114,13 @@ def pull_project(endpoint, values):
 
 @main.route("/admin", methods=["GET", "POST"])
 def admin():
-    """Admin authentication"""
+    """Admin authentication.
+
+    When ADMIN_PASSWORD is empty, admin authentication is deactivated.
+    """
     form = AdminAuthenticationForm()
     goto = request.args.get('goto', url_for('.home'))
+    is_admin_auth_enabled = bool(current_app.config['ADMIN_PASSWORD'])
     if request.method == "POST":
         if form.validate():
             if check_password_hash(current_app.config['ADMIN_PASSWORD'], form.admin_password.data):
@@ -97,7 +130,8 @@ def admin():
             else:
                 msg = _("This admin password is not the right one")
                 form.errors['admin_password'] = [msg]
-    return render_template("authenticate.html", form=form, admin_auth=True)
+    return render_template("admin.html", form=form,
+                           is_admin_auth_enabled=is_admin_auth_enabled)
 
 
 @main.route("/authenticate", methods=["GET", "POST"])
@@ -156,17 +190,17 @@ def home():
     project_form = ProjectForm()
     auth_form = AuthenticationForm()
     # If ADMIN_PASSWORD is empty we consider that admin mode is disabled
-    is_admin_mode_enabled = bool(current_app.config['ADMIN_PASSWORD'])
     is_demo_project_activated = current_app.config['ACTIVATE_DEMO_PROJECT']
+    is_public_project_creation_allowed = current_app.config['ALLOW_PUBLIC_PROJECT_CREATION']
 
     return render_template("home.html", project_form=project_form,
                            is_demo_project_activated=is_demo_project_activated,
-                           is_admin_mode_enabled=is_admin_mode_enabled,
+                           is_public_project_creation_allowed=is_public_project_creation_allowed,
                            auth_form=auth_form, session=session)
 
 
 @main.route("/create", methods=["GET", "POST"])
-@requires_admin
+@requires_admin(bypass=("ALLOW_PUBLIC_PROJECT_CREATION", True))
 def create_project():
     form = ProjectForm()
     if request.method == "GET" and 'project_id' in request.values:
@@ -283,7 +317,7 @@ def delete_project():
     g.project.remove_project()
     flash(_('Project successfully deleted'))
 
-    return redirect(url_for(".home"))
+    return redirect(request.headers.get('Referer') or url_for('.home'))
 
 
 @main.route("/exit")
@@ -496,5 +530,11 @@ def settle_bill():
 
 
 @main.route("/dashboard")
+@requires_admin()
 def dashboard():
-    return render_template("dashboard.html", projects=Project.query.all())
+    is_admin_dashboard_activated = current_app.config['ACTIVATE_ADMIN_DASHBOARD']
+    return render_template(
+        "dashboard.html",
+        projects=Project.query.all(),
+        is_admin_dashboard_activated=is_admin_dashboard_activated
+    )
