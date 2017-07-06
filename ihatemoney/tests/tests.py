@@ -27,6 +27,8 @@ __HERE__ = os.path.dirname(os.path.abspath(__file__))
 
 class BaseTestCase(TestCase):
 
+    SECRET_KEY = "TEST SESSION"
+
     def create_app(self):
         # Pass the test object as a configuration.
         return create_app(self)
@@ -72,14 +74,15 @@ class IhatemoneyTestCase(BaseTestCase):
 
 
 class DefaultConfigurationTestCase(BaseTestCase):
+
     def test_default_configuration(self):
         """Test that default settings are loaded when no other configuration file is specified"""
         self.assertFalse(self.app.config['DEBUG'])
         self.assertEqual(self.app.config['SQLALCHEMY_DATABASE_URI'], 'sqlite://')
         self.assertFalse(self.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'])
-        self.assertEqual(self.app.config['SECRET_KEY'], 'tralala')
         self.assertEqual(self.app.config['MAIL_DEFAULT_SENDER'],
                          ("Budget manager", "budget@notmyidea.org"))
+
 
 
 class BudgetTestCase(IhatemoneyTestCase):
