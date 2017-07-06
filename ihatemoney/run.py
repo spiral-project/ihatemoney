@@ -86,7 +86,7 @@ def validate_configuration(app):
         warnings.warn(
             "The way Ihatemoney stores your ADMIN_PASSWORD has changed. You are using an unhashed"
             + " ADMIN_PASSWORD, which is not supported anymore and won't let you access your admin"
-            + " endpoints. Please use the command './budget/manage.py generate_password_hash'"
+            + " endpoints. Please use the command 'ihatemoney generate_password_hash'"
             + " to generate a proper password HASH and copy the output to the value of"
             + " ADMIN_PASSWORD in your settings file.",
             UserWarning

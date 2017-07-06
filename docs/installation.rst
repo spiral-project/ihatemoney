@@ -29,7 +29,7 @@ dependencies yourself (that's what the `make serve` does). That would be::
 
 And then run the application::
 
-    cd budget
+    cd ihatemoney
     python run.py
 
 In any case, you can point your browser at `http://localhost:5000 <http://localhost:5000>`_.
@@ -86,7 +86,7 @@ properly.
 | ACTIVATE_DEMO_PROJECT      |  ``True``                 | If set to `True`, a demo project will be available on the frontpage.                   |
 +----------------------------+---------------------------+----------------------------------------------------------------------------------------+
 |                            |  ``""``                   | If not empty, the specified password must be entered to create new projects.           |
-| ADMIN_PASSWORD             |                           | To generate the proper password HASH, use ``./budget/manage.py generate_password_hash``|
+| ADMIN_PASSWORD             |                           | To generate the proper password HASH, use ``ihatemoney generate_password_hash``        |
 |                            |                           | and copy its output into the value of *ADMIN_PASSWORD*.                                |
 +----------------------------+---------------------------+----------------------------------------------------------------------------------------+
 
@@ -95,7 +95,7 @@ properly.
 In a production environment
 ---------------------------
 
-Make a copy of ``budget/default_settings.py`` and name it ``ihatemoney.cfg``.
+Make a copy of ``ihatemoney/default_settings.py`` and name it ``ihatemoney.cfg``.
 Then adjust the settings to your needs and move this file to
 ``/etc/ihatemoney/ihatemoney.cfg``.
 
