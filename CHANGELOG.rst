@@ -6,16 +6,25 @@ This document describes changes between each past release.
 2.0 (unreleased)
 ----------------
 
+### Breaking changes
+
+- ``ADMIN_PASSWORD`` is now hashed rather than plain text. The ``ihatemoney generate_password_hash`` command can now be used to generate a proper password HASH (#236)
+- Turn the WSGI file into a python module, renamed from budget/ihatemoney.wsgi to ihatemoney/wsgi.py. Please update your Apache configuration!
+- Admin privileges are now required to access the dashboard
+
 ### Changed
 
-- **BREAKING CHANGE** Use a hashed ``ADMIN_PASSWORD`` instead of a clear text one, ``./budget/manage.py generate_password_hash`` can be used to generate a proper password HASH (#236)
-- **BREAKING CHANGE** Turn the WSGI file into a python module, renamed from budget/ihatemoney.wsgi to budget/wsgi.py. Please update your Apache configuration!
 - Changed the recommended gunicorn configuration to use the wsgi module as an entrypoint
 
 ### Added
 
 - Add a statistics tab (#257)
 - Add python3.6 support (#259)
+- Public project creation can now be deactivated using the ALLOW_PUBLIC_PROJECT_CREATION setting.
+- If admin credentials are defined, they can be used to access any project.
+- It is now possible to edit and delete projects directly from the dashboard.
+- The dashboard can now be deactivated using the ACTIVATE_ADMIN_DASHBOARD setting.
+- When activated, a link to the dashboard appears in the navigation bar.
 
 ### Removed
 
