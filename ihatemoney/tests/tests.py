@@ -1174,5 +1174,6 @@ class ServerTestCase(APITestCase):
         req = self.client.get("/foo/")
         self.assertStatus(200, req)
 
+
 if __name__ == "__main__":
     unittest.main()

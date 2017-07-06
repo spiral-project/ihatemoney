@@ -20,12 +20,13 @@ class GeneratePasswordHash(Command):
 
 def main():
     app = create_app()
-    migrate = Migrate(app, db)
+    Migrate(app, db)
 
     manager = Manager(app)
     manager.add_command('db', MigrateCommand)
     manager.add_command('generate_password_hash', GeneratePasswordHash)
     manager.run()
+
 
 if __name__ == '__main__':
     main()

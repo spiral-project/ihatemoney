@@ -11,8 +11,10 @@ db = SQLAlchemy()
 
 class Project(db.Model):
 
-    _to_serialize = ("id", "name", "password", "contact_email",
-                     "members", "active_members", "balance")
+    _to_serialize = (
+        "id", "name", "password", "contact_email", "members", "active_members",
+        "balance"
+    )
 
     id = db.Column(db.String(64), primary_key=True)
 
@@ -229,6 +231,7 @@ class Person(db.Model):
 
     def __repr__(self):
         return "<Person %s for project %s>" % (self.name, self.project.name)
+
 
 # We need to manually define a join table for m2m relations
 billowers = db.Table(

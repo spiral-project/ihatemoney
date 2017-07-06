@@ -1,6 +1,5 @@
 import base64
 import re
-import inspect
 
 from io import BytesIO, StringIO
 from jinja2 import filters
@@ -118,7 +117,7 @@ def list_of_dicts2csv(dict_to_convert):
             for dic in dict_to_convert:
                 csv_data.append(
                     [dic[h].encode('utf8')
-                     if isinstance(dic[h], unicode) else str(dic[h]).encode('utf8')
+                     if isinstance(dic[h], unicode) else str(dic[h]).encode('utf8')  # NOQA
                      for h in dict_to_convert[0].keys()])
     except (KeyError, IndexError):
         csv_data = []
@@ -128,6 +127,7 @@ def list_of_dicts2csv(dict_to_convert):
     if six.PY3:
         csv_file = BytesIO(csv_file.getvalue().encode('utf-8'))
     return csv_file
+
 
 # base64 encoding that works with both py2 and py3 and yield no warning
 base64_encode = base64.encodestring if six.PY2 else base64.encodebytes

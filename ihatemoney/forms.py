@@ -6,7 +6,6 @@ from wtforms.validators import Email, Required, ValidationError
 from flask_babel import lazy_gettext as _
 from flask import request
 
-from wtforms.widgets import html_params
 from datetime import datetime
 from jinja2 import Markup
 
@@ -155,7 +154,7 @@ class MemberForm(FlaskForm):
         if (not form.edit and Person.query.filter(
                 Person.name == field.data,
                 Person.project == form.project,
-                Person.activated == True).all()):
+                Person.activated == True).all()):  # NOQA
             raise ValidationError(_("This project already have this member"))
 
     def save(self, project, person):

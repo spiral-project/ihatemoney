@@ -228,7 +228,8 @@ def remind_password():
 
             # send the password reminder
             password_reminder = "password_reminder.%s" % get_locale().language
-            current_app.mail.send(Message("password recovery",
+            current_app.mail.send(Message(
+                "password recovery",
                 body=render_template(password_reminder, project=project),
                 recipients=[project.contact_email]))
             flash(_("a mail has been sent to you with the password"))
@@ -388,7 +389,7 @@ def reactivate(member_id):
 def remove_member(member_id):
     member = g.project.remove_member(member_id)
     if member:
-        if member.activated == False:
+        if not member.activated:
             flash(_("User '%(name)s' has been deactivated. It will still "
                     "appear in the users list until its balance "
                     "becomes zero.", name=member.name))
