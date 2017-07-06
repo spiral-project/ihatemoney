@@ -35,7 +35,10 @@ DEPENDENCY_LINKS = [
 
 ENTRY_POINTS = {
     'paste.app_factory': [
-        'main = budget.run:main',
+        'main = ihatemoney.run:main',
+    ],
+    'console_scripts': [
+        'ihatemoney = ihatemoney.manage:main'
     ],
 }
 

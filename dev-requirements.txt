@@ -1,3 +1,5 @@
 zest.releaser
 tox
 pytest
+Flask-Testing
+Flake8
