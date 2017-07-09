@@ -7,6 +7,7 @@ from flask_babel import Babel
 from flask_mail import Mail
 from flask_migrate import Migrate, upgrade, stamp
 from raven.contrib.flask import Sentry
+from werkzeug.contrib.fixers import ProxyFix
 
 from ihatemoney.api import api
 from ihatemoney.models import db
@@ -103,6 +104,11 @@ def create_app(configuration=None, instance_path='/etc/ihatemoney',
     # If a configuration object is passed, use it. Otherwise try to find one.
     load_configuration(app, configuration)
     app.wsgi_app = PrefixedWSGI(app)
+
+    # Get client's real IP
+    # Note(0livd): When running in a non-proxy setup, is vulnerable to requests
+    # with a forged X-FORWARDED-FOR header
+    app.wsgi_app = ProxyFix(app.wsgi_app)
 
     validate_configuration(app)
     app.register_blueprint(web_interface)

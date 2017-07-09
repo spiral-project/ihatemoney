@@ -27,9 +27,11 @@ from ihatemoney.forms import (
     InviteForm, MemberForm, PasswordReminder, ProjectForm, get_billform_for,
     ExportForm
 )
-from ihatemoney.utils import Redirect303, list_of_dicts2json, list_of_dicts2csv
+from ihatemoney.utils import Redirect303, list_of_dicts2json, list_of_dicts2csv, LoginThrottler
 
 main = Blueprint("main", __name__)
+
+login_throttler = LoginThrottler(max_attempts=3, delay=1)
 
 
 def requires_admin(f):
@@ -89,14 +91,24 @@ def admin():
     form = AdminAuthenticationForm()
     goto = request.args.get('goto', url_for('.home'))
     if request.method == "POST":
+        client_ip = request.remote_addr
+        if not login_throttler.is_login_allowed(client_ip):
+            msg = _("Too many failed login attempts, please retry later.")
+            form.errors['admin_password'] = [msg]
+            return render_template("authenticate.html", form=form, admin_auth=True)
         if form.validate():
-            if check_password_hash(current_app.config['ADMIN_PASSWORD'], form.admin_password.data):
+            # Valid password
+            if (check_password_hash(current_app.config['ADMIN_PASSWORD'],
+                                    form.admin_password.data)):
                 session['is_admin'] = True
                 session.update()
+                login_throttler.reset(client_ip)
                 return redirect(goto)
-            else:
-                msg = _("This admin password is not the right one")
-                form.errors['admin_password'] = [msg]
+            # Invalid password
+            login_throttler.increment_attempts_counter(client_ip)
+            msg = _("This admin password is not the right one. Only %(num)d attempts left.",
+                    num=login_throttler.get_remaining_attempts(client_ip))
+            form.errors['admin_password'] = [msg]
     return render_template("authenticate.html", form=form, admin_auth=True)
 
 
