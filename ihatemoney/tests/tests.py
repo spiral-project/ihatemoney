@@ -14,13 +14,12 @@ from werkzeug.security import generate_password_hash
 from flask import session
 from flask_testing import TestCase
 
-from ihatemoney.run import create_app, db
+from ihatemoney.run import create_app, db, load_configuration
 from ihatemoney import models
 from ihatemoney import utils
 
 # Unset configuration file env var if previously set
-if 'IHATEMONEY_SETTINGS_FILE_PATH' in os.environ:
-    del os.environ['IHATEMONEY_SETTINGS_FILE_PATH']
+os.environ.pop('IHATEMONEY_SETTINGS_FILE_PATH', None)
 
 __HERE__ = os.path.dirname(os.path.abspath(__file__))
 
@@ -73,7 +72,7 @@ class IhatemoneyTestCase(BaseTestCase):
     WTF_CSRF_ENABLED = False  # Simplifies the tests.
 
 
-class DefaultConfigurationTestCase(BaseTestCase):
+class ConfigurationTestCase(BaseTestCase):
 
     def test_default_configuration(self):
         """Test that default settings are loaded when no other configuration file is specified"""
@@ -82,6 +81,29 @@ class DefaultConfigurationTestCase(BaseTestCase):
         self.assertFalse(self.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'])
         self.assertEqual(self.app.config['MAIL_DEFAULT_SENDER'],
                          ("Budget manager", "budget@notmyidea.org"))
+
+    def test_env_var_configuration_file(self):
+        """Test that settings are loaded from the specified configuration file"""
+        os.environ['IHATEMONEY_SETTINGS_FILE_PATH'] = os.path.join(__HERE__,
+                                                                   "ihatemoney_envvar.cfg")
+        load_configuration(self.app)
+        self.assertEqual(self.app.config['SECRET_KEY'], 'lalatra')
+
+        # Test that the specified configuration file is loaded
+        # even if the default configuration file ihatemoney.cfg exists
+        os.environ['IHATEMONEY_SETTINGS_FILE_PATH'] = os.path.join(__HERE__,
+                                                                   "ihatemoney_envvar.cfg")
+        self.app.config.root_path = __HERE__
+        load_configuration(self.app)
+        self.assertEqual(self.app.config['SECRET_KEY'], 'lalatra')
+
+        os.environ.pop('IHATEMONEY_SETTINGS_FILE_PATH', None)
+
+    def test_default_configuration_file(self):
+        """Test that settings are loaded from the default configuration file"""
+        self.app.config.root_path = __HERE__
+        load_configuration(self.app)
+        self.assertEqual(self.app.config['SECRET_KEY'], 'supersecret')
 
 
 class BudgetTestCase(IhatemoneyTestCase):
