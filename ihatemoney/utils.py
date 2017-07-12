@@ -149,6 +149,9 @@ class LoginThrottler():
         return self._max_attempts - self._attempts.get(ip, [datetime.now(), 0])[1]
 
     def increment_attempts_counter(self, ip):
+        # Reset all attempt counters when they get hungry for memory
+        if len(self._attempts) > 10000:
+            self.__init__()
         if self._attempts.get(ip) is None:
             # Store first attempt date and number of attempts since
             self._attempts[ip] = [datetime.now(), 0]
