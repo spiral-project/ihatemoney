@@ -90,6 +90,8 @@ ihatemoney relies on a configuration file. If you run the application for the
 first time, you will need to take a few moments to configure the application
 properly.
 
+.. warning:: You **must** customize the ``SECRET_KEY`` on a production installation.
+
 +----------------------------+---------------------------+----------------------------------------------------------------------------------------+
 | Setting name               |  Default                  | What does it do?                                                                       |
 +============================+===========================+========================================================================================+
