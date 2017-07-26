@@ -90,6 +90,9 @@ properly.
 | ADMIN_PASSWORD             |                           | To generate the proper password HASH, use ``ihatemoney generate_password_hash``        |
 |                            |                           | and copy its output into the value of *ADMIN_PASSWORD*.                                |
 +----------------------------+---------------------------+----------------------------------------------------------------------------------------+
+| APPLICATION_ROOT           |  ``""``                   | If empty, ihatemoney will be served at domain root (e.g: *http://domain.tld*), if set  |
+|                            |                           | to ``"foo"``, it will be served from a "folder" (e.g: *http://domain.tld/foo*)         |
++----------------------------+---------------------------+----------------------------------------------------------------------------------------+
 
 In a production environment
 ---------------------------
@@ -105,9 +108,3 @@ the IHATEMONEY_SETTINGS_FILE_PATH environment variable.
 e.g.::
 
     $ export IHATEMONEY_SETTINGS_FILE_PATH="/path/to/your/conf/file.cfg"
-
-Note that you can also pass additional flask parameters with this file.
-e.g. If you want to prefix your URLs to serve ihatemonney in the *folder*
-of a domain, use the following: ::
-
-    APPLICATION_ROOT='/budget'
