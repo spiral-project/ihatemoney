@@ -70,11 +70,18 @@ With Apache and mod_wsgi
 With Nginx, Gunicorn and Supervisord
 ------------------------------------
 
-1. Add the lines in conf/supervisord.conf to your supervisord.conf file.
-2. Copy and paste the content of conf/nginx.conf in your nginx conf file.
-3. reload both nginx and supervisord. It should be working ;)
+.. note:: For the 3 configuration files mentioned below, you will need to fix
+          the paths to reflect yours.
+
+1. Copy *conf/gunicorn.conf.py* to */etc/ihatemoney/gunicorn.conf.py*
+2. Copy *conf/supervisord.conf* to */etc/supervisor/conf.d/ihatemoney.conf*
+3. Copy *conf/nginx.conf* with your nginx vhosts [#nginx-vhosts]_
+4. Reload both nginx and supervisord. It should be working ;)
 
 Don't forget to set the right permission for your files !
+
+.. [#nginx-vhosts] typically, */etc/nginx/conf.d/* or
+   */etc/nginx/sites-available*, depending on your distribution.
 
 Configuration
 =============
