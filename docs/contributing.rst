@@ -47,7 +47,7 @@ End-user
 --------
 
 You are using the application and found a bug? You have some ideas about how to
-improve the project? Please tell us [by filling a new issue](https://github.com/spiral-project/ihatemoney/issues).
+improve the project? Please tell us `by filling a new issue <https://github.com/spiral-project/ihatemoney/issues>`_.
 Or, if you prefer, you can send me an email to `alexis@notmyidea.org` and I will
 update the issue tracker with your feedback.
 
