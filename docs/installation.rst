@@ -1,10 +1,7 @@
 Installation
 ############
 
-First, you need to get the source files. One way to get them is to download
-them from the github repository, using git::
-
-  git clone https://github.com/spiral-project/ihatemoney.git
+.. _installation-requirements:
 
 Requirements
 ============
@@ -13,31 +10,45 @@ Requirements
 
 * **Python**: either 2.7, 3.4, 3.5 will work.
 * **A Backend**: to choose among MySQL, PostgreSQL, SQLite or Memory.
+* **Virtualenv** (recommended): `virtualenv` package under Debian/Ubuntu.
 
-We recommend to use `pip <https://pypi.python.org/pypi/pip/>`_ and
-`virtualenv <https://pypi.python.org/pypi/virtualenv>`_ but it will work
-without if you prefer.
+We recommend to use `virtualenv <https://pypi.python.org/pypi/virtualenv>`_ but
+it will work without if you prefer.
 
-If you have everything installed, you can just issue::
+If wondering about the backend, SQLite is the simplest and will work fine for
+most small to medium setups.
 
-    make serve
+Prepare virtualenv (recommended)
+================================
 
-Alternatively, you can also use the `requirements.txt` file to install the
-dependencies yourself (that's what the `make serve` does). That would be::
+Choose an installation path, here `/home/john/ihatemoney`.
 
-     pip install -r requirements.txt
+Create a virtualenv::
 
-And then run the application::
+    virtualenv  -p /usr/bin/python3 /home/john/ihatemoney
 
-    cd ihatemoney
-    python run.py
+Activate the virtualenv::
 
-In any case, you can point your browser at `http://localhost:5000 <http://localhost:5000>`_.
-It's as simple as that!
+    source /home/john/ihatemoney/bin/activate
 
-In case you want to update to newer versions, you can just run the "update" command::
+.. note:: You will have to re-issue that ``source`` command if you open a new
+          terminal.
 
-  make update
+Install
+=======
+
+Install the latest release with pip::
+
+  pip install ihatemoney
+
+Test it
+=======
+
+Once installed, you can start a test server::
+
+  ihatemoney runserver
+
+And point your browser at `http://localhost:5000 <http://localhost:5000>`_.
 
 Deploy it
 =========
