@@ -77,7 +77,7 @@ class ConfigurationTestCase(BaseTestCase):
     def test_default_configuration(self):
         """Test that default settings are loaded when no other configuration file is specified"""
         self.assertFalse(self.app.config['DEBUG'])
-        self.assertEqual(self.app.config['SQLALCHEMY_DATABASE_URI'], 'sqlite://')
+        self.assertEqual(self.app.config['SQLALCHEMY_DATABASE_URI'], 'sqlite:////tmp/ihatemoney.db')
         self.assertFalse(self.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'])
         self.assertEqual(self.app.config['MAIL_DEFAULT_SENDER'],
                          ("Budget manager", "budget@notmyidea.org"))
