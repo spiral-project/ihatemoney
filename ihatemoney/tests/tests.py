@@ -627,6 +627,68 @@ class BudgetTestCase(IhatemoneyTestCase):
         response = self.client.get("/dashboard")
         self.assertEqual(response.status_code, 200)
 
+    def test_statistics_page(self):
+        self.post_project("raclette")
+        response = self.client.get("/raclette/statistics")
+        self.assertEqual(response.status_code, 200)
+
+    def test_statistics(self):
+        self.post_project("raclette")
+
+        # add members
+        self.client.post("/raclette/members/add", data={'name': 'alexis', 'weight': 2})
+        self.client.post("/raclette/members/add", data={'name': 'fred'})
+        self.client.post("/raclette/members/add", data={'name': 'tata'})
+        # Add a member with a balance=0 :
+        self.client.post("/raclette/members/add", data={'name': 'toto'})
+
+        # create bills
+        self.client.post("/raclette/add", data={
+            'date': '2011-08-10',
+            'what': 'fromage à raclette',
+            'payer': 1,
+            'payed_for': [1, 2, 3],
+            'amount': '10.0',
+        })
+
+        self.client.post("/raclette/add", data={
+            'date': '2011-08-10',
+            'what': 'red wine',
+            'payer': 2,
+            'payed_for': [1],
+            'amount': '20',
+        })
+
+        self.client.post("/raclette/add", data={
+            'date': '2011-08-10',
+            'what': 'delicatessen',
+            'payer': 1,
+            'payed_for': [1, 2],
+            'amount': '10',
+        })
+
+        response = self.client.get("/raclette/statistics")
+        self.assertIn("<td>alexis</td>\n            "
+                      + "<td>20.00</td>\n            "
+                      + "<td>31.67</td>\n            "
+                      + "<td>-11.67</td>\n",
+                      response.data.decode('utf-8'))
+        self.assertIn("<td>fred</td>\n            "
+                      + "<td>20.00</td>\n            "
+                      + "<td>5.83</td>\n            "
+                      + "<td>14.17</td>\n",
+                      response.data.decode('utf-8'))
+        self.assertIn("<td>tata</td>\n            "
+                      + "<td>0.00</td>\n            "
+                      + "<td>2.50</td>\n            "
+                      + "<td>-2.50</td>\n",
+                      response.data.decode('utf-8'))
+        self.assertIn("<td>toto</td>\n            "
+                      + "<td>0.00</td>\n            "
+                      + "<td>0.00</td>\n            "
+                      + "<td>0.00</td>\n",
+                      response.data.decode('utf-8'))
+
     def test_settle_page(self):
         self.post_project("raclette")
         response = self.client.get("/raclette/settle_bills")

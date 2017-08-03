@@ -400,6 +400,10 @@ msgstr "Factures"
 msgid "Settle"
 msgstr "Remboursements"
 
+#: templates/layout.html:50
+msgid "Statistics"
+msgstr "Statistiques"
+
 #: templates/layout.html:53
 msgid "options"
 msgstr "options"
@@ -529,3 +533,19 @@ msgstr "Qui doit payer ?"
 #: templates/settle_bills.html:31
 msgid "To whom?"
 msgstr "Pour qui ?"
+
+#: templates/statistics.html:22
+msgid "Who?"
+msgstr "Qui ?"
+
+#: templates/statistics.html:22
+msgid "Paid"
+msgstr "A payé"
+
+#: templates/statistics.html:22
+msgid "Spent"
+msgstr "A dépensé"
+
+#: templates/statistics.html:22
+msgid "Balance"
+msgstr "Solde"

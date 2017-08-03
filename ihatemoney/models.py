@@ -144,6 +144,16 @@ class Project(db.Model):
             .order_by(Bill.date.desc())\
             .order_by(Bill.id.desc())
 
+    def get_member_bills(self, member_id):
+        """Return the list of bills related to a specific member"""
+        return Bill.query.join(Person, Project)\
+            .filter(Bill.payer_id == Person.id)\
+            .filter(Person.project_id == Project.id)\
+            .filter(Person.id == member_id)\
+            .filter(Project.id == self.id)\
+            .order_by(Bill.date.desc())\
+            .order_by(Bill.id.desc())
+
     def get_pretty_bills(self, export_format="json"):
         """Return a list of project's bills with pretty formatting"""
         bills = self.get_bills()
