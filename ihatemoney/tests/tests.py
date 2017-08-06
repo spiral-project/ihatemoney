@@ -378,8 +378,17 @@ class BudgetTestCase(IhatemoneyTestCase):
             c.get("/exit")
             self.assertNotIn('raclette', session)
 
+        # test that whith admin credentials, one can access every project
+        self.app.config['ADMIN_PASSWORD'] = generate_password_hash("pass")
+        with self.app.test_client() as c:
+            resp = c.post("/admin?goto=%2Fraclette", data={'admin_password': 'pass'})
+            self.assertNotIn("Authentication", resp.data.decode('utf-8'))
+            self.assertTrue(session['is_admin'])
+
     def test_admin_authentication(self):
         self.app.config['ADMIN_PASSWORD'] = generate_password_hash("pass")
+        # Disable public project creation so we have an admin endpoint to test
+        self.app.config['ALLOW_PUBLIC_PROJECT_CREATION'] = False
 
         # test the redirection to the authentication page when trying to access admin endpoints
         resp = self.client.get("/create")
@@ -601,8 +610,23 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertIn("Invalid email address", resp.data.decode('utf-8'))
 
     def test_dashboard(self):
-        response = self.client.get("/dashboard")
-        self.assertEqual(response.status_code, 200)
+        # test that the dashboard is deactivated by default
+        resp = self.client.post(
+            "/admin?goto=%2Fdashboard",
+            data={'admin_password': 'adminpass'},
+            follow_redirects=True
+        )
+        self.assertIn('<div class="alert alert-danger">', resp.data.decode('utf-8'))
+
+        # test access to the dashboard when it is activated
+        self.app.config['ACTIVATE_ADMIN_DASHBOARD'] = True
+        self.app.config['ADMIN_PASSWORD'] = generate_password_hash("adminpass")
+        resp = self.client.post(
+            "/admin?goto=%2Fdashboard",
+            data={'admin_password': 'adminpass'},
+            follow_redirects=True
+        )
+        self.assertIn('<thead><tr><th>Project</th><th>Number of members', resp.data.decode('utf-8'))
 
     def test_settle_page(self):
         self.post_project("raclette")
