@@ -8,7 +8,7 @@ DEBUG = False
 
 # The database URI, reprensenting the type of database and how to connect to it.
 # Enter an absolute path here.
-SQLALCHEMY_DATABASE_URI = 'sqlite://'
+SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/ihatemoney.db'
 SQLACHEMY_ECHO = DEBUG
 
 # Will likely become the default value in flask-sqlalchemy >=3 ; could be removed
