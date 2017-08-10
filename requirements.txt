@@ -3,6 +3,7 @@ flask-wtf>=0.14
 flask-sqlalchemy>=2.2,<3.0
 flask-mail>=0.8
 Flask-Migrate>=1.8.0
+Flask-script
 flask-babel
 flask-rest
 jinja2>=2.6

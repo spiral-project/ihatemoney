@@ -1,7 +1,4 @@
-budget/budget.db
-budget.db
-budget/memory
-budget/settings.py
+ihatemoney.cfg
 *.pyc
 *.egg-info
 dist
@@ -9,3 +6,4 @@ dist
 docs/_build/
 .tox
 dist
+.cache/
