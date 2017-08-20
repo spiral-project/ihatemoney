@@ -9,6 +9,7 @@ import os
 import json
 from collections import defaultdict
 import six
+from time import sleep
 
 from werkzeug.security import generate_password_hash
 from flask import session
@@ -396,6 +397,28 @@ class BudgetTestCase(IhatemoneyTestCase):
         # test empty password
         resp = self.client.post("/admin?goto=%2Fcreate", data={'admin_password': ''})
         self.assertNotIn('<a href="/create">/create</a>', resp.data.decode('utf-8'))
+
+    def test_login_throttler(self):
+        self.app.config['ADMIN_PASSWORD'] = generate_password_hash("pass")
+
+        # Authenticate 3 times with a wrong passsword
+        self.client.post("/admin?goto=%2Fcreate", data={'admin_password': 'wrong'})
+        self.client.post("/admin?goto=%2Fcreate", data={'admin_password': 'wrong'})
+        resp = self.client.post("/admin?goto=%2Fcreate", data={'admin_password': 'wrong'})
+
+        self.assertIn('Too many failed login attempts, please retry later.',
+                      resp.data.decode('utf-8'))
+        # Change throttling delay
+        import gc
+        for obj in gc.get_objects():
+            if isinstance(obj, utils.LoginThrottler):
+                obj._delay = 0.005
+                break
+        # Wait for delay to expire and retry logging in
+        sleep(1)
+        resp = self.client.post("/admin?goto=%2Fcreate", data={'admin_password': 'wrong'})
+        self.assertNotIn('Too many failed login attempts, please retry later.',
+                         resp.data.decode('utf-8'))
 
     def test_manage_bills(self):
         self.post_project("raclette")

@@ -163,12 +163,16 @@ msgid "Export file format"
 msgstr "Format du fichier d'export"
 
 #: web.py:95
-msgid "This admin password is not the right one"
-msgstr "Le mot de passe administrateur que vous avez entré n'est pas correct"
-
-#: web.py:95
 msgid "This private code is not the right one"
 msgstr "Le code que vous avez entré n'est pas correct"
+
+#: web.py:106
+msgid "This admin password is not the right one. Only %(num)d attempts left."
+msgstr "Le mot de passe administrateur que vous avez entré n'est pas correct. Plus que %(num)d tentatives."
+
+#: web.py:106
+msgid "Too many failed login attempts, please retry later."
+msgstr "Trop d'échecs d'authentification successifs, veuillez réessayer plus tard."
 
 #: web.py:147
 #, python-format
