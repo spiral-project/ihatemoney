@@ -1,10 +1,7 @@
 Installation
 ############
 
-First, you need to get the source files. One way to get them is to download
-them from the github repository, using git::
-
-  git clone https://github.com/spiral-project/ihatemoney.git
+.. _installation-requirements:
 
 Requirements
 ============
@@ -13,31 +10,45 @@ Requirements
 
 * **Python**: either 2.7, 3.4, 3.5, 3.6 will work.
 * **A Backend**: to choose among MySQL, PostgreSQL, SQLite or Memory.
+* **Virtualenv** (recommended): `virtualenv` package under Debian/Ubuntu.
 
-We recommend to use `pip <https://pypi.python.org/pypi/pip/>`_ and
-`virtualenv <https://pypi.python.org/pypi/virtualenv>`_ but it will work
-without if you prefer.
+We recommend to use `virtualenv <https://pypi.python.org/pypi/virtualenv>`_ but
+it will work without if you prefer.
 
-If you have everything installed, you can just issue::
+If wondering about the backend, SQLite is the simplest and will work fine for
+most small to medium setups.
 
-    make serve
+Prepare virtualenv (recommended)
+================================
 
-Alternatively, you can also use the `requirements.txt` file to install the
-dependencies yourself (that's what the `make serve` does). That would be::
+Choose an installation path, here `/home/john/ihatemoney`.
 
-     pip install -r requirements.txt
+Create a virtualenv::
 
-And then run the application::
+    virtualenv  -p /usr/bin/python3 /home/john/ihatemoney
 
-    cd ihatemoney
-    python run.py
+Activate the virtualenv::
 
-In any case, you can point your browser at `http://localhost:5000 <http://localhost:5000>`_.
-It's as simple as that!
+    source /home/john/ihatemoney/bin/activate
 
-In case you want to update to newer versions, you can just run the "update" command::
+.. note:: You will have to re-issue that ``source`` command if you open a new
+          terminal.
 
-  make update
+Install
+=======
+
+Install the latest release with pip::
+
+  pip install ihatemoney
+
+Test it
+=======
+
+Once installed, you can start a test server::
+
+  ihatemoney runserver
+
+And point your browser at `http://localhost:5000 <http://localhost:5000>`_.
 
 Deploy it
 =========
@@ -59,11 +70,18 @@ With Apache and mod_wsgi
 With Nginx, Gunicorn and Supervisord
 ------------------------------------
 
-1. Add the lines in conf/supervisord.conf to your supervisord.conf file.
-2. Copy and paste the content of conf/nginx.conf in your nginx conf file.
-3. reload both nginx and supervisord. It should be working ;)
+.. note:: For the 3 configuration files mentioned below, you will need to fix
+          the paths to reflect yours.
+
+1. Copy *conf/gunicorn.conf.py* to */etc/ihatemoney/gunicorn.conf.py*
+2. Copy *conf/supervisord.conf* to */etc/supervisor/conf.d/ihatemoney.conf*
+3. Copy *conf/nginx.conf* with your nginx vhosts [#nginx-vhosts]_
+4. Reload both nginx and supervisord. It should be working ;)
 
 Don't forget to set the right permission for your files !
+
+.. [#nginx-vhosts] typically, */etc/nginx/conf.d/* or
+   */etc/nginx/sites-available*, depending on your distribution.
 
 Configuration
 =============
@@ -71,6 +89,8 @@ Configuration
 ihatemoney relies on a configuration file. If you run the application for the
 first time, you will need to take a few moments to configure the application
 properly.
+
+.. warning:: You **must** customize the ``SECRET_KEY`` on a production installation.
 
 +----------------------------+---------------------------+----------------------------------------------------------------------------------------+
 | Setting name               |  Default                  | What does it do?                                                                       |
@@ -90,6 +110,9 @@ properly.
 | ADMIN_PASSWORD             |                           | To generate the proper password HASH, use ``ihatemoney generate_password_hash``        |
 |                            |                           | and copy its output into the value of *ADMIN_PASSWORD*.                                |
 +----------------------------+---------------------------+----------------------------------------------------------------------------------------+
+| APPLICATION_ROOT           |  ``""``                   | If empty, ihatemoney will be served at domain root (e.g: *http://domain.tld*), if set  |
+|                            |                           | to ``"foo"``, it will be served from a "folder" (e.g: *http://domain.tld/foo*)         |
++----------------------------+---------------------------+----------------------------------------------------------------------------------------+
 
 In a production environment
 ---------------------------
@@ -105,9 +128,3 @@ the IHATEMONEY_SETTINGS_FILE_PATH environment variable.
 e.g.::
 
     $ export IHATEMONEY_SETTINGS_FILE_PATH="/path/to/your/conf/file.cfg"
-
-Note that you can also pass additional flask parameters with this file.
-e.g. If you want to prefix your URLs to serve ihatemonney in the *folder*
-of a domain, use the following: ::
-
-    APPLICATION_ROOT='/budget'

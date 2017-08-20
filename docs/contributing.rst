@@ -4,6 +4,52 @@ Contributing
 Setup a dev environment
 =======================
 
+You must develop on top of the git master branch::
+
+  git clone https://github.com/spiral-project/ihatemoney.git
+
+Then you need to build your dev environments. Choose your way…
+
+The quick way
+-------------
+
+If System :ref:`installation-requirements` are fulfilled, you can just issue::
+
+    make serve
+
+It will setup a `virtualenv <https://pypi.python.org/pypi/virtualenv>`_,
+install dependencies, and run the test server.
+
+The hard way
+------------
+
+Alternatively, you can also use the `requirements.txt` file to install the
+dependencies yourself. That would be::
+
+     pip install -r requirements.txt
+
+And then run the application::
+
+    cd ihatemoney
+    python run.py
+
+Accessing dev server
+--------------------
+
+In any case, you can point your browser at `http://localhost:5000 <http://localhost:5000>`_.
+It's as simple as that!
+
+
+Updating
+--------
+
+In case you want to update to newer versions (from git), you can just run the "update" command::
+
+  make update
+
+Useful settings
+----------------
+
 It is better to actually turn the debugging mode on when you're developing.
 You can create a ``settings.cfg`` file, with the following content::
 
@@ -47,7 +93,7 @@ End-user
 --------
 
 You are using the application and found a bug? You have some ideas about how to
-improve the project? Please tell us [by filling a new issue](https://github.com/spiral-project/ihatemoney/issues).
+improve the project? Please tell us `by filling a new issue <https://github.com/spiral-project/ihatemoney/issues>`_.
 Or, if you prefer, you can send me an email to `alexis@notmyidea.org` and I will
 update the issue tracker with your feedback.
 
