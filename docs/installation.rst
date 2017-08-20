@@ -11,7 +11,7 @@ Requirements
 
 «Ihatemoney» depends on:
 
-* **Python**: either 2.7, 3.4, 3.5 will work.
+* **Python**: either 2.7, 3.4, 3.5, 3.6 will work.
 * **A Backend**: to choose among MySQL, PostgreSQL, SQLite or Memory.
 
 We recommend to use `pip <https://pypi.python.org/pypi/pip/>`_ and

@@ -22,6 +22,7 @@ REQUIREMENTS = [
     'flask-sqlalchemy',
     'flask-mail>=0.8',
     'Flask-Migrate>=1.8.0',
+    'Flask-script',
     'flask-babel',
     'flask-rest',
     'jinja2>=2.6',
