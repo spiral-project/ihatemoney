@@ -12,6 +12,10 @@ This document describes changes between each past release.
 - **BREAKING CHANGE** Turn the WSGI file into a python module, renamed from budget/ihatemoney.wsgi to budget/wsgi.py. Please update your Apache configuration!
 - Changed the recommended gunicorn configuration to use the wsgi module as an entrypoint
 
+### Added
+
+- Add a statistics tab (#257)
+- Add python3.6 support (#259)
 
 ### Removed
 

@@ -40,6 +40,7 @@
           {% block navbar %}
           <li class="nav-item{% if current_view == 'list_bills' %} active{% endif %}"><a class="nav-link" href="{{ url_for(".list_bills") }}">{{ _("Bills") }}</a></li>
           <li class="nav-item{% if current_view == 'settle_bill' %} active{% endif %}"><a class="nav-link" href="{{ url_for(".settle_bill") }}">{{ _("Settle") }}</a></li>
+          <li class="nav-item{% if current_view == 'statistics' %} active{% endif %}"><a class="nav-link" href="{{ url_for(".statistics") }}">{{ _("Statistics") }}</a></li>
           {% endblock %}
           {% endif %}
         </ul>
