@@ -99,6 +99,22 @@ update the issue tracker with your feedback.
 
 Thanks again!
 
+How to build the documentation ?
+=====================================
+
+The documentation is using `sphinx <http://www.sphinx-doc.org/en/stable/>`_ and
+its source is located inside the `docs folder
+<https://github.com/spiral-project/ihatemoney/tree/master/docs>`_.
+
+Install doc dependencies (within the virtualenv, if any)::
+
+  pip install -r docs/requirements.txt
+
+And to produce html doc in `docs/_output` folder::
+
+   cd docs/
+   make html
+
 How to release?
 ===============
 
