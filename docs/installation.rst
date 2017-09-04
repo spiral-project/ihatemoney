@@ -92,27 +92,35 @@ properly.
 
 .. warning:: You **must** customize the ``SECRET_KEY`` on a production installation.
 
-+----------------------------+---------------------------+----------------------------------------------------------------------------------------+
-| Setting name               |  Default                  | What does it do?                                                                       |
-+============================+===========================+========================================================================================+
-| SQLALCHEMY_DATABASE_URI    |  ``sqlite:///budget.db``  | Specifies the type of backend to use and its location. More information                |
-|                            |                           | on the format used can be found on `the SQLAlchemy documentation                       |
-|                            |                           | <http://docs.sqlalchemy.org/en/latest/core/engines.html#database-urls>`_.              |
-+----------------------------+---------------------------+----------------------------------------------------------------------------------------+
-| SECRET_KEY                 |  ``tralala``              | The secret key used to encrypt the cookies. **This needs to be changed**.              |
-+----------------------------+---------------------------+----------------------------------------------------------------------------------------+
-| MAIL_DEFAULT_SENDER        | ``("Budget manager",      | A python tuple describing the name and email adress to use when sending                |
-|                            | "budget@notmyidea.org")`` | emails.                                                                                |
-+----------------------------+---------------------------+----------------------------------------------------------------------------------------+
-| ACTIVATE_DEMO_PROJECT      |  ``True``                 | If set to `True`, a demo project will be available on the frontpage.                   |
-+----------------------------+---------------------------+----------------------------------------------------------------------------------------+
-|                            |  ``""``                   | If not empty, the specified password must be entered to create new projects.           |
-| ADMIN_PASSWORD             |                           | To generate the proper password HASH, use ``ihatemoney generate_password_hash``        |
-|                            |                           | and copy its output into the value of *ADMIN_PASSWORD*.                                |
-+----------------------------+---------------------------+----------------------------------------------------------------------------------------+
-| APPLICATION_ROOT           |  ``""``                   | If empty, ihatemoney will be served at domain root (e.g: *http://domain.tld*), if set  |
-|                            |                           | to ``"foo"``, it will be served from a "folder" (e.g: *http://domain.tld/foo*)         |
-+----------------------------+---------------------------+----------------------------------------------------------------------------------------+
++-------------------------------+---------------------------+----------------------------------------------------------------------------------------+
+| Setting name                  |  Default                  | What does it do?                                                                       |
++===============================+===========================+========================================================================================+
+| SQLALCHEMY_DATABASE_URI       |  ``sqlite:///budget.db``  | Specifies the type of backend to use and its location. More information                |
+|                               |                           | on the format used can be found on `the SQLAlchemy documentation                       |
+|                               |                           | <http://docs.sqlalchemy.org/en/latest/core/engines.html#database-urls>`_.              |
++-------------------------------+---------------------------+----------------------------------------------------------------------------------------+
+| SECRET_KEY                    |  ``tralala``              | The secret key used to encrypt the cookies. **This needs to be changed**.              |
++-------------------------------+---------------------------+----------------------------------------------------------------------------------------+
+| MAIL_DEFAULT_SENDER           | ``("Budget manager",      | A python tuple describing the name and email adress to use when sending                |
+|                               | "budget@notmyidea.org")`` | emails.                                                                                |
++-------------------------------+---------------------------+----------------------------------------------------------------------------------------+
+| ACTIVATE_DEMO_PROJECT         |  ``True``                 | If set to `True`, a demo project will be available on the frontpage.                   |
++-------------------------------+---------------------------+----------------------------------------------------------------------------------------+
+|                               |                           | Hashed password to access protected endpoints. If left empty, all administrative       |
+| ADMIN_PASSWORD                |  ``""``                   | tasks are disabled.                                                                    |
+|                               |                           | To generate the proper password HASH, use ``ihatemoney generate_password_hash``        |
+|                               |                           | and copy the output into the value of *ADMIN_PASSWORD*.                                |
++-------------------------------+---------------------------+----------------------------------------------------------------------------------------+
+| ALLOW_PUBLIC_PROJECT_CREATION |  ``True``                 | If set to `True`, everyone can create a project without entering the admin password    |
+|                               |                           | If set to `False`, the password needs to be entered (and as such, defined in the       |
+|                               |                           | settings).                                                                             |
++-------------------------------+---------------------------+----------------------------------------------------------------------------------------+
+| ACTIVATE_ADMIN_DASHBOARD      |  ``False``                | If set to `True`, the dashboard will become accessible entering the admin password     |
+|                               |                           | If set to `True`, a non empty ADMIN_PASSWORD needs to be set                           |
++-------------------------------+---------------------------+----------------------------------------------------------------------------------------+
+| APPLICATION_ROOT              |  ``""``                   | If empty, ihatemoney will be served at domain root (e.g: *http://domain.tld*), if set  |
+|                               |                           | to ``"foo"``, it will be served from a "folder" (e.g: *http://domain.tld/foo*)         |
++-------------------------------+---------------------------+----------------------------------------------------------------------------------------+
 
 In a production environment
 ---------------------------
