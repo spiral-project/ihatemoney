@@ -17,6 +17,7 @@ Changed
 =======
 
 - Changed the recommended gunicorn configuration to use the wsgi module as an entrypoint (#218)
+- Logged admin can see any project (#262)
 
 Added
 =====
@@ -24,7 +25,6 @@ Added
 - Statistics tab (#257)
 - Python3.6 support (#259)
 - ALLOW_PUBLIC_PROJECT_CREATION setting (#262)
-- Logged admin can see any project (#262)
 - Projects can be edited/deleted from the dashboard (#262)
 - ACTIVATE_ADMIN_DASHBOARD setting (#262)
 - Link to the dashboard in the navigation bar (#262)
