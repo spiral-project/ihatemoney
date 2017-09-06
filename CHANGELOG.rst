@@ -6,34 +6,38 @@ This document describes changes between each past release.
 2.0 (unreleased)
 ----------------
 
-### Breaking changes
+Breaking changes
+================
 
-- ``ADMIN_PASSWORD`` is now hashed rather than plain text. The ``ihatemoney generate_password_hash`` command can now be used to generate a proper password HASH (#236)
-- Turn the WSGI file into a python module, renamed from budget/ihatemoney.wsgi to ihatemoney/wsgi.py. Please update your Apache configuration!
-- Admin privileges are now required to access the dashboard
+- ``ADMIN_PASSWORD`` is now stored hashed. The ``ihatemoney generate_password_hash`` command can now be used to generate a proper password HASH (#236)
+- Turn the WSGI file into a python module, renamed from budget/ihatemoney.wsgi to ihatemoney/wsgi.py. Please update your Apache/Gunicorn configuration! (#218)
+- Admin privileges are now required to access the dashboard (#262)
 
-### Changed
+Changed
+=======
 
-- Changed the recommended gunicorn configuration to use the wsgi module as an entrypoint
+- Logged admin can see any project (#262)
 
-### Added
+Added
+=====
 
-- Add a statistics tab (#257)
-- Add python3.6 support (#259)
-- Public project creation can now be deactivated using the ALLOW_PUBLIC_PROJECT_CREATION setting.
-- If admin credentials are defined, they can be used to access any project.
-- It is now possible to edit and delete projects directly from the dashboard.
-- The dashboard can now be deactivated using the ACTIVATE_ADMIN_DASHBOARD setting.
-- When activated, a link to the dashboard appears in the navigation bar.
+- Statistics tab (#257)
+- Python3.6 support (#259)
+- ALLOW_PUBLIC_PROJECT_CREATION setting (#262)
+- Projects can be edited/deleted from the dashboard (#262)
+- ACTIVATE_ADMIN_DASHBOARD setting (#262)
+- Link to the dashboard in the navigation bar (#262)
 
-### Removed
+Removed
+=======
 
 - Remove unused option in the setup script
 
 1.0 (2017-06-20)
 ----------------
 
-### Added
+Added
+=====
 
 - Apache WSGI Support (#191)
 - Brush up the Makefile (#207, #201)
@@ -42,13 +46,15 @@ This document describes changes between each past release.
 - Project creation can be restricted to admin (#210)
 - More responsive layout (#213)
 
-### Changed
+Changed
+=======
 
 - Some README enhancements
 - Move tests to budget.tests (#205)
 - The demo project can be disabled (#209)
 
-### Fixed
+Fixed
+=====
 
 - Fix sphinx integration (#208)
 
