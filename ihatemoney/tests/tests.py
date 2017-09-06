@@ -169,6 +169,30 @@ class BudgetTestCase(IhatemoneyTestCase):
             self.assertIn("raclette", outbox[0].body)
             self.assertIn("raclette@notmyidea.org", outbox[0].recipients)
 
+    def test_password_reset(self):
+        # test that a password can be changed using a link sent by mail
+
+        self.create_project("raclette")
+        # Get password resetting link from mail
+        with self.app.mail.record_messages() as outbox:
+            self.client.post("/password-reminder", data={"id": "raclette"})
+            self.assertEqual(len(outbox), 1)
+            url_start = outbox[0].body.find('You can reset it here: ') + 23
+            url_end = outbox[0].body.find('.\n', url_start)
+            url = outbox[0].body[url_start:url_end]
+        # Test that we got a valid token
+        resp = self.client.get(url)
+        self.assertIn("Password confirmation</label>", resp.data.decode('utf-8'))
+        # Test that password can be changed
+        self.client.post(url, data={'password': 'pass', 'password_confirmation': 'pass'})
+        resp = self.login('raclette', password='pass')
+        self.assertIn("<title>Account manager - raclette</title>", resp.data.decode('utf-8'))
+        # Test empty and null tokens
+        resp = self.client.get("/reset-password")
+        self.assertIn("No token provided", resp.data.decode('utf-8'))
+        resp = self.client.get("/reset-password?token=token")
+        self.assertIn("Invalid token", resp.data.decode('utf-8'))
+
     def test_project_creation(self):
         with self.app.test_client() as c:
 

@@ -2,9 +2,11 @@ from collections import defaultdict
 
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy, BaseQuery
-from flask import g
+from flask import g, current_app
 
 from sqlalchemy import orm
+from itsdangerous import (TimedJSONWebSignatureSerializer
+                          as Serializer, BadSignature, SignatureExpired)
 
 db = SQLAlchemy()
 
@@ -198,6 +200,30 @@ class Project(db.Model):
     def remove_project(self):
         db.session.delete(self)
         db.session.commit()
+
+    def generate_token(self, expiration):
+        """Generate a timed and serialized JsonWebToken
+
+        :param expiration: Token expiration time (in seconds)
+        """
+        serializer = Serializer(current_app.config['SECRET_KEY'], expiration)
+        return serializer.dumps({'project_id': self.id}).decode('utf-8')
+
+    @staticmethod
+    def verify_token(token):
+        """Return the project id associated to the provided token,
+        None if the provided token is expired or not valid.
+
+        :param token: Serialized TimedJsonWebToken
+        """
+        serializer = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            data = serializer.loads(token)
+        except SignatureExpired:
+            return None
+        except BadSignature:
+            return None
+        return data['project_id']
 
     def __repr__(self):
         return "<Project %s>" % self.name

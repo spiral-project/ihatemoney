@@ -65,6 +65,18 @@ msgstr ""
 msgid "Get in"
 msgstr "Entrer"
 
+#: forms.py:107
+msgid "Password mismatch"
+msgstr "Les mots de passe fournis ne sont pas les mêmes."
+
+#: forms.py:109
+msgid "Password confirmation"
+msgstr "Confirmation du mot de passe"
+
+#: forms.py:107
+msgid "Password"
+msgstr "Mot de passe"
+
 #: forms.py:108
 msgid "Send me the code by email"
 msgstr "Envoyez moi le code par email"
@@ -185,8 +197,8 @@ msgid "%(msg_compl)sThe project identifier is %(project)s"
 msgstr "L'identifiant de ce projet est '%(project)s'"
 
 #: web.py:185
-msgid "a mail has been sent to you with the password"
-msgstr "Un email vous a été envoyé avec le mot de passe"
+msgid "A link to reset your password has been sent to your email."
+msgstr "Un lien pour changer votre mot de passe vous a été envoyé par mail."
 
 #: web.py:211
 msgid "Project successfully deleted"
@@ -196,6 +208,26 @@ msgstr "Projet supprimé"
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
 msgstr "Vous avez été invité à partager vos dépenses pour %(project)s"
+
+#: web.py:259
+#, python-format
+msgid ""No token provided""
+msgstr "Aucun token n'a été fourni."
+
+#: web.py:259
+#, python-format
+msgid "Unknown project"
+msgstr "Project inconnu"
+
+#: web.py:261
+#, python-format
+msgid "Invalid token"
+msgstr "Token invalide"
+
+#: web.py:267
+#, python-format
+msgid "Password successfully reset."
+msgstr "Le mot de passe a été changé avec succès."
 
 #: web.py:261
 msgid "Your invitations have been sent"
@@ -499,6 +531,10 @@ msgstr "Rappel du code d'accès"
 #: templates/recent_projects.html:2
 msgid "Your projects"
 msgstr "Vos projets"
+
+#: templates/reset_password.html:2
+msgid "Reset your password"
+msgstr "Changez votre mot de passe"
 
 #: templates/send_invites.html:6
 msgid "Invite people"
