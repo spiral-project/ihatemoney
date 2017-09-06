@@ -105,7 +105,7 @@ def pull_project(endpoint, values):
                                       project_id=project_id))
 
         is_admin = session.get('is_admin')
-        if (project.id in session and session[project.id] == project.password) or is_admin:
+        if session.get(project.id) or is_admin:
             # add project into kwargs and call the original function
             g.project = project
         else:
@@ -173,7 +173,7 @@ def authenticate(project_id=None):
 
     else:
         # if credentials are already in session, redirect
-        if project_id in session and project.password == session[project_id]:
+        if session.get(project_id):
             setattr(g, 'project', project)
             return redirect(url_for(".list_bills"))
 
@@ -189,7 +189,7 @@ def authenticate(project_id=None):
                         session["projects"] = []
                     # add the project on the top of the list
                     session["projects"].insert(0, (project_id, project.name))
-                    session[project_id] = form.password.data
+                    session[project_id] = True
                     session.update()
                     setattr(g, 'project', project)
                     return redirect(url_for(".list_bills"))
@@ -233,7 +233,7 @@ def create_project():
             db.session.commit()
 
             # create the session object (authenticate)
-            session[project.id] = project.password
+            session[project.id] = True
             session.update()
 
             # send reminder email
@@ -290,8 +290,8 @@ def edit_project():
     if request.method == "POST":
         if edit_form.validate():
             project = edit_form.update(g.project)
+            db.session.add(project)
             db.session.commit()
-            session[project.id] = project.password
 
             return redirect(url_for(".list_bills"))
 
@@ -359,7 +359,7 @@ def demo():
                           contact_email="demo@notmyidea.org")
         db.session.add(project)
         db.session.commit()
-    session[project.id] = project.password
+    session[project.id] = True
     return redirect(url_for(".list_bills", project_id=project.id))
 
 
