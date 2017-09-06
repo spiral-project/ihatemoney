@@ -159,43 +159,34 @@ def authenticate(project_id=None):
         msg = _("You need to enter a project identifier")
         form.errors["id"] = [msg]
         return render_template("authenticate.html", form=form)
-    else:
-        project = Project.query.get(project_id)
 
-    create_project = False  # We don't want to create the project by default
+    project = Project.query.get(project_id)
     if not project:
-        # But if the user try to connect to an unexisting project, we will
+        # If the user try to connect to an unexisting project, we will
         # propose him a link to the creation form.
-        if request.method == "POST":
-            form.validate()
-        else:
-            create_project = project_id
+        return render_template("authenticate.html", form=form, create_project=project_id)
 
-    else:
-        # if credentials are already in session, redirect
-        if session.get(project_id):
-            setattr(g, 'project', project)
-            return redirect(url_for(".list_bills"))
+    # if credentials are already in session, redirect
+    if session.get(project_id):
+        setattr(g, 'project', project)
+        return redirect(url_for(".list_bills"))
 
-        # else process the form
-        if request.method == "POST":
-            if form.validate():
-                if not form.password.data == project.password:
-                    msg = _("This private code is not the right one")
-                    form.errors['password'] = [msg]
-                else:
-                    # maintain a list of visited projects
-                    if "projects" not in session:
-                        session["projects"] = []
-                    # add the project on the top of the list
-                    session["projects"].insert(0, (project_id, project.name))
-                    session[project_id] = True
-                    session.update()
-                    setattr(g, 'project', project)
-                    return redirect(url_for(".list_bills"))
+    if request.method == "POST" and form.validate():
+        if not form.password.data == project.password:
+            msg = _("This private code is not the right one")
+            form.errors['password'] = [msg]
+            return render_template("authenticate.html", form=form)
+        # maintain a list of visited projects
+        if "projects" not in session:
+            session["projects"] = []
+        # add the project on the top of the list
+        session["projects"].insert(0, (project_id, project.name))
+        session[project_id] = True
+        session.update()
+        setattr(g, 'project', project)
+        return redirect(url_for(".list_bills"))
 
-    return render_template("authenticate.html", form=form,
-                           create_project=create_project)
+    return render_template("authenticate.html", form=form)
 
 
 @main.route("/")
