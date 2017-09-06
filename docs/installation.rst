@@ -92,12 +92,12 @@ properly.
 
 .. warning:: You **must** customize the ``SECRET_KEY`` on a production installation.
 
-+-------------------------------+---------------------------+----------------------------------------------------------------------------------------+
-| Setting name                  |  Default                  | What does it do?                                                                       |
-+===============================+===========================+========================================================================================+
-| SQLALCHEMY_DATABASE_URI       |  ``sqlite:///budget.db``  | Specifies the type of backend to use and its location. More information                |
-|                               |                           | on the format used can be found on `the SQLAlchemy documentation                       |
-|                               |                           | <http://docs.sqlalchemy.org/en/latest/core/engines.html#database-urls>`_.              |
++-------------------------------+---------------------------------+----------------------------------------------------------------------------------+
+| Setting name                  |  Default                        | What does it do?                                                                 |
++===============================+=================================+==================================================================================+
+| SQLALCHEMY_DATABASE_URI       | ``sqlite:///tmp/ihatemoney.db`` | Specifies the type of backend to use and its location. More information          |
+|                               |                                 | on the format used can be found on `the SQLAlchemy documentation                 |
+|                               |                                 | <http://docs.sqlalchemy.org/en/latest/core/engines.html#database-urls>`_.        |
 +-------------------------------+---------------------------+----------------------------------------------------------------------------------------+
 | SECRET_KEY                    |  ``tralala``              | The secret key used to encrypt the cookies. **This needs to be changed**.              |
 +-------------------------------+---------------------------+----------------------------------------------------------------------------------------+
