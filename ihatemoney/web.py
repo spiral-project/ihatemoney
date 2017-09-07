@@ -17,7 +17,7 @@ from flask_mail import Message
 from flask_babel import get_locale, gettext as _
 from werkzeug.security import check_password_hash
 from smtplib import SMTPRecipientsRefused
-import werkzeug
+from werkzeug.exceptions import NotFound
 from sqlalchemy import orm
 from functools import wraps
 
@@ -449,7 +449,7 @@ def remove_member(member_id):
 def edit_member(member_id):
     member = Person.query.get(member_id, g.project)
     if not member:
-        raise werkzeug.exceptions.NotFound()
+        raise NotFound()
     form = MemberForm(g.project, edit=True)
 
     if request.method == 'POST' and form.validate():
@@ -491,7 +491,7 @@ def delete_bill(bill_id):
     # fixme: everyone is able to delete a bill
     bill = Bill.query.get(g.project, bill_id)
     if not bill:
-        raise werkzeug.exceptions.NotFound()
+        raise NotFound()
 
     db.session.delete(bill)
     db.session.commit()
@@ -505,7 +505,7 @@ def edit_bill(bill_id):
     # FIXME: Test this bill belongs to this project !
     bill = Bill.query.get(g.project, bill_id)
     if not bill:
-        raise werkzeug.exceptions.NotFound()
+        raise NotFound()
 
     form = get_billform_for(g.project, set_default=False)
 
