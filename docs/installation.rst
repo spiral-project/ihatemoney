@@ -56,7 +56,7 @@ Deploy it
 =========
 
 Now, if you want to deploy it on your own server, you have many options.
-Two of them are documented at the moment.
+Three of them are documented at the moment.
 
 *Of course, if you want to contribute another configuration, feel free to open a
 pull-request against this repository!*
@@ -112,6 +112,40 @@ With Nginx, Gunicorn and Supervisord
 
 .. [#nginx-vhosts] typically, */etc/nginx/conf.d/* or
    */etc/nginx/sites-available*, depending on your distribution.
+
+With Docker
+-----------
+
+Build the image::
+
+    docker build -t ihatemoney --build-arg INSTALL_FROM_PYPI=True .
+
+Start a daemonized Ihatemoney container::
+
+    docker run -d -p 8000:8000 ihatemoney
+
+Ihatemoney is now available on http://localhost:8000.
+
+All Ihatemoney settings can be passed with ``-e`` parameters
+e.g. with a secure ``SECRET_KEY``, an external mail server and an external database::
+
+    docker run -d -p 8000:8000 \
+    -e SECRET_KEY="supersecure" \
+    -e SQLALCHEMY_DATABASE_URI="mysql+pymysql://user:pass@172.17.0.5/ihm" \
+    -e MAIL_SERVER=smtp.gmail.com \
+    -e MAIL_PORT=465 \
+    -e MAIL_USERNAME=your-email@gmail.com \
+    -e MAIL_PASSWORD=your-password \
+    -e MAIL_USE_SSL=True \
+    ihatemoney
+
+A volume can also be specified to persist the default database file::
+
+    docker run -d -p 8000:8000 -v /host/path/to/database:/database ihatemoney
+
+The following gunicorn parameters are also available::
+
+    GUNICORN_NUM_WORKERS (default: 3)
 
 Configuration
 =============
