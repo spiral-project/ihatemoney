@@ -17,10 +17,12 @@ Changed
 =======
 
 - Logged admin can see any project (#262)
+- Better install doc (#275)
 
 Added
 =====
 
+- ``ihatemoney generate-config`` to give working examples of config files (#275)
 - Statistics tab (#257)
 - Python3.6 support (#259)
 - ALLOW_PUBLIC_PROJECT_CREATION setting (#262)

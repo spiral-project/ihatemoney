@@ -1,11 +1,9 @@
 server {
-    server_name yourur;
+    server_name ihatemoney.example.com;  # CUSTOMIZE
     keepalive_timeout 5;
 
     location /static/ {
-        # Alias value may be some messy path, within python libs.
-        # You may want to use "find $VIRTUAL_ENV -path */ihatemoney*/static" to find it.
-        alias   /path/to/app/ihatemoney/static/;
+        alias   {{ pkg_path }}/static/;
     }
     location / {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -26,5 +24,5 @@ server {
 }
 
 upstream ihatemoney_backend {
-        server unix:/path/to/app/ihatemoney.gunicorn.sock;
+        server unix:/tmp/ihatemoney.gunicorn.sock;
 }
