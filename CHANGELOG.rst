@@ -17,6 +17,7 @@ Changed
 =======
 
 - Logged admin can see any project (#262)
+- Better install doc (#275)
 
 Added
 =====
