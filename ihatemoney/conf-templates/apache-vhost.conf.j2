@@ -1,0 +1,19 @@
+<VirtualHost *:80>
+    ServerAdmin admin@example.com      # CUSTOMIZE
+    ServerName ihatemoney.example.com  # CUSTOMIZE
+
+    WSGIDaemonProcess ihatemoney user=www-data group=www-data threads=5 python-path={{ pkg_path }} {% if venv_path %}python-home={{ venv_path }}{% endif %}
+    WSGIScriptAlias / {{ pkg_path }}/wsgi.py
+
+    ErrorLog /var/log/apache2/ihatemoney.example.com_error.log
+    CustomLog /var/log/apache2/ihatemoney.example.com_access.log combined
+
+    <Directory {{ pkg_path }}>
+       WSGIProcessGroup ihatemoney
+       WSGIApplicationGroup %{GLOBAL}
+       Order deny,allow
+       Allow from all
+    </Directory>
+
+    Alias /static/ {{ pkg_path }}/static/
+</VirtualHost>
