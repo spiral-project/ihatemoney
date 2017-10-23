@@ -17,6 +17,7 @@ Changed
 =======
 
 - Logged admin can see any project (#262)
+- Simpler and safer authentication logic (#270)
 - Better install doc (#275)
 
 Added

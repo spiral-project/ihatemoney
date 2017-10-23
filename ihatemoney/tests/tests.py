@@ -181,7 +181,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             })
 
             # session is updated
-            self.assertEqual(session['raclette'], 'party')
+            self.assertTrue(session['raclette'])
 
             # project is created
             self.assertEqual(len(models.Project.query.all()), 1)
@@ -373,7 +373,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
             self.assertNotIn("Authentication", resp.data.decode('utf-8'))
             self.assertIn('raclette', session)
-            self.assertEqual(session['raclette'], 'raclette')
+            self.assertTrue(session['raclette'])
 
             # logout should wipe the session out
             c.get("/exit")
