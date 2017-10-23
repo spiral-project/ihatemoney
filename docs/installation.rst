@@ -18,6 +18,8 @@ it will work without if you prefer.
 If wondering about the backend, SQLite is the simplest and will work fine for
 most small to medium setups.
 
+.. note:: If curious, source config templates can be found in the `project git repository <https://github.com/spiral-project/ihatemoney/tree/master/ihatemoney/conf-templates>`_.
+
 Prepare virtualenv (recommended)
 ================================
 
