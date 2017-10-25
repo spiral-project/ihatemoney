@@ -30,6 +30,7 @@ Added
 - Projects can be edited/deleted from the dashboard (#262)
 - ACTIVATE_ADMIN_DASHBOARD setting (#262)
 - Link to the dashboard in the navigation bar (#262)
+- Dockerfile
 
 Removed
 =======
