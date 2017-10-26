@@ -32,6 +32,7 @@ Added
 - ACTIVATE_ADMIN_DASHBOARD setting (#262)
 - Link to the dashboard in the navigation bar (#262)
 - Dockerfile
+- Documentation explaining the upgrade process
 
 Removed
 =======
