@@ -2,7 +2,7 @@ Hey,
 
 Vous venez de créer le projet "{{ g.project.name }}" pour partager vos dépenses.
 
-Vous pouvez y accéder ici: {{ config['SITE_URL'] }}{{ url_for(".list_bills") }} (l'identifieur est {{ g.project.id }}),
+Vous pouvez y accéder ici: {{ url_for(".list_bills", _external=True) }} (l'identifieur est {{ g.project.id }}),
 et le code d'accès "{{ g.project.password }}".
 
 Faites en bon usage !

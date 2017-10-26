@@ -2,7 +2,7 @@ from flask_wtf.form import FlaskForm
 from wtforms.fields.core import SelectField, SelectMultipleField
 from wtforms.fields.html5 import DateField, DecimalField
 from wtforms.fields.simple import PasswordField, SubmitField, TextAreaField, StringField
-from wtforms.validators import Email, Required, ValidationError
+from wtforms.validators import Email, Required, ValidationError, EqualTo
 from flask_babel import lazy_gettext as _
 from flask import request
 
@@ -100,6 +100,14 @@ class PasswordReminder(FlaskForm):
     def validate_id(form, field):
         if not Project.query.get(field.data):
             raise ValidationError(_("This project does not exists"))
+
+
+class ResetPasswordForm(FlaskForm):
+    password_validators = [Required(),
+                           EqualTo('password_confirmation', message=_("Password mismatch"))]
+    password = PasswordField(_("Password"), validators=password_validators)
+    password_confirmation = PasswordField(_("Password confirmation"), validators=[Required()])
+    submit = SubmitField(_("Reset password"))
 
 
 class BillForm(FlaskForm):

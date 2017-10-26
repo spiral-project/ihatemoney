@@ -29,6 +29,7 @@ REQUIREMENTS = [
     'raven',
     'blinker',
     'six>=1.10',
+    'itsdangerous>=0.24',
 ]
 
 DEPENDENCY_LINKS = [

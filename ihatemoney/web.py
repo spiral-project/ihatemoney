@@ -24,7 +24,7 @@ from functools import wraps
 from ihatemoney.models import db, Project, Person, Bill
 from ihatemoney.forms import (
     AdminAuthenticationForm, AuthenticationForm, EditProjectForm,
-    InviteForm, MemberForm, PasswordReminder, ProjectForm, get_billform_for,
+    InviteForm, MemberForm, PasswordReminder, ResetPasswordForm, ProjectForm, get_billform_for,
     ExportForm
 )
 from ihatemoney.utils import Redirect303, list_of_dicts2json, list_of_dicts2csv, LoginThrottler
@@ -263,15 +263,38 @@ def remind_password():
             # get the project
             project = Project.query.get(form.id.data)
 
-            # send the password reminder
+            # send a link to reset the password
             password_reminder = "password_reminder.%s" % get_locale().language
             current_app.mail.send(Message(
                 "password recovery",
                 body=render_template(password_reminder, project=project),
                 recipients=[project.contact_email]))
-            flash(_("a mail has been sent to you with the password"))
+            flash(_("A link to reset your password has been sent to your email."))
 
     return render_template("password_reminder.html", form=form)
+
+
+@main.route('/reset-password', methods=['GET', 'POST'])
+def reset_password():
+    form = ResetPasswordForm()
+    token = request.args.get('token')
+    if not token:
+        return render_template('reset_password.html', form=form, error=_("No token provided"))
+    project_id = Project.verify_token(token)
+    if not project_id:
+        return render_template('reset_password.html', form=form, error=_("Invalid token"))
+    project = Project.query.get(project_id)
+    if not project:
+        return render_template('reset_password.html', form=form, error=_("Unknown project"))
+
+    if request.method == "POST":
+        if form.validate():
+            project.password = form.password.data
+            db.session.add(project)
+            db.session.commit()
+            flash(_("Password successfully reset."))
+            return redirect(url_for(".home"))
+    return render_template('reset_password.html', form=form)
 
 
 @main.route("/<project_id>/edit", methods=["GET", "POST"])

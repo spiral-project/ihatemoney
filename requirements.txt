@@ -10,3 +10,4 @@ jinja2>=2.6
 raven
 blinker
 six>=1.10
+itsdangerous>=0.24

@@ -159,10 +159,18 @@
 {% endmacro %}
 
 {% macro remind_password(form) %}
-
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
     {{ input(form.id) }}
+    {{ submit(form.submit) }}
+
+{% endmacro %}
+
+{% macro reset_password(form) %}
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }}
+    {{ input(form.password) }}
+    {{ input(form.password_confirmation) }}
     {{ submit(form.submit) }}
 
 {% endmacro %}
