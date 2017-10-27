@@ -152,6 +152,29 @@ class BudgetTestCase(IhatemoneyTestCase):
             # only one message is sent to multiple persons
             self.assertEqual(len(outbox), 0)
 
+    def test_invite(self):
+        """Test that invitation e-mails are sent properly
+        """
+        self.login("raclette")
+        self.post_project("raclette")
+        with self.app.mail.record_messages() as outbox:
+            self.client.post("/raclette/invite",
+                             data={"emails": 'toto@notmyidea.org'})
+            self.assertEqual(len(outbox), 1)
+            url_start = outbox[0].body.find('You can log in using this link: ') + 32
+            url_end = outbox[0].body.find('.\n', url_start)
+            url = outbox[0].body[url_start:url_end]
+        self.client.get("/exit")
+        # Test that we got a valid token
+        resp = self.client.get(url, follow_redirects=True)
+        self.assertIn('You probably want to <a href="/raclette/add"', resp.data.decode('utf-8'))
+        # Test empty and invalid tokens
+        self.client.get("/exit")
+        resp = self.client.get("/authenticate")
+        self.assertIn("You either provided a bad token", resp.data.decode('utf-8'))
+        resp = self.client.get("/authenticate?token=token")
+        self.assertIn("You either provided a bad token", resp.data.decode('utf-8'))
+
     def test_password_reminder(self):
         # test that it is possible to have an email cotaining the password of a
         # project in case people forget it (and it happens!)

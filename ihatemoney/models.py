@@ -5,8 +5,8 @@ from flask_sqlalchemy import SQLAlchemy, BaseQuery
 from flask import g, current_app
 
 from sqlalchemy import orm
-from itsdangerous import (TimedJSONWebSignatureSerializer
-                          as Serializer, BadSignature, SignatureExpired)
+from itsdangerous import (TimedJSONWebSignatureSerializer, URLSafeSerializer,
+                          BadSignature, SignatureExpired)
 
 db = SQLAlchemy()
 
@@ -201,22 +201,32 @@ class Project(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-    def generate_token(self, expiration):
+    def generate_token(self, expiration=0):
         """Generate a timed and serialized JsonWebToken
 
         :param expiration: Token expiration time (in seconds)
         """
-        serializer = Serializer(current_app.config['SECRET_KEY'], expiration)
-        return serializer.dumps({'project_id': self.id}).decode('utf-8')
+        if expiration:
+            serializer = TimedJSONWebSignatureSerializer(
+                current_app.config['SECRET_KEY'],
+                expiration)
+            token = serializer.dumps({'project_id': self.id}).decode('utf-8')
+        else:
+            serializer = URLSafeSerializer(current_app.config['SECRET_KEY'])
+            token = serializer.dumps({'project_id': self.id})
+        return token
 
     @staticmethod
-    def verify_token(token):
+    def verify_token(token, token_type="timed_token"):
         """Return the project id associated to the provided token,
         None if the provided token is expired or not valid.
 
         :param token: Serialized TimedJsonWebToken
         """
-        serializer = Serializer(current_app.config['SECRET_KEY'])
+        if token_type == "timed_token":
+            serializer = TimedJSONWebSignatureSerializer(current_app.config['SECRET_KEY'])
+        else:
+            serializer = URLSafeSerializer(current_app.config['SECRET_KEY'])
         try:
             data = serializer.loads(token)
         except SignatureExpired:

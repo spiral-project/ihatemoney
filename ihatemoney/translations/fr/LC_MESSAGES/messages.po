@@ -175,6 +175,10 @@ msgid "Export file format"
 msgstr "Format du fichier d'export"
 
 #: web.py:95
+msgid "You either provided a bad token or no project identifier."
+msgstr "L'identifiant du projet ou le token fourni n'est pas correct."
+
+#: web.py:95
 msgid "This private code is not the right one"
 msgstr "Le code que vous avez entré n'est pas correct"
 
@@ -271,8 +275,7 @@ msgstr "Retourner à la liste"
 
 #: templates/authenticate.html:6
 msgid ""
-"The project you are trying to access do not exist, do you want \n"
-"to"
+"The project you are trying to access do not exist, do you want to"
 msgstr "Le projet auquel vous essayez d'acceder n'existe pas. Souhaitez vous"
 
 #: templates/authenticate.html:7
