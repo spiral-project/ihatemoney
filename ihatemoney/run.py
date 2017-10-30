@@ -28,6 +28,13 @@ def setup_database(app):
         alembic_setup = db.engine.dialect.has_table(con, 'alembic_version')
         return tables_exist and not alembic_setup
 
+    sqlalchemy_url = app.config.get('SQLALCHEMY_DATABASE_URI')
+    if sqlalchemy_url.startswith('sqlite:////tmp'):
+        warnings.warn(
+            'The database is currently stored in /tmp and might be lost at '
+            'next reboot.'
+        )
+
     db.init_app(app)
     db.app = app
 

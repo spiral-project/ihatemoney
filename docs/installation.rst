@@ -157,28 +157,43 @@ properly.
 Defaults given here, are those for development mode. To know defaults on your
 deployed instance, simply look at your *ihatemoney.cfg*.
 
+Production values are recommended values for use in production.
+
 
 +-------------------------------+---------------------------------+----------------------------------------------------------------------------------------+
 | Setting name                  |  Default                        | What does it do?                                                                       |
 +===============================+=================================+========================================================================================+
 | SQLALCHEMY_DATABASE_URI       | ``sqlite:///tmp/ihatemoney.db`` | Specifies the type of backend to use and its location. More information on the         |
 |                               |                                 | format used can be found on `the SQLAlchemy documentation`_.                           |
+|                               |                                 |                                                                                        |
+|                               |                                 | **Production value:** Set it to some path on your disk. Typically                      |
+|                               |                                 | ``sqlite:///home/ihatemoney/ihatemoney.db``. Do *not* store it under ``/tmp`` as this  |
+|                               |                                 | folder is cleared at each boot.                                                        |
 +-------------------------------+---------------------------------+----------------------------------------------------------------------------------------+
-| SECRET_KEY                    |  ``tralala``                    | The secret key used to encrypt the cookies. `ihatemoney conf-example ihatemoney.cfg`   |
-|                               |                                 | sets it to something random, which is good.                                            |
+| SECRET_KEY                    |  ``tralala``                    | The secret key used to encrypt the cookies.                                            |
+|                               |                                 |                                                                                        |
+|                               |                                 | **Production value:** `ihatemoney conf-example ihatemoney.cfg` sets it to something    |
+|                               |                                 | random, which is good.                                                                 |
 +-------------------------------+---------------------------------+----------------------------------------------------------------------------------------+
 | MAIL_DEFAULT_SENDER           | ``("Budget manager",            | A python tuple describing the name and email adress to use when sending                |
 |                               | "budget@notmyidea.org")``       | emails.                                                                                |
+|                               |                                 |                                                                                        |
+|                               |                                 |  **Production value:** Any tuple you want.                                             |
 +-------------------------------+---------------------------------+----------------------------------------------------------------------------------------+
 | ACTIVATE_DEMO_PROJECT         |  ``True``                       | If set to `True`, a demo project will be available on the frontpage.                   |
+|                               |                                 |                                                                                        |
+|                               |                                 | **Production value:** Usually, you will want to set it to ``False`` for a private      |
+|                               |                                 |  instance.                                                                             |
 +-------------------------------+---------------------------------+----------------------------------------------------------------------------------------+
 |                               |                                 | Hashed password to access protected endpoints. If left empty, all administrative       |
 | ADMIN_PASSWORD                |  ``""``                         | tasks are disabled.                                                                    |
-|                               |                                 | To generate the proper password HASH, use ``ihatemoney generate_password_hash``        |
-|                               |                                 | and copy the output into the value of *ADMIN_PASSWORD*.                                |
+|                               |                                 |                                                                                        |
+|                               |                                 | **Production value:** To generate the proper password HASH, use                        |
+|                               |                                 | ``ihatemoney generate_password_hash`` and copy the output into the value of            |
+|                               |                                 | *ADMIN_PASSWORD*.                                                                      |
 +-------------------------------+---------------------------------+----------------------------------------------------------------------------------------+
-| ALLOW_PUBLIC_PROJECT_CREATION |  ``True``                       | If set to `True`, everyone can create a project without entering the admin password    |
-|                               |                                 | If set to `False`, the password needs to be entered (and as such, defined in the       |
+| ALLOW_PUBLIC_PROJECT_CREATION |  ``True``                       | If set to ``True``, everyone can create a project without entering the admin password  |
+|                               |                                 | If set to ``False``, the password needs to be entered (and as such, defined in the     |
 |                               |                                 | settings).                                                                             |
 +-------------------------------+---------------------------------+----------------------------------------------------------------------------------------+
 | ACTIVATE_ADMIN_DASHBOARD      |  ``False``                      | If set to `True`, the dashboard will become accessible entering the admin password     |
