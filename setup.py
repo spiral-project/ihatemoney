@@ -6,7 +6,7 @@ try:
     from pip.req import parse_requirements
     from pip.download import PipSession
 except ImportError:
-    print('[libbmc] pip not found.')
+    print('Cannot find pip.')
     raise
 
 # Get requirements from the requirements.txt file.
