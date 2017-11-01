@@ -2,6 +2,16 @@
 import codecs
 import os
 from setuptools import setup, find_packages
+try:
+    from pip.req import parse_requirements
+    from pip.download import PipSession
+except ImportError:
+    print('[libbmc] pip not found.')
+    raise
+
+# Get requirements from the requirements.txt file.
+pip_requirements = parse_requirements("requirements.txt", session=PipSession())
+install_requires = [str(ir.req) for ir in pip_requirements]
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -15,25 +25,6 @@ def read_file(filename):
 
 README = read_file('README.rst')
 CHANGELOG = read_file('CHANGELOG.rst')
-
-REQUIREMENTS = [
-    'flask>=0.11',
-    'flask-wtf>=0.13',
-    'flask-sqlalchemy',
-    'flask-mail>=0.8',
-    'Flask-Migrate>=1.8.0',
-    'Flask-script',
-    'flask-babel',
-    'flask-rest',
-    'jinja2>=2.6',
-    'raven',
-    'blinker',
-    'six>=1.10',
-    'itsdangerous>=0.24',
-]
-
-DEPENDENCY_LINKS = [
-]
 
 ENTRY_POINTS = {
     'paste.app_factory': [
@@ -52,9 +43,11 @@ setup(name='ihatemoney',
       license='Custom BSD Beerware',
       classifiers=[
           "Programming Language :: Python",
-	  "Programming Language :: Python :: 2.7",
+          "Programming Language :: Python :: 2.7",
           "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3.4",
           "Programming Language :: Python :: 3.5",
+          "Programming Language :: Python :: 3.6",
           "Programming Language :: Python :: Implementation :: CPython",
           "Topic :: Internet :: WWW/HTTP",
           "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
@@ -66,6 +59,5 @@ setup(name='ihatemoney',
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
-      install_requires=REQUIREMENTS,
-      dependency_links=DEPENDENCY_LINKS,
-entry_points=ENTRY_POINTS)
+      install_requires=install_requires,
+      entry_points=ENTRY_POINTS)
