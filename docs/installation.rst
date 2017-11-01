@@ -1,6 +1,15 @@
 Installation
 ############
 
+We lack some knowledge about packaging to make Ihatemoney installable on mainstream
+Linux distributions. If you want to give us a hand on the topic, please check-out
+`the issue about debian packaging <https://github.com/spiral-project/ihatemoney/issues/227>`_.
+
+If you are using Yunohost (a server operating system aiming to make self-hosting accessible to anyone),
+you can use the `Ihatemoney package <https://github.com/YunoHost-Apps/ihatemoney_ynh>`_.
+
+Otherwise, follow these instructions to install it manually:
+
 .. _installation-requirements:
 
 Requirements
