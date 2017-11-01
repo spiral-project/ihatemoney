@@ -29,6 +29,8 @@ most small to medium setups.
 
 .. note:: If curious, source config templates can be found in the `project git repository <https://github.com/spiral-project/ihatemoney/tree/master/ihatemoney/conf-templates>`_.
 
+.. _virtualenv-preparation:
+
 Prepare virtualenv (recommended)
 ================================
 

@@ -13,6 +13,7 @@ Table of content
    :maxdepth: 1
 
    installation
+   upgrade
    api
    contributing
 
