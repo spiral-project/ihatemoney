@@ -40,6 +40,10 @@ release: $(DEV_STAMP)
 build-translations:
 	$(VENV)/bin/pybabel compile -d ihatemoney/translations
 
+create-database-revision:
+	@read -p "Please enter a message describing this revision: " rev_message; \
+	$(PYTHON) -m ihatemoney.manage db migrate -d ihatemoney/migrations -m "$${rev_message}"
+
 build-requirements:
 	$(VIRTUALENV) $(TEMPDIR)
 	$(TEMPDIR)/bin/pip install -U pip
