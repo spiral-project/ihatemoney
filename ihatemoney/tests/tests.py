@@ -403,7 +403,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             c.get("/exit")
             self.assertNotIn('raclette', session)
 
-        # test that whith admin credentials, one can access every project
+        # test that with admin credentials, one can access every project
         self.app.config['ADMIN_PASSWORD'] = generate_password_hash("pass")
         with self.app.test_client() as c:
             resp = c.post("/admin?goto=%2Fraclette", data={'admin_password': 'pass'})
@@ -1192,7 +1192,7 @@ class APITestCase(IhatemoneyTestCase):
 
         self.assertDictEqual(expected, json.loads(req.data.decode('utf-8')))
 
-        # the list of bills should lenght 1
+        # the list of bills should length 1
         req = self.client.get("/api/projects/raclette/bills",
                               headers=self.get_auth("raclette"))
         self.assertStatus(200, req)

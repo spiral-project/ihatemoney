@@ -359,7 +359,7 @@ def demo():
     Authenticate the user for the demonstration project and redirect him to
     the bills list for this project.
 
-    Create a demo project if it doesnt exists yet (or has been deleted)
+    Create a demo project if it doesn't exists yet (or has been deleted)
     If the demo project is deactivated, one is redirected to the create project form
     """
     is_demo_project_activated = current_app.config['ACTIVATE_DEMO_PROJECT']
