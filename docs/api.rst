@@ -51,7 +51,7 @@ A project needs the following arguments:
     -d 'name=yay&id=yay&password=yay&contact_email=yay@notmyidea.org'
     "yay"
 
-As you can see, the API retuns the identifier of the project
+As you can see, the API returns the identifier of the project
 
 Getting information about the project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

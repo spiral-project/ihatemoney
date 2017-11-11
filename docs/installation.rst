@@ -186,7 +186,7 @@ Production values are recommended values for use in production.
 |                               |                                 | **Production value:** `ihatemoney conf-example ihatemoney.cfg` sets it to something    |
 |                               |                                 | random, which is good.                                                                 |
 +-------------------------------+---------------------------------+----------------------------------------------------------------------------------------+
-| MAIL_DEFAULT_SENDER           | ``("Budget manager",            | A python tuple describing the name and email adress to use when sending                |
+| MAIL_DEFAULT_SENDER           | ``("Budget manager",            | A python tuple describing the name and email address to use when sending                |
 |                               | "budget@notmyidea.org")``       | emails.                                                                                |
 |                               |                                 |                                                                                        |
 |                               |                                 |  **Production value:** Any tuple you want.                                             |

@@ -39,7 +39,7 @@ instructions:
 Switch from git installation to pip installation
 ++++++++++++++++++++++++++++++++++++++++++++++++
 
-The recomended installation method is now using *pip*. Git is now intended for
+The recommended installation method is now using *pip*. Git is now intended for
 development only.
 
 .. warning:: Be extra careful to not remove your sqlite database nor your
