@@ -260,7 +260,7 @@ def create_project():
             # redirect the user to the next step (invite)
             flash(_("%(msg_compl)sThe project identifier is %(project)s",
                     msg_compl=msg_compl, project=project.id))
-            return redirect(url_for(".invite", project_id=project.id))
+            return redirect(url_for(".list_bills", project_id=project.id))
 
     return render_template("create_project.html", form=form)
 

@@ -4,5 +4,7 @@ Vous venez de créer le projet "{{ g.project.name }}" pour partager vos dépense
 
 Vous pouvez y accéder ici: {{ url_for(".list_bills", _external=True) }} (l'identifieur est {{ g.project.id }}),
 et le code d'accès "{{ g.project.password }}".
+Si vous voulez partager ce projet avec vos amis, vous pouvez partager son identifiant et son code d'accès avec eux ou leur envoyer une invitation avec le lien suivant :
+{{ url_for(".invite", _external=True) }}
 
 Faites en bon usage !
