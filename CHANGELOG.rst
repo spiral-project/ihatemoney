@@ -20,6 +20,7 @@ Changed
 - Simpler and safer authentication logic (#270)
 - Use token based auth to reset passwords (#269)
 - Better install doc (#275)
+- Use token based auth in invitation e-mails (#280)
 
 Added
 =====

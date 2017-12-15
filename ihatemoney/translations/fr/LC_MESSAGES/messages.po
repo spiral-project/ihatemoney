@@ -175,6 +175,10 @@ msgid "Export file format"
 msgstr "Format du fichier d'export"
 
 #: web.py:95
+msgid "You either provided a bad token or no project identifier."
+msgstr "L'identifiant du projet ou le token fourni n'est pas correct."
+
+#: web.py:95
 msgid "This private code is not the right one"
 msgstr "Le code que vous avez entré n'est pas correct"
 
@@ -271,8 +275,7 @@ msgstr "Retourner à la liste"
 
 #: templates/authenticate.html:6
 msgid ""
-"The project you are trying to access do not exist, do you want \n"
-"to"
+"The project you are trying to access do not exist, do you want to"
 msgstr "Le projet auquel vous essayez d'acceder n'existe pas. Souhaitez vous"
 
 #: templates/authenticate.html:7
@@ -477,12 +480,12 @@ msgid "reactivate"
 msgstr "ré-activer"
 
 #: templates/list_bills.html:88
-msgid "The project identifier is"
-msgstr "L'identifiant de ce projet est"
+msgid "Invite"
+msgstr "Invitez"
 
 #: templates/list_bills.html:88
-msgid "remember it!"
-msgstr "souvenez vous en !"
+msgid "Invite people to join this project!"
+msgstr "Invitez d'autres personnes à rejoindre ce projet !"
 
 #: templates/list_bills.html:89
 msgid "Add a new bill"
@@ -536,14 +539,6 @@ msgstr "Vos projets"
 msgid "Reset your password"
 msgstr "Changez votre mot de passe"
 
-#: templates/send_invites.html:6
-msgid "Invite people"
-msgstr "Invitez des gens"
-
-#: templates/send_invites.html:7
-msgid "Use it!"
-msgstr "Utilisez le !"
-
 #: templates/send_invites.html:11
 msgid "Invite people to join this project"
 msgstr "Invitez des personnes à rejoindre ce projet"
@@ -551,7 +546,7 @@ msgstr "Invitez des personnes à rejoindre ce projet"
 #: templates/send_invites.html:12
 msgid ""
 "Specify a (comma separated) list of email adresses you want to notify "
-"about the \n"
+"about the\n"
 "creation of this budget management project and we will send them an email"
 " for you."
 msgstr ""
@@ -559,16 +554,11 @@ msgstr ""
 "par des virgules. On s'occupe de leur envoyer un email."
 
 #: templates/send_invites.html:14
-msgid "If you prefer, you can"
-msgstr "Si vous préférez vous pouvez"
-
-#: templates/send_invites.html:14
-msgid "skip this step"
-msgstr "sauter cette étape"
-
-#: templates/send_invites.html:14
-msgid "and notify them yourself"
-msgstr "et les avertir vous même"
+msgid "If you prefer, you can share the project identifier and the shared\n"
+"password by other communication means. Or even directly share the following link:"
+msgstr "Si vous préférez vous pouvez partager l'identifiant du projet et son mot "
+"de passe par un autre moyen de communication. Ou directement partager le lien "
+"suivant :"
 
 #: templates/settle_bills.html:31
 msgid "Who pays?"

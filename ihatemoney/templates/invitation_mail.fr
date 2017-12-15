@@ -4,6 +4,8 @@ Quelqu'un avec l'addresse email "{{ g.project.contact_email }}" vous à invité 
 
 C'est aussi simple que de dire qui à payé pour quoi, pour qui, et combien celà à coûté, on s'occuppe du reste.
 
-Vous pouvez accéder à la page ici: {{ config['SITE_URL'] }}{{ url_for(".list_bills") }} et le code est "{{ g.project.password }}".
+Vous pouvez vous authentifier avec le lien suivant: {{ url_for(".authenticate", _external=True, token=g.project.generate_token()) }}.
+Une fois authentifié, vous pouvez utiliser le lien suivant qui est plus facile à mémoriser: {{ url_for(".list_bills", _external=True) }}
+Si votre cookie est supprimé ou si vous vous déconnectez, voous devrez vous réauthentifier en utilisant le premier lien.
 
 Have fun,

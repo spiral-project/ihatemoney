@@ -92,7 +92,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="identifier">{{ _("The project identifier is") }} <a href="{{ url_for(".list_bills") }}">{{ g.project.id }}</a>, {{ _("remember it!") }}</div>
+<div class="identifier"><a href="{{ url_for(".invite") }}">{{ _("Invite people to join this project!") }}</a></div>
 <a id="new-bill" href="{{ url_for(".add_bill") }}" class="btn btn-primary" data-toggle="modal" data-target="#bill-form">{{ _("Add a new bill") }}</a>
 
     <div id="bill-form" class="modal fade show" role="dialog">

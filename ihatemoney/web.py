@@ -151,12 +151,20 @@ def admin():
 def authenticate(project_id=None):
     """Authentication form"""
     form = AuthenticationForm()
-    if not form.id.data and request.args.get('project_id'):
-        form.id.data = request.args['project_id']
-    project_id = form.id.data
+    # Try to get project_id from token first
+    token = request.args.get('token')
+    if token:
+        project_id = Project.verify_token(token, token_type='non_timed_token')
+        token_auth = True
+    else:
+        if not form.id.data and request.args.get('project_id'):
+            form.id.data = request.args['project_id']
+        project_id = form.id.data
+        token_auth = False
     if project_id is None:
-        # User doesn't provide project identifier, return to authenticate form
-        msg = _("You need to enter a project identifier")
+        # User doesn't provide project identifier or a valid token
+        # return to authenticate form
+        msg = _("You either provided a bad token or no project identifier.")
         form.errors["id"] = [msg]
         return render_template("authenticate.html", form=form)
 
@@ -171,11 +179,10 @@ def authenticate(project_id=None):
         setattr(g, 'project', project)
         return redirect(url_for(".list_bills"))
 
-    if request.method == "POST" and form.validate():
-        if not form.password.data == project.password:
-            msg = _("This private code is not the right one")
-            form.errors['password'] = [msg]
-            return render_template("authenticate.html", form=form)
+    # else do form authentication or token authentication
+    is_post_auth = request.method == "POST" and form.validate()
+    is_valid_password = form.password.data == project.password
+    if is_post_auth and is_valid_password or token_auth:
         # maintain a list of visited projects
         if "projects" not in session:
             session["projects"] = []
@@ -185,6 +192,9 @@ def authenticate(project_id=None):
         session.update()
         setattr(g, 'project', project)
         return redirect(url_for(".list_bills"))
+    if is_post_auth and not is_valid_password:
+        msg = _("This private code is not the right one")
+        form.errors['password'] = [msg]
 
     return render_template("authenticate.html", form=form)
 
@@ -250,7 +260,7 @@ def create_project():
             # redirect the user to the next step (invite)
             flash(_("%(msg_compl)sThe project identifier is %(project)s",
                     msg_compl=msg_compl, project=project.id))
-            return redirect(url_for(".invite", project_id=project.id))
+            return redirect(url_for(".list_bills", project_id=project.id))
 
     return render_template("create_project.html", form=form)
 
