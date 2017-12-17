@@ -5,6 +5,7 @@ from wtforms.fields.simple import PasswordField, SubmitField, TextAreaField, Str
 from wtforms.validators import Email, Required, ValidationError, EqualTo
 from flask_babel import lazy_gettext as _
 from flask import request
+from werkzeug.security import generate_password_hash
 
 from datetime import datetime
 from jinja2 import Markup
@@ -52,14 +53,14 @@ class EditProjectForm(FlaskForm):
         Returns the created instance
         """
         project = Project(name=self.name.data, id=self.id.data,
-                          password=self.password.data,
+                          password=generate_password_hash(self.password.data),
                           contact_email=self.contact_email.data)
         return project
 
     def update(self, project):
         """Update the project with the information from the form"""
         project.name = self.name.data
-        project.password = self.password.data
+        project.password = generate_password_hash(self.password.data)
         project.contact_email = self.contact_email.data
 
         return project
