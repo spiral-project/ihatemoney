@@ -65,14 +65,20 @@ Getting information about the project::
         "contact_email": "demo@notmyidea.org",
         "password": "demo",
         "id": "demo",
-        "active_members": [{"activated": true, "id": 31, "name": "Arnaud"},
-                            {"activated": true, "id": 32, "name": "Alexis"},
-                            {"activated": true, "id": 33, "name": "Olivier"},
-                            {"activated": true, "id": 34, "name": "Fred"}],
-        "members": [{"activated": true, "id": 31, "name": "Arnaud"},
-                    {"activated": true, "id": 32, "name": "Alexis"},
-                    {"activated": true, "id": 33, "name": "Olivier"},
-                    {"activated": true, "id": 34, "name": "Fred"}],
+        "active_members": [{"activated": true, "weight": 1, "id": 31, "name": "Arnaud"},
+                            {"activated": true, "weight": 1, "id": 32, "name": "Alexis"},
+                            {"activated": true, "weight": 1, "id": 33, "name": "Olivier"},
+                            {"activated": true, "weight": 1, "id": 34, "name": "Fred"}],
+        "members": [{"activated": true, "weight": 1, "id": 31, "name": "Arnaud"},
+                    {"activated": true, "weight": 1, "id": 32, "name": "Alexis"},
+                    {"activated": true, "weight": 1, "id": 33, "name": "Olivier"},
+                    {"activated": true, "weight": 1, "id": 34, "name": "Fred"}],
+        "balance": {
+            "31": 6.0,
+            "32": 6.0
+            "33": -6.0
+            "34": -6.0
+        }
     }
 
 
@@ -98,10 +104,10 @@ Members
 You can get all the members with a `GET` on `/api/projects/<id>/members`::
 
     $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo/members\
-    [{"activated": true, "id": 31, "name": "Arnaud"},
-     {"activated": true, "id": 32, "name": "Alexis"},
-     {"activated": true, "id": 33, "name": "Olivier"},
-     {"activated": true, "id": 34, "name": "Fred"}]
+    [{"weight": 1, "activated": true, "id": 31, "name": "Arnaud"},
+     {"weight": 1, "activated": true, "id": 32, "name": "Alexis"},
+     {"weight": 1, "activated": true, "id": 33, "name": "Olivier"},
+     {"weight": 1, "activated": true, "id": 34, "name": "Fred"}]
 
 Add a member with a `POST` request on `/api/projects/<id>/members`::
 
@@ -114,7 +120,7 @@ You can also `PUT` a new version of a member (changing its name)::
     $ curl --basic -u demo:demo -X PUT\
     https://ihatemoney.org/api/projects/demo/members/36\
     -d 'name=yeaaaaah'
-    {"activated": true, "id": 36, "name": "yeaaaaah"}
+    {"activated": true, "id": 36, "name": "yeaaaaah", "weight": 1}
 
 Delete a member with a `DELETE` request on `/api/projects/<id>/members/<member-id>`::
 
