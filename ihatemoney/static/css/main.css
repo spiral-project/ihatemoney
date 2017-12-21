@@ -253,12 +253,14 @@ tr.payer_line .balance-name{
     opacity: 0.3;
 }
 
+.balance.table .action,
 .extra-info {
     display: none;
 }
 
+.balance.table tr:hover .action,
 tr:hover .extra-info {
-    display: inline;
+    display: initial;
 }
 
 /* Fluid Offsets for Boostrap */

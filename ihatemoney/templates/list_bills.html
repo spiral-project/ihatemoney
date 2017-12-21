@@ -14,12 +14,6 @@
         autoclose: true,
         language: '{{ g.lang }}'
     });
-
-    // Hide all members actions
-    $('.action').each(function(){
-        $(this).hide();
-    });
-
     // ask for confirmation before removing an user
     $('.action.delete').each(function(){
         var link = $(this).find('button');
@@ -31,13 +25,6 @@
             $(this).addClass("confirm");
             return false;
         });
-    });
-
-    // display the remove button on mouse over (and hide them per default)
-    $('.balance tr').hover(function(){
-        $(this).find('.action').show();
-    }, function(){
-        $(this).find('.action').hide();
     });
 
     var highlight_owers = function(){
