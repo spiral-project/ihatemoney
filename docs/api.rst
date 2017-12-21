@@ -73,6 +73,12 @@ Getting information about the project::
                     {"activated": true, "weight": 1, "id": 32, "name": "Alexis"},
                     {"activated": true, "weight": 1, "id": 33, "name": "Olivier"},
                     {"activated": true, "weight": 1, "id": 34, "name": "Fred"}],
+        "balance": {
+            "31": 6.0,
+            "32": 6.0
+            "33": -6.0
+            "34": -6.0
+        }
     }
 
 
