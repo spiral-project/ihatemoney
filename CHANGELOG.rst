@@ -21,6 +21,7 @@ Changed
 - Use token based auth to reset passwords (#269)
 - Better install doc (#275)
 - Use token based auth in invitation e-mails (#280)
+- Use hashed passwords for projects (#286)
 
 Added
 =====

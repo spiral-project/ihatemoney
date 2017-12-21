@@ -5,6 +5,7 @@ from flask_rest import RESTResource, need_auth
 from ihatemoney.models import db, Project, Person, Bill
 from ihatemoney.forms import (ProjectForm, EditProjectForm, MemberForm,
                               get_billform_for)
+from werkzeug.security import check_password_hash
 
 
 api = Blueprint("api", __name__, url_prefix="/api")
@@ -21,7 +22,7 @@ def check_project(*args, **kwargs):
     if auth and "project_id" in kwargs and \
             auth.username == kwargs["project_id"]:
         project = Project.query.get(auth.username)
-        if project and project.password == auth.password:
+        if project and check_password_hash(project.password, auth.password):
             return project
     return False
 

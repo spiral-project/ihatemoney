@@ -15,7 +15,7 @@ from flask import (
 )
 from flask_mail import Message
 from flask_babel import get_locale, gettext as _
-from werkzeug.security import check_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash
 from smtplib import SMTPRecipientsRefused
 from werkzeug.exceptions import NotFound
 from sqlalchemy import orm
@@ -181,8 +181,7 @@ def authenticate(project_id=None):
 
     # else do form authentication or token authentication
     is_post_auth = request.method == "POST" and form.validate()
-    is_valid_password = form.password.data == project.password
-    if is_post_auth and is_valid_password or token_auth:
+    if is_post_auth and check_password_hash(project.password, form.password.data) or token_auth:
         # maintain a list of visited projects
         if "projects" not in session:
             session["projects"] = []
@@ -192,7 +191,7 @@ def authenticate(project_id=None):
         session.update()
         setattr(g, 'project', project)
         return redirect(url_for(".list_bills"))
-    if is_post_auth and not is_valid_password:
+    if is_post_auth and not check_password_hash(project.password, form.password.data):
         msg = _("This private code is not the right one")
         form.errors['password'] = [msg]
 
@@ -297,13 +296,12 @@ def reset_password():
     if not project:
         return render_template('reset_password.html', form=form, error=_("Unknown project"))
 
-    if request.method == "POST":
-        if form.validate():
-            project.password = form.password.data
-            db.session.add(project)
-            db.session.commit()
-            flash(_("Password successfully reset."))
-            return redirect(url_for(".home"))
+    if request.method == "POST" and form.validate():
+        project.password = generate_password_hash(form.password.data)
+        db.session.add(project)
+        db.session.commit()
+        flash(_("Password successfully reset."))
+        return redirect(url_for(".home"))
     return render_template('reset_password.html', form=form)
 
 
@@ -342,7 +340,6 @@ def edit_project():
                              )
     else:
         edit_form.name.data = g.project.name
-        edit_form.password.data = g.project.password
         edit_form.contact_email.data = g.project.contact_email
 
     return render_template("edit_project.html", edit_form=edit_form, export_form=export_form)
@@ -379,7 +376,8 @@ def demo():
         raise Redirect303(url_for(".create_project",
                                   project_id='demo'))
     if not project and is_demo_project_activated:
-        project = Project(id="demo", name=u"demonstration", password="demo",
+        project = Project(id="demo", name=u"demonstration",
+                          password=generate_password_hash("demo"),
                           contact_email="demo@notmyidea.org")
         db.session.add(project)
         db.session.commit()

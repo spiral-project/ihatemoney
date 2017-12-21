@@ -11,7 +11,7 @@ from collections import defaultdict
 import six
 from time import sleep
 
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask import session
 from flask_testing import TestCase
 
@@ -61,7 +61,7 @@ class BaseTestCase(TestCase):
         project = models.Project(
             id=name,
             name=six.text_type(name),
-            password=name,
+            password=generate_password_hash(name),
             contact_email="%s@notmyidea.org" % name)
         models.db.session.add(project)
         models.db.session.commit()
@@ -670,8 +670,9 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertEqual(resp.status_code, 200)
         project = models.Project.query.get("raclette")
 
-        for key, value in new_data.items():
-            self.assertEqual(getattr(project, key), value, key)
+        self.assertEqual(project.name, new_data['name'])
+        self.assertEqual(project.contact_email, new_data['contact_email'])
+        self.assertTrue(check_password_hash(project.password, new_data['password']))
 
         # Editing a project with a wrong email address should fail
         new_data['contact_email'] = 'wrong_email'
@@ -1071,11 +1072,12 @@ class APITestCase(IhatemoneyTestCase):
             "name": "raclette",
             "contact_email": "raclette@notmyidea.org",
             "members": [],
-            "password": "raclette",
             "id": "raclette",
             "balance": {},
         }
-        self.assertDictEqual(json.loads(resp.data.decode('utf-8')), expected)
+        decoded_resp = json.loads(resp.data.decode('utf-8'))
+        self.assertTrue(check_password_hash(decoded_resp.pop('password'), 'raclette'))
+        self.assertDictEqual(decoded_resp, expected)
 
         # edit should work
         resp = self.client.put("/api/projects/raclette", data={
@@ -1095,11 +1097,12 @@ class APITestCase(IhatemoneyTestCase):
             "name": "The raclette party",
             "contact_email": "yeah@notmyidea.org",
             "members": [],
-            "password": "raclette",
             "id": "raclette",
             "balance": {},
         }
-        self.assertDictEqual(json.loads(resp.data.decode('utf-8')), expected)
+        decoded_resp = json.loads(resp.data.decode('utf-8'))
+        self.assertTrue(check_password_hash(decoded_resp.pop('password'), 'raclette'))
+        self.assertDictEqual(decoded_resp, expected)
 
         # delete should work
         resp = self.client.delete("/api/projects/raclette",
@@ -1334,11 +1337,12 @@ class APITestCase(IhatemoneyTestCase):
                 {"activated": True, "id": 2, "name": "freddy familly", "weight": 4.0},
                 {"activated": True, "id": 3, "name": "arnaud", "weight": 1.0}
             ],
-            "name": "raclette",
-            "password": "raclette"}
+            "name": "raclette"}
 
         self.assertStatus(200, req)
-        self.assertEqual(expected, json.loads(req.data.decode('utf-8')))
+        decoded_req = json.loads(req.data.decode('utf-8'))
+        self.assertTrue(check_password_hash(decoded_req.pop('password'), 'raclette'))
+        self.assertDictEqual(decoded_req, expected)
 
 
 class ServerTestCase(APITestCase):
