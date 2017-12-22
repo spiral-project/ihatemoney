@@ -1100,14 +1100,26 @@ class APITestCase(IhatemoneyTestCase):
             "balance": {},
         }
         decoded_resp = json.loads(resp.data.decode('utf-8'))
-        self.assertTrue(check_password_hash(decoded_resp.pop('password'), 'raclette'))
         self.assertDictEqual(decoded_resp, expected)
+
+        # password change is possible via API
+        resp = self.client.put("/api/projects/raclette", data={
+            "contact_email": "yeah@notmyidea.org",
+            "password": "tartiflette",
+            "name": "The raclette party",
+        }, headers=self.get_auth("raclette"))
+
+        self.assertEqual(200, resp.status_code)
+
+        resp = self.client.get("/api/projects/raclette",
+                               headers=self.get_auth(
+                                   "raclette", "tartiflette"))
+        self.assertEqual(200, resp.status_code)
 
         # delete should work
         resp = self.client.delete("/api/projects/raclette",
-                                  headers=self.get_auth("raclette"))
-
-        self.assertEqual(200, resp.status_code)
+                                  headers=self.get_auth(
+                                      "raclette", "tartiflette"))
 
         # get should return a 401 on an unknown resource
         resp = self.client.get("/api/projects/raclette",
