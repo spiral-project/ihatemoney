@@ -14,7 +14,7 @@ db = SQLAlchemy()
 class Project(db.Model):
 
     _to_serialize = (
-        "id", "name", "password", "contact_email", "members", "active_members",
+        "id", "name",  "contact_email", "members", "active_members",
         "balance"
     )
 

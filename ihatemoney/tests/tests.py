@@ -1076,7 +1076,6 @@ class APITestCase(IhatemoneyTestCase):
             "balance": {},
         }
         decoded_resp = json.loads(resp.data.decode('utf-8'))
-        self.assertTrue(check_password_hash(decoded_resp.pop('password'), 'raclette'))
         self.assertDictEqual(decoded_resp, expected)
 
         # edit should work
@@ -1341,7 +1340,6 @@ class APITestCase(IhatemoneyTestCase):
 
         self.assertStatus(200, req)
         decoded_req = json.loads(req.data.decode('utf-8'))
-        self.assertTrue(check_password_hash(decoded_req.pop('password'), 'raclette'))
         self.assertDictEqual(decoded_req, expected)
 
 

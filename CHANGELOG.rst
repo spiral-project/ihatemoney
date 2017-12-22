@@ -12,6 +12,7 @@ Breaking changes
 - ``ADMIN_PASSWORD`` is now stored hashed. The ``ihatemoney generate_password_hash`` command can now be used to generate a proper password HASH (#236)
 - Turn the WSGI file into a python module, renamed from budget/ihatemoney.wsgi to ihatemoney/wsgi.py. Please update your Apache/Gunicorn configuration! (#218)
 - Admin privileges are now required to access the dashboard (#262)
+- `password` field has been removed from project API GET views (#289)
 
 Changed
 =======
