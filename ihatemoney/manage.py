@@ -3,6 +3,7 @@
 import os
 import pkgutil
 import random
+import sys
 from getpass import getpass
 
 from flask_script import Manager, Command, Option
@@ -56,8 +57,19 @@ class ConfigTemplate(Command):
 
 
 def main():
+    QUIET_COMMANDS = ('generate_password_hash', 'generate-config')
+
+    backup_stderr = sys.stderr
+    # Hack to divert stderr for commands generating content to stdout
+    # to avoid confusing the user
+    if len(sys.argv) > 1 and sys.argv[1] in QUIET_COMMANDS:
+        sys.stderr = open(os.devnull, 'w')
+
     app = create_app()
     Migrate(app, db)
+
+    # Restore stderr (among other: to be able to display help)
+    sys.stderr = backup_stderr
 
     manager = Manager(app)
     manager.add_command('db', MigrateCommand)
