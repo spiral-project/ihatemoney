@@ -1185,7 +1185,6 @@ class APITestCase(IhatemoneyTestCase):
         self.assertStatus(200, req)
 
         # the list of members should be empty
-        # get the list of members (should be empty)
         req = self.client.get("/api/projects/raclette/members",
                               headers=self.get_auth("raclette"))
 
