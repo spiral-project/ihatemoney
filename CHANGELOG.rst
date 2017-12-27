@@ -41,6 +41,7 @@ Fixed
 =====
 
 - Fix `PUT api/project/:code/members/:id` API endpoint (#295)
+- Fix member name uniqueness validation on API (#299)
 
 Removed
 =======
