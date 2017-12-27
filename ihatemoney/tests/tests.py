@@ -72,6 +72,10 @@ class IhatemoneyTestCase(BaseTestCase):
     TESTING = True
     WTF_CSRF_ENABLED = False  # Simplifies the tests.
 
+    def assertStatus(self, expected, resp, url=""):
+        return self.assertEqual(expected, resp.status_code,
+                                "%s expected %s, got %s" % (url, expected, resp.status_code))
+
 
 class ConfigurationTestCase(BaseTestCase):
 
@@ -1009,11 +1013,6 @@ class APITestCase(IhatemoneyTestCase):
             ('%s:%s' % (username, password)).encode('utf-8')).decode('utf-8').replace('\n', '')
         return {"Authorization": "Basic %s" % base64string}
 
-    def assertStatus(self, expected, resp, url=""):
-
-        return self.assertEqual(expected, resp.status_code,
-                                "%s expected %s, got %s" % (url, expected, resp.status_code))
-
     def test_basic_auth(self):
         # create a project
         resp = self.api_create("raclette")
@@ -1370,7 +1369,7 @@ class APITestCase(IhatemoneyTestCase):
         self.assertDictEqual(decoded_req, expected)
 
 
-class ServerTestCase(APITestCase):
+class ServerTestCase(IhatemoneyTestCase):
 
     def test_unprefixed(self):
         self.app.config['APPLICATION_ROOT'] = '/'
