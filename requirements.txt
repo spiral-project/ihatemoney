@@ -5,7 +5,7 @@ flask-mail>=0.8
 Flask-Migrate>=1.8.0
 Flask-script
 flask-babel
-flask-rest
+flask-rest>=1.3
 jinja2>=2.6
 raven
 blinker
