@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import Blueprint, request
 from flask_rest import RESTResource, need_auth
+from wtforms.fields.core import BooleanField
 
 from ihatemoney.models import db, Project, Person, Bill
 from ihatemoney.forms import (ProjectForm, EditProjectForm, MemberForm,
@@ -58,6 +59,18 @@ class ProjectHandler(object):
         return 400, form.errors
 
 
+class APIMemberForm(MemberForm):
+    """ Member is not disablable via a Form.
+
+    But we want Member.enabled to be togglable via the API.
+    """
+    activated = BooleanField(false_values=('false', '', 'False'))
+
+    def save(self, project, person):
+        person.activated = self.activated.data
+        return super(APIMemberForm, self).save(project, person)
+
+
 class MemberHandler(object):
 
     def get(self, project, member_id):
@@ -79,7 +92,7 @@ class MemberHandler(object):
         return 400, form.errors
 
     def update(self, project, member_id):
-        form = MemberForm(project, meta={'csrf': False}, edit=True)
+        form = APIMemberForm(project, meta={'csrf': False}, edit=True)
         if form.validate():
             member = Person.query.get(member_id, project)
             form.save(project, member)
