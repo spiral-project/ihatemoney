@@ -79,7 +79,7 @@ class MemberHandler(object):
         return 400, form.errors
 
     def update(self, project, member_id):
-        form = MemberForm(project, meta={'csrf': False})
+        form = MemberForm(project, meta={'csrf': False}, edit=True)
         if form.validate():
             member = Person.query.get(member_id, project)
             form.save(project, member)

@@ -1155,7 +1155,8 @@ class APITestCase(IhatemoneyTestCase):
 
         # edit this member
         req = self.client.put("/api/projects/raclette/members/1", data={
-            "name": "Fred"
+            "name": "Fred",
+            "weight": 2,
         }, headers=self.get_auth("raclette"))
 
         self.assertStatus(200, req)
@@ -1166,6 +1167,15 @@ class APITestCase(IhatemoneyTestCase):
 
         self.assertStatus(200, req)
         self.assertEqual("Fred", json.loads(req.data.decode('utf-8'))["name"])
+        self.assertEqual(2, json.loads(req.data.decode('utf-8'))["weight"])
+
+        # edit this member with same information
+        # (test PUT idemopotence)
+        req = self.client.put("/api/projects/raclette/members/1", data={
+            "name": "Fred"
+        }, headers=self.get_auth("raclette"))
+
+        self.assertStatus(200, req)
 
         # delete a member
 
@@ -1175,7 +1185,6 @@ class APITestCase(IhatemoneyTestCase):
         self.assertStatus(200, req)
 
         # the list of members should be empty
-        # get the list of members (should be empty)
         req = self.client.get("/api/projects/raclette/members",
                               headers=self.get_auth("raclette"))
 
