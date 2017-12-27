@@ -1153,7 +1153,13 @@ class APITestCase(IhatemoneyTestCase):
         self.assertStatus(200, req)
         self.assertEqual(len(json.loads(req.data.decode('utf-8'))), 1)
 
-        # edit this member
+        # Try to add another member with the same name.
+        req = self.client.post("/api/projects/raclette/members", data={
+            "name": "Alexis"
+        }, headers=self.get_auth("raclette"))
+        self.assertStatus(400, req)
+
+        # edit the member
         req = self.client.put("/api/projects/raclette/members/1", data={
             "name": "Fred",
             "weight": 2,
