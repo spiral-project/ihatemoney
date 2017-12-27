@@ -37,6 +37,11 @@ Added
 - Dockerfile
 - Documentation explaining the upgrade process
 
+Fixed
+=====
+
+- Fix `PUT api/project/:code/members/:id` API endpoint (#295)
+
 Removed
 =======
 
