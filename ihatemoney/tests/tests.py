@@ -1182,6 +1182,30 @@ class APITestCase(IhatemoneyTestCase):
 
         self.assertStatus(200, req)
 
+        # de-activate the user
+        req = self.client.put("/api/projects/raclette/members/1", data={
+            "name": "Fred",
+            "activated": False,
+        }, headers=self.get_auth("raclette"))
+        self.assertStatus(200, req)
+
+        req = self.client.get("/api/projects/raclette/members/1",
+                              headers=self.get_auth("raclette"))
+        self.assertStatus(200, req)
+        self.assertEqual(False, json.loads(req.data.decode('utf-8'))["activated"])
+
+        # re-activate the user
+
+        req = self.client.put("/api/projects/raclette/members/1", data={
+            "name": "Fred",
+            "activated": True,
+        }, headers=self.get_auth("raclette"))
+
+        req = self.client.get("/api/projects/raclette/members/1",
+                              headers=self.get_auth("raclette"))
+        self.assertStatus(200, req)
+        self.assertEqual(True, json.loads(req.data.decode('utf-8'))["activated"])
+
         # delete a member
 
         req = self.client.delete("/api/projects/raclette/members/1",
