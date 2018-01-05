@@ -49,9 +49,11 @@ class ConfigTemplate(Command):
             os.path.join('conf-templates/', config_file) + '.j2'
         ).decode('utf-8')
 
+        bin_path = os.path.join(os.path.dirname(sys.executable))
+
         print(Template(template_content).render(
                 pkg_path=os.path.abspath(os.path.dirname(__file__)),
-                venv_path=os.environ.get('VIRTUAL_ENV'),
+                bin_path=bin_path,
                 secret_key=self.gen_secret_key(),
         ))
 

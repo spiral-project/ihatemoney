@@ -1,5 +1,5 @@
 [program:ihatemoney]
-command={{ venv_path }}/bin/gunicorn -c /etc/ihatemoney/gunicorn.conf.py ihatemoney.wsgi:application
+command={{ bin_path }}/gunicorn -c /etc/ihatemoney/gunicorn.conf.py ihatemoney.wsgi:application
 user=ihatemoney
 autostart=true
 autorestart=true
