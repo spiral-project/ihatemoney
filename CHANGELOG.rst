@@ -10,6 +10,7 @@ Fixed
 =====
 
 - Fix the generation of the supervisord template (#306)
+- Fix the validation of the hashed password (#310)
 
 
 2.0 (2017-12-27)

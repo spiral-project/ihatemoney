@@ -89,7 +89,7 @@ def validate_configuration(app):
         if 'MAIL_DEFAULT_SENDER' not in app.config:
             app.config['MAIL_DEFAULT_SENDER'] = default_settings.DEFAULT_MAIL_SENDER
 
-    if "pbkdf2:sha256:" not in app.config['ADMIN_PASSWORD'] and app.config['ADMIN_PASSWORD']:
+    if "pbkdf2:" not in app.config['ADMIN_PASSWORD'] and app.config['ADMIN_PASSWORD']:
         # Since 2.0
         warnings.warn(
             "The way Ihatemoney stores your ADMIN_PASSWORD has changed. You are using an unhashed"
