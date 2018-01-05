@@ -4,6 +4,7 @@
 
     WSGIDaemonProcess ihatemoney user=www-data group=www-data threads=5 python-path={{ pkg_path }} {% if venv_path %}python-home={{ venv_path }}{% endif %}
     WSGIScriptAlias / {{ pkg_path }}/wsgi.py
+    WSGIPassAuthorization On
 
     ErrorLog /var/log/apache2/ihatemoney.example.com_error.log
     CustomLog /var/log/apache2/ihatemoney.example.com_access.log combined
