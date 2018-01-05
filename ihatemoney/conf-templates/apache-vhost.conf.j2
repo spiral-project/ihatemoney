@@ -12,7 +12,6 @@
     <Directory {{ pkg_path }}>
        WSGIProcessGroup ihatemoney
        WSGIApplicationGroup %{GLOBAL}
-       AuthType Basic
        Order deny,allow
        Allow from all
     </Directory>
