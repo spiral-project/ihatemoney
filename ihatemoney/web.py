@@ -242,7 +242,7 @@ def create_project():
             message_title = _("You have just created '%(project)s' "
                               "to share your expenses", project=g.project.name)
 
-            message_body = render_template("reminder_mail.%s" %
+            message_body = render_template("reminder_mail.%s.j2" %
                                            get_locale().language)
 
             msg = Message(message_title,
@@ -273,7 +273,7 @@ def remind_password():
             project = Project.query.get(form.id.data)
 
             # send a link to reset the password
-            password_reminder = "password_reminder.%s" % get_locale().language
+            password_reminder = "password_reminder.%s.j2" % get_locale().language
             current_app.mail.send(Message(
                 "password recovery",
                 body=render_template(password_reminder, project=project),
@@ -395,7 +395,7 @@ def invite():
         if form.validate():
             # send the email
 
-            message_body = render_template("invitation_mail.%s" %
+            message_body = render_template("invitation_mail.%s.j2" %
                                            get_locale().language)
 
             message_title = _("You have been invited to share your "
