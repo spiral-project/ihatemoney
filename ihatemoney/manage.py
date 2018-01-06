@@ -4,7 +4,7 @@ import os
 import pkgutil
 import random
 import sys
-from getpass import getpass
+import getpass
 
 from flask_script import Manager, Command, Option
 from flask_migrate import Migrate, MigrateCommand
@@ -20,7 +20,7 @@ class GeneratePasswordHash(Command):
     """Get password from user and hash it without printing it in clear text."""
 
     def run(self):
-        password = getpass(prompt='Password: ')
+        password = getpass.getpass(prompt='Password: ')
         print(generate_password_hash(password))
 
 
