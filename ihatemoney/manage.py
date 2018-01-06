@@ -24,7 +24,7 @@ class GeneratePasswordHash(Command):
         print(generate_password_hash(password))
 
 
-class ConfigTemplate(Command):
+class GenerateConfig(Command):
     def get_options(self):
         return [
             Option('config_file', choices=[
@@ -74,7 +74,7 @@ def main():
     manager = Manager(app)
     manager.add_command('db', MigrateCommand)
     manager.add_command('generate_password_hash', GeneratePasswordHash)
-    manager.add_command('generate-config', ConfigTemplate)
+    manager.add_command('generate-config', GenerateConfig)
     manager.run()
 
 
