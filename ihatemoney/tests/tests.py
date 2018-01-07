@@ -4,6 +4,10 @@ try:
     import unittest2 as unittest
 except ImportError:
     import unittest  # NOQA
+try:
+    from unittest.mock import patch
+except ImportError:
+    from mock import patch
 
 import os
 import json
@@ -16,6 +20,7 @@ from flask import session
 from flask_testing import TestCase
 
 from ihatemoney.run import create_app, db, load_configuration
+from ihatemoney.manage import GenerateConfig, GeneratePasswordHash
 from ihatemoney import models
 from ihatemoney import utils
 
@@ -1404,6 +1409,28 @@ class ServerTestCase(IhatemoneyTestCase):
         self.app.config['APPLICATION_ROOT'] = '/foo'
         req = self.client.get("/foo/")
         self.assertStatus(200, req)
+
+
+class CommandTestCase(BaseTestCase):
+    def test_generate_config(self):
+        """ Simply checks that all config file generation
+        - raise no exception
+        - produce something non-empty
+        """
+        cmd = GenerateConfig()
+        for config_file in cmd.get_options()[0].kwargs['choices']:
+            with patch('sys.stdout', new=six.StringIO()) as stdout:
+                cmd.run(config_file)
+                print(stdout.getvalue())
+                self.assertNotEqual(len(stdout.getvalue().strip()), 0)
+
+    def test_generate_password_hash(self):
+        cmd = GeneratePasswordHash()
+        with patch('sys.stdout', new=six.StringIO()) as stdout, \
+             patch('getpass.getpass', new=lambda prompt: 'secret'): # NOQA
+            cmd.run()
+            print(stdout.getvalue())
+            self.assertEqual(len(stdout.getvalue().strip()), 187)
 
 
 if __name__ == "__main__":
