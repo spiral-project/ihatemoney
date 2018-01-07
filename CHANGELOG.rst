@@ -6,7 +6,10 @@ This document describes changes between each past release.
 2.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+Fixed
+=====
+
+- Include all .j2 files in the packaged version (#308)
 
 
 2.0 (2017-12-27)
