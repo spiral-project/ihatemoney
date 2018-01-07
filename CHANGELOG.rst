@@ -6,7 +6,10 @@ This document describes changes between each past release.
 2.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+Fixed
+=====
+
+- Fix the "IOError" crash when running `ihatemoney generate-config` (#308)
 
 
 2.0 (2017-12-27)
