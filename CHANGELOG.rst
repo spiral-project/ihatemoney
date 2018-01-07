@@ -9,7 +9,7 @@ This document describes changes between each past release.
 Fixed
 =====
 
-- Include all .j2 files in the packaged version (#308)
+- Fix the "IOError" crash when running `ihatemoney generate-config` (#308)
 
 
 2.0 (2017-12-27)
