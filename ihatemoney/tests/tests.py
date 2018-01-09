@@ -1053,7 +1053,7 @@ class APITestCase(IhatemoneyTestCase):
         })
 
         self.assertTrue(400, resp.status_code)
-        self.assertEqual('{"contact_email": ["Invalid email address."]}',
+        self.assertEqual('{"contact_email": ["Invalid email address."]}\n',
                          resp.data.decode('utf-8'))
 
         # create it
@@ -1139,7 +1139,7 @@ class APITestCase(IhatemoneyTestCase):
                               headers=self.get_auth("raclette"))
 
         self.assertStatus(200, req)
-        self.assertEqual('[]', req.data.decode('utf-8'))
+        self.assertEqual('[]\n', req.data.decode('utf-8'))
 
         # add a member
         req = self.client.post("/api/projects/raclette/members", data={
@@ -1148,7 +1148,7 @@ class APITestCase(IhatemoneyTestCase):
 
         # the id of the new member should be returned
         self.assertStatus(201, req)
-        self.assertEqual("1", req.data.decode('utf-8'))
+        self.assertEqual("1\n", req.data.decode('utf-8'))
 
         # the list of members should contain one member
         req = self.client.get("/api/projects/raclette/members",
@@ -1223,7 +1223,7 @@ class APITestCase(IhatemoneyTestCase):
                               headers=self.get_auth("raclette"))
 
         self.assertStatus(200, req)
-        self.assertEqual('[]', req.data.decode('utf-8'))
+        self.assertEqual('[]\n', req.data.decode('utf-8'))
 
     def test_bills(self):
         # create a project
@@ -1239,7 +1239,7 @@ class APITestCase(IhatemoneyTestCase):
                               headers=self.get_auth("raclette"))
         self.assertStatus(200, req)
 
-        self.assertEqual("[]", req.data.decode('utf-8'))
+        self.assertEqual("[]\n", req.data.decode('utf-8'))
 
         # add a bill
         req = self.client.post("/api/projects/raclette/bills", data={
@@ -1252,7 +1252,7 @@ class APITestCase(IhatemoneyTestCase):
 
         # should return the id
         self.assertStatus(201, req)
-        self.assertEqual(req.data.decode('utf-8'), "1")
+        self.assertEqual(req.data.decode('utf-8'), "1\n")
 
         # get this bill details
         req = self.client.get("/api/projects/raclette/bills/1",
@@ -1288,7 +1288,7 @@ class APITestCase(IhatemoneyTestCase):
         }, headers=self.get_auth("raclette"))
 
         self.assertStatus(400, req)
-        self.assertEqual('{"date": ["This field is required."]}', req.data.decode('utf-8'))
+        self.assertEqual('{"date": ["This field is required."]}\n', req.data.decode('utf-8'))
 
         # edit a bill
         req = self.client.put("/api/projects/raclette/bills/1", data={
