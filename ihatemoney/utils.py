@@ -2,7 +2,7 @@ import base64
 import re
 
 from io import BytesIO, StringIO
-from jinja2 import filters
+import jinja2
 from json import dumps
 from flask import redirect
 from werkzeug.routing import HTTPException, RoutingException
@@ -83,7 +83,7 @@ def minimal_round(*args, **kw):
     from http://stackoverflow.com/questions/28458524/
     """
     # Use the original round filter, to deal with the extra arguments
-    res = filters.do_round(*args, **kw)
+    res = jinja2.filters.do_round(*args, **kw)
     # Test if the result is equivalent to an integer and
     # return depending on it
     ires = int(res)
@@ -170,3 +170,18 @@ class LoginThrottler():
 
     def reset(self, ip):
         self._attempts.pop(ip, None)
+
+
+def create_jinja_env(folder, strict_rendering=False):
+    """Creates and return a Jinja2 Environment object, used, to load the
+    templates.
+
+    :param strict_rendering:
+        if set to `True`, all templates which use an undefined variable will
+        throw an exception (default to `False`).
+    """
+    loader = jinja2.PackageLoader('ihatemoney', folder)
+    kwargs = {'loader': loader}
+    if strict_rendering:
+        kwargs['undefined'] = jinja2.StrictUndefined
+    return jinja2.Environment(**kwargs)

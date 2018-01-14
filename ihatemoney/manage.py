@@ -1,18 +1,17 @@
 #!/usr/bin/env python
 
 import os
-import pkgutil
 import random
 import sys
 import getpass
 
 from flask_script import Manager, Command, Option
 from flask_migrate import Migrate, MigrateCommand
-from jinja2 import Template
 from werkzeug.security import generate_password_hash
 
 from ihatemoney.run import create_app
 from ihatemoney.models import db
+from ihatemoney.utils import create_jinja_env
 
 
 class GeneratePasswordHash(Command):
@@ -44,15 +43,14 @@ class GenerateConfig(Command):
             for i in range(50)])
 
     def run(self, config_file):
-        template_content = pkgutil.get_data(
-            'ihatemoney',
-            os.path.join('conf-templates/', config_file) + '.j2'
-        ).decode('utf-8')
+        env = create_jinja_env('conf-templates', strict_rendering=True)
+        template = env.get_template('%s.j2' % config_file)
 
         bin_path = os.path.dirname(sys.executable)
+        pkg_path = os.path.abspath(os.path.dirname(__file__))
 
-        print(Template(template_content).render(
-                pkg_path=os.path.abspath(os.path.dirname(__file__)),
+        print(template.render(
+                pkg_path=pkg_path,
                 bin_path=bin_path,
                 secret_key=self.gen_secret_key(),
         ))
