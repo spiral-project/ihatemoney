@@ -3,7 +3,7 @@ import re
 
 from io import BytesIO, StringIO
 from jinja2 import filters
-from json import dumps
+from json import dumps, JSONEncoder
 from flask import redirect
 from werkzeug.routing import HTTPException, RoutingException
 import six
@@ -170,3 +170,28 @@ class LoginThrottler():
 
     def reset(self, ip):
         self._attempts.pop(ip, None)
+
+
+class IhmJSONEncoder(JSONEncoder):
+    """Subclass of the default encoder to support custom objects.
+    Taken from the deprecated flask-rest package."""
+    def default(self, o):
+        if hasattr(o, "_to_serialize"):
+            # build up the object
+            data = {}
+            for attr in o._to_serialize:
+                data[attr] = getattr(o, attr)
+            return data
+        elif hasattr(o, "isoformat"):
+            return o.isoformat()
+        else:
+            try:
+                from flask_babel import speaklater
+                if isinstance(o, speaklater.LazyString):
+                    try:
+                        return unicode(o)  # For python 2.
+                    except NameError:
+                        return str(o)  # For python 3.
+            except ImportError:
+                pass
+            return JSONEncoder.default(self, o)

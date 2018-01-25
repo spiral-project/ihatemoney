@@ -6,6 +6,11 @@ This document describes changes between each past release.
 2.1 (unreleased)
 ----------------
 
+Changed
+=======
+
+- Use flask-restful instead of deprecated flask-rest for the REST API (#315)
+
 Fixed
 =====
 
