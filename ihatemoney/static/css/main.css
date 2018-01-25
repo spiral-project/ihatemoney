@@ -74,6 +74,7 @@ body {
     background-repeat: no-repeat;
     height: 100%;
     color: black;
+    overflow-y: scroll;
 }
 
 @media (min-width: 768px) {
