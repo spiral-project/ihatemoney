@@ -74,12 +74,13 @@ body {
     background-repeat: no-repeat;
     height: 100%;
     color: black;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 @media (min-width: 768px) {
     .sidebar {
         position: fixed;
+        padding-bottom: 4.5rem;
     }
 }
 
