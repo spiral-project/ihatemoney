@@ -4,12 +4,11 @@ RUN mkdir /ihatemoney &&\
     mkdir -p /etc/ihatemoney &&\
     pip install --no-cache-dir gunicorn pymysql
 
-WORKDIR /ihatemoney
-COPY . .
+COPY . /ihatemoney
 ARG INSTALL_FROM_PYPI="False"
 RUN if [ "$INSTALL_FROM_PYPI" = True ]; then\
     pip install --no-cache-dir ihatemoney ; else\
-    pip install --no-cache-dir -e . ; \
+    pip install --no-cache-dir -e /ihatemoney ; \
     fi
 
 ENV DEBUG="False" \
