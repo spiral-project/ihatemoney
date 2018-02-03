@@ -17,6 +17,11 @@ Fixed
 - Fix the "IOError" crash when running `ihatemoney generate-config` (#308)
 - Made the left-hand sidebar scrollable (#318)
 
+Added
+=====
+
+- Statistics API (#343)
+
 
 2.0 (2017-12-27)
 ----------------

@@ -1325,6 +1325,40 @@ class APITestCase(IhatemoneyTestCase):
                               headers=self.get_auth("raclette"))
         self.assertStatus(404, req)
 
+    def test_statistics(self):
+        # create a project
+        self.api_create("raclette")
+
+        # add members
+        self.api_add_member("raclette", "alexis")
+        self.api_add_member("raclette", "fred")
+
+        # add a bill
+        req = self.client.post("/api/projects/raclette/bills", data={
+            'date': '2011-08-10',
+            'what': 'fromage',
+            'payer': "1",
+            'payed_for': ["1", "2"],
+            'amount': '25',
+        }, headers=self.get_auth("raclette"))
+
+        # get the list of bills (should be empty)
+        req = self.client.get("/api/projects/raclette/statistics",
+                              headers=self.get_auth("raclette"))
+        self.assertStatus(200, req)
+        self.assertEqual([
+            {'balance': 12.5,
+             'member': {'activated': True, 'id': 1,
+                        'name': 'alexis', 'weight': 1.0},
+             'paid': 25.0,
+             'spent': 12.5},
+            {'balance': -12.5,
+             'member': {'activated': True, 'id': 2,
+                        'name': 'fred', 'weight': 1.0},
+             'paid': 0,
+             'spent': 12.5}],
+            json.loads(req.data.decode('utf-8')))
+
     def test_username_xss(self):
         # create a project
         # self.api_create("raclette")
