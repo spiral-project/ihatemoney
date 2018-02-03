@@ -750,24 +750,24 @@ class BudgetTestCase(IhatemoneyTestCase):
         })
 
         response = self.client.get("/raclette/statistics")
-        self.assertIn("<td>alexis</td>\n            "
-                      + "<td>20.00</td>\n            "
-                      + "<td>31.67</td>\n            "
+        self.assertIn("<td>alexis</td>\n        "
+                      + "<td>20.00</td>\n        "
+                      + "<td>31.67</td>\n        "
                       + "<td>-11.67</td>\n",
                       response.data.decode('utf-8'))
-        self.assertIn("<td>fred</td>\n            "
-                      + "<td>20.00</td>\n            "
-                      + "<td>5.83</td>\n            "
+        self.assertIn("<td>fred</td>\n        "
+                      + "<td>20.00</td>\n        "
+                      + "<td>5.83</td>\n        "
                       + "<td>14.17</td>\n",
                       response.data.decode('utf-8'))
-        self.assertIn("<td>tata</td>\n            "
-                      + "<td>0.00</td>\n            "
-                      + "<td>2.50</td>\n            "
+        self.assertIn("<td>tata</td>\n        "
+                      + "<td>0.00</td>\n        "
+                      + "<td>2.50</td>\n        "
                       + "<td>-2.50</td>\n",
                       response.data.decode('utf-8'))
-        self.assertIn("<td>toto</td>\n            "
-                      + "<td>0.00</td>\n            "
-                      + "<td>0.00</td>\n            "
+        self.assertIn("<td>toto</td>\n        "
+                      + "<td>0.00</td>\n        "
+                      + "<td>0.00</td>\n        "
                       + "<td>0.00</td>\n",
                       response.data.decode('utf-8'))
 

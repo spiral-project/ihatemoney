@@ -566,21 +566,22 @@ def settle_bill():
 @main.route("/<project_id>/statistics")
 def statistics():
     """Compute what each member has paid and spent and display it"""
-    members = g.project.active_members
-    balance = g.project.balance
-    paid = {}
-    spent = {}
-    for member in members:
-        paid[member.id] = sum([bill.amount
-                               for bill in g.project.get_member_bills(member.id).all()])
-        spent[member.id] = sum([bill.pay_each() * member.weight
-                                for bill in g.project.get_bills().all() if member in bill.owers])
+    members_stats = [{
+            'member': member,
+            'paid': sum([
+                bill.amount
+                for bill in g.project.get_member_bills(member.id).all()
+            ]),
+            'spent': sum([
+                bill.pay_each() * member.weight
+                for bill in g.project.get_bills().all() if member in bill.owers
+            ]),
+            'balance': g.project.balance[member.id]
+        } for member in g.project.active_members]
+
     return render_template(
         "statistics.html",
-        members=members,
-        balance=balance,
-        paid=paid,
-        spent=spent,
+        members_stats=members_stats,
         current_view='statistics',
     )
 
