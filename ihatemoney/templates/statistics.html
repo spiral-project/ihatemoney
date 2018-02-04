@@ -22,7 +22,7 @@
         <thead><tr><th>{{ _("Who?") }}</th><th>{{ _("Paid") }}</th><th>{{ _("Spent") }}</th><th>{{ _("Balance") }}</th></tr></thead>
     <tbody>
     {% for member in members %}
-    <tr class="{{ loop.cycle("odd", "even") }}">
+    <tr>
             <td>{{ member.name }}</td>
             <td>{{ "%0.2f"|format(paid[member.id]) }}</td>
             <td>{{ "%0.2f"|format(spent[member.id]) }}</td>
