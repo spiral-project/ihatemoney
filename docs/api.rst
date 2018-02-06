@@ -164,3 +164,25 @@ And you can of course `DELETE` them at `/api/projects/<id>/bills/<bill-id>`::
     $ curl --basic -u demo:demo -X DELETE\
     https://ihatemoney.org/api/projects/demo/bills/80\
     "OK"
+
+
+Statistics
+----------
+
+You can get some project stats with a `GET` on `/api/projects/<id>/statistics`::
+
+    $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo/statistics
+    [
+        {
+            "balance": 12.5,
+            "member": {"activated": True, "id": 1, "name": "alexis", "weight": 1.0},
+            "paid": 25.0,
+            "spent": 12.5
+        },
+        {
+            "balance": -12.5,
+            "member": {"activated": True, "id": 2, "name": "fred", "weight": 1.0},
+            "paid": 0,
+            "spent": 12.5
+        }
+    ]

@@ -53,6 +53,26 @@ class Project(db.Model):
         return balances
 
     @property
+    def members_stats(self):
+        """Compute what each member has paid
+
+        :return: one stat dict per member
+        :rtype list:
+        """
+        return [{
+            'member': member,
+            'paid': sum([
+                bill.amount
+                for bill in self.get_member_bills(member.id).all()
+            ]),
+            'spent': sum([
+                bill.pay_each() * member.weight
+                for bill in self.get_bills().all() if member in bill.owers
+            ]),
+            'balance': self.balance[member.id]
+        } for member in self.active_members]
+
+    @property
     def uses_weights(self):
         return len([i for i in self.members if i.weight != 1]) > 0
 
