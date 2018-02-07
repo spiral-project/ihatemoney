@@ -26,9 +26,8 @@ ENV DEBUG="False" \
     ACTIVATE_DEMO_PROJECT="True" \
     ADMIN_PASSWORD="" \
     ALLOW_PUBLIC_PROJECT_CREATION="True" \
-    ACTIVATE_ADMIN_DASHBOARD="False" \
-    GUNICORN_NUM_WORKERS="3"
+    ACTIVATE_ADMIN_DASHBOARD="False"
 
 VOLUME /database
 EXPOSE 8000
-CMD ["/ihatemoney/conf/confandrun.sh"]
+ENTRYPOINT ["/ihatemoney/conf/confandrun.sh"]

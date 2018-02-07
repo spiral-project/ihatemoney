@@ -154,9 +154,10 @@ A volume can also be specified to persist the default database file::
 
     docker run -d -p 8000:8000 -v /host/path/to/database:/database ihatemoney
 
-The following gunicorn parameters are also available::
+Additional gunicorn parameters can be passed using the docker ``CMD`` parameter.
+For example, use the following command to add more gunicorn workers::
 
-    GUNICORN_NUM_WORKERS (default: 3)
+    docker run -d -p 8000:8000 ihatemoney -w 3
 
 Configuration
 =============
