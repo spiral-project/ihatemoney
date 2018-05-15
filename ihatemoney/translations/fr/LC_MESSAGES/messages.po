@@ -2,20 +2,21 @@
 # Copyright (C) 2011 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # Alexis Métaireau <alexis@notmyidea.org>, 2011.
-#
+# Adrien CLERC, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-05-15 21:43+0200\n"
-"PO-Revision-Date: 2011-10-14 23:51+0200\n"
-"Last-Translator: Quentin Roy <royque@gmail.com>\n"
-"Language: fr\n"
+"PO-Revision-Date: 2018-05-15 22:00+0200\n"
+"Last-Translator: Adrien CLERC <>\n"
 "Language-Team: fr <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
 "Generated-By: Babel 2.5.3\n"
 
 #: forms.py:46
@@ -24,7 +25,7 @@ msgstr "Nom de projet"
 
 #: forms.py:47 forms.py:71 forms.py:88
 msgid "Private code"
-msgstr "Code d'accès"
+msgstr "Code d’accès"
 
 #: forms.py:48
 msgid "Email"
@@ -45,6 +46,9 @@ msgid ""
 "identifier already exists. Please create a new identifier that you will "
 "be able to remember"
 msgstr ""
+"L’identifiant du projet est utilisé pour se connecter et pour l’URL du "
+"projet. Nous avons essayé de générer un identifiant mais celui ci existe "
+"déjà. Merci de créer un nouvel identifiant que vous serez capable de retenir"
 
 #: forms.py:89 forms.py:94
 msgid "Get in"
@@ -60,11 +64,11 @@ msgstr "Envoyez moi le code par email"
 
 #: forms.py:103
 msgid "This project does not exists"
-msgstr "Ce projet n'existe pas"
+msgstr "Ce projet n’existe pas"
 
 #: forms.py:108
 msgid "Password mismatch"
-msgstr "Les mots de passe fournis ne sont pas les mêmes."
+msgstr "Les mots de passe sont différents"
 
 #: forms.py:109
 msgid "Password"
@@ -76,7 +80,7 @@ msgstr "Confirmation du mot de passe"
 
 #: forms.py:111
 msgid "Reset password"
-msgstr ""
+msgstr "Réinitialiser le mot de passe"
 
 #: forms.py:115
 msgid "Date"
@@ -108,7 +112,7 @@ msgstr "Valider et ajouter une autre facture"
 
 #: forms.py:146
 msgid "Bills can't be null"
-msgstr "Le montant d'une facture ne peut pas être nul."
+msgstr "Le montant d’une facture ne peut pas être nul"
 
 #: forms.py:151
 msgid "Name"
@@ -124,7 +128,7 @@ msgstr "Ajouter"
 
 #: forms.py:162
 msgid "User name incorrect"
-msgstr "Nom d'utilisateur incorrect"
+msgstr "Nom d’utilisateur incorrect"
 
 #: forms.py:167
 msgid "This project already have this member"
@@ -141,11 +145,11 @@ msgstr "Envoyer les invitations"
 #: forms.py:190
 #, python-format
 msgid "The email %(email)s is not valid"
-msgstr "L'email %(email)s est invalide"
+msgstr "L’email %(email)s est invalide"
 
 #: forms.py:196
 msgid "What do you want to download ?"
-msgstr "Que voulez-vous télécharger ?"
+msgstr "Que voulez-vous télécharger ?"
 
 #: forms.py:199
 msgid "bills"
@@ -157,36 +161,36 @@ msgstr "remboursements"
 
 #: forms.py:201
 msgid "Export file format"
-msgstr "Format du fichier d'export"
+msgstr "Format du fichier d’export"
 
 #: web.py:129
 msgid "Too many failed login attempts, please retry later."
-msgstr "Trop d'échecs d'authentification successifs, veuillez réessayer plus tard."
+msgstr "Trop d'échecs d’authentification successifs, veuillez réessayer plus tard."
 
 #: web.py:144
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr ""
-"Le mot de passe administrateur que vous avez entré n'est pas correct. "
+"Le mot de passe administrateur que vous avez entré n’est pas correct. "
 "Plus que %(num)d tentatives."
 
 #: web.py:167
 msgid "You either provided a bad token or no project identifier."
-msgstr "L'identifiant du projet ou le token fourni n'est pas correct."
+msgstr "L’identifiant du projet ou le token fourni n’est pas correct."
 
 #: web.py:195
 msgid "This private code is not the right one"
-msgstr "Le code que vous avez entré n'est pas correct"
+msgstr "Le code que vous avez entré n’est pas correct"
 
 #: web.py:242
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
-msgstr "Vous venez de créer '%(project)s' pour partager vos dépenses"
+msgstr "Vous venez de créer « %(project)s » pour partager vos dépenses"
 
 #: web.py:260
 #, python-format
 msgid "%(msg_compl)sThe project identifier is %(project)s"
-msgstr "L'identifiant de ce projet est '%(project)s'"
+msgstr "%(msg_compl)sL’identifiant de ce projet est %(project)s"
 
 #: web.py:281
 msgid "A link to reset your password has been sent to your email."
@@ -194,7 +198,7 @@ msgstr "Un lien pour changer votre mot de passe vous a été envoyé par mail."
 
 #: web.py:291
 msgid "No token provided"
-msgstr ""
+msgstr "Aucun token n’a été fourni"
 
 #: web.py:294
 msgid "Invalid token"
@@ -237,18 +241,18 @@ msgid ""
 "User '%(name)s' has been deactivated. It will still appear in the users "
 "list until its balance becomes zero."
 msgstr ""
-"Le membre '%(name)s' a été désactivé. Il continuera d'apparaître jusqu'à "
-"ce que sa balance devienne égale à zéro."
+"Le membre « %(name)s » a été désactivé. Il continuera d’apparaître jusqu'à "
+"ce que sa balance soit nulle."
 
 #: web.py:465
 #, python-format
 msgid "User '%(name)s' has been removed"
-msgstr ""
+msgstr "Le membre « %(name)s » a été supprimé"
 
 #: web.py:480
 #, python-format
 msgid "User '%(name)s' has been edited"
-msgstr ""
+msgstr "Le membre « %(name)s » a été édité"
 
 #: web.py:500
 msgid "The bill has been added"
@@ -268,11 +272,11 @@ msgstr "Retourner à la liste"
 
 #: templates/admin.html:10
 msgid "Administration tasks are currently disabled."
-msgstr "Les tâches d'administration sont actuellement désactivées."
+msgstr "Les tâches d’administration sont actuellement désactivées."
 
 #: templates/authenticate.html:6
 msgid "The project you are trying to access do not exist, do you want to"
-msgstr "Le projet auquel vous essayez d'acceder n'existe pas. Souhaitez vous"
+msgstr "Le projet auquel vous essayez d’accéder n’existe pas, souhaitez vous"
 
 #: templates/authenticate.html:8
 msgid "create it"
@@ -280,7 +284,7 @@ msgstr "le créer"
 
 #: templates/authenticate.html:8
 msgid "?"
-msgstr " ?"
+msgstr " ?"
 
 #: templates/create_project.html:4
 msgid "Create a new project"
@@ -322,11 +326,11 @@ msgstr "supprimer"
 
 #: templates/dashboard.html:25
 msgid "The Dashboard is currently deactivated."
-msgstr "La page d'administration est actuellement désactivée."
+msgstr "Le tableau de bord est actuellement désactivée."
 
 #: templates/edit_project.html:6 templates/list_bills.html:24
 msgid "you sure?"
-msgstr "c'est sûr ?"
+msgstr "c’est sûr ?"
 
 #: templates/edit_project.html:11
 msgid "Edit this project"
@@ -338,7 +342,7 @@ msgstr "Télécharger les données de ce projet"
 
 #: templates/forms.html:27
 msgid "Can't remember the password?"
-msgstr "Vous ne vous souvenez plus du code d'accès ?"
+msgstr "Vous ne vous souvenez plus du code d’accès ?"
 
 #: templates/forms.html:30
 msgid "Cancel"
@@ -386,7 +390,7 @@ msgstr "Télécharger"
 
 #: templates/home.html:7
 msgid "Manage your shared <br>expenses, easily"
-msgstr "Gérez vos dépenses<br> partagées, facilement"
+msgstr "Gérez vos dépenses <br>partagées, facilement"
 
 #: templates/home.html:9
 msgid "Try out the demo"
@@ -402,7 +406,7 @@ msgstr "Partez en vacances avec des amis ?"
 
 #: templates/home.html:13
 msgid "Simply sharing money with others?"
-msgstr "Ça vous arrive de partager de l'argent avec d'autres ?"
+msgstr "Ça vous arrive de partager de l’argent avec d’autres ?"
 
 #: templates/home.html:13
 msgid "We can help!"
@@ -418,7 +422,7 @@ msgstr "se connecter"
 
 #: templates/home.html:26
 msgid "can't remember your password?"
-msgstr "vous ne vous souvenez plus du code d'accès ?"
+msgstr "vous ne vous souvenez plus du code d’accès ?"
 
 #: templates/home.html:34 templates/home.html:42
 msgid "or create a new one"
@@ -426,15 +430,15 @@ msgstr "ou créez en un nouveau"
 
 #: templates/home.html:38
 msgid "let's get started"
-msgstr "c'est parti !"
+msgstr "c’est parti !"
 
 #: templates/home.html:51
 msgid ""
 "This access code will be sent to your friends. It is stored as-is by the "
 "server, so don\\'t reuse a personal password!"
 msgstr ""
-"Ce code d\\'accès va être envoyé à vos amis et stocké en clair sur le "
-"serveur.N\\'utilisez pas un mot de passe personnel !"
+"Ce code d’accès va être envoyé à vos amis et stocké en clair sur le serveur. "
+"N’utilisez pas un mot de passe personnel !"
 
 #: templates/layout.html:5
 msgid "Account manager"
@@ -474,7 +478,7 @@ msgstr "Se déconnecter"
 
 #: templates/layout.html:66
 msgid "Dashboard"
-msgstr ""
+msgstr "Tableau de bord"
 
 #: templates/layout.html:89
 msgid "This is a free software"
@@ -482,7 +486,7 @@ msgstr "Ceci est un logiciel libre"
 
 #: templates/layout.html:89
 msgid "you can contribute and improve it!"
-msgstr "vous pouvez y contribuer et l'améliorer"
+msgstr "vous pouvez y contribuer et l’améliorer !"
 
 #: templates/list_bills.html:63
 msgid "deactivate"
@@ -494,7 +498,7 @@ msgstr "ré-activer"
 
 #: templates/list_bills.html:82
 msgid "Invite people to join this project!"
-msgstr "Invitez d'autres personnes à rejoindre ce projet !"
+msgstr "Invitez d’autres personnes à rejoindre ce projet !"
 
 #: templates/list_bills.html:83
 msgid "Add a new bill"
@@ -522,7 +526,7 @@ msgstr "chacun"
 
 #: templates/list_bills.html:120
 msgid "Nothing to list yet. You probably want to"
-msgstr "Rien à lister pour l'instant. Vous voulez surement"
+msgstr "Rien à lister pour l’instant. Vous voulez surement"
 
 #: templates/list_bills.html:120
 msgid "add a bill"
@@ -530,7 +534,7 @@ msgstr "ajouter une facture"
 
 #: templates/password_reminder.html:4
 msgid "Password reminder"
-msgstr "Rappel du code d'accès"
+msgstr "Rappel du code d’accès"
 
 #: templates/recent_projects.html:2
 msgid "Your projects"
@@ -551,8 +555,8 @@ msgid ""
 "creation of this budget management project and we will send them an email"
 " for you."
 msgstr ""
-"Entrez les addresses des personnes que vous souhaitez inviter, séparées "
-"par des virgules. On s'occupe de leur envoyer un email."
+"Entrez les adresses des personnes que vous souhaitez inviter,\n"
+"séparées par des virgules, on s’occupe de leur envoyer un email."
 
 #: templates/send_invites.html:7
 msgid ""
@@ -560,9 +564,9 @@ msgid ""
 "password by other communication means. Or even directly share the "
 "following link:"
 msgstr ""
-"Si vous préférez vous pouvez partager l'identifiant du projet et son mot "
-"de passe par un autre moyen de communication. Ou directement partager le "
-"lien suivant :"
+"Si vous préférez vous pouvez partager l’identifiant du projet\n"
+"et son mot de passe par un autre moyen de communication. Ou directement "
+"partager le lien suivant :"
 
 #: templates/settle_bills.html:22
 msgid "Who pays?"
@@ -598,7 +602,7 @@ msgstr "Solde"
 #~ " that you will be able to "
 #~ "remember."
 #~ msgstr ""
-#~ "L'identifiant du projet est utilisé pour"
+#~ "L’identifiant du projet est utilisé pour"
 #~ " se connecter.Nous avons essayé de "
 #~ "générer un identifiant mais celui ci "
 #~ "existe déjà. Merci de créer un "
@@ -612,11 +616,10 @@ msgstr "Solde"
 #~ msgstr "Date de fin"
 
 #~ msgid "\"No token provided\""
-#~ msgstr "Aucun token n'a été fourni."
+#~ msgstr "Aucun token n’a été fourni."
 
 #~ msgid "User '%(name)s' has been deactivated"
 #~ msgstr "Le membre '%(name)s' a été désactivé"
 
 #~ msgid "Invite"
 #~ msgstr "Invitez"
-
