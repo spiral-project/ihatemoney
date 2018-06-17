@@ -242,7 +242,7 @@ msgid ""
 "list until its balance becomes zero."
 msgstr ""
 "Le membre « %(name)s » a été désactivé. Il continuera d’apparaître jusqu'à "
-"ce que sa balance soit nulle."
+"ce que son solde soit nul."
 
 #: web.py:465
 #, python-format
