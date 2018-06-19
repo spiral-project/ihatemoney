@@ -6,7 +6,7 @@ This document describes changes between each past release.
 2.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Regenerate translations (#338)
 
 
 2.1 (2018-02-16)
