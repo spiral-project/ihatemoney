@@ -2,16 +2,24 @@
 import codecs
 import os
 from setuptools import setup, find_packages
-try:
-    from pip.req import parse_requirements
-    from pip.download import PipSession
-except ImportError:
-    print('Cannot find pip.')
-    raise
 
-# Get requirements from the requirements.txt file.
-pip_requirements = parse_requirements("requirements.txt", session=PipSession())
-install_requires = [str(ir.req) for ir in pip_requirements]
+import pip
+if pip.__version__ < "10":
+    try:
+        from pip.req import parse_requirements
+        from pip.download import PipSession
+    except ImportError:
+        print('Cannot find pip.')
+        raise
+    # Get requirements from the requirements.txt file.
+    pip_requirements = parse_requirements("requirements.txt", session=PipSession())
+    install_requires = [str(ir.req) for ir in pip_requirements]
+else:
+    def parse_requirements(filename):
+        """ load requirements from a pip requirements file """
+        lineiter = (line.strip() for line in open(filename))
+        return [line for line in lineiter if line and not line.startswith("#")]
+    install_requires = parse_requirements('requirements.txt')
 
 here = os.path.abspath(os.path.dirname(__file__))
 
