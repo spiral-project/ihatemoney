@@ -1434,6 +1434,12 @@ class APITestCase(IhatemoneyTestCase):
 
 class ServerTestCase(IhatemoneyTestCase):
 
+    def test_homepage(self):
+        # See https://github.com/spiral-project/ihatemoney/pull/358
+        self.app.config['APPLICATION_ROOT'] = '/'
+        req = self.client.get("/")
+        self.assertStatus(200, req)
+
     def test_unprefixed(self):
         self.app.config['APPLICATION_ROOT'] = '/'
         req = self.client.get("/foo/")

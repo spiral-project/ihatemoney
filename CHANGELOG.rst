@@ -13,6 +13,7 @@ Fixed
 - Fix broken install with pip ≥ 10 (#340)
 - Fix the generation of the supervisord template (#309)
 - Fix the validation of the hashed password (#310)
+- Fix infinite loop that happened when accessing / (#358)
 
 Added
 =====
