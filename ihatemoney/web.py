@@ -198,7 +198,7 @@ def authenticate(project_id=None):
     return render_template("authenticate.html", form=form)
 
 
-@main.route("/")
+@main.route("/", strict_slashes=False)
 def home():
     project_form = ProjectForm()
     auth_form = AuthenticationForm()
