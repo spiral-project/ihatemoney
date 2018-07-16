@@ -89,6 +89,22 @@ Feel free to provide us mockups or to involve yourself into the discussions
 hapenning on the github issue tracker. All ideas are welcome. Of course, if you
 know how to implement them, feel free to fork and make a pull request.
 
+As a translator
+---------------
+
+Collect all new strings to translate::
+
+  $ make update-translations
+
+ Add missing translations to *.po* files inside *translations/* dir using your
+ favorite text editor.
+
+ Compile them into *.mo* files::
+
+  $ make compile-translations
+
+Commit both *.mo* and *.po*.
+
 End-user
 --------
 
