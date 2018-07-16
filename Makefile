@@ -41,7 +41,7 @@ build-translations:
 	$(VENV)/bin/pybabel compile -d ihatemoney/translations
 
 update-translations:
-	$(VENV)/bin/pybabel extract --no-location --mapping-file ihatemoney/babel.cfg -o ihatemoney/messages.pot ihatemoney
+	$(VENV)/bin/pybabel extract --strip-comments --omit-header --no-location --mapping-file ihatemoney/babel.cfg -o ihatemoney/messages.pot ihatemoney
 	$(VENV)/bin/pybabel update -i ihatemoney/messages.pot -d ihatemoney/translations/
 
 create-database-revision:
