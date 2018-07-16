@@ -52,6 +52,7 @@ class GenerateConfig(Command):
         print(template.render(
                 pkg_path=pkg_path,
                 bin_path=bin_path,
+                sys_prefix=sys.prefix,
                 secret_key=self.gen_secret_key(),
         ))
 
