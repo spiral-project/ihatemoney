@@ -6,7 +6,11 @@ This document describes changes between each past release.
 2.1.1 (unreleased)
 ------------------
 
+Fixed
+=====
+
 - Regenerate translations (#338)
+- Fix broken install with pip ≥ 10 (#340)
 
 
 2.1 (2018-02-16)
