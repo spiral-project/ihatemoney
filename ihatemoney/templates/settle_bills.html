@@ -22,7 +22,7 @@
         <thead><tr><th>{{ _("Who pays?") }}</th><th>{{ _("To whom?") }}</th><th>{{ _("How much?") }}</th></tr></thead>
     <tbody>
     {% for bill in bills %}
-    <tr class="{{ loop.cycle("odd", "even") }}" receiver={{bill.receiver.id}}>
+    <tr receiver={{bill.receiver.id}}>
             <td>{{ bill.ower }}</td>
             <td>{{ bill.receiver }}</td>
             <td>{{ "%0.2f"|format(bill.amount) }}</td>

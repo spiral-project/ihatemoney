@@ -2,16 +2,6 @@
 import codecs
 import os
 from setuptools import setup, find_packages
-try:
-    from pip.req import parse_requirements
-    from pip.download import PipSession
-except ImportError:
-    print('Cannot find pip.')
-    raise
-
-# Get requirements from the requirements.txt file.
-pip_requirements = parse_requirements("requirements.txt", session=PipSession())
-install_requires = [str(ir.req) for ir in pip_requirements]
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -21,6 +11,13 @@ def read_file(filename):
     with codecs.open(os.path.join(here, filename), encoding='utf-8') as f:
         content = f.read()
     return content
+
+
+def parse_requirements(filename):
+    """ load requirements from a pip requirements file """
+    with open(filename) as lines:
+        lineiter = (line.strip() for line in lines)
+        return [line for line in lineiter if line and not line.startswith("#")]
 
 
 README = read_file('README.rst')
@@ -37,7 +34,7 @@ ENTRY_POINTS = {
 
 
 setup(name='ihatemoney',
-      version='2.1.dev0',
+      version='2.1.1.dev0',
       description='A simple shared budget manager web application.',
       long_description="{}\n\n{}".format(README.encode('utf-8'), CHANGELOG.encode('utf-8')),
       license='Custom BSD Beerware',
@@ -59,5 +56,5 @@ setup(name='ihatemoney',
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
-      install_requires=install_requires,
+      install_requires=parse_requirements('requirements.txt'),
       entry_points=ENTRY_POINTS)
