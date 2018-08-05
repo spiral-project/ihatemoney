@@ -10,7 +10,7 @@ from flask_migrate import Migrate, MigrateCommand
 from werkzeug.security import generate_password_hash
 
 from ihatemoney.run import create_app
-from ihatemoney.models import db
+from ihatemoney.models import db, Project
 from ihatemoney.utils import create_jinja_env
 
 
@@ -57,6 +57,13 @@ class GenerateConfig(Command):
         ))
 
 
+class DeleteProject(Command):
+    def run(self, project_name):
+        demo_project = Project.query.get(project_name)
+        db.session.delete(demo_project)
+        db.session.commit()
+
+
 def main():
     QUIET_COMMANDS = ('generate_password_hash', 'generate-config')
 
@@ -76,6 +83,7 @@ def main():
     manager.add_command('db', MigrateCommand)
     manager.add_command('generate_password_hash', GeneratePasswordHash)
     manager.add_command('generate-config', GenerateConfig)
+    manager.add_command('delete-project', DeleteProject)
     manager.run()
 
 

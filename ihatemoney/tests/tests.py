@@ -20,7 +20,8 @@ from flask import session
 from flask_testing import TestCase
 
 from ihatemoney.run import create_app, db, load_configuration
-from ihatemoney.manage import GenerateConfig, GeneratePasswordHash
+from ihatemoney.manage import (
+    GenerateConfig, GeneratePasswordHash, DeleteProject)
 from ihatemoney import models
 from ihatemoney import utils
 
@@ -1471,6 +1472,15 @@ class CommandTestCase(BaseTestCase):
             cmd.run()
             print(stdout.getvalue())
             self.assertEqual(len(stdout.getvalue().strip()), 187)
+
+    def test_demo_project_deletion(self):
+        self.create_project('demo')
+        self.assertEquals(models.Project.query.get('demo').name, 'demo')
+
+        cmd = DeleteProject()
+        cmd.run('demo')
+
+        self.assertEqual(len(models.Project.query.all()), 0)
 
 
 if __name__ == "__main__":
