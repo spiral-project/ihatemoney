@@ -604,6 +604,17 @@ class BudgetTestCase(IhatemoneyTestCase):
         balance = models.Project.query.get("raclette").balance
         self.assertEqual(set(balance.values()), set([6, -6]))
 
+
+    def test_trimmed_members(self):
+        self.post_project("raclette")
+
+        # add two times the same person (with a space at the end)
+        self.client.post("/raclette/members/add", data={'name': 'alexis'})
+        self.client.post("/raclette/members/add", data={'name': 'alexis '})
+        members = models.Project.query.get("raclette").members
+
+        self.assertEqual(len(members), 1)
+
     def test_weighted_members_list(self):
         self.post_project("raclette")
 
@@ -1212,7 +1223,6 @@ class APITestCase(IhatemoneyTestCase):
         self.assertEqual(False, json.loads(req.data.decode('utf-8'))["activated"])
 
         # re-activate the user
-
         req = self.client.put("/api/projects/raclette/members/1", data={
             "name": "Fred",
             "activated": True,
