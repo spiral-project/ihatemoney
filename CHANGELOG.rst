@@ -6,9 +6,17 @@ This document describes changes between each past release.
 2.1.1 (unreleased)
 ------------------
 
+Fixed
+=====
+
 - Regenerate translations (#338)
 - Fix the supervisord template (#309)
+- Fix broken install with pip ≥ 10 (#340)
 
+Added
+=====
+
+- Document MySQL setup (#357)
 
 2.1 (2018-02-16)
 ----------------
