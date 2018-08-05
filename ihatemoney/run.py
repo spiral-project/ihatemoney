@@ -2,7 +2,7 @@ import os
 import os.path
 import warnings
 
-from flask import Flask, g, request, session
+from flask import Flask, g, request, session, render_template
 from flask_babel import Babel
 from flask_mail import Mail
 from flask_migrate import Migrate, upgrade, stamp
@@ -103,6 +103,10 @@ def validate_configuration(app):
         )
 
 
+def page_not_found(e):
+    return render_template('404.html', root="main"), 404
+
+
 def create_app(configuration=None, instance_path='/etc/ihatemoney',
                instance_relative_config=True):
     app = Flask(
@@ -122,8 +126,9 @@ def create_app(configuration=None, instance_path='/etc/ihatemoney',
     validate_configuration(app)
     app.register_blueprint(web_interface)
     app.register_blueprint(api)
+    app.register_error_handler(404, page_not_found)
 
-    # Configure the application
+    # Configure the a, root="main"pplication
     setup_database(app)
 
     mail = Mail()
