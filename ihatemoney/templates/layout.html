@@ -43,10 +43,10 @@
           {% endif %}
         </ul>
         <ul class="navbar-nav secondary-nav">
-          {% if g.project %}
-          <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>{{ g.project.name }}</strong> {{ _("options") }} <b class="caret"></b></a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li class="nav-item dropdown dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ _("options") }} <b class="caret"></b></a>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            {% if g.project %}
               <li><a class="dropdown-item" href="{{ url_for(".edit_project") }}">{{ _("Project settings") }}</a></li>
               <li class="dropdown-divider"></li>
               {% for id, name in session['projects'] %}
@@ -56,12 +56,16 @@
               {% endfor %}
               <li><a class="dropdown-item" href="{{ url_for(".create_project") }}">{{ _("Start a new project") }}</a></li>
               <li class="dropdown-divider"></li>
+            {% endif %}
+              <li>  <h6 class="dropdown-header">{{ _("Change Language…")}}</h6></li>
+              <li><a class="dropdown-item{% if g.lang == "fr" %} active{% endif %}" href="{{ url_for(".change_lang", lang="fr") }}">{{ _("French") }}</a></li>
+              <li><a class="dropdown-item{% if g.lang == "en" %} active{% endif %}" href="{{ url_for(".change_lang", lang="en") }}">{{ _("English") }}</a></li>
+              {% if g.project %}
+              <li class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="{{ url_for(".exit") }}">{{ _("Logout") }}</a></li>
+              {% endif %}
             </ul>
           </li>
-          {% endif %}
-          <li class="nav-item{% if g.lang == "fr" %} active{% endif %}"><a class="nav-link" href="{{ url_for(".change_lang", lang="fr") }}">fr</a></li>
-          <li class="nav-item{% if g.lang == "en" %} active{% endif %}"><a class="nav-link" href="{{ url_for(".change_lang", lang="en") }}">en</a></li>
           {% if g.show_admin_dashboard_link %}
           <li class="nav-item{% if request.url_rule.endpoint == "main.dashboard" %} active{% endif %}"><a class="nav-link" href="{{ url_for(".dashboard") }}">{{ _("Dashboard") }}</a></li>
           {% endif %}
