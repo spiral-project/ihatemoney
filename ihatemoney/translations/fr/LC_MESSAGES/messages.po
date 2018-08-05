@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-07-16 23:26+0200\n"
+"POT-Creation-Date: 2018-08-05 16:21+0200\n"
 "PO-Revision-Date: 2018-05-15 22:00+0200\n"
 "Last-Translator: Adrien CLERC <>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.3\n"
+"Generated-By: Babel 2.6.0\n"
 
 msgid "Project name"
 msgstr "Nom de projet"
@@ -97,6 +97,9 @@ msgstr "Nom"
 
 msgid "Weight"
 msgstr "Parts"
+
+msgid "Weights should be positive"
+msgstr "Les parts doivent être positives"
 
 msgid "Add"
 msgstr "Ajouter"
@@ -488,4 +491,3 @@ msgstr "Solde"
 
 #~ msgid "Invite"
 #~ msgstr "Invitez"
-
