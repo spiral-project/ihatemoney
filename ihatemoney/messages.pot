@@ -13,11 +13,10 @@ msgstr ""
 msgid "Create the project"
 msgstr ""
 
+#, python-format
 msgid ""
-"The project identifier is used to log in and for the URL of the project. "
-"We tried to generate an identifier for you but a project with this "
-"identifier already exists. Please create a new identifier that you will "
-"be able to remember"
+"A project with this identifier (\"%(project)s\") already exists. Please "
+"create a new identifier that you will be able to remember"
 msgstr ""
 
 msgid "Get in"

@@ -74,9 +74,9 @@ class ProjectForm(EditProjectForm):
     def validate_id(form, field):
         form.id.data = slugify(field.data)
         if (form.id.data == "dashboard") or Project.query.get(form.id.data):
-            message = _("A project with this identifier (\"%s\") already exists. "
+            message = _("A project with this identifier (\"%(project)s\") already exists. "
                         "Please create a new identifier that you will be able "
-                        "to remember" % form.id.data)
+                        "to remember", project=form.id.data)
             raise ValidationError(Markup(message))
 
 
