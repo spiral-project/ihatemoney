@@ -1,15 +1,15 @@
 FROM python:3.6-alpine
 
-RUN mkdir /ihatemoney &&\
+RUN apk add gcc libc-dev libffi-dev openssl-dev &&\
+    mkdir /ihatemoney &&\
     mkdir -p /etc/ihatemoney &&\
     pip install --no-cache-dir gunicorn pymysql
 
-WORKDIR /ihatemoney
-COPY . .
+COPY . /ihatemoney
 ARG INSTALL_FROM_PYPI="False"
 RUN if [ "$INSTALL_FROM_PYPI" = True ]; then\
     pip install --no-cache-dir ihatemoney ; else\
-    pip install --no-cache-dir -e . ; \
+    pip install --no-cache-dir -e /ihatemoney ; \
     fi
 
 ENV DEBUG="False" \
@@ -26,9 +26,8 @@ ENV DEBUG="False" \
     ACTIVATE_DEMO_PROJECT="True" \
     ADMIN_PASSWORD="" \
     ALLOW_PUBLIC_PROJECT_CREATION="True" \
-    ACTIVATE_ADMIN_DASHBOARD="False" \
-    GUNICORN_NUM_WORKERS="3"
+    ACTIVATE_ADMIN_DASHBOARD="False"
 
 VOLUME /database
 EXPOSE 8000
-CMD ["/ihatemoney/conf/confandrun.sh"]
+ENTRYPOINT ["/ihatemoney/conf/confandrun.sh"]

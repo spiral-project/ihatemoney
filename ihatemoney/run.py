@@ -11,7 +11,7 @@ from werkzeug.contrib.fixers import ProxyFix
 
 from ihatemoney.api import api
 from ihatemoney.models import db
-from ihatemoney.utils import PrefixedWSGI, minimal_round
+from ihatemoney.utils import PrefixedWSGI, minimal_round, IhmJSONEncoder
 from ihatemoney.web import main as web_interface
 
 from ihatemoney import default_settings
@@ -68,6 +68,8 @@ def load_configuration(app, configuration=None):
         app.config.from_pyfile(env_var_config)
     else:
         app.config.from_pyfile('ihatemoney.cfg', silent=True)
+    # Configure custom JSONEncoder used by the API
+    app.config['RESTFUL_JSON'] = {'cls': IhmJSONEncoder}
 
 
 def validate_configuration(app):

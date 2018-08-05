@@ -242,7 +242,7 @@ def create_project():
             message_title = _("You have just created '%(project)s' "
                               "to share your expenses", project=g.project.name)
 
-            message_body = render_template("reminder_mail.%s" %
+            message_body = render_template("reminder_mail.%s.j2" %
                                            get_locale().language)
 
             msg = Message(message_title,
@@ -273,7 +273,7 @@ def remind_password():
             project = Project.query.get(form.id.data)
 
             # send a link to reset the password
-            password_reminder = "password_reminder.%s" % get_locale().language
+            password_reminder = "password_reminder.%s.j2" % get_locale().language
             current_app.mail.send(Message(
                 "password recovery",
                 body=render_template(password_reminder, project=project),
@@ -395,7 +395,7 @@ def invite():
         if form.validate():
             # send the email
 
-            message_body = render_template("invitation_mail.%s" %
+            message_body = render_template("invitation_mail.%s.j2" %
                                            get_locale().language)
 
             message_title = _("You have been invited to share your "
@@ -566,21 +566,9 @@ def settle_bill():
 @main.route("/<project_id>/statistics")
 def statistics():
     """Compute what each member has paid and spent and display it"""
-    members = g.project.active_members
-    balance = g.project.balance
-    paid = {}
-    spent = {}
-    for member in members:
-        paid[member.id] = sum([bill.amount
-                               for bill in g.project.get_member_bills(member.id).all()])
-        spent[member.id] = sum([bill.pay_each() * member.weight
-                                for bill in g.project.get_bills().all() if member in bill.owers])
     return render_template(
         "statistics.html",
-        members=members,
-        balance=balance,
-        paid=paid,
-        spent=spent,
+        members_stats=g.project.members_stats,
         current_view='statistics',
     )
 

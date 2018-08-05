@@ -63,6 +63,22 @@ Once installed, you can start a test server::
 
 And point your browser at `http://localhost:5000 <http://localhost:5000>`_.
 
+Configure database with MySQL/MariaDB (optional)
+================================================
+
+Only required if you prefer MySQL/MariaDB over SQLite.
+
+1. Install PyMySQL dependencies. On Debian or Ubuntu, that would be::
+
+    apt install python3-dev libssl-dev
+
+2. Install PyMySQL (within your virtualenv)::
+
+    pip install 'PyMySQL>=0.9,<0.10'
+
+3. Create an empty database and a database user
+4. Configure :ref:`SQLALCHEMY_DATABASE_URI <configuration>` accordingly
+
 Deploy it
 =========
 
@@ -154,9 +170,12 @@ A volume can also be specified to persist the default database file::
 
     docker run -d -p 8000:8000 -v /host/path/to/database:/database ihatemoney
 
-The following gunicorn parameters are also available::
+Additional gunicorn parameters can be passed using the docker ``CMD`` parameter.
+For example, use the following command to add more gunicorn workers::
 
-    GUNICORN_NUM_WORKERS (default: 3)
+    docker run -d -p 8000:8000 ihatemoney -w 3
+
+.. _configuration:
 
 Configuration
 =============
@@ -186,7 +205,7 @@ Production values are recommended values for use in production.
 |                               |                                 | **Production value:** `ihatemoney conf-example ihatemoney.cfg` sets it to something    |
 |                               |                                 | random, which is good.                                                                 |
 +-------------------------------+---------------------------------+----------------------------------------------------------------------------------------+
-| MAIL_DEFAULT_SENDER           | ``("Budget manager",            | A python tuple describing the name and email address to use when sending                |
+| MAIL_DEFAULT_SENDER           | ``("Budget manager",            | A python tuple describing the name and email address to use when sending               |
 |                               | "budget@notmyidea.org")``       | emails.                                                                                |
 |                               |                                 |                                                                                        |
 |                               |                                 |  **Production value:** Any tuple you want.                                             |

@@ -3,14 +3,45 @@ Changelog
 
 This document describes changes between each past release.
 
-2.1 (unreleased)
-----------------
+2.1.1 (unreleased)
+------------------
 
 Fixed
 =====
 
-- Fix the generation of the supervisord template (#306)
+- Regenerate translations (#338)
+- Fix broken install with pip ≥ 10 (#340)
+- Fix the generation of the supervisord template (#309)
 - Fix the validation of the hashed password (#310)
+
+Added
+=====
+
+- Document MySQL setup (#357)
+
+2.1 (2018-02-16)
+----------------
+
+=======
+Changed
+=======
+
+- Use flask-restful instead of deprecated flask-rest for the REST API (#315)
+- Make sidebar scrollable. Usefull for large groups (#316)
+
+Fixed
+=====
+
+- Fix the "IOError" crash when running `ihatemoney generate-config` (#308)
+- Made the left-hand sidebar scrollable (#318)
+- Fix and enhanche Docker support (#320, #321)
+
+Added
+=====
+
+- Statistics API (#343)
+- Allow to disable/enable member via API (#301)
+- Enable basic Apache auth passthrough for API (#303)
 
 
 2.0 (2017-12-27)

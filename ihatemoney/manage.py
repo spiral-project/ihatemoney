@@ -1,18 +1,17 @@
 #!/usr/bin/env python
 
 import os
-import pkgutil
 import random
 import sys
-from getpass import getpass
+import getpass
 
 from flask_script import Manager, Command, Option
 from flask_migrate import Migrate, MigrateCommand
-from jinja2 import Template
 from werkzeug.security import generate_password_hash
 
 from ihatemoney.run import create_app
 from ihatemoney.models import db
+from ihatemoney.utils import create_jinja_env
 
 
 class GeneratePasswordHash(Command):
@@ -20,11 +19,11 @@ class GeneratePasswordHash(Command):
     """Get password from user and hash it without printing it in clear text."""
 
     def run(self):
-        password = getpass(prompt='Password: ')
+        password = getpass.getpass(prompt='Password: ')
         print(generate_password_hash(password))
 
 
-class ConfigTemplate(Command):
+class GenerateConfig(Command):
     def get_options(self):
         return [
             Option('config_file', choices=[
@@ -44,16 +43,16 @@ class ConfigTemplate(Command):
             for i in range(50)])
 
     def run(self, config_file):
-        template_content = pkgutil.get_data(
-            'ihatemoney',
-            os.path.join('conf-templates/', config_file) + '.j2'
-        ).decode('utf-8')
+        env = create_jinja_env('conf-templates', strict_rendering=True)
+        template = env.get_template('%s.j2' % config_file)
 
-        bin_path = os.path.join(os.path.dirname(sys.executable))
+        bin_path = os.path.dirname(sys.executable)
+        pkg_path = os.path.abspath(os.path.dirname(__file__))
 
-        print(Template(template_content).render(
-                pkg_path=os.path.abspath(os.path.dirname(__file__)),
+        print(template.render(
+                pkg_path=pkg_path,
                 bin_path=bin_path,
+                sys_prefix=sys.prefix,
                 secret_key=self.gen_secret_key(),
         ))
 
@@ -76,7 +75,7 @@ def main():
     manager = Manager(app)
     manager.add_command('db', MigrateCommand)
     manager.add_command('generate_password_hash', GeneratePasswordHash)
-    manager.add_command('generate-config', ConfigTemplate)
+    manager.add_command('generate-config', GenerateConfig)
     manager.run()
 
 

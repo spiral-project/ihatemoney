@@ -17,7 +17,8 @@ ADMIN_PASSWORD = "$ADMIN_PASSWORD"
 ALLOW_PUBLIC_PROJECT_CREATION = $ALLOW_PUBLIC_PROJECT_CREATION
 ACTIVATE_ADMIN_DASHBOARD = $ACTIVATE_ADMIN_DASHBOARD
 EOF
-gunicorn ihatemoney.wsgi:application \
--b 0.0.0.0:8000 \
---log-syslog \
--w "$GUNICORN_NUM_WORKERS"
+# Start gunicorn without forking
+exec gunicorn ihatemoney.wsgi:application \
+     -b 0.0.0.0:8000 \
+     --log-syslog \
+     "$@"

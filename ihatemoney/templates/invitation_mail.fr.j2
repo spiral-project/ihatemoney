@@ -1,0 +1,11 @@
+Salut,
+
+Quelqu'un avec l'adresse "{{ g.project.contact_email }}" vous à invité à partager vos dépenses pour "{{ g.project.name }}".
+
+C'est aussi simple que de dire qui à payé pour quoi, pour qui, et combien celà à coûté, on s’occupe du reste.
+
+Vous pouvez vous authentifier avec le lien suivant: {{ url_for(".authenticate", _external=True, token=g.project.generate_token()) }}.
+Une fois authentifié, vous pouvez utiliser le lien suivant qui est plus facile à mémoriser: {{ url_for(".list_bills", _external=True) }}
+Si votre cookie est supprimé ou si vous vous déconnectez, vous devrez vous authentifier à nouveau en utilisant le premier lien.
+
+Have fun,

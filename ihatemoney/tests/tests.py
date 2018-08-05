@@ -4,6 +4,10 @@ try:
     import unittest2 as unittest
 except ImportError:
     import unittest  # NOQA
+try:
+    from unittest.mock import patch
+except ImportError:
+    from mock import patch
 
 import os
 import json
@@ -16,6 +20,7 @@ from flask import session
 from flask_testing import TestCase
 
 from ihatemoney.run import create_app, db, load_configuration
+from ihatemoney.manage import GenerateConfig, GeneratePasswordHash
 from ihatemoney import models
 from ihatemoney import utils
 
@@ -745,24 +750,24 @@ class BudgetTestCase(IhatemoneyTestCase):
         })
 
         response = self.client.get("/raclette/statistics")
-        self.assertIn("<td>alexis</td>\n            "
-                      + "<td>20.00</td>\n            "
-                      + "<td>31.67</td>\n            "
+        self.assertIn("<td>alexis</td>\n        "
+                      + "<td>20.00</td>\n        "
+                      + "<td>31.67</td>\n        "
                       + "<td>-11.67</td>\n",
                       response.data.decode('utf-8'))
-        self.assertIn("<td>fred</td>\n            "
-                      + "<td>20.00</td>\n            "
-                      + "<td>5.83</td>\n            "
+        self.assertIn("<td>fred</td>\n        "
+                      + "<td>20.00</td>\n        "
+                      + "<td>5.83</td>\n        "
                       + "<td>14.17</td>\n",
                       response.data.decode('utf-8'))
-        self.assertIn("<td>tata</td>\n            "
-                      + "<td>0.00</td>\n            "
-                      + "<td>2.50</td>\n            "
+        self.assertIn("<td>tata</td>\n        "
+                      + "<td>0.00</td>\n        "
+                      + "<td>2.50</td>\n        "
                       + "<td>-2.50</td>\n",
                       response.data.decode('utf-8'))
-        self.assertIn("<td>toto</td>\n            "
-                      + "<td>0.00</td>\n            "
-                      + "<td>0.00</td>\n            "
+        self.assertIn("<td>toto</td>\n        "
+                      + "<td>0.00</td>\n        "
+                      + "<td>0.00</td>\n        "
                       + "<td>0.00</td>\n",
                       response.data.decode('utf-8'))
 
@@ -1048,7 +1053,7 @@ class APITestCase(IhatemoneyTestCase):
         })
 
         self.assertTrue(400, resp.status_code)
-        self.assertEqual('{"contact_email": ["Invalid email address."]}',
+        self.assertEqual('{"contact_email": ["Invalid email address."]}\n',
                          resp.data.decode('utf-8'))
 
         # create it
@@ -1134,7 +1139,7 @@ class APITestCase(IhatemoneyTestCase):
                               headers=self.get_auth("raclette"))
 
         self.assertStatus(200, req)
-        self.assertEqual('[]', req.data.decode('utf-8'))
+        self.assertEqual('[]\n', req.data.decode('utf-8'))
 
         # add a member
         req = self.client.post("/api/projects/raclette/members", data={
@@ -1143,7 +1148,7 @@ class APITestCase(IhatemoneyTestCase):
 
         # the id of the new member should be returned
         self.assertStatus(201, req)
-        self.assertEqual("1", req.data.decode('utf-8'))
+        self.assertEqual("1\n", req.data.decode('utf-8'))
 
         # the list of members should contain one member
         req = self.client.get("/api/projects/raclette/members",
@@ -1218,7 +1223,7 @@ class APITestCase(IhatemoneyTestCase):
                               headers=self.get_auth("raclette"))
 
         self.assertStatus(200, req)
-        self.assertEqual('[]', req.data.decode('utf-8'))
+        self.assertEqual('[]\n', req.data.decode('utf-8'))
 
     def test_bills(self):
         # create a project
@@ -1234,7 +1239,7 @@ class APITestCase(IhatemoneyTestCase):
                               headers=self.get_auth("raclette"))
         self.assertStatus(200, req)
 
-        self.assertEqual("[]", req.data.decode('utf-8'))
+        self.assertEqual("[]\n", req.data.decode('utf-8'))
 
         # add a bill
         req = self.client.post("/api/projects/raclette/bills", data={
@@ -1247,7 +1252,7 @@ class APITestCase(IhatemoneyTestCase):
 
         # should return the id
         self.assertStatus(201, req)
-        self.assertEqual(req.data.decode('utf-8'), "1")
+        self.assertEqual(req.data.decode('utf-8'), "1\n")
 
         # get this bill details
         req = self.client.get("/api/projects/raclette/bills/1",
@@ -1283,7 +1288,7 @@ class APITestCase(IhatemoneyTestCase):
         }, headers=self.get_auth("raclette"))
 
         self.assertStatus(400, req)
-        self.assertEqual('{"date": ["This field is required."]}', req.data.decode('utf-8'))
+        self.assertEqual('{"date": ["This field is required."]}\n', req.data.decode('utf-8'))
 
         # edit a bill
         req = self.client.put("/api/projects/raclette/bills/1", data={
@@ -1319,6 +1324,40 @@ class APITestCase(IhatemoneyTestCase):
         req = self.client.get("/api/projects/raclette/bills/1",
                               headers=self.get_auth("raclette"))
         self.assertStatus(404, req)
+
+    def test_statistics(self):
+        # create a project
+        self.api_create("raclette")
+
+        # add members
+        self.api_add_member("raclette", "alexis")
+        self.api_add_member("raclette", "fred")
+
+        # add a bill
+        req = self.client.post("/api/projects/raclette/bills", data={
+            'date': '2011-08-10',
+            'what': 'fromage',
+            'payer': "1",
+            'payed_for': ["1", "2"],
+            'amount': '25',
+        }, headers=self.get_auth("raclette"))
+
+        # get the list of bills (should be empty)
+        req = self.client.get("/api/projects/raclette/statistics",
+                              headers=self.get_auth("raclette"))
+        self.assertStatus(200, req)
+        self.assertEqual([
+            {'balance': 12.5,
+             'member': {'activated': True, 'id': 1,
+                        'name': 'alexis', 'weight': 1.0},
+             'paid': 25.0,
+             'spent': 12.5},
+            {'balance': -12.5,
+             'member': {'activated': True, 'id': 2,
+                        'name': 'fred', 'weight': 1.0},
+             'paid': 0,
+             'spent': 12.5}],
+            json.loads(req.data.decode('utf-8')))
 
     def test_username_xss(self):
         # create a project
@@ -1404,6 +1443,28 @@ class ServerTestCase(IhatemoneyTestCase):
         self.app.config['APPLICATION_ROOT'] = '/foo'
         req = self.client.get("/foo/")
         self.assertStatus(200, req)
+
+
+class CommandTestCase(BaseTestCase):
+    def test_generate_config(self):
+        """ Simply checks that all config file generation
+        - raise no exception
+        - produce something non-empty
+        """
+        cmd = GenerateConfig()
+        for config_file in cmd.get_options()[0].kwargs['choices']:
+            with patch('sys.stdout', new=six.StringIO()) as stdout:
+                cmd.run(config_file)
+                print(stdout.getvalue())
+                self.assertNotEqual(len(stdout.getvalue().strip()), 0)
+
+    def test_generate_password_hash(self):
+        cmd = GeneratePasswordHash()
+        with patch('sys.stdout', new=six.StringIO()) as stdout, \
+             patch('getpass.getpass', new=lambda prompt: 'secret'): # NOQA
+            cmd.run()
+            print(stdout.getvalue())
+            self.assertEqual(len(stdout.getvalue().strip()), 187)
 
 
 if __name__ == "__main__":
