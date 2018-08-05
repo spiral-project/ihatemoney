@@ -32,7 +32,7 @@ def setup_database(app):
     if sqlalchemy_url.startswith('sqlite:////tmp'):
         warnings.warn(
             'The database is currently stored in /tmp and might be lost at '
-            'next reboot.'
+            'next reboot (%s).' % sqlalchemy_url
         )
 
     db.init_app(app)
