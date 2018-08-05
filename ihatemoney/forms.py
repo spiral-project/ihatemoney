@@ -151,7 +151,7 @@ class BillForm(FlaskForm):
 class MemberForm(FlaskForm):
     name = StringField(_("Name"), validators=[Required()])
 
-    wieght_validators = [NumberRange(min=0.1, message=_("Weights should be positive"))]
+    weight_validators = [NumberRange(min=0.1, message=_("Weights should be positive"))]
     weight = CommaDecimalField(_("Weight"), default=1,
                                validators=weight_validators)
     submit = SubmitField(_("Add"))
