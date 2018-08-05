@@ -186,7 +186,7 @@ def create_jinja_env(folder, strict_rendering=False):
         kwargs['undefined'] = jinja2.StrictUndefined
     return jinja2.Environment(**kwargs)
 
-  
+
 class IhmJSONEncoder(JSONEncoder):
     """Subclass of the default encoder to support custom objects.
     Taken from the deprecated flask-rest package."""
