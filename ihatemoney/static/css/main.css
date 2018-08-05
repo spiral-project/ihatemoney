@@ -224,6 +224,10 @@ tr.payer_line .balance-name{
     padding: 0 0 0 20px;
 }
 
+.action button:hover {
+  text-decoration: underline;
+}
+
 .delete button, .delete button:hover {
     background: url('../images/deleter.png') left no-repeat;
     color: red;
