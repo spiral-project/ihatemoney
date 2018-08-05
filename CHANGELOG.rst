@@ -7,6 +7,7 @@ This document describes changes between each past release.
 ------------------
 
 - Regenerate translations (#338)
+- Fix the supervisord template (#309)
 
 
 2.1 (2018-02-16)
