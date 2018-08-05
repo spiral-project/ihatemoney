@@ -2,9 +2,9 @@
 The blueprint for the web interface.
 
 Contains all the interaction logic with the end user (except forms which
-are directly handled in the forms module.
+are directly handled in the forms module).
 
-Basically, this blueprint takes care of the authentication and provides
+This blueprint takes care of the authentication and provides
 some shortcuts to make your life better when coding (see `pull_project`
 and `add_project_id` for a quick overview)
 """
@@ -62,9 +62,9 @@ def requires_admin(bypass=None):
 
 @main.url_defaults
 def add_project_id(endpoint, values):
-    """Add the project id to the url calls if it is expected.
+    """Add the project id to the url calls if it is expected by the endpoint.
 
-    This is to not carry it everywhere in the templates.
+    This avoids carrying it all over the place (especially templates).
     """
     if 'project_id' in values or not hasattr(g, 'project'):
         return
@@ -86,12 +86,12 @@ def set_show_admin_dashboard_link(endpoint, values):
 
 @main.url_value_preprocessor
 def pull_project(endpoint, values):
-    """When a request contains a project_id value, transform it directly
-    into a project by checking the credentials stored in the session.
+    """When a request contains a project_id value, retrieve the project object
+    from the database after checking the credentials stored in the session.
 
     With administration credentials, one can access any project.
 
-    If not, redirect the user to an authentication form
+    If no credentials are provided, redirect the user to an authentication form.
     """
     if endpoint == "authenticate":
         return
@@ -219,11 +219,9 @@ def create_project():
         form.name.data = request.values['project_id']
 
     if request.method == "POST":
-        # At first, we don't want the user to bother with the identifier
-        # so it will automatically be missing because not displayed into
-        # the form
-        # Thus we fill it with the same value as the filled name,
-        # the validation will take care of the slug
+        # As we don't want the user to bother with the project identifier,
+        # it is made equal to the project name, the validation logic will take
+        # care of the slugification to create a project id.
         if not form.id.data:
             form.id.data = form.name.data
         if form.validate():
