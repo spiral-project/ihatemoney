@@ -10,6 +10,8 @@ from werkzeug.security import generate_password_hash
 from datetime import datetime
 from jinja2 import Markup
 
+import email_validator
+
 from ihatemoney.models import Project, Person
 from ihatemoney.utils import slugify
 
@@ -184,9 +186,10 @@ class InviteForm(FlaskForm):
     submit = SubmitField(_("Send invites"))
 
     def validate_emails(form, field):
-        validator = Email()
         for email in [email.strip() for email in form.emails.data.split(",")]:
-            if not validator.regex.match(email):
+            try:
+                email_validator.validate_email(email)
+            except email_validator.EmailNotValidError as e:
                 raise ValidationError(_("The email %(email)s is not valid",
                                         email=email))
 
