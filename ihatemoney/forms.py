@@ -2,7 +2,7 @@ from flask_wtf.form import FlaskForm
 from wtforms.fields.core import SelectField, SelectMultipleField
 from wtforms.fields.html5 import DateField, DecimalField
 from wtforms.fields.simple import PasswordField, SubmitField, TextAreaField, StringField
-from wtforms.validators import Email, Required, ValidationError, EqualTo
+from wtforms.validators import Email, Required, ValidationError, EqualTo, NumberRange
 from flask_babel import lazy_gettext as _
 from flask import request
 from werkzeug.security import generate_password_hash
@@ -149,9 +149,11 @@ class BillForm(FlaskForm):
 
 
 class MemberForm(FlaskForm):
-
     name = StringField(_("Name"), validators=[Required()])
-    weight = CommaDecimalField(_("Weight"), default=1)
+
+    weight_validators = [NumberRange(min=0.1, message=_("Weights should be positive"))]
+    weight = CommaDecimalField(_("Weight"), default=1,
+                               validators=weight_validators)
     submit = SubmitField(_("Add"))
 
     def __init__(self, project, edit=False, *args, **kwargs):

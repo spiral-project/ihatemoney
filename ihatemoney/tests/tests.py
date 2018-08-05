@@ -621,6 +621,18 @@ class BudgetTestCase(IhatemoneyTestCase):
         resp = self.client.get("/raclette/")
         self.assertNotIn('extra-info', resp.data.decode('utf-8'))
 
+    def test_negative_weight(self):
+        self.post_project("raclette")
+
+        # Add one user and edit it to have a negative share
+        self.client.post("/raclette/members/add", data={'name': 'alexis'})
+        resp = self.client.post("/raclette/members/1/edit", data={'name': 'alexis', 'weight': -1})
+
+        # An error should be generated, and its weight should still be 1.
+        self.assertIn('<p class="alert alert-danger">', resp.data.decode('utf-8'))
+        self.assertEqual(len(models.Project.query.get('raclette').members), 1)
+        self.assertEqual(models.Project.query.get('raclette').members[0].weight, 1)
+
     def test_rounding(self):
         self.post_project("raclette")
 

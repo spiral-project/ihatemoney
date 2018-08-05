@@ -74,6 +74,9 @@ msgstr ""
 msgid "Weight"
 msgstr ""
 
+msgid "Weights should be positive"
+msgstr ""
+
 msgid "Add"
 msgstr ""
 

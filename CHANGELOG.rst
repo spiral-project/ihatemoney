@@ -10,6 +10,7 @@ Added
 =====
 
 - Document database migrations (#390)
+- Do not allow negative weights on users (#366)
 
 
 3.0 (2018-11-25)

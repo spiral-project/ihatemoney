@@ -348,8 +348,9 @@ class Bill(db.Model):
     def pay_each(self):
         """Compute what each share has to pay"""
         if self.owers:
-            # FIXME: SQL might dot that more efficiently
-            return self.amount / sum(i.weight for i in self.owers)
+            # FIXME: SQL might do that more efficiently
+            weights = sum(i.weight for i in self.owers)
+            return self.amount / weights
         else:
             return 0
 

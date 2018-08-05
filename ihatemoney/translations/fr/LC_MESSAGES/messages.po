@@ -98,6 +98,9 @@ msgstr "Nom"
 msgid "Weight"
 msgstr "Parts"
 
+msgid "Weights should be positive"
+msgstr "Les parts doivent être positives"
+
 msgid "Add"
 msgstr "Ajouter"
 
