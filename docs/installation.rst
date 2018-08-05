@@ -265,6 +265,22 @@ if set to ``"somestring"``, it will be served from a "folder"
 
 .. _the SQLAlchemy documentation: http://docs.sqlalchemy.org/en/latest/core/engines.html#database-urls
 
+Configuring emails sending
+--------------------------
+
+By default, Ihatemoney sends emails using a local SMTP server, but it's
+possible to configure it to act differently, thanks to the great
+`Flask-Mail project <https://pythonhosted.org/flask-mail/#configuring-flask-mail>`_
+
+* **MAIL_SERVER** : default **'localhost'**
+* **MAIL_PORT** : default **25**
+* **MAIL_USE_TLS** : default **False**
+* **MAIL_USE_SSL** : default **False**
+* **MAIL_DEBUG** : default **app.debug**
+* **MAIL_USERNAME** : default **None**
+* **MAIL_PASSWORD** : default **None**
+* **DEFAULT_MAIL_SENDER** : default **None**
+
 Using an alternate settings path
 --------------------------------
 
