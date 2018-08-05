@@ -6,7 +6,6 @@ from flask import Flask, g, request, session
 from flask_babel import Babel
 from flask_mail import Mail
 from flask_migrate import Migrate, upgrade, stamp
-from raven.contrib.flask import Sentry
 from werkzeug.contrib.fixers import ProxyFix
 
 from ihatemoney.api import api
@@ -129,9 +128,6 @@ def create_app(configuration=None, instance_path='/etc/ihatemoney',
     mail = Mail()
     mail.init_app(app)
     app.mail = mail
-
-    # Error reporting
-    Sentry(app)
 
     # Jinja filters
     app.jinja_env.filters['minimal_round'] = minimal_round
