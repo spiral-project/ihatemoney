@@ -7,7 +7,6 @@ Flask-script
 flask-babel
 flask-restful>=0.3.6
 jinja2>=2.6
-raven
 blinker
 six>=1.10
 itsdangerous>=0.24
