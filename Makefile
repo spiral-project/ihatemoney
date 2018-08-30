@@ -29,6 +29,7 @@ remove-install-stamp:
 update: remove-install-stamp install ## Update the dependencies
 
 serve: install ## Run the ihatemoney server
+	@echo 'Running ihatemoney on http://localhost:5000'
 	$(PYTHON) -m ihatemoney.manage runserver
 
 test: $(DEV_STAMP) ## Run the tests
