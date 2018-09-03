@@ -117,6 +117,7 @@
 
 {% macro add_member(form) %}
 {{ form.hidden_tag() }}
+    {% include "display_errors.html" %}
     <div class="input-group">
         <label class="sr-only" for="name">_("Type user name here")</label>
         {{ form.name(placeholder=_("Type user name here"), class="form-control") }}
