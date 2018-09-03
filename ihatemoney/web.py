@@ -514,7 +514,7 @@ def delete_bill(bill_id):
     # fixme: everyone is able to delete a bill
     bill = Bill.query.get(g.project, bill_id)
     if not bill:
-        raise NotFound()
+        return redirect(url_for('.list_bills'))
 
     db.session.delete(bill)
     db.session.commit()
