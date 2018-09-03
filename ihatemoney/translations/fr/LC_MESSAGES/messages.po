@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-07-16 23:26+0200\n"
+"POT-Creation-Date: 2018-08-05 23:41+0200\n"
 "PO-Revision-Date: 2018-05-15 22:00+0200\n"
 "Last-Translator: Adrien CLERC <>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.3\n"
+"Generated-By: Babel 2.6.0\n"
 
 msgid "Project name"
 msgstr "Nom de projet"
@@ -209,6 +209,12 @@ msgstr "La facture a été supprimée"
 
 msgid "The bill has been modified"
 msgstr "La facture a été modifiée"
+
+msgid "Sorry, we were unable to find the page you've asked for."
+msgstr "Navré, nous ne trouvons pas la page que vous avez demandé."
+
+msgid "The best thing to do is probably to get back to the main page."
+msgstr "Votre meilleure piste est probablement la page d'accueil."
 
 msgid "Back to the list"
 msgstr "Retourner à la liste"
@@ -488,4 +494,3 @@ msgstr "Solde"
 
 #~ msgid "Invite"
 #~ msgstr "Invitez"
-

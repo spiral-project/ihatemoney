@@ -182,6 +182,12 @@ msgstr ""
 msgid "The bill has been modified"
 msgstr ""
 
+msgid "Sorry, we were unable to find the page you've asked for."
+msgstr ""
+
+msgid "The best thing to do is probably to get back to the main page."
+msgstr ""
+
 msgid "Back to the list"
 msgstr ""
 
