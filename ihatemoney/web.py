@@ -9,9 +9,10 @@ some shortcuts to make your life better when coding (see `pull_project`
 and `add_project_id` for a quick overview)
 """
 
+import os
 from flask import (
     Blueprint, current_app, flash, g, redirect, render_template, request,
-    session, url_for, send_file
+    session, url_for, send_file, send_from_directory
 )
 from flask_mail import Message
 from flask_babel import get_locale, gettext as _
@@ -513,7 +514,7 @@ def delete_bill(bill_id):
     # fixme: everyone is able to delete a bill
     bill = Bill.query.get(g.project, bill_id)
     if not bill:
-        raise NotFound()
+        return redirect(url_for('.list_bills'))
 
     db.session.delete(bill)
     db.session.commit()
@@ -582,3 +583,9 @@ def dashboard():
         projects=Project.query.all(),
         is_admin_dashboard_activated=is_admin_dashboard_activated
     )
+
+
+@main.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(main.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
