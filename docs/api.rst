@@ -138,10 +138,10 @@ You can get the list of bills by doing a `GET` on `/api/projects/<id>/bills` ::
 Add a bill with a `POST` query on `/api/projects/<id>/bills`. you need the
 following params:
 
-* `date`: the date of the bill; defaults to current date if not provided. (yy-mm-dd)
+* `date`: the date of the bill; defaults to current date if not provided. (yyyy-mm-dd)
 * `what`: what have been payed
 * `payer`: by who ? (id)
-* `payed_for`: for who ? (id, repeat the parameter to set multiple id)
+* `payed_for`: for who ? (id, to set multiple id use a list, e.g. `["id1", "id2"]`)
 * `amount`: amount payed
 
 Returns the id of the created bill ::
