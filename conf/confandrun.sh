@@ -1,5 +1,5 @@
 #!/bin/sh
-cat <<EOF >> /etc/ihatemoney/ihatemoney.cfg
+cat <<EOF > /etc/ihatemoney/ihatemoney.cfg
 DEBUG = $DEBUG
 SQLALCHEMY_DATABASE_URI = "$SQLALCHEMY_DATABASE_URI"
 SQLACHEMY_DEBUG = DEBUG
