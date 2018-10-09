@@ -160,8 +160,6 @@ class Project(db.Model):
     def get_bills(self):
         """Return the list of bills related to this project"""
         return Bill.query.join(Person, Project)\
-            .filter(Bill.payer_id == Person.id)\
-            .filter(Person.project_id == Project.id)\
             .filter(Project.id == self.id)\
             .order_by(Bill.date.desc())\
             .order_by(Bill.id.desc())
