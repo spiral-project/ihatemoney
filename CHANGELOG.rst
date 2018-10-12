@@ -9,17 +9,46 @@ This document describes changes between each past release.
 Fixed
 =====
 
-- Regenerate translations (#338)
 - Fix broken install with pip ≥ 10 (#340)
 - Fix the generation of the supervisord template (#309)
+- Fix Apache conf template (#359)
+
+- Regenerate translations and improve fr translations (#338)
 - Fix the validation of the hashed password (#310)
 - Fix infinite loop that happened when accessing / (#358)
 - Fix email validation when sending invites
+- Fix double-click when deleting a bill (#349)
+- Fix error escaping (#388)
+- Fix form error on already existing participant (#370)
+- Fix documentation for create bills via api (#391)
+
+- Fix docker ADMIN_PASSWORD configuration (#384)
+- Fix docker bug where conf is duplicated at each run (#392)
+- Fix cffi installation in Dockerfile (#364)
 
 Added
 =====
 
 - Document MySQL setup (#357)
+- Add a favicon.ico  (#381)
+- Document external mail server configuration (#278)
+- Improve settings documentation styling (#251)
+- Add a ihatemoney delete-project command to delete a project (#375)
+- Add nice 404 error pages (#379)
+
+Changed
+=======
+
+- Enhance translation tooling (#360)
+- Improve Makefile (#387)
+- Sort members alphabetically in the new bill form. (#374)
+- Underline actions links on hover (#377)
+
+Removed
+=======
+
+- Remove Sentry, as it's not used anymore on prod. (#380)
+
 
 2.1 (2018-02-16)
 ----------------
