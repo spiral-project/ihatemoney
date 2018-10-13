@@ -61,6 +61,11 @@ create-database-revision: ## Create a new database revision
 	@read -p "Please enter a message describing this revision: " rev_message; \
 	$(PYTHON) -m ihatemoney.manage db migrate -d ihatemoney/migrations -m "$${rev_message}"
 
+.PHONY: create-empty-database-revision
+create-empty-database-revision: ## Create an empty database revision
+	@read -p "Please enter a message describing this revision: " rev_message; \
+	$(PYTHON) -m ihatemoney.manage db revision -d ihatemoney/migrations -m "$${rev_message}"
+
 .PHONY: build-requirements
 build-requirements: ## Save currently installed packages to requirements.txt
 	$(VIRTUALENV) $(TEMPDIR)
