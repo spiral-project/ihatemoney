@@ -189,7 +189,7 @@ class InviteForm(FlaskForm):
         for email in [email.strip() for email in form.emails.data.split(",")]:
             try:
                 email_validator.validate_email(email)
-            except email_validator.EmailNotValidError as e:
+            except email_validator.EmailNotValidError:
                 raise ValidationError(_("The email %(email)s is not valid",
                                         email=email))
 

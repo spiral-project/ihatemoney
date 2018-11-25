@@ -23,8 +23,8 @@ def slugify(value):
         value = unicodedata.normalize('NFKD', value)
         if six.PY2:
             value = value.encode('ascii', 'ignore')
-    value = six.text_type(re.sub('[^\w\s-]', '', value).strip().lower())
-    return re.sub('[-\s]+', '-', value)
+    value = six.text_type(re.sub(r'[^\w\s-]', '', value).strip().lower())
+    return re.sub(r'[-\s]+', '-', value)
 
 
 class Redirect303(HTTPException, RoutingException):
