@@ -152,3 +152,7 @@ Once this is done, use the "release" instruction:
      $ make release
 
 And the new version should be published on PyPI.
+
+.. note:: The above command will prompt for version number, handle
+          :file:`CHANGELOG.rst` and :file:`setup.py` updates, package creation,
+          pypi upload. It will prompt you before each step to get your consent.
