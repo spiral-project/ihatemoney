@@ -8,6 +8,8 @@ it before upgrading.
 Ihatemoney follows `semantic versioning <http://semver.org/>`_. So minor/patch
 upgrades can be done blindly.
 
+.. _general-procedure:
+
 General procedure
 =================
 
@@ -32,6 +34,14 @@ Version-specific instructions
 
 When upgrading from a major version to another, you **must** follow special
 instructions:
+
+2.x → 3.x
+---------
+
+Sentry support has been removed. Sorry if you used it.
+
+Appart from that, :ref:`general-procedure` applies.
+
 
 1.x → 2.x
 ---------
