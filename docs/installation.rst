@@ -134,7 +134,7 @@ With Nginx, Gunicorn and Supervisord
 
      ihatemoney generate-config supervisord.conf > /etc/supervisor/conf.d/ihatemoney.conf
 
-4. Copy (and adapt) output of ``ihatemoney generate-config conf/nginx.conf`` with your nginx vhosts [#nginx-vhosts]_
+4. Copy (and adapt) output of ``ihatemoney generate-config nginx.conf`` with your nginx vhosts [#nginx-vhosts]_
 5. Reload both nginx and supervisord. It should be working ;)
 
 .. [#nginx-vhosts] typically, */etc/nginx/conf.d/* or
