@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import Blueprint, request
 from flask_restful import Resource, Api, abort
+from flask_cors import CORS
 from wtforms.fields.core import BooleanField
 
 from ihatemoney.models import db, Project, Person, Bill
@@ -11,6 +12,7 @@ from functools import wraps
 
 
 api = Blueprint("api", __name__, url_prefix="/api")
+CORS(api)
 restful_api = Api(api)
 
 
