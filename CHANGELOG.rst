@@ -6,8 +6,10 @@ This document describes changes between each past release.
 3.1 (unreleased)
 ----------------
 
+Added
+=====
 - Add CORS headers in the API (#407)
-
+- Document database migrations (#390)
 
 3.0 (2018-11-25)
 ----------------
