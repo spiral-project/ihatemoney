@@ -9,6 +9,7 @@ try:
 except ImportError:
     from mock import patch
 
+import datetime
 import os
 import json
 from collections import defaultdict
@@ -1271,7 +1272,13 @@ class APITestCase(IhatemoneyTestCase):
             "date": "2011-08-10",
             "id": 1}
 
-        self.assertDictEqual(expected, json.loads(req.data.decode('utf-8')))
+        got = json.loads(req.data.decode('utf-8'))
+        self.assertEqual(
+            datetime.date.today(),
+            datetime.datetime.strptime(got["creation_date"], '%Y-%m-%d').date()
+        )
+        del got["creation_date"]
+        self.assertDictEqual(expected, got)
 
         # the list of bills should length 1
         req = self.client.get("/api/projects/raclette/bills",
@@ -1303,6 +1310,10 @@ class APITestCase(IhatemoneyTestCase):
         # check its fields
         req = self.client.get("/api/projects/raclette/bills/1",
                               headers=self.get_auth("raclette"))
+        creation_date = datetime.datetime.strptime(
+            json.loads(req.data.decode('utf-8'))["creation_date"],
+            '%Y-%m-%d'
+        ).date()
 
         expected = {
             "what": "beer",
@@ -1314,7 +1325,13 @@ class APITestCase(IhatemoneyTestCase):
             "date": "2011-09-10",
             "id": 1}
 
-        self.assertDictEqual(expected, json.loads(req.data.decode('utf-8')))
+        got = json.loads(req.data.decode('utf-8'))
+        self.assertEqual(
+            creation_date,
+            datetime.datetime.strptime(got["creation_date"], '%Y-%m-%d').date()
+        )
+        del got["creation_date"]
+        self.assertDictEqual(expected, got)
 
         # delete a bill
         req = self.client.delete("/api/projects/raclette/bills/1",
@@ -1393,6 +1410,10 @@ class APITestCase(IhatemoneyTestCase):
         # get this bill details
         req = self.client.get("/api/projects/raclette/bills/1",
                               headers=self.get_auth("raclette"))
+        creation_date = datetime.datetime.strptime(
+            json.loads(req.data.decode('utf-8'))["creation_date"],
+            '%Y-%m-%d'
+        ).date()
 
         # compare with the added info
         self.assertStatus(200, req)
@@ -1405,7 +1426,13 @@ class APITestCase(IhatemoneyTestCase):
             "amount": 25.0,
             "date": "2011-08-10",
             "id": 1}
-        self.assertDictEqual(expected, json.loads(req.data.decode('utf-8')))
+        got = json.loads(req.data.decode('utf-8'))
+        self.assertEqual(
+            creation_date,
+            datetime.datetime.strptime(got["creation_date"], '%Y-%m-%d').date()
+        )
+        del got["creation_date"]
+        self.assertDictEqual(expected, got)
 
         # getting it should return a 404
         req = self.client.get("/api/projects/raclette",

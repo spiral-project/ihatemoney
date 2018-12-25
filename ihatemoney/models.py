@@ -163,6 +163,7 @@ class Project(db.Model):
             .filter(Bill.payer_id == Person.id)\
             .filter(Person.project_id == Project.id)\
             .filter(Project.id == self.id)\
+            .order_by(Bill.creation_date.desc())\
             .order_by(Bill.date.desc())\
             .order_by(Bill.id.desc())
 
@@ -329,7 +330,8 @@ class Bill(db.Model):
 
     query_class = BillQuery
 
-    _to_serialize = ("id", "payer_id", "owers", "amount", "date", "what")
+    _to_serialize = ("id", "payer_id", "owers", "amount", "date",
+                     "creation_date", "what")
 
     id = db.Column(db.Integer, primary_key=True)
 
@@ -338,6 +340,7 @@ class Bill(db.Model):
 
     amount = db.Column(db.Float)
     date = db.Column(db.Date, default=datetime.now)
+    creation_date = db.Column(db.Date, default=datetime.now)
     what = db.Column(db.UnicodeText)
 
     archive = db.Column(db.Integer, db.ForeignKey("archive.id"))
