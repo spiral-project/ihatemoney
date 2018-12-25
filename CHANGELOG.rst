@@ -6,7 +6,10 @@ This document describes changes between each past release.
 3.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+Added
+=====
+
+- Document database migrations (#390)
 
 
 3.0 (2018-11-25)
@@ -41,7 +44,6 @@ Added
 - Improve settings documentation styling (#251)
 - Add a ihatemoney delete-project command to delete a project (#375)
 - Add nice 404 error pages (#379)
-- Document database migrations (#390)
 
 Changed
 =======

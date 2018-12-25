@@ -55,7 +55,8 @@ Then run the following command to create a new database revision file::
   make create-database-revision
 
 If your changes are simple enough, the generated script will be populated with
-the necessary migrations steps.
+the necessary migrations steps. You can edit the generated script. eg: to add data migrations.
+
 For complex migrations, it is recommended to start from an empty revision file which can be created
 with the following command::
 
