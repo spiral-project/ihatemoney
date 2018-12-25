@@ -1,6 +1,6 @@
 FROM python:3.6-alpine
 
-RUN apk add gcc libc-dev libffi-dev openssl-dev &&\
+RUN apk update && apk add gcc libc-dev libffi-dev openssl-dev &&\
     mkdir /ihatemoney &&\
     mkdir -p /etc/ihatemoney &&\
     pip install --no-cache-dir gunicorn pymysql
