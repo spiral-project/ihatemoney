@@ -1020,6 +1020,16 @@ class APITestCase(IhatemoneyTestCase):
             ('%s:%s' % (username, password)).encode('utf-8')).decode('utf-8').replace('\n', '')
         return {"Authorization": "Basic %s" % base64string}
 
+    def test_cors_requests(self):
+        # Create a project and test that CORS headers are present if requested.
+        resp = self.api_create("raclette")
+        self.assertStatus(201, resp)
+
+        # Try to do an OPTIONS requests and see if the headers are correct.
+        resp = self.client.options("/api/projects/raclette",
+                                   headers=self.get_auth("raclette"))
+        self.assertEqual(resp.headers['Access-Control-Allow-Origin'], '*')
+
     def test_basic_auth(self):
         # create a project
         resp = self.api_create("raclette")
