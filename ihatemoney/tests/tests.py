@@ -1084,12 +1084,10 @@ class APITestCase(IhatemoneyTestCase):
 
         self.assertTrue(200, resp.status_code)
         expected = {
-            "active_members": [],
+            "members": [],
             "name": "raclette",
             "contact_email": "raclette@notmyidea.org",
-            "members": [],
             "id": "raclette",
-            "balance": {},
         }
         decoded_resp = json.loads(resp.data.decode('utf-8'))
         self.assertDictEqual(decoded_resp, expected)
@@ -1108,12 +1106,10 @@ class APITestCase(IhatemoneyTestCase):
 
         self.assertEqual(200, resp.status_code)
         expected = {
-            "active_members": [],
             "name": "The raclette party",
             "contact_email": "yeah@notmyidea.org",
             "members": [],
             "id": "raclette",
-            "balance": {},
         }
         decoded_resp = json.loads(resp.data.decode('utf-8'))
         self.assertDictEqual(decoded_resp, expected)
@@ -1449,21 +1445,16 @@ class APITestCase(IhatemoneyTestCase):
                               headers=self.get_auth("raclette"))
 
         expected = {
-            "active_members": [
-                {"activated": True, "id": 1, "name": "alexis", "weight": 1.0},
-                {"activated": True, "id": 2, "name": "freddy familly", "weight": 4.0},
-                {"activated": True, "id": 3, "name": "arnaud", "weight": 1.0}
+            "members": [
+                {"activated": True, "id": 1, "name": "alexis", "weight": 1.0, "balance": 20.0},
+                {"activated": True, "id": 2, "name": "freddy familly", "weight": 4.0,
+                 "balance": -20.0},
+                {"activated": True, "id": 3, "name": "arnaud", "weight": 1.0, "balance": 0},
             ],
-            "balance": {"1": 20.0, "2": -20.0, "3": 0},
             "contact_email": "raclette@notmyidea.org",
             "id": "raclette",
-
-            "members": [
-                {"activated": True, "id": 1, "name": "alexis", "weight": 1.0},
-                {"activated": True, "id": 2, "name": "freddy familly", "weight": 4.0},
-                {"activated": True, "id": 3, "name": "arnaud", "weight": 1.0}
-            ],
-            "name": "raclette"}
+            "name": "raclette",
+        }
 
         self.assertStatus(200, req)
         decoded_req = json.loads(req.data.decode('utf-8'))
