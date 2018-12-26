@@ -1447,7 +1447,8 @@ class APITestCase(IhatemoneyTestCase):
         expected = {
             "members": [
                 {"activated": True, "id": 1, "name": "alexis", "weight": 1.0, "balance": 20.0},
-                {"activated": True, "id": 2, "name": "freddy familly", "weight": 4.0, "balance": -20.0},
+                {"activated": True, "id": 2, "name": "freddy familly", "weight": 4.0,
+                 "balance": -20.0},
                 {"activated": True, "id": 3, "name": "arnaud", "weight": 1.0, "balance": 0},
             ],
             "contact_email": "raclette@notmyidea.org",
