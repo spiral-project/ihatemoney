@@ -22,14 +22,20 @@ class Project(db.Model):
 
     @property
     def _to_serialize(self):
-        return {
+        obj = {
             "id": self.id,
             "name": self.name,
             "contact_email": self.contact_email,
-            "members": self.members,
-            "active_members": self.active_members,
-            "balance": self.balance,
+            "members": [],
         }
+
+        balance = self.balance
+        for member in self.members:
+            member_obj = member._to_serialize
+            member_obj['balance'] = balance.get(member.id, 0)
+            obj['members'].append(member_obj)
+
+        return obj
 
     @property
     def active_members(self):
