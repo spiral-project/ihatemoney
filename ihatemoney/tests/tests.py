@@ -1349,6 +1349,69 @@ class APITestCase(IhatemoneyTestCase):
                               headers=self.get_auth("raclette"))
         self.assertStatus(404, req)
 
+    def test_bills_with_calculation(self):
+        # create a project
+        self.api_create("raclette")
+
+        # add members
+        self.api_add_member("raclette", "alexis")
+        self.api_add_member("raclette", "fred")
+
+        # add a bill
+        req = self.client.post("/api/projects/raclette/bills", data={
+            'date': '2011-08-10',
+            'what': 'fromage',
+            'payer': "1",
+            'payed_for': ["1", "2"],
+            'amount': '((100 + 200.25) * 2 - 100) / 2',
+        }, headers=self.get_auth("raclette"))
+
+        # should return the id
+        self.assertStatus(201, req)
+        self.assertEqual(req.data.decode('utf-8'), "1\n")
+
+        # get this bill details
+        req = self.client.get("/api/projects/raclette/bills/1",
+                              headers=self.get_auth("raclette"))
+
+        # compare with the added info
+        self.assertStatus(200, req)
+        expected = {
+            "what": "fromage",
+            "payer_id": 1,
+            "owers": [
+                {"activated": True, "id": 1, "name": "alexis", "weight": 1},
+                {"activated": True, "id": 2, "name": "fred", "weight": 1}],
+            "amount": 250.25,
+            "date": "2011-08-10",
+            "id": 1}
+
+        got = json.loads(req.data.decode('utf-8'))
+        self.assertEqual(
+            datetime.date.today(),
+            datetime.datetime.strptime(got["creation_date"], '%Y-%m-%d').date()
+        )
+        del got["creation_date"]
+        self.assertDictEqual(expected, got)
+
+        erroneous_amounts = [
+            "lambda ",  # letters
+            "(20 + 2",  # invalid expression
+            "20/0",  # invalid calc
+            "9999**99999999999999999",  # exponents
+            "2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2"  # greater than 50 chars
+        ]
+
+        for amount in erroneous_amounts:
+            req = self.client.post("/api/projects/raclette/bills", data={
+                'date': '2011-08-10',
+                'what': 'fromage',
+                'payer': "1",
+                'payed_for': ["1", "2"],
+                'amount': amount,
+            }, headers=self.get_auth("raclette"))
+            self.assertStatus(400, req)
+
     def test_statistics(self):
         # create a project
         self.api_create("raclette")

@@ -8,6 +8,7 @@ from flask import request
 from werkzeug.security import generate_password_hash
 
 from datetime import datetime
+from re import match
 from jinja2 import Markup
 
 import email_validator
@@ -42,6 +43,28 @@ class CommaDecimalField(DecimalField):
         if value:
             value[0] = str(value[0]).replace(',', '.')
         return super(CommaDecimalField, self).process_formdata(value)
+
+
+class CalculatorStringField(StringField):
+    """
+    A class to deal with math ops (+, -, *, /)
+    in StringField
+    """
+
+    def process_formdata(self, valuelist):
+        if valuelist:
+            error_msg = "Not a valid amount or expression"
+            value = str(valuelist[0]).replace(" ", "").replace(",", ".")
+
+            if not match(r'^[ 0-9\.\+\-\*/\(\)]{0,50}$', value) or "**" in value:
+                raise ValueError(error_msg)
+
+            try:
+                valuelist[0] = str(eval(value, {"__builtins__": None}, {}))
+            except (SyntaxError, NameError, TypeError, ZeroDivisionError):
+                raise ValueError(error_msg)
+
+        return super(CalculatorStringField, self).process_formdata(valuelist)
 
 
 class EditProjectForm(FlaskForm):
@@ -117,7 +140,7 @@ class BillForm(FlaskForm):
     date = DateField(_("Date"), validators=[Required()], default=datetime.now)
     what = StringField(_("What?"), validators=[Required()])
     payer = SelectField(_("Payer"), validators=[Required()], coerce=int)
-    amount = CommaDecimalField(_("Amount paid"), validators=[Required()])
+    amount = CalculatorStringField(_("Amount paid"), validators=[Required()])
     payed_for = SelectMultipleField(_("For whom?"),
                                     validators=[Required()], coerce=int)
     submit = SubmitField(_("Submit"))
