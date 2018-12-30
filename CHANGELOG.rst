@@ -10,6 +10,7 @@ Added
 =====
 - Add CORS headers in the API (#407)
 - Document database migrations (#390)
+- Allow basic math operations in amount field (#413)
 
 3.0 (2018-11-25)
 ----------------
