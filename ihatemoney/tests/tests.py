@@ -1399,7 +1399,7 @@ class APITestCase(IhatemoneyTestCase):
             "(20 + 2",  # invalid expression
             "20/0",  # invalid calc
             "9999**99999999999999999",  # exponents
-            "2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2"  # greater than 50 chars
+            "2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2",  # greater than 50 chars,
         ]
 
         for amount in erroneous_amounts:

@@ -14,7 +14,7 @@ from jinja2 import Markup
 import email_validator
 
 from ihatemoney.models import Project, Person
-from ihatemoney.utils import slugify
+from ihatemoney.utils import slugify, eval_arithmetic_expression
 
 
 def get_billform_for(project, set_default=True, **kwargs):
@@ -54,15 +54,12 @@ class CalculatorStringField(StringField):
     def process_formdata(self, valuelist):
         if valuelist:
             error_msg = "Not a valid amount or expression"
-            value = str(valuelist[0]).replace(" ", "").replace(",", ".")
+            value = str(valuelist[0]).replace(",", ".")
 
             if not match(r'^[ 0-9\.\+\-\*/\(\)]{0,50}$', value) or "**" in value:
                 raise ValueError(error_msg)
 
-            try:
-                valuelist[0] = str(eval(value, {"__builtins__": None}, {}))
-            except (SyntaxError, NameError, TypeError, ZeroDivisionError):
-                raise ValueError(error_msg)
+            valuelist[0] = str(eval_arithmetic_expression(value))
 
         return super(CalculatorStringField, self).process_formdata(valuelist)
 
