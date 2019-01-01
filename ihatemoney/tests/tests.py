@@ -1361,6 +1361,7 @@ class APITestCase(IhatemoneyTestCase):
         input_expected = [
             ("((100 + 200.25) * 2 - 100) / 2", 250.25),
             ("3/2", 1.5),
+            ("2 + 1 * 5 - 2 / 1", 5),
         ]
 
         for i, pair in enumerate(input_expected):
