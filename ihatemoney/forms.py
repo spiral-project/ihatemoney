@@ -53,11 +53,16 @@ class CalculatorStringField(StringField):
 
     def process_formdata(self, valuelist):
         if valuelist:
-            error_msg = "Not a valid amount or expression"
+            message = _(
+                "Not a valid amount or expression."
+                "Only numbers and + - * / operators"
+                "are accepted."
+            )
             value = str(valuelist[0]).replace(",", ".")
 
-            if not match(r'^[ 0-9\.\+\-\*/\(\)]{0,50}$', value) or "**" in value:
-                raise ValueError(error_msg)
+            # avoid exponents to prevent expensive calculations i.e 2**9999999999**9999999
+            if not match(r'^[ 0-9\.\+\-\*/\(\)]{0,200}$', value) or "**" in value:
+                raise ValueError(Markup(message))
 
             valuelist[0] = str(eval_arithmetic_expression(value))
 

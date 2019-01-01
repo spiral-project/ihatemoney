@@ -1,3 +1,4 @@
+from __future__ import division
 import base64
 import re
 import ast

@@ -1357,49 +1357,66 @@ class APITestCase(IhatemoneyTestCase):
         self.api_add_member("raclette", "alexis")
         self.api_add_member("raclette", "fred")
 
-        # add a bill
-        req = self.client.post("/api/projects/raclette/bills", data={
-            'date': '2011-08-10',
-            'what': 'fromage',
-            'payer': "1",
-            'payed_for': ["1", "2"],
-            'amount': '((100 + 200.25) * 2 - 100) / 2',
-        }, headers=self.get_auth("raclette"))
+        # valid amounts
+        input_expected = [
+            ("((100 + 200.25) * 2 - 100) / 2", 250.25),
+            ("3/2", 1.5),
+        ]
 
-        # should return the id
-        self.assertStatus(201, req)
-        self.assertEqual(req.data.decode('utf-8'), "1\n")
+        for i, pair in enumerate(input_expected):
+            input_amount, expected_amount = pair
+            id = i + 1
 
-        # get this bill details
-        req = self.client.get("/api/projects/raclette/bills/1",
-                              headers=self.get_auth("raclette"))
+            req = self.client.post(
+                "/api/projects/raclette/bills",
+                data={
+                    'date': '2011-08-10',
+                    'what': 'fromage',
+                    'payer': "1",
+                    'payed_for': ["1", "2"],
+                    'amount': input_amount,
+                },
+                headers=self.get_auth("raclette")
+            )
 
-        # compare with the added info
-        self.assertStatus(200, req)
-        expected = {
-            "what": "fromage",
-            "payer_id": 1,
-            "owers": [
-                {"activated": True, "id": 1, "name": "alexis", "weight": 1},
-                {"activated": True, "id": 2, "name": "fred", "weight": 1}],
-            "amount": 250.25,
-            "date": "2011-08-10",
-            "id": 1}
+            # should return the id
+            self.assertStatus(201, req)
+            self.assertEqual(req.data.decode('utf-8'), "{}\n".format(id))
 
-        got = json.loads(req.data.decode('utf-8'))
-        self.assertEqual(
-            datetime.date.today(),
-            datetime.datetime.strptime(got["creation_date"], '%Y-%m-%d').date()
-        )
-        del got["creation_date"]
-        self.assertDictEqual(expected, got)
+            # get this bill's details
+            req = self.client.get(
+                "/api/projects/raclette/bills/{}".format(id),
+                headers=self.get_auth("raclette")
+            )
 
+            # compare with the added info
+            self.assertStatus(200, req)
+            expected = {
+                "what": "fromage",
+                "payer_id": 1,
+                "owers": [
+                    {"activated": True, "id": 1, "name": "alexis", "weight": 1},
+                    {"activated": True, "id": 2, "name": "fred", "weight": 1}],
+                "amount": expected_amount,
+                "date": "2011-08-10",
+                "id": id,
+            }
+
+            got = json.loads(req.data.decode('utf-8'))
+            self.assertEqual(
+                datetime.date.today(),
+                datetime.datetime.strptime(got["creation_date"], '%Y-%m-%d').date()
+            )
+            del got["creation_date"]
+            self.assertDictEqual(expected, got)
+
+        # should raise errors
         erroneous_amounts = [
             "lambda ",  # letters
             "(20 + 2",  # invalid expression
             "20/0",  # invalid calc
             "9999**99999999999999999",  # exponents
-            "2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2",  # greater than 50 chars,
+            "2" * 201,  # greater than 200 chars,
         ]
 
         for amount in erroneous_amounts:
