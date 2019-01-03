@@ -1032,6 +1032,16 @@ class APITestCase(IhatemoneyTestCase):
             ('%s:%s' % (username, password)).encode('utf-8')).decode('utf-8').replace('\n', '')
         return {"Authorization": "Basic %s" % base64string}
 
+    def test_cors_requests(self):
+        # Create a project and test that CORS headers are present if requested.
+        resp = self.api_create("raclette")
+        self.assertStatus(201, resp)
+
+        # Try to do an OPTIONS requests and see if the headers are correct.
+        resp = self.client.options("/api/projects/raclette",
+                                   headers=self.get_auth("raclette"))
+        self.assertEqual(resp.headers['Access-Control-Allow-Origin'], '*')
+
     def test_basic_auth(self):
         # create a project
         resp = self.api_create("raclette")
@@ -1086,12 +1096,10 @@ class APITestCase(IhatemoneyTestCase):
 
         self.assertTrue(200, resp.status_code)
         expected = {
-            "active_members": [],
+            "members": [],
             "name": "raclette",
             "contact_email": "raclette@notmyidea.org",
-            "members": [],
             "id": "raclette",
-            "balance": {},
         }
         decoded_resp = json.loads(resp.data.decode('utf-8'))
         self.assertDictEqual(decoded_resp, expected)
@@ -1110,12 +1118,10 @@ class APITestCase(IhatemoneyTestCase):
 
         self.assertEqual(200, resp.status_code)
         expected = {
-            "active_members": [],
             "name": "The raclette party",
             "contact_email": "yeah@notmyidea.org",
             "members": [],
             "id": "raclette",
-            "balance": {},
         }
         decoded_resp = json.loads(resp.data.decode('utf-8'))
         self.assertDictEqual(decoded_resp, expected)
@@ -1355,6 +1361,87 @@ class APITestCase(IhatemoneyTestCase):
                               headers=self.get_auth("raclette"))
         self.assertStatus(404, req)
 
+    def test_bills_with_calculation(self):
+        # create a project
+        self.api_create("raclette")
+
+        # add members
+        self.api_add_member("raclette", "alexis")
+        self.api_add_member("raclette", "fred")
+
+        # valid amounts
+        input_expected = [
+            ("((100 + 200.25) * 2 - 100) / 2", 250.25),
+            ("3/2", 1.5),
+            ("2 + 1 * 5 - 2 / 1", 5),
+        ]
+
+        for i, pair in enumerate(input_expected):
+            input_amount, expected_amount = pair
+            id = i + 1
+
+            req = self.client.post(
+                "/api/projects/raclette/bills",
+                data={
+                    'date': '2011-08-10',
+                    'what': 'fromage',
+                    'payer': "1",
+                    'payed_for': ["1", "2"],
+                    'amount': input_amount,
+                },
+                headers=self.get_auth("raclette")
+            )
+
+            # should return the id
+            self.assertStatus(201, req)
+            self.assertEqual(req.data.decode('utf-8'), "{}\n".format(id))
+
+            # get this bill's details
+            req = self.client.get(
+                "/api/projects/raclette/bills/{}".format(id),
+                headers=self.get_auth("raclette")
+            )
+
+            # compare with the added info
+            self.assertStatus(200, req)
+            expected = {
+                "what": "fromage",
+                "payer_id": 1,
+                "owers": [
+                    {"activated": True, "id": 1, "name": "alexis", "weight": 1},
+                    {"activated": True, "id": 2, "name": "fred", "weight": 1}],
+                "amount": expected_amount,
+                "date": "2011-08-10",
+                "id": id,
+            }
+
+            got = json.loads(req.data.decode('utf-8'))
+            self.assertEqual(
+                datetime.date.today(),
+                datetime.datetime.strptime(got["creation_date"], '%Y-%m-%d').date()
+            )
+            del got["creation_date"]
+            self.assertDictEqual(expected, got)
+
+        # should raise errors
+        erroneous_amounts = [
+            "lambda ",  # letters
+            "(20 + 2",  # invalid expression
+            "20/0",  # invalid calc
+            "9999**99999999999999999",  # exponents
+            "2" * 201,  # greater than 200 chars,
+        ]
+
+        for amount in erroneous_amounts:
+            req = self.client.post("/api/projects/raclette/bills", data={
+                'date': '2011-08-10',
+                'what': 'fromage',
+                'payer': "1",
+                'payed_for': ["1", "2"],
+                'amount': amount,
+            }, headers=self.get_auth("raclette"))
+            self.assertStatus(400, req)
+
     def test_statistics(self):
         # create a project
         self.api_create("raclette")
@@ -1451,21 +1538,16 @@ class APITestCase(IhatemoneyTestCase):
                               headers=self.get_auth("raclette"))
 
         expected = {
-            "active_members": [
-                {"activated": True, "id": 1, "name": "alexis", "weight": 1.0},
-                {"activated": True, "id": 2, "name": "freddy familly", "weight": 4.0},
-                {"activated": True, "id": 3, "name": "arnaud", "weight": 1.0}
+            "members": [
+                {"activated": True, "id": 1, "name": "alexis", "weight": 1.0, "balance": 20.0},
+                {"activated": True, "id": 2, "name": "freddy familly", "weight": 4.0,
+                 "balance": -20.0},
+                {"activated": True, "id": 3, "name": "arnaud", "weight": 1.0, "balance": 0},
             ],
-            "balance": {"1": 20.0, "2": -20.0, "3": 0},
             "contact_email": "raclette@notmyidea.org",
             "id": "raclette",
-
-            "members": [
-                {"activated": True, "id": 1, "name": "alexis", "weight": 1.0},
-                {"activated": True, "id": 2, "name": "freddy familly", "weight": 4.0},
-                {"activated": True, "id": 3, "name": "arnaud", "weight": 1.0}
-            ],
-            "name": "raclette"}
+            "name": "raclette",
+        }
 
         self.assertStatus(200, req)
         decoded_req = json.loads(req.data.decode('utf-8'))

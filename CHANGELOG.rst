@@ -9,9 +9,14 @@ This document describes changes between each past release.
 Added
 =====
 
+- Add CORS headers in the API (#407)
 - Document database migrations (#390)
-- Do not allow negative weights on users (#366)
+- Allow basic math operations in amount field (#413)
 
+Fixed
+=====
+
+- Do not allow negative weights on users (#366)
 
 3.0 (2018-11-25)
 ----------------

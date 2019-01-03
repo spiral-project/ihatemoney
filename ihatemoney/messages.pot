@@ -1,3 +1,8 @@
+msgid ""
+"Not a valid amount or expression.Only numbers and + - * / operatorsare "
+"accepted."
+msgstr ""
+
 msgid "Project name"
 msgstr ""
 
@@ -365,6 +370,9 @@ msgid "Invite people to join this project!"
 msgstr ""
 
 msgid "Add a new bill"
+msgstr ""
+
+msgid "Added on"
 msgstr ""
 
 msgid "When?"

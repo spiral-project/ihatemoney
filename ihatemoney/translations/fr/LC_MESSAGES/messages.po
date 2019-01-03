@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-08-05 23:41+0200\n"
+"POT-Creation-Date: 2019-01-02 23:26-0500\n"
 "PO-Revision-Date: 2018-05-15 22:00+0200\n"
 "Last-Translator: Adrien CLERC <>\n"
 "Language: fr\n"
@@ -17,6 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
+
+msgid ""
+"Not a valid amount or expression.Only numbers and + - * / operators are "
+"accepted."
+msgstr ""
+"Pas un montant ou une expression valide. Seuls les nombres et les opérateurs"
+"+ - * / sont acceptés"
 
 msgid "Project name"
 msgstr "Nom de projet"
@@ -397,6 +404,9 @@ msgstr "Invitez d’autres personnes à rejoindre ce projet !"
 msgid "Add a new bill"
 msgstr "Nouvelle facture"
 
+msgid "Added on"
+msgstr "Ajouté Sur"
+
 msgid "When?"
 msgstr "Quand ?"
 
@@ -497,3 +507,4 @@ msgstr "Solde"
 
 #~ msgid "Invite"
 #~ msgstr "Invitez"
+

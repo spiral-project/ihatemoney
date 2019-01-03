@@ -13,17 +13,29 @@ db = SQLAlchemy()
 
 class Project(db.Model):
 
-    _to_serialize = (
-        "id", "name",  "contact_email", "members", "active_members",
-        "balance"
-    )
-
     id = db.Column(db.String(64), primary_key=True)
 
     name = db.Column(db.UnicodeText)
     password = db.Column(db.String(128))
     contact_email = db.Column(db.String(128))
     members = db.relationship("Person", backref="project")
+
+    @property
+    def _to_serialize(self):
+        obj = {
+            "id": self.id,
+            "name": self.name,
+            "contact_email": self.contact_email,
+            "members": [],
+        }
+
+        balance = self.balance
+        for member in self.members:
+            member_obj = member._to_serialize
+            member_obj['balance'] = balance.get(member.id, 0)
+            obj['members'].append(member_obj)
+
+        return obj
 
     @property
     def active_members(self):
@@ -276,8 +288,6 @@ class Person(db.Model):
 
     query_class = PersonQuery
 
-    _to_serialize = ("id", "name", "weight", "activated")
-
     id = db.Column(db.Integer, primary_key=True)
     project_id = db.Column(db.String(64), db.ForeignKey("project.id"))
     bills = db.relationship("Bill", backref="payer")
@@ -285,6 +295,15 @@ class Person(db.Model):
     name = db.Column(db.UnicodeText)
     weight = db.Column(db.Float, default=1)
     activated = db.Column(db.Boolean, default=True)
+
+    @property
+    def _to_serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "weight": self.weight,
+            "activated": self.activated,
+        }
 
     def has_bills(self):
         """return if the user do have bills or not"""
@@ -330,9 +349,6 @@ class Bill(db.Model):
 
     query_class = BillQuery
 
-    _to_serialize = ("id", "payer_id", "owers", "amount", "date",
-                     "creation_date", "what")
-
     id = db.Column(db.Integer, primary_key=True)
 
     payer_id = db.Column(db.Integer, db.ForeignKey("person.id"))
@@ -344,6 +360,18 @@ class Bill(db.Model):
     what = db.Column(db.UnicodeText)
 
     archive = db.Column(db.Integer, db.ForeignKey("archive.id"))
+
+    @property
+    def _to_serialize(self):
+        return {
+            "id": self.id,
+            "payer_id": self.payer_id,
+            "owers": self.owers,
+            "amount": self.amount,
+            "date": self.date,
+            "creation_date": self.creation_date,
+            "what": self.what,
+        }
 
     def pay_each(self):
         """Compute what each share has to pay"""

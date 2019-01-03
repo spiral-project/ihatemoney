@@ -116,7 +116,7 @@ Collect all new strings to translate::
 
  Compile them into *.mo* files::
 
-  $ make compile-translations
+  $ make build-translations
 
 Commit both *.mo* and *.po*.
 
