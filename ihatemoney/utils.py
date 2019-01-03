@@ -1,5 +1,8 @@
+from __future__ import division
 import base64
 import re
+import ast
+import operator
 
 from io import BytesIO, StringIO
 import jinja2
@@ -206,3 +209,33 @@ class IhmJSONEncoder(JSONEncoder):
             except ImportError:
                 pass
             return JSONEncoder.default(self, o)
+
+
+def eval_arithmetic_expression(expr):
+    def _eval(node):
+        # supported operators
+        operators = {
+            ast.Add: operator.add,
+            ast.Sub: operator.sub,
+            ast.Mult: operator.mul,
+            ast.Div: operator.truediv,
+            ast.USub: operator.neg,
+        }
+
+        if isinstance(node, ast.Num):  # <number>
+            return node.n
+        elif isinstance(node, ast.BinOp):  # <left> <operator> <right>
+            return operators[type(node.op)](_eval(node.left), _eval(node.right))
+        elif isinstance(node, ast.UnaryOp):  # <operator> <operand> e.g., -1
+            return operators[type(node.op)](_eval(node.operand))
+        else:
+            raise TypeError(node)
+
+    expr = str(expr)
+
+    try:
+        result = _eval(ast.parse(expr, mode='eval').body)
+    except (SyntaxError, TypeError, ZeroDivisionError, KeyError):
+        raise ValueError("Error evaluating expression: {}".format(expr))
+
+    return result

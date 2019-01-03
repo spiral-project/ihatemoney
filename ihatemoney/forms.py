@@ -8,12 +8,13 @@ from flask import request
 from werkzeug.security import generate_password_hash
 
 from datetime import datetime
+from re import match
 from jinja2 import Markup
 
 import email_validator
 
 from ihatemoney.models import Project, Person
-from ihatemoney.utils import slugify
+from ihatemoney.utils import slugify, eval_arithmetic_expression
 
 
 def get_billform_for(project, set_default=True, **kwargs):
@@ -42,6 +43,30 @@ class CommaDecimalField(DecimalField):
         if value:
             value[0] = str(value[0]).replace(',', '.')
         return super(CommaDecimalField, self).process_formdata(value)
+
+
+class CalculatorStringField(StringField):
+    """
+    A class to deal with math ops (+, -, *, /)
+    in StringField
+    """
+
+    def process_formdata(self, valuelist):
+        if valuelist:
+            message = _(
+                "Not a valid amount or expression."
+                "Only numbers and + - * / operators"
+                "are accepted."
+            )
+            value = str(valuelist[0]).replace(",", ".")
+
+            # avoid exponents to prevent expensive calculations i.e 2**9999999999**9999999
+            if not match(r'^[ 0-9\.\+\-\*/\(\)]{0,200}$', value) or "**" in value:
+                raise ValueError(Markup(message))
+
+            valuelist[0] = str(eval_arithmetic_expression(value))
+
+        return super(CalculatorStringField, self).process_formdata(valuelist)
 
 
 class EditProjectForm(FlaskForm):
@@ -117,7 +142,7 @@ class BillForm(FlaskForm):
     date = DateField(_("Date"), validators=[Required()], default=datetime.now)
     what = StringField(_("What?"), validators=[Required()])
     payer = SelectField(_("Payer"), validators=[Required()], coerce=int)
-    amount = CommaDecimalField(_("Amount paid"), validators=[Required()])
+    amount = CalculatorStringField(_("Amount paid"), validators=[Required()])
     payed_for = SelectMultipleField(_("For whom?"),
                                     validators=[Required()], coerce=int)
     submit = SubmitField(_("Submit"))
