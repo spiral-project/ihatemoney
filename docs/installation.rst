@@ -66,7 +66,7 @@ And point your browser at `http://localhost:5000 <http://localhost:5000>`_.
 Configure database with MySQL/MariaDB (optional)
 ================================================
 
-Only required if you prefer MySQL/MariaDB over SQLite.
+.. note:: Only required if you use MySQL/MariaDB.
 
 1. Install PyMySQL dependencies. On Debian or Ubuntu, that would be::
 
@@ -78,6 +78,19 @@ Only required if you prefer MySQL/MariaDB over SQLite.
 
 3. Create an empty database and a database user
 4. Configure :ref:`SQLALCHEMY_DATABASE_URI <configuration>` accordingly
+
+
+Configure database with PostgreSQL (optional)
+=============================================
+
+.. note:: Only required if you use Postgresql.
+
+1. Install python driver for PostgreSQL (from within your virtualenv)::
+
+    pip install psycopg2
+
+2. Configure :ref:`SQLALCHEMY_DATABASE_URI <configuration>` accordingly
+
 
 Deploy it
 =========
@@ -199,6 +212,10 @@ format used can be found on `the SQLAlchemy documentation`_.
 - **Production value:** Set it to some path on your disk. Typically
   ``sqlite:///home/ihatemoney/ihatemoney.db``. Do *not* store it under
   ``/tmp`` as this folder is cleared at each boot.
+
+If you're using PostgreSQL, Your client must use utf8. Unfortunately, PostgreSQL default
+is to use ASCII. Either change your client settings, or specify the encoding by appending
+`?client_encoding=utf8` to the connection string.
 
 `SECRET_KEY`
 ------------
