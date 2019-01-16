@@ -66,7 +66,7 @@ And point your browser at `http://localhost:5000 <http://localhost:5000>`_.
 Configure database with MySQL/MariaDB (optional)
 ================================================
 
-Only required if you use MySQL/MariaDB.
+.. note:: Only required if you use MySQL/MariaDB.
 
 1. Install PyMySQL dependencies. On Debian or Ubuntu, that would be::
 
@@ -83,7 +83,7 @@ Only required if you use MySQL/MariaDB.
 Configure database with PostgreSQL (optional)
 =============================================
 
-Only required if you use Postgresql.
+.. note:: Only required if you use Postgresql.
 
 1. Install python driver for PostgreSQL (from within your virtualenv)::
 
