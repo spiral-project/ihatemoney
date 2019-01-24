@@ -3,7 +3,7 @@ Changelog
 
 This document describes changes between each past release.
 
-3.1 (unreleased)
+4.0 (unreleased)
 ----------------
 
 Added
@@ -12,11 +12,21 @@ Added
 - Add CORS headers in the API (#407)
 - Document database migrations (#390)
 - Allow basic math operations in amount field (#413)
+- Add bill.creation_date field (#327) 
+- Document PostgreSQL configuration (#415)
 
 Fixed
 =====
 
 - Do not allow negative weights on users (#366)
+- Fix docker image (#398) 
+- minor documentation changes
+
+Changed
+=======
+
+- Update API project list (#405)
+
 
 3.0 (2018-11-25)
 ----------------
