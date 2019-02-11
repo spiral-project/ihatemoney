@@ -405,7 +405,7 @@ msgid "Add a new bill"
 msgstr "Nouvelle facture"
 
 msgid "Added on"
-msgstr "Ajouté Sur"
+msgstr "Ajouté le"
 
 msgid "When?"
 msgstr "Quand ?"
