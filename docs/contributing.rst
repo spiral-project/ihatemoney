@@ -158,7 +158,7 @@ In order to prepare a new release, we are following the following steps:
 
 .. code-block:: bash
 
-     $ pip freeze | grep -v -- '-e' > requirements.txt
+     $ make build-requirements
 
 Once this is done, use the "release" instruction:
 
