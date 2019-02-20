@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import codecs
 import os
 from setuptools import setup, find_packages
@@ -56,5 +56,19 @@ setup(name='ihatemoney',
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
-      install_requires=parse_requirements('requirements.txt'),
+      install_requires=[
+          "flask",
+          "flask-wtf",
+          "flask-sqlalchemy<3.0",
+          "flask-mail",
+          "Flask-Migrate",
+          "Flask-script",
+          "flask-babel",
+          "flask-restful",
+          "jinja2",
+          "blinker",
+          "flask-cors",
+          "six",
+          "itsdangerous",
+          "email_validator"],
       entry_points=ENTRY_POINTS)
