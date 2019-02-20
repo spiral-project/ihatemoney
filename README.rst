@@ -20,7 +20,7 @@ so.
 Requirements
 ============
 
-* **Python**: 2.7, 3.4, 3.5, 3.6.
+* **Python**: 2.7, 3.4, 3.5, 3.6, 3.7.
 * **Backends**: MySQL, PostgreSQL, SQLite, Memory.
 
 Contributing
