@@ -3,424 +3,453 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-30 18:48+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2019-04-01 11:04+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"i-hate-money/i-hate-money/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.6-dev\n"
 
+#, fuzzy
 msgid ""
 "Not a valid amount or expression.Only numbers and + - * / operatorsare "
 "accepted."
 msgstr ""
+"Ikke gyldig beløp eller uttrykk. Kun tall og + - * / operatorer tillates."
 
 msgid "Project name"
-msgstr ""
+msgstr "Prosjektnavn"
 
 msgid "Private code"
-msgstr ""
+msgstr "Privat kode"
 
 msgid "Email"
-msgstr ""
+msgstr "E-post"
 
 msgid "Project identifier"
-msgstr ""
+msgstr "Prosjektidentifikator"
 
 msgid "Create the project"
-msgstr ""
+msgstr "Opprett prosjektet"
 
+#, fuzzy
 msgid ""
 "The project identifier is used to log in and for the URL of the project. "
 "We tried to generate an identifier for you but a project with this "
 "identifier already exists. Please create a new identifier that you will "
 "be able to remember"
 msgstr ""
+"Prosjektidentifikatoren brukes til og logge inn og for prosjektets "
+"nettadresse. Vi prøvde å generere en identifikator for deg, men et prosjekt "
+"hadde den identifikatoren allerede. Opprett en ny identifikator du husker."
 
+#, fuzzy
 msgid "Get in"
-msgstr ""
+msgstr "Til prosjektet"
 
 msgid "Admin password"
-msgstr ""
+msgstr "Administratorpassord"
 
 msgid "Send me the code by email"
-msgstr ""
+msgstr "Send meg koden per e-post"
 
 msgid "This project does not exists"
-msgstr ""
+msgstr "Dette prosjektet finnes ikke"
 
 msgid "Password mismatch"
-msgstr ""
+msgstr "Passordet samsvarer ikke"
 
 msgid "Password"
-msgstr ""
+msgstr "Passord"
 
 msgid "Password confirmation"
-msgstr ""
+msgstr "Passordbekreftelse"
 
 msgid "Reset password"
-msgstr ""
+msgstr "Tilbakestill passord"
 
 msgid "Date"
-msgstr ""
+msgstr "Dato"
 
 msgid "What?"
-msgstr ""
+msgstr "Hva?"
 
 msgid "Payer"
-msgstr ""
+msgstr "Betaler"
 
 msgid "Amount paid"
-msgstr ""
+msgstr "Beløp betalt"
 
 msgid "For whom?"
-msgstr ""
+msgstr "For hvem?"
 
 msgid "Submit"
-msgstr ""
+msgstr "Send inn"
 
 msgid "Submit and add a new one"
-msgstr ""
+msgstr "Send inn og legg til ny"
 
 msgid "Bills can't be null"
-msgstr ""
+msgstr "Regninger kan ikke være null"
 
 msgid "Name"
-msgstr ""
+msgstr "Navn"
 
 msgid "Weight"
-msgstr ""
+msgstr "Vekt"
 
 msgid "Weights should be positive"
-msgstr ""
+msgstr "Vekter må være positive"
 
 msgid "Add"
-msgstr ""
+msgstr "Legg til"
 
+#, fuzzy
 msgid "User name incorrect"
-msgstr ""
+msgstr "Feil brukernavn"
 
 msgid "This project already have this member"
-msgstr ""
+msgstr "Allerede medlem av prosjektet"
 
 msgid "People to notify"
-msgstr ""
+msgstr "Folk å sende merknad til"
 
 msgid "Send invites"
-msgstr ""
+msgstr "Send invitasjoner"
 
-#, python-format
+#, fuzzy, python-format
 msgid "The email %(email)s is not valid"
-msgstr ""
+msgstr "E-posten \"%(email)s\" er ikke gyldig"
 
+#, fuzzy
 msgid "What do you want to download ?"
-msgstr ""
+msgstr "Hva ønsker du å laste ned?"
 
 msgid "bills"
-msgstr ""
+msgstr "regninger"
 
 msgid "transactions"
-msgstr ""
+msgstr "overøfringer"
 
 msgid "Export file format"
-msgstr ""
+msgstr "Eksport-filformat"
 
 msgid "Too many failed login attempts, please retry later."
-msgstr ""
+msgstr "For mange mislykkede innloggingsforsøk, prøv igjen senere."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
-msgstr ""
+msgstr "Dette administratorpassordet er ikke rett. Kun %(num)d forsøk igjen."
 
 msgid "You either provided a bad token or no project identifier."
 msgstr ""
+"Du har enten oppgitt et feilaktig symbol, eller utelot prosjektidentifikator."
 
 msgid "This private code is not the right one"
-msgstr ""
+msgstr "Denne private koden er ikke rett"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
+msgstr "Du har akkurat opprettet \"%(projects)s\" for å dele dine utgifter"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%(msg_compl)sThe project identifier is %(project)s"
-msgstr ""
+msgstr "%(msg_compl)sProsjektidentifikatoren er %(project)s"
 
+#, fuzzy
 msgid "A link to reset your password has been sent to your email."
 msgstr ""
+"En lenke for å tilbakestille passordet har blitt sent til deg per e-post."
 
 msgid "No token provided"
-msgstr ""
+msgstr "Inget symbol angitt"
 
 msgid "Invalid token"
-msgstr ""
+msgstr "Ugyldig symbol"
 
 msgid "Unknown project"
-msgstr ""
+msgstr "Ukjent prosjekt"
 
+#, fuzzy
 msgid "Password successfully reset."
-msgstr ""
+msgstr "Passord tilbakestilt."
 
+#, fuzzy
 msgid "Project successfully deleted"
-msgstr ""
+msgstr "Prosjekt slettet"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
 msgstr ""
+"Du har blitt invitert til å dele dine utgifter i forbindelse med %(project)s"
 
 msgid "Your invitations have been sent"
-msgstr ""
+msgstr "Invitasjonene dine har blitt sendt"
 
 #, python-format
 msgid "%(member)s had been added"
-msgstr ""
+msgstr "%(member)s lagt til"
 
 #, python-format
 msgid "%(name)s is part of this project again"
-msgstr ""
+msgstr "%(name)s er en del av dette prosjektet igjen"
 
 #, python-format
 msgid ""
 "User '%(name)s' has been deactivated. It will still appear in the users "
 "list until its balance becomes zero."
 msgstr ""
+"Brukeren \"%(name)s\" har blitt avskrudd. Vedkommende vil still fremtre i "
+"brukerlisten til dens konto går tom."
 
 #, python-format
 msgid "User '%(name)s' has been removed"
-msgstr ""
+msgstr "Brukeren \"%(name)s\" har blitt fjernet"
 
 #, python-format
 msgid "User '%(name)s' has been edited"
-msgstr ""
+msgstr "Brukeren \"%(name)s\" har blitt endret"
 
 msgid "The bill has been added"
-msgstr ""
+msgstr "Regningen har blitt lagt til"
 
 msgid "The bill has been deleted"
-msgstr ""
+msgstr "Regningen har blitt slettet"
 
 msgid "The bill has been modified"
-msgstr ""
+msgstr "Regningen har blitt endret"
 
 msgid "Sorry, we were unable to find the page you've asked for."
-msgstr ""
+msgstr "Fant ikke siden du forespurte."
 
 msgid "The best thing to do is probably to get back to the main page."
-msgstr ""
+msgstr "Det beste foretagende er antagelig å vise hovedsiden."
 
 msgid "Back to the list"
-msgstr ""
+msgstr "Tilbake til listen"
 
+#, fuzzy
 msgid "Administration tasks are currently disabled."
-msgstr ""
+msgstr "Administratoroppgaver er for tiden avskrudd."
 
 msgid "The project you are trying to access do not exist, do you want to"
-msgstr ""
+msgstr "Prosjektet du prøver å få tilgang til finnes ikke. Ønsker du å"
 
 msgid "create it"
-msgstr ""
+msgstr "opprette det"
 
+#, fuzzy
 msgid "?"
-msgstr ""
+msgstr "?"
 
 msgid "Create a new project"
-msgstr ""
+msgstr "Opprett et nytt prosjekt"
 
 msgid "Project"
-msgstr ""
+msgstr "Prosjekt"
 
 msgid "Number of members"
-msgstr ""
+msgstr "Antall medlemmer"
 
 msgid "Number of bills"
-msgstr ""
+msgstr "Antall regninger"
 
 msgid "Newest bill"
-msgstr ""
+msgstr "Nyeste regning"
 
 msgid "Oldest bill"
-msgstr ""
+msgstr "Eldste regning"
 
 msgid "Actions"
-msgstr ""
+msgstr "Handlinger"
 
 msgid "edit"
-msgstr ""
+msgstr "rediger"
 
 msgid "delete"
-msgstr ""
+msgstr "slett"
 
 msgid "The Dashboard is currently deactivated."
-msgstr ""
+msgstr "Oversikten er for tiden avskrudd."
 
 msgid "you sure?"
-msgstr ""
+msgstr "er du sikker?"
 
 msgid "Edit this project"
-msgstr ""
+msgstr "Rediger dette prosjektet"
 
 msgid "Download this project's data"
-msgstr ""
+msgstr "Last ned data for dette prosjektet"
 
 msgid "Can't remember the password?"
-msgstr ""
+msgstr "Husker du ikke passordet?"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 msgid "Edit the project"
-msgstr ""
+msgstr "Rediger prosjektet"
 
 msgid "Edit this bill"
-msgstr ""
+msgstr "Rediger denne regningen"
 
 msgid "Add a bill"
-msgstr ""
+msgstr "Legg til en regning"
 
 msgid "Select all"
-msgstr ""
+msgstr "Velg alt"
 
 msgid "Select none"
-msgstr ""
+msgstr "Fravelg alt"
 
+#, fuzzy
 msgid "Type user name here"
-msgstr ""
+msgstr "Skriv inn brukernavn her"
 
 msgid "Edit this member"
-msgstr ""
+msgstr "Rediger dette medlemmet"
 
 msgid "Send the invitations"
-msgstr ""
+msgstr "Send ut invitasjonene"
 
 msgid "No, thanks"
-msgstr ""
+msgstr "Nei takk"
 
 msgid "Download"
-msgstr ""
+msgstr "Last nd"
 
+#, fuzzy
 msgid "Manage your shared <br>expenses, easily"
-msgstr ""
+msgstr "Behandle dine delte <br>utgifter, enkelt"
 
 msgid "Try out the demo"
-msgstr ""
+msgstr "Prøv demonstrasjonen"
 
 msgid "You're sharing a house?"
-msgstr ""
+msgstr "Deler du et hus?"
 
 msgid "Going on holidays with friends?"
-msgstr ""
+msgstr "Skal du på ferie med venner?"
 
 msgid "Simply sharing money with others?"
-msgstr ""
+msgstr "Enkel deling av penger med andre?"
 
+#, fuzzy
 msgid "We can help!"
-msgstr ""
+msgstr "Vi kan hjelpe deg."
 
 msgid "Log to an existing project"
-msgstr ""
+msgstr "Logg inn i et eksisterende prosjekt"
 
 msgid "log in"
-msgstr ""
+msgstr "logg inn"
 
 msgid "can't remember your password?"
-msgstr ""
+msgstr "glemt passordet ditt?"
 
 msgid "or create a new one"
-msgstr ""
+msgstr "eller opprett et nytt"
 
+#, fuzzy
 msgid "let's get started"
-msgstr ""
+msgstr "la oss komme i gang"
 
+#, fuzzy
 msgid ""
 "This access code will be sent to your friends. It is stored as-is by the "
 "server, so don\\'t reuse a personal password!"
 msgstr ""
+"Denne tilgangskoden vil bli sendt til venne dine. Den lagres som den er på "
+"tjeneren, så ikke gjenbruk et personlig passord."
 
 msgid "Account manager"
-msgstr ""
+msgstr "Kontobehandler"
 
 msgid "Bills"
-msgstr ""
+msgstr "Regninger"
 
 msgid "Settle"
-msgstr ""
+msgstr "Gjør opp"
 
 msgid "Statistics"
-msgstr ""
+msgstr "Statistikk"
 
 msgid "options"
-msgstr ""
+msgstr "innstillinger"
 
 msgid "Project settings"
-msgstr ""
+msgstr "Prosjektinnstillinger"
 
 msgid "switch to"
-msgstr ""
+msgstr "bytt til"
 
 msgid "Start a new project"
-msgstr ""
+msgstr "Start et nytt prosjekt"
 
+#, fuzzy
 msgid "Logout"
-msgstr ""
+msgstr "Logg ut"
 
 msgid "Dashboard"
-msgstr ""
+msgstr "Oversikt"
 
 msgid "This is a free software"
-msgstr ""
+msgstr "Dette er fri programvare"
 
 msgid "you can contribute and improve it!"
-msgstr ""
+msgstr "du kan bidra og forbedre den."
 
 msgid "deactivate"
-msgstr ""
+msgstr "skru av"
 
 msgid "reactivate"
-msgstr ""
+msgstr "skru på igjen"
 
 msgid "Invite people to join this project!"
-msgstr ""
+msgstr "Inviter folk til dette prosjektet."
 
 msgid "Add a new bill"
-msgstr ""
+msgstr "Legg til en ny regning"
 
 msgid "Added on"
-msgstr ""
+msgstr "Lagt til"
 
 msgid "When?"
-msgstr ""
+msgstr "Når?"
 
 msgid "Who paid?"
-msgstr ""
+msgstr "Hvem betalte?"
 
 msgid "For what?"
-msgstr ""
+msgstr "For hva?"
 
 msgid "How much?"
-msgstr ""
+msgstr "Hvor meget?"
 
 msgid "each"
-msgstr ""
+msgstr "hver"
 
 msgid "Nothing to list yet. You probably want to"
-msgstr ""
+msgstr "ingenting å liste opp enda. Du ønsker antagelig å"
 
 msgid "add a bill"
-msgstr ""
+msgstr "legge til en regning"
 
 msgid "Password reminder"
-msgstr ""
+msgstr "Passordpåminner"
 
 msgid "Your projects"
-msgstr ""
+msgstr "Dine prosjekter"
 
 msgid "Reset your password"
-msgstr ""
+msgstr "Tilbakestill passordet ditt"
 
 msgid "Invite people to join this project"
-msgstr ""
+msgstr "Inviter folk til å ta del i dette prosjektet"
 
 msgid ""
 "Specify a (comma separated) list of email adresses you want to notify "
@@ -428,27 +457,33 @@ msgid ""
 "creation of this budget management project and we will send them an email"
 " for you."
 msgstr ""
+"Angi en (kommainndelt) liste over e-postadresser du ønsker å gi nyss om\n"
+"opprettelsen av dette budsjetthåndteringsprosjektet, og de vil motta en "
+"e-post."
 
 msgid ""
 "If you prefer, you can share the project identifier and the shared\n"
 "password by other communication means. Or even directly share the "
 "following link:"
 msgstr ""
+"Hvis du foretrekker det, kan du dele prosjektidentifikatoeren og det delte\n"
+"passordet på annet vis. Du kan også dele det følgende lenke direkte:"
 
 msgid "Who pays?"
-msgstr ""
+msgstr "Hvem betaler?"
 
 msgid "To whom?"
-msgstr ""
+msgstr "Til hvem?"
 
 msgid "Who?"
-msgstr ""
+msgstr "Hvem?"
 
 msgid "Paid"
-msgstr ""
+msgstr "Betalt"
 
 msgid "Spent"
-msgstr ""
+msgstr "Forbrukt"
 
+#, fuzzy
 msgid "Balance"
-msgstr ""
+msgstr "Kontobalanse"
