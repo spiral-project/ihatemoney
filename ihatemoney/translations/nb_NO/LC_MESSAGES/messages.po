@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-30 18:48+0200\n"
-"PO-Revision-Date: 2019-04-01 11:04+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2019-04-11 06:04+0000\n"
+"Last-Translator: Michal Čihař <michal@cihar.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "i-hate-money/i-hate-money/nb_NO/>\n"
 "Language: nb_NO\n"
@@ -154,7 +154,7 @@ msgstr "Denne private koden er ikke rett"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
-msgstr "Du har akkurat opprettet \"%(projects)s\" for å dele dine utgifter"
+msgstr "Du har akkurat opprettet \"%(project)s\" for å dele dine utgifter"
 
 #, fuzzy, python-format
 msgid "%(msg_compl)sThe project identifier is %(project)s"
