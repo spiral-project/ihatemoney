@@ -50,6 +50,10 @@ Activate the virtualenv::
 Install
 =======
 
+Install Gunicorn dependency::
+
+  pip install gunicorn
+
 Install the latest release with pip::
 
   pip install ihatemoney
