@@ -130,7 +130,7 @@ With Apache and mod_wsgi
 3. Create an Apache virtual host, the command ``ihatemoney generate-config apache-vhost.conf`` will output a good starting point (read and adapt it)
 4. Activate the virtual host if needed and restart Apache
 
-With Nginx, Gunicorn and Supervisord
+With Nginx, Gunicorn and Supervisord/systemd
 ------------------------------------
 
 1. Create a dedicated unix user (here called `ihatemoney`), required dirs, and fix permissions::
@@ -143,15 +143,21 @@ With Nginx, Gunicorn and Supervisord
 
      ihatemoney generate-config gunicorn.conf.py > /etc/ihatemoney/gunicorn.conf.py
 
-3. Create supervisor config file ::
+3a. Create supervisor config file ::
 
      ihatemoney generate-config supervisord.conf > /etc/supervisor/conf.d/ihatemoney.conf
+
+3b. To use systemd services, symlink ``ihatemoney.service`` to [#systemd-services]_::
+
+     ln -s /var/lib/ihatemoney/conf/ihatemoney.service /lib/systemd/system/ihatemoney.service
 
 4. Copy (and adapt) output of ``ihatemoney generate-config nginx.conf`` with your nginx vhosts [#nginx-vhosts]_
 5. Reload both nginx and supervisord. It should be working ;)
 
 .. [#nginx-vhosts] typically, */etc/nginx/conf.d/* or
    */etc/nginx/sites-available*, depending on your distribution.
+
+.. [#systemd-services] ``/lib/systemd/system/ihatemoney.service`` path may change depending on your distribution.
 
 With Docker
 -----------
