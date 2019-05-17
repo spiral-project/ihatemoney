@@ -50,10 +50,6 @@ Activate the virtualenv::
 Install
 =======
 
-Install Gunicorn dependency::
-
-  pip install gunicorn
-
 Install the latest release with pip::
 
   pip install ihatemoney
@@ -135,7 +131,11 @@ With Apache and mod_wsgi
 4. Activate the virtual host if needed and restart Apache
 
 With Nginx, Gunicorn and Supervisord/systemd
-------------------------------------
+--------------------------------------------
+
+Install Gunicorn::
+
+  pip install gunicorn
 
 1. Create a dedicated unix user (here called `ihatemoney`), required dirs, and fix permissions::
 
@@ -145,23 +145,48 @@ With Nginx, Gunicorn and Supervisord/systemd
 
 2. Create gunicorn config file ::
 
-     ihatemoney generate-config gunicorn.conf.py > /etc/ihatemoney/gunicorn.conf.py
+    ihatemoney generate-config gunicorn.conf.py > /etc/ihatemoney/gunicorn.conf.py
 
-3a. Create supervisor config file ::
+3. Setup Supervisord or systemd
 
-     ihatemoney generate-config supervisord.conf > /etc/supervisor/conf.d/ihatemoney.conf
+   - To use Supervisord, create supervisor config file ::
 
-3b. To use systemd services, symlink ``ihatemoney.service`` to [#systemd-services]_::
+      ihatemoney generate-config supervisord.conf > /etc/supervisor/conf.d/ihatemoney.conf
 
-     ln -s /var/lib/ihatemoney/conf/ihatemoney.service /lib/systemd/system/ihatemoney.service
+   - To use systemd services, create ``ihatemoney.service`` in [#systemd-services]_::
+
+      [Unit]
+      Description=I hate money
+      Requires=network.target postgresql.service
+      After=network.target postgresql.service
+
+      [Service]
+      Type=simple
+      User=ihatemoney
+      ExecStart=/home/john/ihatemoney/bin/gunicorn -c /etc/ihatemoney/gunicorn.conf.py ihatemoney.wsgi:application
+      SyslogIdentifier=ihatemoney
+
+      [Install]
+      WantedBy=multi-user.target
+
+     Obviously, adapt the ``ExecStart`` path for your installation folder.
+
+     If you use SQLite as database: remove mentions of ``postgresql.service`` in ``ihatemoney.service``.
+     If you use MySQL or MariaDB as database: replace mentions of ``postgresql.service`` by ``mysql.service`` or ``mariadb.service`` in ``ihatemoney.service``.
+
+     Then reload systemd, enable and start ``ihatemoney``::
+
+       systemctl daemon-reload
+       systemctl enable ihatemoney.service
+       systemctl start ihatemoney.service
 
 4. Copy (and adapt) output of ``ihatemoney generate-config nginx.conf`` with your nginx vhosts [#nginx-vhosts]_
-5. Reload both nginx and supervisord. It should be working ;)
+5. Reload nginx (and supervisord if you use it). It should be working ;)
 
 .. [#nginx-vhosts] typically, */etc/nginx/conf.d/* or
    */etc/nginx/sites-available*, depending on your distribution.
 
-.. [#systemd-services] ``/lib/systemd/system/ihatemoney.service`` path may change depending on your distribution.
+.. [#systemd-services] ``/etc/systemd/system/ihatemoney.service`` path may change depending on your distribution.
 
 With Docker
 -----------
