@@ -18,7 +18,7 @@ class Project(db.Model):
     name = db.Column(db.UnicodeText)
     password = db.Column(db.String(128))
     contact_email = db.Column(db.String(128))
-    members = db.relationship("Person", backref="project")
+    members = db.relationship("Person", backref=orm.backref("project", order_by=name))
 
     @property
     def _to_serialize(self):
