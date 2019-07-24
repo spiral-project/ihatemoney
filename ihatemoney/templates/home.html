@@ -22,8 +22,8 @@
                     {{ forms.authenticate(auth_form, home=True) }}
                 </fieldset>
                 <div class="controls">
-                    <button class="btn" type="submit">{{ _("log in") }}</button>
-                    <a class="password-reminder" href="{{ url_for(".remind_password") }}">{{ _("can't remember your password?") }}</a>
+                    <button class="btn btn-primary" type="submit">{{ _("log in") }}</button>
+                    <a class="password-reminder btn btn-link" href="{{ url_for(".remind_password") }}">{{ _("can't remember your password?") }}</a>
                 </div>
             </form>
         </div>
