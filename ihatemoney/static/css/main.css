@@ -20,7 +20,9 @@ body {
 .navbar .secondary-nav {
     text-align: right;
     flex-direction: row-reverse;
-
+}
+.secondary-nav .nav-link {
+    padding: .5rem 1rem;
 }
 .navbar-brand{ font-family: 'Lobster', arial, serif; }
 
@@ -116,7 +118,7 @@ footer{
     margin-top: 30px;
     position: fixed;
     bottom: 0px;
-    height: 20px;
+    height: 2em;
     width: 100%;
     text-align: center;
     background-color: #fff;
@@ -254,12 +256,12 @@ tr.payer_line .balance-name {
 
 .balance.table .action,
 .extra-info {
-    display: none;
+    visibility: hidden;
 }
 
 .balance.table tr:hover .action,
 tr:hover .extra-info {
-    display: initial;
+    visibility: visible;
 }
 
 /* Fluid Offsets for Boostrap */
