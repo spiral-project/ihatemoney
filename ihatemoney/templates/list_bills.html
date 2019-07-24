@@ -79,7 +79,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="identifier"><a href="{{ url_for(".invite") }}">{{ _("Invite people to join this project!") }}</a></div>
+<div class="identifier"><a class="btn btn-link" href="{{ url_for(".invite") }}">{{ _("Invite people to join this project!") }}</a></div>
 <a id="new-bill" href="{{ url_for(".add_bill") }}" class="btn btn-primary" data-toggle="modal" data-target="#bill-form">{{ _("Add a new bill") }}</a>
 
     <div id="bill-form" class="modal fade show" role="dialog">
@@ -97,7 +97,7 @@
     </div>
 
     {% if bills.count() > 0 %}
-    <table id="bill_table" class="col table table-striped table-hover">
+    <table id="bill_table" class="col table table-striped table-hover table-responsive-sm">
         <thead><tr><th>{{ _("Added on") }}</th><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</th><th>{{ _("For what?") }}</th><th>{{ _("For whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Actions") }}</th></tr></thead>
     <tbody>
     {% for bill in bills %}

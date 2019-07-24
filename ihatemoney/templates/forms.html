@@ -24,10 +24,10 @@
     <div class="actions">
         <button type="submit" class="btn btn-primary">{{ field.name }}</button>
         {% if home %}
-        <a href="{{ url_for(".remind_password") }}">{{ _("Can't remember the password?") }}</a>
+        <a href="{{ url_for(".remind_password") }}" class="btn btn-link">{{ _("Can't remember the password?") }}</a>
         {% endif %}
         {% if cancel %}
-        <button type="reset" class="btn">{{ _("Cancel") }}</button>
+        <button type="reset" class="btn btn-light">{{ _("Cancel") }}</button>
         {% endif %}
       </div>
 {% endmacro %}
@@ -110,7 +110,7 @@
     </fieldset>
     <div class="actions">
         {{ form.submit(class="btn btn-primary") }}
-        {% if not edit %} {{ form.submit2(class="btn") }}{% endif %}
+        {% if not edit %} {{ form.submit2(class="btn btn-light") }}{% endif %}
     </div>
 
 {% endmacro %}
@@ -121,7 +121,9 @@
     <div class="input-group">
         <label class="sr-only" for="name">_("Type user name here")</label>
         {{ form.name(placeholder=_("Type user name here"), class="form-control") }}
-        <button class=" input-group-addon btn">{{ _("Add") }}</button>
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary input-group-addon" type="submit">{{ _("Add") }}</button>
+        </div>
     </div>
 {% endmacro %}
 
