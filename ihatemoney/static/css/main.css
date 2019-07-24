@@ -17,7 +17,6 @@ body {
     margin: 0;
     padding: 0;
 }
-.navbar .primary-nav { padding-left: 75px; }
 .navbar .secondary-nav {
     text-align: right;
     flex-direction: row-reverse;
@@ -138,12 +137,6 @@ footer{
     color: #fff;
 }
 
-.password-reminder{
-    float: right;
-    margin-right: 20px;
-    margin-top: 5px;
-}
-
 .confirm, .confirm:hover {
     color: red;
 }
@@ -169,11 +162,6 @@ footer{
 
 .bill-actions > .edit{
     background: url('../images/edit.png') no-repeat right;
-}
-
-project-actions {
-    padding-top: 10px;
-    text-align: center;
 }
 
 .project-actions > .delete, .project-actions > .edit {
@@ -207,7 +195,7 @@ tr.ower_line {
     background-color: #CBEF68;
 }
 
-tr.payer_line .balance-name{
+tr.payer_line .balance-name {
     color:green;
     text-indent:5px;
 }
