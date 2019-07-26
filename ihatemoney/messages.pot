@@ -1,5 +1,5 @@
 msgid ""
-"Not a valid amount or expression.Only numbers and + - * / operatorsare "
+"Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
 
@@ -18,11 +18,10 @@ msgstr ""
 msgid "Create the project"
 msgstr ""
 
+#, python-format
 msgid ""
-"The project identifier is used to log in and for the URL of the project. "
-"We tried to generate an identifier for you but a project with this "
-"identifier already exists. Please create a new identifier that you will "
-"be able to remember"
+"A project with this identifier (\"%(project)s\") already exists. Please "
+"choose a new identifier"
 msgstr ""
 
 msgid "Get in"
@@ -76,10 +75,10 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-msgid "Weight"
+msgid "Weights should be positive"
 msgstr ""
 
-msgid "Weights should be positive"
+msgid "Weight"
 msgstr ""
 
 msgid "Add"
@@ -348,10 +347,10 @@ msgstr ""
 msgid "Start a new project"
 msgstr ""
 
-msgid "Logout"
+msgid "Dashboard"
 msgstr ""
 
-msgid "Dashboard"
+msgid "Logout"
 msgstr ""
 
 msgid "This is a free software"

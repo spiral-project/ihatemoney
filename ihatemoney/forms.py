@@ -54,8 +54,8 @@ class CalculatorStringField(StringField):
     def process_formdata(self, valuelist):
         if valuelist:
             message = _(
-                "Not a valid amount or expression."
-                "Only numbers and + - * / operators"
+                "Not a valid amount or expression. "
+                "Only numbers and + - * / operators "
                 "are accepted."
             )
             value = str(valuelist[0]).replace(",", ".")
@@ -101,12 +101,8 @@ class ProjectForm(EditProjectForm):
     def validate_id(form, field):
         form.id.data = slugify(field.data)
         if (form.id.data == "dashboard") or Project.query.get(form.id.data):
-            message = _("The project identifier is used to log in and for the "
-                        "URL of the project. "
-                        "We tried to generate an identifier for you but a "
-                        "project with this identifier already exists. "
-                        "Please create a new identifier that you will be able "
-                        "to remember")
+            message = _("A project with this identifier (\"%(project)s\") already exists. "
+                        "Please choose a new identifier", project=form.id.data)
             raise ValidationError(Markup(message))
 
 
