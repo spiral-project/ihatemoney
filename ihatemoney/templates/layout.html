@@ -9,6 +9,7 @@
     <script src="{{ url_for("static", filename="js/jquery-3.1.1.min.js") }}"></script>
     <script src="{{ url_for("static", filename="js/ihatemoney.js") }}"></script>
     <script src="{{ url_for("static", filename="js/tether.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/popper.min.js") }}"></script>
     <script src="{{ url_for("static", filename="js/bootstrap.min.js") }}"></script>
     {% block head %}{% endblock %}
     <script type="text/javascript" charset="utf-8">
@@ -20,7 +21,7 @@
             }, 4000);
 
             $('.dropdown-toggle').dropdown();
-
+            $('[data-toggle="tooltip"]').tooltip();
             {% block js %}{% endblock %}
         });
     </script>

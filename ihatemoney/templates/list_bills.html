@@ -98,12 +98,16 @@
 
     {% if bills.count() > 0 %}
     <table id="bill_table" class="col table table-striped table-hover table-responsive-sm">
-        <thead><tr><th>{{ _("Added on") }}</th><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</th><th>{{ _("For what?") }}</th><th>{{ _("For whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Actions") }}</th></tr></thead>
+        <thead><tr><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</<th><th>{{ _("For what?") }}</th><th>{{ _("For whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Actions") }}</th></tr></thead>
     <tbody>
     {% for bill in bills %}
     <tr owers="{{bill.owers|join(',','id')}}" payer="{{bill.payer.id}}">
-            <td>{{ bill.creation_date if bill.creation_date else bill.date }}</td>
-            <td>{{ bill.date }}</td>
+            <td>
+                <span data-toggle="tooltip" data-placement="top"
+                    title="{{ _('Added on %(date)s', date=bill.creation_date if bill.creation_date else bill.date) }}">
+                    {{ bill.date }}
+                </span>
+            </td>
             <td>{{ bill.payer }}</td>
             <td>{{ bill.what }}</td>
             <td>{{ bill.owers|join(', ', 'name') }} </td>

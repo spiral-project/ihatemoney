@@ -175,8 +175,8 @@ class Project(db.Model):
             .filter(Bill.payer_id == Person.id)\
             .filter(Person.project_id == Project.id)\
             .filter(Project.id == self.id)\
-            .order_by(Bill.creation_date.desc())\
             .order_by(Bill.date.desc())\
+            .order_by(Bill.creation_date.desc())\
             .order_by(Bill.id.desc())
 
     def get_member_bills(self, member_id):
