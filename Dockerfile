@@ -1,18 +1,7 @@
-FROM python:3.6-alpine
+FROM python:3.7-alpine
 
-RUN apk update && apk add gcc libc-dev libffi-dev openssl-dev &&\
-    mkdir /ihatemoney &&\
-    mkdir -p /etc/ihatemoney &&\
-    pip install --no-cache-dir gunicorn pymysql
-
-COPY . /ihatemoney
-ARG INSTALL_FROM_PYPI="False"
-RUN if [ "$INSTALL_FROM_PYPI" = True ]; then\
-    pip install --no-cache-dir ihatemoney ; else\
-    pip install --no-cache-dir -e /ihatemoney ; \
-    fi
-
-ENV DEBUG="False" \
+ENV NIGHTLY="" \
+    DEBUG="False" \
     SQLALCHEMY_DATABASE_URI="sqlite:////database/ihatemoney.db" \
     SQLALCHEMY_TRACK_MODIFICATIONS="False" \
     SECRET_KEY="tralala" \
@@ -21,13 +10,19 @@ ENV DEBUG="False" \
     MAIL_PORT=25 \
     MAIL_USE_TLS=False \
     MAIL_USE_SSL=False \
-    MAIL_USERNAME=None \
-    MAIL_PASSWORD=None \
+    MAIL_USERNAME= \
+    MAIL_PASSWORD= \
     ACTIVATE_DEMO_PROJECT="True" \
     ADMIN_PASSWORD="" \
     ALLOW_PUBLIC_PROJECT_CREATION="True" \
     ACTIVATE_ADMIN_DASHBOARD="False"
 
+RUN apk update && apk add git gcc libc-dev libffi-dev openssl-dev wget &&\
+    mkdir -p /etc/ihatemoney &&\
+    pip install --no-cache-dir gunicorn pymysql;
+
+COPY ./conf/entrypoint.sh /entrypoint.sh
+
 VOLUME /database
 EXPOSE 8000
-ENTRYPOINT ["/ihatemoney/conf/confandrun.sh"]
+ENTRYPOINT ["/entrypoint.sh"]

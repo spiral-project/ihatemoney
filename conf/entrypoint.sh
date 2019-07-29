@@ -1,4 +1,8 @@
 #!/bin/sh
+
+# Fail the whole script on the first failure.
+set -e
+
 cat <<EOF > /etc/ihatemoney/ihatemoney.cfg
 DEBUG = $DEBUG
 SQLALCHEMY_DATABASE_URI = "$SQLALCHEMY_DATABASE_URI"
@@ -17,6 +21,25 @@ ADMIN_PASSWORD = '$ADMIN_PASSWORD'
 ALLOW_PUBLIC_PROJECT_CREATION = $ALLOW_PUBLIC_PROJECT_CREATION
 ACTIVATE_ADMIN_DASHBOARD = $ACTIVATE_ADMIN_DASHBOARD
 EOF
+
+if [ ! -z "$NIGHTLY" ]; then
+    # Clone or update repository into /ihatemoney.
+    if [ ! -d /ihatemoney/.git ]; then
+        echo "Cloning..."
+        git clone --depth 1 https://github.com/spiral-project/ihatemoney /ihatemoney
+        echo "Done cloning."
+    else
+        cd /ihatemoney
+        echo "Updating..."
+        git pull || echo "Couldn't update; maybe Github is unreachable?"
+        echo "Done updating."
+    fi
+    pip install --no-cache-dir -e /ihatemoney
+else
+    # Get the latest release from PyPy.
+    pip install --no-cache-dir --upgrade ihatemoney
+fi
+
 # Start gunicorn without forking
 exec gunicorn ihatemoney.wsgi:application \
      -b 0.0.0.0:8000 \
