@@ -1,13 +1,15 @@
 from __future__ import division
 import base64
 import re
+import os
 import ast
 import operator
 
 from io import BytesIO, StringIO
 import jinja2
 from json import dumps, JSONEncoder
-from flask import redirect
+from flask import redirect, current_app
+from babel import Locale
 from werkzeug.routing import HTTPException, RoutingException
 import six
 from datetime import datetime, timedelta
@@ -91,6 +93,16 @@ def minimal_round(*args, **kw):
     # return depending on it
     ires = int(res)
     return (res if res != ires else ires)
+
+
+def static_include(filename):
+    fullpath = os.path.join(current_app.static_folder, filename)
+    with open(fullpath, 'r') as f:
+        return f.read()
+
+
+def locale_from_iso(iso_code):
+    return Locale(iso_code)
 
 
 def list_of_dicts2json(dict_to_convert):

@@ -328,3 +328,16 @@ tr:hover .extra-info {
 .row-fluid > .offset1 {
   margin-left: 8.5%;
 }
+
+.globe-europe svg {
+  display: inline-block;
+  border-bottom: 0.2em solid transparent;
+  height: 1.2em;
+  fill: rgba(255,255,255,.5)
+}
+.navbar-nav .dropdown-toggle:hover .globe-europe svg {
+  fill: rgba(255,255,255,.75);
+}
+.navbar-dark .navbar-nav .show > .nav-link svg {
+  fill: white;
+}
