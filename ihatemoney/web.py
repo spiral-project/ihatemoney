@@ -343,7 +343,12 @@ def edit_project():
         edit_form.name.data = g.project.name
         edit_form.contact_email.data = g.project.contact_email
 
-    return render_template("edit_project.html", edit_form=edit_form, export_form=export_form)
+    return render_template(
+        "edit_project.html",
+        edit_form=edit_form,
+        export_form=export_form,
+        current_view="edit_project"
+    )
 
 
 @main.route("/<project_id>/delete")

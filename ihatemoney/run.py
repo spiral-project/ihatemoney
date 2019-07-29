@@ -10,7 +10,8 @@ from werkzeug.contrib.fixers import ProxyFix
 
 from ihatemoney.api import api
 from ihatemoney.models import db
-from ihatemoney.utils import PrefixedWSGI, minimal_round, IhmJSONEncoder
+from ihatemoney.utils import (IhmJSONEncoder, PrefixedWSGI, locale_from_iso,
+                              minimal_round, static_include)
 from ihatemoney.web import main as web_interface
 
 from ihatemoney import default_settings
@@ -135,6 +136,8 @@ def create_app(configuration=None, instance_path='/etc/ihatemoney',
     app.mail = mail
 
     # Jinja filters
+    app.jinja_env.globals['static_include'] = static_include
+    app.jinja_env.globals['locale_from_iso'] = locale_from_iso
     app.jinja_env.filters['minimal_round'] = minimal_round
 
     # Translations
@@ -144,7 +147,10 @@ def create_app(configuration=None, instance_path='/etc/ihatemoney',
     def get_locale():
         # get the lang from the session if defined, fallback on the browser "accept
         # languages" header.
-        lang = session.get('lang', request.accept_languages.best_match(['fr', 'en']))
+        lang = session.get(
+            'lang',
+            request.accept_languages.best_match(app.config['SUPPORTED_LANGUAGES'])
+        )
         setattr(g, 'lang', lang)
         return lang
 

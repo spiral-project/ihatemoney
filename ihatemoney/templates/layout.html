@@ -28,55 +28,71 @@
 </head>
 <body>
   <div class="container">
-    <nav class="navbar navbar-expand-sm fixed-top navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <h1><a class="navbar-brand" href="{{ url_for("main.home") }}">#! money?</a></h1>
-      {% if g.project %}<strong class="d-block d-sm-none text-white">{{ g.project.name }}</strong>{% endif %}
+      {% if g.project %}
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" id="navbarProjectsLinks" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <strong class="text-white">{{ g.project.name }}</strong>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarProjectsLinks">
+            <li><a class="dropdown-item" href="{{ url_for("main.create_project") }}">{{ _("Start a new project") }}</a></li>
 
-      <div class="collapse navbar-collapse" id="navbarToggler">
-        <ul class="navbar-nav ml-auto mr-auto">
-          {% if g.project %}
-          <li class="nav-item">
-          </li>
-
-          {% block navbar %}
-          <li class="nav-item{% if current_view == 'list_bills' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.list_bills") }}">{{ _("Bills") }}</a></li>
-          <li class="nav-item{% if current_view == 'settle_bill' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.settle_bill") }}">{{ _("Settle") }}</a></li>
-          <li class="nav-item{% if current_view == 'statistics' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.statistics") }}">{{ _("Statistics") }}</a></li>
-          {% endblock %}
-          {% endif %}
-          {% if g.project %}
-          <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <strong class="d-none d-sm-inline">{{ g.project.name }}</strong> {{ _("options") }}
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="{{ url_for("main.edit_project") }}">{{ _("Project settings") }}</a></li>
-              <li class="dropdown-divider"></li>
+            {% if (session['projects'] | length) > 1 %}
+            <li class="dropdown-divider"></li>
+            <li class="dropdown-header">{{ _('Other projects :') }}</li>
               {% for id, name in session['projects'] %}
                 {% if id != g.project.id %}
                 <li><a class="dropdown-item" href="{{ url_for("main.list_bills", project_id=id) }}">{{ _("switch to") }} {{ name }}</a></li>
                 {% endif %}
               {% endfor %}
-              <li><a class="dropdown-item" href="{{ url_for("main.create_project") }}">{{ _("Start a new project") }}</a></li>
-              {% if g.show_admin_dashboard_link %}
-              <li class="dropdown-divider"></li>
-              <li class="nav-item{% if request.url_rule.endpoint == "main.dashboard" %} active{% endif %}">
-                <a class="dropdown-item" href="{{ url_for("main.dashboard") }}">{{ _("Dashboard") }}</a>
-              </li>
-              {% endif %}
-              <li class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="{{ url_for("main.exit") }}">{{ _("Logout") }}</a></li>
-            </ul>
-          </li>
+            {% endif %}
+          </ul>
+        </li>
+      </ul>
+      {% endif %}
+
+      <div class="collapse navbar-collapse" id="navbarToggler">
+        <ul class="navbar-nav ml-auto mr-auto">
+          {% if g.project %}
+            {% block navbar %}
+            <li class="nav-item{% if current_view == 'list_bills' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.list_bills") }}">{{ _("Bills") }}</a></li>
+            <li class="nav-item{% if current_view == 'settle_bill' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.settle_bill") }}">{{ _("Settle") }}</a></li>
+            <li class="nav-item{% if current_view == 'statistics' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.statistics") }}">{{ _("Statistics") }}</a></li>
+            <li class="nav-item{% if current_view == 'edit_project' %} active{% endif %}""><a class="nav-link" href="{{ url_for("main.edit_project") }}">{{ _("Settings") }}</a></li>
+            {% endblock %}
           {% endif %}
         </ul>
-        <ul class="navbar-nav secondary-nav">
-          <li class="nav-item{% if g.lang == "fr" %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.change_lang", lang="fr") }}">fr</a></li>
-          <li class="nav-item{% if g.lang == "en" %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.change_lang", lang="en") }}">en</a></li>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="langMenuButton">
+              <i class="globe-europe">{{ static_include("images/globe.svg") | safe }}</i>
+              {% if g.lang %}
+                {{ locale_from_iso(g.lang).display_name | capitalize }}
+              {% else %}
+                {{ _('Languages') }}
+              {% endif %}
+              <b class="caret"></b>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="langMenuButton">
+                <h6 class="dropdown-header">{{ _('Languages') }}</h6>
+                {% for lang in config['SUPPORTED_LANGUAGES'] %}
+                  {% if g.lang != lang %}
+                    <a class="dropdown-item" href="{{ url_for("main.change_lang", lang=lang)}}">{{ locale_from_iso(lang).display_name | capitalize }}</a>
+                  {% endif %}
+                {% endfor %}
+            </div>
+          </li>
+          {% if (session['projects'] | length) > 0 or session['is_admin'] %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for("main.exit") }}">{{ _("Logout") }}</a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </nav>
