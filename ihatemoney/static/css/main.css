@@ -7,7 +7,6 @@
 body {
   /* For fixed navbar */
   padding-top: 3.5rem;
-  padding-bottom: 2rem;
 }
 
 /* Navbar */
@@ -130,16 +129,91 @@ body {
 }
 
 footer {
-  margin-left: -15px;
-  margin-right: -15px;
-  margin-top: 30px;
-  position: fixed;
-  bottom: 0px;
-  height: 2em;
   width: 100%;
+  font: normal 16px sans-serif;
+  padding: 45px 50px;
+}
+
+@media (min-width: 768px) {
+  footer {
+    padding-left: calc(25% + 50px);
+  }
+}
+
+footer .footer-limiter {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+footer .footer-left p {
+  color: #8f9296;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Footer links */
+footer p.footer-links {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+footer p.footer-links a {
+  display: inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color: inherit;
+}
+
+footer .footer-right {
+  float: right;
+  margin-top: 6px;
+  max-width: 180px;
+}
+
+footer .footer-right a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-color: #33383b;
+  border-radius: 2px;
+
+  font-size: 20px;
+  color: #ffffff;
   text-align: center;
-  background-color: #fff;
-  opacity: 0.8;
+  line-height: 35px;
+
+  margin-left: 3px;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+footer .footer-right a:hover {
+  opacity: 1;
+}
+
+footer .footer-left {
+  padding-top: 6px;
+  line-height: 35px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 600px) {
+  footer .footer-left,
+  footer .footer-right {
+    text-align: center;
+  }
+
+  footer .footer-right {
+    float: none;
+    margin: 0 auto 20px;
+  }
+
+  footer .footer-left p.footer-links {
+    line-height: 1.8;
+  }
 }
 
 .identifier {
@@ -330,14 +404,22 @@ tr:hover .extra-info {
 }
 
 .globe-europe svg {
+  fill: rgba(255, 255, 255, 0.5);
+}
+.navbar-nav .dropdown-toggle:hover .globe-europe svg {
+  fill: rgba(255, 255, 255, 0.75);
+}
+.navbar-dark .navbar-nav .show > .nav-link svg {
+  fill: white;
+}
+.icon svg {
   display: inline-block;
   border-bottom: 0.2em solid transparent;
   height: 1.2em;
-  fill: rgba(255,255,255,.5)
 }
-.navbar-nav .dropdown-toggle:hover .globe-europe svg {
-  fill: rgba(255,255,255,.75);
+.icon.plus svg {
+  margin-right: 3px;
 }
-.navbar-dark .navbar-nav .show > .nav-link svg {
+footer .icon svg {
   fill: white;
 }
