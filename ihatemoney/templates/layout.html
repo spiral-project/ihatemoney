@@ -1,6 +1,6 @@
 {% import "forms.html" as forms %}
 <!DOCTYPE html>
-<html>
+<html class="h-100">
 <head>
     <title>{{ _("Account manager") }}{% block title %}{% endblock %}</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -26,100 +26,125 @@
         });
     </script>
 </head>
-<body>
-  <div class="container">
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <h1><a class="navbar-brand" href="{{ url_for("main.home") }}">#! money?</a></h1>
-      {% if g.project %}
-      <ul class="navbar-nav mr-auto">
+<body class="d-flex flex-column h-100">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <h1><a class="navbar-brand" href="{{ url_for("main.home") }}">#! money?</a></h1>
+    {% if g.project %}
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" id="navbarProjectsLinks" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <strong class="text-white">{{ g.project.name }}</strong>
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarProjectsLinks">
+          <li>
+            <a class="dropdown-item" href="{{ url_for("main.create_project") }}">
+              <i class="icon plus">{{ static_include("images/plus.svg") | safe }}</i>
+              {{ _("Start a new project") }}
+            </a>
+          </li>
+
+          {% if (session['projects'] | length) > 1 %}
+          <li class="dropdown-divider"></li>
+          <li class="dropdown-header">{{ _('Other projects :') }}</li>
+            {% for id, name in session['projects'] %}
+              {% if id != g.project.id %}
+              <li><a class="dropdown-item" href="{{ url_for("main.list_bills", project_id=id) }}">{{ _("switch to") }} {{ name }}</a></li>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        </ul>
+      </li>
+    </ul>
+    {% endif %}
+
+    <div class="collapse navbar-collapse" id="navbarToggler">
+      <ul class="navbar-nav ml-auto mr-auto">
+        {% if g.project %}
+          {% block navbar %}
+          <li class="nav-item{% if current_view == 'list_bills' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.list_bills") }}">{{ _("Bills") }}</a></li>
+          <li class="nav-item{% if current_view == 'settle_bill' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.settle_bill") }}">{{ _("Settle") }}</a></li>
+          <li class="nav-item{% if current_view == 'statistics' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.statistics") }}">{{ _("Statistics") }}</a></li>
+          <li class="nav-item{% if current_view == 'edit_project' %} active{% endif %}""><a class="nav-link" href="{{ url_for("main.edit_project") }}">{{ _("Settings") }}</a></li>
+          {% endblock %}
+        {% endif %}
+      </ul>
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" id="navbarProjectsLinks" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <strong class="text-white">{{ g.project.name }}</strong>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="langMenuButton">
+            <i class="icon globe-europe">{{ static_include("images/globe.svg") | safe }}</i>
+            {% if g.lang %}
+              {{ locale_from_iso(g.lang).display_name | capitalize }}
+            {% else %}
+              {{ _('Languages') }}
+            {% endif %}
             <b class="caret"></b>
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarProjectsLinks">
-            <li><a class="dropdown-item" href="{{ url_for("main.create_project") }}">{{ _("Start a new project") }}</a></li>
-
-            {% if (session['projects'] | length) > 1 %}
-            <li class="dropdown-divider"></li>
-            <li class="dropdown-header">{{ _('Other projects :') }}</li>
-              {% for id, name in session['projects'] %}
-                {% if id != g.project.id %}
-                <li><a class="dropdown-item" href="{{ url_for("main.list_bills", project_id=id) }}">{{ _("switch to") }} {{ name }}</a></li>
+          <div class="dropdown-menu" aria-labelledby="langMenuButton">
+              <h6 class="dropdown-header">{{ _('Languages') }}</h6>
+              {% for lang in config['SUPPORTED_LANGUAGES'] %}
+                {% if g.lang != lang %}
+                  <a class="dropdown-item" href="{{ url_for("main.change_lang", lang=lang)}}">{{ locale_from_iso(lang).display_name | capitalize }}</a>
                 {% endif %}
               {% endfor %}
-            {% endif %}
-          </ul>
+          </div>
         </li>
+        {% if (session['projects'] | length) > 0 or session['is_admin'] %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for("main.exit") }}">{{ _("Logout") }}</a>
+        </li>
+        {% endif %}
       </ul>
-      {% endif %}
+    </div>
+  </nav>
 
-      <div class="collapse navbar-collapse" id="navbarToggler">
-        <ul class="navbar-nav ml-auto mr-auto">
-          {% if g.project %}
-            {% block navbar %}
-            <li class="nav-item{% if current_view == 'list_bills' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.list_bills") }}">{{ _("Bills") }}</a></li>
-            <li class="nav-item{% if current_view == 'settle_bill' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.settle_bill") }}">{{ _("Settle") }}</a></li>
-            <li class="nav-item{% if current_view == 'statistics' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.statistics") }}">{{ _("Statistics") }}</a></li>
-            <li class="nav-item{% if current_view == 'edit_project' %} active{% endif %}""><a class="nav-link" href="{{ url_for("main.edit_project") }}">{{ _("Settings") }}</a></li>
-            {% endblock %}
-          {% endif %}
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="langMenuButton">
-              <i class="globe-europe">{{ static_include("images/globe.svg") | safe }}</i>
-              {% if g.lang %}
-                {{ locale_from_iso(g.lang).display_name | capitalize }}
-              {% else %}
-                {{ _('Languages') }}
-              {% endif %}
-              <b class="caret"></b>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="langMenuButton">
-                <h6 class="dropdown-header">{{ _('Languages') }}</h6>
-                {% for lang in config['SUPPORTED_LANGUAGES'] %}
-                  {% if g.lang != lang %}
-                    <a class="dropdown-item" href="{{ url_for("main.change_lang", lang=lang)}}">{{ locale_from_iso(lang).display_name | capitalize }}</a>
-                  {% endif %}
-                {% endfor %}
-            </div>
-          </li>
-          {% if (session['projects'] | length) > 0 or session['is_admin'] %}
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for("main.exit") }}">{{ _("Logout") }}</a>
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-    </nav>
+  <div class="container-fluid flex-shrink-0">
+  {% block body %}
+      <main class="content offset-1 col-10">
+      {% block content %}{% endblock %}
+      </main>
+  {% endblock %}
   </div>
 
-<div class="container-fluid">
-{% block body %}
-    <main class="content offset-1 col-10">
-    {% block content %}{% endblock %}
-    </main>
-</div>
-{% endblock %}
+  <div class="messages">
+      {% for message in get_flashed_messages() %}
+      <div class="flash alert alert-success">{{ message }}</div>
+      {% endfor %}
+  </div>
 
-<div class="messages">
-    {% for message in get_flashed_messages() %}
-    <div class="flash alert alert-success">{{ message }}</div>
-    {% endfor %}
-</div>
+  {% block footer %}
+  <footer class="footer mt-auto py-3">
+      <div class="footer-limiter">
 
-{% block footer %}
-<footer>
-    <p>
-      <a href="https://github.com/spiral-project/ihatemoney">{{ _("This is a free software") }}</a><span class="d-none d-sm-inline">,
-      {{ _("you can contribute and improve it!") }}</span>
-    </p>
-</footer>
-{% endblock %}
+          <div class="footer-right">
+            <a target="_blank" rel="noopener" n data-toggle="tooltip" data-placement="top" title="{{ _('Code') }}" href="https://github.com/spiral-project/ihatemoney">
+              <i class="icon github">{{ static_include("images/github.svg") | safe }}</i>
+            </a>
+            <a target="_blank" rel="noopener" n data-toggle="tooltip" data-placement="top" title="{{ _('Mobile Application') }}" href="https://gitlab.com/eneiluj/moneybuster">
+              <i class="icon mobile">{{ static_include("images/mobile-alt.svg") | safe }}</i>
+            </a>
+            <a target="_blank" rel="noopener" n data-toggle="tooltip" data-placement="top" title="{{ _('Documentation') }}" href="https://ihatemoney.readthedocs.io/en/latest/">
+              <i class="icon book">{{ static_include("images/book.svg") | safe }}</i>
+            </a>
+            {% if g.show_admin_dashboard_link %}
+            <a target="_blank" rel="noopener" n data-toggle="tooltip" data-placement="top" title="{{ _('Administation Dashboard') }}" href="{{ url_for("main.dashboard") }}">
+              <i class="icon admin">{{ static_include("images/cog.svg") | safe }}</i>
+            </a>
+            {% endif %}
+          </div>
+
+          <div class="footer-left">
+            <p>
+              <a href="https://github.com/spiral-project/ihatemoney">{{ _("\"I hate money\" is a free software") }}</a><span class="d-none d-sm-inline"></span>,
+              {{ _("you can contribute and improve it!") }}</span>
+            </p>
+          </div>
+        </div>
+  </footer>
+  {% endblock %}
 
 </body>
 </html>
