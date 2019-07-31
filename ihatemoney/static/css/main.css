@@ -27,6 +27,12 @@ body {
   font-family: "Lobster", arial, serif;
 }
 
+@media (min-width: 992px) {
+  .projects-item {
+    margin-left: auto!important;
+  }
+}
+
 /* Header */
 
 #header {
@@ -188,6 +194,12 @@ footer .footer-right a {
   margin-left: 3px;
   border-radius: 50%;
   opacity: 0.5;
+}
+@-moz-document url-prefix() {
+  /** Firefox style fix **/
+  footer .footer-right a {
+    padding-top: 2px
+  }
 }
 footer .footer-right a:hover {
   opacity: 1;

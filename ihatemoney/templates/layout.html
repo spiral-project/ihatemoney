@@ -32,34 +32,6 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <h1><a class="navbar-brand" href="{{ url_for("main.home") }}">#! money?</a></h1>
-    {% if g.project %}
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle" id="navbarProjectsLinks" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <strong class="text-white">{{ g.project.name }}</strong>
-          <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarProjectsLinks">
-          <li>
-            <a class="dropdown-item" href="{{ url_for("main.create_project") }}">
-              <i class="icon plus">{{ static_include("images/plus.svg") | safe }}</i>
-              {{ _("Start a new project") }}
-            </a>
-          </li>
-
-          {% if (session['projects'] | length) > 1 %}
-          <li class="dropdown-divider"></li>
-          <li class="dropdown-header">{{ _('Other projects :') }}</li>
-            {% for id, name in session['projects'] %}
-              {% if id != g.project.id %}
-              <li><a class="dropdown-item" href="{{ url_for("main.list_bills", project_id=id) }}">{{ _("switch to") }} {{ name }}</a></li>
-              {% endif %}
-            {% endfor %}
-          {% endif %}
-        </ul>
-      </li>
-    </ul>
-    {% endif %}
 
     <div class="collapse navbar-collapse" id="navbarToggler">
       <ul class="navbar-nav ml-auto mr-auto">
@@ -68,7 +40,7 @@
           <li class="nav-item{% if current_view == 'list_bills' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.list_bills") }}">{{ _("Bills") }}</a></li>
           <li class="nav-item{% if current_view == 'settle_bill' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.settle_bill") }}">{{ _("Settle") }}</a></li>
           <li class="nav-item{% if current_view == 'statistics' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.statistics") }}">{{ _("Statistics") }}</a></li>
-          <li class="nav-item{% if current_view == 'edit_project' %} active{% endif %}""><a class="nav-link" href="{{ url_for("main.edit_project") }}">{{ _("Settings") }}</a></li>
+          <li class="nav-item{% if current_view == 'edit_project' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.edit_project") }}">{{ _("Settings") }}</a></li>
           {% endblock %}
         {% endif %}
       </ul>
@@ -92,11 +64,48 @@
               {% endfor %}
           </div>
         </li>
-        {% if (session['projects'] | length) > 0 or session['is_admin'] %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for("main.exit") }}">{{ _("Logout") }}</a>
+        {% if g.project or (session['projects'] | length) > 0 or session['is_admin'] %}
+        <li class="nav-item dropdown projects-item">
+          <a href="#" class="nav-link dropdown-toggle" id="navbarProjectsLinks" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <strong class="text-white">
+              {% if g.project %}
+                {{ g.project.name }}
+              {% else %}
+                {{_('Projects')}}
+              {% endif %}
+            </strong>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarProjectsLinks">
+            <li>
+              <a class="dropdown-item" href="{{ url_for("main.create_project") }}">
+                <i class="icon plus">{{ static_include("images/plus.svg") | safe }}</i>
+                {{ _("Start a new project") }}
+              </a>
+            </li>
+
+
+            {% if session['projects'] and not ((session['projects'] | length) == 1 and g.project and session['projects'][0][0] == g.project.id) %}
+            <li class="dropdown-divider"></li>
+            <li class="dropdown-header">{{ _('Other projects :') }}</li>
+              {% for id, name in session['projects'] %}
+                {% if not g.project or id != g.project.id %}
+                <li><a class="dropdown-item" href="{{ url_for("main.list_bills", project_id=id) }}">{{ _("switch to") }} {{ name }}</a></li>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+            <li class="dropdown-divider"></li>
+            {% if session['is_admin'] %}
+            <li><a class="dropdown-item" href="{{ url_for("main.dashboard") }}">{{ _("Dashboard") }}</a></li>
+            {% endif %}
+            <li>
+              <a class="dropdown-item" href="{{ url_for("main.exit") }}">
+                {{ _("Logout") }}
+              </a>
+            </li>
+          </ul>
         </li>
-        {% endif %}
+      {% endif %}
       </ul>
     </div>
   </nav>
@@ -121,7 +130,7 @@
 
           <div class="footer-right">
             <a target="_blank" rel="noopener" n data-toggle="tooltip" data-placement="top" title="{{ _('Code') }}" href="https://github.com/spiral-project/ihatemoney">
-              <i class="icon github">{{ static_include("images/github.svg") | safe }}</i>
+              <i class="icon git">{{ static_include("images/git.svg") | safe }}</i>
             </a>
             <a target="_blank" rel="noopener" n data-toggle="tooltip" data-placement="top" title="{{ _('Mobile Application') }}" href="https://gitlab.com/eneiluj/moneybuster">
               <i class="icon mobile">{{ static_include("images/mobile-alt.svg") | safe }}</i>
