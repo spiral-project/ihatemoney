@@ -354,7 +354,7 @@ tr.payer_line .balance-name {
   display: flex;
   justify-content: center;
   position: absolute;
-  top: 0.6rem;
+  top: 4.5rem;
   width: 100%;
   pointer-events: none;
 }
