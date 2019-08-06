@@ -3,82 +3,88 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-06 14:55+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2019-08-07 13:24+0000\n"
+"Last-Translator: Mesut Akcan <makcan@gmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.4.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.8-dev\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
+"Geçerli bir miktar veya ifade değil. Sadece rakamlar ve + - * / operatörler "
+"kabul edilir."
 
 msgid "Project name"
-msgstr ""
+msgstr "Proje adı"
 
 msgid "Private code"
-msgstr ""
+msgstr "Özel kod"
 
 msgid "Email"
-msgstr ""
+msgstr "E-posta"
 
 msgid "Project identifier"
-msgstr ""
+msgstr "Proje tanımlayıcısı"
 
 msgid "Create the project"
-msgstr ""
+msgstr "Proje oluştur"
 
 #, python-format
 msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
+"Bu tanımlayıcıya sahip bir proje (\"%(project)s\") zaten var. Lütfen yeni "
+"bir tanımlayıcı seçin"
 
 msgid "Get in"
-msgstr ""
+msgstr "Alın"
 
 msgid "Admin password"
-msgstr ""
+msgstr "Yönetici parolası"
 
 msgid "Send me the code by email"
-msgstr ""
+msgstr "E-posta ile bana kodu gönder"
 
 msgid "This project does not exists"
-msgstr ""
+msgstr "Bu proje mevcut değil"
 
 msgid "Password mismatch"
-msgstr ""
+msgstr "Parola uyuşmazlığı"
 
 msgid "Password"
-msgstr ""
+msgstr "Parola"
 
 msgid "Password confirmation"
-msgstr ""
+msgstr "Parola onayı"
 
 msgid "Reset password"
-msgstr ""
+msgstr "Parolayı sıfırla"
 
 msgid "Date"
-msgstr ""
+msgstr "Tarih"
 
 msgid "What?"
-msgstr ""
+msgstr "Ne?"
 
 msgid "Payer"
-msgstr ""
+msgstr "Mükellefi"
 
 msgid "Amount paid"
-msgstr ""
+msgstr "Ödenen tutar"
 
 msgid "For whom?"
-msgstr ""
+msgstr "Kim için?"
 
 msgid "Submit"
-msgstr ""
+msgstr "Gönder"
 
 msgid "Submit and add a new one"
 msgstr ""
