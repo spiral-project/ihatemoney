@@ -8,12 +8,48 @@
 {% endblock %}
 
 {% block content %}
-<h2>{{ _("Edit this project") }}</h2>
-<form class="form-horizontal" method="post">
-{{ forms.edit_project(edit_form) }}
-</form></br>
-<h2>{{ _("Download this project's data") }}</h2>
-<form class="form-horizontal" method="post">
-{{ forms.export_project(export_form) }}
-</form>
+<h2>{{ _("Edit project") }}</h2>
+<p>
+    <form class="form-horizontal" method="post">
+    {{ forms.edit_project(edit_form) }}
+    </form>
+</p>
+
+<h2>{{ _("Download project's data") }}</h2>
+<p>
+    <div class="list-group download-project">
+        <div class="list-group-item list-group-item-action">
+            <h5 class="d-flex w-100 justify-content-between">
+                <span class="mb-1">{{ _('Bill items') }}</span>
+                <span>
+                    <a href="{{ url_for('.export_project', file='bills', format='json') }}" download class="badge badge-secondary">
+                        <i class="icon plus">{{ static_include("images/file-alt.svg") | safe }}</i>
+                        JSON
+                    </a>
+                    <a href="{{ url_for('.export_project', file='bills', format='csv') }}" download class="badge badge-secondary">
+                        <i class="icon plus">{{ static_include("images/file-csv-solid.svg") | safe }}</i>
+                        CSV
+                    </a>
+                </span>
+            </h5>
+        <p class="mb-1 text-muted">{{ _('Download the list of bills with owner, amount, reason,... ') }}</p>
+        </div>
+        <div class="list-group-item list-group-item-action">
+            <h5 class="d-flex w-100 justify-content-between">
+                <span class="mb-1">{{ _('Settle plans') }}</span>
+                <span>
+                    <a href="{{ url_for('.export_project', file='transactions', format='json') }}" download class="badge badge-secondary">
+                        <i class="icon plus">{{ static_include("images/file-alt.svg") | safe }}</i>
+                        JSON
+                    </a>
+                    <a href="{{ url_for('.export_project', file='transactions', format='csv') }}" download class="badge badge-secondary">
+                        <i class="icon plus">{{ static_include("images/file-csv-solid.svg") | safe }}</i>
+                        CSV
+                    </a>
+                </span>
+            </h5>
+            <p class="mb-1 text-muted">{{ _('Download the list of transactions needed to settle the current bills.') }}</p>
+        </div>
+    </div>
+</p>
 {% endblock %}
