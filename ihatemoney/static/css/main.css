@@ -11,6 +11,9 @@ body {
 
 /* Navbar */
 
+.navbar-brand span {
+  color: #abe128;
+}
 .navbar h1 {
   font-size: 1rem;
   margin: 0;
@@ -37,11 +40,6 @@ body {
 
 #header {
   padding-bottom: 2em;
-  margin-bottom: 1em;
-  background-color: #abe128;
-  background-image: url("../images/gradient.png");
-  background-position: center top;
-  background-repeat: no-repeat;
 }
 
 #header h2 {
@@ -118,11 +116,26 @@ body {
 }
 
 /* Home */
-
+.home-container {
+  background: linear-gradient(150deg, #abe128 0%, #43CA61 100%);
+}
+.home {
+  padding-top: 1em;
+  padding-bottom: 3em;
+}
 #authentication-form legend {
   text-align: right;
 }
 
+.home .card {
+  min-width: 25em;
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0px 0px 10px rgba(83, 88, 93, .40);
+  margin-right: 25px;
+  margin-bottom: 20px;
+  margin-left: 25px;
+}
 /* Other */
 
 #bills {

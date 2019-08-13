@@ -31,7 +31,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <h1><a class="navbar-brand" href="{{ url_for("main.home") }}">#! money?</a></h1>
+    <h1><a class="navbar-brand" href="{{ url_for("main.home") }}"><span>#!</span> money?</a></h1>
 
     <div class="collapse navbar-collapse" id="navbarToggler">
       <ul class="navbar-nav ml-auto mr-auto">
@@ -110,7 +110,7 @@
     </div>
   </nav>
 
-  <div class="container-fluid flex-shrink-0">
+  <div class="container-fluid flex-shrink-0 {% if request.url_rule.endpoint == 'main.home' %} home-container {% endif %}">
   {% block body %}
       <main class="content offset-1 col-10">
       {% block content %}{% endblock %}
