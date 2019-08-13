@@ -912,10 +912,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         })
 
         # generate json export of bills
-        resp = self.client.post("/raclette/edit", data={
-            'export_format': 'json',
-            'export_type': 'bills'
-        })
+        resp = self.client.get("/raclette/export/bills.json")
         expected = [{
             'date': '2017-01-01',
             'what': 'refund',
@@ -941,10 +938,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertEqual(json.loads(resp.data.decode('utf-8')), expected)
 
         # generate csv export of bills
-        resp = self.client.post("/raclette/edit", data={
-            'export_format': 'csv',
-            'export_type': 'bills'
-        })
+        resp = self.client.get("/raclette/export/bills.csv")
         expected = [
             "date,what,amount,payer_name,payer_weight,owers",
             "2017-01-01,refund,13.33,tata,1.0,fred",
@@ -959,20 +953,14 @@ class BudgetTestCase(IhatemoneyTestCase):
             )
 
         # generate json export of transactions
-        resp = self.client.post("/raclette/edit", data={
-            'export_format': 'json',
-            'export_type': 'transactions'
-        })
+        resp = self.client.get("/raclette/export/transactions.json")
         expected = [{"amount": 127.33, "receiver": "fred", "ower": "alexis"},
                     {"amount": 55.34, "receiver": "fred", "ower": "tata"},
                     {"amount": 2.00, "receiver": "fred", "ower": "p\xe9p\xe9"}]
         self.assertEqual(json.loads(resp.data.decode('utf-8')), expected)
 
         # generate csv export of transactions
-        resp = self.client.post("/raclette/edit", data={
-            'export_format': 'csv',
-            'export_type': 'transactions'
-        })
+        resp = self.client.get("/raclette/export/transactions.csv")
 
         expected = ["amount,receiver,ower",
                     "127.33,fred,alexis",
@@ -986,23 +974,9 @@ class BudgetTestCase(IhatemoneyTestCase):
                 set(received_lines[i].strip("\r").split(","))
             )
 
-        # wrong export_format should return a 200 and export form
-        resp = self.client.post("/raclette/edit", data={
-            'export_format': 'wrong_export_format',
-            'export_type': 'transactions'
-        })
-
-        self.assertEqual(resp.status_code, 200)
-        self.assertIn('id="export_format" name="export_format"', resp.data.decode('utf-8'))
-
-        # wrong export_type should return a 200 and export form
-        resp = self.client.post("/raclette/edit", data={
-            'export_format': 'json',
-            'export_type': 'wrong_export_type'
-        })
-
-        self.assertEqual(resp.status_code, 200)
-        self.assertIn('id="export_format" name="export_format"', resp.data.decode('utf-8'))
+        # wrong export_format should return a 404
+        resp = self.client.get("/raclette/export/transactions.wrong")
+        self.assertEqual(resp.status_code, 404)
 
 
 class APITestCase(IhatemoneyTestCase):

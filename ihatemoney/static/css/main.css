@@ -442,6 +442,11 @@ tr:hover .extra-info {
   border-bottom: 0.2em solid transparent;
   height: 1.2em;
 }
+
+.download-project .icon svg {
+  fill: white;
+}
+
 .icon.plus svg {
   margin-right: 3px;
 }

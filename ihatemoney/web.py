@@ -11,7 +11,7 @@ and `add_project_id` for a quick overview)
 
 import os
 from flask import (
-    Blueprint, current_app, flash, g, redirect, render_template, request,
+    abort, Blueprint, current_app, flash, g, redirect, render_template, request,
     session, url_for, send_file, send_from_directory
 )
 from flask_mail import Message
@@ -25,8 +25,7 @@ from functools import wraps
 from ihatemoney.models import db, Project, Person, Bill
 from ihatemoney.forms import (
     AdminAuthenticationForm, AuthenticationForm, EditProjectForm,
-    InviteForm, MemberForm, PasswordReminder, ResetPasswordForm, ProjectForm, get_billform_for,
-    ExportForm
+    InviteForm, MemberForm, PasswordReminder, ResetPasswordForm, ProjectForm, get_billform_for
 )
 from ihatemoney.utils import Redirect303, list_of_dicts2json, list_of_dicts2csv, LoginThrottler
 
@@ -309,7 +308,6 @@ def reset_password():
 @main.route("/<project_id>/edit", methods=["GET", "POST"])
 def edit_project():
     edit_form = EditProjectForm()
-    export_form = ExportForm()
     if request.method == "POST":
         if edit_form.validate():
             project = edit_form.update(g.project)
@@ -317,28 +315,6 @@ def edit_project():
             db.session.commit()
 
             return redirect(url_for(".list_bills"))
-
-        if export_form.validate():
-            export_format = export_form.export_format.data
-            export_type = export_form.export_type.data
-
-            if export_type == 'transactions':
-                export = g.project.get_transactions_to_settle_bill(
-                    pretty_output=True)
-            if export_type == "bills":
-                export = g.project.get_pretty_bills(
-                    export_format=export_format)
-
-            if export_format == "json":
-                file2export = list_of_dicts2json(export)
-            if export_format == "csv":
-                file2export = list_of_dicts2csv(export)
-
-            return send_file(file2export,
-                             attachment_filename="%s-%s.%s" %
-                             (g.project.id, export_type, export_format),
-                             as_attachment=True
-                             )
     else:
         edit_form.name.data = g.project.name
         edit_form.contact_email.data = g.project.contact_email
@@ -346,7 +322,6 @@ def edit_project():
     return render_template(
         "edit_project.html",
         edit_form=edit_form,
-        export_form=export_form,
         current_view="edit_project"
     )
 
@@ -357,6 +332,29 @@ def delete_project():
     flash(_('Project successfully deleted'))
 
     return redirect(request.headers.get('Referer') or url_for('.home'))
+
+
+@main.route("/<project_id>/export/<string:file>.<string:format>")
+def export_project(file, format):
+    if file == 'transactions':
+        export = g.project.get_transactions_to_settle_bill(pretty_output=True)
+    elif file == "bills":
+        export = g.project.get_pretty_bills(export_format=format)
+    else:
+        abort(404, 'No such export type')
+
+    if format == "json":
+        file2export = list_of_dicts2json(export)
+    elif format == "csv":
+        file2export = list_of_dicts2csv(export)
+    else:
+        abort(404, 'No such export format')
+
+    return send_file(
+        file2export,
+        attachment_filename="%s-%s.%s" % (g.project.id, file, format),
+        as_attachment=True
+    )
 
 
 @main.route("/exit")
