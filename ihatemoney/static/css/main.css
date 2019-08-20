@@ -87,6 +87,16 @@ body {
   height: 100%;
   color: black;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar_content {
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+.identifier {
+  margin-bottom: 15px;
 }
 
 @media (min-width: 768px) {
@@ -94,6 +104,11 @@ body {
     position: fixed;
     padding-bottom: 4.5rem;
   }
+
+  .identifier {
+    margin-bottom: 0;
+  }
+
 }
 
 #add-member-form {
@@ -241,14 +256,9 @@ footer .footer-left {
   }
 }
 
-.identifier {
-  float: right;
-}
-
-#new-bill,
-.identifier {
-  margin-top: 16px;
-  margin-bottom: 16px;
+#new-bill {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 /* Avoid text color flickering when it loose focus as the modal appears */
@@ -441,10 +451,14 @@ tr:hover .extra-info {
   display: inline-block;
   border-bottom: 0.2em solid transparent;
   height: 1.2em;
+  width: 1.2em; /* protection for IE11 */
 }
 .icon.plus svg {
   margin-right: 3px;
 }
 footer .icon svg {
+  fill: white;
+}
+.icon.icon-white {
   fill: white;
 }
