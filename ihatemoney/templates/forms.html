@@ -1,4 +1,4 @@
-{% macro input(field, multiple=False, class='form-control', inline=False) -%}
+{% macro input(field, multiple=False, class='form-control', inline=False, placeholder='') -%}
     <div class="form-group{% if inline %} row{% endif %}">
     {% if field.type != "SubmitField" %}
         {% if inline %}
@@ -9,9 +9,9 @@
     {% endif %}
         <div class="controls{% if inline %} col-9{% endif %}">
         {% if multiple == True %}
-            {{ field(multiple=True, class=class) }}
+            {{ field(multiple=True, class=class, placeholder=placeholder) }}
         {% else %}
-            {{ field(class=class) | safe }}
+            {{ field(class=class, placeholder=placeholder) | safe }}
         {% endif %}
         {% if field.description %}
             <p class="help-inline">{{ field.description }}</p>
@@ -119,8 +119,8 @@
 {{ form.hidden_tag() }}
     {% include "display_errors.html" %}
     <div class="input-group">
-        <label class="sr-only" for="name">_("Type user name here")</label>
-        {{ form.name(placeholder=_("Type user name here"), class="form-control") }}
+        <label class="sr-only" for="name">_("Add participant")</label>
+        {{ form.name(placeholder=_("Add participant"), class="form-control") }}
         <div class="input-group-append">
             <button class="btn btn-outline-secondary input-group-addon" type="submit">{{ _("Add") }}</button>
         </div>
@@ -143,10 +143,9 @@
 
 {% macro invites(form) %}
     {{ form.hidden_tag() }}
-    {{ input(form.emails) }}
+    {{ input(form.emails, placeholder=_('john.doe@example.com, mary.moe@site.com')) }}
     <div class="actions">
         <button class="btn btn-primary">{{ _("Send the invitations") }}</button>
-        <a href="{{ url_for(".list_bills") }}">{{ _("No, thanks") }}</a>
     </div>
 {% endmacro %}
 
