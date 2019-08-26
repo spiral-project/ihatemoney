@@ -3,28 +3,44 @@
 {% block content %}
 <h1>{{ _("Invite people to join this project") }}</h1>
 
-<h3>{{ _('Share Identifier & code') }}</h3>
-<p>
-    {{ _("You can share the project identifier and the private code by any communication means.") }}
-    <br />
-    <strong>{{ _('Identifier:') }}</strong> <a href="{{ url_for("main.list_bills", project_id=g.project.id) }}">{{ g.project.id }}</a>
-</p>
+<table class="table">
+    <tbody>
+        <tr>
+            <td>
+                <h3>{{ _('Share Identifier & code') }}</h3>
+            </td>
+            <td>
+                {{ _("You can share the project identifier and the private code by any communication means.") }}
+                <br />
+                <strong>{{ _('Identifier:') }}</strong> <a href="{{ url_for("main.list_bills", project_id=g.project.id) }}">{{ g.project.id }}</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3>{{ _('Share the Link') }}</h3>
+            </td>
+            <td>
+                {{ _("You can directly share the following link via your prefered medium") }}</br>
+                <a href="{{ url_for(".authenticate", _external=True, token=g.project.generate_token()) }}">
+                    {{ url_for(".authenticate", _external=True, token=g.project.generate_token()) }}
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3>{{ _('Send via Emails') }}</h3>
+            </td>
+            <td>
+                <p>{{ _("Specify a (comma separated) list of email adresses you want to notify about the
+                creation of this budget management project and we will send them an email for you.") }}</p>
+                {% include "display_errors.html" %}
+                <form class="invites form-horizontal" method="post" accept-charset="utf-8">
+                    {{ forms.invites(form) }}
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
-<h3>{{ _('Share the Link') }}</h3>
-<p>{{ _("You can directly share the following link via your prefered medium") }}</br>
-    <a href="{{ url_for(".authenticate", _external=True, token=g.project.generate_token()) }}">
-        {{ url_for(".authenticate", _external=True, token=g.project.generate_token()) }}
-    </a>
-</p>
 
-<h3>{{ _('Send via Emails') }}</h3>
-<p>{{ _("Specify a (comma separated) list of email adresses you want to notify about the
-creation of this budget management project and we will send them an email for you.") }}</p>
-
-
-
-{% include "display_errors.html" %}
-<form class="invites form-horizontal" method="post" accept-charset="utf-8">
-    {{ forms.invites(form) }}
-</form>
 {% endblock %}
