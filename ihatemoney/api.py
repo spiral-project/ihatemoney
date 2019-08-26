@@ -26,12 +26,27 @@ def need_auth(f):
         auth = request.authorization
         project_id = kwargs.get("project_id")
 
+        # Use Basic Auth
         if auth and project_id and auth.username == project_id:
             project = Project.query.get(auth.username)
             if project and check_password_hash(project.password, auth.password):
                 # The whole project object will be passed instead of project_id
                 kwargs.pop("project_id")
                 return f(*args, project=project, **kwargs)
+        else:
+            # Use Bearer token Auth
+            auth_header = request.headers.get('Authorization', '')
+            auth_token = ''
+            try:
+                auth_token = auth_header.split(" ")[1]
+            except IndexError:
+                abort(401)
+            project_id = Project.verify_token(auth_token, token_type='non_timed_token')
+            if auth_token and project_id:
+                project = Project.query.get(project_id)
+                if project:
+                    kwargs.pop("project_id")
+                    return f(*args, project=project, **kwargs)
         abort(401)
     return wrapper
 
