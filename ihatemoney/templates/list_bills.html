@@ -131,6 +131,6 @@
     </table>
 
     {% else %}
-    <p>{{ _("Nothing to list yet. You probably want to") }} <a href="{{ url_for(".add_bill") }}" data-toggle="modal" data-target="#bill-form">{{ _("add a bill") }}</a> ?</p>
+    <div class="py-3"></div><p>{{ _("Nothing to list yet. You probably want to") }} <a href="{{ url_for(".add_bill") }}" data-toggle="modal" data-target="#bill-form">{{ _("add a bill") }}</a> ?</p></div>
     {% endif %}
 {% endblock %}
