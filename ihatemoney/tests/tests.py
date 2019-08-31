@@ -178,7 +178,10 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.client.get("/exit")
         # Test that we got a valid token
         resp = self.client.get(url, follow_redirects=True)
-        self.assertIn('You probably want to <a href="/raclette/add"', resp.data.decode('utf-8'))
+        self.assertIn(
+            'You probably want to <a href="/raclette/members/add"',
+            resp.data.decode('utf-8')
+        )
         # Test empty and invalid tokens
         self.client.get("/exit")
         resp = self.client.get("/authenticate")
@@ -274,6 +277,29 @@ class BudgetTestCase(IhatemoneyTestCase):
 
             # project removed
             self.assertEqual(len(models.Project.query.all()), 0)
+
+    def test_bill_placeholder(self):
+        self.post_project("raclette")
+        self.login("raclette")
+
+        result = self.client.get("/raclette/")
+
+        # Empty bill list and no members, should now propose to add members first
+        self.assertIn(
+            'You probably want to <a href="/raclette/members/add"',
+            result.data.decode('utf-8')
+        )
+
+        result = self.client.post("/raclette/members/add",
+                                  data={'name': 'alexis'})
+
+        result = self.client.get("/raclette/")
+
+        # Empty bill with member, list should now propose to add bills
+        self.assertIn(
+            'You probably want to <a href="/raclette/add"',
+            result.data.decode('utf-8')
+        )
 
     def test_membership(self):
         self.post_project("raclette")

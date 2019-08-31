@@ -157,6 +157,20 @@ body {
   color: black;
 }
 
+.empty-bill {
+  margin-top: 5rem !important;
+
+}
+.empty-bill .card {
+  border: 0;
+}
+
+.empty-bill .hand-holding-heart svg {
+  fill: lightgray;
+  height: 5em;
+  width: 5em;
+}
+
 .invites textarea {
   width: 800px;
   height: 100px;
@@ -258,7 +272,6 @@ footer .footer-left {
 
 #new-bill {
   margin-top: 30px;
-  margin-bottom: 30px;
 }
 
 /* Avoid text color flickering when it loose focus as the modal appears */
@@ -293,6 +306,10 @@ footer .footer-left {
 
 .bill-actions > .edit {
   background: url("../images/edit.png") no-repeat right;
+}
+
+#bill_table {
+  margin-top: 30px;
 }
 
 .project-actions > .delete,

@@ -129,17 +129,17 @@
       <div class="footer-limiter">
 
           <div class="footer-right">
-            <a target="_blank" rel="noopener" n data-toggle="tooltip" data-placement="top" title="{{ _('Code') }}" href="https://github.com/spiral-project/ihatemoney">
+            <a target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="{{ _('Code') }}" href="https://github.com/spiral-project/ihatemoney">
               <i class="icon git">{{ static_include("images/git.svg") | safe }}</i>
             </a>
-            <a target="_blank" rel="noopener" n data-toggle="tooltip" data-placement="top" title="{{ _('Mobile Application') }}" href="https://gitlab.com/eneiluj/moneybuster">
+            <a target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="{{ _('Mobile Application') }}" href="https://gitlab.com/eneiluj/moneybuster">
               <i class="icon mobile">{{ static_include("images/mobile-alt.svg") | safe }}</i>
             </a>
-            <a target="_blank" rel="noopener" n data-toggle="tooltip" data-placement="top" title="{{ _('Documentation') }}" href="https://ihatemoney.readthedocs.io/en/latest/">
+            <a target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="{{ _('Documentation') }}" href="https://ihatemoney.readthedocs.io/en/latest/">
               <i class="icon book">{{ static_include("images/book.svg") | safe }}</i>
             </a>
             {% if g.show_admin_dashboard_link %}
-            <a target="_blank" rel="noopener" n data-toggle="tooltip" data-placement="top" title="{{ _('Administation Dashboard') }}" href="{{ url_for("main.dashboard") }}">
+            <a target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="{{ _('Administation Dashboard') }}" href="{{ url_for("main.dashboard") }}">
               <i class="icon admin">{{ static_include("images/cog.svg") | safe }}</i>
             </a>
             {% endif %}
