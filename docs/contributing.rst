@@ -159,6 +159,11 @@ In order to prepare a new release, we are following the following steps:
 .. code-block:: bash
 
      $ make build-requirements
+- If needed, recompress assets. It requires zopflipng:
+
+.. code-block:: bash
+
+     $ make compress-assets
 
 Once this is done, use the "release" instruction:
 
