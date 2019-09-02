@@ -6,6 +6,7 @@ DEV_STAMP = $(VENV)/.dev_env_installed.stamp
 DOC_STAMP = $(VENV)/.doc_env_installed.stamp
 INSTALL_STAMP = $(VENV)/.install.stamp
 TEMPDIR := $(shell mktemp -d)
+ZOPFLIPNG := zopflipng
 
 .PHONY: all
 all: install ## Alias for install
@@ -46,6 +47,15 @@ test: $(DEV_STAMP) ## Run the tests
 .PHONY: release
 release: $(DEV_STAMP) ## Release a new version (see https://ihatemoney.readthedocs.io/en/latest/contributing.html#how-to-release)
 	$(VENV)/bin/fullrelease
+
+.PHONY: compress_assets
+compress_assets: ## Compress static assets
+	@which $(ZOPFLIPNG) >/dev/null || (echo "ZopfliPNG ($(ZOPFLIPNG)) is missing" && exit 1)
+	mkdir $(TEMPDIR)/zopfli
+	$(eval CPUCOUNT := $(shell python -c "import psutil; print(psutil.cpu_count(logical=False))"))
+# We need to go into the directory to use an absolute path as a prefix
+	cd ihatemoney/static/images/; find -name '*.png' -printf '%f\0' | xargs --null --max-args=1 --max-procs=$(CPUCOUNT) $(ZOPFLIPNG) --iterations=500 --filters=01234mepb --lossy_8bit --lossy_transparent --prefix=$(TEMPDIR)/zopfli/
+	mv $(TEMPDIR)/zopfli/* ihatemoney/static/images/
 
 .PHONY: build-translations
 build-translations: ## Build the translations
