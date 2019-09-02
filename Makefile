@@ -48,8 +48,8 @@ test: $(DEV_STAMP) ## Run the tests
 release: $(DEV_STAMP) ## Release a new version (see https://ihatemoney.readthedocs.io/en/latest/contributing.html#how-to-release)
 	$(VENV)/bin/fullrelease
 
-.PHONY: compress_assets
-compress_assets: ## Compress static assets
+.PHONY: compress-assets
+compress-assets: ## Compress static assets
 	@which $(ZOPFLIPNG) >/dev/null || (echo "ZopfliPNG ($(ZOPFLIPNG)) is missing" && exit 1)
 	mkdir $(TEMPDIR)/zopfli
 	$(eval CPUCOUNT := $(shell python -c "import psutil; print(psutil.cpu_count(logical=False))"))
