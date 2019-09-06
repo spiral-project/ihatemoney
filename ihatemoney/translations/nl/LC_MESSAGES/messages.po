@@ -1,19 +1,19 @@
+
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-07-26 17:17+0200\n"
+"POT-Creation-Date: 2019-09-06 23:11+0200\n"
 "PO-Revision-Date: 2019-08-01 05:14+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/nl/>\n"
 "Language: nl\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/nl/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.8-dev\n"
-"Generated-By: Babel 2.7.0\n"
+"Generated-By: Babel 2.6.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -116,18 +116,6 @@ msgstr "Uitnodigingen versturen"
 #, python-format
 msgid "The email %(email)s is not valid"
 msgstr "Het e-mailadres '%(email)s' is onjuist"
-
-msgid "What do you want to download ?"
-msgstr "Wat wil je downloaden?"
-
-msgid "bills"
-msgstr "rekeningen"
-
-msgid "transactions"
-msgstr "transacties"
-
-msgid "Export file format"
-msgstr "Bestandsformaat voor exporteren"
 
 msgid "Too many failed login attempts, please retry later."
 msgstr "Te vaak onjuist ingelogd. Probeer het later opnieuw."
@@ -266,11 +254,23 @@ msgstr "De overzichtspagina is momenteel uitgeschakeld."
 msgid "you sure?"
 msgstr "weet je het zeker?"
 
-msgid "Edit this project"
-msgstr "Dit project bewerken"
+msgid "Edit project"
+msgstr ""
 
-msgid "Download this project's data"
-msgstr "Projectgegevens downloaden"
+msgid "Download project's data"
+msgstr ""
+
+msgid "Bill items"
+msgstr ""
+
+msgid "Download the list of bills with owner, amount, reason,... "
+msgstr ""
+
+msgid "Settle plans"
+msgstr ""
+
+msgid "Download the list of transactions needed to settle the current bills."
+msgstr ""
 
 msgid "Can't remember the password?"
 msgstr "Ben je je wachtwoord vergeten?"
@@ -293,23 +293,23 @@ msgstr "Alles selecteren"
 msgid "Select none"
 msgstr "Niets selecteren"
 
-msgid "Type user name here"
-msgstr "Typ hier de gebruikersnaam"
+msgid "Add participant"
+msgstr ""
 
 msgid "Edit this member"
 msgstr "Deze deelnemer bewerken"
 
+msgid "john.doe@example.com, mary.moe@site.com"
+msgstr ""
+
 msgid "Send the invitations"
 msgstr "Uitnodigingen versturen"
-
-msgid "No, thanks"
-msgstr "Nee, bedankt"
 
 msgid "Download"
 msgstr "Downloaden"
 
-msgid "Manage your shared <br>expenses, easily"
-msgstr "Beheer eenvoudig je gedeelde <br>uitgaven"
+msgid "Manage your shared <br />expenses, easily"
+msgstr ""
 
 msgid "Try out the demo"
 msgstr "Probeer het uit"
@@ -326,20 +326,17 @@ msgstr "Wil je gewoon geld verdelen met anderen?"
 msgid "We can help!"
 msgstr "Wij kunnen helpen!"
 
-msgid "Log to an existing project"
-msgstr "Log in op een bestaand project"
+msgid "Log in to an existing project"
+msgstr ""
 
-msgid "log in"
-msgstr "inloggen"
+msgid "Log in"
+msgstr ""
 
 msgid "can't remember your password?"
 msgstr "ben je je wachtwoord vergeten?"
 
-msgid "or create a new one"
-msgstr "of creëer een nieuwe"
-
-msgid "let's get started"
-msgstr "aan de slag"
+msgid "Create"
+msgstr ""
 
 msgid ""
 "This access code will be sent to your friends. It is stored as-is by the "
@@ -360,17 +357,23 @@ msgstr "Schikken"
 msgid "Statistics"
 msgstr "Statistieken"
 
-msgid "options"
-msgstr "opties"
+msgid "Settings"
+msgstr ""
 
-msgid "Project settings"
-msgstr "Projectinstellingen"
+msgid "Languages"
+msgstr ""
 
-msgid "switch to"
-msgstr "overschakelen naar"
+msgid "Projects"
+msgstr ""
 
 msgid "Start a new project"
 msgstr "Nieuw project starten"
+
+msgid "Other projects :"
+msgstr ""
+
+msgid "switch to"
+msgstr "overschakelen naar"
 
 msgid "Dashboard"
 msgstr "Overzicht"
@@ -378,8 +381,20 @@ msgstr "Overzicht"
 msgid "Logout"
 msgstr "Uitloggen"
 
-msgid "This is a free software"
-msgstr "Dit is vrije software"
+msgid "Code"
+msgstr ""
+
+msgid "Mobile Application"
+msgstr ""
+
+msgid "Documentation"
+msgstr ""
+
+msgid "Administation Dashboard"
+msgstr ""
+
+msgid "\"I hate money\" is a free software"
+msgstr ""
 
 msgid "you can contribute and improve it!"
 msgstr "je kunt bijdragen en de code verbeteren!"
@@ -390,14 +405,14 @@ msgstr "deactiveren"
 msgid "reactivate"
 msgstr "heractiveren"
 
-msgid "Invite people to join this project!"
-msgstr "Nodig mensen uit voor dit project!"
+msgid "Invite people"
+msgstr ""
+
+msgid "You should start by adding participants"
+msgstr ""
 
 msgid "Add a new bill"
 msgstr "Nieuwe rekening toevoegen"
-
-msgid "Added on"
-msgstr "Toegevoegd op"
 
 msgid "When?"
 msgstr "Wanneer?"
@@ -411,14 +426,27 @@ msgstr "Voor wat?"
 msgid "How much?"
 msgstr "Hoeveel?"
 
+#, python-format
+msgid "Added on %(date)s"
+msgstr ""
+
 msgid "each"
 msgstr "per persoon"
 
-msgid "Nothing to list yet. You probably want to"
-msgstr "Er kan nog geen opsomming worden gemaakt. Voeg"
+msgid "No bills"
+msgstr ""
+
+msgid "Nothing to list yet."
+msgstr ""
+
+msgid "You probably want to"
+msgstr ""
 
 msgid "add a bill"
 msgstr "een rekening toe"
+
+msgid "add participants"
+msgstr ""
 
 msgid "Password reminder"
 msgstr "Wachtwoordhint"
@@ -432,24 +460,32 @@ msgstr "Wachtwoord herstellen"
 msgid "Invite people to join this project"
 msgstr "Nodig mensen uit voor dit project"
 
+msgid "Share Identifier & code"
+msgstr ""
+
+msgid ""
+"You can share the project identifier and the private code by any "
+"communication means."
+msgstr ""
+
+msgid "Identifier:"
+msgstr ""
+
+msgid "Share the Link"
+msgstr ""
+
+msgid "You can directly share the following link via your prefered medium"
+msgstr ""
+
+msgid "Send via Emails"
+msgstr ""
+
 msgid ""
 "Specify a (comma separated) list of email adresses you want to notify "
 "about the\n"
-"creation of this budget management project and we will send them an email"
-" for you."
+"                creation of this budget management project and we will "
+"send them an email for you."
 msgstr ""
-"Geef een kommagescheiden lijst van e-mailadressen op. Deze mensen worden "
-"op de\n"
-"hoogte gebracht van het bestaan van dit project en wij sturen hen een "
-"e-mail."
-
-msgid ""
-"If you prefer, you can share the project identifier and the shared\n"
-"password by other communication means. Or even directly share the "
-"following link:"
-msgstr ""
-"Als je wilt, dan kun je de project-id en het gedeelde wachtwoord\n"
-"delen via andere kanalen. Of deel gewoon de volgende link:"
 
 msgid "Who pays?"
 msgstr "Wie betaalt?"
@@ -495,3 +531,85 @@ msgstr "Saldo"
 #~ "Geen geldig bedrag of geldige expressie."
 #~ " Alleen getallen en + - * / "
 #~ "zijn toegestaan."
+
+#~ msgid "What do you want to download ?"
+#~ msgstr "Wat wil je downloaden?"
+
+#~ msgid "bills"
+#~ msgstr "rekeningen"
+
+#~ msgid "transactions"
+#~ msgstr "transacties"
+
+#~ msgid "Export file format"
+#~ msgstr "Bestandsformaat voor exporteren"
+
+#~ msgid "Edit this project"
+#~ msgstr "Dit project bewerken"
+
+#~ msgid "Download this project's data"
+#~ msgstr "Projectgegevens downloaden"
+
+#~ msgid "Type user name here"
+#~ msgstr "Typ hier de gebruikersnaam"
+
+#~ msgid "No, thanks"
+#~ msgstr "Nee, bedankt"
+
+#~ msgid "Manage your shared <br>expenses, easily"
+#~ msgstr "Beheer eenvoudig je gedeelde <br>uitgaven"
+
+#~ msgid "Log to an existing project"
+#~ msgstr "Log in op een bestaand project"
+
+#~ msgid "log in"
+#~ msgstr "inloggen"
+
+#~ msgid "or create a new one"
+#~ msgstr "of creëer een nieuwe"
+
+#~ msgid "let's get started"
+#~ msgstr "aan de slag"
+
+#~ msgid "options"
+#~ msgstr "opties"
+
+#~ msgid "Project settings"
+#~ msgstr "Projectinstellingen"
+
+#~ msgid "This is a free software"
+#~ msgstr "Dit is vrije software"
+
+#~ msgid "Invite people to join this project!"
+#~ msgstr "Nodig mensen uit voor dit project!"
+
+#~ msgid "Added on"
+#~ msgstr "Toegevoegd op"
+
+#~ msgid "Nothing to list yet. You probably want to"
+#~ msgstr "Er kan nog geen opsomming worden gemaakt. Voeg"
+
+#~ msgid ""
+#~ "Specify a (comma separated) list of "
+#~ "email adresses you want to notify "
+#~ "about the\n"
+#~ "creation of this budget management "
+#~ "project and we will send them an"
+#~ " email for you."
+#~ msgstr ""
+#~ "Geef een kommagescheiden lijst van "
+#~ "e-mailadressen op. Deze mensen worden op"
+#~ " de\n"
+#~ "hoogte gebracht van het bestaan van "
+#~ "dit project en wij sturen hen een"
+#~ " e-mail."
+
+#~ msgid ""
+#~ "If you prefer, you can share the project identifier and the shared\n"
+#~ "password by other communication means. "
+#~ "Or even directly share the following "
+#~ "link:"
+#~ msgstr ""
+#~ "Als je wilt, dan kun je de project-id en het gedeelde wachtwoord\n"
+#~ "delen via andere kanalen. Of deel gewoon de volgende link:"
+

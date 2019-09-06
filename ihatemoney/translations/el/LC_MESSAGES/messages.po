@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-26 17:17+0200\n"
+"POT-Creation-Date: 2019-09-06 23:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language: el\n"
@@ -12,7 +12,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.7.0\n"
+"Generated-By: Babel 2.6.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -114,18 +114,6 @@ msgstr ""
 
 #, python-format
 msgid "The email %(email)s is not valid"
-msgstr ""
-
-msgid "What do you want to download ?"
-msgstr ""
-
-msgid "bills"
-msgstr ""
-
-msgid "transactions"
-msgstr ""
-
-msgid "Export file format"
 msgstr ""
 
 msgid "Too many failed login attempts, please retry later."
@@ -259,10 +247,22 @@ msgstr ""
 msgid "you sure?"
 msgstr ""
 
-msgid "Edit this project"
+msgid "Edit project"
 msgstr ""
 
-msgid "Download this project's data"
+msgid "Download project's data"
+msgstr ""
+
+msgid "Bill items"
+msgstr ""
+
+msgid "Download the list of bills with owner, amount, reason,... "
+msgstr ""
+
+msgid "Settle plans"
+msgstr ""
+
+msgid "Download the list of transactions needed to settle the current bills."
 msgstr ""
 
 msgid "Can't remember the password?"
@@ -286,22 +286,22 @@ msgstr ""
 msgid "Select none"
 msgstr ""
 
-msgid "Type user name here"
+msgid "Add participant"
 msgstr ""
 
 msgid "Edit this member"
 msgstr ""
 
-msgid "Send the invitations"
+msgid "john.doe@example.com, mary.moe@site.com"
 msgstr ""
 
-msgid "No, thanks"
+msgid "Send the invitations"
 msgstr ""
 
 msgid "Download"
 msgstr ""
 
-msgid "Manage your shared <br>expenses, easily"
+msgid "Manage your shared <br />expenses, easily"
 msgstr ""
 
 msgid "Try out the demo"
@@ -319,19 +319,16 @@ msgstr ""
 msgid "We can help!"
 msgstr ""
 
-msgid "Log to an existing project"
+msgid "Log in to an existing project"
 msgstr ""
 
-msgid "log in"
+msgid "Log in"
 msgstr ""
 
 msgid "can't remember your password?"
 msgstr ""
 
-msgid "or create a new one"
-msgstr ""
-
-msgid "let's get started"
+msgid "Create"
 msgstr ""
 
 msgid ""
@@ -351,16 +348,22 @@ msgstr ""
 msgid "Statistics"
 msgstr ""
 
-msgid "options"
+msgid "Settings"
 msgstr ""
 
-msgid "Project settings"
+msgid "Languages"
 msgstr ""
 
-msgid "switch to"
+msgid "Projects"
 msgstr ""
 
 msgid "Start a new project"
+msgstr ""
+
+msgid "Other projects :"
+msgstr ""
+
+msgid "switch to"
 msgstr ""
 
 msgid "Dashboard"
@@ -369,7 +372,19 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-msgid "This is a free software"
+msgid "Code"
+msgstr ""
+
+msgid "Mobile Application"
+msgstr ""
+
+msgid "Documentation"
+msgstr ""
+
+msgid "Administation Dashboard"
+msgstr ""
+
+msgid "\"I hate money\" is a free software"
 msgstr ""
 
 msgid "you can contribute and improve it!"
@@ -381,13 +396,13 @@ msgstr ""
 msgid "reactivate"
 msgstr ""
 
-msgid "Invite people to join this project!"
+msgid "Invite people"
+msgstr ""
+
+msgid "You should start by adding participants"
 msgstr ""
 
 msgid "Add a new bill"
-msgstr ""
-
-msgid "Added on"
 msgstr ""
 
 msgid "When?"
@@ -402,13 +417,26 @@ msgstr ""
 msgid "How much?"
 msgstr ""
 
+#, python-format
+msgid "Added on %(date)s"
+msgstr ""
+
 msgid "each"
 msgstr ""
 
-msgid "Nothing to list yet. You probably want to"
+msgid "No bills"
+msgstr ""
+
+msgid "Nothing to list yet."
+msgstr ""
+
+msgid "You probably want to"
 msgstr ""
 
 msgid "add a bill"
+msgstr ""
+
+msgid "add participants"
 msgstr ""
 
 msgid "Password reminder"
@@ -423,17 +451,31 @@ msgstr ""
 msgid "Invite people to join this project"
 msgstr ""
 
-msgid ""
-"Specify a (comma separated) list of email adresses you want to notify "
-"about the\n"
-"creation of this budget management project and we will send them an email"
-" for you."
+msgid "Share Identifier & code"
 msgstr ""
 
 msgid ""
-"If you prefer, you can share the project identifier and the shared\n"
-"password by other communication means. Or even directly share the "
-"following link:"
+"You can share the project identifier and the private code by any "
+"communication means."
+msgstr ""
+
+msgid "Identifier:"
+msgstr ""
+
+msgid "Share the Link"
+msgstr ""
+
+msgid "You can directly share the following link via your prefered medium"
+msgstr ""
+
+msgid "Send via Emails"
+msgstr ""
+
+msgid ""
+"Specify a (comma separated) list of email adresses you want to notify "
+"about the\n"
+"                creation of this budget management project and we will "
+"send them an email for you."
 msgstr ""
 
 msgid "Who pays?"
@@ -458,5 +500,78 @@ msgstr ""
 #~ "Not a valid amount or expression.Only"
 #~ " numbers and + - * / "
 #~ "operatorsare accepted."
+#~ msgstr ""
+
+#~ msgid "What do you want to download ?"
+#~ msgstr ""
+
+#~ msgid "bills"
+#~ msgstr ""
+
+#~ msgid "transactions"
+#~ msgstr ""
+
+#~ msgid "Export file format"
+#~ msgstr ""
+
+#~ msgid "Edit this project"
+#~ msgstr ""
+
+#~ msgid "Download this project's data"
+#~ msgstr ""
+
+#~ msgid "Type user name here"
+#~ msgstr ""
+
+#~ msgid "No, thanks"
+#~ msgstr ""
+
+#~ msgid "Manage your shared <br>expenses, easily"
+#~ msgstr ""
+
+#~ msgid "Log to an existing project"
+#~ msgstr ""
+
+#~ msgid "log in"
+#~ msgstr ""
+
+#~ msgid "or create a new one"
+#~ msgstr ""
+
+#~ msgid "let's get started"
+#~ msgstr ""
+
+#~ msgid "options"
+#~ msgstr ""
+
+#~ msgid "Project settings"
+#~ msgstr ""
+
+#~ msgid "This is a free software"
+#~ msgstr ""
+
+#~ msgid "Invite people to join this project!"
+#~ msgstr ""
+
+#~ msgid "Added on"
+#~ msgstr ""
+
+#~ msgid "Nothing to list yet. You probably want to"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Specify a (comma separated) list of "
+#~ "email adresses you want to notify "
+#~ "about the\n"
+#~ "creation of this budget management "
+#~ "project and we will send them an"
+#~ " email for you."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If you prefer, you can share the project identifier and the shared\n"
+#~ "password by other communication means. "
+#~ "Or even directly share the following "
+#~ "link:"
 #~ msgstr ""
 

@@ -7,25 +7,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-07-26 17:17+0200\n"
+"POT-Creation-Date: 2019-09-06 23:11+0200\n"
 "PO-Revision-Date: 2019-08-02 10:12+0000\n"
 "Last-Translator: Alexis Metaireau <alexis@notmyidea.org>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/fr/>\n"
 "Language: fr\n"
+"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/fr/>\n"
+"Plural-Forms: nplurals=2; plural=n > 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.8-dev\n"
-"Generated-By: Babel 2.7.0\n"
+"Generated-By: Babel 2.6.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
-"Ceci n'est pas pas un montant ou une expression valide. Seuls les nombres et "
-"les opérateurs + - * / sont acceptés."
+"Ceci n'est pas pas un montant ou une expression valide. Seuls les nombres"
+" et les opérateurs + - * / sont acceptés."
 
 msgid "Project name"
 msgstr "Nom de projet"
@@ -47,8 +46,8 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
-"Il existe déjà un projet avec cet identifiant (\"%(project)s\"). Merci de "
-"choisir un nouvel identifiant"
+"Il existe déjà un projet avec cet identifiant (\"%(project)s\"). Merci de"
+" choisir un nouvel identifiant"
 
 msgid "Get in"
 msgstr "Entrer"
@@ -125,18 +124,6 @@ msgstr "Envoyer les invitations"
 #, python-format
 msgid "The email %(email)s is not valid"
 msgstr "L’email %(email)s est invalide"
-
-msgid "What do you want to download ?"
-msgstr "Que voulez-vous télécharger ?"
-
-msgid "bills"
-msgstr "factures"
-
-msgid "transactions"
-msgstr "remboursements"
-
-msgid "Export file format"
-msgstr "Format du fichier d’export"
 
 msgid "Too many failed login attempts, please retry later."
 msgstr "Trop d'échecs d’authentification successifs, veuillez réessayer plus tard."
@@ -273,11 +260,23 @@ msgstr "Le tableau de bord est actuellement désactivée."
 msgid "you sure?"
 msgstr "c’est sûr ?"
 
-msgid "Edit this project"
-msgstr "Éditer ce projet"
+msgid "Edit project"
+msgstr ""
 
-msgid "Download this project's data"
-msgstr "Télécharger les données de ce projet"
+msgid "Download project's data"
+msgstr ""
+
+msgid "Bill items"
+msgstr ""
+
+msgid "Download the list of bills with owner, amount, reason,... "
+msgstr ""
+
+msgid "Settle plans"
+msgstr ""
+
+msgid "Download the list of transactions needed to settle the current bills."
+msgstr ""
 
 msgid "Can't remember the password?"
 msgstr "Vous ne vous souvenez plus du code d’accès ?"
@@ -300,23 +299,23 @@ msgstr "Tout cocher"
 msgid "Select none"
 msgstr "Tout décocher"
 
-msgid "Type user name here"
-msgstr "Nouveau participant"
+msgid "Add participant"
+msgstr ""
 
 msgid "Edit this member"
 msgstr "Éditer ce participant"
 
+msgid "john.doe@example.com, mary.moe@site.com"
+msgstr ""
+
 msgid "Send the invitations"
 msgstr "Envoyer les invitations"
-
-msgid "No, thanks"
-msgstr "Non merci"
 
 msgid "Download"
 msgstr "Télécharger"
 
-msgid "Manage your shared <br>expenses, easily"
-msgstr "Gérez vos dépenses <br>partagées, facilement"
+msgid "Manage your shared <br />expenses, easily"
+msgstr ""
 
 msgid "Try out the demo"
 msgstr "Essayez la démo"
@@ -333,20 +332,17 @@ msgstr "Ça vous arrive de partager de l’argent avec d’autres ?"
 msgid "We can help!"
 msgstr "On peut vous aider !"
 
-msgid "Log to an existing project"
-msgstr "Se connecter à un projet existant"
+msgid "Log in to an existing project"
+msgstr ""
 
-msgid "log in"
-msgstr "se connecter"
+msgid "Log in"
+msgstr ""
 
 msgid "can't remember your password?"
 msgstr "vous ne vous souvenez plus du code d’accès ?"
 
-msgid "or create a new one"
-msgstr "ou créez en un nouveau"
-
-msgid "let's get started"
-msgstr "c’est parti !"
+msgid "Create"
+msgstr ""
 
 msgid ""
 "This access code will be sent to your friends. It is stored as-is by the "
@@ -367,17 +363,23 @@ msgstr "Remboursements"
 msgid "Statistics"
 msgstr "Statistiques"
 
-msgid "options"
-msgstr "options"
+msgid "Settings"
+msgstr ""
 
-msgid "Project settings"
-msgstr "Options du projet"
+msgid "Languages"
+msgstr ""
 
-msgid "switch to"
-msgstr "aller à"
+msgid "Projects"
+msgstr ""
 
 msgid "Start a new project"
 msgstr "Nouveau projet"
+
+msgid "Other projects :"
+msgstr ""
+
+msgid "switch to"
+msgstr "aller à"
 
 msgid "Dashboard"
 msgstr "Tableau de bord"
@@ -385,8 +387,20 @@ msgstr "Tableau de bord"
 msgid "Logout"
 msgstr "Se déconnecter"
 
-msgid "This is a free software"
-msgstr "Ceci est un logiciel libre"
+msgid "Code"
+msgstr ""
+
+msgid "Mobile Application"
+msgstr ""
+
+msgid "Documentation"
+msgstr ""
+
+msgid "Administation Dashboard"
+msgstr ""
+
+msgid "\"I hate money\" is a free software"
+msgstr ""
 
 msgid "you can contribute and improve it!"
 msgstr "vous pouvez y contribuer et l’améliorer !"
@@ -397,14 +411,14 @@ msgstr "désactiver"
 msgid "reactivate"
 msgstr "ré-activer"
 
-msgid "Invite people to join this project!"
-msgstr "Invitez d’autres personnes à rejoindre ce projet !"
+msgid "Invite people"
+msgstr ""
+
+msgid "You should start by adding participants"
+msgstr ""
 
 msgid "Add a new bill"
 msgstr "Nouvelle facture"
-
-msgid "Added on"
-msgstr "Ajouté le"
 
 msgid "When?"
 msgstr "Quand ?"
@@ -418,14 +432,27 @@ msgstr "Pour quoi ?"
 msgid "How much?"
 msgstr "Combien ?"
 
+#, python-format
+msgid "Added on %(date)s"
+msgstr ""
+
 msgid "each"
 msgstr "chacun"
 
-msgid "Nothing to list yet. You probably want to"
-msgstr "Rien à lister pour l’instant. Vous voulez surement"
+msgid "No bills"
+msgstr ""
+
+msgid "Nothing to list yet."
+msgstr ""
+
+msgid "You probably want to"
+msgstr ""
 
 msgid "add a bill"
 msgstr "ajouter une facture"
+
+msgid "add participants"
+msgstr ""
 
 msgid "Password reminder"
 msgstr "Rappel du code d’accès"
@@ -439,23 +466,32 @@ msgstr "Changez votre mot de passe"
 msgid "Invite people to join this project"
 msgstr "Invitez des personnes à rejoindre ce projet"
 
+msgid "Share Identifier & code"
+msgstr ""
+
+msgid ""
+"You can share the project identifier and the private code by any "
+"communication means."
+msgstr ""
+
+msgid "Identifier:"
+msgstr ""
+
+msgid "Share the Link"
+msgstr ""
+
+msgid "You can directly share the following link via your prefered medium"
+msgstr ""
+
+msgid "Send via Emails"
+msgstr ""
+
 msgid ""
 "Specify a (comma separated) list of email adresses you want to notify "
 "about the\n"
-"creation of this budget management project and we will send them an email"
-" for you."
+"                creation of this budget management project and we will "
+"send them an email for you."
 msgstr ""
-"Entrez les adresses des personnes que vous souhaitez inviter,\n"
-"séparées par des virgules, on s’occupe de leur envoyer un email."
-
-msgid ""
-"If you prefer, you can share the project identifier and the shared\n"
-"password by other communication means. Or even directly share the "
-"following link:"
-msgstr ""
-"Si vous préférez vous pouvez partager l’identifiant du projet\n"
-"et son mot de passe par un autre moyen de communication. Ou directement "
-"partager le lien suivant :"
 
 msgid "Who pays?"
 msgstr "Qui doit payer ?"
@@ -539,3 +575,83 @@ msgstr "Solde"
 #~ " numbers and + - * / "
 #~ "operatorsare accepted."
 #~ msgstr ""
+
+#~ msgid "What do you want to download ?"
+#~ msgstr "Que voulez-vous télécharger ?"
+
+#~ msgid "bills"
+#~ msgstr "factures"
+
+#~ msgid "transactions"
+#~ msgstr "remboursements"
+
+#~ msgid "Export file format"
+#~ msgstr "Format du fichier d’export"
+
+#~ msgid "Edit this project"
+#~ msgstr "Éditer ce projet"
+
+#~ msgid "Download this project's data"
+#~ msgstr "Télécharger les données de ce projet"
+
+#~ msgid "Type user name here"
+#~ msgstr "Nouveau participant"
+
+#~ msgid "No, thanks"
+#~ msgstr "Non merci"
+
+#~ msgid "Manage your shared <br>expenses, easily"
+#~ msgstr "Gérez vos dépenses <br>partagées, facilement"
+
+#~ msgid "Log to an existing project"
+#~ msgstr "Se connecter à un projet existant"
+
+#~ msgid "log in"
+#~ msgstr "se connecter"
+
+#~ msgid "or create a new one"
+#~ msgstr "ou créez en un nouveau"
+
+#~ msgid "let's get started"
+#~ msgstr "c’est parti !"
+
+#~ msgid "options"
+#~ msgstr "options"
+
+#~ msgid "Project settings"
+#~ msgstr "Options du projet"
+
+#~ msgid "This is a free software"
+#~ msgstr "Ceci est un logiciel libre"
+
+#~ msgid "Invite people to join this project!"
+#~ msgstr "Invitez d’autres personnes à rejoindre ce projet !"
+
+#~ msgid "Added on"
+#~ msgstr "Ajouté le"
+
+#~ msgid "Nothing to list yet. You probably want to"
+#~ msgstr "Rien à lister pour l’instant. Vous voulez surement"
+
+#~ msgid ""
+#~ "Specify a (comma separated) list of "
+#~ "email adresses you want to notify "
+#~ "about the\n"
+#~ "creation of this budget management "
+#~ "project and we will send them an"
+#~ " email for you."
+#~ msgstr ""
+#~ "Entrez les adresses des personnes que vous souhaitez inviter,\n"
+#~ "séparées par des virgules, on s’occupe de leur envoyer un email."
+
+#~ msgid ""
+#~ "If you prefer, you can share the project identifier and the shared\n"
+#~ "password by other communication means. "
+#~ "Or even directly share the following "
+#~ "link:"
+#~ msgstr ""
+#~ "Si vous préférez vous pouvez partager l’identifiant du projet\n"
+#~ "et son mot de passe par un "
+#~ "autre moyen de communication. Ou "
+#~ "directement partager le lien suivant :"
+
