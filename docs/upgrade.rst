@@ -66,7 +66,8 @@ development only.
 
     pip install ihatemoney
 
-3. Fix your configuration file (paths *have* changed), depending on the software you use in your setup:
+3. Fix your configuration file (paths *have* changed), depending on
+   the software you use in your setup:
 
    - **gunicorn**: ``ihatemoney generate-config gunicorn.conf.py`` (nothing
      critical changed, keeping your old config might be fine)

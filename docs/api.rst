@@ -4,8 +4,7 @@ The REST API
 All of what's possible to do with the website is also possible via a web API.
 This document explains how the API is organized and how you can query it.
 
-By default, the API talks JSON. There is no other way to speak with it
-currently.
+The only supported data format is JSON.
 
 Overall organisation
 ====================
@@ -13,7 +12,7 @@ Overall organisation
 You can access three different things: projects, members and bills. You can
 also get the balance for a project.
 
-For the examples, I'm using curl, feel free to use whatever you want to do the
+The examples here are using curl, feel free to use whatever you want to do the
 same thing, curl is not a requirement.
 
 Authentication
@@ -33,17 +32,17 @@ Projects
 You can't list projects, for security reasons. But you can create, update and
 delete one directly from the API.
 
-The URLs are `/api/projects` and `/api/projects/<identifier>`.
+The URLs are ``/api/projects`` and ``/api/projects/<identifier>``.
 
 Creating a project
 ~~~~~~~~~~~~~~~~~~
 
 A project needs the following arguments:
 
-* `name`: The project name (string)
-* `id`: the project identifier (string without special chars or spaces)
-* `password`: the project password / secret code (string)
-* `contact_email`: the contact email
+* ``name``: The project name (string)
+* ``id``: the project identifier (string without special chars or spaces)
+* ``password``: the project password / secret code (string)
+* ``contact_email``: the contact email
 
 ::
 
@@ -85,7 +84,7 @@ Getting information about the project::
 Updating a project
 ~~~~~~~~~~~~~~~~~~
 
-Updating a project is done with the `PUT` verb::
+Updating a project is done with the ``PUT`` verb::
 
     $ curl --basic -u yay:yay -X PUT\
     https://ihatemoney.org/api/projects/yay -d\
@@ -101,7 +100,7 @@ Just send a DELETE request ont the project URI ::
 Members
 -------
 
-You can get all the members with a `GET` on `/api/projects/<id>/members`::
+You can get all the members with a ``GET`` on ``/api/projects/<id>/members``::
 
     $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo/members\
     [{"weight": 1, "activated": true, "id": 31, "name": "Arnaud"},
@@ -109,20 +108,21 @@ You can get all the members with a `GET` on `/api/projects/<id>/members`::
      {"weight": 1, "activated": true, "id": 33, "name": "Olivier"},
      {"weight": 1, "activated": true, "id": 34, "name": "Fred"}]
 
-Add a member with a `POST` request on `/api/projects/<id>/members`::
+Add a member with a ``POST`` request on ``/api/projects/<id>/members``::
 
     $ curl --basic -u demo:demo -X POST\
     https://ihatemoney.org/api/projects/demo/members -d 'name=tatayoyo'
     35
 
-You can also `PUT` a new version of a member (changing its name)::
+You can also ``PUT`` a new version of a member (changing its name)::
 
     $ curl --basic -u demo:demo -X PUT\
     https://ihatemoney.org/api/projects/demo/members/36\
     -d 'name=yeaaaaah'
     {"activated": true, "id": 36, "name": "yeaaaaah", "weight": 1}
 
-Delete a member with a `DELETE` request on `/api/projects/<id>/members/<member-id>`::
+Delete a member with a ``DELETE`` request on
+``/api/projects/<id>/members/<member-id>``::
 
     $ curl --basic -u demo:demo -X DELETE\
     https://ihatemoney.org/api/projects/demo/members/35
@@ -131,18 +131,21 @@ Delete a member with a `DELETE` request on `/api/projects/<id>/members/<member-i
 Bills
 -----
 
-You can get the list of bills by doing a `GET` on `/api/projects/<id>/bills` ::
+You can get the list of bills by doing a ``GET`` on
+``/api/projects/<id>/bills`` ::
 
     $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo/bills
 
-Add a bill with a `POST` query on `/api/projects/<id>/bills`. you need the
+Add a bill with a ``POST`` query on ``/api/projects/<id>/bills``. you need the
 following params:
 
-* `date`: the date of the bill; defaults to current date if not provided. (yyyy-mm-dd)
-* `what`: what have been payed
-* `payer`: by who ? (id)
-* `payed_for`: for who ? (id, to set multiple id use a list, e.g. `["id1", "id2"]`)
-* `amount`: amount payed
+* ``date``: the date of the bill; defaults to current date if not
+  provided. (format is ``yyyy-mm-dd``)
+* ``what``: what have been payed
+* ``payer``: by who ? (id)
+* ``payed_for``: for who ? (id, to set multiple id use a list,
+  e.g. ``["id1", "id2"]``)
+* ``amount``: amount payed
 
 Returns the id of the created bill ::
 
@@ -151,15 +154,16 @@ Returns the id of the created bill ::
     -d "date=2011-09-10&what=raclette&payer=31&payed_for=31&amount=200"
     80
 
-You can also `PUT` a new version of the bill at
-`/api/projects/<id>/bills/<bill-id>`::
+You can also ``PUT`` a new version of the bill at
+``/api/projects/<id>/bills/<bill-id>``::
 
     $ curl --basic -u demo:demo -X PUT\
     https://ihatemoney.org/api/projects/demo/bills/80\
     -d "date=2011-09-10&what=raclette&payer=31&payed_for=31&amount=250"
     80
 
-And you can of course `DELETE` them at `/api/projects/<id>/bills/<bill-id>`::
+And you can of course ``DELETE`` them at
+``/api/projects/<id>/bills/<bill-id>``::
 
     $ curl --basic -u demo:demo -X DELETE\
     https://ihatemoney.org/api/projects/demo/bills/80\
@@ -169,7 +173,8 @@ And you can of course `DELETE` them at `/api/projects/<id>/bills/<bill-id>`::
 Statistics
 ----------
 
-You can get some project stats with a `GET` on `/api/projects/<id>/statistics`::
+You can get some project stats with a ``GET`` on
+``/api/projects/<id>/statistics``::
 
     $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo/statistics
     [

@@ -2,8 +2,8 @@ Installation
 ############
 
 We lack some knowledge about packaging to make Ihatemoney installable on mainstream
-Linux distributions. If you want to give us a hand on the topic, please check-out
-`the issue about debian packaging <https://github.com/spiral-project/ihatemoney/issues/227>`_.
+Linux distributions. If you want to give us a hand on the topic, please
+check-out `the issue about debian packaging <https://github.com/spiral-project/ihatemoney/issues/227>`_.
 
 If you are using Yunohost (a server operating system aiming to make self-hosting accessible to anyone),
 you can use the `Ihatemoney package <https://github.com/YunoHost-Apps/ihatemoney_ynh>`_.
@@ -98,8 +98,8 @@ Deploy it
 Now, if you want to deploy it on your own server, you have many options.
 Three of them are documented at the moment.
 
-*Of course, if you want to contribute another configuration, feel free to open a
-pull-request against this repository!*
+*Of course, if you want to contribute another configuration, feel free
+to open a pull-request against this repository!*
 
 
 Whatever your installation option is…
@@ -114,8 +114,8 @@ Whatever your installation option is…
     ihatemoney generate-config ihatemoney.cfg > /etc/ihatemoney/ihatemoney.cfg
     chmod 740 /etc/ihatemoney/ihatemoney.cfg
 
-You probably want to adjust `/etc/ihatemoney/ihatemoney.cfg` contents, you may
-do it later, see `Configuration`_.
+You probably want to adjust ``/etc/ihatemoney/ihatemoney.cfg`` contents,
+you may do it later, see :ref:`configuration`.
 
 
 With Apache and mod_wsgi
@@ -126,8 +126,11 @@ With Apache and mod_wsgi
      chgrp www-data /etc/ihatemoney/ihatemoney.cfg
      chown www-data /var/lib/ihatemoney
 
-2. Install Apache and mod_wsgi - libapache2-mod-wsgi(-py3) for Debian based and mod_wsgi for RedHat based distributions -
-3. Create an Apache virtual host, the command ``ihatemoney generate-config apache-vhost.conf`` will output a good starting point (read and adapt it)
+2. Install Apache and mod_wsgi : ``libapache2-mod-wsgi(-py3)`` for Debian
+   based and ``mod_wsgi`` for RedHat based distributions
+3. Create an Apache virtual host, the command
+   ``ihatemoney generate-config apache-vhost.conf`` will output a good
+   starting point (read and adapt it).
 4. Activate the virtual host if needed and restart Apache
 
 With Nginx, Gunicorn and Supervisord/systemd
@@ -180,13 +183,15 @@ Install Gunicorn::
        systemctl enable ihatemoney.service
        systemctl start ihatemoney.service
 
-4. Copy (and adapt) output of ``ihatemoney generate-config nginx.conf`` with your nginx vhosts [#nginx-vhosts]_
+4. Copy (and adapt) output of ``ihatemoney generate-config nginx.conf``
+   with your nginx vhosts [#nginx-vhosts]_
 5. Reload nginx (and supervisord if you use it). It should be working ;)
 
 .. [#nginx-vhosts] typically, */etc/nginx/conf.d/* or
    */etc/nginx/sites-available*, depending on your distribution.
 
-.. [#systemd-services] ``/etc/systemd/system/ihatemoney.service`` path may change depending on your distribution.
+.. [#systemd-services] ``/etc/systemd/system/ihatemoney.service``
+                       path may change depending on your distribution.
 
 With Docker
 -----------
@@ -202,7 +207,8 @@ Start a daemonized Ihatemoney container::
 Ihatemoney is now available on http://localhost:8000.
 
 All Ihatemoney settings can be passed with ``-e`` parameters
-e.g. with a secure ``SECRET_KEY``, an external mail server and an external database::
+e.g. with a secure ``SECRET_KEY``, an external mail server and an
+external database::
 
     docker run -d -p 8000:8000 \
     -e SECRET_KEY="supersecure" \
@@ -218,127 +224,8 @@ A volume can also be specified to persist the default database file::
 
     docker run -d -p 8000:8000 -v /host/path/to/database:/database ihatemoney
 
-Additional gunicorn parameters can be passed using the docker ``CMD`` parameter.
+Additional gunicorn parameters can be passed using the docker ``CMD``
+parameter.
 For example, use the following command to add more gunicorn workers::
 
     docker run -d -p 8000:8000 ihatemoney -w 3
-
-.. _configuration:
-
-Configuration
-=============
-
-ihatemoney relies on a configuration file. If you run the application for the
-first time, you will need to take a few moments to configure the application
-properly.
-
-Defaults given here, are those for development mode. To know defaults on your
-deployed instance, simply look at your *ihatemoney.cfg*.
-
-Production values are recommended values for use in production.
-
-`SQLALCHEMY_DATABASE_URI`
--------------------------
-
-Specifies the type of backend to use and its location. More information on the
-format used can be found on `the SQLAlchemy documentation`_.
-
-- **default value:** ``sqlite:///tmp/ihatemoney.db``
-- **Production value:** Set it to some path on your disk. Typically
-  ``sqlite:///home/ihatemoney/ihatemoney.db``. Do *not* store it under
-  ``/tmp`` as this folder is cleared at each boot.
-
-If you're using PostgreSQL, Your client must use utf8. Unfortunately, PostgreSQL default
-is to use ASCII. Either change your client settings, or specify the encoding by appending
-`?client_encoding=utf8` to the connection string.
-
-`SECRET_KEY`
-------------
-
-The secret key used to encrypt the cookies.
-
-- **Production value:** `ihatemoney conf-example ihatemoney.cfg` sets it to
-  something random, which is good.
-
-`MAIL_DEFAULT_SENDER`
----------------------
-
-A python tuple describing the name and email address to use when sending emails.
-
-- **Default value:** ``("Budget manager", "budget@notmyidea.org")``
-- **Production value:** Any tuple you want.
-
-`ACTIVATE_DEMO_PROJECT`
------------------------
-
-If set to `True`, a demo project will be available on the frontpage.
-
-- **Default value:** ``True``
-- **Production value:** Usually, you will want to set it to ``False`` for a
-  private instance.
-
-`ADMIN_PASSWORD`
-----------------
-
-Hashed password to access protected endpoints. If left empty, all administrative
-tasks are disabled.
-
-- **Default value:** ``""`` (empty string)
-- **Production value:** To generate the proper password HASH, use
-  ``ihatemoney generate_password_hash`` and copy the output into the value of
-  *ADMIN_PASSWORD*.
-
-`ALLOW_PUBLIC_PROJECT_CREATION`
--------------------------------
-
-If set to ``True``, everyone can create a project without entering the admin
-password. If set to ``False``, the password needs to be entered (and as such,
-defined in the settings).
-
-- **Default value:** : ``True``.
-
-
-`ACTIVATE_ADMIN_DASHBOARD`
---------------------------
-
-If set to `True`, the dashboard will become accessible entering the admin
-password, if set to `True`, a non empty ADMIN_PASSWORD needs to be set.
-
-- **Default value**: ``False``
-
-`APPLICATION_ROOT`
-------------------
-
-If empty, ihatemoney will be served at domain root (e.g: *http://domain.tld*),
-if set to ``"somestring"``, it will be served from a "folder"
-(e.g: *http://domain.tld/somestring*).
-
-- **Default value:** ``""`` (empty string)
-
-.. _the SQLAlchemy documentation: http://docs.sqlalchemy.org/en/latest/core/engines.html#database-urls
-
-Configuring emails sending
---------------------------
-
-By default, Ihatemoney sends emails using a local SMTP server, but it's
-possible to configure it to act differently, thanks to the great
-`Flask-Mail project <https://pythonhosted.org/flask-mail/#configuring-flask-mail>`_
-
-* **MAIL_SERVER** : default **'localhost'**
-* **MAIL_PORT** : default **25**
-* **MAIL_USE_TLS** : default **False**
-* **MAIL_USE_SSL** : default **False**
-* **MAIL_DEBUG** : default **app.debug**
-* **MAIL_USERNAME** : default **None**
-* **MAIL_PASSWORD** : default **None**
-* **DEFAULT_MAIL_SENDER** : default **None**
-
-Using an alternate settings path
---------------------------------
-
-You can put your settings file where you want, and pass its path to the
-application using the ``IHATEMONEY_SETTINGS_FILE_PATH`` environment variable.
-
-e.g.::
-
-    $ export IHATEMONEY_SETTINGS_FILE_PATH="/path/to/your/conf/file.cfg"
