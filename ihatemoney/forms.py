@@ -2,7 +2,7 @@ from flask_wtf.form import FlaskForm
 from wtforms.fields.core import SelectField, SelectMultipleField
 from wtforms.fields.html5 import DateField, DecimalField
 from wtforms.fields.simple import PasswordField, SubmitField, TextAreaField, StringField
-from wtforms.validators import Email, Required, ValidationError, EqualTo, NumberRange
+from wtforms.validators import Email, DataRequired, ValidationError, EqualTo, NumberRange
 from flask_babel import lazy_gettext as _
 from flask import request
 from werkzeug.security import generate_password_hash
@@ -70,9 +70,9 @@ class CalculatorStringField(StringField):
 
 
 class EditProjectForm(FlaskForm):
-    name = StringField(_("Project name"), validators=[Required()])
-    password = StringField(_("Private code"), validators=[Required()])
-    contact_email = StringField(_("Email"), validators=[Required(), Email()])
+    name = StringField(_("Project name"), validators=[DataRequired()])
+    password = StringField(_("Private code"), validators=[DataRequired()])
+    contact_email = StringField(_("Email"), validators=[DataRequired(), Email()])
 
     def save(self):
         """Create a new project with the information given by this form.
@@ -94,8 +94,8 @@ class EditProjectForm(FlaskForm):
 
 
 class ProjectForm(EditProjectForm):
-    id = StringField(_("Project identifier"), validators=[Required()])
-    password = PasswordField(_("Private code"), validators=[Required()])
+    id = StringField(_("Project identifier"), validators=[DataRequired()])
+    password = PasswordField(_("Private code"), validators=[DataRequired()])
     submit = SubmitField(_("Create the project"))
 
     def validate_id(form, field):
@@ -107,18 +107,18 @@ class ProjectForm(EditProjectForm):
 
 
 class AuthenticationForm(FlaskForm):
-    id = StringField(_("Project identifier"), validators=[Required()])
-    password = PasswordField(_("Private code"), validators=[Required()])
+    id = StringField(_("Project identifier"), validators=[DataRequired()])
+    password = PasswordField(_("Private code"), validators=[DataRequired()])
     submit = SubmitField(_("Get in"))
 
 
 class AdminAuthenticationForm(FlaskForm):
-    admin_password = PasswordField(_("Admin password"), validators=[Required()])
+    admin_password = PasswordField(_("Admin password"), validators=[DataRequired()])
     submit = SubmitField(_("Get in"))
 
 
 class PasswordReminder(FlaskForm):
-    id = StringField(_("Project identifier"), validators=[Required()])
+    id = StringField(_("Project identifier"), validators=[DataRequired()])
     submit = SubmitField(_("Send me the code by email"))
 
     def validate_id(form, field):
@@ -127,20 +127,20 @@ class PasswordReminder(FlaskForm):
 
 
 class ResetPasswordForm(FlaskForm):
-    password_validators = [Required(),
+    password_validators = [DataRequired(),
                            EqualTo('password_confirmation', message=_("Password mismatch"))]
     password = PasswordField(_("Password"), validators=password_validators)
-    password_confirmation = PasswordField(_("Password confirmation"), validators=[Required()])
+    password_confirmation = PasswordField(_("Password confirmation"), validators=[DataRequired()])
     submit = SubmitField(_("Reset password"))
 
 
 class BillForm(FlaskForm):
-    date = DateField(_("Date"), validators=[Required()], default=datetime.now)
-    what = StringField(_("What?"), validators=[Required()])
-    payer = SelectField(_("Payer"), validators=[Required()], coerce=int)
-    amount = CalculatorStringField(_("Amount paid"), validators=[Required()])
+    date = DateField(_("Date"), validators=[DataRequired()], default=datetime.now)
+    what = StringField(_("What?"), validators=[DataRequired()])
+    payer = SelectField(_("Payer"), validators=[DataRequired()], coerce=int)
+    amount = CalculatorStringField(_("Amount paid"), validators=[DataRequired()])
     payed_for = SelectMultipleField(_("For whom?"),
-                                    validators=[Required()], coerce=int)
+                                    validators=[DataRequired()], coerce=int)
     submit = SubmitField(_("Submit"))
     submit2 = SubmitField(_("Submit and add a new one"))
 
@@ -170,7 +170,7 @@ class BillForm(FlaskForm):
 
 
 class MemberForm(FlaskForm):
-    name = StringField(_("Name"), validators=[Required()])
+    name = StringField(_("Name"), validators=[DataRequired()])
 
     weight_validators = [NumberRange(min=0.1, message=_("Weights should be positive"))]
     weight = CommaDecimalField(_("Weight"), default=1,
