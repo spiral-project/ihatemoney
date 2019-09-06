@@ -1592,7 +1592,7 @@ class CommandTestCase(BaseTestCase):
              patch('getpass.getpass', new=lambda prompt: 'secret'): # NOQA
             cmd.run()
             print(stdout.getvalue())
-            self.assertEqual(len(stdout.getvalue().strip()), 187)
+            self.assertEqual(len(stdout.getvalue().strip()), 189)
 
     def test_demo_project_deletion(self):
         self.create_project('demo')
