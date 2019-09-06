@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-09-24 16:56+0200\n"
+"POT-Creation-Date: 2019-09-30 23:53+0200\n"
 "PO-Revision-Date: 2019-09-19 23:27+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language: nl\n"
@@ -426,6 +426,13 @@ msgstr "Hoeveel?"
 #, python-format
 msgid "Added on %(date)s"
 msgstr "Toegevoegd op %(date)s"
+
+msgid "Everyone"
+msgstr ""
+
+#, python-format
+msgid "Everyone but %(excluded)s"
+msgstr ""
 
 msgid "each"
 msgstr "per persoon"

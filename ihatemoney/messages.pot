@@ -402,6 +402,13 @@ msgstr ""
 msgid "Added on %(date)s"
 msgstr ""
 
+msgid "Everyone"
+msgstr ""
+
+#, python-format
+msgid "Everyone but %(excluded)s"
+msgstr ""
+
 msgid "each"
 msgstr ""
 
