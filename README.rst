@@ -20,7 +20,7 @@ so.
 Requirements
 ============
 
-* **Python**: 2.7, 3.4, 3.5, 3.6, 3.7.
+* **Python**: 2.7, 3.5, 3.6, 3.7.
 * **Backends**: MySQL, PostgreSQL, SQLite, Memory.
 
 Contributing
@@ -29,4 +29,4 @@ Contributing
 Do you wish to contribute to IHateMoney? Fantastic! There's a lot of very
 useful help on the official `contributing
 <https://ihatemoney.readthedocs.io/en/latest/contributing.html>`_ page.
-   
+
