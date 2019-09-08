@@ -3,7 +3,7 @@ Changelog
 
 This document describes changes between each past release.
 
-4.1 (unreleased)
+4.1 (2019-09-08)
 ----------------
 
 - Documentation has been cleaned and reorganised.
