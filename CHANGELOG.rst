@@ -1,32 +1,41 @@
 Changelog
-=========
+#########
 
 This document describes changes between each past release.
 
 4.1 (2019-09-08)
 ----------------
 
+Added
+=====
+
+- Add a ``compress_assets`` target in the makefile to compress PNG (#459)
+- Document how to use systemd (#435)
+- Add support for python 3.7
+- Add links to documentation, mobile app and git repository in the
+  footer (#445)
+- Use weblate to handle translations
+- Add dutch translation
+- Add project switcher on login page if already logged (#445)
+
+
+Changed
+=======
+
 - Documentation has been cleaned and reorganised.
 - Display a placeholder when no entries are present in the bill
   list. (#457)
 - Disable the "add bill" action until members are present (#457)
 - Improve invitations UX (#451)
+- In the bills list, display the "added on" column as a tooltip (#443)
+- Updated bootstrap to latest stable (#440)
+- Improved "project already exists" message (#442)
+- Improve usability specially for small screen (#441)
 - Replace export forms by links (#450)
 - Rework homepage design (#445)
 - Docker now downloads IHM from Pypy or the reference git repo (#446)
-- Add a ``compress_assets`` target in the makefile to compress PNG (#459)
-- In the bills list, display the "added on" column as a tooltip (#443)
-- Updated bootstrap to latest stable (#440)
-- Document how to use systemd (#435)
-- Add support for python 3.7
-- Improved "project already exists" message (#442)
-- Improve usability specially for small screen (#441)
-- Add links to documentation, mobile app and git repository in the
-  footer (#445)
-- Add project switcher on login page if already logged (#445)
-- Use weblate to handle translations
-- Add dutch translation
 - Arrange navbar items by functions (#445)
+
 
 4.0 (2019-01-24)
 ----------------
@@ -103,7 +112,6 @@ Removed
 2.1 (2018-02-16)
 ----------------
 
-=======
 Changed
 =======
 
