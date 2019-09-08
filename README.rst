@@ -11,11 +11,12 @@ bills.
 
 * `Online documentation <https://ihatemoney.readthedocs.org>`_
 * `Hosted version <https://ihatemoney.org>`_
-* `Mailing list <https://mailman.alwaysdata.com/postorius/lists/info.ihatemoney.org/>`_ (to get updates when needed)
+* `Mailing list <https://mailman.alwaysdata.com/postorius/lists/info.ihatemoney.org/>`_
+  (to get updates when needed).
 
-The code is distributed under a BSD *beerware* derivative: if you meet the people
-in person and you want to pay them a craft beer, you are highly encouraged to do
-so.
+The code is distributed under a BSD *beerware* derivative: if you meet the
+people in person and you want to pay them a craft beer, you are highly
+encouraged to do so.
 
 Requirements
 ============
