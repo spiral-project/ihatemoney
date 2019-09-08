@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import codecs
 import os
 from setuptools import setup, find_packages
 
@@ -8,9 +7,8 @@ here = os.path.abspath(os.path.dirname(__file__))
 
 def read_file(filename):
     """Open a related file and return its content."""
-    with codecs.open(os.path.join(here, filename), encoding='utf-8') as f:
-        content = f.read()
-    return content
+    with open(os.path.join(here, filename), "r") as f:
+        return f.read()
 
 
 def parse_requirements(filename):
@@ -35,7 +33,7 @@ ENTRY_POINTS = {
 setup(name='ihatemoney',
       version='4.1',
       description='A simple shared budget manager web application.',
-      long_description=README.encode('utf-8'),
+      long_description=README,
       license='Custom BSD Beerware',
       classifiers=[
           "Programming Language :: Python",
