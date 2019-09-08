@@ -21,7 +21,6 @@ def parse_requirements(filename):
 
 
 README = read_file('README.rst')
-CHANGELOG = read_file('CHANGELOG.rst')
 
 ENTRY_POINTS = {
     'paste.app_factory': [
@@ -36,7 +35,7 @@ ENTRY_POINTS = {
 setup(name='ihatemoney',
       version='4.1',
       description='A simple shared budget manager web application.',
-      long_description="{}\n\n{}".format(README.encode('utf-8'), CHANGELOG.encode('utf-8')),
+      long_description=README.encode('utf-8'),
       license='Custom BSD Beerware',
       classifiers=[
           "Programming Language :: Python",
