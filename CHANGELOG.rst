@@ -25,7 +25,7 @@ This document describes changes between each past release.
   footer (#445)
 - Add project switcher on login page if already logged (#445)
 - Use weblate to handle translations
-- Add dutch and norvegian translations
+- Add dutch translation
 - Arrange navbar items by functions (#445)
 
 4.0 (2019-01-24)
