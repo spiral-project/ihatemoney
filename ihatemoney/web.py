@@ -271,16 +271,21 @@ def remind_password():
         if form.validate():
             # get the project
             project = Project.query.get(form.id.data)
-
             # send a link to reset the password
             password_reminder = "password_reminder.%s.j2" % get_locale().language
             current_app.mail.send(Message(
                 "password recovery",
                 body=render_template(password_reminder, project=project),
                 recipients=[project.contact_email]))
-            flash(_("A link to reset your password has been sent to your email."))
+            return redirect(url_for(".password_reminder_sent"))
 
     return render_template("password_reminder.html", form=form)
+
+
+@main.route("/password-reminder-sent", methods=["GET"])
+def password_reminder_sent():
+    message = "A link to reset your password has been sent to you, please check your emails"
+    return render_template("display_message.html", title="Password reminder", message=message)
 
 
 @main.route('/reset-password', methods=['GET', 'POST'])
