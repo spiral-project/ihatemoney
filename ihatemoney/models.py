@@ -358,12 +358,13 @@ class Bill(db.Model):
     date = db.Column(db.Date, default=datetime.now)
     creation_date = db.Column(db.Date, default=datetime.now)
     what = db.Column(db.UnicodeText)
+    document = db.Column(db.UnicodeText)
 
     archive = db.Column(db.Integer, db.ForeignKey("archive.id"))
 
     @property
     def _to_serialize(self):
-        return {
+        dict = {
             "id": self.id,
             "payer_id": self.payer_id,
             "owers": self.owers,
@@ -372,6 +373,9 @@ class Bill(db.Model):
             "creation_date": self.creation_date,
             "what": self.what,
         }
+        if self.document:
+            dict["document"] = self.document
+        return dict
 
     def pay_each(self):
         """Compute what each share has to pay"""

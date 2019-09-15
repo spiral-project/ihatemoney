@@ -290,7 +290,8 @@ footer .footer-left {
 }
 
 .bill-actions > .delete,
-.bill-actions > .edit {
+.bill-actions > .edit,
+.bill-actions > .see {
   font-size: 0px;
   display: block;
   width: 16px;
@@ -306,6 +307,10 @@ footer .footer-left {
 
 .bill-actions > .edit {
   background: url("../images/edit.png") no-repeat right;
+}
+
+.bill-actions > .see {
+  background: url("../images/see.png") no-repeat right;
 }
 
 #bill_table {
