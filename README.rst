@@ -30,3 +30,4 @@ Contributing
 Do you wish to contribute to IHateMoney? Fantastic! There's a lot of very
 useful help on the official `contributing
 <https://ihatemoney.readthedocs.io/en/latest/contributing.html>`_ page.
+

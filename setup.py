@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 import os
+import sys
+
+from io import open
 from setuptools import setup, find_packages
 
 here = os.path.abspath(os.path.dirname(__file__))
-
-
-def read_file(filename):
-    """Open a related file and return its content."""
-    with open(os.path.join(here, filename), "r") as f:
-        return f.read()
 
 
 def parse_requirements(filename):
@@ -18,7 +15,12 @@ def parse_requirements(filename):
         return [line for line in lineiter if line and not line.startswith("#")]
 
 
-README = read_file('README.rst')
+README = open('README.rst', encoding='utf-8').read()
+CHANGELOG = open('CHANGELOG.rst', encoding='utf-8').read()
+
+description = u'\n'.join([README, CHANGELOG])
+if sys.version_info.major < 3:
+    description = description.encode('utf-8')
 
 ENTRY_POINTS = {
     'paste.app_factory': [
@@ -33,7 +35,7 @@ ENTRY_POINTS = {
 setup(name='ihatemoney',
       version='4.1',
       description='A simple shared budget manager web application.',
-      long_description=README,
+      long_description=description,
       license='Custom BSD Beerware',
       classifiers=[
           "Programming Language :: Python",
