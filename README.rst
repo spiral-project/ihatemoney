@@ -5,7 +5,7 @@ I hate money
    :target: https://travis-ci.org/spiral-project/ihatemoney
    :alt: Travis CI Build Status
 
-«I hate money» is a web application made to ease shared budget management.
+*I hate money* is a web application made to ease shared budget management.
 It keeps track of who bought what, when, and for whom; and helps to settle the
 bills.
 

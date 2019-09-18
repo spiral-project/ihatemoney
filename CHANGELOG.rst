@@ -3,10 +3,10 @@ Changelog
 
 This document describes changes between each past release.
 
-4.2 (unreleased)
+4.1.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Fix readme to upload to PyPI.
 
 
 4.1.1 (2019-09-18)

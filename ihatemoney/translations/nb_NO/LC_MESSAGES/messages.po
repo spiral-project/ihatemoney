@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-06 23:11+0200\n"
+"POT-Creation-Date: 2019-09-18 21:34+0200\n"
 "PO-Revision-Date: 2019-08-01 05:14+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language: nb_NO\n"
@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.7.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -145,10 +145,6 @@ msgstr "Du har akkurat opprettet \"%(project)s\" for å dele dine utgifter"
 #, fuzzy, python-format
 msgid "%(msg_compl)sThe project identifier is %(project)s"
 msgstr "%(msg_compl)sProsjektidentifikatoren er %(project)s"
-
-#, fuzzy
-msgid "A link to reset your password has been sent to your email."
-msgstr "En lenke for å tilbakestille passordet har blitt sent til deg per e-post."
 
 msgid "No token provided"
 msgstr "Inget symbol angitt"
@@ -465,6 +461,14 @@ msgstr ""
 msgid "Password reminder"
 msgstr "Passordpåminner"
 
+msgid ""
+"A link to reset your password has been sent to you, please check your "
+"emails."
+msgstr ""
+
+msgid "Return to home page"
+msgstr ""
+
 msgid "Your projects"
 msgstr "Dine prosjekter"
 
@@ -627,4 +631,10 @@ msgstr "Kontobalanse"
 #~ "dele prosjektidentifikatoeren og det delte"
 #~ "\n"
 #~ "passordet på annet vis. Du kan også dele det følgende lenke direkte:"
+
+#~ msgid "A link to reset your password has been sent to your email."
+#~ msgstr ""
+#~ "En lenke for å tilbakestille passordet"
+#~ " har blitt sent til deg per "
+#~ "e-post."
 

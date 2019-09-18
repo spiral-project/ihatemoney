@@ -165,6 +165,11 @@ In order to prepare a new release, we are following the following steps:
 
     make compress-assets
 
+- Build the translations::
+ 
+    make update-translations
+    make build-translations
+
 Once this is done, use the "release" instruction::
 
     make release

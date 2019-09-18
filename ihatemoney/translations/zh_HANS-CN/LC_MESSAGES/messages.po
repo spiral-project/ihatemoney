@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-06 23:11+0200\n"
+"POT-Creation-Date: 2019-09-18 21:34+0200\n"
 "PO-Revision-Date: 2019-07-02 00:02+0000\n"
 "Last-Translator: Elizabeth Sherrock <lizzyd710@gmail.com>\n"
 "Language: zh_HANS_CN\n"
@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.7.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -137,9 +137,6 @@ msgstr ""
 
 #, python-format
 msgid "%(msg_compl)sThe project identifier is %(project)s"
-msgstr ""
-
-msgid "A link to reset your password has been sent to your email."
 msgstr ""
 
 msgid "No token provided"
@@ -444,6 +441,14 @@ msgstr ""
 msgid "Password reminder"
 msgstr ""
 
+msgid ""
+"A link to reset your password has been sent to you, please check your "
+"emails."
+msgstr ""
+
+msgid "Return to home page"
+msgstr ""
+
 msgid "Your projects"
 msgstr ""
 
@@ -586,5 +591,8 @@ msgstr ""
 #~ "password by other communication means. "
 #~ "Or even directly share the following "
 #~ "link:"
+#~ msgstr ""
+
+#~ msgid "A link to reset your password has been sent to your email."
 #~ msgstr ""
 

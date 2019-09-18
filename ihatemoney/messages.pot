@@ -121,9 +121,6 @@ msgstr ""
 msgid "%(msg_compl)sThe project identifier is %(project)s"
 msgstr ""
 
-msgid "A link to reset your password has been sent to your email."
-msgstr ""
-
 msgid "No token provided"
 msgstr ""
 
@@ -424,6 +421,14 @@ msgid "add participants"
 msgstr ""
 
 msgid "Password reminder"
+msgstr ""
+
+msgid ""
+"A link to reset your password has been sent to you, please check your "
+"emails."
+msgstr ""
+
+msgid "Return to home page"
 msgstr ""
 
 msgid "Your projects"
