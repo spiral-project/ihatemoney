@@ -284,12 +284,7 @@ def remind_password():
 
 @main.route("/password-reminder-sent", methods=["GET"])
 def password_reminder_sent():
-    message = "A link to reset your password has been sent to you, please check your emails."
-    return render_template(
-        "password_reminder_sent.html",
-        title="Password reminder",
-        message=message
-        )
+    return render_template("password_reminder_sent.html")
 
 
 @main.route('/reset-password', methods=['GET', 'POST'])
