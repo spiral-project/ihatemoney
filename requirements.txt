@@ -19,7 +19,6 @@ itsdangerous==1.1.0
 Jinja2==2.10.1
 Mako==1.1.0
 MarkupSafe==1.1.1
-pkg-resources==0.0.0
 python-dateutil==2.8.0
 pytz==2019.2
 six==1.12.0

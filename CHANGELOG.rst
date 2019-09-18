@@ -3,19 +3,14 @@ Changelog
 
 This document describes changes between each past release.
 
-4.1.2 (2019-09-18)
-==================
-
-- Fix readme to upload to PyPI.
-
-
-4.1.1 (2019-09-18)
+4.1.3 (2019-09-18)
 ==================
 
 Fixed
 -----
 
 - Fix packaging. Previous (4.1) release wasn't pip-installable on all systems.
+- Fix readme and requirements.txt to upload to PyPI.
 
 Changed
 -------
