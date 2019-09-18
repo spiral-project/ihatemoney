@@ -3,8 +3,8 @@ Changelog
 
 This document describes changes between each past release.
 
-4.1.1 (XXX)
------------
+4.1.1 (2019-09-18)
+------------------
 
 Fixed
 =====
