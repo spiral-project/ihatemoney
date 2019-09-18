@@ -3,6 +3,19 @@ Changelog
 
 This document describes changes between each past release.
 
+4.1.1 (XXX)
+-----------
+
+Fixed
+=====
+
+- Fix packaging. Previous (4.1) release wasn't pip-installable on all systems.
+
+Changed
+=======
+
+- Display password reminder message on a new page rather than on a flash message (#455, #469)
+
 4.1 (2019-09-08)
 ----------------
 
