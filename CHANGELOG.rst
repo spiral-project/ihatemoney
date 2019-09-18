@@ -4,29 +4,29 @@ Changelog
 This document describes changes between each past release.
 
 4.1.2 (2019-09-18)
-------------------
+==================
 
 - Fix readme to upload to PyPI.
 
 
 4.1.1 (2019-09-18)
-------------------
+==================
 
 Fixed
-=====
+-----
 
 - Fix packaging. Previous (4.1) release wasn't pip-installable on all systems.
 
 Changed
-=======
+-------
 
 - Display password reminder message on a new page rather than on a flash message (#455, #469)
 
 4.1 (2019-09-08)
-----------------
+================
 
 Added
-=====
+-----
 
 - Add a ``compress_assets`` target in the makefile to compress PNG (#459)
 - Document how to use systemd (#435)
@@ -37,9 +37,8 @@ Added
 - Add dutch translation
 - Add project switcher on login page if already logged (#445)
 
-
 Changed
-=======
+-------
 
 - Documentation has been cleaned and reorganised.
 - Display a placeholder when no entries are present in the bill
@@ -57,10 +56,10 @@ Changed
 
 
 4.0 (2019-01-24)
-----------------
+================
 
 Added
-=====
+-----
 
 - Add CORS headers in the API (#407)
 - Document database migrations (#390)
@@ -69,23 +68,23 @@ Added
 - Document PostgreSQL configuration (#415)
 
 Fixed
-=====
+-----
 
 - Do not allow negative weights on users (#366)
 - Fix docker image (#398)
 - minor documentation changes
 
 Changed
-=======
+-------
 
 - Update API project list (#405)
 
 
 3.0 (2018-11-25)
-----------------
+================
 
 Fixed
-=====
+-----
 
 - Fix broken install with pip ≥ 10 (#340)
 - Fix the generation of the supervisord template (#309)
@@ -105,7 +104,7 @@ Fixed
 - Fix cffi installation in Dockerfile (#364)
 
 Added
-=====
+-----
 
 - Document MySQL setup (#357)
 - Add a favicon.ico  (#381)
@@ -115,7 +114,7 @@ Added
 - Add nice 404 error pages (#379)
 
 Changed
-=======
+-------
 
 - Enhance translation tooling (#360)
 - Improve Makefile (#387)
@@ -123,29 +122,29 @@ Changed
 - Underline actions links on hover (#377)
 
 Removed
-=======
+-------
 
 - Remove Sentry, as it's not used anymore on prod. (#380)
 
 
 2.1 (2018-02-16)
-----------------
+================
 
 Changed
-=======
+-------
 
 - Use flask-restful instead of deprecated flask-rest for the REST API (#315)
 - Make sidebar scrollable. Usefull for large groups (#316)
 
 Fixed
-=====
+-----
 
 - Fix the "IOError" crash when running `ihatemoney generate-config` (#308)
 - Made the left-hand sidebar scrollable (#318)
 - Fix and enhanche Docker support (#320, #321)
 
 Added
-=====
+-----
 
 - Statistics API (#343)
 - Allow to disable/enable member via API (#301)
@@ -153,10 +152,10 @@ Added
 
 
 2.0 (2017-12-27)
-----------------
+================
 
 Breaking changes
-================
+----------------
 
 - ``ADMIN_PASSWORD`` is now stored hashed. The ``ihatemoney generate_password_hash`` command can now be used to generate a proper password HASH (#236)
 - Turn the WSGI file into a python module, renamed from budget/ihatemoney.wsgi to ihatemoney/wsgi.py. Please update your Apache/Gunicorn configuration! (#218)
@@ -164,7 +163,7 @@ Breaking changes
 - `password` field has been removed from project API GET views (#289)
 
 Changed
-=======
+-------
 
 - Logged admin can see any project (#262)
 - Simpler and safer authentication logic (#270)
@@ -174,7 +173,7 @@ Changed
 - Use hashed passwords for projects (#286)
 
 Added
-=====
+-----
 
 - ``ihatemoney generate-config`` to give working examples of config files (#275)
 - Statistics tab (#257)
@@ -187,21 +186,21 @@ Added
 - Documentation explaining the upgrade process
 
 Fixed
-=====
+-----
 
 - Fix `PUT api/project/:code/members/:id` API endpoint (#295)
 - Fix member name uniqueness validation on API (#299)
 
 Removed
-=======
+-------
 
 - Remove unused option in the setup script
 
 1.0 (2017-06-20)
-----------------
+================
 
 Added
-=====
+-----
 
 - Apache WSGI Support (#191)
 - Brush up the Makefile (#207, #201)
@@ -211,18 +210,18 @@ Added
 - More responsive layout (#213)
 
 Changed
-=======
+-------
 
 - Some README enhancements
 - Move tests to budget.tests (#205)
 - The demo project can be disabled (#209)
 
 Fixed
-=====
+-----
 
 - Fix sphinx integration (#208)
 
 0.9 (2017-04-04)
-----------------
+================
 
 - First release of the project.
