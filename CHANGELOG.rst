@@ -3,8 +3,8 @@ Changelog
 
 This document describes changes between each past release.
 
-4.1.2 (unreleased)
-----------------
+4.1.2 (2019-09-18)
+------------------
 
 - Fix readme to upload to PyPI.
 
