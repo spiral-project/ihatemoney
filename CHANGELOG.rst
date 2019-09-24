@@ -6,7 +6,7 @@ This document describes changes between each past release.
 4.2 (unreleased)
 ================
 
-- Nothing changed yet.
+- Add support for espanol latino america (es_419)
 
 
 4.1.3 (2019-09-18)
