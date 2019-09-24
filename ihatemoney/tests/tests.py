@@ -859,7 +859,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             members[t['receiver']] += t['amount']
         balance = models.Project.query.get("raclette").balance
         for m, a in members.items():
-            self.assertEqual(a, balance[m.id])
+            assert abs(a - balance[m.id]) < 0.01
         return
 
     def test_settle_zero(self):
@@ -980,18 +980,23 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         # generate json export of transactions
         resp = self.client.get("/raclette/export/transactions.json")
-        expected = [{"amount": 127.33, "receiver": "fred", "ower": "alexis"},
-                    {"amount": 55.34, "receiver": "fred", "ower": "tata"},
-                    {"amount": 2.00, "receiver": "fred", "ower": "p\xe9p\xe9"}]
+        expected = [
+            {"amount": 2.00, "receiver": "fred", "ower": "p\xe9p\xe9"},
+            {"amount": 55.34, "receiver": "fred", "ower": "tata"},
+            {"amount": 127.33, "receiver": "fred", "ower": "alexis"},
+        ]
+
         self.assertEqual(json.loads(resp.data.decode('utf-8')), expected)
 
         # generate csv export of transactions
         resp = self.client.get("/raclette/export/transactions.csv")
 
-        expected = ["amount,receiver,ower",
-                    "127.33,fred,alexis",
-                    "55.34,fred,tata",
-                    "2.0,fred,pépé"]
+        expected = [
+            "amount,receiver,ower",
+            "2.0,fred,pépé",
+            "55.34,fred,tata",
+            "127.33,fred,alexis",
+        ]
         received_lines = resp.data.decode('utf-8').split("\n")
 
         for i, line in enumerate(expected):

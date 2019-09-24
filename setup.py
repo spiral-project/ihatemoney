@@ -7,14 +7,6 @@ from setuptools import setup, find_packages
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-
-def parse_requirements(filename):
-    """ load requirements from a pip requirements file """
-    with open(filename) as lines:
-        lineiter = (line.strip() for line in lines)
-        return [line for line in lineiter if line and not line.startswith("#")]
-
-
 README = open('README.rst', encoding='utf-8').read()
 CHANGELOG = open('CHANGELOG.rst', encoding='utf-8').read()
 
@@ -30,7 +22,6 @@ ENTRY_POINTS = {
         'ihatemoney = ihatemoney.manage:main'
     ],
 }
-
 
 setup(name='ihatemoney',
       version='4.2.dev0',
@@ -69,5 +60,6 @@ setup(name='ihatemoney',
           "flask-cors",
           "six",
           "itsdangerous",
-          "email_validator"],
+          "email_validator",
+          "debts"],
       entry_points=ENTRY_POINTS)

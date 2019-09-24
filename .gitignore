@@ -7,3 +7,6 @@ docs/_build/
 .tox
 dist
 .cache/
+build
+.vscode
+.env

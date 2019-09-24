@@ -4,6 +4,7 @@ from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy, BaseQuery
 from flask import g, current_app
 
+from debts import settle
 from sqlalchemy import orm
 from itsdangerous import (TimedJSONWebSignatureSerializer, URLSafeSerializer,
                           BadSignature, SignatureExpired)
@@ -106,46 +107,14 @@ class Project(db.Model):
             return pretty_transactions
 
         # cache value for better performance
-        balance = self.balance
-        credits, debts, transactions = [], [], []
-        # Create lists of credits and debts
-        for person in self.members:
-            if round(balance[person.id], 2) > 0:
-                credits.append({"person": person, "balance": balance[person.id]})
-            elif round(balance[person.id], 2) < 0:
-                debts.append({"person": person, "balance": -balance[person.id]})
+        members = {person.id: person for person in self.members}
+        settle_plan = settle(self.balance.items()) or []
 
-        # Try and find exact matches
-        for credit in credits:
-            match = self.exactmatch(round(credit["balance"], 2), debts)
-            if match:
-                for m in match:
-                    transactions.append({
-                        "ower": m["person"],
-                        "receiver": credit["person"],
-                        "amount": m["balance"]
-                    })
-                    debts.remove(m)
-                credits.remove(credit)
-        # Split any remaining debts & credits
-        while credits and debts:
-
-            if credits[0]["balance"] > debts[0]["balance"]:
-                transactions.append({
-                    "ower": debts[0]["person"],
-                    "receiver": credits[0]["person"],
-                    "amount": debts[0]["balance"]
-                })
-                credits[0]["balance"] = credits[0]["balance"] - debts[0]["balance"]
-                del debts[0]
-            else:
-                transactions.append({
-                    "ower": debts[0]["person"],
-                    "receiver": credits[0]["person"],
-                    "amount": credits[0]["balance"]
-                })
-                debts[0]["balance"] = debts[0]["balance"] - credits[0]["balance"]
-                del credits[0]
+        transactions = [{
+            'ower': members[ower_id],
+            'receiver': members[receiver_id],
+            'amount': amount
+        } for ower_id, amount, receiver_id in settle_plan]
 
         return prettify(transactions, pretty_output)
 
