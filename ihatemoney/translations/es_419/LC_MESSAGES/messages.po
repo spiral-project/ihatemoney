@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-24 16:56+0200\n"
-"PO-Revision-Date: 2019-09-24 14:47+0000\n"
+"PO-Revision-Date: 2019-09-25 22:28+0000\n"
 "Last-Translator: Diego Caraballo <diegocaraballo84@gmail.com>\n"
+"Language-Team: Spanish (Latin America) <https://hosted.weblate.org/projects/"
+"i-hate-money/i-hate-money/es_419/>\n"
 "Language: es_419\n"
-"Language-Team: Spanish (Latin America) "
-"<https://hosted.weblate.org/projects/i-hate-money/i-hate-money/es_419/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9-dev\n"
 "Generated-By: Babel 2.7.0\n"
 
 msgid ""
@@ -318,13 +318,13 @@ msgid "Try out the demo"
 msgstr "Prueba la demo"
 
 msgid "You're sharing a house?"
-msgstr "¿Estás compartiendo una casa?"
+msgstr "Estás compartiendo una casa?"
 
 msgid "Going on holidays with friends?"
-msgstr "¿Te vas de vacaciones con amigos?"
+msgstr "Te vas de vacaciones con amigos?"
 
 msgid "Simply sharing money with others?"
-msgstr "¿Simplemente compartes dinero con otros?"
+msgstr "Simplemente compartes dinero con otros?"
 
 msgid "We can help!"
 msgstr "Nosotros podemos ayudarte!"
@@ -525,4 +525,3 @@ msgstr "gastado"
 
 msgid "Balance"
 msgstr "Balance"
-
