@@ -186,7 +186,7 @@ class MemberForm(FlaskForm):
         if field.data == form.name.default:
             raise ValidationError(_("User name incorrect"))
         if (not form.edit and Person.query.filter(
-                Person.name == field.data,
+                Person.name == field.data.strip(),
                 Person.project == form.project,
                 Person.activated == True).all()):  # NOQA
             raise ValidationError(_("This project already have this member"))
