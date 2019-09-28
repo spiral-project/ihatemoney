@@ -1,8 +1,8 @@
 from flask_wtf.form import FlaskForm
 from wtforms.fields.core import SelectField, SelectMultipleField
-from wtforms.fields.html5 import DateField, DecimalField
+from wtforms.fields.html5 import DateField, DecimalField, URLField
 from wtforms.fields.simple import PasswordField, SubmitField, TextAreaField, StringField
-from wtforms.validators import Email, DataRequired, ValidationError, EqualTo, NumberRange
+from wtforms.validators import Email, DataRequired, ValidationError, EqualTo, NumberRange, Optional
 from flask_babel import lazy_gettext as _
 from flask import request
 from werkzeug.security import generate_password_hash
@@ -146,6 +146,8 @@ class BillForm(FlaskForm):
     what = StringField(_("What?"), validators=[DataRequired()])
     payer = SelectField(_("Payer"), validators=[DataRequired()], coerce=int)
     amount = CalculatorStringField(_("Amount paid"), validators=[DataRequired()])
+    external_link = URLField(_("External link"), validators=[Optional(
+    )], description="A link to an external document, related to this bill")
     payed_for = SelectMultipleField(_("For whom?"),
                                     validators=[DataRequired()], coerce=int)
     submit = SubmitField(_("Submit"))
@@ -155,6 +157,7 @@ class BillForm(FlaskForm):
         bill.payer_id = self.payer.data
         bill.amount = self.amount.data
         bill.what = self.what.data
+        bill.external_link = self.external_link.data
         bill.date = self.date.data
         bill.owers = [Person.query.get(ower, project)
                       for ower in self.payed_for.data]
@@ -165,6 +168,7 @@ class BillForm(FlaskForm):
         self.payer.data = bill.payer_id
         self.amount.data = bill.amount
         self.what.data = bill.what
+        self.external_link.data = bill.external_link
         self.date.data = bill.date
         self.payed_for.data = [int(ower.id) for ower in bill.owers]
 

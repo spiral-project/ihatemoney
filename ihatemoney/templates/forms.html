@@ -14,7 +14,7 @@
             {{ field(class=class, placeholder=placeholder) | safe }}
         {% endif %}
         {% if field.description %}
-            <p class="help-inline">{{ field.description }}</p>
+            <small id="{{field.name}}_description"" class="form-text text-muted">{{ field.description }}</small>
         {% endif %}
         </div>
     </div>
@@ -95,6 +95,7 @@
     {{ input(form.what, inline=True) }}
     {{ input(form.payer, inline=True, class="form-control custom-select") }}
     {{ input(form.amount, inline=True) }}
+    {{ input(form.external_link, inline=True) }}
 
     <div class="form-group row">
         <label class="col-3" for="payed_for">{{ _("For whom?") }}</label>

@@ -327,6 +327,7 @@ class Bill(db.Model):
     date = db.Column(db.Date, default=datetime.now)
     creation_date = db.Column(db.Date, default=datetime.now)
     what = db.Column(db.UnicodeText)
+    external_link = db.Column(db.UnicodeText)
 
     archive = db.Column(db.Integer, db.ForeignKey("archive.id"))
 
@@ -340,6 +341,7 @@ class Bill(db.Model):
             "date": self.date,
             "creation_date": self.creation_date,
             "what": self.what,
+            "external_link": self.external_link,
         }
 
     def pay_each(self):
