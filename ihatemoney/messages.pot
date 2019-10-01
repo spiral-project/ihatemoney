@@ -60,6 +60,12 @@ msgstr ""
 msgid "Amount paid"
 msgstr ""
 
+msgid "External link"
+msgstr ""
+
+msgid "A link to an external document, related to this bill"
+msgstr ""
+
 msgid "For whom?"
 msgstr ""
 
@@ -410,6 +416,9 @@ msgid "Everyone but %(excluded)s"
 msgstr ""
 
 msgid "each"
+msgstr ""
+
+msgid "see"
 msgstr ""
 
 msgid "No bills"

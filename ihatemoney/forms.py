@@ -147,7 +147,7 @@ class BillForm(FlaskForm):
     payer = SelectField(_("Payer"), validators=[DataRequired()], coerce=int)
     amount = CalculatorStringField(_("Amount paid"), validators=[DataRequired()])
     external_link = URLField(_("External link"), validators=[Optional(
-    )], description="A link to an external document, related to this bill")
+    )], description=_("A link to an external document, related to this bill"))
     payed_for = SelectMultipleField(_("For whom?"),
                                     validators=[DataRequired()], coerce=int)
     submit = SubmitField(_("Submit"))

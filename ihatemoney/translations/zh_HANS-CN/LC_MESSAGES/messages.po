@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-30 23:53+0200\n"
+"POT-Creation-Date: 2019-10-01 21:48+0200\n"
 "PO-Revision-Date: 2019-07-02 00:02+0000\n"
 "Last-Translator: Elizabeth Sherrock <lizzyd710@gmail.com>\n"
 "Language: zh_HANS_CN\n"
@@ -76,6 +76,12 @@ msgid "Payer"
 msgstr ""
 
 msgid "Amount paid"
+msgstr ""
+
+msgid "External link"
+msgstr ""
+
+msgid "A link to an external document, related to this bill"
 msgstr ""
 
 msgid "For whom?"
@@ -428,6 +434,9 @@ msgid "Everyone but %(excluded)s"
 msgstr ""
 
 msgid "each"
+msgstr ""
+
+msgid "see"
 msgstr ""
 
 msgid "No bills"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-30 23:53+0200\n"
+"POT-Creation-Date: 2019-10-01 21:48+0200\n"
 "PO-Revision-Date: 2019-09-25 22:28+0000\n"
 "Last-Translator: Diego Caraballo <diegocaraballo84@gmail.com>\n"
 "Language: es_419\n"
@@ -80,6 +80,12 @@ msgstr "Paga"
 
 msgid "Amount paid"
 msgstr "Cantidad pagada"
+
+msgid "External link"
+msgstr ""
+
+msgid "A link to an external document, related to this bill"
+msgstr ""
 
 msgid "For whom?"
 msgstr "¿Para quién?"
@@ -442,6 +448,9 @@ msgstr ""
 
 msgid "each"
 msgstr "Cada"
+
+msgid "see"
+msgstr ""
 
 msgid "No bills"
 msgstr "Sin facturas"
