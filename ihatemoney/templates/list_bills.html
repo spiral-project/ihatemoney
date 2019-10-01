@@ -97,13 +97,23 @@
         </div>
     </div>
 
-    {% if bills.count() > 0 %}
+{% if bills.pages > 1 %}
+    <span id="previous-page" class="float-left">
+      <a class="btn btn-outline-secondary float-left {% if bills.page == 1 %}disabled{% endif %}" href="{{ url_for('main.list_bills', page=bills.prev_num) }}">&laquo; {{ _("Newer bills") }}</a>
+    </span>
+
+    <span id="next-page" class="float-left">
+      <a class="btn btn-outline-secondary float-left {% if bills.page == bills.pages %}disabled{% endif %}" href="{{ url_for('main.list_bills', page=bills.next_num) }}">{{ _("Older bills") }} &raquo;</a>
+    </span>
+{% endif %}
+
+    {% if bills.total > 0 %}
         <div class="clearfix"></div>
 
         <table id="bill_table" class="col table table-striped table-hover table-responsive-sm">
             <thead><tr><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</<th><th>{{ _("For what?") }}</th><th>{{ _("For whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Actions") }}</th></tr></thead>
         <tbody>
-        {% for bill in bills %}
+        {% for bill in bills.items %}
         <tr owers="{{bill.owers|join(',','id')}}" payer="{{bill.payer.id}}">
                 <td>
                     <span data-toggle="tooltip" data-placement="top"
@@ -132,6 +142,20 @@
         {% endfor %}
         </tbody>
         </table>
+
+{% if bills.pages > 1 %}
+<ul class="pagination">
+  <li class="page-item {% if bills.page == 1 %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.prev_num) }}">&laquo; Newer bills</a></li>
+  {%- for page in bills.iter_pages() %}
+  {% if page %}
+  <li class="page-item {% if page == bills.page %}active{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=page) }}">{{ page }}</a></li>
+  {% else %}
+  <li class="page-item disabled"><span class="ellipsis page-link">…</span></li>
+  {% endif %}
+  {%- endfor %}
+  <li class="page-item {% if bills.page == bills.pages %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.next_num) }}">Older bills &raquo;</a></li>
+</ul>
+{% endif %}
 
     {% else %}
         <div class="py-3 d-flex justify-content-center empty-bill">

@@ -586,7 +586,11 @@ def list_bills():
     if "last_selected_payer" in session:
         bill_form.payer.data = session["last_selected_payer"]
     # Preload the "owers" relationship for all bills
-    bills = g.project.get_bills().options(orm.subqueryload(Bill.owers))
+    bills = (
+        g.project.get_bills()
+        .options(orm.subqueryload(Bill.owers))
+        .paginate(per_page=100, error_out=True)
+    )
 
     return render_template(
         "list_bills.html",
