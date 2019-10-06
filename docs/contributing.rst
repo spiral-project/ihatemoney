@@ -109,18 +109,15 @@ know how to implement them, feel free to fork and make a pull request.
 As a translator
 ---------------
 
-Collect all new strings to translate::
+If you're able to translate Ihatemoney in your own language,
+head over to `the website we use for translations <https://hosted.weblate.org/settings/i-hate-money/i-hate-money/>`_
+and start translating!
 
-  make update-translations
+All the heavy lifting will be done automatically, and your strings will
+eventually be integrated.
 
-Add missing translations to *.po* files inside *translations/* dir using your
-favorite text editor.
-
-Compile them into *.mo* files::
-
-  make build-translations
-
-Commit both *.mo* and *.po*.
+Once a language is ready to be integrated, add it to the
+``SUPPORTED_LANGUAGES`` list, in ``ihatemoney/default_settings.py``.
 
 End-user
 --------
@@ -133,7 +130,7 @@ will update the issue tracker with your feedback.
 Thanks again!
 
 How to build the documentation ?
-=====================================
+================================
 
 The documentation is using `sphinx <http://www.sphinx-doc.org/en/stable/>`_ and
 its source is located inside the `docs folder
@@ -177,5 +174,5 @@ Once this is done, use the "release" instruction::
 And the new version should be published on PyPI.
 
 .. note:: The above command will prompt for version number, handle
-          :file:`CHANGELOG.rst` and :file:`setup.py` updates, package creation,
+          :file:`CHANGELOG.rst` and :file:`setup.cfg` updates, package creation,
           pypi upload. It will prompt you before each step to get your consent.
