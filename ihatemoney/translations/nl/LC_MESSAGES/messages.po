@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-09-30 23:53+0200\n"
-"PO-Revision-Date: 2019-10-02 15:56+0000\n"
+"PO-Revision-Date: 2019-10-07 22:56+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/nl/>\n"
@@ -33,7 +33,7 @@ msgid "Project identifier"
 msgstr "Project-id"
 
 msgid "Create the project"
-msgstr "Project creëren"
+msgstr "Project aanmaken"
 
 #, python-format
 msgid ""
@@ -78,10 +78,10 @@ msgid "Amount paid"
 msgstr "Betaald bedrag"
 
 msgid "External link"
-msgstr ""
+msgstr "Externe link"
 
 msgid "A link to an external document, related to this bill"
-msgstr ""
+msgstr "Een link naar een extern document, gerelateerd aan deze rekening"
 
 msgid "For whom?"
 msgstr "Aan wie?"
@@ -139,7 +139,7 @@ msgstr "Deze privécode is onjuist"
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr ""
-"Je hebt zojuist het project '%(project)s' gecreëerd om je uitgaven te "
+"Je hebt zojuist het project '%(project)s' aangemaakt om je uitgaven te "
 "verdelen"
 
 #, python-format
@@ -217,13 +217,13 @@ msgid "The project you are trying to access do not exist, do you want to"
 msgstr "Het project dat je probeert te benaderen bestaat niet. Wil je"
 
 msgid "create it"
-msgstr "het creëren"
+msgstr "het aanmaken"
 
 msgid "?"
 msgstr "?"
 
 msgid "Create a new project"
-msgstr "Nieuw project creëren"
+msgstr "Nieuw project aanmaken"
 
 msgid "Project"
 msgstr "Project"
@@ -339,7 +339,7 @@ msgid "can't remember your password?"
 msgstr "ben je je wachtwoord vergeten?"
 
 msgid "Create"
-msgstr "Creëren"
+msgstr "Maken"
 
 msgid ""
 "This access code will be sent to your friends. It is stored as-is by the "
@@ -444,7 +444,7 @@ msgid "each"
 msgstr "per persoon"
 
 msgid "see"
-msgstr ""
+msgstr "bekijk"
 
 msgid "No bills"
 msgstr "Geen rekeningen"
