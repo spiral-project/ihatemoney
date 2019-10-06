@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-30 23:53+0200\n"
+"POT-Creation-Date: 2019-10-01 21:48+0200\n"
 "PO-Revision-Date: 2019-08-07 13:24+0000\n"
 "Last-Translator: Mesut Akcan <makcan@gmail.com>\n"
 "Language: tr\n"
@@ -80,6 +80,12 @@ msgstr "Mükellefi"
 
 msgid "Amount paid"
 msgstr "Ödenen tutar"
+
+msgid "External link"
+msgstr ""
+
+msgid "A link to an external document, related to this bill"
+msgstr ""
 
 msgid "For whom?"
 msgstr "Kim için?"
@@ -431,6 +437,9 @@ msgid "Everyone but %(excluded)s"
 msgstr ""
 
 msgid "each"
+msgstr ""
+
+msgid "see"
 msgstr ""
 
 msgid "No bills"

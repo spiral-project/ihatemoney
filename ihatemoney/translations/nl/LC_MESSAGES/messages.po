@@ -77,6 +77,12 @@ msgstr "Betaler"
 msgid "Amount paid"
 msgstr "Betaald bedrag"
 
+msgid "External link"
+msgstr ""
+
+msgid "A link to an external document, related to this bill"
+msgstr ""
+
 msgid "For whom?"
 msgstr "Aan wie?"
 
@@ -436,6 +442,9 @@ msgstr "Iedereen, behalve %(excluded)s"
 
 msgid "each"
 msgstr "per persoon"
+
+msgid "see"
+msgstr ""
 
 msgid "No bills"
 msgstr "Geen rekeningen"

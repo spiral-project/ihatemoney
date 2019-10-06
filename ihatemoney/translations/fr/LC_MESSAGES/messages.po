@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-09-30 23:53+0200\n"
+"POT-Creation-Date: 2019-10-01 21:48+0200\n"
 "PO-Revision-Date: 2019-09-24 15:13+0000\n"
 "Last-Translator: Alexis Metaireau <alexis@notmyidea.org>\n"
 "Language: fr\n"
@@ -84,6 +84,12 @@ msgstr "Payeur"
 
 msgid "Amount paid"
 msgstr "Montant"
+
+msgid "External link"
+msgstr "Lien externe"
+
+msgid "A link to an external document, related to this bill"
+msgstr "Un lien vers un document, lié à cette facture"
 
 msgid "For whom?"
 msgstr "Pour qui ?"
@@ -442,6 +448,9 @@ msgstr ""
 
 msgid "each"
 msgstr "chacun"
+
+msgid "see"
+msgstr ""
 
 msgid "No bills"
 msgstr "Pas encore de factures"

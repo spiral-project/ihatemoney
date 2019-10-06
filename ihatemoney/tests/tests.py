@@ -1282,6 +1282,7 @@ class APITestCase(IhatemoneyTestCase):
             'payer': "1",
             'payed_for': ["1", "2"],
             'amount': '25',
+            'external_link': "https://raclette.fr"
         }, headers=self.get_auth("raclette"))
 
         # should return the id
@@ -1302,7 +1303,9 @@ class APITestCase(IhatemoneyTestCase):
                 {"activated": True, "id": 2, "name": "fred", "weight": 1}],
             "amount": 25.0,
             "date": "2011-08-10",
-            "id": 1}
+            "id": 1,
+            'external_link': "https://raclette.fr"
+        }
 
         got = json.loads(req.data.decode('utf-8'))
         self.assertEqual(
@@ -1325,6 +1328,7 @@ class APITestCase(IhatemoneyTestCase):
             'payer': "1",
             'payed_for': ["1", "2"],
             'amount': '25',
+            'external_link': "https://raclette.fr",
         }, headers=self.get_auth("raclette"))
 
         self.assertStatus(400, req)
@@ -1337,6 +1341,7 @@ class APITestCase(IhatemoneyTestCase):
             'payer': "2",
             'payed_for': ["1", "2"],
             'amount': '25',
+            'external_link': "https://raclette.fr",
         }, headers=self.get_auth("raclette"))
 
         # check its fields
@@ -1355,7 +1360,9 @@ class APITestCase(IhatemoneyTestCase):
                 {"activated": True, "id": 2, "name": "fred", "weight": 1}],
             "amount": 25.0,
             "date": "2011-09-10",
-            "id": 1}
+            'external_link': "https://raclette.fr",
+            "id": 1
+            }
 
         got = json.loads(req.data.decode('utf-8'))
         self.assertEqual(
@@ -1427,6 +1434,7 @@ class APITestCase(IhatemoneyTestCase):
                 "amount": expected_amount,
                 "date": "2011-08-10",
                 "id": id,
+                "external_link": '',
             }
 
             got = json.loads(req.data.decode('utf-8'))
@@ -1538,7 +1546,9 @@ class APITestCase(IhatemoneyTestCase):
                 {"activated": True, "id": 2, "name": "freddy familly", "weight": 4}],
             "amount": 25.0,
             "date": "2011-08-10",
-            "id": 1}
+            "id": 1,
+            "external_link": ''
+        }
         got = json.loads(req.data.decode('utf-8'))
         self.assertEqual(
             creation_date,
@@ -1603,7 +1613,7 @@ class CommandTestCase(BaseTestCase):
     def test_generate_password_hash(self):
         cmd = GeneratePasswordHash()
         with patch('sys.stdout', new=six.StringIO()) as stdout, \
-             patch('getpass.getpass', new=lambda prompt: 'secret'): # NOQA
+             patch('getpass.getpass', new=lambda prompt: 'secret'):  # NOQA
             cmd.run()
             print(stdout.getvalue())
             self.assertEqual(len(stdout.getvalue().strip()), 189)
