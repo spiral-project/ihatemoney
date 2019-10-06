@@ -1,5 +1,3 @@
-from __future__ import division
-import base64
 import re
 import os
 import ast
@@ -11,7 +9,6 @@ from json import dumps, JSONEncoder
 from flask import redirect, current_app
 from babel import Locale
 from werkzeug.routing import HTTPException, RoutingException
-import six
 from datetime import datetime, timedelta
 
 import csv
@@ -20,16 +17,13 @@ import csv
 def slugify(value):
     """Normalizes string, converts to lowercase, removes non-alpha characters,
     and converts spaces to hyphens.
-
-    Copy/Pasted from ametaireau/pelican/utils itself took from django sources.
     """
-    if isinstance(value, six.text_type):
+    if isinstance(value, str):
         import unicodedata
-        value = unicodedata.normalize('NFKD', value)
-        if six.PY2:
-            value = value.encode('ascii', 'ignore')
-    value = six.text_type(re.sub(r'[^\w\s-]', '', value).strip().lower())
-    return re.sub(r'[-\s]+', '-', value)
+
+        value = unicodedata.normalize("NFKD", value)
+    value = str(re.sub(r"[^\w\s-]", "", value).strip().lower())
+    return re.sub(r"[-\s]+", "-", value)
 
 
 class Redirect303(HTTPException, RoutingException):
@@ -39,6 +33,7 @@ class Redirect303(HTTPException, RoutingException):
 
     The attribute `new_url` contains the absolute destination url.
     """
+
     code = 303
 
     def __init__(self, new_url):
@@ -51,7 +46,7 @@ class Redirect303(HTTPException, RoutingException):
 
 class PrefixedWSGI(object):
 
-    '''
+    """
     Wrap the application in this middleware and configure the
     front-end server to add these headers, to let you quietly bind
     this to a URL other than / and to an HTTP scheme that is
@@ -62,23 +57,23 @@ class PrefixedWSGI(object):
     Inspired from http://flask.pocoo.org/snippets/35/
 
     :param app: the WSGI application
-    '''
+    """
 
     def __init__(self, app):
         self.app = app
         self.wsgi_app = app.wsgi_app
 
     def __call__(self, environ, start_response):
-        script_name = self.app.config['APPLICATION_ROOT']
+        script_name = self.app.config["APPLICATION_ROOT"]
         if script_name:
-            environ['SCRIPT_NAME'] = script_name
-            path_info = environ['PATH_INFO']
+            environ["SCRIPT_NAME"] = script_name
+            path_info = environ["PATH_INFO"]
             if path_info.startswith(script_name):
-                environ['PATH_INFO'] = path_info[len(script_name):]
+                environ["PATH_INFO"] = path_info[len(script_name) :]  # NOQA
 
-        scheme = environ.get('HTTP_X_SCHEME', '')
+        scheme = environ.get("HTTP_X_SCHEME", "")
         if scheme:
-            environ['wsgi.url_scheme'] = scheme
+            environ["wsgi.url_scheme"] = scheme
         return self.wsgi_app(environ, start_response)
 
 
@@ -92,12 +87,12 @@ def minimal_round(*args, **kw):
     # Test if the result is equivalent to an integer and
     # return depending on it
     ires = int(res)
-    return (res if res != ires else ires)
+    return res if res != ires else ires
 
 
 def static_include(filename):
     fullpath = os.path.join(current_app.static_folder, filename)
-    with open(fullpath, 'r') as f:
+    with open(fullpath, "r") as f:
         return f.read()
 
 
@@ -109,7 +104,7 @@ def list_of_dicts2json(dict_to_convert):
     """Take a list of dictionnaries and turns it into
     a json in-memory file
     """
-    return BytesIO(dumps(dict_to_convert).encode('utf-8'))
+    return BytesIO(dumps(dict_to_convert).encode("utf-8"))
 
 
 def list_of_dicts2csv(dict_to_convert):
@@ -119,41 +114,27 @@ def list_of_dicts2csv(dict_to_convert):
     # CSV writer has a different behavior in PY2 and PY3
     # http://stackoverflow.com/a/37974772
     try:
-        if six.PY3:
-            csv_file = StringIO()
-            # using list() for py3.4 compat. Otherwise, writerows() fails
-            # (expecting a sequence getting a view)
-            csv_data = [list(dict_to_convert[0].keys())]
-            for dic in dict_to_convert:
-                csv_data.append([dic[h] for h in dict_to_convert[0].keys()])
-        else:
-            csv_file = BytesIO()
-            csv_data = []
-            csv_data.append([key.encode('utf-8') for key in dict_to_convert[0].keys()])
-            for dic in dict_to_convert:
-                csv_data.append(
-                    [dic[h].encode('utf8')
-                     if isinstance(dic[h], unicode) else str(dic[h]).encode('utf8')  # NOQA
-                     for h in dict_to_convert[0].keys()])
+        csv_file = StringIO()
+        # using list() for py3.4 compat. Otherwise, writerows() fails
+        # (expecting a sequence getting a view)
+        csv_data = [list(dict_to_convert[0].keys())]
+        for dic in dict_to_convert:
+            csv_data.append([dic[h] for h in dict_to_convert[0].keys()])
     except (KeyError, IndexError):
         csv_data = []
     writer = csv.writer(csv_file)
     writer.writerows(csv_data)
     csv_file.seek(0)
-    if six.PY3:
-        csv_file = BytesIO(csv_file.getvalue().encode('utf-8'))
+    csv_file = BytesIO(csv_file.getvalue().encode("utf-8"))
     return csv_file
 
 
-# base64 encoding that works with both py2 and py3 and yield no warning
-base64_encode = base64.encodestring if six.PY2 else base64.encodebytes
-
-
-class LoginThrottler():
+class LoginThrottler:
     """Simple login throttler used to limit authentication attempts based on client's ip address.
     When using multiple workers, remaining number of attempts can get inconsistent
     but will still be limited to num_workers * max_attempts.
     """
+
     def __init__(self, max_attempts=3, delay=1):
         self._max_attempts = max_attempts
         # Delay in minutes before resetting the attempts counter
@@ -195,16 +176,17 @@ def create_jinja_env(folder, strict_rendering=False):
         if set to `True`, all templates which use an undefined variable will
         throw an exception (default to `False`).
     """
-    loader = jinja2.PackageLoader('ihatemoney', folder)
-    kwargs = {'loader': loader}
+    loader = jinja2.PackageLoader("ihatemoney", folder)
+    kwargs = {"loader": loader}
     if strict_rendering:
-        kwargs['undefined'] = jinja2.StrictUndefined
+        kwargs["undefined"] = jinja2.StrictUndefined
     return jinja2.Environment(**kwargs)
 
 
 class IhmJSONEncoder(JSONEncoder):
     """Subclass of the default encoder to support custom objects.
     Taken from the deprecated flask-rest package."""
+
     def default(self, o):
         if hasattr(o, "_to_serialize"):
             return o._to_serialize
@@ -213,6 +195,7 @@ class IhmJSONEncoder(JSONEncoder):
         else:
             try:
                 from flask_babel import speaklater
+
                 if isinstance(o, speaklater.LazyString):
                     try:
                         return unicode(o)  # For python 2.
@@ -246,7 +229,7 @@ def eval_arithmetic_expression(expr):
     expr = str(expr)
 
     try:
-        result = _eval(ast.parse(expr, mode='eval').body)
+        result = _eval(ast.parse(expr, mode="eval").body)
     except (SyntaxError, TypeError, ZeroDivisionError, KeyError):
         raise ValueError("Error evaluating expression: {}".format(expr))
 
