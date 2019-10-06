@@ -19,42 +19,51 @@ class GeneratePasswordHash(Command):
     """Get password from user and hash it without printing it in clear text."""
 
     def run(self):
-        password = getpass.getpass(prompt='Password: ')
+        password = getpass.getpass(prompt="Password: ")
         print(generate_password_hash(password))
 
 
 class GenerateConfig(Command):
     def get_options(self):
         return [
-            Option('config_file', choices=[
-                'ihatemoney.cfg',
-                'apache-vhost.conf',
-                'gunicorn.conf.py',
-                'supervisord.conf',
-                'nginx.conf',
-            ]),
+            Option(
+                "config_file",
+                choices=[
+                    "ihatemoney.cfg",
+                    "apache-vhost.conf",
+                    "gunicorn.conf.py",
+                    "supervisord.conf",
+                    "nginx.conf",
+                ],
+            )
         ]
 
     @staticmethod
     def gen_secret_key():
-        return ''.join([
-            random.SystemRandom().choice(
-                'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)')
-            for i in range(50)])
+        return "".join(
+            [
+                random.SystemRandom().choice(
+                    "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)"
+                )
+                for i in range(50)
+            ]
+        )
 
     def run(self, config_file):
-        env = create_jinja_env('conf-templates', strict_rendering=True)
-        template = env.get_template('%s.j2' % config_file)
+        env = create_jinja_env("conf-templates", strict_rendering=True)
+        template = env.get_template("%s.j2" % config_file)
 
         bin_path = os.path.dirname(sys.executable)
         pkg_path = os.path.abspath(os.path.dirname(__file__))
 
-        print(template.render(
+        print(
+            template.render(
                 pkg_path=pkg_path,
                 bin_path=bin_path,
                 sys_prefix=sys.prefix,
                 secret_key=self.gen_secret_key(),
-        ))
+            )
+        )
 
 
 class DeleteProject(Command):
@@ -65,13 +74,13 @@ class DeleteProject(Command):
 
 
 def main():
-    QUIET_COMMANDS = ('generate_password_hash', 'generate-config')
+    QUIET_COMMANDS = ("generate_password_hash", "generate-config")
 
     backup_stderr = sys.stderr
     # Hack to divert stderr for commands generating content to stdout
     # to avoid confusing the user
     if len(sys.argv) > 1 and sys.argv[1] in QUIET_COMMANDS:
-        sys.stderr = open(os.devnull, 'w')
+        sys.stderr = open(os.devnull, "w")
 
     app = create_app()
     Migrate(app, db)
@@ -80,12 +89,12 @@ def main():
     sys.stderr = backup_stderr
 
     manager = Manager(app)
-    manager.add_command('db', MigrateCommand)
-    manager.add_command('generate_password_hash', GeneratePasswordHash)
-    manager.add_command('generate-config', GenerateConfig)
-    manager.add_command('delete-project', DeleteProject)
+    manager.add_command("db", MigrateCommand)
+    manager.add_command("generate_password_hash", GeneratePasswordHash)
+    manager.add_command("generate-config", GenerateConfig)
+    manager.add_command("delete-project", DeleteProject)
     manager.run()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
