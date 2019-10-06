@@ -6,7 +6,7 @@ from flask import Flask, g, request, session, render_template
 from flask_babel import Babel
 from flask_mail import Mail
 from flask_migrate import Migrate, upgrade, stamp
-from werkzeug.contrib.fixers import ProxyFix
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 from ihatemoney.api import api
 from ihatemoney.models import db
