@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding: utf8
 from flask import Blueprint, request
 from flask_restful import Resource, Api, abort
 from flask_cors import CORS

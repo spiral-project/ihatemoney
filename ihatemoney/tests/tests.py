@@ -1,19 +1,14 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest  # NOQA
-try:
-    from unittest.mock import patch
-except ImportError:
-    from mock import patch
+# coding: utf8
+import unittest
+from unittest.mock import patch
 
 import datetime
 import os
+import io
 import json
+import base64
+
 from collections import defaultdict
-import six
 from time import sleep
 
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -67,7 +62,7 @@ class BaseTestCase(TestCase):
     def create_project(self, name):
         project = models.Project(
             id=name,
-            name=six.text_type(name),
+            name=str(name),
             password=generate_password_hash(name),
             contact_email="%s@notmyidea.org" % name)
         models.db.session.add(project)
@@ -711,7 +706,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         # rounding issues that prevent test from working.
         # However, we should obtain the same values as the theorical ones if we
         # round to 2 decimals, like in the UI.
-        for key, value in six.iteritems(balance):
+        for key, value in balance.items():
             self.assertEqual(round(value, 2), result[key])
 
     def test_edit_project(self):
@@ -1043,7 +1038,7 @@ class APITestCase(IhatemoneyTestCase):
 
     def get_auth(self, username, password=None):
         password = password or username
-        base64string = utils.base64_encode(
+        base64string = base64.encodebytes(
             ('%s:%s' % (username, password)).encode('utf-8')).decode('utf-8').replace('\n', '')
         return {"Authorization": "Basic %s" % base64string}
 
@@ -1605,14 +1600,14 @@ class CommandTestCase(BaseTestCase):
         """
         cmd = GenerateConfig()
         for config_file in cmd.get_options()[0].kwargs['choices']:
-            with patch('sys.stdout', new=six.StringIO()) as stdout:
+            with patch('sys.stdout', new=io.StringIO()) as stdout:
                 cmd.run(config_file)
                 print(stdout.getvalue())
                 self.assertNotEqual(len(stdout.getvalue().strip()), 0)
 
     def test_generate_password_hash(self):
         cmd = GeneratePasswordHash()
-        with patch('sys.stdout', new=six.StringIO()) as stdout, \
+        with patch('sys.stdout', new=io.StringIO()) as stdout, \
              patch('getpass.getpass', new=lambda prompt: 'secret'):  # NOQA
             cmd.run()
             print(stdout.getvalue())

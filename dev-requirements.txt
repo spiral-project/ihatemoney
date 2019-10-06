@@ -3,4 +3,3 @@ tox
 pytest
 flake8
 Flask-Testing
-mock; python_version < '3.3'
