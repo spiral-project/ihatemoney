@@ -89,7 +89,14 @@ Configure database with PostgreSQL (optional)
 
     pip install psycopg2
 
-2. Configure :ref:`SQLALCHEMY_DATABASE_URI <configuration>` accordingly
+2. Create the users and tables. On the command line, this looks like::
+
+    sudo -u postgres psql
+    postgres=# create database mydb;
+    postgres=# create user myuser with encrypted password 'mypass';
+    postgres=# grant all privileges on database mydb to myuser;
+
+3. Configure :ref:`SQLALCHEMY_DATABASE_URI <configuration>` accordingly.
 
 
 Deploy it
