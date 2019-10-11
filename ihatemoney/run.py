@@ -10,8 +10,13 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 
 from ihatemoney.api import api
 from ihatemoney.models import db
-from ihatemoney.utils import (IhmJSONEncoder, PrefixedWSGI, locale_from_iso,
-                              minimal_round, static_include)
+from ihatemoney.utils import (
+    IhmJSONEncoder,
+    PrefixedWSGI,
+    locale_from_iso,
+    minimal_round,
+    static_include,
+)
 from ihatemoney.web import main as web_interface
 
 from ihatemoney import default_settings
@@ -24,27 +29,27 @@ def setup_database(app):
         """ Checks if we are migrating from a pre-alembic ihatemoney
         """
         con = db.engine.connect()
-        tables_exist = db.engine.dialect.has_table(con, 'project')
-        alembic_setup = db.engine.dialect.has_table(con, 'alembic_version')
+        tables_exist = db.engine.dialect.has_table(con, "project")
+        alembic_setup = db.engine.dialect.has_table(con, "alembic_version")
         return tables_exist and not alembic_setup
 
-    sqlalchemy_url = app.config.get('SQLALCHEMY_DATABASE_URI')
-    if sqlalchemy_url.startswith('sqlite:////tmp'):
+    sqlalchemy_url = app.config.get("SQLALCHEMY_DATABASE_URI")
+    if sqlalchemy_url.startswith("sqlite:////tmp"):
         warnings.warn(
-            'The database is currently stored in /tmp and might be lost at '
-            'next reboot.'
+            "The database is currently stored in /tmp and might be lost at "
+            "next reboot."
         )
 
     db.init_app(app)
     db.app = app
 
     Migrate(app, db)
-    migrations_path = os.path.join(app.root_path, 'migrations')
+    migrations_path = os.path.join(app.root_path, "migrations")
 
     if _pre_alembic_db():
         with app.app_context():
             # fake the first migration
-            stamp(migrations_path, revision='b9a10d5d63ce')
+            stamp(migrations_path, revision="b9a10d5d63ce")
 
     # auto-execute migrations on runtime
     with app.app_context():
@@ -60,38 +65,38 @@ def load_configuration(app, configuration=None):
     - Otherwise, load the default settings.
     """
 
-    env_var_config = os.environ.get('IHATEMONEY_SETTINGS_FILE_PATH')
-    app.config.from_object('ihatemoney.default_settings')
+    env_var_config = os.environ.get("IHATEMONEY_SETTINGS_FILE_PATH")
+    app.config.from_object("ihatemoney.default_settings")
     if configuration:
         app.config.from_object(configuration)
     elif env_var_config:
         app.config.from_pyfile(env_var_config)
     else:
-        app.config.from_pyfile('ihatemoney.cfg', silent=True)
+        app.config.from_pyfile("ihatemoney.cfg", silent=True)
     # Configure custom JSONEncoder used by the API
-    app.config['RESTFUL_JSON'] = {'cls': IhmJSONEncoder}
+    app.config["RESTFUL_JSON"] = {"cls": IhmJSONEncoder}
 
 
 def validate_configuration(app):
 
-    if app.config['SECRET_KEY'] == default_settings.SECRET_KEY:
+    if app.config["SECRET_KEY"] == default_settings.SECRET_KEY:
         warnings.warn(
             "Running a server without changing the SECRET_KEY can lead to"
             + " user impersonation. Please update your configuration file.",
-            UserWarning
+            UserWarning,
         )
     # Deprecations
-    if 'DEFAULT_MAIL_SENDER' in app.config:
+    if "DEFAULT_MAIL_SENDER" in app.config:
         # Since flask-mail  0.8
         warnings.warn(
             "DEFAULT_MAIL_SENDER is deprecated in favor of MAIL_DEFAULT_SENDER"
             + " and will be removed in further version",
-            UserWarning
+            UserWarning,
         )
-        if 'MAIL_DEFAULT_SENDER' not in app.config:
-            app.config['MAIL_DEFAULT_SENDER'] = default_settings.DEFAULT_MAIL_SENDER
+        if "MAIL_DEFAULT_SENDER" not in app.config:
+            app.config["MAIL_DEFAULT_SENDER"] = default_settings.DEFAULT_MAIL_SENDER
 
-    if "pbkdf2:" not in app.config['ADMIN_PASSWORD'] and app.config['ADMIN_PASSWORD']:
+    if "pbkdf2:" not in app.config["ADMIN_PASSWORD"] and app.config["ADMIN_PASSWORD"]:
         # Since 2.0
         warnings.warn(
             "The way Ihatemoney stores your ADMIN_PASSWORD has changed. You are using an unhashed"
@@ -99,20 +104,22 @@ def validate_configuration(app):
             + " endpoints. Please use the command 'ihatemoney generate_password_hash'"
             + " to generate a proper password HASH and copy the output to the value of"
             + " ADMIN_PASSWORD in your settings file.",
-            UserWarning
+            UserWarning,
         )
 
 
 def page_not_found(e):
-    return render_template('404.html', root="main"), 404
+    return render_template("404.html", root="main"), 404
 
 
-def create_app(configuration=None, instance_path='/etc/ihatemoney',
-               instance_relative_config=True):
+def create_app(
+    configuration=None, instance_path="/etc/ihatemoney", instance_relative_config=True
+):
     app = Flask(
         __name__,
         instance_path=instance_path,
-        instance_relative_config=instance_relative_config)
+        instance_relative_config=instance_relative_config,
+    )
 
     # If a configuration object is passed, use it. Otherwise try to find one.
     load_configuration(app, configuration)
@@ -136,9 +143,9 @@ def create_app(configuration=None, instance_path='/etc/ihatemoney',
     app.mail = mail
 
     # Jinja filters
-    app.jinja_env.globals['static_include'] = static_include
-    app.jinja_env.globals['locale_from_iso'] = locale_from_iso
-    app.jinja_env.filters['minimal_round'] = minimal_round
+    app.jinja_env.globals["static_include"] = static_include
+    app.jinja_env.globals["locale_from_iso"] = locale_from_iso
+    app.jinja_env.filters["minimal_round"] = minimal_round
 
     # Translations
     babel = Babel(app)
@@ -148,10 +155,10 @@ def create_app(configuration=None, instance_path='/etc/ihatemoney',
         # get the lang from the session if defined, fallback on the browser "accept
         # languages" header.
         lang = session.get(
-            'lang',
-            request.accept_languages.best_match(app.config['SUPPORTED_LANGUAGES'])
+            "lang",
+            request.accept_languages.best_match(app.config["SUPPORTED_LANGUAGES"]),
         )
-        setattr(g, 'lang', lang)
+        setattr(g, "lang", lang)
         return lang
 
     return app
@@ -162,5 +169,5 @@ def main():
     app.run(host="0.0.0.0", debug=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

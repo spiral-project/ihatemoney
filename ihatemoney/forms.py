@@ -2,7 +2,14 @@ from flask_wtf.form import FlaskForm
 from wtforms.fields.core import SelectField, SelectMultipleField
 from wtforms.fields.html5 import DateField, DecimalField, URLField
 from wtforms.fields.simple import PasswordField, SubmitField, TextAreaField, StringField
-from wtforms.validators import Email, DataRequired, ValidationError, EqualTo, NumberRange, Optional
+from wtforms.validators import (
+    Email,
+    DataRequired,
+    ValidationError,
+    EqualTo,
+    NumberRange,
+    Optional,
+)
 from flask_babel import lazy_gettext as _
 from flask import request
 from werkzeug.security import generate_password_hash
@@ -48,7 +55,7 @@ class CommaDecimalField(DecimalField):
 
     def process_formdata(self, value):
         if value:
-            value[0] = str(value[0]).replace(',', '.')
+            value[0] = str(value[0]).replace(",", ".")
         return super(CommaDecimalField, self).process_formdata(value)
 
 
@@ -68,7 +75,7 @@ class CalculatorStringField(StringField):
             value = str(valuelist[0]).replace(",", ".")
 
             # avoid exponents to prevent expensive calculations i.e 2**9999999999**9999999
-            if not match(r'^[ 0-9\.\+\-\*/\(\)]{0,200}$', value) or "**" in value:
+            if not match(r"^[ 0-9\.\+\-\*/\(\)]{0,200}$", value) or "**" in value:
                 raise ValueError(Markup(message))
 
             valuelist[0] = str(eval_arithmetic_expression(value))
@@ -86,9 +93,12 @@ class EditProjectForm(FlaskForm):
 
         Returns the created instance
         """
-        project = Project(name=self.name.data, id=self.id.data,
-                          password=generate_password_hash(self.password.data),
-                          contact_email=self.contact_email.data)
+        project = Project(
+            name=self.name.data,
+            id=self.id.data,
+            password=generate_password_hash(self.password.data),
+            contact_email=self.contact_email.data,
+        )
         return project
 
     def update(self, project):
@@ -108,8 +118,11 @@ class ProjectForm(EditProjectForm):
     def validate_id(form, field):
         form.id.data = slugify(field.data)
         if (form.id.data == "dashboard") or Project.query.get(form.id.data):
-            message = _("A project with this identifier (\"%(project)s\") already exists. "
-                        "Please choose a new identifier", project=form.id.data)
+            message = _(
+                'A project with this identifier ("%(project)s") already exists. '
+                "Please choose a new identifier",
+                project=form.id.data,
+            )
             raise ValidationError(Markup(message))
 
 
@@ -134,10 +147,14 @@ class PasswordReminder(FlaskForm):
 
 
 class ResetPasswordForm(FlaskForm):
-    password_validators = [DataRequired(),
-                           EqualTo('password_confirmation', message=_("Password mismatch"))]
+    password_validators = [
+        DataRequired(),
+        EqualTo("password_confirmation", message=_("Password mismatch")),
+    ]
     password = PasswordField(_("Password"), validators=password_validators)
-    password_confirmation = PasswordField(_("Password confirmation"), validators=[DataRequired()])
+    password_confirmation = PasswordField(
+        _("Password confirmation"), validators=[DataRequired()]
+    )
     submit = SubmitField(_("Reset password"))
 
 
@@ -146,10 +163,14 @@ class BillForm(FlaskForm):
     what = StringField(_("What?"), validators=[DataRequired()])
     payer = SelectField(_("Payer"), validators=[DataRequired()], coerce=int)
     amount = CalculatorStringField(_("Amount paid"), validators=[DataRequired()])
-    external_link = URLField(_("External link"), validators=[Optional(
-    )], description=_("A link to an external document, related to this bill"))
-    payed_for = SelectMultipleField(_("For whom?"),
-                                    validators=[DataRequired()], coerce=int)
+    external_link = URLField(
+        _("External link"),
+        validators=[Optional()],
+        description=_("A link to an external document, related to this bill"),
+    )
+    payed_for = SelectMultipleField(
+        _("For whom?"), validators=[DataRequired()], coerce=int
+    )
     submit = SubmitField(_("Submit"))
     submit2 = SubmitField(_("Submit and add a new one"))
 
@@ -159,8 +180,7 @@ class BillForm(FlaskForm):
         bill.what = self.what.data
         bill.external_link = self.external_link.data
         bill.date = self.date.data
-        bill.owers = [Person.query.get(ower, project)
-                      for ower in self.payed_for.data]
+        bill.owers = [Person.query.get(ower, project) for ower in self.payed_for.data]
 
         return bill
 
@@ -181,11 +201,10 @@ class BillForm(FlaskForm):
 
 
 class MemberForm(FlaskForm):
-    name = StringField(_("Name"), validators=[DataRequired()], filters=[strip_filter, ])
+    name = StringField(_("Name"), validators=[DataRequired()], filters=[strip_filter])
 
     weight_validators = [NumberRange(min=0.1, message=_("Weights should be positive"))]
-    weight = CommaDecimalField(_("Weight"), default=1,
-                               validators=weight_validators)
+    weight = CommaDecimalField(_("Weight"), default=1, validators=weight_validators)
     submit = SubmitField(_("Add"))
 
     def __init__(self, project, edit=False, *args, **kwargs):
@@ -196,10 +215,14 @@ class MemberForm(FlaskForm):
     def validate_name(form, field):
         if field.data == form.name.default:
             raise ValidationError(_("User name incorrect"))
-        if (not form.edit and Person.query.filter(
+        if (
+            not form.edit
+            and Person.query.filter(
                 Person.name == field.data,
                 Person.project == form.project,
-                Person.activated == True).all()):  # NOQA
+                Person.activated == True,
+            ).all()
+        ):  # NOQA
             raise ValidationError(_("This project already have this member"))
 
     def save(self, project, person):
@@ -224,5 +247,6 @@ class InviteForm(FlaskForm):
             try:
                 email_validator.validate_email(email)
             except email_validator.EmailNotValidError:
-                raise ValidationError(_("The email %(email)s is not valid",
-                                        email=email))
+                raise ValidationError(
+                    _("The email %(email)s is not valid", email=email)
+                )
