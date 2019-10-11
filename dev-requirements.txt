@@ -3,4 +3,4 @@ tox
 pytest
 flake8
 Flask-Testing
-black
+black ; python_version >= '3.6'

@@ -1,11 +1,9 @@
+sudo: false
 language: python
-script: tox
-install:
-  - pip install tox-travis
 python:
   - "3.5"
   - "3.6"
-matrix:
-  include:
-    - python: 3.7
-      dist: xenial
+  - "3.7"
+script: tox
+install:
+  - pip install tox-travis
