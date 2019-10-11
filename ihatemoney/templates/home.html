@@ -9,6 +9,9 @@
             {{ _("Try out the demo") }}
         </a>
     {% endif %}
+    {% if g.lang == 'fr' %}
+        ou <a class="showcase btn" onclick="javascript:showGallery(); return false;">Voir la BD explicative</a>
+    {% endif %}
   </div>
   <div class="col-xs-12 col-sm-4">
     <p class="additional-content">
