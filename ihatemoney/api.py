@@ -5,8 +5,7 @@ from flask_cors import CORS
 from wtforms.fields.core import BooleanField
 
 from ihatemoney.models import db, Project, Person, Bill
-from ihatemoney.forms import (ProjectForm, EditProjectForm, MemberForm,
-                              get_billform_for)
+from ihatemoney.forms import ProjectForm, EditProjectForm, MemberForm, get_billform_for
 from werkzeug.security import check_password_hash
 from functools import wraps
 
@@ -21,6 +20,7 @@ def need_auth(f):
 
     Return the project if the authorization is good, abort the request with a 401 otherwise
     """
+
     @wraps(f)
     def wrapper(*args, **kwargs):
         auth = request.authorization
@@ -35,25 +35,26 @@ def need_auth(f):
                 return f(*args, project=project, **kwargs)
         else:
             # Use Bearer token Auth
-            auth_header = request.headers.get('Authorization', '')
-            auth_token = ''
+            auth_header = request.headers.get("Authorization", "")
+            auth_token = ""
             try:
                 auth_token = auth_header.split(" ")[1]
             except IndexError:
                 abort(401)
-            project_id = Project.verify_token(auth_token, token_type='non_timed_token')
+            project_id = Project.verify_token(auth_token, token_type="non_timed_token")
             if auth_token and project_id:
                 project = Project.query.get(project_id)
                 if project:
                     kwargs.pop("project_id")
                     return f(*args, project=project, **kwargs)
         abort(401)
+
     return wrapper
 
 
 class ProjectsHandler(Resource):
     def post(self):
-        form = ProjectForm(meta={'csrf': False})
+        form = ProjectForm(meta={"csrf": False})
         if form.validate():
             project = form.save()
             db.session.add(project)
@@ -74,7 +75,7 @@ class ProjectHandler(Resource):
         return "DELETED"
 
     def put(self, project):
-        form = EditProjectForm(meta={'csrf': False})
+        form = EditProjectForm(meta={"csrf": False})
         if form.validate():
             form.update(project)
             db.session.commit()
@@ -94,7 +95,8 @@ class APIMemberForm(MemberForm):
 
     But we want Member.enabled to be togglable via the API.
     """
-    activated = BooleanField(false_values=('false', '', 'False'))
+
+    activated = BooleanField(false_values=("false", "", "False"))
 
     def save(self, project, person):
         person.activated = self.activated.data
@@ -108,7 +110,7 @@ class MembersHandler(Resource):
         return project.members
 
     def post(self, project):
-        form = MemberForm(project, meta={'csrf': False})
+        form = MemberForm(project, meta={"csrf": False})
         if form.validate():
             member = Person()
             form.save(project, member)
@@ -127,7 +129,7 @@ class MemberHandler(Resource):
         return member
 
     def put(self, project, member_id):
-        form = APIMemberForm(project, meta={'csrf': False}, edit=True)
+        form = APIMemberForm(project, meta={"csrf": False}, edit=True)
         if form.validate():
             member = Person.query.get(member_id, project)
             form.save(project, member)
@@ -148,7 +150,7 @@ class BillsHandler(Resource):
         return project.get_bills().all()
 
     def post(self, project):
-        form = get_billform_for(project, True, meta={'csrf': False})
+        form = get_billform_for(project, True, meta={"csrf": False})
         if form.validate():
             bill = Bill()
             form.save(bill, project)
@@ -168,7 +170,7 @@ class BillHandler(Resource):
         return bill, 200
 
     def put(self, project, bill_id):
-        form = get_billform_for(project, True, meta={'csrf': False})
+        form = get_billform_for(project, True, meta={"csrf": False})
         if form.validate():
             bill = Bill.query.get(project, bill_id)
             form.save(bill, project)
@@ -184,10 +186,16 @@ class BillHandler(Resource):
         return "OK", 200
 
 
-restful_api.add_resource(ProjectsHandler, '/projects')
-restful_api.add_resource(ProjectHandler, '/projects/<string:project_id>')
+restful_api.add_resource(ProjectsHandler, "/projects")
+restful_api.add_resource(ProjectHandler, "/projects/<string:project_id>")
 restful_api.add_resource(MembersHandler, "/projects/<string:project_id>/members")
-restful_api.add_resource(ProjectStatsHandler, "/projects/<string:project_id>/statistics")
-restful_api.add_resource(MemberHandler, "/projects/<string:project_id>/members/<int:member_id>")
+restful_api.add_resource(
+    ProjectStatsHandler, "/projects/<string:project_id>/statistics"
+)
+restful_api.add_resource(
+    MemberHandler, "/projects/<string:project_id>/members/<int:member_id>"
+)
 restful_api.add_resource(BillsHandler, "/projects/<string:project_id>/bills")
-restful_api.add_resource(BillHandler, "/projects/<string:project_id>/bills/<int:bill_id>")
+restful_api.add_resource(
+    BillHandler, "/projects/<string:project_id>/bills/<int:bill_id>"
+)
