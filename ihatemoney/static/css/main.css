@@ -50,17 +50,20 @@ body {
   font-size: 2.4em;
 }
 
-#header .tryout {
-  margin-right: 10em;
+#header .tryout, #header .showcase {
   color: #fff;
   background-color: #414141;
   border-color: #414141;
 }
 
-#header .tryout:hover {
+#header .tryout:hover, #header .showcase:hover {
   background-color: #606060;
   border-color: #606060;
+  cursor: pointer;
 }
+
+
+
 
 #header .additional-content {
   margin-top: 5em;
