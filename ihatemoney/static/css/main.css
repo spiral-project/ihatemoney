@@ -62,8 +62,10 @@ body {
   cursor: pointer;
 }
 
-
-
+#header .showcaseimg {
+  width: 100px;
+  margin-left: 20px;
+}
 
 #header .additional-content {
   margin-top: 5em;
