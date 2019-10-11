@@ -67,17 +67,24 @@ class DeleteProject(Command):
 def main():
     QUIET_COMMANDS = ('generate_password_hash', 'generate-config')
 
+    exception = None
     backup_stderr = sys.stderr
     # Hack to divert stderr for commands generating content to stdout
     # to avoid confusing the user
     if len(sys.argv) > 1 and sys.argv[1] in QUIET_COMMANDS:
         sys.stderr = open(os.devnull, 'w')
 
-    app = create_app()
-    Migrate(app, db)
+    try:
+        app = create_app()
+        Migrate(app, db)
+    except Exception as e:
+        exception = e
 
-    # Restore stderr (among other: to be able to display help)
+    # Restore stderr
     sys.stderr = backup_stderr
+
+    if exception:
+        raise exception
 
     manager = Manager(app)
     manager.add_command('db', MigrateCommand)
