@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-30 23:53+0200\n"
-"PO-Revision-Date: 2019-10-11 23:20+0200\n"
+"PO-Revision-Date: 2019-10-12 09:48+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language: de\n"
 "Language-Team: none\n"
@@ -51,7 +51,7 @@ msgid "Admin password"
 msgstr "Admin-Passwort"
 
 msgid "Send me the code by email"
-msgstr "Senden Sie mir den Code per E-Mail"
+msgstr "Sende mir den Code per E-Mail"
 
 msgid "This project does not exists"
 msgstr "Dieses Projekt existiert nicht"
@@ -72,25 +72,25 @@ msgid "Date"
 msgstr "Datum"
 
 msgid "What?"
-msgstr "Was?"
+msgstr "Was"
 
 msgid "Payer"
-msgstr "Zahler"
+msgstr "Von"
 
 msgid "Amount paid"
-msgstr "Bezahlter Betrag"
+msgstr "Betrag"
 
 msgid "For whom?"
-msgstr "Für wen?"
+msgstr "Für"
 
 msgid "Submit"
-msgstr "Eintragen"
+msgstr "Hinzufügen"
 
 msgid "Submit and add a new one"
-msgstr "Eintragen und neuen hinzufügen"
+msgstr "Hinzufügen und neuen erstellen"
 
 msgid "Bills can't be null"
-msgstr "Die Rechnung darf nicht null sein"
+msgstr "Die Betrag darf nicht null sein"
 
 msgid "Name"
 msgstr "Name"
@@ -192,16 +192,16 @@ msgid "User '%(name)s' has been edited"
 msgstr "Der Benutzer '%(name)s' wurde bearbeitet"
 
 msgid "The bill has been added"
-msgstr "Die Rechnung wurde hinzugefügt"
+msgstr "Die Ausgabe wurde hinzugefügt"
 
 msgid "The bill has been deleted"
-msgstr "Die Rechnung wurde entfernt"
+msgstr "Die Ausgabe wurde entfernt"
 
 msgid "The bill has been modified"
-msgstr "Die Rechnung wurde bearbeitet"
+msgstr "Die Ausgabe wurde bearbeitet"
 
 msgid "Sorry, we were unable to find the page you've asked for."
-msgstr "Entschuldigen Sie, wir können die angefragte Seite nicht finden."
+msgstr "Entschuldigung, wir können die angefragte Seite nicht finden."
 
 msgid "The best thing to do is probably to get back to the main page."
 msgstr "Das beste wird sein wieder auf die Hauptseite zurück zu kehren."
@@ -212,9 +212,8 @@ msgstr "Zurück zur Liste"
 msgid "Administration tasks are currently disabled."
 msgstr "Administrationsaufgaben sind aktuell deaktiviert."
 
-#, fuzzy
 msgid "The project you are trying to access do not exist, do you want to"
-msgstr "Das Projekt existiert nicht, wollen Sie"
+msgstr "Das Projekt existiert nicht, willst du"
 
 msgid "create it"
 msgstr "Erstellen"
@@ -232,13 +231,13 @@ msgid "Number of members"
 msgstr "Anzahl von Teilnehmer"
 
 msgid "Number of bills"
-msgstr "Anzahl von Rechnungen"
+msgstr "Anzahl von Ausgaben"
 
 msgid "Newest bill"
-msgstr "Neuste Rechnung"
+msgstr "Neuster Eintrag"
 
 msgid "Oldest bill"
-msgstr "Älteste Rechnung"
+msgstr "Ältester Eintrag"
 
 msgid "Actions"
 msgstr "Aktion"
@@ -252,9 +251,8 @@ msgstr "Löschen"
 msgid "The Dashboard is currently deactivated."
 msgstr "Das Dashboard ist aktuell deaktiviert."
 
-#, fuzzy
 msgid "you sure?"
-msgstr "Sind Sie sicher?"
+msgstr "Bist du sicher?"
 
 msgid "Edit project"
 msgstr "Projekt bearbeiten"
@@ -269,10 +267,10 @@ msgid "Download the list of bills with owner, amount, reason,... "
 msgstr "Liste herunterladen (Mit Ersteller, Betrag, Grund, ...)"
 
 msgid "Settle plans"
-msgstr "Ableichen"
+msgstr "Bilanz"
 
 msgid "Download the list of transactions needed to settle the current bills."
-msgstr "Ausgleichs-Liste herunterladen."
+msgstr "Bilanzübersicht herunterladen."
 
 msgid "Can't remember the password?"
 msgstr "Passwort vergessen?"
@@ -284,10 +282,10 @@ msgid "Edit the project"
 msgstr "Projekt bearbeiten"
 
 msgid "Edit this bill"
-msgstr "Rechnung bearbeiten"
+msgstr "Ausgabe bearbeiten"
 
 msgid "Add a bill"
-msgstr "Rechnung hinzufügen"
+msgstr "Ausgabe hinzufügen"
 
 msgid "Select all"
 msgstr "Alles auswählen"
@@ -310,16 +308,14 @@ msgstr "Einladung versenden"
 msgid "Download"
 msgstr "Herunterladen"
 
-#, fuzzy
 msgid "Manage your shared <br />expenses, easily"
-msgstr "Verwalten Sie Ihre <br />geteilten Ausgaben ganz einfach"
+msgstr "Verwalten deine geteilten <br />Ausgaben ganz einfach"
 
 msgid "Try out the demo"
 msgstr "Demo ausprobieren"
 
-#, fuzzy
 msgid "You're sharing a house?"
-msgstr "Teilen Sie sich ein Haus?"
+msgstr "Teilst du dir ein Haus?"
 
 msgid "Going on holidays with friends?"
 msgstr "Mit Freunden in den Urlaub fahren?"
@@ -330,36 +326,34 @@ msgstr "Einfach Geld mit anderen teilen?"
 msgid "We can help!"
 msgstr "Wir können helfen!"
 
-#, fuzzy
 msgid "Log in to an existing project"
-msgstr "Melden Sie sich bei einem vorhandenen Projekt an"
+msgstr "Meld dich bei einem vorhandenen Projekt an"
 
 msgid "Log in"
 msgstr "Anmelden"
 
-#, fuzzy
 msgid "can't remember your password?"
-msgstr "Sie können sich nicht an Ihr Passwort erinnern?"
+msgstr "Kannst du dich nicht an dein Passwort erinnern?"
 
 msgid "Create"
 msgstr "Erstellen"
 
-#, fuzzy
 msgid ""
 "This access code will be sent to your friends. It is stored as-is by the "
 "server, so don\\'t reuse a personal password!"
 msgstr ""
-"Dieser Zugangscode wird an Ihre Freunde gesendet. Es wird so wie es ist "
-"auf dem Server gespeichert. Verwenden Sie also kein persönliches Passwort!"
+"Dieser Zugangscode wird an deine Freunde gesendet. Es wird als klartext "
+"auf dem Server gespeichert. Bitte verwenden daher kein persönliches "
+"Passwort!"
 
 msgid "Account manager"
 msgstr "Konten"
 
 msgid "Bills"
-msgstr "Rechnungen"
+msgstr "Ausgaben"
 
 msgid "Settle"
-msgstr "Ausgleich"
+msgstr " Bilanz"
 
 msgid "Statistics"
 msgstr "Statistik"
@@ -403,9 +397,8 @@ msgstr "Dashboard Administration"
 msgid "\"I hate money\" is a free software"
 msgstr "\"I hate money\" ist freie Software"
 
-#, fuzzy
 msgid "you can contribute and improve it!"
-msgstr "Sie können dazu beitragen und es verbessern!"
+msgstr "du kannst dazu beitragen und sie verbessern!"
 
 msgid "deactivate"
 msgstr "deaktivieren"
@@ -416,12 +409,11 @@ msgstr "reaktivieren"
 msgid "Invite people"
 msgstr "Leute einladen"
 
-#, fuzzy
 msgid "You should start by adding participants"
-msgstr "Sie können anfangen Teilnehmer hinzuzufügen"
+msgstr "Du kannst anfangen Teilnehmer hinzuzufügen"
 
 msgid "Add a new bill"
-msgstr "Neue Rechnung hizufügen"
+msgstr "Neue Ausgabe"
 
 msgid "When?"
 msgstr "Wann?"
@@ -450,16 +442,16 @@ msgid "each"
 msgstr "alles"
 
 msgid "No bills"
-msgstr "Keine Rechnung"
+msgstr "Keine Ausgaben"
 
 msgid "Nothing to list yet."
 msgstr "Nichts zu aufzulisten."
 
 msgid "You probably want to"
-msgstr "Du willst wahrscheinlich"
+msgstr "Du willst wahrscheinlich eine"
 
 msgid "add a bill"
-msgstr "Rechnung hinzufügen"
+msgstr "Ausgabe hinzufügen"
 
 msgid "add participants"
 msgstr "Teilnehmer hinzufügen"
@@ -493,8 +485,8 @@ msgid ""
 "You can share the project identifier and the private code by any "
 "communication means."
 msgstr ""
-"Sie können die Projekt-ID und den privaten Code auf jedem "
-"Kommunikationsweg freigeben."
+"Du kannst die Projekt-ID und den privaten Code auf jedem Kommunikationsweg "
+"weitergeben."
 
 msgid "Identifier:"
 msgstr "ID:"
@@ -503,7 +495,8 @@ msgid "Share the Link"
 msgstr "Link teilen"
 
 msgid "You can directly share the following link via your prefered medium"
-msgstr "You can directly share the following link via your prefered medium"
+msgstr ""
+"Du kannst den folgenden Link direkt über dein bevorzugtes Medium teilen"
 
 msgid "Send via Emails"
 msgstr "Per E-Mail versenden"
