@@ -27,6 +27,7 @@ Alternatively, you can also use the `requirements.txt` file to install the
 dependencies yourself. That would be::
 
      pip install -r requirements.txt
+     pip install .
 
 And then run the application::
 
