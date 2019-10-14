@@ -97,7 +97,16 @@ a pull request as it will help us to maintain the code clean and running.
 
 To do so::
 
-    $ make test
+    make test
+
+We are using the `black <https://black.readthedocs.io/en/stable/>`_ formatter
+for all the python files in this project. Be sure to run it locally on your
+files. To do so, just run::
+
+    black ihatemoney
+
+You can also integrate it with your dev environment (as a *format-on-save*
+hook, for instance).
 
 As a designer / Front-end developer
 -----------------------------------
