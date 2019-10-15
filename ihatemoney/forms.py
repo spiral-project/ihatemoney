@@ -239,7 +239,7 @@ class MemberForm(FlaskForm):
 
 
 class InviteForm(FlaskForm):
-    emails = TextAreaField(_("People to notify"))
+    emails = StringField(_("People to notify"), render_kw={"class": "tag"})
     submit = SubmitField(_("Send invites"))
 
     def validate_emails(form, field):
