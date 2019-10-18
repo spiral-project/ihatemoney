@@ -1,19 +1,9 @@
 {% extends "sidebar_table_layout.html" %}
 
 {% block title %} - {{ g.project.name }}{% endblock %}
-{% block head %}
-    <script src="{{ url_for("static", filename="js/bootstrap-datepicker.js") }}"></script>
-    <script src="{{ url_for("static", filename="js/locales/bootstrap-datepicker.fr.min.js") }}" charset="utf-8"></script>
-{% endblock %}
 {% block js %}
     {% if add_bill %} $('#new-bill').click(); {% endif %}
 
-    $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd',
-        weekStart: 1,
-        autoclose: true,
-        language: '{{ g.lang }}'
-    });
     // ask for confirmation before removing an user
     $('.action.delete').each(function(){
         var link = $(this).find('button');
