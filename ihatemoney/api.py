@@ -1,5 +1,5 @@
 # coding: utf8
-from flask import Blueprint, request
+from flask import Blueprint, request, current_app
 from flask_restful import Resource, Api, abort
 from flask_cors import CORS
 from wtforms.fields.core import BooleanField
@@ -55,7 +55,7 @@ def need_auth(f):
 class ProjectsHandler(Resource):
     def post(self):
         form = ProjectForm(meta={"csrf": False})
-        if form.validate():
+        if form.validate() and current_app.config.get("ALLOW_PUBLIC_PROJECT_CREATION"):
             project = form.save()
             db.session.add(project)
             db.session.commit()
@@ -76,7 +76,7 @@ class ProjectHandler(Resource):
 
     def put(self, project):
         form = EditProjectForm(meta={"csrf": False})
-        if form.validate():
+        if form.validate() and current_app.config.get("ALLOW_PUBLIC_PROJECT_CREATION"):
             form.update(project)
             db.session.commit()
             return "UPDATED"
