@@ -6,7 +6,7 @@
     <script src="{{ url_for("static", filename="js/locales/bootstrap-datepicker.fr.min.js") }}" charset="utf-8"></script>
 {% endblock %}
 {% block js %}
-    {% if add_bill %} $('#new-bill').click(); {% endif %}
+    {% if add_bill %} $('#new-bill > a').click(); {% endif %}
 
     $('.datepicker').datepicker({
         format: 'yyyy-mm-dd',
