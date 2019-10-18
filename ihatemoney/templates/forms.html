@@ -91,7 +91,7 @@
         {% if title %}<legend>{% if edit %}{{ _("Edit this bill") }} {% else %}{{ _("Add a bill") }} {% endif %}</legend>{% endif %}
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
-    {{ input(form.date, class="form-control datepicker", inline=True) }}
+    {{ input(form.date, class="form-control", inline=True) }}
     {{ input(form.what, inline=True) }}
     {{ input(form.payer, inline=True, class="form-control custom-select") }}
     {{ input(form.amount, inline=True) }}
