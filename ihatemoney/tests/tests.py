@@ -281,6 +281,46 @@ class BudgetTestCase(IhatemoneyTestCase):
             # no new project added
             self.assertEqual(len(models.Project.query.all()), 1)
 
+    def test_project_creation_without_public_permissions(self):
+        self.app.config["ALLOW_PUBLIC_PROJECT_CREATION"] = False
+        with self.app.test_client() as c:
+            # add a valid project
+            c.post(
+                "/create",
+                data={
+                    "name": "The fabulous raclette party",
+                    "id": "raclette",
+                    "password": "party",
+                    "contact_email": "raclette@notmyidea.org",
+                },
+            )
+
+            # session is not updated
+            self.assertNotIn("raclette", session)
+
+            # project is created
+            self.assertEqual(len(models.Project.query.all()), 0)
+
+    def test_project_creation_with_public_permissions(self):
+        self.app.config["ALLOW_PUBLIC_PROJECT_CREATION"] = True
+        with self.app.test_client() as c:
+            # add a valid project
+            c.post(
+                "/create",
+                data={
+                    "name": "The fabulous raclette party",
+                    "id": "raclette",
+                    "password": "party",
+                    "contact_email": "raclette@notmyidea.org",
+                },
+            )
+
+            # session is updated
+            self.assertTrue(session["raclette"])
+
+            # project is created
+            self.assertEqual(len(models.Project.query.all()), 1)
+
     def test_project_deletion(self):
 
         with self.app.test_client() as c:
