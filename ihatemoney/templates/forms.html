@@ -104,6 +104,7 @@
     {{ input(form.what, inline=True) }}
     {{ input(form.payer, inline=True, class="form-control custom-select") }}
     {{ input(form.amount, inline=True) }}
+    {% if form.bill_type == "loan" %}
     {{ input(form.external_link, inline=True) }}
 
     <div class="form-group row">
@@ -122,6 +123,7 @@
             </ul>
         </div>
     </div>
+    {% endif %}
     </fieldset>
     <div class="actions">
         {{ form.submit(class="btn btn-primary") }}

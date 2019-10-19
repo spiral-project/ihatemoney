@@ -3,6 +3,7 @@ from collections import defaultdict
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy, BaseQuery
 from flask import g, current_app
+from flask_babel import lazy_gettext as _
 
 from debts import settle
 from sqlalchemy import orm
@@ -86,13 +87,17 @@ class Project(db.Model):
             {
                 "member": member,
                 "paid": sum(
-                    [bill.amount for bill in self.get_member_bills(member.id).all()]
+                    [
+                        bill.amount
+                        for bill in self.get_member_bills(member.id).all()
+                        if bill.type != "settlement"
+                    ]
                 ),
                 "spent": sum(
                     [
                         bill.pay_each() * member.weight
                         for bill in self.get_bills().all()
-                        if member in bill.owers
+                        if member in bill.owers and bill.type != "settlement"
                     ]
                 ),
                 "balance": self.balance[member.id],
@@ -374,6 +379,7 @@ class Bill(db.Model):
     date = db.Column(db.Date, default=datetime.now)
     creation_date = db.Column(db.Date, default=datetime.now)
     what = db.Column(db.UnicodeText)
+    type = db.Column(db.UnicodeText, default="loan")
     external_link = db.Column(db.UnicodeText)
 
     archive = db.Column(db.Integer, db.ForeignKey("archive.id"))
@@ -389,6 +395,7 @@ class Bill(db.Model):
             "creation_date": self.creation_date,
             "what": self.what,
             "external_link": self.external_link,
+            "type": self.type,
         }
 
     def pay_each(self):
@@ -403,12 +410,26 @@ class Bill(db.Model):
         else:
             return 0
 
+    def is_loan(self):
+        return self.type == "loan"
+
+    def is_settlement(self):
+        return self.type == "settlement"
+
     def __repr__(self):
         return "<Bill of %s from %s for %s>" % (
             self.amount,
             self.payer,
             ", ".join([o.name for o in self.owers]),
         )
+
+    def from_settlement(self, settlement_bill):
+        self.payer_id = settlement_bill["ower"].id
+        self.amount = settlement_bill["amount"]
+        self.what = _("Refund")
+        self.date = datetime.now()
+        self.owers = [settlement_bill["receiver"]]
+        return self
 
 
 class Archive(db.Model):

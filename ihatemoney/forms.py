@@ -182,6 +182,11 @@ class BillForm(FlaskForm):
     submit = SubmitField(_("Submit"))
     submit2 = SubmitField(_("Submit and add a new one"))
 
+    def __init__(self, bill_type="loan", *args, **kwargs):
+        super(BillForm, self).__init__(*args, **kwargs)
+        self.bill_type = bill_type
+        self.title = _("Bill form")
+
     def save(self, bill, project):
         bill.payer_id = self.payer.data
         bill.amount = self.amount.data
@@ -189,6 +194,7 @@ class BillForm(FlaskForm):
         bill.external_link = self.external_link.data
         bill.date = self.date.data
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for.data]
+        bill.type = self.bill_type
         return bill
 
     def fake_form(self, bill, project):
@@ -198,6 +204,7 @@ class BillForm(FlaskForm):
         bill.external_link = ""
         bill.date = self.date
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for]
+        bill.type = self.bill_type
 
         return bill
 
@@ -208,6 +215,7 @@ class BillForm(FlaskForm):
         self.external_link.data = bill.external_link
         self.date.data = bill.date
         self.payed_for.data = [int(ower.id) for ower in bill.owers]
+        self.bill_type = bill.type
 
     def set_default(self):
         self.payed_for.data = self.payed_for.default

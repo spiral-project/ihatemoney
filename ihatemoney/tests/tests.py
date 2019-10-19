@@ -141,7 +141,8 @@ class BudgetTestCase(IhatemoneyTestCase):
 
             self.post_project("raclette")
             self.client.post(
-                "/raclette/invite", data={"emails": "alexis@notmyidea.org"}
+                "/raclette/invite",
+                data={"emails": ["alexis@notmyidea.org", "raclette@notmyidea.org"]},
             )
 
             self.assertEqual(len(outbox), 2)
@@ -675,6 +676,20 @@ class BudgetTestCase(IhatemoneyTestCase):
         balance = models.Project.query.get("raclette").balance
         self.assertEqual(set(balance.values()), set([19.0, -19.0]))
 
+        # Refund from member 0 to member 1
+        self.client.post(
+            "raclette/payment/add/{}".format(members_ids[1]),
+            data={
+                "date": "2011-08-11",
+                "payer": members_ids[0],
+                "what": "Refund",
+                "amount": 18,
+            },
+        )
+
+        balance = models.Project.query.get("raclette").balance
+        self.assertEqual(set(balance.values()), set([1.0, -1.0]))
+
         # Bill with negative amount
         self.client.post(
             "/raclette/add",
@@ -930,6 +945,12 @@ class BudgetTestCase(IhatemoneyTestCase):
             },
         )
 
+        # Refund should only affect balance
+        self.client.post(
+            "raclette/payment/add/2",
+            data={"date": "2011-08-11", "payer": 1, "what": "Refund", "amount": 18},
+        )
+
         response = self.client.get("/raclette/statistics")
         first_cell = '<td class="d-md-none">'
         indent = "\n            "
@@ -967,6 +988,38 @@ class BudgetTestCase(IhatemoneyTestCase):
             + "<td>0.00</td>"
             + indent
             + "<td>0.00</td>\n",
+            response.data.decode("utf-8"),
+        )
+
+        balance_first_cell = '<td class="balance-name">'
+        balance_indent = "\n        "
+        positive_balance = '<td class="balance-value positive">'
+        negative_balance = '<td class="balance-value negative">'
+        self.assertIn(
+            balance_first_cell
+            + "alexis</td>"
+            + balance_indent
+            + positive_balance
+            + indent
+            + "+6.33",
+            response.data.decode("utf-8"),
+        )
+        self.assertIn(
+            balance_first_cell
+            + "fred</td>"
+            + balance_indent
+            + negative_balance
+            + indent
+            + "-3.83",
+            response.data.decode("utf-8"),
+        )
+        self.assertIn(
+            balance_first_cell
+            + "tata</td>"
+            + balance_indent
+            + negative_balance
+            + indent
+            + "-2.5",
             response.data.decode("utf-8"),
         )
 
@@ -1776,6 +1829,7 @@ class APITestCase(IhatemoneyTestCase):
             "date": "2011-08-10",
             "id": 1,
             "external_link": "https://raclette.fr",
+            "type": "loan",
         }
 
         got = json.loads(req.data.decode("utf-8"))
@@ -1845,6 +1899,7 @@ class APITestCase(IhatemoneyTestCase):
             "date": "2011-09-10",
             "external_link": "https://raclette.fr",
             "id": 1,
+            "type": "loan",
         }
 
         got = json.loads(req.data.decode("utf-8"))
@@ -1854,6 +1909,57 @@ class APITestCase(IhatemoneyTestCase):
         )
         del got["creation_date"]
         self.assertDictEqual(expected, got)
+
+        # add a refound
+        req = self.client.post(
+            "/api/projects/raclette/payments",
+            data={
+                "date": "2011-08-15",
+                "what": "refund",
+                "payer": "2",
+                "payed_for": ["1"],
+                "amount": "10",
+                "type": "settlement",
+            },
+            headers=self.get_auth("raclette"),
+        )
+
+        # should return the id
+        self.assertStatus(201, req)
+        self.assertEqual(req.data.decode("utf-8"), "2\n")
+
+        # get the refund details
+        req = self.client.get(
+            "/api/projects/raclette/bills/2", headers=self.get_auth("raclette")
+        )
+
+        # compare with the added info
+        self.assertStatus(200, req)
+        expected = {
+            "what": "refund",
+            "payer_id": 2,
+            "owers": [{"activated": True, "id": 1, "name": "alexis", "weight": 1},],
+            "amount": 10.0,
+            "date": "2011-08-15",
+            "external_link": "",
+            "id": 2,
+            "type": "settlement",
+        }
+
+        got = json.loads(req.data.decode("utf-8"))
+        self.assertEqual(
+            datetime.date.today(),
+            datetime.datetime.strptime(got["creation_date"], "%Y-%m-%d").date(),
+        )
+        del got["creation_date"]
+        self.assertDictEqual(expected, got)
+
+        # get only refund bills
+        req = self.client.get(
+            "/api/projects/raclette/payments", headers=self.get_auth("raclette")
+        )
+        self.assertStatus(200, req)
+        self.assertEqual(1, len(json.loads(req.data.decode("utf-8"))))
 
         # delete a bill
         req = self.client.delete(
@@ -1921,6 +2027,7 @@ class APITestCase(IhatemoneyTestCase):
                 "date": "2011-08-10",
                 "id": id,
                 "external_link": "",
+                "type": "loan",
             }
 
             got = json.loads(req.data.decode("utf-8"))
@@ -2063,6 +2170,7 @@ class APITestCase(IhatemoneyTestCase):
             "date": "2011-08-10",
             "id": 1,
             "external_link": "",
+            "type": "loan",
         }
         got = json.loads(req.data.decode("utf-8"))
         self.assertEqual(

@@ -19,16 +19,41 @@
 
 {% block content %}
     <table id="bill_table" class="split_bills table table-striped">
-        <thead><tr><th>{{ _("Who pays?") }}</th><th>{{ _("To whom?") }}</th><th>{{ _("How much?") }}</th></tr></thead>
+        <thead><tr><th>{{ _("Who pays?") }}</th><th>{{ _("To whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Actions") }}</th></tr></thead>
     <tbody>
     {% for bill in bills %}
     <tr receiver={{bill.receiver.id}}>
             <td>{{ bill.ower }}</td>
             <td>{{ bill.receiver }}</td>
             <td>{{ "%0.2f"|format(bill.amount) }}</td>
+            <td class="table-actions">
+                <a 
+                class="payment"
+                href="{{ url_for(".add_payment", receiver=bill.receiver.id) }}" 
+                title="{{ _("pay") }}" data-toggle="modal" 
+                data-target="#payment-form-{{bill.ower.id}}-{{bill.receiver.id}}"
+                >
+                    {{ _('pay') }}
+                </a>
+            </td>
     </tr>
     {% endfor %}
     </tbody>
     </table>
+    {% for form in bill_forms %}
+    <div id="payment-form-{{form.payer.data}}-{{form.payed_for.data[0]}}" class="modal fade show" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">{{ form.title }}</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <form action="{{ url_for(".add_payment", receiver=form.payed_for.data[0]) }}" method="post" class="modal-body container">
+                {{ forms.add_bill(form, title=False, edit=True) }}
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 
 {% endblock %}

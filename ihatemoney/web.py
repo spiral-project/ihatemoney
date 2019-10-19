@@ -737,7 +737,57 @@ def change_lang(lang):
 def settle_bill():
     """Compute the sum each one have to pay to each other and display it"""
     bills = g.project.get_transactions_to_settle_bill()
-    return render_template("settle_bills.html", bills=bills, current_view="settle_bill")
+    bill_forms = [build_payment_form(bill) for bill in bills]
+
+    return render_template(
+        "settle_bills.html",
+        bills=bills,
+        bill_forms=bill_forms,
+        current_view="settle_bill",
+    )
+
+
+def build_payment_form(settlement_bill):
+    form = get_billform_for(g.project, set_default=False, bill_type="settlement")
+    bill = Bill().from_settlement(settlement_bill)
+
+    form.fill(bill)
+    receiver = settlement_bill["receiver"]
+    form.payer.choices = [
+        choice for choice in form.payer.choices if choice[0] != receiver.id
+    ]
+    title = _("Refund for {}".format(receiver))
+    form.title = title
+
+    return form
+
+
+@main.route("/<project_id>/payment/add/<int:receiver>", methods=["POST"])
+def add_payment(receiver):
+    receiver = Person.query.get(receiver, g.project)
+    if not receiver:
+        raise NotFound("Person with id: {} not found".format(receiver))
+
+    form = get_billform_for(g.project, bill_type="settlement")
+    if request.method == "POST":
+        form.payed_for.data = [receiver.id]
+        if form.validate():
+
+            bill = Bill()
+            db.session.add(form.save(bill, g.project))
+            db.session.commit()
+
+            flash(
+                _(
+                    "The payment of {} to {} has been added".format(
+                        form.amount.data, receiver.name
+                    )
+                )
+            )
+
+            return redirect(url_for(".settle_bill"))
+
+    return render_template("add_bill.html", form=form, edit=True)
 
 
 @main.route("/<project_id>/statistics")

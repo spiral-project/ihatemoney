@@ -154,6 +154,25 @@ class BillsHandler(Resource):
         return form.errors, 400
 
 
+class PaymentHandler(Resource):
+    method_decorators = [need_auth]
+
+    def get(self, project):
+        return project.get_bills().filter(Bill.type == "settlement").all()
+
+    def post(self, project):
+        form = get_billform_for(
+            project, True, meta={"csrf": False}, bill_type="settlement"
+        )
+        if form.validate():
+            bill = Bill()
+            form.save(bill, project)
+            db.session.add(bill)
+            db.session.commit()
+            return bill.id, 201
+        return form.errors, 400
+
+
 class BillHandler(Resource):
     method_decorators = [need_auth]
 
