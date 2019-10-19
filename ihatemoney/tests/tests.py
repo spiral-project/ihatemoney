@@ -298,7 +298,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             # session is not updated
             self.assertNotIn("raclette", session)
 
-            # project is created
+            # project is not created
             self.assertEqual(len(models.Project.query.all()), 0)
 
     def test_project_creation_with_public_permissions(self):
