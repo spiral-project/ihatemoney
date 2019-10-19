@@ -1357,6 +1357,29 @@ class APITestCase(IhatemoneyTestCase):
         )
         self.assertEqual(401, resp.status_code)
 
+    def test_token_creation(self):
+        """Test that token of project is generated
+        """
+
+        # Create project
+        resp = self.api_create("raclette")
+        self.assertTrue(201, resp.status_code)
+
+        # Get token
+        resp = self.client.get("/api/token/raclette", headers=self.get_auth("raclette"))
+
+        self.assertEqual(200, resp.status_code)
+
+        decoded_resp = json.loads(resp.data.decode("utf-8"))
+
+        # Access with token
+        resp = self.client.get(
+            "/api/token/raclette",
+            headers={"Authorization": "Basic %s" % decoded_resp["token"]},
+        )
+
+        self.assertEqual(200, resp.status_code)
+
     def test_member(self):
         # create a project
         self.api_create("raclette")
