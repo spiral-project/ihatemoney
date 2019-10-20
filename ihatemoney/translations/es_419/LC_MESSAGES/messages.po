@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-01 21:48+0200\n"
+"POT-Creation-Date: 2019-10-20 11:52+0200\n"
 "PO-Revision-Date: 2019-09-25 22:28+0000\n"
 "Last-Translator: Diego Caraballo <diegocaraballo84@gmail.com>\n"
 "Language: es_419\n"
@@ -82,10 +82,10 @@ msgid "Amount paid"
 msgstr "Cantidad pagada"
 
 msgid "External link"
-msgstr ""
+msgstr "Enlace externo"
 
 msgid "A link to an external document, related to this bill"
-msgstr ""
+msgstr "Un enlace a un documento externo relaccionado con esta factura"
 
 msgid "For whom?"
 msgstr "¿Para quién?"
@@ -192,7 +192,7 @@ msgstr ""
 
 #, python-format
 msgid "User '%(name)s' has been removed"
-msgstr "Se ha eliminado el usuario '%(name)s'"
+msgstr "Se ha eliminado al usuario '%(name)s'"
 
 #, python-format
 msgid "User '%(name)s' has been edited"
@@ -300,7 +300,7 @@ msgid "Select all"
 msgstr "Seleccionar todo"
 
 msgid "Select none"
-msgstr "Seleccionar ninguno"
+msgstr "No seleccionar a ninguno"
 
 msgid "Add participant"
 msgstr "Añadir participante"
@@ -324,16 +324,16 @@ msgid "Try out the demo"
 msgstr "Prueba la demo"
 
 msgid "You're sharing a house?"
-msgstr "Estás compartiendo una casa?"
+msgstr "¿Estás compartiendo una casa?"
 
 msgid "Going on holidays with friends?"
-msgstr "Te vas de vacaciones con amigos?"
+msgstr "¿Te vas de vacaciones con amigos?"
 
 msgid "Simply sharing money with others?"
-msgstr "Simplemente compartes dinero con otros?"
+msgstr "¿Simplemente compartes dinero con otros?"
 
 msgid "We can help!"
-msgstr "Nosotros podemos ayudarte!"
+msgstr "¡Nosotros podemos ayudarte!"
 
 msgid "Log in to an existing project"
 msgstr "Iniciar sesión en un proyecto existente"
@@ -440,17 +440,17 @@ msgid "Added on %(date)s"
 msgstr "Agregado el %(date)s"
 
 msgid "Everyone"
-msgstr ""
+msgstr "Todo el mundo"
 
 #, python-format
 msgid "Everyone but %(excluded)s"
-msgstr ""
+msgstr "Todo el mundo menos %(excluded)s"
 
 msgid "each"
 msgstr "Cada"
 
 msgid "see"
-msgstr ""
+msgstr "ver"
 
 msgid "No bills"
 msgstr "Sin facturas"
@@ -537,7 +537,7 @@ msgid "Paid"
 msgstr "Pagado"
 
 msgid "Spent"
-msgstr "gastado"
+msgstr "Gastado"
 
 msgid "Balance"
 msgstr "Balance"
