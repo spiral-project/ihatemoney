@@ -1342,6 +1342,17 @@ class APITestCase(IhatemoneyTestCase):
 
         self.assertEqual(200, resp.status_code)
 
+    def test_token_login(self):
+        resp = self.api_create("raclette")
+        # Get token
+        resp = self.client.get(
+            "/api/projects/raclette/token", headers=self.get_auth("raclette")
+        )
+        decoded_resp = json.loads(resp.data.decode("utf-8"))
+        resp = self.client.get("/authenticate?token={}".format(decoded_resp["token"]))
+        # Test that We are readirected am redirected
+        self.assertEqual(302, resp.status_code)
+
     def test_member(self):
         # create a project
         self.api_create("raclette")
