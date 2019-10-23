@@ -199,7 +199,7 @@ class TokenHandler(Resource):
 
 restful_api.add_resource(ProjectsHandler, "/projects")
 restful_api.add_resource(ProjectHandler, "/projects/<string:project_id>")
-restful_api.add_resource(TokenHandler, "/token/<string:project_id>")
+restful_api.add_resource(TokenHandler, "/projects/<string:project_id>/token")
 restful_api.add_resource(MembersHandler, "/projects/<string:project_id>/members")
 restful_api.add_resource(
     ProjectStatsHandler, "/projects/<string:project_id>/statistics"

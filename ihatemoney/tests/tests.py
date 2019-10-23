@@ -1326,7 +1326,9 @@ class APITestCase(IhatemoneyTestCase):
         self.assertTrue(201, resp.status_code)
 
         # Get token
-        resp = self.client.get("/api/token/raclette", headers=self.get_auth("raclette"))
+        resp = self.client.get(
+            "/api/projects/raclette/token", headers=self.get_auth("raclette")
+        )
 
         self.assertEqual(200, resp.status_code)
 
@@ -1334,7 +1336,7 @@ class APITestCase(IhatemoneyTestCase):
 
         # Access with token
         resp = self.client.get(
-            "/api/token/raclette",
+            "/api/projects/raclette/token",
             headers={"Authorization": "Basic %s" % decoded_resp["token"]},
         )
 
