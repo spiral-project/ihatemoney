@@ -190,11 +190,10 @@ class TokenHandler(Resource):
     method_decorators = [need_auth]
 
     def get(self, project):
-        print(project)
         if not project:
             return "Not Found", 404
+
         token = project.generate_token()
-        print(token)
         return {"token": token}, 200
 
 
