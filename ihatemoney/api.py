@@ -186,8 +186,20 @@ class BillHandler(Resource):
         return "OK", 200
 
 
+class TokenHandler(Resource):
+    method_decorators = [need_auth]
+
+    def get(self, project):
+        if not project:
+            return "Not Found", 404
+
+        token = project.generate_token()
+        return {"token": token}, 200
+
+
 restful_api.add_resource(ProjectsHandler, "/projects")
 restful_api.add_resource(ProjectHandler, "/projects/<string:project_id>")
+restful_api.add_resource(TokenHandler, "/projects/<string:project_id>/token")
 restful_api.add_resource(MembersHandler, "/projects/<string:project_id>/members")
 restful_api.add_resource(
     ProjectStatsHandler, "/projects/<string:project_id>/statistics"
