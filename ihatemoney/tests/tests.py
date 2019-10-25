@@ -1350,7 +1350,7 @@ class APITestCase(IhatemoneyTestCase):
         )
         decoded_resp = json.loads(resp.data.decode("utf-8"))
         resp = self.client.get("/authenticate?token={}".format(decoded_resp["token"]))
-        # Test that We are readirected am redirected
+        # Test that we are redirected.
         self.assertEqual(302, resp.status_code)
 
     def test_member(self):
