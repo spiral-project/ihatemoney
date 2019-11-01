@@ -78,7 +78,7 @@
 
 {% block content %}
     <span id="new-bill" class="float-right"  {% if not g.project.members %} data-toggle="tooltip" title="{{_('You should start by adding participants')}}" {% endif %}>
-        <a href="{{ url_for('.add_bill') }}" class="btn btn-primary float-right {% if not g.project.members %} disabled {% endif %}" data-toggle="modal" data-target="#bill-form">
+        <a href="{{ url_for('.add_bill') }}" class="btn btn-primary float-right {% if not g.project.members %} disabled {% endif %}" data-toggle="modal" data-keyboard="false" data-target="#bill-form">
             <i class="icon icon-white plus">{{ static_include("images/plus.svg") | safe }}</i>
             {{ _("Add a new bill") }}
         </a>
