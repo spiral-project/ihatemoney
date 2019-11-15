@@ -16,6 +16,19 @@
             return false;
         });
     });
+    
+    $('#btn-bill-search').click(function() {
+        var value = $('#payer-search-select option:selected').val();
+        var matching = $('#bill_table tbody tr').filter(function(){
+            return $(this).attr('payer') !== value;
+        });
+        matching.hide();
+        $('#bill_table tbody tr').not(matching).show(200);
+    });
+
+    $('#btn-bill-showall').click(function() {
+        $('#bill_table tbody tr').show(200);
+    });
 
     var highlight_owers = function(){
         var ower_ids = $(this).attr("owers").split(',');
@@ -99,6 +112,20 @@
 
     {% if bills.count() > 0 %}
         <div class="clearfix"></div>
+
+        <div id="bill-search">
+            <span>Search by:</span>
+            <form class="form-inline mt-2">
+                <div class="form-group mr-sm-2">
+                    <label for="payer-select" class="mr-sm-2">{{ _("Payer") }}</label>
+                    {{ bill_form.payer(id="payer-search-select", class="form-control custom-select", placeholder='') | safe }}
+                </div>
+                <div class="form-group">
+                    <button id="btn-bill-search" type="button" class="btn btn-secondary mr-sm-2">{{ _("Search") }}</button>
+                    <button id="btn-bill-showall" type="button" class="btn btn-secondary">{{ _("Show All") }}</button>
+                </div>
+            </form>
+        </div>
 
         <table id="bill_table" class="col table table-striped table-hover table-responsive-sm">
             <thead><tr><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</<th><th>{{ _("For what?") }}</th><th>{{ _("For whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Actions") }}</th></tr></thead>
