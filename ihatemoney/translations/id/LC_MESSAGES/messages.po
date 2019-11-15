@@ -3,492 +3,506 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-15 09:12+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2019-11-16 10:04+0000\n"
+"Last-Translator: Muhammad Fauzi <fauzi.padlaw@gmail.com>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.4.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 3.10-dev\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
+"Jumlah atau operator tidak valid. Hanya angka dan opertaor +-* yang diterima."
 
 msgid "Project name"
-msgstr ""
+msgstr "Nama proyek"
 
 msgid "Private code"
-msgstr ""
+msgstr "Kode pribadi"
 
 msgid "Email"
-msgstr ""
+msgstr "Surel"
 
 msgid "Project identifier"
-msgstr ""
+msgstr "Pengidentifikasi proyek"
 
 msgid "Create the project"
-msgstr ""
+msgstr "Buat proyek"
 
 #, python-format
 msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
+"Sebuah proyek dengan ID ini (\"%(project)s\") sudah ada. Silakan pilih ID "
+"baru"
 
 msgid "Get in"
-msgstr ""
+msgstr "Masuk"
 
 msgid "Admin password"
-msgstr ""
+msgstr "Kata sandi admin"
 
 msgid "Send me the code by email"
-msgstr ""
+msgstr "Kirim saya kode melalui email"
 
 msgid "This project does not exists"
-msgstr ""
+msgstr "Proyek ini tidak ada"
 
 msgid "Password mismatch"
-msgstr ""
+msgstr "Kata sandi tidak cocok"
 
 msgid "Password"
-msgstr ""
+msgstr "Kata sandi"
 
 msgid "Password confirmation"
-msgstr ""
+msgstr "Konfirmasi kata sandi"
 
 msgid "Reset password"
-msgstr ""
+msgstr "Atur ulang kata sandi"
 
 msgid "Date"
-msgstr ""
+msgstr "Tanggal"
 
 msgid "What?"
-msgstr ""
+msgstr "Apa?"
 
 msgid "Payer"
-msgstr ""
+msgstr "Pembayar"
 
 msgid "Amount paid"
-msgstr ""
+msgstr "Jumlah bayar"
 
 msgid "External link"
-msgstr ""
+msgstr "Tautan luar"
 
 msgid "A link to an external document, related to this bill"
-msgstr ""
+msgstr "Sebuah tautan mengarah ke dokumen luar, terhubung dengan pembayaran ini"
 
 msgid "For whom?"
-msgstr ""
+msgstr "Untuk siapa?"
 
 msgid "Submit"
-msgstr ""
+msgstr "Ajukan"
 
 msgid "Submit and add a new one"
-msgstr ""
+msgstr "Ajukan dan tambah yang baru"
 
 msgid "Bills can't be null"
-msgstr ""
+msgstr "Tagihan tidak boleh kosong"
 
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 msgid "Weights should be positive"
-msgstr ""
+msgstr "Bobot harus positif"
 
 msgid "Weight"
-msgstr ""
+msgstr "Bobot"
 
 msgid "Add"
-msgstr ""
+msgstr "Tambah"
 
 msgid "User name incorrect"
-msgstr ""
+msgstr "Nama pengguna tidak benar"
 
 msgid "This project already have this member"
-msgstr ""
+msgstr "Proyek ini sudah mempunyai anggota ini"
 
 msgid "People to notify"
-msgstr ""
+msgstr "Orang yang akan diberi pemberitahuan"
 
 msgid "Send invites"
-msgstr ""
+msgstr "Kirim undangan"
 
 #, python-format
 msgid "The email %(email)s is not valid"
-msgstr ""
+msgstr "Surel %(email)s tidak valid"
 
 msgid "Too many failed login attempts, please retry later."
-msgstr ""
+msgstr "Terlalu banyak percobaan masuk, silakan coba lagi nanti."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
-msgstr ""
+msgstr "Kata sandi admin ini tidak cocok. Hanya tinggal %(num)d percobaan lagi."
 
 msgid "You either provided a bad token or no project identifier."
-msgstr ""
+msgstr "Anda memasukkan token yang salah atau tidak memiliki ID proyek."
 
 msgid "This private code is not the right one"
-msgstr ""
+msgstr "Kode pribadi ini tidak benar"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
+msgstr "Anda baru saja membuat %(project)s untuk membagikan harga Anda"
 
 #, python-format
 msgid "%(msg_compl)sThe project identifier is %(project)s"
-msgstr ""
+msgstr "%(msg_compl)sId proyek adalah %(project)s"
 
 msgid "No token provided"
-msgstr ""
+msgstr "Belum ada token diberikan"
 
 msgid "Invalid token"
-msgstr ""
+msgstr "Token tidak benar"
 
 msgid "Unknown project"
-msgstr ""
+msgstr "Proyek tidak diketahui"
 
 msgid "Password successfully reset."
-msgstr ""
+msgstr "Kata sandi berhasil diatur ulang."
 
 msgid "Project successfully deleted"
-msgstr ""
+msgstr "Proyek berhasil dihapus"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
-msgstr ""
+msgstr "Anda telah diundang untuk membagikan harga Anda untuk %(project)s"
 
 msgid "Your invitations have been sent"
-msgstr ""
+msgstr "Undangan Anda telah dikirim"
 
 #, python-format
 msgid "%(member)s had been added"
-msgstr ""
+msgstr "%(member)s telah ditambahkan"
 
 #, python-format
 msgid "%(name)s is part of this project again"
-msgstr ""
+msgstr "%(name)s adalah bagian dari proyek ini lagi"
 
 #, python-format
 msgid ""
 "User '%(name)s' has been deactivated. It will still appear in the users "
 "list until its balance becomes zero."
 msgstr ""
+"Pengguna %(name)s telah dinonaktifkan. Pengguna akan tetap muncul dalam "
+"daftar pengguna sampai saldonya menjadi kosong."
 
 #, python-format
 msgid "User '%(name)s' has been removed"
-msgstr ""
+msgstr "Pengguna %(name)s telah dihapus"
 
 #, python-format
 msgid "User '%(name)s' has been edited"
-msgstr ""
+msgstr "Pengguna %(name)s telah diperbarui"
 
 msgid "The bill has been added"
-msgstr ""
+msgstr "Tagihan telah ditambahkan"
 
 msgid "The bill has been deleted"
-msgstr ""
+msgstr "Tagihan telah dihapus"
 
 msgid "The bill has been modified"
-msgstr ""
+msgstr "Tagihan telah diperbarui"
 
 msgid "Sorry, we were unable to find the page you've asked for."
-msgstr ""
+msgstr "Maaf, kami tidak bisa menemukan halaman yang Anda minta."
 
 msgid "The best thing to do is probably to get back to the main page."
-msgstr ""
+msgstr "Hal terbaik yang bisa dilakukan adalah kembali ke halaman utama."
 
 msgid "Back to the list"
-msgstr ""
+msgstr "Kembali ke daftar"
 
 msgid "Administration tasks are currently disabled."
-msgstr ""
+msgstr "Tugas adiministrasi saat sekarang dinonaktifkan."
 
 msgid "The project you are trying to access do not exist, do you want to"
-msgstr ""
+msgstr "Anda mencoba mengakses proyek yang tidak ada, apakah Anda ingin"
 
 msgid "create it"
-msgstr ""
+msgstr "buat"
 
 msgid "?"
-msgstr ""
+msgstr "?"
 
 msgid "Create a new project"
-msgstr ""
+msgstr "Buat proyek baru"
 
 msgid "Project"
-msgstr ""
+msgstr "Proyek"
 
 msgid "Number of members"
-msgstr ""
+msgstr "Jumlah anggota"
 
 msgid "Number of bills"
-msgstr ""
+msgstr "Jumlah tagihan"
 
 msgid "Newest bill"
-msgstr ""
+msgstr "Tagihan terbaru"
 
 msgid "Oldest bill"
-msgstr ""
+msgstr "Tagihan terlawas"
 
 msgid "Actions"
-msgstr ""
+msgstr "Aksi"
 
 msgid "edit"
-msgstr ""
+msgstr "ubah"
 
 msgid "delete"
-msgstr ""
+msgstr "hapus"
 
 msgid "The Dashboard is currently deactivated."
-msgstr ""
+msgstr "Dasbor sekarang ini sedang dinonaktifkan."
 
 msgid "you sure?"
-msgstr ""
+msgstr "Anda yakin?"
 
 msgid "Edit project"
-msgstr ""
+msgstr "Ubah proyek"
 
 msgid "Download project's data"
-msgstr ""
+msgstr "Unduh data proyek"
 
 msgid "Bill items"
-msgstr ""
+msgstr "Item tagihan"
 
 msgid "Download the list of bills with owner, amount, reason,... "
-msgstr ""
+msgstr "Unduh daftar tagihan beserta pemilikinya, jumlah, alasan,... "
 
 msgid "Settle plans"
-msgstr ""
+msgstr "Atur perencanaan"
 
 msgid "Download the list of transactions needed to settle the current bills."
-msgstr ""
+msgstr "Unduh daftar transaksi yang dibutuhkan untuk mengatur tagihan saat ini."
 
 msgid "Can't remember the password?"
-msgstr ""
+msgstr "Tidak bisa mengingat kata sandi?"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Batalkan"
 
 msgid "Edit the project"
-msgstr ""
+msgstr "Ubah proyek"
 
 msgid "Edit this bill"
-msgstr ""
+msgstr "Ubah tagihan ini"
 
 msgid "Add a bill"
-msgstr ""
+msgstr "Tambah tagihan"
 
 msgid "Select all"
-msgstr ""
+msgstr "Pilih semua"
 
 msgid "Select none"
-msgstr ""
+msgstr "Pilih tidak ada"
 
 msgid "Add participant"
-msgstr ""
+msgstr "Tambah partisipan"
 
 msgid "Edit this member"
-msgstr ""
+msgstr "Ubah anggota ini"
 
 msgid "john.doe@example.com, mary.moe@site.com"
-msgstr ""
+msgstr "john.doe@example.com, mary.moe@site.com"
 
 msgid "Send the invitations"
-msgstr ""
+msgstr "Kirim undangan"
 
 msgid "Download"
-msgstr ""
+msgstr "Unduh"
 
 msgid "Manage your shared <br />expenses, easily"
-msgstr ""
+msgstr "Atur pembagian harga <br />Anda, dengan mudah"
 
 msgid "Try out the demo"
-msgstr ""
+msgstr "Coba demo"
 
 msgid "You're sharing a house?"
-msgstr ""
+msgstr "Kamu membagikan sebuah rumah?"
 
 msgid "Going on holidays with friends?"
-msgstr ""
+msgstr "Pergi liburan bersama teman?"
 
 msgid "Simply sharing money with others?"
-msgstr ""
+msgstr "Berbagi uang dengan orang lain?"
 
 msgid "We can help!"
-msgstr ""
+msgstr "Kami bisa membantu!"
 
 msgid "Log in to an existing project"
-msgstr ""
+msgstr "Masuk ke proyek yang telah ada"
 
 msgid "Log in"
-msgstr ""
+msgstr "Masuk"
 
 msgid "can't remember your password?"
-msgstr ""
+msgstr "tidak bisa mengingat kata sandi Anda?"
 
 msgid "Create"
-msgstr ""
+msgstr "Buat"
 
 msgid ""
 "This access code will be sent to your friends. It is stored as-is by the "
 "server, so don\\'t reuse a personal password!"
 msgstr ""
+"Kode akses ini akan dikirimkan ke teman Anda. Kode ini disimpan dalam bentuk "
+"teks biasa dalam server, jadi jangan gunakan password Anda!"
 
 msgid "Account manager"
-msgstr ""
+msgstr "Pengatur akun"
 
 msgid "Bills"
-msgstr ""
+msgstr "Tagihan"
 
 msgid "Settle"
-msgstr ""
+msgstr "Atur"
 
 msgid "Statistics"
-msgstr ""
+msgstr "Statistik"
 
 msgid "Settings"
-msgstr ""
+msgstr "Pengaturan"
 
 msgid "Languages"
-msgstr ""
+msgstr "Bahasa"
 
 msgid "Projects"
-msgstr ""
+msgstr "Proyek"
 
 msgid "Start a new project"
-msgstr ""
+msgstr "Mulai proyek baru"
 
 msgid "Other projects :"
-msgstr ""
+msgstr "Proyek lainnya:"
 
 msgid "switch to"
-msgstr ""
+msgstr "ganti ke"
 
 msgid "Dashboard"
-msgstr ""
+msgstr "Dasbor"
 
 msgid "Logout"
-msgstr ""
+msgstr "Keluar"
 
 msgid "Code"
-msgstr ""
+msgstr "Kode"
 
 msgid "Mobile Application"
-msgstr ""
+msgstr "Aplikasi Gawai"
 
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentasi"
 
 msgid "Administation Dashboard"
-msgstr ""
+msgstr "Dasbor Administrasi"
 
 msgid "\"I hate money\" is a free software"
-msgstr ""
+msgstr "\"I hate money\" adalah perangkat lunak gratis"
 
 msgid "you can contribute and improve it!"
-msgstr ""
+msgstr "kamu bisa berkontribusi dan meningkatkannya!"
 
 msgid "deactivate"
-msgstr ""
+msgstr "nonaktifkan"
 
 msgid "reactivate"
-msgstr ""
+msgstr "aktivasi ulang"
 
 msgid "Invite people"
-msgstr ""
+msgstr "Undang orang"
 
 msgid "You should start by adding participants"
-msgstr ""
+msgstr "Anda harus mulai dengan menambahkan partisipan"
 
 msgid "Add a new bill"
-msgstr ""
+msgstr "Tambah tagihan baru"
 
 msgid "When?"
-msgstr ""
+msgstr "Kapan?"
 
 msgid "Who paid?"
-msgstr ""
+msgstr "Siapa yang bayar?"
 
 msgid "For what?"
-msgstr ""
+msgstr "Untuk apa?"
 
 msgid "How much?"
-msgstr ""
+msgstr "Berapa banyak?"
 
 #, python-format
 msgid "Added on %(date)s"
-msgstr ""
+msgstr "Ditambahkan pada %(date)s"
 
 msgid "Everyone"
-msgstr ""
+msgstr "Semua orang"
 
 #, python-format
 msgid "Everyone but %(excluded)s"
-msgstr ""
+msgstr "Semua orang kecuali %(excluded)s"
 
 msgid "each"
-msgstr ""
+msgstr "setiap"
 
 msgid "see"
-msgstr ""
+msgstr "lihat"
 
 msgid "No bills"
-msgstr ""
+msgstr "Tidak ada tagihan"
 
 msgid "Nothing to list yet."
-msgstr ""
+msgstr "Belum ada untuk didaftarkan."
 
 msgid "You probably want to"
-msgstr ""
+msgstr "Anda mungkin menginginkan"
 
 msgid "add a bill"
-msgstr ""
+msgstr "tambah tagihan"
 
 msgid "add participants"
-msgstr ""
+msgstr "tambah partisipan"
 
 msgid "Password reminder"
-msgstr ""
+msgstr "Pengingat kata sandi"
 
 msgid ""
 "A link to reset your password has been sent to you, please check your "
 "emails."
 msgstr ""
+"Tautan atur ulang kata sandi telah dikirim kepada Anda, silakan cek email "
+"Anda."
 
 msgid "Return to home page"
-msgstr ""
+msgstr "Kembali ke halaman depan"
 
 msgid "Your projects"
-msgstr ""
+msgstr "Proyek Anda"
 
 msgid "Reset your password"
-msgstr ""
+msgstr "Atur ulang kata sandi Anda"
 
 msgid "Invite people to join this project"
-msgstr ""
+msgstr "Undang orang untuk bergabung dalam proyek ini"
 
 msgid "Share Identifier & code"
-msgstr ""
+msgstr "Bagikan ID & kode"
 
 msgid ""
 "You can share the project identifier and the private code by any "
 "communication means."
 msgstr ""
+"Anda bisa membagikan ID proyek dan kode pribadi dengan cara komunikasi "
+"apapun."
 
 msgid "Identifier:"
-msgstr ""
+msgstr "ID:"
 
 msgid "Share the Link"
-msgstr ""
+msgstr "Bagikan tautan"
 
 msgid "You can directly share the following link via your prefered medium"
 msgstr ""
+"Anda bisa membagikan tautan secara langsung melalui media yang Anda inginkan"
 
 msgid "Send via Emails"
-msgstr ""
+msgstr "Kirim melalui surel"
 
 msgid ""
 "Specify a (comma separated) list of email adresses you want to notify "
@@ -496,21 +510,25 @@ msgid ""
 "                creation of this budget management project and we will "
 "send them an email for you."
 msgstr ""
+"Spesifikkan daftar alamat surel (dipisah dengan koma) yang akan Anda kirim "
+"pemberitahuan tentang\n"
+"                pembuatan dari manajemen anggaran proyek ini dan kami akan "
+"memngirim mereka sebuah surel."
 
 msgid "Who pays?"
-msgstr ""
+msgstr "Siapa membayar?"
 
 msgid "To whom?"
-msgstr ""
+msgstr "Kepada siapa?"
 
 msgid "Who?"
-msgstr ""
+msgstr "Siapa?"
 
 msgid "Paid"
-msgstr ""
+msgstr "Dibayar"
 
 msgid "Spent"
-msgstr ""
+msgstr "Dihabiskan"
 
 msgid "Balance"
-msgstr ""
+msgstr "Saldo"
