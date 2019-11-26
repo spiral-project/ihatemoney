@@ -10,6 +10,8 @@ from wtforms.validators import (
     NumberRange,
     Optional,
 )
+from flask_wtf.file import FileField, FileAllowed, FileRequired
+
 from flask_babel import lazy_gettext as _
 from flask import request
 from werkzeug.security import generate_password_hash
@@ -108,6 +110,12 @@ class EditProjectForm(FlaskForm):
         project.contact_email = self.contact_email.data
 
         return project
+
+class UploadForm(FlaskForm):
+    file = FileField('JSON', validators=[
+        FileRequired(),
+        FileAllowed(['json', 'JSON'], 'JSON only!')
+    ])
 
 
 class ProjectForm(EditProjectForm):

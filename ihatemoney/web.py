@@ -43,7 +43,7 @@ from ihatemoney.forms import (
     ResetPasswordForm,
     ProjectForm,
     get_billform_for,
-)
+    UploadForm)
 from ihatemoney.utils import (
     Redirect303,
     list_of_dicts2json,
@@ -389,6 +389,20 @@ def edit_project():
     return render_template(
         "edit_project.html", edit_form=edit_form, current_view="edit_project"
     )
+
+
+@main.route('/<project_id>/upload_json', methods=['GET', 'POST'])
+def upload_json():
+    form = UploadForm()
+    pid = g.project.id
+    if form.validate_on_submit():
+        filename = pid+"_uploaded_bills.json"
+        form.file.data.save(filename)
+        return redirect(url_for('upload'))
+        os.remove(filename)
+        return redirect(url_for('main.list_bills'))
+
+    return render_template('upload_json.html', form=form)
 
 
 @main.route("/<project_id>/delete")
