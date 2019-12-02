@@ -234,3 +234,22 @@ def eval_arithmetic_expression(expr):
         raise ValueError("Error evaluating expression: {}".format(expr))
 
     return result
+
+def get_members(file):
+    members_list = list()
+    for item in file:
+        if (item['payer_name'], item['payer_weight']) not in members_list:
+            members_list.append((item['payer_name'], item['payer_weight']))
+    for item in file:
+        for ower in item['owers']:
+            if ower not in [i[0] for i in members_list]:
+                members_list.append((ower,1))
+
+    return members_list
+
+def same_bill(bill1,bill2):
+    attr = ["what", "payer_name", "payer_weight", "amount", "date", "owers"]
+    for a in attr:
+        if bill1[a] != bill2[a]:
+            return False
+    return True

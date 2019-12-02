@@ -8,7 +8,7 @@ Basically, this blueprint takes care of the authentication and provides
 some shortcuts to make your life better when coding (see `pull_project`
 and `add_project_id` for a quick overview)
 """
-
+import json
 import os
 from flask import (
     abort,
@@ -49,6 +49,8 @@ from ihatemoney.utils import (
     list_of_dicts2json,
     list_of_dicts2csv,
     LoginThrottler,
+    get_members,
+    same_bill
 )
 
 main = Blueprint("main", __name__)
@@ -396,14 +398,44 @@ def upload_json():
     form = UploadForm()
     pid = g.project.id
     if form.validate_on_submit():
-        filename = pid+"_uploaded_bills.json"
+        filename = pid + "_uploaded_bills.json"
         form.file.data.save(filename)
-        return redirect(url_for('upload'))
+        import_project(filename)
         os.remove(filename)
+        flash(_("Project successfully uploaded"))
         return redirect(url_for('main.list_bills'))
 
     return render_template('upload_json.html', form=form)
 
+
+def import_project(file):
+    # From json : export list of members
+    json_file = json.load(open(file))
+    members = get_members(json_file)
+    active_members = g.project.active_members
+    members_already_here = list()
+    for m in active_members:
+        members_already_here.append(str(m))
+
+    # List all members not in the project and weight associated
+    # List of tuples (name,weight)
+    members_to_add = list()
+    for i in members:
+        if str(i[0]) not in members_already_here:
+            members_to_add.append(i)
+
+    # List bills not in the project
+    # Same format than JSON element
+    project_bills = g.project.get_pretty_bills()
+    bill_to_add = list()
+    for j in json_file:
+        same = False
+        for p in project_bills:
+            if same_bill(p, j):
+                same = True
+                break
+        if not same:
+            bill_to_add.append(j)
 
 @main.route("/<project_id>/delete")
 def delete_project():
