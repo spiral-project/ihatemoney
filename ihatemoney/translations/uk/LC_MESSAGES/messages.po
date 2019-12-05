@@ -3,14 +3,17 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 15:35+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2019-12-08 16:26+0000\n"
+"Last-Translator: Tymofij Lytvynenko <till.svit@gmail.com>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.4.0\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.10-dev\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -18,19 +21,19 @@ msgid ""
 msgstr ""
 
 msgid "Project name"
-msgstr ""
+msgstr "Назва проєкту"
 
 msgid "Private code"
-msgstr ""
+msgstr "Приватний код"
 
 msgid "Email"
-msgstr ""
+msgstr "Е-пошта"
 
 msgid "Project identifier"
-msgstr ""
+msgstr "Ідентифікатор проєкту"
 
 msgid "Create the project"
-msgstr ""
+msgstr "Створити проєкт"
 
 #, python-format
 msgid ""
@@ -39,43 +42,43 @@ msgid ""
 msgstr ""
 
 msgid "Get in"
-msgstr ""
+msgstr "Отримати в"
 
 msgid "Admin password"
-msgstr ""
+msgstr "Пароль адміністратора"
 
 msgid "Send me the code by email"
-msgstr ""
+msgstr "Надішліть мені код електронною поштою"
 
 msgid "This project does not exists"
-msgstr ""
+msgstr "Цей проєкт не існує"
 
 msgid "Password mismatch"
-msgstr ""
+msgstr "Невідповідність пароля"
 
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 msgid "Password confirmation"
-msgstr ""
+msgstr "Підтвердження паролю"
 
 msgid "Reset password"
-msgstr ""
+msgstr "Скинути пароль"
 
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 msgid "What?"
-msgstr ""
+msgstr "Що?"
 
 msgid "Payer"
-msgstr ""
+msgstr "Платник"
 
 msgid "Amount paid"
-msgstr ""
+msgstr "Виплачувана сума"
 
 msgid "External link"
-msgstr ""
+msgstr "Зовнішнє посилання"
 
 msgid "A link to an external document, related to this bill"
 msgstr ""
