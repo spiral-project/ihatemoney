@@ -34,6 +34,7 @@ class Project(db.Model):
             "name": self.name,
             "contact_email": self.contact_email,
             "members": [],
+            "default_currency": self.default_currency,
         }
 
         balance = self.balance
@@ -376,6 +377,8 @@ class Bill(db.Model):
             "creation_date": self.creation_date,
             "what": self.what,
             "external_link": self.external_link,
+            "original_currency": self.original_currency,
+            "original_amount": self.original_amount,
         }
 
     def pay_each(self):
