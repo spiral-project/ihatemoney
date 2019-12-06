@@ -25,6 +25,8 @@ class Project(db.Model):
     contact_email = db.Column(db.String(128))
     members = db.relationship("Person", backref="project")
 
+    default_currency = db.Column(db.String(3))
+
     @property
     def _to_serialize(self):
         obj = {
@@ -357,6 +359,9 @@ class Bill(db.Model):
     creation_date = db.Column(db.Date, default=datetime.now)
     what = db.Column(db.UnicodeText)
     external_link = db.Column(db.UnicodeText)
+
+    original_currency = db.Column(db.String(3))
+    original_amount = db.Column(db.Float)
 
     archive = db.Column(db.Integer, db.ForeignKey("archive.id"))
 
