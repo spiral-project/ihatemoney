@@ -16,7 +16,7 @@ import sqlalchemy as sa
 
 def upgrade():
     op.add_column("bill", sa.Column("original_amount", sa.Float(), nullable=True))
-    op.add_column("bill", sa.Column("original_currency", sa.String(length=64), nullable=True))
+    op.add_column("bill", sa.Column("original_currency", sa.String(length=3), nullable=True))
 
 
 def downgrade():
