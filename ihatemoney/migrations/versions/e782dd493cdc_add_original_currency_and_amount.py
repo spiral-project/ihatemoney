@@ -1,4 +1,4 @@
-"""add original currency and original amount fields to Bill
+"""add bill.original_currency and bill.original_amount fields
 
 Revision ID: e782dd493cdc
 Revises: 6c6fb2b7f229
