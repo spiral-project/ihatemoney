@@ -25,6 +25,8 @@ class Project(db.Model):
     contact_email = db.Column(db.String(128))
     members = db.relationship("Person", backref="project")
 
+    default_currency = "USD"
+
     @property
     def _to_serialize(self):
         obj = {
