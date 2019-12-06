@@ -358,6 +358,9 @@ class Bill(db.Model):
     what = db.Column(db.UnicodeText)
     external_link = db.Column(db.UnicodeText)
 
+    original_currency = db.Column(db.String(3))
+    original_amount = db.Column(db.Float)
+
     archive = db.Column(db.Integer, db.ForeignKey("archive.id"))
 
     @property
