@@ -71,6 +71,7 @@ class Project(db.Model):
     members = db.relationship("Person", backref="project")
 
     query_class = ProjectQuery
+    default_currency = db.Column(db.String(3))
 
     @property
     def _to_serialize(self):
@@ -80,6 +81,7 @@ class Project(db.Model):
             "contact_email": self.contact_email,
             "logging_preference": self.logging_preference.value,
             "members": [],
+            "default_currency": self.default_currency,
         }
 
         balance = self.balance
@@ -128,7 +130,10 @@ class Project(db.Model):
             {
                 "member": member,
                 "paid": sum(
-                    [bill.amount for bill in self.get_member_bills(member.id).all()]
+                    [
+                        bill.converted_amount
+                        for bill in self.get_member_bills(member.id).all()
+                    ]
                 ),
                 "spent": sum(
                     [
@@ -151,7 +156,7 @@ class Project(db.Model):
         """
         monthly = defaultdict(lambda: defaultdict(float))
         for bill in self.get_bills().all():
-            monthly[bill.date.year][bill.date.month] += bill.amount
+            monthly[bill.date.year][bill.date.month] += bill.converted_amount
         return monthly
 
     @property
@@ -432,6 +437,9 @@ class Bill(db.Model):
     what = db.Column(db.UnicodeText)
     external_link = db.Column(db.UnicodeText)
 
+    original_currency = db.Column(db.String(3))
+    converted_amount = db.Column(db.Float)
+
     archive = db.Column(db.Integer, db.ForeignKey("archive.id"))
 
     @property
@@ -445,9 +453,11 @@ class Bill(db.Model):
             "creation_date": self.creation_date,
             "what": self.what,
             "external_link": self.external_link,
+            "original_currency": self.original_currency,
+            "converted_amount": self.converted_amount,
         }
 
-    def pay_each(self):
+    def pay_each_default(self, amount):
         """Compute what each share has to pay"""
         if self.owers:
             weights = (
@@ -455,12 +465,15 @@ class Bill(db.Model):
                 .join(billowers, Bill)
                 .filter(Bill.id == self.id)
             ).scalar()
-            return self.amount / weights
+            return amount / weights
         else:
             return 0
 
     def __str__(self):
         return self.what
+
+    def pay_each(self):
+        return self.pay_each_default(self.converted_amount)
 
     def __repr__(self):
         return (

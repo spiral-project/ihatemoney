@@ -37,10 +37,10 @@ from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash, generate_password_hash
 
+from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.forms import (
     AdminAuthenticationForm,
     AuthenticationForm,
-    EditProjectForm,
     InviteForm,
     MemberForm,
     PasswordReminder,
@@ -48,6 +48,7 @@ from ihatemoney.forms import (
     ResetPasswordForm,
     UploadForm,
     get_billform_for,
+    get_editprojectform_for,
 )
 from ihatemoney.history import get_history, get_history_queries
 from ihatemoney.models import Bill, LoggingMode, Person, Project, db
@@ -376,7 +377,7 @@ def reset_password():
 
 @main.route("/<project_id>/edit", methods=["GET", "POST"])
 def edit_project():
-    edit_form = EditProjectForm()
+    edit_form = get_editprojectform_for(g.project)
     import_form = UploadForm()
     # Import form
     if import_form.validate_on_submit():
@@ -391,6 +392,18 @@ def edit_project():
     # Edit form
     if edit_form.validate_on_submit():
         project = edit_form.update(g.project)
+        # Update converted currency
+        if project.default_currency != CurrencyConverter.default:
+            for bill in project.get_bills():
+
+                if bill.original_currency == CurrencyConverter.default:
+                    bill.original_currency = project.default_currency
+
+                bill.converted_amount = CurrencyConverter().exchange_currency(
+                    bill.amount, bill.original_currency, project.default_currency
+                )
+                db.session.add(bill)
+
         db.session.add(project)
         db.session.commit()
 
@@ -478,6 +491,7 @@ def import_project(file, project):
         form.date = parse(b["date"])
         form.payer = id_dict[b["payer_name"]]
         form.payed_for = owers_id
+        form.original_currency = b.get("original_currency")
 
         db.session.add(form.fake_form(bill, project))
 
@@ -543,6 +557,7 @@ def demo():
             name="demonstration",
             password=generate_password_hash("demo"),
             contact_email="demo@notmyidea.org",
+            default_currency="EUR",
         )
         db.session.add(project)
         db.session.commit()

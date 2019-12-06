@@ -6,7 +6,7 @@ import json
 import os
 from time import sleep
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, MagicMock
 
 from flask import session
 from flask_testing import TestCase
@@ -15,6 +15,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from ihatemoney import history, models, utils
 from ihatemoney.manage import DeleteProject, GenerateConfig, GeneratePasswordHash
+from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.run import create_app, db, load_configuration
 from ihatemoney.versioning import LoggingMode
 
@@ -59,6 +60,7 @@ class BaseTestCase(TestCase):
                 "id": name,
                 "password": name,
                 "contact_email": f"{name}@notmyidea.org",
+                "default_currency": "USD",
             },
         )
 
@@ -68,6 +70,7 @@ class BaseTestCase(TestCase):
             name=str(name),
             password=generate_password_hash(name),
             contact_email=f"{name}@notmyidea.org",
+            default_currency="USD",
         )
         models.db.session.add(project)
         models.db.session.commit()
@@ -254,6 +257,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                     "id": "raclette",
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
                 },
             )
 
@@ -273,6 +277,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                     "id": "raclette",  # already used !
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
                 },
             )
 
@@ -290,6 +295,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                     "id": "raclette",
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
                 },
             )
 
@@ -310,6 +316,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                     "id": "raclette",
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
                 },
             )
 
@@ -329,6 +336,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                     "id": "raclette",
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
                 },
             )
 
@@ -841,6 +849,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             "contact_email": "alexis@notmyidea.org",
             "password": "didoudida",
             "logging_preference": LoggingMode.ENABLED.value,
+            "default_currency": "USD",
         }
 
         resp = self.client.post("/raclette/edit", data=new_data, follow_redirects=True)
@@ -849,6 +858,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         self.assertEqual(project.name, new_data["name"])
         self.assertEqual(project.contact_email, new_data["contact_email"])
+        self.assertEqual(project.default_currency, new_data["default_currency"])
         self.assertTrue(check_password_hash(project.password, new_data["password"]))
 
         # Editing a project with a wrong email address should fail
@@ -1099,6 +1109,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": 1,
                 "payed_for": [1, 2, 3, 4],
                 "amount": "10.0",
+                "original_currency": "USD",
             },
         )
 
@@ -1110,6 +1121,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": 2,
                 "payed_for": [1, 3],
                 "amount": "200",
+                "original_currency": "USD",
             },
         )
 
@@ -1121,6 +1133,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": 3,
                 "payed_for": [2],
                 "amount": "13.33",
+                "original_currency": "USD",
             },
         )
 
@@ -1425,6 +1438,7 @@ class APITestCase(IhatemoneyTestCase):
                 "id": id,
                 "password": password,
                 "contact_email": contact,
+                "default_currency": "USD",
             },
         )
 
@@ -1486,6 +1500,7 @@ class APITestCase(IhatemoneyTestCase):
                 "id": "raclette",
                 "password": "raclette",
                 "contact_email": "not-an-email",
+                "default_currency": "USD",
             },
         )
 
@@ -1514,6 +1529,7 @@ class APITestCase(IhatemoneyTestCase):
             "members": [],
             "name": "raclette",
             "contact_email": "raclette@notmyidea.org",
+            "default_currency": "USD",
             "id": "raclette",
             "logging_preference": 1,
         }
@@ -1525,6 +1541,7 @@ class APITestCase(IhatemoneyTestCase):
             "/api/projects/raclette",
             data={
                 "contact_email": "yeah@notmyidea.org",
+                "default_currency": "USD",
                 "password": "raclette",
                 "name": "The raclette party",
                 "project_history": "y",
@@ -1542,6 +1559,7 @@ class APITestCase(IhatemoneyTestCase):
         expected = {
             "name": "The raclette party",
             "contact_email": "yeah@notmyidea.org",
+            "default_currency": "USD",
             "members": [],
             "id": "raclette",
             "logging_preference": 1,
@@ -1554,6 +1572,7 @@ class APITestCase(IhatemoneyTestCase):
             "/api/projects/raclette",
             data={
                 "contact_email": "yeah@notmyidea.org",
+                "default_currency": "USD",
                 "password": "tartiflette",
                 "name": "The raclette party",
             },
@@ -1776,6 +1795,8 @@ class APITestCase(IhatemoneyTestCase):
             "amount": 25.0,
             "date": "2011-08-10",
             "id": 1,
+            "converted_amount": 25.0,
+            "original_currency": "USD",
             "external_link": "https://raclette.fr",
         }
 
@@ -1845,6 +1866,8 @@ class APITestCase(IhatemoneyTestCase):
             "amount": 25.0,
             "date": "2011-09-10",
             "external_link": "https://raclette.fr",
+            "converted_amount": 25.0,
+            "original_currency": "USD",
             "id": 1,
         }
 
@@ -1922,6 +1945,8 @@ class APITestCase(IhatemoneyTestCase):
                 "date": "2011-08-10",
                 "id": id,
                 "external_link": "",
+                "original_currency": "USD",
+                "converted_amount": expected_amount,
             }
 
             got = json.loads(req.data.decode("utf-8"))
@@ -2064,6 +2089,8 @@ class APITestCase(IhatemoneyTestCase):
             "date": "2011-08-10",
             "id": 1,
             "external_link": "",
+            "converted_amount": 25.0,
+            "original_currency": "USD",
         }
         got = json.loads(req.data.decode("utf-8"))
         self.assertEqual(
@@ -2106,6 +2133,7 @@ class APITestCase(IhatemoneyTestCase):
             "id": "raclette",
             "name": "raclette",
             "logging_preference": 1,
+            "default_currency": "USD",
         }
 
         self.assertStatus(200, req)
@@ -2848,6 +2876,24 @@ class HistoryTestCase(IhatemoneyTestCase):
             if "prop_changed" in entry:
                 self.assertNotIn("owers", entry["prop_changed"])
         self.assertEqual(len(history_list), 6)
+
+
+class TestCurrencyConverter(unittest.TestCase):
+    converter = CurrencyConverter()
+    mock_data = {"USD": 1, "EUR": 0.8115}
+    converter.get_rates = MagicMock(return_value=mock_data)
+
+    def test_only_one_instance(self):
+        one = id(CurrencyConverter())
+        two = id(CurrencyConverter())
+        self.assertEqual(one, two)
+
+    def test_get_currencies(self):
+        self.assertCountEqual(self.converter.get_currencies(), ["USD", "EUR"])
+
+    def test_exchange_currency(self):
+        result = self.converter.exchange_currency(100, "USD", "EUR")
+        self.assertEqual(result, 81.15)
 
 
 if __name__ == "__main__":
