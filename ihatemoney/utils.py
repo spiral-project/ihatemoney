@@ -14,26 +14,31 @@ from datetime import datetime, timedelta
 import csv
 import requests
 
+
 class CurrencyConverter(object):
-    api_url = 'https://api.exchangerate-api.com/v4/latest/USD'
+    api_url = "https://api.exchangerate-api.com/v4/latest/USD"
     response = []
 
     def __init__(self):
-        self.response = requests.get(self.api_url).json();
-    
+        self.response = requests.get(self.api_url).json()
+
     def get_currencies(self):
         currencies = []
         for rate in self.response["rates"]:
-            currencies.append((rate,rate))
+            currencies.append((rate, rate))
         return currencies
-    
-    def exchange_currency(self,amount,currency1,currency2):
+
+    def exchange_currency(self, amount, currency1, currency2):
+        if currency1 == currency2:
+            return amount
+            
         base = self.response["base"]
         conversion_rate1 = self.response["rates"][currency1]
         conversion_rate2 = self.response["rates"][currency2]
         new_amount = (amount / conversion_rate1) * conversion_rate2
         # round to two digits because we are dealing with money
-        return round(new_amount,2)
+        return round(new_amount, 2)
+
 
 def slugify(value):
     """Normalizes string, converts to lowercase, removes non-alpha characters,

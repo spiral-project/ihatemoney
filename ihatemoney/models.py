@@ -379,7 +379,6 @@ class Bill(db.Model):
             "external_link": self.external_link,
             "original_currency": self.original_currency,
             "original_amount": self.original_amount,
-
         }
 
     def pay_each(self):
