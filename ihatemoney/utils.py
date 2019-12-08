@@ -27,7 +27,7 @@ class CurrencyConverter(object):
             currencies.append((rate,rate))
         return currencies
     
-    def echange_currency(self,amount,currency1,currency2):
+    def exchange_currency(self,amount,currency1,currency2):
         base = self.response["base"]
         conversion_rate1 = self.response["rates"][currency1]
         conversion_rate2 = self.response["rates"][currency2]
