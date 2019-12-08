@@ -26,6 +26,14 @@ class CurrencyConverter(object):
         for rate in self.response["rates"]:
             currencies.append((rate,rate))
         return currencies
+    
+    def echange_currency(self,amount,currency1,currency2):
+        base = self.response["base"]
+        conversion_rate1 = self.response["rates"][currency1]
+        conversion_rate2 = self.response["rates"][currency2]
+        new_amount = (amount / conversion_rate1) * conversion_rate2
+        # round to two digits because we are dealing with money
+        return round(new_amount,2)
 
 def slugify(value):
     """Normalizes string, converts to lowercase, removes non-alpha characters,
