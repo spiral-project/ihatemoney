@@ -1146,6 +1146,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payed_for": [1, 2, 3, 4],
                 "amount": "10.0",
                 "original_currency": "USD",
+                "original_amount": "10.0",
             },
         )
 
@@ -1158,6 +1159,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payed_for": [1, 3],
                 "amount": "200",
                 "original_currency": "USD",
+                "original_amount": "200",
             },
         )
 
@@ -1170,6 +1172,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payed_for": [2],
                 "amount": "13.33",
                 "original_currency": "USD",
+                "original_amount": "13.33",
             },
         )
 

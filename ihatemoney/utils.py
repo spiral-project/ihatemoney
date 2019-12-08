@@ -29,6 +29,9 @@ class CurrencyConverter(object):
         return currencies
 
     def exchange_currency(self, amount, currency1, currency2):
+        if currency1 == currency2:
+            return amount
+            
         base = self.response["base"]
         conversion_rate1 = self.response["rates"][currency1]
         conversion_rate2 = self.response["rates"][currency2]
