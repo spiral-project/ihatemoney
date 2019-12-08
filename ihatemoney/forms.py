@@ -193,7 +193,7 @@ class BillForm(FlaskForm):
         bill.date = self.date.data
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for.data]
         bill.original_currency = self.original_currency.data
-        bill.original_amount = self.currency_helper.exchange_currency(bill.amount, bill.original_currency, project.default_currency)
+        bill.original_amount = self.currency_helper.exchange_currency(float(bill.amount), bill.original_currency, project.default_currency)
 
         return bill
 
