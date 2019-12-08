@@ -299,7 +299,7 @@ def create_project():
             )
             try:
                 current_app.mail.send(msg)
-            except SMTPRecipientsRefused:
+            except (SMTPRecipientsRefused, ConnectionRefusedError):
                 msg_compl = "Problem sending mail. "
                 # TODO: destroy the project and cancel instead?
             else:
