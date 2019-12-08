@@ -61,6 +61,7 @@ class BaseTestCase(TestCase):
                 "id": name,
                 "password": name,
                 "contact_email": "%s@notmyidea.org" % name,
+                "default_currency": "USD",
             },
         )
 
@@ -70,6 +71,7 @@ class BaseTestCase(TestCase):
             name=str(name),
             password=generate_password_hash(name),
             contact_email="%s@notmyidea.org" % name,
+            default_currency="USD",
         )
         models.db.session.add(project)
         models.db.session.commit()
@@ -256,6 +258,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                     "id": "raclette",
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
                 },
             )
 
@@ -275,6 +278,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                     "id": "raclette",  # already used !
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
                 },
             )
 
@@ -292,6 +296,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                     "id": "raclette",
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
                 },
             )
 
@@ -312,6 +317,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                     "id": "raclette",
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
                 },
             )
 
@@ -331,6 +337,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                     "id": "raclette",
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
                 },
             )
 
@@ -842,6 +849,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             "name": "Super raclette party!",
             "contact_email": "alexis@notmyidea.org",
             "password": "didoudida",
+            "default_currency": "USD",
         }
 
         resp = self.client.post("/raclette/edit", data=new_data, follow_redirects=True)
@@ -850,6 +858,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         self.assertEqual(project.name, new_data["name"])
         self.assertEqual(project.contact_email, new_data["contact_email"])
+        self.assertEqual(project.default_currency, new_data["default_currency"])
         self.assertTrue(check_password_hash(project.password, new_data["password"]))
 
         # Editing a project with a wrong email address should fail
@@ -1207,6 +1216,7 @@ class APITestCase(IhatemoneyTestCase):
                 "id": id,
                 "password": password,
                 "contact_email": contact,
+                "default_currency": "USD",
             },
         )
 
@@ -1268,6 +1278,7 @@ class APITestCase(IhatemoneyTestCase):
                 "id": "raclette",
                 "password": "raclette",
                 "contact_email": "not-an-email",
+                "default_currency": "USD",
             },
         )
 
@@ -1296,6 +1307,7 @@ class APITestCase(IhatemoneyTestCase):
             "members": [],
             "name": "raclette",
             "contact_email": "raclette@notmyidea.org",
+            "default_currency": "USD",
             "id": "raclette",
         }
         decoded_resp = json.loads(resp.data.decode("utf-8"))
@@ -1306,6 +1318,7 @@ class APITestCase(IhatemoneyTestCase):
             "/api/projects/raclette",
             data={
                 "contact_email": "yeah@notmyidea.org",
+                "default_currency": "USD",
                 "password": "raclette",
                 "name": "The raclette party",
             },
@@ -1322,6 +1335,7 @@ class APITestCase(IhatemoneyTestCase):
         expected = {
             "name": "The raclette party",
             "contact_email": "yeah@notmyidea.org",
+            "default_currency": "USD",
             "members": [],
             "id": "raclette",
         }
@@ -1333,6 +1347,7 @@ class APITestCase(IhatemoneyTestCase):
             "/api/projects/raclette",
             data={
                 "contact_email": "yeah@notmyidea.org",
+                "default_currency": "USD",
                 "password": "tartiflette",
                 "name": "The raclette party",
             },
@@ -1900,6 +1915,7 @@ class APITestCase(IhatemoneyTestCase):
             "contact_email": "raclette@notmyidea.org",
             "id": "raclette",
             "name": "raclette",
+            "default_currency": "USD",
         }
 
         self.assertStatus(200, req)
