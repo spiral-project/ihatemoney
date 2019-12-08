@@ -315,7 +315,9 @@ def create_project():
             )
             return redirect(url_for(".list_bills", project_id=project.id))
 
-    return render_template("create_project.html", form=form)
+    return render_template(
+        "create_project.html", form=form,
+    )
 
 
 @main.route("/password-reminder", methods=["GET", "POST"])
@@ -387,7 +389,9 @@ def edit_project():
         edit_form.contact_email.data = g.project.contact_email
 
     return render_template(
-        "edit_project.html", edit_form=edit_form, current_view="edit_project"
+        "edit_project.html",
+        edit_form=edit_form,
+        current_view="edit_project",
     )
 
 
@@ -449,6 +453,7 @@ def demo():
             name="demonstration",
             password=generate_password_hash("demo"),
             contact_email="demo@notmyidea.org",
+            default_currency="USD",
         )
         db.session.add(project)
         db.session.commit()

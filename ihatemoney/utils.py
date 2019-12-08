@@ -12,7 +12,20 @@ from werkzeug.routing import HTTPException, RoutingException
 from datetime import datetime, timedelta
 
 import csv
+import requests
 
+class CurrencyConverter(object):
+    api_url = 'https://api.exchangerate-api.com/v4/latest/USD'
+    response = []
+
+    def __init__(self):
+        self.response = requests.get(self.api_url).json();
+    
+    def get_currencies(self):
+        currencies = []
+        for rate in self.response["rates"]:
+            currencies.append((rate,rate))
+        return currencies
 
 def slugify(value):
     """Normalizes string, converts to lowercase, removes non-alpha characters,
