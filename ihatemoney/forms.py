@@ -38,7 +38,7 @@ def get_billform_for(project, set_default=True, **kwargs):
                   display the default form, it will call set_default on it.
 
     """
-    form = BillForm(project=project, **kwargs)
+    form = BillForm(**kwargs)
     form.original_currency.label = Label("original_currency", "Currency (Default: %s)" % (project.default_currency))
     active_members = [(m.id, m.name) for m in project.active_members]
 
@@ -193,7 +193,7 @@ class BillForm(FlaskForm):
         bill.date = self.date.data
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for.data]
         bill.original_currency = self.original_currency.data
-        bill.original_amount = currency_helper.exchange_currency(bill.amount, bill.original_currency, project.default_currency)
+        bill.original_amount = self.currency_helper.exchange_currency(bill.amount, bill.original_currency, project.default_currency)
 
         return bill
 
