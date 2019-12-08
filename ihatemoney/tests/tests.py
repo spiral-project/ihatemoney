@@ -1530,6 +1530,8 @@ class APITestCase(IhatemoneyTestCase):
                 "payed_for": ["1", "2"],
                 "amount": "25",
                 "external_link": "https://raclette.fr",
+                "original_currency": "USD",
+                "original_amount": "25",
             },
             headers=self.get_auth("raclette"),
         )
@@ -1555,6 +1557,8 @@ class APITestCase(IhatemoneyTestCase):
             "amount": 25.0,
             "date": "2011-08-10",
             "id": 1,
+            "original_amount": 25.0,
+            "original_currency": "USD",
             "external_link": "https://raclette.fr",
         }
 
@@ -1583,6 +1587,8 @@ class APITestCase(IhatemoneyTestCase):
                 "payed_for": ["1", "2"],
                 "amount": "25",
                 "external_link": "https://raclette.fr",
+                "original_amount": "25",
+                "original_currency": "USD",
             },
             headers=self.get_auth("raclette"),
         )
@@ -1602,6 +1608,8 @@ class APITestCase(IhatemoneyTestCase):
                 "payed_for": ["1", "2"],
                 "amount": "25",
                 "external_link": "https://raclette.fr",
+                "original_amount": "25",
+                "original_currency": "USD",
             },
             headers=self.get_auth("raclette"),
         )
@@ -1624,6 +1632,8 @@ class APITestCase(IhatemoneyTestCase):
             "amount": 25.0,
             "date": "2011-09-10",
             "external_link": "https://raclette.fr",
+            "original_amount": 25.0,
+            "original_currency": "USD",
             "id": 1,
         }
 
@@ -1674,6 +1684,8 @@ class APITestCase(IhatemoneyTestCase):
                     "payer": "1",
                     "payed_for": ["1", "2"],
                     "amount": input_amount,
+                    "original_currency": "USD",
+                    "original_amount": input_amount,
                 },
                 headers=self.get_auth("raclette"),
             )
@@ -1701,6 +1713,8 @@ class APITestCase(IhatemoneyTestCase):
                 "date": "2011-08-10",
                 "id": id,
                 "external_link": "",
+                "original_currency": "USD",
+                "original_amount": input_amount,
             }
 
             got = json.loads(req.data.decode("utf-8"))
@@ -1843,6 +1857,8 @@ class APITestCase(IhatemoneyTestCase):
             "date": "2011-08-10",
             "id": 1,
             "external_link": "",
+            "original_amount": 25.0,
+            "original_currency": "USD",
         }
         got = json.loads(req.data.decode("utf-8"))
         self.assertEqual(
