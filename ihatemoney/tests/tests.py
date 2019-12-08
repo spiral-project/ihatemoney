@@ -1784,7 +1784,7 @@ class APITestCase(IhatemoneyTestCase):
                 "id": id,
                 "external_link": "",
                 "original_currency": "USD",
-                "original_amount": input_amount,
+                "original_amount": expected_amount,
             }
 
             got = json.loads(req.data.decode("utf-8"))
