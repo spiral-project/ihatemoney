@@ -37,7 +37,7 @@ def get_billform_for(project, set_default=True, **kwargs):
                   display the default form, it will call set_default on it.
 
     """
-    form = BillForm(**kwargs)
+    form = BillForm(**kwargs, project)
     active_members = [(m.id, m.name) for m in project.active_members]
 
     form.payed_for.choices = form.payer.choices = active_members
@@ -163,11 +163,15 @@ class ResetPasswordForm(FlaskForm):
     submit = SubmitField(_("Reset password"))
 
 
-class BillForm(FlaskForm):
+class BillForm(FlaskForm, project):
     date = DateField(_("Date"), validators=[DataRequired()], default=datetime.now)
     what = StringField(_("What?"), validators=[DataRequired()])
     payer = SelectField(_("Payer"), validators=[DataRequired()], coerce=int)
     amount = CalculatorStringField(_("Amount paid"), validators=[DataRequired()])
+    currency_helper = CurrencyConverter()
+    original_currency = SelectField(
+        _("Currency (Default: %s)" % (project.default_currency)), choices=currency_helper.get_currencies(), validators=[DataRequired()]
+    )
     external_link = URLField(
         _("External link"),
         validators=[Optional()],
@@ -186,6 +190,8 @@ class BillForm(FlaskForm):
         bill.external_link = self.external_link.data
         bill.date = self.date.data
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for.data]
+        bill.original_currency = self.original_currency.data
+        bill.original_amount = currency_helper.exchange_currency(bill.amount, bill.original_currency, project.default_currency)
 
         return bill
 
