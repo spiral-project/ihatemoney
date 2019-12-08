@@ -101,7 +101,7 @@
         <div class="clearfix"></div>
 
         <table id="bill_table" class="col table table-striped table-hover table-responsive-sm">
-            <thead><tr><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</<th><th>{{ _("For what?") }}</th><th>{{ _("For whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Actions") }}</th></tr></thead>
+            <thead><tr><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</<th><th>{{ _("For what?") }}</th><th>{{ _("For whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Original currency") }}</th><th>{{ _("Original amount") }}</th><th>{{ _("Actions") }}</th></tr></thead>
         <tbody>
         {% for bill in bills %}
         <tr owers="{{bill.owers|join(',','id')}}" payer="{{bill.payer.id}}">
