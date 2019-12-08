@@ -1128,6 +1128,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             )
 
     def test_export(self):
+        self.maxDiff = None
         self.post_project("raclette")
 
         # add members
