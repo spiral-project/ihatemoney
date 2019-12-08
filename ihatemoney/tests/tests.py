@@ -1183,7 +1183,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer_name": "tata",
                 "payer_weight": 1.0,
                 "owers": ["fred"],
-                "original_amount": "13.33",
+                "original_amount": 13.33,
                 "original_currency": "USD",
             },
             {
@@ -1193,7 +1193,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer_name": "fred",
                 "payer_weight": 1.0,
                 "owers": ["alexis", "tata"],
-                "original_amount": "200.0",
+                "original_amount": 200.0,
                 "original_currency": "USD",
             },
             {
@@ -1203,7 +1203,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer_name": "alexis",
                 "payer_weight": 2.0,
                 "owers": ["alexis", "fred", "tata", "p\xe9p\xe9"],
-                "original_amount": "10.0",
+                "original_amount": 10.0,
                 "original_currency": "USD",
             },
         ]
