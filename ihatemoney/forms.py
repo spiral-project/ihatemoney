@@ -22,7 +22,8 @@ from jinja2 import Markup
 import email_validator
 
 from ihatemoney.models import Project, Person
-from ihatemoney.utils import slugify, eval_arithmetic_expression,CurrencyConverter
+from ihatemoney.utils import slugify, eval_arithmetic_expression, CurrencyConverter
+
 
 def strip_filter(string):
     try:
@@ -39,7 +40,9 @@ def get_billform_for(project, set_default=True, **kwargs):
 
     """
     form = BillForm(**kwargs)
-    form.original_currency.label = Label("original_currency", "Currency (Default: %s)" % (project.default_currency))
+    form.original_currency.label = Label(
+        "original_currency", "Currency (Default: %s)" % (project.default_currency)
+    )
     active_members = [(m.id, m.name) for m in project.active_members]
 
     form.payed_for.choices = form.payer.choices = active_members
@@ -90,7 +93,9 @@ class EditProjectForm(FlaskForm):
     contact_email = StringField(_("Email"), validators=[DataRequired(), Email()])
     currency_helper = CurrencyConverter()
     default_currency = SelectField(
-        _("Default Currency"), choices=currency_helper.get_currencies(), validators=[DataRequired()]
+        _("Default Currency"),
+        choices=currency_helper.get_currencies(),
+        validators=[DataRequired()],
     )
 
     def save(self):
@@ -103,7 +108,7 @@ class EditProjectForm(FlaskForm):
             id=self.id.data,
             password=generate_password_hash(self.password.data),
             contact_email=self.contact_email.data,
-            default_currency=self.default_currency.data
+            default_currency=self.default_currency.data,
         )
         return project
 
@@ -172,7 +177,9 @@ class BillForm(FlaskForm):
     amount = CalculatorStringField(_("Amount paid"), validators=[DataRequired()])
     currency_helper = CurrencyConverter()
     original_currency = SelectField(
-        _("Currency"), choices=currency_helper.get_currencies(), validators=[DataRequired()]
+        _("Currency"),
+        choices=currency_helper.get_currencies(),
+        validators=[DataRequired()],
     )
     external_link = URLField(
         _("External link"),
@@ -193,7 +200,9 @@ class BillForm(FlaskForm):
         bill.date = self.date.data
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for.data]
         bill.original_currency = self.original_currency.data
-        bill.original_amount = self.currency_helper.exchange_currency(float(bill.amount), bill.original_currency, project.default_currency)
+        bill.original_amount = self.currency_helper.exchange_currency(
+            float(bill.amount), bill.original_currency, project.default_currency
+        )
 
         return bill
 
