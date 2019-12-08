@@ -414,6 +414,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": fred_id,
                 "payed_for": [fred_id],
                 "amount": "25",
+                "original_amount": "25",
+                "original_currency": "USD",
             },
         )
 
@@ -465,6 +467,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": alexis.id,
                 "payed_for": [alexis.id],
                 "amount": "25",
+                "original_amount": "25",
+                "original_currency": "USD",
             },
         )
 
@@ -619,6 +623,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": members_ids[0],
                 "payed_for": members_ids,
                 "amount": "25",
+                "original_amount": "25",
+                "original_currency": "USD",
             },
         )
         models.Project.query.get("raclette")
@@ -634,6 +640,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": members_ids[0],
                 "payed_for": members_ids,
                 "amount": "10",
+                "original_amount": "10",
+                "original_currency": "USD",
             },
         )
 
@@ -653,6 +661,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": members_ids[0],
                 "payed_for": members_ids,
                 "amount": "19",
+                "original_amount": "19",
+                "original_currency": "USD",
             },
         )
 
@@ -664,6 +674,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": members_ids[1],
                 "payed_for": members_ids[0],
                 "amount": "20",
+                "original_amount": "20",
+                "original_currency": "USD",
             },
         )
 
@@ -675,6 +687,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": members_ids[1],
                 "payed_for": members_ids,
                 "amount": "17",
+                "original_amount": "17",
+                "original_currency": "USD",
             },
         )
 
@@ -690,6 +704,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": members_ids[0],
                 "payed_for": members_ids,
                 "amount": "-25",
+                "original_amount": "-25",
+                "original_currency": "USD",
             },
         )
         bill = models.Bill.query.filter(models.Bill.date == "2011-08-12")[0]
@@ -704,6 +720,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": members_ids[0],
                 "payed_for": members_ids,
                 "amount": "25,02",
+                "original_amount": "25,02",
+                "original_currency": "USD",
             },
         )
         bill = models.Bill.query.filter(models.Bill.date == "2011-08-01")[0]
@@ -729,6 +747,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": members_ids[0],
                 "payed_for": members_ids,
                 "amount": "10",
+                "original_amount": "10",
+                "original_currency": "USD",
             },
         )
 
@@ -740,6 +760,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": members_ids[1],
                 "payed_for": members_ids,
                 "amount": "10",
+                "original_amount": "10",
+                "original_currency": "USD",
             },
         )
 
@@ -804,6 +826,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": 1,
                 "payed_for": [1, 2, 3],
                 "amount": "24.36",
+                "original_amount": "24.36",
+                "original_currency": "USD",
             },
         )
 
@@ -815,6 +839,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": 2,
                 "payed_for": [1],
                 "amount": "19.12",
+                "original_amount": "19.12",
+                "original_currency": "USD",
             },
         )
 
@@ -826,6 +852,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": 1,
                 "payed_for": [1, 2],
                 "amount": "22",
+                "original_amount": "22",
+                "original_currency": "USD",
             },
         )
 
@@ -913,6 +941,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": 1,
                 "payed_for": [1, 2, 3],
                 "amount": "10.0",
+                "original_amount": "10",
+                "original_currency": "USD",
             },
         )
 
@@ -924,6 +954,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": 2,
                 "payed_for": [1],
                 "amount": "20",
+                "original_amount": "20",
+                "original_currency": "USD",
             },
         )
 
@@ -935,6 +967,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": 1,
                 "payed_for": [1, 2],
                 "amount": "10",
+                "original_amount": "10",
+                "original_currency": "USD",
             },
         )
 
@@ -992,6 +1026,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": 1,
                 "payed_for": [1, 2, 3],
                 "amount": "10.0",
+                "original_amount": "10.0",
+                "original_currency": "USD",
             },
         )
 
@@ -1003,6 +1039,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": 2,
                 "payed_for": [1],
                 "amount": "20",
+                "original_amount": "20",
+                "original_currency": "USD",
             },
         )
 
@@ -1014,6 +1052,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": 1,
                 "payed_for": [1, 2],
                 "amount": "10",
+                "original_amount": "10",
+                "original_currency": "USD",
             },
         )
         project = models.Project.query.get("raclette")
@@ -1045,6 +1085,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": 1,
                 "payed_for": [1, 2, 3],
                 "amount": "10.0",
+                "original_amount": "10",
+                "original_currency": "USD",
             },
         )
 
@@ -1056,6 +1098,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": 2,
                 "payed_for": [1, 3],
                 "amount": "20",
+                "original_amount": "20",
+                "original_currency": "USD",
             },
         )
 
@@ -1067,6 +1111,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": 3,
                 "payed_for": [2],
                 "amount": "13.33",
+                "original_amount": "13.33",
+                "original_currency": "USD",
             },
         )
         project = models.Project.query.get("raclette")
@@ -1770,6 +1816,8 @@ class APITestCase(IhatemoneyTestCase):
                     "payer": "1",
                     "payed_for": ["1", "2"],
                     "amount": amount,
+                    "original_amount": amount,
+                    "original_currency": "USD",
                 },
                 headers=self.get_auth("raclette"),
             )
@@ -1792,6 +1840,8 @@ class APITestCase(IhatemoneyTestCase):
                 "payer": "1",
                 "payed_for": ["1", "2"],
                 "amount": "25",
+                "original_amount": "25",
+                "original_currency": "USD",
             },
             headers=self.get_auth("raclette"),
         )
@@ -1859,6 +1909,8 @@ class APITestCase(IhatemoneyTestCase):
                 "payer": "1",
                 "payed_for": ["1", "2"],
                 "amount": "25",
+                "original_amount": "25",
+                "original_currency": "USD",
             },
             headers=self.get_auth("raclette"),
         )
