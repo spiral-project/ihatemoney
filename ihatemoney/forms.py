@@ -87,9 +87,9 @@ class EditProjectForm(FlaskForm):
     password = StringField(_("Private code"), validators=[DataRequired()])
     contact_email = StringField(_("Email"), validators=[DataRequired(), Email()])
     currency_helper = CurrencyConverter()
-    default_currency = SelectField(
-        _("Default Currency"), choices=currency_helper.get_currencies(), validators=[DataRequired()]
-    )
+    # default_currency = SelectField(
+    #     _("Default Currency"), choices=currency_helper.get_currencies(), validators=[DataRequired()]
+    # )
 
     def save(self):
         """Create a new project with the information given by this form.
@@ -101,7 +101,7 @@ class EditProjectForm(FlaskForm):
             id=self.id.data,
             password=generate_password_hash(self.password.data),
             contact_email=self.contact_email.data,
-            default_currency=self.default_currency.data
+            # default_currency=self.default_currency.data
         )
         return project
 

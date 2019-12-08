@@ -277,6 +277,8 @@ def create_project():
             project = form.save()
             db.session.add(project)
             db.session.commit()
+            print(project.name)
+            print(project.default_currency)
 
             # create the session object (authenticate)
             session[project.id] = True
