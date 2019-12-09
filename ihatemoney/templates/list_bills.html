@@ -101,7 +101,7 @@
         <div class="clearfix"></div>
 
         <table id="bill_table" class="col table table-striped table-hover table-responsive-sm">
-            <thead><tr><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</<th><th>{{ _("For what?") }}</th><th>{{ _("For whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Original currency") }}</th><th>{{ _("Original amount") }}</th><th>{{ _("Actions") }}</th></tr></thead>
+            <thead><tr><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</<th><th>{{ _("For what?") }}</th><th>{{ _("For whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Amount in ") }}{{ g.project.default_currency }}</th><th>{{ _("Actions") }}</th></tr></thead>
         <tbody>
         {% for bill in bills %}
         <tr owers="{{bill.owers|join(',','id')}}" payer="{{bill.payer.id}}">
@@ -120,8 +120,7 @@
                 {%- else -%}
                 {{ bill.owers|join(', ', 'name') }}
                 {%- endif %}</td>
-                <td>{{ "%0.2f"|format(bill.amount) }} ({{ "%0.2f"|format(bill.pay_each()) }} {{ _("each") }})</td>
-                <td>{{ bill.original_currency }}</td>
+                <td>{{ "%0.2f"|format(bill.amount) }} {{bill.original_currency}} ({{ "%0.2f"|format(bill.pay_each()) }} {{ _("each") }})</td>
                 <td>{{ bill.original_amount }}</td>
                 <td class="bill-actions">
                     <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">{{ _('edit') }}</a>
