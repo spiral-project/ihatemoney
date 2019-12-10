@@ -235,13 +235,14 @@ def eval_arithmetic_expression(expr):
 
     return result
 
+
 def get_members(file):
     members_list = list()
     for item in file:
-        if (item['payer_name'], item['payer_weight']) not in members_list:
-            members_list.append((item['payer_name'], item['payer_weight']))
+        if (item["payer_name"], item["payer_weight"]) not in members_list:
+            members_list.append((item["payer_name"], item["payer_weight"]))
     for item in file:
-        for ower in item['owers']:
+        for ower in item["owers"]:
             if ower not in [i[0] for i in members_list]:
                 members_list.append((ower, 1))
 

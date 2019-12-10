@@ -43,14 +43,15 @@ from ihatemoney.forms import (
     ResetPasswordForm,
     ProjectForm,
     get_billform_for,
-    UploadForm)
+    UploadForm,
+)
 from ihatemoney.utils import (
     Redirect303,
     list_of_dicts2json,
     list_of_dicts2csv,
     LoginThrottler,
     get_members,
-    same_bill
+    same_bill,
 )
 
 main = Blueprint("main", __name__)
@@ -393,7 +394,7 @@ def edit_project():
     )
 
 
-@main.route('/<project_id>/upload_json', methods=['GET', 'POST'])
+@main.route("/<project_id>/upload_json", methods=["GET", "POST"])
 def upload_json():
     form = UploadForm()
     pid = g.project.id
@@ -403,9 +404,9 @@ def upload_json():
         import_project(filename)
         os.remove(filename)
         flash(_("Project successfully uploaded"))
-        return redirect(url_for('main.list_bills'))
+        return redirect(url_for("main.list_bills"))
 
-    return render_template('upload_json.html', form=form)
+    return render_template("upload_json.html", form=form)
 
 
 def import_project(file):

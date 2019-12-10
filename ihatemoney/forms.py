@@ -111,11 +111,11 @@ class EditProjectForm(FlaskForm):
 
         return project
 
+
 class UploadForm(FlaskForm):
-    file = FileField('JSON', validators=[
-        FileRequired(),
-        FileAllowed(['json', 'JSON'], 'JSON only!')
-    ])
+    file = FileField(
+        "JSON", validators=[FileRequired(), FileAllowed(["json", "JSON"], "JSON only!")]
+    )
 
 
 class ProjectForm(EditProjectForm):
