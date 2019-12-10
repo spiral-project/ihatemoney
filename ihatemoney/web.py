@@ -437,6 +437,12 @@ def import_project(file):
         if not same:
             bill_to_add.append(j)
 
+    # Add to DB
+    for m in members_to_add:
+        Person(name=m[0], project=g.project, weight=m[1])
+
+    db.session.commit()
+
 @main.route("/<project_id>/delete")
 def delete_project():
     g.project.remove_project()
