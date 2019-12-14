@@ -442,6 +442,9 @@ def import_project(file):
     for m in members_to_add:
         Person(name=m[0], project=g.project, weight=m[1])
 
+    bill = Bill(
+        what="TestBill", amount=12, date="2019-12-04", payer_id=9, owers=[7, 8, 9], id=7
+    )
     db.session.commit()
 
 @main.route("/<project_id>/delete")
