@@ -42,7 +42,7 @@
           <li class="nav-item{% if current_view == 'settle_bill' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.settle_bill") }}">{{ _("Settle") }}</a></li>
           <li class="nav-item{% if current_view == 'statistics' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.statistics") }}">{{ _("Statistics") }}</a></li>
           <li class="nav-item{% if current_view == 'edit_project' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.edit_project") }}">{{ _("Settings") }}</a></li>
-          <li class="nav-item{% if current_view == 'upload_json' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.upload_json") }}">{{ _("Upload") }}</a></li>
+          <li class="nav-item{% if current_view == 'upload_json' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.upload_json") }}">{{ _("Import") }}</a></li>
           {% endblock %}
         {% endif %}
       </ul>

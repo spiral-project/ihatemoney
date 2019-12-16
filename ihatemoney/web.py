@@ -10,6 +10,9 @@ and `add_project_id` for a quick overview)
 """
 import json
 import os
+from functools import wraps
+from smtplib import SMTPRecipientsRefused
+
 from flask import (
     abort,
     Blueprint,
@@ -24,15 +27,12 @@ from flask import (
     send_file,
     send_from_directory,
 )
-from flask_mail import Message
 from flask_babel import get_locale, gettext as _
-from werkzeug.security import check_password_hash, generate_password_hash
-from smtplib import SMTPRecipientsRefused
-from werkzeug.exceptions import NotFound
+from flask_mail import Message
 from sqlalchemy import orm
-from functools import wraps
+from werkzeug.exceptions import NotFound
+from werkzeug.security import check_password_hash, generate_password_hash
 
-from ihatemoney.models import db, Project, Person, Bill
 from ihatemoney.forms import (
     AdminAuthenticationForm,
     AuthenticationForm,
@@ -45,6 +45,7 @@ from ihatemoney.forms import (
     get_billform_for,
     UploadForm,
 )
+from ihatemoney.models import db, Project, Person, Bill
 from ihatemoney.utils import (
     Redirect303,
     list_of_dicts2json,
@@ -52,6 +53,7 @@ from ihatemoney.utils import (
     LoginThrottler,
     get_members,
     same_bill,
+    parse_date,
 )
 
 main = Blueprint("main", __name__)
@@ -401,9 +403,13 @@ def upload_json():
     if form.validate_on_submit():
         filename = pid + "_uploaded_bills.json"
         form.file.data.save(filename)
-        import_project(filename)
-        os.remove(filename)
-        flash(_("Project successfully uploaded"))
+        try:
+            import_project(filename)
+            flash(_("Project successfully uploaded"))
+        except ValueError:
+            flash(_("Invalid JSON"), category="error")
+        finally:
+            os.remove(filename)
         return redirect(url_for("main.list_bills"))
 
     return render_template("upload_json.html", form=form)
@@ -438,14 +444,34 @@ def import_project(file):
         if not same:
             bill_to_add.append(j)
 
-    # Add to DB
+    # Add users to DB
     for m in members_to_add:
         Person(name=m[0], project=g.project, weight=m[1])
-
-    bill = Bill(
-        what="TestBill", amount=12, date="2019-12-04", payer_id=9, owers=[7, 8, 9], id=7
-    )
     db.session.commit()
+
+    id_dict = {}
+    for i in g.project.members:
+        id_dict[i.name] = i.id
+
+    # Create bills
+    for b in bill_to_add:
+        owers_id = list()
+        for ower in b["owers"]:
+            owers_id.append(id_dict[ower])
+
+        bill = Bill()
+        form = get_billform_for(g.project)
+        form.what = b["what"]
+        form.amount = b["amount"]
+        form.date = parse_date(b["date"])
+        form.payer = id_dict[b["payer_name"]]
+        form.payed_for = owers_id
+
+        db.session.add(form.fake_form(bill, g.project))
+
+    # Add bills to DB
+    db.session.commit()
+
 
 @main.route("/<project_id>/delete")
 def delete_project():

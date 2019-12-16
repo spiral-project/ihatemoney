@@ -189,6 +189,15 @@ class BillForm(FlaskForm):
         bill.external_link = self.external_link.data
         bill.date = self.date.data
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for.data]
+        return bill
+
+    def fake_form(self, bill, project):
+        bill.payer_id = self.payer
+        bill.amount = self.amount
+        bill.what = self.what
+        bill.external_link = u""
+        bill.date = self.date
+        bill.owers = [Person.query.get(ower, project) for ower in self.payed_for]
 
         return bill
 
