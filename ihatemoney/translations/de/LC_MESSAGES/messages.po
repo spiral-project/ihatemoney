@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-12 09:58+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2019-10-20 19:09+0000\n"
+"Last-Translator: nautilusx <mail.ka@mailbox.org>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.4.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1-dev\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -70,7 +72,7 @@ msgid "Date"
 msgstr "Datum"
 
 msgid "What?"
-msgstr "Was"
+msgstr "Was?"
 
 msgid "Payer"
 msgstr "Von"
@@ -79,7 +81,7 @@ msgid "Amount paid"
 msgstr "Betrag"
 
 msgid "For whom?"
-msgstr "Für"
+msgstr "Für wen?"
 
 msgid "Submit"
 msgstr "Hinzufügen"
@@ -173,19 +175,19 @@ msgstr "%(member)s wurden hinzugefügt"
 msgid "%(name)s is part of this project again"
 msgstr "%(name)s ist wieder Teil von diesem Projekt"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "User '%(name)s' has been deactivated. It will still appear in the users "
 "list until its balance becomes zero."
 msgstr ""
 "Der Benutzer '%(name)s' wurde deaktiviert. Er wird weiterhin in der "
-"Benutzerliste erscheinen solange seine Bilanz Null ist."
+"Benutzerliste erscheinen, bis sein Saldo Null ist."
 
-#, fuzzy, python-format
+#, python-format
 msgid "User '%(name)s' has been removed"
 msgstr "Der Benutzer '%(name)s' wurde entfernt"
 
-#, fuzzy, python-format
+#, python-format
 msgid "User '%(name)s' has been edited"
 msgstr "Der Benutzer '%(name)s' wurde bearbeitet"
 
@@ -262,7 +264,7 @@ msgid "Bill items"
 msgstr "Rechungsposition"
 
 msgid "Download the list of bills with owner, amount, reason,... "
-msgstr "Liste herunterladen (Mit Ersteller, Betrag, Grund, ...)"
+msgstr "Liste herunterladen mit Ersteller, Betrag, Grund, ... "
 
 msgid "Settle plans"
 msgstr "Bilanz"
@@ -351,7 +353,7 @@ msgid "Bills"
 msgstr "Ausgaben"
 
 msgid "Settle"
-msgstr " Bilanz"
+msgstr "Bilanz"
 
 msgid "Statistics"
 msgstr "Statistik"
