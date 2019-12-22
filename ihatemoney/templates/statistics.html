@@ -18,14 +18,13 @@
 
 {% block content %}
     <table id="bill_table" class="split_bills table table-striped">
-        <thead><tr><th>{{ _("Who?") }}</th><th>{{ _("Paid") }}</th><th>{{ _("Spent") }}</th><th>{{ _("Balance") }}</th></tr></thead>
+        <thead><tr><th>{{ _("Who?") }}</th><th>{{ _("Paid") }}</th><th>{{ _("Spent") }}</th></tr></thead>
     <tbody>
     {% for stat in members_stats %}
     <tr>
         <td>{{ stat.member.name }}</td>
         <td>{{ "%0.2f"|format(stat.paid) }}</td>
         <td>{{ "%0.2f"|format(stat.spent) }}</td>
-        <td>{{ "%0.2f"|format(stat.balance) }}</td>
     </tr>
     {% endfor %}
     </tbody>
