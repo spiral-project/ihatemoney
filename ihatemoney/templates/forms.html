@@ -89,7 +89,6 @@
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
     {{ form.file }}
-    {{ form.csrf_token() }}
     <div class="actions">
         <button class="btn btn-primary">{{ _("Import") }}</button>
     </div>

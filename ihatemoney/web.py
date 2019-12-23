@@ -418,16 +418,16 @@ def upload_json():
 def import_project(file):
     # From json : export list of members
     json_file = json.load(open(file))
-    members = get_members(json_file)
-    active_members = g.project.active_members
+    members_json = get_members(json_file)
+    members = g.project.members
     members_already_here = list()
-    for m in active_members:
+    for m in members:
         members_already_here.append(str(m))
 
     # List all members not in the project and weight associated
     # List of tuples (name,weight)
     members_to_add = list()
-    for i in members:
+    for i in members_json:
         if str(i[0]) not in members_already_here:
             members_to_add.append(i)
 
