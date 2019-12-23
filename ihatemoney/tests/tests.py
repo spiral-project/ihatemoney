@@ -1190,6 +1190,62 @@ class BudgetTestCase(IhatemoneyTestCase):
         resp = self.client.get("/raclette/export/transactions.wrong")
         self.assertEqual(resp.status_code, 404)
 
+    def test_import(self):
+        self.post_project("raclette")
+        self.login("raclette")
+
+        json_to_import = [
+            {
+                "date": "2017-01-01",
+                "what": "refund",
+                "amount": 13.33,
+                "payer_name": "tata",
+                "payer_weight": 1.0,
+                "owers": ["fred"],
+            },
+            {
+                "date": "2016-12-31",
+                "what": "red wine",
+                "amount": 200.0,
+                "payer_name": "fred",
+                "payer_weight": 1.0,
+                "owers": ["alexis", "tata"],
+            },
+            {
+                "date": "2016-12-31",
+                "what": "fromage a raclette",
+                "amount": 10.0,
+                "payer_name": "alexis",
+                "payer_weight": 2.0,
+                "owers": ["alexis", "fred", "tata", "pepe"],
+            },
+        ]
+
+        with open("json_test.json", "w+") as file:
+            json.dump(json_to_import, file)
+
+        self.client.post("/raclette/upload_json", data={"file": "json_test.json"})
+
+        os.remove("json_test.json")
+
+        project = models.Project.query.get("raclette")
+        bills = project.get_pretty_bills()
+
+        for i in json_to_import:
+            for j in bills:
+                if j["what"] == i["what"]:
+                    self.assertEqual(j["payer_name"], i["payer_name"])
+                    self.assertEqual(j["amount"], i["amount"])
+                    self.assertEqual(j["payer_weight"], i["payer_weight"])
+                    self.assertEqual(j["date"], i["date"])
+
+                    list_project = [ower for ower in j["owers"]]
+                    list_project.sort()
+                    list_json = [ower for ower in i["owers"]]
+                    list_json.sort()
+
+                    self.assertEqual(list_project, list_json)
+
 
 class APITestCase(IhatemoneyTestCase):
 
