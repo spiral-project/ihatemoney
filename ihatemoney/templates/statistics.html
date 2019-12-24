@@ -3,6 +3,10 @@
 {% block sidebar %}
     <div id="table_overflow">
     <table class="balance table">
+    <tr>
+        <th></th>
+        <th class="balance-value">{{ _("Balance") }}</th>
+    </tr>
     {% for stat in members_stats| sort(attribute='member.name') %}
     <tr>
         <td class="balance-name">{{ stat.member.name }}</td>
