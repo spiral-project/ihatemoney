@@ -129,7 +129,7 @@ class ConfigurationTestCase(BaseTestCase):
 
 class BudgetTestCase(IhatemoneyTestCase):
     def test_notifications(self):
-        """Test that the notifications are sent, and that email adresses
+        """Test that the notifications are sent, and that email addresses
         are checked properly.
         """
         # sending a message to one person
@@ -166,7 +166,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             self.assertEqual(len(outbox), 0)  # no message sent
             self.assertIn("The email toto is not valid", response.data.decode("utf-8"))
 
-        # mixing good and wrong adresses shouldn't send any messages
+        # mixing good and wrong addresses shouldn't send any messages
         with self.app.mail.record_messages() as outbox:
             self.client.post(
                 "/raclette/invite", data={"emails": "alexis@notmyidea.org, alexis"}
@@ -201,7 +201,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertIn("You either provided a bad token", resp.data.decode("utf-8"))
 
     def test_password_reminder(self):
-        # test that it is possible to have an email cotaining the password of a
+        # test that it is possible to have an email containing the password of a
         # project in case people forget it (and it happens!)
 
         self.create_project("raclette")
@@ -829,7 +829,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         result[models.Project.query.get("raclette").members[2].id] = -8.12
         # Since we're using floating point to store currency, we can have some
         # rounding issues that prevent test from working.
-        # However, we should obtain the same values as the theorical ones if we
+        # However, we should obtain the same values as the theoretical ones if we
         # round to 2 decimals, like in the UI.
         for key, value in balance.items():
             self.assertEqual(round(value, 2), result[key])
