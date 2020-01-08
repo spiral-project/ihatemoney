@@ -4,12 +4,14 @@ import ast
 import operator
 
 from io import BytesIO, StringIO
+
 import jinja2
 from json import dumps, JSONEncoder
 from flask import redirect, current_app
 from babel import Locale
 from werkzeug.routing import HTTPException, RoutingException
 from datetime import datetime, timedelta
+
 
 import csv
 
@@ -255,8 +257,3 @@ def same_bill(bill1, bill2):
         if bill1[a] != bill2[a]:
             return False
     return True
-
-
-def parse_date(string_date):
-    date = string_date.split("-")
-    return datetime(int(date[0]), int(date[1]), int(date[2]), 0, 0, 0)

@@ -13,6 +13,7 @@ import os
 from functools import wraps
 from smtplib import SMTPRecipientsRefused
 
+from dateutil.parser import parse
 from flask import (
     abort,
     Blueprint,
@@ -53,7 +54,6 @@ from ihatemoney.utils import (
     LoginThrottler,
     get_members,
     same_bill,
-    parse_date,
 )
 
 main = Blueprint("main", __name__)
@@ -399,17 +399,13 @@ def edit_project():
 @main.route("/<project_id>/upload_json", methods=["GET", "POST"])
 def upload_json():
     form = UploadForm()
-    pid = g.project.id
     if form.validate_on_submit():
-        filename = pid + "_uploaded_bills.json"
-        form.file.data.save(filename)
+        file = form.file.data.stream.read()
         try:
-            import_project(filename)
+            import_project(file)
             flash(_("Project successfully uploaded"))
         except ValueError:
             flash(_("Invalid JSON"), category="error")
-        finally:
-            os.remove(filename)
         return redirect(url_for("main.list_bills"))
 
     return render_template("upload_json.html", form=form)
@@ -417,7 +413,7 @@ def upload_json():
 
 def import_project(file):
     # From json : export list of members
-    json_file = json.load(open(file))
+    json_file = json.loads(file)
     members_json = get_members(json_file)
     members = g.project.members
     members_already_here = list()
@@ -463,7 +459,7 @@ def import_project(file):
         form = get_billform_for(g.project)
         form.what = b["what"]
         form.amount = b["amount"]
-        form.date = parse_date(b["date"])
+        form.date = parse(b["date"])
         form.payer = id_dict[b["payer_name"]]
         form.payed_for = owers_id
 
