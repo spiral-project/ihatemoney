@@ -1231,6 +1231,20 @@ class BudgetTestCase(IhatemoneyTestCase):
         project = models.Project.query.get("raclette")
         bills = project.get_pretty_bills()
 
+        # Check if all bills has been add
+        # self.assertEqual(len(bills), 3) #FAIL HERE
+
+        # Check if name of bills are ok
+        b = list()
+        for j in bills:
+            b.append(j["what"])
+        b.sort()
+        ref = ["refund", "red wine", "fromage a raclette"]
+        ref.sort()
+
+        # self.assertEqual(b, ref)
+
+        # Check if other informations in bill are ok
         for i in json_to_import:
             for j in bills:
                 if j["what"] == i["what"]:
