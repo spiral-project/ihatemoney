@@ -1190,9 +1190,13 @@ class BudgetTestCase(IhatemoneyTestCase):
         resp = self.client.get("/raclette/export/transactions.wrong")
         self.assertEqual(resp.status_code, 404)
 
-    def test_import(self):
+    def test_import_new_project(self):
+        # Import JSON in an empty project
+
         self.post_project("raclette")
         self.login("raclette")
+
+        project = models.Project.query.get("raclette")
 
         json_to_import = [
             {
@@ -1221,28 +1225,104 @@ class BudgetTestCase(IhatemoneyTestCase):
             },
         ]
 
-        with open("json_test.json", "w+") as file:
-            json.dump(json_to_import, file)
+        from ihatemoney.web import import_project
 
-        self.client.post("/raclette/upload_json", data={"file": "json_test.json"})
+        import_project(json.dumps(json_to_import), project)
 
-        os.remove("json_test.json")
-
-        project = models.Project.query.get("raclette")
         bills = project.get_pretty_bills()
 
         # Check if all bills has been add
-        # self.assertEqual(len(bills), 3) #FAIL HERE
+        self.assertEqual(len(bills), len(json_to_import))
 
         # Check if name of bills are ok
-        b = list()
-        for j in bills:
-            b.append(j["what"])
+        b = [e["what"] for e in bills]
         b.sort()
-        ref = ["refund", "red wine", "fromage a raclette"]
+        ref = [e["what"] for e in json_to_import]
         ref.sort()
 
-        # self.assertEqual(b, ref)
+        self.assertEqual(b, ref)
+
+        # Check if other informations in bill are ok
+        for i in json_to_import:
+            for j in bills:
+                if j["what"] == i["what"]:
+                    self.assertEqual(j["payer_name"], i["payer_name"])
+                    self.assertEqual(j["amount"], i["amount"])
+                    self.assertEqual(j["payer_weight"], i["payer_weight"])
+                    self.assertEqual(j["date"], i["date"])
+
+                    list_project = [ower for ower in j["owers"]]
+                    list_project.sort()
+                    list_json = [ower for ower in i["owers"]]
+                    list_json.sort()
+
+                    self.assertEqual(list_project, list_json)
+
+    def test_import_partial_project(self):
+        # Import a JSON in a project with already existing data
+
+        self.post_project("raclette")
+        self.login("raclette")
+
+        project = models.Project.query.get("raclette")
+
+        self.client.post("/raclette/members/add", data={"name": "alexis", "weight": 2})
+        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "tata"})
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-31",
+                "what": "red wine",
+                "payer": 2,
+                "payed_for": [1, 3],
+                "amount": "200",
+            },
+        )
+
+        json_to_import = [
+            {
+                "date": "2017-01-01",
+                "what": "refund",
+                "amount": 13.33,
+                "payer_name": "tata",
+                "payer_weight": 1.0,
+                "owers": ["fred"],
+            },
+            {  # This expense does not have to be present twice.
+                "date": "2016-12-31",
+                "what": "red wine",
+                "amount": 200.0,
+                "payer_name": "fred",
+                "payer_weight": 1.0,
+                "owers": ["alexis", "tata"],
+            },
+            {
+                "date": "2016-12-31",
+                "what": "fromage a raclette",
+                "amount": 10.0,
+                "payer_name": "alexis",
+                "payer_weight": 2.0,
+                "owers": ["alexis", "fred", "tata", "pepe"],
+            },
+        ]
+
+        from ihatemoney.web import import_project
+
+        import_project(json.dumps(json_to_import), project)
+
+        bills = project.get_pretty_bills()
+
+        # Check if all bills has been add
+        self.assertEqual(len(bills), len(json_to_import))
+
+        # Check if name of bills are ok
+        b = [e["what"] for e in bills]
+        b.sort()
+        ref = [e["what"] for e in json_to_import]
+        ref.sort()
+
+        self.assertEqual(b, ref)
 
         # Check if other informations in bill are ok
         for i in json_to_import:

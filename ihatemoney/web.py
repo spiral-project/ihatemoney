@@ -402,7 +402,7 @@ def upload_json():
     if form.validate_on_submit():
         file = form.file.data.stream.read()
         try:
-            import_project(file)
+            import_project(file, g.project)
             flash(_("Project successfully uploaded"))
         except ValueError:
             flash(_("Invalid JSON"), category="error")
@@ -411,11 +411,11 @@ def upload_json():
     return render_template("upload_json.html", form=form)
 
 
-def import_project(file):
+def import_project(file, project):
     # From json : export list of members
     json_file = json.loads(file)
     members_json = get_members(json_file)
-    members = g.project.members
+    members = project.members
     members_already_here = list()
     for m in members:
         members_already_here.append(str(m))
@@ -429,7 +429,7 @@ def import_project(file):
 
     # List bills not in the project
     # Same format than JSON element
-    project_bills = g.project.get_pretty_bills()
+    project_bills = project.get_pretty_bills()
     bill_to_add = list()
     for j in json_file:
         same = False
@@ -442,11 +442,11 @@ def import_project(file):
 
     # Add users to DB
     for m in members_to_add:
-        Person(name=m[0], project=g.project, weight=m[1])
+        Person(name=m[0], project=project, weight=m[1])
     db.session.commit()
 
     id_dict = {}
-    for i in g.project.members:
+    for i in project.members:
         id_dict[i.name] = i.id
 
     # Create bills
@@ -456,14 +456,14 @@ def import_project(file):
             owers_id.append(id_dict[ower])
 
         bill = Bill()
-        form = get_billform_for(g.project)
+        form = get_billform_for(project)
         form.what = b["what"]
         form.amount = b["amount"]
         form.date = parse(b["date"])
         form.payer = id_dict[b["payer_name"]]
         form.payed_for = owers_id
 
-        db.session.add(form.fake_form(bill, g.project))
+        db.session.add(form.fake_form(bill, project))
 
     # Add bills to DB
     db.session.commit()
