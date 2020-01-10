@@ -95,6 +95,18 @@ class Project(db.Model):
         ]
 
     @property
+    def monthly_stats(self):
+        """Compute expenses by month
+
+        :return: a dict of years mapping to a dict of months mapping to the amount
+        :rtype dict:
+        """
+        monthly = defaultdict(lambda: defaultdict(float))
+        for bill in self.get_bills().all():
+            monthly[bill.date.year][bill.date.month] += bill.amount
+        return monthly
+
+    @property
     def uses_weights(self):
         return len([i for i in self.members if i.weight != 1]) > 0
 

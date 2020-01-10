@@ -311,8 +311,9 @@ footer .footer-left {
   background: url("../images/see.png") no-repeat right;
 }
 
-#bill_table {
+#bill_table, #monthly_stats {
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .project-actions > .delete,
@@ -486,4 +487,10 @@ footer .icon svg {
 }
 .icon.icon-white {
   fill: white;
+}
+
+/* align the first column */
+#monthly_stats tr *:first-child {
+  text-align: right;
+  width: 200px;
 }
