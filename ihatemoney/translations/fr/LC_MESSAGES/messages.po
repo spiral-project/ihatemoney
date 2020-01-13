@@ -543,7 +543,7 @@ msgid "Import"
 msgstr "Importer"
 
 msgid "Project successfully uploaded"
-msgstr "Le projet a correctement été importé"
+msgstr "Le projet a été correctement importé"
 
 msgid "Invalid JSON"
 msgstr "Le fichier JSON est invalide"
