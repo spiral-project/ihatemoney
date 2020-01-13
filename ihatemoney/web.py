@@ -400,9 +400,8 @@ def edit_project():
 def upload_json():
     form = UploadForm()
     if form.validate_on_submit():
-        file = form.file.data.stream.read()
         try:
-            import_project(file, g.project)
+            import_project(form.file.data.stream, g.project)
             flash(_("Project successfully uploaded"))
         except ValueError:
             flash(_("Invalid JSON"), category="error")
@@ -412,8 +411,22 @@ def upload_json():
 
 
 def import_project(file, project):
+    json_file = json.load(file)
+
+    # Check if JSON is correct
+    attr = ["what", "payer_name", "payer_weight", "amount", "date", "owers"]
+    attr.sort()
+    for e in json_file:
+        if len(e) != len(attr):
+            raise ValueError
+        list_attr = []
+        for i in e:
+            list_attr.append(i)
+        list_attr.sort()
+        if list_attr != attr:
+            raise ValueError
+
     # From json : export list of members
-    json_file = json.loads(file)
     members_json = get_members(json_file)
     members = project.members
     members_already_here = list()
