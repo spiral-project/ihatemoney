@@ -1227,7 +1227,10 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         from ihatemoney.web import import_project
 
-        import_project(json.dumps(json_to_import), project)
+        file = io.StringIO()
+        json.dump(json_to_import, file)
+        file.seek(0)
+        import_project(file, project)
 
         bills = project.get_pretty_bills()
 
@@ -1309,7 +1312,10 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         from ihatemoney.web import import_project
 
-        import_project(json.dumps(json_to_import), project)
+        file = io.StringIO()
+        json.dump(json_to_import, file)
+        file.seek(0)
+        import_project(file, project)
 
         bills = project.get_pretty_bills()
 
@@ -1339,6 +1345,59 @@ class BudgetTestCase(IhatemoneyTestCase):
                     list_json.sort()
 
                     self.assertEqual(list_project, list_json)
+
+    def test_import_wrong_json(self):
+        self.post_project("raclette")
+        self.login("raclette")
+
+        project = models.Project.query.get("raclette")
+
+        json_1 = [
+            {  # wrong keys
+                "checked": False,
+                "dimensions": {"width": 5, "height": 10,},
+                "id": 1,
+                "name": "A green door",
+                "price": 12.5,
+                "tags": ["home", "green"],
+            }
+        ]
+
+        json_2 = [
+            {  # amount missing
+                "date": "2017-01-01",
+                "what": "refund",
+                "payer_name": "tata",
+                "payer_weight": 1.0,
+                "owers": ["fred"],
+            }
+        ]
+
+        from ihatemoney.web import import_project
+
+        try:
+            file = io.StringIO()
+            json.dump(json_1, file)
+            file.seek(0)
+            import_project(file, project)
+        except ValueError:
+            self.assertTrue(True)
+        except Exception:
+            self.fail("unexpected exception raised")
+        else:
+            self.fail("ExpectedException not raised")
+
+        try:
+            file = io.StringIO()
+            json.dump(json_2, file)
+            file.seek(0)
+            import_project(file, project)
+        except ValueError:
+            self.assertTrue(True)
+        except Exception:
+            self.fail("unexpected exception raised")
+        else:
+            self.fail("ExpectedException not raised")
 
 
 class APITestCase(IhatemoneyTestCase):
