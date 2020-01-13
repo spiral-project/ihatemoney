@@ -1355,7 +1355,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         json_1 = [
             {  # wrong keys
                 "checked": False,
-                "dimensions": {"width": 5, "height": 10,},
+                "dimensions": {"width": 5, "height": 10},
                 "id": 1,
                 "name": "A green door",
                 "price": 12.5,
