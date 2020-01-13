@@ -539,6 +539,16 @@ msgstr "A dépensé"
 msgid "Balance"
 msgstr "Solde"
 
+msgid "Import"
+msgstr "Importer"
+
+msgid "Project successfully uploaded"
+msgstr "Le projet a été correctement importé"
+
+msgid "Invalid JSON"
+msgstr "Le fichier JSON est invalide"
+
+
 #~ msgid ""
 #~ "The project identifier is used to "
 #~ "log in and for the URL of "

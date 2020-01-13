@@ -85,6 +85,15 @@
 
 {% endmacro %}
 
+{% macro upload_json(form) %}
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }}
+    {{ form.file }}
+    <div class="actions">
+        <button class="btn btn-primary">{{ _("Import") }}</button>
+    </div>
+{% endmacro %}
+
 {% macro add_bill(form, edit=False, title=True) %}
 
     <fieldset>

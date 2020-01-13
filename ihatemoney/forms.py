@@ -10,6 +10,8 @@ from wtforms.validators import (
     NumberRange,
     Optional,
 )
+from flask_wtf.file import FileField, FileAllowed, FileRequired
+
 from flask_babel import lazy_gettext as _
 from flask import request
 from werkzeug.security import generate_password_hash
@@ -110,6 +112,12 @@ class EditProjectForm(FlaskForm):
         return project
 
 
+class UploadForm(FlaskForm):
+    file = FileField(
+        "JSON", validators=[FileRequired(), FileAllowed(["json", "JSON"], "JSON only!")]
+    )
+
+
 class ProjectForm(EditProjectForm):
     id = StringField(_("Project identifier"), validators=[DataRequired()])
     password = PasswordField(_("Private code"), validators=[DataRequired()])
@@ -181,6 +189,15 @@ class BillForm(FlaskForm):
         bill.external_link = self.external_link.data
         bill.date = self.date.data
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for.data]
+        return bill
+
+    def fake_form(self, bill, project):
+        bill.payer_id = self.payer
+        bill.amount = self.amount
+        bill.what = self.what
+        bill.external_link = ""
+        bill.date = self.date
+        bill.owers = [Person.query.get(ower, project) for ower in self.payed_for]
 
         return bill
 

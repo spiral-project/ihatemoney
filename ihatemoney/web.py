@@ -8,8 +8,12 @@ Basically, this blueprint takes care of the authentication and provides
 some shortcuts to make your life better when coding (see `pull_project`
 and `add_project_id` for a quick overview)
 """
-
+import json
 import os
+from functools import wraps
+from smtplib import SMTPRecipientsRefused
+
+from dateutil.parser import parse
 from flask import (
     abort,
     Blueprint,
@@ -24,15 +28,12 @@ from flask import (
     send_file,
     send_from_directory,
 )
-from flask_mail import Message
 from flask_babel import get_locale, gettext as _
-from werkzeug.security import check_password_hash, generate_password_hash
-from smtplib import SMTPRecipientsRefused
-from werkzeug.exceptions import NotFound
+from flask_mail import Message
 from sqlalchemy import orm
-from functools import wraps
+from werkzeug.exceptions import NotFound
+from werkzeug.security import check_password_hash, generate_password_hash
 
-from ihatemoney.models import db, Project, Person, Bill
 from ihatemoney.forms import (
     AdminAuthenticationForm,
     AuthenticationForm,
@@ -43,12 +44,16 @@ from ihatemoney.forms import (
     ResetPasswordForm,
     ProjectForm,
     get_billform_for,
+    UploadForm,
 )
+from ihatemoney.models import db, Project, Person, Bill
 from ihatemoney.utils import (
     Redirect303,
     list_of_dicts2json,
     list_of_dicts2csv,
     LoginThrottler,
+    get_members,
+    same_bill,
 )
 
 main = Blueprint("main", __name__)
@@ -389,6 +394,92 @@ def edit_project():
     return render_template(
         "edit_project.html", edit_form=edit_form, current_view="edit_project"
     )
+
+
+@main.route("/<project_id>/upload_json", methods=["GET", "POST"])
+def upload_json():
+    form = UploadForm()
+    if form.validate_on_submit():
+        try:
+            import_project(form.file.data.stream, g.project)
+            flash(_("Project successfully uploaded"))
+        except ValueError:
+            flash(_("Invalid JSON"), category="error")
+        return redirect(url_for("main.list_bills"))
+
+    return render_template("upload_json.html", form=form)
+
+
+def import_project(file, project):
+    json_file = json.load(file)
+
+    # Check if JSON is correct
+    attr = ["what", "payer_name", "payer_weight", "amount", "date", "owers"]
+    attr.sort()
+    for e in json_file:
+        if len(e) != len(attr):
+            raise ValueError
+        list_attr = []
+        for i in e:
+            list_attr.append(i)
+        list_attr.sort()
+        if list_attr != attr:
+            raise ValueError
+
+    # From json : export list of members
+    members_json = get_members(json_file)
+    members = project.members
+    members_already_here = list()
+    for m in members:
+        members_already_here.append(str(m))
+
+    # List all members not in the project and weight associated
+    # List of tuples (name,weight)
+    members_to_add = list()
+    for i in members_json:
+        if str(i[0]) not in members_already_here:
+            members_to_add.append(i)
+
+    # List bills not in the project
+    # Same format than JSON element
+    project_bills = project.get_pretty_bills()
+    bill_to_add = list()
+    for j in json_file:
+        same = False
+        for p in project_bills:
+            if same_bill(p, j):
+                same = True
+                break
+        if not same:
+            bill_to_add.append(j)
+
+    # Add users to DB
+    for m in members_to_add:
+        Person(name=m[0], project=project, weight=m[1])
+    db.session.commit()
+
+    id_dict = {}
+    for i in project.members:
+        id_dict[i.name] = i.id
+
+    # Create bills
+    for b in bill_to_add:
+        owers_id = list()
+        for ower in b["owers"]:
+            owers_id.append(id_dict[ower])
+
+        bill = Bill()
+        form = get_billform_for(project)
+        form.what = b["what"]
+        form.amount = b["amount"]
+        form.date = parse(b["date"])
+        form.payer = id_dict[b["payer_name"]]
+        form.payed_for = owers_id
+
+        db.session.add(form.fake_form(bill, project))
+
+    # Add bills to DB
+    db.session.commit()
 
 
 @main.route("/<project_id>/delete")
