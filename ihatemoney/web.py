@@ -699,6 +699,7 @@ def delete_bill(bill_id):
 
 @main.route("/<project_id>/edit/<int:bill_id>", methods=["GET", "POST"])
 def edit_bill(bill_id):
+    # FIXME: Test this bill belongs to this project !
     bill = Bill.query.get(g.project, bill_id)
     if not bill:
         raise NotFound()
