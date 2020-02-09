@@ -1,3 +1,5 @@
 from .resources import api
 
-__all__ = ['api',]
+__all__ = [
+    "api",
+]
