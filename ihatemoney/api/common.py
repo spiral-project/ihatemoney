@@ -8,6 +8,7 @@ from ihatemoney.forms import ProjectForm, EditProjectForm, MemberForm, get_billf
 from werkzeug.security import check_password_hash
 from functools import wraps
 
+
 def need_auth(f):
     """Check the request for basic authentication for a given project.
 
@@ -188,4 +189,3 @@ class TokenHandler(Resource):
 
         token = project.generate_token()
         return {"token": token}, 200
-    
