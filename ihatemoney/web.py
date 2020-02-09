@@ -55,6 +55,8 @@ from ihatemoney.utils import (
     get_members,
     same_bill,
 )
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 main = Blueprint("main", __name__)
 
@@ -737,9 +739,12 @@ def settle_bill():
 @main.route("/<project_id>/statistics")
 def statistics():
     """Compute what each member has paid and spent and display it"""
+    today = datetime.now()
     return render_template(
         "statistics.html",
         members_stats=g.project.members_stats,
+        monthly_stats=g.project.monthly_stats,
+        months=[today - relativedelta(months=i) for i in range(12)],
         current_view="statistics",
     )
 
