@@ -1,19 +1,12 @@
 # coding: utf8
-from flask import Blueprint, request, current_app
-from flask_restful import Resource, Api, abort
-from flask_cors import CORS
+from flask import request, current_app
+from flask_restful import Resource, abort
 from wtforms.fields.core import BooleanField
 
 from ihatemoney.models import db, Project, Person, Bill
 from ihatemoney.forms import ProjectForm, EditProjectForm, MemberForm, get_billform_for
 from werkzeug.security import check_password_hash
 from functools import wraps
-
-
-api = Blueprint("api", __name__, url_prefix="/api")
-CORS(api)
-restful_api = Api(api)
-
 
 def need_auth(f):
     """Check the request for basic authentication for a given project.
@@ -195,19 +188,4 @@ class TokenHandler(Resource):
 
         token = project.generate_token()
         return {"token": token}, 200
-
-
-restful_api.add_resource(ProjectsHandler, "/projects")
-restful_api.add_resource(ProjectHandler, "/projects/<string:project_id>")
-restful_api.add_resource(TokenHandler, "/projects/<string:project_id>/token")
-restful_api.add_resource(MembersHandler, "/projects/<string:project_id>/members")
-restful_api.add_resource(
-    ProjectStatsHandler, "/projects/<string:project_id>/statistics"
-)
-restful_api.add_resource(
-    MemberHandler, "/projects/<string:project_id>/members/<int:member_id>"
-)
-restful_api.add_resource(BillsHandler, "/projects/<string:project_id>/bills")
-restful_api.add_resource(
-    BillHandler, "/projects/<string:project_id>/bills/<int:bill_id>"
-)
+    
