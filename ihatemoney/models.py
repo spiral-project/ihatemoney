@@ -376,8 +376,10 @@ class Bill(db.Model):
     def pay_each(self):
         """Compute what each share has to pay"""
         if self.owers:
-            # FIXME: SQL might do that more efficiently
-            weights = sum(i.weight for i in self.owers)
+            weights = (db.session.query(func.sum(Person.weight))
+                       .join(billowers, Bill)
+                       .filter(Bill.id == self.id))\
+                .scalar()            
             return self.amount / weights
         else:
             return 0
