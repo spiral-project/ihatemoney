@@ -2,101 +2,101 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-01 21:48+0200\n"
-"PO-Revision-Date: 2020-02-09 12:01+0000\n"
-"Last-Translator: Muge Niu <mugeniu12138@gmail.com>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
-"i-hate-money/i-hate-money/zh_Hans/>\n"
-"Language: zh_HANS-CN\n"
+"POT-Creation-Date: 2019-12-05 15:35+0200\n"
+"PO-Revision-Date: 2019-12-08 16:26+0000\n"
+"Last-Translator: Tymofij Lytvynenko <till.svit@gmail.com>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/uk/>\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.11-dev\n"
-"Generated-By: Babel 2.7.0\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.10-dev\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
-msgstr "金额或符号无效。仅限数字与+-*/符号。"
+msgstr ""
 
 msgid "Project name"
-msgstr "账目名称"
+msgstr "Назва проєкту"
 
 msgid "Private code"
-msgstr "共享密钥"
+msgstr "Приватний код"
 
 msgid "Email"
-msgstr "邮箱"
+msgstr "Е-пошта"
 
 msgid "Project identifier"
-msgstr "账目名称"
+msgstr "Ідентифікатор проєкту"
 
 msgid "Create the project"
-msgstr "创建账目明细"
+msgstr "Створити проєкт"
 
 #, python-format
 msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
-msgstr "账目(“%(project)s”)已存在，请选择一个新名称"
-
-msgid "Get in"
 msgstr ""
 
+msgid "Get in"
+msgstr "Отримати в"
+
 msgid "Admin password"
-msgstr "管理密码"
+msgstr "Пароль адміністратора"
 
 msgid "Send me the code by email"
-msgstr "通过邮件发送"
+msgstr "Надішліть мені код електронною поштою"
 
 msgid "This project does not exists"
-msgstr "账目不存在"
+msgstr "Цей проєкт не існує"
 
 msgid "Password mismatch"
-msgstr "密码错误"
+msgstr "Невідповідність пароля"
 
 msgid "Password"
-msgstr "密码"
+msgstr "Пароль"
 
 msgid "Password confirmation"
-msgstr "密码确认"
+msgstr "Підтвердження паролю"
 
 msgid "Reset password"
-msgstr "密码重置"
+msgstr "Скинути пароль"
 
 msgid "Date"
-msgstr "日期"
+msgstr "Дата"
 
 msgid "What?"
-msgstr "什么？"
+msgstr "Що?"
 
 msgid "Payer"
-msgstr "支付人"
+msgstr "Платник"
 
 msgid "Amount paid"
-msgstr "支付金额"
+msgstr "Виплачувана сума"
 
 msgid "External link"
-msgstr "外部链接"
+msgstr "Зовнішнє посилання"
 
 msgid "A link to an external document, related to this bill"
-msgstr "与此账单有关的外部链接"
+msgstr ""
 
 msgid "For whom?"
-msgstr "成员？"
+msgstr ""
 
 msgid "Submit"
-msgstr "确定"
+msgstr ""
 
 msgid "Submit and add a new one"
-msgstr "确定并添加另一个"
+msgstr ""
 
 msgid "Bills can't be null"
-msgstr "数字不能为零"
+msgstr ""
 
 msgid "Name"
-msgstr "姓名"
+msgstr ""
 
 msgid "Weights should be positive"
 msgstr ""
@@ -216,7 +216,7 @@ msgid "create it"
 msgstr ""
 
 msgid "?"
-msgstr "？"
+msgstr ""
 
 msgid "Create a new project"
 msgstr ""
@@ -273,7 +273,7 @@ msgid "Can't remember the password?"
 msgstr ""
 
 msgid "Cancel"
-msgstr "取消"
+msgstr ""
 
 msgid "Edit the project"
 msgstr ""
@@ -303,7 +303,7 @@ msgid "Send the invitations"
 msgstr ""
 
 msgid "Download"
-msgstr "下载"
+msgstr ""
 
 msgid "Manage your shared <br />expenses, easily"
 msgstr ""
@@ -321,7 +321,7 @@ msgid "Simply sharing money with others?"
 msgstr ""
 
 msgid "We can help!"
-msgstr "我们可以帮助！"
+msgstr ""
 
 msgid "Log in to an existing project"
 msgstr ""
@@ -374,7 +374,7 @@ msgid "Dashboard"
 msgstr ""
 
 msgid "Logout"
-msgstr "签出"
+msgstr ""
 
 msgid "Code"
 msgstr ""
@@ -410,7 +410,7 @@ msgid "Add a new bill"
 msgstr ""
 
 msgid "When?"
-msgstr "什么时候？"
+msgstr ""
 
 msgid "Who paid?"
 msgstr ""
@@ -419,7 +419,7 @@ msgid "For what?"
 msgstr ""
 
 msgid "How much?"
-msgstr "多少？"
+msgstr ""
 
 #, python-format
 msgid "Added on %(date)s"
@@ -507,7 +507,7 @@ msgid "To whom?"
 msgstr ""
 
 msgid "Who?"
-msgstr "谁？"
+msgstr ""
 
 msgid "Paid"
 msgstr ""
@@ -517,96 +517,3 @@ msgstr ""
 
 msgid "Balance"
 msgstr ""
-
-#~ msgid ""
-#~ "The project identifier is used to "
-#~ "log in and for the URL of "
-#~ "the project. We tried to generate "
-#~ "an identifier for you but a "
-#~ "project with this identifier already "
-#~ "exists. Please create a new identifier"
-#~ " that you will be able to "
-#~ "remember"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Not a valid amount or expression.Only"
-#~ " numbers and + - * / "
-#~ "operatorsare accepted."
-#~ msgstr ""
-
-#~ msgid "What do you want to download ?"
-#~ msgstr "你想下载什么？"
-
-#~ msgid "bills"
-#~ msgstr ""
-
-#~ msgid "transactions"
-#~ msgstr ""
-
-#~ msgid "Export file format"
-#~ msgstr ""
-
-#~ msgid "Edit this project"
-#~ msgstr ""
-
-#~ msgid "Download this project's data"
-#~ msgstr ""
-
-#~ msgid "Type user name here"
-#~ msgstr ""
-
-#~ msgid "No, thanks"
-#~ msgstr ""
-
-#~ msgid "Manage your shared <br>expenses, easily"
-#~ msgstr ""
-
-#~ msgid "Log to an existing project"
-#~ msgstr ""
-
-#~ msgid "log in"
-#~ msgstr ""
-
-#~ msgid "or create a new one"
-#~ msgstr ""
-
-#~ msgid "let's get started"
-#~ msgstr ""
-
-#~ msgid "options"
-#~ msgstr ""
-
-#~ msgid "Project settings"
-#~ msgstr ""
-
-#~ msgid "This is a free software"
-#~ msgstr ""
-
-#~ msgid "Invite people to join this project!"
-#~ msgstr ""
-
-#~ msgid "Added on"
-#~ msgstr ""
-
-#~ msgid "Nothing to list yet. You probably want to"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Specify a (comma separated) list of "
-#~ "email adresses you want to notify "
-#~ "about the\n"
-#~ "creation of this budget management "
-#~ "project and we will send them an"
-#~ " email for you."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "If you prefer, you can share the project identifier and the shared\n"
-#~ "password by other communication means. "
-#~ "Or even directly share the following "
-#~ "link:"
-#~ msgstr ""
-
-#~ msgid "A link to reset your password has been sent to your email."
-#~ msgstr ""

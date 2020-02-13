@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-12 09:58+0200\n"
-"PO-Revision-Date: 2019-10-20 19:09+0000\n"
-"Last-Translator: nautilusx <mail.ka@mailbox.org>\n"
+"PO-Revision-Date: 2020-02-12 10:50+0000\n"
+"Last-Translator: flolilo <flolilo@mailbox.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/de/>\n"
 "Language: de\n"
@@ -12,14 +12,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1-dev\n"
+"X-Generator: Weblate 3.11-dev\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
-"Kein gültiger Betrag oder Ausdruck. Es werden nur Zahlen und + - * / "
-"Operatoren akzeptiert."
+"Kein gültiger Betrag oder Ausdruck. Es werden nur Zahlen und die Operatoren +"
+" - * / akzeptiert."
 
 msgid "Project name"
 msgstr "Projektname"
@@ -41,8 +41,8 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
-"Ein Projekt mit der Kennung (\"%(project)s\") existiert/existieren "
-"bereits. Bitte wähle eine andere Kennung"
+"Ein Projekt mit der Kennung (\"%(project)s\") existiert bereits. Bitte wähle "
+"eine andere Kennung"
 
 msgid "Get in"
 msgstr "Eintreten"
@@ -90,7 +90,7 @@ msgid "Submit and add a new one"
 msgstr "Hinzufügen und neuen erstellen"
 
 msgid "Bills can't be null"
-msgstr "Die Betrag darf nicht null sein"
+msgstr "Der Betrag darf nicht null sein"
 
 msgid "Name"
 msgstr "Name"
@@ -111,7 +111,7 @@ msgid "This project already have this member"
 msgstr "Der Benutzer ist bereits dem Projekt zugeordnet"
 
 msgid "People to notify"
-msgstr "Personen die informiert werden sollen"
+msgstr "Personen, die informiert werden sollen"
 
 msgid "Send invites"
 msgstr "Einladung senden"
@@ -126,7 +126,8 @@ msgstr "Zu viele fehlgeschlagene Anmeldeversuche, bitte versuche es später."
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr ""
-"Das Administrator-Passwort ist nicht korrekt. Noch %(num)d Versuche fehlen."
+"Das Administrator-Passwort ist nicht korrekt. Noch %(num)d Versuch(e) "
+"verbleibend."
 
 msgid "You either provided a bad token or no project identifier."
 msgstr ""
@@ -138,7 +139,7 @@ msgstr "Der private Code ist nicht korrekt"
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr ""
-"Du hast gerade das Projekt '%(project)s' erstellt um dein Ausgaben zu "
+"Du hast gerade das Projekt '%(project)s' erstellt, um deine Ausgaben zu "
 "teilen"
 
 #, python-format
@@ -162,18 +163,18 @@ msgstr "Projekt erfolgreich gelöscht"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
-msgstr "Du wurdest eingeladen deine Ausgaben für %(project)s zu teilen"
+msgstr "Du wurdest eingeladen, deine Ausgaben für %(project)s zu teilen"
 
 msgid "Your invitations have been sent"
 msgstr "Deine Einladungen wurden versendet"
 
 #, python-format
 msgid "%(member)s had been added"
-msgstr "%(member)s wurden hinzugefügt"
+msgstr "%(member)s wurde(n) hinzugefügt"
 
 #, python-format
 msgid "%(name)s is part of this project again"
-msgstr "%(name)s ist wieder Teil von diesem Projekt"
+msgstr "%(name)s ist/sind wieder Teil von diesem Projekt"
 
 #, python-format
 msgid ""
@@ -228,10 +229,10 @@ msgid "Project"
 msgstr "Projekt"
 
 msgid "Number of members"
-msgstr "Anzahl von Teilnehmer"
+msgstr "Anzahl der Teilnehmer"
 
 msgid "Number of bills"
-msgstr "Anzahl von Ausgaben"
+msgstr "Anzahl der Ausgaben"
 
 msgid "Newest bill"
 msgstr "Neuster Eintrag"
@@ -240,7 +241,7 @@ msgid "Oldest bill"
 msgstr "Ältester Eintrag"
 
 msgid "Actions"
-msgstr "Aktion"
+msgstr "Aktionen"
 
 msgid "edit"
 msgstr "Bearbeiten"
@@ -264,7 +265,7 @@ msgid "Bill items"
 msgstr "Rechungsposition"
 
 msgid "Download the list of bills with owner, amount, reason,... "
-msgstr "Liste herunterladen mit Ersteller, Betrag, Grund, ... "
+msgstr "Liste mit Ersteller, Betrag, Grund, ... herunterladen "
 
 msgid "Settle plans"
 msgstr "Bilanz"
@@ -300,7 +301,7 @@ msgid "Edit this member"
 msgstr "Teilnehmer bearbeiten"
 
 msgid "john.doe@example.com, mary.moe@site.com"
-msgstr "john.doe@example.com, mary.moe@site.com"
+msgstr "max.mustermann@beispiel.com, mary.moe@site.com"
 
 msgid "Send the invitations"
 msgstr "Einladung versenden"
@@ -342,9 +343,8 @@ msgid ""
 "This access code will be sent to your friends. It is stored as-is by the "
 "server, so don\\'t reuse a personal password!"
 msgstr ""
-"Dieser Zugangscode wird an deine Freunde gesendet. Es wird als klartext "
-"auf dem Server gespeichert. Bitte verwenden daher kein persönliches "
-"Passwort!"
+"Dieser Zugangscode wird an deine Freunde gesendet. Es wird als Klartext auf "
+"dem Server gespeichert. Bitte verwenden daher kein persönliches Passwort!"
 
 msgid "Account manager"
 msgstr "Konten"
@@ -374,7 +374,7 @@ msgid "Other projects :"
 msgstr "Andere Projekte:"
 
 msgid "switch to"
-msgstr "wechsel zu"
+msgstr "wechseln zu"
 
 msgid "Dashboard"
 msgstr "Dashboard"
@@ -386,7 +386,7 @@ msgid "Code"
 msgstr "Code"
 
 msgid "Mobile Application"
-msgstr "Handy Applikation"
+msgstr "Handy-Applikation"
 
 msgid "Documentation"
 msgstr "Dokumentation"
@@ -410,7 +410,7 @@ msgid "Invite people"
 msgstr "Leute einladen"
 
 msgid "You should start by adding participants"
-msgstr "Du kannst anfangen Teilnehmer hinzuzufügen"
+msgstr "Du kannst anfangen, Teilnehmer hinzuzufügen"
 
 msgid "Add a new bill"
 msgstr "Neue Ausgabe"
@@ -425,7 +425,7 @@ msgid "For what?"
 msgstr "Wofür?"
 
 msgid "How much?"
-msgstr "Wie viel?"
+msgstr "Wieviel?"
 
 #, python-format
 msgid "Added on %(date)s"
@@ -445,13 +445,13 @@ msgid "No bills"
 msgstr "Keine Ausgaben"
 
 msgid "Nothing to list yet."
-msgstr "Nichts zu aufzulisten."
+msgstr "Noch nichts aufzulisten."
 
 msgid "You probably want to"
-msgstr "Du willst wahrscheinlich eine"
+msgstr "Du willst wahrscheinlich"
 
 msgid "add a bill"
-msgstr "Ausgabe hinzufügen"
+msgstr "eine Ausgabe hinzufügen"
 
 msgid "add participants"
 msgstr "Teilnehmer hinzufügen"
@@ -476,7 +476,7 @@ msgid "Reset your password"
 msgstr "Setze dein Passwort zurück"
 
 msgid "Invite people to join this project"
-msgstr "Lade Leute ein diesem Projekt beizutreten"
+msgstr "Lade Leute ein, diesem Projekt beizutreten"
 
 msgid "Share Identifier & code"
 msgstr "Teile die ID & den Code"
@@ -507,16 +507,16 @@ msgid ""
 "                creation of this budget management project and we will "
 "send them an email for you."
 msgstr ""
-"Gib eine (durch Kommas getrennte) Liste von E-Mail-Adressen an, die du "
-"über die\n"
-"\t\tErstellung dieses Projekts informieren möchtest, und wir senden ihnen "
+"Gib eine (durch Kommas getrennte) Liste von E-Mail-Adressen an, die du über "
+"die\n"
+"\t\t\tErstellung dieses Projekts informieren möchtest, und wir senden ihnen "
 "eine E-Mail."
 
 msgid "Who pays?"
 msgstr "Wer zahlt?"
 
 msgid "To whom?"
-msgstr "An wem?"
+msgstr "An wen?"
 
 msgid "Who?"
 msgstr "Wer?"
