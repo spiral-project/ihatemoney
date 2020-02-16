@@ -18,6 +18,9 @@ db = SQLAlchemy()
 
 
 class Project(db.Model):
+    class ProjectQuery(BaseQuery):
+        def get_by_name(self, name):
+            return Project.query.filter(Project.name == name).one()
 
     id = db.Column(db.String(64), primary_key=True)
 
@@ -25,6 +28,8 @@ class Project(db.Model):
     password = db.Column(db.String(128))
     contact_email = db.Column(db.String(128))
     members = db.relationship("Person", backref="project")
+
+    query_class = ProjectQuery
 
     @property
     def _to_serialize(self):
