@@ -8,7 +8,7 @@ from flask_mail import Mail
 from flask_migrate import Migrate, upgrade, stamp
 from werkzeug.middleware.proxy_fix import ProxyFix
 
-from ihatemoney.api import api
+from ihatemoney.api.v1 import api as apiv1
 from ihatemoney.models import db
 from ihatemoney.utils import (
     IhmJSONEncoder,
@@ -132,7 +132,7 @@ def create_app(
 
     validate_configuration(app)
     app.register_blueprint(web_interface)
-    app.register_blueprint(api)
+    app.register_blueprint(apiv1)
     app.register_error_handler(404, page_not_found)
 
     # Configure the a, root="main"pplication
