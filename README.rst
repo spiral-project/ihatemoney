@@ -4,10 +4,6 @@ I hate money
 .. image:: https://travis-ci.org/spiral-project/ihatemoney.svg?branch=master
    :target: https://travis-ci.org/spiral-project/ihatemoney
    :alt: Travis CI Build Status
-   
-.. image:: https://img.shields.io/badge/maintainers-wanted-red.svg
-   :target: https://github.com/pickhardt/maintainers-wanted
-   :alt: Maintainers Wanted
 
 *I hate money* is a web application made to ease shared budget management.
 It keeps track of who bought what, when, and for whom; and helps to settle the
