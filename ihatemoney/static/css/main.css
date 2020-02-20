@@ -325,6 +325,13 @@ footer .footer-left {
   margin-bottom: 30px;
 }
 
+@media (min-width: 768px) {
+  .split_bills, #table_overflow.statistics {
+    /* The table is shifted to left, so add the spacer width on the right to match */
+    width: calc(100% + 15px);
+  }
+}
+
 .project-actions > .delete,
 .project-actions > .edit {
   font-size: 0px;
@@ -397,6 +404,7 @@ tr.payer_line .balance-name {
 
 .balance.table {
   table-layout: fixed;
+  margin-top: 30px;
 }
 
 #bill-form > fieldset {
