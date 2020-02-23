@@ -17,7 +17,7 @@ Requirements
 
 «Ihatemoney» depends on:
 
-* **Python**: either 2.7, 3.4, 3.5, 3.6 will work.
+* **Python**: either 3.5, 3.6 or 3.7 will work.
 * **A Backend**: to choose among MySQL, PostgreSQL, SQLite or Memory.
 * **Virtualenv** (recommended): `virtualenv` package under Debian/Ubuntu.
 
@@ -230,6 +230,8 @@ external database::
 A volume can also be specified to persist the default database file::
 
     docker run -d -p 8000:8000 -v /host/path/to/database:/database ihatemoney
+
+If you want to run the latest version, you can pass `-e NIGHTLY="true"`.
 
 Additional gunicorn parameters can be passed using the docker ``CMD``
 parameter.
