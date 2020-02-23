@@ -9,8 +9,8 @@ I hate money is written in python, using the `flask <https://palletsprojects.com
 framework. It's developped with ease of use in mind, and is trying to
 keep things simple. Hope you (will) like it!
 
-Table of content
-================
+Table of contents
+=================
 
 .. toctree::
    :maxdepth: 1

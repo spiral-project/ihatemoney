@@ -22,7 +22,7 @@ ALLOW_PUBLIC_PROJECT_CREATION = $ALLOW_PUBLIC_PROJECT_CREATION
 ACTIVATE_ADMIN_DASHBOARD = $ACTIVATE_ADMIN_DASHBOARD
 EOF
 
-if [ ! -z "$NIGHTLY" ]; then
+if [ "$NIGHTLY" == "True" -o "$NIGHTLY" == "true" ]; then
     # Clone or update repository into /ihatemoney.
     if [ ! -d /ihatemoney/.git ]; then
         echo "Cloning..."
@@ -36,7 +36,7 @@ if [ ! -z "$NIGHTLY" ]; then
     fi
     pip install --no-cache-dir -e /ihatemoney
 else
-    # Get the latest release from PyPy.
+    # Get the latest release from PyPI.
     pip install --no-cache-dir --upgrade ihatemoney
 fi
 
