@@ -32,12 +32,12 @@
     {% endfor %}
     </tbody>
 </table>
-{% else %}
-<div class="alert alert-danger">{{ _("The Dashboard is currently deactivated.") }}</div>
-{% endif %}
 <script language="JavaScript">
 $(document).ready(function() {
     $('#bill_table').DataTable();
 })
 </script>
+{% else %}
+<div class="alert alert-danger">{{ _("The Dashboard is currently deactivated.") }}</div>
+{% endif %}
 {% endblock %}
