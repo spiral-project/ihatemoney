@@ -22,7 +22,9 @@
 </table>
 <script language="JavaScript">
 $(document).ready(function() {
-    $('#bill_table').DataTable();
+    $('#bill_table').DataTable({
+        paging: false
+    });
 })
 </script>
 {% else %}
