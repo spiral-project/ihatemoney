@@ -1,25 +1,26 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-12 09:58+0200\n"
+"POT-Creation-Date: 2020-02-26 06:46+0100\n"
 "PO-Revision-Date: 2020-02-12 10:50+0000\n"
 "Last-Translator: flolilo <flolilo@mailbox.org>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/de/>\n"
 "Language: de\n"
+"Language-Team: German <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/de/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.11-dev\n"
+"Generated-By: Babel 2.7.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
-"Kein gültiger Betrag oder Ausdruck. Es werden nur Zahlen und die Operatoren +"
-" - * / akzeptiert."
+"Kein gültiger Betrag oder Ausdruck. Es werden nur Zahlen und die "
+"Operatoren + - * / akzeptiert."
 
 msgid "Project name"
 msgstr "Projektname"
@@ -41,8 +42,8 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
-"Ein Projekt mit der Kennung (\"%(project)s\") existiert bereits. Bitte wähle "
-"eine andere Kennung"
+"Ein Projekt mit der Kennung (\"%(project)s\") existiert bereits. Bitte "
+"wähle eine andere Kennung"
 
 msgid "Get in"
 msgstr "Eintreten"
@@ -79,6 +80,12 @@ msgstr "Von"
 
 msgid "Amount paid"
 msgstr "Betrag"
+
+msgid "External link"
+msgstr ""
+
+msgid "A link to an external document, related to this bill"
+msgstr ""
 
 msgid "For whom?"
 msgstr "Für wen?"
@@ -130,8 +137,7 @@ msgstr ""
 "verbleibend."
 
 msgid "You either provided a bad token or no project identifier."
-msgstr ""
-"Du hast entweder einen ungültigen Token oder keine Projekt-ID angegeben."
+msgstr "Du hast entweder einen ungültigen Token oder keine Projekt-ID angegeben."
 
 msgid "This private code is not the right one"
 msgstr "Der private Code ist nicht korrekt"
@@ -157,6 +163,12 @@ msgstr "Unbekanntes Projekt"
 
 msgid "Password successfully reset."
 msgstr "Passwort erfolgreich zurückgesetzt."
+
+msgid "Project successfully uploaded"
+msgstr ""
+
+msgid "Invalid JSON"
+msgstr ""
 
 msgid "Project successfully deleted"
 msgstr "Projekt erfolgreich gelöscht"
@@ -282,6 +294,9 @@ msgstr "Abbrechen"
 msgid "Edit the project"
 msgstr "Projekt bearbeiten"
 
+msgid "Import"
+msgstr ""
+
 msgid "Edit this bill"
 msgstr "Ausgabe bearbeiten"
 
@@ -343,8 +358,9 @@ msgid ""
 "This access code will be sent to your friends. It is stored as-is by the "
 "server, so don\\'t reuse a personal password!"
 msgstr ""
-"Dieser Zugangscode wird an deine Freunde gesendet. Es wird als Klartext auf "
-"dem Server gespeichert. Bitte verwenden daher kein persönliches Passwort!"
+"Dieser Zugangscode wird an deine Freunde gesendet. Es wird als Klartext "
+"auf dem Server gespeichert. Bitte verwenden daher kein persönliches "
+"Passwort!"
 
 msgid "Account manager"
 msgstr "Konten"
@@ -415,6 +431,12 @@ msgstr "Du kannst anfangen, Teilnehmer hinzuzufügen"
 msgid "Add a new bill"
 msgstr "Neue Ausgabe"
 
+msgid "Newer bills"
+msgstr ""
+
+msgid "Older bills"
+msgstr ""
+
 msgid "When?"
 msgstr "Wann?"
 
@@ -440,6 +462,9 @@ msgstr "Jeder außer %(excluded)s"
 
 msgid "each"
 msgstr "alles"
+
+msgid "see"
+msgstr ""
 
 msgid "No bills"
 msgstr "Keine Ausgaben"
@@ -485,8 +510,8 @@ msgid ""
 "You can share the project identifier and the private code by any "
 "communication means."
 msgstr ""
-"Du kannst die Projekt-ID und den privaten Code auf jedem Kommunikationsweg "
-"weitergeben."
+"Du kannst die Projekt-ID und den privaten Code auf jedem "
+"Kommunikationsweg weitergeben."
 
 msgid "Identifier:"
 msgstr "ID:"
@@ -495,8 +520,7 @@ msgid "Share the Link"
 msgstr "Link teilen"
 
 msgid "You can directly share the following link via your prefered medium"
-msgstr ""
-"Du kannst den folgenden Link direkt über dein bevorzugtes Medium teilen"
+msgstr "Du kannst den folgenden Link direkt über dein bevorzugtes Medium teilen"
 
 msgid "Send via Emails"
 msgstr "Per E-Mail versenden"
@@ -507,10 +531,10 @@ msgid ""
 "                creation of this budget management project and we will "
 "send them an email for you."
 msgstr ""
-"Gib eine (durch Kommas getrennte) Liste von E-Mail-Adressen an, die du über "
-"die\n"
-"\t\t\tErstellung dieses Projekts informieren möchtest, und wir senden ihnen "
-"eine E-Mail."
+"Gib eine (durch Kommas getrennte) Liste von E-Mail-Adressen an, die du "
+"über die\n"
+"\t\t\tErstellung dieses Projekts informieren möchtest, und wir senden "
+"ihnen eine E-Mail."
 
 msgid "Who pays?"
 msgstr "Wer zahlt?"
@@ -521,11 +545,21 @@ msgstr "An wen?"
 msgid "Who?"
 msgstr "Wer?"
 
+msgid "Balance"
+msgstr "Bilanz"
+
 msgid "Paid"
 msgstr "Bezahlt"
 
 msgid "Spent"
 msgstr "Ausgegeben"
 
-msgid "Balance"
-msgstr "Bilanz"
+msgid "Expenses by Month"
+msgstr ""
+
+msgid "Period"
+msgstr ""
+
+msgid "Import JSON"
+msgstr ""
+

@@ -1,18 +1,18 @@
+
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-09-30 23:53+0200\n"
+"POT-Creation-Date: 2020-02-26 06:46+0100\n"
 "PO-Revision-Date: 2019-10-07 22:56+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/nl/>\n"
 "Language: nl\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/nl/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9-dev\n"
 "Generated-By: Babel 2.7.0\n"
 
 msgid ""
@@ -158,6 +158,12 @@ msgstr "Onbekend project"
 msgid "Password successfully reset."
 msgstr "Wachtwoord is hersteld."
 
+msgid "Project successfully uploaded"
+msgstr ""
+
+msgid "Invalid JSON"
+msgstr ""
+
 msgid "Project successfully deleted"
 msgstr "Project is verwijderd"
 
@@ -283,6 +289,9 @@ msgstr "Annuleren"
 
 msgid "Edit the project"
 msgstr "Project bewerken"
+
+msgid "Import"
+msgstr ""
 
 msgid "Edit this bill"
 msgstr "Deze rekening bewerken"
@@ -417,6 +426,12 @@ msgstr "Begin met het toevoegen van deelnemers"
 msgid "Add a new bill"
 msgstr "Nieuwe rekening toevoegen"
 
+msgid "Newer bills"
+msgstr ""
+
+msgid "Older bills"
+msgstr ""
+
 msgid "When?"
 msgstr "Wanneer?"
 
@@ -525,14 +540,23 @@ msgstr "Aan wie?"
 msgid "Who?"
 msgstr "Wie?"
 
+msgid "Balance"
+msgstr "Saldo"
+
 msgid "Paid"
 msgstr "Betaald"
 
 msgid "Spent"
 msgstr "Uitgegeven"
 
-msgid "Balance"
-msgstr "Saldo"
+msgid "Expenses by Month"
+msgstr ""
+
+msgid "Period"
+msgstr ""
+
+msgid "Import JSON"
+msgstr ""
 
 #~ msgid ""
 #~ "The project identifier is used to "
@@ -647,3 +671,4 @@ msgstr "Saldo"
 #~ "Er is een link met "
 #~ "wachtwoordherstelinstructies naar je e-mailadres "
 #~ "verstuurd."
+

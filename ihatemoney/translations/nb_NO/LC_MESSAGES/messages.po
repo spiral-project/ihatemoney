@@ -1,18 +1,18 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-30 23:53+0200\n"
+"POT-Creation-Date: 2020-02-26 06:46+0100\n"
 "PO-Revision-Date: 2019-11-12 09:04+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
-"i-hate-money/i-hate-money/nb_NO/>\n"
 "Language: nb_NO\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/i"
+"-hate-money/i-hate-money/nb_NO/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.10-dev\n"
 "Generated-By: Babel 2.7.0\n"
 
 msgid ""
@@ -165,6 +165,12 @@ msgstr "Ukjent prosjekt"
 msgid "Password successfully reset."
 msgstr "Passord tilbakestilt."
 
+msgid "Project successfully uploaded"
+msgstr ""
+
+msgid "Invalid JSON"
+msgstr ""
+
 #, fuzzy
 msgid "Project successfully deleted"
 msgstr "Prosjekt slettet"
@@ -296,6 +302,9 @@ msgstr "Avbryt"
 
 msgid "Edit the project"
 msgstr "Rediger prosjektet"
+
+msgid "Import"
+msgstr ""
 
 msgid "Edit this bill"
 msgstr "Rediger denne regningen"
@@ -436,6 +445,12 @@ msgstr "Du kan starte ved å legge til deltagere"
 msgid "Add a new bill"
 msgstr "Legg til en ny regning"
 
+msgid "Newer bills"
+msgstr ""
+
+msgid "Older bills"
+msgstr ""
+
 msgid "When?"
 msgstr "Når?"
 
@@ -549,15 +564,24 @@ msgstr "Til hvem?"
 msgid "Who?"
 msgstr "Hvem?"
 
+#, fuzzy
+msgid "Balance"
+msgstr "Kontobalanse"
+
 msgid "Paid"
 msgstr "Betalt"
 
 msgid "Spent"
 msgstr "Forbrukt"
 
-#, fuzzy
-msgid "Balance"
-msgstr "Kontobalanse"
+msgid "Expenses by Month"
+msgstr ""
+
+msgid "Period"
+msgstr ""
+
+msgid "Import JSON"
+msgstr ""
 
 #~ msgid ""
 #~ "The project identifier is used to "
@@ -672,3 +696,4 @@ msgstr "Kontobalanse"
 #~ "En lenke for å tilbakestille passordet"
 #~ " har blitt sent til deg per "
 #~ "e-post."
+

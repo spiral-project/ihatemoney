@@ -1,18 +1,19 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-01 21:48+0200\n"
+"POT-Creation-Date: 2020-02-26 06:46+0100\n"
 "PO-Revision-Date: 2020-02-09 12:01+0000\n"
 "Last-Translator: Muge Niu <mugeniu12138@gmail.com>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
-"i-hate-money/i-hate-money/zh_Hans/>\n"
-"Language: zh_HANS-CN\n"
+"Language: zh_HANS_CN\n"
+"Language-Team: Chinese (Simplified) "
+"<https://hosted.weblate.org/projects/i-hate-money/i-hate-money/zh_Hans/>"
+"\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.11-dev\n"
 "Generated-By: Babel 2.7.0\n"
 
 msgid ""
@@ -156,6 +157,12 @@ msgstr ""
 msgid "Password successfully reset."
 msgstr ""
 
+msgid "Project successfully uploaded"
+msgstr ""
+
+msgid "Invalid JSON"
+msgstr ""
+
 msgid "Project successfully deleted"
 msgstr ""
 
@@ -276,6 +283,9 @@ msgid "Cancel"
 msgstr "取消"
 
 msgid "Edit the project"
+msgstr ""
+
+msgid "Import"
 msgstr ""
 
 msgid "Edit this bill"
@@ -409,6 +419,12 @@ msgstr ""
 msgid "Add a new bill"
 msgstr ""
 
+msgid "Newer bills"
+msgstr ""
+
+msgid "Older bills"
+msgstr ""
+
 msgid "When?"
 msgstr "什么时候？"
 
@@ -509,13 +525,22 @@ msgstr ""
 msgid "Who?"
 msgstr "谁？"
 
+msgid "Balance"
+msgstr ""
+
 msgid "Paid"
 msgstr ""
 
 msgid "Spent"
 msgstr ""
 
-msgid "Balance"
+msgid "Expenses by Month"
+msgstr ""
+
+msgid "Period"
+msgstr ""
+
+msgid "Import JSON"
 msgstr ""
 
 #~ msgid ""
@@ -610,3 +635,4 @@ msgstr ""
 
 #~ msgid "A link to reset your password has been sent to your email."
 #~ msgstr ""
+

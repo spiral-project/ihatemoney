@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 11:52+0200\n"
+"POT-Creation-Date: 2020-02-26 06:46+0100\n"
 "PO-Revision-Date: 2019-09-25 22:28+0000\n"
 "Last-Translator: Diego Caraballo <diegocaraballo84@gmail.com>\n"
 "Language: es_419\n"
@@ -164,6 +164,12 @@ msgstr "Proyecto desconocido"
 msgid "Password successfully reset."
 msgstr "Contraseña restablecida con éxito."
 
+msgid "Project successfully uploaded"
+msgstr ""
+
+msgid "Invalid JSON"
+msgstr ""
+
 msgid "Project successfully deleted"
 msgstr "Proyecto eliminado correctamente"
 
@@ -289,6 +295,9 @@ msgstr "Cancelar"
 
 msgid "Edit the project"
 msgstr "Editar el proyecto"
+
+msgid "Import"
+msgstr ""
 
 msgid "Edit this bill"
 msgstr "Editar esta factura"
@@ -423,6 +432,12 @@ msgstr "Deberías comenzar agregando participantes"
 msgid "Add a new bill"
 msgstr "Añadir una nueva factura"
 
+msgid "Newer bills"
+msgstr ""
+
+msgid "Older bills"
+msgstr ""
+
 msgid "When?"
 msgstr "¿Cuando?"
 
@@ -533,12 +548,21 @@ msgstr "¿A quién?"
 msgid "Who?"
 msgstr "¿Quién?"
 
+msgid "Balance"
+msgstr "Balance"
+
 msgid "Paid"
 msgstr "Pagado"
 
 msgid "Spent"
 msgstr "Gastado"
 
-msgid "Balance"
-msgstr "Balance"
+msgid "Expenses by Month"
+msgstr ""
+
+msgid "Period"
+msgstr ""
+
+msgid "Import JSON"
+msgstr ""
 

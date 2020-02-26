@@ -139,6 +139,12 @@ msgstr ""
 msgid "Password successfully reset."
 msgstr ""
 
+msgid "Project successfully uploaded"
+msgstr ""
+
+msgid "Invalid JSON"
+msgstr ""
+
 msgid "Project successfully deleted"
 msgstr ""
 
@@ -259,6 +265,9 @@ msgid "Cancel"
 msgstr ""
 
 msgid "Edit the project"
+msgstr ""
+
+msgid "Import"
 msgstr ""
 
 msgid "Edit this bill"
@@ -392,6 +401,12 @@ msgstr ""
 msgid "Add a new bill"
 msgstr ""
 
+msgid "Newer bills"
+msgstr ""
+
+msgid "Older bills"
+msgstr ""
+
 msgid "When?"
 msgstr ""
 
@@ -492,12 +507,21 @@ msgstr ""
 msgid "Who?"
 msgstr ""
 
+msgid "Balance"
+msgstr ""
+
 msgid "Paid"
 msgstr ""
 
 msgid "Spent"
 msgstr ""
 
-msgid "Balance"
+msgid "Expenses by Month"
+msgstr ""
+
+msgid "Period"
+msgstr ""
+
+msgid "Import JSON"
 msgstr ""
 

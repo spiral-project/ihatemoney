@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-01 21:48+0200\n"
+"POT-Creation-Date: 2020-02-26 06:46+0100\n"
 "PO-Revision-Date: 2019-08-07 13:24+0000\n"
 "Last-Translator: Mesut Akcan <makcan@gmail.com>\n"
 "Language: tr\n"
@@ -160,6 +160,12 @@ msgstr ""
 msgid "Password successfully reset."
 msgstr ""
 
+msgid "Project successfully uploaded"
+msgstr ""
+
+msgid "Invalid JSON"
+msgstr ""
+
 msgid "Project successfully deleted"
 msgstr ""
 
@@ -280,6 +286,9 @@ msgid "Cancel"
 msgstr ""
 
 msgid "Edit the project"
+msgstr ""
+
+msgid "Import"
 msgstr ""
 
 msgid "Edit this bill"
@@ -413,6 +422,12 @@ msgstr ""
 msgid "Add a new bill"
 msgstr ""
 
+msgid "Newer bills"
+msgstr ""
+
+msgid "Older bills"
+msgstr ""
+
 msgid "When?"
 msgstr ""
 
@@ -513,13 +528,22 @@ msgstr ""
 msgid "Who?"
 msgstr ""
 
+msgid "Balance"
+msgstr ""
+
 msgid "Paid"
 msgstr ""
 
 msgid "Spent"
 msgstr ""
 
-msgid "Balance"
+msgid "Expenses by Month"
+msgstr ""
+
+msgid "Period"
+msgstr ""
+
+msgid "Import JSON"
 msgstr ""
 
 #~ msgid "What do you want to download ?"
