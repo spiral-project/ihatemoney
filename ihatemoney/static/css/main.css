@@ -333,7 +333,8 @@ footer .footer-left {
 }
 
 .project-actions > .delete,
-.project-actions > .edit {
+.project-actions > .edit,
+.project-actions > .see {
   font-size: 0px;
   display: block;
   width: 16px;
@@ -349,6 +350,10 @@ footer .footer-left {
 
 .project-actions > .edit {
   background: url("../images/edit.png") no-repeat right;
+}
+
+.project-actions > .see {
+  background: url("../images/see.png") no-repeat right;
 }
 
 .balance .balance-value {
