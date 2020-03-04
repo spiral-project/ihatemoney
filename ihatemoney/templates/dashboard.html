@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
 {% if is_admin_dashboard_activated %}
+<link rel=stylesheet type=text/css href="{{ url_for("static", filename='css/datatables.min.css') }}">
+<script src="{{ url_for("static", filename="js/datatables.min.js") }}"></script>
+
 <table id="bill_table" class="table table-striped">
     <thead><tr><th>{{ _("Project") }}</th><th>{{ _("Number of members") }}</th><th>{{ _("Number of bills") }}</th><th>{{_("Newest bill")}}</th><th>{{_("Oldest bill")}}</th><th>{{_("Actions")}}</th></tr></thead>
     <tbody>{% for project in projects|sort(attribute='name') %}
