@@ -23,11 +23,11 @@
                 <span class="mb-1">{{ _('Bill items') }}</span>
                 <span>
                     <a href="{{ url_for('.export_project', file='bills', format='json') }}" download class="badge badge-secondary">
-                        <i class="icon plus">{{ static_include("images/file-alt.svg") | safe }}</i>
+                        <i class="icon before-text">{{ static_include("images/file-alt.svg") | safe }}</i>
                         JSON
                     </a>
                     <a href="{{ url_for('.export_project', file='bills', format='csv') }}" download class="badge badge-secondary">
-                        <i class="icon plus">{{ static_include("images/file-csv-solid.svg") | safe }}</i>
+                        <i class="icon before-text">{{ static_include("images/file-csv-solid.svg") | safe }}</i>
                         CSV
                     </a>
                 </span>
@@ -39,11 +39,11 @@
                 <span class="mb-1">{{ _('Settle plans') }}</span>
                 <span>
                     <a href="{{ url_for('.export_project', file='transactions', format='json') }}" download class="badge badge-secondary">
-                        <i class="icon plus">{{ static_include("images/file-alt.svg") | safe }}</i>
+                        <i class="icon before-text">{{ static_include("images/file-alt.svg") | safe }}</i>
                         JSON
                     </a>
                     <a href="{{ url_for('.export_project', file='transactions', format='csv') }}" download class="badge badge-secondary">
-                        <i class="icon plus">{{ static_include("images/file-csv-solid.svg") | safe }}</i>
+                        <i class="icon before-text">{{ static_include("images/file-csv-solid.svg") | safe }}</i>
                         CSV
                     </a>
                 </span>

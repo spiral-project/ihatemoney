@@ -54,6 +54,8 @@ body {
   color: #fff;
   background-color: #414141;
   border-color: #414141;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 #header .tryout:hover, #header .showcase:hover {
@@ -63,8 +65,9 @@ body {
 }
 
 #header .showcaseimg {
-  width: 100px;
-  margin-left: 20px;
+  width: 36px;
+  margin-left: 5px;
+  margin-bottom: 8px;
 }
 
 #header .additional-content {
@@ -502,11 +505,17 @@ tr:hover .extra-info {
   width: 1.2em; /* protection for IE11 */
 }
 
+.icon.high svg {
+  height: 2em;
+  margin-top: -0.2em;
+  margin-bottom: -0.2em;
+}
+
 .download-project .icon svg {
   fill: white;
 }
 
-.icon.plus svg {
+.icon.before-text svg {
   margin-right: 3px;
 }
 footer .icon svg {
