@@ -175,10 +175,10 @@ body {
   border: 0;
 }
 
-.empty-bill .hand-holding-heart svg {
+.empty-bill .billimg svg {
   fill: lightgray;
-  height: 5em;
-  width: 5em;
+  height: 6em;
+  width: 4em;
 }
 
 .invites textarea {
