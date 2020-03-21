@@ -66,6 +66,10 @@ body {
 
 #header .showcaseimg {
   width: 55px;
+}
+
+#header .shareimg {
+  width: 80px;
   margin-left: 5px;
   margin-bottom: 8px;
 }
