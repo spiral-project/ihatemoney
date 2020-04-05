@@ -150,6 +150,11 @@ body {
   margin-bottom: 20px;
   margin-left: 25px;
 }
+@media (max-width: 400px) {
+  .home .card {
+    min-width: unset;
+  }
+}
 /* Other */
 
 #bills {
@@ -320,13 +325,15 @@ footer .footer-left {
   background: url("../images/see.png") no-repeat right;
 }
 
-#bill_table, #monthly_stats {
+#bill_table,
+#monthly_stats {
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
 @media (min-width: 768px) {
-  .split_bills, #table_overflow.statistics {
+  .split_bills,
+  #table_overflow.statistics {
     /* The table is shifted to left, so add the spacer width on the right to match */
     width: calc(100% + 15px);
   }
