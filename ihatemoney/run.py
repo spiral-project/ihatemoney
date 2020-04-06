@@ -147,11 +147,6 @@ def create_app(
     app.jinja_env.globals["locale_from_iso"] = locale_from_iso
     app.jinja_env.filters["minimal_round"] = minimal_round
 
-    # Set session to permanent to make language choice persist
-    @app.before_request
-    def make_session_permanent():
-        session.permanent = True
-
     # Translations
     babel = Babel(app)
 

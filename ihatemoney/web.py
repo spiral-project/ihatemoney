@@ -190,6 +190,7 @@ def admin():
 
 @main.route("/authenticate", methods=["GET", "POST"])
 def authenticate(project_id=None):
+    print("authenticate")
     """Authentication form"""
     form = AuthenticationForm()
     # Try to get project_id from token first
@@ -235,6 +236,8 @@ def authenticate(project_id=None):
         # add the project on the top of the list
         session["projects"].insert(0, (project_id, project.name))
         session[project_id] = True
+        # Set session to permanent to make language choice persist
+        session.permanent = True
         session.update()
         setattr(g, "project", project)
         return redirect(url_for(".list_bills"))
@@ -698,6 +701,7 @@ def delete_bill(bill_id):
 
     db.session.delete(bill)
     db.session.commit()
+    session["recentlyDeletedBill"] = json.loads(bill)
     flash(_("The bill has been deleted"))
 
     return redirect(url_for(".list_bills"))
