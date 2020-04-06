@@ -190,7 +190,6 @@ def admin():
 
 @main.route("/authenticate", methods=["GET", "POST"])
 def authenticate(project_id=None):
-    print("authenticate")
     """Authentication form"""
     form = AuthenticationForm()
     # Try to get project_id from token first
@@ -701,7 +700,6 @@ def delete_bill(bill_id):
 
     db.session.delete(bill)
     db.session.commit()
-    session["recentlyDeletedBill"] = json.loads(bill)
     flash(_("The bill has been deleted"))
 
     return redirect(url_for(".list_bills"))
