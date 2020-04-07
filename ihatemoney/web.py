@@ -235,6 +235,8 @@ def authenticate(project_id=None):
         # add the project on the top of the list
         session["projects"].insert(0, (project_id, project.name))
         session[project_id] = True
+        # Set session to permanent to make language choice persist
+        session.permanent = True
         session.update()
         setattr(g, "project", project)
         return redirect(url_for(".list_bills"))
