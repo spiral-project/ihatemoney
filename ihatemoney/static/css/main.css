@@ -185,7 +185,7 @@ footer {
   padding: 45px 50px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   footer {
     padding-left: calc(25% + 50px);
   }
@@ -522,4 +522,14 @@ footer .icon svg {
 #monthly_stats tr *:first-child {
   text-align: right;
   width: 200px;
+}
+
+/* edit settings */
+
+.edit-project form {
+  margin-top: 1em;
+  margin-bottom: 3em;
+}
+.edit-project .custom-file {
+  margin-bottom: 2em;
 }

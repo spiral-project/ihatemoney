@@ -114,8 +114,11 @@ class EditProjectForm(FlaskForm):
 
 class UploadForm(FlaskForm):
     file = FileField(
-        "JSON", validators=[FileRequired(), FileAllowed(["json", "JSON"], "JSON only!")]
+        "JSON",
+        validators=[FileRequired(), FileAllowed(["json", "JSON"], "JSON only!")],
+        description=_("Import previously exported JSON file"),
     )
+    submit = SubmitField(_("Import"))
 
 
 class ProjectForm(EditProjectForm):

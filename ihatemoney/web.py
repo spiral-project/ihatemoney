@@ -384,34 +384,34 @@ def reset_password():
 @main.route("/<project_id>/edit", methods=["GET", "POST"])
 def edit_project():
     edit_form = EditProjectForm()
-    if request.method == "POST":
-        if edit_form.validate():
-            project = edit_form.update(g.project)
-            db.session.add(project)
-            db.session.commit()
+    import_form = UploadForm()
+    # Import form
+    if import_form.validate_on_submit():
+        try:
+            import_project(import_form.file.data.stream, g.project)
+            flash(_("Project successfully uploaded"))
 
-            return redirect(url_for(".list_bills"))
+            return redirect(url_for("main.list_bills"))
+        except ValueError:
+            flash(_("Invalid JSON"), category="error")
+
+    # Edit form
+    if edit_form.validate_on_submit():
+        project = edit_form.update(g.project)
+        db.session.add(project)
+        db.session.commit()
+
+        return redirect(url_for("main.list_bills"))
     else:
         edit_form.name.data = g.project.name
         edit_form.contact_email.data = g.project.contact_email
 
     return render_template(
-        "edit_project.html", edit_form=edit_form, current_view="edit_project"
+        "edit_project.html",
+        edit_form=edit_form,
+        import_form=import_form,
+        current_view="edit_project",
     )
-
-
-@main.route("/<project_id>/upload_json", methods=["GET", "POST"])
-def upload_json():
-    form = UploadForm()
-    if form.validate_on_submit():
-        try:
-            import_project(form.file.data.stream, g.project)
-            flash(_("Project successfully uploaded"))
-        except ValueError:
-            flash(_("Invalid JSON"), category="error")
-        return redirect(url_for("main.list_bills"))
-
-    return render_template("upload_json.html", form=form)
 
 
 def import_project(file, project):
