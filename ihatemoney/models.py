@@ -7,6 +7,7 @@ from flask import g, current_app
 from debts import settle
 from sqlalchemy import orm
 from sqlalchemy.sql import func
+from ihatemoney.utils import LoggingMode
 from itsdangerous import (
     TimedJSONWebSignatureSerializer,
     URLSafeSerializer,
@@ -27,6 +28,7 @@ class Project(db.Model):
     name = db.Column(db.UnicodeText)
     password = db.Column(db.String(128))
     contact_email = db.Column(db.String(128))
+    logging_preference = db.Column(db.Enum(LoggingMode), default=LoggingMode.default())
     members = db.relationship("Person", backref="project")
 
     query_class = ProjectQuery
@@ -37,6 +39,7 @@ class Project(db.Model):
             "id": self.id,
             "name": self.name,
             "contact_email": self.contact_email,
+            "logging_preference": self.logging_preference.value,
             "members": [],
         }
 

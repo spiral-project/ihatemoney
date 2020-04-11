@@ -391,6 +391,7 @@ def edit_project():
             return redirect(url_for(".list_bills"))
     else:
         edit_form.name.data = g.project.name
+        edit_form.logging_preferences.data = g.project.logging_preference
         edit_form.contact_email.data = g.project.contact_email
 
     return render_template(

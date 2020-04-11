@@ -78,6 +78,26 @@
     {{ input(form.name) }}
     {{ input(form.password) }}
     {{ input(form.contact_email) }}
+    <div class="form-group">
+        <label for="privacy_checkboxes">{{ _("Privacy Settings") }}</label>
+        <div id="privacy_checkboxes" class="card card-body bg-light">
+            <div class="controls">
+                <input id="logging_enabled" type="checkbox" onchange="updatePrivacySelectFromCheckBoxes()">
+                <label for="logging_enabled">{{ _("Enable Project History") }}</label>
+            </div>
+            <div class="controls">
+                <div class="ml-4">
+                    <input id="record_ip" type="checkbox" onchange="updatePrivacySelectFromCheckBoxes()">
+                    <label id="record_ip_label" for="record_ip">{{ _("Record IP Adressses") }}</label>
+                </div>
+            </div>
+        </div>
+        <div class="d-none">
+            {{ form.logging_preferences }}
+            <script>updateCheckBoxesFromPrivacySelect()</script>
+        </div>
+    </div>
+
     <div class="actions">
         <button class="btn btn-primary">{{ _("Edit the project") }}</button>
         <a id="delete-project" style="color:red; margin-left:10px; cursor:pointer; ">{{ _("delete") }}</a>

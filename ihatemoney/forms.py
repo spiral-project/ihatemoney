@@ -23,7 +23,7 @@ from jinja2 import Markup
 import email_validator
 
 from ihatemoney.models import Project, Person
-from ihatemoney.utils import slugify, eval_arithmetic_expression
+from ihatemoney.utils import slugify, eval_arithmetic_expression, LoggingMode
 
 
 def strip_filter(string):
@@ -89,6 +89,12 @@ class EditProjectForm(FlaskForm):
     name = StringField(_("Project name"), validators=[DataRequired()])
     password = StringField(_("Private code"), validators=[DataRequired()])
     contact_email = StringField(_("Email"), validators=[DataRequired(), Email()])
+    logging_preferences = SelectField(
+        _("Logging Preferences"),
+        choices=LoggingMode.choices(),
+        coerce=LoggingMode.coerce,
+        default=LoggingMode.default(),
+    )
 
     def save(self):
         """Create a new project with the information given by this form.
@@ -100,6 +106,7 @@ class EditProjectForm(FlaskForm):
             id=self.id.data,
             password=generate_password_hash(self.password.data),
             contact_email=self.contact_email.data,
+            logging_preference=self.logging_preferences.data,
         )
         return project
 
@@ -108,6 +115,7 @@ class EditProjectForm(FlaskForm):
         project.name = self.name.data
         project.password = generate_password_hash(self.password.data)
         project.contact_email = self.contact_email.data
+        project.logging_preference = self.logging_preferences.data
 
         return project
 
