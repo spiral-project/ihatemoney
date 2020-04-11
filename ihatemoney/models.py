@@ -1,18 +1,71 @@
 from collections import defaultdict
 
 from datetime import datetime
+
+import sqlalchemy
 from flask_sqlalchemy import SQLAlchemy, BaseQuery
 from flask import g, current_app
 
 from debts import settle
 from sqlalchemy import orm
 from sqlalchemy.sql import func
-from ihatemoney.utils import LoggingMode
+from ihatemoney.utils import LoggingMode, get_ip_if_allowed
 from itsdangerous import (
     TimedJSONWebSignatureSerializer,
     URLSafeSerializer,
     BadSignature,
     SignatureExpired,
+)
+from sqlalchemy_continuum import make_versioned
+from sqlalchemy_continuum import VersioningManager as VersioningManager
+from sqlalchemy_continuum.plugins import FlaskPlugin
+
+
+def version_privacy_predicate():
+    """Evaluate if the project of the current session has enabled logging."""
+    return g.project.logging_preference != LoggingMode.DISABLED
+
+
+class ConditionalVersioningManager(VersioningManager):
+    """Conditionally enable version tracking based on the given predicate."""
+
+    def __init__(self, tracking_predicate, *args, **kwargs):
+        """Create version entry iff tracking_predicate() returns True."""
+        super().__init__(*args, **kwargs)
+        self.tracking_predicate = tracking_predicate
+
+    def before_flush(self, session, flush_context, instances):
+        if self.tracking_predicate():
+            return super().before_flush(session, flush_context, instances)
+        else:
+            # At least one call to unit_of_work() needs to be made against the
+            # session object to prevent a KeyError later. This doesn't create
+            # a version or transaction entry
+            self.unit_of_work(session)
+
+    def after_flush(self, session, flush_context):
+        if self.tracking_predicate():
+            return super().after_flush(session, flush_context)
+        else:
+            # At least one call to unit_of_work() needs to be made against the
+            # session object to prevent a KeyError later. This doesn't create
+            # a version or transaction entry
+            self.unit_of_work(session)
+
+
+make_versioned(
+    user_cls=None,
+    manager=ConditionalVersioningManager(tracking_predicate=version_privacy_predicate),
+    plugins=[
+        FlaskPlugin(
+            # Redirect to our own function, which respects user preferences
+            # on IP address collection
+            remote_addr_factory=get_ip_if_allowed,
+            # Suppress the plugin's attempt to grab a user id,
+            # which imports the flask_login module (causing an error)
+            current_user_id_factory=lambda: None,
+        )
+    ],
 )
 
 db = SQLAlchemy()
@@ -22,6 +75,9 @@ class Project(db.Model):
     class ProjectQuery(BaseQuery):
         def get_by_name(self, name):
             return Project.query.filter(Project.name == name).one()
+
+    # Direct SQLAlchemy-Continuum to track changes to this model
+    __versioned__ = {}
 
     id = db.Column(db.String(64), primary_key=True)
 
@@ -304,6 +360,9 @@ class Person(db.Model):
 
     query_class = PersonQuery
 
+    # Direct SQLAlchemy-Continuum to track changes to this model
+    __versioned__ = {}
+
     id = db.Column(db.Integer, primary_key=True)
     project_id = db.Column(db.String(64), db.ForeignKey("project.id"))
     bills = db.relationship("Bill", backref="payer")
@@ -340,8 +399,8 @@ class Person(db.Model):
 # We need to manually define a join table for m2m relations
 billowers = db.Table(
     "billowers",
-    db.Column("bill_id", db.Integer, db.ForeignKey("bill.id")),
-    db.Column("person_id", db.Integer, db.ForeignKey("person.id")),
+    db.Column("bill_id", db.Integer, db.ForeignKey("bill.id"), primary_key=True),
+    db.Column("person_id", db.Integer, db.ForeignKey("person.id"), primary_key=True),
 )
 
 
@@ -367,6 +426,9 @@ class Bill(db.Model):
             return bill
 
     query_class = BillQuery
+
+    # Direct SQLAlchemy-Continuum to track changes to this model
+    __versioned__ = {}
 
     id = db.Column(db.Integer, primary_key=True)
 
@@ -429,3 +491,6 @@ class Archive(db.Model):
 
     def __repr__(self):
         return "<Archive>"
+
+
+sqlalchemy.orm.configure_mappers()
