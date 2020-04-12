@@ -113,7 +113,7 @@ As a designer / Front-end developer
 -----------------------------------
 
 Feel free to provide mockups, or to involve yourself in the discussions
-hapenning on the GitHub issue tracker. All ideas are welcome. Of course, if you
+happening on the GitHub issue tracker. All ideas are welcome. Of course, if you
 know how to implement them, feel free to fork and make a pull request.
 
 As a translator
