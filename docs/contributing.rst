@@ -1,14 +1,14 @@
 Contributing
 ############
 
-Setup a dev environment
+Set up a dev environment
 =======================
 
-You must develop on top of the git master branch::
+You must develop on top of the Git master branch::
 
   git clone https://github.com/spiral-project/ihatemoney.git
 
-Then you need to build your dev environments. Choose your way…
+Then you need to build your dev environment. Choose your way…
 
 The quick way
 -------------
@@ -43,7 +43,7 @@ It's as simple as that!
 Updating
 --------
 
-In case you want to update to newer versions (from git), you can just run the "update" command::
+In case you want to update to newer versions (from Git), you can just run the "update" command::
 
   make update
 
@@ -57,7 +57,7 @@ database revision file::
   make create-database-revision
 
 If your changes are simple enough, the generated script will be populated with
-the necessary migrations steps. You can edit the generated script. eg: to add
+the necessary migrations steps. You can edit the generated script. e.g: To add
 data migrations.
 
 For complex migrations, it is recommended to start from an empty revision file
@@ -101,7 +101,7 @@ To do so::
     make test
 
 We are using the `black <https://black.readthedocs.io/en/stable/>`_ formatter
-for all the python files in this project. Be sure to run it locally on your
+for all the Python files in this project. Be sure to run it locally on your
 files. To do so, just run::
 
     black ihatemoney
@@ -112,16 +112,16 @@ hook, for instance).
 As a designer / Front-end developer
 -----------------------------------
 
-Feel free to provide us mockups or to involve yourself into the discussions
-hapenning on the github issue tracker. All ideas are welcome. Of course, if you
+Feel free to provide mockups, or to involve yourself in the discussions
+hapenning on the GitHub issue tracker. All ideas are welcome. Of course, if you
 know how to implement them, feel free to fork and make a pull request.
 
 As a translator
 ---------------
 
 If you're able to translate Ihatemoney in your own language,
-head over to `the website we use for translations <https://hosted.weblate.org/settings/i-hate-money/i-hate-money/>`_
-and start translating!
+head over to `the website we use for translations <https://hosted.weblate.org/projects/i-hate-money/i-hate-money/>`_
+and start translating.
 
 All the heavy lifting will be done automatically, and your strings will
 eventually be integrated.
@@ -134,7 +134,7 @@ End-user
 
 You are using the application and found a bug? You have some ideas about how to
 improve the project? Please tell us `by filling a new issue <https://github.com/spiral-project/ihatemoney/issues>`_.
-Or, if you prefer, you can send me an email to `alexis@notmyidea.org` and I
+Or, if you prefer, you can send me an e-mail to `alexis@notmyidea.org` and I
 will update the issue tracker with your feedback.
 
 Thanks again!
@@ -150,7 +150,7 @@ Install doc dependencies (within the virtualenv, if any)::
 
   pip install -r docs/requirements.txt
 
-And to produce html doc in `docs/_output` folder::
+And to produce a HTML doc in the `docs/_output` folder::
 
    cd docs/
    make html
