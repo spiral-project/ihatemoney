@@ -94,6 +94,7 @@ class EditProjectForm(FlaskForm):
         choices=LoggingMode.choices(),
         coerce=LoggingMode.coerce,
         default=LoggingMode.default(),
+        validators=[DataRequired()],
     )
 
     def save(self):
