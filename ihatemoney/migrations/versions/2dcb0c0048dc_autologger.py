@@ -129,6 +129,7 @@ def upgrade():
         sa.Column(
             "logging_preference",
             sa.Enum("DISABLED", "ENABLED", "RECORD_IP", name="loggingmode"),
+            server_default="ENABLED",
             autoincrement=False,
             nullable=True,
         ),
@@ -169,7 +170,8 @@ def upgrade():
         sa.Column(
             "logging_preference",
             sa.Enum("DISABLED", "ENABLED", "RECORD_IP", name="loggingmode"),
-            nullable=True,
+            server_default="ENABLED",
+            nullable=False,
         ),
     )
     # ### end Alembic commands ###

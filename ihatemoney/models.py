@@ -58,7 +58,12 @@ class Project(db.Model):
     name = db.Column(db.UnicodeText)
     password = db.Column(db.String(128))
     contact_email = db.Column(db.String(128))
-    logging_preference = db.Column(db.Enum(LoggingMode), default=LoggingMode.default())
+    logging_preference = db.Column(
+        db.Enum(LoggingMode),
+        default=LoggingMode.default(),
+        nullable=False,
+        server_default=LoggingMode.default().name,
+    )
     members = db.relationship("Person", backref="project")
 
     query_class = ProjectQuery
