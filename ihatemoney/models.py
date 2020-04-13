@@ -9,7 +9,6 @@ from flask import g, current_app
 from debts import settle
 from sqlalchemy import orm
 from sqlalchemy.sql import func
-from ihatemoney.utils import LoggingMode, get_ip_if_allowed
 from itsdangerous import (
     TimedJSONWebSignatureSerializer,
     URLSafeSerializer,
@@ -17,40 +16,15 @@ from itsdangerous import (
     SignatureExpired,
 )
 from sqlalchemy_continuum import make_versioned
-from sqlalchemy_continuum import VersioningManager as VersioningManager
 from sqlalchemy_continuum.plugins import FlaskPlugin
+from sqlalchemy_continuum import version_class
 
-
-def version_privacy_predicate():
-    """Evaluate if the project of the current session has enabled logging."""
-    return g.project.logging_preference != LoggingMode.DISABLED
-
-
-class ConditionalVersioningManager(VersioningManager):
-    """Conditionally enable version tracking based on the given predicate."""
-
-    def __init__(self, tracking_predicate, *args, **kwargs):
-        """Create version entry iff tracking_predicate() returns True."""
-        super().__init__(*args, **kwargs)
-        self.tracking_predicate = tracking_predicate
-
-    def before_flush(self, session, flush_context, instances):
-        if self.tracking_predicate():
-            return super().before_flush(session, flush_context, instances)
-        else:
-            # At least one call to unit_of_work() needs to be made against the
-            # session object to prevent a KeyError later. This doesn't create
-            # a version or transaction entry
-            self.unit_of_work(session)
-
-    def after_flush(self, session, flush_context):
-        if self.tracking_predicate():
-            return super().after_flush(session, flush_context)
-        else:
-            # At least one call to unit_of_work() needs to be made against the
-            # session object to prevent a KeyError later. This doesn't create
-            # a version or transaction entry
-            self.unit_of_work(session)
+from ihatemoney.versioning import (
+    LoggingMode,
+    ConditionalVersioningManager,
+    version_privacy_predicate,
+    get_ip_if_allowed,
+)
 
 
 make_versioned(
@@ -500,3 +474,7 @@ class Archive(db.Model):
 
 
 sqlalchemy.orm.configure_mappers()
+
+PersonVersion = version_class(Person)
+ProjectVersion = version_class(Project)
+BillVersion = version_class(Bill)

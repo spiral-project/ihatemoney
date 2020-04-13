@@ -10,10 +10,8 @@ import jinja2
 from json import dumps, JSONEncoder
 from flask import redirect, current_app
 from babel import Locale
-from sqlalchemy_continuum.plugins.flask import fetch_remote_addr
 from werkzeug.routing import HTTPException, RoutingException
 from datetime import datetime, timedelta
-from flask import g
 
 import csv
 
@@ -282,27 +280,3 @@ class FormEnum(Enum):
 
     def __str__(self):
         return str(self.value)
-
-
-class LoggingMode(FormEnum):
-    """Represents a project's history preferences."""
-
-    DISABLED = 0
-    ENABLED = 1
-    RECORD_IP = 2
-
-    @classmethod
-    def default(cls):
-        return cls.ENABLED
-
-
-def get_ip_if_allowed():
-    """
-    Get the remote address (IP address) of the current Flask context, if the
-    project's privacy settings allow it. Behind the scenes, this calls back to
-    the FlaskPlugin from SQLAlchemy-Continuum in order to maintain forward
-    compatibility
-    """
-    if g.project and g.project.logging_preference == LoggingMode.RECORD_IP:
-        return fetch_remote_addr()
-    return None

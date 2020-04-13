@@ -22,8 +22,8 @@ from jinja2 import Markup
 
 import email_validator
 
-from ihatemoney.models import Project, Person
-from ihatemoney.utils import slugify, eval_arithmetic_expression, LoggingMode
+from ihatemoney.models import Project, Person, LoggingMode
+from ihatemoney.utils import slugify, eval_arithmetic_expression
 
 
 def strip_filter(string):
