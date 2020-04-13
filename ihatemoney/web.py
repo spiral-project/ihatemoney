@@ -750,11 +750,7 @@ def history():
     """Query for the version entries associated with this project."""
     history = get_history(g.project, human_readable_names=True)
 
-    any_ip_addresses = False
-    for event in history:
-        if event["ip"]:
-            any_ip_addresses = True
-            break
+    any_ip_addresses = any(event["ip"] for event in history)
 
     return render_template(
         "history.html",
