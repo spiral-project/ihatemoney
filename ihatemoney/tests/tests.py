@@ -18,6 +18,7 @@ from flask_testing import TestCase
 from ihatemoney.run import create_app, db, load_configuration
 from ihatemoney.manage import GenerateConfig, GeneratePasswordHash, DeleteProject
 from ihatemoney import models
+from ihatemoney.versioning import LoggingMode
 from ihatemoney import utils
 from sqlalchemy import orm
 
@@ -843,6 +844,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             "name": "Super raclette party!",
             "contact_email": "alexis@notmyidea.org",
             "password": "didoudida",
+            "logging_preference": LoggingMode.ENABLED.value,
         }
 
         resp = self.client.post("/raclette/edit", data=new_data, follow_redirects=True)
@@ -2113,6 +2115,25 @@ class APITestCase(IhatemoneyTestCase):
         decoded_req = json.loads(req.data.decode("utf-8"))
         self.assertDictEqual(decoded_req, expected)
 
+    def test_log_created_from_api_call(self):
+        # create a project
+        self.api_create("raclette")
+        self.login("raclette")
+
+        # add members
+        self.api_add_member("raclette", "alexis")
+
+        resp = self.client.get("/raclette/history", follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            "Person %s added" % em_surround("alexis"), resp.data.decode("utf-8")
+        )
+        self.assertIn(
+            "Project %s added" % em_surround("raclette"), resp.data.decode("utf-8"),
+        )
+        self.assertTrue(resp.data.decode("utf-8").count("<td> -- </td>") == 2)
+        self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+
 
 class ServerTestCase(IhatemoneyTestCase):
     def test_homepage(self):
@@ -2225,6 +2246,428 @@ class ModelsTestCase(IhatemoneyTestCase):
             if bill.what == "delicatessen":
                 pay_each_expected = 10 / 3
                 self.assertEqual(bill.pay_each(), pay_each_expected)
+
+
+def em_surround(string):
+    return '<em class="font-italic">%s</em>' % string
+
+
+class HistoryTestCase(IhatemoneyTestCase):
+    def setUp(self):
+        super().setUp()
+        self.post_project("demo")
+        self.login("demo")
+
+    def test_simple_create_logentry_no_ip(self):
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            "Project %s added" % em_surround("demo"), resp.data.decode("utf-8"),
+        )
+        self.assertTrue(resp.data.decode("utf-8").count("<td> -- </td>") == 1)
+        self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+
+    def change_privacy_to(self, logging_preference):
+        # Change only logging_preferences
+        new_data = {
+            "name": "demo",
+            "contact_email": "demo@notmyidea.org",
+            "password": "demo",
+            "logging_preferences": logging_preference.value,
+        }
+
+        # Disable History
+        resp = self.client.post("/demo/edit", data=new_data, follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+        self.assertNotIn("danger", resp.data.decode("utf-8"))
+
+        resp = self.client.get("/demo/edit")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            '<option selected value="%i">%s</option>'
+            % (logging_preference.value, logging_preference.name),
+            resp.data.decode("utf-8"),
+        )
+
+    def assert_empty_history_logging_disabled(self):
+        resp = self.client.get("/demo/history")
+        self.assertIn(
+            "This project has history disabled. New actions won't appear below. ",
+            resp.data.decode("utf-8"),
+        )
+        self.assertIn(
+            "Nothing to list", resp.data.decode("utf-8"),
+        )
+        self.assertNotIn(
+            "The table below reflects actions recorded prior to disabling project history.",
+            resp.data.decode("utf-8"),
+        )
+        self.assertNotIn(
+            "Some entries below contain IP addresses,", resp.data.decode("utf-8"),
+        )
+        self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+        self.assertNotIn("<td> -- </td>", resp.data.decode("utf-8"))
+        self.assertNotIn(
+            "Project %s added" % em_surround("demo"), resp.data.decode("utf-8")
+        )
+
+    def test_project_edit(self):
+        new_data = {
+            "name": "demo2",
+            "contact_email": "demo2@notmyidea.org",
+            "password": "123456",
+        }
+
+        resp = self.client.post("/demo/edit", data=new_data, follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            "Project %s added" % em_surround("demo"), resp.data.decode("utf-8")
+        )
+        self.assertIn(
+            "Project contact email changed to %s" % em_surround("demo2@notmyidea.org"),
+            resp.data.decode("utf-8"),
+        )
+        self.assertIn(
+            "Project private code changed", resp.data.decode("utf-8"),
+        )
+        self.assertIn(
+            "Project renamed to %s" % em_surround("demo2"), resp.data.decode("utf-8"),
+        )
+        self.assertLess(
+            resp.data.decode("utf-8").index("Project renamed "),
+            resp.data.decode("utf-8").index("Project contact email changed to "),
+        )
+        self.assertLess(
+            resp.data.decode("utf-8").index("Project renamed "),
+            resp.data.decode("utf-8").index("Project private code changed"),
+        )
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 4)
+        self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+
+    def test_project_privacy_edit(self):
+        resp = self.client.get("/demo/edit")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            '<option selected value="1">ENABLED</option>', resp.data.decode("utf-8")
+        )
+
+        self.change_privacy_to(LoggingMode.DISABLED)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn("Disabled Project History\n", resp.data.decode("utf-8"))
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 2)
+        self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+
+        self.change_privacy_to(LoggingMode.RECORD_IP)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            "Enabled Project History & IP Address Recording", resp.data.decode("utf-8")
+        )
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 2)
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 1)
+
+        self.change_privacy_to(LoggingMode.ENABLED)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn("Disabled IP Address Recording\n", resp.data.decode("utf-8"))
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 2)
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 2)
+
+    def test_project_privacy_edit2(self):
+        self.change_privacy_to(LoggingMode.RECORD_IP)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn("Enabled IP Address Recording\n", resp.data.decode("utf-8"))
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 1)
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 1)
+
+        self.change_privacy_to(LoggingMode.DISABLED)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            "Disabled Project History & IP Address Recording", resp.data.decode("utf-8")
+        )
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 1)
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 2)
+
+        self.change_privacy_to(LoggingMode.ENABLED)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn("Enabled Project History\n", resp.data.decode("utf-8"))
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 2)
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 2)
+
+    def do_misc_database_operations(self, logging_mode):
+        new_data = {
+            "name": "demo2",
+            "contact_email": "demo2@notmyidea.org",
+            "password": "123456",
+            "logging_preferences": logging_mode.value,
+            # Keep privacy settings where they were
+        }
+
+        resp = self.client.post("/demo/edit", data=new_data, follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+
+        # adds a member to this project
+        resp = self.client.post(
+            "/demo/members/add", data={"name": "alexis"}, follow_redirects=True
+        )
+        self.assertEqual(resp.status_code, 200)
+
+        # create a bill
+        resp = self.client.post(
+            "/demo/add",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1],
+                "amount": "25",
+            },
+            follow_redirects=True,
+        )
+        self.assertEqual(resp.status_code, 200)
+        # edit the bill
+        resp = self.client.post(
+            "/demo/edit/1",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1],
+                "amount": "10",
+            },
+            follow_redirects=True,
+        )
+        self.assertEqual(resp.status_code, 200)
+        # delete the bill
+        resp = self.client.get("/demo/delete/1", follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+        # delete user using POST method
+        resp = self.client.post("/demo/members/1/delete", follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+
+    def test_disable_clear_no_new_records(self):
+        # Disable logging
+        self.change_privacy_to(LoggingMode.DISABLED)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            "This project has history disabled. New actions won't appear below. ",
+            resp.data.decode("utf-8"),
+        )
+        self.assertIn(
+            "The table below reflects actions recorded prior to disabling project history.",
+            resp.data.decode("utf-8"),
+        )
+        self.assertNotIn(
+            "Nothing to list", resp.data.decode("utf-8"),
+        )
+        self.assertNotIn(
+            "Some entries below contain IP addresses,", resp.data.decode("utf-8"),
+        )
+
+        # Clear Existing Entries
+        resp = self.client.post("/demo/erase_history", follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+        self.assert_empty_history_logging_disabled()
+
+        # Do lots of database operations & check that there's still no history
+        self.do_misc_database_operations(LoggingMode.DISABLED)
+
+        self.assert_empty_history_logging_disabled()
+
+    def test_clear_ip_records(self):
+        # Enable IP Recording
+        self.change_privacy_to(LoggingMode.RECORD_IP)
+
+        # Do lots of database operations to generate IP address entries
+        self.do_misc_database_operations(LoggingMode.RECORD_IP)
+
+        # Disable IP Recording
+        self.change_privacy_to(LoggingMode.ENABLED)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertNotIn(
+            "This project has history disabled. New actions won't appear below. ",
+            resp.data.decode("utf-8"),
+        )
+        self.assertNotIn(
+            "The table below reflects actions recorded prior to disabling project history.",
+            resp.data.decode("utf-8"),
+        )
+        self.assertNotIn(
+            "Nothing to list", resp.data.decode("utf-8"),
+        )
+        self.assertIn(
+            "Some entries below contain IP addresses,", resp.data.decode("utf-8"),
+        )
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 10)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 1)
+
+        # Generate more operations to confirm additional IP info isn't recorded
+        self.do_misc_database_operations(LoggingMode.ENABLED)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 10)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 6)
+
+        # Clear IP Data
+        resp = self.client.post("/demo/strip_ip_addresses", follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+        self.assertNotIn(
+            "This project has history disabled. New actions won't appear below. ",
+            resp.data.decode("utf-8"),
+        )
+        self.assertNotIn(
+            "The table below reflects actions recorded prior to disabling project history.",
+            resp.data.decode("utf-8"),
+        )
+        self.assertNotIn(
+            "Nothing to list", resp.data.decode("utf-8"),
+        )
+        self.assertNotIn(
+            "Some entries below contain IP addresses,", resp.data.decode("utf-8"),
+        )
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 0)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 16)
+
+    def test_logs_for_common_actions(self):
+        # adds a member to this project
+        resp = self.client.post(
+            "/demo/members/add", data={"name": "alexis"}, follow_redirects=True
+        )
+        self.assertEqual(resp.status_code, 200)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            "Person %s added" % em_surround("alexis"), resp.data.decode("utf-8")
+        )
+
+        # create a bill
+        resp = self.client.post(
+            "/demo/add",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1],
+                "amount": "25",
+            },
+            follow_redirects=True,
+        )
+        self.assertEqual(resp.status_code, 200)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            "Bill %s added" % em_surround("25.0 for fromage à raclette"),
+            resp.data.decode("utf-8"),
+        )
+
+        # edit the bill
+        resp = self.client.post(
+            "/demo/edit/1",
+            data={
+                "date": "2011-08-10",
+                "what": "new thing",
+                "payer": 1,
+                "payed_for": [1],
+                "amount": "10",
+            },
+            follow_redirects=True,
+        )
+        self.assertEqual(resp.status_code, 200)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            "Bill %s added" % em_surround("25.0 for fromage à raclette"),
+            resp.data.decode("utf-8"),
+        )
+        self.assertIn(
+            "Bill %s:\n    Amount changed\n    from %s\n    to %s"
+            % (
+                em_surround("25.0 for fromage à raclette"),
+                em_surround("25.0"),
+                em_surround("10.0"),
+            ),
+            resp.data.decode("utf-8"),
+        )
+        self.assertIn(
+            "Bill %s renamed to %s"
+            % (em_surround("25.0 for fromage à raclette"), em_surround("new thing"),),
+            resp.data.decode("utf-8"),
+        )
+        self.assertLess(
+            resp.data.decode("utf-8").index(
+                "Bill %s renamed to" % em_surround("25.0 for fromage à raclette")
+            ),
+            resp.data.decode("utf-8").index("Amount changed"),
+        )
+
+        # delete the bill
+        resp = self.client.get("/demo/delete/1", follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            "Bill %s removed" % em_surround("10.0 for new thing"),
+            resp.data.decode("utf-8"),
+        )
+
+        # edit user
+        resp = self.client.post(
+            "/demo/members/1/edit",
+            data={"weight": 2, "name": "new name"},
+            follow_redirects=True,
+        )
+        self.assertEqual(resp.status_code, 200)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            "Person %s:\n    Weight changed\n    from %s\n    to %s"
+            % (em_surround("alexis"), em_surround("1.0"), em_surround("2.0")),
+            resp.data.decode("utf-8"),
+        )
+        self.assertIn(
+            "Person %s renamed to %s"
+            % (em_surround("alexis"), em_surround("new name"),),
+            resp.data.decode("utf-8"),
+        )
+        self.assertLess(
+            resp.data.decode("utf-8").index(
+                "Person %s renamed" % em_surround("alexis")
+            ),
+            resp.data.decode("utf-8").index("Weight changed"),
+        )
+
+        # delete user using POST method
+        resp = self.client.post("/demo/members/1/delete", follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            "Person %s removed" % em_surround("new name"), resp.data.decode("utf-8")
+        )
 
 
 if __name__ == "__main__":
