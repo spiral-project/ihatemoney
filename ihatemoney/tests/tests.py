@@ -2676,6 +2676,143 @@ class HistoryTestCase(IhatemoneyTestCase):
             "Person %s removed" % em_surround("new name"), resp.data.decode("utf-8")
         )
 
+    def test_double_bill_double_person_edit_second(self):
+
+        # add two members
+        self.client.post("/demo/members/add", data={"name": "User 1"})
+        self.client.post("/demo/members/add", data={"name": "User 2"})
+
+        # add two bills
+        self.client.post(
+            "/demo/add",
+            data={
+                "date": "2020-04-13",
+                "what": "Bill 1",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "amount": "25",
+            },
+        )
+        self.client.post(
+            "/demo/add",
+            data={
+                "date": "2020-04-13",
+                "what": "Bill 2",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "amount": "20",
+            },
+        )
+
+        # Should be 5 history entries at this point
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 5)
+        self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+
+        # Edit ONLY the amount on the first bill
+        self.client.post(
+            "/demo/edit/1",
+            data={
+                "date": "2020-04-13",
+                "what": "Bill 1",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "amount": "88",
+            },
+        )
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertRegex(
+            resp.data.decode("utf-8"),
+            "Bill %s:\s* Amount changed\s* from %s\s* to %s"
+            % (
+                em_surround("25.0 for Bill 1", regex_escape=True),
+                em_surround("25.0", regex_escape=True),
+                em_surround("88.0", regex_escape=True),
+            ),
+        )
+
+        self.assertNotRegex(
+            resp.data.decode("utf-8"),
+            "Removed\s* %s\s* and\s* %s\s* from\s* owers list"
+            % (
+                em_surround("User 1", regex_escape=True),
+                em_surround("User 2", regex_escape=True),
+            ),
+            resp.data.decode("utf-8"),
+        )
+
+        # Should be 6 history entries at this point
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 6)
+        self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+
+    def test_bill_add_remove_add(self):
+        # add two members
+        self.client.post("/demo/members/add", data={"name": "User 1"})
+        self.client.post("/demo/members/add", data={"name": "User 2"})
+
+        # add 1 bill
+        self.client.post(
+            "/demo/add",
+            data={
+                "date": "2020-04-13",
+                "what": "Bill 1",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "amount": "25",
+            },
+        )
+
+        # delete the bill
+        self.client.get("/demo/delete/1", follow_redirects=True)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 5)
+        self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+        self.assertIn(
+            "Bill %s added" % em_surround("25.0 for Bill 1"), resp.data.decode("utf-8")
+        )
+        self.assertIn(
+            "Bill %s removed" % em_surround("25.0 for Bill 1"),
+            resp.data.decode("utf-8"),
+        )
+
+        # Add a new bill
+        self.client.post(
+            "/demo/add",
+            data={
+                "date": "2020-04-13",
+                "what": "Bill 2",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "amount": "20",
+            },
+        )
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 6)
+        self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+        self.assertIn(
+            "Bill %s added" % em_surround("25.0 for Bill 1"), resp.data.decode("utf-8")
+        )
+        self.assertEquals(
+            resp.data.decode("utf-8").count(
+                "Bill %s added" % em_surround("25.0 for Bill 1")
+            ),
+            1,
+        )
+        self.assertIn(
+            "Bill %s added" % em_surround("20.0 for Bill 2"), resp.data.decode("utf-8")
+        )
+        self.assertIn(
+            "Bill %s removed" % em_surround("25.0 for Bill 1"),
+            resp.data.decode("utf-8"),
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
