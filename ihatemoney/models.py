@@ -345,6 +345,8 @@ class Person(db.Model):
     # Direct SQLAlchemy-Continuum to track changes to this model
     __versioned__ = {}
 
+    __table_args__ = {"sqlite_autoincrement": True}
+
     id = db.Column(db.Integer, primary_key=True)
     project_id = db.Column(db.String(64), db.ForeignKey("project.id"))
     bills = db.relationship("Bill", backref="payer")
@@ -383,6 +385,7 @@ billowers = db.Table(
     "billowers",
     db.Column("bill_id", db.Integer, db.ForeignKey("bill.id"), primary_key=True),
     db.Column("person_id", db.Integer, db.ForeignKey("person.id"), primary_key=True),
+    sqlite_autoincrement=True,
 )
 
 
@@ -411,6 +414,8 @@ class Bill(db.Model):
 
     # Direct SQLAlchemy-Continuum to track changes to this model
     __versioned__ = {}
+
+    __table_args__ = {"sqlite_autoincrement": True}
 
     id = db.Column(db.Integer, primary_key=True)
 
