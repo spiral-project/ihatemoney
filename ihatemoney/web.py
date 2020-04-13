@@ -27,6 +27,7 @@ from flask import (
     url_for,
     send_file,
     send_from_directory,
+    Markup,
 )
 from flask_babel import get_locale, gettext as _
 from flask_mail import Message
@@ -111,8 +112,8 @@ def set_show_admin_dashboard_link(endpoint, values):
     """
 
     g.show_admin_dashboard_link = (
-        current_app.config["ACTIVATE_ADMIN_DASHBOARD"]
-        and current_app.config["ADMIN_PASSWORD"]
+            current_app.config["ACTIVATE_ADMIN_DASHBOARD"]
+            and current_app.config["ADMIN_PASSWORD"]
     )
 
 
@@ -167,7 +168,7 @@ def admin():
         if form.validate():
             # Valid password
             if check_password_hash(
-                current_app.config["ADMIN_PASSWORD"], form.admin_password.data
+                    current_app.config["ADMIN_PASSWORD"], form.admin_password.data
             ):
                 session["is_admin"] = True
                 session.update()
@@ -225,9 +226,9 @@ def authenticate(project_id=None):
     # else do form authentication or token authentication
     is_post_auth = request.method == "POST" and form.validate()
     if (
-        is_post_auth
-        and check_password_hash(project.password, form.password.data)
-        or token_auth
+            is_post_auth
+            and check_password_hash(project.password, form.password.data)
+            or token_auth
     ):
         # maintain a list of visited projects
         if "projects" not in session:
@@ -590,8 +591,8 @@ def list_bills():
     # Preload the "owers" relationship for all bills
     bills = (
         g.project.get_bills()
-        .options(orm.subqueryload(Bill.owers))
-        .paginate(per_page=100, error_out=True)
+            .options(orm.subqueryload(Bill.owers))
+            .paginate(per_page=100, error_out=True)
     )
 
     return render_template(
@@ -622,8 +623,8 @@ def add_member():
 def reactivate(member_id):
     person = (
         Person.query.filter(Person.id == member_id)
-        .filter(Project.id == g.project.id)
-        .all()
+            .filter(Project.id == g.project.id)
+            .all()
     )
     if person:
         person[0].activated = True
@@ -691,6 +692,22 @@ def add_bill():
     return render_template("add_bill.html", form=form)
 
 
+@main.route("/<project_id>/undo")
+def undo_delete_bill():
+    bill = Bill()
+    form = get_billform_for(g.project)
+    form.what = session["recently_deleted_bill"]["what"]
+    form.amount = session["recently_deleted_bill"]["amount"]
+    form.date = parse(session["recently_deleted_bill"]["date"])
+    form.payer = session["recently_deleted_bill"]["payer_id"]
+    form.payed_for = session["recently_deleted_bill"]["owers"]
+    form.external_link = session["recently_deleted_bill"]["external_link"]
+
+    db.session.add(form.fake_form(bill, g.project))
+    db.session.commit()
+    return redirect(url_for(".list_bills"))
+
+
 @main.route("/<project_id>/delete/<int:bill_id>")
 def delete_bill(bill_id):
     # fixme: everyone is able to delete a bill
@@ -700,7 +717,12 @@ def delete_bill(bill_id):
 
     db.session.delete(bill)
     db.session.commit()
-    flash(_("The bill has been deleted"))
+
+    session["test"] = bill.to_json()
+
+    url = url_for(".undo_delete_bill")
+    alert = 'The bill has been deleted <a class="alert-link" href="' + url + '" id="undo"> undo </a>'
+    flash(Markup(alert))
 
     return redirect(url_for(".list_bills"))
 

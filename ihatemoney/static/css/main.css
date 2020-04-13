@@ -270,6 +270,7 @@ footer .footer-left {
 
 #new-bill {
   margin-top: 30px;
+  z-index:100;
 }
 
 #previous-page {
@@ -422,7 +423,6 @@ tr.payer_line .balance-name {
   position: absolute;
   top: 4.5rem;
   width: 100%;
-  pointer-events: none;
 }
 
 .light {
