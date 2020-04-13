@@ -19,11 +19,11 @@
     {% endif %}
 {% elif event.val_after == LoggingMode.RECORD_IP %}
     {% if event.val_before == LoggingMode.DISABLED %}
-        {{ _("Enabled Project History & IP Address  Recording") }}
+        {{ _("Enabled Project History & IP Address Recording") }}
     {% elif event.val_before == LoggingMode.ENABLED %}
         {{ _("Enabled IP Address Recording") }}
     {% else %}
-        {{ _("Enabled Project History & IP Address  Recording") }}
+        {{ _("Enabled Project History & IP Address Recording") }}
     {% endif %}
 {% else %}
     {# Should be unreachable #}
@@ -36,7 +36,7 @@
 {% macro simple_property_change(event, localized_property_name, from=True) %}
     {{ describe_object(event) }}:
     {{ localized_property_name }} {{ _("changed") }}
-    {% if from %}{{ _("from") }} <em class="font-italic">{{ event.val_before }}</em>  {% endif %}
+    {% if from %}{{ _("from") }} <em class="font-italic">{{ event.val_before }}</em>{% endif %}
     {{ _("to") }} <em class="font-italic">{{ event.val_after }}</em>
 {% endmacro %}
 
@@ -176,9 +176,9 @@
                         {% elif event.prop_changed == "logging_preference" %}
                             {{ change_to_logging_preference(event) }}
                         {% elif event.prop_changed == "name" %}
-                            {{ _("Project renamed to ") }} <em class="font-italic">{{ event.object_desc }}</em>
+                            {{ _("Project renamed to") }} <em class="font-italic">{{ event.val_after }}</em>
                         {% elif event.prop_changed == "contact_email" %}
-                            {{ _("Project contact email changed to ") }} <em class="font-italic">{{ event.val_after }}</em>
+                            {{ _("Project contact email changed to") }} <em class="font-italic">{{ event.val_after }}</em>
                         {% else %}
                             {{ _("Project settings modified") }}
                         {% endif %}
