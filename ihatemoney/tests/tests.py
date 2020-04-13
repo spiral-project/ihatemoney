@@ -2248,8 +2248,11 @@ class ModelsTestCase(IhatemoneyTestCase):
                 self.assertEqual(bill.pay_each(), pay_each_expected)
 
 
-def em_surround(string):
-    return '<em class="font-italic">%s</em>' % string
+def em_surround(string, regex_escape=False):
+    if regex_escape:
+        return '<em class="font-italic">%s<\/em>' % string
+    else:
+        return '<em class="font-italic">%s</em>' % string
 
 
 class HistoryTestCase(IhatemoneyTestCase):
@@ -2600,14 +2603,14 @@ class HistoryTestCase(IhatemoneyTestCase):
             "Bill %s added" % em_surround("25.0 for fromage à raclette"),
             resp.data.decode("utf-8"),
         )
-        self.assertIn(
-            "Bill %s:\n    Amount changed\n    from %s\n    to %s"
-            % (
-                em_surround("25.0 for fromage à raclette"),
-                em_surround("25.0"),
-                em_surround("10.0"),
-            ),
+        self.assertRegex(
             resp.data.decode("utf-8"),
+            "Bill %s:\s* Amount changed\s* from %s\s* to %s"
+            % (
+                em_surround("25.0 for fromage à raclette", regex_escape=True),
+                em_surround("25.0", regex_escape=True),
+                em_surround("10.0", regex_escape=True),
+            ),
         )
         self.assertIn(
             "Bill %s renamed to %s"
@@ -2642,10 +2645,14 @@ class HistoryTestCase(IhatemoneyTestCase):
 
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
-        self.assertIn(
-            "Person %s:\n    Weight changed\n    from %s\n    to %s"
-            % (em_surround("alexis"), em_surround("1.0"), em_surround("2.0")),
+        self.assertRegex(
             resp.data.decode("utf-8"),
+            "Person %s:\s* Weight changed\s* from %s\s* to %s"
+            % (
+                em_surround("alexis", regex_escape=True),
+                em_surround("1.0", regex_escape=True),
+                em_surround("2.0", regex_escape=True),
+            ),
         )
         self.assertIn(
             "Person %s renamed to %s"
