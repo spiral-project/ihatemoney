@@ -2428,37 +2428,45 @@ class HistoryTestCase(IhatemoneyTestCase):
         )
         self.assertEqual(resp.status_code, 200)
 
+        user_id = models.Person.query.one().id
+
         # create a bill
         resp = self.client.post(
             "/demo/add",
             data={
                 "date": "2011-08-10",
                 "what": "fromage à raclette",
-                "payer": 1,
-                "payed_for": [1],
+                "payer": user_id,
+                "payed_for": [user_id],
                 "amount": "25",
             },
             follow_redirects=True,
         )
         self.assertEqual(resp.status_code, 200)
+
+        bill_id = models.Bill.query.one().id
+
         # edit the bill
         resp = self.client.post(
-            "/demo/edit/1",
+            "/demo/edit/%i" % bill_id,
             data={
                 "date": "2011-08-10",
                 "what": "fromage à raclette",
-                "payer": 1,
-                "payed_for": [1],
+                "payer": user_id,
+                "payed_for": [user_id],
                 "amount": "10",
             },
             follow_redirects=True,
         )
         self.assertEqual(resp.status_code, 200)
         # delete the bill
-        resp = self.client.get("/demo/delete/1", follow_redirects=True)
+        resp = self.client.get("/demo/delete/%i" % bill_id, follow_redirects=True)
         self.assertEqual(resp.status_code, 200)
+
         # delete user using POST method
-        resp = self.client.post("/demo/members/1/delete", follow_redirects=True)
+        resp = self.client.post(
+            "/demo/members/%i/delete" % user_id, follow_redirects=True
+        )
         self.assertEqual(resp.status_code, 200)
 
     def test_disable_clear_no_new_records(self):
