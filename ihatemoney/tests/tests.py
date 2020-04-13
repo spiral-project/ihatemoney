@@ -1517,6 +1517,7 @@ class APITestCase(IhatemoneyTestCase):
             "name": "raclette",
             "contact_email": "raclette@notmyidea.org",
             "id": "raclette",
+            "logging_preference": 1,
         }
         decoded_resp = json.loads(resp.data.decode("utf-8"))
         self.assertDictEqual(decoded_resp, expected)
@@ -1544,6 +1545,7 @@ class APITestCase(IhatemoneyTestCase):
             "contact_email": "yeah@notmyidea.org",
             "members": [],
             "id": "raclette",
+            "logging_preference": 1,
         }
         decoded_resp = json.loads(resp.data.decode("utf-8"))
         self.assertDictEqual(decoded_resp, expected)
@@ -2104,6 +2106,7 @@ class APITestCase(IhatemoneyTestCase):
             "contact_email": "raclette@notmyidea.org",
             "id": "raclette",
             "name": "raclette",
+            "logging_preference": 1,
         }
 
         self.assertStatus(200, req)
