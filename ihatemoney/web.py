@@ -31,6 +31,7 @@ from flask import (
 from flask_babel import get_locale, gettext as _
 from flask_mail import Message
 from sqlalchemy import orm
+from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -46,7 +47,8 @@ from ihatemoney.forms import (
     get_billform_for,
     UploadForm,
 )
-from ihatemoney.models import db, Project, Person, Bill
+from ihatemoney.history import get_history_queries, get_history
+from ihatemoney.models import db, Project, Person, Bill, LoggingMode
 from ihatemoney.utils import (
     Redirect303,
     list_of_dicts2json,
@@ -739,6 +741,49 @@ def settle_bill():
     """Compute the sum each one have to pay to each other and display it"""
     bills = g.project.get_transactions_to_settle_bill()
     return render_template("settle_bills.html", bills=bills, current_view="settle_bill")
+
+
+@main.route("/<project_id>/history")
+def history():
+    """Query for the version entries associated with this project."""
+    history = get_history(g.project, human_readable_names=True)
+
+    any_ip_addresses = False
+    for event in history:
+        if event["ip"]:
+            any_ip_addresses = True
+            break
+
+    return render_template(
+        "history.html",
+        current_view="history",
+        history=history,
+        any_ip_addresses=any_ip_addresses,
+        LoggingMode=LoggingMode,
+        OperationType=Operation,
+        current_log_pref=g.project.logging_preference,
+    )
+
+
+@main.route("/<project_id>/erase_history", methods=["POST"])
+def erase_history():
+    """Erase all history entries associated with this project."""
+    for query in get_history_queries(g.project):
+        query.delete(synchronize_session="fetch")
+
+    db.session.commit()
+    return redirect(url_for(".history"))
+
+
+@main.route("/<project_id>/strip_ip_addresses", methods=["POST"])
+def strip_ip_addresses():
+    """Strip ip addresses from history entries associated with this project."""
+    for query in get_history_queries(g.project):
+        for version_object in query.all():
+            version_object.transaction.remote_addr = None
+
+    db.session.commit()
+    return redirect(url_for(".history"))
 
 
 @main.route("/<project_id>/statistics")
