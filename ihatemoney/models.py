@@ -336,6 +336,9 @@ class Project(db.Model):
             return None
         return data["project_id"]
 
+    def __str__(self):
+        return self.name
+
     def __repr__(self):
         return "<Project %s>" % self.name
 
@@ -467,6 +470,9 @@ class Bill(db.Model):
             return self.amount / weights
         else:
             return 0
+
+    def __str__(self):
+        return "%s for %s" % (self.amount, self.what)
 
     def __repr__(self):
         return "<Bill of %s from %s for %s>" % (
