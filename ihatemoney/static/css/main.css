@@ -150,6 +150,11 @@ body {
   margin-bottom: 20px;
   margin-left: 25px;
 }
+@media (max-width: 400px) {
+  .home .card {
+    min-width: unset;
+  }
+}
 /* Other */
 
 #bills {
@@ -180,7 +185,7 @@ footer {
   padding: 45px 50px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   footer {
     padding-left: calc(25% + 50px);
   }
@@ -320,13 +325,16 @@ footer .footer-left {
   background: url("../images/see.png") no-repeat right;
 }
 
-#bill_table, #monthly_stats, #history_table {
+#bill_table,
+#monthly_stats,
+#history_table {
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
 @media (min-width: 768px) {
-  .split_bills, #table_overflow.statistics {
+  .split_bills,
+  #table_overflow.statistics {
     /* The table is shifted to left, so add the spacer width on the right to match */
     width: calc(100% + 15px);
   }
@@ -549,4 +557,14 @@ footer .icon svg {
 
 #history_warnings {
   margin-top: 30px;
+}
+
+/* edit settings */
+
+.edit-project form {
+  margin-top: 1em;
+  margin-bottom: 3em;
+}
+.edit-project .custom-file {
+  margin-bottom: 2em;
 }
