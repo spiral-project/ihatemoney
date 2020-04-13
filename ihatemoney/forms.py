@@ -14,7 +14,7 @@ from flask_wtf.file import FileField, FileAllowed, FileRequired
 
 from flask_babel import lazy_gettext as _
 from flask import request
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from datetime import datetime
 from re import match
@@ -113,7 +113,11 @@ class EditProjectForm(FlaskForm):
     def update(self, project):
         """Update the project with the information from the form"""
         project.name = self.name.data
-        project.password = generate_password_hash(self.password.data)
+
+        # Only update password if changed to prevent spurious log entries
+        if not check_password_hash(project.password, self.password.data):
+            project.password = generate_password_hash(self.password.data)
+
         project.contact_email = self.contact_email.data
         project.logging_preference = self.logging_preferences.data
 
