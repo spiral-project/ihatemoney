@@ -2131,7 +2131,7 @@ class APITestCase(IhatemoneyTestCase):
         self.assertIn(
             "Project %s added" % em_surround("raclette"), resp.data.decode("utf-8"),
         )
-        self.assertTrue(resp.data.decode("utf-8").count("<td> -- </td>") == 2)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 2)
         self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
 
 
@@ -2264,7 +2264,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertIn(
             "Project %s added" % em_surround("demo"), resp.data.decode("utf-8"),
         )
-        self.assertTrue(resp.data.decode("utf-8").count("<td> -- </td>") == 1)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 1)
         self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
 
     def change_privacy_to(self, logging_preference):
