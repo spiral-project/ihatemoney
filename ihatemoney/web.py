@@ -112,8 +112,8 @@ def set_show_admin_dashboard_link(endpoint, values):
     """
 
     g.show_admin_dashboard_link = (
-            current_app.config["ACTIVATE_ADMIN_DASHBOARD"]
-            and current_app.config["ADMIN_PASSWORD"]
+        current_app.config["ACTIVATE_ADMIN_DASHBOARD"]
+        and current_app.config["ADMIN_PASSWORD"]
     )
 
 
@@ -168,7 +168,7 @@ def admin():
         if form.validate():
             # Valid password
             if check_password_hash(
-                    current_app.config["ADMIN_PASSWORD"], form.admin_password.data
+                current_app.config["ADMIN_PASSWORD"], form.admin_password.data
             ):
                 session["is_admin"] = True
                 session.update()
@@ -226,9 +226,9 @@ def authenticate(project_id=None):
     # else do form authentication or token authentication
     is_post_auth = request.method == "POST" and form.validate()
     if (
-            is_post_auth
-            and check_password_hash(project.password, form.password.data)
-            or token_auth
+        is_post_auth
+        and check_password_hash(project.password, form.password.data)
+        or token_auth
     ):
         # maintain a list of visited projects
         if "projects" not in session:
@@ -591,8 +591,8 @@ def list_bills():
     # Preload the "owers" relationship for all bills
     bills = (
         g.project.get_bills()
-            .options(orm.subqueryload(Bill.owers))
-            .paginate(per_page=100, error_out=True)
+        .options(orm.subqueryload(Bill.owers))
+        .paginate(per_page=100, error_out=True)
     )
 
     return render_template(
@@ -623,8 +623,8 @@ def add_member():
 def reactivate(member_id):
     person = (
         Person.query.filter(Person.id == member_id)
-            .filter(Project.id == g.project.id)
-            .all()
+        .filter(Project.id == g.project.id)
+        .all()
     )
     if person:
         person[0].activated = True
@@ -705,7 +705,6 @@ def undo_delete_bill():
 
     db.session.add(form.fake_form(bill, g.project))
     db.session.commit()
-    print(bill.to_json())
     return redirect(url_for(".list_bills"))
 
 
@@ -721,7 +720,11 @@ def delete_bill(bill_id):
     db.session.commit()
 
     url = url_for(".undo_delete_bill")
-    alert = 'The bill has been deleted <a class="alert-link" href="' + url + '" id="undo"> undo </a>'
+    alert = (
+        'The bill has been deleted <a class="alert-link" href="'
+        + url
+        + '" id="undo"> undo </a>'
+    )
     flash(Markup(alert))
 
     return redirect(url_for(".list_bills"))
