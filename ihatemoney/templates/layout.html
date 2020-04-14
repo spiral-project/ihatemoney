@@ -126,7 +126,7 @@
 
   <div class="messages">
       {% for message in get_flashed_messages() %}
-      <div style="z-index:2;" class="alert alert-success">{{ message }}</div>
+      <div class="flash alert alert-success">{{ message }}</div>
       {% endfor %}
   </div>
 

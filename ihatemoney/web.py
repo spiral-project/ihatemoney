@@ -705,6 +705,7 @@ def undo_delete_bill():
 
     db.session.add(form.fake_form(bill, g.project))
     db.session.commit()
+    print(bill.to_json())
     return redirect(url_for(".list_bills"))
 
 
@@ -715,10 +716,9 @@ def delete_bill(bill_id):
     if not bill:
         return redirect(url_for(".list_bills"))
 
+    session["recently_deleted_bill"] = bill.to_json()
     db.session.delete(bill)
     db.session.commit()
-
-    session["test"] = bill.to_json()
 
     url = url_for(".undo_delete_bill")
     alert = 'The bill has been deleted <a class="alert-link" href="' + url + '" id="undo"> undo </a>'
