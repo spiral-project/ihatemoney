@@ -705,13 +705,14 @@ def delete_bill(bill_id):
 
     url = url_for(".undo_delete_bill")
     alert = (
-            'The bill has been deleted <a class="alert-link" href="'
-            + url
-            + '" id="undo"> undo </a>'
+        'The bill has been deleted <a class="alert-link" href="'
+        + url
+        + '" id="undo"> undo </a>'
     )
     flash(Markup(alert))
 
     return redirect(url_for(".list_bills"))
+
 
 @main.route("/<project_id>/undo")
 def undo_delete_bill():
