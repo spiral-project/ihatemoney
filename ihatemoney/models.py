@@ -391,6 +391,14 @@ class Bill(db.Model):
             "external_link": self.external_link,
         }
 
+    def to_json(self):
+        bill_dict = self._to_serialize
+        owers_list = []
+        for ower in bill_dict["owers"]:
+            owers_list.append(ower.id)
+        bill_dict["owers"] = owers_list
+        return bill_dict
+
     def pay_each(self):
         """Compute what each share has to pay"""
         if self.owers:

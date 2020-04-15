@@ -27,6 +27,7 @@ from flask import (
     url_for,
     send_file,
     send_from_directory,
+    Markup,
 )
 from flask_babel import get_locale, gettext as _
 from flask_mail import Message
@@ -698,10 +699,33 @@ def delete_bill(bill_id):
     if not bill:
         return redirect(url_for(".list_bills"))
 
+    session["recently_deleted_bill"] = bill.to_json()
     db.session.delete(bill)
     db.session.commit()
-    flash(_("The bill has been deleted"))
 
+    url = url_for(".undo_delete_bill")
+    alert = (
+            'The bill has been deleted <a class="alert-link" href="'
+            + url
+            + '" id="undo"> undo </a>'
+    )
+    flash(Markup(alert))
+
+    return redirect(url_for(".list_bills"))
+
+@main.route("/<project_id>/undo")
+def undo_delete_bill():
+    bill = Bill()
+    form = get_billform_for(g.project)
+    form.what = session["recently_deleted_bill"]["what"]
+    form.amount = session["recently_deleted_bill"]["amount"]
+    form.date = parse(session["recently_deleted_bill"]["date"])
+    form.payer = session["recently_deleted_bill"]["payer_id"]
+    form.payed_for = session["recently_deleted_bill"]["owers"]
+    form.external_link = session["recently_deleted_bill"]["external_link"]
+
+    db.session.add(form.fake_form(bill, g.project))
+    db.session.commit()
     return redirect(url_for(".list_bills"))
 
 
