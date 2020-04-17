@@ -19,6 +19,7 @@ from sqlalchemy_continuum import make_versioned
 from sqlalchemy_continuum.plugins import FlaskPlugin
 from sqlalchemy_continuum import version_class
 
+from ihatemoney.patch_sqlalchemy_continuum import PatchedBuilder
 from ihatemoney.versioning import (
     LoggingMode,
     ConditionalVersioningManager,
@@ -29,7 +30,14 @@ from ihatemoney.versioning import (
 
 make_versioned(
     user_cls=None,
-    manager=ConditionalVersioningManager(tracking_predicate=version_privacy_predicate),
+    manager=ConditionalVersioningManager(
+        # Conditionally Disable the versioning based on each
+        # project's privacy preferences
+        tracking_predicate=version_privacy_predicate,
+        # Patch in a fix to a SQLAchemy-Continuum Bug.
+        # See patch_sqlalchemy_continuum.py
+        builder=PatchedBuilder(),
+    ),
     plugins=[
         FlaskPlugin(
             # Redirect to our own function, which respects user preferences
