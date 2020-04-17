@@ -78,7 +78,7 @@ class BaseTestCase(TestCase):
 
 
 class IhatemoneyTestCase(BaseTestCase):
-    SQLALCHEMY_DATABASE_URI = "sqlite:////tmp/ihatemoneytest.db"
+    SQLALCHEMY_DATABASE_URI = "sqlite://"
     TESTING = True
     WTF_CSRF_ENABLED = False  # Simplifies the tests.
 
