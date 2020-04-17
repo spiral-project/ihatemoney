@@ -17,7 +17,7 @@ from flask_testing import TestCase
 
 from ihatemoney.run import create_app, db, load_configuration
 from ihatemoney.manage import GenerateConfig, GeneratePasswordHash, DeleteProject
-from ihatemoney import models
+from ihatemoney import models, history
 from ihatemoney.versioning import LoggingMode
 from ihatemoney import utils
 from sqlalchemy import orm
@@ -78,7 +78,7 @@ class BaseTestCase(TestCase):
 
 
 class IhatemoneyTestCase(BaseTestCase):
-    SQLALCHEMY_DATABASE_URI = "sqlite://"
+    SQLALCHEMY_DATABASE_URI = "sqlite:////tmp/ihatemoneytest.db"
     TESTING = True
     WTF_CSRF_ENABLED = False  # Simplifies the tests.
 
@@ -2807,7 +2807,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertIn(
             "Bill %s added" % em_surround("25.0 for Bill 1"), resp.data.decode("utf-8")
         )
-        self.assertEquals(
+        self.assertEqual(
             resp.data.decode("utf-8").count(
                 "Bill %s added" % em_surround("25.0 for Bill 1")
             ),
@@ -2820,6 +2820,37 @@ class HistoryTestCase(IhatemoneyTestCase):
             "Bill %s removed" % em_surround("25.0 for Bill 1"),
             resp.data.decode("utf-8"),
         )
+
+    def test_double_bill_double_person_edit_second_no_web(self):
+        u1 = models.Person(project_id="demo", name="User 1")
+        u2 = models.Person(project_id="demo", name="User 1")
+
+        models.db.session.add(u1)
+        models.db.session.add(u2)
+        models.db.session.commit()
+
+        b1 = models.Bill(what="Bill 1", payer_id=u1.id, owers=[u2], amount=10,)
+        b2 = models.Bill(what="Bill 2", payer_id=u2.id, owers=[u2], amount=11,)
+
+        # This db commit exposes the "spurious owers edit" bug
+        models.db.session.add(b1)
+        models.db.session.commit()
+
+        models.db.session.add(b2)
+        models.db.session.commit()
+
+        history_list = history.get_history(models.Project.query.get("demo"))
+        self.assertEqual(len(history_list), 5)
+
+        # Change just the amount
+        b1.amount = 5
+        models.db.session.commit()
+
+        history_list = history.get_history(models.Project.query.get("demo"))
+        for entry in history_list:
+            if "prop_changed" in entry:
+                self.assertNotIn("owers", entry["prop_changed"])
+        self.assertEqual(len(history_list), 6)
 
 
 if __name__ == "__main__":
