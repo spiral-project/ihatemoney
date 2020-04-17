@@ -2613,7 +2613,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         )
         self.assertRegex(
             resp.data.decode("utf-8"),
-            "Bill %s:\s* Amount changed\s* from %s\s* to %s"
+            r"Bill %s:\s* Amount changed\s* from %s\s* to %s"
             % (
                 em_surround("25.0 for fromage à raclette", regex_escape=True),
                 em_surround("25.0", regex_escape=True),
@@ -2655,7 +2655,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertRegex(
             resp.data.decode("utf-8"),
-            "Person %s:\s* Weight changed\s* from %s\s* to %s"
+            r"Person %s:\s* Weight changed\s* from %s\s* to %s"
             % (
                 em_surround("alexis", regex_escape=True),
                 em_surround("1.0", regex_escape=True),
@@ -2734,7 +2734,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertRegex(
             resp.data.decode("utf-8"),
-            "Bill %s:\s* Amount changed\s* from %s\s* to %s"
+            r"Bill %s:\s* Amount changed\s* from %s\s* to %s"
             % (
                 em_surround("25.0 for Bill 1", regex_escape=True),
                 em_surround("25.0", regex_escape=True),
@@ -2744,7 +2744,7 @@ class HistoryTestCase(IhatemoneyTestCase):
 
         self.assertNotRegex(
             resp.data.decode("utf-8"),
-            "Removed\s* %s\s* and\s* %s\s* from\s* owers list"
+            r"Removed\s* %s\s* and\s* %s\s* from\s* owers list"
             % (
                 em_surround("User 1", regex_escape=True),
                 em_surround("User 2", regex_escape=True),
