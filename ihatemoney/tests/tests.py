@@ -1531,6 +1531,7 @@ class APITestCase(IhatemoneyTestCase):
                 "contact_email": "yeah@notmyidea.org",
                 "password": "raclette",
                 "name": "The raclette party",
+                "project_history": "y",
             },
             headers=self.get_auth("raclette"),
         )
