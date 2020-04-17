@@ -20,6 +20,16 @@
     </div>
 {% endmacro %}
 
+{% macro checkbox(field) %}
+    <div class="controls{% if inline %} col-9{% endif %}">
+        {{ field(id=field.name) }}
+        <label for="{{ field.name }}">{{ field.label() }}</label>
+    {% if field.description %}
+        <small id="{{field.name}}_description"" class="form-text text-muted">{{ field.description }}</small>
+    {% endif %}
+    </div>
+{% endmacro %}
+
 {% macro submit(field, cancel=False, home=False) -%}
     <div class="actions">
         <button type="submit" class="btn btn-primary">{{ field.name }}</button>
@@ -81,20 +91,8 @@
     <div class="form-group">
         <label for="privacy_checkboxes">{{ _("Privacy Settings") }}</label>
         <div id="privacy_checkboxes" class="card card-body bg-light">
-            <div class="controls">
-                <input id="logging_enabled" type="checkbox" onchange="updatePrivacySelectFromCheckBoxes()">
-                <label for="logging_enabled">{{ _("Enable Project History") }}</label>
-            </div>
-            <div class="controls">
-                <div class="ml-4">
-                    <input id="record_ip" type="checkbox" onchange="updatePrivacySelectFromCheckBoxes()">
-                    <label id="record_ip_label" for="record_ip">{{ _("Record IP Adressses") }}</label>
-                </div>
-            </div>
-        </div>
-        <div class="d-none">
-            {{ form.logging_preferences }}
-            <script>updateCheckBoxesFromPrivacySelect()</script>
+        {{ checkbox(form.project_history) }}
+        {{ checkbox(form.ip_recording) }}
         </div>
     </div>
 

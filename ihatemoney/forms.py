@@ -1,7 +1,7 @@
 from flask_wtf.form import FlaskForm
 from wtforms.fields.core import SelectField, SelectMultipleField
 from wtforms.fields.html5 import DateField, DecimalField, URLField
-from wtforms.fields.simple import PasswordField, SubmitField, StringField
+from wtforms.fields.simple import PasswordField, SubmitField, StringField, BooleanField
 from wtforms.validators import (
     Email,
     DataRequired,
@@ -89,25 +89,28 @@ class EditProjectForm(FlaskForm):
     name = StringField(_("Project name"), validators=[DataRequired()])
     password = StringField(_("Private code"), validators=[DataRequired()])
     contact_email = StringField(_("Email"), validators=[DataRequired(), Email()])
-    logging_preferences = SelectField(
-        _("Logging Preferences"),
-        choices=LoggingMode.choices(),
-        coerce=LoggingMode.coerce,
-        default=LoggingMode.default(),
-        validators=[DataRequired()],
-    )
+    project_history = BooleanField(_("Enable project history"))
+    ip_recording = BooleanField(_("Use IP tracking for project history"))
 
     def save(self):
         """Create a new project with the information given by this form.
 
         Returns the created instance
         """
+        if not self.project_history.data:
+            new_logging_preference = LoggingMode.DISABLED
+        else:
+            if self.ip_recording.data:
+                new_logging_preference = LoggingMode.RECORD_IP
+            else:
+                new_logging_preference = LoggingMode.ENABLED
+
         project = Project(
             name=self.name.data,
             id=self.id.data,
             password=generate_password_hash(self.password.data),
             contact_email=self.contact_email.data,
-            logging_preference=self.logging_preferences.data,
+            logging_preference=new_logging_preference,
         )
         return project
 
@@ -120,7 +123,16 @@ class EditProjectForm(FlaskForm):
             project.password = generate_password_hash(self.password.data)
 
         project.contact_email = self.contact_email.data
-        project.logging_preference = self.logging_preferences.data
+
+        if not self.project_history.data:
+            new_logging_preference = LoggingMode.DISABLED
+        else:
+            if self.ip_recording.data:
+                new_logging_preference = LoggingMode.RECORD_IP
+            else:
+                new_logging_preference = LoggingMode.ENABLED
+
+        project.logging_preference = new_logging_preference
 
         return project
 
@@ -138,6 +150,14 @@ class ProjectForm(EditProjectForm):
     id = StringField(_("Project identifier"), validators=[DataRequired()])
     password = PasswordField(_("Private code"), validators=[DataRequired()])
     submit = SubmitField(_("Create the project"))
+
+    def save(self):
+        # WTForms Boolean Fields don't insert the default value when the
+        # request doesn't include any value the way that other fields do,
+        # so we'll manually do it here
+        self.project_history.data = LoggingMode.default() != LoggingMode.DISABLED
+        self.ip_recording.data = LoggingMode.default() == LoggingMode.RECORD_IP
+        return super().save()
 
     def validate_id(form, field):
         form.id.data = slugify(field.data)

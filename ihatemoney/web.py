@@ -406,7 +406,12 @@ def edit_project():
         return redirect(url_for("main.list_bills"))
     else:
         edit_form.name.data = g.project.name
-        edit_form.logging_preferences.data = g.project.logging_preference
+
+        if g.project.logging_preference != LoggingMode.DISABLED:
+            edit_form.project_history.data = True
+            if g.project.logging_preference == LoggingMode.RECORD_IP:
+                edit_form.ip_recording.data = True
+
         edit_form.contact_email.data = g.project.contact_email
 
     return render_template(

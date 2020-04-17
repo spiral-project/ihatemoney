@@ -2276,8 +2276,12 @@ class HistoryTestCase(IhatemoneyTestCase):
             "name": "demo",
             "contact_email": "demo@notmyidea.org",
             "password": "demo",
-            "logging_preferences": logging_preference.value,
         }
+
+        if logging_preference != LoggingMode.DISABLED:
+            new_data["project_history"] = "y"
+            if logging_preference == LoggingMode.RECORD_IP:
+                new_data["ip_recording"] = "y"
 
         # Disable History
         resp = self.client.post("/demo/edit", data=new_data, follow_redirects=True)
@@ -2286,11 +2290,17 @@ class HistoryTestCase(IhatemoneyTestCase):
 
         resp = self.client.get("/demo/edit")
         self.assertEqual(resp.status_code, 200)
-        self.assertIn(
-            '<option selected value="%i">%s</option>'
-            % (logging_preference.value, logging_preference.name),
-            resp.data.decode("utf-8"),
-        )
+        if logging_preference == LoggingMode.DISABLED:
+            self.assertIn('<input id="project_history"', resp.data.decode("utf-8"))
+        else:
+            self.assertIn(
+                '<input checked id="project_history"', resp.data.decode("utf-8")
+            )
+
+        if logging_preference == LoggingMode.RECORD_IP:
+            self.assertIn('<input checked id="ip_recording"', resp.data.decode("utf-8"))
+        else:
+            self.assertIn('<input id="ip_recording"', resp.data.decode("utf-8"))
 
     def assert_empty_history_logging_disabled(self):
         resp = self.client.get("/demo/history")
@@ -2319,6 +2329,7 @@ class HistoryTestCase(IhatemoneyTestCase):
             "name": "demo2",
             "contact_email": "demo2@notmyidea.org",
             "password": "123456",
+            "project_history": "y",
         }
 
         resp = self.client.post("/demo/edit", data=new_data, follow_redirects=True)
@@ -2354,7 +2365,8 @@ class HistoryTestCase(IhatemoneyTestCase):
         resp = self.client.get("/demo/edit")
         self.assertEqual(resp.status_code, 200)
         self.assertIn(
-            '<option selected value="1">ENABLED</option>', resp.data.decode("utf-8")
+            '<input checked id="project_history" name="project_history" type="checkbox" value="y">',
+            resp.data.decode("utf-8"),
         )
 
         self.change_privacy_to(LoggingMode.DISABLED)
@@ -2415,9 +2427,13 @@ class HistoryTestCase(IhatemoneyTestCase):
             "name": "demo2",
             "contact_email": "demo2@notmyidea.org",
             "password": "123456",
-            "logging_preferences": logging_mode.value,
-            # Keep privacy settings where they were
         }
+
+        # Keep privacy settings where they were
+        if logging_mode != LoggingMode.DISABLED:
+            new_data["project_history"] = "y"
+            if logging_mode == LoggingMode.RECORD_IP:
+                new_data["ip_recording"] = "y"
 
         resp = self.client.post("/demo/edit", data=new_data, follow_redirects=True)
         self.assertEqual(resp.status_code, 200)
