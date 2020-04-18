@@ -549,6 +549,13 @@ footer .icon svg {
   fill: white;
 }
 
+.icon.icon-red {
+  fill: #dc3545;
+}
+.btn:hover .icon.icon-red  {
+  fill: white !important;
+}
+
 /* align the first column */
 #monthly_stats tr *:first-child {
   text-align: right;

@@ -38,6 +38,49 @@
     {{ _("to") }} <em class="font-italic">{{ event.val_after }}</em>
 {% endmacro %}
 
+{% macro clear_history_modals() %}
+<!-- Modal -->
+<div id="confirm-ip-delete" class="modal fade show" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">{{ _('Confirm Remove IP Adresses') }}</h3>
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+            </div>
+            <div class="modal-body">
+                <p>{{ _("Are you sure you want to delete all recorded IP addresses from this project?
+                The rest of the project history will be unaffected. This action cannot be undone.") }}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _("Close") }}</button>
+                <form action="{{ url_for(".strip_ip_addresses") }}" method="post">
+                    <input type="submit" class="btn btn-danger" value="{{ _("Confirm Delete") }}" name="{{ _("Confirm Delete") }}"/>
+                </form>
+              </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+    <div id="confirm-erase" class="modal fade show" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">{{ _('Delete Confirmation') }}</h3>
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+            </div>
+            <div class="modal-body">
+                <p>{{ _("Are you sure you want to erase all history for this project? This action cannot be undone.") }}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _("Close") }}</button>
+                <form action="{{ url_for(".erase_history") }}" method="post">
+                    <input type="submit" class="btn btn-danger" value="{{ _("Confirm Delete") }}" name="{{ _("Confirm Delete") }}"/>
+                </form>
+              </div>
+        </div>
+    </div>
+</div>
+{% endmacro %}
 
 {% macro owers_changed(event, add) %}
     {{ describe_object(event) }}: {% if add %}{{ _("Added") }}{% else %}{{ _("Removed") }}{% endif %}
@@ -88,55 +131,29 @@
         {% if history %}
         <p><i>{{ _("The table below reflects actions recorded prior to disabling project history. You can ") }}
             <a href="#" data-toggle="modal" data-keyboard="false" data-target="#confirm-erase">{{ _("clear project history") }}</a> {{ _("to remove them.") }}</i></p>
-            <!-- Modal -->
-            <div id="confirm-erase" class="modal fade show" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title">{{ _('Delete Confirmation') }}</h3>
-                        <a href="#" class="close" data-dismiss="modal">&times;</a>
-                    </div>
-                    <div class="modal-body">
-                        <p>{{ _("Are you sure you want to erase all history for this project? This action cannot be undone.") }}</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _("Close") }}</button>
-                        <form action="{{ url_for(".erase_history") }}" method="post">
-                            <input type="submit" class="btn btn-danger" value="{{ _("Confirm Delete") }}" name="{{ _("Confirm Delete") }}"/>
-                        </form>
-                      </div>
-                </div>
-            </div>
-        </div>
         {% endif %}
     {% endif %}
     {% if current_log_pref != LoggingMode.RECORD_IP and any_ip_addresses %}
         <p><i>{{  _("Some entries below contain IP addresses, even though this project has IP recording disabled. ") }}
-            <a href="#" data-toggle="modal" data-keyboard="false" data-target="#confirm-ip-delete">{{ _(" Delete stored IP addresses ") }}</a></i></p>
-            <!-- Modal -->
-            <div id="confirm-ip-delete" class="modal fade show" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title">{{ _('Confirm Remove IP Adresses') }}</h3>
-                        <a href="#" class="close" data-dismiss="modal">&times;</a>
-                    </div>
-                    <div class="modal-body">
-                        <p>{{ _("Are you sure you want to delete all recorded IP addresses from this project?
-                        The rest of the project history will be unaffected. This action cannot be undone.") }}</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _("Close") }}</button>
-                        <form action="{{ url_for(".strip_ip_addresses") }}" method="post">
-                            <input type="submit" class="btn btn-danger" value="{{ _("Confirm Delete") }}" name="{{ _("Confirm Delete") }}"/>
-                        </form>
-                      </div>
-                </div>
-            </div>
-            </div>
+            <a href="#" data-toggle="modal" data-keyboard="false" data-target="#confirm-ip-delete">{{ _("Delete stored IP addresses") }}</a></i></p>
     {% endif %}
     </div>
     {% endif %}
+    {{ clear_history_modals() }}
+    <span class="float-right mt-3" {% if not history %} data-toggle="tooltip" title="{{_('No history to erase')}}" {% endif %}>
+        <a href="#" class="btn btn-outline-danger float-right {% if not history %} disabled {% endif %}" data-toggle="modal" data-keyboard="false" data-target="#confirm-erase">
+            <i class="icon icon-red plus">{{ static_include("images/x.svg") | safe }}</i>
+            {{ _("Clear Project History") }}
+        </a>
+    </span>
+    <span class="float-right mt-3" {% if not any_ip_addresses %}data-placement="top" data-toggle="tooltip" title="{{_('No IP Addresses to erase')}}" {% endif %}>
+        <a href="#" class="btn btn-outline-danger float-right mr-2 {% if not any_ip_addresses %} disabled {% endif %}" data-toggle="modal" data-keyboard="false" data-target="#confirm-ip-delete">
+            <i class="icon icon-red plus">{{ static_include("images/x.svg") | safe }}</i>
+            {{ _("Delete Stored IP Addresses") }}
+        </a>
+    </span>
+
+    <div class="clearfix"></div>
     {% if history %}
     <table id="history_table" class="split_bills table table-striped">
         <thead><tr>
