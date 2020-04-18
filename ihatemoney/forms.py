@@ -92,25 +92,28 @@ class EditProjectForm(FlaskForm):
     project_history = BooleanField(_("Enable project history"))
     ip_recording = BooleanField(_("Use IP tracking for project history"))
 
+    @property
+    def logging_preference(self):
+        """Get the LoggingMode object corresponding to current form data."""
+        if not self.project_history.data:
+            return LoggingMode.DISABLED
+        else:
+            if self.ip_recording.data:
+                return LoggingMode.RECORD_IP
+            else:
+                return LoggingMode.ENABLED
+
     def save(self):
         """Create a new project with the information given by this form.
 
         Returns the created instance
         """
-        if not self.project_history.data:
-            new_logging_preference = LoggingMode.DISABLED
-        else:
-            if self.ip_recording.data:
-                new_logging_preference = LoggingMode.RECORD_IP
-            else:
-                new_logging_preference = LoggingMode.ENABLED
-
         project = Project(
             name=self.name.data,
             id=self.id.data,
             password=generate_password_hash(self.password.data),
             contact_email=self.contact_email.data,
-            logging_preference=new_logging_preference,
+            logging_preference=self.logging_preference,
         )
         return project
 
@@ -123,16 +126,7 @@ class EditProjectForm(FlaskForm):
             project.password = generate_password_hash(self.password.data)
 
         project.contact_email = self.contact_email.data
-
-        if not self.project_history.data:
-            new_logging_preference = LoggingMode.DISABLED
-        else:
-            if self.ip_recording.data:
-                new_logging_preference = LoggingMode.RECORD_IP
-            else:
-                new_logging_preference = LoggingMode.ENABLED
-
-        project.logging_preference = new_logging_preference
+        project.logging_preference = self.logging_preference
 
         return project
 
