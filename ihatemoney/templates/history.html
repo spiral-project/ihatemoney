@@ -142,8 +142,8 @@
     {% if history %}
     <table id="history_table" class="split_bills table table-striped">
         <thead><tr>
-            <th style="width: 20%">{{ _("Time") }}</th>
-            <th style="width: 60%">{{ _("Event") }}</th>
+            <th style="width: 15%">{{ _("Time") }}</th>
+            <th style="width: 65%">{{ _("Event") }}</th>
             <th style="width: 20%">
                 <span data-toggle="tooltip" title="{{_('IP address recording can be') }}
                                                     {% if current_log_pref != LoggingMode.RECORD_IP %}
@@ -154,7 +154,7 @@
     <tbody>
     {% for event in history %}
     <tr>
-            <td>{{ momentjs(event.time).calendar() }}</td>
+            <td><script>document.write(localizeTime("{{ event.time }}"));</script></td>
             <td >
                 <div class="history_icon">
                     <i {% if event.operation_type == OperationType.INSERT  %}

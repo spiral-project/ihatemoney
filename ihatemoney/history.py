@@ -90,7 +90,7 @@ def get_history(project, human_readable_names=True):
                 object_str = describe_version(version)
 
             common_properties = {
-                "time": version.transaction.issued_at,
+                "time": version.transaction.issued_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
                 "operation_type": version.operation_type,
                 "object_type": object_type,
                 "object_desc": object_str,

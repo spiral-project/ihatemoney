@@ -20,7 +20,6 @@ from ihatemoney.utils import (
 from ihatemoney.web import main as web_interface
 
 from ihatemoney import default_settings
-from ihatemoney.momentjs import momentjs
 
 
 def setup_database(app):
@@ -147,7 +146,6 @@ def create_app(
     app.jinja_env.globals["static_include"] = static_include
     app.jinja_env.globals["locale_from_iso"] = locale_from_iso
     app.jinja_env.filters["minimal_round"] = minimal_round
-    app.jinja_env.globals["momentjs"] = momentjs
 
     # Translations
     babel = Babel(app)
