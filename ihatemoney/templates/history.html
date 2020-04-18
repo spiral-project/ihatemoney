@@ -4,8 +4,6 @@
 {% if event.val_after == LoggingMode.DISABLED %}
     {% if event.val_before == LoggingMode.ENABLED %}
         {{ _("Disabled Project History") }}
-    {% elif event.val_before == LoggingMode.RECORD_IP %}
-        {{ _("Disabled Project History & IP Address Recording") }}
     {% else %}
         {{ _("Disabled Project History & IP Address Recording") }}
     {% endif %}
