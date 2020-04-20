@@ -17,6 +17,44 @@
         });
     });
 
+    // remove duplicate tags
+    var usedTags = {};
+    $("select[name='tag-search-select'] > option").each(function() {
+        if (usedTags[this.text]) {
+            $(this).remove();
+        } else {
+            usedTags[this.text] = this.value;
+        }
+    });
+
+    // add default values to payer select
+    $('#payer-search-select').prepend(new Option('', '', true, true));
+
+    // add default values to date select
+    $('#date-search-select').prepend(new Option('', '', true, true));
+
+    $('#btn-bill-filter').click(function() {
+        var dateValue = $('#date-search-select').val();
+        var payerValue = $('#payer-search-select option:selected').val();
+        var amountValue = $('#amount-search-select').val();
+        if (amountValue.substr(amountValue.length - 3) === '.00') {
+            amountValue = amountValue.substr(0, amountValue.length - 3)
+        }
+        var amountWithZero = amountValue + ".0"
+        var tagValue = $('#tag-search-select').val();
+        
+        var matching = $('#bill_table tbody tr').filter(function(){
+            return (payerValue != "" && $(this).attr('payer') !== payerValue) || $(this).attr('date') !== dateValue || (amountValue != "" && $(this).attr('amount') !== amountValue && $(this).attr('amount') !== amountWithZero) || (tagValue != "" && $(this).attr('tag') !== tagValue);
+        });
+        
+        matching.hide();
+        $('#bill_table tbody tr').not(matching).show(200);
+    });
+
+    $('#btn-bill-showall').click(function() {
+        $('#bill_table tbody tr').show(200);
+    });
+
     var highlight_owers = function(){
         var ower_ids = $(this).attr("owers").split(',');
         var payer_id = $(this).attr("payer");
@@ -110,11 +148,38 @@
     {% if bills.total > 0 %}
         <div class="clearfix"></div>
 
+        <div id="bill-search">
+            <span>Filter by:</span>
+            <form class="form-inline mt-2">
+                <div class="form-group mr-sm-2">
+                    <label for="date-select" class="mr-sm-2">{{ _("Date") }}</label>
+                    {{ bill_form.date(id="date-search-select", class="form-control custom-select", placeholder='') | safe }}
+                    <label for="payer-select" class="mr-sm-2" style="margin-left: 8px">{{ _("Payer") }}</label>
+                    {{ bill_form.payer(id="payer-search-select", class="form-control custom-select", placeholder='') | safe }}
+                    <label for="amount-select" class="mr-sm-2" style="margin-left: 8px">{{ _("Amount") }}</label>
+                    {{ bill_form.amount(id="amount-search-select", class="form-control", style="width: 100px", placeholder='') | safe }}
+                    <label for="tag-select" class="mr-sm-2" style="margin-left: 8px">{{ _("Tag") }}</label>
+                    <select name="tag-search-select" id="tag-search-select" style="height: 38px; margin-right: 8px">
+                        <option value=""></option>
+                        {% for bill in bills.items %}
+                            {% if bill.tag %}
+                                <option value="{{bill.tag}}">{{bill.tag}}</option>
+                            {% endif %}
+                        {% endfor %}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button id="btn-bill-filter" type="button" class="btn btn-secondary mr-sm-2">{{ _("Apply Filter") }}</button>
+                    <button id="btn-bill-showall" type="button" class="btn btn-secondary">{{ _("Show All") }}</button>
+                </div>
+            </form>
+        </div>
+
         <table id="bill_table" class="col table table-striped table-hover table-responsive-sm">
             <thead><tr><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</<th><th>{{ _("For what?") }}</th><th>{{ _("For whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Actions") }}</th></tr></thead>
         <tbody>
         {% for bill in bills.items %}
-        <tr owers="{{bill.owers|join(',','id')}}" payer="{{bill.payer.id}}">
+        <tr owers="{{bill.owers|join(',','id')}}" payer="{{bill.payer.id}}" date="{{bill.date}}" amount="{{bill.amount}}" tag="{{bill.tag}}">
                 <td>
                     <span data-toggle="tooltip" data-placement="top"
                         title="{{ _('Added on %(date)s', date=bill.creation_date if bill.creation_date else bill.date) }}">
