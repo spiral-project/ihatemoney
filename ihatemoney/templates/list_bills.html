@@ -21,6 +21,16 @@
         });
     });
 
+    // remove duplicate tags
+    var usedTags = {};
+    $("select[name='tag-search-select'] > option").each(function() {
+        if (usedTags[this.text]) {
+            $(this).remove();
+        } else {
+            usedTags[this.text] = this.value;
+        }
+    });
+
     var highlight_owers = function(){
         var ower_ids = $(this).attr("owers").split(',');
         var payer_id = $(this).attr("payer");
@@ -110,7 +120,7 @@
             </thead>
         <tbody>
         {% for bill in bills.items %}
-        <tr owers="{{bill.owers|join(',','id')}}" payer="{{bill.payer.id}}">
+        <tr owers="{{bill.owers|join(',','id')}}" payer="{{bill.payer.id}}" date="{{bill.date}}" amount="{{bill.amount}}" tag="{{bill.tag}}">
                 <td>
                     <span data-toggle="tooltip" data-placement="top"
                         title="{{ _('Added on %(date)s', date=bill.creation_date|dateformat("long") if bill.creation_date else bill.date|dateformat("long")) }}">

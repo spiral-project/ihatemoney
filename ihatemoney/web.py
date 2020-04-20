@@ -462,7 +462,7 @@ def import_project(file, project):
     json_file = json.load(file)
 
     # Check if JSON is correct
-    attr = ["what", "payer_name", "payer_weight", "amount", "currency", "date", "owers"]
+    attr = ["what", "tag", "payer_name", "payer_weight", "amount", "currency", "date", "owers"]
     attr.sort()
     currencies = set()
     for e in json_file:
@@ -539,6 +539,7 @@ def import_project(file, project):
         bill = Bill()
         form = get_billform_for(project)
         form.what = b["what"]
+        form.tag = b["tag"]
         form.amount = b["amount"]
         form.original_currency = b["currency"]
         form.date = parse(b["date"])

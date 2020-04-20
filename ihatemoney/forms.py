@@ -11,7 +11,7 @@ from markupsafe import Markup
 from werkzeug.security import check_password_hash, generate_password_hash
 from wtforms.fields.core import Label, SelectField, SelectMultipleField
 from wtforms.fields.html5 import DateField, DecimalField, URLField
-from wtforms.fields.simple import BooleanField, PasswordField, StringField, SubmitField
+from wtforms.fields.simple import BooleanField, PasswordField, StringField, SubmitField, HiddenField
 from wtforms.validators import (
     URL,
     DataRequired,
@@ -310,6 +310,7 @@ class BillForm(FlaskForm):
     amount = CalculatorStringField(_("How much?"), validators=[DataRequired()])
     currency_helper = CurrencyConverter()
     original_currency = SelectField(_("Currency"), validators=[DataRequired()])
+    tag = HiddenField(_("Tag"), default="")
     external_link = URLField(
         _("External link"),
         validators=[Optional(), URL()],
@@ -325,6 +326,9 @@ class BillForm(FlaskForm):
         bill.payer_id = self.payer.data
         bill.amount = self.amount.data
         bill.what = self.what.data
+        tag = list(set(part[1:] for part in bill.what.split() if part.startswith('#')))
+        if tag:
+            bill.tag = tag[0]
         bill.external_link = self.external_link.data
         bill.date = self.date.data
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for.data]
@@ -338,6 +342,7 @@ class BillForm(FlaskForm):
         bill.payer_id = self.payer
         bill.amount = self.amount
         bill.what = self.what
+        bill.tag = self.tag
         bill.external_link = ""
         bill.date = self.date
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for]
@@ -352,6 +357,7 @@ class BillForm(FlaskForm):
         self.payer.data = bill.payer_id
         self.amount.data = bill.amount
         self.what.data = bill.what
+        self.tag.data = bill.tag
         self.external_link.data = bill.external_link
         self.original_currency.data = bill.original_currency
         self.date.data = bill.date
