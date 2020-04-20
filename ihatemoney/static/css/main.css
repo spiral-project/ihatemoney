@@ -326,7 +326,8 @@ footer .footer-left {
 }
 
 #bill_table,
-#monthly_stats {
+#monthly_stats,
+#history_table {
   margin-top: 30px;
   margin-bottom: 30px;
 }
@@ -362,6 +363,36 @@ footer .footer-left {
 .project-actions > .see {
   background: url("../images/see.png") no-repeat right;
 }
+
+.history_icon > .delete,
+.history_icon > .add,
+.history_icon > .edit {
+  font-size: 0px;
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: 2px;
+  margin-right: 10px;
+  margin-top: 3px;
+  float: left;
+}
+
+.history_icon > .delete {
+  background: url("../images/delete.png") no-repeat right;
+}
+
+.history_icon > .edit {
+  background: url("../images/edit.png") no-repeat right;
+}
+
+.history_icon > .add {
+  background: url("../images/add.png") no-repeat right;
+}
+
+.history_text {
+  display: table-cell;
+}
+
 
 .balance .balance-value {
   text-align: right;
@@ -518,10 +549,21 @@ footer .icon svg {
   fill: white;
 }
 
+.icon.icon-red {
+  fill: #dc3545;
+}
+.btn:hover .icon.icon-red  {
+  fill: white !important;
+}
+
 /* align the first column */
 #monthly_stats tr *:first-child {
   text-align: right;
   width: 200px;
+}
+
+#history_warnings {
+  margin-top: 30px;
 }
 
 /* edit settings */
