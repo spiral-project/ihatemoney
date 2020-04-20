@@ -1215,6 +1215,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             {
                 "date": "2017-01-01",
                 "what": "refund",
+                "tag": "",
                 "amount": 13.33,
                 "payer_name": "tata",
                 "payer_weight": 1.0,
@@ -1223,6 +1224,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             {
                 "date": "2016-12-31",
                 "what": "red wine",
+                "tag": "",
                 "amount": 200.0,
                 "payer_name": "fred",
                 "payer_weight": 1.0,
@@ -1231,6 +1233,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             {
                 "date": "2016-12-31",
                 "what": "fromage a raclette",
+                "tag": "",
                 "amount": 10.0,
                 "payer_name": "alexis",
                 "payer_weight": 2.0,
@@ -1290,6 +1293,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             data={
                 "date": "2016-12-31",
                 "what": "red wine",
+                "tag": "",
                 "payer": 2,
                 "payed_for": [1, 3],
                 "amount": "200",
@@ -1300,6 +1304,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             {
                 "date": "2017-01-01",
                 "what": "refund",
+                "tag": "",
                 "amount": 13.33,
                 "payer_name": "tata",
                 "payer_weight": 1.0,
@@ -1308,6 +1313,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             {  # This expense does not have to be present twice.
                 "date": "2016-12-31",
                 "what": "red wine",
+                "tag": "",
                 "amount": 200.0,
                 "payer_name": "fred",
                 "payer_weight": 1.0,
@@ -1316,6 +1322,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             {
                 "date": "2016-12-31",
                 "what": "fromage a raclette",
+                "tag": "",
                 "amount": 10.0,
                 "payer_name": "alexis",
                 "payer_weight": 2.0,
@@ -1380,6 +1387,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             {  # amount missing
                 "date": "2017-01-01",
                 "what": "refund",
+                "tag": "",
                 "payer_name": "tata",
                 "payer_weight": 1.0,
                 "owers": ["fred"],
@@ -1784,6 +1792,7 @@ class APITestCase(IhatemoneyTestCase):
         }
 
         got = json.loads(req.data.decode("utf-8"))
+        del got["tag"]
         self.assertEqual(
             datetime.date.today(),
             datetime.datetime.strptime(got["creation_date"], "%Y-%m-%d").date(),
@@ -1858,6 +1867,7 @@ class APITestCase(IhatemoneyTestCase):
             datetime.datetime.strptime(got["creation_date"], "%Y-%m-%d").date(),
         )
         del got["creation_date"]
+        del got["tag"]
         self.assertDictEqual(expected, got)
 
         # delete a bill
@@ -1934,6 +1944,7 @@ class APITestCase(IhatemoneyTestCase):
                 datetime.datetime.strptime(got["creation_date"], "%Y-%m-%d").date(),
             )
             del got["creation_date"]
+            del got["tag"]
             self.assertDictEqual(expected, got)
 
         # should raise errors
@@ -2075,6 +2086,7 @@ class APITestCase(IhatemoneyTestCase):
             datetime.datetime.strptime(got["creation_date"], "%Y-%m-%d").date(),
         )
         del got["creation_date"]
+        del got["tag"]
         self.assertDictEqual(expected, got)
 
         # getting it should return a 404

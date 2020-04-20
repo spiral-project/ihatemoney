@@ -1,7 +1,7 @@
 from flask_wtf.form import FlaskForm
 from wtforms.fields.core import SelectField, SelectMultipleField
 from wtforms.fields.html5 import DateField, DecimalField, URLField
-from wtforms.fields.simple import PasswordField, SubmitField, StringField, BooleanField
+from wtforms.fields.simple import PasswordField, SubmitField, StringField, BooleanField, HiddenField
 from wtforms.validators import (
     Email,
     DataRequired,
@@ -199,6 +199,7 @@ class ResetPasswordForm(FlaskForm):
 class BillForm(FlaskForm):
     date = DateField(_("Date"), validators=[DataRequired()], default=datetime.now)
     what = StringField(_("What?"), validators=[DataRequired()])
+    tag = HiddenField(_("Tag"), default="")
     payer = SelectField(_("Payer"), validators=[DataRequired()], coerce=int)
     amount = CalculatorStringField(_("Amount paid"), validators=[DataRequired()])
     external_link = URLField(
@@ -216,6 +217,9 @@ class BillForm(FlaskForm):
         bill.payer_id = self.payer.data
         bill.amount = self.amount.data
         bill.what = self.what.data
+        tag = list(set(part[1:] for part in bill.what.split() if part.startswith('#')))
+        if tag:
+            bill.tag = tag[0]
         bill.external_link = self.external_link.data
         bill.date = self.date.data
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for.data]
@@ -225,6 +229,7 @@ class BillForm(FlaskForm):
         bill.payer_id = self.payer
         bill.amount = self.amount
         bill.what = self.what
+        bill.tag = self.tag
         bill.external_link = ""
         bill.date = self.date
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for]
@@ -235,6 +240,7 @@ class BillForm(FlaskForm):
         self.payer.data = bill.payer_id
         self.amount.data = bill.amount
         self.what.data = bill.what
+        self.tag.data = bill.tag
         self.external_link.data = bill.external_link
         self.date.data = bill.date
         self.payed_for.data = [int(ower.id) for ower in bill.owers]
