@@ -2,7 +2,7 @@ Contributing
 ############
 
 Set up a dev environment
-=======================
+========================
 
 You must develop on top of the Git master branch::
 
@@ -23,10 +23,8 @@ install dependencies, and run the test server.
 The hard way
 ------------
 
-Alternatively, you can also use the `requirements.txt` file to install the
-dependencies yourself. That would be::
+Alternatively, you can use pip to install dependencies yourself. That would be::
 
-     pip install -r requirements.txt
      pip install -e .
 
 And then run the application::
