@@ -11,8 +11,8 @@ ZOPFLIPNG := zopflipng
 .PHONY: all
 all: install ## Alias for install
 .PHONY: install
-install: setup.cfg $(INSTALL_STAMP) ## Install dependencies
-$(INSTALL_STAMP): virtualenv
+install: virtualenv setup.cfg $(INSTALL_STAMP) ## Install dependencies
+$(INSTALL_STAMP):
 	$(VENV)/bin/pip install -U pip
 	$(VENV)/bin/pip install -e .
 	touch $(INSTALL_STAMP)
@@ -23,7 +23,7 @@ $(PYTHON):
 	$(VIRTUALENV) $(VENV)
 
 .PHONY: install-dev
-install-dev: setup.cfg $(INSTALL_STAMP) $(DEV_STAMP) ## Install development dependencies
+install-dev: virtualenv setup.cfg $(INSTALL_STAMP) $(DEV_STAMP) ## Install development dependencies
 $(DEV_STAMP): $(PYTHON)
 	$(VENV)/bin/pip install -Ue .[dev]
 	touch $(DEV_STAMP)
