@@ -38,7 +38,7 @@ from sqlalchemy_continuum import Operation
 from sqlalchemy_continuum.builder import Builder
 from sqlalchemy_continuum.expression_reflector import VersionExpressionReflector
 from sqlalchemy_continuum.relationship_builder import RelationshipBuilder
-from sqlalchemy_continuum.utils import option, adapt_columns
+from sqlalchemy_continuum.utils import adapt_columns, option
 
 
 class PatchedRelationShipBuilder(RelationshipBuilder):

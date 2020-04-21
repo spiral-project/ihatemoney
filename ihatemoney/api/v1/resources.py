@@ -1,17 +1,17 @@
 # coding: utf8
 from flask import Blueprint
-from flask_restful import Api
 from flask_cors import CORS
+from flask_restful import Api
 
 from ihatemoney.api.common import (
-    ProjectsHandler,
-    ProjectHandler,
-    TokenHandler,
-    MemberHandler,
-    ProjectStatsHandler,
-    MembersHandler,
     BillHandler,
     BillsHandler,
+    MemberHandler,
+    MembersHandler,
+    ProjectHandler,
+    ProjectsHandler,
+    ProjectStatsHandler,
+    TokenHandler,
 )
 
 api = Blueprint("api", __name__, url_prefix="/api")

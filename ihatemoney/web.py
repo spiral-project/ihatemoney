@@ -8,25 +8,27 @@ Basically, this blueprint takes care of the authentication and provides
 some shortcuts to make your life better when coding (see `pull_project`
 and `add_project_id` for a quick overview)
 """
+from datetime import datetime
+from functools import wraps
 import json
 import os
-from functools import wraps
 from smtplib import SMTPRecipientsRefused
 
 from dateutil.parser import parse
+from dateutil.relativedelta import relativedelta
 from flask import (
-    abort,
     Blueprint,
+    abort,
     current_app,
     flash,
     g,
     redirect,
     render_template,
     request,
-    session,
-    url_for,
     send_file,
     send_from_directory,
+    session,
+    url_for,
 )
 from flask_babel import get_locale, gettext as _
 from flask_mail import Message
@@ -42,23 +44,21 @@ from ihatemoney.forms import (
     InviteForm,
     MemberForm,
     PasswordReminder,
-    ResetPasswordForm,
     ProjectForm,
-    get_billform_for,
+    ResetPasswordForm,
     UploadForm,
+    get_billform_for,
 )
-from ihatemoney.history import get_history_queries, get_history
-from ihatemoney.models import db, Project, Person, Bill, LoggingMode
+from ihatemoney.history import get_history, get_history_queries
+from ihatemoney.models import Bill, LoggingMode, Person, Project, db
 from ihatemoney.utils import (
-    Redirect303,
-    list_of_dicts2json,
-    list_of_dicts2csv,
     LoginThrottler,
+    Redirect303,
     get_members,
+    list_of_dicts2csv,
+    list_of_dicts2json,
     same_bill,
 )
-from datetime import datetime
-from dateutil.relativedelta import relativedelta
 
 main = Blueprint("main", __name__)
 
