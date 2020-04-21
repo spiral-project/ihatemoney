@@ -1,15 +1,7 @@
 from flask_babel import gettext as _
-from sqlalchemy_continuum import (
-    Operation,
-    parent_class,
-)
+from sqlalchemy_continuum import Operation, parent_class
 
-from ihatemoney.models import (
-    PersonVersion,
-    ProjectVersion,
-    BillVersion,
-    Person,
-)
+from ihatemoney.models import BillVersion, Person, PersonVersion, ProjectVersion
 
 
 def get_history_queries(project):

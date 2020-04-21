@@ -1,32 +1,28 @@
 from collections import defaultdict
-
 from datetime import datetime
 
-import sqlalchemy
-from flask_sqlalchemy import SQLAlchemy, BaseQuery
-from flask import g, current_app
-
 from debts import settle
-from sqlalchemy import orm
-from sqlalchemy.sql import func
+from flask import current_app, g
+from flask_sqlalchemy import BaseQuery, SQLAlchemy
 from itsdangerous import (
-    TimedJSONWebSignatureSerializer,
-    URLSafeSerializer,
     BadSignature,
     SignatureExpired,
+    TimedJSONWebSignatureSerializer,
+    URLSafeSerializer,
 )
-from sqlalchemy_continuum import make_versioned
+import sqlalchemy
+from sqlalchemy import orm
+from sqlalchemy.sql import func
+from sqlalchemy_continuum import make_versioned, version_class
 from sqlalchemy_continuum.plugins import FlaskPlugin
-from sqlalchemy_continuum import version_class
 
 from ihatemoney.patch_sqlalchemy_continuum import PatchedBuilder
 from ihatemoney.versioning import (
-    LoggingMode,
     ConditionalVersioningManager,
-    version_privacy_predicate,
+    LoggingMode,
     get_ip_if_allowed,
+    version_privacy_predicate,
 )
-
 
 make_versioned(
     user_cls=None,

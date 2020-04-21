@@ -41,11 +41,19 @@ serve: install ## Run the ihatemoney server
 	$(PYTHON) -m ihatemoney.manage runserver
 
 .PHONY: test
-test: $(DEV_STAMP) ## Run the tests
+test: install-dev ## Run the tests
 	$(VENV)/bin/tox
 
+.PHONY: black
+black: install-dev ## Run the tests
+	$(VENV)/bin/black --target-version=py34 .
+
+.PHONY: isort
+isort: install-dev ## Run the tests
+	$(VENV)/bin/isort -rc .
+
 .PHONY: release
-release: $(DEV_STAMP) ## Release a new version (see https://ihatemoney.readthedocs.io/en/latest/contributing.html#how-to-release)
+release: install-dev ## Release a new version (see https://ihatemoney.readthedocs.io/en/latest/contributing.html#how-to-release)
 	$(VENV)/bin/fullrelease
 
 .PHONY: compress-assets
