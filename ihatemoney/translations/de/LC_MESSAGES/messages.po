@@ -1,25 +1,26 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-12 09:58+0200\n"
+"POT-Creation-Date: 2020-04-21 14:18+0200\n"
 "PO-Revision-Date: 2020-02-12 10:50+0000\n"
 "Last-Translator: flolilo <flolilo@mailbox.org>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/de/>\n"
 "Language: de\n"
+"Language-Team: German <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/de/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.11-dev\n"
+"Generated-By: Babel 2.7.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
-"Kein gültiger Betrag oder Ausdruck. Es werden nur Zahlen und die Operatoren +"
-" - * / akzeptiert."
+"Kein gültiger Betrag oder Ausdruck. Es werden nur Zahlen und die "
+"Operatoren + - * / akzeptiert."
 
 msgid "Project name"
 msgstr "Projektname"
@@ -29,6 +30,18 @@ msgstr "Privater Code"
 
 msgid "Email"
 msgstr "E-Mail"
+
+msgid "Enable project history"
+msgstr ""
+
+msgid "Use IP tracking for project history"
+msgstr ""
+
+msgid "Import previously exported JSON file"
+msgstr ""
+
+msgid "Import"
+msgstr ""
 
 msgid "Project identifier"
 msgstr "Projektkennung"
@@ -41,8 +54,8 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
-"Ein Projekt mit der Kennung (\"%(project)s\") existiert bereits. Bitte wähle "
-"eine andere Kennung"
+"Ein Projekt mit der Kennung (\"%(project)s\") existiert bereits. Bitte "
+"wähle eine andere Kennung"
 
 msgid "Get in"
 msgstr "Eintreten"
@@ -79,6 +92,12 @@ msgstr "Von"
 
 msgid "Amount paid"
 msgstr "Betrag"
+
+msgid "External link"
+msgstr ""
+
+msgid "A link to an external document, related to this bill"
+msgstr ""
 
 msgid "For whom?"
 msgstr "Für wen?"
@@ -120,6 +139,15 @@ msgstr "Einladung senden"
 msgid "The email %(email)s is not valid"
 msgstr "Die E-Mail-Adresse(n) %(email)s ist/sind nicht gültig"
 
+msgid "Person"
+msgstr ""
+
+msgid "Bill"
+msgstr ""
+
+msgid "Project"
+msgstr "Projekt"
+
 msgid "Too many failed login attempts, please retry later."
 msgstr "Zu viele fehlgeschlagene Anmeldeversuche, bitte versuche es später."
 
@@ -130,8 +158,7 @@ msgstr ""
 "verbleibend."
 
 msgid "You either provided a bad token or no project identifier."
-msgstr ""
-"Du hast entweder einen ungültigen Token oder keine Projekt-ID angegeben."
+msgstr "Du hast entweder einen ungültigen Token oder keine Projekt-ID angegeben."
 
 msgid "This private code is not the right one"
 msgstr "Der private Code ist nicht korrekt"
@@ -157,6 +184,12 @@ msgstr "Unbekanntes Projekt"
 
 msgid "Password successfully reset."
 msgstr "Passwort erfolgreich zurückgesetzt."
+
+msgid "Project successfully uploaded"
+msgstr ""
+
+msgid "Invalid JSON"
+msgstr ""
 
 msgid "Project successfully deleted"
 msgstr "Projekt erfolgreich gelöscht"
@@ -225,9 +258,6 @@ msgstr "?"
 msgid "Create a new project"
 msgstr "Neues Projekt erstellen"
 
-msgid "Project"
-msgstr "Projekt"
-
 msgid "Number of members"
 msgstr "Anzahl der Teilnehmer"
 
@@ -249,6 +279,9 @@ msgstr "Bearbeiten"
 msgid "delete"
 msgstr "Löschen"
 
+msgid "see"
+msgstr ""
+
 msgid "The Dashboard is currently deactivated."
 msgstr "Das Dashboard ist aktuell deaktiviert."
 
@@ -257,6 +290,12 @@ msgstr "Bist du sicher?"
 
 msgid "Edit project"
 msgstr "Projekt bearbeiten"
+
+msgid "Import JSON"
+msgstr ""
+
+msgid "Choose file"
+msgstr ""
 
 msgid "Download project's data"
 msgstr "Projektdaten herunterladen"
@@ -278,6 +317,9 @@ msgstr "Passwort vergessen?"
 
 msgid "Cancel"
 msgstr "Abbrechen"
+
+msgid "Privacy Settings"
+msgstr ""
 
 msgid "Edit the project"
 msgstr "Projekt bearbeiten"
@@ -308,6 +350,186 @@ msgstr "Einladung versenden"
 
 msgid "Download"
 msgstr "Herunterladen"
+
+msgid "Disabled Project History"
+msgstr ""
+
+msgid "Disabled Project History & IP Address Recording"
+msgstr ""
+
+msgid "Enabled Project History"
+msgstr ""
+
+msgid "Disabled IP Address Recording"
+msgstr ""
+
+msgid "Enabled Project History & IP Address Recording"
+msgstr ""
+
+msgid "Enabled IP Address Recording"
+msgstr ""
+
+msgid "History Settings Changed"
+msgstr ""
+
+msgid "changed"
+msgstr ""
+
+msgid "from"
+msgstr ""
+
+msgid "to"
+msgstr ""
+
+msgid "Confirm Remove IP Adresses"
+msgstr ""
+
+msgid ""
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Confirm Delete"
+msgstr ""
+
+msgid "Delete Confirmation"
+msgstr ""
+
+msgid ""
+"Are you sure you want to erase all history for this project? This action "
+"cannot be undone."
+msgstr ""
+
+msgid "Added"
+msgstr ""
+
+msgid "Removed"
+msgstr ""
+
+msgid "and"
+msgstr ""
+
+msgid "owers list"
+msgstr ""
+
+msgid "Who?"
+msgstr "Wer?"
+
+msgid "Balance"
+msgstr "Bilanz"
+
+msgid ""
+"This project has history disabled. New actions won't appear below. You "
+"can enable history on the"
+msgstr ""
+
+msgid "settings page"
+msgstr ""
+
+msgid ""
+"The table below reflects actions recorded prior to disabling project "
+"history. You can "
+msgstr ""
+
+msgid "clear project history"
+msgstr ""
+
+msgid "to remove them."
+msgstr ""
+
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr ""
+
+msgid "Delete stored IP addresses"
+msgstr ""
+
+msgid "No history to erase"
+msgstr ""
+
+msgid "Clear Project History"
+msgstr ""
+
+msgid "No IP Addresses to erase"
+msgstr ""
+
+msgid "Delete Stored IP Addresses"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "Event"
+msgstr ""
+
+msgid "IP address recording can be"
+msgstr ""
+
+msgid "enabled"
+msgstr ""
+
+msgid "disabled"
+msgstr ""
+
+msgid "on the Settings page"
+msgstr ""
+
+msgid "From IP"
+msgstr ""
+
+msgid "added"
+msgstr ""
+
+msgid "Project private code changed"
+msgstr ""
+
+msgid "Project renamed to"
+msgstr ""
+
+msgid "Project contact email changed to"
+msgstr ""
+
+msgid "Project settings modified"
+msgstr ""
+
+msgid "deactivated"
+msgstr ""
+
+msgid "reactivated"
+msgstr ""
+
+msgid "renamed"
+msgstr ""
+
+msgid "External link changed to"
+msgstr ""
+
+msgid "Amount"
+msgstr ""
+
+msgid "modified"
+msgstr ""
+
+msgid "removed"
+msgstr ""
+
+msgid "changed in a unknown way"
+msgstr ""
+
+msgid "Nothing to list"
+msgstr ""
+
+msgid "Someone probably"
+msgstr ""
+
+msgid "cleared the project history."
+msgstr ""
 
 msgid "Manage your shared <br />expenses, easily"
 msgstr "Verwalten deine geteilten <br />Ausgaben ganz einfach"
@@ -343,8 +565,9 @@ msgid ""
 "This access code will be sent to your friends. It is stored as-is by the "
 "server, so don\\'t reuse a personal password!"
 msgstr ""
-"Dieser Zugangscode wird an deine Freunde gesendet. Es wird als Klartext auf "
-"dem Server gespeichert. Bitte verwenden daher kein persönliches Passwort!"
+"Dieser Zugangscode wird an deine Freunde gesendet. Es wird als Klartext "
+"auf dem Server gespeichert. Bitte verwenden daher kein persönliches "
+"Passwort!"
 
 msgid "Account manager"
 msgstr "Konten"
@@ -357,6 +580,9 @@ msgstr "Bilanz"
 
 msgid "Statistics"
 msgstr "Statistik"
+
+msgid "History"
+msgstr ""
 
 msgid "Settings"
 msgstr "Einstellungen"
@@ -414,6 +640,12 @@ msgstr "Du kannst anfangen, Teilnehmer hinzuzufügen"
 
 msgid "Add a new bill"
 msgstr "Neue Ausgabe"
+
+msgid "Newer bills"
+msgstr ""
+
+msgid "Older bills"
+msgstr ""
 
 msgid "When?"
 msgstr "Wann?"
@@ -485,8 +717,8 @@ msgid ""
 "You can share the project identifier and the private code by any "
 "communication means."
 msgstr ""
-"Du kannst die Projekt-ID und den privaten Code auf jedem Kommunikationsweg "
-"weitergeben."
+"Du kannst die Projekt-ID und den privaten Code auf jedem "
+"Kommunikationsweg weitergeben."
 
 msgid "Identifier:"
 msgstr "ID:"
@@ -495,8 +727,7 @@ msgid "Share the Link"
 msgstr "Link teilen"
 
 msgid "You can directly share the following link via your prefered medium"
-msgstr ""
-"Du kannst den folgenden Link direkt über dein bevorzugtes Medium teilen"
+msgstr "Du kannst den folgenden Link direkt über dein bevorzugtes Medium teilen"
 
 msgid "Send via Emails"
 msgstr "Per E-Mail versenden"
@@ -507,10 +738,10 @@ msgid ""
 "                creation of this budget management project and we will "
 "send them an email for you."
 msgstr ""
-"Gib eine (durch Kommas getrennte) Liste von E-Mail-Adressen an, die du über "
-"die\n"
-"\t\t\tErstellung dieses Projekts informieren möchtest, und wir senden ihnen "
-"eine E-Mail."
+"Gib eine (durch Kommas getrennte) Liste von E-Mail-Adressen an, die du "
+"über die\n"
+"\t\t\tErstellung dieses Projekts informieren möchtest, und wir senden "
+"ihnen eine E-Mail."
 
 msgid "Who pays?"
 msgstr "Wer zahlt?"
@@ -518,14 +749,15 @@ msgstr "Wer zahlt?"
 msgid "To whom?"
 msgstr "An wen?"
 
-msgid "Who?"
-msgstr "Wer?"
-
 msgid "Paid"
 msgstr "Bezahlt"
 
 msgid "Spent"
 msgstr "Ausgegeben"
 
-msgid "Balance"
-msgstr "Bilanz"
+msgid "Expenses by Month"
+msgstr ""
+
+msgid "Period"
+msgstr ""
+

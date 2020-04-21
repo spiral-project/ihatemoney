@@ -1,24 +1,26 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-15 09:12+0200\n"
+"POT-Creation-Date: 2020-04-21 14:18+0200\n"
 "PO-Revision-Date: 2019-11-16 10:04+0000\n"
 "Last-Translator: Muhammad Fauzi <fauzi.padlaw@gmail.com>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/id/>\n"
 "Language: id\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/id/>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.10-dev\n"
+"Generated-By: Babel 2.7.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
-"Jumlah atau operator tidak valid. Hanya angka dan opertaor +-* yang diterima."
+"Jumlah atau operator tidak valid. Hanya angka dan opertaor +-* yang "
+"diterima."
 
 msgid "Project name"
 msgstr "Nama proyek"
@@ -28,6 +30,18 @@ msgstr "Kode pribadi"
 
 msgid "Email"
 msgstr "Surel"
+
+msgid "Enable project history"
+msgstr ""
+
+msgid "Use IP tracking for project history"
+msgstr ""
+
+msgid "Import previously exported JSON file"
+msgstr ""
+
+msgid "Import"
+msgstr ""
 
 msgid "Project identifier"
 msgstr "Pengidentifikasi proyek"
@@ -40,8 +54,8 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
-"Sebuah proyek dengan ID ini (\"%(project)s\") sudah ada. Silakan pilih ID "
-"baru"
+"Sebuah proyek dengan ID ini (\"%(project)s\") sudah ada. Silakan pilih ID"
+" baru"
 
 msgid "Get in"
 msgstr "Masuk"
@@ -125,6 +139,15 @@ msgstr "Kirim undangan"
 msgid "The email %(email)s is not valid"
 msgstr "Surel %(email)s tidak valid"
 
+msgid "Person"
+msgstr ""
+
+msgid "Bill"
+msgstr ""
+
+msgid "Project"
+msgstr "Proyek"
+
 msgid "Too many failed login attempts, please retry later."
 msgstr "Terlalu banyak percobaan masuk, silakan coba lagi nanti."
 
@@ -157,6 +180,12 @@ msgstr "Proyek tidak diketahui"
 
 msgid "Password successfully reset."
 msgstr "Kata sandi berhasil diatur ulang."
+
+msgid "Project successfully uploaded"
+msgstr ""
+
+msgid "Invalid JSON"
+msgstr ""
 
 msgid "Project successfully deleted"
 msgstr "Proyek berhasil dihapus"
@@ -225,9 +254,6 @@ msgstr "?"
 msgid "Create a new project"
 msgstr "Buat proyek baru"
 
-msgid "Project"
-msgstr "Proyek"
-
 msgid "Number of members"
 msgstr "Jumlah anggota"
 
@@ -249,6 +275,9 @@ msgstr "ubah"
 msgid "delete"
 msgstr "hapus"
 
+msgid "see"
+msgstr "lihat"
+
 msgid "The Dashboard is currently deactivated."
 msgstr "Dasbor sekarang ini sedang dinonaktifkan."
 
@@ -257,6 +286,12 @@ msgstr "Anda yakin?"
 
 msgid "Edit project"
 msgstr "Ubah proyek"
+
+msgid "Import JSON"
+msgstr ""
+
+msgid "Choose file"
+msgstr ""
 
 msgid "Download project's data"
 msgstr "Unduh data proyek"
@@ -278,6 +313,9 @@ msgstr "Tidak bisa mengingat kata sandi?"
 
 msgid "Cancel"
 msgstr "Batalkan"
+
+msgid "Privacy Settings"
+msgstr ""
 
 msgid "Edit the project"
 msgstr "Ubah proyek"
@@ -308,6 +346,186 @@ msgstr "Kirim undangan"
 
 msgid "Download"
 msgstr "Unduh"
+
+msgid "Disabled Project History"
+msgstr ""
+
+msgid "Disabled Project History & IP Address Recording"
+msgstr ""
+
+msgid "Enabled Project History"
+msgstr ""
+
+msgid "Disabled IP Address Recording"
+msgstr ""
+
+msgid "Enabled Project History & IP Address Recording"
+msgstr ""
+
+msgid "Enabled IP Address Recording"
+msgstr ""
+
+msgid "History Settings Changed"
+msgstr ""
+
+msgid "changed"
+msgstr ""
+
+msgid "from"
+msgstr ""
+
+msgid "to"
+msgstr ""
+
+msgid "Confirm Remove IP Adresses"
+msgstr ""
+
+msgid ""
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Confirm Delete"
+msgstr ""
+
+msgid "Delete Confirmation"
+msgstr ""
+
+msgid ""
+"Are you sure you want to erase all history for this project? This action "
+"cannot be undone."
+msgstr ""
+
+msgid "Added"
+msgstr ""
+
+msgid "Removed"
+msgstr ""
+
+msgid "and"
+msgstr ""
+
+msgid "owers list"
+msgstr ""
+
+msgid "Who?"
+msgstr "Siapa?"
+
+msgid "Balance"
+msgstr "Saldo"
+
+msgid ""
+"This project has history disabled. New actions won't appear below. You "
+"can enable history on the"
+msgstr ""
+
+msgid "settings page"
+msgstr ""
+
+msgid ""
+"The table below reflects actions recorded prior to disabling project "
+"history. You can "
+msgstr ""
+
+msgid "clear project history"
+msgstr ""
+
+msgid "to remove them."
+msgstr ""
+
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr ""
+
+msgid "Delete stored IP addresses"
+msgstr ""
+
+msgid "No history to erase"
+msgstr ""
+
+msgid "Clear Project History"
+msgstr ""
+
+msgid "No IP Addresses to erase"
+msgstr ""
+
+msgid "Delete Stored IP Addresses"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "Event"
+msgstr ""
+
+msgid "IP address recording can be"
+msgstr ""
+
+msgid "enabled"
+msgstr ""
+
+msgid "disabled"
+msgstr ""
+
+msgid "on the Settings page"
+msgstr ""
+
+msgid "From IP"
+msgstr ""
+
+msgid "added"
+msgstr ""
+
+msgid "Project private code changed"
+msgstr ""
+
+msgid "Project renamed to"
+msgstr ""
+
+msgid "Project contact email changed to"
+msgstr ""
+
+msgid "Project settings modified"
+msgstr ""
+
+msgid "deactivated"
+msgstr ""
+
+msgid "reactivated"
+msgstr ""
+
+msgid "renamed"
+msgstr ""
+
+msgid "External link changed to"
+msgstr ""
+
+msgid "Amount"
+msgstr ""
+
+msgid "modified"
+msgstr ""
+
+msgid "removed"
+msgstr ""
+
+msgid "changed in a unknown way"
+msgstr ""
+
+msgid "Nothing to list"
+msgstr ""
+
+msgid "Someone probably"
+msgstr ""
+
+msgid "cleared the project history."
+msgstr ""
 
 msgid "Manage your shared <br />expenses, easily"
 msgstr "Atur pembagian harga <br />Anda, dengan mudah"
@@ -343,8 +561,8 @@ msgid ""
 "This access code will be sent to your friends. It is stored as-is by the "
 "server, so don\\'t reuse a personal password!"
 msgstr ""
-"Kode akses ini akan dikirimkan ke teman Anda. Kode ini disimpan dalam bentuk "
-"teks biasa dalam server, jadi jangan gunakan password Anda!"
+"Kode akses ini akan dikirimkan ke teman Anda. Kode ini disimpan dalam "
+"bentuk teks biasa dalam server, jadi jangan gunakan password Anda!"
 
 msgid "Account manager"
 msgstr "Pengatur akun"
@@ -357,6 +575,9 @@ msgstr "Atur"
 
 msgid "Statistics"
 msgstr "Statistik"
+
+msgid "History"
+msgstr ""
 
 msgid "Settings"
 msgstr "Pengaturan"
@@ -415,6 +636,12 @@ msgstr "Anda harus mulai dengan menambahkan partisipan"
 msgid "Add a new bill"
 msgstr "Tambah tagihan baru"
 
+msgid "Newer bills"
+msgstr ""
+
+msgid "Older bills"
+msgstr ""
+
 msgid "When?"
 msgstr "Kapan?"
 
@@ -441,9 +668,6 @@ msgstr "Semua orang kecuali %(excluded)s"
 msgid "each"
 msgstr "setiap"
 
-msgid "see"
-msgstr "lihat"
-
 msgid "No bills"
 msgstr "Tidak ada tagihan"
 
@@ -466,8 +690,8 @@ msgid ""
 "A link to reset your password has been sent to you, please check your "
 "emails."
 msgstr ""
-"Tautan atur ulang kata sandi telah dikirim kepada Anda, silakan cek email "
-"Anda."
+"Tautan atur ulang kata sandi telah dikirim kepada Anda, silakan cek email"
+" Anda."
 
 msgid "Return to home page"
 msgstr "Kembali ke halaman depan"
@@ -499,7 +723,8 @@ msgstr "Bagikan tautan"
 
 msgid "You can directly share the following link via your prefered medium"
 msgstr ""
-"Anda bisa membagikan tautan secara langsung melalui media yang Anda inginkan"
+"Anda bisa membagikan tautan secara langsung melalui media yang Anda "
+"inginkan"
 
 msgid "Send via Emails"
 msgstr "Kirim melalui surel"
@@ -510,10 +735,10 @@ msgid ""
 "                creation of this budget management project and we will "
 "send them an email for you."
 msgstr ""
-"Spesifikkan daftar alamat surel (dipisah dengan koma) yang akan Anda kirim "
-"pemberitahuan tentang\n"
-"                pembuatan dari manajemen anggaran proyek ini dan kami akan "
-"memngirim mereka sebuah surel."
+"Spesifikkan daftar alamat surel (dipisah dengan koma) yang akan Anda "
+"kirim pemberitahuan tentang\n"
+"                pembuatan dari manajemen anggaran proyek ini dan kami "
+"akan memngirim mereka sebuah surel."
 
 msgid "Who pays?"
 msgstr "Siapa membayar?"
@@ -521,14 +746,15 @@ msgstr "Siapa membayar?"
 msgid "To whom?"
 msgstr "Kepada siapa?"
 
-msgid "Who?"
-msgstr "Siapa?"
-
 msgid "Paid"
 msgstr "Dibayar"
 
 msgid "Spent"
 msgstr "Dihabiskan"
 
-msgid "Balance"
-msgstr "Saldo"
+msgid "Expenses by Month"
+msgstr ""
+
+msgid "Period"
+msgstr ""
+
