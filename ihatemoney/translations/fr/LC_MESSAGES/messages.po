@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2020-04-21 14:18+0200\n"
-"PO-Revision-Date: 2019-10-07 22:56+0000\n"
-"Last-Translator: Alexis Metaireau <alexis@notmyidea.org>\n"
+"PO-Revision-Date: 2020-04-22 22:11+0000\n"
+"Last-Translator: Glandos <bugs-github@antipoul.fr>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/fr/>\n"
 "Language: fr\n"
-"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/i"
-"-hate-money/fr/>\n"
-"Plural-Forms: nplurals=2; plural=n > 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.0.2-dev\n"
 "Generated-By: Babel 2.7.0\n"
 
 msgid ""
@@ -42,7 +43,7 @@ msgid "Use IP tracking for project history"
 msgstr ""
 
 msgid "Import previously exported JSON file"
-msgstr ""
+msgstr "Importer un fichier JSON précédemment exporté"
 
 msgid "Import"
 msgstr "Importer"
@@ -147,7 +148,7 @@ msgid "Person"
 msgstr ""
 
 msgid "Bill"
-msgstr ""
+msgstr "Facture"
 
 msgid "Project"
 msgstr "Projets"
@@ -294,10 +295,10 @@ msgid "Edit project"
 msgstr "Éditer le projet"
 
 msgid "Import JSON"
-msgstr ""
+msgstr "Import JSON"
 
 msgid "Choose file"
-msgstr ""
+msgstr "Choisir un fichier"
 
 msgid "Download project's data"
 msgstr "Télécharger les données du projet"
@@ -321,7 +322,7 @@ msgid "Cancel"
 msgstr "Annuler"
 
 msgid "Privacy Settings"
-msgstr ""
+msgstr "Vie privée"
 
 msgid "Edit the project"
 msgstr "Éditer le projet"
@@ -354,37 +355,37 @@ msgid "Download"
 msgstr "Télécharger"
 
 msgid "Disabled Project History"
-msgstr ""
+msgstr "Historisation du projet désactivée"
 
 msgid "Disabled Project History & IP Address Recording"
-msgstr ""
+msgstr "Historisation du projet et enregistrement des adresses IP désactivés"
 
 msgid "Enabled Project History"
-msgstr ""
+msgstr "Historisation du projet activée"
 
 msgid "Disabled IP Address Recording"
-msgstr ""
+msgstr "Enregistrement des adresses IP désactivé"
 
 msgid "Enabled Project History & IP Address Recording"
-msgstr ""
+msgstr "Historisation du projet et enregistrement des adresses IP activés"
 
 msgid "Enabled IP Address Recording"
-msgstr ""
+msgstr "Enregistrement des adresses IP activé"
 
 msgid "History Settings Changed"
-msgstr ""
+msgstr "Changement des paramètres d’historisation"
 
 msgid "changed"
-msgstr ""
+msgstr "modifié"
 
 msgid "from"
-msgstr ""
+msgstr "depuis"
 
 msgid "to"
-msgstr ""
+msgstr "vers"
 
 msgid "Confirm Remove IP Adresses"
-msgstr ""
+msgstr "Confirmer la suppression des adresses IP"
 
 msgid ""
 "Are you sure you want to delete all recorded IP addresses from this "
@@ -392,26 +393,32 @@ msgid ""
 "                The rest of the project history will be unaffected. This "
 "action cannot be undone."
 msgstr ""
+"Êtes vous sûr de supprimer toutes les adresses IP enregistrées dans ce "
+"projet ?\n"
+"Le reste de l’historique du projet restera inchangé. Cette action est "
+"irréversible."
 
 msgid "Close"
-msgstr ""
+msgstr "Fermer"
 
 msgid "Confirm Delete"
-msgstr ""
+msgstr "Confirmer la suppression"
 
 msgid "Delete Confirmation"
-msgstr ""
+msgstr "Confirmation de suppression"
 
 msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
 msgstr ""
+"Êtes vous sûr de supprimer la totalité de l’historique de ce projet ? Cette "
+"action est irréversible."
 
 msgid "Added"
-msgstr ""
+msgstr "Ajouté"
 
 msgid "Removed"
-msgstr ""
+msgstr "Supprimé"
 
 msgid "and"
 msgstr ""
@@ -906,4 +913,3 @@ msgstr ""
 
 #~ msgid "A link to reset your password has been sent to your email."
 #~ msgstr "Un lien pour changer votre mot de passe vous a été envoyé par mail."
-
