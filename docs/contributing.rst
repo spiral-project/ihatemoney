@@ -98,13 +98,14 @@ To do so::
 
     make test
 
-We are using the `black <https://black.readthedocs.io/en/stable/>`_ formatter
-for all the Python files in this project. Be sure to run it locally on your
-files. To do so, just run::
+We are using `black <https://black.readthedocs.io/en/stable/>`_ and
+`isort <https://timothycrosley.github.io/isort/>`_ formatters for all the Python
+files in this project. Be sure to run it locally on your files.
+To do so, just run::
 
-    black ihatemoney
+    make black isort
 
-You can also integrate it with your dev environment (as a *format-on-save*
+You can also integrate them with your dev environment (as a *format-on-save*
 hook, for instance).
 
 As a designer / Front-end developer
