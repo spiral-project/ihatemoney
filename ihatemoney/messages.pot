@@ -204,6 +204,9 @@ msgstr ""
 msgid "The bill has been deleted"
 msgstr ""
 
+msgid "UNDO"
+msgstr ""
+
 msgid "The bill has been modified"
 msgstr ""
 

@@ -1,0 +1,185 @@
+{% extends "sidebar_table_layout.html" %}
+
+{% block title %} - {{ g.project.name }}{% endblock %}
+{% block js %}
+    {% if add_bill %} $('#new-bill > a').click(); {% endif %}
+
+    // ask for confirmation before removing an user
+    $('.action.delete').each(function(){
+        var link = $(this).find('button');
+        link.click(function(){
+            if ($(this).hasClass("confirm")){
+                return true;
+            }
+            $(this).html("{{_("you sure?")}}");
+            $(this).addClass("confirm");
+            return false;
+        });
+    });
+
+    var highlight_owers = function(){
+        var ower_ids = $(this).attr("owers").split(',');
+        var payer_id = $(this).attr("payer");
+        $.each(ower_ids, function(i, val){
+            $('#bal-member-'+val).addClass("ower_line");
+        });
+        $("#bal-member-"+payer_id).addClass("payer_line");
+    };
+
+    var unhighlight_owers = function(){
+        $('[id^="bal-member-"]').removeClass("ower_line payer_line");
+    };
+
+    $('#bill_table tbody tr').hover(highlight_owers, unhighlight_owers);
+
+{% endblock %}
+
+{% block sidebar %}
+    <div class="sidebar_content">
+        <form id="add-member-form" action="{{ url_for(".add_member") }}" method="post">
+            {{ forms.add_member(member_form) }}
+        </form>
+
+        <div id="table_overflow">
+        <table class="balance table">
+        {% set balance = g.project.balance %}
+        {% for member in g.project.members | sort(attribute='name') if member.activated or balance[member.id]|round(2) != 0 %}
+        <tr id="bal-member-{{ member.id }}" action={% if member.activated %}delete{% else %}reactivate{% endif %}>
+            <td class="balance-name">{{ member.name }}
+                <span class="light{% if not g.project.uses_weights %} extra-info{% endif %}">(x{{ member.weight|minimal_round(1) }})</span>
+            </td>
+            {% if member.activated %}
+            <td>
+                <form class="action delete" action="{{ url_for(".remove_member", member_id=member.id) }}" method="POST">
+                    <button type="submit">{{ _("deactivate") }}</button></form>
+                <form class="action edit" action="{{ url_for(".edit_member", member_id=member.id) }}" method="GET">
+                    <button type="submit">{{ _("edit") }}</button></form>
+            </td>
+            {% else %}
+            <td>
+                <form class="action reactivate" action="{{ url_for(".reactivate", member_id=member.id) }}" method="POST">
+                    <button type="submit">{{ _("reactivate") }}</button></form></td>
+            {% endif %}
+            <td class="balance-value {% if balance[member.id]|round(2) > 0 %}positive{% elif balance[member.id]|round(2) < 0 %}negative{% endif %}">
+                {% if balance[member.id]|round(2) > 0 %}+{% endif %}{{ "%.2f" | format(balance[member.id]) }}
+            </td>
+        </tr>
+        {% endfor %}
+        </table>
+        </div>
+    </div>
+    <div class="identifier">
+        <a class="btn btn-secondary btn-block" href="{{ url_for('.invite') }}">
+            <i class="icon icon-white paper-plane">{{ static_include("images/paper-plane.svg") | safe }}</i>
+            {{ _("Invite people") }}
+        </a>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <span id="undo" class="float-left">
+        <a href="{{ url_for('.undo_delete_bill') }}" method="get" class="btn btn-primary float-left">
+            {{ _("Undo delete") }}
+        </a>
+    </span>
+    <span id="new-bill" class="float-right"  {% if not g.project.members %} data-toggle="tooltip" title="{{_('You should start by adding participants')}}" {% endif %}>
+        <a href="{{ url_for('.add_bill') }}" class="btn btn-primary float-right {% if not g.project.members %} disabled {% endif %}" data-toggle="modal" data-keyboard="false" data-target="#bill-form">
+            <i class="icon icon-white plus">{{ static_include("images/plus.svg") | safe }}</i>
+            {{ _("Add a new bill") }}
+        </a>
+    </span>
+    <div id="bill-form" class="modal fade show" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">{{ _('Add a bill') }}</h3>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+                <form action="{{ url_for(".add_bill") }}" method="post" class="modal-body container">
+                {{ forms.add_bill(bill_form, title=False) }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% if bills.pages > 1 %}
+    <span id="previous-page" class="float-left">
+      <a class="btn btn-outline-secondary float-left {% if bills.page == 1 %}disabled{% endif %}" href="{{ url_for('main.list_bills', page=bills.prev_num) }}">&laquo; {{ _("Newer bills") }}</a>
+    </span>
+
+    <span id="next-page" class="float-left">
+      <a class="btn btn-outline-secondary float-left {% if bills.page == bills.pages %}disabled{% endif %}" href="{{ url_for('main.list_bills', page=bills.next_num) }}">{{ _("Older bills") }} &raquo;</a>
+    </span>
+{% endif %}
+
+    {% if bills.total > 0 %}
+        <div class="clearfix"></div>
+
+        <table id="bill_table" class="col table table-striped table-hover table-responsive-sm">
+            <thead><tr><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</<th><th>{{ _("For what?") }}</th><th>{{ _("For whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Actions") }}</th></tr></thead>
+        <tbody>
+        {% for bill in bills.items %}
+        <tr owers="{{bill.owers|join(',','id')}}" payer="{{bill.payer.id}}">
+                <td>
+                    <span data-toggle="tooltip" data-placement="top"
+                        title="{{ _('Added on %(date)s', date=bill.creation_date if bill.creation_date else bill.date) }}">
+                        {{ bill.date }}
+                    </span>
+                </td>
+                <td>{{ bill.payer }}</td>
+                <td>{{ bill.what }}</td>
+                <td>{% if bill.owers|length == g.project.members|length -%}
+                {{ _("Everyone") }}
+                {%- elif bill.owers|length > g.project.members|length / 2 + 1 -%}
+                {{ _("Everyone but %(excluded)s", excluded=g.project.members|reject('in', bill.owers)|join(', ', 'name')) }}
+                {%- else -%}
+                {{ bill.owers|join(', ', 'name') }}
+                {%- endif %}</td>
+                <td>{{ "%0.2f"|format(bill.amount) }} ({{ "%0.2f"|format(bill.pay_each()) }} {{ _("each") }})</td>
+                <td class="bill-actions">
+                    <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">{{ _('edit') }}</a>
+                    <a class="delete" href="{{ url_for(".delete_bill", bill_id=bill.id) }}" title="{{ _("delete") }}">{{ _('delete') }}</a>
+                    {% if bill.external_link %}
+                    <a class="see" href="{{ bill.external_link }}" ref="noopener" target="_blank" title="{{ _("see") }}">{{ _('see') }} </a>
+                    {% endif %}
+                </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+
+{% if bills.pages > 1 %}
+<ul class="pagination">
+  <li class="page-item {% if bills.page == 1 %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.prev_num) }}">&laquo; Newer bills</a></li>
+  {%- for page in bills.iter_pages() %}
+  {% if page %}
+  <li class="page-item {% if page == bills.page %}active{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=page) }}">{{ page }}</a></li>
+  {% else %}
+  <li class="page-item disabled"><span class="ellipsis page-link">…</span></li>
+  {% endif %}
+  {%- endfor %}
+  <li class="page-item {% if bills.page == bills.pages %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.next_num) }}">Older bills &raquo;</a></li>
+</ul>
+{% endif %}
+
+    {% else %}
+        <div class="py-3 d-flex justify-content-center empty-bill">
+        <div class="card d-inline-flex p-2">
+            <div class="card-body text-center text-muted">
+                <i class="icon icon-white hand-holding-heart">{{ static_include("images/hand-holding-heart.svg") | safe }}</i>
+                <h3>{{ _('No bills')}}</h3>
+                <p>
+                    {{ _("Nothing to list yet.")}}<br />
+                    {{ _("You probably want to") }}
+                    {%- if g.project.members %} <a href="{{ url_for('.add_bill') }}" data-toggle="modal" data-target="#bill-form">
+                            {{- _("add a bill") -}}
+                        </a> ?
+                    {% else %} <a href="{{ url_for('.add_member') }}">
+                            {{- _('add participants') -}}
+                        </a> ?
+                    {%- endif -%}
+                </p>
+            </div>
+        </div></div>
+    {% endif %}
+{% endblock %}

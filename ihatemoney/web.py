@@ -12,6 +12,7 @@ from datetime import datetime
 from functools import wraps
 import json
 import os
+import copy
 from smtplib import SMTPRecipientsRefused
 
 from dateutil.parser import parse
@@ -63,6 +64,8 @@ from ihatemoney.utils import (
 main = Blueprint("main", __name__)
 
 login_throttler = LoginThrottler(max_attempts=3, delay=1)
+
+ghost_billform = None
 
 
 def requires_admin(bypass=None):
@@ -213,8 +216,8 @@ def authenticate(project_id=None):
 
     project = Project.query.get(project_id)
     if not project:
-        # If the user try to connect to an unexisting project, we will
-        # propose him a link to the creation form.
+        # If the user tries to connect to an unexisting project, we will
+        # provide them with a link to the creation form.
         return render_template(
             "authenticate.html", form=form, create_project=project_id
         )
@@ -620,7 +623,7 @@ def add_member():
         if form.validate():
             member = form.save(g.project, Person())
             db.session.commit()
-            flash(_("%(member)s had been added", member=member.name))
+            flash(_("%(member)s has been added", member=member.name))
             return redirect(url_for(".list_bills"))
 
     return render_template("add_member.html", form=form)
@@ -699,16 +702,61 @@ def add_bill():
     return render_template("add_bill.html", form=form)
 
 
-@main.route("/<project_id>/delete/<int:bill_id>")
+@main.route("/<project_id>/delete/<int:bill_id>", methods=["GET", "POST"])
 def delete_bill(bill_id):
+    global ghost_billform
+    ghost_billform = get_billform_for(g.project)
     # fixme: everyone is able to delete a bill
     bill = Bill.query.get(g.project, bill_id)
     if not bill:
         return redirect(url_for(".list_bills"))
 
+    # save the deleted bill, so that it can be restored if the
+    # user chooses to undo this action
+    ghost_billform.fill(bill)
+
     db.session.delete(bill)
     db.session.commit()
     flash(_("The bill has been deleted"))
+
+    return redirect(url_for(".post_delete"))
+
+
+@main.route("/<project_id>/post_delete", methods=["GET", "POST"])
+def post_delete():
+    # this functions identically to list_bills, however
+    # the undo action button is added
+    bill_form = get_billform_for(g.project)
+    # set the last selected payer as default choice if exists
+    if "last_selected_payer" in session:
+        bill_form.payer.data = session["last_selected_payer"]
+    # Preload the "owers" relationship for all bills
+    bills = (
+        g.project.get_bills()
+        .options(orm.subqueryload(Bill.owers))
+        .paginate(per_page=100, error_out=True)
+    )
+
+    return render_template(
+        "list_bills_post_delete.html",
+        bills=bills,
+        member_form=MemberForm(g.project),
+        bill_form=bill_form,
+        add_bill=request.values.get("add_bill", False),
+        current_view="list_bills_post_delete",
+    )
+
+
+@main.route("/<project_id>/undo", methods=["GET", "POST"])
+def undo_delete_bill():
+    global ghost_billform
+    args = {}
+
+    bill = Bill()
+    db.session.add(ghost_billform.save(bill, g.project))
+    db.session.commit()
+
+    flash(_("Restored bill"))
 
     return redirect(url_for(".list_bills"))
 

@@ -673,6 +673,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         balance = models.Project.query.get("raclette").balance
         self.assertEqual(set(balance.values()), set([19.0, -19.0]))
 
+
         # Bill with negative amount
         self.client.post(
             "/raclette/add",
@@ -786,6 +787,61 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.client.post("/raclette/members/add", data={"name": "alexis"})
         self.client.post("/raclette/members/add", data={"name": "fred"})
         self.client.post("/raclette/members/add", data={"name": "tata"})
+
+        # create bills, then delete and undo
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2020-04-22",
+                "what": "Glover Apts. Rent April",
+                "payer": 1,
+                "payed_for": [1, 2, 3],
+                "amount": "852.00",
+            },
+        )
+
+        balance = models.Project.query.get("raclette").balance
+        self.assertEqual(set(balance.values()), set([568.00, -284.00, -284.00]))
+
+        self.client.post(
+            "/raclette/add",
+            data={
+                "data": "2020-05-22",
+                "what": "Glover Apts. Rent May",
+                "payer": 2,
+                "payed_for": [1, 2, 3],
+                "amount": "852.00",
+            },
+        )
+
+        balance = models.Project.query.get("raclette").balance
+        self.assertEqual(set(balance.values()), set([284.00, 284.00, -568.00]))
+
+        bill = models.Bill.query.one()
+        self.assertEqual(bill.amount, 852.00)
+
+        # delete the first bill
+        self.client.get("/raclette/delete/%s" % bill.id)
+        self.assertEqual(1, len(models.Bill.query.all()), "bill deletion")
+
+        # check balance
+        balance = models.Project.query.get("raclette").balance
+        self.assertEqual(set(balance.values()), set([-284.00, 568.00, -284.00]))
+
+        # undo delete
+        self.client.get("/raclette/undo")
+
+        # recheck balance
+        balance = models.Project.query.get("raclette").balance
+        self.assertEqual(set(balance.values()), set([284.00, 284.00, -568.00]))
+
+        # delete both bills
+        bill = models.Bill.query.one()
+        self.client.get("/raclette/delete/%s" % bill.id)
+        bill = models.Bill.query.one()
+        self.client.get("/raclette/delete/%s" % bill.id)
+        balance = models.Project.query.get("raclette").balance
+        self.assertEqual(set(balance.values()), set([0, 0, 0]))
 
         # create bills
         self.client.post(
