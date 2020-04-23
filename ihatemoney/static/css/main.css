@@ -174,14 +174,6 @@ body {
   width: 5em;
 }
 
-#bill-search {
-  color: white;
-  background: #8f9296;
-  margin-top: 10px;
-  border-radius: .25rem;
-  padding: .375rem .75rem;
-}
-
 .invites textarea {
   width: 800px;
   height: 100px;
