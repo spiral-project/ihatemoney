@@ -3,13 +3,43 @@ Changelog
 
 This document describes changes between each past release.
 
-4.2 (2020-04-24)
+5.0 (unreleased)
 ================
 
-- Add support for espanol latino america (es_419)
+Breaking changes
+----------------
+
+- Drop support for Python 2 (#483)
+- Drop support for Python 3.5 (#571)
+
+The minimum supported version is now Python 3.6
+
+Added
+-----
+
+- Add espanol latino america (es_419) translation
+- Add German translation (#492)
+- Allow to import previously exported json data (#518)
+- Add new optional field "external link" in bill form (#429)
+- Add new statistics showing monthly expenses (#526)
+- Add pagination to the list of bills (#480)
+- Add sorting, pagination, and searching to the admin dashboard (#538)
+- Add Project History page that records all changes (#553)
+- Add token-based authentication to the API (#504)
+
+Changed
+-------
+
 - Use the external debts lib to solve settlements (#476)
 - Remove balance column in statistics view (#323)
 - Remove requirements files in favor of setup.cfg pinning (#558)
+- Make language choice persistent (#547)
+
+Fixed
+-----
+
+- Improve input of email addresses when inviting people to join a project (#133)
+- Fix datepicker that was displayed twice on some browsers (#221)
 
 4.1.3 (2019-09-18)
 ==================
