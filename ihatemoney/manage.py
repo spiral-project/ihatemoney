@@ -51,7 +51,7 @@ class GenerateConfig(Command):
 
     def run(self, config_file):
         env = create_jinja_env("conf-templates", strict_rendering=True)
-        template = env.get_template("%s.j2" % config_file)
+        template = env.get_template(f"{config_file}.j2")
 
         bin_path = os.path.dirname(sys.executable)
         pkg_path = os.path.abspath(os.path.dirname(__file__))

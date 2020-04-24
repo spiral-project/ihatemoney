@@ -323,7 +323,7 @@ class Project(db.Model):
         return self.name
 
     def __repr__(self):
-        return "<Project %s>" % self.name
+        return f"<Project {self.name}>"
 
 
 class Person(db.Model):
@@ -381,7 +381,7 @@ class Person(db.Model):
         return self.name
 
     def __repr__(self):
-        return "<Person %s for project %s>" % (self.name, self.project.name)
+        return f"<Person {self.name} for project {self.project.name}>"
 
 
 # We need to manually define a join table for m2m relations
@@ -460,13 +460,12 @@ class Bill(db.Model):
             return 0
 
     def __str__(self):
-        return "%s for %s" % (self.amount, self.what)
+        return f"{self.amount} for {self.what}"
 
     def __repr__(self):
-        return "<Bill of %s from %s for %s>" % (
-            self.amount,
-            self.payer,
-            ", ".join([o.name for o in self.owers]),
+        return (
+            f"<Bill of {self.amount} from {self.payer} for "
+            f"{', '.join([o.name for o in self.owers])}>"
         )
 
 
