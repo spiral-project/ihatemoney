@@ -48,20 +48,35 @@ In case you want to update to newer versions (from Git), you can just run the "u
 Create database migrations
 --------------------------
 
-In case you need to modify the database schema, first update the models in
-``ihatemoney/models.py``. Then run the following command to create a new
-database revision file::
+In case you need to modify the database schema, first make sure that you have
+an up-to-date database by running the dev server at least once (the quick way
+or the hard way, see above).  The dev server applies all existing migrations
+when starting up.
+
+You can now update the models in ``ihatemoney/models.py``. Then run the following
+command to create a new database revision file::
 
   make create-database-revision
 
 If your changes are simple enough, the generated script will be populated with
-the necessary migrations steps. You can edit the generated script. e.g: To add
-data migrations.
+the necessary migrations steps. You can view and edit the generated script, which
+is useful to review that the expected model changes have been properly detected.
+Usually the auto-detection works well in most cases, but you can of course edit the
+script to fix small issues.  You could also edit the script to add data migrations.
+
+When you are done with your changes, don't forget to add the migration script to
+your final git commit!
+
+If the migration script looks completely wrong, remove the script and start again
+with an empty database.  The simplest way is to remove or rename the dev database
+located at ``/tmp/ihatemoney.db``, and run the dev server at least once.
 
 For complex migrations, it is recommended to start from an empty revision file
 which can be created with the following command::
 
   make create-empty-database-revision
+
+You then need to write the migration steps yourself.
 
 Useful settings
 ----------------
