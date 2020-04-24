@@ -1,7 +1,3 @@
-# coding: utf8
-import os
-import sys
-
 templates_path = ["_templates"]
 source_suffix = ".rst"
 master_doc = "index"

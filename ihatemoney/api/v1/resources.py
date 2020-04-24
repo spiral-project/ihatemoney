@@ -1,4 +1,3 @@
-# coding: utf8
 from flask import Blueprint
 from flask_cors import CORS
 from flask_restful import Api

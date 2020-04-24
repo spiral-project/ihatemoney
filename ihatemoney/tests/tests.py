@@ -1,4 +1,3 @@
-# coding: utf8
 import base64
 from collections import defaultdict
 import datetime
