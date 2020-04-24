@@ -301,9 +301,7 @@ def create_project():
                 project=g.project.name,
             )
 
-            message_body = render_template(
-                "reminder_mail.%s.j2" % get_locale().language
-            )
+            message_body = render_template(f"reminder_mail.{get_locale().language}.j2")
 
             msg = Message(
                 message_title, body=message_body, recipients=[project.contact_email]
@@ -337,7 +335,7 @@ def remind_password():
             # get the project
             project = Project.query.get(form.id.data)
             # send a link to reset the password
-            password_reminder = "password_reminder.%s.j2" % get_locale().language
+            password_reminder = f"password_reminder.{get_locale().language}.j2"
             current_app.mail.send(
                 Message(
                     "password recovery",
@@ -520,7 +518,7 @@ def export_project(file, format):
 
     return send_file(
         file2export,
-        attachment_filename="%s-%s.%s" % (g.project.id, file, format),
+        attachment_filename=f"{g.project.id}-{file}.{format}",
         as_attachment=True,
     )
 
@@ -570,7 +568,7 @@ def invite():
             # send the email
 
             message_body = render_template(
-                "invitation_mail.%s.j2" % get_locale().language
+                f"invitation_mail.{get_locale().language}.j2"
             )
 
             message_title = _(
