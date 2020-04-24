@@ -3,7 +3,7 @@ Changelog
 
 This document describes changes between each past release.
 
-4.2 (unreleased)
+4.2 (2020-04-24)
 ================
 
 - Add support for espanol latino america (es_419)
