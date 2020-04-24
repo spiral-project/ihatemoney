@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-04-24 19:33+0200\n"
+"POT-Creation-Date: 2020-04-24 19:59+0200\n"
 "PO-Revision-Date: 2019-10-07 22:56+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language: nl\n"
@@ -135,7 +135,7 @@ msgstr "Uitnodigingen versturen"
 msgid "The email %(email)s is not valid"
 msgstr "Het e-mailadres '%(email)s' is onjuist"
 
-msgid "Person"
+msgid "Participant"
 msgstr ""
 
 msgid "Bill"
@@ -872,4 +872,7 @@ msgstr ""
 
 #~ msgid "%(member)s had been added"
 #~ msgstr "%(member)s is toegevoegd"
+
+#~ msgid "Person"
+#~ msgstr ""
 

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-24 19:33+0200\n"
+"POT-Creation-Date: 2020-04-24 19:59+0200\n"
 "PO-Revision-Date: 2019-09-25 22:28+0000\n"
 "Last-Translator: Diego Caraballo <diegocaraballo84@gmail.com>\n"
 "Language: es_419\n"
@@ -139,7 +139,7 @@ msgstr "Enviar invitaciones"
 msgid "The email %(email)s is not valid"
 msgstr "El correo electrónico %(email)s no es válido"
 
-msgid "Person"
+msgid "Participant"
 msgstr ""
 
 msgid "Bill"
@@ -766,4 +766,7 @@ msgstr ""
 
 #~ msgid "%(member)s had been added"
 #~ msgstr "se han añadido %(member)s"
+
+#~ msgid "Person"
+#~ msgstr ""
 

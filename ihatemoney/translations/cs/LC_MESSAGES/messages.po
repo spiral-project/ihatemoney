@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-24 19:33+0200\n"
+"POT-Creation-Date: 2020-04-24 19:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language: cs\n"
@@ -134,7 +134,7 @@ msgstr ""
 msgid "The email %(email)s is not valid"
 msgstr ""
 
-msgid "Person"
+msgid "Participant"
 msgstr ""
 
 msgid "Bill"
@@ -740,5 +740,8 @@ msgid "Period"
 msgstr ""
 
 #~ msgid "%(member)s had been added"
+#~ msgstr ""
+
+#~ msgid "Person"
 #~ msgstr ""
 

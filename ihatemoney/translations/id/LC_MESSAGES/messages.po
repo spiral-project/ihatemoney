@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-24 19:33+0200\n"
+"POT-Creation-Date: 2020-04-24 19:59+0200\n"
 "PO-Revision-Date: 2019-11-16 10:04+0000\n"
 "Last-Translator: Muhammad Fauzi <fauzi.padlaw@gmail.com>\n"
 "Language: id\n"
@@ -139,7 +139,7 @@ msgstr "Kirim undangan"
 msgid "The email %(email)s is not valid"
 msgstr "Surel %(email)s tidak valid"
 
-msgid "Person"
+msgid "Participant"
 msgstr ""
 
 msgid "Bill"
@@ -760,4 +760,7 @@ msgstr ""
 
 #~ msgid "%(member)s had been added"
 #~ msgstr "%(member)s telah ditambahkan"
+
+#~ msgid "Person"
+#~ msgstr ""
 

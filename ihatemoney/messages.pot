@@ -118,7 +118,7 @@ msgstr ""
 msgid "The email %(email)s is not valid"
 msgstr ""
 
-msgid "Person"
+msgid "Participant"
 msgstr ""
 
 msgid "Bill"
