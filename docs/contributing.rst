@@ -126,9 +126,18 @@ Running tests
 Please, think about updating and running the tests before asking for a pull request
 as it will help us to maintain the code clean and running.
 
-To do so::
+To run the tests::
 
     make test
+
+Tests can be edited in ``ihatemoney/tests/tests.py``. If some test cases fail because
+of your changes, first check whether your code correctly handle these cases.
+If you are confident that your code is correct and that the test cases simply need
+to be updated to match your changes, update the test cases and send them as part of
+your pull request.
+
+If you are introducing a new feature, you need to either add tests to existing classes,
+or add a new class (if your new feature is significantly different from existing code).
 
 Formatting code
 ---------------
