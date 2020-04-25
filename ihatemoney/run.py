@@ -17,6 +17,7 @@ from ihatemoney.utils import (
     locale_from_iso,
     minimal_round,
     static_include,
+    localize_list,
 )
 from ihatemoney.web import main as web_interface
 
@@ -145,6 +146,7 @@ def create_app(
     app.jinja_env.globals["static_include"] = static_include
     app.jinja_env.globals["locale_from_iso"] = locale_from_iso
     app.jinja_env.filters["minimal_round"] = minimal_round
+    app.jinja_env.filters["localize_list"] = localize_list
 
     # Translations
     babel = Babel(app)

@@ -16,6 +16,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from ihatemoney import history, models, utils
 from ihatemoney.manage import DeleteProject, GenerateConfig, GeneratePasswordHash
 from ihatemoney.run import create_app, db, load_configuration
+from ihatemoney.utils import em_surround
 from ihatemoney.versioning import LoggingMode
 
 # Unset configuration file env var if previously set
@@ -2243,13 +2244,6 @@ class ModelsTestCase(IhatemoneyTestCase):
             if bill.what == "delicatessen":
                 pay_each_expected = 10 / 3
                 self.assertEqual(bill.pay_each(), pay_each_expected)
-
-
-def em_surround(string, regex_escape=False):
-    if regex_escape:
-        return r'<em class="font-italic">%s<\/em>' % string
-    else:
-        return '<em class="font-italic">%s</em>' % string
 
 
 class HistoryTestCase(IhatemoneyTestCase):

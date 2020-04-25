@@ -9,7 +9,8 @@ import os
 import re
 
 from babel import Locale
-from flask import current_app, redirect
+from flask import current_app, redirect, escape
+from flask_babel import gettext as _
 import jinja2
 from werkzeug.routing import HTTPException, RoutingException
 
@@ -278,3 +279,68 @@ class FormEnum(Enum):
 
     def __str__(self):
         return str(self.value)
+
+
+def em_surround(string, regex_escape=False):
+    # Needed since we're going to assume this is safe later in order to render
+    # the <em> tag we're adding
+    string = escape(string)
+
+    if regex_escape:
+        return r'<em class="font-italic">%s<\/em>' % string
+    else:
+        return '<em class="font-italic">%s</em>' % string
+
+
+def localize_list(list, surround_with_em=True):
+    """
+    Localize a list, optionally surrounding each item in <em> tags.
+
+    Uses the appropriate joining character, oxford comma behavior, and handles
+    1, and 2 object lists, all according to localizable behavior.
+
+    Examples (using en locale):
+        >>> localize_list([1,2,3,4,5], False)
+        1, 2, 3, 4, and 5
+
+        >>> localize_list([1,2], False)
+        1 and 2
+
+    Based on the LUA example from:
+    https://stackoverflow.com/a/58033018
+
+    :param list: The list of objects to localize by a call to str()
+    :param surround_with_em: Optionally surround each object with <em> tags
+    :return: A locally formatted list of objects
+    """
+    list = list[:]
+    one = _("{single_object}")
+    two = _("{dual_object_0} and {dual_object_1}")
+    start = _("{start_object}, {next_object}")
+    middle = _("{previous_object}, {next_object}")
+    end = _("{previous_object}, and {end_object}")
+
+    item_wrapper = em_surround
+    if not surround_with_em:
+        item_wrapper = lambda x: x
+
+    if len(list) == 1:
+        return one.format(single_object=item_wrapper(list[0]))
+    elif len(list) == 2:
+        return two.format(
+            dual_object_0=item_wrapper(list[0]), dual_object_1=item_wrapper(list[1])
+        )
+    else:
+        output_str = end.format(
+            previous_object="{previous_object}", end_object=item_wrapper(list.pop())
+        )
+        while len(list) > 2:
+            temp = middle.format(
+                previous_object="{previous_object}",
+                next_object=item_wrapper(list.pop()),
+            )
+            output_str = output_str.format(previous_object=temp)
+
+        output_str = output_str.format(previous_object=item_wrapper(list.pop()))
+        output_str = start.format(start_object="{start_object}", next_object=output_str)
+        return output_str.format(start_object=item_wrapper(list.pop()))

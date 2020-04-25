@@ -29,13 +29,29 @@
 {% endif %}
 {% endmacro %}
 
-{% macro describe_object(event) %}{{ event.object_type }} <em class="font-italic">{{ event.object_desc }}</em>{% endmacro %}
+{% macro em_surround(text) %}<em class="font-italic">{{ text }}</em>{% endmacro %}
 
 {% macro simple_property_change(event, localized_property_name, from=True) %}
-    {{ describe_object(event) }}:
-    {{ localized_property_name }} {{ _("changed") }}
-    {% if from %}{{ _("from") }} <em class="font-italic">{{ event.val_before }}</em>{% endif %}
-    {{ _("to") }} <em class="font-italic">{{ event.val_after }}</em>
+    {% if from %}
+        {{
+            _("{object_type} {object_description}: {property_name} changed from {value_before} to {value_after}").format(
+                object_type=event.object_type,
+                object_description=em_surround(event.object_desc),
+                property_name=localized_property_name,
+                value_before=em_surround(event.val_before),
+                value_after=em_surround(event.val_after)
+            )
+        }}
+    {% else %}
+        {{
+            _("{object_type} {object_description}: {property_name} changed to {value_after}").format(
+                object_type=event.object_type,
+                object_description=em_surround(event.object_desc),
+                property_name=localized_property_name,
+                value_after=em_surround(event.val_after)
+            )
+        }}
+    {% endif %}
 {% endmacro %}
 
 {% macro clear_history_modals() %}
@@ -83,17 +99,23 @@
 {% endmacro %}
 
 {% macro owers_changed(event, add) %}
-    {{ describe_object(event) }}: {% if add %}{{ _("Added") }}{% else %}{{ _("Removed") }}{% endif %}
-    {% if event.val_after|length > 1 %}
-        {% for name in event.val_after %}
-            <em class="font-italic">{{ name }}</em>{% if event.val_after|length > 2 and loop.index != event.val_after|length %},{% endif %}
-            {% if loop.index == event.val_after|length - 1 %} {{ _("and") }} {% endif %}
-        {% endfor %}
+    {% if add %}
+        {{
+            _("{object_type} {object_description}: Added {owers_list_str} to owers list").format(
+                object_type=event.object_type,
+                object_description=em_surround(event.object_desc),
+                owers_list_str=event.val_after|localize_list|safe
+            )
+        }}
     {% else %}
-        <em class="font-italic">{{ event.val_after[0] }}</em>
+        {{
+            _("{object_type} {object_description}: Removed {owers_list_str} from owers list").format(
+                object_type=event.object_type,
+                object_description=em_surround(event.object_desc),
+                owers_list_str=event.val_after|localize_list|safe
+            )
+        }}
     {% endif %}
-    {% if add %}{{ _("to") }}{% else %}{{ _("from") }}{% endif %}
-    {{ _("owers list") }}
 {% endmacro %}
 
 {% block sidebar %}
@@ -191,7 +213,11 @@
                 </div>
                 <div class="history_text">
                 {% if event.operation_type == OperationType.INSERT %}
-                    {{ event.object_type }} <em class="font-italic">{{ event.object_desc }}</em> {{ _("added") }}
+                    {{ _("{object_type} {object_description} added").format(
+                            object_type=event.object_type,
+                            object_description=em_surround(event.object_desc)
+                        )
+                    }}
                 {% elif event.operation_type == OperationType.UPDATE  %}
                     {% if event.object_type == _("Project") %}
                         {% if event.prop_changed == "password" %}
@@ -199,22 +225,48 @@
                         {% elif event.prop_changed == "logging_preference" %}
                             {{ change_to_logging_preference(event) }}
                         {% elif event.prop_changed == "name" %}
-                            {{ _("Project renamed to") }} <em class="font-italic">{{ event.val_after }}</em>
+                            {{ _("Project renamed to {new_project_name}").format(
+                                    new_project_name=em_surround(event.val_after)
+                                )
+                            }}
                         {% elif event.prop_changed == "contact_email" %}
-                            {{ _("Project contact email changed to") }} <em class="font-italic">{{ event.val_after }}</em>
+                            {{ _("Project contact email changed to {new_email}").format(
+                                    new_email=em_surround(event.val_after)
+                                )
+                            }}
                         {% else %}
                             {{ _("Project settings modified") }}
                         {% endif %}
                     {% elif event.prop_changed == "activated" %}
-                        {{ event.object_type }} <em class="font-italic">{{ event.object_desc }}</em>
-                        {% if event.val_after == False %}{{ _("deactivated") }}{% else %}{{ _("reactivated") }}{% endif %}
+                        {% if event.val_after == False %}
+                            {{ _("{object_type} {object_description} deactivated").format(
+                                    object_type=event.object_type,
+                                    object_description=em_surround(event.object_desc)
+                                )
+                            }}
+                        {% else %}
+                            {{ _("{object_type} {object_description} reactivated").format(
+                                    object_type=event.object_type,
+                                    object_description=em_surround(event.object_desc)
+                                )
+                            }}
+                        {% endif %}
                     {% elif event.prop_changed == "name" or event.prop_changed == "what" %}
-                        {{ describe_object(event) }} {{ _("renamed to") }} <em class="font-italic">{{ event.val_after }}</em>
+                            {{ _("{object_type} {object_description} renamed to {new_name}").format(
+                                    object_type=event.object_type,
+                                    object_description=em_surround(event.object_desc),
+                                    new_name=em_surround(event.val_after)
+                                )
+                            }}
                     {% elif event.prop_changed == "weight" %}
                         {{ simple_property_change(event, _("Weight")) }}
                     {% elif event.prop_changed == "external_link" %}
-                        {{ describe_object(event) }}: {{ _("External link changed to") }}
-                        <a href="{{ event.val_after }}" class="font-italic">{{ event.val_after }}</a>
+                        {{ _("{object_type} {object_description}: External link changed to {new_link}").format(
+                                object_type=event.object_type,
+                                object_description=em_surround(event.object_desc),
+                                new_link='<a href="{0}" class="font-italic">{0}</a>'.format(event.val_after)
+                            )
+                        }}
                     {% elif event.prop_changed == "owers_added" %}
                         {{ owers_changed(event, True)}}
                     {% elif event.prop_changed == "owers_removed" %}
@@ -226,13 +278,25 @@
                     {% elif event.prop_changed == "date" %}
                         {{ simple_property_change(event, _("Date")) }}
                     {% else %}
-                       {{ describe_object(event) }} {{ _("modified") }}
+                       {{ _("{object_type} {object_description} modified").format(
+                                object_type=event.object_type,
+                                object_description=em_surround(event.object_desc)
+                            )
+                        }}
                     {% endif %}
                 {% elif event.operation_type == OperationType.DELETE %}
-                    {{ event.object_type }} <em class="font-italic">{{ event.object_desc }}</em> {{ _("removed") }}
+                    {{ _("{object_type} {object_description} removed").format(
+                            object_type=event.object_type,
+                            object_description=em_surround(event.object_desc)
+                        )
+                    }}
                 {% else %}
                 {# Should be unreachable #}
-                {{ describe_object(event) }} {{ _("changed in a unknown way") }}
+                {{ _("{object_type} {object_description} changed in an unkown way").format(
+                            object_type=event.object_type,
+                            object_description=em_surround(event.object_desc)
+                        )
+                    }}
                 {% endif %}
                 </div>
             </td>
