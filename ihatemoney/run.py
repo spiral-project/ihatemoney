@@ -15,9 +15,9 @@ from ihatemoney.utils import (
     IhmJSONEncoder,
     PrefixedWSGI,
     locale_from_iso,
+    localize_list,
     minimal_round,
     static_include,
-    localize_list,
 )
 from ihatemoney.web import main as web_interface
 

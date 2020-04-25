@@ -9,7 +9,7 @@ import os
 import re
 
 from babel import Locale
-from flask import current_app, redirect, escape
+from flask import current_app, escape, redirect
 from flask_babel import gettext as _
 import jinja2
 from werkzeug.routing import HTTPException, RoutingException
