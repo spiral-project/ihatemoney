@@ -755,3 +755,120 @@ msgstr ""
 
 msgid "Period"
 msgstr ""
+
+#~ msgid ""
+#~ "The project identifier is used to "
+#~ "log in and for the URL of "
+#~ "the project. We tried to generate "
+#~ "an identifier for you but a "
+#~ "project with this identifier already "
+#~ "exists. Please create a new identifier"
+#~ " that you will be able to "
+#~ "remember"
+#~ msgstr ""
+#~ "De project-id wordt gebruikt om in"
+#~ " te loggen en als url van het"
+#~ " project. We hebben geprobeerd om een"
+#~ " id voor je te genereren, maar "
+#~ "er is al een project met deze "
+#~ "id. Creëer een nieuwe id die je"
+#~ " makkelijk kunt onthouden."
+
+#~ msgid ""
+#~ "Not a valid amount or expression.Only"
+#~ " numbers and + - * / "
+#~ "operatorsare accepted."
+#~ msgstr ""
+#~ "Geen geldig bedrag of geldige expressie."
+#~ " Alleen getallen en + - * / "
+#~ "zijn toegestaan."
+
+#~ msgid "What do you want to download ?"
+#~ msgstr "Wat wil je downloaden?"
+
+#~ msgid "bills"
+#~ msgstr "rekeningen"
+
+#~ msgid "transactions"
+#~ msgstr "transacties"
+
+#~ msgid "Export file format"
+#~ msgstr "Bestandsformaat voor exporteren"
+
+#~ msgid "Edit this project"
+#~ msgstr "Dit project bewerken"
+
+#~ msgid "Download this project's data"
+#~ msgstr "Projectgegevens downloaden"
+
+#~ msgid "Type user name here"
+#~ msgstr "Typ hier de gebruikersnaam"
+
+#~ msgid "No, thanks"
+#~ msgstr "Nee, bedankt"
+
+#~ msgid "Manage your shared <br>expenses, easily"
+#~ msgstr "Beheer eenvoudig je gedeelde <br>uitgaven"
+
+#~ msgid "Log to an existing project"
+#~ msgstr "Log in op een bestaand project"
+
+#~ msgid "log in"
+#~ msgstr "inloggen"
+
+#~ msgid "or create a new one"
+#~ msgstr "of creëer een nieuwe"
+
+#~ msgid "let's get started"
+#~ msgstr "aan de slag"
+
+#~ msgid "options"
+#~ msgstr "opties"
+
+#~ msgid "Project settings"
+#~ msgstr "Projectinstellingen"
+
+#~ msgid "This is a free software"
+#~ msgstr "Dit is vrije software"
+
+#~ msgid "Invite people to join this project!"
+#~ msgstr "Nodig mensen uit voor dit project!"
+
+#~ msgid "Added on"
+#~ msgstr "Toegevoegd op"
+
+#~ msgid "Nothing to list yet. You probably want to"
+#~ msgstr "Er kan nog geen opsomming worden gemaakt. Voeg"
+
+#~ msgid ""
+#~ "Specify a (comma separated) list of "
+#~ "email adresses you want to notify "
+#~ "about the\n"
+#~ "creation of this budget management "
+#~ "project and we will send them an"
+#~ " email for you."
+#~ msgstr ""
+#~ "Geef een kommagescheiden lijst van "
+#~ "e-mailadressen op. Deze mensen worden op"
+#~ " de\n"
+#~ "hoogte gebracht van het bestaan van "
+#~ "dit project en wij sturen hen een"
+#~ " e-mail."
+
+#~ msgid ""
+#~ "If you prefer, you can share the project identifier and the shared\n"
+#~ "password by other communication means. "
+#~ "Or even directly share the following "
+#~ "link:"
+#~ msgstr ""
+#~ "Als je wilt, dan kun je de project-id en het gedeelde wachtwoord\n"
+#~ "delen via andere kanalen. Of deel gewoon de volgende link:"
+
+#~ msgid "A link to reset your password has been sent to your email."
+#~ msgstr ""
+#~ "Er is een link met "
+#~ "wachtwoordherstelinstructies naar je e-mailadres "
+#~ "verstuurd."
+
+#~ msgid "%(member)s had been added"
+#~ msgstr "%(member)s is toegevoegd"

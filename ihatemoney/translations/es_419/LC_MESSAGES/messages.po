@@ -763,3 +763,6 @@ msgstr ""
 
 msgid "Period"
 msgstr ""
+
+#~ msgid "%(member)s had been added"
+#~ msgstr "se han añadido %(member)s"
