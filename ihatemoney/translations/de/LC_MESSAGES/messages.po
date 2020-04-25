@@ -760,10 +760,3 @@ msgstr ""
 
 msgid "Period"
 msgstr ""
-
-#~ msgid "%(member)s had been added"
-#~ msgstr "%(member)s wurde(n) hinzugefügt"
-
-#~ msgid "Person"
-#~ msgstr ""
-
