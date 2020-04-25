@@ -2598,7 +2598,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
         self.assertIn(
-            f"Bill {em_surround('25.0 for fromage à raclette')} added",
+            f"Bill {em_surround('fromage à raclette')} added",
             resp.data.decode("utf-8"),
         )
 
@@ -2619,26 +2619,26 @@ class HistoryTestCase(IhatemoneyTestCase):
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
         self.assertIn(
-            f"Bill {em_surround('25.0 for fromage à raclette')} added",
+            f"Bill {em_surround('fromage à raclette')} added",
             resp.data.decode("utf-8"),
         )
         self.assertRegex(
             resp.data.decode("utf-8"),
             r"Bill %s:\s* Amount changed\s* from %s\s* to %s"
             % (
-                em_surround("25.0 for fromage à raclette", regex_escape=True),
+                em_surround("fromage à raclette", regex_escape=True),
                 em_surround("25.0", regex_escape=True),
                 em_surround("10.0", regex_escape=True),
             ),
         )
         self.assertIn(
             "Bill %s renamed to %s"
-            % (em_surround("25.0 for fromage à raclette"), em_surround("new thing"),),
+            % (em_surround("fromage à raclette"), em_surround("new thing"),),
             resp.data.decode("utf-8"),
         )
         self.assertLess(
             resp.data.decode("utf-8").index(
-                f"Bill {em_surround('25.0 for fromage à raclette')} renamed to"
+                f"Bill {em_surround('fromage à raclette')} renamed to"
             ),
             resp.data.decode("utf-8").index("Amount changed"),
         )
@@ -2650,8 +2650,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
         self.assertIn(
-            f"Bill {em_surround('10.0 for new thing')} removed",
-            resp.data.decode("utf-8"),
+            f"Bill {em_surround('new thing')} removed", resp.data.decode("utf-8"),
         )
 
         # edit user
@@ -2746,7 +2745,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertRegex(
             resp.data.decode("utf-8"),
             r"Bill {}:\s* Amount changed\s* from {}\s* to {}".format(
-                em_surround("25.0 for Bill 1", regex_escape=True),
+                em_surround("Bill 1", regex_escape=True),
                 em_surround("25.0", regex_escape=True),
                 em_surround("88.0", regex_escape=True),
             ),
@@ -2789,11 +2788,9 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 5)
         self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+        self.assertIn(f"Bill {em_surround('Bill 1')} added", resp.data.decode("utf-8"))
         self.assertIn(
-            f"Bill {em_surround('25.0 for Bill 1')} added", resp.data.decode("utf-8")
-        )
-        self.assertIn(
-            f"Bill {em_surround('25.0 for Bill 1')} removed", resp.data.decode("utf-8"),
+            f"Bill {em_surround('Bill 1')} removed", resp.data.decode("utf-8"),
         )
 
         # Add a new bill
@@ -2812,20 +2809,13 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 6)
         self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
-        self.assertIn(
-            f"Bill {em_surround('25.0 for Bill 1')} added", resp.data.decode("utf-8")
-        )
+        self.assertIn(f"Bill {em_surround('Bill 1')} added", resp.data.decode("utf-8"))
         self.assertEqual(
-            resp.data.decode("utf-8").count(
-                f"Bill {em_surround('25.0 for Bill 1')} added"
-            ),
-            1,
+            resp.data.decode("utf-8").count(f"Bill {em_surround('Bill 1')} added"), 1,
         )
+        self.assertIn(f"Bill {em_surround('Bill 2')} added", resp.data.decode("utf-8"))
         self.assertIn(
-            f"Bill {em_surround('20.0 for Bill 2')} added", resp.data.decode("utf-8")
-        )
-        self.assertIn(
-            f"Bill {em_surround('25.0 for Bill 1')} removed", resp.data.decode("utf-8"),
+            f"Bill {em_surround('Bill 1')} removed", resp.data.decode("utf-8"),
         )
 
     def test_double_bill_double_person_edit_second_no_web(self):
