@@ -1,6 +1,56 @@
 Contributing
 ############
 
+.. _how-to-contribute:
+
+How to contribute
+=================
+
+You would like to contribute? First, thanks a bunch! This project is a small
+project with just a few people behind it, so any help is appreciated!
+
+There are different ways to help us, regarding if you are a designer,
+a developer or an user.
+
+As a developer
+--------------
+
+If you want to contribute code, you can write it and then issue a pull request
+on github. To get started, please read :ref:`setup-dev-environment` and
+:ref:`contributing-developer`.
+
+As a designer / Front-end developer
+-----------------------------------
+
+Feel free to provide mockups, or to involve yourself in the discussions
+happening on the GitHub issue tracker. All ideas are welcome. Of course, if you
+know how to implement them, feel free to fork and make a pull request.
+
+As a translator
+---------------
+
+If you're able to translate Ihatemoney in your own language,
+head over to `the website we use for translations <https://hosted.weblate.org/projects/i-hate-money/i-hate-money/>`_
+and start translating.
+
+All the heavy lifting will be done automatically, and your strings will
+eventually be integrated.
+
+Once a language is ready to be integrated, add it to the
+``SUPPORTED_LANGUAGES`` list, in ``ihatemoney/default_settings.py``.
+
+End-user
+--------
+
+You are using the application and found a bug? You have some ideas about how to
+improve the project? Please tell us `by filling a new issue <https://github.com/spiral-project/ihatemoney/issues>`_.
+Or, if you prefer, you can send me an e-mail to `alexis@notmyidea.org` and I
+will update the issue tracker with your feedback.
+
+Thanks again!
+
+.. _setup-dev-environment:
+
 Set up a dev environment
 ========================
 
@@ -45,8 +95,65 @@ In case you want to update to newer versions (from Git), you can just run the "u
 
   make update
 
-Create database migrations
---------------------------
+Useful settings
+----------------
+
+It is better to actually turn the debugging mode on when you're developing.
+You can create a ``settings.cfg`` file, with the following content::
+
+    DEBUG = True
+    SQLACHEMY_ECHO = DEBUG
+
+You can also set the `TESTING` flag to `True` so no mails are sent
+(and no exception is raised) while you're on development mode.
+Then before running the application, declare its path with ::
+
+  export IHATEMONEY_SETTINGS_FILE_PATH="$(pwd)/settings.cfg"
+
+.. _contributing-developer:
+
+Contributing as a developer
+===========================
+
+All code contributions should be submitted as Pull Requests on the
+`github project <https://github.com/spiral-project/ihatemoney>`_.
+
+Below are some points that you should check to help you prepare your Pull Request.
+
+Running tests
+-------------
+
+Please, think about updating and running the tests before asking for a pull request
+as it will help us to maintain the code clean and running.
+
+To run the tests::
+
+    make test
+
+Tests can be edited in ``ihatemoney/tests/tests.py``. If some test cases fail because
+of your changes, first check whether your code correctly handle these cases.
+If you are confident that your code is correct and that the test cases simply need
+to be updated to match your changes, update the test cases and send them as part of
+your pull request.
+
+If you are introducing a new feature, you need to either add tests to existing classes,
+or add a new class (if your new feature is significantly different from existing code).
+
+Formatting code
+---------------
+
+We are using `black <https://black.readthedocs.io/en/stable/>`_ and
+`isort <https://timothycrosley.github.io/isort/>`_ formatters for all the Python
+files in this project. Be sure to run it locally on your files.
+To do so, just run::
+
+    make black isort
+
+You can also integrate them with your dev environment (as a *format-on-save*
+hook, for instance).
+
+Creating database migrations
+----------------------------
 
 In case you need to modify the database schema, first make sure that you have
 an up-to-date database by running the dev server at least once (the quick way
@@ -78,80 +185,6 @@ which can be created with the following command::
 
 You then need to write the migration steps yourself.
 
-Useful settings
-----------------
-
-It is better to actually turn the debugging mode on when you're developing.
-You can create a ``settings.cfg`` file, with the following content::
-
-    DEBUG = True
-    SQLACHEMY_ECHO = DEBUG
-
-You can also set the `TESTING` flag to `True` so no mails are sent
-(and no exception is raised) while you're on development mode.
-Then before running the application, declare its path with ::
-
-  export IHATEMONEY_SETTINGS_FILE_PATH="$(pwd)/settings.cfg"
-
-How to contribute
-=================
-
-You would like to contribute? First, thanks a bunch! This project is a small
-project with just a few people behind it, so any help is appreciated!
-
-There are different ways to help us, regarding if you are a designer,
-a developer or an user.
-
-As a developer
---------------
-
-If you want to contribute code, you can write it and then issue a pull request
-on github. Please, think about updating and running the tests before asking for
-a pull request as it will help us to maintain the code clean and running.
-
-To do so::
-
-    make test
-
-We are using `black <https://black.readthedocs.io/en/stable/>`_ and
-`isort <https://timothycrosley.github.io/isort/>`_ formatters for all the Python
-files in this project. Be sure to run it locally on your files.
-To do so, just run::
-
-    make black isort
-
-You can also integrate them with your dev environment (as a *format-on-save*
-hook, for instance).
-
-As a designer / Front-end developer
------------------------------------
-
-Feel free to provide mockups, or to involve yourself in the discussions
-happening on the GitHub issue tracker. All ideas are welcome. Of course, if you
-know how to implement them, feel free to fork and make a pull request.
-
-As a translator
----------------
-
-If you're able to translate Ihatemoney in your own language,
-head over to `the website we use for translations <https://hosted.weblate.org/projects/i-hate-money/i-hate-money/>`_
-and start translating.
-
-All the heavy lifting will be done automatically, and your strings will
-eventually be integrated.
-
-Once a language is ready to be integrated, add it to the
-``SUPPORTED_LANGUAGES`` list, in ``ihatemoney/default_settings.py``.
-
-End-user
---------
-
-You are using the application and found a bug? You have some ideas about how to
-improve the project? Please tell us `by filling a new issue <https://github.com/spiral-project/ihatemoney/issues>`_.
-Or, if you prefer, you can send me an e-mail to `alexis@notmyidea.org` and I
-will update the issue tracker with your feedback.
-
-Thanks again!
 
 How to build the documentation ?
 ================================
