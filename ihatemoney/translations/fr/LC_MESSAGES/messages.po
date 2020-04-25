@@ -8,8 +8,10 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2020-04-25 12:43+0200\n"
-"PO-Revision-Date: 2020-04-22 22:11+0000\n"
-"Last-Translator: Glandos <bugs-github@antipoul.fr>\n"
+"PO-Revision-Date: 2020-04-25 11:01+0000\n"
+"Last-Translator: Rémy Hubscher <hubscher.remy@gmail.com>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -353,37 +355,37 @@ msgid "Download"
 msgstr "Télécharger"
 
 msgid "Disabled Project History"
-msgstr ""
+msgstr "Désactiver l'historique du projet."
 
 msgid "Disabled Project History & IP Address Recording"
-msgstr ""
+msgstr "Désactiver l'historique du projet et l'enregistrement des adresses IP"
 
 msgid "Enabled Project History"
-msgstr ""
+msgstr "Activer l'historique du projet"
 
 msgid "Disabled IP Address Recording"
-msgstr ""
+msgstr "Désactiver l'enregistrement des adresses IP"
 
 msgid "Enabled Project History & IP Address Recording"
-msgstr ""
+msgstr "Activer l'historique du projet et l’enregistrement des adresses IP"
 
 msgid "Enabled IP Address Recording"
-msgstr ""
+msgstr "Activer l'enregistrement des adresses IP"
 
 msgid "History Settings Changed"
-msgstr ""
+msgstr "Paramètres d'historique modifiés"
 
 msgid "changed"
-msgstr ""
+msgstr "modifié"
 
 msgid "from"
-msgstr ""
+msgstr "du"
 
 msgid "to"
-msgstr ""
+msgstr "au"
 
 msgid "Confirm Remove IP Adresses"
-msgstr ""
+msgstr "Confirmer la suppression des adresses IP"
 
 msgid ""
 "Are you sure you want to delete all recorded IP addresses from this "
@@ -391,26 +393,32 @@ msgid ""
 "                The rest of the project history will be unaffected. This "
 "action cannot be undone."
 msgstr ""
+"Êtes-vous sur de vouloir supprimer toutes les adresses IP enregistrées pour "
+"ce projet?\n"
+"Le reste de l'historique ne sera pas affecté. Cette action n'est pas "
+"réversible."
 
 msgid "Close"
-msgstr ""
+msgstr "Fermer"
 
 msgid "Confirm Delete"
-msgstr ""
+msgstr "Confirmer la suppression"
 
 msgid "Delete Confirmation"
-msgstr ""
+msgstr "Confirmation de suppression"
 
 msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
 msgstr ""
+"Êtes-vous sur de vouloir supprimer tout l'historique du projet? Cette action "
+"n'est pas réversible."
 
 msgid "Added"
-msgstr ""
+msgstr "Ajouté"
 
 msgid "Removed"
-msgstr ""
+msgstr "Supprimé"
 
 msgid "and"
 msgstr "et"
@@ -432,6 +440,12 @@ msgid ""
 "            <a href=\"%(url)s\">settings page</a>\n"
 "            "
 msgstr ""
+"\n"
+"            <i>L'historique de ce projet a été désactivé. Les nouvelles "
+"actions n'apparaîtront pas ci-dessous. Vous pouvez réactiver l'historique du "
+"projet dans les </i>\n"
+"            <a href=\"%(url)s\">paramètres du projet</a>\n"
+"            "
 
 msgid ""
 "\n"
@@ -442,89 +456,102 @@ msgid ""
 "them.</i></p>\n"
 "            "
 msgstr ""
+"\n"
+"            <i>Le tableau ci-dessous liste les actions enregistrées avant la "
+"désactivation de l'historique du projet. Vous pouvez\n"
+"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" data-"
+"target=\"#confirm-erase\">clear project history</a> cliquer ici pour les "
+"supprimer.</i></p>\n"
+"            "
 
 msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
 "recording disabled. "
 msgstr ""
+"Certaines entrées de l'historique contiennent une adresse IP, bien que ce "
+"projet ait désactivé l'enregistrement des adresses IP. "
 
 msgid "Delete stored IP addresses"
-msgstr ""
+msgstr "Supprimer toutes les adresses IP enregistrées"
 
 msgid "No history to erase"
-msgstr ""
+msgstr "Aucun historique à supprimer"
 
 msgid "Clear Project History"
-msgstr ""
+msgstr "Supprimer les entrées de l'historique du projet"
 
 msgid "No IP Addresses to erase"
-msgstr ""
+msgstr "Aucune adresse IP à supprimer"
 
 msgid "Delete Stored IP Addresses"
-msgstr ""
+msgstr "Supprimer les adresses IP enregistrées"
 
 msgid "Time"
-msgstr ""
+msgstr "Heure"
 
 msgid "Event"
-msgstr ""
+msgstr "Évènement"
 
 msgid "IP address recording can be enabled on the settings page"
 msgstr ""
+"L'enregistrement des adresses IP peut-être activé dans les paramètres de la "
+"page"
 
 msgid "IP address recording can be disabled on the settings page"
 msgstr ""
+"L'enregistrement des adresses IP peut-être désactivé dans les paramètres de "
+"la page"
 
 msgid "From IP"
-msgstr ""
+msgstr "Depuis l'IP"
 
 msgid "added"
-msgstr ""
+msgstr "ajouté"
 
 msgid "Project private code changed"
-msgstr ""
+msgstr "Le mot de passe du projet a été modifié"
 
 msgid "Project renamed to"
-msgstr ""
+msgstr "Le projet a été renommé"
 
 msgid "Project contact email changed to"
-msgstr ""
+msgstr "L'adresse email de contact du projet a été modifié en"
 
 msgid "Project settings modified"
-msgstr ""
+msgstr "Les paramètres du projet ont été modifiés"
 
 msgid "deactivated"
-msgstr ""
+msgstr "désactivé"
 
 msgid "reactivated"
-msgstr ""
+msgstr "réactivé"
 
 msgid "renamed to"
-msgstr ""
+msgstr "renommé en"
 
 msgid "External link changed to"
-msgstr ""
+msgstr "Le lien d'accès a été modifié en"
 
 msgid "Amount"
-msgstr ""
+msgstr "Montant"
 
 msgid "modified"
-msgstr ""
+msgstr "modifié"
 
 msgid "removed"
-msgstr ""
+msgstr "supprimé"
 
 msgid "changed in a unknown way"
-msgstr ""
+msgstr "modifié d'une manière inconnue"
 
 msgid "Nothing to list"
-msgstr ""
+msgstr "Rien à afficher"
 
 msgid "Someone probably"
-msgstr ""
+msgstr "Quelqu'un a probablement"
 
 msgid "cleared the project history."
-msgstr ""
+msgstr "vidé l'historique du projet."
 
 msgid "Manage your shared <br />expenses, easily"
 msgstr "Gérez vos dépenses <br />partagées, facilement"
@@ -968,4 +995,3 @@ msgstr ""
 #~ "Êtes vous sûr de supprimer la "
 #~ "totalité de l’historique de ce projet"
 #~ " ? Cette action est irréversible."
-
