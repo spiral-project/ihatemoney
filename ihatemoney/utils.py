@@ -321,8 +321,11 @@ def localize_list(list, surround_with_em=True):
     end = _("{previous_object}, and {end_object}")
 
     item_wrapper = em_surround
+    # fmt: off
     if not surround_with_em:
-        item_wrapper = lambda x: x
+        def item_wrapper(x):
+            return x
+    # fmt: on
 
     if len(list) == 1:
         return one.format(single_object=item_wrapper(list[0]))
