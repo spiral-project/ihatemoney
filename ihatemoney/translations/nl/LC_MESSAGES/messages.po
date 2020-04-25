@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-04-25 12:43+0200\n"
+"POT-Creation-Date: 2020-04-25 13:02+0200\n"
 "PO-Revision-Date: 2019-10-07 22:56+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language: nl\n"
@@ -515,10 +515,7 @@ msgstr ""
 msgid "Nothing to list"
 msgstr ""
 
-msgid "Someone probably"
-msgstr ""
-
-msgid "cleared the project history."
+msgid "Someone probably cleared the project history."
 msgstr ""
 
 msgid "Manage your shared <br />expenses, easily"
@@ -749,4 +746,3 @@ msgstr ""
 
 msgid "Period"
 msgstr ""
-
