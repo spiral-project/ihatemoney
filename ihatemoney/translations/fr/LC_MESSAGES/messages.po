@@ -23,8 +23,8 @@ msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
-"Ceci n'est pas pas un montant ou une expression valide. Seuls les nombres"
-" et les opérateurs + - * / sont acceptés."
+"Ceci n'est pas un montant ou une expression valide. Seuls les nombres et les "
+"opérateurs + - * / sont acceptés."
 
 msgid "Project name"
 msgstr "Nom de projet"
@@ -36,10 +36,10 @@ msgid "Email"
 msgstr "Email"
 
 msgid "Enable project history"
-msgstr ""
+msgstr "Activer l'historique de projet"
 
 msgid "Use IP tracking for project history"
-msgstr ""
+msgstr "Collecter les adresses IP dans l'historique de projet"
 
 msgid "Import previously exported JSON file"
 msgstr "Importer un fichier JSON précédemment exporté"
@@ -150,7 +150,7 @@ msgid "Bill"
 msgstr "Facture"
 
 msgid "Project"
-msgstr "Projets"
+msgstr "Projet"
 
 msgid "Too many failed login attempts, please retry later."
 msgstr "Trop d'échecs d’authentification successifs, veuillez réessayer plus tard."
