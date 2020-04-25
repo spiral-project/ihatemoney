@@ -2123,7 +2123,7 @@ class APITestCase(IhatemoneyTestCase):
         resp = self.client.get("/raclette/history", follow_redirects=True)
         self.assertEqual(resp.status_code, 200)
         self.assertIn(
-            f"Person {em_surround('alexis')} added", resp.data.decode("utf-8")
+            f"Participant {em_surround('alexis')} added", resp.data.decode("utf-8")
         )
         self.assertIn(
             f"Project {em_surround('raclette')} added", resp.data.decode("utf-8"),
@@ -2578,7 +2578,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
         self.assertIn(
-            f"Person {em_surround('alexis')} added", resp.data.decode("utf-8")
+            f"Participant {em_surround('alexis')} added", resp.data.decode("utf-8")
         )
 
         # create a bill
@@ -2666,7 +2666,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertRegex(
             resp.data.decode("utf-8"),
-            r"Person %s:\s* Weight changed\s* from %s\s* to %s"
+            r"Participant %s:\s* Weight changed\s* from %s\s* to %s"
             % (
                 em_surround("alexis", regex_escape=True),
                 em_surround("1.0", regex_escape=True),
@@ -2674,12 +2674,14 @@ class HistoryTestCase(IhatemoneyTestCase):
             ),
         )
         self.assertIn(
-            "Person %s renamed to %s"
+            "Participant %s renamed to %s"
             % (em_surround("alexis"), em_surround("new name"),),
             resp.data.decode("utf-8"),
         )
         self.assertLess(
-            resp.data.decode("utf-8").index(f"Person {em_surround('alexis')} renamed"),
+            resp.data.decode("utf-8").index(
+                f"Participant {em_surround('alexis')} renamed"
+            ),
             resp.data.decode("utf-8").index("Weight changed"),
         )
 
@@ -2690,7 +2692,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
         self.assertIn(
-            f"Person {em_surround('new name')} removed", resp.data.decode("utf-8")
+            f"Participant {em_surround('new name')} removed", resp.data.decode("utf-8")
         )
 
     def test_double_bill_double_person_edit_second(self):

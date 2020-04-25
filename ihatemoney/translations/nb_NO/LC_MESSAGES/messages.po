@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-21 14:18+0200\n"
+"POT-Creation-Date: 2020-04-24 19:59+0200\n"
 "PO-Revision-Date: 2019-11-12 09:04+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language: nb_NO\n"
@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.7.0\n"
+"Generated-By: Babel 2.8.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -141,7 +141,7 @@ msgstr "Send invitasjoner"
 msgid "The email %(email)s is not valid"
 msgstr "E-posten \"%(email)s\" er ikke gyldig"
 
-msgid "Person"
+msgid "Participant"
 msgstr ""
 
 msgid "Bill"
@@ -206,8 +206,8 @@ msgid "Your invitations have been sent"
 msgstr "Invitasjonene dine har blitt sendt"
 
 #, python-format
-msgid "%(member)s had been added"
-msgstr "%(member)s lagt til"
+msgid "%(member)s has been added"
+msgstr ""
 
 #, python-format
 msgid "%(name)s is part of this project again"
@@ -780,118 +780,3 @@ msgstr ""
 
 msgid "Period"
 msgstr ""
-
-#~ msgid ""
-#~ "The project identifier is used to "
-#~ "log in and for the URL of "
-#~ "the project. We tried to generate "
-#~ "an identifier for you but a "
-#~ "project with this identifier already "
-#~ "exists. Please create a new identifier"
-#~ " that you will be able to "
-#~ "remember"
-#~ msgstr ""
-#~ "Prosjektidentifikatoren brukes til og logge"
-#~ " inn og for prosjektets nettadresse. "
-#~ "Vi prøvde å generere en identifikator"
-#~ " for deg, men et prosjekt hadde "
-#~ "den identifikatoren allerede. Opprett en "
-#~ "ny identifikator du husker."
-
-#~ msgid ""
-#~ "Not a valid amount or expression.Only"
-#~ " numbers and + - * / "
-#~ "operatorsare accepted."
-#~ msgstr ""
-#~ "Ikke gyldig beløp eller uttrykk. Kun "
-#~ "tall og + - * / operatorer "
-#~ "tillates."
-
-#~ msgid "What do you want to download ?"
-#~ msgstr "Hva ønsker du å laste ned?"
-
-#~ msgid "bills"
-#~ msgstr "regninger"
-
-#~ msgid "transactions"
-#~ msgstr "overøfringer"
-
-#~ msgid "Export file format"
-#~ msgstr "Eksport-filformat"
-
-#~ msgid "Edit this project"
-#~ msgstr "Rediger dette prosjektet"
-
-#~ msgid "Download this project's data"
-#~ msgstr "Last ned data for dette prosjektet"
-
-#~ msgid "Type user name here"
-#~ msgstr "Skriv inn brukernavn her"
-
-#~ msgid "No, thanks"
-#~ msgstr "Nei takk"
-
-#~ msgid "Manage your shared <br>expenses, easily"
-#~ msgstr "Behandle dine delte <br>utgifter, enkelt"
-
-#~ msgid "Log to an existing project"
-#~ msgstr "Logg inn i et eksisterende prosjekt"
-
-#~ msgid "log in"
-#~ msgstr "logg inn"
-
-#~ msgid "or create a new one"
-#~ msgstr "eller opprett et nytt"
-
-#~ msgid "let's get started"
-#~ msgstr "la oss komme i gang"
-
-#~ msgid "options"
-#~ msgstr "innstillinger"
-
-#~ msgid "Project settings"
-#~ msgstr "Prosjektinnstillinger"
-
-#~ msgid "This is a free software"
-#~ msgstr "Dette er fri programvare"
-
-#~ msgid "Invite people to join this project!"
-#~ msgstr "Inviter folk til dette prosjektet."
-
-#~ msgid "Added on"
-#~ msgstr "Lagt til"
-
-#~ msgid "Nothing to list yet. You probably want to"
-#~ msgstr "ingenting å liste opp enda. Du ønsker antagelig å"
-
-#~ msgid ""
-#~ "Specify a (comma separated) list of "
-#~ "email adresses you want to notify "
-#~ "about the\n"
-#~ "creation of this budget management "
-#~ "project and we will send them an"
-#~ " email for you."
-#~ msgstr ""
-#~ "Angi en (kommainndelt) liste over "
-#~ "e-postadresser du ønsker å gi nyss "
-#~ "om\n"
-#~ "opprettelsen av dette budsjetthåndteringsprosjektet,"
-#~ " og de vil motta en e-post."
-
-#~ msgid ""
-#~ "If you prefer, you can share the project identifier and the shared\n"
-#~ "password by other communication means. "
-#~ "Or even directly share the following "
-#~ "link:"
-#~ msgstr ""
-#~ "Hvis du foretrekker det, kan du "
-#~ "dele prosjektidentifikatoeren og det delte"
-#~ "\n"
-#~ "passordet på annet vis. Du kan også dele det følgende lenke direkte:"
-
-#~ msgid "A link to reset your password has been sent to your email."
-#~ msgstr ""
-#~ "En lenke for å tilbakestille passordet"
-#~ " har blitt sent til deg per "
-#~ "e-post."
-

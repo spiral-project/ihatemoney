@@ -618,7 +618,7 @@ def add_member():
         if form.validate():
             member = form.save(g.project, Person())
             db.session.commit()
-            flash(_("%(member)s had been added", member=member.name))
+            flash(_("%(member)s has been added", member=member.name))
             return redirect(url_for(".list_bills"))
 
     return render_template("add_member.html", form=form)

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-21 14:18+0200\n"
+"POT-Creation-Date: 2020-04-24 19:59+0200\n"
 "PO-Revision-Date: 2020-02-09 12:01+0000\n"
 "Last-Translator: Muge Niu <mugeniu12138@gmail.com>\n"
 "Language: zh_HANS_CN\n"
@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.7.0\n"
+"Generated-By: Babel 2.8.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -136,7 +136,7 @@ msgstr ""
 msgid "The email %(email)s is not valid"
 msgstr ""
 
-msgid "Person"
+msgid "Participant"
 msgstr ""
 
 msgid "Bill"
@@ -195,7 +195,7 @@ msgid "Your invitations have been sent"
 msgstr ""
 
 #, python-format
-msgid "%(member)s had been added"
+msgid "%(member)s has been added"
 msgstr ""
 
 #, python-format
@@ -740,97 +740,3 @@ msgstr ""
 
 msgid "Period"
 msgstr ""
-
-#~ msgid ""
-#~ "The project identifier is used to "
-#~ "log in and for the URL of "
-#~ "the project. We tried to generate "
-#~ "an identifier for you but a "
-#~ "project with this identifier already "
-#~ "exists. Please create a new identifier"
-#~ " that you will be able to "
-#~ "remember"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Not a valid amount or expression.Only"
-#~ " numbers and + - * / "
-#~ "operatorsare accepted."
-#~ msgstr ""
-
-#~ msgid "What do you want to download ?"
-#~ msgstr "你想下载什么？"
-
-#~ msgid "bills"
-#~ msgstr ""
-
-#~ msgid "transactions"
-#~ msgstr ""
-
-#~ msgid "Export file format"
-#~ msgstr ""
-
-#~ msgid "Edit this project"
-#~ msgstr ""
-
-#~ msgid "Download this project's data"
-#~ msgstr ""
-
-#~ msgid "Type user name here"
-#~ msgstr ""
-
-#~ msgid "No, thanks"
-#~ msgstr ""
-
-#~ msgid "Manage your shared <br>expenses, easily"
-#~ msgstr ""
-
-#~ msgid "Log to an existing project"
-#~ msgstr ""
-
-#~ msgid "log in"
-#~ msgstr ""
-
-#~ msgid "or create a new one"
-#~ msgstr ""
-
-#~ msgid "let's get started"
-#~ msgstr ""
-
-#~ msgid "options"
-#~ msgstr ""
-
-#~ msgid "Project settings"
-#~ msgstr ""
-
-#~ msgid "This is a free software"
-#~ msgstr ""
-
-#~ msgid "Invite people to join this project!"
-#~ msgstr ""
-
-#~ msgid "Added on"
-#~ msgstr ""
-
-#~ msgid "Nothing to list yet. You probably want to"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Specify a (comma separated) list of "
-#~ "email adresses you want to notify "
-#~ "about the\n"
-#~ "creation of this budget management "
-#~ "project and we will send them an"
-#~ " email for you."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "If you prefer, you can share the project identifier and the shared\n"
-#~ "password by other communication means. "
-#~ "Or even directly share the following "
-#~ "link:"
-#~ msgstr ""
-
-#~ msgid "A link to reset your password has been sent to your email."
-#~ msgstr ""
-
