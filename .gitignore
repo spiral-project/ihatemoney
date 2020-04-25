@@ -12,3 +12,4 @@ build
 .env
 .pytest_cache
 ihatemoney/budget.db
+.idea/
