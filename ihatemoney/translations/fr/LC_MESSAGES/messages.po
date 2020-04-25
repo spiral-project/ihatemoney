@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-04-24 19:59+0200\n"
+"POT-Creation-Date: 2020-04-25 12:43+0200\n"
 "PO-Revision-Date: 2020-04-22 22:11+0000\n"
 "Last-Translator: Glandos <bugs-github@antipoul.fr>\n"
 "Language: fr\n"
@@ -23,8 +23,8 @@ msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
-"Ceci n'est pas un montant ou une expression valide. Seuls les nombres et les "
-"opérateurs + - * / sont acceptés."
+"Ceci n'est pas un montant ou une expression valide. Seuls les nombres et "
+"les opérateurs + - * / sont acceptés."
 
 msgid "Project name"
 msgstr "Nom de projet"
@@ -354,37 +354,37 @@ msgid "Download"
 msgstr "Télécharger"
 
 msgid "Disabled Project History"
-msgstr "Historisation du projet désactivée"
+msgstr ""
 
 msgid "Disabled Project History & IP Address Recording"
-msgstr "Historisation du projet et enregistrement des adresses IP désactivés"
+msgstr ""
 
 msgid "Enabled Project History"
-msgstr "Historisation du projet activée"
+msgstr ""
 
 msgid "Disabled IP Address Recording"
-msgstr "Enregistrement des adresses IP désactivé"
+msgstr ""
 
 msgid "Enabled Project History & IP Address Recording"
-msgstr "Historisation du projet et enregistrement des adresses IP activés"
+msgstr ""
 
 msgid "Enabled IP Address Recording"
-msgstr "Enregistrement des adresses IP activé"
+msgstr ""
 
 msgid "History Settings Changed"
-msgstr "Changement des paramètres d’historisation"
+msgstr ""
 
 msgid "changed"
-msgstr "modifié"
+msgstr ""
 
 msgid "from"
-msgstr "depuis"
+msgstr ""
 
 msgid "to"
-msgstr "vers"
+msgstr ""
 
 msgid "Confirm Remove IP Adresses"
-msgstr "Confirmer la suppression des adresses IP"
+msgstr ""
 
 msgid ""
 "Are you sure you want to delete all recorded IP addresses from this "
@@ -392,32 +392,26 @@ msgid ""
 "                The rest of the project history will be unaffected. This "
 "action cannot be undone."
 msgstr ""
-"Êtes vous sûr de supprimer toutes les adresses IP enregistrées dans ce "
-"projet ?\n"
-"Le reste de l’historique du projet restera inchangé. Cette action est "
-"irréversible."
 
 msgid "Close"
-msgstr "Fermer"
+msgstr ""
 
 msgid "Confirm Delete"
-msgstr "Confirmer la suppression"
+msgstr ""
 
 msgid "Delete Confirmation"
-msgstr "Confirmation de suppression"
+msgstr ""
 
 msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
 msgstr ""
-"Êtes vous sûr de supprimer la totalité de l’historique de ce projet ? "
-"Cette action est irréversible."
 
 msgid "Added"
-msgstr "Ajouté"
+msgstr ""
 
 msgid "Removed"
-msgstr "Supprimé"
+msgstr ""
 
 msgid "and"
 msgstr ""
@@ -431,23 +425,23 @@ msgstr "Qui ?"
 msgid "Balance"
 msgstr "Solde"
 
+#, python-format
 msgid ""
-"This project has history disabled. New actions won't appear below. You "
-"can enable history on the"
-msgstr ""
-
-msgid "settings page"
+"\n"
+"            <i>This project has history disabled. New actions won't "
+"appear below. You can enable history on the</i>\n"
+"            <a href=\"%(url)s\">settings page</a>\n"
+"            "
 msgstr ""
 
 msgid ""
-"The table below reflects actions recorded prior to disabling project "
-"history. You can "
-msgstr ""
-
-msgid "clear project history"
-msgstr ""
-
-msgid "to remove them."
+"\n"
+"            <i>The table below reflects actions recorded prior to "
+"disabling project history. You can\n"
+"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
+"data-target=\"#confirm-erase\">clear project history</a> to remove "
+"them.</i></p>\n"
+"            "
 msgstr ""
 
 msgid ""
@@ -476,16 +470,10 @@ msgstr ""
 msgid "Event"
 msgstr ""
 
-msgid "IP address recording can be"
+msgid "IP address recording can be enabled on the settings page"
 msgstr ""
 
-msgid "enabled"
-msgstr ""
-
-msgid "disabled"
-msgstr ""
-
-msgid "on the Settings page"
+msgid "IP address recording can be disabled on the settings page"
 msgstr ""
 
 msgid "From IP"
@@ -512,7 +500,7 @@ msgstr ""
 msgid "reactivated"
 msgstr ""
 
-msgid "renamed"
+msgid "renamed to"
 msgstr ""
 
 msgid "External link changed to"
@@ -915,3 +903,70 @@ msgstr ""
 
 #~ msgid "%(member)s had been added"
 #~ msgstr "%(member)s a bien été ajouté"
+
+#~ msgid "Disabled Project History"
+#~ msgstr "Historisation du projet désactivée"
+
+#~ msgid "Disabled Project History & IP Address Recording"
+#~ msgstr "Historisation du projet et enregistrement des adresses IP désactivés"
+
+#~ msgid "Enabled Project History"
+#~ msgstr "Historisation du projet activée"
+
+#~ msgid "Disabled IP Address Recording"
+#~ msgstr "Enregistrement des adresses IP désactivé"
+
+#~ msgid "Enabled Project History & IP Address Recording"
+#~ msgstr "Historisation du projet et enregistrement des adresses IP activés"
+
+#~ msgid "Enabled IP Address Recording"
+#~ msgstr "Enregistrement des adresses IP activé"
+
+#~ msgid "History Settings Changed"
+#~ msgstr "Changement des paramètres d’historisation"
+
+#~ msgid "changed"
+#~ msgstr "modifié"
+
+#~ msgid "from"
+#~ msgstr "depuis"
+
+#~ msgid "to"
+#~ msgstr "vers"
+
+#~ msgid "Confirm Remove IP Adresses"
+#~ msgstr "Confirmer la suppression des adresses IP"
+
+#~ msgid ""
+#~ "Are you sure you want to delete"
+#~ " all recorded IP addresses from this"
+#~ " project?\n"
+#~ "                The rest of the project"
+#~ " history will be unaffected. This "
+#~ "action cannot be undone."
+#~ msgstr ""
+#~ "Êtes vous sûr de supprimer toutes "
+#~ "les adresses IP enregistrées dans ce "
+#~ "projet ?\n"
+#~ "Le reste de l’historique du projet "
+#~ "restera inchangé. Cette action est "
+#~ "irréversible."
+
+#~ msgid "Close"
+#~ msgstr "Fermer"
+
+#~ msgid "Confirm Delete"
+#~ msgstr "Confirmer la suppression"
+
+#~ msgid "Delete Confirmation"
+#~ msgstr "Confirmation de suppression"
+
+#~ msgid ""
+#~ "Are you sure you want to erase "
+#~ "all history for this project? This "
+#~ "action cannot be undone."
+#~ msgstr ""
+#~ "Êtes vous sûr de supprimer la "
+#~ "totalité de l’historique de ce projet"
+#~ " ? Cette action est irréversible."
+

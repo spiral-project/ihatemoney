@@ -396,23 +396,23 @@ msgstr ""
 msgid "Balance"
 msgstr ""
 
+#, python-format
 msgid ""
-"This project has history disabled. New actions won't appear below. You "
-"can enable history on the"
-msgstr ""
-
-msgid "settings page"
+"\n"
+"            <i>This project has history disabled. New actions won't "
+"appear below. You can enable history on the</i>\n"
+"            <a href=\"%(url)s\">settings page</a>\n"
+"            "
 msgstr ""
 
 msgid ""
-"The table below reflects actions recorded prior to disabling project "
-"history. You can "
-msgstr ""
-
-msgid "clear project history"
-msgstr ""
-
-msgid "to remove them."
+"\n"
+"            <i>The table below reflects actions recorded prior to "
+"disabling project history. You can\n"
+"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
+"data-target=\"#confirm-erase\">clear project history</a> to remove "
+"them.</i></p>\n"
+"            "
 msgstr ""
 
 msgid ""
@@ -441,16 +441,10 @@ msgstr ""
 msgid "Event"
 msgstr ""
 
-msgid "IP address recording can be"
+msgid "IP address recording can be enabled on the settings page"
 msgstr ""
 
-msgid "enabled"
-msgstr ""
-
-msgid "disabled"
-msgstr ""
-
-msgid "on the Settings page"
+msgid "IP address recording can be disabled on the settings page"
 msgstr ""
 
 msgid "From IP"
@@ -477,7 +471,7 @@ msgstr ""
 msgid "reactivated"
 msgstr ""
 
-msgid "renamed"
+msgid "renamed to"
 msgstr ""
 
 msgid "External link changed to"
