@@ -1,4 +1,3 @@
-from flask_babel import gettext as _
 from sqlalchemy_continuum import Operation, parent_class
 
 from ihatemoney.models import BillVersion, Person, PersonVersion, ProjectVersion
