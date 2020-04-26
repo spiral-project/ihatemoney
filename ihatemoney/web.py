@@ -12,7 +12,6 @@ from datetime import datetime
 from functools import wraps
 import json
 import os
-from smtplib import SMTPRecipientsRefused
 
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
@@ -60,6 +59,7 @@ from ihatemoney.utils import (
     list_of_dicts2json,
     render_localized_template,
     same_bill,
+    send_email,
 )
 
 main = Blueprint("main", __name__)
@@ -308,11 +308,17 @@ def create_project():
             msg = Message(
                 message_title, body=message_body, recipients=[project.contact_email]
             )
-            try:
-                current_app.mail.send(msg)
-            except SMTPRecipientsRefused:
-                flash(_("Error while sending reminder email"), category="danger")
-
+            success = send_email(msg, _("A reminder email has just been sent to you"))
+            if not success:
+                # Display the error as a simple "info" alert, because it's
+                # not critical and doesn't prevent using the project.
+                flash(
+                    _(
+                        "We tried to send you an reminder email, but there was an error. "
+                        "You can still use the project normally."
+                    ),
+                    category="info",
+                )
             # redirect the user to the next step (invite)
             flash(_("The project identifier is %(project)s", project=project.id))
             return redirect(url_for(".list_bills", project_id=project.id))
@@ -328,16 +334,21 @@ def remind_password():
             # get the project
             project = Project.query.get(form.id.data)
             # send a link to reset the password
-            current_app.mail.send(
-                Message(
-                    "password recovery",
-                    body=render_localized_template(
-                        "password_reminder", project=project
-                    ),
-                    recipients=[project.contact_email],
-                )
+            remind_message = Message(
+                "password recovery",
+                body=render_localized_template("password_reminder", project=project),
+                recipients=[project.contact_email],
             )
-            return redirect(url_for(".password_reminder_sent"))
+            success = send_email(
+                remind_message,
+                _("A password reminder email has just been sent to you"),
+                _(
+                    "Sorry, there was an error while sending you an email with password reset instructions. "
+                    "Please check the email configuration of the server or contact the administrator."
+                ),
+            )
+            if success:
+                return redirect(url_for(".password_reminder_sent"))
 
     return render_template("password_reminder.html", form=form)
 
@@ -585,9 +596,16 @@ def invite():
                 body=message_body,
                 recipients=[email.strip() for email in form.emails.data.split(",")],
             )
-            current_app.mail.send(msg)
-            flash(_("Your invitations have been sent"))
-            return redirect(url_for(".list_bills"))
+            success = send_email(
+                msg,
+                _("Your invitations have been sent"),
+                _(
+                    "Sorry, there was an error while trying to send the invitation emails. "
+                    "Please check the email configuration of the server or contact the administrator."
+                ),
+            )
+            if success:
+                return redirect(url_for(".list_bills"))
 
     return render_template("send_invites.html", form=form)
 
