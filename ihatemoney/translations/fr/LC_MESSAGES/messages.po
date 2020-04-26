@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-10-01 21:48+0200\n"
-"PO-Revision-Date: 2019-10-07 22:56+0000\n"
-"Last-Translator: Alexis Metaireau <alexis@notmyidea.org>\n"
+"POT-Creation-Date: 2020-04-25 13:02+0200\n"
+"PO-Revision-Date: 2020-04-25 11:14+0000\n"
+"Last-Translator: Rémy Hubscher <hubscher.remy@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/fr/>\n"
 "Language: fr\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9-dev\n"
-"Generated-By: Babel 2.7.0\n"
+"X-Generator: Weblate 4.0.2-dev\n"
+"Generated-By: Babel 2.8.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
-"Ceci n'est pas pas un montant ou une expression valide. Seuls les nombres"
-" et les opérateurs + - * / sont acceptés."
+"Ceci n'est pas un montant ou une expression valide. Seuls les nombres et "
+"les opérateurs + - * / sont acceptés."
 
 msgid "Project name"
 msgstr "Nom de projet"
@@ -35,6 +35,18 @@ msgstr "Code d’accès"
 
 msgid "Email"
 msgstr "Email"
+
+msgid "Enable project history"
+msgstr "Activer l'historique de projet"
+
+msgid "Use IP tracking for project history"
+msgstr "Collecter les adresses IP dans l'historique de projet"
+
+msgid "Import previously exported JSON file"
+msgstr "Importer un fichier JSON précédemment exporté"
+
+msgid "Import"
+msgstr "Importer"
 
 msgid "Project identifier"
 msgstr "Identifiant du projet"
@@ -132,6 +144,15 @@ msgstr "Envoyer les invitations"
 msgid "The email %(email)s is not valid"
 msgstr "L’email %(email)s est invalide"
 
+msgid "Participant"
+msgstr "Participant"
+
+msgid "Bill"
+msgstr "Facture"
+
+msgid "Project"
+msgstr "Projet"
+
 msgid "Too many failed login attempts, please retry later."
 msgstr "Trop d'échecs d’authentification successifs, veuillez réessayer plus tard."
 
@@ -167,6 +188,12 @@ msgstr "Project inconnu"
 msgid "Password successfully reset."
 msgstr "Le mot de passe a été changé avec succès."
 
+msgid "Project successfully uploaded"
+msgstr "Le projet a été correctement importé"
+
+msgid "Invalid JSON"
+msgstr "Le fichier JSON est invalide"
+
 msgid "Project successfully deleted"
 msgstr "Projet supprimé"
 
@@ -178,8 +205,8 @@ msgid "Your invitations have been sent"
 msgstr "Vos invitations ont bien été envoyées"
 
 #, python-format
-msgid "%(member)s had been added"
-msgstr "%(member)s a bien été ajouté"
+msgid "%(member)s has been added"
+msgstr "%(member)s a été ajouté"
 
 #, python-format
 msgid "%(name)s is part of this project again"
@@ -234,9 +261,6 @@ msgstr " ?"
 msgid "Create a new project"
 msgstr "Créer un nouveau projet"
 
-msgid "Project"
-msgstr "Projets"
-
 msgid "Number of members"
 msgstr "Nombre de membres"
 
@@ -258,6 +282,9 @@ msgstr "éditer"
 msgid "delete"
 msgstr "supprimer"
 
+msgid "see"
+msgstr "voir"
+
 msgid "The Dashboard is currently deactivated."
 msgstr "Le tableau de bord est actuellement désactivée."
 
@@ -266,6 +293,12 @@ msgstr "c’est sûr ?"
 
 msgid "Edit project"
 msgstr "Éditer le projet"
+
+msgid "Import JSON"
+msgstr "Import JSON"
+
+msgid "Choose file"
+msgstr "Choisir un fichier"
 
 msgid "Download project's data"
 msgstr "Télécharger les données du projet"
@@ -287,6 +320,9 @@ msgstr "Vous ne vous souvenez plus du code d’accès ?"
 
 msgid "Cancel"
 msgstr "Annuler"
+
+msgid "Privacy Settings"
+msgstr "Vie privée"
 
 msgid "Edit the project"
 msgstr "Éditer le projet"
@@ -317,6 +353,202 @@ msgstr "Envoyer les invitations"
 
 msgid "Download"
 msgstr "Télécharger"
+
+msgid "Disabled Project History"
+msgstr "Désactiver l'historique du projet"
+
+msgid "Disabled Project History & IP Address Recording"
+msgstr "Désactiver l'historique du projet et l'enregistrement des adresses IP"
+
+msgid "Enabled Project History"
+msgstr "Activer l'historique du projet"
+
+msgid "Disabled IP Address Recording"
+msgstr "Désactiver l'enregistrement des adresses IP"
+
+msgid "Enabled Project History & IP Address Recording"
+msgstr "Activer l'historique du projet et l’enregistrement des adresses IP"
+
+msgid "Enabled IP Address Recording"
+msgstr "Activer l'enregistrement des adresses IP"
+
+msgid "History Settings Changed"
+msgstr "Paramètres d'historique modifiés"
+
+msgid "changed"
+msgstr "modifié"
+
+msgid "from"
+msgstr "du"
+
+msgid "to"
+msgstr "au"
+
+msgid "Confirm Remove IP Adresses"
+msgstr "Confirmer la suppression des adresses IP"
+
+msgid ""
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+"Êtes-vous sur de vouloir supprimer toutes les adresses IP enregistrées pour "
+"ce projet ?\n"
+"Le reste de l'historique ne sera pas affecté. Cette action n'est pas "
+"réversible."
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Confirm Delete"
+msgstr "Confirmer la suppression"
+
+msgid "Delete Confirmation"
+msgstr "Confirmation de suppression"
+
+msgid ""
+"Are you sure you want to erase all history for this project? This action "
+"cannot be undone."
+msgstr ""
+"Êtes-vous sur de vouloir supprimer tout l'historique du projet ? Cette "
+"action n'est pas réversible."
+
+msgid "Added"
+msgstr "Ajouté"
+
+msgid "Removed"
+msgstr "Supprimé"
+
+msgid "and"
+msgstr "et"
+
+msgid "owers list"
+msgstr "Liste des débiteurs"
+
+msgid "Who?"
+msgstr "Qui ?"
+
+msgid "Balance"
+msgstr "Solde"
+
+#, python-format
+msgid ""
+"\n"
+"            <i>This project has history disabled. New actions won't "
+"appear below. You can enable history on the</i>\n"
+"            <a href=\"%(url)s\">settings page</a>\n"
+"            "
+msgstr ""
+"\n"
+"            <i>L'historique de ce projet a été désactivé. Les nouvelles "
+"actions n'apparaîtront pas ci-dessous. Vous pouvez réactiver l'historique"
+" du projet dans les </i>\n"
+"            <a href=\"%(url)s\">paramètres du projet</a>\n"
+"            "
+
+msgid ""
+"\n"
+"            <i>The table below reflects actions recorded prior to "
+"disabling project history. You can\n"
+"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
+"data-target=\"#confirm-erase\">clear project history</a> to remove "
+"them.</i></p>\n"
+"            "
+msgstr ""
+"\n"
+"            <i>Le tableau ci-dessous liste les actions enregistrées avant"
+" la désactivation de l'historique du projet. Vous pouvez\n"
+"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
+"data-target=\"#confirm-erase\">clear project history</a> cliquer ici pour"
+" les supprimer.</i></p>\n"
+"            "
+
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr ""
+"Certaines entrées de l'historique contiennent une adresse IP, bien que ce"
+" projet ait désactivé l'enregistrement des adresses IP. "
+
+msgid "Delete stored IP addresses"
+msgstr "Supprimer toutes les adresses IP enregistrées"
+
+msgid "No history to erase"
+msgstr "Aucun historique à supprimer"
+
+msgid "Clear Project History"
+msgstr "Supprimer les entrées de l'historique du projet"
+
+msgid "No IP Addresses to erase"
+msgstr "Aucune adresse IP à supprimer"
+
+msgid "Delete Stored IP Addresses"
+msgstr "Supprimer les adresses IP enregistrées"
+
+msgid "Time"
+msgstr "Heure"
+
+msgid "Event"
+msgstr "Évènement"
+
+msgid "IP address recording can be enabled on the settings page"
+msgstr ""
+"L'enregistrement des adresses IP peut-être activé dans les paramètres de "
+"la page"
+
+msgid "IP address recording can be disabled on the settings page"
+msgstr ""
+"L'enregistrement des adresses IP peut-être désactivé dans les paramètres "
+"de la page"
+
+msgid "From IP"
+msgstr "Depuis l'IP"
+
+msgid "added"
+msgstr "ajouté"
+
+msgid "Project private code changed"
+msgstr "Le mot de passe du projet a été modifié"
+
+msgid "Project renamed to"
+msgstr "Le projet a été renommé"
+
+msgid "Project contact email changed to"
+msgstr "L'adresse email de contact du projet a été modifié en"
+
+msgid "Project settings modified"
+msgstr "Les paramètres du projet ont été modifiés"
+
+msgid "deactivated"
+msgstr "désactivé"
+
+msgid "reactivated"
+msgstr "réactivé"
+
+msgid "renamed to"
+msgstr "renommé en"
+
+msgid "External link changed to"
+msgstr "Le lien d'accès a été modifié en"
+
+msgid "Amount"
+msgstr "Montant"
+
+msgid "modified"
+msgstr "modifié"
+
+msgid "removed"
+msgstr "supprimé"
+
+msgid "changed in a unknown way"
+msgstr "modifié d'une manière inconnue"
+
+msgid "Nothing to list"
+msgstr "Rien à afficher"
+
+msgid "Someone probably cleared the project history."
+msgstr "Quelqu'un a probablement vidé l'historique du projet."
 
 msgid "Manage your shared <br />expenses, easily"
 msgstr "Gérez vos dépenses <br />partagées, facilement"
@@ -366,6 +598,9 @@ msgstr "Remboursements"
 
 msgid "Statistics"
 msgstr "Statistiques"
+
+msgid "History"
+msgstr "Historique"
 
 msgid "Settings"
 msgstr "Options"
@@ -424,6 +659,12 @@ msgstr "Vous devriez commencer par ajouter des participants"
 msgid "Add a new bill"
 msgstr "Nouvelle facture"
 
+msgid "Newer bills"
+msgstr "Nouvelles factures"
+
+msgid "Older bills"
+msgstr "Ancienne factures"
+
 msgid "When?"
 msgstr "Quand ?"
 
@@ -449,9 +690,6 @@ msgstr "Tout le monde sauf %(excluded)s"
 
 msgid "each"
 msgstr "chacun"
-
-msgid "see"
-msgstr "voir"
 
 msgid "No bills"
 msgstr "Pas encore de factures"
@@ -527,27 +765,17 @@ msgstr "Qui doit payer ?"
 msgid "To whom?"
 msgstr "Pour qui ?"
 
-msgid "Who?"
-msgstr "Qui ?"
-
 msgid "Paid"
 msgstr "A payé"
 
 msgid "Spent"
 msgstr "A dépensé"
 
-msgid "Balance"
-msgstr "Solde"
+msgid "Expenses by Month"
+msgstr "Dépenses par mois"
 
-msgid "Import"
-msgstr "Importer"
-
-msgid "Project successfully uploaded"
-msgstr "Le projet a été correctement importé"
-
-msgid "Invalid JSON"
-msgstr "Le fichier JSON est invalide"
-
+msgid "Period"
+msgstr "Période"
 
 #~ msgid ""
 #~ "The project identifier is used to "
@@ -695,3 +923,72 @@ msgstr "Le fichier JSON est invalide"
 
 #~ msgid "A link to reset your password has been sent to your email."
 #~ msgstr "Un lien pour changer votre mot de passe vous a été envoyé par mail."
+
+#~ msgid "%(member)s had been added"
+#~ msgstr "%(member)s a bien été ajouté"
+
+#~ msgid "Disabled Project History"
+#~ msgstr "Historisation du projet désactivée"
+
+#~ msgid "Disabled Project History & IP Address Recording"
+#~ msgstr "Historisation du projet et enregistrement des adresses IP désactivés"
+
+#~ msgid "Enabled Project History"
+#~ msgstr "Historisation du projet activée"
+
+#~ msgid "Disabled IP Address Recording"
+#~ msgstr "Enregistrement des adresses IP désactivé"
+
+#~ msgid "Enabled Project History & IP Address Recording"
+#~ msgstr "Historisation du projet et enregistrement des adresses IP activés"
+
+#~ msgid "Enabled IP Address Recording"
+#~ msgstr "Enregistrement des adresses IP activé"
+
+#~ msgid "History Settings Changed"
+#~ msgstr "Changement des paramètres d’historisation"
+
+#~ msgid "changed"
+#~ msgstr "modifié"
+
+#~ msgid "from"
+#~ msgstr "depuis"
+
+#~ msgid "to"
+#~ msgstr "vers"
+
+#~ msgid "Confirm Remove IP Adresses"
+#~ msgstr "Confirmer la suppression des adresses IP"
+
+#~ msgid ""
+#~ "Are you sure you want to delete"
+#~ " all recorded IP addresses from this"
+#~ " project?\n"
+#~ "                The rest of the project"
+#~ " history will be unaffected. This "
+#~ "action cannot be undone."
+#~ msgstr ""
+#~ "Êtes vous sûr de supprimer toutes "
+#~ "les adresses IP enregistrées dans ce "
+#~ "projet ?\n"
+#~ "Le reste de l’historique du projet "
+#~ "restera inchangé. Cette action est "
+#~ "irréversible."
+
+#~ msgid "Close"
+#~ msgstr "Fermer"
+
+#~ msgid "Confirm Delete"
+#~ msgstr "Confirmer la suppression"
+
+#~ msgid "Delete Confirmation"
+#~ msgstr "Confirmation de suppression"
+
+#~ msgid ""
+#~ "Are you sure you want to erase "
+#~ "all history for this project? This "
+#~ "action cannot be undone."
+#~ msgstr ""
+#~ "Êtes vous sûr de supprimer la "
+#~ "totalité de l’historique de ce projet"
+#~ " ? Cette action est irréversible."

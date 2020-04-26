@@ -15,36 +15,46 @@ import sqlalchemy as sa
 
 
 def upgrade():
-    alter_table_batches = [
-        op.batch_alter_table(
-            "person", recreate="always", table_kwargs={"sqlite_autoincrement": True}
-        ),
-        op.batch_alter_table(
-            "bill", recreate="always", table_kwargs={"sqlite_autoincrement": True}
-        ),
-        op.batch_alter_table(
-            "billowers", recreate="always", table_kwargs={"sqlite_autoincrement": True}
-        ),
-    ]
+    bind = op.get_bind()
+    if bind.engine.name == "sqlite":
+        alter_table_batches = [
+            op.batch_alter_table(
+                "person", recreate="always", table_kwargs={"sqlite_autoincrement": True}
+            ),
+            op.batch_alter_table(
+                "bill", recreate="always", table_kwargs={"sqlite_autoincrement": True}
+            ),
+            op.batch_alter_table(
+                "billowers",
+                recreate="always",
+                table_kwargs={"sqlite_autoincrement": True},
+            ),
+        ]
 
-    for batch_op in alter_table_batches:
-        with batch_op:
-            pass
+        for batch_op in alter_table_batches:
+            with batch_op:
+                pass
 
 
 def downgrade():
-    alter_table_batches = [
-        op.batch_alter_table(
-            "person", recreate="always", table_kwargs={"sqlite_autoincrement": False}
-        ),
-        op.batch_alter_table(
-            "bill", recreate="always", table_kwargs={"sqlite_autoincrement": False}
-        ),
-        op.batch_alter_table(
-            "billowers", recreate="always", table_kwargs={"sqlite_autoincrement": False}
-        ),
-    ]
+    bind = op.get_bind()
+    if bind.engine.name == "sqlite":
+        alter_table_batches = [
+            op.batch_alter_table(
+                "person",
+                recreate="always",
+                table_kwargs={"sqlite_autoincrement": False},
+            ),
+            op.batch_alter_table(
+                "bill", recreate="always", table_kwargs={"sqlite_autoincrement": False}
+            ),
+            op.batch_alter_table(
+                "billowers",
+                recreate="always",
+                table_kwargs={"sqlite_autoincrement": False},
+            ),
+        ]
 
-    for batch_op in alter_table_batches:
-        with batch_op:
-            pass
+        for batch_op in alter_table_batches:
+            with batch_op:
+                pass

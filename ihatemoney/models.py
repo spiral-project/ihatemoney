@@ -1,32 +1,28 @@
 from collections import defaultdict
-
 from datetime import datetime
 
-import sqlalchemy
-from flask_sqlalchemy import SQLAlchemy, BaseQuery
-from flask import g, current_app
-
 from debts import settle
-from sqlalchemy import orm
-from sqlalchemy.sql import func
+from flask import current_app, g
+from flask_sqlalchemy import BaseQuery, SQLAlchemy
 from itsdangerous import (
-    TimedJSONWebSignatureSerializer,
-    URLSafeSerializer,
     BadSignature,
     SignatureExpired,
+    TimedJSONWebSignatureSerializer,
+    URLSafeSerializer,
 )
-from sqlalchemy_continuum import make_versioned
+import sqlalchemy
+from sqlalchemy import orm
+from sqlalchemy.sql import func
+from sqlalchemy_continuum import make_versioned, version_class
 from sqlalchemy_continuum.plugins import FlaskPlugin
-from sqlalchemy_continuum import version_class
 
 from ihatemoney.patch_sqlalchemy_continuum import PatchedBuilder
 from ihatemoney.versioning import (
-    LoggingMode,
     ConditionalVersioningManager,
-    version_privacy_predicate,
+    LoggingMode,
     get_ip_if_allowed,
+    version_privacy_predicate,
 )
-
 
 make_versioned(
     user_cls=None,
@@ -327,7 +323,7 @@ class Project(db.Model):
         return self.name
 
     def __repr__(self):
-        return "<Project %s>" % self.name
+        return f"<Project {self.name}>"
 
 
 class Person(db.Model):
@@ -385,7 +381,7 @@ class Person(db.Model):
         return self.name
 
     def __repr__(self):
-        return "<Person %s for project %s>" % (self.name, self.project.name)
+        return f"<Person {self.name} for project {self.project.name}>"
 
 
 # We need to manually define a join table for m2m relations
@@ -466,13 +462,12 @@ class Bill(db.Model):
             return 0
 
     def __str__(self):
-        return "%s for %s" % (self.amount, self.what)
+        return self.what
 
     def __repr__(self):
-        return "<Bill of %s from %s for %s>" % (
-            self.amount,
-            self.payer,
-            ", ".join([o.name for o in self.owers]),
+        return (
+            f"<Bill of {self.amount} from {self.payer} for "
+            f"{', '.join([o.name for o in self.owers])}>"
         )
 
 

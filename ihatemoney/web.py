@@ -8,25 +8,27 @@ Basically, this blueprint takes care of the authentication and provides
 some shortcuts to make your life better when coding (see `pull_project`
 and `add_project_id` for a quick overview)
 """
+from datetime import datetime
+from functools import wraps
 import json
 import os
-from functools import wraps
 from smtplib import SMTPRecipientsRefused
 
 from dateutil.parser import parse
+from dateutil.relativedelta import relativedelta
 from flask import (
-    abort,
     Blueprint,
+    abort,
     current_app,
     flash,
     g,
     redirect,
     render_template,
     request,
-    session,
-    url_for,
     send_file,
     send_from_directory,
+    session,
+    url_for,
 )
 from flask_babel import get_locale, gettext as _
 from flask_mail import Message
@@ -42,23 +44,21 @@ from ihatemoney.forms import (
     InviteForm,
     MemberForm,
     PasswordReminder,
-    ResetPasswordForm,
     ProjectForm,
-    get_billform_for,
+    ResetPasswordForm,
     UploadForm,
+    get_billform_for,
 )
-from ihatemoney.history import get_history_queries, get_history
-from ihatemoney.models import db, Project, Person, Bill, LoggingMode
+from ihatemoney.history import get_history, get_history_queries
+from ihatemoney.models import Bill, LoggingMode, Person, Project, db
 from ihatemoney.utils import (
-    Redirect303,
-    list_of_dicts2json,
-    list_of_dicts2csv,
     LoginThrottler,
+    Redirect303,
     get_members,
+    list_of_dicts2csv,
+    list_of_dicts2json,
     same_bill,
 )
-from datetime import datetime
-from dateutil.relativedelta import relativedelta
 
 main = Blueprint("main", __name__)
 
@@ -301,9 +301,7 @@ def create_project():
                 project=g.project.name,
             )
 
-            message_body = render_template(
-                "reminder_mail.%s.j2" % get_locale().language
-            )
+            message_body = render_template(f"reminder_mail.{get_locale().language}.j2")
 
             msg = Message(
                 message_title, body=message_body, recipients=[project.contact_email]
@@ -337,7 +335,7 @@ def remind_password():
             # get the project
             project = Project.query.get(form.id.data)
             # send a link to reset the password
-            password_reminder = "password_reminder.%s.j2" % get_locale().language
+            password_reminder = f"password_reminder.{get_locale().language}.j2"
             current_app.mail.send(
                 Message(
                     "password recovery",
@@ -521,7 +519,7 @@ def export_project(file, format):
 
     return send_file(
         file2export,
-        attachment_filename="%s-%s.%s" % (g.project.id, file, format),
+        attachment_filename=f"{g.project.id}-{file}.{format}",
         as_attachment=True,
     )
 
@@ -571,7 +569,7 @@ def invite():
             # send the email
 
             message_body = render_template(
-                "invitation_mail.%s.j2" % get_locale().language
+                f"invitation_mail.{get_locale().language}.j2"
             )
 
             message_title = _(
@@ -621,7 +619,7 @@ def add_member():
         if form.validate():
             member = form.save(g.project, Person())
             db.session.commit()
-            flash(_("%(member)s had been added", member=member.name))
+            flash(_("%(member)s has been added", member=member.name))
             return redirect(url_for(".list_bills"))
 
     return render_template("add_member.html", form=form)

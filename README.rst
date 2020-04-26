@@ -5,6 +5,10 @@ I hate money
    :target: https://travis-ci.org/spiral-project/ihatemoney
    :alt: Travis CI Build Status
 
+.. image:: https://hosted.weblate.org/widgets/i-hate-money/-/i-hate-money/svg-badge.svg
+   :target: https://hosted.weblate.org/engage/i-hate-money/?utm_source=widget
+   :alt: Translation status from Weblate
+
 *I hate money* is a web application made to ease shared budget management.
 It keeps track of who bought what, when, and for whom; and helps to settle the
 bills.
@@ -21,7 +25,7 @@ encouraged to do so.
 Requirements
 ============
 
-* **Python**: 3.5, 3.6, 3.7.
+* **Python**: 3.6, 3.7, 3.8.
 * **Backends**: MySQL, PostgreSQL, SQLite, Memory.
 
 Contributing
@@ -31,3 +35,9 @@ Do you wish to contribute to IHateMoney? Fantastic! There's a lot of very
 useful help on the official `contributing
 <https://ihatemoney.readthedocs.io/en/latest/contributing.html>`_ page.
 
+Translation status
+==================
+
+.. image:: https://hosted.weblate.org/widgets/i-hate-money/-/i-hate-money/multi-blue.svg
+   :target: https://hosted.weblate.org/engage/i-hate-money/?utm_source=widget
+   :alt: Translation status for each language

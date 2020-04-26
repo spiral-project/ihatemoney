@@ -17,7 +17,7 @@ Requirements
 
 «Ihatemoney» depends on:
 
-* **Python**: either 3.5, 3.6 or 3.7 will work.
+* **Python**: either 3.6, 3.7 or 3.8 will work.
 * **A Backend**: to choose among MySQL, PostgreSQL, SQLite or Memory.
 * **Virtualenv** (recommended): `virtualenv` package under Debian/Ubuntu.
 

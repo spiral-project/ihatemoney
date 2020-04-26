@@ -1,19 +1,17 @@
-import re
-import os
 import ast
-import operator
-from enum import Enum
-
-from io import BytesIO, StringIO
-
-import jinja2
-from json import dumps, JSONEncoder
-from flask import redirect, current_app
-from babel import Locale
-from werkzeug.routing import HTTPException, RoutingException
-from datetime import datetime, timedelta
-
 import csv
+from datetime import datetime, timedelta
+from enum import Enum
+from io import BytesIO, StringIO
+from json import JSONEncoder, dumps
+import operator
+import os
+import re
+
+from babel import Locale
+from flask import current_app, redirect
+import jinja2
+from werkzeug.routing import HTTPException, RoutingException
 
 
 def slugify(value):
@@ -99,7 +97,7 @@ def static_include(filename):
 
 
 def locale_from_iso(iso_code):
-    return Locale(iso_code)
+    return Locale.parse(iso_code)
 
 
 def list_of_dicts2json(dict_to_convert):

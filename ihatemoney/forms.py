@@ -1,29 +1,27 @@
+from datetime import datetime
+from re import match
+
+import email_validator
+from flask import request
+from flask_babel import lazy_gettext as _
+from flask_wtf.file import FileAllowed, FileField, FileRequired
 from flask_wtf.form import FlaskForm
+from jinja2 import Markup
+from werkzeug.security import check_password_hash, generate_password_hash
 from wtforms.fields.core import SelectField, SelectMultipleField
 from wtforms.fields.html5 import DateField, DecimalField, URLField
-from wtforms.fields.simple import PasswordField, SubmitField, StringField, BooleanField, HiddenField
+from wtforms.fields.simple import BooleanField, HiddenField, PasswordField, StringField, SubmitField
 from wtforms.validators import (
-    Email,
     DataRequired,
-    ValidationError,
+    Email,
     EqualTo,
     NumberRange,
     Optional,
+    ValidationError,
 )
-from flask_wtf.file import FileField, FileAllowed, FileRequired
 
-from flask_babel import lazy_gettext as _
-from flask import request
-from werkzeug.security import generate_password_hash, check_password_hash
-
-from datetime import datetime
-from re import match
-from jinja2 import Markup
-
-import email_validator
-
-from ihatemoney.models import Project, Person, LoggingMode
-from ihatemoney.utils import slugify, eval_arithmetic_expression
+from ihatemoney.models import LoggingMode, Person, Project
+from ihatemoney.utils import eval_arithmetic_expression, slugify
 
 
 def strip_filter(string):

@@ -11,4 +11,5 @@ build
 .vscode
 .env
 .pytest_cache
-
+ihatemoney/budget.db
+.idea/

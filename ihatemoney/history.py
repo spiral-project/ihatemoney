@@ -1,15 +1,7 @@
 from flask_babel import gettext as _
-from sqlalchemy_continuum import (
-    Operation,
-    parent_class,
-)
+from sqlalchemy_continuum import Operation, parent_class
 
-from ihatemoney.models import (
-    PersonVersion,
-    ProjectVersion,
-    BillVersion,
-    Person,
-)
+from ihatemoney.models import BillVersion, Person, PersonVersion, ProjectVersion
 
 
 def get_history_queries(project):
@@ -78,7 +70,7 @@ def get_history(project, human_readable_names=True):
     for version_list in [person_query.all(), project_query.all(), bill_query.all()]:
         for version in version_list:
             object_type = {
-                "Person": _("Person"),
+                "Person": _("Participant"),
                 "Bill": _("Bill"),
                 "Project": _("Project"),
             }[parent_class(type(version)).__name__]
