@@ -3,170 +3,177 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-26 19:50+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2020-04-26 20:48+0000\n"
+"Last-Translator: Vsevolod <sevauserg.com@gmail.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.5.0\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.0.2-dev\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
+"Недопустимая сумма выражения. Принимаются только цифры и операторы + - * / ."
 
 msgid "Project name"
-msgstr ""
+msgstr "Имя проекта"
 
 msgid "Private code"
-msgstr ""
+msgstr "Приватный код"
 
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 msgid "Enable project history"
-msgstr ""
+msgstr "Включить историю проекта"
 
 msgid "Use IP tracking for project history"
-msgstr ""
+msgstr "Использовать отслеживание по IP для истории проекта"
 
 msgid "Import previously exported JSON file"
-msgstr ""
+msgstr "Импортировать ранее экспортированный JSON файл"
 
 msgid "Import"
-msgstr ""
+msgstr "Импортировать"
 
 msgid "Project identifier"
-msgstr ""
+msgstr "Идентификатор проекта"
 
 msgid "Create the project"
-msgstr ""
+msgstr "Создать проект"
 
 #, python-format
 msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
+"Проект с идентификатором (\"%(project)s\") уже существует. Пожалуйста, "
+"выберете новый идентификатор"
 
 msgid "Get in"
-msgstr ""
+msgstr "Войти"
 
 msgid "Admin password"
-msgstr ""
+msgstr "Пароль администратора"
 
 msgid "Send me the code by email"
-msgstr ""
+msgstr "Отправить код мне на Email"
 
 msgid "This project does not exists"
-msgstr ""
+msgstr "Такой проект не существует"
 
 msgid "Password mismatch"
-msgstr ""
+msgstr "Пароли не совпадают"
 
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 msgid "Password confirmation"
-msgstr ""
+msgstr "Подтвердите пароль"
 
 msgid "Reset password"
-msgstr ""
+msgstr "Восстановить пароль"
 
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 msgid "What?"
-msgstr ""
+msgstr "Что?"
 
 msgid "Payer"
-msgstr ""
+msgstr "Плательщик"
 
 msgid "Amount paid"
-msgstr ""
+msgstr "Уплаченная сумма"
 
 msgid "External link"
-msgstr ""
+msgstr "Внешняя ссылка"
 
 msgid "A link to an external document, related to this bill"
-msgstr ""
+msgstr "Ссылка на внешний документ, относящийся к этому счёту"
 
 msgid "For whom?"
-msgstr ""
+msgstr "Кому?"
 
 msgid "Submit"
-msgstr ""
+msgstr "Отправить"
 
 msgid "Submit and add a new one"
-msgstr ""
+msgstr "Отправить и добавить новый"
 
 msgid "Bills can't be null"
-msgstr ""
+msgstr "Счета не могут быть нулевыми"
 
 msgid "Name"
-msgstr ""
+msgstr "Имя"
 
 msgid "Weights should be positive"
-msgstr ""
+msgstr "Вес должен быть положительным"
 
 msgid "Weight"
-msgstr ""
+msgstr "Вес"
 
 msgid "Add"
-msgstr ""
+msgstr "Добавить"
 
 msgid "User name incorrect"
-msgstr ""
+msgstr "Неправильное имя пользователя"
 
 msgid "This project already have this member"
-msgstr ""
+msgstr "В этом проекте уже есть такой участник"
 
 msgid "People to notify"
 msgstr ""
 
 msgid "Send invites"
-msgstr ""
+msgstr "Отправить приглашения"
 
 #, python-format
 msgid "The email %(email)s is not valid"
-msgstr ""
+msgstr "Email %(email)s не правильный"
 
 msgid "Participant"
-msgstr ""
+msgstr "Участник"
 
 msgid "Bill"
-msgstr ""
+msgstr "Счёт"
 
 msgid "Project"
-msgstr ""
+msgstr "Проект"
 
 msgid "Too many failed login attempts, please retry later."
-msgstr ""
+msgstr "Слишком много неудачных попыток входа, попробуйте позже."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr ""
+"Этот пароль администратора неправильный. Осталось только %(num)d попыток."
 
 msgid "You either provided a bad token or no project identifier."
 msgstr ""
 
 msgid "This private code is not the right one"
-msgstr ""
+msgstr "Этот приватный код не подходит"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
+msgstr "Вы только что создали '%(project)s' , чтобы разделить расходы"
 
 #, python-format
 msgid "%(msg_compl)sThe project identifier is %(project)s"
-msgstr ""
+msgstr "%(msg_compl)sИдентификатор проекта это %(project)s"
 
 msgid "No token provided"
-msgstr ""
+msgstr "Не предоставлен токен"
 
 msgid "Invalid token"
-msgstr ""
+msgstr "Неправильный токен"
 
 msgid "Unknown project"
 msgstr ""
