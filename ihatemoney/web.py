@@ -309,19 +309,10 @@ def create_project():
             try:
                 current_app.mail.send(msg)
             except SMTPRecipientsRefused:
-                msg_compl = "Problem sending mail. "
-                # TODO: destroy the project and cancel instead?
-            else:
-                msg_compl = ""
+                flash(_("Error while sending reminder email"), category="danger")
 
             # redirect the user to the next step (invite)
-            flash(
-                _(
-                    "%(msg_compl)sThe project identifier is %(project)s",
-                    msg_compl=msg_compl,
-                    project=project.id,
-                )
-            )
+            flash(_("The project identifier is %(project)s", project=project.id))
             return redirect(url_for(".list_bills", project_id=project.id))
 
     return render_template("create_project.html", form=form)
@@ -393,7 +384,7 @@ def edit_project():
 
             return redirect(url_for("main.list_bills"))
         except ValueError:
-            flash(_("Invalid JSON"), category="error")
+            flash(_("Invalid JSON"), category="danger")
 
     # Edit form
     if edit_form.validate_on_submit():

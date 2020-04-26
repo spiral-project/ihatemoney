@@ -125,9 +125,13 @@
   </div>
 
   <div class="messages">
-      {% for message in get_flashed_messages() %}
-      <div class="flash alert alert-success">{{ message }}</div>
-      {% endfor %}
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+      {% if category == "message" %}{# Default category for flash(msg) #}
+        <div class="flash alert alert-success">{{ message }}</div>
+      {% else %}
+        <div class="flash alert alert-{{ category }}">{{ message }}</div>
+      {% endif %}
+    {% endfor %}
   </div>
 
   {% block footer %}
