@@ -314,7 +314,6 @@ def localize_list(list, surround_with_em=True):
     :return: A locally formatted list of objects
     """
     list = list[:]
-    one = _("{single_object}")
     two = _("{dual_object_0} and {dual_object_1}")
     start = _("{start_object}, {next_object}")
     middle = _("{previous_object}, {next_object}")
@@ -322,8 +321,10 @@ def localize_list(list, surround_with_em=True):
 
     item_wrapper = em_surround if surround_with_em else lambda x: x
 
+    if len(list) == 0:
+        return ""
     if len(list) == 1:
-        return one.format(single_object=item_wrapper(list[0]))
+        return str(item_wrapper(list[0]))
     elif len(list) == 2:
         return two.format(
             dual_object_0=item_wrapper(list[0]), dual_object_1=item_wrapper(list[1])
