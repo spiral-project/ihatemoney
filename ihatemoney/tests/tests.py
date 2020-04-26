@@ -16,7 +16,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from ihatemoney import history, models, utils
 from ihatemoney.manage import DeleteProject, GenerateConfig, GeneratePasswordHash
 from ihatemoney.run import create_app, db, load_configuration
-from ihatemoney.utils import em_surround
+from ihatemoney.utils import em_surround, localize_list
 from ihatemoney.versioning import LoggingMode
 
 # Unset configuration file env var if previously set
@@ -2852,6 +2852,35 @@ class HistoryTestCase(IhatemoneyTestCase):
             if "prop_changed" in entry:
                 self.assertNotIn("owers", entry["prop_changed"])
         self.assertEqual(len(history_list), 6)
+
+
+class LocalizeListTestCase(IhatemoneyTestCase):
+    def test_list_numbers_no_em(self):
+        self.assertEqual("", localize_list([], False))
+        self.assertEqual("1", localize_list([1], False))
+        self.assertEqual("1 and 2", localize_list([1, 2], False))
+        self.assertEqual("1, 2, and 3", localize_list(list(range(1, 4)), False))
+        self.assertEqual("1, 2, 3, and 4", localize_list(list(range(1, 5)), False))
+        self.assertEqual("1, 2, 3, 4, and 5", localize_list(list(range(1, 6)), False))
+
+    def test_list_numbers_with_em(self):
+        self.assertEqual("", localize_list([]))
+        self.assertEqual(em_surround("1"), localize_list([1]))
+        self.assertEqual(
+            f"{em_surround(1)} and {em_surround(2)}", localize_list([1, 2])
+        )
+        self.assertEqual(
+            f"{em_surround(1)}, {em_surround(2)}, and {em_surround(3)}",
+            localize_list(list(range(1, 4))),
+        )
+        self.assertEqual(
+            f"{em_surround(1)}, {em_surround(2)}, {em_surround(3)}, and {em_surround(4)}",
+            localize_list(list(range(1, 5))),
+        )
+        self.assertEqual(
+            f"{em_surround(1)}, {em_surround(2)}, {em_surround(3)}, {em_surround(4)}, and {em_surround(5)}",
+            localize_list(list(range(1, 6))),
+        )
 
 
 if __name__ == "__main__":
