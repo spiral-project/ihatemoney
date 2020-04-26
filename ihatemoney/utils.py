@@ -4,11 +4,14 @@ import re
 import os
 import ast
 import operator
+import smtplib
+import socket
 
 from io import BytesIO, StringIO
+
 import jinja2
 from json import dumps, JSONEncoder
-from flask import redirect, current_app, render_template
+from flask import flash, redirect, current_app, render_template
 from flask_babel import get_locale
 from babel import Locale
 from werkzeug.routing import HTTPException, RoutingException
@@ -31,6 +34,28 @@ def slugify(value):
             value = value.encode('ascii', 'ignore')
     value = six.text_type(re.sub(r'[^\w\s-]', '', value).strip().lower())
     return re.sub(r'[-\s]+', '-', value)
+
+
+def send_email(mail_message, flash_success="", flash_error=""):
+    """Send an email using Flask-Mail, returning False if there was an error.
+
+    Optionally display a "flash alert" message to the user.  The flash
+    message is different depending on whether we could successfully send
+    the email or not.
+    """
+    # Since Python 3.4, SMTPException and socket.error are actually
+    # identical, but this was not the case before.  Also, it is more clear
+    # to check for both.
+    try:
+        current_app.mail.send(mail_message)
+    except (smtplib.SMTPException, socket.error):
+        if flash_error:
+            flash(flash_error, category="danger")
+        return False
+    # Email was sent successfully
+    if flash_success:
+        flash(flash_success, category="success")
+    return True
 
 
 class Redirect303(HTTPException, RoutingException):
