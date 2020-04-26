@@ -101,7 +101,7 @@
 {% macro owers_changed(event, add) %}
     {% if add %}
         {{
-            _("{object_type} {object_description}: Added {owers_list_str} to owers list").format(
+            _("{object_type} {object_description}: added {owers_list_str} to owers list").format(
                 object_type=event.object_type,
                 object_description=em_surround(event.object_desc),
                 owers_list_str=event.val_after|localize_list|safe
@@ -109,7 +109,7 @@
         }}
     {% else %}
         {{
-            _("{object_type} {object_description}: Removed {owers_list_str} from owers list").format(
+            _("{object_type} {object_description}: removed {owers_list_str} from owers list").format(
                 object_type=event.object_type,
                 object_description=em_surround(event.object_desc),
                 owers_list_str=event.val_after|localize_list|safe
@@ -259,12 +259,12 @@
                                 )
                             }}
                     {% elif event.prop_changed == "weight" %}
-                        {{ simple_property_change(event, _("Weight")) }}
+                        {{ simple_property_change(event, _("weight")) }}
                     {% elif event.prop_changed == "external_link" %}
-                        {{ _("{object_type} {object_description}: External link changed to {new_link}").format(
+                        {{ _("{object_type} {object_description}: external link changed to {new_link}").format(
                                 object_type=event.object_type,
                                 object_description=em_surround(event.object_desc),
-                                new_link='<a href="{0}" class="font-italic">{0}</a>'.format(event.val_after)
+                                new_link='<a href="{0}" class="font-italic">{0}</a>'.format(event.val_after|escape)|safe
                             )
                         }}
                     {% elif event.prop_changed == "owers_added" %}
@@ -272,11 +272,11 @@
                     {% elif event.prop_changed == "owers_removed" %}
                         {{ owers_changed(event, False)}}
                     {% elif event.prop_changed == "payer" %}
-                        {{ simple_property_change(event, _("Payer"))}}
+                        {{ simple_property_change(event, _("payer"))}}
                     {% elif event.prop_changed == "amount" %}
-                        {{ simple_property_change(event, _("Amount")) }}
+                        {{ simple_property_change(event, _("amount")) }}
                     {% elif event.prop_changed == "date" %}
-                        {{ simple_property_change(event, _("Date")) }}
+                        {{ simple_property_change(event, _("date")) }}
                     {% else %}
                        {{ _("{object_type} {object_description} modified").format(
                                 object_type=event.object_type,
@@ -292,7 +292,7 @@
                     }}
                 {% else %}
                 {# Should be unreachable #}
-                {{ _("{object_type} {object_description} changed in an unkown way").format(
+                {{ _("{object_type} {object_description} changed in an unknown way").format(
                             object_type=event.object_type,
                             object_description=em_surround(event.object_desc)
                         )
