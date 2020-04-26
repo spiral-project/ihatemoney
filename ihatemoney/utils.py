@@ -97,7 +97,7 @@ def static_include(filename):
 
 
 def locale_from_iso(iso_code):
-    return Locale(iso_code)
+    return Locale.parse(iso_code)
 
 
 def list_of_dicts2json(dict_to_convert):
