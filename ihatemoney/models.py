@@ -460,7 +460,7 @@ class Bill(db.Model):
             return 0
 
     def __str__(self):
-        return f"{self.amount} for {self.what}"
+        return self.what
 
     def __repr__(self):
         return (
