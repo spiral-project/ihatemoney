@@ -2868,7 +2868,8 @@ class LocalizeListTestCase(IhatemoneyTestCase):
             localize_list(list(range(1, 5))),
         )
         self.assertEqual(
-            f"{em_surround(1)}, {em_surround(2)}, {em_surround(3)}, {em_surround(4)}, and {em_surround(5)}",
+            f"{em_surround(1)}, {em_surround(2)}, {em_surround(3)},"
+            f" {em_surround(4)}, and {em_surround(5)}",
             localize_list(list(range(1, 6))),
         )
 
