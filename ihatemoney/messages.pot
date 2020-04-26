@@ -144,7 +144,7 @@ msgid "Your invitations have been sent"
 msgstr ""
 
 #, python-format
-msgid "%(member)s had been added"
+msgid "%(member)s has been added"
 msgstr ""
 
 #, python-format
