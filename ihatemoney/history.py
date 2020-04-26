@@ -69,11 +69,10 @@ def get_history(project, human_readable_names=True):
     history = []
     for version_list in [person_query.all(), project_query.all(), bill_query.all()]:
         for version in version_list:
-            object_type = {
-                "Person": _("Participant"),
-                "Bill": _("Bill"),
-                "Project": _("Project"),
-            }[parent_class(type(version)).__name__]
+            object_type = parent_class(type(version)).__name__
+
+            # The history.html template can only handle objects of these types
+            assert object_type in ["Person", "Bill", "Project"]
 
             # Use the old name if applicable
             if version.previous:

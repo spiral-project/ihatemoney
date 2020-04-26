@@ -31,12 +31,11 @@
 
 {% macro em_surround(text) %}<em class="font-italic">{{ text }}</em>{% endmacro %}
 
-{% macro simple_property_change(event, localized_property_name, from=True) %}
+{% macro bill_property_change(event, localized_property_name, from=True) %}
     {% if from %}
         {{
-            _("{object_type} {object_description}: {property_name} changed from {value_before} to {value_after}").format(
-                object_type=event.object_type,
-                object_description=em_surround(event.object_desc),
+            _("Bill {bill_description}: {property_name} changed from {value_before} to {value_after}").format(
+                bill_description=em_surround(event.object_desc),
                 property_name=localized_property_name,
                 value_before=em_surround(event.val_before),
                 value_after=em_surround(event.val_after)
@@ -44,9 +43,8 @@
         }}
     {% else %}
         {{
-            _("{object_type} {object_description}: {property_name} changed to {value_after}").format(
-                object_type=event.object_type,
-                object_description=em_surround(event.object_desc),
+            _("Bill {bill_description}: {property_name} changed to {value_after}").format(
+                bill_description=em_surround(event.object_desc),
                 property_name=localized_property_name,
                 value_after=em_surround(event.val_after)
             )
@@ -101,17 +99,15 @@
 {% macro owers_changed(event, add) %}
     {% if add %}
         {{
-            _("{object_type} {object_description}: added {owers_list_str} to owers list").format(
-                object_type=event.object_type,
-                object_description=em_surround(event.object_desc),
+            _("Bill {bill_description}: added {owers_list_str} to owers list").format(
+                bill_description=em_surround(event.object_desc),
                 owers_list_str=event.val_after|localize_list|safe
             )
         }}
     {% else %}
         {{
-            _("{object_type} {object_description}: removed {owers_list_str} from owers list").format(
-                object_type=event.object_type,
-                object_description=em_surround(event.object_desc),
+            _("Bill {bill_description}: removed {owers_list_str} from owers list").format(
+                bill_description=em_surround(event.object_desc),
                 owers_list_str=event.val_after|localize_list|safe
             )
         }}
@@ -213,13 +209,24 @@
                 </div>
                 <div class="history_text">
                 {% if event.operation_type == OperationType.INSERT %}
-                    {{ _("{object_type} {object_description} added").format(
-                            object_type=event.object_type,
-                            object_description=em_surround(event.object_desc)
-                        )
-                    }}
+                    {% if event.object_type == "Project" %}
+                        {{ _("Project {project_name} added").format(
+                                project_name=em_surround(event.object_desc)
+                            )
+                        }}
+                    {% elif event.object_type == "Bill" %}
+                        {{ _("Bill {bill_description} added").format(
+                                bill_description=em_surround(event.object_desc)
+                            )
+                        }}
+                    {% elif event.object_type == "Person" %}
+                        {{ _("Participant {participant_name} added").format(
+                                participant_name=em_surround(event.object_desc)
+                            )
+                        }}
+                    {% endif %}
                 {% elif event.operation_type == OperationType.UPDATE  %}
-                    {% if event.object_type == _("Project") %}
+                    {% if event.object_type == "Project" %}
                         {% if event.prop_changed == "password" %}
                            {{ _("Project private code changed") }}
                         {% elif event.prop_changed == "logging_preference" %}
@@ -239,31 +246,38 @@
                         {% endif %}
                     {% elif event.prop_changed == "activated" %}
                         {% if event.val_after == False %}
-                            {{ _("{object_type} {object_description} deactivated").format(
-                                    object_type=event.object_type,
-                                    object_description=em_surround(event.object_desc)
+                            {{ _("Participant {participant_name} deactivated").format(
+                                    participant_name=em_surround(event.object_desc)
                                 )
                             }}
                         {% else %}
-                            {{ _("{object_type} {object_description} reactivated").format(
-                                    object_type=event.object_type,
-                                    object_description=em_surround(event.object_desc)
+                            {{ _("Participant {participant_name} reactivated").format(
+                                    participant_name=em_surround(event.object_desc)
                                 )
                             }}
                         {% endif %}
-                    {% elif event.prop_changed == "name" or event.prop_changed == "what" %}
-                            {{ _("{object_type} {object_description} renamed to {new_name}").format(
-                                    object_type=event.object_type,
-                                    object_description=em_surround(event.object_desc),
+                    {% elif event.prop_changed == "name" %}
+                            {{ _("Participant {participant_name} renamed to {new_name}").format(
+                                    participant_name=em_surround(event.object_desc),
                                     new_name=em_surround(event.val_after)
                                 )
                             }}
+                    {% elif event.prop_changed == "what" %}
+                            {{ _("Bill {old_description} renamed to {new_description}").format(
+                                    old_description=em_surround(event.object_desc),
+                                    new_description=em_surround(event.val_after)
+                                )
+                            }}
                     {% elif event.prop_changed == "weight" %}
-                        {{ simple_property_change(event, _("weight")) }}
+                        {{ _("Participant {participant_name}: weight changed from {old_weight} to {new_weight}").format(
+                                participant_name=em_surround(event.object_desc),
+                                old_weight=em_surround(event.val_before),
+                                new_weight=em_surround(event.val_after)
+                            )
+                        }}
                     {% elif event.prop_changed == "external_link" %}
-                        {{ _("{object_type} {object_description}: external link changed to {new_link}").format(
-                                object_type=event.object_type,
-                                object_description=em_surround(event.object_desc),
+                        {{ _("Bill {bill_description}: external link changed to {new_link}").format(
+                                bill_description=em_surround(event.object_desc),
                                 new_link='<a href="{0}" class="font-italic">{0}</a>'.format(event.val_after|escape)|safe
                             )
                         }}
@@ -272,31 +286,64 @@
                     {% elif event.prop_changed == "owers_removed" %}
                         {{ owers_changed(event, False)}}
                     {% elif event.prop_changed == "payer" %}
-                        {{ simple_property_change(event, _("payer"))}}
+                        {{ bill_property_change(event, _("payer"))}}
                     {% elif event.prop_changed == "amount" %}
-                        {{ simple_property_change(event, _("amount")) }}
+                        {{ bill_property_change(event, _("amount")) }}
                     {% elif event.prop_changed == "date" %}
-                        {{ simple_property_change(event, _("date")) }}
+                        {{ bill_property_change(event, _("date")) }}
                     {% else %}
-                       {{ _("{object_type} {object_description} modified").format(
-                                object_type=event.object_type,
-                                object_description=em_surround(event.object_desc)
+                        {% if event.object_type == "Project" %}
+                            {{ _("Project {project_name} modified").format(
+                                    project_name=em_surround(event.object_desc)
+                                )
+                            }}
+                        {% elif event.object_type == "Bill" %}
+                            {{ _("Bill {bill_description} modfied").format(
+                                    bill_description=em_surround(event.object_desc)
+                                )
+                            }}
+                        {% elif event.object_type == "Person" %}
+                            {{ _("Participant {particpant_name} modified").format(
+                                    particpant_name=em_surround(event.object_desc)
+                                )
+                            }}
+                        {% endif %}
+                    {% endif %}
+                {% elif event.operation_type == OperationType.DELETE %}
+                    {% if event.object_type == "Project" %}
+                        {{ _("Project {project_name} removed").format(
+                                project_name=em_surround(event.object_desc)
+                            )
+                        }}
+                    {% elif event.object_type == "Bill" %}
+                        {{ _("Bill {bill_description} removed").format(
+                                bill_description=em_surround(event.object_desc)
+                            )
+                        }}
+                    {% elif event.object_type == "Person" %}
+                        {{ _("Participant {participant_name} removed").format(
+                                participant_name=em_surround(event.object_desc)
                             )
                         }}
                     {% endif %}
-                {% elif event.operation_type == OperationType.DELETE %}
-                    {{ _("{object_type} {object_description} removed").format(
-                            object_type=event.object_type,
-                            object_description=em_surround(event.object_desc)
-                        )
-                    }}
                 {% else %}
-                {# Should be unreachable #}
-                {{ _("{object_type} {object_description} changed in an unknown way").format(
-                            object_type=event.object_type,
-                            object_description=em_surround(event.object_desc)
-                        )
-                    }}
+                    {# Should be unreachable #}
+                    {% if event.object_type == "Project" %}
+                        {{ _("Project {project_name} changed in an unknown way").format(
+                                project_name=em_surround(event.object_desc)
+                            )
+                        }}
+                    {% elif event.object_type == "Bill" %}
+                        {{ _("Bill {bill_description} changed in an unknown way").format(
+                                bill_description=em_surround(event.object_desc)
+                            )
+                        }}
+                    {% elif event.object_type == "Person" %}
+                        {{ _("Participant {participant_name} changed in an unknown way").format(
+                                participant_name=em_surround(event.object_desc)
+                            )
+                        }}
+                    {% endif %}
                 {% endif %}
                 </div>
             </td>
