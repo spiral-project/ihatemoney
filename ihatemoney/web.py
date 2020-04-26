@@ -30,7 +30,7 @@ from flask import (
     session,
     url_for,
 )
-from flask_babel import get_locale, gettext as _
+from flask_babel import gettext as _
 from flask_mail import Message
 from sqlalchemy import orm
 from sqlalchemy_continuum import Operation
@@ -57,6 +57,7 @@ from ihatemoney.utils import (
     get_members,
     list_of_dicts2csv,
     list_of_dicts2json,
+    render_localized_template,
     same_bill,
 )
 
@@ -301,7 +302,7 @@ def create_project():
                 project=g.project.name,
             )
 
-            message_body = render_template(f"reminder_mail.{get_locale().language}.j2")
+            message_body = render_localized_template("reminder_mail")
 
             msg = Message(
                 message_title, body=message_body, recipients=[project.contact_email]
@@ -335,11 +336,12 @@ def remind_password():
             # get the project
             project = Project.query.get(form.id.data)
             # send a link to reset the password
-            password_reminder = f"password_reminder.{get_locale().language}.j2"
             current_app.mail.send(
                 Message(
                     "password recovery",
-                    body=render_template(password_reminder, project=project),
+                    body=render_localized_template(
+                        "password_reminder", project=project
+                    ),
                     recipients=[project.contact_email],
                 )
             )
@@ -566,11 +568,7 @@ def invite():
     if request.method == "POST":
         if form.validate():
             # send the email
-
-            message_body = render_template(
-                f"invitation_mail.{get_locale().language}.j2"
-            )
-
+            message_body = render_localized_template("invitation_mail")
             message_title = _(
                 "You have been invited to share your " "expenses for %(project)s",
                 project=g.project.name,

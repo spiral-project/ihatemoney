@@ -9,7 +9,8 @@ import os
 import re
 
 from babel import Locale
-from flask import current_app, redirect
+from flask import current_app, redirect, render_template
+from flask_babel import get_locale
 import jinja2
 from werkzeug.routing import HTTPException, RoutingException
 
@@ -278,3 +279,17 @@ class FormEnum(Enum):
 
     def __str__(self):
         return str(self.value)
+
+
+def render_localized_template(template_name_prefix, **context):
+    """Like render_template(), but selects the right template according to the
+    current user language.  Fallback to English if a template for the
+    current language does not exist.
+    """
+    fallback = "en"
+    templates = [
+        f"{template_name_prefix}.{lang}.j2"
+        for lang in (get_locale().language, fallback)
+    ]
+    # render_template() supports a list of templates to try in order
+    return render_template(templates, **context)
