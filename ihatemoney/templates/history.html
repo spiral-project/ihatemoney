@@ -32,23 +32,14 @@
 {% macro em_surround(text) %}<em class="font-italic">{{ text }}</em>{% endmacro %}
 
 {% macro bill_property_change(event, localized_property_name, from=True) %}
+    {% set bill_description=em_surround(event.object_desc) %}
+    {% set property_name=localized_property_name %}
+    {% set value_before=em_surround(event.val_before) %}
+    {% set value_after=em_surround(event.val_after) %}
     {% if from %}
-        {{
-            _("Bill {bill_description}: {property_name} changed from {value_before} to {value_after}").format(
-                bill_description=em_surround(event.object_desc),
-                property_name=localized_property_name,
-                value_before=em_surround(event.val_before),
-                value_after=em_surround(event.val_after)
-            )
-        }}
+        {% trans %}Bill {{ bill_description }}: {{ property_name }} changed from {{ value_before }} to {{ value_after }}{% endtrans %}
     {% else %}
-        {{
-            _("Bill {bill_description}: {property_name} changed to {value_after}").format(
-                bill_description=em_surround(event.object_desc),
-                property_name=localized_property_name,
-                value_after=em_surround(event.val_after)
-            )
-        }}
+        {% trans %}Bill {{ bill_description }}: {{ property_name }} changed to {{ value_after }}{% endtrans %}
     {% endif %}
 {% endmacro %}
 
@@ -97,20 +88,12 @@
 {% endmacro %}
 
 {% macro owers_changed(event, add) %}
+    {% set bill_description=em_surround(event.object_desc) %}
+    {% set owers_list_str=event.val_after|localize_list|safe %}
     {% if add %}
-        {{
-            _("Bill {bill_description}: added {owers_list_str} to owers list").format(
-                bill_description=em_surround(event.object_desc),
-                owers_list_str=event.val_after|localize_list|safe
-            )
-        }}
+        {% trans %}Bill {{ bill_description }}: added {{ owers_list_str }} to owers list{% endtrans %}
     {% else %}
-        {{
-            _("Bill {bill_description}: removed {owers_list_str} from owers list").format(
-                bill_description=em_surround(event.object_desc),
-                owers_list_str=event.val_after|localize_list|safe
-            )
-        }}
+        {% trans %}Bill {{ bill_description }}: removed {{ owers_list_str }} from owers list{% endtrans %}
     {% endif %}
 {% endmacro %}
 
@@ -210,20 +193,14 @@
                 <div class="history_text">
                 {% if event.operation_type == OperationType.INSERT %}
                     {% if event.object_type == "Project" %}
-                        {{ _("Project {project_name} added").format(
-                                project_name=em_surround(event.object_desc)
-                            )
-                        }}
+                        {% set project_name=em_surround(event.object_desc) %}
+                        {% trans %}Project {{ project_name }} added{% endtrans %}
                     {% elif event.object_type == "Bill" %}
-                        {{ _("Bill {bill_description} added").format(
-                                bill_description=em_surround(event.object_desc)
-                            )
-                        }}
+                        {% set bill_description=em_surround(event.object_desc) %}
+                        {% trans %}Bill {{ bill_description }} added{% endtrans %}
                     {% elif event.object_type == "Person" %}
-                        {{ _("Participant {participant_name} added").format(
-                                participant_name=em_surround(event.object_desc)
-                            )
-                        }}
+                        {% set participant_name=em_surround(event.object_desc) %}
+                        {% trans %}Participant {{ participant_name }} added{% endtrans %}
                     {% endif %}
                 {% elif event.operation_type == OperationType.UPDATE  %}
                     {% if event.object_type == "Project" %}
@@ -232,55 +209,39 @@
                         {% elif event.prop_changed == "logging_preference" %}
                             {{ change_to_logging_preference(event) }}
                         {% elif event.prop_changed == "name" %}
-                            {{ _("Project renamed to {new_project_name}").format(
-                                    new_project_name=em_surround(event.val_after)
-                                )
-                            }}
+                            {% set new_project_name=em_surround(event.val_after) %}
+                            {% trans %}Project renamed to {{ new_project_name }}{% endtrans %}
                         {% elif event.prop_changed == "contact_email" %}
-                            {{ _("Project contact email changed to {new_email}").format(
-                                    new_email=em_surround(event.val_after)
-                                )
-                            }}
+                            {% set new_email=em_surround(event.val_after) %}
+                            {% trans %}Project contact email changed to {{ new_email }}{% endtrans %}
                         {% else %}
                             {{ _("Project settings modified") }}
                         {% endif %}
                     {% elif event.prop_changed == "activated" %}
                         {% if event.val_after == False %}
-                            {{ _("Participant {participant_name} deactivated").format(
-                                    participant_name=em_surround(event.object_desc)
-                                )
-                            }}
+                            {% set participant_name=em_surround(event.object_desc) %}
+                            {% trans %}Participant {{ participant_name }} deactivated{% endtrans %}
                         {% else %}
-                            {{ _("Participant {participant_name} reactivated").format(
-                                    participant_name=em_surround(event.object_desc)
-                                )
-                            }}
+                            {% set participant_name=em_surround(event.object_desc) %}
+                            {% trans %}Participant {{ participant_name }} reactivated{% endtrans %}
                         {% endif %}
                     {% elif event.prop_changed == "name" %}
-                            {{ _("Participant {participant_name} renamed to {new_name}").format(
-                                    participant_name=em_surround(event.object_desc),
-                                    new_name=em_surround(event.val_after)
-                                )
-                            }}
+                            {% set participant_name=em_surround(event.object_desc) %}
+                            {% set new_name=em_surround(event.val_after) %}
+                            {% trans %}Participant {{ participant_name }} renamed to {{ new_name }}{% endtrans %}
                     {% elif event.prop_changed == "what" %}
-                            {{ _("Bill {old_description} renamed to {new_description}").format(
-                                    old_description=em_surround(event.object_desc),
-                                    new_description=em_surround(event.val_after)
-                                )
-                            }}
+                            {% set old_description=em_surround(event.object_desc) %}
+                            {% set new_description=em_surround(event.val_after) %}
+                            {% trans %}Bill {{ old_description }} renamed to {{ new_description }}{% endtrans %}
                     {% elif event.prop_changed == "weight" %}
-                        {{ _("Participant {participant_name}: weight changed from {old_weight} to {new_weight}").format(
-                                participant_name=em_surround(event.object_desc),
-                                old_weight=em_surround(event.val_before),
-                                new_weight=em_surround(event.val_after)
-                            )
-                        }}
+                        {% set participant_name=em_surround(event.object_desc) %}
+                        {% set old_weight=em_surround(event.val_before) %}
+                        {% set new_weight=em_surround(event.val_after) %}
+                        {% trans %}Participant {{ participant_name }}: weight changed from {{ old_weight }} to {{ new_weight }}{% endtrans %}
                     {% elif event.prop_changed == "external_link" %}
-                        {{ _("Bill {bill_description}: external link changed to {new_link}").format(
-                                bill_description=em_surround(event.object_desc),
-                                new_link='<a href="{0}" class="font-italic">{0}</a>'.format(event.val_after|escape)|safe
-                            )
-                        }}
+                        {% set bill_description=em_surround(event.object_desc) %}
+                        {% set new_link=event.val_after %}
+                        {% trans %}Bill {{ bill_description }}: external link changed to <a href="{{ new_link }}" class="font-italic">{{ new_link }}</a>{% endtrans %}
                     {% elif event.prop_changed == "owers_added" %}
                         {{ owers_changed(event, True)}}
                     {% elif event.prop_changed == "owers_removed" %}
@@ -292,57 +253,33 @@
                     {% elif event.prop_changed == "date" %}
                         {{ bill_property_change(event, _("date")) }}
                     {% else %}
-                        {% if event.object_type == "Project" %}
-                            {{ _("Project {project_name} modified").format(
-                                    project_name=em_surround(event.object_desc)
-                                )
-                            }}
-                        {% elif event.object_type == "Bill" %}
-                            {{ _("Bill {bill_description} modfied").format(
-                                    bill_description=em_surround(event.object_desc)
-                                )
-                            }}
+                        {% if event.object_type == "Bill" %}
+                            {% set bill_description=em_surround(event.object_desc) %}
+                            {% trans %}Bill {{ bill_description }} modfied{% endtrans %}
                         {% elif event.object_type == "Person" %}
-                            {{ _("Participant {particpant_name} modified").format(
-                                    particpant_name=em_surround(event.object_desc)
-                                )
-                            }}
+                            {% set particpant_name=em_surround(event.object_desc) %}
+                            {% trans %}Participant {{ particpant_name }} modfied{% endtrans %}
                         {% endif %}
                     {% endif %}
                 {% elif event.operation_type == OperationType.DELETE %}
-                    {% if event.object_type == "Project" %}
-                        {{ _("Project {project_name} removed").format(
-                                project_name=em_surround(event.object_desc)
-                            )
-                        }}
-                    {% elif event.object_type == "Bill" %}
-                        {{ _("Bill {bill_description} removed").format(
-                                bill_description=em_surround(event.object_desc)
-                            )
-                        }}
+                    {% if event.object_type == "Bill" %}
+                        {% set bill_description=em_surround(event.object_desc) %}
+                        {% trans %}Bill {{ bill_description }} removed{% endtrans %}
                     {% elif event.object_type == "Person" %}
-                        {{ _("Participant {participant_name} removed").format(
-                                participant_name=em_surround(event.object_desc)
-                            )
-                        }}
+                        {% set particpant_name=em_surround(event.object_desc) %}
+                        {% trans %}Participant {{ particpant_name }} removed{% endtrans %}
                     {% endif %}
                 {% else %}
                     {# Should be unreachable #}
                     {% if event.object_type == "Project" %}
-                        {{ _("Project {project_name} changed in an unknown way").format(
-                                project_name=em_surround(event.object_desc)
-                            )
-                        }}
+                        {% set project_name=em_surround(event.object_desc) %}
+                        {% trans %}Project {{ project_name }} changed in an unknown way{% endtrans %}
                     {% elif event.object_type == "Bill" %}
-                        {{ _("Bill {bill_description} changed in an unknown way").format(
-                                bill_description=em_surround(event.object_desc)
-                            )
-                        }}
+                        {% set bill_description=em_surround(event.object_desc) %}
+                        {% trans %}Bill {{ bill_description }} changed in an unknown way{% endtrans %}
                     {% elif event.object_type == "Person" %}
-                        {{ _("Participant {participant_name} changed in an unknown way").format(
-                                participant_name=em_surround(event.object_desc)
-                            )
-                        }}
+                        {% set particpant_name=em_surround(event.object_desc) %}
+                        {% trans %}Participant {{ participant_name }} changed in an unknown way{% endtrans %}
                     {% endif %}
                 {% endif %}
                 </div>
