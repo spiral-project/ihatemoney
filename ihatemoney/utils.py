@@ -8,7 +8,8 @@ import operator
 from io import BytesIO, StringIO
 import jinja2
 from json import dumps, JSONEncoder
-from flask import redirect, current_app
+from flask import redirect, current_app, render_template
+from flask_babel import get_locale
 from babel import Locale
 from werkzeug.routing import HTTPException, RoutingException
 import six
@@ -251,3 +252,15 @@ def eval_arithmetic_expression(expr):
         raise ValueError("Error evaluating expression: {}".format(expr))
 
     return result
+
+
+def render_localized_template(template_name_prefix, **context):
+    """Like render_template(), but selects the right template according to the
+    current user language.  Fallback to English if a template for the
+    current language does not exist.
+    """
+    fallback = "en"
+    templates = ["{}.{}.j2".format(template_name_prefix, lang)
+                 for lang in (get_locale().language, fallback)]
+    # render_template() supports a list of templates to try in order
+    return render_template(templates, **context)

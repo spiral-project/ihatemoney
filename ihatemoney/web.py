@@ -27,7 +27,7 @@ from ihatemoney.forms import (
     AdminAuthenticationForm, AuthenticationForm, EditProjectForm,
     InviteForm, MemberForm, PasswordReminder, ResetPasswordForm, ProjectForm, get_billform_for
 )
-from ihatemoney.utils import Redirect303, list_of_dicts2json, list_of_dicts2csv, LoginThrottler
+from ihatemoney.utils import Redirect303, list_of_dicts2json, list_of_dicts2csv, LoginThrottler, render_localized_template
 
 main = Blueprint("main", __name__)
 
@@ -242,8 +242,7 @@ def create_project():
             message_title = _("You have just created '%(project)s' "
                               "to share your expenses", project=g.project.name)
 
-            message_body = render_template("reminder_mail.%s.j2" %
-                                           get_locale().language)
+            message_body = render_localized_template("reminder_mail")
 
             msg = Message(message_title,
                           body=message_body,
@@ -272,11 +271,15 @@ def remind_password():
             # get the project
             project = Project.query.get(form.id.data)
             # send a link to reset the password
-            password_reminder = "password_reminder.%s.j2" % get_locale().language
-            current_app.mail.send(Message(
-                "password recovery",
-                body=render_template(password_reminder, project=project),
-                recipients=[project.contact_email]))
+            current_app.mail.send(
+                Message(
+                    "password recovery",
+                    body=render_localized_template(
+                        "password_reminder", project=project
+                    ),
+                    recipients=[project.contact_email],
+                )
+            )
             return redirect(url_for(".password_reminder_sent"))
 
     return render_template("password_reminder.html", form=form)
@@ -402,10 +405,7 @@ def invite():
     if request.method == "POST":
         if form.validate():
             # send the email
-
-            message_body = render_template("invitation_mail.%s.j2" %
-                                           get_locale().language)
-
+            message_body = render_localized_template("invitation_mail")
             message_title = _("You have been invited to share your "
                               "expenses for %(project)s", project=g.project.name)
             msg = Message(message_title,
