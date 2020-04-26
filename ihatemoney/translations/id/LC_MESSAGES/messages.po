@@ -4,12 +4,12 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-25 13:02+0200\n"
-"PO-Revision-Date: 2019-11-12 09:04+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language: nb_NO\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/i"
-"-hate-money/i-hate-money/nb_NO/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
+"PO-Revision-Date: 2019-11-16 10:04+0000\n"
+"Last-Translator: Muhammad Fauzi <fauzi.padlaw@gmail.com>\n"
+"Language: id\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/id/>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,17 +19,17 @@ msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
-"Ikke et gyldig beløp eller uttrykk. Kun nummer og operatorene + - * / "
-"godtas."
+"Jumlah atau operator tidak valid. Hanya angka dan opertaor +-* yang "
+"diterima."
 
 msgid "Project name"
-msgstr "Prosjektnavn"
+msgstr "Nama proyek"
 
 msgid "Private code"
-msgstr "Privat kode"
+msgstr "Kode pribadi"
 
 msgid "Email"
-msgstr "E-post"
+msgstr "Surel"
 
 msgid "Enable project history"
 msgstr ""
@@ -44,102 +44,100 @@ msgid "Import"
 msgstr ""
 
 msgid "Project identifier"
-msgstr "Prosjektidentifikator"
+msgstr "Pengidentifikasi proyek"
 
 msgid "Create the project"
-msgstr "Opprett prosjektet"
+msgstr "Buat proyek"
 
 #, python-format
 msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
-"Et prosjekt med denne identifikatoren (\"%(project)s\") finnes allerede. "
-"Velg en ny identifikator."
+"Sebuah proyek dengan ID ini (\"%(project)s\") sudah ada. Silakan pilih ID"
+" baru"
 
-#, fuzzy
 msgid "Get in"
-msgstr "Til prosjektet"
+msgstr "Masuk"
 
 msgid "Admin password"
-msgstr "Administratorpassord"
+msgstr "Kata sandi admin"
 
 msgid "Send me the code by email"
-msgstr "Send meg koden per e-post"
+msgstr "Kirim saya kode melalui email"
 
 msgid "This project does not exists"
-msgstr "Dette prosjektet finnes ikke"
+msgstr "Proyek ini tidak ada"
 
 msgid "Password mismatch"
-msgstr "Passordet samsvarer ikke"
+msgstr "Kata sandi tidak cocok"
 
 msgid "Password"
-msgstr "Passord"
+msgstr "Kata sandi"
 
 msgid "Password confirmation"
-msgstr "Passordbekreftelse"
+msgstr "Konfirmasi kata sandi"
 
 msgid "Reset password"
-msgstr "Tilbakestill passord"
+msgstr "Atur ulang kata sandi"
 
 msgid "Date"
-msgstr "Dato"
+msgstr "Tanggal"
 
 msgid "What?"
-msgstr "Hva?"
+msgstr "Apa?"
 
 msgid "Payer"
-msgstr "Betaler"
+msgstr "Pembayar"
 
 msgid "Amount paid"
-msgstr "Beløp betalt"
+msgstr "Jumlah bayar"
 
 msgid "External link"
-msgstr "Ekstern lenke"
+msgstr "Tautan luar"
 
 msgid "A link to an external document, related to this bill"
-msgstr "En lenke til et eksternt dokument, i relasjon til denne regningen"
+msgstr "Sebuah tautan mengarah ke dokumen luar, terhubung dengan pembayaran ini"
 
 msgid "For whom?"
-msgstr "For hvem?"
+msgstr "Untuk siapa?"
 
 msgid "Submit"
-msgstr "Send inn"
+msgstr "Ajukan"
 
 msgid "Submit and add a new one"
-msgstr "Send inn og legg til ny"
+msgstr "Ajukan dan tambah yang baru"
 
 msgid "Bills can't be null"
-msgstr "Regninger kan ikke være null"
+msgstr "Tagihan tidak boleh kosong"
 
 msgid "Name"
-msgstr "Navn"
+msgstr "Nama"
 
 msgid "Weights should be positive"
-msgstr "Vekter må være positive"
+msgstr "Bobot harus positif"
 
 msgid "Weight"
-msgstr "Vekt"
+msgstr "Bobot"
 
 msgid "Add"
-msgstr "Legg til"
+msgstr "Tambah"
 
-#, fuzzy
 msgid "User name incorrect"
-msgstr "Feil brukernavn"
+msgstr "Nama pengguna tidak benar"
 
 msgid "This project already have this member"
-msgstr "Allerede medlem av prosjektet"
+msgstr "Proyek ini sudah mempunyai anggota ini"
 
 msgid "People to notify"
-msgstr "Folk å sende merknad til"
+msgstr "Orang yang akan diberi pemberitahuan"
 
 msgid "Send invites"
-msgstr "Send invitasjoner"
+msgstr "Kirim undangan"
 
-#, fuzzy, python-format
+#, python-format
 msgid "The email %(email)s is not valid"
-msgstr "E-posten \"%(email)s\" er ikke gyldig"
+msgstr "Surel %(email)s tidak valid"
 
 msgid "Participant"
 msgstr ""
@@ -148,43 +146,40 @@ msgid "Bill"
 msgstr ""
 
 msgid "Project"
-msgstr "Prosjekt"
+msgstr "Proyek"
 
 msgid "Too many failed login attempts, please retry later."
-msgstr "For mange mislykkede innloggingsforsøk, prøv igjen senere."
+msgstr "Terlalu banyak percobaan masuk, silakan coba lagi nanti."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
-msgstr "Dette administratorpassordet er ikke rett. Kun %(num)d forsøk igjen."
+msgstr "Kata sandi admin ini tidak cocok. Hanya tinggal %(num)d percobaan lagi."
 
 msgid "You either provided a bad token or no project identifier."
-msgstr ""
-"Du har enten oppgitt et feilaktig symbol, eller utelot "
-"prosjektidentifikator."
+msgstr "Anda memasukkan token yang salah atau tidak memiliki ID proyek."
 
 msgid "This private code is not the right one"
-msgstr "Denne private koden er ikke rett"
+msgstr "Kode pribadi ini tidak benar"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
-msgstr "Du har akkurat opprettet \"%(project)s\" for å dele dine utgifter"
+msgstr "Anda baru saja membuat %(project)s untuk membagikan harga Anda"
 
-#, fuzzy, python-format
+#, python-format
 msgid "%(msg_compl)sThe project identifier is %(project)s"
-msgstr "%(msg_compl)sProsjektidentifikatoren er %(project)s"
+msgstr "%(msg_compl)sId proyek adalah %(project)s"
 
 msgid "No token provided"
-msgstr "Inget symbol angitt"
+msgstr "Belum ada token diberikan"
 
 msgid "Invalid token"
-msgstr "Ugyldig symbol"
+msgstr "Token tidak benar"
 
 msgid "Unknown project"
-msgstr "Ukjent prosjekt"
+msgstr "Proyek tidak diketahui"
 
-#, fuzzy
 msgid "Password successfully reset."
-msgstr "Passord tilbakestilt."
+msgstr "Kata sandi berhasil diatur ulang."
 
 msgid "Project successfully uploaded"
 msgstr ""
@@ -192,18 +187,15 @@ msgstr ""
 msgid "Invalid JSON"
 msgstr ""
 
-#, fuzzy
 msgid "Project successfully deleted"
-msgstr "Prosjekt slettet"
+msgstr "Proyek berhasil dihapus"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
-msgstr ""
-"Du har blitt invitert til å dele dine utgifter i forbindelse med "
-"%(project)s"
+msgstr "Anda telah diundang untuk membagikan harga Anda untuk %(project)s"
 
 msgid "Your invitations have been sent"
-msgstr "Invitasjonene dine har blitt sendt"
+msgstr "Undangan Anda telah dikirim"
 
 #, python-format
 msgid "%(member)s has been added"
@@ -211,92 +203,89 @@ msgstr ""
 
 #, python-format
 msgid "%(name)s is part of this project again"
-msgstr "%(name)s er en del av dette prosjektet igjen"
+msgstr "%(name)s adalah bagian dari proyek ini lagi"
 
 #, python-format
 msgid ""
 "User '%(name)s' has been deactivated. It will still appear in the users "
 "list until its balance becomes zero."
 msgstr ""
-"Brukeren \"%(name)s\" har blitt avskrudd. Vedkommende vil still fremtre i"
-" brukerlisten til dens konto går tom."
+"Pengguna %(name)s telah dinonaktifkan. Pengguna akan tetap muncul dalam "
+"daftar pengguna sampai saldonya menjadi kosong."
 
 #, python-format
 msgid "User '%(name)s' has been removed"
-msgstr "Brukeren \"%(name)s\" har blitt fjernet"
+msgstr "Pengguna %(name)s telah dihapus"
 
 #, python-format
 msgid "User '%(name)s' has been edited"
-msgstr "Brukeren \"%(name)s\" har blitt endret"
+msgstr "Pengguna %(name)s telah diperbarui"
 
 msgid "The bill has been added"
-msgstr "Regningen har blitt lagt til"
+msgstr "Tagihan telah ditambahkan"
 
 msgid "The bill has been deleted"
-msgstr "Regningen har blitt slettet"
+msgstr "Tagihan telah dihapus"
 
 msgid "The bill has been modified"
-msgstr "Regningen har blitt endret"
+msgstr "Tagihan telah diperbarui"
 
 msgid "Sorry, we were unable to find the page you've asked for."
-msgstr "Fant ikke siden du forespurte."
+msgstr "Maaf, kami tidak bisa menemukan halaman yang Anda minta."
 
 msgid "The best thing to do is probably to get back to the main page."
-msgstr "Det beste foretagende er antagelig å vise hovedsiden."
+msgstr "Hal terbaik yang bisa dilakukan adalah kembali ke halaman utama."
 
 msgid "Back to the list"
-msgstr "Tilbake til listen"
+msgstr "Kembali ke daftar"
 
-#, fuzzy
 msgid "Administration tasks are currently disabled."
-msgstr "Administratoroppgaver er for tiden avskrudd."
+msgstr "Tugas adiministrasi saat sekarang dinonaktifkan."
 
 msgid "The project you are trying to access do not exist, do you want to"
-msgstr "Prosjektet du prøver å få tilgang til finnes ikke. Ønsker du å"
+msgstr "Anda mencoba mengakses proyek yang tidak ada, apakah Anda ingin"
 
 msgid "create it"
-msgstr "opprette det"
+msgstr "buat"
 
-#, fuzzy
 msgid "?"
 msgstr "?"
 
 msgid "Create a new project"
-msgstr "Opprett et nytt prosjekt"
+msgstr "Buat proyek baru"
 
 msgid "Number of members"
-msgstr "Antall medlemmer"
+msgstr "Jumlah anggota"
 
 msgid "Number of bills"
-msgstr "Antall regninger"
+msgstr "Jumlah tagihan"
 
 msgid "Newest bill"
-msgstr "Nyeste regning"
+msgstr "Tagihan terbaru"
 
 msgid "Oldest bill"
-msgstr "Eldste regning"
+msgstr "Tagihan terlawas"
 
 msgid "Actions"
-msgstr "Handlinger"
+msgstr "Aksi"
 
 msgid "edit"
-msgstr "rediger"
+msgstr "ubah"
 
 msgid "delete"
-msgstr "slett"
+msgstr "hapus"
 
-#, fuzzy
 msgid "see"
-msgstr "se"
+msgstr "lihat"
 
 msgid "The Dashboard is currently deactivated."
-msgstr "Oversikten er for tiden avskrudd."
+msgstr "Dasbor sekarang ini sedang dinonaktifkan."
 
 msgid "you sure?"
-msgstr "er du sikker?"
+msgstr "Anda yakin?"
 
 msgid "Edit project"
-msgstr "Rediger prosjekt"
+msgstr "Ubah proyek"
 
 msgid "Import JSON"
 msgstr ""
@@ -305,62 +294,58 @@ msgid "Choose file"
 msgstr ""
 
 msgid "Download project's data"
-msgstr "Last ned prosjektets data"
+msgstr "Unduh data proyek"
 
 msgid "Bill items"
-msgstr "Regningsoppføringer"
+msgstr "Item tagihan"
 
-#, fuzzy
 msgid "Download the list of bills with owner, amount, reason,... "
-msgstr "Last ned listen over regninger, med eier, beløp, grunn,… "
+msgstr "Unduh daftar tagihan beserta pemilikinya, jumlah, alasan,... "
 
 msgid "Settle plans"
-msgstr "Nedbetalingsplaner"
+msgstr "Atur perencanaan"
 
 msgid "Download the list of transactions needed to settle the current bills."
-msgstr ""
-"Last ned listen over overføringer som må til for å nedbetale gjeldende "
-"regninger."
+msgstr "Unduh daftar transaksi yang dibutuhkan untuk mengatur tagihan saat ini."
 
 msgid "Can't remember the password?"
-msgstr "Husker du ikke passordet?"
+msgstr "Tidak bisa mengingat kata sandi?"
 
 msgid "Cancel"
-msgstr "Avbryt"
+msgstr "Batalkan"
 
 msgid "Privacy Settings"
 msgstr ""
 
 msgid "Edit the project"
-msgstr "Rediger prosjektet"
+msgstr "Ubah proyek"
 
 msgid "Edit this bill"
-msgstr "Rediger denne regningen"
+msgstr "Ubah tagihan ini"
 
 msgid "Add a bill"
-msgstr "Legg til en regning"
+msgstr "Tambah tagihan"
 
 msgid "Select all"
-msgstr "Velg alt"
+msgstr "Pilih semua"
 
 msgid "Select none"
-msgstr "Fravelg alt"
+msgstr "Pilih tidak ada"
 
 msgid "Add participant"
-msgstr "Legg til deltager"
+msgstr "Tambah partisipan"
 
 msgid "Edit this member"
-msgstr "Rediger dette medlemmet"
+msgstr "Ubah anggota ini"
 
-#, fuzzy
 msgid "john.doe@example.com, mary.moe@site.com"
-msgstr "ola@eksempel.no, kari@eksempel.no"
+msgstr "john.doe@example.com, mary.moe@site.com"
 
 msgid "Send the invitations"
-msgstr "Send ut invitasjonene"
+msgstr "Kirim undangan"
 
 msgid "Download"
-msgstr "Last nd"
+msgstr "Unduh"
 
 msgid "Disabled Project History"
 msgstr ""
@@ -429,11 +414,10 @@ msgid "owers list"
 msgstr ""
 
 msgid "Who?"
-msgstr "Hvem?"
+msgstr "Siapa?"
 
-#, fuzzy
 msgid "Balance"
-msgstr "Kontobalanse"
+msgstr "Saldo"
 
 #, python-format
 msgid ""
@@ -535,118 +519,113 @@ msgid "Someone probably cleared the project history."
 msgstr ""
 
 msgid "Manage your shared <br />expenses, easily"
-msgstr "Håndter delte <br />utgifter, enkelt"
+msgstr "Atur pembagian harga <br />Anda, dengan mudah"
 
 msgid "Try out the demo"
-msgstr "Prøv demonstrasjonen"
+msgstr "Coba demo"
 
 msgid "You're sharing a house?"
-msgstr "Deler du et hus?"
+msgstr "Kamu membagikan sebuah rumah?"
 
 msgid "Going on holidays with friends?"
-msgstr "Skal du på ferie med venner?"
+msgstr "Pergi liburan bersama teman?"
 
 msgid "Simply sharing money with others?"
-msgstr "Enkel deling av penger med andre?"
+msgstr "Berbagi uang dengan orang lain?"
 
-#, fuzzy
 msgid "We can help!"
-msgstr "Vi kan hjelpe deg."
+msgstr "Kami bisa membantu!"
 
 msgid "Log in to an existing project"
-msgstr "Logg inn i et eksisterende prosjekt"
+msgstr "Masuk ke proyek yang telah ada"
 
 msgid "Log in"
-msgstr "Logg inn"
+msgstr "Masuk"
 
 msgid "can't remember your password?"
-msgstr "glemt passordet ditt?"
+msgstr "tidak bisa mengingat kata sandi Anda?"
 
 msgid "Create"
-msgstr "Opprett"
+msgstr "Buat"
 
-#, fuzzy
 msgid ""
 "This access code will be sent to your friends. It is stored as-is by the "
 "server, so don\\'t reuse a personal password!"
 msgstr ""
-"Denne tilgangskoden vil bli sendt til venne dine. Den lagres som den er "
-"på tjeneren, så ikke gjenbruk et personlig passord."
+"Kode akses ini akan dikirimkan ke teman Anda. Kode ini disimpan dalam "
+"bentuk teks biasa dalam server, jadi jangan gunakan password Anda!"
 
 msgid "Account manager"
-msgstr "Kontobehandler"
+msgstr "Pengatur akun"
 
 msgid "Bills"
-msgstr "Regninger"
+msgstr "Tagihan"
 
 msgid "Settle"
-msgstr "Gjør opp"
+msgstr "Atur"
 
 msgid "Statistics"
-msgstr "Statistikk"
+msgstr "Statistik"
 
 msgid "History"
 msgstr ""
 
 msgid "Settings"
-msgstr "Innstillinger"
+msgstr "Pengaturan"
 
 msgid "Languages"
-msgstr "Språk"
+msgstr "Bahasa"
 
 msgid "Projects"
-msgstr "Prosjekter"
+msgstr "Proyek"
 
 msgid "Start a new project"
-msgstr "Start et nytt prosjekt"
+msgstr "Mulai proyek baru"
 
-#, fuzzy
 msgid "Other projects :"
-msgstr "Andre prosjekter:"
+msgstr "Proyek lainnya:"
 
 msgid "switch to"
-msgstr "bytt til"
+msgstr "ganti ke"
 
 msgid "Dashboard"
-msgstr "Oversikt"
+msgstr "Dasbor"
 
-#, fuzzy
 msgid "Logout"
-msgstr "Logg ut"
+msgstr "Keluar"
 
 msgid "Code"
 msgstr "Kode"
 
 msgid "Mobile Application"
-msgstr "Mobilprogram"
+msgstr "Aplikasi Gawai"
 
 msgid "Documentation"
-msgstr "Dokumentasjon"
+msgstr "Dokumentasi"
 
 msgid "Administation Dashboard"
-msgstr "Administrasjonsoversiktspanel"
+msgstr "Dasbor Administrasi"
 
-#, fuzzy
 msgid "\"I hate money\" is a free software"
-msgstr "\"Jeg hater penger\" er fri programvare"
+msgstr "\"I hate money\" adalah perangkat lunak gratis"
 
 msgid "you can contribute and improve it!"
-msgstr "du kan bidra og forbedre den."
+msgstr "kamu bisa berkontribusi dan meningkatkannya!"
 
 msgid "deactivate"
-msgstr "skru av"
+msgstr "nonaktifkan"
 
 msgid "reactivate"
-msgstr "skru på igjen"
+msgstr "aktivasi ulang"
 
 msgid "Invite people"
-msgstr "Inviter folk"
+msgstr "Undang orang"
 
 msgid "You should start by adding participants"
-msgstr "Du kan starte ved å legge til deltagere"
+msgstr "Anda harus mulai dengan menambahkan partisipan"
 
 msgid "Add a new bill"
-msgstr "Legg til en ny regning"
+msgstr "Tambah tagihan baru"
 
 msgid "Newer bills"
 msgstr ""
@@ -655,116 +634,114 @@ msgid "Older bills"
 msgstr ""
 
 msgid "When?"
-msgstr "Når?"
+msgstr "Kapan?"
 
 msgid "Who paid?"
-msgstr "Hvem betalte?"
+msgstr "Siapa yang bayar?"
 
 msgid "For what?"
-msgstr "For hva?"
+msgstr "Untuk apa?"
 
 msgid "How much?"
-msgstr "Hvor meget?"
+msgstr "Berapa banyak?"
 
 #, python-format
 msgid "Added on %(date)s"
-msgstr "Lagt til %(date)s"
+msgstr "Ditambahkan pada %(date)s"
 
 msgid "Everyone"
-msgstr "Alle"
+msgstr "Semua orang"
 
 #, python-format
 msgid "Everyone but %(excluded)s"
-msgstr "Alle, unntagen %(excluded)s"
+msgstr "Semua orang kecuali %(excluded)s"
 
 msgid "each"
-msgstr "hver"
+msgstr "setiap"
 
 msgid "No bills"
-msgstr "Ingen regninger"
+msgstr "Tidak ada tagihan"
 
-#, fuzzy
 msgid "Nothing to list yet."
-msgstr "Ingenting å liste opp enda."
+msgstr "Belum ada untuk didaftarkan."
 
 msgid "You probably want to"
-msgstr "Du ønsker antagelig å"
+msgstr "Anda mungkin menginginkan"
 
 msgid "add a bill"
-msgstr "legge til en regning"
+msgstr "tambah tagihan"
 
 msgid "add participants"
-msgstr "legge til deltagere"
+msgstr "tambah partisipan"
 
 msgid "Password reminder"
-msgstr "Passordpåminner"
+msgstr "Pengingat kata sandi"
 
-#, fuzzy
 msgid ""
 "A link to reset your password has been sent to you, please check your "
 "emails."
-msgstr "En tilbakestillingslenke har blitt sendt til din e-postadresse."
+msgstr ""
+"Tautan atur ulang kata sandi telah dikirim kepada Anda, silakan cek email"
+" Anda."
 
-#, fuzzy
 msgid "Return to home page"
-msgstr "Gå tilbake til hjemmesiden"
+msgstr "Kembali ke halaman depan"
 
 msgid "Your projects"
-msgstr "Dine prosjekter"
+msgstr "Proyek Anda"
 
 msgid "Reset your password"
-msgstr "Tilbakestill passordet ditt"
+msgstr "Atur ulang kata sandi Anda"
 
 msgid "Invite people to join this project"
-msgstr "Inviter folk til å ta del i dette prosjektet"
+msgstr "Undang orang untuk bergabung dalam proyek ini"
 
-#, fuzzy
 msgid "Share Identifier & code"
-msgstr "Del identifikator og kode"
+msgstr "Bagikan ID & kode"
 
 msgid ""
 "You can share the project identifier and the private code by any "
 "communication means."
 msgstr ""
-"Du kan dele prosjektidentifikatoren og den private koden slik det måtte "
-"passe deg."
+"Anda bisa membagikan ID proyek dan kode pribadi dengan cara komunikasi "
+"apapun."
 
 msgid "Identifier:"
-msgstr "Identifikator:"
+msgstr "ID:"
 
-#, fuzzy
 msgid "Share the Link"
-msgstr "Del lenken"
+msgstr "Bagikan tautan"
 
 msgid "You can directly share the following link via your prefered medium"
-msgstr "Du kan dele denne lenken slik du ønsker"
+msgstr ""
+"Anda bisa membagikan tautan secara langsung melalui media yang Anda "
+"inginkan"
 
-#, fuzzy
 msgid "Send via Emails"
-msgstr "Send via e-poster"
+msgstr "Kirim melalui surel"
 
-#, fuzzy
 msgid ""
 "Specify a (comma separated) list of email adresses you want to notify "
 "about the\n"
 "                creation of this budget management project and we will "
 "send them an email for you."
 msgstr ""
-"Angi en (kommainndelt) liste over e-postadresser du ønsker å varsle om\n"
-"opprettelsen av dette budsjetthåndteringsprosjektet, og de vil få en "
-"e-post om det."
+"Spesifikkan daftar alamat surel (dipisah dengan koma) yang akan Anda "
+"kirim pemberitahuan tentang\n"
+"                pembuatan dari manajemen anggaran proyek ini dan kami "
+"akan memngirim mereka sebuah surel."
 
 msgid "Who pays?"
-msgstr "Hvem betaler?"
+msgstr "Siapa membayar?"
 
 msgid "To whom?"
-msgstr "Til hvem?"
+msgstr "Kepada siapa?"
 
 msgid "Paid"
-msgstr "Betalt"
+msgstr "Dibayar"
 
 msgid "Spent"
-msgstr "Forbrukt"
+msgstr "Dihabiskan"
 
 msgid "Expenses by Month"
 msgstr ""
@@ -772,119 +749,12 @@ msgstr ""
 msgid "Period"
 msgstr ""
 
-#~ msgid ""
-#~ "The project identifier is used to "
-#~ "log in and for the URL of "
-#~ "the project. We tried to generate "
-#~ "an identifier for you but a "
-#~ "project with this identifier already "
-#~ "exists. Please create a new identifier"
-#~ " that you will be able to "
-#~ "remember"
-#~ msgstr ""
-#~ "Prosjektidentifikatoren brukes til og logge"
-#~ " inn og for prosjektets nettadresse. "
-#~ "Vi prøvde å generere en identifikator"
-#~ " for deg, men et prosjekt hadde "
-#~ "den identifikatoren allerede. Opprett en "
-#~ "ny identifikator du husker."
-
-#~ msgid ""
-#~ "Not a valid amount or expression.Only"
-#~ " numbers and + - * / "
-#~ "operatorsare accepted."
-#~ msgstr ""
-#~ "Ikke gyldig beløp eller uttrykk. Kun "
-#~ "tall og + - * / operatorer "
-#~ "tillates."
-
-#~ msgid "What do you want to download ?"
-#~ msgstr "Hva ønsker du å laste ned?"
-
-#~ msgid "bills"
-#~ msgstr "regninger"
-
-#~ msgid "transactions"
-#~ msgstr "overøfringer"
-
-#~ msgid "Export file format"
-#~ msgstr "Eksport-filformat"
-
-#~ msgid "Edit this project"
-#~ msgstr "Rediger dette prosjektet"
-
-#~ msgid "Download this project's data"
-#~ msgstr "Last ned data for dette prosjektet"
-
-#~ msgid "Type user name here"
-#~ msgstr "Skriv inn brukernavn her"
-
-#~ msgid "No, thanks"
-#~ msgstr "Nei takk"
-
-#~ msgid "Manage your shared <br>expenses, easily"
-#~ msgstr "Behandle dine delte <br>utgifter, enkelt"
-
-#~ msgid "Log to an existing project"
-#~ msgstr "Logg inn i et eksisterende prosjekt"
-
-#~ msgid "log in"
-#~ msgstr "logg inn"
-
-#~ msgid "or create a new one"
-#~ msgstr "eller opprett et nytt"
-
-#~ msgid "let's get started"
-#~ msgstr "la oss komme i gang"
-
-#~ msgid "options"
-#~ msgstr "innstillinger"
-
-#~ msgid "Project settings"
-#~ msgstr "Prosjektinnstillinger"
-
-#~ msgid "This is a free software"
-#~ msgstr "Dette er fri programvare"
-
-#~ msgid "Invite people to join this project!"
-#~ msgstr "Inviter folk til dette prosjektet."
-
-#~ msgid "Added on"
-#~ msgstr "Lagt til"
-
-#~ msgid "Nothing to list yet. You probably want to"
-#~ msgstr "ingenting å liste opp enda. Du ønsker antagelig å"
-
-#~ msgid ""
-#~ "Specify a (comma separated) list of "
-#~ "email adresses you want to notify "
-#~ "about the\n"
-#~ "creation of this budget management "
-#~ "project and we will send them an"
-#~ " email for you."
-#~ msgstr ""
-#~ "Angi en (kommainndelt) liste over "
-#~ "e-postadresser du ønsker å gi nyss "
-#~ "om\n"
-#~ "opprettelsen av dette budsjetthåndteringsprosjektet,"
-#~ " og de vil motta en e-post."
-
-#~ msgid ""
-#~ "If you prefer, you can share the project identifier and the shared\n"
-#~ "password by other communication means. "
-#~ "Or even directly share the following "
-#~ "link:"
-#~ msgstr ""
-#~ "Hvis du foretrekker det, kan du "
-#~ "dele prosjektidentifikatoeren og det delte"
-#~ "\n"
-#~ "passordet på annet vis. Du kan også dele det følgende lenke direkte:"
-
-#~ msgid "A link to reset your password has been sent to your email."
-#~ msgstr ""
-#~ "En lenke for å tilbakestille passordet"
-#~ " har blitt sent til deg per "
-#~ "e-post."
-
 #~ msgid "%(member)s had been added"
-#~ msgstr "%(member)s lagt til"
+#~ msgstr "%(member)s telah ditambahkan"
+
+#~ msgid "Someone probably"
+#~ msgstr ""
+
+#~ msgid "cleared the project history."
+#~ msgstr ""
+
