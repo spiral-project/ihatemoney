@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-26 19:50+0200\n"
-"PO-Revision-Date: 2020-04-26 20:48+0000\n"
+"PO-Revision-Date: 2020-04-28 07:11+0000\n"
 "Last-Translator: Vsevolod <sevauserg.com@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/ru/>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
 "4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.0.2-dev\n"
+"X-Generator: Weblate 4.0.2\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -129,7 +129,7 @@ msgid "This project already have this member"
 msgstr "В этом проекте уже есть такой участник"
 
 msgid "People to notify"
-msgstr ""
+msgstr "Люди для уведомления"
 
 msgid "Send invites"
 msgstr "Отправить приглашения"
@@ -157,6 +157,7 @@ msgstr ""
 
 msgid "You either provided a bad token or no project identifier."
 msgstr ""
+"Вы либо предоставили неверный токен, либо не указали идентификатор проекта."
 
 msgid "This private code is not the right one"
 msgstr "Этот приватный код не подходит"
@@ -176,207 +177,210 @@ msgid "Invalid token"
 msgstr "Неправильный токен"
 
 msgid "Unknown project"
-msgstr ""
+msgstr "Неизвестный проект"
 
 msgid "Password successfully reset."
-msgstr ""
+msgstr "Пароль успешно восстановлен."
 
 msgid "Project successfully uploaded"
-msgstr ""
+msgstr "Проект успешно загружен"
 
 msgid "Invalid JSON"
-msgstr ""
+msgstr "Неправильный JSON"
 
 msgid "Project successfully deleted"
-msgstr ""
+msgstr "Проект удалён"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
-msgstr ""
+msgstr "Вас пригласили разделить расходы в проект %(project)s"
 
 msgid "Your invitations have been sent"
-msgstr ""
+msgstr "Ваш код приглашения был отправлен"
 
 #, python-format
 msgid "%(member)s has been added"
-msgstr ""
+msgstr "%(member)s был добавлен"
 
 #, python-format
 msgid "%(name)s is part of this project again"
-msgstr ""
+msgstr "%(name)s снова часть этого проекта"
 
 #, python-format
 msgid ""
 "User '%(name)s' has been deactivated. It will still appear in the users "
 "list until its balance becomes zero."
 msgstr ""
+"Пользователь '%(name)s' был деактивирован. Он будет отображаться в списке "
+"пользователей до тех пор, пока его баланс не станет равным нулю."
 
 #, python-format
 msgid "User '%(name)s' has been removed"
-msgstr ""
+msgstr "Пользователь '%(name)s' был удалён"
 
 #, python-format
 msgid "User '%(name)s' has been edited"
-msgstr ""
+msgstr "Пользователь '%(name)s' был изменён"
 
 msgid "The bill has been added"
-msgstr ""
+msgstr "Счёт был добавлен"
 
 msgid "The bill has been deleted"
-msgstr ""
+msgstr "Счёт был удалён"
 
 msgid "The bill has been modified"
-msgstr ""
+msgstr "Счёт был изменён"
 
 msgid "Sorry, we were unable to find the page you've asked for."
-msgstr ""
+msgstr "К сожалению, нам не удалось найти страницу, которую вы запросили."
 
 msgid "The best thing to do is probably to get back to the main page."
-msgstr ""
+msgstr "Лучше всего вернуться на главную страницу."
 
 msgid "Back to the list"
-msgstr ""
+msgstr "Вернутся к списку"
 
 msgid "Administration tasks are currently disabled."
-msgstr ""
+msgstr "Задачи администратора в данный момент отключены."
 
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr ""
+"Проект, к которому вы пытаетесь получить доступ, не существует, вы хотите"
 
 msgid "create it"
-msgstr ""
+msgstr "создать его"
 
 msgid "?"
-msgstr ""
+msgstr "?"
 
 msgid "Create a new project"
-msgstr ""
+msgstr "Создать новый проект"
 
 msgid "Number of members"
-msgstr ""
+msgstr "Число участников"
 
 msgid "Number of bills"
-msgstr ""
+msgstr "Число счетов"
 
 msgid "Newest bill"
-msgstr ""
+msgstr "Новейший счёт"
 
 msgid "Oldest bill"
-msgstr ""
+msgstr "Старейший счёт"
 
 msgid "Actions"
-msgstr ""
+msgstr "Действия"
 
 msgid "edit"
-msgstr ""
+msgstr "изменить"
 
 msgid "delete"
-msgstr ""
+msgstr "удалить"
 
 msgid "see"
-msgstr ""
+msgstr "просмотреть"
 
 msgid "The Dashboard is currently deactivated."
-msgstr ""
+msgstr "Панель инструментов в данный момент отключена."
 
 msgid "you sure?"
-msgstr ""
+msgstr "вы уверены?"
 
 msgid "Edit project"
-msgstr ""
+msgstr "Изменить проект"
 
 msgid "Import JSON"
-msgstr ""
+msgstr "Импортировать JSON"
 
 msgid "Choose file"
-msgstr ""
+msgstr "Выбрать файл"
 
 msgid "Download project's data"
-msgstr ""
+msgstr "Скачать данные проекта"
 
 msgid "Bill items"
-msgstr ""
+msgstr "Пункты счета"
 
 msgid "Download the list of bills with owner, amount, reason,... "
-msgstr ""
+msgstr "Скачать список счетов с владельцем, суммой, причиной, .. "
 
 msgid "Settle plans"
-msgstr ""
+msgstr "Урегулировать планы"
 
 msgid "Download the list of transactions needed to settle the current bills."
-msgstr ""
+msgstr "Скачать список переводов нужных, чтобы урегулировать данные счета."
 
 msgid "Can't remember the password?"
-msgstr ""
+msgstr "Не помните пароль?"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Отменить"
 
 msgid "Privacy Settings"
-msgstr ""
+msgstr "Настройки приватности"
 
 msgid "Edit the project"
-msgstr ""
+msgstr "Изменить проект"
 
 msgid "Edit this bill"
-msgstr ""
+msgstr "Изменить счёт"
 
 msgid "Add a bill"
-msgstr ""
+msgstr "Добавить счёт"
 
 msgid "Select all"
-msgstr ""
+msgstr "Выбрать всё"
 
 msgid "Select none"
-msgstr ""
+msgstr "Отменить выбор"
 
 msgid "Add participant"
-msgstr ""
+msgstr "Добавить участника"
 
 msgid "Edit this member"
-msgstr ""
+msgstr "Изменить этого участника"
 
 msgid "john.doe@example.com, mary.moe@site.com"
-msgstr ""
+msgstr "john.doe@example.com, mary.moe@site.com"
 
 msgid "Send the invitations"
-msgstr ""
+msgstr "Отправить приглашения"
 
 msgid "Download"
-msgstr ""
+msgstr "Скачать"
 
 msgid "Disabled Project History"
-msgstr ""
+msgstr "История отключенных проектов"
 
 msgid "Disabled Project History & IP Address Recording"
-msgstr ""
+msgstr "Отключенная история проекта и запись IP-адреса"
 
 msgid "Enabled Project History"
-msgstr ""
+msgstr "Включить историю проекта"
 
 msgid "Disabled IP Address Recording"
-msgstr ""
+msgstr "Выключить запись IP-адрессов"
 
 msgid "Enabled Project History & IP Address Recording"
-msgstr ""
+msgstr "Включить историю проекта и запись IP адрессов"
 
 msgid "Enabled IP Address Recording"
-msgstr ""
+msgstr "Включить запись IP адрессов"
 
 msgid "History Settings Changed"
-msgstr ""
+msgstr "Настройки истории изменены"
 
 msgid "changed"
-msgstr ""
+msgstr "изменены"
 
 msgid "from"
-msgstr ""
+msgstr "от"
 
 msgid "to"
-msgstr ""
+msgstr "кому"
 
 msgid "Confirm Remove IP Adresses"
-msgstr ""
+msgstr "Подтвердите удаление IP-адресов"
 
 msgid ""
 "Are you sure you want to delete all recorded IP addresses from this "
@@ -384,38 +388,42 @@ msgid ""
 "                The rest of the project history will be unaffected. This "
 "action cannot be undone."
 msgstr ""
+"Вы уверены, что хотите удалить все записанные IP-адреса из этого проекта?\n"
+"                Остальная часть истории проекта не будет затронута. Это "
+"действие не может быть отменено."
 
 msgid "Close"
-msgstr ""
+msgstr "Закрыть"
 
 msgid "Confirm Delete"
-msgstr ""
+msgstr "Подтвердить удаление"
 
 msgid "Delete Confirmation"
-msgstr ""
+msgstr "Подтверждение удаления"
 
 msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
 msgstr ""
+"Вы уверены, что хотите стереть историю проекта? Это действие нельзя отменить."
 
 msgid "Added"
-msgstr ""
+msgstr "Добавлен"
 
 msgid "Removed"
-msgstr ""
+msgstr "Удалён"
 
 msgid "and"
-msgstr ""
+msgstr "и"
 
 msgid "owers list"
-msgstr ""
+msgstr "список владельцев"
 
 msgid "Who?"
-msgstr ""
+msgstr "Кто?"
 
 msgid "Balance"
-msgstr ""
+msgstr "Баланс"
 
 #, python-format
 msgid ""
@@ -425,6 +433,11 @@ msgid ""
 "            <a href=\"%(url)s\">settings page</a>\n"
 "            "
 msgstr ""
+"\n"
+"            <i>У этого проекта история отключена. Новые действия не появятся "
+"ниже. Вы можете включить историю в</i>\n"
+"            <a href=\"%(url)s\">настройках</a>\n"
+"            "
 
 msgid ""
 "\n"
@@ -435,280 +448,295 @@ msgid ""
 "them.</i></p>\n"
 "            "
 msgstr ""
+"\n"
+"            <i>В таблице ниже отражены действия, записанные до отключения "
+"истории проекта. Вы можете\n"
+"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" data-"
+"target=\"#confirm-erase\">очистить историю проекта</a> to remove "
+"them.</i></p>\n"
+"            "
 
 msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
 "recording disabled. "
 msgstr ""
+"Некоторые записи ниже содержат IP-адреса, хотя в этом проекте запись IP "
+"отключена. "
 
 msgid "Delete stored IP addresses"
-msgstr ""
+msgstr "Удалить сохраненные IP-адреса"
 
 msgid "No history to erase"
-msgstr ""
+msgstr "Нечего стирать"
 
 msgid "Clear Project History"
-msgstr ""
+msgstr "Стереть историю проекта"
 
 msgid "No IP Addresses to erase"
-msgstr ""
+msgstr "Нечего стирать"
 
 msgid "Delete Stored IP Addresses"
-msgstr ""
+msgstr "Удалить сохраненные IP-адреса"
 
 msgid "Time"
-msgstr ""
+msgstr "Время"
 
 msgid "Event"
-msgstr ""
+msgstr "Событие"
 
 msgid "IP address recording can be enabled on the settings page"
-msgstr ""
+msgstr "Запись IP-адреса может быть включена на странице настроек"
 
 msgid "IP address recording can be disabled on the settings page"
-msgstr ""
+msgstr "Запись IP-адреса может быть отключена на странице настроек"
 
 msgid "From IP"
-msgstr ""
+msgstr "От IP"
 
 msgid "added"
-msgstr ""
+msgstr "добавлен"
 
 msgid "Project private code changed"
-msgstr ""
+msgstr "Приватный код проекта изменен"
 
 msgid "Project renamed to"
-msgstr ""
+msgstr "Проект переименован в"
 
 msgid "Project contact email changed to"
-msgstr ""
+msgstr "Контактная почта проекта изменена на"
 
 msgid "Project settings modified"
-msgstr ""
+msgstr "Настройки проекта изменены"
 
 msgid "deactivated"
-msgstr ""
+msgstr "отключено"
 
 msgid "reactivated"
-msgstr ""
+msgstr "реактивирован"
 
 msgid "renamed to"
-msgstr ""
+msgstr "переименован в"
 
 msgid "External link changed to"
-msgstr ""
+msgstr "Внешняя ссылка изменена на"
 
 msgid "Amount"
-msgstr ""
+msgstr "Количество"
 
 msgid "modified"
-msgstr ""
+msgstr "изменено"
 
 msgid "removed"
-msgstr ""
+msgstr "удалено"
 
 msgid "changed in a unknown way"
-msgstr ""
+msgstr "изменилось неизвестным образом"
 
 msgid "Nothing to list"
-msgstr ""
+msgstr "Нечего перечислять"
 
 msgid "Someone probably cleared the project history."
-msgstr ""
+msgstr "Кто-то скорее всего стёр историю проекта."
 
 msgid "Manage your shared <br />expenses, easily"
-msgstr ""
+msgstr "Управляйте своими общими <br />расходами проще"
 
 msgid "Try out the demo"
-msgstr ""
+msgstr "Попробуйте"
 
 msgid "You're sharing a house?"
-msgstr ""
+msgstr "Вы живете в одном доме с другими людьми?"
 
 msgid "Going on holidays with friends?"
-msgstr ""
+msgstr "Собираетесь в отпуск с друзьями?"
 
 msgid "Simply sharing money with others?"
-msgstr ""
+msgstr "Просто делиться деньгами с другими?"
 
 msgid "We can help!"
-msgstr ""
+msgstr "Мы поможем!"
 
 msgid "Log in to an existing project"
-msgstr ""
+msgstr "Войти в существующий проект"
 
 msgid "Log in"
-msgstr ""
+msgstr "Войти"
 
 msgid "can't remember your password?"
-msgstr ""
+msgstr "не помните пароль?"
 
 msgid "Create"
-msgstr ""
+msgstr "Создать"
 
 msgid ""
 "This access code will be sent to your friends. It is stored as-is by the "
 "server, so don\\'t reuse a personal password!"
 msgstr ""
+"Этот код доступа будет отправлен вашим друзьям. Он хранится на сервере как "
+"есть, поэтому не используйте личный пароль!"
 
 msgid "Account manager"
-msgstr ""
+msgstr "Менеджер аккаунтов"
 
 msgid "Bills"
-msgstr ""
+msgstr "Счета"
 
 msgid "Settle"
-msgstr ""
+msgstr "Отрегулировать"
 
 msgid "Statistics"
-msgstr ""
+msgstr "Статистика"
 
 msgid "History"
-msgstr ""
+msgstr "История"
 
 msgid "Settings"
-msgstr ""
+msgstr "Настройки"
 
 msgid "Languages"
-msgstr ""
+msgstr "Языки"
 
 msgid "Projects"
-msgstr ""
+msgstr "Проекты"
 
 msgid "Start a new project"
-msgstr ""
+msgstr "Начать новый проект"
 
 msgid "Other projects :"
-msgstr ""
+msgstr "Остальные проекты :"
 
 msgid "switch to"
-msgstr ""
+msgstr "сменён на"
 
 msgid "Dashboard"
-msgstr ""
+msgstr "Панель инструментов"
 
 msgid "Logout"
-msgstr ""
+msgstr "Выйти"
 
 msgid "Code"
-msgstr ""
+msgstr "Код"
 
 msgid "Mobile Application"
-msgstr ""
+msgstr "Мобильное приложение"
 
 msgid "Documentation"
-msgstr ""
+msgstr "Документация"
 
 msgid "Administation Dashboard"
-msgstr ""
+msgstr "Панель инструментов администратора"
 
 msgid "\"I hate money\" is a free software"
-msgstr ""
+msgstr "\" I hate money \" - бесплатная программа"
 
 msgid "you can contribute and improve it!"
-msgstr ""
+msgstr "вы можете способствовать развитию и улучшать её!"
 
 msgid "deactivate"
-msgstr ""
+msgstr "отключить"
 
 msgid "reactivate"
-msgstr ""
+msgstr "включить"
 
 msgid "Invite people"
-msgstr ""
+msgstr "Пригласить людей"
 
 msgid "You should start by adding participants"
-msgstr ""
+msgstr "Вам стоит начать с добавления пользователей"
 
 msgid "Add a new bill"
-msgstr ""
+msgstr "Добавить новый счёт"
 
 msgid "Newer bills"
-msgstr ""
+msgstr "Новые счета"
 
 msgid "Older bills"
-msgstr ""
+msgstr "Старые счета"
 
 msgid "When?"
-msgstr ""
+msgstr "Когда?"
 
 msgid "Who paid?"
-msgstr ""
+msgstr "Кто заплатил?"
 
 msgid "For what?"
-msgstr ""
+msgstr "За что?"
 
 msgid "How much?"
-msgstr ""
+msgstr "Сколько?"
 
 #, python-format
 msgid "Added on %(date)s"
-msgstr ""
+msgstr "Добавлено %(date)s"
 
 msgid "Everyone"
-msgstr ""
+msgstr "Каждый"
 
 #, python-format
 msgid "Everyone but %(excluded)s"
-msgstr ""
+msgstr "Каждый, кроме %(excluded)s"
 
 msgid "each"
-msgstr ""
+msgstr "каждый"
 
 msgid "No bills"
-msgstr ""
+msgstr "Нет счетов"
 
 msgid "Nothing to list yet."
-msgstr ""
+msgstr "Нечего перечислять еще."
 
 msgid "You probably want to"
-msgstr ""
+msgstr "Возможно вы хотите"
 
 msgid "add a bill"
-msgstr ""
+msgstr "добавить счёт"
 
 msgid "add participants"
-msgstr ""
+msgstr "добавить пользователя"
 
 msgid "Password reminder"
-msgstr ""
+msgstr "Напоминание пароля"
 
 msgid ""
 "A link to reset your password has been sent to you, please check your "
 "emails."
 msgstr ""
+"Ссылка для восстановления пароля отправлена, пожалуйста, проверьте Email."
 
 msgid "Return to home page"
-msgstr ""
+msgstr "Вернуться на главную страницу"
 
 msgid "Your projects"
-msgstr ""
+msgstr "Ваши проекты"
 
 msgid "Reset your password"
-msgstr ""
+msgstr "Восстановить пароль"
 
 msgid "Invite people to join this project"
-msgstr ""
+msgstr "Пригласить людей присоединиться к этому проекту"
 
 msgid "Share Identifier & code"
-msgstr ""
+msgstr "Поделиться идентификатором и кодом"
 
 msgid ""
 "You can share the project identifier and the private code by any "
 "communication means."
 msgstr ""
+"Вы можете поделиться идентификатором проекта и личным кодом любым способом "
+"связи."
 
 msgid "Identifier:"
-msgstr ""
+msgstr "Идентификатор:"
 
 msgid "Share the Link"
-msgstr ""
+msgstr "Поделиться ссылкой"
 
 msgid "You can directly share the following link via your prefered medium"
 msgstr ""
+"Вы можете напрямую поделиться следующей ссылкой через любой способ связи"
 
 msgid "Send via Emails"
-msgstr ""
+msgstr "Отправить по почте"
 
 msgid ""
 "Specify a (comma separated) list of email adresses you want to notify "
@@ -716,21 +744,25 @@ msgid ""
 "                creation of this budget management project and we will "
 "send them an email for you."
 msgstr ""
+"Укажите (разделенный запятыми) список адресов электронной почты, которые вы "
+"хотите уведомить о\n"
+"                создание этого проекта управления бюджетом, и мы вышлем им "
+"письмо."
 
 msgid "Who pays?"
-msgstr ""
+msgstr "Кто платит?"
 
 msgid "To whom?"
-msgstr ""
+msgstr "Кому?"
 
 msgid "Paid"
-msgstr ""
+msgstr "Оплачено"
 
 msgid "Spent"
-msgstr ""
+msgstr "Потрачено"
 
 msgid "Expenses by Month"
-msgstr ""
+msgstr "Расходы по месяцам"
 
 msgid "Period"
-msgstr ""
+msgstr "Период"
