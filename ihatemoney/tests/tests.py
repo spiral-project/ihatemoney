@@ -2301,6 +2301,7 @@ class HistoryTestCase(IhatemoneyTestCase):
             "name": "demo",
             "contact_email": "demo@notmyidea.org",
             "password": "demo",
+            "default_currency": "USD",
         }
 
         if logging_preference != LoggingMode.DISABLED:
@@ -2355,6 +2356,7 @@ class HistoryTestCase(IhatemoneyTestCase):
             "contact_email": "demo2@notmyidea.org",
             "password": "123456",
             "project_history": "y",
+            "default_currency": "USD",
         }
 
         resp = self.client.post("/demo/edit", data=new_data, follow_redirects=True)
@@ -2450,6 +2452,7 @@ class HistoryTestCase(IhatemoneyTestCase):
             "name": "demo2",
             "contact_email": "demo2@notmyidea.org",
             "password": "123456",
+            "default_currency": "USD",
         }
 
         # Keep privacy settings where they were
