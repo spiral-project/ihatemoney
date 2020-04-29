@@ -1,5 +1,5 @@
+from cachetools import TTLCache, cached
 import requests
-from cachetools import cached, TTLCache
 
 
 class Singleton(type):
