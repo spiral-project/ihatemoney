@@ -118,7 +118,7 @@
                 </th><th>{{ _("For whom?") }}
                 </th><th>{{ _("How much?") }}
                 {% if g.project.default_currency != "No Currency" %}
-                  </th><th>{{ _("Amount in ") }}{{ g.project.default_currency }}
+                  </th><th>{{ _("Amount in %(currency)s", currency=g.project.default_currency) }}
                 {%- else -%}
                   </th><th>{{ _("Amount") }}
                 {% endif %}
