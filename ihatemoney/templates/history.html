@@ -225,6 +225,10 @@
                         {{ simple_property_change(event, _("Amount")) }}
                     {% elif event.prop_changed == "date" %}
                         {{ simple_property_change(event, _("Date")) }}
+                    {% elif event.prop_changed == "original_currency" %}
+                        {{ simple_property_change(event, _("Currency")) }}
+                    {% elif event.prop_changed == "converted_amount" %}
+                        {{ simple_property_change(event, _("Amount in %(currency)s", currency=g.project.default_currency)) }}
                     {% else %}
                        {{ describe_object(event) }} {{ _("modified") }}
                     {% endif %}
