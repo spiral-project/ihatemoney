@@ -111,7 +111,19 @@
         <div class="clearfix"></div>
 
         <table id="bill_table" class="col table table-striped table-hover table-responsive-sm">
-            <thead><tr><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</<th><th>{{ _("For what?") }}</th><th>{{ _("For whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Actions") }}</th></tr></thead>
+            <thead>
+                <tr><th>{{ _("When?") }}
+                </th><th>{{ _("Who paid?") }}   
+                </th><th>{{ _("For what?") }}
+                </th><th>{{ _("For whom?") }}
+                </th><th>{{ _("How much?") }}
+                {% if g.project.default_currency != "No Currency" %}
+                  </th><th>{{ _("Amount in %(currency)s", currency=g.project.default_currency) }}
+                {%- else -%}
+                  </th><th>{{ _("Amount") }}
+                {% endif %}
+                </th><th>{{ _("Actions") }}</th></tr>
+            </thead>
         <tbody>
         {% for bill in bills.items %}
         <tr owers="{{bill.owers|join(',','id')}}" payer="{{bill.payer.id}}">
@@ -130,7 +142,14 @@
                 {%- else -%}
                 {{ bill.owers|join(', ', 'name') }}
                 {%- endif %}</td>
-                <td>{{ "%0.2f"|format(bill.amount) }} ({{ "%0.2f"|format(bill.pay_each()) }} {{ _("each") }})</td>
+                <td>
+                    {% if bill.original_currency != "No Currency" %}
+                        {{ "%0.2f"|format(bill.amount) }} {{bill.original_currency}} ({{ "%0.2f"|format(bill.pay_each_default(bill.amount)) }} {{bill.original_currency}} {{ _(" each") }})
+                    {%- else -%}
+                        {{ "%0.2f"|format(bill.amount) }} ({{ "%0.2f"|format(bill.pay_each_default(bill.amount)) }} {{ _(" each") }})
+                    {% endif %}
+                </td>
+                <td>{{ "%0.2f"|format(bill.converted_amount) }}</td>
                 <td class="bill-actions">
                     <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">{{ _('edit') }}</a>
                     <a class="delete" href="{{ url_for(".delete_bill", bill_id=bill.id) }}" title="{{ _("delete") }}">{{ _('delete') }}</a>
