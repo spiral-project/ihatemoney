@@ -23,10 +23,9 @@ install dependencies, and run the test server.
 The hard way
 ------------
 
-Alternatively, you can also use the `requirements.txt` file to install the
-dependencies yourself. That would be::
+Alternatively, you can use pip to install dependencies yourself. That would be::
 
-     pip install -r requirements.txt
+     pip install -e .
 
 And then run the application::
 
@@ -156,11 +155,7 @@ In order to prepare a new release, we are following the following steps:
 - Merge remaining pull requests;
 - Update :file:`CHANGELOG.rst` with the last changes;
 - Update :file:`CONTRIBUTORS`;
-- Update known good versions of dependencies in ``requirements.txt`` with this
-  command (from inside the venv)::
-
-    make build-requirements
-
+- Update known good versions of dependencies in ``setup.py``;
 - If needed, recompress assets. It requires zopflipng::
 
     make compress-assets
