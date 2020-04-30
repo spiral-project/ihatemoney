@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-25 13:02+0200\n"
+"POT-Creation-Date: 2020-05-01 00:54+0200\n"
 "PO-Revision-Date: 2019-11-12 09:04+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language: nb_NO\n"
@@ -30,18 +30,6 @@ msgstr "Privat kode"
 
 msgid "Email"
 msgstr "E-post"
-
-msgid "Enable project history"
-msgstr ""
-
-msgid "Use IP tracking for project history"
-msgstr ""
-
-msgid "Import previously exported JSON file"
-msgstr ""
-
-msgid "Import"
-msgstr ""
 
 msgid "Project identifier"
 msgstr "Prosjektidentifikator"
@@ -94,12 +82,6 @@ msgstr "Betaler"
 msgid "Amount paid"
 msgstr "Beløp betalt"
 
-msgid "External link"
-msgstr "Ekstern lenke"
-
-msgid "A link to an external document, related to this bill"
-msgstr "En lenke til et eksternt dokument, i relasjon til denne regningen"
-
 msgid "For whom?"
 msgstr "For hvem?"
 
@@ -141,15 +123,6 @@ msgstr "Send invitasjoner"
 msgid "The email %(email)s is not valid"
 msgstr "E-posten \"%(email)s\" er ikke gyldig"
 
-msgid "Participant"
-msgstr ""
-
-msgid "Bill"
-msgstr ""
-
-msgid "Project"
-msgstr "Prosjekt"
-
 msgid "Too many failed login attempts, please retry later."
 msgstr "For mange mislykkede innloggingsforsøk, prøv igjen senere."
 
@@ -185,12 +158,6 @@ msgstr "Ukjent prosjekt"
 #, fuzzy
 msgid "Password successfully reset."
 msgstr "Passord tilbakestilt."
-
-msgid "Project successfully uploaded"
-msgstr ""
-
-msgid "Invalid JSON"
-msgstr ""
 
 #, fuzzy
 msgid "Project successfully deleted"
@@ -264,6 +231,9 @@ msgstr "?"
 msgid "Create a new project"
 msgstr "Opprett et nytt prosjekt"
 
+msgid "Project"
+msgstr "Prosjekt"
+
 msgid "Number of members"
 msgstr "Antall medlemmer"
 
@@ -285,10 +255,6 @@ msgstr "rediger"
 msgid "delete"
 msgstr "slett"
 
-#, fuzzy
-msgid "see"
-msgstr "se"
-
 msgid "The Dashboard is currently deactivated."
 msgstr "Oversikten er for tiden avskrudd."
 
@@ -297,12 +263,6 @@ msgstr "er du sikker?"
 
 msgid "Edit project"
 msgstr "Rediger prosjekt"
-
-msgid "Import JSON"
-msgstr ""
-
-msgid "Choose file"
-msgstr ""
 
 msgid "Download project's data"
 msgstr "Last ned prosjektets data"
@@ -327,9 +287,6 @@ msgstr "Husker du ikke passordet?"
 
 msgid "Cancel"
 msgstr "Avbryt"
-
-msgid "Privacy Settings"
-msgstr ""
 
 msgid "Edit the project"
 msgstr "Rediger prosjektet"
@@ -361,178 +318,6 @@ msgstr "Send ut invitasjonene"
 
 msgid "Download"
 msgstr "Last nd"
-
-msgid "Disabled Project History"
-msgstr ""
-
-msgid "Disabled Project History & IP Address Recording"
-msgstr ""
-
-msgid "Enabled Project History"
-msgstr ""
-
-msgid "Disabled IP Address Recording"
-msgstr ""
-
-msgid "Enabled Project History & IP Address Recording"
-msgstr ""
-
-msgid "Enabled IP Address Recording"
-msgstr ""
-
-msgid "History Settings Changed"
-msgstr ""
-
-msgid "changed"
-msgstr ""
-
-msgid "from"
-msgstr ""
-
-msgid "to"
-msgstr ""
-
-msgid "Confirm Remove IP Adresses"
-msgstr ""
-
-msgid ""
-"Are you sure you want to delete all recorded IP addresses from this "
-"project?\n"
-"                The rest of the project history will be unaffected. This "
-"action cannot be undone."
-msgstr ""
-
-msgid "Close"
-msgstr ""
-
-msgid "Confirm Delete"
-msgstr ""
-
-msgid "Delete Confirmation"
-msgstr ""
-
-msgid ""
-"Are you sure you want to erase all history for this project? This action "
-"cannot be undone."
-msgstr ""
-
-msgid "Added"
-msgstr ""
-
-msgid "Removed"
-msgstr ""
-
-msgid "and"
-msgstr ""
-
-msgid "owers list"
-msgstr ""
-
-msgid "Who?"
-msgstr "Hvem?"
-
-#, fuzzy
-msgid "Balance"
-msgstr "Kontobalanse"
-
-#, python-format
-msgid ""
-"\n"
-"            <i>This project has history disabled. New actions won't "
-"appear below. You can enable history on the</i>\n"
-"            <a href=\"%(url)s\">settings page</a>\n"
-"            "
-msgstr ""
-
-msgid ""
-"\n"
-"            <i>The table below reflects actions recorded prior to "
-"disabling project history. You can\n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
-"data-target=\"#confirm-erase\">clear project history</a> to remove "
-"them.</i></p>\n"
-"            "
-msgstr ""
-
-msgid ""
-"Some entries below contain IP addresses, even though this project has IP "
-"recording disabled. "
-msgstr ""
-
-msgid "Delete stored IP addresses"
-msgstr ""
-
-msgid "No history to erase"
-msgstr ""
-
-msgid "Clear Project History"
-msgstr ""
-
-msgid "No IP Addresses to erase"
-msgstr ""
-
-msgid "Delete Stored IP Addresses"
-msgstr ""
-
-msgid "Time"
-msgstr ""
-
-msgid "Event"
-msgstr ""
-
-msgid "IP address recording can be enabled on the settings page"
-msgstr ""
-
-msgid "IP address recording can be disabled on the settings page"
-msgstr ""
-
-msgid "From IP"
-msgstr ""
-
-msgid "added"
-msgstr ""
-
-msgid "Project private code changed"
-msgstr ""
-
-msgid "Project renamed to"
-msgstr ""
-
-msgid "Project contact email changed to"
-msgstr ""
-
-msgid "Project settings modified"
-msgstr ""
-
-msgid "deactivated"
-msgstr ""
-
-msgid "reactivated"
-msgstr ""
-
-msgid "renamed to"
-msgstr ""
-
-msgid "External link changed to"
-msgstr ""
-
-msgid "Amount"
-msgstr ""
-
-msgid "modified"
-msgstr ""
-
-msgid "removed"
-msgstr ""
-
-msgid "changed in a unknown way"
-msgstr ""
-
-msgid "Nothing to list"
-msgstr ""
-
-msgid "Someone probably cleared the project history."
-msgstr ""
 
 msgid "Manage your shared <br />expenses, easily"
 msgstr "Håndter delte <br />utgifter, enkelt"
@@ -584,9 +369,6 @@ msgstr "Gjør opp"
 
 msgid "Statistics"
 msgstr "Statistikk"
-
-msgid "History"
-msgstr ""
 
 msgid "Settings"
 msgstr "Innstillinger"
@@ -648,12 +430,6 @@ msgstr "Du kan starte ved å legge til deltagere"
 msgid "Add a new bill"
 msgstr "Legg til en ny regning"
 
-msgid "Newer bills"
-msgstr ""
-
-msgid "Older bills"
-msgstr ""
-
 msgid "When?"
 msgstr "Når?"
 
@@ -669,13 +445,6 @@ msgstr "Hvor meget?"
 #, python-format
 msgid "Added on %(date)s"
 msgstr "Lagt til %(date)s"
-
-msgid "Everyone"
-msgstr "Alle"
-
-#, python-format
-msgid "Everyone but %(excluded)s"
-msgstr "Alle, unntagen %(excluded)s"
 
 msgid "each"
 msgstr "hver"
@@ -760,131 +529,16 @@ msgstr "Hvem betaler?"
 msgid "To whom?"
 msgstr "Til hvem?"
 
+msgid "Who?"
+msgstr "Hvem?"
+
 msgid "Paid"
 msgstr "Betalt"
 
 msgid "Spent"
 msgstr "Forbrukt"
 
-msgid "Expenses by Month"
-msgstr ""
+#, fuzzy
+msgid "Balance"
+msgstr "Kontobalanse"
 
-msgid "Period"
-msgstr ""
-
-#~ msgid ""
-#~ "The project identifier is used to "
-#~ "log in and for the URL of "
-#~ "the project. We tried to generate "
-#~ "an identifier for you but a "
-#~ "project with this identifier already "
-#~ "exists. Please create a new identifier"
-#~ " that you will be able to "
-#~ "remember"
-#~ msgstr ""
-#~ "Prosjektidentifikatoren brukes til og logge"
-#~ " inn og for prosjektets nettadresse. "
-#~ "Vi prøvde å generere en identifikator"
-#~ " for deg, men et prosjekt hadde "
-#~ "den identifikatoren allerede. Opprett en "
-#~ "ny identifikator du husker."
-
-#~ msgid ""
-#~ "Not a valid amount or expression.Only"
-#~ " numbers and + - * / "
-#~ "operatorsare accepted."
-#~ msgstr ""
-#~ "Ikke gyldig beløp eller uttrykk. Kun "
-#~ "tall og + - * / operatorer "
-#~ "tillates."
-
-#~ msgid "What do you want to download ?"
-#~ msgstr "Hva ønsker du å laste ned?"
-
-#~ msgid "bills"
-#~ msgstr "regninger"
-
-#~ msgid "transactions"
-#~ msgstr "overøfringer"
-
-#~ msgid "Export file format"
-#~ msgstr "Eksport-filformat"
-
-#~ msgid "Edit this project"
-#~ msgstr "Rediger dette prosjektet"
-
-#~ msgid "Download this project's data"
-#~ msgstr "Last ned data for dette prosjektet"
-
-#~ msgid "Type user name here"
-#~ msgstr "Skriv inn brukernavn her"
-
-#~ msgid "No, thanks"
-#~ msgstr "Nei takk"
-
-#~ msgid "Manage your shared <br>expenses, easily"
-#~ msgstr "Behandle dine delte <br>utgifter, enkelt"
-
-#~ msgid "Log to an existing project"
-#~ msgstr "Logg inn i et eksisterende prosjekt"
-
-#~ msgid "log in"
-#~ msgstr "logg inn"
-
-#~ msgid "or create a new one"
-#~ msgstr "eller opprett et nytt"
-
-#~ msgid "let's get started"
-#~ msgstr "la oss komme i gang"
-
-#~ msgid "options"
-#~ msgstr "innstillinger"
-
-#~ msgid "Project settings"
-#~ msgstr "Prosjektinnstillinger"
-
-#~ msgid "This is a free software"
-#~ msgstr "Dette er fri programvare"
-
-#~ msgid "Invite people to join this project!"
-#~ msgstr "Inviter folk til dette prosjektet."
-
-#~ msgid "Added on"
-#~ msgstr "Lagt til"
-
-#~ msgid "Nothing to list yet. You probably want to"
-#~ msgstr "ingenting å liste opp enda. Du ønsker antagelig å"
-
-#~ msgid ""
-#~ "Specify a (comma separated) list of "
-#~ "email adresses you want to notify "
-#~ "about the\n"
-#~ "creation of this budget management "
-#~ "project and we will send them an"
-#~ " email for you."
-#~ msgstr ""
-#~ "Angi en (kommainndelt) liste over "
-#~ "e-postadresser du ønsker å gi nyss "
-#~ "om\n"
-#~ "opprettelsen av dette budsjetthåndteringsprosjektet,"
-#~ " og de vil motta en e-post."
-
-#~ msgid ""
-#~ "If you prefer, you can share the project identifier and the shared\n"
-#~ "password by other communication means. "
-#~ "Or even directly share the following "
-#~ "link:"
-#~ msgstr ""
-#~ "Hvis du foretrekker det, kan du "
-#~ "dele prosjektidentifikatoeren og det delte"
-#~ "\n"
-#~ "passordet på annet vis. Du kan også dele det følgende lenke direkte:"
-
-#~ msgid "A link to reset your password has been sent to your email."
-#~ msgstr ""
-#~ "En lenke for å tilbakestille passordet"
-#~ " har blitt sent til deg per "
-#~ "e-post."
-
-#~ msgid "%(member)s had been added"
-#~ msgstr "%(member)s lagt til"
