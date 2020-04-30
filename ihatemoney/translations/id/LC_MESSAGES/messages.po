@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-25 13:02+0200\n"
+"POT-Creation-Date: 2020-05-01 00:54+0200\n"
 "PO-Revision-Date: 2019-11-16 10:04+0000\n"
 "Last-Translator: Muhammad Fauzi <fauzi.padlaw@gmail.com>\n"
 "Language: id\n"
@@ -30,18 +30,6 @@ msgstr "Kode pribadi"
 
 msgid "Email"
 msgstr "Surel"
-
-msgid "Enable project history"
-msgstr ""
-
-msgid "Use IP tracking for project history"
-msgstr ""
-
-msgid "Import previously exported JSON file"
-msgstr ""
-
-msgid "Import"
-msgstr ""
 
 msgid "Project identifier"
 msgstr "Pengidentifikasi proyek"
@@ -93,12 +81,6 @@ msgstr "Pembayar"
 msgid "Amount paid"
 msgstr "Jumlah bayar"
 
-msgid "External link"
-msgstr "Tautan luar"
-
-msgid "A link to an external document, related to this bill"
-msgstr "Sebuah tautan mengarah ke dokumen luar, terhubung dengan pembayaran ini"
-
 msgid "For whom?"
 msgstr "Untuk siapa?"
 
@@ -139,15 +121,6 @@ msgstr "Kirim undangan"
 msgid "The email %(email)s is not valid"
 msgstr "Surel %(email)s tidak valid"
 
-msgid "Participant"
-msgstr ""
-
-msgid "Bill"
-msgstr ""
-
-msgid "Project"
-msgstr "Proyek"
-
 msgid "Too many failed login attempts, please retry later."
 msgstr "Terlalu banyak percobaan masuk, silakan coba lagi nanti."
 
@@ -180,12 +153,6 @@ msgstr "Proyek tidak diketahui"
 
 msgid "Password successfully reset."
 msgstr "Kata sandi berhasil diatur ulang."
-
-msgid "Project successfully uploaded"
-msgstr ""
-
-msgid "Invalid JSON"
-msgstr ""
 
 msgid "Project successfully deleted"
 msgstr "Proyek berhasil dihapus"
@@ -254,6 +221,9 @@ msgstr "?"
 msgid "Create a new project"
 msgstr "Buat proyek baru"
 
+msgid "Project"
+msgstr "Proyek"
+
 msgid "Number of members"
 msgstr "Jumlah anggota"
 
@@ -275,9 +245,6 @@ msgstr "ubah"
 msgid "delete"
 msgstr "hapus"
 
-msgid "see"
-msgstr "lihat"
-
 msgid "The Dashboard is currently deactivated."
 msgstr "Dasbor sekarang ini sedang dinonaktifkan."
 
@@ -286,12 +253,6 @@ msgstr "Anda yakin?"
 
 msgid "Edit project"
 msgstr "Ubah proyek"
-
-msgid "Import JSON"
-msgstr ""
-
-msgid "Choose file"
-msgstr ""
 
 msgid "Download project's data"
 msgstr "Unduh data proyek"
@@ -313,9 +274,6 @@ msgstr "Tidak bisa mengingat kata sandi?"
 
 msgid "Cancel"
 msgstr "Batalkan"
-
-msgid "Privacy Settings"
-msgstr ""
 
 msgid "Edit the project"
 msgstr "Ubah proyek"
@@ -346,177 +304,6 @@ msgstr "Kirim undangan"
 
 msgid "Download"
 msgstr "Unduh"
-
-msgid "Disabled Project History"
-msgstr ""
-
-msgid "Disabled Project History & IP Address Recording"
-msgstr ""
-
-msgid "Enabled Project History"
-msgstr ""
-
-msgid "Disabled IP Address Recording"
-msgstr ""
-
-msgid "Enabled Project History & IP Address Recording"
-msgstr ""
-
-msgid "Enabled IP Address Recording"
-msgstr ""
-
-msgid "History Settings Changed"
-msgstr ""
-
-msgid "changed"
-msgstr ""
-
-msgid "from"
-msgstr ""
-
-msgid "to"
-msgstr ""
-
-msgid "Confirm Remove IP Adresses"
-msgstr ""
-
-msgid ""
-"Are you sure you want to delete all recorded IP addresses from this "
-"project?\n"
-"                The rest of the project history will be unaffected. This "
-"action cannot be undone."
-msgstr ""
-
-msgid "Close"
-msgstr ""
-
-msgid "Confirm Delete"
-msgstr ""
-
-msgid "Delete Confirmation"
-msgstr ""
-
-msgid ""
-"Are you sure you want to erase all history for this project? This action "
-"cannot be undone."
-msgstr ""
-
-msgid "Added"
-msgstr ""
-
-msgid "Removed"
-msgstr ""
-
-msgid "and"
-msgstr ""
-
-msgid "owers list"
-msgstr ""
-
-msgid "Who?"
-msgstr "Siapa?"
-
-msgid "Balance"
-msgstr "Saldo"
-
-#, python-format
-msgid ""
-"\n"
-"            <i>This project has history disabled. New actions won't "
-"appear below. You can enable history on the</i>\n"
-"            <a href=\"%(url)s\">settings page</a>\n"
-"            "
-msgstr ""
-
-msgid ""
-"\n"
-"            <i>The table below reflects actions recorded prior to "
-"disabling project history. You can\n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
-"data-target=\"#confirm-erase\">clear project history</a> to remove "
-"them.</i></p>\n"
-"            "
-msgstr ""
-
-msgid ""
-"Some entries below contain IP addresses, even though this project has IP "
-"recording disabled. "
-msgstr ""
-
-msgid "Delete stored IP addresses"
-msgstr ""
-
-msgid "No history to erase"
-msgstr ""
-
-msgid "Clear Project History"
-msgstr ""
-
-msgid "No IP Addresses to erase"
-msgstr ""
-
-msgid "Delete Stored IP Addresses"
-msgstr ""
-
-msgid "Time"
-msgstr ""
-
-msgid "Event"
-msgstr ""
-
-msgid "IP address recording can be enabled on the settings page"
-msgstr ""
-
-msgid "IP address recording can be disabled on the settings page"
-msgstr ""
-
-msgid "From IP"
-msgstr ""
-
-msgid "added"
-msgstr ""
-
-msgid "Project private code changed"
-msgstr ""
-
-msgid "Project renamed to"
-msgstr ""
-
-msgid "Project contact email changed to"
-msgstr ""
-
-msgid "Project settings modified"
-msgstr ""
-
-msgid "deactivated"
-msgstr ""
-
-msgid "reactivated"
-msgstr ""
-
-msgid "renamed to"
-msgstr ""
-
-msgid "External link changed to"
-msgstr ""
-
-msgid "Amount"
-msgstr ""
-
-msgid "modified"
-msgstr ""
-
-msgid "removed"
-msgstr ""
-
-msgid "changed in a unknown way"
-msgstr ""
-
-msgid "Nothing to list"
-msgstr ""
-
-msgid "Someone probably cleared the project history."
-msgstr ""
 
 msgid "Manage your shared <br />expenses, easily"
 msgstr "Atur pembagian harga <br />Anda, dengan mudah"
@@ -566,9 +353,6 @@ msgstr "Atur"
 
 msgid "Statistics"
 msgstr "Statistik"
-
-msgid "History"
-msgstr ""
 
 msgid "Settings"
 msgstr "Pengaturan"
@@ -627,12 +411,6 @@ msgstr "Anda harus mulai dengan menambahkan partisipan"
 msgid "Add a new bill"
 msgstr "Tambah tagihan baru"
 
-msgid "Newer bills"
-msgstr ""
-
-msgid "Older bills"
-msgstr ""
-
 msgid "When?"
 msgstr "Kapan?"
 
@@ -648,13 +426,6 @@ msgstr "Berapa banyak?"
 #, python-format
 msgid "Added on %(date)s"
 msgstr "Ditambahkan pada %(date)s"
-
-msgid "Everyone"
-msgstr "Semua orang"
-
-#, python-format
-msgid "Everyone but %(excluded)s"
-msgstr "Semua orang kecuali %(excluded)s"
 
 msgid "each"
 msgstr "setiap"
@@ -737,24 +508,15 @@ msgstr "Siapa membayar?"
 msgid "To whom?"
 msgstr "Kepada siapa?"
 
+msgid "Who?"
+msgstr "Siapa?"
+
 msgid "Paid"
 msgstr "Dibayar"
 
 msgid "Spent"
 msgstr "Dihabiskan"
 
-msgid "Expenses by Month"
-msgstr ""
-
-msgid "Period"
-msgstr ""
-
-#~ msgid "%(member)s had been added"
-#~ msgstr "%(member)s telah ditambahkan"
-
-#~ msgid "Someone probably"
-#~ msgstr ""
-
-#~ msgid "cleared the project history."
-#~ msgstr ""
+msgid "Balance"
+msgstr "Saldo"
 

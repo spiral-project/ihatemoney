@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-25 13:02+0200\n"
+"POT-Creation-Date: 2020-05-01 00:54+0200\n"
 "PO-Revision-Date: 2019-09-25 22:28+0000\n"
 "Last-Translator: Diego Caraballo <diegocaraballo84@gmail.com>\n"
 "Language: es_419\n"
@@ -30,18 +30,6 @@ msgstr "Código privado"
 
 msgid "Email"
 msgstr "Correo Electrónico"
-
-msgid "Enable project history"
-msgstr ""
-
-msgid "Use IP tracking for project history"
-msgstr ""
-
-msgid "Import previously exported JSON file"
-msgstr ""
-
-msgid "Import"
-msgstr ""
 
 msgid "Project identifier"
 msgstr "Identificador de proyecto"
@@ -93,12 +81,6 @@ msgstr "Paga"
 msgid "Amount paid"
 msgstr "Cantidad pagada"
 
-msgid "External link"
-msgstr "Enlace externo"
-
-msgid "A link to an external document, related to this bill"
-msgstr "Un enlace a un documento externo relaccionado con esta factura"
-
 msgid "For whom?"
 msgstr "¿Para quién?"
 
@@ -139,15 +121,6 @@ msgstr "Enviar invitaciones"
 msgid "The email %(email)s is not valid"
 msgstr "El correo electrónico %(email)s no es válido"
 
-msgid "Participant"
-msgstr ""
-
-msgid "Bill"
-msgstr ""
-
-msgid "Project"
-msgstr "Proyecto"
-
 msgid "Too many failed login attempts, please retry later."
 msgstr ""
 "Demasiados intentos fallidos de inicio de sesión, vuelva a intentarlo más"
@@ -184,12 +157,6 @@ msgstr "Proyecto desconocido"
 
 msgid "Password successfully reset."
 msgstr "Contraseña restablecida con éxito."
-
-msgid "Project successfully uploaded"
-msgstr ""
-
-msgid "Invalid JSON"
-msgstr ""
 
 msgid "Project successfully deleted"
 msgstr "Proyecto eliminado correctamente"
@@ -258,6 +225,9 @@ msgstr "?"
 msgid "Create a new project"
 msgstr "Crear un nuevo proyecto"
 
+msgid "Project"
+msgstr "Proyecto"
+
 msgid "Number of members"
 msgstr "Número de miembros"
 
@@ -279,9 +249,6 @@ msgstr "Editar"
 msgid "delete"
 msgstr "Eliminar"
 
-msgid "see"
-msgstr "ver"
-
 msgid "The Dashboard is currently deactivated."
 msgstr "El panel está desactivado actualmente."
 
@@ -290,12 +257,6 @@ msgstr "¿Estás seguro?"
 
 msgid "Edit project"
 msgstr "Editar proyecto"
-
-msgid "Import JSON"
-msgstr ""
-
-msgid "Choose file"
-msgstr ""
 
 msgid "Download project's data"
 msgstr "Descargar datos del proyecto"
@@ -319,9 +280,6 @@ msgstr "¿No recuerdas la contraseña?"
 
 msgid "Cancel"
 msgstr "Cancelar"
-
-msgid "Privacy Settings"
-msgstr ""
 
 msgid "Edit the project"
 msgstr "Editar el proyecto"
@@ -352,177 +310,6 @@ msgstr "Enviar las invitaciones"
 
 msgid "Download"
 msgstr "Descargar"
-
-msgid "Disabled Project History"
-msgstr ""
-
-msgid "Disabled Project History & IP Address Recording"
-msgstr ""
-
-msgid "Enabled Project History"
-msgstr ""
-
-msgid "Disabled IP Address Recording"
-msgstr ""
-
-msgid "Enabled Project History & IP Address Recording"
-msgstr ""
-
-msgid "Enabled IP Address Recording"
-msgstr ""
-
-msgid "History Settings Changed"
-msgstr ""
-
-msgid "changed"
-msgstr ""
-
-msgid "from"
-msgstr ""
-
-msgid "to"
-msgstr ""
-
-msgid "Confirm Remove IP Adresses"
-msgstr ""
-
-msgid ""
-"Are you sure you want to delete all recorded IP addresses from this "
-"project?\n"
-"                The rest of the project history will be unaffected. This "
-"action cannot be undone."
-msgstr ""
-
-msgid "Close"
-msgstr ""
-
-msgid "Confirm Delete"
-msgstr ""
-
-msgid "Delete Confirmation"
-msgstr ""
-
-msgid ""
-"Are you sure you want to erase all history for this project? This action "
-"cannot be undone."
-msgstr ""
-
-msgid "Added"
-msgstr ""
-
-msgid "Removed"
-msgstr ""
-
-msgid "and"
-msgstr ""
-
-msgid "owers list"
-msgstr ""
-
-msgid "Who?"
-msgstr "¿Quién?"
-
-msgid "Balance"
-msgstr "Balance"
-
-#, python-format
-msgid ""
-"\n"
-"            <i>This project has history disabled. New actions won't "
-"appear below. You can enable history on the</i>\n"
-"            <a href=\"%(url)s\">settings page</a>\n"
-"            "
-msgstr ""
-
-msgid ""
-"\n"
-"            <i>The table below reflects actions recorded prior to "
-"disabling project history. You can\n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
-"data-target=\"#confirm-erase\">clear project history</a> to remove "
-"them.</i></p>\n"
-"            "
-msgstr ""
-
-msgid ""
-"Some entries below contain IP addresses, even though this project has IP "
-"recording disabled. "
-msgstr ""
-
-msgid "Delete stored IP addresses"
-msgstr ""
-
-msgid "No history to erase"
-msgstr ""
-
-msgid "Clear Project History"
-msgstr ""
-
-msgid "No IP Addresses to erase"
-msgstr ""
-
-msgid "Delete Stored IP Addresses"
-msgstr ""
-
-msgid "Time"
-msgstr ""
-
-msgid "Event"
-msgstr ""
-
-msgid "IP address recording can be enabled on the settings page"
-msgstr ""
-
-msgid "IP address recording can be disabled on the settings page"
-msgstr ""
-
-msgid "From IP"
-msgstr ""
-
-msgid "added"
-msgstr ""
-
-msgid "Project private code changed"
-msgstr ""
-
-msgid "Project renamed to"
-msgstr ""
-
-msgid "Project contact email changed to"
-msgstr ""
-
-msgid "Project settings modified"
-msgstr ""
-
-msgid "deactivated"
-msgstr ""
-
-msgid "reactivated"
-msgstr ""
-
-msgid "renamed to"
-msgstr ""
-
-msgid "External link changed to"
-msgstr ""
-
-msgid "Amount"
-msgstr ""
-
-msgid "modified"
-msgstr ""
-
-msgid "removed"
-msgstr ""
-
-msgid "changed in a unknown way"
-msgstr ""
-
-msgid "Nothing to list"
-msgstr ""
-
-msgid "Someone probably cleared the project history."
-msgstr ""
 
 msgid "Manage your shared <br />expenses, easily"
 msgstr "Gestione sus gastos compartidos <br />fácilmente"
@@ -572,9 +359,6 @@ msgstr "Resolver"
 
 msgid "Statistics"
 msgstr "Estadísticas"
-
-msgid "History"
-msgstr ""
 
 msgid "Settings"
 msgstr "Configuración"
@@ -633,12 +417,6 @@ msgstr "Deberías comenzar agregando participantes"
 msgid "Add a new bill"
 msgstr "Añadir una nueva factura"
 
-msgid "Newer bills"
-msgstr ""
-
-msgid "Older bills"
-msgstr ""
-
 msgid "When?"
 msgstr "¿Cuando?"
 
@@ -654,13 +432,6 @@ msgstr "¿Cuánto?"
 #, python-format
 msgid "Added on %(date)s"
 msgstr "Agregado el %(date)s"
-
-msgid "Everyone"
-msgstr "Todo el mundo"
-
-#, python-format
-msgid "Everyone but %(excluded)s"
-msgstr "Todo el mundo menos %(excluded)s"
 
 msgid "each"
 msgstr "Cada"
@@ -743,17 +514,15 @@ msgstr "¿Quién paga?"
 msgid "To whom?"
 msgstr "¿A quién?"
 
+msgid "Who?"
+msgstr "¿Quién?"
+
 msgid "Paid"
 msgstr "Pagado"
 
 msgid "Spent"
 msgstr "Gastado"
 
-msgid "Expenses by Month"
-msgstr ""
+msgid "Balance"
+msgstr "Balance"
 
-msgid "Period"
-msgstr ""
-
-#~ msgid "%(member)s had been added"
-#~ msgstr "se han añadido %(member)s"
