@@ -14,7 +14,7 @@ all: install ## Alias for install
 install: virtualenv $(INSTALL_STAMP) ## Install dependencies
 $(INSTALL_STAMP):
 	$(VENV)/bin/pip install -U pip
-	$(VENV)/bin/pip install -r requirements.txt
+	$(VENV)/bin/pip install -e .
 	touch $(INSTALL_STAMP)
 
 .PHONY: virtualenv
@@ -24,8 +24,8 @@ $(PYTHON):
 
 .PHONY: install-dev
 install-dev: $(INSTALL_STAMP) $(DEV_STAMP) ## Install development dependencies
-$(DEV_STAMP): $(PYTHON) dev-requirements.txt
-	$(VENV)/bin/pip install -Ur dev-requirements.txt
+$(DEV_STAMP): $(PYTHON)
+	$(VENV)/bin/pip install -Ue .[dev]
 	touch $(DEV_STAMP)
 
 .PHONY: remove-install-stamp
@@ -75,13 +75,6 @@ create-database-revision: ## Create a new database revision
 create-empty-database-revision: ## Create an empty database revision
 	@read -p "Please enter a message describing this revision: " rev_message; \
 	$(PYTHON) -m ihatemoney.manage db revision -d ihatemoney/migrations -m "$${rev_message}"
-
-.PHONY: build-requirements
-build-requirements: ## Save currently installed packages to requirements.txt
-	$(VIRTUALENV) $(TEMPDIR)
-	$(TEMPDIR)/bin/pip install -U pip
-	$(TEMPDIR)/bin/pip install -Ue "."
-	$(TEMPDIR)/bin/pip freeze | grep -v -- '-e' > requirements.txt
 
 .PHONY: clean
 clean: ## Destroy the virtual environment
