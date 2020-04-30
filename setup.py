@@ -71,6 +71,7 @@ setup(name='ihatemoney',
           "Jinja2==2.10.1",
           "six==1.12.0",
           "WTForms==2.2.1",
+          "Werkzeug==0.16.1",
       ],
       extras_require={"dev": [
           "zest.releaser",
