@@ -23,7 +23,11 @@ from wtforms.validators import (
 
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.models import LoggingMode, Person, Project
-from ihatemoney.utils import eval_arithmetic_expression, slugify, render_localized_currency
+from ihatemoney.utils import (
+    eval_arithmetic_expression,
+    render_localized_currency,
+    slugify,
+)
 
 
 def strip_filter(string):
@@ -45,7 +49,12 @@ def get_billform_for(project, set_default=True, **kwargs):
         form.original_currency.data = project.default_currency
 
     if form.original_currency.data != CurrencyConverter.default:
-        form.original_currency.choices.remove((CurrencyConverter.default, render_localized_currency(CurrencyConverter.default, detailed=False)))
+        form.original_currency.choices.remove(
+            (
+                CurrencyConverter.default,
+                render_localized_currency(CurrencyConverter.default, detailed=False),
+            )
+        )
 
     active_members = [(m.id, m.name) for m in project.active_members]
 
@@ -275,7 +284,9 @@ class BillForm(FlaskForm):
         self.payed_for.data = [int(ower.id) for ower in bill.owers]
 
         if bill.original_currency != project.default_currency:
-            label = _("Currency (Default: %(currency)s)", currency=project.default_currency)
+            label = _(
+                "Currency (Default: %(currency)s)", currency=project.default_currency
+            )
         else:
             label = _("Currency")
         self.original_currency.label = Label("original_currency", label)

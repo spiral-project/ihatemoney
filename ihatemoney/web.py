@@ -41,6 +41,7 @@ from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.forms import (
     AdminAuthenticationForm,
     AuthenticationForm,
+    EditProjectForm,
     InviteForm,
     MemberForm,
     PasswordReminder,
@@ -48,7 +49,6 @@ from ihatemoney.forms import (
     ResetPasswordForm,
     UploadForm,
     get_billform_for,
-    EditProjectForm,
 )
 from ihatemoney.history import get_history, get_history_queries
 from ihatemoney.models import Bill, LoggingMode, Person, Project, db
