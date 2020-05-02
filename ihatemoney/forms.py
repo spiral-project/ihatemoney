@@ -45,19 +45,8 @@ def get_billform_for(project, set_default=True, **kwargs):
         form.original_currency.data = project.default_currency
 
     if form.original_currency.data != CurrencyConverter.default:
-        choices = copy.copy(form.original_currency.choices)
-        choices.remove((CurrencyConverter.default, CurrencyConverter.default))
-        choices.sort(
-            key=lambda rates: "" if rates[0] == project.default_currency else rates[0]
-        )
-        form.original_currency.choices = choices
-    else:
-        form.original_currency.render_kw = {"default": True}
-        form.original_currency.data = CurrencyConverter.default
+        form.original_currency.choices.remove((CurrencyConverter.default, render_localized_currency(CurrencyConverter.default, detailed=False)))
 
-    form.original_currency.label = Label(
-        "original_currency", "Currency (Default: %s)" % (project.default_currency)
-    )
     active_members = [(m.id, m.name) for m in project.active_members]
 
     form.payed_for.choices = form.payer.choices = active_members
@@ -233,7 +222,7 @@ class BillForm(FlaskForm):
     original_currency = SelectField(
         _("Currency"),
         choices=[
-            (currency_name, currency_name)
+            (currency_name, render_localized_currency(currency_name, detailed=False))
             for currency_name in currency_helper.get_currencies()
         ],
         validators=[DataRequired()],
@@ -276,7 +265,7 @@ class BillForm(FlaskForm):
 
         return bill
 
-    def fill(self, bill):
+    def fill(self, bill, project):
         self.payer.data = bill.payer_id
         self.amount.data = bill.amount
         self.what.data = bill.what
@@ -284,6 +273,12 @@ class BillForm(FlaskForm):
         self.original_currency.data = bill.original_currency
         self.date.data = bill.date
         self.payed_for.data = [int(ower.id) for ower in bill.owers]
+
+        if bill.original_currency != project.default_currency:
+            label = _("Currency (Default: %(currency)s)", currency=project.default_currency)
+        else:
+            label = _("Currency")
+        self.original_currency.label = Label("original_currency", label)
 
     def set_default(self):
         self.payed_for.data = self.payed_for.default

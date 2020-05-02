@@ -733,7 +733,7 @@ def edit_bill(bill_id):
         return redirect(url_for(".list_bills"))
 
     if not form.errors:
-        form.fill(bill)
+        form.fill(bill, g.project)
 
     return render_template("add_bill.html", form=form, edit=True)
 
