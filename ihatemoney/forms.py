@@ -23,7 +23,7 @@ from wtforms.validators import (
 
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.models import LoggingMode, Person, Project
-from ihatemoney.utils import eval_arithmetic_expression, slugify
+from ihatemoney.utils import eval_arithmetic_expression, slugify, render_localized_currency
 
 
 def strip_filter(string):
@@ -31,18 +31,6 @@ def strip_filter(string):
         return string.strip()
     except Exception:
         return string
-
-
-def get_editprojectform_for(project, **kwargs):
-    """Return an instance of EditProjectForm configured for a particular project.
-    """
-    form = EditProjectForm(**kwargs)
-    choices = copy.copy(form.default_currency.choices)
-    choices.sort(
-        key=lambda rates: "" if rates[0] == project.default_currency else rates[0]
-    )
-    form.default_currency.choices = choices
-    return form
 
 
 def get_billform_for(project, set_default=True, **kwargs):
@@ -124,7 +112,7 @@ class EditProjectForm(FlaskForm):
     default_currency = SelectField(
         _("Default Currency"),
         choices=[
-            (currency_name, currency_name)
+            (currency_name, render_localized_currency(currency_name))
             for currency_name in currency_helper.get_currencies()
         ],
         validators=[DataRequired()],

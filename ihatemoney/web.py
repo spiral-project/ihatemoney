@@ -48,7 +48,7 @@ from ihatemoney.forms import (
     ResetPasswordForm,
     UploadForm,
     get_billform_for,
-    get_editprojectform_for,
+    EditProjectForm,
 )
 from ihatemoney.history import get_history, get_history_queries
 from ihatemoney.models import Bill, LoggingMode, Person, Project, db
@@ -377,7 +377,7 @@ def reset_password():
 
 @main.route("/<project_id>/edit", methods=["GET", "POST"])
 def edit_project():
-    edit_form = get_editprojectform_for(g.project)
+    edit_form = EditProjectForm()
     import_form = UploadForm()
     # Import form
     if import_form.validate_on_submit():
@@ -417,6 +417,7 @@ def edit_project():
                 edit_form.ip_recording.data = True
 
         edit_form.contact_email.data = g.project.contact_email
+        edit_form.default_currency.data = g.project.default_currency
 
     return render_template(
         "edit_project.html",
