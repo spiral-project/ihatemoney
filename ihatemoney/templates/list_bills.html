@@ -1,5 +1,10 @@
 {% extends "sidebar_table_layout.html" %}
 
+{%- macro bill_amount(bill, currency=bill.original_currency, amount=bill.amount) %}
+    {# Undocumented currencyformat filter from flask_babel is forwarding to Babel format_currency #}
+    {{ amount|currencyformat(currency if currency != 'XXX' else '') }} ({{ _("%(amount)s each", amount=bill.pay_each_default(amount)|currencyformat(currency if currency != 'XXX' else '')) }})
+{% endmacro -%}
+
 {% block title %} - {{ g.project.name }}{% endblock %}
 {% block js %}
     {% if add_bill %} $('#new-bill > a').click(); {% endif %}
@@ -117,11 +122,6 @@
                 </th><th>{{ _("For what?") }}
                 </th><th>{{ _("For whom?") }}
                 </th><th>{{ _("How much?") }}
-                {% if g.project.default_currency != "XXX" %}
-                  </th><th>{{ _("Amount in %(currency)s", currency=g.project.default_currency) }}
-                {%- else -%}
-                  </th><th>{{ _("Amount") }}
-                {% endif %}
                 </th><th>{{ _("Actions") }}</th></tr>
             </thead>
         <tbody>
@@ -143,13 +143,11 @@
                 {{ bill.owers|join(', ', 'name') }}
                 {%- endif %}</td>
                 <td>
-                    {% if bill.original_currency != "XXX" %}
-                        {{ "%0.2f"|format(bill.amount) }} {{bill.original_currency}} ({{ "%0.2f"|format(bill.pay_each_default(bill.amount)) }} {{bill.original_currency}} {{ _(" each") }})
-                    {%- else -%}
-                        {{ "%0.2f"|format(bill.amount) }} ({{ "%0.2f"|format(bill.pay_each_default(bill.amount)) }} {{ _(" each") }})
-                    {% endif %}
+                    <span data-toggle="tooltip" data-placement="top"
+                        title="{{ bill_amount(bill, g.project.default_currency, bill.converted_amount) if bill.original_currency != g.project.default_currency else '' }}">
+                        {{ bill_amount(bill) }}
+                    </span>
                 </td>
-                <td>{{ "%0.2f"|format(bill.converted_amount) }}</td>
                 <td class="bill-actions">
                     <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">{{ _('edit') }}</a>
                     <a class="delete" href="{{ url_for(".delete_bill", bill_id=bill.id) }}" title="{{ _("delete") }}">{{ _('delete') }}</a>
