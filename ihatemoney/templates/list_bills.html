@@ -117,7 +117,7 @@
                 </th><th>{{ _("For what?") }}
                 </th><th>{{ _("For whom?") }}
                 </th><th>{{ _("How much?") }}
-                {% if g.project.default_currency != "No Currency" %}
+                {% if g.project.default_currency != "XXX" %}
                   </th><th>{{ _("Amount in %(currency)s", currency=g.project.default_currency) }}
                 {%- else -%}
                   </th><th>{{ _("Amount") }}
@@ -143,7 +143,7 @@
                 {{ bill.owers|join(', ', 'name') }}
                 {%- endif %}</td>
                 <td>
-                    {% if bill.original_currency != "No Currency" %}
+                    {% if bill.original_currency != "XXX" %}
                         {{ "%0.2f"|format(bill.amount) }} {{bill.original_currency}} ({{ "%0.2f"|format(bill.pay_each_default(bill.amount)) }} {{bill.original_currency}} {{ _(" each") }})
                     {%- else -%}
                         {{ "%0.2f"|format(bill.amount) }} ({{ "%0.2f"|format(bill.pay_each_default(bill.amount)) }} {{ _(" each") }})
