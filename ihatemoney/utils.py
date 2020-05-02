@@ -9,6 +9,7 @@ import os
 import re
 
 from babel import Locale
+from babel.numbers import get_currency_name, get_currency_symbol
 from flask import current_app, redirect, render_template
 from flask_babel import get_locale
 import jinja2
@@ -279,6 +280,16 @@ class FormEnum(Enum):
 
     def __str__(self):
         return str(self.value)
+
+
+def render_localized_currency(code):
+    locale = get_locale() or "en_US"
+    symbol = get_currency_symbol(code, locale=locale)
+    l10n_name = get_currency_name(code, locale=locale)
+    if symbol == code:
+        return f"{code} - {l10n_name}"
+    else:
+        return f"{code} - {symbol} - {l10n_name}"
 
 
 def render_localized_template(template_name_prefix, **context):
