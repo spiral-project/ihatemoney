@@ -282,16 +282,19 @@ class FormEnum(Enum):
         return str(self.value)
 
 
-def render_localized_currency(code):
+def render_localized_currency(code, detailed=True):
     if code == "XXX":
         return _("No Currency")
     locale = get_locale() or "en_US"
     symbol = get_currency_symbol(code, locale=locale)
-    l10n_name = get_currency_name(code, locale=locale)
+    details = ""
+    if detailed:
+        l10n_name = get_currency_name(code, locale=locale)
+        details = f" − {get_currency_name(code, locale=locale)}"
     if symbol == code:
-        return f"{code} - {l10n_name}"
+        return f"{code}{details}"
     else:
-        return f"{code} - {symbol} - {l10n_name}"
+        return f"{code} − {symbol}{details}"
 
 
 def render_localized_template(template_name_prefix, **context):
