@@ -939,43 +939,18 @@ class BudgetTestCase(IhatemoneyTestCase):
         )
 
         response = self.client.get("/raclette/statistics")
-        first_cell = '<td class="d-md-none">'
-        indent = "\n            "
-        self.assertIn(
-            first_cell
-            + "alexis</td>"
-            + indent
-            + "<td>20.00</td>"
-            + indent
-            + "<td>31.67</td>\n",
-            response.data.decode("utf-8"),
+        regex = r"<td class=\"d-md-none\">{}</td>\s+<td>{}</td>\s+<td>{}</td>"
+        self.assertRegex(
+            response.data.decode("utf-8"), regex.format("alexis", "20.00", "31.67"),
         )
-        self.assertIn(
-            first_cell
-            + "fred</td>"
-            + indent
-            + "<td>20.00</td>"
-            + indent
-            + "<td>5.83</td>\n",
-            response.data.decode("utf-8"),
+        self.assertRegex(
+            response.data.decode("utf-8"), regex.format("fred", "20.00", "5.83"),
         )
-        self.assertIn(
-            first_cell
-            + "tata</td>"
-            + indent
-            + "<td>0.00</td>"
-            + indent
-            + "<td>2.50</td>\n",
-            response.data.decode("utf-8"),
+        self.assertRegex(
+            response.data.decode("utf-8"), regex.format("tata", "0.00", "2.50"),
         )
-        self.assertIn(
-            first_cell
-            + "toto</td>"
-            + indent
-            + "<td>0.00</td>"
-            + indent
-            + "<td>0.00</td>\n",
-            response.data.decode("utf-8"),
+        self.assertRegex(
+            response.data.decode("utf-8"), regex.format("toto", "0.00", "0.00"),
         )
 
     def test_settle_page(self):
