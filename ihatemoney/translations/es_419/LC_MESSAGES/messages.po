@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-25 13:02+0200\n"
-"PO-Revision-Date: 2019-09-25 22:28+0000\n"
-"Last-Translator: Diego Caraballo <diegocaraballo84@gmail.com>\n"
+"PO-Revision-Date: 2020-05-03 15:20+0000\n"
+"Last-Translator: Fabian Rodriguez <fabian@fabianrodriguez.com>\n"
+"Language-Team: Spanish (Latin America) <https://hosted.weblate.org/projects/"
+"i-hate-money/i-hate-money/es_419/>\n"
 "Language: es_419\n"
-"Language-Team: Spanish (Latin America) "
-"<https://hosted.weblate.org/projects/i-hate-money/i-hate-money/es_419/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.1-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 msgid ""
@@ -32,16 +32,16 @@ msgid "Email"
 msgstr "Correo Electrónico"
 
 msgid "Enable project history"
-msgstr ""
+msgstr "Habilitar historial del proyecto"
 
 msgid "Use IP tracking for project history"
-msgstr ""
+msgstr "Registrar la IPs para el historial del proyecto"
 
 msgid "Import previously exported JSON file"
-msgstr ""
+msgstr "Importar archivo JSON previamente exportado"
 
 msgid "Import"
-msgstr ""
+msgstr "Importar"
 
 msgid "Project identifier"
 msgstr "Identificador de proyecto"
@@ -140,10 +140,10 @@ msgid "The email %(email)s is not valid"
 msgstr "El correo electrónico %(email)s no es válido"
 
 msgid "Participant"
-msgstr ""
+msgstr "Participante"
 
 msgid "Bill"
-msgstr ""
+msgstr "Factura"
 
 msgid "Project"
 msgstr "Proyecto"
@@ -186,10 +186,10 @@ msgid "Password successfully reset."
 msgstr "Contraseña restablecida con éxito."
 
 msgid "Project successfully uploaded"
-msgstr ""
+msgstr "El proyecto se subió exitosamente"
 
 msgid "Invalid JSON"
-msgstr ""
+msgstr "JSON inválido"
 
 msgid "Project successfully deleted"
 msgstr "Proyecto eliminado correctamente"
@@ -203,7 +203,7 @@ msgstr "Sus invitaciones han sido enviadas"
 
 #, python-format
 msgid "%(member)s has been added"
-msgstr ""
+msgstr "Se añadieron %(member)s"
 
 #, python-format
 msgid "%(name)s is part of this project again"
@@ -292,10 +292,10 @@ msgid "Edit project"
 msgstr "Editar proyecto"
 
 msgid "Import JSON"
-msgstr ""
+msgstr "Importar JSON"
 
 msgid "Choose file"
-msgstr ""
+msgstr "Escoger un archivo"
 
 msgid "Download project's data"
 msgstr "Descargar datos del proyecto"
@@ -321,7 +321,7 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 msgid "Privacy Settings"
-msgstr ""
+msgstr "Ajustes de privacidad"
 
 msgid "Edit the project"
 msgstr "Editar el proyecto"
@@ -345,7 +345,7 @@ msgid "Edit this member"
 msgstr "Editar este miembro"
 
 msgid "john.doe@example.com, mary.moe@site.com"
-msgstr "john.doe@example.com, mary.moe@site.com"
+msgstr "juan.perez@example.com, ana.rodriguez@site.com"
 
 msgid "Send the invitations"
 msgstr "Enviar las invitaciones"
@@ -354,37 +354,37 @@ msgid "Download"
 msgstr "Descargar"
 
 msgid "Disabled Project History"
-msgstr ""
+msgstr "Historial de proyecto activo"
 
 msgid "Disabled Project History & IP Address Recording"
-msgstr ""
+msgstr "Historial de proyecto y registros de dirección IP inactivos"
 
 msgid "Enabled Project History"
-msgstr ""
+msgstr "Historial de proyecto activo"
 
 msgid "Disabled IP Address Recording"
-msgstr ""
+msgstr "Registro de direcciones IP activo"
 
 msgid "Enabled Project History & IP Address Recording"
-msgstr ""
+msgstr "Historial de proyecto y registros de dirección IP activos"
 
 msgid "Enabled IP Address Recording"
-msgstr ""
+msgstr "Se activó el registros de dirección IP"
 
 msgid "History Settings Changed"
-msgstr ""
+msgstr "Se cambiaron los ajustes del historial"
 
 msgid "changed"
-msgstr ""
+msgstr "cambió"
 
 msgid "from"
-msgstr ""
+msgstr "de"
 
 msgid "to"
-msgstr ""
+msgstr "a"
 
 msgid "Confirm Remove IP Adresses"
-msgstr ""
+msgstr "Confirmar eliminación de direcciones IP"
 
 msgid ""
 "Are you sure you want to delete all recorded IP addresses from this "
@@ -392,32 +392,38 @@ msgid ""
 "                The rest of the project history will be unaffected. This "
 "action cannot be undone."
 msgstr ""
+"Por favor confirme la eliminación completa del registro de direcciones IP "
+"del proyecto.\n"
+"                El resto de historial del proyecto no será afectado. Este "
+"cambio es irreversible."
 
 msgid "Close"
-msgstr ""
+msgstr "Cerrar"
 
 msgid "Confirm Delete"
-msgstr ""
+msgstr "Confirmar eliminación"
 
 msgid "Delete Confirmation"
-msgstr ""
+msgstr "Confirmación de eliminación"
 
 msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
 msgstr ""
+"Por favor confirme la eliminación completa del historial del proyecto. Esta "
+"acción es irreversible."
 
 msgid "Added"
-msgstr ""
+msgstr "Agregado"
 
 msgid "Removed"
-msgstr ""
+msgstr "Eliminado"
 
 msgid "and"
-msgstr ""
+msgstr "y"
 
 msgid "owers list"
-msgstr ""
+msgstr "lista de deudores"
 
 msgid "Who?"
 msgstr "¿Quién?"
@@ -433,6 +439,12 @@ msgid ""
 "            <a href=\"%(url)s\">settings page</a>\n"
 "            "
 msgstr ""
+"\n"
+"            <i>El historial de este proyecto ha sido desactivado. Nuevas "
+"operaciones no apareceran a continuacion. El historial se puede agregar</i> "
+"\n"
+"            <a href=\"%(url)s\">en la página de ajustes</a>\n"
+"            "
 
 msgid ""
 "\n"
@@ -443,86 +455,96 @@ msgid ""
 "them.</i></p>\n"
 "            "
 msgstr ""
+"\n"
+"            <i>Este registro muestra la actividad previa a la desactivación "
+"del historial del proyecto. Use la opción \n"
+"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" data-"
+"target=\"#confirm-erase\">Eliminar historial del proyecto</a> para "
+"borrarlo.</i></p>\n"
+"            "
 
 msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
 "recording disabled. "
 msgstr ""
+"Algunos registros contienen direcciones IP, a pesar de que el registro de "
+"direcciones IP del proyecto no está activo. "
 
 msgid "Delete stored IP addresses"
-msgstr ""
+msgstr "Borrar las direcciones IP registradas"
 
 msgid "No history to erase"
-msgstr ""
+msgstr "No hay historial para borrar"
 
 msgid "Clear Project History"
-msgstr ""
+msgstr "Borrar el historial del proyecto"
 
 msgid "No IP Addresses to erase"
-msgstr ""
+msgstr "No hay direcciones IP para borrar"
 
 msgid "Delete Stored IP Addresses"
-msgstr ""
+msgstr "Borrar direcciones IP registradas"
 
 msgid "Time"
-msgstr ""
+msgstr "Hora"
 
 msgid "Event"
-msgstr ""
+msgstr "Evento"
 
 msgid "IP address recording can be enabled on the settings page"
-msgstr ""
+msgstr "El registro de direcciones IP se puede activar en la página de ajustes"
 
 msgid "IP address recording can be disabled on the settings page"
 msgstr ""
+"El registro de direcciones IP se puede desactivar en la página de ajustes"
 
 msgid "From IP"
-msgstr ""
+msgstr "IP de origen"
 
 msgid "added"
-msgstr ""
+msgstr "agregado"
 
 msgid "Project private code changed"
-msgstr ""
+msgstr "Se cambió el código privado del proyecto"
 
 msgid "Project renamed to"
-msgstr ""
+msgstr "Se cambió el nombre del proyecto a"
 
 msgid "Project contact email changed to"
-msgstr ""
+msgstr "Se cambió el correo electrónico de contacto a"
 
 msgid "Project settings modified"
-msgstr ""
+msgstr "Ajustes del proyecto modificados"
 
 msgid "deactivated"
-msgstr ""
+msgstr "desactivado"
 
 msgid "reactivated"
-msgstr ""
+msgstr "reactivado"
 
 msgid "renamed to"
-msgstr ""
+msgstr "se cambió de nombre a"
 
 msgid "External link changed to"
-msgstr ""
+msgstr "Se cambió el enlace externo por"
 
 msgid "Amount"
-msgstr ""
+msgstr "Monto"
 
 msgid "modified"
-msgstr ""
+msgstr "modificado"
 
 msgid "removed"
-msgstr ""
+msgstr "removido"
 
 msgid "changed in a unknown way"
-msgstr ""
+msgstr "se cambió de manera desconocida"
 
 msgid "Nothing to list"
-msgstr ""
+msgstr "Nada por listar"
 
 msgid "Someone probably cleared the project history."
-msgstr ""
+msgstr "Es probable que alguien borrara el historial del proyecto."
 
 msgid "Manage your shared <br />expenses, easily"
 msgstr "Gestione sus gastos compartidos <br />fácilmente"
@@ -574,7 +596,7 @@ msgid "Statistics"
 msgstr "Estadísticas"
 
 msgid "History"
-msgstr ""
+msgstr "Historial"
 
 msgid "Settings"
 msgstr "Configuración"
@@ -634,10 +656,10 @@ msgid "Add a new bill"
 msgstr "Añadir una nueva factura"
 
 msgid "Newer bills"
-msgstr ""
+msgstr "Nuevas facturas"
 
 msgid "Older bills"
-msgstr ""
+msgstr "Facturas anteriores"
 
 msgid "When?"
 msgstr "¿Cuando?"
@@ -691,7 +713,7 @@ msgstr ""
 "correos electrónicos."
 
 msgid "Return to home page"
-msgstr "Regresar a la página principal"
+msgstr "Regresar al inicio"
 
 msgid "Your projects"
 msgstr "Sus proyectos"
@@ -750,10 +772,10 @@ msgid "Spent"
 msgstr "Gastado"
 
 msgid "Expenses by Month"
-msgstr ""
+msgstr "Gastos por mes"
 
 msgid "Period"
-msgstr ""
+msgstr "Período"
 
 #~ msgid "%(member)s had been added"
 #~ msgstr "se han añadido %(member)s"
