@@ -21,6 +21,7 @@ Added
 - Add German translation (#492)
 - Allow to import previously exported json data (#518)
 - Add new optional field "external link" in bill form (#429)
+- Add currencies to project and bills (#541)
 - Add new statistics showing monthly expenses (#526)
 - Add pagination to the list of bills (#480)
 - Add sorting, pagination, and searching to the admin dashboard (#538)
