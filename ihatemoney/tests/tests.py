@@ -4,6 +4,7 @@ import datetime
 import io
 import json
 import os
+import re
 from time import sleep
 import unittest
 from unittest.mock import MagicMock, patch
@@ -952,6 +953,20 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertRegex(
             response.data.decode("utf-8"), regex.format("pépé", "0.00", "0.00"),
         )
+
+        # Check that the order of participants in the sidebar table is the
+        # same as in the main table.
+        order = ["fred", "pépé", "tata", "zorglub"]
+        regex1 = r".*".join(
+            r"<td class=\"balance-name\">{}</td>".format(name) for name in order
+        )
+        regex2 = r".*".join(
+            r"<td class=\"d-md-none\">{}</td>".format(name) for name in order
+        )
+        # Build the regexp ourselves to be able to pass the DOTALL flag
+        # (so that ".*" matches newlines)
+        self.assertRegex(response.data.decode("utf-8"), re.compile(regex1, re.DOTALL))
+        self.assertRegex(response.data.decode("utf-8"), re.compile(regex2, re.DOTALL))
 
     def test_settle_page(self):
         self.post_project("raclette")
