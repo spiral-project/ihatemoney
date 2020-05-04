@@ -107,10 +107,7 @@ class EditProjectForm(FlaskForm):
     project_history = BooleanField(_("Enable project history"))
     ip_recording = BooleanField(_("Use IP tracking for project history"))
     currency_helper = CurrencyConverter()
-    default_currency = SelectField(
-        _("Default Currency"),
-        validators=[DataRequired()],
-    )
+    default_currency = SelectField(_("Default Currency"), validators=[DataRequired()],)
 
     def __init__(self):
         super().__init__()
