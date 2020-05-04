@@ -1,8 +1,7 @@
 {% extends "sidebar_table_layout.html" %}
 
 {%- macro bill_amount(bill, currency=bill.original_currency, amount=bill.amount) %}
-    {# Undocumented currencyformat filter from flask_babel is forwarding to Babel format_currency #}
-    {{ amount|currencyformat(currency if currency != 'XXX' else '') }} ({{ _("%(amount)s each", amount=bill.pay_each_default(amount)|currencyformat(currency if currency != 'XXX' else '')) }})
+    {{ amount|currencyformat_nc(currency) }} ({{ _("%(amount)s each", amount=bill.pay_each_default(amount)|currencyformat_nc(currency)) }})
 {% endmacro -%}
 
 {% block title %} - {{ g.project.name }}{% endblock %}
