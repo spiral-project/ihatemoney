@@ -109,8 +109,8 @@ class EditProjectForm(FlaskForm):
     currency_helper = CurrencyConverter()
     default_currency = SelectField(_("Default Currency"), validators=[DataRequired()],)
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.default_currency.choices = [
             (currency_name, render_localized_currency(currency_name, detailed=True))
             for currency_name in self.currency_helper.get_currencies()
