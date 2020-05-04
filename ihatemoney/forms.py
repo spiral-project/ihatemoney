@@ -47,13 +47,14 @@ def get_billform_for(project, set_default=True, **kwargs):
     if form.original_currency.data == "None":
         form.original_currency.data = project.default_currency
 
-    if form.original_currency.data != CurrencyConverter.no_currency:
-        form.original_currency.choices.remove(
-            (
-                CurrencyConverter.no_currency,
-                render_localized_currency(CurrencyConverter.no_currency, detailed=False),
-            )
+    show_no_currency = form.original_currency.data == CurrencyConverter.no_currency
+
+    form.original_currency.choices = [
+        (currency_name, render_localized_currency(currency_name, detailed=False))
+        for currency_name in form.currency_helper.get_currencies(
+            with_no_currency=show_no_currency
         )
+    ]
 
     active_members = [(m.id, m.name) for m in project.active_members]
 
@@ -227,14 +228,7 @@ class BillForm(FlaskForm):
     payer = SelectField(_("Payer"), validators=[DataRequired()], coerce=int)
     amount = CalculatorStringField(_("Amount paid"), validators=[DataRequired()])
     currency_helper = CurrencyConverter()
-    original_currency = SelectField(
-        _("Currency"),
-        choices=[
-            (currency_name, render_localized_currency(currency_name, detailed=False))
-            for currency_name in currency_helper.get_currencies()
-        ],
-        validators=[DataRequired()],
-    )
+    original_currency = SelectField(_("Currency"), validators=[DataRequired()],)
     external_link = URLField(
         _("External link"),
         validators=[Optional()],
