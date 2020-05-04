@@ -47,11 +47,11 @@ def get_billform_for(project, set_default=True, **kwargs):
     if form.original_currency.data == "None":
         form.original_currency.data = project.default_currency
 
-    if form.original_currency.data != CurrencyConverter.default:
+    if form.original_currency.data != CurrencyConverter.no_currency:
         form.original_currency.choices.remove(
             (
-                CurrencyConverter.default,
-                render_localized_currency(CurrencyConverter.default, detailed=False),
+                CurrencyConverter.no_currency,
+                render_localized_currency(CurrencyConverter.no_currency, detailed=False),
             )
         )
 
@@ -266,7 +266,7 @@ class BillForm(FlaskForm):
         bill.external_link = ""
         bill.date = self.date
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for]
-        bill.original_currency = CurrencyConverter.default
+        bill.original_currency = CurrencyConverter.no_currency
         bill.converted_amount = self.currency_helper.exchange_currency(
             bill.amount, bill.original_currency, project.default_currency
         )

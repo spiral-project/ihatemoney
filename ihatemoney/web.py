@@ -393,10 +393,10 @@ def edit_project():
     if edit_form.validate_on_submit():
         project = edit_form.update(g.project)
         # Update converted currency
-        if project.default_currency != CurrencyConverter.default:
+        if project.default_currency != CurrencyConverter.no_currency:
             for bill in project.get_bills():
 
-                if bill.original_currency == CurrencyConverter.default:
+                if bill.original_currency == CurrencyConverter.no_currency:
                     bill.original_currency = project.default_currency
 
                 bill.converted_amount = CurrencyConverter().exchange_currency(

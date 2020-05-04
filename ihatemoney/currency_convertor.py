@@ -13,7 +13,7 @@ class Singleton(type):
 
 class CurrencyConverter(object, metaclass=Singleton):
     # Get exchange rates
-    default = "XXX"
+    no_currency = "XXX"
     api_url = "https://api.exchangeratesapi.io/latest?base=USD"
 
     def __init__(self):
@@ -22,19 +22,19 @@ class CurrencyConverter(object, metaclass=Singleton):
     @cached(cache=TTLCache(maxsize=1, ttl=86400))
     def get_rates(self):
         rates = requests.get(self.api_url).json()["rates"]
-        rates[self.default] = 1.0
+        rates[self.no_currency] = 1.0
         return rates
 
     def get_currencies(self):
         rates = [rate for rate in self.get_rates()]
-        rates.sort(key=lambda rate: "" if rate == self.default else rate)
+        rates.sort(key=lambda rate: "" if rate == self.no_currency else rate)
         return rates
 
     def exchange_currency(self, amount, source_currency, dest_currency):
         if (
             source_currency == dest_currency
-            or source_currency == self.default
-            or dest_currency == self.default
+            or source_currency == self.no_currency
+            or dest_currency == self.no_currency
         ):
             return amount
 
