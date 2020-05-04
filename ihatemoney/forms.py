@@ -276,13 +276,11 @@ class BillForm(FlaskForm):
         self.date.data = bill.date
         self.payed_for.data = [int(ower.id) for ower in bill.owers]
 
-        if bill.original_currency != project.default_currency:
-            label = _(
-                "Currency (Default: %(currency)s)", currency=project.default_currency
-            )
-        else:
-            label = _("Currency")
-        self.original_currency.label = Label("original_currency", label)
+        self.original_currency.label = Label("original_currency", _("Currency"))
+        self.original_currency.description = _(
+            "Project default: %(currency)s",
+            currency=render_localized_currency(project.default_currency, detailed=False),
+        )
 
     def set_default(self):
         self.payed_for.data = self.payed_for.default
