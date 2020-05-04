@@ -9,7 +9,7 @@
             <th class="balance-value">{{ _("Balance") }}</th>
         </tr>
     </thead>
-    {% for stat in members_stats| sort(attribute='member.name') %}
+    {% for stat in members_stats|sort(attribute='member.name') %}
     <tr>
         <td class="balance-name">{{ stat.member.name }}</td>
         <td class="balance-value {% if stat.balance|round(2) > 0 %}positive{% elif stat.balance|round(2) < 0 %}negative{% endif %}">
@@ -27,7 +27,7 @@
         <table id="bill_table" class="split_bills table table-striped ml-md-n3">
             <thead><tr><th class="d-md-none">{{ _("Who?") }}</th><th>{{ _("Paid") }}</th><th>{{ _("Spent") }}</th></tr></thead>
         <tbody>
-        {% for stat in members_stats %}
+        {% for stat in members_stats|sort(attribute='member.name') %}
         <tr>
             <td class="d-md-none">{{ stat.member.name }}</td>
             <td>{{ "%0.2f"|format(stat.paid) }}</td>
