@@ -279,7 +279,9 @@ class BillForm(FlaskForm):
         self.original_currency.label = Label("original_currency", _("Currency"))
         self.original_currency.description = _(
             "Project default: %(currency)s",
-            currency=render_localized_currency(project.default_currency, detailed=False),
+            currency=render_localized_currency(
+                project.default_currency, detailed=False
+            ),
         )
 
     def set_default(self):
