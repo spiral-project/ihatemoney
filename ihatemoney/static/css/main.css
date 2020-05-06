@@ -534,3 +534,7 @@ footer .icon svg {
   text-align: right;
   width: 200px;
 }
+
+.hiddenpswp {
+  display: none;
+}

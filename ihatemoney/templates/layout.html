@@ -17,13 +17,6 @@
     <script src="{{ url_for("static", filename="js/datatables.min.js") }}"></script>
     {%- endif %}
 
-    {% if g.lang == 'fr' %}
-    <link rel="stylesheet" href="{{ url_for("static", filename="photoswipe/photoswipe.css") }}">
-    <link rel="stylesheet" href="{{ url_for("static", filename="photoswipe/default-skin/default-skin.css") }}">
-    <script src="{{ url_for("static", filename="photoswipe/photoswipe.min.js")}}"></script>
-    <script src="{{ url_for("static", filename="photoswipe/photoswipe-ui-default.min.js")}}"></script>
-    {% endif %}
-
     {% block head %}{% endblock %}
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function(){
