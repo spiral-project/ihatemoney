@@ -1,29 +1,29 @@
+import copy
+from datetime import datetime
+from re import match
+
+import email_validator
+from flask import request
+from flask_babel import lazy_gettext as _
+from flask_wtf.file import FileAllowed, FileField, FileRequired
 from flask_wtf.form import FlaskForm
-from wtforms.fields.core import SelectField, SelectMultipleField
+from jinja2 import Markup
+from werkzeug.security import check_password_hash, generate_password_hash
+from wtforms.fields.core import Label, SelectField, SelectMultipleField
 from wtforms.fields.html5 import DateField, DecimalField, URLField
-from wtforms.fields.simple import PasswordField, SubmitField, StringField
+from wtforms.fields.simple import BooleanField, PasswordField, StringField, SubmitField
 from wtforms.validators import (
-    Email,
     DataRequired,
-    ValidationError,
+    Email,
     EqualTo,
     NumberRange,
     Optional,
+    ValidationError,
 )
-from flask_wtf.file import FileField, FileAllowed, FileRequired
 
-from flask_babel import lazy_gettext as _
-from flask import request
-from werkzeug.security import generate_password_hash
-
-from datetime import datetime
-from re import match
-from jinja2 import Markup
-
-import email_validator
-
-from ihatemoney.models import Project, Person
-from ihatemoney.utils import slugify, eval_arithmetic_expression
+from ihatemoney.currency_convertor import CurrencyConverter
+from ihatemoney.models import LoggingMode, Person, Project
+from ihatemoney.utils import eval_arithmetic_expression, slugify
 
 
 def strip_filter(string):
@@ -31,6 +31,18 @@ def strip_filter(string):
         return string.strip()
     except Exception:
         return string
+
+
+def get_editprojectform_for(project, **kwargs):
+    """Return an instance of EditProjectForm configured for a particular project.
+    """
+    form = EditProjectForm(**kwargs)
+    choices = copy.copy(form.default_currency.choices)
+    choices.sort(
+        key=lambda rates: "" if rates[0] == project.default_currency else rates[0]
+    )
+    form.default_currency.choices = choices
+    return form
 
 
 def get_billform_for(project, set_default=True, **kwargs):
@@ -41,6 +53,23 @@ def get_billform_for(project, set_default=True, **kwargs):
 
     """
     form = BillForm(**kwargs)
+    if form.original_currency.data == "None":
+        form.original_currency.data = project.default_currency
+
+    if form.original_currency.data != CurrencyConverter.default:
+        choices = copy.copy(form.original_currency.choices)
+        choices.remove((CurrencyConverter.default, CurrencyConverter.default))
+        choices.sort(
+            key=lambda rates: "" if rates[0] == project.default_currency else rates[0]
+        )
+        form.original_currency.choices = choices
+    else:
+        form.original_currency.render_kw = {"default": True}
+        form.original_currency.data = CurrencyConverter.default
+
+    form.original_currency.label = Label(
+        "original_currency", "Currency (Default: %s)" % (project.default_currency)
+    )
     active_members = [(m.id, m.name) for m in project.active_members]
 
     form.payed_for.choices = form.payer.choices = active_members
@@ -89,6 +118,28 @@ class EditProjectForm(FlaskForm):
     name = StringField(_("Project name"), validators=[DataRequired()])
     password = StringField(_("Private code"), validators=[DataRequired()])
     contact_email = StringField(_("Email"), validators=[DataRequired(), Email()])
+    project_history = BooleanField(_("Enable project history"))
+    ip_recording = BooleanField(_("Use IP tracking for project history"))
+    currency_helper = CurrencyConverter()
+    default_currency = SelectField(
+        _("Default Currency"),
+        choices=[
+            (currency_name, currency_name)
+            for currency_name in currency_helper.get_currencies()
+        ],
+        validators=[DataRequired()],
+    )
+
+    @property
+    def logging_preference(self):
+        """Get the LoggingMode object corresponding to current form data."""
+        if not self.project_history.data:
+            return LoggingMode.DISABLED
+        else:
+            if self.ip_recording.data:
+                return LoggingMode.RECORD_IP
+            else:
+                return LoggingMode.ENABLED
 
     def save(self):
         """Create a new project with the information given by this form.
@@ -100,28 +151,47 @@ class EditProjectForm(FlaskForm):
             id=self.id.data,
             password=generate_password_hash(self.password.data),
             contact_email=self.contact_email.data,
+            logging_preference=self.logging_preference,
+            default_currency=self.default_currency.data,
         )
         return project
 
     def update(self, project):
         """Update the project with the information from the form"""
         project.name = self.name.data
-        project.password = generate_password_hash(self.password.data)
+
+        # Only update password if changed to prevent spurious log entries
+        if not check_password_hash(project.password, self.password.data):
+            project.password = generate_password_hash(self.password.data)
+
         project.contact_email = self.contact_email.data
+        project.logging_preference = self.logging_preference
+        project.default_currency = self.default_currency.data
 
         return project
 
 
 class UploadForm(FlaskForm):
     file = FileField(
-        "JSON", validators=[FileRequired(), FileAllowed(["json", "JSON"], "JSON only!")]
+        "JSON",
+        validators=[FileRequired(), FileAllowed(["json", "JSON"], "JSON only!")],
+        description=_("Import previously exported JSON file"),
     )
+    submit = SubmitField(_("Import"))
 
 
 class ProjectForm(EditProjectForm):
     id = StringField(_("Project identifier"), validators=[DataRequired()])
     password = PasswordField(_("Private code"), validators=[DataRequired()])
     submit = SubmitField(_("Create the project"))
+
+    def save(self):
+        # WTForms Boolean Fields don't insert the default value when the
+        # request doesn't include any value the way that other fields do,
+        # so we'll manually do it here
+        self.project_history.data = LoggingMode.default() != LoggingMode.DISABLED
+        self.ip_recording.data = LoggingMode.default() == LoggingMode.RECORD_IP
+        return super().save()
 
     def validate_id(form, field):
         form.id.data = slugify(field.data)
@@ -171,6 +241,15 @@ class BillForm(FlaskForm):
     what = StringField(_("What?"), validators=[DataRequired()])
     payer = SelectField(_("Payer"), validators=[DataRequired()], coerce=int)
     amount = CalculatorStringField(_("Amount paid"), validators=[DataRequired()])
+    currency_helper = CurrencyConverter()
+    original_currency = SelectField(
+        _("Currency"),
+        choices=[
+            (currency_name, currency_name)
+            for currency_name in currency_helper.get_currencies()
+        ],
+        validators=[DataRequired()],
+    )
     external_link = URLField(
         _("External link"),
         validators=[Optional()],
@@ -189,6 +268,10 @@ class BillForm(FlaskForm):
         bill.external_link = self.external_link.data
         bill.date = self.date.data
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for.data]
+        bill.original_currency = self.original_currency.data
+        bill.converted_amount = self.currency_helper.exchange_currency(
+            bill.amount, bill.original_currency, project.default_currency
+        )
         return bill
 
     def fake_form(self, bill, project):
@@ -198,6 +281,10 @@ class BillForm(FlaskForm):
         bill.external_link = ""
         bill.date = self.date
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for]
+        bill.original_currency = CurrencyConverter.default
+        bill.converted_amount = self.currency_helper.exchange_currency(
+            bill.amount, bill.original_currency, project.default_currency
+        )
 
         return bill
 
@@ -206,6 +293,7 @@ class BillForm(FlaskForm):
         self.amount.data = bill.amount
         self.what.data = bill.what
         self.external_link.data = bill.external_link
+        self.original_currency.data = bill.original_currency
         self.date.data = bill.date
         self.payed_for.data = [int(ower.id) for ower in bill.owers]
 

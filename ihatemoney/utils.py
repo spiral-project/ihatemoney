@@ -1,19 +1,18 @@
-import re
-import os
 import ast
-import operator
-
-from io import BytesIO, StringIO
-
-import jinja2
-from json import dumps, JSONEncoder
-from flask import redirect, current_app
-from babel import Locale
-from werkzeug.routing import HTTPException, RoutingException
-from datetime import datetime, timedelta
-
-
 import csv
+from datetime import datetime, timedelta
+from enum import Enum
+from io import BytesIO, StringIO
+from json import JSONEncoder, dumps
+import operator
+import os
+import re
+
+from babel import Locale
+from flask import current_app, redirect, render_template
+from flask_babel import get_locale
+import jinja2
+from werkzeug.routing import HTTPException, RoutingException
 
 
 def slugify(value):
@@ -99,7 +98,7 @@ def static_include(filename):
 
 
 def locale_from_iso(iso_code):
-    return Locale(iso_code)
+    return Locale.parse(iso_code)
 
 
 def list_of_dicts2json(dict_to_convert):
@@ -257,3 +256,40 @@ def same_bill(bill1, bill2):
         if bill1[a] != bill2[a]:
             return False
     return True
+
+
+class FormEnum(Enum):
+    """Extend builtin Enum class to be seamlessly compatible with WTForms"""
+
+    @classmethod
+    def choices(cls):
+        return [(choice, choice.name) for choice in cls]
+
+    @classmethod
+    def coerce(cls, item):
+        """Coerce a str or int representation into an Enum object"""
+        if isinstance(item, cls):
+            return item
+
+        # If item is not already a Enum object then it must be
+        # a string or int corresponding to an ID (e.g. '0' or 1)
+        # Either int() or cls() will correctly throw a TypeError if this
+        # is not the case
+        return cls(int(item))
+
+    def __str__(self):
+        return str(self.value)
+
+
+def render_localized_template(template_name_prefix, **context):
+    """Like render_template(), but selects the right template according to the
+    current user language.  Fallback to English if a template for the
+    current language does not exist.
+    """
+    fallback = "en"
+    templates = [
+        f"{template_name_prefix}.{lang}.j2"
+        for lang in (get_locale().language, fallback)
+    ]
+    # render_template() supports a list of templates to try in order
+    return render_template(templates, **context)

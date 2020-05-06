@@ -1,12 +1,12 @@
-# coding: utf8
-from flask import request, current_app
+from functools import wraps
+
+from flask import current_app, request
 from flask_restful import Resource, abort
+from werkzeug.security import check_password_hash
 from wtforms.fields.core import BooleanField
 
-from ihatemoney.models import db, Project, Person, Bill
-from ihatemoney.forms import ProjectForm, EditProjectForm, MemberForm, get_billform_for
-from werkzeug.security import check_password_hash
-from functools import wraps
+from ihatemoney.forms import EditProjectForm, MemberForm, ProjectForm, get_billform_for
+from ihatemoney.models import Bill, Person, Project, db
 
 
 def need_auth(f):

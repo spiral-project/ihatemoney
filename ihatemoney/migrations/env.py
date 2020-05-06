@@ -41,7 +41,7 @@ def run_migrations_offline():
 
     """
     url = config.get_main_option("sqlalchemy.url")
-    context.configure(url=url)
+    context.configure(url=url, include_object=include_object)
 
     with context.begin_transaction():
         context.run_migrations()
@@ -75,6 +75,7 @@ def run_migrations_online():
     context.configure(
         connection=connection,
         target_metadata=target_metadata,
+        include_object=include_object,
         process_revision_directives=process_revision_directives,
         **current_app.extensions["migrate"].configure_args
     )
@@ -84,6 +85,12 @@ def run_migrations_online():
             context.run_migrations()
     finally:
         connection.close()
+
+
+def include_object(object, name, type_, reflected, compare_to):
+    if name == "sqlite_sequence":
+        return False
+    return True
 
 
 if context.is_offline_mode():

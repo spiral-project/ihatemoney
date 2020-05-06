@@ -5,3 +5,7 @@ function selectCheckboxes(value){
     els[i].checked = value;
   }
 }
+
+function localizeTime(utcTimestamp) {
+    return new Date(utcTimestamp).toLocaleString()
+}

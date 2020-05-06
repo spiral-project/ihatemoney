@@ -1,4 +1,3 @@
-ihatemoney.cfg
 *.pyc
 *.egg-info
 dist
@@ -11,4 +10,10 @@ build
 .vscode
 .env
 .pytest_cache
+ihatemoney/budget.db
+.idea/
+.envrc
+.DS_Store
+.idea
+.python-version
 

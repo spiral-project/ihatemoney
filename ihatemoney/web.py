@@ -8,55 +8,59 @@ Basically, this blueprint takes care of the authentication and provides
 some shortcuts to make your life better when coding (see `pull_project`
 and `add_project_id` for a quick overview)
 """
+from datetime import datetime
+from functools import wraps
 import json
 import os
-from functools import wraps
 from smtplib import SMTPRecipientsRefused
 
 from dateutil.parser import parse
+from dateutil.relativedelta import relativedelta
 from flask import (
-    abort,
     Blueprint,
+    abort,
     current_app,
     flash,
     g,
     redirect,
     render_template,
     request,
-    session,
-    url_for,
     send_file,
     send_from_directory,
+    session,
+    url_for,
 )
-from flask_babel import get_locale, gettext as _
+from flask_babel import gettext as _
 from flask_mail import Message
 from sqlalchemy import orm
+from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash, generate_password_hash
 
+from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.forms import (
     AdminAuthenticationForm,
     AuthenticationForm,
-    EditProjectForm,
     InviteForm,
     MemberForm,
     PasswordReminder,
-    ResetPasswordForm,
     ProjectForm,
-    get_billform_for,
+    ResetPasswordForm,
     UploadForm,
+    get_billform_for,
+    get_editprojectform_for,
 )
-from ihatemoney.models import db, Project, Person, Bill
+from ihatemoney.history import get_history, get_history_queries
+from ihatemoney.models import Bill, LoggingMode, Person, Project, db
 from ihatemoney.utils import (
-    Redirect303,
-    list_of_dicts2json,
-    list_of_dicts2csv,
     LoginThrottler,
+    Redirect303,
     get_members,
+    list_of_dicts2csv,
+    list_of_dicts2json,
+    render_localized_template,
     same_bill,
 )
-from datetime import datetime
-from dateutil.relativedelta import relativedelta
 
 main = Blueprint("main", __name__)
 
@@ -235,6 +239,8 @@ def authenticate(project_id=None):
         # add the project on the top of the list
         session["projects"].insert(0, (project_id, project.name))
         session[project_id] = True
+        # Set session to permanent to make language choice persist
+        session.permanent = True
         session.update()
         setattr(g, "project", project)
         return redirect(url_for(".list_bills"))
@@ -297,9 +303,7 @@ def create_project():
                 project=g.project.name,
             )
 
-            message_body = render_template(
-                "reminder_mail.%s.j2" % get_locale().language
-            )
+            message_body = render_localized_template("reminder_mail")
 
             msg = Message(
                 message_title, body=message_body, recipients=[project.contact_email]
@@ -307,19 +311,10 @@ def create_project():
             try:
                 current_app.mail.send(msg)
             except SMTPRecipientsRefused:
-                msg_compl = "Problem sending mail. "
-                # TODO: destroy the project and cancel instead?
-            else:
-                msg_compl = ""
+                flash(_("Error while sending reminder email"), category="danger")
 
             # redirect the user to the next step (invite)
-            flash(
-                _(
-                    "%(msg_compl)sThe project identifier is %(project)s",
-                    msg_compl=msg_compl,
-                    project=project.id,
-                )
-            )
+            flash(_("The project identifier is %(project)s", project=project.id))
             return redirect(url_for(".list_bills", project_id=project.id))
 
     return render_template("create_project.html", form=form)
@@ -333,11 +328,12 @@ def remind_password():
             # get the project
             project = Project.query.get(form.id.data)
             # send a link to reset the password
-            password_reminder = "password_reminder.%s.j2" % get_locale().language
             current_app.mail.send(
                 Message(
                     "password recovery",
-                    body=render_template(password_reminder, project=project),
+                    body=render_localized_template(
+                        "password_reminder", project=project
+                    ),
                     recipients=[project.contact_email],
                 )
             )
@@ -381,35 +377,53 @@ def reset_password():
 
 @main.route("/<project_id>/edit", methods=["GET", "POST"])
 def edit_project():
-    edit_form = EditProjectForm()
-    if request.method == "POST":
-        if edit_form.validate():
-            project = edit_form.update(g.project)
-            db.session.add(project)
-            db.session.commit()
+    edit_form = get_editprojectform_for(g.project)
+    import_form = UploadForm()
+    # Import form
+    if import_form.validate_on_submit():
+        try:
+            import_project(import_form.file.data.stream, g.project)
+            flash(_("Project successfully uploaded"))
 
-            return redirect(url_for(".list_bills"))
+            return redirect(url_for("main.list_bills"))
+        except ValueError:
+            flash(_("Invalid JSON"), category="danger")
+
+    # Edit form
+    if edit_form.validate_on_submit():
+        project = edit_form.update(g.project)
+        # Update converted currency
+        if project.default_currency != CurrencyConverter.default:
+            for bill in project.get_bills():
+
+                if bill.original_currency == CurrencyConverter.default:
+                    bill.original_currency = project.default_currency
+
+                bill.converted_amount = CurrencyConverter().exchange_currency(
+                    bill.amount, bill.original_currency, project.default_currency
+                )
+                db.session.add(bill)
+
+        db.session.add(project)
+        db.session.commit()
+
+        return redirect(url_for("main.list_bills"))
     else:
         edit_form.name.data = g.project.name
+
+        if g.project.logging_preference != LoggingMode.DISABLED:
+            edit_form.project_history.data = True
+            if g.project.logging_preference == LoggingMode.RECORD_IP:
+                edit_form.ip_recording.data = True
+
         edit_form.contact_email.data = g.project.contact_email
 
     return render_template(
-        "edit_project.html", edit_form=edit_form, current_view="edit_project"
+        "edit_project.html",
+        edit_form=edit_form,
+        import_form=import_form,
+        current_view="edit_project",
     )
-
-
-@main.route("/<project_id>/upload_json", methods=["GET", "POST"])
-def upload_json():
-    form = UploadForm()
-    if form.validate_on_submit():
-        try:
-            import_project(form.file.data.stream, g.project)
-            flash(_("Project successfully uploaded"))
-        except ValueError:
-            flash(_("Invalid JSON"), category="error")
-        return redirect(url_for("main.list_bills"))
-
-    return render_template("upload_json.html", form=form)
 
 
 def import_project(file, project):
@@ -477,6 +491,7 @@ def import_project(file, project):
         form.date = parse(b["date"])
         form.payer = id_dict[b["payer_name"]]
         form.payed_for = owers_id
+        form.original_currency = b.get("original_currency")
 
         db.session.add(form.fake_form(bill, project))
 
@@ -510,7 +525,7 @@ def export_project(file, format):
 
     return send_file(
         file2export,
-        attachment_filename="%s-%s.%s" % (g.project.id, file, format),
+        attachment_filename=f"{g.project.id}-{file}.{format}",
         as_attachment=True,
     )
 
@@ -542,6 +557,7 @@ def demo():
             name="demonstration",
             password=generate_password_hash("demo"),
             contact_email="demo@notmyidea.org",
+            default_currency="EUR",
         )
         db.session.add(project)
         db.session.commit()
@@ -558,11 +574,7 @@ def invite():
     if request.method == "POST":
         if form.validate():
             # send the email
-
-            message_body = render_template(
-                "invitation_mail.%s.j2" % get_locale().language
-            )
-
+            message_body = render_localized_template("invitation_mail")
             message_title = _(
                 "You have been invited to share your " "expenses for %(project)s",
                 project=g.project.name,
@@ -610,7 +622,7 @@ def add_member():
         if form.validate():
             member = form.save(g.project, Person())
             db.session.commit()
-            flash(_("%(member)s had been added", member=member.name))
+            flash(_("%(member)s has been added", member=member.name))
             return redirect(url_for(".list_bills"))
 
     return render_template("add_member.html", form=form)
@@ -738,6 +750,45 @@ def settle_bill():
     """Compute the sum each one have to pay to each other and display it"""
     bills = g.project.get_transactions_to_settle_bill()
     return render_template("settle_bills.html", bills=bills, current_view="settle_bill")
+
+
+@main.route("/<project_id>/history")
+def history():
+    """Query for the version entries associated with this project."""
+    history = get_history(g.project, human_readable_names=True)
+
+    any_ip_addresses = any(event["ip"] for event in history)
+
+    return render_template(
+        "history.html",
+        current_view="history",
+        history=history,
+        any_ip_addresses=any_ip_addresses,
+        LoggingMode=LoggingMode,
+        OperationType=Operation,
+        current_log_pref=g.project.logging_preference,
+    )
+
+
+@main.route("/<project_id>/erase_history", methods=["POST"])
+def erase_history():
+    """Erase all history entries associated with this project."""
+    for query in get_history_queries(g.project):
+        query.delete(synchronize_session="fetch")
+
+    db.session.commit()
+    return redirect(url_for(".history"))
+
+
+@main.route("/<project_id>/strip_ip_addresses", methods=["POST"])
+def strip_ip_addresses():
+    """Strip ip addresses from history entries associated with this project."""
+    for query in get_history_queries(g.project):
+        for version_object in query.all():
+            version_object.transaction.remote_addr = None
+
+    db.session.commit()
+    return redirect(url_for(".history"))
 
 
 @main.route("/<project_id>/statistics")

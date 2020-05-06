@@ -162,6 +162,11 @@ body {
   margin-bottom: 20px;
   margin-left: 25px;
 }
+@media (max-width: 400px) {
+  .home .card {
+    min-width: unset;
+  }
+}
 /* Other */
 
 #bills {
@@ -192,7 +197,7 @@ footer {
   padding: 45px 50px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   footer {
     padding-left: calc(25% + 50px);
   }
@@ -332,13 +337,16 @@ footer .footer-left {
   background: url("../images/see.png") no-repeat right;
 }
 
-#bill_table, #monthly_stats {
+#bill_table,
+#monthly_stats,
+#history_table {
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
 @media (min-width: 768px) {
-  .split_bills, #table_overflow.statistics {
+  .split_bills,
+  #table_overflow.statistics {
     /* The table is shifted to left, so add the spacer width on the right to match */
     width: calc(100% + 15px);
   }
@@ -367,6 +375,36 @@ footer .footer-left {
 .project-actions > .see {
   background: url("../images/see.png") no-repeat right;
 }
+
+.history_icon > .delete,
+.history_icon > .add,
+.history_icon > .edit {
+  font-size: 0px;
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: 2px;
+  margin-right: 10px;
+  margin-top: 3px;
+  float: left;
+}
+
+.history_icon > .delete {
+  background: url("../images/delete.png") no-repeat right;
+}
+
+.history_icon > .edit {
+  background: url("../images/edit.png") no-repeat right;
+}
+
+.history_icon > .add {
+  background: url("../images/add.png") no-repeat right;
+}
+
+.history_text {
+  display: table-cell;
+}
+
 
 .balance .balance-value {
   text-align: right;
@@ -529,6 +567,13 @@ footer .icon svg {
   fill: white;
 }
 
+.icon.icon-red {
+  fill: #dc3545;
+}
+.btn:hover .icon.icon-red  {
+  fill: white !important;
+}
+
 /* align the first column */
 #monthly_stats tr *:first-child {
   text-align: right;
@@ -537,4 +582,18 @@ footer .icon svg {
 
 .hiddenpswp {
   display: none;
+}
+
+#history_warnings {
+  margin-top: 30px;
+}
+
+/* edit settings */
+
+.edit-project form {
+  margin-top: 1em;
+  margin-bottom: 3em;
+}
+.edit-project .custom-file {
+  margin-bottom: 2em;
 }

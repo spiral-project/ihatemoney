@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 
+import getpass
 import os
 import random
 import sys
-import getpass
 
-from flask_script import Manager, Command, Option
 from flask_migrate import Migrate, MigrateCommand
+from flask_script import Command, Manager, Option
 from werkzeug.security import generate_password_hash
 
+from ihatemoney.models import Project, db
 from ihatemoney.run import create_app
-from ihatemoney.models import db, Project
 from ihatemoney.utils import create_jinja_env
 
 
@@ -51,7 +51,7 @@ class GenerateConfig(Command):
 
     def run(self, config_file):
         env = create_jinja_env("conf-templates", strict_rendering=True)
-        template = env.get_template("%s.j2" % config_file)
+        template = env.get_template(f"{config_file}.j2")
 
         bin_path = os.path.dirname(sys.executable)
         pkg_path = os.path.abspath(os.path.dirname(__file__))

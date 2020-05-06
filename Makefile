@@ -11,10 +11,10 @@ ZOPFLIPNG := zopflipng
 .PHONY: all
 all: install ## Alias for install
 .PHONY: install
-install: virtualenv $(INSTALL_STAMP) ## Install dependencies
+install: virtualenv setup.cfg $(INSTALL_STAMP) ## Install dependencies
 $(INSTALL_STAMP):
 	$(VENV)/bin/pip install -U pip
-	$(VENV)/bin/pip install -r requirements.txt
+	$(VENV)/bin/pip install -e .
 	touch $(INSTALL_STAMP)
 
 .PHONY: virtualenv
@@ -23,9 +23,9 @@ $(PYTHON):
 	$(VIRTUALENV) $(VENV)
 
 .PHONY: install-dev
-install-dev: $(INSTALL_STAMP) $(DEV_STAMP) ## Install development dependencies
-$(DEV_STAMP): $(PYTHON) dev-requirements.txt
-	$(VENV)/bin/pip install -Ur dev-requirements.txt
+install-dev: virtualenv setup.cfg $(INSTALL_STAMP) $(DEV_STAMP) ## Install development dependencies
+$(DEV_STAMP): $(PYTHON)
+	$(VENV)/bin/pip install -Ue .[dev]
 	touch $(DEV_STAMP)
 
 .PHONY: remove-install-stamp
@@ -41,11 +41,19 @@ serve: install ## Run the ihatemoney server
 	$(PYTHON) -m ihatemoney.manage runserver
 
 .PHONY: test
-test: $(DEV_STAMP) ## Run the tests
+test: install-dev ## Run the tests
 	$(VENV)/bin/tox
 
+.PHONY: black
+black: install-dev ## Run the tests
+	$(VENV)/bin/black --target-version=py34 .
+
+.PHONY: isort
+isort: install-dev ## Run the tests
+	$(VENV)/bin/isort -rc .
+
 .PHONY: release
-release: $(DEV_STAMP) ## Release a new version (see https://ihatemoney.readthedocs.io/en/latest/contributing.html#how-to-release)
+release: install-dev ## Release a new version (see https://ihatemoney.readthedocs.io/en/latest/contributing.html#how-to-release)
 	$(VENV)/bin/fullrelease
 
 .PHONY: compress-assets
@@ -75,13 +83,6 @@ create-database-revision: ## Create a new database revision
 create-empty-database-revision: ## Create an empty database revision
 	@read -p "Please enter a message describing this revision: " rev_message; \
 	$(PYTHON) -m ihatemoney.manage db revision -d ihatemoney/migrations -m "$${rev_message}"
-
-.PHONY: build-requirements
-build-requirements: ## Save currently installed packages to requirements.txt
-	$(VIRTUALENV) $(TEMPDIR)
-	$(TEMPDIR)/bin/pip install -U pip
-	$(TEMPDIR)/bin/pip install -Ue "."
-	$(TEMPDIR)/bin/pip freeze | grep -v -- '-e' > requirements.txt
 
 .PHONY: clean
 clean: ## Destroy the virtual environment

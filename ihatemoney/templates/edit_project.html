@@ -5,18 +5,43 @@
     {
         $(this).html("<a style='color:red; ' href='{{ url_for('.delete_project') }}' >{{_("you sure?")}}</a>");
     });
+
+    $('.custom-file-input').on('change', function(event) {
+        var filename = [].slice.call(this.files).map(function (file) { return file.name}).join(',')
+        var $labelElement = $(this).parents('.custom-file').find('.custom-file-label')
+        $labelElement.text(filename)
+    })
 {% endblock %}
 
 {% block content %}
-<h2>{{ _("Edit project") }}</h2>
-<p>
-    <form class="form-horizontal" method="post">
-    {{ forms.edit_project(edit_form) }}
-    </form>
-</p>
+<div class="container edit-project">
 
-<h2>{{ _("Download project's data") }}</h2>
-<p>
+    <h2>{{ _("Edit project") }}</h2>
+    <form class="form-horizontal" method="post">
+        {{ forms.edit_project(edit_form) }}
+    </form>
+
+
+    <h2>{{ _("Import JSON") }}</h2>
+    <form class="form-horizontal" method="post" enctype="multipart/form-data">
+        {{ import_form.hidden_tag() }}
+
+        <div class="custom-file">
+            <div class="form-group">
+                {{ import_form.file(class="custom-file-input") }}
+                <small class="form-text text-muted">
+                    {{ import_form.file.description }}
+                </small>
+            </div>
+            <label class="custom-file-label" for="customFile">{{ _('Choose file') }}</label>
+        </div>
+
+        <div class="actions">
+            {{ import_form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+
+    <h2>{{ _("Download project's data") }}</h2>
     <div class="list-group download-project">
         <div class="list-group-item list-group-item-action">
             <h5 class="d-flex w-100 justify-content-between">
@@ -51,5 +76,5 @@
             <p class="mb-1 text-muted">{{ _('Download the list of transactions needed to settle the current bills.') }}</p>
         </div>
     </div>
-</p>
+</div>
 {% endblock %}

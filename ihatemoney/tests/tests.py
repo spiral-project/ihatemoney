@@ -1,25 +1,24 @@
-# coding: utf8
-import unittest
-from unittest.mock import patch
-
+import base64
+from collections import defaultdict
 import datetime
-import os
 import io
 import json
-import base64
-
-from collections import defaultdict
+import os
+import re
 from time import sleep
+import unittest
+from unittest.mock import MagicMock, patch
 
-from werkzeug.security import generate_password_hash, check_password_hash
 from flask import session
 from flask_testing import TestCase
-
-from ihatemoney.run import create_app, db, load_configuration
-from ihatemoney.manage import GenerateConfig, GeneratePasswordHash, DeleteProject
-from ihatemoney import models
-from ihatemoney import utils
 from sqlalchemy import orm
+from werkzeug.security import check_password_hash, generate_password_hash
+
+from ihatemoney import history, models, utils
+from ihatemoney.currency_convertor import CurrencyConverter
+from ihatemoney.manage import DeleteProject, GenerateConfig, GeneratePasswordHash
+from ihatemoney.run import create_app, db, load_configuration
+from ihatemoney.versioning import LoggingMode
 
 # Unset configuration file env var if previously set
 os.environ.pop("IHATEMONEY_SETTINGS_FILE_PATH", None)
@@ -61,7 +60,8 @@ class BaseTestCase(TestCase):
                 "name": name,
                 "id": name,
                 "password": name,
-                "contact_email": "%s@notmyidea.org" % name,
+                "contact_email": f"{name}@notmyidea.org",
+                "default_currency": "USD",
             },
         )
 
@@ -70,7 +70,8 @@ class BaseTestCase(TestCase):
             id=name,
             name=str(name),
             password=generate_password_hash(name),
-            contact_email="%s@notmyidea.org" % name,
+            contact_email=f"{name}@notmyidea.org",
+            default_currency="USD",
         )
         models.db.session.add(project)
         models.db.session.commit()
@@ -85,7 +86,7 @@ class IhatemoneyTestCase(BaseTestCase):
         return self.assertEqual(
             expected,
             resp.status_code,
-            "%s expected %s, got %s" % (url, expected, resp.status_code),
+            f"{url} expected {expected}, got {resp.status_code}",
         )
 
 
@@ -141,24 +142,24 @@ class BudgetTestCase(IhatemoneyTestCase):
 
             self.post_project("raclette")
             self.client.post(
-                "/raclette/invite", data={"emails": "alexis@notmyidea.org"}
+                "/raclette/invite", data={"emails": "zorglub@notmyidea.org"}
             )
 
             self.assertEqual(len(outbox), 2)
             self.assertEqual(outbox[0].recipients, ["raclette@notmyidea.org"])
-            self.assertEqual(outbox[1].recipients, ["alexis@notmyidea.org"])
+            self.assertEqual(outbox[1].recipients, ["zorglub@notmyidea.org"])
 
         # sending a message to multiple persons
         with self.app.mail.record_messages() as outbox:
             self.client.post(
                 "/raclette/invite",
-                data={"emails": "alexis@notmyidea.org, toto@notmyidea.org"},
+                data={"emails": "zorglub@notmyidea.org, toto@notmyidea.org"},
             )
 
             # only one message is sent to multiple persons
             self.assertEqual(len(outbox), 1)
             self.assertEqual(
-                outbox[0].recipients, ["alexis@notmyidea.org", "toto@notmyidea.org"]
+                outbox[0].recipients, ["zorglub@notmyidea.org", "toto@notmyidea.org"]
             )
 
         # mail address checking
@@ -170,7 +171,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         # mixing good and wrong addresses shouldn't send any messages
         with self.app.mail.record_messages() as outbox:
             self.client.post(
-                "/raclette/invite", data={"emails": "alexis@notmyidea.org, alexis"}
+                "/raclette/invite", data={"emails": "zorglub@notmyidea.org, zorglub"}
             )  # not valid
 
             # only one message is sent to multiple persons
@@ -257,6 +258,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                     "id": "raclette",
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
                 },
             )
 
@@ -276,6 +278,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                     "id": "raclette",  # already used !
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
                 },
             )
 
@@ -293,6 +296,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                     "id": "raclette",
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
                 },
             )
 
@@ -313,6 +317,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                     "id": "raclette",
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
                 },
             )
 
@@ -332,6 +337,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                     "id": "raclette",
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
                 },
             )
 
@@ -355,7 +361,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             result.data.decode("utf-8"),
         )
 
-        result = self.client.post("/raclette/members/add", data={"name": "alexis"})
+        result = self.client.post("/raclette/members/add", data={"name": "zorglub"})
 
         result = self.client.get("/raclette/")
 
@@ -369,11 +375,11 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.login("raclette")
 
         # adds a member to this project
-        self.client.post("/raclette/members/add", data={"name": "alexis"})
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
         self.assertEqual(len(models.Project.query.get("raclette").members), 1)
 
         # adds him twice
-        result = self.client.post("/raclette/members/add", data={"name": "alexis"})
+        result = self.client.post("/raclette/members/add", data={"name": "zorglub"})
 
         # should not accept him
         self.assertEqual(len(models.Project.query.get("raclette").members), 1)
@@ -412,7 +418,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         )
 
         # remove fred
-        self.client.post("/raclette/members/%s/delete" % fred_id)
+        self.client.post(f"/raclette/members/{fred_id}/delete")
 
         # he is still in the database, but is deactivated
         self.assertEqual(len(models.Project.query.get("raclette").members), 2)
@@ -422,7 +428,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         # a bill or displaying the balance
         result = self.client.get("/raclette/")
         self.assertNotIn(
-            ("/raclette/members/%s/delete" % fred_id), result.data.decode("utf-8")
+            (f"/raclette/members/{fred_id}/delete"), result.data.decode("utf-8")
         )
 
         result = self.client.get("/raclette/add")
@@ -444,11 +450,11 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.login("raclette")
 
         # adds a member to this project
-        self.client.post("/raclette/members/add", data={"name": "alexis"})
-        alexis = models.Project.query.get("raclette").members[-1]
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
+        zorglub = models.Project.query.get("raclette").members[-1]
 
         # should not have any bills
-        self.assertFalse(alexis.has_bills())
+        self.assertFalse(zorglub.has_bills())
 
         # bound him to a bill
         self.client.post(
@@ -456,22 +462,22 @@ class BudgetTestCase(IhatemoneyTestCase):
             data={
                 "date": "2011-08-10",
                 "what": "fromage à raclette",
-                "payer": alexis.id,
-                "payed_for": [alexis.id],
+                "payer": zorglub.id,
+                "payed_for": [zorglub.id],
                 "amount": "25",
             },
         )
 
         # should have a bill now
-        alexis = models.Project.query.get("raclette").members[-1]
-        self.assertTrue(alexis.has_bills())
+        zorglub = models.Project.query.get("raclette").members[-1]
+        self.assertTrue(zorglub.has_bills())
 
     def test_member_delete_method(self):
         self.post_project("raclette")
         self.login("raclette")
 
         # adds a member to this project
-        self.client.post("/raclette/members/add", data={"name": "alexis"})
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
 
         # try to remove the member using GET method
         response = self.client.get("/raclette/members/1/delete")
@@ -599,7 +605,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.post_project("raclette")
 
         # add two persons
-        self.client.post("/raclette/members/add", data={"name": "alexis"})
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
         self.client.post("/raclette/members/add", data={"name": "fred"})
 
         members_ids = [m.id for m in models.Project.query.get("raclette").members]
@@ -621,7 +627,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         # edit the bill
         self.client.post(
-            "/raclette/edit/%s" % bill.id,
+            f"/raclette/edit/{bill.id}",
             data={
                 "date": "2011-08-10",
                 "what": "fromage à raclette",
@@ -635,7 +641,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertEqual(bill.amount, 10, "bill edition")
 
         # delete the bill
-        self.client.get("/raclette/delete/%s" % bill.id)
+        self.client.get(f"/raclette/delete/{bill.id}")
         self.assertEqual(0, len(models.Bill.query.all()), "bill deletion")
 
         # test balance
@@ -707,7 +713,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.post_project("raclette")
 
         # add two persons
-        self.client.post("/raclette/members/add", data={"name": "alexis"})
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
         self.client.post(
             "/raclette/members/add", data={"name": "freddy familly", "weight": 4}
         )
@@ -744,8 +750,8 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.post_project("raclette")
 
         # Add two times the same person (with a space at the end).
-        self.client.post("/raclette/members/add", data={"name": "alexis"})
-        self.client.post("/raclette/members/add", data={"name": "alexis "})
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
+        self.client.post("/raclette/members/add", data={"name": "zorglub "})
         members = models.Project.query.get("raclette").members
 
         self.assertEqual(len(members), 1)
@@ -754,7 +760,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.post_project("raclette")
 
         # add two persons
-        self.client.post("/raclette/members/add", data={"name": "alexis"})
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
         self.client.post("/raclette/members/add", data={"name": "tata", "weight": 1})
 
         resp = self.client.get("/raclette/")
@@ -771,9 +777,9 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.post_project("raclette")
 
         # Add one user and edit it to have a negative share
-        self.client.post("/raclette/members/add", data={"name": "alexis"})
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
         resp = self.client.post(
-            "/raclette/members/1/edit", data={"name": "alexis", "weight": -1}
+            "/raclette/members/1/edit", data={"name": "zorglub", "weight": -1}
         )
 
         # An error should be generated, and its weight should still be 1.
@@ -785,7 +791,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.post_project("raclette")
 
         # add members
-        self.client.post("/raclette/members/add", data={"name": "alexis"})
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
         self.client.post("/raclette/members/add", data={"name": "fred"})
         self.client.post("/raclette/members/add", data={"name": "tata"})
 
@@ -841,8 +847,10 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.post_project("raclette")
         new_data = {
             "name": "Super raclette party!",
-            "contact_email": "alexis@notmyidea.org",
+            "contact_email": "zorglub@notmyidea.org",
             "password": "didoudida",
+            "logging_preference": LoggingMode.ENABLED.value,
+            "default_currency": "USD",
         }
 
         resp = self.client.post("/raclette/edit", data=new_data, follow_redirects=True)
@@ -851,6 +859,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         self.assertEqual(project.name, new_data["name"])
         self.assertEqual(project.contact_email, new_data["contact_email"])
+        self.assertEqual(project.default_currency, new_data["default_currency"])
         self.assertTrue(check_password_hash(project.password, new_data["password"]))
 
         # Editing a project with a wrong email address should fail
@@ -890,11 +899,11 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.post_project("raclette")
 
         # add members
-        self.client.post("/raclette/members/add", data={"name": "alexis", "weight": 2})
+        self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
         self.client.post("/raclette/members/add", data={"name": "fred"})
         self.client.post("/raclette/members/add", data={"name": "tata"})
         # Add a member with a balance=0 :
-        self.client.post("/raclette/members/add", data={"name": "toto"})
+        self.client.post("/raclette/members/add", data={"name": "pépé"})
 
         # create bills
         self.client.post(
@@ -931,44 +940,33 @@ class BudgetTestCase(IhatemoneyTestCase):
         )
 
         response = self.client.get("/raclette/statistics")
-        first_cell = '<td class="d-md-none">'
-        indent = "\n            "
-        self.assertIn(
-            first_cell
-            + "alexis</td>"
-            + indent
-            + "<td>20.00</td>"
-            + indent
-            + "<td>31.67</td>\n",
-            response.data.decode("utf-8"),
+        regex = r"<td class=\"d-md-none\">{}</td>\s+<td>{}</td>\s+<td>{}</td>"
+        self.assertRegex(
+            response.data.decode("utf-8"), regex.format("zorglub", "20.00", "31.67"),
         )
-        self.assertIn(
-            first_cell
-            + "fred</td>"
-            + indent
-            + "<td>20.00</td>"
-            + indent
-            + "<td>5.83</td>\n",
-            response.data.decode("utf-8"),
+        self.assertRegex(
+            response.data.decode("utf-8"), regex.format("fred", "20.00", "5.83"),
         )
-        self.assertIn(
-            first_cell
-            + "tata</td>"
-            + indent
-            + "<td>0.00</td>"
-            + indent
-            + "<td>2.50</td>\n",
-            response.data.decode("utf-8"),
+        self.assertRegex(
+            response.data.decode("utf-8"), regex.format("tata", "0.00", "2.50"),
         )
-        self.assertIn(
-            first_cell
-            + "toto</td>"
-            + indent
-            + "<td>0.00</td>"
-            + indent
-            + "<td>0.00</td>\n",
-            response.data.decode("utf-8"),
+        self.assertRegex(
+            response.data.decode("utf-8"), regex.format("pépé", "0.00", "0.00"),
         )
+
+        # Check that the order of participants in the sidebar table is the
+        # same as in the main table.
+        order = ["fred", "pépé", "tata", "zorglub"]
+        regex1 = r".*".join(
+            r"<td class=\"balance-name\">{}</td>".format(name) for name in order
+        )
+        regex2 = r".*".join(
+            r"<td class=\"d-md-none\">{}</td>".format(name) for name in order
+        )
+        # Build the regexp ourselves to be able to pass the DOTALL flag
+        # (so that ".*" matches newlines)
+        self.assertRegex(response.data.decode("utf-8"), re.compile(regex1, re.DOTALL))
+        self.assertRegex(response.data.decode("utf-8"), re.compile(regex2, re.DOTALL))
 
     def test_settle_page(self):
         self.post_project("raclette")
@@ -979,11 +977,11 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.post_project("raclette")
 
         # add members
-        self.client.post("/raclette/members/add", data={"name": "alexis"})
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
         self.client.post("/raclette/members/add", data={"name": "fred"})
         self.client.post("/raclette/members/add", data={"name": "tata"})
         # Add a member with a balance=0 :
-        self.client.post("/raclette/members/add", data={"name": "toto"})
+        self.client.post("/raclette/members/add", data={"name": "pépé"})
 
         # create bills
         self.client.post(
@@ -1034,7 +1032,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.post_project("raclette")
 
         # add members
-        self.client.post("/raclette/members/add", data={"name": "alexis"})
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
         self.client.post("/raclette/members/add", data={"name": "fred"})
         self.client.post("/raclette/members/add", data={"name": "tata"})
 
@@ -1080,14 +1078,14 @@ class BudgetTestCase(IhatemoneyTestCase):
             self.assertNotEqual(
                 0.0,
                 rounded_amount,
-                msg="%f is equal to zero after rounding" % t["amount"],
+                msg=f"{t['amount']} is equal to zero after rounding",
             )
 
     def test_export(self):
         self.post_project("raclette")
 
         # add members
-        self.client.post("/raclette/members/add", data={"name": "alexis", "weight": 2})
+        self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
         self.client.post("/raclette/members/add", data={"name": "fred"})
         self.client.post("/raclette/members/add", data={"name": "tata"})
         self.client.post("/raclette/members/add", data={"name": "pépé"})
@@ -1101,6 +1099,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": 1,
                 "payed_for": [1, 2, 3, 4],
                 "amount": "10.0",
+                "original_currency": "USD",
             },
         )
 
@@ -1112,6 +1111,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": 2,
                 "payed_for": [1, 3],
                 "amount": "200",
+                "original_currency": "USD",
             },
         )
 
@@ -1123,6 +1123,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "payer": 3,
                 "payed_for": [2],
                 "amount": "13.33",
+                "original_currency": "USD",
             },
         )
 
@@ -1143,15 +1144,15 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "amount": 200.0,
                 "payer_name": "fred",
                 "payer_weight": 1.0,
-                "owers": ["alexis", "tata"],
+                "owers": ["zorglub", "tata"],
             },
             {
                 "date": "2016-12-31",
                 "what": "fromage \xe0 raclette",
                 "amount": 10.0,
-                "payer_name": "alexis",
+                "payer_name": "zorglub",
                 "payer_weight": 2.0,
-                "owers": ["alexis", "fred", "tata", "p\xe9p\xe9"],
+                "owers": ["zorglub", "fred", "tata", "p\xe9p\xe9"],
             },
         ]
         self.assertEqual(json.loads(resp.data.decode("utf-8")), expected)
@@ -1161,8 +1162,8 @@ class BudgetTestCase(IhatemoneyTestCase):
         expected = [
             "date,what,amount,payer_name,payer_weight,owers",
             "2017-01-01,refund,13.33,tata,1.0,fred",
-            '2016-12-31,red wine,200.0,fred,1.0,"alexis, tata"',
-            '2016-12-31,fromage à raclette,10.0,alexis,2.0,"alexis, fred, tata, pépé"',
+            '2016-12-31,red wine,200.0,fred,1.0,"zorglub, tata"',
+            '2016-12-31,fromage à raclette,10.0,zorglub,2.0,"zorglub, fred, tata, pépé"',
         ]
         received_lines = resp.data.decode("utf-8").split("\n")
 
@@ -1176,7 +1177,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         expected = [
             {"amount": 2.00, "receiver": "fred", "ower": "p\xe9p\xe9"},
             {"amount": 55.34, "receiver": "fred", "ower": "tata"},
-            {"amount": 127.33, "receiver": "fred", "ower": "alexis"},
+            {"amount": 127.33, "receiver": "fred", "ower": "zorglub"},
         ]
 
         self.assertEqual(json.loads(resp.data.decode("utf-8")), expected)
@@ -1188,7 +1189,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             "amount,receiver,ower",
             "2.0,fred,pépé",
             "55.34,fred,tata",
-            "127.33,fred,alexis",
+            "127.33,fred,zorglub",
         ]
         received_lines = resp.data.decode("utf-8").split("\n")
 
@@ -1224,15 +1225,15 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "amount": 200.0,
                 "payer_name": "fred",
                 "payer_weight": 1.0,
-                "owers": ["alexis", "tata"],
+                "owers": ["zorglub", "tata"],
             },
             {
                 "date": "2016-12-31",
                 "what": "fromage a raclette",
                 "amount": 10.0,
-                "payer_name": "alexis",
+                "payer_name": "zorglub",
                 "payer_weight": 2.0,
-                "owers": ["alexis", "fred", "tata", "pepe"],
+                "owers": ["zorglub", "fred", "tata", "pepe"],
             },
         ]
 
@@ -1280,7 +1281,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         project = models.Project.query.get("raclette")
 
-        self.client.post("/raclette/members/add", data={"name": "alexis", "weight": 2})
+        self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
         self.client.post("/raclette/members/add", data={"name": "fred"})
         self.client.post("/raclette/members/add", data={"name": "tata"})
         self.client.post(
@@ -1309,15 +1310,15 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "amount": 200.0,
                 "payer_name": "fred",
                 "payer_weight": 1.0,
-                "owers": ["alexis", "tata"],
+                "owers": ["zorglub", "tata"],
             },
             {
                 "date": "2016-12-31",
                 "what": "fromage a raclette",
                 "amount": 10.0,
-                "payer_name": "alexis",
+                "payer_name": "zorglub",
                 "payer_weight": 2.0,
-                "owers": ["alexis", "fred", "tata", "pepe"],
+                "owers": ["zorglub", "fred", "tata", "pepe"],
             },
         ]
 
@@ -1418,7 +1419,7 @@ class APITestCase(IhatemoneyTestCase):
     def api_create(self, name, id=None, password=None, contact=None):
         id = id or name
         password = password or name
-        contact = contact or "%s@notmyidea.org" % name
+        contact = contact or f"{name}@notmyidea.org"
 
         return self.client.post(
             "/api/projects",
@@ -1427,12 +1428,13 @@ class APITestCase(IhatemoneyTestCase):
                 "id": id,
                 "password": password,
                 "contact_email": contact,
+                "default_currency": "USD",
             },
         )
 
     def api_add_member(self, project, name, weight=1):
         self.client.post(
-            "/api/projects/%s/members" % project,
+            f"/api/projects/{project}/members",
             data={"name": name, "weight": weight},
             headers=self.get_auth(project),
         )
@@ -1440,11 +1442,11 @@ class APITestCase(IhatemoneyTestCase):
     def get_auth(self, username, password=None):
         password = password or username
         base64string = (
-            base64.encodebytes(("%s:%s" % (username, password)).encode("utf-8"))
+            base64.encodebytes(f"{username}:{password}".encode("utf-8"))
             .decode("utf-8")
             .replace("\n", "")
         )
-        return {"Authorization": "Basic %s" % base64string}
+        return {"Authorization": f"Basic {base64string}"}
 
     def test_cors_requests(self):
         # Create a project and test that CORS headers are present if requested.
@@ -1488,6 +1490,7 @@ class APITestCase(IhatemoneyTestCase):
                 "id": "raclette",
                 "password": "raclette",
                 "contact_email": "not-an-email",
+                "default_currency": "USD",
             },
         )
 
@@ -1516,7 +1519,9 @@ class APITestCase(IhatemoneyTestCase):
             "members": [],
             "name": "raclette",
             "contact_email": "raclette@notmyidea.org",
+            "default_currency": "USD",
             "id": "raclette",
+            "logging_preference": 1,
         }
         decoded_resp = json.loads(resp.data.decode("utf-8"))
         self.assertDictEqual(decoded_resp, expected)
@@ -1526,8 +1531,10 @@ class APITestCase(IhatemoneyTestCase):
             "/api/projects/raclette",
             data={
                 "contact_email": "yeah@notmyidea.org",
+                "default_currency": "USD",
                 "password": "raclette",
                 "name": "The raclette party",
+                "project_history": "y",
             },
             headers=self.get_auth("raclette"),
         )
@@ -1542,8 +1549,10 @@ class APITestCase(IhatemoneyTestCase):
         expected = {
             "name": "The raclette party",
             "contact_email": "yeah@notmyidea.org",
+            "default_currency": "USD",
             "members": [],
             "id": "raclette",
+            "logging_preference": 1,
         }
         decoded_resp = json.loads(resp.data.decode("utf-8"))
         self.assertDictEqual(decoded_resp, expected)
@@ -1553,6 +1562,7 @@ class APITestCase(IhatemoneyTestCase):
             "/api/projects/raclette",
             data={
                 "contact_email": "yeah@notmyidea.org",
+                "default_currency": "USD",
                 "password": "tartiflette",
                 "name": "The raclette party",
             },
@@ -1597,7 +1607,7 @@ class APITestCase(IhatemoneyTestCase):
         # Access with token
         resp = self.client.get(
             "/api/projects/raclette/token",
-            headers={"Authorization": "Basic %s" % decoded_resp["token"]},
+            headers={"Authorization": f"Basic {decoded_resp['token']}"},
         )
 
         self.assertEqual(200, resp.status_code)
@@ -1628,7 +1638,7 @@ class APITestCase(IhatemoneyTestCase):
         # add a member
         req = self.client.post(
             "/api/projects/raclette/members",
-            data={"name": "Alexis"},
+            data={"name": "Zorglub"},
             headers=self.get_auth("raclette"),
         )
 
@@ -1647,7 +1657,7 @@ class APITestCase(IhatemoneyTestCase):
         # Try to add another member with the same name.
         req = self.client.post(
             "/api/projects/raclette/members",
-            data={"name": "Alexis"},
+            data={"name": "Zorglub"},
             headers=self.get_auth("raclette"),
         )
         self.assertStatus(400, req)
@@ -1728,9 +1738,9 @@ class APITestCase(IhatemoneyTestCase):
         self.api_create("raclette")
 
         # add members
-        self.api_add_member("raclette", "alexis")
+        self.api_add_member("raclette", "zorglub")
         self.api_add_member("raclette", "fred")
-        self.api_add_member("raclette", "arnaud")
+        self.api_add_member("raclette", "quentin")
 
         # get the list of bills (should be empty)
         req = self.client.get(
@@ -1769,12 +1779,14 @@ class APITestCase(IhatemoneyTestCase):
             "what": "fromage",
             "payer_id": 1,
             "owers": [
-                {"activated": True, "id": 1, "name": "alexis", "weight": 1},
+                {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
                 {"activated": True, "id": 2, "name": "fred", "weight": 1},
             ],
             "amount": 25.0,
             "date": "2011-08-10",
             "id": 1,
+            "converted_amount": 25.0,
+            "original_currency": "USD",
             "external_link": "https://raclette.fr",
         }
 
@@ -1838,12 +1850,14 @@ class APITestCase(IhatemoneyTestCase):
             "what": "beer",
             "payer_id": 2,
             "owers": [
-                {"activated": True, "id": 1, "name": "alexis", "weight": 1},
+                {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
                 {"activated": True, "id": 2, "name": "fred", "weight": 1},
             ],
             "amount": 25.0,
             "date": "2011-09-10",
             "external_link": "https://raclette.fr",
+            "converted_amount": 25.0,
+            "original_currency": "USD",
             "id": 1,
         }
 
@@ -1872,7 +1886,7 @@ class APITestCase(IhatemoneyTestCase):
         self.api_create("raclette")
 
         # add members
-        self.api_add_member("raclette", "alexis")
+        self.api_add_member("raclette", "zorglub")
         self.api_add_member("raclette", "fred")
 
         # valid amounts
@@ -1914,13 +1928,15 @@ class APITestCase(IhatemoneyTestCase):
                 "what": "fromage",
                 "payer_id": 1,
                 "owers": [
-                    {"activated": True, "id": 1, "name": "alexis", "weight": 1},
+                    {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
                     {"activated": True, "id": 2, "name": "fred", "weight": 1},
                 ],
                 "amount": expected_amount,
                 "date": "2011-08-10",
                 "id": id,
                 "external_link": "",
+                "original_currency": "USD",
+                "converted_amount": expected_amount,
             }
 
             got = json.loads(req.data.decode("utf-8"))
@@ -1959,7 +1975,7 @@ class APITestCase(IhatemoneyTestCase):
         self.api_create("raclette")
 
         # add members
-        self.api_add_member("raclette", "alexis")
+        self.api_add_member("raclette", "zorglub")
         self.api_add_member("raclette", "fred")
 
         # add a bill
@@ -1987,7 +2003,7 @@ class APITestCase(IhatemoneyTestCase):
                     "member": {
                         "activated": True,
                         "id": 1,
-                        "name": "alexis",
+                        "name": "zorglub",
                         "weight": 1.0,
                     },
                     "paid": 25.0,
@@ -2025,9 +2041,9 @@ class APITestCase(IhatemoneyTestCase):
         self.api_create("raclette")
 
         # add members
-        self.api_add_member("raclette", "alexis")
+        self.api_add_member("raclette", "zorglub")
         self.api_add_member("raclette", "freddy familly", 4)
-        self.api_add_member("raclette", "arnaud")
+        self.api_add_member("raclette", "quentin")
 
         # add a bill
         req = self.client.post(
@@ -2056,13 +2072,15 @@ class APITestCase(IhatemoneyTestCase):
             "what": "fromage",
             "payer_id": 1,
             "owers": [
-                {"activated": True, "id": 1, "name": "alexis", "weight": 1},
+                {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
                 {"activated": True, "id": 2, "name": "freddy familly", "weight": 4},
             ],
             "amount": 25.0,
             "date": "2011-08-10",
             "id": 1,
             "external_link": "",
+            "converted_amount": 25.0,
+            "original_currency": "USD",
         }
         got = json.loads(req.data.decode("utf-8"))
         self.assertEqual(
@@ -2082,7 +2100,7 @@ class APITestCase(IhatemoneyTestCase):
                 {
                     "activated": True,
                     "id": 1,
-                    "name": "alexis",
+                    "name": "zorglub",
                     "weight": 1.0,
                     "balance": 20.0,
                 },
@@ -2096,7 +2114,7 @@ class APITestCase(IhatemoneyTestCase):
                 {
                     "activated": True,
                     "id": 3,
-                    "name": "arnaud",
+                    "name": "quentin",
                     "weight": 1.0,
                     "balance": 0,
                 },
@@ -2104,11 +2122,32 @@ class APITestCase(IhatemoneyTestCase):
             "contact_email": "raclette@notmyidea.org",
             "id": "raclette",
             "name": "raclette",
+            "logging_preference": 1,
+            "default_currency": "USD",
         }
 
         self.assertStatus(200, req)
         decoded_req = json.loads(req.data.decode("utf-8"))
         self.assertDictEqual(decoded_req, expected)
+
+    def test_log_created_from_api_call(self):
+        # create a project
+        self.api_create("raclette")
+        self.login("raclette")
+
+        # add members
+        self.api_add_member("raclette", "zorglub")
+
+        resp = self.client.get("/raclette/history", follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            f"Participant {em_surround('zorglub')} added", resp.data.decode("utf-8")
+        )
+        self.assertIn(
+            f"Project {em_surround('raclette')} added", resp.data.decode("utf-8"),
+        )
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 2)
+        self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
 
 
 class ServerTestCase(IhatemoneyTestCase):
@@ -2167,11 +2206,11 @@ class ModelsTestCase(IhatemoneyTestCase):
         self.post_project("raclette")
 
         # add members
-        self.client.post("/raclette/members/add", data={"name": "alexis", "weight": 2})
+        self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
         self.client.post("/raclette/members/add", data={"name": "fred"})
         self.client.post("/raclette/members/add", data={"name": "tata"})
         # Add a member with a balance=0 :
-        self.client.post("/raclette/members/add", data={"name": "toto"})
+        self.client.post("/raclette/members/add", data={"name": "pépé"})
 
         # create bills
         self.client.post(
@@ -2208,11 +2247,11 @@ class ModelsTestCase(IhatemoneyTestCase):
         )
 
         project = models.Project.query.get_by_name(name="raclette")
-        alexis = models.Person.query.get_by_name(name="alexis", project=project)
-        alexis_bills = models.Bill.query.options(
+        zorglub = models.Person.query.get_by_name(name="zorglub", project=project)
+        zorglub_bills = models.Bill.query.options(
             orm.subqueryload(models.Bill.owers)
-        ).filter(models.Bill.owers.contains(alexis))
-        for bill in alexis_bills.all():
+        ).filter(models.Bill.owers.contains(zorglub))
+        for bill in zorglub_bills.all():
             if bill.what == "red wine":
                 pay_each_expected = 20 / 2
                 self.assertEqual(bill.pay_each(), pay_each_expected)
@@ -2222,6 +2261,632 @@ class ModelsTestCase(IhatemoneyTestCase):
             if bill.what == "delicatessen":
                 pay_each_expected = 10 / 3
                 self.assertEqual(bill.pay_each(), pay_each_expected)
+
+
+def em_surround(string, regex_escape=False):
+    if regex_escape:
+        return r'<em class="font-italic">%s<\/em>' % string
+    else:
+        return '<em class="font-italic">%s</em>' % string
+
+
+class HistoryTestCase(IhatemoneyTestCase):
+    def setUp(self):
+        super().setUp()
+        self.post_project("demo")
+        self.login("demo")
+
+    def test_simple_create_logentry_no_ip(self):
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            f"Project {em_surround('demo')} added", resp.data.decode("utf-8"),
+        )
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 1)
+        self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+
+    def change_privacy_to(self, logging_preference):
+        # Change only logging_preferences
+        new_data = {
+            "name": "demo",
+            "contact_email": "demo@notmyidea.org",
+            "password": "demo",
+            "default_currency": "USD",
+        }
+
+        if logging_preference != LoggingMode.DISABLED:
+            new_data["project_history"] = "y"
+            if logging_preference == LoggingMode.RECORD_IP:
+                new_data["ip_recording"] = "y"
+
+        # Disable History
+        resp = self.client.post("/demo/edit", data=new_data, follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+        self.assertNotIn("danger", resp.data.decode("utf-8"))
+
+        resp = self.client.get("/demo/edit")
+        self.assertEqual(resp.status_code, 200)
+        if logging_preference == LoggingMode.DISABLED:
+            self.assertIn('<input id="project_history"', resp.data.decode("utf-8"))
+        else:
+            self.assertIn(
+                '<input checked id="project_history"', resp.data.decode("utf-8")
+            )
+
+        if logging_preference == LoggingMode.RECORD_IP:
+            self.assertIn('<input checked id="ip_recording"', resp.data.decode("utf-8"))
+        else:
+            self.assertIn('<input id="ip_recording"', resp.data.decode("utf-8"))
+
+    def assert_empty_history_logging_disabled(self):
+        resp = self.client.get("/demo/history")
+        self.assertIn(
+            "This project has history disabled. New actions won't appear below. ",
+            resp.data.decode("utf-8"),
+        )
+        self.assertIn(
+            "Nothing to list", resp.data.decode("utf-8"),
+        )
+        self.assertNotIn(
+            "The table below reflects actions recorded prior to disabling project history.",
+            resp.data.decode("utf-8"),
+        )
+        self.assertNotIn(
+            "Some entries below contain IP addresses,", resp.data.decode("utf-8"),
+        )
+        self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+        self.assertNotIn("<td> -- </td>", resp.data.decode("utf-8"))
+        self.assertNotIn(
+            f"Project {em_surround('demo')} added", resp.data.decode("utf-8")
+        )
+
+    def test_project_edit(self):
+        new_data = {
+            "name": "demo2",
+            "contact_email": "demo2@notmyidea.org",
+            "password": "123456",
+            "project_history": "y",
+            "default_currency": "USD",
+        }
+
+        resp = self.client.post("/demo/edit", data=new_data, follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(f"Project {em_surround('demo')} added", resp.data.decode("utf-8"))
+        self.assertIn(
+            f"Project contact email changed to {em_surround('demo2@notmyidea.org')}",
+            resp.data.decode("utf-8"),
+        )
+        self.assertIn(
+            "Project private code changed", resp.data.decode("utf-8"),
+        )
+        self.assertIn(
+            f"Project renamed to {em_surround('demo2')}", resp.data.decode("utf-8"),
+        )
+        self.assertLess(
+            resp.data.decode("utf-8").index("Project renamed "),
+            resp.data.decode("utf-8").index("Project contact email changed to "),
+        )
+        self.assertLess(
+            resp.data.decode("utf-8").index("Project renamed "),
+            resp.data.decode("utf-8").index("Project private code changed"),
+        )
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 4)
+        self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+
+    def test_project_privacy_edit(self):
+        resp = self.client.get("/demo/edit")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            '<input checked id="project_history" name="project_history" type="checkbox" value="y">',
+            resp.data.decode("utf-8"),
+        )
+
+        self.change_privacy_to(LoggingMode.DISABLED)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn("Disabled Project History\n", resp.data.decode("utf-8"))
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 2)
+        self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+
+        self.change_privacy_to(LoggingMode.RECORD_IP)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            "Enabled Project History & IP Address Recording", resp.data.decode("utf-8")
+        )
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 2)
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 1)
+
+        self.change_privacy_to(LoggingMode.ENABLED)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn("Disabled IP Address Recording\n", resp.data.decode("utf-8"))
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 2)
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 2)
+
+    def test_project_privacy_edit2(self):
+        self.change_privacy_to(LoggingMode.RECORD_IP)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn("Enabled IP Address Recording\n", resp.data.decode("utf-8"))
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 1)
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 1)
+
+        self.change_privacy_to(LoggingMode.DISABLED)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            "Disabled Project History & IP Address Recording", resp.data.decode("utf-8")
+        )
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 1)
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 2)
+
+        self.change_privacy_to(LoggingMode.ENABLED)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn("Enabled Project History\n", resp.data.decode("utf-8"))
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 2)
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 2)
+
+    def do_misc_database_operations(self, logging_mode):
+        new_data = {
+            "name": "demo2",
+            "contact_email": "demo2@notmyidea.org",
+            "password": "123456",
+            "default_currency": "USD",
+        }
+
+        # Keep privacy settings where they were
+        if logging_mode != LoggingMode.DISABLED:
+            new_data["project_history"] = "y"
+            if logging_mode == LoggingMode.RECORD_IP:
+                new_data["ip_recording"] = "y"
+
+        resp = self.client.post("/demo/edit", data=new_data, follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+
+        # adds a member to this project
+        resp = self.client.post(
+            "/demo/members/add", data={"name": "zorglub"}, follow_redirects=True
+        )
+        self.assertEqual(resp.status_code, 200)
+
+        user_id = models.Person.query.one().id
+
+        # create a bill
+        resp = self.client.post(
+            "/demo/add",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage à raclette",
+                "payer": user_id,
+                "payed_for": [user_id],
+                "amount": "25",
+            },
+            follow_redirects=True,
+        )
+        self.assertEqual(resp.status_code, 200)
+
+        bill_id = models.Bill.query.one().id
+
+        # edit the bill
+        resp = self.client.post(
+            f"/demo/edit/{bill_id}",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage à raclette",
+                "payer": user_id,
+                "payed_for": [user_id],
+                "amount": "10",
+            },
+            follow_redirects=True,
+        )
+        self.assertEqual(resp.status_code, 200)
+        # delete the bill
+        resp = self.client.get(f"/demo/delete/{bill_id}", follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+
+        # delete user using POST method
+        resp = self.client.post(
+            f"/demo/members/{user_id}/delete", follow_redirects=True
+        )
+        self.assertEqual(resp.status_code, 200)
+
+    def test_disable_clear_no_new_records(self):
+        # Disable logging
+        self.change_privacy_to(LoggingMode.DISABLED)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            "This project has history disabled. New actions won't appear below. ",
+            resp.data.decode("utf-8"),
+        )
+        self.assertIn(
+            "The table below reflects actions recorded prior to disabling project history.",
+            resp.data.decode("utf-8"),
+        )
+        self.assertNotIn(
+            "Nothing to list", resp.data.decode("utf-8"),
+        )
+        self.assertNotIn(
+            "Some entries below contain IP addresses,", resp.data.decode("utf-8"),
+        )
+
+        # Clear Existing Entries
+        resp = self.client.post("/demo/erase_history", follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+        self.assert_empty_history_logging_disabled()
+
+        # Do lots of database operations & check that there's still no history
+        self.do_misc_database_operations(LoggingMode.DISABLED)
+
+        self.assert_empty_history_logging_disabled()
+
+    def test_clear_ip_records(self):
+        # Enable IP Recording
+        self.change_privacy_to(LoggingMode.RECORD_IP)
+
+        # Do lots of database operations to generate IP address entries
+        self.do_misc_database_operations(LoggingMode.RECORD_IP)
+
+        # Disable IP Recording
+        self.change_privacy_to(LoggingMode.ENABLED)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertNotIn(
+            "This project has history disabled. New actions won't appear below. ",
+            resp.data.decode("utf-8"),
+        )
+        self.assertNotIn(
+            "The table below reflects actions recorded prior to disabling project history.",
+            resp.data.decode("utf-8"),
+        )
+        self.assertNotIn(
+            "Nothing to list", resp.data.decode("utf-8"),
+        )
+        self.assertIn(
+            "Some entries below contain IP addresses,", resp.data.decode("utf-8"),
+        )
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 10)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 1)
+
+        # Generate more operations to confirm additional IP info isn't recorded
+        self.do_misc_database_operations(LoggingMode.ENABLED)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 10)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 6)
+
+        # Clear IP Data
+        resp = self.client.post("/demo/strip_ip_addresses", follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+        self.assertNotIn(
+            "This project has history disabled. New actions won't appear below. ",
+            resp.data.decode("utf-8"),
+        )
+        self.assertNotIn(
+            "The table below reflects actions recorded prior to disabling project history.",
+            resp.data.decode("utf-8"),
+        )
+        self.assertNotIn(
+            "Nothing to list", resp.data.decode("utf-8"),
+        )
+        self.assertNotIn(
+            "Some entries below contain IP addresses,", resp.data.decode("utf-8"),
+        )
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 0)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 16)
+
+    def test_logs_for_common_actions(self):
+        # adds a member to this project
+        resp = self.client.post(
+            "/demo/members/add", data={"name": "zorglub"}, follow_redirects=True
+        )
+        self.assertEqual(resp.status_code, 200)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            f"Participant {em_surround('zorglub')} added", resp.data.decode("utf-8")
+        )
+
+        # create a bill
+        resp = self.client.post(
+            "/demo/add",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1],
+                "amount": "25",
+            },
+            follow_redirects=True,
+        )
+        self.assertEqual(resp.status_code, 200)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            f"Bill {em_surround('fromage à raclette')} added",
+            resp.data.decode("utf-8"),
+        )
+
+        # edit the bill
+        resp = self.client.post(
+            "/demo/edit/1",
+            data={
+                "date": "2011-08-10",
+                "what": "new thing",
+                "payer": 1,
+                "payed_for": [1],
+                "amount": "10",
+            },
+            follow_redirects=True,
+        )
+        self.assertEqual(resp.status_code, 200)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            f"Bill {em_surround('fromage à raclette')} added",
+            resp.data.decode("utf-8"),
+        )
+        self.assertRegex(
+            resp.data.decode("utf-8"),
+            r"Bill %s:\s* Amount changed\s* from %s\s* to %s"
+            % (
+                em_surround("fromage à raclette", regex_escape=True),
+                em_surround("25.0", regex_escape=True),
+                em_surround("10.0", regex_escape=True),
+            ),
+        )
+        self.assertIn(
+            "Bill %s renamed to %s"
+            % (em_surround("fromage à raclette"), em_surround("new thing"),),
+            resp.data.decode("utf-8"),
+        )
+        self.assertLess(
+            resp.data.decode("utf-8").index(
+                f"Bill {em_surround('fromage à raclette')} renamed to"
+            ),
+            resp.data.decode("utf-8").index("Amount changed"),
+        )
+
+        # delete the bill
+        resp = self.client.get("/demo/delete/1", follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            f"Bill {em_surround('new thing')} removed", resp.data.decode("utf-8"),
+        )
+
+        # edit user
+        resp = self.client.post(
+            "/demo/members/1/edit",
+            data={"weight": 2, "name": "new name"},
+            follow_redirects=True,
+        )
+        self.assertEqual(resp.status_code, 200)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertRegex(
+            resp.data.decode("utf-8"),
+            r"Participant %s:\s* Weight changed\s* from %s\s* to %s"
+            % (
+                em_surround("zorglub", regex_escape=True),
+                em_surround("1.0", regex_escape=True),
+                em_surround("2.0", regex_escape=True),
+            ),
+        )
+        self.assertIn(
+            "Participant %s renamed to %s"
+            % (em_surround("zorglub"), em_surround("new name"),),
+            resp.data.decode("utf-8"),
+        )
+        self.assertLess(
+            resp.data.decode("utf-8").index(
+                f"Participant {em_surround('zorglub')} renamed"
+            ),
+            resp.data.decode("utf-8").index("Weight changed"),
+        )
+
+        # delete user using POST method
+        resp = self.client.post("/demo/members/1/delete", follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            f"Participant {em_surround('new name')} removed", resp.data.decode("utf-8")
+        )
+
+    def test_double_bill_double_person_edit_second(self):
+
+        # add two members
+        self.client.post("/demo/members/add", data={"name": "User 1"})
+        self.client.post("/demo/members/add", data={"name": "User 2"})
+
+        # add two bills
+        self.client.post(
+            "/demo/add",
+            data={
+                "date": "2020-04-13",
+                "what": "Bill 1",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "amount": "25",
+            },
+        )
+        self.client.post(
+            "/demo/add",
+            data={
+                "date": "2020-04-13",
+                "what": "Bill 2",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "amount": "20",
+            },
+        )
+
+        # Should be 5 history entries at this point
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 5)
+        self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+
+        # Edit ONLY the amount on the first bill
+        self.client.post(
+            "/demo/edit/1",
+            data={
+                "date": "2020-04-13",
+                "what": "Bill 1",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "amount": "88",
+            },
+        )
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertRegex(
+            resp.data.decode("utf-8"),
+            r"Bill {}:\s* Amount changed\s* from {}\s* to {}".format(
+                em_surround("Bill 1", regex_escape=True),
+                em_surround("25.0", regex_escape=True),
+                em_surround("88.0", regex_escape=True),
+            ),
+        )
+
+        self.assertNotRegex(
+            resp.data.decode("utf-8"),
+            r"Removed\s* {}\s* and\s* {}\s* from\s* owers list".format(
+                em_surround("User 1", regex_escape=True),
+                em_surround("User 2", regex_escape=True),
+            ),
+            resp.data.decode("utf-8"),
+        )
+
+        # Should be 6 history entries at this point
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 6)
+        self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+
+    def test_bill_add_remove_add(self):
+        # add two members
+        self.client.post("/demo/members/add", data={"name": "User 1"})
+        self.client.post("/demo/members/add", data={"name": "User 2"})
+
+        # add 1 bill
+        self.client.post(
+            "/demo/add",
+            data={
+                "date": "2020-04-13",
+                "what": "Bill 1",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "amount": "25",
+            },
+        )
+
+        # delete the bill
+        self.client.get("/demo/delete/1", follow_redirects=True)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 5)
+        self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+        self.assertIn(f"Bill {em_surround('Bill 1')} added", resp.data.decode("utf-8"))
+        self.assertIn(
+            f"Bill {em_surround('Bill 1')} removed", resp.data.decode("utf-8"),
+        )
+
+        # Add a new bill
+        self.client.post(
+            "/demo/add",
+            data={
+                "date": "2020-04-13",
+                "what": "Bill 2",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "amount": "20",
+            },
+        )
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 6)
+        self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+        self.assertIn(f"Bill {em_surround('Bill 1')} added", resp.data.decode("utf-8"))
+        self.assertEqual(
+            resp.data.decode("utf-8").count(f"Bill {em_surround('Bill 1')} added"), 1,
+        )
+        self.assertIn(f"Bill {em_surround('Bill 2')} added", resp.data.decode("utf-8"))
+        self.assertIn(
+            f"Bill {em_surround('Bill 1')} removed", resp.data.decode("utf-8"),
+        )
+
+    def test_double_bill_double_person_edit_second_no_web(self):
+        u1 = models.Person(project_id="demo", name="User 1")
+        u2 = models.Person(project_id="demo", name="User 1")
+
+        models.db.session.add(u1)
+        models.db.session.add(u2)
+        models.db.session.commit()
+
+        b1 = models.Bill(what="Bill 1", payer_id=u1.id, owers=[u2], amount=10,)
+        b2 = models.Bill(what="Bill 2", payer_id=u2.id, owers=[u2], amount=11,)
+
+        # This db commit exposes the "spurious owers edit" bug
+        models.db.session.add(b1)
+        models.db.session.commit()
+
+        models.db.session.add(b2)
+        models.db.session.commit()
+
+        history_list = history.get_history(models.Project.query.get("demo"))
+        self.assertEqual(len(history_list), 5)
+
+        # Change just the amount
+        b1.amount = 5
+        models.db.session.commit()
+
+        history_list = history.get_history(models.Project.query.get("demo"))
+        for entry in history_list:
+            if "prop_changed" in entry:
+                self.assertNotIn("owers", entry["prop_changed"])
+        self.assertEqual(len(history_list), 6)
+
+
+class TestCurrencyConverter(unittest.TestCase):
+    converter = CurrencyConverter()
+    mock_data = {"USD": 1, "EUR": 0.8115}
+    converter.get_rates = MagicMock(return_value=mock_data)
+
+    def test_only_one_instance(self):
+        one = id(CurrencyConverter())
+        two = id(CurrencyConverter())
+        self.assertEqual(one, two)
+
+    def test_get_currencies(self):
+        self.assertCountEqual(self.converter.get_currencies(), ["USD", "EUR"])
+
+    def test_exchange_currency(self):
+        result = self.converter.exchange_currency(100, "USD", "EUR")
+        self.assertEqual(result, 81.15)
 
 
 if __name__ == "__main__":

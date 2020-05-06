@@ -9,7 +9,7 @@ This document describes changes between each past release.
 - Add support for espanol latino america (es_419)
 - Use the external debts lib to solve settlements (#476)
 - Remove balance column in statistics view (#323)
-
+- Remove requirements files in favor of setup.cfg pinning (#558)
 
 4.1.3 (2019-09-18)
 ==================
