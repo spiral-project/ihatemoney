@@ -1,4 +1,3 @@
-import copy
 from datetime import datetime
 from re import match
 
@@ -23,7 +22,11 @@ from wtforms.validators import (
 
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.models import LoggingMode, Person, Project
-from ihatemoney.utils import eval_arithmetic_expression, slugify
+from ihatemoney.utils import (
+    eval_arithmetic_expression,
+    render_localized_currency,
+    slugify,
+)
 
 
 def strip_filter(string):
@@ -31,18 +34,6 @@ def strip_filter(string):
         return string.strip()
     except Exception:
         return string
-
-
-def get_editprojectform_for(project, **kwargs):
-    """Return an instance of EditProjectForm configured for a particular project.
-    """
-    form = EditProjectForm(**kwargs)
-    choices = copy.copy(form.default_currency.choices)
-    choices.sort(
-        key=lambda rates: "" if rates[0] == project.default_currency else rates[0]
-    )
-    form.default_currency.choices = choices
-    return form
 
 
 def get_billform_for(project, set_default=True, **kwargs):
@@ -56,20 +47,15 @@ def get_billform_for(project, set_default=True, **kwargs):
     if form.original_currency.data == "None":
         form.original_currency.data = project.default_currency
 
-    if form.original_currency.data != CurrencyConverter.default:
-        choices = copy.copy(form.original_currency.choices)
-        choices.remove((CurrencyConverter.default, CurrencyConverter.default))
-        choices.sort(
-            key=lambda rates: "" if rates[0] == project.default_currency else rates[0]
-        )
-        form.original_currency.choices = choices
-    else:
-        form.original_currency.render_kw = {"default": True}
-        form.original_currency.data = CurrencyConverter.default
+    show_no_currency = form.original_currency.data == CurrencyConverter.no_currency
 
-    form.original_currency.label = Label(
-        "original_currency", "Currency (Default: %s)" % (project.default_currency)
-    )
+    form.original_currency.choices = [
+        (currency_name, render_localized_currency(currency_name, detailed=False))
+        for currency_name in form.currency_helper.get_currencies(
+            with_no_currency=show_no_currency
+        )
+    ]
+
     active_members = [(m.id, m.name) for m in project.active_members]
 
     form.payed_for.choices = form.payer.choices = active_members
@@ -121,14 +107,14 @@ class EditProjectForm(FlaskForm):
     project_history = BooleanField(_("Enable project history"))
     ip_recording = BooleanField(_("Use IP tracking for project history"))
     currency_helper = CurrencyConverter()
-    default_currency = SelectField(
-        _("Default Currency"),
-        choices=[
-            (currency_name, currency_name)
-            for currency_name in currency_helper.get_currencies()
-        ],
-        validators=[DataRequired()],
-    )
+    default_currency = SelectField(_("Default Currency"), validators=[DataRequired()],)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.default_currency.choices = [
+            (currency_name, render_localized_currency(currency_name, detailed=True))
+            for currency_name in self.currency_helper.get_currencies()
+        ]
 
     @property
     def logging_preference(self):
@@ -242,14 +228,7 @@ class BillForm(FlaskForm):
     payer = SelectField(_("Payer"), validators=[DataRequired()], coerce=int)
     amount = CalculatorStringField(_("Amount paid"), validators=[DataRequired()])
     currency_helper = CurrencyConverter()
-    original_currency = SelectField(
-        _("Currency"),
-        choices=[
-            (currency_name, currency_name)
-            for currency_name in currency_helper.get_currencies()
-        ],
-        validators=[DataRequired()],
-    )
+    original_currency = SelectField(_("Currency"), validators=[DataRequired()],)
     external_link = URLField(
         _("External link"),
         validators=[Optional()],
@@ -281,14 +260,14 @@ class BillForm(FlaskForm):
         bill.external_link = ""
         bill.date = self.date
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for]
-        bill.original_currency = CurrencyConverter.default
+        bill.original_currency = CurrencyConverter.no_currency
         bill.converted_amount = self.currency_helper.exchange_currency(
             bill.amount, bill.original_currency, project.default_currency
         )
 
         return bill
 
-    def fill(self, bill):
+    def fill(self, bill, project):
         self.payer.data = bill.payer_id
         self.amount.data = bill.amount
         self.what.data = bill.what
@@ -296,6 +275,14 @@ class BillForm(FlaskForm):
         self.original_currency.data = bill.original_currency
         self.date.data = bill.date
         self.payed_for.data = [int(ower.id) for ower in bill.owers]
+
+        self.original_currency.label = Label("original_currency", _("Currency"))
+        self.original_currency.description = _(
+            "Project default: %(currency)s",
+            currency=render_localized_currency(
+                project.default_currency, detailed=False
+            ),
+        )
 
     def set_default(self):
         self.payed_for.data = self.payed_for.default

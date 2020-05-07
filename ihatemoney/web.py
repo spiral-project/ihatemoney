@@ -41,6 +41,7 @@ from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.forms import (
     AdminAuthenticationForm,
     AuthenticationForm,
+    EditProjectForm,
     InviteForm,
     MemberForm,
     PasswordReminder,
@@ -48,7 +49,6 @@ from ihatemoney.forms import (
     ResetPasswordForm,
     UploadForm,
     get_billform_for,
-    get_editprojectform_for,
 )
 from ihatemoney.history import get_history, get_history_queries
 from ihatemoney.models import Bill, LoggingMode, Person, Project, db
@@ -377,7 +377,7 @@ def reset_password():
 
 @main.route("/<project_id>/edit", methods=["GET", "POST"])
 def edit_project():
-    edit_form = get_editprojectform_for(g.project)
+    edit_form = EditProjectForm()
     import_form = UploadForm()
     # Import form
     if import_form.validate_on_submit():
@@ -393,10 +393,10 @@ def edit_project():
     if edit_form.validate_on_submit():
         project = edit_form.update(g.project)
         # Update converted currency
-        if project.default_currency != CurrencyConverter.default:
+        if project.default_currency != CurrencyConverter.no_currency:
             for bill in project.get_bills():
 
-                if bill.original_currency == CurrencyConverter.default:
+                if bill.original_currency == CurrencyConverter.no_currency:
                     bill.original_currency = project.default_currency
 
                 bill.converted_amount = CurrencyConverter().exchange_currency(
@@ -417,6 +417,7 @@ def edit_project():
                 edit_form.ip_recording.data = True
 
         edit_form.contact_email.data = g.project.contact_email
+        edit_form.default_currency.data = g.project.default_currency
 
     return render_template(
         "edit_project.html",
@@ -732,7 +733,7 @@ def edit_bill(bill_id):
         return redirect(url_for(".list_bills"))
 
     if not form.errors:
-        form.fill(bill)
+        form.fill(bill, g.project)
 
     return render_template("add_bill.html", form=form, edit=True)
 

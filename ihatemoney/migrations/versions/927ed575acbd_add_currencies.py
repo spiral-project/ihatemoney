@@ -23,7 +23,7 @@ def upgrade():
         sa.Column(
             "original_currency",
             sa.String(length=3),
-            server_default=CurrencyConverter.default,
+            server_default=CurrencyConverter.no_currency,
             nullable=True,
         ),
     )
@@ -42,7 +42,7 @@ def upgrade():
         sa.Column(
             "default_currency",
             sa.String(length=3),
-            server_default=CurrencyConverter.default,
+            server_default=CurrencyConverter.no_currency,
             nullable=True,
         ),
     )

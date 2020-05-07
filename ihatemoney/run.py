@@ -3,7 +3,7 @@ import os.path
 import warnings
 
 from flask import Flask, g, render_template, request, session
-from flask_babel import Babel
+from flask_babel import Babel, format_currency
 from flask_mail import Mail
 from flask_migrate import Migrate, stamp, upgrade
 from werkzeug.middleware.proxy_fix import ProxyFix
@@ -152,6 +152,22 @@ def create_app(
 
     # Translations
     babel = Babel(app)
+
+    # Undocumented currencyformat filter from flask_babel is forwarding to Babel format_currency
+    # We overwrite it to remove the currency sign ¤ when there is no currency
+    def currencyformat_nc(number, currency, *args, **kwargs):
+        """
+        Same as flask_babel.Babel.currencyformat, but without the "no currency ¤" sign
+        when there is no currency.
+        """
+        return format_currency(
+            number,
+            currency if currency != CurrencyConverter.no_currency else "",
+            *args,
+            **kwargs
+        ).strip()
+
+    app.jinja_env.filters["currencyformat_nc"] = currencyformat_nc
 
     @babel.localeselector
     def get_locale():

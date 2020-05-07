@@ -124,7 +124,7 @@
     {{ input(form.what, inline=True) }}
     {{ input(form.payer, inline=True, class="form-control custom-select") }}
     {{ input(form.amount, inline=True) }}
-    {% if not form.original_currency.render_kw %}
+    {% if g.project.default_currency != "XXX" %}
         {{ input(form.original_currency, inline=True) }}
     {% endif %}
     {{ input(form.external_link, inline=True) }}
