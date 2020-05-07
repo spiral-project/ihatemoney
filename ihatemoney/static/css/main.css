@@ -50,16 +50,28 @@ body {
   font-size: 2.4em;
 }
 
-#header .tryout {
-  margin-right: 10em;
+#header .tryout, #header .showcase {
   color: #fff;
   background-color: #414141;
   border-color: #414141;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
-#header .tryout:hover {
+#header .tryout:hover, #header .showcase:hover {
   background-color: #606060;
   border-color: #606060;
+  cursor: pointer;
+}
+
+#header .showcaseimg {
+  width: 55px;
+}
+
+#header .shareimg {
+  width: 80px;
+  margin-left: 5px;
+  margin-bottom: 8px;
 }
 
 #header .additional-content {
@@ -168,10 +180,10 @@ body {
   border: 0;
 }
 
-.empty-bill .hand-holding-heart svg {
+.empty-bill .billimg svg {
   fill: lightgray;
-  height: 5em;
-  width: 5em;
+  height: 6em;
+  width: 4em;
 }
 
 .invites textarea {
@@ -535,11 +547,17 @@ tr:hover .extra-info {
   width: 1.2em; /* protection for IE11 */
 }
 
+.icon.high svg {
+  height: 2em;
+  margin-top: -0.2em;
+  margin-bottom: -0.2em;
+}
+
 .download-project .icon svg {
   fill: white;
 }
 
-.icon.plus svg {
+.icon.before-text svg {
   margin-right: 3px;
 }
 footer .icon svg {
@@ -560,6 +578,10 @@ footer .icon svg {
 #monthly_stats tr *:first-child {
   text-align: right;
   width: 200px;
+}
+
+.hiddenpswp {
+  display: none;
 }
 
 #history_warnings {
