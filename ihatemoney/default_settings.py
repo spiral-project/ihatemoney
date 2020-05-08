@@ -8,4 +8,17 @@ ACTIVATE_DEMO_PROJECT = True
 ADMIN_PASSWORD = ""
 ALLOW_PUBLIC_PROJECT_CREATION = True
 ACTIVATE_ADMIN_DASHBOARD = False
-SUPPORTED_LANGUAGES = ["en", "fr", "de", "nl", "es_419", "nb_NO", "id"]
+SUPPORTED_LANGUAGES = [
+    "de",
+    "en",
+    "es_419",
+    "fr",
+    "id",
+    "nb_NO",
+    "nl",
+    "pl",
+    "ru",
+    "tr",
+    "uk",
+    "zh_Hans",
+]
