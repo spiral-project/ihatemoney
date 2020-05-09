@@ -493,7 +493,12 @@ class BudgetTestCase(IhatemoneyTestCase):
         # test that a demo project is created if none is defined
         self.assertEqual([], models.Project.query.all())
         self.client.get("/demo")
-        self.assertTrue(models.Project.query.get("demo") is not None)
+        demo = models.Project.query.get("demo")
+        self.assertTrue(demo is not None)
+
+        self.assertEqual(["Amina", "Georg", "Alice"], [m.name for m in demo.members])
+        self.assertEqual(demo.get_bills().count(), 3)
+
 
     def test_deactivated_demo(self):
         self.app.config["ACTIVATE_DEMO_PROJECT"] = False

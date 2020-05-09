@@ -10,11 +10,13 @@ from itsdangerous import (
     TimedJSONWebSignatureSerializer,
     URLSafeSerializer,
 )
+
 import sqlalchemy
 from sqlalchemy import orm
 from sqlalchemy.sql import func
 from sqlalchemy_continuum import make_versioned, version_class
 from sqlalchemy_continuum.plugins import FlaskPlugin
+from werkzeug.security import generate_password_hash
 
 from ihatemoney.patch_sqlalchemy_continuum import PatchedBuilder
 from ihatemoney.versioning import (
@@ -329,6 +331,49 @@ class Project(db.Model):
 
     def __repr__(self):
         return f"<Project {self.name}>"
+
+    @staticmethod
+    def create_demo_project():
+        project = Project(
+            id="demo",
+            name="demonstration",
+            password=generate_password_hash("demo"),
+            contact_email="demo@notmyidea.org",
+            default_currency="EUR",
+        )
+        db.session.add(project)
+        db.session.commit()
+
+        members = {}
+        for name in ("Amina", "Georg", "Alice"):
+            person = Person()
+            person.name = name
+            person.project = project
+            person.weight = 1
+            db.session.add(person)
+
+            members[name] = person
+
+        db.session.commit()
+
+        operations = (
+            ("Georg", 200, ("Amina", "Georg", "Alice"), "Food shopping"),
+            ("Alice", 20, ("Amina", "Alice"), "Beer !"),
+            ("Amina", 50, ("Amina", "Alice", "Georg"), "AMAP"),
+        )
+        for (payer, amount, owers, subject) in operations:
+            bill = Bill()
+            bill.payer_id = members[payer].id
+            bill.what = subject
+            bill.owers = [members[name] for name in owers]
+            bill.amount = amount
+            bill.original_currency = "EUR"
+            bill.converted_amount = amount
+
+            db.session.add(bill)
+
+        db.session.commit()
+        return project
 
 
 class Person(db.Model):

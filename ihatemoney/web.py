@@ -541,11 +541,11 @@ def exit():
 @main.route("/demo")
 def demo():
     """
-    Authenticate the user for the demonstration project and redirect him to
+    Authenticate the user for the demonstration project and redirects to
     the bills list for this project.
 
     Create a demo project if it doesn't exists yet (or has been deleted)
-    If the demo project is deactivated, one is redirected to the create project form
+    If the demo project is deactivated, redirects to the create project form.
     """
     is_demo_project_activated = current_app.config["ACTIVATE_DEMO_PROJECT"]
     project = Project.query.get("demo")
@@ -553,15 +553,7 @@ def demo():
     if not project and not is_demo_project_activated:
         raise Redirect303(url_for(".create_project", project_id="demo"))
     if not project and is_demo_project_activated:
-        project = Project(
-            id="demo",
-            name="demonstration",
-            password=generate_password_hash("demo"),
-            contact_email="demo@notmyidea.org",
-            default_currency="EUR",
-        )
-        db.session.add(project)
-        db.session.commit()
+        project = Project.create_demo_project()
     session[project.id] = True
     return redirect(url_for(".list_bills", project_id=project.id))
 
