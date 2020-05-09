@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-25 13:02+0200\n"
+"POT-Creation-Date: 2020-05-09 21:41+0200\n"
 "PO-Revision-Date: 2019-11-12 09:04+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language: nb_NO\n"
@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.7.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -35,6 +35,9 @@ msgid "Enable project history"
 msgstr ""
 
 msgid "Use IP tracking for project history"
+msgstr ""
+
+msgid "Default Currency"
 msgstr ""
 
 msgid "Import previously exported JSON file"
@@ -94,6 +97,9 @@ msgstr "Betaler"
 msgid "Amount paid"
 msgstr "Beløp betalt"
 
+msgid "Currency"
+msgstr ""
+
 msgid "External link"
 msgstr "Ekstern lenke"
 
@@ -108,6 +114,10 @@ msgstr "Send inn"
 
 msgid "Submit and add a new one"
 msgstr "Send inn og legg til ny"
+
+#, python-format
+msgid "Project default: %(currency)s"
+msgstr ""
 
 msgid "Bills can't be null"
 msgstr "Regninger kan ikke være null"
@@ -150,6 +160,9 @@ msgstr ""
 msgid "Project"
 msgstr "Prosjekt"
 
+msgid "No Currency"
+msgstr ""
+
 msgid "Too many failed login attempts, please retry later."
 msgstr "For mange mislykkede innloggingsforsøk, prøv igjen senere."
 
@@ -169,9 +182,12 @@ msgstr "Denne private koden er ikke rett"
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr "Du har akkurat opprettet \"%(project)s\" for å dele dine utgifter"
 
-#, fuzzy, python-format
-msgid "%(msg_compl)sThe project identifier is %(project)s"
-msgstr "%(msg_compl)sProsjektidentifikatoren er %(project)s"
+msgid "Error while sending reminder email"
+msgstr ""
+
+#, python-format
+msgid "The project identifier is %(project)s"
+msgstr ""
 
 msgid "No token provided"
 msgstr "Inget symbol angitt"
@@ -519,6 +535,10 @@ msgstr ""
 msgid "Amount"
 msgstr ""
 
+#, python-format
+msgid "Amount in %(currency)s"
+msgstr ""
+
 msgid "modified"
 msgstr ""
 
@@ -633,6 +653,10 @@ msgstr "\"Jeg hater penger\" er fri programvare"
 msgid "you can contribute and improve it!"
 msgstr "du kan bidra og forbedre den."
 
+#, python-format
+msgid "%(amount)s each"
+msgstr ""
+
 msgid "deactivate"
 msgstr "skru av"
 
@@ -676,9 +700,6 @@ msgstr "Alle"
 #, python-format
 msgid "Everyone but %(excluded)s"
 msgstr "Alle, unntagen %(excluded)s"
-
-msgid "each"
-msgstr "hver"
 
 msgid "No bills"
 msgstr "Ingen regninger"
@@ -888,3 +909,10 @@ msgstr ""
 
 #~ msgid "%(member)s had been added"
 #~ msgstr "%(member)s lagt til"
+
+#~ msgid "%(msg_compl)sThe project identifier is %(project)s"
+#~ msgstr "%(msg_compl)sProsjektidentifikatoren er %(project)s"
+
+#~ msgid "each"
+#~ msgstr "hver"
+

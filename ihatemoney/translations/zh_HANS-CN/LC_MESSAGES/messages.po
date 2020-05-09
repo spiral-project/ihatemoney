@@ -1,19 +1,20 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-25 13:02+0200\n"
+"POT-Creation-Date: 2020-05-09 21:41+0200\n"
 "PO-Revision-Date: 2020-05-09 10:38+0000\n"
 "Last-Translator: Muge Niu <mugeniu12138@gmail.com>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
-"i-hate-money/i-hate-money/zh_Hans/>\n"
-"Language: zh_HANS-CN\n"
+"Language: zh_HANS_CN\n"
+"Language-Team: Chinese (Simplified) "
+"<https://hosted.weblate.org/projects/i-hate-money/i-hate-money/zh_Hans/>"
+"\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.1-dev\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.7.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -34,6 +35,9 @@ msgstr "启用项目历史"
 
 msgid "Use IP tracking for project history"
 msgstr "用IP追踪项目历史"
+
+msgid "Default Currency"
+msgstr ""
 
 msgid "Import previously exported JSON file"
 msgstr "导入之前的JSON 文件"
@@ -89,6 +93,9 @@ msgstr "支付人"
 msgid "Amount paid"
 msgstr "支付金额"
 
+msgid "Currency"
+msgstr ""
+
 msgid "External link"
 msgstr "外部链接"
 
@@ -103,6 +110,10 @@ msgstr "确定"
 
 msgid "Submit and add a new one"
 msgstr "确定并添加另一个"
+
+#, python-format
+msgid "Project default: %(currency)s"
+msgstr ""
 
 msgid "Bills can't be null"
 msgstr "数字不能为零"
@@ -144,6 +155,9 @@ msgstr "帐单"
 msgid "Project"
 msgstr "项目"
 
+msgid "No Currency"
+msgstr ""
+
 msgid "Too many failed login attempts, please retry later."
 msgstr "输入错误太多次了，请稍后重试。"
 
@@ -161,9 +175,12 @@ msgstr "专用码不正确"
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr "你新建了一个‘%(project)s'来分担你的花费"
 
+msgid "Error while sending reminder email"
+msgstr ""
+
 #, python-format
-msgid "%(msg_compl)sThe project identifier is %(project)s"
-msgstr "%(msg_compl)s项目标识符是 %(project)s"
+msgid "The project identifier is %(project)s"
+msgstr ""
 
 msgid "No token provided"
 msgstr "没有符号"
@@ -438,10 +455,10 @@ msgid ""
 "            "
 msgstr ""
 "\n"
-"            <i>The table below下表显示的是之前的禁用项目历史纪录 reflects actions recorded "
-"prior to disabling project history. 你可以通过\n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" data-"
-"target=\"#confirm-erase\">清除项目记录</a> t来移除他们.</i></p>\n"
+"            <i>The table below下表显示的是之前的禁用项目历史纪录 reflects actions recorded"
+" prior to disabling project history. 你可以通过\n"
+"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
+"data-target=\"#confirm-erase\">清除项目记录</a> t来移除他们.</i></p>\n"
 "            "
 
 msgid ""
@@ -508,6 +525,10 @@ msgstr "外部链接更改为"
 
 msgid "Amount"
 msgstr "数量"
+
+#, python-format
+msgid "Amount in %(currency)s"
+msgstr ""
 
 msgid "modified"
 msgstr "更改"
@@ -616,6 +637,10 @@ msgstr "“I hate money\"是一个免费软件"
 msgid "you can contribute and improve it!"
 msgstr "你可以贡献自己的力量让它变得更好！"
 
+#, python-format
+msgid "%(amount)s each"
+msgstr ""
+
 msgid "deactivate"
 msgstr "暂停"
 
@@ -659,9 +684,6 @@ msgstr "每个人"
 #, python-format
 msgid "Everyone but %(excluded)s"
 msgstr "除了%(excluded)s的每个人"
-
-msgid "each"
-msgstr "每一个·"
 
 msgid "No bills"
 msgstr "没有账单"
@@ -744,3 +766,10 @@ msgstr "每月花销"
 
 msgid "Period"
 msgstr "期间"
+
+#~ msgid "%(msg_compl)sThe project identifier is %(project)s"
+#~ msgstr "%(msg_compl)s项目标识符是 %(project)s"
+
+#~ msgid "each"
+#~ msgstr "每一个·"
+
