@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-25 13:02+0200\n"
+"POT-Creation-Date: 2020-05-09 21:41+0200\n"
 "PO-Revision-Date: 2019-11-16 10:04+0000\n"
 "Last-Translator: Muhammad Fauzi <fauzi.padlaw@gmail.com>\n"
 "Language: id\n"
@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.7.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -35,6 +35,9 @@ msgid "Enable project history"
 msgstr ""
 
 msgid "Use IP tracking for project history"
+msgstr ""
+
+msgid "Default Currency"
 msgstr ""
 
 msgid "Import previously exported JSON file"
@@ -93,6 +96,9 @@ msgstr "Pembayar"
 msgid "Amount paid"
 msgstr "Jumlah bayar"
 
+msgid "Currency"
+msgstr ""
+
 msgid "External link"
 msgstr "Tautan luar"
 
@@ -107,6 +113,10 @@ msgstr "Ajukan"
 
 msgid "Submit and add a new one"
 msgstr "Ajukan dan tambah yang baru"
+
+#, python-format
+msgid "Project default: %(currency)s"
+msgstr ""
 
 msgid "Bills can't be null"
 msgstr "Tagihan tidak boleh kosong"
@@ -148,6 +158,9 @@ msgstr ""
 msgid "Project"
 msgstr "Proyek"
 
+msgid "No Currency"
+msgstr ""
+
 msgid "Too many failed login attempts, please retry later."
 msgstr "Terlalu banyak percobaan masuk, silakan coba lagi nanti."
 
@@ -165,9 +178,12 @@ msgstr "Kode pribadi ini tidak benar"
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr "Anda baru saja membuat %(project)s untuk membagikan harga Anda"
 
+msgid "Error while sending reminder email"
+msgstr ""
+
 #, python-format
-msgid "%(msg_compl)sThe project identifier is %(project)s"
-msgstr "%(msg_compl)sId proyek adalah %(project)s"
+msgid "The project identifier is %(project)s"
+msgstr ""
 
 msgid "No token provided"
 msgstr "Belum ada token diberikan"
@@ -503,6 +519,10 @@ msgstr ""
 msgid "Amount"
 msgstr ""
 
+#, python-format
+msgid "Amount in %(currency)s"
+msgstr ""
+
 msgid "modified"
 msgstr ""
 
@@ -612,6 +632,10 @@ msgstr "\"I hate money\" adalah perangkat lunak gratis"
 msgid "you can contribute and improve it!"
 msgstr "kamu bisa berkontribusi dan meningkatkannya!"
 
+#, python-format
+msgid "%(amount)s each"
+msgstr ""
+
 msgid "deactivate"
 msgstr "nonaktifkan"
 
@@ -655,9 +679,6 @@ msgstr "Semua orang"
 #, python-format
 msgid "Everyone but %(excluded)s"
 msgstr "Semua orang kecuali %(excluded)s"
-
-msgid "each"
-msgstr "setiap"
 
 msgid "No bills"
 msgstr "Tidak ada tagihan"
@@ -757,4 +778,10 @@ msgstr ""
 
 #~ msgid "cleared the project history."
 #~ msgstr ""
+
+#~ msgid "%(msg_compl)sThe project identifier is %(project)s"
+#~ msgstr "%(msg_compl)sId proyek adalah %(project)s"
+
+#~ msgid "each"
+#~ msgstr "setiap"
 

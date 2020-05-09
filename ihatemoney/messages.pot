@@ -18,6 +18,9 @@ msgstr ""
 msgid "Use IP tracking for project history"
 msgstr ""
 
+msgid "Default Currency"
+msgstr ""
+
 msgid "Import previously exported JSON file"
 msgstr ""
 
@@ -72,6 +75,9 @@ msgstr ""
 msgid "Amount paid"
 msgstr ""
 
+msgid "Currency"
+msgstr ""
+
 msgid "External link"
 msgstr ""
 
@@ -85,6 +91,10 @@ msgid "Submit"
 msgstr ""
 
 msgid "Submit and add a new one"
+msgstr ""
+
+#, python-format
+msgid "Project default: %(currency)s"
 msgstr ""
 
 msgid "Bills can't be null"
@@ -127,6 +137,9 @@ msgstr ""
 msgid "Project"
 msgstr ""
 
+msgid "No Currency"
+msgstr ""
+
 msgid "Too many failed login attempts, please retry later."
 msgstr ""
 
@@ -144,8 +157,11 @@ msgstr ""
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr ""
 
+msgid "Error while sending reminder email"
+msgstr ""
+
 #, python-format
-msgid "%(msg_compl)sThe project identifier is %(project)s"
+msgid "The project identifier is %(project)s"
 msgstr ""
 
 msgid "No token provided"
@@ -480,6 +496,10 @@ msgstr ""
 msgid "Amount"
 msgstr ""
 
+#, python-format
+msgid "Amount in %(currency)s"
+msgstr ""
+
 msgid "modified"
 msgstr ""
 
@@ -587,6 +607,10 @@ msgstr ""
 msgid "you can contribute and improve it!"
 msgstr ""
 
+#, python-format
+msgid "%(amount)s each"
+msgstr ""
+
 msgid "deactivate"
 msgstr ""
 
@@ -629,9 +653,6 @@ msgstr ""
 
 #, python-format
 msgid "Everyone but %(excluded)s"
-msgstr ""
-
-msgid "each"
 msgstr ""
 
 msgid "No bills"

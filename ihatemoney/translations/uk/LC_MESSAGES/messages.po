@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-25 13:02+0200\n"
+"POT-Creation-Date: 2020-05-09 21:41+0200\n"
 "PO-Revision-Date: 2019-12-08 16:26+0000\n"
 "Last-Translator: Tymofij Lytvynenko <till.svit@gmail.com>\n"
 "Language: uk\n"
@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.7.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -34,6 +34,9 @@ msgid "Enable project history"
 msgstr ""
 
 msgid "Use IP tracking for project history"
+msgstr ""
+
+msgid "Default Currency"
 msgstr ""
 
 msgid "Import previously exported JSON file"
@@ -90,6 +93,9 @@ msgstr "Платник"
 msgid "Amount paid"
 msgstr "Виплачувана сума"
 
+msgid "Currency"
+msgstr ""
+
 msgid "External link"
 msgstr "Зовнішнє посилання"
 
@@ -103,6 +109,10 @@ msgid "Submit"
 msgstr ""
 
 msgid "Submit and add a new one"
+msgstr ""
+
+#, python-format
+msgid "Project default: %(currency)s"
 msgstr ""
 
 msgid "Bills can't be null"
@@ -145,6 +155,9 @@ msgstr ""
 msgid "Project"
 msgstr ""
 
+msgid "No Currency"
+msgstr ""
+
 msgid "Too many failed login attempts, please retry later."
 msgstr ""
 
@@ -162,8 +175,11 @@ msgstr ""
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr ""
 
+msgid "Error while sending reminder email"
+msgstr ""
+
 #, python-format
-msgid "%(msg_compl)sThe project identifier is %(project)s"
+msgid "The project identifier is %(project)s"
 msgstr ""
 
 msgid "No token provided"
@@ -498,6 +514,10 @@ msgstr ""
 msgid "Amount"
 msgstr ""
 
+#, python-format
+msgid "Amount in %(currency)s"
+msgstr ""
+
 msgid "modified"
 msgstr ""
 
@@ -605,6 +625,10 @@ msgstr ""
 msgid "you can contribute and improve it!"
 msgstr ""
 
+#, python-format
+msgid "%(amount)s each"
+msgstr ""
+
 msgid "deactivate"
 msgstr ""
 
@@ -647,9 +671,6 @@ msgstr ""
 
 #, python-format
 msgid "Everyone but %(excluded)s"
-msgstr ""
-
-msgid "each"
 msgstr ""
 
 msgid "No bills"
@@ -731,3 +752,10 @@ msgstr ""
 
 msgid "Period"
 msgstr ""
+
+#~ msgid "%(msg_compl)sThe project identifier is %(project)s"
+#~ msgstr ""
+
+#~ msgid "each"
+#~ msgstr ""
+
