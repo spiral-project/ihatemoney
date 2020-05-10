@@ -942,16 +942,18 @@ class BudgetTestCase(IhatemoneyTestCase):
         response = self.client.get("/raclette/statistics")
         regex = r"<td class=\"d-md-none\">{}</td>\s+<td>{}</td>\s+<td>{}</td>"
         self.assertRegex(
-            response.data.decode("utf-8"), regex.format("zorglub", "20.00", "31.67"),
+            response.data.decode("utf-8"),
+            regex.format("zorglub", r"\$20\.00", r"\$31\.67"),
         )
         self.assertRegex(
-            response.data.decode("utf-8"), regex.format("fred", "20.00", "5.83"),
+            response.data.decode("utf-8"),
+            regex.format("fred", r"\$20\.00", r"\$5\.83"),
         )
         self.assertRegex(
-            response.data.decode("utf-8"), regex.format("tata", "0.00", "2.50"),
+            response.data.decode("utf-8"), regex.format("tata", r"\$0\.00", r"\$2\.50"),
         )
         self.assertRegex(
-            response.data.decode("utf-8"), regex.format("pépé", "0.00", "0.00"),
+            response.data.decode("utf-8"), regex.format("pépé", r"\$0\.00", r"\$0\.00"),
         )
 
         # Check that the order of participants in the sidebar table is the
