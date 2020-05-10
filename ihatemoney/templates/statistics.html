@@ -30,8 +30,8 @@
         {% for stat in members_stats|sort(attribute='member.name') %}
         <tr>
             <td class="d-md-none">{{ stat.member.name }}</td>
-            <td>{{ "%0.2f"|format(stat.paid) }}</td>
-            <td>{{ "%0.2f"|format(stat.spent) }}</td>
+            <td>{{ stat.paid|currencyformat_nc(g.project.default_currency) }}</td>
+            <td>{{ stat.spent|currencyformat_nc(g.project.default_currency) }}</td>
         </tr>
         {% endfor %}
         </tbody>
@@ -43,7 +43,7 @@
         {% for month in months %}
                 <tr>
                     <td>{{ _(month.strftime("%B")) }} {{ month.year }}</td>
-                    <td>{{ "%0.2f"|format(monthly_stats[month.year][month.month]) }}</td>
+                    <td>{{ monthly_stats[month.year][month.month]|currencyformat_nc(g.project.default_currency) }}</td>
                 </tr>
         {% endfor %}
         </tbody>
