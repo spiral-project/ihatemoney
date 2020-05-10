@@ -2,22 +2,7 @@
 
 {% block sidebar %}
     <div id="table_overflow" class="statistics mr-md-n3">
-    <table class="balance table">
-    <thead>
-        <tr class="d-none d-md-table-row">
-            <th>{{ _("Who?") }}</th>
-            <th class="balance-value">{{ _("Balance") }}</th>
-        </tr>
-    </thead>
-    {% for stat in members_stats|sort(attribute='member.name') %}
-    <tr>
-        <td class="balance-name">{{ stat.member.name }}</td>
-        <td class="balance-value {% if stat.balance|round(2) > 0 %}positive{% elif stat.balance|round(2) < 0 %}negative{% endif %}">
-            {% if stat.balance|round(2) > 0 %}+{% endif %}{{ "%.2f" | format(stat.balance) }}
-        </td>
-    </tr>
-    {% endfor %}
-    </table>
+        {{ balance_table(show_weight=False, show_header=True) }}
     </div>
 {% endblock %}
 
