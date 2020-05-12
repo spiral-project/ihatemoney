@@ -1,19 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-09 21:41+0200\n"
-"PO-Revision-Date: 2020-05-09 10:38+0000\n"
+"PO-Revision-Date: 2020-05-13 15:41+0000\n"
 "Last-Translator: Muge Niu <mugeniu12138@gmail.com>\n"
-"Language: zh_HANS_CN\n"
-"Language-Team: Chinese (Simplified) "
-"<https://hosted.weblate.org/projects/i-hate-money/i-hate-money/zh_Hans/>"
-"\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"i-hate-money/i-hate-money/zh_Hans/>\n"
+"Language: zh_HANS-CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.1-dev\n"
 "Generated-By: Babel 2.7.0\n"
 
 msgid ""
@@ -37,7 +36,7 @@ msgid "Use IP tracking for project history"
 msgstr "用IP追踪项目历史"
 
 msgid "Default Currency"
-msgstr ""
+msgstr "默认货币"
 
 msgid "Import previously exported JSON file"
 msgstr "导入之前的JSON 文件"
@@ -94,7 +93,7 @@ msgid "Amount paid"
 msgstr "支付金额"
 
 msgid "Currency"
-msgstr ""
+msgstr "货币"
 
 msgid "External link"
 msgstr "外部链接"
@@ -113,7 +112,7 @@ msgstr "确定并添加另一个"
 
 #, python-format
 msgid "Project default: %(currency)s"
-msgstr ""
+msgstr "默认项目: %(currency)s"
 
 msgid "Bills can't be null"
 msgstr "数字不能为零"
@@ -156,7 +155,7 @@ msgid "Project"
 msgstr "项目"
 
 msgid "No Currency"
-msgstr ""
+msgstr "没有货币"
 
 msgid "Too many failed login attempts, please retry later."
 msgstr "输入错误太多次了，请稍后重试。"
@@ -176,11 +175,11 @@ msgid "You have just created '%(project)s' to share your expenses"
 msgstr "你新建了一个‘%(project)s'来分担你的花费"
 
 msgid "Error while sending reminder email"
-msgstr ""
+msgstr "发送提醒邮件时出错"
 
 #, python-format
 msgid "The project identifier is %(project)s"
-msgstr ""
+msgstr "项目的标识符是%(project)s"
 
 msgid "No token provided"
 msgstr "没有符号"
@@ -528,7 +527,7 @@ msgstr "数量"
 
 #, python-format
 msgid "Amount in %(currency)s"
-msgstr ""
+msgstr "%(currency)s的数量是"
 
 msgid "modified"
 msgstr "更改"
@@ -639,7 +638,7 @@ msgstr "你可以贡献自己的力量让它变得更好！"
 
 #, python-format
 msgid "%(amount)s each"
-msgstr ""
+msgstr "美人%(amount)s"
 
 msgid "deactivate"
 msgstr "暂停"
@@ -772,4 +771,3 @@ msgstr "期间"
 
 #~ msgid "each"
 #~ msgstr "每一个·"
-
