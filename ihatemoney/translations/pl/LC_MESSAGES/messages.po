@@ -1,19 +1,19 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-09 21:41+0200\n"
-"PO-Revision-Date: 2020-05-08 20:02+0000\n"
+"PO-Revision-Date: 2020-05-13 15:41+0000\n"
 "Last-Translator: Szylu <chipolade@gmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/pl/>\n"
 "Language: pl\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/i-hate-money/i"
-"-hate-money/pl/>\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && "
-"(n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.1-dev\n"
 "Generated-By: Babel 2.7.0\n"
 
 msgid ""
@@ -39,7 +39,7 @@ msgid "Use IP tracking for project history"
 msgstr "Użyj śledzenia IP do historii projektu"
 
 msgid "Default Currency"
-msgstr ""
+msgstr "Domyślna waluta"
 
 msgid "Import previously exported JSON file"
 msgstr "Zaimportuj wcześniej wyeksportowany plik JSON"
@@ -98,7 +98,7 @@ msgid "Amount paid"
 msgstr "Opłata zapłacona"
 
 msgid "Currency"
-msgstr ""
+msgstr "Waluta"
 
 msgid "External link"
 msgstr "Link zewnętrzny"
@@ -117,7 +117,7 @@ msgstr "Zatwierdź i dodaj nowy"
 
 #, python-format
 msgid "Project default: %(currency)s"
-msgstr ""
+msgstr "Wartość domyślna projektu: %(currency)s"
 
 msgid "Bills can't be null"
 msgstr "Rachunki nie mogą być zerowe"
@@ -160,7 +160,7 @@ msgid "Project"
 msgstr "Projekt"
 
 msgid "No Currency"
-msgstr ""
+msgstr "Brak walut"
 
 msgid "Too many failed login attempts, please retry later."
 msgstr "Zbyt wiele nieudanych prób logowania, spróbuj ponownie później."
@@ -180,11 +180,11 @@ msgid "You have just created '%(project)s' to share your expenses"
 msgstr "Właśnie utworzyłeś „%(project)s”, aby podzielić się wydatkami"
 
 msgid "Error while sending reminder email"
-msgstr ""
+msgstr "Błąd podczas wysyłania wiadomości e-mail z przypomnieniem"
 
 #, python-format
 msgid "The project identifier is %(project)s"
-msgstr ""
+msgstr "Identyfikator projektu to %(project)s"
 
 msgid "No token provided"
 msgstr "Nie podano tokena"
@@ -544,7 +544,7 @@ msgstr "Ilość"
 
 #, python-format
 msgid "Amount in %(currency)s"
-msgstr ""
+msgstr "Ilość w %(currency)s"
 
 msgid "modified"
 msgstr "zmieniony"
@@ -658,7 +658,7 @@ msgstr "możesz przyczynić się i je ulepszyć!"
 
 #, python-format
 msgid "%(amount)s each"
-msgstr ""
+msgstr "%(amount)s każdy"
 
 msgid "deactivate"
 msgstr "dezaktywuj"
@@ -799,4 +799,3 @@ msgstr "Okres"
 
 #~ msgid "each"
 #~ msgstr "każdy"
-
