@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-09 21:41+0200\n"
 "PO-Revision-Date: 2020-05-18 07:09+0000\n"
-"Last-Translator: Stefano Mortellaro <fazen@fazenlab.it>\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/it/>\n"
 "Language: it\n"
@@ -166,7 +166,7 @@ msgstr "Troppi tentativi di accesso non riusciti. Riprova più tardi."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
-msgstr ""
+msgstr "Password da impiegato non e corretto. Solo %(num)d tentativi rimasti."
 
 msgid "You either provided a bad token or no project identifier."
 msgstr ""
