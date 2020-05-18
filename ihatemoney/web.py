@@ -283,8 +283,10 @@ def remind_password():
                 remind_message,
                 "",
                 _(
-                    "Sorry, there was an error while sending you an email with password reset instructions. "
-                    "Please check the email configuration of the server or contact the administrator."
+                    "Sorry, there was an error while sending you an email "
+                    "with password reset instructions. "
+                    "Please check the email configuration of the server "
+                    "or contact the administrator."
                 ),
             )
             if success:
@@ -425,7 +427,8 @@ def invite():
                 _("Your invitations have been sent"),
                 _(
                     "Sorry, there was an error while trying to send the invitation emails. "
-                    "Please check the email configuration of the server or contact the administrator."
+                    "Please check the email configuration of the server "
+                    "or contact the administrator."
                 ),
             )
             if success:
