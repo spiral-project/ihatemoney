@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-09 21:41+0200\n"
 "PO-Revision-Date: 2020-05-18 07:07+0000\n"
-"Last-Translator: Stefano Mortellaro <fazen@fazenlab.it>\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/it/>\n"
 "Language: it\n"
@@ -147,16 +147,16 @@ msgstr "Spedisci inviti"
 
 #, python-format
 msgid "The email %(email)s is not valid"
-msgstr ""
+msgstr "L'email %(email)s non e valido"
 
 msgid "Participant"
-msgstr ""
+msgstr "Partecipante"
 
 msgid "Bill"
 msgstr "Addebito"
 
 msgid "Project"
-msgstr ""
+msgstr "Progetto"
 
 msgid "No Currency"
 msgstr ""
