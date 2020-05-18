@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-09 21:41+0200\n"
-"PO-Revision-Date: 2020-05-18 07:10+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2020-05-18 13:02+0000\n"
+"Last-Translator: Stefano Mortellaro <fazen@fazenlab.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/it/>\n"
 "Language: it\n"
@@ -32,10 +32,10 @@ msgid "Email"
 msgstr "Email"
 
 msgid "Enable project history"
-msgstr "Attivare la storia del progetto"
+msgstr "Attivare lo storico del progetto"
 
 msgid "Use IP tracking for project history"
-msgstr "Utilizzare la localizzazione IP per la storia del progetto"
+msgstr "Utilizzare la localizzazione IP per lo storico del progetto"
 
 msgid "Default Currency"
 msgstr ""
@@ -44,7 +44,7 @@ msgid "Import previously exported JSON file"
 msgstr "Importare il file esportato JSON"
 
 msgid "Import"
-msgstr ""
+msgstr "Importa"
 
 msgid "Project identifier"
 msgstr "Identificatore del progetto"
@@ -64,7 +64,7 @@ msgid "Get in"
 msgstr ""
 
 msgid "Admin password"
-msgstr ""
+msgstr "Password di amministrazione"
 
 msgid "Send me the code by email"
 msgstr "Inviami il codice per email"
@@ -179,17 +179,17 @@ msgstr "Questo codice privato non è quello corretto"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
-msgstr "Lei ha appena creato  '%(project)s' per condividere le sue spese"
+msgstr "Hai appena creato '%(project)s' per condividere le tue spese"
 
 msgid "Error while sending reminder email"
-msgstr ""
+msgstr "Errore durante l'invio dell'email di promemoria"
 
 #, python-format
 msgid "The project identifier is %(project)s"
-msgstr ""
+msgstr "L'identificatore del progetto è %(project)s"
 
 msgid "No token provided"
-msgstr ""
+msgstr "Nessun token fornito"
 
 msgid "Invalid token"
 msgstr ""
@@ -204,21 +204,21 @@ msgid "Project successfully uploaded"
 msgstr ""
 
 msgid "Invalid JSON"
-msgstr ""
+msgstr "JSON non valido"
 
 msgid "Project successfully deleted"
 msgstr ""
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
-msgstr ""
+msgstr "Sei stato invitato a condividere le tue spese per %(project)s"
 
 msgid "Your invitations have been sent"
-msgstr ""
+msgstr "I tuoi inviti sono stati spediti"
 
 #, python-format
 msgid "%(member)s has been added"
-msgstr ""
+msgstr "%(member)s è stato aggiunto"
 
 #, python-format
 msgid "%(name)s is part of this project again"
@@ -236,16 +236,16 @@ msgstr ""
 
 #, python-format
 msgid "User '%(name)s' has been edited"
-msgstr ""
+msgstr "L'utente '%(name)s' è stato aggiornato"
 
 msgid "The bill has been added"
-msgstr ""
+msgstr "L'addebito è stato aggiunto"
 
 msgid "The bill has been deleted"
-msgstr ""
+msgstr "L'addebito è stato rimosso"
 
 msgid "The bill has been modified"
-msgstr ""
+msgstr "L'addebito è stato aggiornato"
 
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr ""
@@ -254,7 +254,7 @@ msgid "The best thing to do is probably to get back to the main page."
 msgstr ""
 
 msgid "Back to the list"
-msgstr ""
+msgstr "Ritorna all'elenco"
 
 msgid "Administration tasks are currently disabled."
 msgstr ""
@@ -269,49 +269,49 @@ msgid "?"
 msgstr ""
 
 msgid "Create a new project"
-msgstr ""
+msgstr "Crea un nuovo progetto"
 
 msgid "Number of members"
-msgstr ""
+msgstr "Numero di membri"
 
 msgid "Number of bills"
-msgstr ""
+msgstr "Numero di addebiti"
 
 msgid "Newest bill"
-msgstr ""
+msgstr "Ultimo addebito"
 
 msgid "Oldest bill"
-msgstr ""
+msgstr "Primo addebito"
 
 msgid "Actions"
-msgstr ""
+msgstr "Azioni"
 
 msgid "edit"
-msgstr ""
+msgstr "modifica"
 
 msgid "delete"
-msgstr ""
+msgstr "rimuovi"
 
 msgid "see"
-msgstr ""
+msgstr "vedi"
 
 msgid "The Dashboard is currently deactivated."
 msgstr ""
 
 msgid "you sure?"
-msgstr ""
+msgstr "sei sicuro?"
 
 msgid "Edit project"
-msgstr ""
+msgstr "Modifica progetto"
 
 msgid "Import JSON"
-msgstr ""
+msgstr "Importa JSON"
 
 msgid "Choose file"
-msgstr ""
+msgstr "Scegli file"
 
 msgid "Download project's data"
-msgstr ""
+msgstr "Scarica i dati del progetto"
 
 msgid "Bill items"
 msgstr ""
@@ -326,52 +326,52 @@ msgid "Download the list of transactions needed to settle the current bills."
 msgstr ""
 
 msgid "Can't remember the password?"
-msgstr ""
+msgstr "Non ricordi la password?"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Annulla"
 
 msgid "Privacy Settings"
 msgstr ""
 
 msgid "Edit the project"
-msgstr ""
+msgstr "Modifica il progetto"
 
 msgid "Edit this bill"
-msgstr ""
+msgstr "Modifica questo addebito"
 
 msgid "Add a bill"
-msgstr ""
+msgstr "Aggiungi un addebito"
 
 msgid "Select all"
-msgstr ""
+msgstr "Seleziona tutto"
 
 msgid "Select none"
-msgstr ""
+msgstr "Seleziona nessuno"
 
 msgid "Add participant"
 msgstr ""
 
 msgid "Edit this member"
-msgstr ""
+msgstr "Modifica questo membro"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr ""
 
 msgid "Send the invitations"
-msgstr ""
+msgstr "Spedisci gli inviti"
 
 msgid "Download"
-msgstr ""
+msgstr "Scarica"
 
 msgid "Disabled Project History"
-msgstr ""
+msgstr "Storico del progetto disabilitato"
 
 msgid "Disabled Project History & IP Address Recording"
 msgstr ""
 
 msgid "Enabled Project History"
-msgstr ""
+msgstr "Storico del progetto abilitato"
 
 msgid "Disabled IP Address Recording"
 msgstr ""
