@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-09 21:41+0200\n"
 "PO-Revision-Date: 2020-05-18 07:04+0000\n"
-"Last-Translator: Stefano Mortellaro <fazen@fazenlab.it>\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/it/>\n"
 "Language: it\n"
@@ -106,13 +106,13 @@ msgid "A link to an external document, related to this bill"
 msgstr "Un link a un documento esterno in relazione a questo addebito"
 
 msgid "For whom?"
-msgstr ""
+msgstr "Per chi?"
 
 msgid "Submit"
-msgstr ""
+msgstr "Invia"
 
 msgid "Submit and add a new one"
-msgstr ""
+msgstr "Inviare ed aggiungere un nuovo"
 
 #, python-format
 msgid "Project default: %(currency)s"
