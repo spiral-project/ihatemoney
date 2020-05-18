@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-09 21:41+0200\n"
-"PO-Revision-Date: 2020-05-18 06:57+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2020-05-18 07:03+0000\n"
+"Last-Translator: Stefano Mortellaro <fazen@fazenlab.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/it/>\n"
 "Language: it\n"
@@ -57,7 +57,7 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
-"Un progetto con questo identificatore (\"%(project)s\") esiste gia. Per "
+"Un progetto con questo identificatore (\"%(project)s\") esiste già. Per "
 "favore scegliere un identificatore nuovo"
 
 msgid "Get in"
@@ -67,25 +67,25 @@ msgid "Admin password"
 msgstr ""
 
 msgid "Send me the code by email"
-msgstr ""
+msgstr "Inviami il codice per email"
 
 msgid "This project does not exists"
 msgstr ""
 
 msgid "Password mismatch"
-msgstr ""
+msgstr "Password non corrispondente"
 
 msgid "Password"
 msgstr ""
 
 msgid "Password confirmation"
-msgstr ""
+msgstr "Conferma password"
 
 msgid "Reset password"
 msgstr ""
 
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgid "What?"
 msgstr ""
@@ -94,10 +94,10 @@ msgid "Payer"
 msgstr ""
 
 msgid "Amount paid"
-msgstr ""
+msgstr "Quantità pagata"
 
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 msgid "External link"
 msgstr ""
