@@ -341,7 +341,7 @@ def remind_password():
             )
             success = send_email(
                 remind_message,
-                _("A password reminder email has just been sent to you"),
+                "",
                 _(
                     "Sorry, there was an error while sending you an email with password reset instructions. "
                     "Please check the email configuration of the server or contact the administrator."
