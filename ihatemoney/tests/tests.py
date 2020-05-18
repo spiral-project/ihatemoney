@@ -51,10 +51,10 @@ class BaseTestCase(TestCase):
             follow_redirects=True,
         )
 
-    def post_project(self, name):
+    def post_project(self, name, follow_redirects=False):
         """Create a fake project"""
         # create the project
-        self.client.post(
+        return self.client.post(
             "/create",
             data={
                 "name": name,
@@ -63,6 +63,7 @@ class BaseTestCase(TestCase):
                 "contact_email": f"{name}@notmyidea.org",
                 "default_currency": "USD",
             },
+            follow_redirects=follow_redirects,
         )
 
     def create_project(self, name):
