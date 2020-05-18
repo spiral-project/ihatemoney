@@ -5,15 +5,18 @@ try:
 except ImportError:
     import unittest  # NOQA
 try:
-    from unittest.mock import patch
+    from unittest.mock import patch, MagicMock
 except ImportError:
-    from mock import patch
+    from mock import patch, MagicMock
 
 import datetime
 import os
 import json
 from collections import defaultdict
 import six
+import re
+import smtplib
+import socket
 from time import sleep
 
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -1630,6 +1633,78 @@ class CommandTestCase(BaseTestCase):
         cmd.run('demo')
 
         self.assertEqual(len(models.Project.query.all()), 0)
+
+
+class EmailFailureTestCase(IhatemoneyTestCase):
+    def test_creation_email_failure_smtp(self):
+        self.login("raclette")
+        with patch.object(
+            self.app.mail, "send", MagicMock(side_effect=smtplib.SMTPException)
+        ):
+            resp = self.post_project("raclette", follow_redirects=True)
+        # Check that an error message is displayed
+        self.assertIn(
+            "We tried to send you an reminder email, but there was an error",
+            resp.data.decode("utf-8"),
+        )
+        # Check that we are redirected anyway
+        self.assertIn(
+            'You probably want to <a href="/raclette/members/add"',
+            resp.data.decode("utf-8"),
+        )
+
+    def test_creation_email_failure_socket(self):
+        self.login("raclette")
+        with patch.object(self.app.mail, "send", MagicMock(side_effect=socket.error)):
+            resp = self.post_project("raclette", follow_redirects=True)
+        # Check that an error message is displayed
+        self.assertIn(
+            "We tried to send you an reminder email, but there was an error",
+            resp.data.decode("utf-8"),
+        )
+        # Check that we are redirected anyway
+        self.assertIn(
+            'You probably want to <a href="/raclette/members/add"',
+            resp.data.decode("utf-8"),
+        )
+
+    def test_password_reset_email_failure(self):
+        self.create_project("raclette")
+        for exception in (smtplib.SMTPException, socket.error):
+            with patch.object(self.app.mail, "send", MagicMock(side_effect=exception)):
+                resp = self.client.post(
+                    "/password-reminder", data={"id": "raclette"}, follow_redirects=True
+                )
+            # Check that an error message is displayed
+            self.assertIn(
+                "there was an error while sending you an email",
+                resp.data.decode("utf-8"),
+            )
+            # Check that we were not redirected to the success page
+            self.assertNotIn(
+                "A link to reset your password has been sent to you",
+                resp.data.decode("utf-8"),
+            )
+
+    def test_invitation_email_failure(self):
+        self.login("raclette")
+        self.post_project("raclette")
+        for exception in (smtplib.SMTPException, socket.error):
+            with patch.object(self.app.mail, "send", MagicMock(side_effect=exception)):
+                resp = self.client.post(
+                    "/raclette/invite",
+                    data={"emails": "toto@notmyidea.org"},
+                    follow_redirects=True,
+                )
+            # Check that an error message is displayed
+            self.assertIn(
+                "there was an error while trying to send the invitation emails",
+                resp.data.decode("utf-8"),
+            )
+            # Check that we are still on the same page (no redirection)
+            self.assertIn(
+                "Invite people to join this project", resp.data.decode("utf-8"),
+            )
 
 
 if __name__ == "__main__":
