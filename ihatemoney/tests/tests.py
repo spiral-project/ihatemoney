@@ -142,9 +142,14 @@ class BudgetTestCase(IhatemoneyTestCase):
             self.login("raclette")
 
             self.post_project("raclette")
-            self.client.post(
-                "/raclette/invite", data={"emails": "zorglub@notmyidea.org"}
+            resp = self.client.post(
+                "/raclette/invite",
+                data={"emails": "zorglub@notmyidea.org"},
+                follow_redirects=True,
             )
+
+            # success notification
+            self.assertIn("Your invitations have been sent", resp.data.decode("utf-8"))
 
             self.assertEqual(len(outbox), 2)
             self.assertEqual(outbox[0].recipients, ["raclette@notmyidea.org"])
@@ -226,7 +231,15 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.create_project("raclette")
         # Get password resetting link from mail
         with self.app.mail.record_messages() as outbox:
-            self.client.post("/password-reminder", data={"id": "raclette"})
+            resp = self.client.post(
+                "/password-reminder", data={"id": "raclette"}, follow_redirects=True
+            )
+            # Check that we are redirected to the right page
+            self.assertIn(
+                "A link to reset your password has been sent to you",
+                resp.data.decode("utf-8"),
+            )
+            # Check that an email was sent
             self.assertEqual(len(outbox), 1)
             url_start = outbox[0].body.find("You can reset it here: ") + 23
             url_end = outbox[0].body.find(".\n", url_start)
@@ -251,17 +264,26 @@ class BudgetTestCase(IhatemoneyTestCase):
     def test_project_creation(self):
         with self.app.test_client() as c:
 
-            # add a valid project
-            c.post(
-                "/create",
-                data={
-                    "name": "The fabulous raclette party",
-                    "id": "raclette",
-                    "password": "party",
-                    "contact_email": "raclette@notmyidea.org",
-                    "default_currency": "USD",
-                },
-            )
+            with self.app.mail.record_messages() as outbox:
+                # add a valid project
+                resp = c.post(
+                    "/create",
+                    data={
+                        "name": "The fabulous raclette party",
+                        "id": "raclette",
+                        "password": "party",
+                        "contact_email": "raclette@notmyidea.org",
+                        "default_currency": "USD",
+                    },
+                    follow_redirects=True,
+                )
+                # an email is sent to the owner with a reminder of the password
+                self.assertEqual(len(outbox), 1)
+                self.assertEqual(outbox[0].recipients, ["raclette@notmyidea.org"])
+                self.assertIn(
+                    "A reminder email has just been sent to you",
+                    resp.data.decode("utf-8"),
+                )
 
             # session is updated
             self.assertTrue(session["raclette"])
