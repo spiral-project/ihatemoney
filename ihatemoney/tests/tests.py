@@ -54,15 +54,15 @@ class BaseTestCase(TestCase):
         return self.client.post('/authenticate', data=dict(
             id=project, password=password), follow_redirects=True)
 
-    def post_project(self, name):
+    def post_project(self, name, follow_redirects=False):
         """Create a fake project"""
         # create the project
-        self.client.post("/create", data={
+        return self.client.post("/create", data={
             'name': name,
             'id': name,
             'password': name,
             'contact_email': '%s@notmyidea.org' % name
-        })
+        }, follow_redirects=follow_redirects)
 
     def create_project(self, name):
         project = models.Project(
