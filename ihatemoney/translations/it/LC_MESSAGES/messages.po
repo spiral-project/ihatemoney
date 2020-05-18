@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-09 21:41+0200\n"
 "PO-Revision-Date: 2020-05-18 07:10+0000\n"
-"Last-Translator: Stefano Mortellaro <fazen@fazenlab.it>\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/it/>\n"
 "Language: it\n"
@@ -179,7 +179,7 @@ msgstr "Questo codice privato non è quello corretto"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
+msgstr "Lei ha appena creato  '%(project)s' per condividere le sue spese"
 
 msgid "Error while sending reminder email"
 msgstr ""
