@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-09 21:41+0200\n"
-"PO-Revision-Date: 2020-05-18 07:04+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2020-05-18 07:06+0000\n"
+"Last-Translator: Stefano Mortellaro <fazen@fazenlab.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/it/>\n"
 "Language: it\n"
@@ -112,17 +112,17 @@ msgid "Submit"
 msgstr "Invia"
 
 msgid "Submit and add a new one"
-msgstr "Inviare ed aggiungere un nuovo"
+msgstr "Inviare e aggiungerne uno nuovo"
 
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr ""
 
 msgid "Bills can't be null"
-msgstr ""
+msgstr "L'addebito non può essere nullo"
 
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 msgid "Weights should be positive"
 msgstr ""
@@ -131,7 +131,7 @@ msgid "Weight"
 msgstr ""
 
 msgid "Add"
-msgstr ""
+msgstr "Aggiungi"
 
 msgid "User name incorrect"
 msgstr ""
