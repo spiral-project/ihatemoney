@@ -53,7 +53,7 @@ class BaseTestCase(TestCase):
             follow_redirects=True,
         )
 
-    def post_project(self, name, follow_redirects=False):
+    def post_project(self, name, follow_redirects=True):
         """Create a fake project"""
         # create the project
         return self.client.post(
