@@ -1641,13 +1641,13 @@ class EmailFailureTestCase(IhatemoneyTestCase):
         with patch.object(
             self.app.mail, "send", MagicMock(side_effect=smtplib.SMTPException)
         ):
-            resp = self.post_project("raclette", follow_redirects=True)
+            resp = self.post_project("raclette")
         # Check that an error message is displayed
         self.assertIn(
             "We tried to send you an reminder email, but there was an error",
             resp.data.decode("utf-8"),
         )
-        # Check that we are redirected anyway
+        # Check that we were redirected to the home page anyway
         self.assertIn(
             'You probably want to <a href="/raclette/members/add"',
             resp.data.decode("utf-8"),
@@ -1656,13 +1656,13 @@ class EmailFailureTestCase(IhatemoneyTestCase):
     def test_creation_email_failure_socket(self):
         self.login("raclette")
         with patch.object(self.app.mail, "send", MagicMock(side_effect=socket.error)):
-            resp = self.post_project("raclette", follow_redirects=True)
+            resp = self.post_project("raclette")
         # Check that an error message is displayed
         self.assertIn(
             "We tried to send you an reminder email, but there was an error",
             resp.data.decode("utf-8"),
         )
-        # Check that we are redirected anyway
+        # Check that we were redirected to the home page anyway
         self.assertIn(
             'You probably want to <a href="/raclette/members/add"',
             resp.data.decode("utf-8"),
