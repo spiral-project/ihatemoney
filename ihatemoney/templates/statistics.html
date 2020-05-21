@@ -15,8 +15,8 @@
         {% for stat in members_stats|sort(attribute='member.name') %}
         <tr>
             <td class="d-md-none">{{ stat.member.name }}</td>
-            <td>{{ stat.paid|currencyformat_nc(g.project.default_currency) }}</td>
-            <td>{{ stat.spent|currencyformat_nc(g.project.default_currency) }}</td>
+            <td>{{ stat.paid|currency }}</td>
+            <td>{{ stat.spent|currency }}</td>
         </tr>
         {% endfor %}
         </tbody>

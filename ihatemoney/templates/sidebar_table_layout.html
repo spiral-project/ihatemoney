@@ -37,7 +37,7 @@
           {%- endif %}
         {%- endif %}
         <td class="balance-value {% if balance[member.id]|round(2) > 0 %}positive{% elif balance[member.id]|round(2) < 0 %}negative{% endif %}">
-          {% if balance[member.id] | round(2) > 0 %}+{% endif %}{{ balance[member.id]|currencyformat_nc(g.project.default_currency) }}
+          {% if balance[member.id] | round(2) > 0 %}+{% endif %}{{ balance[member.id]|currency }}
         </td>
       </tr>
     {%- endfor %}
