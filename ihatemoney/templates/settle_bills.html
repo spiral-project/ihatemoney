@@ -15,7 +15,7 @@
     <tr receiver={{bill.receiver.id}}>
             <td>{{ bill.ower }}</td>
             <td>{{ bill.receiver }}</td>
-            <td>{{ bill.amount|currencyformat_nc(g.project.default_currency) }}</td>
+            <td>{{ bill.amount|currency }}</td>
     </tr>
     {% endfor %}
     </tbody>
