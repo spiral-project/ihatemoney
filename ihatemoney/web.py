@@ -247,8 +247,12 @@ def create_project():
             msg = Message(message_title,
                           body=message_body,
                           recipients=[project.contact_email])
-            success = send_email(msg, _("A reminder email has just been sent to you"))
-            if not success:
+            success = send_email(msg)
+            if success:
+                flash(
+                    _("A reminder email has just been sent to you"), category="success"
+                )
+            else:
                 # Display the error as a simple "info" alert, because it's
                 # not critical and doesn't prevent using the project.
                 flash(
@@ -279,19 +283,20 @@ def remind_password():
                 body=render_localized_template("password_reminder", project=project),
                 recipients=[project.contact_email],
             )
-            success = send_email(
-                remind_message,
-                "",
-                _(
-                    "Sorry, there was an error while sending you an email "
-                    "with password reset instructions. "
-                    "Please check the email configuration of the server "
-                    "or contact the administrator."
-                ),
-            )
+            success = send_email(remind_message)
             if success:
                 return redirect(url_for(".password_reminder_sent"))
-
+            else:
+                flash(
+                    _(
+                        "Sorry, there was an error while sending you an email "
+                        "with password reset instructions. "
+                        "Please check the email configuration of the server "
+                        "or contact the administrator."
+                    ),
+                    category="danger",
+                )
+                # Fall-through: we stay on the same page and display the form again
     return render_template("password_reminder.html", form=form)
 
 
@@ -422,18 +427,20 @@ def invite():
                           body=message_body,
                           recipients=[email.strip()
                                       for email in form.emails.data.split(",")])
-            success = send_email(
-                msg,
-                _("Your invitations have been sent"),
-                _(
-                    "Sorry, there was an error while trying to send the invitation emails. "
-                    "Please check the email configuration of the server "
-                    "or contact the administrator."
-                ),
-            )
+            success = send_email(msg)
             if success:
+                flash(_("Your invitations have been sent"), category="success")
                 return redirect(url_for(".list_bills"))
-
+            else:
+                flash(
+                    _(
+                        "Sorry, there was an error while trying to send the invitation emails. "
+                        "Please check the email configuration of the server "
+                        "or contact the administrator."
+                    ),
+                    category="danger",
+                )
+                # Fall-through: we stay on the same page and display the form again
     return render_template("send_invites.html", form=form)
 
 
