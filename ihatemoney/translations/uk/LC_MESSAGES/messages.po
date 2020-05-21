@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-01 00:54+0200\n"
+"POT-Creation-Date: 2020-05-21 22:28+0200\n"
 "PO-Revision-Date: 2019-12-08 16:26+0000\n"
 "Last-Translator: Tymofij Lytvynenko <till.svit@gmail.com>\n"
 "Language: uk\n"
@@ -135,8 +135,22 @@ msgstr ""
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr ""
 
+msgid "A reminder email has just been sent to you"
+msgstr ""
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
+
 #, python-format
-msgid "%(msg_compl)sThe project identifier is %(project)s"
+msgid "The project identifier is %(project)s"
+msgstr ""
+
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions. Please check the email configuration of the server or "
+"contact the administrator."
 msgstr ""
 
 msgid "No token provided"
@@ -159,6 +173,12 @@ msgid "You have been invited to share your expenses for %(project)s"
 msgstr ""
 
 msgid "Your invitations have been sent"
+msgstr ""
+
+msgid ""
+"Sorry, there was an error while trying to send the invitation emails. "
+"Please check the email configuration of the server or contact the "
+"administrator."
 msgstr ""
 
 #, python-format

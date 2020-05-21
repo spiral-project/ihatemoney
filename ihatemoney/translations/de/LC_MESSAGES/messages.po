@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-01 00:54+0200\n"
+"POT-Creation-Date: 2020-05-21 22:28+0200\n"
 "PO-Revision-Date: 2020-02-12 10:50+0000\n"
 "Last-Translator: flolilo <flolilo@mailbox.org>\n"
 "Language: de\n"
@@ -142,9 +142,23 @@ msgstr ""
 "Du hast gerade das Projekt '%(project)s' erstellt, um deine Ausgaben zu "
 "teilen"
 
+msgid "A reminder email has just been sent to you"
+msgstr ""
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
+
 #, python-format
-msgid "%(msg_compl)sThe project identifier is %(project)s"
-msgstr "%(msg_compl)sDie Projekt-ID lautet %(project)s"
+msgid "The project identifier is %(project)s"
+msgstr ""
+
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions. Please check the email configuration of the server or "
+"contact the administrator."
+msgstr ""
 
 msgid "No token provided"
 msgstr "Kein Token zur Verfügung gestellt"
@@ -167,6 +181,12 @@ msgstr "Du wurdest eingeladen, deine Ausgaben für %(project)s zu teilen"
 
 msgid "Your invitations have been sent"
 msgstr "Deine Einladungen wurden versendet"
+
+msgid ""
+"Sorry, there was an error while trying to send the invitation emails. "
+"Please check the email configuration of the server or contact the "
+"administrator."
+msgstr ""
 
 #, python-format
 msgid "%(member)s has been added"
@@ -433,7 +453,7 @@ msgid "Added on %(date)s"
 msgstr "Hinzugefügt am %(date)s"
 
 msgid "each"
-msgstr "alles"
+msgstr ""
 
 msgid "No bills"
 msgstr "Keine Ausgaben"

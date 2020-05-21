@@ -4,12 +4,13 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-21 22:28+0200\n"
-"PO-Revision-Date: 2019-08-07 13:24+0000\n"
-"Last-Translator: Mesut Akcan <makcan@gmail.com>\n"
-"Language: tr\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/tr/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
+"PO-Revision-Date: 2020-05-13 15:41+0000\n"
+"Last-Translator: Szylu <chipolade@gmail.com>\n"
+"Language: pl\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/pl/>\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && "
+"(n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,124 +20,124 @@ msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
-"Geçerli bir miktar veya ifade değil. Sadece rakamlar ve + - * / "
-"operatörler kabul edilir."
+"Niepoprawna kwota lub wyrażenie. Akceptowane są tylko liczby i operatory "
+"+ - * /."
 
 msgid "Project name"
-msgstr "Proje adı"
+msgstr "Nazwa projektu"
 
 msgid "Private code"
-msgstr "Özel kod"
+msgstr "Kod prywatny"
 
 msgid "Email"
-msgstr "E-posta"
+msgstr "E-mail"
 
 msgid "Project identifier"
-msgstr "Proje tanımlayıcısı"
+msgstr "Identyfikator projektu"
 
 msgid "Create the project"
-msgstr "Proje oluştur"
+msgstr "Stwórz projekt"
 
 #, python-format
 msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
-"Bu tanımlayıcıya sahip bir proje (\"%(project)s\") zaten var. Lütfen yeni"
-" bir tanımlayıcı seçin"
+"Projekt o tym identyfikatorze („%(project)s”) już istnieje. Wybierz nowy "
+"identyfikator"
 
 msgid "Get in"
-msgstr "Alın"
+msgstr "Wejdź"
 
 msgid "Admin password"
-msgstr "Yönetici parolası"
+msgstr "Hasło administratora"
 
 msgid "Send me the code by email"
-msgstr "E-posta ile bana kodu gönder"
+msgstr "Wyślij mi kod emailem"
 
 msgid "This project does not exists"
-msgstr "Bu proje mevcut değil"
+msgstr "Ten projekt nie istnieje"
 
 msgid "Password mismatch"
-msgstr "Parola uyuşmazlığı"
+msgstr "Hasło się różni"
 
 msgid "Password"
-msgstr "Parola"
+msgstr "Hasło"
 
 msgid "Password confirmation"
-msgstr "Parola onayı"
+msgstr "Potwierdzenie hasła"
 
 msgid "Reset password"
-msgstr "Parolayı sıfırla"
+msgstr "Zresetuj hasło"
 
 msgid "Date"
-msgstr "Tarih"
+msgstr "Data"
 
 msgid "What?"
-msgstr "Ne?"
+msgstr "Co?"
 
 msgid "Payer"
-msgstr "Mükellefi"
+msgstr "Płatnik"
 
 msgid "Amount paid"
-msgstr "Ödenen tutar"
+msgstr "Opłata zapłacona"
 
 msgid "For whom?"
-msgstr "Kim için?"
+msgstr "Dla kogo?"
 
 msgid "Submit"
-msgstr "Gönder"
+msgstr "Zatwierdź"
 
 msgid "Submit and add a new one"
-msgstr ""
+msgstr "Zatwierdź i dodaj nowy"
 
 msgid "Bills can't be null"
-msgstr ""
+msgstr "Rachunki nie mogą być zerowe"
 
 msgid "Name"
-msgstr ""
+msgstr "Nazwa"
 
 msgid "Weights should be positive"
-msgstr ""
+msgstr "Wagi powinny być dodatnie"
 
 msgid "Weight"
-msgstr ""
+msgstr "Waga"
 
 msgid "Add"
-msgstr ""
+msgstr "Dodaj"
 
 msgid "User name incorrect"
-msgstr ""
+msgstr "Nazwa użytkownika jest niepoprawna"
 
 msgid "This project already have this member"
-msgstr ""
+msgstr "Ten projekt ma już tego członka"
 
 msgid "People to notify"
-msgstr ""
+msgstr "Osoby do powiadomienia"
 
 msgid "Send invites"
-msgstr ""
+msgstr "Wyślij zaproszenia"
 
 #, python-format
 msgid "The email %(email)s is not valid"
-msgstr ""
+msgstr "Ten email %(email)s jest nieprawidłowy"
 
 msgid "Too many failed login attempts, please retry later."
-msgstr ""
+msgstr "Zbyt wiele nieudanych prób logowania, spróbuj ponownie później."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
-msgstr ""
+msgstr "To hasło administratora jest nieprawidłowe. Pozostało tylko %(num)d prób."
 
 msgid "You either provided a bad token or no project identifier."
-msgstr ""
+msgstr "Podałeś zły token lub brak identyfikatora projektu."
 
 msgid "This private code is not the right one"
-msgstr ""
+msgstr "Ten prywatny kod jest niewłaściwy"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
+msgstr "Właśnie utworzyłeś „%(project)s”, aby podzielić się wydatkami"
 
 msgid "A reminder email has just been sent to you"
 msgstr ""
@@ -148,7 +149,7 @@ msgstr ""
 
 #, python-format
 msgid "The project identifier is %(project)s"
-msgstr ""
+msgstr "Identyfikator projektu to %(project)s"
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
@@ -157,26 +158,26 @@ msgid ""
 msgstr ""
 
 msgid "No token provided"
-msgstr ""
+msgstr "Nie podano tokena"
 
 msgid "Invalid token"
-msgstr ""
+msgstr "Nieprawidłowy token"
 
 msgid "Unknown project"
-msgstr ""
+msgstr "Nieznany projekt"
 
 msgid "Password successfully reset."
-msgstr ""
+msgstr "Hasło zostało pomyślnie zresetowane."
 
 msgid "Project successfully deleted"
-msgstr ""
+msgstr "Projekt został pomyślnie usunięty"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
-msgstr ""
+msgstr "Zostałeś zaproszony do podzielenia się swoimi wydatkami w %(project)s"
 
 msgid "Your invitations have been sent"
-msgstr ""
+msgstr "Twoje zaproszenia zostały wysłane"
 
 msgid ""
 "Sorry, there was an error while trying to send the invitation emails. "
@@ -186,320 +187,333 @@ msgstr ""
 
 #, python-format
 msgid "%(member)s has been added"
-msgstr ""
+msgstr "%(member)s został dodany"
 
 #, python-format
 msgid "%(name)s is part of this project again"
-msgstr ""
+msgstr "%(name)s jest ponownie częścią tego projektu"
 
 #, python-format
 msgid ""
 "User '%(name)s' has been deactivated. It will still appear in the users "
 "list until its balance becomes zero."
 msgstr ""
+"Użytkownik „%(name)s” został dezaktywowany. Będzie nadal pojawiać się na "
+"liście użytkowników, dopóki jego saldo nie wyniesie zero."
 
 #, python-format
 msgid "User '%(name)s' has been removed"
-msgstr ""
+msgstr "Użytkownik „%(name)s” został usunięty"
 
 #, python-format
 msgid "User '%(name)s' has been edited"
-msgstr ""
+msgstr "Użytkownik „%(name)s” został edytowany"
 
 msgid "The bill has been added"
-msgstr ""
+msgstr "Rachunek został dodany"
 
 msgid "The bill has been deleted"
-msgstr ""
+msgstr "Rachunek został usunięty"
 
 msgid "The bill has been modified"
-msgstr ""
+msgstr "Rachunek został zmieniony"
 
 msgid "Sorry, we were unable to find the page you've asked for."
-msgstr ""
+msgstr "Niestety nie udało nam się znaleźć strony, o którą prosiłeś."
 
 msgid "The best thing to do is probably to get back to the main page."
 msgstr ""
+"Najlepszą rzeczą do zrobienia jest prawdopodobnie powrót do strony "
+"głównej."
 
 msgid "Back to the list"
-msgstr ""
+msgstr "Powrót do listy"
 
 msgid "Administration tasks are currently disabled."
-msgstr ""
+msgstr "Zadania administracyjne są obecnie wyłączone."
 
 msgid "The project you are trying to access do not exist, do you want to"
-msgstr ""
+msgstr "Projekt, do którego próbujesz uzyskać dostęp, nie istnieje, czy chcesz"
 
 msgid "create it"
-msgstr ""
+msgstr "stworzyć go"
 
 msgid "?"
-msgstr ""
+msgstr "?"
 
 msgid "Create a new project"
-msgstr ""
+msgstr "Stwórz nowy projekt"
 
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 msgid "Number of members"
-msgstr ""
+msgstr "Liczba użytkowników"
 
 msgid "Number of bills"
-msgstr ""
+msgstr "Liczba rachunków"
 
 msgid "Newest bill"
-msgstr ""
+msgstr "Najnowszy rachunek"
 
 msgid "Oldest bill"
-msgstr ""
+msgstr "Najstarszy rachunek"
 
 msgid "Actions"
-msgstr ""
+msgstr "Akcje"
 
 msgid "edit"
-msgstr ""
+msgstr "edytuj"
 
 msgid "delete"
-msgstr ""
+msgstr "usuń"
 
 msgid "The Dashboard is currently deactivated."
-msgstr ""
+msgstr "Pulpit nawigacyjny jest obecnie dezaktywowany."
 
 msgid "you sure?"
-msgstr ""
+msgstr "jesteś pewny?"
 
 msgid "Edit project"
-msgstr ""
+msgstr "Edytuj projekt"
 
 msgid "Download project's data"
-msgstr ""
+msgstr "Pobierz dane projektu"
 
 msgid "Bill items"
-msgstr ""
+msgstr "Zawartość rachunku"
 
 msgid "Download the list of bills with owner, amount, reason,... "
-msgstr ""
+msgstr "Pobierz listę rachunków z właścicielem, kwotą, powodem,... "
 
 msgid "Settle plans"
-msgstr ""
+msgstr "Uzgodnij plany"
 
 msgid "Download the list of transactions needed to settle the current bills."
-msgstr ""
+msgstr "Pobierz listę transakcji potrzebnych do rozliczenia bieżących rachunków."
 
 msgid "Can't remember the password?"
-msgstr ""
+msgstr "Nie pamiętasz hasła?"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 msgid "Edit the project"
-msgstr ""
+msgstr "Edytuj projekt"
 
 msgid "Edit this bill"
-msgstr ""
+msgstr "Edytuj ten rachunek"
 
 msgid "Add a bill"
-msgstr ""
+msgstr "Dodaj rachunek"
 
 msgid "Select all"
-msgstr ""
+msgstr "Zaznacz wszystko"
 
 msgid "Select none"
-msgstr ""
+msgstr "Zaznacz brak"
 
 msgid "Add participant"
-msgstr ""
+msgstr "Dodaj uczestnika"
 
 msgid "Edit this member"
-msgstr ""
+msgstr "Edytuj tego członka"
 
 msgid "john.doe@example.com, mary.moe@site.com"
-msgstr ""
+msgstr "jan.kowalski@przykład.com, anna.nowak@strona.com"
 
 msgid "Send the invitations"
-msgstr ""
+msgstr "Wyślij zaproszenia"
 
 msgid "Download"
-msgstr ""
+msgstr "Pobierz"
 
 msgid "Manage your shared <br />expenses, easily"
-msgstr ""
+msgstr "Łatwo zarządzaj wspólnymi <br /> wydatkami"
 
 msgid "Try out the demo"
-msgstr ""
+msgstr "Wypróbuj wersję demo"
 
 msgid "You're sharing a house?"
-msgstr ""
+msgstr "Dzielisz z kimś dom?"
 
 msgid "Going on holidays with friends?"
-msgstr ""
+msgstr "Jedziesz na wakacje ze znajomymi?"
 
 msgid "Simply sharing money with others?"
-msgstr ""
+msgstr "Po prostu dzielisz się pieniędzmi z innymi?"
 
 msgid "We can help!"
-msgstr ""
+msgstr "Możemy pomóc!"
 
 msgid "Log in to an existing project"
-msgstr ""
+msgstr "Zaloguj się do istniejącego projektu"
 
 msgid "Log in"
-msgstr ""
+msgstr "Zaloguj się"
 
 msgid "can't remember your password?"
-msgstr ""
+msgstr "nie pamiętasz swojego hasła?"
 
 msgid "Create"
-msgstr ""
+msgstr "Stwórz"
 
 msgid ""
 "This access code will be sent to your friends. It is stored as-is by the "
 "server, so don\\'t reuse a personal password!"
 msgstr ""
+"Ten kod dostępu zostanie wysłany do znajomych. Jest przechowywany w "
+"stanie niezmienionym przez serwer, więc nie używaj ponownie osobistego "
+"hasła!"
 
 msgid "Account manager"
-msgstr ""
+msgstr "Menadżer konta"
 
 msgid "Bills"
-msgstr ""
+msgstr "Rachunki"
 
 msgid "Settle"
-msgstr ""
+msgstr "Rozliczenia"
 
 msgid "Statistics"
-msgstr ""
+msgstr "Statystyki"
 
 msgid "Settings"
-msgstr ""
+msgstr "Ustawienia"
 
 msgid "Languages"
-msgstr ""
+msgstr "Języki"
 
 msgid "Projects"
-msgstr ""
+msgstr "Projekty"
 
 msgid "Start a new project"
-msgstr ""
+msgstr "Rozpocznij nowy projekt"
 
 msgid "Other projects :"
-msgstr ""
+msgstr "Inne projekty:"
 
 msgid "switch to"
-msgstr ""
+msgstr "przełącz na"
 
 msgid "Dashboard"
-msgstr ""
+msgstr "Kokpit"
 
 msgid "Logout"
-msgstr ""
+msgstr "Wyloguj"
 
 msgid "Code"
-msgstr ""
+msgstr "Kod"
 
 msgid "Mobile Application"
-msgstr ""
+msgstr "Aplikacja mobilna"
 
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentacja"
 
 msgid "Administation Dashboard"
-msgstr ""
+msgstr "Kokpit administracyjny"
 
 msgid "\"I hate money\" is a free software"
-msgstr ""
+msgstr "„I Hate Money” to darmowe oprogramowanie"
 
 msgid "you can contribute and improve it!"
-msgstr ""
+msgstr "możesz przyczynić się i je ulepszyć!"
 
 msgid "deactivate"
-msgstr ""
+msgstr "dezaktywuj"
 
 msgid "reactivate"
-msgstr ""
+msgstr "reaktywuj"
 
 msgid "Invite people"
-msgstr ""
+msgstr "Zaproś ludzi"
 
 msgid "You should start by adding participants"
-msgstr ""
+msgstr "Powinieneś zacząć od dodania uczestników"
 
 msgid "Add a new bill"
-msgstr ""
+msgstr "Dodaj nowy rachunek"
 
 msgid "When?"
-msgstr ""
+msgstr "Kiedy?"
 
 msgid "Who paid?"
-msgstr ""
+msgstr "Kto zapłacił?"
 
 msgid "For what?"
-msgstr ""
+msgstr "Za co?"
 
 msgid "How much?"
-msgstr ""
+msgstr "Jak dużo?"
 
 #, python-format
 msgid "Added on %(date)s"
-msgstr ""
+msgstr "Dodano %(date)s"
 
 msgid "each"
 msgstr ""
 
 msgid "No bills"
-msgstr ""
+msgstr "Brak rachunków"
 
 msgid "Nothing to list yet."
-msgstr ""
+msgstr "Nie ma jeszcze żadnej listy."
 
 msgid "You probably want to"
-msgstr ""
+msgstr "Prawdopodobnie chcesz"
 
 msgid "add a bill"
-msgstr ""
+msgstr "dodać rachunek"
 
 msgid "add participants"
-msgstr ""
+msgstr "dodać członków"
 
 msgid "Password reminder"
-msgstr ""
+msgstr "Przypomnienie hasła"
 
 msgid ""
 "A link to reset your password has been sent to you, please check your "
 "emails."
 msgstr ""
+"Link do zresetowania hasła został wysłany do Ciebie, sprawdź swojego "
+"maila."
 
 msgid "Return to home page"
-msgstr ""
+msgstr "Wróć do strony głównej"
 
 msgid "Your projects"
-msgstr ""
+msgstr "Twoje projekty"
 
 msgid "Reset your password"
-msgstr ""
+msgstr "Zresetuj swoje hasło"
 
 msgid "Invite people to join this project"
-msgstr ""
+msgstr "Zaproś ludzi do dołączenia do tego projektu"
 
 msgid "Share Identifier & code"
-msgstr ""
+msgstr "Udostępnij identyfikator i kod"
 
 msgid ""
 "You can share the project identifier and the private code by any "
 "communication means."
 msgstr ""
+"Identyfikator projektu i kod prywatny można udostępniać dowolnymi "
+"środkami komunikacji."
 
 msgid "Identifier:"
-msgstr ""
+msgstr "Identyfikator:"
 
 msgid "Share the Link"
-msgstr ""
+msgstr "Udostępnij link"
 
 msgid "You can directly share the following link via your prefered medium"
 msgstr ""
+"Możesz bezpośrednio udostępnić poniższy link za pośrednictwem "
+"preferowanego medium"
 
 msgid "Send via Emails"
-msgstr ""
+msgstr "Wyślij przez maile"
 
 msgid ""
 "Specify a (comma separated) list of email adresses you want to notify "
@@ -507,22 +521,26 @@ msgid ""
 "                creation of this budget management project and we will "
 "send them an email for you."
 msgstr ""
+"Podaj (adresy rozdzielone przecinkami) adresy email, które chcesz "
+"powiadomić o \n"
+"                utworzeniu tego projektu zarządzania budżetem, a my "
+"wyślemy Ci wiadomość email."
 
 msgid "Who pays?"
-msgstr ""
+msgstr "Kto płaci?"
 
 msgid "To whom?"
-msgstr ""
+msgstr "Komu?"
 
 msgid "Who?"
-msgstr ""
+msgstr "Kto?"
 
 msgid "Paid"
-msgstr ""
+msgstr "Zapłacone"
 
 msgid "Spent"
-msgstr ""
+msgstr "Wydano"
 
 msgid "Balance"
-msgstr ""
+msgstr "Saldo"
 
