@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-05-01 00:54+0200\n"
+"POT-Creation-Date: 2020-05-21 22:28+0200\n"
 "PO-Revision-Date: 2019-10-07 22:56+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language: nl\n"
@@ -136,9 +136,23 @@ msgstr ""
 "Je hebt zojuist het project '%(project)s' aangemaakt om je uitgaven te "
 "verdelen"
 
+msgid "A reminder email has just been sent to you"
+msgstr ""
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
+
 #, python-format
-msgid "%(msg_compl)sThe project identifier is %(project)s"
-msgstr "%(msg_compl)sDe project-id is %(project)s"
+msgid "The project identifier is %(project)s"
+msgstr ""
+
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions. Please check the email configuration of the server or "
+"contact the administrator."
+msgstr ""
 
 msgid "No token provided"
 msgstr "Geen toegangssleutel opgegeven"
@@ -161,6 +175,12 @@ msgstr "Je bent uitgenodigd om je uitgaven te delen met %(project)s"
 
 msgid "Your invitations have been sent"
 msgstr "Je uitnodigingen zijn verstuurd"
+
+msgid ""
+"Sorry, there was an error while trying to send the invitation emails. "
+"Please check the email configuration of the server or contact the "
+"administrator."
+msgstr ""
 
 #, python-format
 msgid "%(member)s has been added"
@@ -428,7 +448,7 @@ msgid "Added on %(date)s"
 msgstr "Toegevoegd op %(date)s"
 
 msgid "each"
-msgstr "per persoon"
+msgstr ""
 
 msgid "No bills"
 msgstr "Geen rekeningen"

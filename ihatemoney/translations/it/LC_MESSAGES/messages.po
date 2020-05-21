@@ -4,11 +4,11 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-21 22:28+0200\n"
-"PO-Revision-Date: 2019-08-07 13:24+0000\n"
-"Last-Translator: Mesut Akcan <makcan@gmail.com>\n"
-"Language: tr\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/tr/>\n"
+"PO-Revision-Date: 2020-05-18 13:02+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language: it\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/it/>\n"
 "Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -19,82 +19,82 @@ msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
-"Geçerli bir miktar veya ifade değil. Sadece rakamlar ve + - * / "
-"operatörler kabul edilir."
+"Quantità o espressione non valida. Solo numeri e operatori + - * / sono "
+"accettati."
 
 msgid "Project name"
-msgstr "Proje adı"
+msgstr "Nome del progetto"
 
 msgid "Private code"
-msgstr "Özel kod"
+msgstr "Codice privato"
 
 msgid "Email"
-msgstr "E-posta"
+msgstr "Email"
 
 msgid "Project identifier"
-msgstr "Proje tanımlayıcısı"
+msgstr "Identificatore del progetto"
 
 msgid "Create the project"
-msgstr "Proje oluştur"
+msgstr "Creare il progetto"
 
 #, python-format
 msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
-"Bu tanımlayıcıya sahip bir proje (\"%(project)s\") zaten var. Lütfen yeni"
-" bir tanımlayıcı seçin"
+"Un progetto con questo identificatore (\"%(project)s\") esiste già. Per "
+"favore scegliere un identificatore nuovo"
 
 msgid "Get in"
-msgstr "Alın"
+msgstr ""
 
 msgid "Admin password"
-msgstr "Yönetici parolası"
+msgstr "Password di amministrazione"
 
 msgid "Send me the code by email"
-msgstr "E-posta ile bana kodu gönder"
+msgstr "Inviami il codice per email"
 
 msgid "This project does not exists"
-msgstr "Bu proje mevcut değil"
+msgstr "Questo progetto non esiste"
 
 msgid "Password mismatch"
-msgstr "Parola uyuşmazlığı"
+msgstr "Password non corrispondente"
 
 msgid "Password"
-msgstr "Parola"
+msgstr "Password"
 
 msgid "Password confirmation"
-msgstr "Parola onayı"
+msgstr "Conferma password"
 
 msgid "Reset password"
-msgstr "Parolayı sıfırla"
+msgstr ""
 
 msgid "Date"
-msgstr "Tarih"
+msgstr "Data"
 
 msgid "What?"
-msgstr "Ne?"
+msgstr "Cosa?"
 
 msgid "Payer"
-msgstr "Mükellefi"
+msgstr "Pagatore"
 
 msgid "Amount paid"
-msgstr "Ödenen tutar"
+msgstr "Quantità pagata"
 
 msgid "For whom?"
-msgstr "Kim için?"
+msgstr "Per chi?"
 
 msgid "Submit"
-msgstr "Gönder"
+msgstr "Invia"
 
 msgid "Submit and add a new one"
-msgstr ""
+msgstr "Inviare e aggiungerne uno nuovo"
 
 msgid "Bills can't be null"
-msgstr ""
+msgstr "L'addebito non può essere nullo"
 
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 msgid "Weights should be positive"
 msgstr ""
@@ -103,40 +103,44 @@ msgid "Weight"
 msgstr ""
 
 msgid "Add"
-msgstr ""
+msgstr "Aggiungi"
 
 msgid "User name incorrect"
-msgstr ""
+msgstr "Nome utente non valido"
 
 msgid "This project already have this member"
-msgstr ""
+msgstr "Membro già presente in questo progetto"
 
 msgid "People to notify"
-msgstr ""
+msgstr "Persone da notificare"
 
 msgid "Send invites"
-msgstr ""
+msgstr "Spedisci inviti"
 
 #, python-format
 msgid "The email %(email)s is not valid"
-msgstr ""
+msgstr "L'email %(email)s non è valida"
 
 msgid "Too many failed login attempts, please retry later."
-msgstr ""
+msgstr "Troppi tentativi di accesso non riusciti. Riprova più tardi."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr ""
+"Questa password di amministrazione non è corretta. Solo %(num)d tentativi"
+" rimasti."
 
 msgid "You either provided a bad token or no project identifier."
 msgstr ""
+"Hai fornito un token invalido o l'identificatore del progetto non è "
+"valido."
 
 msgid "This private code is not the right one"
-msgstr ""
+msgstr "Questo codice privato non è quello corretto"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
+msgstr "Hai appena creato '%(project)s' per condividere le tue spese"
 
 msgid "A reminder email has just been sent to you"
 msgstr ""
@@ -148,7 +152,7 @@ msgstr ""
 
 #, python-format
 msgid "The project identifier is %(project)s"
-msgstr ""
+msgstr "L'identificatore del progetto è %(project)s"
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
@@ -157,13 +161,13 @@ msgid ""
 msgstr ""
 
 msgid "No token provided"
-msgstr ""
+msgstr "Nessun token fornito"
 
 msgid "Invalid token"
-msgstr ""
+msgstr "Token invalido"
 
 msgid "Unknown project"
-msgstr ""
+msgstr "Progetto non conosciuto"
 
 msgid "Password successfully reset."
 msgstr ""
@@ -173,10 +177,10 @@ msgstr ""
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
-msgstr ""
+msgstr "Sei stato invitato a condividere le tue spese per %(project)s"
 
 msgid "Your invitations have been sent"
-msgstr ""
+msgstr "I tuoi inviti sono stati spediti"
 
 msgid ""
 "Sorry, there was an error while trying to send the invitation emails. "
@@ -186,7 +190,7 @@ msgstr ""
 
 #, python-format
 msgid "%(member)s has been added"
-msgstr ""
+msgstr "%(member)s è stato aggiunto"
 
 #, python-format
 msgid "%(name)s is part of this project again"
@@ -204,16 +208,16 @@ msgstr ""
 
 #, python-format
 msgid "User '%(name)s' has been edited"
-msgstr ""
+msgstr "L'utente '%(name)s' è stato aggiornato"
 
 msgid "The bill has been added"
-msgstr ""
+msgstr "L'addebito è stato aggiunto"
 
 msgid "The bill has been deleted"
-msgstr ""
+msgstr "L'addebito è stato rimosso"
 
 msgid "The bill has been modified"
-msgstr ""
+msgstr "L'addebito è stato aggiornato"
 
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr ""
@@ -222,7 +226,7 @@ msgid "The best thing to do is probably to get back to the main page."
 msgstr ""
 
 msgid "Back to the list"
-msgstr ""
+msgstr "Ritorna all'elenco"
 
 msgid "Administration tasks are currently disabled."
 msgstr ""
@@ -237,43 +241,43 @@ msgid "?"
 msgstr ""
 
 msgid "Create a new project"
-msgstr ""
+msgstr "Crea un nuovo progetto"
 
 msgid "Project"
-msgstr ""
+msgstr "Progetto"
 
 msgid "Number of members"
-msgstr ""
+msgstr "Numero di membri"
 
 msgid "Number of bills"
-msgstr ""
+msgstr "Numero di addebiti"
 
 msgid "Newest bill"
-msgstr ""
+msgstr "Ultimo addebito"
 
 msgid "Oldest bill"
-msgstr ""
+msgstr "Primo addebito"
 
 msgid "Actions"
-msgstr ""
+msgstr "Azioni"
 
 msgid "edit"
-msgstr ""
+msgstr "modifica"
 
 msgid "delete"
-msgstr ""
+msgstr "rimuovi"
 
 msgid "The Dashboard is currently deactivated."
 msgstr ""
 
 msgid "you sure?"
-msgstr ""
+msgstr "sei sicuro?"
 
 msgid "Edit project"
-msgstr ""
+msgstr "Modifica progetto"
 
 msgid "Download project's data"
-msgstr ""
+msgstr "Scarica i dati del progetto"
 
 msgid "Bill items"
 msgstr ""
@@ -288,40 +292,40 @@ msgid "Download the list of transactions needed to settle the current bills."
 msgstr ""
 
 msgid "Can't remember the password?"
-msgstr ""
+msgstr "Non ricordi la password?"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Annulla"
 
 msgid "Edit the project"
-msgstr ""
+msgstr "Modifica il progetto"
 
 msgid "Edit this bill"
-msgstr ""
+msgstr "Modifica questo addebito"
 
 msgid "Add a bill"
-msgstr ""
+msgstr "Aggiungi un addebito"
 
 msgid "Select all"
-msgstr ""
+msgstr "Seleziona tutto"
 
 msgid "Select none"
-msgstr ""
+msgstr "Seleziona nessuno"
 
 msgid "Add participant"
 msgstr ""
 
 msgid "Edit this member"
-msgstr ""
+msgstr "Modifica questo membro"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr ""
 
 msgid "Send the invitations"
-msgstr ""
+msgstr "Spedisci gli inviti"
 
 msgid "Download"
-msgstr ""
+msgstr "Scarica"
 
 msgid "Manage your shared <br />expenses, easily"
 msgstr ""

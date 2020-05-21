@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-05-01 00:54+0200\n"
-"PO-Revision-Date: 2020-04-25 11:14+0000\n"
-"Last-Translator: Rémy Hubscher <hubscher.remy@gmail.com>\n"
+"POT-Creation-Date: 2020-05-21 22:28+0200\n"
+"PO-Revision-Date: 2020-05-15 20:41+0000\n"
+"Last-Translator: Glandos <bugs-github@antipoul.fr>\n"
 "Language: fr\n"
 "Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/i"
 "-hate-money/fr/>\n"
@@ -144,9 +144,23 @@ msgstr "Le code que vous avez entré n’est pas correct"
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr "Vous venez de créer « %(project)s » pour partager vos dépenses"
 
+msgid "A reminder email has just been sent to you"
+msgstr ""
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
+
 #, python-format
-msgid "%(msg_compl)sThe project identifier is %(project)s"
-msgstr "%(msg_compl)sL’identifiant de ce projet est %(project)s"
+msgid "The project identifier is %(project)s"
+msgstr "L’identifiant de ce projet est %(project)s"
+
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions. Please check the email configuration of the server or "
+"contact the administrator."
+msgstr ""
 
 msgid "No token provided"
 msgstr "Aucun token n’a été fourni"
@@ -169,6 +183,12 @@ msgstr "Vous avez été invité à partager vos dépenses pour %(project)s"
 
 msgid "Your invitations have been sent"
 msgstr "Vos invitations ont bien été envoyées"
+
+msgid ""
+"Sorry, there was an error while trying to send the invitation emails. "
+"Please check the email configuration of the server or contact the "
+"administrator."
+msgstr ""
 
 #, python-format
 msgid "%(member)s has been added"
@@ -434,7 +454,7 @@ msgid "Added on %(date)s"
 msgstr "Ajouté le %(date)s"
 
 msgid "each"
-msgstr "chacun"
+msgstr ""
 
 msgid "No bills"
 msgstr "Pas encore de factures"

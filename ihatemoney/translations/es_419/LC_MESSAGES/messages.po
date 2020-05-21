@@ -3,9 +3,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-01 00:54+0200\n"
-"PO-Revision-Date: 2019-09-25 22:28+0000\n"
-"Last-Translator: Diego Caraballo <diegocaraballo84@gmail.com>\n"
+"POT-Creation-Date: 2020-05-21 22:28+0200\n"
+"PO-Revision-Date: 2020-05-03 15:20+0000\n"
+"Last-Translator: Fabian Rodriguez <fabian@fabianrodriguez.com>\n"
 "Language: es_419\n"
 "Language-Team: Spanish (Latin America) "
 "<https://hosted.weblate.org/projects/i-hate-money/i-hate-money/es_419/>\n"
@@ -142,9 +142,23 @@ msgstr "Este código privado no es el correcto"
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr "Acabas de crear '%(project)s' para compartir tus gastos"
 
+msgid "A reminder email has just been sent to you"
+msgstr ""
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
+
 #, python-format
-msgid "%(msg_compl)sThe project identifier is %(project)s"
-msgstr "%(msg_compl)sEl identificador del proyecto es %(project)s"
+msgid "The project identifier is %(project)s"
+msgstr ""
+
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions. Please check the email configuration of the server or "
+"contact the administrator."
+msgstr ""
 
 msgid "No token provided"
 msgstr "No se proporciono ningún token"
@@ -168,9 +182,15 @@ msgstr "Usted ha sido invitado a compartir sus gastos para %(project)s"
 msgid "Your invitations have been sent"
 msgstr "Sus invitaciones han sido enviadas"
 
+msgid ""
+"Sorry, there was an error while trying to send the invitation emails. "
+"Please check the email configuration of the server or contact the "
+"administrator."
+msgstr ""
+
 #, python-format
 msgid "%(member)s has been added"
-msgstr ""
+msgstr "Se añadieron %(member)s"
 
 #, python-format
 msgid "%(name)s is part of this project again"
@@ -303,7 +323,7 @@ msgid "Edit this member"
 msgstr "Editar este miembro"
 
 msgid "john.doe@example.com, mary.moe@site.com"
-msgstr "john.doe@example.com, mary.moe@site.com"
+msgstr "juan.perez@example.com, ana.rodriguez@site.com"
 
 msgid "Send the invitations"
 msgstr "Enviar las invitaciones"
@@ -434,7 +454,7 @@ msgid "Added on %(date)s"
 msgstr "Agregado el %(date)s"
 
 msgid "each"
-msgstr "Cada"
+msgstr ""
 
 msgid "No bills"
 msgstr "Sin facturas"
@@ -462,7 +482,7 @@ msgstr ""
 "correos electrónicos."
 
 msgid "Return to home page"
-msgstr "Regresar a la página principal"
+msgstr "Regresar al inicio"
 
 msgid "Your projects"
 msgstr "Sus proyectos"
