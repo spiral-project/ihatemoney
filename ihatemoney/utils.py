@@ -7,6 +7,8 @@ from json import JSONEncoder, dumps
 import operator
 import os
 import re
+import smtplib
+import socket
 
 from babel import Locale
 from babel.numbers import get_currency_name, get_currency_symbol
@@ -26,6 +28,22 @@ def slugify(value):
         value = unicodedata.normalize("NFKD", value)
     value = str(re.sub(r"[^\w\s-]", "", value).strip().lower())
     return re.sub(r"[-\s]+", "-", value)
+
+
+def send_email(mail_message):
+    """Send an email using Flask-Mail, with proper error handling.
+
+    Return True if everything went well, and False if there was an error.
+    """
+    # Since Python 3.4, SMTPException and socket.error are actually
+    # identical, but this was not the case before.  Also, it is more clear
+    # to check for both.
+    try:
+        current_app.mail.send(mail_message)
+    except (smtplib.SMTPException, socket.error):
+        return False
+    # Email was sent successfully
+    return True
 
 
 class Redirect303(HTTPException, RoutingException):

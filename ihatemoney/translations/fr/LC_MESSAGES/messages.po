@@ -7,18 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-05-09 21:41+0200\n"
+"POT-Creation-Date: 2020-05-18 15:11+0200\n"
 "PO-Revision-Date: 2020-05-15 20:41+0000\n"
 "Last-Translator: Glandos <bugs-github@antipoul.fr>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/fr/>\n"
 "Language: fr\n"
+"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/fr/>\n"
+"Plural-Forms: nplurals=2; plural=n > 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.1-dev\n"
-"Generated-By: Babel 2.7.0\n"
+"Generated-By: Babel 2.8.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -185,12 +184,23 @@ msgstr "Le code que vous avez entré n’est pas correct"
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr "Vous venez de créer « %(project)s » pour partager vos dépenses"
 
-msgid "Error while sending reminder email"
-msgstr "Erreur lors de l’envoi du courriel de rappel"
+msgid "A reminder email has just been sent to you"
+msgstr ""
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
 
 #, python-format
 msgid "The project identifier is %(project)s"
 msgstr "L’identifiant de ce projet est %(project)s"
+
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions. Please check the email configuration of the server or "
+"contact the administrator."
+msgstr ""
 
 msgid "No token provided"
 msgstr "Aucun token n’a été fourni"
@@ -219,6 +229,12 @@ msgstr "Vous avez été invité à partager vos dépenses pour %(project)s"
 
 msgid "Your invitations have been sent"
 msgstr "Vos invitations ont bien été envoyées"
+
+msgid ""
+"Sorry, there was an error while trying to send the invitation emails. "
+"Please check the email configuration of the server or contact the "
+"administrator."
+msgstr ""
 
 #, python-format
 msgid "%(member)s has been added"
@@ -1019,3 +1035,7 @@ msgstr "Période"
 
 #~ msgid "each"
 #~ msgstr "chacun"
+
+#~ msgid "Error while sending reminder email"
+#~ msgstr "Erreur lors de l’envoi du courriel de rappel"
+
