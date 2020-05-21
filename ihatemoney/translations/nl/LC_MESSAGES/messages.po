@@ -448,7 +448,7 @@ msgid "Added on %(date)s"
 msgstr "Toegevoegd op %(date)s"
 
 msgid "each"
-msgstr ""
+msgstr "per persoon"
 
 msgid "No bills"
 msgstr "Geen rekeningen"

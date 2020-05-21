@@ -441,7 +441,7 @@ msgid "Added on %(date)s"
 msgstr "添加到%(date)s"
 
 msgid "each"
-msgstr ""
+msgstr "每一个·"
 
 msgid "No bills"
 msgstr "没有账单"

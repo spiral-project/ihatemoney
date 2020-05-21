@@ -448,7 +448,7 @@ msgid "Added on %(date)s"
 msgstr "Ditambahkan pada %(date)s"
 
 msgid "each"
-msgstr ""
+msgstr "setiap"
 
 msgid "No bills"
 msgstr "Tidak ada tagihan"
