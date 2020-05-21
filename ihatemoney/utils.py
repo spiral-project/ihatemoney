@@ -12,7 +12,7 @@ import socket
 
 from babel import Locale
 from babel.numbers import get_currency_name, get_currency_symbol
-from flask import current_app, flash, redirect, render_template
+from flask import current_app, redirect, render_template
 from flask_babel import get_locale, lazy_gettext as _
 import jinja2
 from werkzeug.routing import HTTPException, RoutingException
@@ -30,12 +30,10 @@ def slugify(value):
     return re.sub(r"[-\s]+", "-", value)
 
 
-def send_email(mail_message, flash_success="", flash_error=""):
-    """Send an email using Flask-Mail, returning False if there was an error.
+def send_email(mail_message):
+    """Send an email using Flask-Mail, with proper error handling.
 
-    Optionally display a "flash alert" message to the user.  The flash
-    message is different depending on whether we could successfully send
-    the email or not.
+    Return True if everything went well, and False if there was an error.
     """
     # Since Python 3.4, SMTPException and socket.error are actually
     # identical, but this was not the case before.  Also, it is more clear
@@ -43,12 +41,8 @@ def send_email(mail_message, flash_success="", flash_error=""):
     try:
         current_app.mail.send(mail_message)
     except (smtplib.SMTPException, socket.error):
-        if flash_error:
-            flash(flash_error, category="danger")
         return False
     # Email was sent successfully
-    if flash_success:
-        flash(flash_success, category="success")
     return True
 
 
