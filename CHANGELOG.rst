@@ -6,7 +6,8 @@ This document describes changes between each past release.
 4.1.4 (unreleased)
 ==================
 
-This is a bugfix-only release, and probably the last release in the 4.x branch.
+This is a bugfix-only release.  It is almost certainly the last release to support Python 2:
+you should upgrade to Python 3!
 
 Fixed
 -----
@@ -16,6 +17,7 @@ Fixed
 - backend: Fix API to forbid project creation when the `ALLOW_PUBLIC_PROJECT_CREATION` setting is set to false (#496)
 - backend: Fix crash when a localized email template is missing (#592)
 - backend: Fix language code parsing (#589)
+- backend: Improve error handling when sending emails (#595)
 - UI: Fix datepicker that was being displayed twice on some browsers (#221)
 - UI: Fix "Submit and add a new one" button that had no effect when adding a bill (#498)
 - UI: Prevent bill cancellation when cancelling autocomplete (#506)
@@ -24,11 +26,12 @@ Fixed
 - UI: Fix missing HTML tag (#583)
 - UI: Fix a small typo in the french project-reminder email (#486)
 - UI: Fix typo on message displayed when adding a member (#575)
+- UI: Fix incorrect tool-tip message about the private code (#623)
 
 Added
 -----
 
-- Add translations for German, Spanish, Norwegian, Indonesian, and Russian
+- Add translations for German, Spanish (latin-america), Norwegian (bokmål), Indonesian, Polish, Russian, Chinese, Turkish, Ukrainian
 - Update translations for all languages
 
 4.1.3 (2019-09-18)
