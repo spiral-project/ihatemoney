@@ -453,7 +453,7 @@ msgid "Added on %(date)s"
 msgstr "Hinzugefügt am %(date)s"
 
 msgid "each"
-msgstr ""
+msgstr "alles"
 
 msgid "No bills"
 msgstr "Keine Ausgaben"

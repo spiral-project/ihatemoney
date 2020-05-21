@@ -454,7 +454,7 @@ msgid "Added on %(date)s"
 msgstr "Ajouté le %(date)s"
 
 msgid "each"
-msgstr ""
+msgstr "chacun"
 
 msgid "No bills"
 msgstr "Pas encore de factures"

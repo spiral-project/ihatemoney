@@ -467,7 +467,7 @@ msgid "Added on %(date)s"
 msgstr "Lagt til %(date)s"
 
 msgid "each"
-msgstr ""
+msgstr "hver"
 
 msgid "No bills"
 msgstr "Ingen regninger"
