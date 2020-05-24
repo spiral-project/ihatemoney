@@ -177,12 +177,23 @@ msgstr "Цей приватний код не підходить"
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr "Ви щойно створили '%(project)s', щоб поділитися витратами"
 
-msgid "Error while sending reminder email"
-msgstr "Помилка під час надсилання нагадування електронною поштою"
+msgid "A reminder email has just been sent to you"
+msgstr ""
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
 
 #, python-format
 msgid "The project identifier is %(project)s"
 msgstr "Ідентифікатор проєкту %(project)s"
+
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions. Please check the email configuration of the server or "
+"contact the administrator."
+msgstr ""
 
 msgid "No token provided"
 msgstr "Не надано токен"
@@ -211,6 +222,12 @@ msgstr "Вас запросили поділитися своїми витрат
 
 msgid "Your invitations have been sent"
 msgstr "Ваші запрошення відправленні"
+
+msgid ""
+"Sorry, there was an error while trying to send the invitation emails. "
+"Please check the email configuration of the server or contact the "
+"administrator."
+msgstr ""
 
 #, python-format
 msgid "%(member)s has been added"
@@ -760,3 +777,7 @@ msgstr ""
 
 #~ msgid "each"
 #~ msgstr ""
+
+#~ msgid "Error while sending reminder email"
+#~ msgstr ""
+

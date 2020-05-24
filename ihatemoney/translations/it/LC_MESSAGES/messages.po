@@ -1,3 +1,4 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -8,12 +9,13 @@ msgstr ""
 "Language-Team: Italian <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/it/>\n"
 "Language: it\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/it/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.1-dev\n"
-"Generated-By: Babel 2.7.0\n"
+"Generated-By: Babel 2.8.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -167,12 +169,13 @@ msgstr "Troppi tentativi di accesso non riusciti. Riprova più tardi."
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr ""
-"Questa password di amministrazione non è corretta. Solo %(num)d tentativi "
-"rimasti."
+"Questa password di amministrazione non è corretta. Solo %(num)d tentativi"
+" rimasti."
 
 msgid "You either provided a bad token or no project identifier."
 msgstr ""
-"Hai fornito un token invalido o l'identificatore del progetto non è valido."
+"Hai fornito un token invalido o l'identificatore del progetto non è "
+"valido."
 
 msgid "This private code is not the right one"
 msgstr "Questo codice privato non è quello corretto"
@@ -181,12 +184,23 @@ msgstr "Questo codice privato non è quello corretto"
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr "Hai appena creato '%(project)s' per condividere le tue spese"
 
-msgid "Error while sending reminder email"
-msgstr "Errore durante l'invio dell'email di promemoria"
+msgid "A reminder email has just been sent to you"
+msgstr ""
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
 
 #, python-format
 msgid "The project identifier is %(project)s"
 msgstr "L'identificatore del progetto è %(project)s"
+
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions. Please check the email configuration of the server or "
+"contact the administrator."
+msgstr ""
 
 msgid "No token provided"
 msgstr "Nessun token fornito"
@@ -215,6 +229,12 @@ msgstr "Sei stato invitato a condividere le tue spese per %(project)s"
 
 msgid "Your invitations have been sent"
 msgstr "I tuoi inviti sono stati spediti"
+
+msgid ""
+"Sorry, there was an error while trying to send the invitation emails. "
+"Please check the email configuration of the server or contact the "
+"administrator."
+msgstr ""
 
 #, python-format
 msgid "%(member)s has been added"
@@ -804,3 +824,7 @@ msgstr "Periodo"
 
 #~ msgid "each"
 #~ msgstr ""
+
+#~ msgid "Error while sending reminder email"
+#~ msgstr "Errore durante l'invio dell'email di promemoria"
+
