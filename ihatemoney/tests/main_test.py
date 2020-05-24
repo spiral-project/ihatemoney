@@ -33,7 +33,8 @@ class ConfigurationTestCase(BaseTestCase):
         )
 
     def test_env_var_configuration_file(self):
-        """Test that settings are loaded from the specified configuration file"""
+        """Test that settings are loaded from a configuration file specified
+        with an environment variable."""
         os.environ["IHATEMONEY_SETTINGS_FILE_PATH"] = os.path.join(
             __HERE__, "ihatemoney_envvar.cfg"
         )
@@ -42,6 +43,7 @@ class ConfigurationTestCase(BaseTestCase):
 
         # Test that the specified configuration file is loaded
         # even if the default configuration file ihatemoney.cfg exists
+        # in the current directory.
         os.environ["IHATEMONEY_SETTINGS_FILE_PATH"] = os.path.join(
             __HERE__, "ihatemoney_envvar.cfg"
         )
@@ -52,7 +54,8 @@ class ConfigurationTestCase(BaseTestCase):
         os.environ.pop("IHATEMONEY_SETTINGS_FILE_PATH", None)
 
     def test_default_configuration_file(self):
-        """Test that settings are loaded from the default configuration file"""
+        """Test that settings are loaded from a configuration file if one is found
+        in the current directory."""
         self.app.config.root_path = __HERE__
         load_configuration(self.app)
         self.assertEqual(self.app.config["SECRET_KEY"], "supersecret")
