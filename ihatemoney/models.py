@@ -10,7 +10,6 @@ from itsdangerous import (
     TimedJSONWebSignatureSerializer,
     URLSafeSerializer,
 )
-
 import sqlalchemy
 from sqlalchemy import orm
 from sqlalchemy.sql import func

@@ -499,7 +499,6 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertEqual(["Amina", "Georg", "Alice"], [m.name for m in demo.members])
         self.assertEqual(demo.get_bills().count(), 3)
 
-
     def test_deactivated_demo(self):
         self.app.config["ACTIVATE_DEMO_PROJECT"] = False
 
