@@ -5,8 +5,18 @@ python:
   - "3.7"
   - "3.8"
   - "3.9"
+env:
+  - TESTING_SQLALCHEMY_DATABASE_URI='sqlite:///budget.db'
+  - TESTING_SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://postgres:@localhost/travis_ci_test'
+  - TESTING_SQLALCHEMY_DATABASE_URI='mysql+pymysql://travis:@localhost/travis_ci_test'
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - mysql -e 'CREATE DATABASE travis_ci_test;'
 script: tox
 before_install:
   - python -m pip install --upgrade pip virtualenv
 install:
   - pip install tox-travis
+services:
+  - mysql
+  - postgresql

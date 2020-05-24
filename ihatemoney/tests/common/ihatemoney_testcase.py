@@ -1,3 +1,5 @@
+import os
+
 from flask_testing import TestCase
 from werkzeug.security import generate_password_hash
 
@@ -58,7 +60,9 @@ class BaseTestCase(TestCase):
 
 
 class IhatemoneyTestCase(BaseTestCase):
-    SQLALCHEMY_DATABASE_URI = "sqlite://"
+    SQLALCHEMY_DATABASE_URI = os.environ.get(
+        "TESTING_SQLALCHEMY_DATABASE_URI", "sqlite://"
+    )
     TESTING = True
     WTF_CSRF_ENABLED = False  # Simplifies the tests.
 
