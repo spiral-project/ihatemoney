@@ -1,20 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-09 21:41+0200\n"
-"PO-Revision-Date: 2020-05-20 06:41+0000\n"
+"PO-Revision-Date: 2020-05-25 20:41+0000\n"
 "Last-Translator: Stefano Mortellaro <fazen@fazenlab.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/it/>\n"
 "Language: it\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/it/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.1-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 msgid ""
@@ -185,12 +183,14 @@ msgid "You have just created '%(project)s' to share your expenses"
 msgstr "Hai appena creato '%(project)s' per condividere le tue spese"
 
 msgid "A reminder email has just been sent to you"
-msgstr ""
+msgstr "Ti è stato inviato un promemoria per email"
 
 msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
+"Abbiamo provato a inviarti un promemoria per email, ma si è verificato un "
+"errore. Puoi comunque utilizzare normalmente il progetto."
 
 #, python-format
 msgid "The project identifier is %(project)s"
@@ -201,6 +201,9 @@ msgid ""
 "instructions. Please check the email configuration of the server or "
 "contact the administrator."
 msgstr ""
+"Spiacenti, si è verificato un errore durante l'invio dell'email con le "
+"istruzioni per il reset della password. Verifica la configurazione "
+"dell'email del server o contatta l'amministratore."
 
 msgid "No token provided"
 msgstr "Nessun token fornito"
@@ -235,6 +238,8 @@ msgid ""
 "Please check the email configuration of the server or contact the "
 "administrator."
 msgstr ""
+"Spiacenti, si è verificato un errore durante l'invio delle email di invito. "
+"Verifica la configurazione dell'email sul server o contatta l'amministratore."
 
 #, python-format
 msgid "%(member)s has been added"
@@ -827,4 +832,3 @@ msgstr "Periodo"
 
 #~ msgid "Error while sending reminder email"
 #~ msgstr "Errore durante l'invio dell'email di promemoria"
-
