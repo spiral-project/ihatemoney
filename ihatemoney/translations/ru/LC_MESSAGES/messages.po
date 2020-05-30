@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-30 14:26+0200\n"
+"POT-Creation-Date: 2020-05-30 21:50+0200\n"
 "PO-Revision-Date: 2020-04-28 07:11+0000\n"
 "Last-Translator: Vsevolod <sevauserg.com@gmail.com>\n"
 "Language: ru\n"
@@ -455,12 +455,6 @@ msgstr "и"
 msgid "owers list"
 msgstr "список владельцев"
 
-msgid "Who?"
-msgstr "Кто?"
-
-msgid "Balance"
-msgstr "Баланс"
-
 #, python-format
 msgid ""
 "\n"
@@ -609,11 +603,9 @@ msgid "Create"
 msgstr "Создать"
 
 msgid ""
-"This access code will be sent to your friends. It is stored as-is by the "
-"server, so don\\'t reuse a personal password!"
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
 msgstr ""
-"Этот код доступа будет отправлен вашим друзьям. Он хранится на сервере "
-"как есть, поэтому не используйте личный пароль!"
 
 msgid "Account manager"
 msgstr "Менеджер аккаунтов"
@@ -675,12 +667,6 @@ msgstr "вы можете способствовать развитию и ул�
 #, python-format
 msgid "%(amount)s each"
 msgstr ""
-
-msgid "deactivate"
-msgstr "отключить"
-
-msgid "reactivate"
-msgstr "включить"
 
 msgid "Invite people"
 msgstr "Пригласить людей"
@@ -794,6 +780,18 @@ msgstr "Кто платит?"
 msgid "To whom?"
 msgstr "Кому?"
 
+msgid "Who?"
+msgstr "Кто?"
+
+msgid "Balance"
+msgstr "Баланс"
+
+msgid "deactivate"
+msgstr "отключить"
+
+msgid "reactivate"
+msgstr "включить"
+
 msgid "Paid"
 msgstr "Оплачено"
 
@@ -814,4 +812,15 @@ msgstr "Период"
 
 #~ msgid "Error while sending reminder email"
 #~ msgstr ""
+
+#~ msgid ""
+#~ "This access code will be sent to"
+#~ " your friends. It is stored as-"
+#~ "is by the server, so don\\'t reuse"
+#~ " a personal password!"
+#~ msgstr ""
+#~ "Этот код доступа будет отправлен вашим"
+#~ " друзьям. Он хранится на сервере как"
+#~ " есть, поэтому не используйте личный "
+#~ "пароль!"
 

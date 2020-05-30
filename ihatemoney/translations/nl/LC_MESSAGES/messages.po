@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-05-30 14:26+0200\n"
+"POT-Creation-Date: 2020-05-30 21:50+0200\n"
 "PO-Revision-Date: 2019-10-07 22:56+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language: nl\n"
@@ -446,12 +446,6 @@ msgstr ""
 msgid "owers list"
 msgstr ""
 
-msgid "Who?"
-msgstr "Wie?"
-
-msgid "Balance"
-msgstr "Saldo"
-
 #, python-format
 msgid ""
 "\n"
@@ -586,11 +580,9 @@ msgid "Create"
 msgstr "Maken"
 
 msgid ""
-"This access code will be sent to your friends. It is stored as-is by the "
-"server, so don\\'t reuse a personal password!"
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
 msgstr ""
-"Deze toegangscode wordt verstuurd aan je vrienden. Deze wordt in platte "
-"tekst opgeslagen op de server, dus gebruik geen persoonlijk wachtwoord!"
 
 msgid "Account manager"
 msgstr "Accountbeheer"
@@ -652,12 +644,6 @@ msgstr "je kunt bijdragen en de code verbeteren!"
 #, python-format
 msgid "%(amount)s each"
 msgstr ""
-
-msgid "deactivate"
-msgstr "deactiveren"
-
-msgid "reactivate"
-msgstr "heractiveren"
 
 msgid "Invite people"
 msgstr "Anderen uitnodigen"
@@ -773,6 +759,18 @@ msgstr "Wie betaalt?"
 msgid "To whom?"
 msgstr "Aan wie?"
 
+msgid "Who?"
+msgstr "Wie?"
+
+msgid "Balance"
+msgstr "Saldo"
+
+msgid "deactivate"
+msgstr "deactiveren"
+
+msgid "reactivate"
+msgstr "heractiveren"
+
 msgid "Paid"
 msgstr "Betaald"
 
@@ -793,4 +791,15 @@ msgstr ""
 
 #~ msgid "Error while sending reminder email"
 #~ msgstr ""
+
+#~ msgid ""
+#~ "This access code will be sent to"
+#~ " your friends. It is stored as-"
+#~ "is by the server, so don\\'t reuse"
+#~ " a personal password!"
+#~ msgstr ""
+#~ "Deze toegangscode wordt verstuurd aan je"
+#~ " vrienden. Deze wordt in platte tekst"
+#~ " opgeslagen op de server, dus gebruik"
+#~ " geen persoonlijk wachtwoord!"
 

@@ -423,12 +423,6 @@ msgstr ""
 msgid "owers list"
 msgstr ""
 
-msgid "Who?"
-msgstr ""
-
-msgid "Balance"
-msgstr ""
-
 #, python-format
 msgid ""
 "\n"
@@ -563,8 +557,8 @@ msgid "Create"
 msgstr ""
 
 msgid ""
-"This access code will be sent to your friends. It is stored as-is by the "
-"server, so don\\'t reuse a personal password!"
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
 msgstr ""
 
 msgid "Account manager"
@@ -626,12 +620,6 @@ msgstr ""
 
 #, python-format
 msgid "%(amount)s each"
-msgstr ""
-
-msgid "deactivate"
-msgstr ""
-
-msgid "reactivate"
 msgstr ""
 
 msgid "Invite people"
@@ -738,6 +726,18 @@ msgid "Who pays?"
 msgstr ""
 
 msgid "To whom?"
+msgstr ""
+
+msgid "Who?"
+msgstr ""
+
+msgid "Balance"
+msgstr ""
+
+msgid "deactivate"
+msgstr ""
+
+msgid "reactivate"
 msgstr ""
 
 msgid "Paid"

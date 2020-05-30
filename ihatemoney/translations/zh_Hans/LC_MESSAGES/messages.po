@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-30 14:26+0200\n"
+"POT-Creation-Date: 2020-05-30 21:50+0200\n"
 "PO-Revision-Date: 2020-05-13 15:41+0000\n"
 "Last-Translator: Muge Niu <mugeniu12138@gmail.com>\n"
 "Language: zh_HANS_CN\n"
@@ -443,12 +443,6 @@ msgstr "和"
 msgid "owers list"
 msgstr "所有人清单"
 
-msgid "Who?"
-msgstr "谁？"
-
-msgid "Balance"
-msgstr "余额"
-
 #, python-format
 msgid ""
 "\n"
@@ -593,9 +587,9 @@ msgid "Create"
 msgstr "创建"
 
 msgid ""
-"This access code will be sent to your friends. It is stored as-is by the "
-"server, so don\\'t reuse a personal password!"
-msgstr "进入码已发送给朋友，会被保存在服务器，不要重复使用私人密码!"
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
+msgstr ""
 
 msgid "Account manager"
 msgstr "账户经理"
@@ -657,12 +651,6 @@ msgstr "你可以贡献自己的力量让它变得更好！"
 #, python-format
 msgid "%(amount)s each"
 msgstr "美人%(amount)s"
-
-msgid "deactivate"
-msgstr "暂停"
-
-msgid "reactivate"
-msgstr "激活"
 
 msgid "Invite people"
 msgstr "邀请别人"
@@ -772,6 +760,18 @@ msgstr "谁付款？"
 msgid "To whom?"
 msgstr "给谁？"
 
+msgid "Who?"
+msgstr "谁？"
+
+msgid "Balance"
+msgstr "余额"
+
+msgid "deactivate"
+msgstr "暂停"
+
+msgid "reactivate"
+msgstr "激活"
+
 msgid "Paid"
 msgstr "付款"
 
@@ -792,4 +792,11 @@ msgstr "期间"
 
 #~ msgid "Error while sending reminder email"
 #~ msgstr "发送提醒邮件时出错"
+
+#~ msgid ""
+#~ "This access code will be sent to"
+#~ " your friends. It is stored as-"
+#~ "is by the server, so don\\'t reuse"
+#~ " a personal password!"
+#~ msgstr "进入码已发送给朋友，会被保存在服务器，不要重复使用私人密码!"
 
