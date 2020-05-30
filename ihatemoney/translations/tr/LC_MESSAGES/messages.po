@@ -458,7 +458,7 @@ msgid "Added on %(date)s"
 msgstr "%(date)s tarihinde eklendi"
 
 msgid "each"
-msgstr ""
+msgstr "her biri"
 
 msgid "No bills"
 msgstr "Fatura yok"
