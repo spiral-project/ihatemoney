@@ -285,7 +285,7 @@ msgstr ""
 msgid "delete"
 msgstr ""
 
-msgid "see"
+msgid "show"
 msgstr ""
 
 msgid "The Dashboard is currently deactivated."

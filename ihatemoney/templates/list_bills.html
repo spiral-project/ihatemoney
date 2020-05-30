@@ -133,7 +133,7 @@
                     <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">{{ _('edit') }}</a>
                     <a class="delete" href="{{ url_for(".delete_bill", bill_id=bill.id) }}" title="{{ _("delete") }}">{{ _('delete') }}</a>
                     {% if bill.external_link %}
-                    <a class="see" href="{{ bill.external_link }}" ref="noopener" target="_blank" title="{{ _("see") }}">{{ _('see') }} </a>
+                    <a class="show" href="{{ bill.external_link }}" ref="noopener" target="_blank" title="{{ _("show") }}">{{ _('show') }} </a>
                     {% endif %}
                 </td>
         </tr>

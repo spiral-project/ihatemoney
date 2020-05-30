@@ -315,7 +315,7 @@ footer .footer-left {
 
 .bill-actions > .delete,
 .bill-actions > .edit,
-.bill-actions > .see {
+.bill-actions > .show {
   font-size: 0px;
   display: block;
   width: 16px;
@@ -333,8 +333,8 @@ footer .footer-left {
   background: url("../images/edit.png") no-repeat right;
 }
 
-.bill-actions > .see {
-  background: url("../images/see.png") no-repeat right;
+.bill-actions > .show {
+  background: url("../images/show.png") no-repeat right;
 }
 
 #bill_table,
@@ -354,7 +354,7 @@ footer .footer-left {
 
 .project-actions > .delete,
 .project-actions > .edit,
-.project-actions > .see {
+.project-actions > .show {
   font-size: 0px;
   display: block;
   width: 16px;
@@ -372,8 +372,8 @@ footer .footer-left {
   background: url("../images/edit.png") no-repeat right;
 }
 
-.project-actions > .see {
-  background: url("../images/see.png") no-repeat right;
+.project-actions > .show {
+  background: url("../images/show.png") no-repeat right;
 }
 
 .history_icon > .delete,
