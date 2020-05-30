@@ -3,9 +3,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-21 22:28+0200\n"
-"PO-Revision-Date: 2019-12-08 16:26+0000\n"
-"Last-Translator: Tymofij Lytvynenko <till.svit@gmail.com>\n"
+"POT-Creation-Date: 2020-05-30 17:29+0200\n"
+"PO-Revision-Date: 2020-05-21 18:48+0000\n"
+"Last-Translator: Andrew Zaplitnyak <zaplitnyak@gmail.com>\n"
 "Language: uk\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/i-hate-"
 "money/i-hate-money/uk/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
-msgstr ""
+msgstr "Не вірна сума чи вираз. Приймаються тільки числа та оператори + - * /."
 
 msgid "Project name"
 msgstr "Назва проєкту"
@@ -41,6 +41,8 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
+"Проєкт з таким ідентифікатором (\"%(project)s\") вже існує. Будь ласка "
+"оберіть новий ідентифікатор"
 
 msgid "Get in"
 msgstr "Отримати в"
@@ -79,61 +81,61 @@ msgid "Amount paid"
 msgstr "Виплачувана сума"
 
 msgid "For whom?"
-msgstr ""
+msgstr "Для кого?"
 
 msgid "Submit"
-msgstr ""
+msgstr "Підтвердити"
 
 msgid "Submit and add a new one"
-msgstr ""
+msgstr "Підтвердити та додати ще один"
 
 msgid "Bills can't be null"
-msgstr ""
+msgstr "Рахунки не можуть бути порожніми"
 
 msgid "Name"
-msgstr ""
+msgstr "Назва"
 
 msgid "Weights should be positive"
-msgstr ""
+msgstr "Вага має бути додатною"
 
 msgid "Weight"
-msgstr ""
+msgstr "Вага"
 
 msgid "Add"
-msgstr ""
+msgstr "Додати"
 
 msgid "User name incorrect"
-msgstr ""
+msgstr "Не вірне ім'я користувача"
 
 msgid "This project already have this member"
-msgstr ""
+msgstr "У цьому проєкті вже є такий учасник"
 
 msgid "People to notify"
-msgstr ""
+msgstr "Люди, яких треба сповістити"
 
 msgid "Send invites"
-msgstr ""
+msgstr "Відправити запрошення"
 
 #, python-format
 msgid "The email %(email)s is not valid"
-msgstr ""
+msgstr "Поштові скриньки %(email)s не дійсні"
 
 msgid "Too many failed login attempts, please retry later."
-msgstr ""
+msgstr "Забагато невдалих спроб увійти, будь ласка спробуйте пізніше."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
-msgstr ""
+msgstr "Цей пароль адміністратора не вірний. Залишилося тільки %(num)d спроб."
 
 msgid "You either provided a bad token or no project identifier."
-msgstr ""
+msgstr "Або Ви надали неналежний токен, або не вказаний ідентифікатор проєкту."
 
 msgid "This private code is not the right one"
-msgstr ""
+msgstr "Цей приватний код не підходить"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
+msgstr "Ви щойно створили '%(project)s', щоб поділитися витратами"
 
 msgid "A reminder email has just been sent to you"
 msgstr ""
@@ -145,7 +147,7 @@ msgstr ""
 
 #, python-format
 msgid "The project identifier is %(project)s"
-msgstr ""
+msgstr "Ідентифікатор проєкту %(project)s"
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
@@ -154,26 +156,26 @@ msgid ""
 msgstr ""
 
 msgid "No token provided"
-msgstr ""
+msgstr "Не надано токен"
 
 msgid "Invalid token"
-msgstr ""
+msgstr "Недійсний токен"
 
 msgid "Unknown project"
-msgstr ""
+msgstr "Невідомий проєкт"
 
 msgid "Password successfully reset."
-msgstr ""
+msgstr "Пароль з успіхом відновлено."
 
 msgid "Project successfully deleted"
-msgstr ""
+msgstr "Проєкт з успіхом видалено"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
-msgstr ""
+msgstr "Вас запросили поділитися своїми витратами у %(project)s"
 
 msgid "Your invitations have been sent"
-msgstr ""
+msgstr "Ваші запрошення відправленні"
 
 msgid ""
 "Sorry, there was an error while trying to send the invitation emails. "
@@ -183,11 +185,11 @@ msgstr ""
 
 #, python-format
 msgid "%(member)s has been added"
-msgstr ""
+msgstr "%(member)s додано"
 
 #, python-format
 msgid "%(name)s is part of this project again"
-msgstr ""
+msgstr "%(name)s знову частина цього проекту"
 
 #, python-format
 msgid ""
@@ -197,7 +199,7 @@ msgstr ""
 
 #, python-format
 msgid "User '%(name)s' has been removed"
-msgstr ""
+msgstr "Користвача '%(name)s' видалено"
 
 #, python-format
 msgid "User '%(name)s' has been edited"
@@ -237,7 +239,7 @@ msgid "Create a new project"
 msgstr ""
 
 msgid "Project"
-msgstr ""
+msgstr "Проєкт"
 
 msgid "Number of members"
 msgstr ""

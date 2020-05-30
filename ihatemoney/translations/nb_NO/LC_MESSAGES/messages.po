@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-21 22:28+0200\n"
-"PO-Revision-Date: 2019-11-12 09:04+0000\n"
+"POT-Creation-Date: 2020-05-30 17:29+0200\n"
+"PO-Revision-Date: 2020-05-25 20:41+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language: nb_NO\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/i"
@@ -143,7 +143,7 @@ msgid "You have just created '%(project)s' to share your expenses"
 msgstr "Du har akkurat opprettet \"%(project)s\" for å dele dine utgifter"
 
 msgid "A reminder email has just been sent to you"
-msgstr ""
+msgstr "En påminnelse har blitt sendt til deg per e-post"
 
 msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
@@ -152,7 +152,7 @@ msgstr ""
 
 #, python-format
 msgid "The project identifier is %(project)s"
-msgstr ""
+msgstr "Prosjektidentifikatoren er"
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
@@ -467,7 +467,7 @@ msgid "Added on %(date)s"
 msgstr "Lagt til %(date)s"
 
 msgid "each"
-msgstr "hver"
+msgstr ""
 
 msgid "No bills"
 msgstr "Ingen regninger"

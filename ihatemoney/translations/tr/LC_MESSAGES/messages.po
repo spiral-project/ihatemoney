@@ -3,9 +3,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-21 22:28+0200\n"
-"PO-Revision-Date: 2019-08-07 13:24+0000\n"
-"Last-Translator: Mesut Akcan <makcan@gmail.com>\n"
+"POT-Creation-Date: 2020-05-30 17:29+0200\n"
+"PO-Revision-Date: 2020-05-28 05:41+0000\n"
+"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language: tr\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-"
 "money/i-hate-money/tr/>\n"
@@ -88,418 +88,438 @@ msgid "Submit"
 msgstr "Gönder"
 
 msgid "Submit and add a new one"
-msgstr ""
+msgstr "Gönder ve yeni bir tane ekle"
 
 msgid "Bills can't be null"
-msgstr ""
+msgstr "Faturalar boş olamaz"
 
 msgid "Name"
-msgstr ""
+msgstr "İsim"
 
 msgid "Weights should be positive"
-msgstr ""
+msgstr "Ağırlıklar pozitif olmalıdır"
 
 msgid "Weight"
-msgstr ""
+msgstr "Ağırlık"
 
 msgid "Add"
-msgstr ""
+msgstr "Ekle"
 
 msgid "User name incorrect"
-msgstr ""
+msgstr "Kullanıcı adı yanlış"
 
 msgid "This project already have this member"
-msgstr ""
+msgstr "Bu proje zaten bu üyeye sahip"
 
 msgid "People to notify"
-msgstr ""
+msgstr "Bildirilecek kişiler"
 
 msgid "Send invites"
-msgstr ""
+msgstr "Davet gönder"
 
 #, python-format
 msgid "The email %(email)s is not valid"
-msgstr ""
+msgstr "%(email)s e-posta adresi geçerli değil"
 
 msgid "Too many failed login attempts, please retry later."
 msgstr ""
+"Çok fazla başarısız oturum açma denemesi, lütfen daha sonra tekrar "
+"deneyin."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
-msgstr ""
+msgstr "Bu yönetici parolası doğru değil. Sadece %(num)d tane deneme kaldı."
 
 msgid "You either provided a bad token or no project identifier."
-msgstr ""
+msgstr "Yanlış bir belirteç sağladınız veya proje tanımlayıcısı belirtmediniz."
 
 msgid "This private code is not the right one"
-msgstr ""
+msgstr "Bu özel kod doğru değil"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
+msgstr "Giderlerinizi paylaşmak için '%(project)s' oluşturdunuz"
 
 msgid "A reminder email has just been sent to you"
-msgstr ""
+msgstr "Size bir hatırlatma e-postası gönderildi"
 
 msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
+"Size bir hatırlatma e-postası göndermeye çalıştık, ancak bir hata oluştu."
+" Projeyi yine de normal şekilde kullanabilirsiniz."
 
 #, python-format
 msgid "The project identifier is %(project)s"
-msgstr ""
+msgstr "Proje tanımlayıcısı %(project)s"
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
 "instructions. Please check the email configuration of the server or "
 "contact the administrator."
 msgstr ""
+"Maalesef, parola sıfırlama talimatlarını içeren e-posta gönderilirken bir"
+" hata oluştu. Lütfen sunucunun e-posta yapılandırmasına göz atın veya "
+"yöneticiye başvurun."
 
 msgid "No token provided"
-msgstr ""
+msgstr "Belirteç sağlanmadı"
 
 msgid "Invalid token"
-msgstr ""
+msgstr "Geçersiz belirteç"
 
 msgid "Unknown project"
-msgstr ""
+msgstr "Bilinmeyen proje"
 
 msgid "Password successfully reset."
-msgstr ""
+msgstr "Parola başarıyla sıfırlandı."
 
 msgid "Project successfully deleted"
-msgstr ""
+msgstr "Proje başarıyla silindi"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
-msgstr ""
+msgstr "%(project)s için giderlerinizi paylaşmaya davet edildiniz"
 
 msgid "Your invitations have been sent"
-msgstr ""
+msgstr "Davetleriniz gönderildi"
 
 msgid ""
 "Sorry, there was an error while trying to send the invitation emails. "
 "Please check the email configuration of the server or contact the "
 "administrator."
 msgstr ""
+"Maalesef davet e-postalarını göndermeye çalışırken bir hata oluştu. "
+"Lütfen sunucunun e-posta yapılandırmasına göz atın veya yöneticiye "
+"başvurun."
 
 #, python-format
 msgid "%(member)s has been added"
-msgstr ""
+msgstr "%(member)s eklendi"
 
 #, python-format
 msgid "%(name)s is part of this project again"
-msgstr ""
+msgstr "%(name)s yine bu projenin bir parçası"
 
 #, python-format
 msgid ""
 "User '%(name)s' has been deactivated. It will still appear in the users "
 "list until its balance becomes zero."
 msgstr ""
+"'%(name)s' kullanıcısı devre dışı bırakıldı. Bakiyesi sıfır oluncaya "
+"kadar kullanıcılar listesinde görünmeye devam edecektir."
 
 #, python-format
 msgid "User '%(name)s' has been removed"
-msgstr ""
+msgstr "'%(name)s' kullanıcısı kaldırıldı"
 
 #, python-format
 msgid "User '%(name)s' has been edited"
-msgstr ""
+msgstr "'%(name)s' kullanıcısı düzenlendi"
 
 msgid "The bill has been added"
-msgstr ""
+msgstr "Fatura eklendi"
 
 msgid "The bill has been deleted"
-msgstr ""
+msgstr "Fatura silindi"
 
 msgid "The bill has been modified"
-msgstr ""
+msgstr "Fatura değiştirildi"
 
 msgid "Sorry, we were unable to find the page you've asked for."
-msgstr ""
+msgstr "Maalesef, istediğiniz sayfayı bulamadık."
 
 msgid "The best thing to do is probably to get back to the main page."
-msgstr ""
+msgstr "Yapılacak en iyi şey muhtemelen ana sayfaya geri dönmektir."
 
 msgid "Back to the list"
-msgstr ""
+msgstr "Listeye geri dön"
 
 msgid "Administration tasks are currently disabled."
-msgstr ""
+msgstr "Yönetim görevleri şu anda devre dışı."
 
 msgid "The project you are trying to access do not exist, do you want to"
-msgstr ""
+msgstr "Erişmeye çalıştığınız proje mevcut değil, ister misiniz"
 
 msgid "create it"
-msgstr ""
+msgstr "onu oluşturmak"
 
 msgid "?"
-msgstr ""
+msgstr "?"
 
 msgid "Create a new project"
-msgstr ""
+msgstr "Yeni bir proje oluştur"
 
 msgid "Project"
-msgstr ""
+msgstr "Proje"
 
 msgid "Number of members"
-msgstr ""
+msgstr "Üye sayısı"
 
 msgid "Number of bills"
-msgstr ""
+msgstr "Fatura sayısı"
 
 msgid "Newest bill"
-msgstr ""
+msgstr "En yeni fatura"
 
 msgid "Oldest bill"
-msgstr ""
+msgstr "En eski fatura"
 
 msgid "Actions"
-msgstr ""
+msgstr "Eylemler"
 
 msgid "edit"
-msgstr ""
+msgstr "düzenle"
 
 msgid "delete"
-msgstr ""
+msgstr "sil"
 
 msgid "The Dashboard is currently deactivated."
-msgstr ""
+msgstr "Gösterge paneli şu anda devre dışı."
 
 msgid "you sure?"
-msgstr ""
+msgstr "emin misiniz?"
 
 msgid "Edit project"
-msgstr ""
+msgstr "Projeyi düzenle"
 
 msgid "Download project's data"
-msgstr ""
+msgstr "Proje verilerini indir"
 
 msgid "Bill items"
-msgstr ""
+msgstr "Fatura ögeleri"
 
 msgid "Download the list of bills with owner, amount, reason,... "
-msgstr ""
+msgstr "Sahibi, tutarı, nedeni,... ile birlikte fatura listesini indir "
 
 msgid "Settle plans"
-msgstr ""
+msgstr "Planları öde"
 
 msgid "Download the list of transactions needed to settle the current bills."
-msgstr ""
+msgstr "Geçerli faturaların ödenmesi için gereken işlemlerin listesini indir."
 
 msgid "Can't remember the password?"
-msgstr ""
+msgstr "Parolayı hatırlayamıyor musunuz?"
 
 msgid "Cancel"
-msgstr ""
+msgstr "İptal"
 
 msgid "Edit the project"
-msgstr ""
+msgstr "Projeyi düzenle"
 
 msgid "Edit this bill"
-msgstr ""
+msgstr "Bu faturayı düzenle"
 
 msgid "Add a bill"
-msgstr ""
+msgstr "Bir fatura ekle"
 
 msgid "Select all"
-msgstr ""
+msgstr "Hepsini seç"
 
 msgid "Select none"
-msgstr ""
+msgstr "Hiçbirini seçme"
 
 msgid "Add participant"
-msgstr ""
+msgstr "Katılımcı ekle"
 
 msgid "Edit this member"
-msgstr ""
+msgstr "Bu üyeyi düzenle"
 
 msgid "john.doe@example.com, mary.moe@site.com"
-msgstr ""
+msgstr "john.doe@example.com, mary.moe@site.com"
 
 msgid "Send the invitations"
-msgstr ""
+msgstr "Davetleri gönder"
 
 msgid "Download"
-msgstr ""
+msgstr "İndir"
 
 msgid "Manage your shared <br />expenses, easily"
-msgstr ""
+msgstr "Paylaşılan giderlerinizi <br />kolayca yönetin"
 
 msgid "Try out the demo"
-msgstr ""
+msgstr "Tanıtım sürümünü deneyin"
 
 msgid "You're sharing a house?"
-msgstr ""
+msgstr "Bir evi mi paylaşıyorsunuz?"
 
 msgid "Going on holidays with friends?"
-msgstr ""
+msgstr "Arkadaşlarınızla tatile mi çıkıyorsunuz?"
 
 msgid "Simply sharing money with others?"
-msgstr ""
+msgstr "Sadece başkalarıyla para mı paylaşıyorsunuz?"
 
 msgid "We can help!"
-msgstr ""
+msgstr "Yardımcı olabiliriz!"
 
 msgid "Log in to an existing project"
-msgstr ""
+msgstr "Var olan bir projede oturum aç"
 
 msgid "Log in"
-msgstr ""
+msgstr "Oturum aç"
 
 msgid "can't remember your password?"
-msgstr ""
+msgstr "parolanızı hatırlayamıyor musunuz?"
 
 msgid "Create"
-msgstr ""
+msgstr "Oluştur"
 
 msgid ""
 "This access code will be sent to your friends. It is stored as-is by the "
 "server, so don\\'t reuse a personal password!"
 msgstr ""
+"Bu erişim kodu arkadaşlarınıza gönderilecek. Sunucu tarafından olduğu "
+"gibi saklanmaktadır, bu yüzden kişisel bir parolayı tekrar kullanmayın!"
 
 msgid "Account manager"
-msgstr ""
+msgstr "Hesap yöneticisi"
 
 msgid "Bills"
-msgstr ""
+msgstr "Faturalar"
 
 msgid "Settle"
-msgstr ""
+msgstr "Öde"
 
 msgid "Statistics"
-msgstr ""
+msgstr "İstatistikler"
 
 msgid "Settings"
-msgstr ""
+msgstr "Ayarlar"
 
 msgid "Languages"
-msgstr ""
+msgstr "Diller"
 
 msgid "Projects"
-msgstr ""
+msgstr "Projeler"
 
 msgid "Start a new project"
-msgstr ""
+msgstr "Yeni bir proje başlat"
 
 msgid "Other projects :"
-msgstr ""
+msgstr "Diğer projeler:"
 
 msgid "switch to"
-msgstr ""
+msgstr "geçiş yap"
 
 msgid "Dashboard"
-msgstr ""
+msgstr "Gösterge Paneli"
 
 msgid "Logout"
-msgstr ""
+msgstr "Oturumu kapat"
 
 msgid "Code"
-msgstr ""
+msgstr "Kod"
 
 msgid "Mobile Application"
-msgstr ""
+msgstr "Telefon Uygulaması"
 
 msgid "Documentation"
-msgstr ""
+msgstr "Belgelendirme"
 
 msgid "Administation Dashboard"
-msgstr ""
+msgstr "Yönetici Gösterge Paneli"
 
 msgid "\"I hate money\" is a free software"
-msgstr ""
+msgstr "\"I hate money\" özgür bir yazılımdır"
 
 msgid "you can contribute and improve it!"
-msgstr ""
+msgstr "katkıda bulunabilir ve geliştirebilirsiniz!"
 
 msgid "deactivate"
-msgstr ""
+msgstr "devre dışı bırak"
 
 msgid "reactivate"
-msgstr ""
+msgstr "yeniden etkinleştir"
 
 msgid "Invite people"
-msgstr ""
+msgstr "İnsanları davet et"
 
 msgid "You should start by adding participants"
-msgstr ""
+msgstr "Katılımcıları ekleyerek başlamalısınız"
 
 msgid "Add a new bill"
-msgstr ""
+msgstr "Yeni bir fatura ekle"
 
 msgid "When?"
-msgstr ""
+msgstr "Ne zaman?"
 
 msgid "Who paid?"
-msgstr ""
+msgstr "Kim ödedi?"
 
 msgid "For what?"
-msgstr ""
+msgstr "Ne için?"
 
 msgid "How much?"
-msgstr ""
+msgstr "Ne kadar?"
 
 #, python-format
 msgid "Added on %(date)s"
-msgstr ""
+msgstr "%(date)s tarihinde eklendi"
 
 msgid "each"
 msgstr ""
 
 msgid "No bills"
-msgstr ""
+msgstr "Fatura yok"
 
 msgid "Nothing to list yet."
-msgstr ""
+msgstr "Henüz listelenecek bir şey yok."
 
 msgid "You probably want to"
-msgstr ""
+msgstr "Muhtemelen istediğiniz"
 
 msgid "add a bill"
-msgstr ""
+msgstr "bir fatura ekle"
 
 msgid "add participants"
-msgstr ""
+msgstr "katılımcılar ekle"
 
 msgid "Password reminder"
-msgstr ""
+msgstr "Parola hatırlatıcı"
 
 msgid ""
 "A link to reset your password has been sent to you, please check your "
 "emails."
 msgstr ""
+"Size parolanızı sıfırlamak için bir bağlantı gönderildi, lütfen "
+"e-postalarınıza bakın."
 
 msgid "Return to home page"
-msgstr ""
+msgstr "Ana sayfaya dön"
 
 msgid "Your projects"
-msgstr ""
+msgstr "Projeleriniz"
 
 msgid "Reset your password"
-msgstr ""
+msgstr "Parolanızı sıfırlayın"
 
 msgid "Invite people to join this project"
-msgstr ""
+msgstr "İnsanları bu projeye katılmaya davet et"
 
 msgid "Share Identifier & code"
-msgstr ""
+msgstr "Tanımlayıcıyı ve Kodu Paylaş"
 
 msgid ""
 "You can share the project identifier and the private code by any "
 "communication means."
 msgstr ""
+"Proje tanımlayıcısını ve özel kodu herhangi bir iletişim aracıyla "
+"paylaşabilirsiniz."
 
 msgid "Identifier:"
-msgstr ""
+msgstr "Tanımlayıcı:"
 
 msgid "Share the Link"
-msgstr ""
+msgstr "Bağlantıyı Paylaş"
 
 msgid "You can directly share the following link via your prefered medium"
 msgstr ""
+"Aşağıdaki bağlantıyı tercih ettiğiniz ortam aracılığıyla doğrudan "
+"paylaşabilirsiniz"
 
 msgid "Send via Emails"
-msgstr ""
+msgstr "E-posta ile Gönder"
 
 msgid ""
 "Specify a (comma separated) list of email adresses you want to notify "
@@ -507,22 +527,26 @@ msgid ""
 "                creation of this budget management project and we will "
 "send them an email for you."
 msgstr ""
+"Bu bütçe yönetimi projesinin oluşturulması hakkında bildirimde bulunmak "
+"istediğiniz e-posta \n"
+"                adreslerinin (virgülle ayrılmış) bir listesini belirtin, "
+"biz de sizin için onlara bir e-posta gönderelim."
 
 msgid "Who pays?"
-msgstr ""
+msgstr "Kim ödüyor?"
 
 msgid "To whom?"
-msgstr ""
+msgstr "Kime?"
 
 msgid "Who?"
-msgstr ""
+msgstr "Kim?"
 
 msgid "Paid"
-msgstr ""
+msgstr "Ödendi"
 
 msgid "Spent"
-msgstr ""
+msgstr "Harcandı"
 
 msgid "Balance"
-msgstr ""
+msgstr "Bakiye"
 
