@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-30 14:26+0200\n"
+"POT-Creation-Date: 2020-05-30 21:50+0200\n"
 "PO-Revision-Date: 2019-11-16 10:04+0000\n"
 "Last-Translator: Muhammad Fauzi <fauzi.padlaw@gmail.com>\n"
 "Language: id\n"
@@ -446,12 +446,6 @@ msgstr ""
 msgid "owers list"
 msgstr ""
 
-msgid "Who?"
-msgstr "Siapa?"
-
-msgid "Balance"
-msgstr "Saldo"
-
 #, python-format
 msgid ""
 "\n"
@@ -586,11 +580,9 @@ msgid "Create"
 msgstr "Buat"
 
 msgid ""
-"This access code will be sent to your friends. It is stored as-is by the "
-"server, so don\\'t reuse a personal password!"
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
 msgstr ""
-"Kode akses ini akan dikirimkan ke teman Anda. Kode ini disimpan dalam "
-"bentuk teks biasa dalam server, jadi jangan gunakan password Anda!"
 
 msgid "Account manager"
 msgstr "Pengatur akun"
@@ -652,12 +644,6 @@ msgstr "kamu bisa berkontribusi dan meningkatkannya!"
 #, python-format
 msgid "%(amount)s each"
 msgstr ""
-
-msgid "deactivate"
-msgstr "nonaktifkan"
-
-msgid "reactivate"
-msgstr "aktivasi ulang"
 
 msgid "Invite people"
 msgstr "Undang orang"
@@ -775,6 +761,18 @@ msgstr "Siapa membayar?"
 msgid "To whom?"
 msgstr "Kepada siapa?"
 
+msgid "Who?"
+msgstr "Siapa?"
+
+msgid "Balance"
+msgstr "Saldo"
+
+msgid "deactivate"
+msgstr "nonaktifkan"
+
+msgid "reactivate"
+msgstr "aktivasi ulang"
+
 msgid "Paid"
 msgstr "Dibayar"
 
@@ -804,4 +802,15 @@ msgstr ""
 
 #~ msgid "Error while sending reminder email"
 #~ msgstr ""
+
+#~ msgid ""
+#~ "This access code will be sent to"
+#~ " your friends. It is stored as-"
+#~ "is by the server, so don\\'t reuse"
+#~ " a personal password!"
+#~ msgstr ""
+#~ "Kode akses ini akan dikirimkan ke "
+#~ "teman Anda. Kode ini disimpan dalam "
+#~ "bentuk teks biasa dalam server, jadi "
+#~ "jangan gunakan password Anda!"
 

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-30 14:26+0200\n"
+"POT-Creation-Date: 2020-05-30 21:50+0200\n"
 "PO-Revision-Date: 2020-05-13 15:41+0000\n"
 "Last-Translator: Szylu <chipolade@gmail.com>\n"
 "Language: pl\n"
@@ -455,12 +455,6 @@ msgstr "i"
 msgid "owers list"
 msgstr "lista dłużników"
 
-msgid "Who?"
-msgstr "Kto?"
-
-msgid "Balance"
-msgstr "Saldo"
-
 #, python-format
 msgid ""
 "\n"
@@ -609,12 +603,9 @@ msgid "Create"
 msgstr "Stwórz"
 
 msgid ""
-"This access code will be sent to your friends. It is stored as-is by the "
-"server, so don\\'t reuse a personal password!"
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
 msgstr ""
-"Ten kod dostępu zostanie wysłany do znajomych. Jest przechowywany w "
-"stanie niezmienionym przez serwer, więc nie używaj ponownie osobistego "
-"hasła!"
 
 msgid "Account manager"
 msgstr "Menadżer konta"
@@ -676,12 +667,6 @@ msgstr "możesz przyczynić się i je ulepszyć!"
 #, python-format
 msgid "%(amount)s each"
 msgstr "%(amount)s każdy"
-
-msgid "deactivate"
-msgstr "dezaktywuj"
-
-msgid "reactivate"
-msgstr "reaktywuj"
 
 msgid "Invite people"
 msgstr "Zaproś ludzi"
@@ -799,6 +784,18 @@ msgstr "Kto płaci?"
 msgid "To whom?"
 msgstr "Komu?"
 
+msgid "Who?"
+msgstr "Kto?"
+
+msgid "Balance"
+msgstr "Saldo"
+
+msgid "deactivate"
+msgstr "dezaktywuj"
+
+msgid "reactivate"
+msgstr "reaktywuj"
+
 msgid "Paid"
 msgstr "Zapłacone"
 
@@ -819,4 +816,15 @@ msgstr "Okres"
 
 #~ msgid "Error while sending reminder email"
 #~ msgstr "Błąd podczas wysyłania wiadomości e-mail z przypomnieniem"
+
+#~ msgid ""
+#~ "This access code will be sent to"
+#~ " your friends. It is stored as-"
+#~ "is by the server, so don\\'t reuse"
+#~ " a personal password!"
+#~ msgstr ""
+#~ "Ten kod dostępu zostanie wysłany do "
+#~ "znajomych. Jest przechowywany w stanie "
+#~ "niezmienionym przez serwer, więc nie "
+#~ "używaj ponownie osobistego hasła!"
 
