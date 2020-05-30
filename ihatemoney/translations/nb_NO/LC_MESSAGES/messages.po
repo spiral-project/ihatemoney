@@ -192,7 +192,7 @@ msgstr ""
 
 #, python-format
 msgid "The project identifier is %(project)s"
-msgstr "Prosjektidentifikatoren er"
+msgstr "Prosjektidentifikatoren er %(project)s"
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
