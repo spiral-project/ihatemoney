@@ -15,9 +15,8 @@ from flask import (
     session, url_for, send_file, send_from_directory
 )
 from flask_mail import Message
-from flask_babel import get_locale, gettext as _
+from flask_babel import gettext as _
 from werkzeug.security import check_password_hash, generate_password_hash
-from smtplib import SMTPRecipientsRefused
 from werkzeug.exceptions import NotFound
 from sqlalchemy import orm
 from functools import wraps
@@ -27,7 +26,10 @@ from ihatemoney.forms import (
     AdminAuthenticationForm, AuthenticationForm, EditProjectForm,
     InviteForm, MemberForm, PasswordReminder, ResetPasswordForm, ProjectForm, get_billform_for
 )
-from ihatemoney.utils import Redirect303, list_of_dicts2json, list_of_dicts2csv, LoginThrottler, render_localized_template, send_email
+from ihatemoney.utils import (
+    Redirect303, list_of_dicts2json, list_of_dicts2csv, LoginThrottler,
+    render_localized_template, send_email
+)
 
 main = Blueprint("main", __name__)
 
