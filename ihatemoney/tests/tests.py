@@ -14,7 +14,6 @@ import os
 import json
 from collections import defaultdict
 import six
-import re
 import smtplib
 import socket
 from time import sleep
