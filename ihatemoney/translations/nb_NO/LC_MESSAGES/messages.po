@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-30 21:50+0200\n"
-"PO-Revision-Date: 2020-06-01 16:41+0000\n"
+"PO-Revision-Date: 2020-06-05 02:41+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "i-hate-money/i-hate-money/nb_NO/>\n"
@@ -458,7 +458,7 @@ msgid "and"
 msgstr ""
 
 msgid "owers list"
-msgstr ""
+msgstr "eierliste"
 
 #, python-format
 msgid ""
@@ -485,13 +485,13 @@ msgid ""
 msgstr ""
 
 msgid "Delete stored IP addresses"
-msgstr ""
+msgstr "Slett lagrede IP-adresser"
 
 msgid "No history to erase"
-msgstr ""
+msgstr "Ingen historikk å slette"
 
 msgid "Clear Project History"
-msgstr ""
+msgstr "Tøm prosjekthistorikk"
 
 msgid "No IP Addresses to erase"
 msgstr ""
@@ -521,13 +521,13 @@ msgid "Project private code changed"
 msgstr ""
 
 msgid "Project renamed to"
-msgstr ""
+msgstr "Prosjektnavn endret til"
 
 msgid "Project contact email changed to"
 msgstr ""
 
 msgid "Project settings modified"
-msgstr ""
+msgstr "Prosjektinnstillinger endret"
 
 msgid "deactivated"
 msgstr ""
