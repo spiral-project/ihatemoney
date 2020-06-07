@@ -359,11 +359,9 @@ msgid "Create"
 msgstr "Создать"
 
 msgid ""
-"This access code will be sent to your friends. It is stored as-is by the "
-"server, so don\\'t reuse a personal password!"
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
 msgstr ""
-"Этот код доступа будет отправлен вашим друзьям. Он хранится на сервере "
-"как есть, поэтому не используйте личный пароль!"
 
 msgid "Account manager"
 msgstr "Менеджер аккаунтов"

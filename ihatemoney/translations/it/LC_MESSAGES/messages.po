@@ -370,11 +370,9 @@ msgid "Create"
 msgstr "Crea"
 
 msgid ""
-"This access code will be sent to your friends. It is stored as-is by the "
-"server, so don\\'t reuse a personal password!"
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
 msgstr ""
-"Questo codice di accesso sarà inviato ai tuoi amici. È conservato in "
-"chiaro sul server, quindi non riutilizzarlo come password personale!"
 
 msgid "Account manager"
 msgstr "Gestione account"
