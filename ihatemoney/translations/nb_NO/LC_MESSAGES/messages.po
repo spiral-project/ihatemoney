@@ -370,13 +370,10 @@ msgstr "glemt passordet ditt?"
 msgid "Create"
 msgstr "Opprett"
 
-#, fuzzy
 msgid ""
-"This access code will be sent to your friends. It is stored as-is by the "
-"server, so don\\'t reuse a personal password!"
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
 msgstr ""
-"Denne tilgangskoden vil bli sendt til venne dine. Den lagres som den er "
-"på tjeneren, så ikke gjenbruk et personlig passord."
 
 msgid "Account manager"
 msgstr "Kontobehandler"

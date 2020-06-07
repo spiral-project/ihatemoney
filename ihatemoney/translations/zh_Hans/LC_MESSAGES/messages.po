@@ -351,9 +351,9 @@ msgid "Create"
 msgstr "创建"
 
 msgid ""
-"This access code will be sent to your friends. It is stored as-is by the "
-"server, so don\\'t reuse a personal password!"
-msgstr "进入码已发送给朋友，会被保存在服务器，不要重复使用私人密码!"
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
+msgstr ""
 
 msgid "Account manager"
 msgstr "账户经理"
