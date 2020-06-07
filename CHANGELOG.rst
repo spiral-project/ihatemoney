@@ -3,7 +3,7 @@ Changelog
 
 This document describes changes between each past release.
 
-4.1.4 (unreleased)
+4.1.4 (2020-06-07)
 ==================
 
 This is a bugfix-only release.  It is almost certainly the last release to support Python 2:
