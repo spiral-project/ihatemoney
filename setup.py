@@ -33,7 +33,7 @@ ENTRY_POINTS = {
 
 
 setup(name='ihatemoney',
-      version='4.1.4',
+      version='4.1.5.dev0',
       description='A simple shared budget manager web application.',
       long_description=description,
       license='Custom BSD Beerware',

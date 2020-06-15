@@ -3,6 +3,12 @@ Changelog
 
 This document describes changes between each past release.
 
+4.1.5 (unreleased)
+==================
+
+- Nothing changed yet.
+
+
 4.1.4 (2020-06-07)
 ==================
 
