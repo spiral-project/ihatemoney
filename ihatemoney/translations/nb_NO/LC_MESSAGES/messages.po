@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-30 21:50+0200\n"
-"PO-Revision-Date: 2020-06-05 02:41+0000\n"
+"PO-Revision-Date: 2020-06-18 10:41+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "i-hate-money/i-hate-money/nb_NO/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.1-dev\n"
+"X-Generator: Weblate 4.1.1-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 msgid ""
@@ -117,7 +117,7 @@ msgstr "Send inn og legg til ny"
 
 #, python-format
 msgid "Project default: %(currency)s"
-msgstr "Prosjektforvalg:"
+msgstr "Prosjektforvalg: %(currency)s"
 
 msgid "Bills can't be null"
 msgstr "Regninger kan ikke være null"
@@ -546,7 +546,7 @@ msgstr "Beløp"
 
 #, python-format
 msgid "Amount in %(currency)s"
-msgstr "Beløp i"
+msgstr "Beløp i %(currency)s"
 
 msgid "modified"
 msgstr ""
