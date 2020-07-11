@@ -13,6 +13,7 @@ SUPPORTED_LANGUAGES = [
     "en",
     "es_419",
     "fr",
+    "hi",
     "id",
     "nb_NO",
     "nl",
