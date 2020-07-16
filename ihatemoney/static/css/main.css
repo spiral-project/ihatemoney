@@ -162,7 +162,7 @@ body {
   margin-bottom: 20px;
   margin-left: 25px;
 }
-@media (max-width: 400px) {
+@media (max-width: 450px) {
   .home .card {
     min-width: unset;
   }
