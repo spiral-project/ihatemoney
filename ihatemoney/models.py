@@ -380,7 +380,7 @@ class Person(db.Model):
         def get_by_name(self, name, project):
             return (
                 Person.query.filter(Person.name == name)
-                .filter(Project.id == project.id)
+                .filter(Person.project_id == project.id)
                 .one()
             )
 
@@ -389,7 +389,7 @@ class Person(db.Model):
                 project = g.project
             return (
                 Person.query.filter(Person.id == id)
-                .filter(Project.id == project.id)
+                .filter(Person.project_id == project.id)
                 .one()
             )
 
