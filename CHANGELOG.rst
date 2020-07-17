@@ -25,6 +25,7 @@ Added
 - Add sorting, pagination, and searching to the admin dashboard (#538)
 - Add Project History page that records all changes (#553)
 - Add token-based authentication to the API (#504)
+- Add translations for Hindi, Portuguese (Brazil), Tamil
 
 Changed
 -------
