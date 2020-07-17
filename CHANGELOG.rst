@@ -3,13 +3,42 @@ Changelog
 
 This document describes changes between each past release.
 
-4.2 (unreleased)
-================
+5.0.0 (unreleased)
+==================
 
-- Add support for espanol latino america (es_419)
 - Use the external debts lib to solve settlements (#476)
 - Remove balance column in statistics view (#323)
-- Remove requirements files in favor of setup.cfg pinning (#558)
+
+4.1.4 (2020-06-07)
+==================
+
+This is a bugfix-only release.  It is almost certainly the last release to support Python 2:
+you should upgrade to Python 3!
+
+Fixed
+-----
+
+- Fix failed installation because dependencies were not being pinned (#540, #545, #558)
+- backend: Trim usernames to remove leading or trailing spaces. This avoids a situation where different names can be visually identical (#367)
+- backend: Fix API to forbid project creation when the `ALLOW_PUBLIC_PROJECT_CREATION` setting is set to false (#496)
+- backend: Fix crash when a localized email template is missing (#592)
+- backend: Fix language code parsing (#589)
+- backend: Improve error handling when sending emails (#595)
+- UI: Fix datepicker that was being displayed twice on some browsers (#221)
+- UI: Fix "Submit and add a new one" button that had no effect when adding a bill (#498)
+- UI: Prevent bill cancellation when cancelling autocomplete (#506)
+- UI: Fix responsive width of homepage on small screns (#549)
+- UI: Fix color of the "Add a member" button (#499)
+- UI: Fix missing HTML tag (#583)
+- UI: Fix a small typo in the french project-reminder email (#486)
+- UI: Fix typo on message displayed when adding a member (#575)
+- UI: Fix incorrect tool-tip message about the private code (#623)
+
+Added
+-----
+
+- Add translations for German, Spanish (latin-america), Norwegian (bokmål), Indonesian, Polish, Russian, Chinese, Turkish, Ukrainian
+- Update translations for all languages
 
 4.1.3 (2019-09-18)
 ==================
