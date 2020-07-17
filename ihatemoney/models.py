@@ -218,9 +218,8 @@ class Project(db.Model):
         This method returns the status DELETED or DEACTIVATED regarding the
         changes made.
         """
-        try:
-            person = Person.query.get(member_id, self)
-        except orm.exc.NoResultFound:
+        person = Person.query.get(member_id, self)
+        if person is None:
             return None
         if not person.has_bills():
             db.session.delete(person)
@@ -278,13 +277,13 @@ class Person(db.Model):
 
         def get_by_name(self, name, project):
             return Person.query.filter(Person.name == name)\
-                .filter(Person.project_id == project.id).one()
+                .filter(Person.project_id == project.id).one_or_none()
 
         def get(self, id, project=None):
             if not project:
                 project = g.project
             return Person.query.filter(Person.id == id)\
-                .filter(Person.project_id == project.id).one()
+                .filter(Person.project_id == project.id).one_or_none()
 
     query_class = PersonQuery
 
