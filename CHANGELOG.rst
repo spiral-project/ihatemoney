@@ -83,7 +83,7 @@ Changed
 - Improve usability specially for small screen (#441)
 - Replace export forms by links (#450)
 - Rework homepage design (#445)
-- Docker now downloads IHM from Pypy or the reference git repo (#446)
+- Docker now downloads IHM from PyPI or the reference git repo (#446)
 - Arrange navbar items by functions (#445)
 
 
