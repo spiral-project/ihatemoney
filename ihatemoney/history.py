@@ -14,9 +14,9 @@ def get_history_queries(project):
         BillVersion.query.with_entities(BillVersion.id.label("bill_version_id"))
         .join(Person, BillVersion.payer_id == Person.id)
         .filter(Person.project_id == project.id)
+        .values()
     )
-    sub_query = bill_changes.subquery()
-    bill_changes = BillVersion.query.filter(BillVersion.id.in_(sub_query))
+    bill_changes = BillVersion.query.filter(BillVersion.id.in_(bill_changes))
 
     return person_changes, project_changes, bill_changes
 
