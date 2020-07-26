@@ -6,8 +6,16 @@ This document describes changes between each past release.
 4.1.5 (unreleased)
 ==================
 
-- Nothing changed yet.
+Changed
+-------
 
+- Change mobile icon link (#598)
+- Improve French translation of email templates (#593)
+
+Added
+-----
+
+- Add translations for Portuguese (Brazil), Tamil, Hindi
 
 4.1.4 (2020-06-07)
 ==================
