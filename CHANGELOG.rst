@@ -28,6 +28,8 @@ Added
 - Add Project History page that records all changes (#553)
 - Add token-based authentication to the API (#504)
 - Add translations for Hindi, Portuguese (Brazil), Tamil
+- Integrate illustrations as a showcase (#544)
+- Differenciate "flash alerts" notifications (#594)
 
 Changed
 -------
@@ -35,11 +37,16 @@ Changed
 - Use the external debts lib to solve settlements (#476)
 - Remove balance column in statistics view (#323)
 - Make language choice persistent (#547)
+- compress jpeg with mozjpeg and png with zopfli (#611)
+- Reorganize "Contributing" documentation to be more accessible to new contributors
+- Improve documentation regarding database migrations (#569)
+
 
 Fixed
 -----
 
 - Improve input of email addresses when inviting people to join a project (#133)
+- Fix order of participants in the statistics page (#608)
 
 4.1.5 (2020-07-26)
 ==================
