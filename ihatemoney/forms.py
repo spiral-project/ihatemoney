@@ -312,7 +312,7 @@ class MemberForm(FlaskForm):
             and Person.query.filter(
                 Person.name == field.data,
                 Person.project == form.project,
-                Person.activated == True,
+                Person.activated,
             ).all()
         ):  # NOQA
             raise ValidationError(_("This project already have this member"))
