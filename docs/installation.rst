@@ -21,9 +21,9 @@ Requirements
 
 * **Python**: either 3.6, 3.7 or 3.8 will work.
 * **A Backend**: to choose among MySQL, PostgreSQL, SQLite or Memory.
-* **Virtualenv** (recommended): `virtualenv` package under Debian/Ubuntu.
+* **Virtual environment** (recommended): `python3-venv` package under Debian/Ubuntu.
 
-We recommend to use `virtualenv <https://pypi.python.org/pypi/virtualenv>`_ but
+We recommend to use `virtual environment <https://docs.python.org/3/tutorial/venv.html>`_ but
 it will work without if you prefer.
 
 If wondering about the backend, SQLite is the simplest and will work fine for
@@ -33,16 +33,16 @@ most small to medium setups.
 
 .. _virtualenv-preparation:
 
-Prepare virtualenv (recommended)
-================================
+Prepare virtual environment (recommended)
+=========================================
 
 Choose an installation path, here `/home/john/ihatemoney`.
 
-Create a virtualenv::
+Create a virtual environment::
 
-    virtualenv  -p /usr/bin/python3 /home/john/ihatemoney
+    python3 -m venv /home/john/ihatemoney
 
-Activate the virtualenv::
+Activate the virtual environment::
 
     source /home/john/ihatemoney/bin/activate
 
@@ -74,7 +74,7 @@ Configure database with MySQL/MariaDB (optional)
 
     apt install python3-dev libssl-dev
 
-2. Install PyMySQL (within your virtualenv)::
+2. Install PyMySQL (within your virtual environment)::
 
     pip install 'PyMySQL>=0.9,<0.10'
 
@@ -87,7 +87,7 @@ Configure database with PostgreSQL (optional)
 
 .. note:: Only required if you use Postgresql.
 
-1. Install python driver for PostgreSQL (from within your virtualenv)::
+1. Install python driver for PostgreSQL (from within your virtual environment)::
 
     pip install psycopg2
 
