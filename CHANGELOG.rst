@@ -39,6 +39,30 @@ Fixed
 
 - Improve input of email addresses when inviting people to join a project (#133)
 
+4.1.5 (2020-07-26)
+==================
+
+This release fixes a `serious security issue <https://github.com/spiral-project/ihatemoney/security/advisories/GHSA-67j9-c52g-w2q9>`_.
+
+All users are encouraged to upgrade.
+
+Fixed
+-----
+
+- Fix unauthorized access and modification of project data (CVE-2020-15120) (#663)
+
+Changed
+-------
+
+- Change mobile icon link (#598)
+- Improve French translation of email templates (#593)
+
+Added
+-----
+
+- Add translations for Portuguese (Brazil), Tamil, Hindi
+
+
 4.1.4 (2020-06-07)
 ==================
 
