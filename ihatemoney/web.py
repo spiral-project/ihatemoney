@@ -413,7 +413,6 @@ def edit_project():
 
     # Edit form
     if edit_form.validate_on_submit():
-        old_currency = g.project.default_currency
         project = edit_form.update(g.project)
 
         db.session.add(project)
