@@ -112,7 +112,15 @@ class EditProjectForm(FlaskForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.default_currency.choices = [
-            (currency_name, render_localized_currency(currency_name, detailed=True))
+            (
+                currency_name,
+                render_localized_currency(currency_name, detailed=True)
+                + (
+                    " − " + _("⚠ All bill currencies will be removed")
+                    if currency_name == self.currency_helper.no_currency
+                    else ""
+                ),
+            )
             for currency_name in self.currency_helper.get_currencies()
         ]
 

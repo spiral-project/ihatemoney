@@ -21,6 +21,9 @@ msgstr ""
 msgid "Default Currency"
 msgstr ""
 
+msgid "⚠ All bill currencies will be removed"
+msgstr ""
+
 msgid "Import previously exported JSON file"
 msgstr ""
 

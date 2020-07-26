@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-30 21:50+0200\n"
+"POT-Creation-Date: 2020-07-26 22:04+0200\n"
 "PO-Revision-Date: 2020-05-21 18:48+0000\n"
 "Last-Translator: Andrew Zaplitnyak <zaplitnyak@gmail.com>\n"
 "Language: uk\n"
@@ -38,6 +38,9 @@ msgstr "Слідкувати за мережевою адресою(IP) для �
 
 msgid "Default Currency"
 msgstr "Стандартна валюта"
+
+msgid "⚠ All bill currencies will be removed"
+msgstr ""
 
 msgid "Import previously exported JSON file"
 msgstr "Імпортувати попередньо експортований JSON файл"

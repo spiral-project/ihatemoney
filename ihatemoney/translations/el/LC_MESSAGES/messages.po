@@ -38,6 +38,9 @@ msgstr "Χρήση παρακολούθησης IP για ιστορικό έρ�
 msgid "Default Currency"
 msgstr "Προεπιλεγμένο Νόμισμα"
 
+msgid "⚠ All bill currencies will be removed"
+msgstr ""
+
 msgid "Import previously exported JSON file"
 msgstr "Εισαγωγή αρχείου JSON που έχει εξαχθεί προηγουμένως"
 
