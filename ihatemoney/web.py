@@ -423,7 +423,7 @@ def edit_project():
                     continue
 
                 if project.default_currency == CurrencyConverter.no_currency:
-                    # Use old currency before stripping
+                    # Use old currency to flatten all amount before stripping
                     bill.converted_amount = CurrencyConverter().exchange_currency(
                         bill.amount, bill.original_currency, old_currency
                     )
