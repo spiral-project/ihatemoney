@@ -1,18 +1,19 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-30 19:34+0200\n"
+"POT-Creation-Date: 2020-07-26 18:02+0200\n"
 "PO-Revision-Date: 2020-07-01 18:41+0000\n"
 "Last-Translator: rohitn01 <rohitmen01@gmail.com>\n"
-"Language-Team: Tamil <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/ta/>\n"
 "Language: ta\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/ta/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.2-dev\n"
+"Generated-By: Babel 2.8.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -30,21 +31,6 @@ msgstr "தனியார் குறியீடு"
 msgid "Email"
 msgstr "மின்னஞ்சல்"
 
-msgid "Enable project history"
-msgstr "திட்ட வரலாற்றை இயக்கு"
-
-msgid "Use IP tracking for project history"
-msgstr "திட்ட வரலாற்றுக்கு ஐபி கண்காணிப்பைப் பயன்படுத்தவும்"
-
-msgid "Default Currency"
-msgstr "இயல்புநிலை நாணயம்"
-
-msgid "Import previously exported JSON file"
-msgstr "முன்னர் ஏற்றுமதி செய்யப்பட்ட JSON கோப்பை இறக்குமதி செய்க"
-
-msgid "Import"
-msgstr "இறக்குமதி"
-
 msgid "Project identifier"
 msgstr "திட்ட அடையாளங்காட்டி"
 
@@ -56,8 +42,8 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
-"இந்த அடையாளங்காட்டியுடன் ஒரு திட்டம் (\"%(project)s\") ஏற்கனவே இருக்கிறது. "
-"புதிய அடையாளங்காட்டியைத் தேர்ந்தெடுக்கவும்"
+"இந்த அடையாளங்காட்டியுடன் ஒரு திட்டம் (\"%(project)s\") ஏற்கனவே "
+"இருக்கிறது. புதிய அடையாளங்காட்டியைத் தேர்ந்தெடுக்கவும்"
 
 msgid "Get in"
 msgstr "உள்ளே வா"
@@ -95,15 +81,6 @@ msgstr "செலுத்துவோர்"
 msgid "Amount paid"
 msgstr "பணம் செலுத்தப்பட்டது"
 
-msgid "Currency"
-msgstr "நாணய"
-
-msgid "External link"
-msgstr "வெளிப்புற இணைப்பு"
-
-msgid "A link to an external document, related to this bill"
-msgstr "இந்த மசோதா தொடர்பான வெளிப்புற ஆவணத்திற்கான இணைப்பு"
-
 msgid "For whom?"
 msgstr "யாருக்காக?"
 
@@ -112,10 +89,6 @@ msgstr "சமர்ப்பிக்கவும்"
 
 msgid "Submit and add a new one"
 msgstr "சமர்ப்பித்து புதிய ஒன்றைச் சேர்க்கவும்"
-
-#, python-format
-msgid "Project default: %(currency)s"
-msgstr "திட்ட இயல்புநிலை: %(currency)s"
 
 msgid "Bills can't be null"
 msgstr "பில்கள் பூஜ்யமாக இருக்க முடியாது"
@@ -148,18 +121,6 @@ msgstr "அழைப்புகளை அனுப்பு"
 msgid "The email %(email)s is not valid"
 msgstr "மின்னஞ்சல் %(email)s செல்லுபடியாகாது"
 
-msgid "Participant"
-msgstr "பங்கேற்பாளராக"
-
-msgid "Bill"
-msgstr "ர சி து"
-
-msgid "Project"
-msgstr "திட்டம்"
-
-msgid "No Currency"
-msgstr "நாணயம் இல்லை"
-
 msgid "Too many failed login attempts, please retry later."
 msgstr "உள்நுழைவு முயற்சிகள் பல தோல்வியுற்றன, பின்னர் மீண்டும் முயற்சிக்கவும்."
 
@@ -180,8 +141,8 @@ msgstr "இந்த தனிப்பட்ட குறியீடு சர
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr ""
-"நீங்கள் இப்போது உருவாக்கியுள்ளீர்கள் '%(project)s' உங்கள் செலவுகளை பகிர்ந்து "
-"கொள்ள"
+"நீங்கள் இப்போது உருவாக்கியுள்ளீர்கள் '%(project)s' உங்கள் செலவுகளை "
+"பகிர்ந்து கொள்ள"
 
 msgid "A reminder email has just been sent to you"
 msgstr "ஒரு நினைவூட்டல் மின்னஞ்சல் உங்களுக்கு அனுப்பப்பட்டுள்ளது"
@@ -190,8 +151,8 @@ msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
-"உங்களுக்கு நினைவூட்டல் மின்னஞ்சலை அனுப்ப முயற்சித்தோம், ஆனால் பிழை ஏற்பட்டது"
-". நீங்கள் இன்னும் திட்டத்தை சாதாரணமாக பயன்படுத்தலாம்."
+"உங்களுக்கு நினைவூட்டல் மின்னஞ்சலை அனுப்ப முயற்சித்தோம், ஆனால் பிழை "
+"ஏற்பட்டது. நீங்கள் இன்னும் திட்டத்தை சாதாரணமாக பயன்படுத்தலாம்."
 
 #, python-format
 msgid "The project identifier is %(project)s"
@@ -203,8 +164,8 @@ msgid ""
 "contact the administrator."
 msgstr ""
 "மன்னிக்கவும், கடவுச்சொல் மீட்டமைப்பு வழிமுறைகளுடன் உங்களுக்கு மின்னஞ்சல் "
-"அனுப்பும்போது பிழை ஏற்பட்டது. சேவையகத்தின் மின்னஞ்சல் உள்ளமைவை சரிபார்க்கவும்"
-" அல்லது நிர்வாகியைத் தொடர்பு கொள்ளவும்."
+"அனுப்பும்போது பிழை ஏற்பட்டது. சேவையகத்தின் மின்னஞ்சல் உள்ளமைவை "
+"சரிபார்க்கவும் அல்லது நிர்வாகியைத் தொடர்பு கொள்ளவும்."
 
 msgid "No token provided"
 msgstr "டோக்கன் வழங்கப்படவில்லை"
@@ -217,12 +178,6 @@ msgstr "தெரியாத திட்டம்"
 
 msgid "Password successfully reset."
 msgstr "கடவுச்சொல் வெற்றிகரமாக மீட்டமைக்கப்படுகிறது."
-
-msgid "Project successfully uploaded"
-msgstr "திட்டம் வெற்றிகரமாக பதிவேற்றப்பட்டது"
-
-msgid "Invalid JSON"
-msgstr "தவறான JSON"
 
 msgid "Project successfully deleted"
 msgstr "திட்டம் வெற்றிகரமாக நீக்கப்பட்டது"
@@ -298,6 +253,9 @@ msgstr ""
 msgid "Create a new project"
 msgstr ""
 
+msgid "Project"
+msgstr "திட்டம்"
+
 msgid "Number of members"
 msgstr ""
 
@@ -319,9 +277,6 @@ msgstr ""
 msgid "delete"
 msgstr ""
 
-msgid "show"
-msgstr ""
-
 msgid "The Dashboard is currently deactivated."
 msgstr ""
 
@@ -329,12 +284,6 @@ msgid "you sure?"
 msgstr ""
 
 msgid "Edit project"
-msgstr ""
-
-msgid "Import JSON"
-msgstr ""
-
-msgid "Choose file"
 msgstr ""
 
 msgid "Download project's data"
@@ -356,9 +305,6 @@ msgid "Can't remember the password?"
 msgstr ""
 
 msgid "Cancel"
-msgstr ""
-
-msgid "Privacy Settings"
 msgstr ""
 
 msgid "Edit the project"
@@ -389,175 +335,6 @@ msgid "Send the invitations"
 msgstr ""
 
 msgid "Download"
-msgstr ""
-
-msgid "Disabled Project History"
-msgstr ""
-
-msgid "Disabled Project History & IP Address Recording"
-msgstr ""
-
-msgid "Enabled Project History"
-msgstr ""
-
-msgid "Disabled IP Address Recording"
-msgstr ""
-
-msgid "Enabled Project History & IP Address Recording"
-msgstr ""
-
-msgid "Enabled IP Address Recording"
-msgstr ""
-
-msgid "History Settings Changed"
-msgstr ""
-
-msgid "changed"
-msgstr ""
-
-msgid "from"
-msgstr ""
-
-msgid "to"
-msgstr ""
-
-msgid "Confirm Remove IP Adresses"
-msgstr ""
-
-msgid ""
-"Are you sure you want to delete all recorded IP addresses from this "
-"project?\n"
-"                The rest of the project history will be unaffected. This "
-"action cannot be undone."
-msgstr ""
-
-msgid "Close"
-msgstr ""
-
-msgid "Confirm Delete"
-msgstr ""
-
-msgid "Delete Confirmation"
-msgstr ""
-
-msgid ""
-"Are you sure you want to erase all history for this project? This action "
-"cannot be undone."
-msgstr ""
-
-msgid "Added"
-msgstr ""
-
-msgid "Removed"
-msgstr ""
-
-msgid "and"
-msgstr ""
-
-msgid "owers list"
-msgstr ""
-
-#, python-format
-msgid ""
-"\n"
-"            <i>This project has history disabled. New actions won't "
-"appear below. You can enable history on the</i>\n"
-"            <a href=\"%(url)s\">settings page</a>\n"
-"            "
-msgstr ""
-
-msgid ""
-"\n"
-"            <i>The table below reflects actions recorded prior to "
-"disabling project history. You can\n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
-"data-target=\"#confirm-erase\">clear project history</a> to remove "
-"them.</i></p>\n"
-"            "
-msgstr ""
-
-msgid ""
-"Some entries below contain IP addresses, even though this project has IP "
-"recording disabled. "
-msgstr ""
-
-msgid "Delete stored IP addresses"
-msgstr ""
-
-msgid "No history to erase"
-msgstr ""
-
-msgid "Clear Project History"
-msgstr ""
-
-msgid "No IP Addresses to erase"
-msgstr ""
-
-msgid "Delete Stored IP Addresses"
-msgstr ""
-
-msgid "Time"
-msgstr ""
-
-msgid "Event"
-msgstr ""
-
-msgid "IP address recording can be enabled on the settings page"
-msgstr ""
-
-msgid "IP address recording can be disabled on the settings page"
-msgstr ""
-
-msgid "From IP"
-msgstr ""
-
-msgid "added"
-msgstr ""
-
-msgid "Project private code changed"
-msgstr ""
-
-msgid "Project renamed to"
-msgstr ""
-
-msgid "Project contact email changed to"
-msgstr ""
-
-msgid "Project settings modified"
-msgstr ""
-
-msgid "deactivated"
-msgstr ""
-
-msgid "reactivated"
-msgstr ""
-
-msgid "renamed to"
-msgstr ""
-
-msgid "External link changed to"
-msgstr ""
-
-msgid "Amount"
-msgstr ""
-
-#, python-format
-msgid "Amount in %(currency)s"
-msgstr ""
-
-msgid "modified"
-msgstr ""
-
-msgid "removed"
-msgstr ""
-
-msgid "changed in a unknown way"
-msgstr ""
-
-msgid "Nothing to list"
-msgstr ""
-
-msgid "Someone probably cleared the project history."
 msgstr ""
 
 msgid "Manage your shared <br />expenses, easily"
@@ -607,9 +384,6 @@ msgstr ""
 msgid "Statistics"
 msgstr ""
 
-msgid "History"
-msgstr ""
-
 msgid "Settings"
 msgstr ""
 
@@ -652,8 +426,10 @@ msgstr ""
 msgid "you can contribute and improve it!"
 msgstr ""
 
-#, python-format
-msgid "%(amount)s each"
+msgid "deactivate"
+msgstr ""
+
+msgid "reactivate"
 msgstr ""
 
 msgid "Invite people"
@@ -663,12 +439,6 @@ msgid "You should start by adding participants"
 msgstr ""
 
 msgid "Add a new bill"
-msgstr ""
-
-msgid "Newer bills"
-msgstr ""
-
-msgid "Older bills"
 msgstr ""
 
 msgid "When?"
@@ -687,11 +457,7 @@ msgstr ""
 msgid "Added on %(date)s"
 msgstr ""
 
-msgid "Everyone"
-msgstr ""
-
-#, python-format
-msgid "Everyone but %(excluded)s"
+msgid "each"
 msgstr ""
 
 msgid "No bills"
@@ -765,23 +531,12 @@ msgstr ""
 msgid "Who?"
 msgstr ""
 
-msgid "Balance"
-msgstr ""
-
-msgid "deactivate"
-msgstr ""
-
-msgid "reactivate"
-msgstr ""
-
 msgid "Paid"
 msgstr ""
 
 msgid "Spent"
 msgstr ""
 
-msgid "Expenses by Month"
+msgid "Balance"
 msgstr ""
 
-msgid "Period"
-msgstr ""
