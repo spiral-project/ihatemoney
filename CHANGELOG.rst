@@ -3,8 +3,17 @@ Changelog
 
 This document describes changes between each past release.
 
-4.1.5 (unreleased)
+4.1.5 (2020-07-26)
 ==================
+
+This release fixes a `serious security issue <https://github.com/spiral-project/ihatemoney/security/advisories/GHSA-67j9-c52g-w2q9>`_.
+
+All users are encouraged to upgrade.
+
+Fixed
+-----
+
+- Fix unauthorized access and modification of project data (CVE-2020-15120) (#663)
 
 Changed
 -------
