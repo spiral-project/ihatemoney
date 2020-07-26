@@ -1035,6 +1035,131 @@ class BudgetTestCase(IhatemoneyTestCase):
         resp = self.client.get("/raclette/export/transactions.wrong")
         self.assertEqual(resp.status_code, 404)
 
+    def test_access_other_projects(self):
+        """Test that accessing or editing bills and members from another project fails
+        """
+        # Create project
+        self.post_project("raclette")
+
+        # Add members
+        self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
+        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "tata"})
+        self.client.post("/raclette/members/add", data={"name": "pépé"})
+
+        # Create bill
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-31",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1, 2, 3, 4],
+                "amount": "10.0",
+            },
+        )
+        # Ensure it has been created
+        raclette = models.Project.query.get("raclette")
+        self.assertEqual(raclette.get_bills().count(), 1)
+
+        # Log out
+        self.client.get("/exit")
+
+        # Create and log in as another project
+        self.post_project("tartiflette")
+
+        modified_bill = {
+            "date": "2018-12-31",
+            "what": "roblochon",
+            "payer": 2,
+            "payed_for": [1, 3, 4],
+            "amount": "100.0",
+        }
+        # Try to access bill of another project
+        resp = self.client.get("/raclette/edit/1")
+        self.assertStatus(303, resp)
+        # Try to access bill of another project by ID
+        resp = self.client.get("/tartiflette/edit/1")
+        self.assertStatus(404, resp)
+        # Try to edit bill
+        resp = self.client.post("/raclette/edit/1", data=modified_bill)
+        self.assertStatus(303, resp)
+        # Try to edit bill by ID
+        resp = self.client.post("/tartiflette/edit/1", data=modified_bill)
+        self.assertStatus(404, resp)
+        # Try to delete bill
+        resp = self.client.get("/raclette/delete/1")
+        self.assertStatus(303, resp)
+        # Try to delete bill by ID
+        resp = self.client.get("/tartiflette/delete/1")
+        self.assertStatus(302, resp)
+
+        # Additional check that the bill was indeed not modified or deleted
+        bill = models.Bill.query.filter(models.Bill.id == 1).one()
+        self.assertEqual(bill.what, "fromage à raclette")
+
+        # Use the correct credentials to modify and delete the bill.
+        # This ensures that modifying and deleting the bill can actually work
+
+        self.client.get("/exit")
+        self.client.post(
+            "/authenticate", data={"id": "raclette", "password": "raclette"}
+        )
+        self.client.post("/raclette/edit/1", data=modified_bill)
+        bill = models.Bill.query.filter(models.Bill.id == 1).one_or_none()
+        self.assertNotEqual(bill, None, "bill not found")
+        self.assertEqual(bill.what, "roblochon")
+        self.client.get("/raclette/delete/1")
+        bill = models.Bill.query.filter(models.Bill.id == 1).one_or_none()
+        self.assertEqual(bill, None)
+
+        # Switch back to the second project
+        self.client.get("/exit")
+        self.client.post(
+            "/authenticate", data={"id": "tartiflette", "password": "tartiflette"}
+        )
+        modified_member = {
+            "name": "bulgroz",
+            "weight": 42,
+        }
+        # Try to access member from another project
+        resp = self.client.get("/raclette/members/1/edit")
+        self.assertStatus(303, resp)
+        # Try to access member by ID
+        resp = self.client.get("/tartiflette/members/1/edit")
+        self.assertStatus(404, resp)
+        # Try to edit member
+        resp = self.client.post("/raclette/members/1/edit", data=modified_member)
+        self.assertStatus(303, resp)
+        # Try to edit member by ID
+        resp = self.client.post("/tartiflette/members/1/edit", data=modified_member)
+        self.assertStatus(404, resp)
+        # Try to delete member
+        resp = self.client.post("/raclette/members/1/delete")
+        self.assertStatus(303, resp)
+        # Try to delete member by ID
+        resp = self.client.post("/tartiflette/members/1/delete")
+        self.assertStatus(302, resp)
+
+        # Additional check that the member was indeed not modified or deleted
+        member = models.Person.query.filter(models.Person.id == 1).one_or_none()
+        self.assertNotEqual(member, None, "member not found")
+        self.assertEqual(member.name, "zorglub")
+        self.assertTrue(member.activated)
+
+        # Use the correct credentials to modify and delete the member.
+        # This ensures that modifying and deleting the member can actually work
+        self.client.get("/exit")
+        self.client.post(
+            "/authenticate", data={"id": "raclette", "password": "raclette"}
+        )
+        self.client.post("/raclette/members/1/edit", data=modified_member)
+        member = models.Person.query.filter(models.Person.id == 1).one()
+        self.assertEqual(member.name, "bulgroz")
+        self.client.post("/raclette/members/1/delete")
+        member = models.Person.query.filter(models.Person.id == 1).one_or_none()
+        self.assertEqual(member, None)
+
 
 class APITestCase(IhatemoneyTestCase):
 
