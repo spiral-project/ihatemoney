@@ -40,6 +40,9 @@ msgstr "Registrar la IPs para el historial del proyecto"
 msgid "Default Currency"
 msgstr "Moneda por defecto"
 
+msgid "⚠ All bill currencies will be removed"
+msgstr ""
+
 msgid "Import previously exported JSON file"
 msgstr "Importar archivo JSON previamente exportado"
 

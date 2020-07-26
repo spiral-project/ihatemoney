@@ -1,3 +1,4 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -8,6 +9,9 @@ msgstr ""
 "Language-Team: German <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/de/>\n"
 "Language: de\n"
+"Language-Team: German <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/de/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -39,6 +43,9 @@ msgstr "IP-Tracking für Verlauf benutzen"
 
 msgid "Default Currency"
 msgstr "Standardwährung"
+
+msgid "⚠ All bill currencies will be removed"
+msgstr ""
 
 msgid "Import previously exported JSON file"
 msgstr "Zuvor exportierte JSON-Datei importieren"
@@ -842,3 +849,4 @@ msgstr "Zeitraum"
 #~ " gesendet. Es wird als Klartext auf"
 #~ " dem Server gespeichert. Bitte verwenden"
 #~ " daher kein persönliches Passwort!"
+
