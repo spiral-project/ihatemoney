@@ -152,7 +152,7 @@ class EditProjectForm(FlaskForm):
 
         project.contact_email = self.contact_email.data
         project.logging_preference = self.logging_preference
-        project.default_currency = self.default_currency.data
+        project.switch_currency(self.default_currency.data)
 
         return project
 

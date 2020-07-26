@@ -17,6 +17,7 @@ from sqlalchemy_continuum import make_versioned, version_class
 from sqlalchemy_continuum.plugins import FlaskPlugin
 from werkzeug.security import generate_password_hash
 
+from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.patch_sqlalchemy_continuum import PatchedBuilder
 from ihatemoney.versioning import (
     ConditionalVersioningManager,
@@ -262,6 +263,34 @@ class Project(db.Model):
                 }
             )
         return pretty_bills
+
+    def switch_currency(self, new_currency):
+        # Update converted currency
+        if new_currency != self.default_currency:
+            for bill in self.get_bills():
+                if bill.original_currency == new_currency:
+                    continue
+
+                if new_currency == CurrencyConverter.no_currency:
+                    # Use old currency to flatten all amount before stripping
+                    bill.converted_amount = CurrencyConverter().exchange_currency(
+                        bill.amount, bill.original_currency, self.default_currency
+                    )
+                    # Strip currency
+                    bill.amount = bill.converted_amount
+                    bill.original_currency = CurrencyConverter.no_currency
+                else:
+                    # Switch to new currency for everyone
+                    bill.converted_amount = CurrencyConverter().exchange_currency(
+                        bill.amount, bill.original_currency, new_currency
+                    )
+                    # Add the currency for previously un-currency-ied
+                    if bill.original_currency == CurrencyConverter.no_currency:
+                        bill.original_currency = new_currency
+                db.session.add(bill)
+        self.default_currency = new_currency
+        db.session.add(self)
+        db.session.commit()
 
     def remove_member(self, member_id):
         """Remove a member from the project.
