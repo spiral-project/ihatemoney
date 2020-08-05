@@ -50,7 +50,7 @@ black: install-dev ## Run the tests
 
 .PHONY: isort
 isort: install-dev ## Run the tests
-	$(VENV)/bin/isort -rc .
+	$(VENV)/bin/isort .
 
 .PHONY: release
 release: install-dev ## Release a new version (see https://ihatemoney.readthedocs.io/en/latest/contributing.html#how-to-release)
