@@ -40,9 +40,6 @@ msgstr "IP-tracking voor projectgeschiedenis gebruiken"
 msgid "Default Currency"
 msgstr "Standaard munteenheid"
 
-msgid "⚠ All bill currencies will be removed"
-msgstr ""
-
 msgid "Import previously exported JSON file"
 msgstr "Eerder geëxporteerd JSON-bestand importeren"
 

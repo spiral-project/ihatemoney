@@ -40,9 +40,6 @@ msgstr "Gunakan pelacakan IP untuk riwayat proyek"
 msgid "Default Currency"
 msgstr "Mata Uang Standar"
 
-msgid "⚠ All bill currencies will be removed"
-msgstr ""
-
 msgid "Import previously exported JSON file"
 msgstr "Impor file JSON yang sudah diekspor sebelumnya"
 

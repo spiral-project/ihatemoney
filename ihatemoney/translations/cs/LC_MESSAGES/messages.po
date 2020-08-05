@@ -39,9 +39,6 @@ msgstr "Záznam IP adres pro historii projektu"
 msgid "Default Currency"
 msgstr "Výchozí měna"
 
-msgid "⚠ All bill currencies will be removed"
-msgstr ""
-
 msgid "Import previously exported JSON file"
 msgstr "Import exportovaného JSON souboru"
 

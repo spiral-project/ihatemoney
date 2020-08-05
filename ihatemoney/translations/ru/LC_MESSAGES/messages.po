@@ -41,9 +41,6 @@ msgstr "Использовать отслеживание по IP для ист�
 msgid "Default Currency"
 msgstr "Валюта по умолчанию"
 
-msgid "⚠ All bill currencies will be removed"
-msgstr ""
-
 msgid "Import previously exported JSON file"
 msgstr "Импортировать ранее экспортированный JSON файл"
 
