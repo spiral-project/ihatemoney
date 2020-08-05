@@ -36,7 +36,6 @@ from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.forms import (
     AdminAuthenticationForm,
     AuthenticationForm,
