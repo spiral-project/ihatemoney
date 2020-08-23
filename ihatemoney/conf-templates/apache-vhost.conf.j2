@@ -11,8 +11,7 @@
     <Directory {{ pkg_path }}>
        WSGIProcessGroup ihatemoney
        WSGIApplicationGroup %{GLOBAL}
-       Order deny,allow
-       Allow from all
+       Require all granted
     </Directory>
 
     Alias /static/ {{ pkg_path }}/static/
