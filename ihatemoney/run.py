@@ -27,8 +27,7 @@ def setup_database(app):
     """Prepare the database. Create tables, run migrations etc."""
 
     def _pre_alembic_db():
-        """ Checks if we are migrating from a pre-alembic ihatemoney
-        """
+        """Checks if we are migrating from a pre-alembic ihatemoney"""
         con = db.engine.connect()
         tables_exist = db.engine.dialect.has_table(con, "project")
         alembic_setup = db.engine.dialect.has_table(con, "alembic_version")
@@ -58,7 +57,7 @@ def setup_database(app):
 
 
 def load_configuration(app, configuration=None):
-    """ Find the right configuration file for the application and load it.
+    """Find the right configuration file for the application and load it.
 
     By order of preference:
     - Use the IHATEMONEY_SETTINGS_FILE_PATH env var if defined ;

@@ -168,8 +168,7 @@ class Project(db.Model):
         """Return a list of transactions that could be made to settle the bill"""
 
         def prettify(transactions, pretty_output):
-            """ Return pretty transactions
-            """
+            """Return pretty transactions"""
             if not pretty_output:
                 return transactions
             pretty_transactions = []

@@ -98,7 +98,7 @@ class PrefixedWSGI(object):
 
 
 def minimal_round(*args, **kw):
-    """ Jinja2 filter: rounds, but display only non-zero decimals
+    """Jinja2 filter: rounds, but display only non-zero decimals
 
     from http://stackoverflow.com/questions/28458524/
     """
