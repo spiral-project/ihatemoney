@@ -1,19 +1,19 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-30 21:50+0200\n"
-"PO-Revision-Date: 2020-04-28 07:11+0000\n"
-"Last-Translator: Vsevolod <sevauserg.com@gmail.com>\n"
+"PO-Revision-Date: 2020-08-17 17:32+0000\n"
+"Last-Translator: Alexey Napalkov <flynbit@gmail.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/ru/>\n"
 "Language: ru\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/ru/>\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.2-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 msgid ""
@@ -39,7 +39,7 @@ msgid "Use IP tracking for project history"
 msgstr "Использовать отслеживание по IP для истории проекта"
 
 msgid "Default Currency"
-msgstr ""
+msgstr "Валюта по умолчанию"
 
 msgid "Import previously exported JSON file"
 msgstr "Импортировать ранее экспортированный JSON файл"
@@ -98,7 +98,7 @@ msgid "Amount paid"
 msgstr "Уплаченная сумма"
 
 msgid "Currency"
-msgstr ""
+msgstr "Валюта"
 
 msgid "External link"
 msgstr "Внешняя ссылка"
@@ -117,7 +117,7 @@ msgstr "Отправить и добавить новый"
 
 #, python-format
 msgid "Project default: %(currency)s"
-msgstr ""
+msgstr "По умолчанию для проекта: %(currency)s"
 
 msgid "Bills can't be null"
 msgstr "Счета не могут быть нулевыми"
@@ -160,7 +160,7 @@ msgid "Project"
 msgstr "Проект"
 
 msgid "No Currency"
-msgstr ""
+msgstr "Нет валюты"
 
 msgid "Too many failed login attempts, please retry later."
 msgstr "Слишком много неудачных попыток входа, попробуйте позже."
@@ -182,22 +182,27 @@ msgid "You have just created '%(project)s' to share your expenses"
 msgstr "Вы только что создали '%(project)s' , чтобы разделить расходы"
 
 msgid "A reminder email has just been sent to you"
-msgstr ""
+msgstr "Вам было отправлено электронное письмо с напоминанием"
 
 msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
+"Мы попытались отправить вам напоминание по электронной почте, но произошла "
+"ошибка. Вы по-прежнему можете использовать проект в обычном режиме."
 
 #, python-format
 msgid "The project identifier is %(project)s"
-msgstr ""
+msgstr "Идентификатор проекта: %(project)s"
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
 "instructions. Please check the email configuration of the server or "
 "contact the administrator."
 msgstr ""
+"К сожалению, при отправке вам электронного письма с инструкциями по сбросу "
+"пароля произошла ошибка. Пожалуйста, проверьте конфигурацию электронной "
+"почты сервера или свяжитесь с администратором."
 
 msgid "No token provided"
 msgstr "Не предоставлен токен"
@@ -232,6 +237,9 @@ msgid ""
 "Please check the email configuration of the server or contact the "
 "administrator."
 msgstr ""
+"К сожалению, при отправке электронных писем с приглашениями произошла "
+"ошибка. Пожалуйста, проверьте конфигурацию электронной почты сервера или "
+"свяжитесь с администратором."
 
 #, python-format
 msgid "%(member)s has been added"
@@ -312,7 +320,7 @@ msgid "delete"
 msgstr "удалить"
 
 msgid "show"
-msgstr ""
+msgstr "показать"
 
 msgid "The Dashboard is currently deactivated."
 msgstr "Панель инструментов в данный момент отключена."
@@ -555,7 +563,7 @@ msgstr "Количество"
 
 #, python-format
 msgid "Amount in %(currency)s"
-msgstr ""
+msgstr "Количество в %(currency)s"
 
 msgid "modified"
 msgstr "изменено"
@@ -606,6 +614,8 @@ msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
 msgstr ""
+"Не используйте повторно личный пароль. Выберите приватный код и отправьте "
+"его своим друзьям"
 
 msgid "Account manager"
 msgstr "Менеджер аккаунтов"
@@ -666,7 +676,7 @@ msgstr "вы можете способствовать развитию и ул�
 
 #, python-format
 msgid "%(amount)s each"
-msgstr ""
+msgstr "%(amount)s каждый"
 
 msgid "Invite people"
 msgstr "Пригласить людей"
@@ -823,4 +833,3 @@ msgstr "Период"
 #~ " друзьям. Он хранится на сервере как"
 #~ " есть, поэтому не используйте личный "
 #~ "пароль!"
-
