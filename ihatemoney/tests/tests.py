@@ -186,8 +186,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             self.assertEqual(len(outbox), 0)
 
     def test_invite(self):
-        """Test that invitation e-mails are sent properly
-        """
+        """Test that invitation e-mails are sent properly"""
         self.login("raclette")
         self.post_project("raclette")
         with self.app.mail.record_messages() as outbox:
@@ -979,10 +978,10 @@ class BudgetTestCase(IhatemoneyTestCase):
             regex.format("fred", r"\$20\.00", r"\$5\.83"),
         )
         self.assertRegex(
-            response.data.decode("utf-8"), regex.format("tata", r"\$0\.00", r"\$2\.50"),
+            response.data.decode("utf-8"), regex.format("tata", r"\$0\.00", r"\$2\.50")
         )
         self.assertRegex(
-            response.data.decode("utf-8"), regex.format("pépé", r"\$0\.00", r"\$0\.00"),
+            response.data.decode("utf-8"), regex.format("pépé", r"\$0\.00", r"\$0\.00")
         )
 
         # Check that the order of participants in the sidebar table is the
@@ -1443,8 +1442,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             self.fail("ExpectedException not raised")
 
     def test_access_other_projects(self):
-        """Test that accessing or editing bills and members from another project fails
-        """
+        """Test that accessing or editing bills and members from another project fails"""
         # Create project
         self.post_project("raclette")
 
@@ -1744,8 +1742,7 @@ class APITestCase(IhatemoneyTestCase):
         self.assertEqual(401, resp.status_code)
 
     def test_token_creation(self):
-        """Test that token of project is generated
-        """
+        """Test that token of project is generated"""
 
         # Create project
         resp = self.api_create("raclette")
@@ -2300,7 +2297,7 @@ class APITestCase(IhatemoneyTestCase):
             f"Participant {em_surround('zorglub')} added", resp.data.decode("utf-8")
         )
         self.assertIn(
-            f"Project {em_surround('raclette')} added", resp.data.decode("utf-8"),
+            f"Project {em_surround('raclette')} added", resp.data.decode("utf-8")
         )
         self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 2)
         self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
@@ -2326,7 +2323,7 @@ class ServerTestCase(IhatemoneyTestCase):
 
 class CommandTestCase(BaseTestCase):
     def test_generate_config(self):
-        """ Simply checks that all config file generation
+        """Simply checks that all config file generation
         - raise no exception
         - produce something non-empty
         """
@@ -2487,7 +2484,7 @@ class EmailFailureTestCase(IhatemoneyTestCase):
             )
             # Check that we are still on the same page (no redirection)
             self.assertIn(
-                "Invite people to join this project", resp.data.decode("utf-8"),
+                "Invite people to join this project", resp.data.decode("utf-8")
             )
 
 
@@ -2507,9 +2504,7 @@ class HistoryTestCase(IhatemoneyTestCase):
     def test_simple_create_logentry_no_ip(self):
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
-        self.assertIn(
-            f"Project {em_surround('demo')} added", resp.data.decode("utf-8"),
-        )
+        self.assertIn(f"Project {em_surround('demo')} added", resp.data.decode("utf-8"))
         self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 1)
         self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
 
@@ -2552,15 +2547,13 @@ class HistoryTestCase(IhatemoneyTestCase):
             "This project has history disabled. New actions won't appear below. ",
             resp.data.decode("utf-8"),
         )
-        self.assertIn(
-            "Nothing to list", resp.data.decode("utf-8"),
-        )
+        self.assertIn("Nothing to list", resp.data.decode("utf-8"))
         self.assertNotIn(
             "The table below reflects actions recorded prior to disabling project history.",
             resp.data.decode("utf-8"),
         )
         self.assertNotIn(
-            "Some entries below contain IP addresses,", resp.data.decode("utf-8"),
+            "Some entries below contain IP addresses,", resp.data.decode("utf-8")
         )
         self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
         self.assertNotIn("<td> -- </td>", resp.data.decode("utf-8"))
@@ -2587,11 +2580,9 @@ class HistoryTestCase(IhatemoneyTestCase):
             f"Project contact email changed to {em_surround('demo2@notmyidea.org')}",
             resp.data.decode("utf-8"),
         )
+        self.assertIn("Project private code changed", resp.data.decode("utf-8"))
         self.assertIn(
-            "Project private code changed", resp.data.decode("utf-8"),
-        )
-        self.assertIn(
-            f"Project renamed to {em_surround('demo2')}", resp.data.decode("utf-8"),
+            f"Project renamed to {em_surround('demo2')}", resp.data.decode("utf-8")
         )
         self.assertLess(
             resp.data.decode("utf-8").index("Project renamed "),
@@ -2743,11 +2734,9 @@ class HistoryTestCase(IhatemoneyTestCase):
             "The table below reflects actions recorded prior to disabling project history.",
             resp.data.decode("utf-8"),
         )
+        self.assertNotIn("Nothing to list", resp.data.decode("utf-8"))
         self.assertNotIn(
-            "Nothing to list", resp.data.decode("utf-8"),
-        )
-        self.assertNotIn(
-            "Some entries below contain IP addresses,", resp.data.decode("utf-8"),
+            "Some entries below contain IP addresses,", resp.data.decode("utf-8")
         )
 
         # Clear Existing Entries
@@ -2780,11 +2769,9 @@ class HistoryTestCase(IhatemoneyTestCase):
             "The table below reflects actions recorded prior to disabling project history.",
             resp.data.decode("utf-8"),
         )
-        self.assertNotIn(
-            "Nothing to list", resp.data.decode("utf-8"),
-        )
+        self.assertNotIn("Nothing to list", resp.data.decode("utf-8"))
         self.assertIn(
-            "Some entries below contain IP addresses,", resp.data.decode("utf-8"),
+            "Some entries below contain IP addresses,", resp.data.decode("utf-8")
         )
         self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 10)
         self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 1)
@@ -2808,11 +2795,9 @@ class HistoryTestCase(IhatemoneyTestCase):
             "The table below reflects actions recorded prior to disabling project history.",
             resp.data.decode("utf-8"),
         )
+        self.assertNotIn("Nothing to list", resp.data.decode("utf-8"))
         self.assertNotIn(
-            "Nothing to list", resp.data.decode("utf-8"),
-        )
-        self.assertNotIn(
-            "Some entries below contain IP addresses,", resp.data.decode("utf-8"),
+            "Some entries below contain IP addresses,", resp.data.decode("utf-8")
         )
         self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 0)
         self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 16)
@@ -2882,7 +2867,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         )
         self.assertIn(
             "Bill %s renamed to %s"
-            % (em_surround("fromage à raclette"), em_surround("new thing"),),
+            % (em_surround("fromage à raclette"), em_surround("new thing")),
             resp.data.decode("utf-8"),
         )
         self.assertLess(
@@ -2899,7 +2884,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
         self.assertIn(
-            f"Bill {em_surround('new thing')} removed", resp.data.decode("utf-8"),
+            f"Bill {em_surround('new thing')} removed", resp.data.decode("utf-8")
         )
 
         # edit user
@@ -2923,7 +2908,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         )
         self.assertIn(
             "Participant %s renamed to %s"
-            % (em_surround("zorglub"), em_surround("new name"),),
+            % (em_surround("zorglub"), em_surround("new name")),
             resp.data.decode("utf-8"),
         )
         self.assertLess(
@@ -3039,7 +3024,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
         self.assertIn(f"Bill {em_surround('Bill 1')} added", resp.data.decode("utf-8"))
         self.assertIn(
-            f"Bill {em_surround('Bill 1')} removed", resp.data.decode("utf-8"),
+            f"Bill {em_surround('Bill 1')} removed", resp.data.decode("utf-8")
         )
 
         # Add a new bill
@@ -3060,11 +3045,11 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
         self.assertIn(f"Bill {em_surround('Bill 1')} added", resp.data.decode("utf-8"))
         self.assertEqual(
-            resp.data.decode("utf-8").count(f"Bill {em_surround('Bill 1')} added"), 1,
+            resp.data.decode("utf-8").count(f"Bill {em_surround('Bill 1')} added"), 1
         )
         self.assertIn(f"Bill {em_surround('Bill 2')} added", resp.data.decode("utf-8"))
         self.assertIn(
-            f"Bill {em_surround('Bill 1')} removed", resp.data.decode("utf-8"),
+            f"Bill {em_surround('Bill 1')} removed", resp.data.decode("utf-8")
         )
 
     def test_double_bill_double_person_edit_second_no_web(self):
@@ -3075,8 +3060,8 @@ class HistoryTestCase(IhatemoneyTestCase):
         models.db.session.add(u2)
         models.db.session.commit()
 
-        b1 = models.Bill(what="Bill 1", payer_id=u1.id, owers=[u2], amount=10,)
-        b2 = models.Bill(what="Bill 2", payer_id=u2.id, owers=[u2], amount=11,)
+        b1 = models.Bill(what="Bill 1", payer_id=u1.id, owers=[u2], amount=10)
+        b2 = models.Bill(what="Bill 2", payer_id=u2.id, owers=[u2], amount=11)
 
         # This db commit exposes the "spurious owers edit" bug
         models.db.session.add(b1)

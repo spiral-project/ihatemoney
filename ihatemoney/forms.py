@@ -107,7 +107,7 @@ class EditProjectForm(FlaskForm):
     project_history = BooleanField(_("Enable project history"))
     ip_recording = BooleanField(_("Use IP tracking for project history"))
     currency_helper = CurrencyConverter()
-    default_currency = SelectField(_("Default Currency"), validators=[DataRequired()],)
+    default_currency = SelectField(_("Default Currency"), validators=[DataRequired()])
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -228,7 +228,7 @@ class BillForm(FlaskForm):
     payer = SelectField(_("Payer"), validators=[DataRequired()], coerce=int)
     amount = CalculatorStringField(_("Amount paid"), validators=[DataRequired()])
     currency_helper = CurrencyConverter()
-    original_currency = SelectField(_("Currency"), validators=[DataRequired()],)
+    original_currency = SelectField(_("Currency"), validators=[DataRequired()])
     external_link = URLField(
         _("External link"),
         validators=[Optional()],
