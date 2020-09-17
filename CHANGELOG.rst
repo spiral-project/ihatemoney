@@ -94,6 +94,7 @@ Fixed
 - UI: Fix a small typo in the french project-reminder email (#486)
 - UI: Fix typo on message displayed when adding a member (#575)
 - UI: Fix incorrect tool-tip message about the private code (#623)
+- UI : Fix bug on tool-tip message (#635)
 
 Added
 -----
