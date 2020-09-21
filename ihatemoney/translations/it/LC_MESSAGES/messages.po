@@ -41,7 +41,7 @@ msgid "Default Currency"
 msgstr "Valuta predefinita"
 
 msgid "Import previously exported JSON file"
-msgstr "Importare il file esportato JSON"
+msgstr "Importare il file JSON esportato precedentemente"
 
 msgid "Import"
 msgstr "Importa"
@@ -50,7 +50,7 @@ msgid "Project identifier"
 msgstr "Identificatore del progetto"
 
 msgid "Create the project"
-msgstr "Creare il progetto"
+msgstr "Crea il progetto"
 
 #, python-format
 msgid ""
@@ -58,13 +58,13 @@ msgid ""
 "choose a new identifier"
 msgstr ""
 "Un progetto con questo identificatore (\"%(project)s\") esiste già. Per "
-"favore scegliere un identificatore nuovo"
+"favore scegli un identificatore nuovo"
 
 msgid "Get in"
 msgstr "Entra"
 
 msgid "Admin password"
-msgstr "Password di amministrazione"
+msgstr "Password di amministratore"
 
 msgid "Send me the code by email"
 msgstr "Inviami il codice per email"
@@ -103,7 +103,7 @@ msgid "External link"
 msgstr "Link esterno"
 
 msgid "A link to an external document, related to this bill"
-msgstr "Un link a un documento esterno in relazione a questa spesa"
+msgstr "Un link ad un documento esterno, in relazione a questa spesa"
 
 msgid "For whom?"
 msgstr "Per chi?"
@@ -112,7 +112,7 @@ msgid "Submit"
 msgstr "Invia"
 
 msgid "Submit and add a new one"
-msgstr "Inviare e aggiungerne uno nuovo"
+msgstr "Inviare e aggiungine uno nuovo"
 
 #, python-format
 msgid "Project default: %(currency)s"
@@ -143,7 +143,7 @@ msgid "People to notify"
 msgstr "Persone da notificare"
 
 msgid "Send invites"
-msgstr "Spedisci inviti"
+msgstr "Invia inviti"
 
 #, python-format
 msgid "The email %(email)s is not valid"
@@ -167,7 +167,7 @@ msgstr "Troppi tentativi di accesso non riusciti. Riprova più tardi."
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr ""
-"Questa password di amministrazione non è corretta. Solo %(num)d tentativi"
+"Questa password di amministrazione non è quella corretta. Solo %(num) tentativi"
 " rimasti."
 
 msgid "You either provided a bad token or no project identifier."
