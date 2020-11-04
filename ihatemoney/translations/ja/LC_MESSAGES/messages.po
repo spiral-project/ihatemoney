@@ -3,128 +3,130 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-22 06:40+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2020-11-04 17:27+0000\n"
+"Last-Translator: Jwen921 <yangjingwen0921@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 3.1.1\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.3.2-dev\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
-msgstr ""
+msgstr "無効な入力です。数字と「+ - * / 」の演算子しか入力できません。"
 
 msgid "Project name"
-msgstr ""
+msgstr "プロジェクトの名前"
 
 msgid "Private code"
-msgstr ""
+msgstr "暗証コード"
 
 msgid "Email"
-msgstr ""
+msgstr "メールアドレス"
 
 msgid "Enable project history"
-msgstr ""
+msgstr "プロジェクトの歴史を有効にする"
 
 msgid "Use IP tracking for project history"
-msgstr ""
+msgstr "IPでプロジェクトの歴史を追跡する"
 
 msgid "Default Currency"
-msgstr ""
+msgstr "初期設定にする通貨"
 
 msgid "Import previously exported JSON file"
-msgstr ""
+msgstr "以前のJSONファイルをインポートする"
 
 msgid "Import"
-msgstr ""
+msgstr "インポート"
 
 msgid "Project identifier"
-msgstr ""
+msgstr "プロジェクトの名前"
 
 msgid "Create the project"
-msgstr ""
+msgstr "プロジェクトを新規作成する"
 
 #, python-format
 msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
-msgstr ""
+msgstr "(\"%(project)s\")というプロジェクトは既に存在します。別の名前にしてください"
 
 msgid "Get in"
-msgstr ""
+msgstr "入る"
 
 msgid "Admin password"
-msgstr ""
+msgstr "管理者パスワード"
 
 msgid "Send me the code by email"
-msgstr ""
+msgstr "メールでコードを送る"
 
 msgid "This project does not exists"
-msgstr ""
+msgstr "プロジェクトは存在していない"
 
 msgid "Password mismatch"
-msgstr ""
+msgstr "パスワードが正しくありません"
 
 msgid "Password"
-msgstr ""
+msgstr "パスワード"
 
 msgid "Password confirmation"
-msgstr ""
+msgstr "パスワードの確認"
 
 msgid "Reset password"
-msgstr ""
+msgstr "パスワードの再設定"
 
 msgid "Date"
-msgstr ""
+msgstr "日付"
 
 msgid "What?"
-msgstr ""
+msgstr "何ですか？"
 
 msgid "Payer"
-msgstr ""
+msgstr "支払人"
 
 msgid "Amount paid"
-msgstr ""
+msgstr "支払額"
 
 msgid "Currency"
-msgstr ""
+msgstr "通貨"
 
 msgid "External link"
-msgstr ""
+msgstr "外部リンク"
 
 msgid "A link to an external document, related to this bill"
-msgstr ""
+msgstr "この明細に関する外部ファイルのリンク"
 
 msgid "For whom?"
-msgstr ""
+msgstr "誰のためですか？"
 
 msgid "Submit"
-msgstr ""
+msgstr "確認"
 
 msgid "Submit and add a new one"
-msgstr ""
+msgstr "確認して、新しいのを作成します"
 
 #, python-format
 msgid "Project default: %(currency)s"
-msgstr ""
+msgstr "初期プロジェクト: %(currency)s"
 
 msgid "Bills can't be null"
-msgstr ""
+msgstr "数値を空値にしてはいけません"
 
 msgid "Name"
-msgstr ""
+msgstr "名前"
 
 msgid "Weights should be positive"
-msgstr ""
+msgstr "重みは正でなければなりません"
 
 msgid "Weight"
-msgstr ""
+msgstr "重み"
 
 msgid "Add"
-msgstr ""
+msgstr "追加"
 
 msgid "User name incorrect"
 msgstr ""
