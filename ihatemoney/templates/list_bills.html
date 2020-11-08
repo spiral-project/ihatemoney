@@ -1,5 +1,9 @@
 {% extends "sidebar_table_layout.html" %}
 
+{%- macro bill_amount(bill, currency=bill.original_currency, amount=bill.amount) %}
+    {{ amount|currency(currency) }} ({{ _("%(amount)s each", amount=bill.pay_each_default(amount)|currency(currency)) }})
+{% endmacro -%}
+
 {% block title %} - {{ g.project.name }}{% endblock %}
 {% block js %}
     {% if add_bill %} $('#new-bill > a').click(); {% endif %}
@@ -41,36 +45,18 @@
         </form>
 
         <div id="table_overflow">
-        <table class="balance table">
-        {% set balance = g.project.balance %}
-        {% for member in g.project.members | sort(attribute='name') if member.activated or balance[member.id]|round(2) != 0 %}
-        <tr id="bal-member-{{ member.id }}" action={% if member.activated %}delete{% else %}reactivate{% endif %}>
-            <td class="balance-name">{{ member.name }}
-                <span class="light{% if not g.project.uses_weights %} extra-info{% endif %}">(x{{ member.weight|minimal_round(1) }})</span>
-            </td>
-            {% if member.activated %}
-            <td>
-                <form class="action delete" action="{{ url_for(".remove_member", member_id=member.id) }}" method="POST">
-                    <button type="submit">{{ _("deactivate") }}</button></form>
-                <form class="action edit" action="{{ url_for(".edit_member", member_id=member.id) }}" method="GET">
-                    <button type="submit">{{ _("edit") }}</button></form>
-            </td>
-            {% else %}
-            <td>
-                <form class="action reactivate" action="{{ url_for(".reactivate", member_id=member.id) }}" method="POST">
-                    <button type="submit">{{ _("reactivate") }}</button></form></td>
-            {% endif %}
-            <td class="balance-value {% if balance[member.id]|round(2) > 0 %}positive{% elif balance[member.id]|round(2) < 0 %}negative{% endif %}">
-                {% if balance[member.id]|round(2) > 0 %}+{% endif %}{{ "%.2f" | format(balance[member.id]) }}
-            </td>
-        </tr>
-        {% endfor %}
-        </table>
+            {{ balance_table(member_edit=True) }}
         </div>
     </div>
     <div class="identifier">
+	{% if g.lang == 'fr' %}
+        <a class="btn btn-secondary btn-block" href=""  onclick="javascript:showGallery(); return false;">
+            <i class="icon icon-white high before-text">{{ static_include("images/read.svg") | safe }}</i>
+	    Voir la BD explicative
+        </a>
+	{% endif %}
         <a class="btn btn-secondary btn-block" href="{{ url_for('.invite') }}">
-            <i class="icon icon-white paper-plane">{{ static_include("images/paper-plane.svg") | safe }}</i>
+            <i class="icon icon-white high before-text">{{ static_include("images/paper-plane.svg") | safe }}</i>
             {{ _("Invite people") }}
         </a>
     </div>
@@ -79,7 +65,7 @@
 {% block content %}
     <span id="new-bill" class="float-right"  {% if not g.project.members %} data-toggle="tooltip" title="{{_('You should start by adding participants')}}" {% endif %}>
         <a href="{{ url_for('.add_bill') }}" class="btn btn-primary float-right {% if not g.project.members %} disabled {% endif %}" data-toggle="modal" data-keyboard="false" data-target="#bill-form">
-            <i class="icon icon-white plus">{{ static_include("images/plus.svg") | safe }}</i>
+            <i class="icon icon-white before-text">{{ static_include("images/plus.svg") | safe }}</i>
             {{ _("Add a new bill") }}
         </a>
     </span>
@@ -111,7 +97,14 @@
         <div class="clearfix"></div>
 
         <table id="bill_table" class="col table table-striped table-hover table-responsive-sm">
-            <thead><tr><th>{{ _("When?") }}</th><th>{{ _("Who paid?") }}</<th><th>{{ _("For what?") }}</th><th>{{ _("For whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Actions") }}</th></tr></thead>
+            <thead>
+                <tr><th>{{ _("When?") }}
+                </th><th>{{ _("Who paid?") }}   
+                </th><th>{{ _("For what?") }}
+                </th><th>{{ _("For whom?") }}
+                </th><th>{{ _("How much?") }}
+                </th><th>{{ _("Actions") }}</th></tr>
+            </thead>
         <tbody>
         {% for bill in bills.items %}
         <tr owers="{{bill.owers|join(',','id')}}" payer="{{bill.payer.id}}">
@@ -130,12 +123,17 @@
                 {%- else -%}
                 {{ bill.owers|join(', ', 'name') }}
                 {%- endif %}</td>
-                <td>{{ "%0.2f"|format(bill.amount) }} ({{ "%0.2f"|format(bill.pay_each()) }} {{ _("each") }})</td>
+                <td>
+                    <span data-toggle="tooltip" data-placement="top"
+                        title="{{ bill_amount(bill, g.project.default_currency, bill.converted_amount) if bill.original_currency != g.project.default_currency else '' }}">
+                        {{ bill_amount(bill) }}
+                    </span>
+                </td>
                 <td class="bill-actions">
                     <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">{{ _('edit') }}</a>
                     <a class="delete" href="{{ url_for(".delete_bill", bill_id=bill.id) }}" title="{{ _("delete") }}">{{ _('delete') }}</a>
                     {% if bill.external_link %}
-                    <a class="see" href="{{ bill.external_link }}" ref="noopener" target="_blank" title="{{ _("see") }}">{{ _('see') }} </a>
+                    <a class="show" href="{{ bill.external_link }}" ref="noopener" target="_blank" title="{{ _("show") }}">{{ _('show') }} </a>
                     {% endif %}
                 </td>
         </tr>
@@ -161,7 +159,7 @@
         <div class="py-3 d-flex justify-content-center empty-bill">
         <div class="card d-inline-flex p-2">
             <div class="card-body text-center text-muted">
-                <i class="icon icon-white hand-holding-heart">{{ static_include("images/hand-holding-heart.svg") | safe }}</i>
+                <i class="icon icon-white billimg">{{ static_include("images/bill.svg") | safe }}</i>
                 <h3>{{ _('No bills')}}</h3>
                 <p>
                     {{ _("Nothing to list yet.")}}<br />

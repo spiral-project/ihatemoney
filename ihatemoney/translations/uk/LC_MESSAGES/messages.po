@@ -3,9 +3,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-25 13:02+0200\n"
-"PO-Revision-Date: 2019-12-08 16:26+0000\n"
-"Last-Translator: Tymofij Lytvynenko <till.svit@gmail.com>\n"
+"POT-Creation-Date: 2020-05-30 21:50+0200\n"
+"PO-Revision-Date: 2020-05-21 18:48+0000\n"
+"Last-Translator: Andrew Zaplitnyak <zaplitnyak@gmail.com>\n"
 "Language: uk\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/i-hate-"
 "money/i-hate-money/uk/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
-msgstr ""
+msgstr "Не вірна сума чи вираз. Приймаються тільки числа та оператори + - * /."
 
 msgid "Project name"
 msgstr "Назва проєкту"
@@ -31,16 +31,19 @@ msgid "Email"
 msgstr "Е-пошта"
 
 msgid "Enable project history"
-msgstr ""
+msgstr "Ввімкнути історію проєкту"
 
 msgid "Use IP tracking for project history"
-msgstr ""
+msgstr "Слідкувати за мережевою адресою(IP) для історії проєкту"
+
+msgid "Default Currency"
+msgstr "Стандартна валюта"
 
 msgid "Import previously exported JSON file"
-msgstr ""
+msgstr "Імпортувати попередньо експортований JSON файл"
 
 msgid "Import"
-msgstr ""
+msgstr "Імпортувати"
 
 msgid "Project identifier"
 msgstr "Ідентифікатор проєкту"
@@ -53,6 +56,8 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
+"Проєкт з таким ідентифікатором (\"%(project)s\") вже існує. Будь ласка "
+"оберіть новий ідентифікатор"
 
 msgid "Get in"
 msgstr "Отримати в"
@@ -90,117 +95,147 @@ msgstr "Платник"
 msgid "Amount paid"
 msgstr "Виплачувана сума"
 
+msgid "Currency"
+msgstr "Валюта"
+
 msgid "External link"
 msgstr "Зовнішнє посилання"
 
 msgid "A link to an external document, related to this bill"
-msgstr ""
+msgstr "Посилання на зовнішній документ, що має відношення до рахунку"
 
 msgid "For whom?"
-msgstr ""
+msgstr "Для кого?"
 
 msgid "Submit"
-msgstr ""
+msgstr "Підтвердити"
 
 msgid "Submit and add a new one"
-msgstr ""
+msgstr "Підтвердити та додати ще один"
+
+#, python-format
+msgid "Project default: %(currency)s"
+msgstr "Типове для проєкту: %(currency)s"
 
 msgid "Bills can't be null"
-msgstr ""
+msgstr "Рахунки не можуть бути порожніми"
 
 msgid "Name"
-msgstr ""
+msgstr "Назва"
 
 msgid "Weights should be positive"
-msgstr ""
+msgstr "Вага має бути додатною"
 
 msgid "Weight"
-msgstr ""
+msgstr "Вага"
 
 msgid "Add"
-msgstr ""
+msgstr "Додати"
 
 msgid "User name incorrect"
-msgstr ""
+msgstr "Не вірне ім'я користувача"
 
 msgid "This project already have this member"
-msgstr ""
+msgstr "У цьому проєкті вже є такий учасник"
 
 msgid "People to notify"
-msgstr ""
+msgstr "Люди, яких треба сповістити"
 
 msgid "Send invites"
-msgstr ""
+msgstr "Відправити запрошення"
 
 #, python-format
 msgid "The email %(email)s is not valid"
-msgstr ""
+msgstr "Поштові скриньки %(email)s не дійсні"
 
 msgid "Participant"
-msgstr ""
+msgstr "Учасник"
 
 msgid "Bill"
-msgstr ""
+msgstr "Рахунок"
 
 msgid "Project"
-msgstr ""
+msgstr "Проєкт"
+
+msgid "No Currency"
+msgstr "Немає валюти"
 
 msgid "Too many failed login attempts, please retry later."
-msgstr ""
+msgstr "Забагато невдалих спроб увійти, будь ласка спробуйте пізніше."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
-msgstr ""
+msgstr "Цей пароль адміністратора не вірний. Залишилося тільки %(num)d спроб."
 
 msgid "You either provided a bad token or no project identifier."
-msgstr ""
+msgstr "Або Ви надали неналежний токен, або не вказаний ідентифікатор проєкту."
 
 msgid "This private code is not the right one"
-msgstr ""
+msgstr "Цей приватний код не підходить"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
+msgstr "Ви щойно створили '%(project)s', щоб поділитися витратами"
+
+msgid "A reminder email has just been sent to you"
+msgstr ""
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
 msgstr ""
 
 #, python-format
-msgid "%(msg_compl)sThe project identifier is %(project)s"
+msgid "The project identifier is %(project)s"
+msgstr "Ідентифікатор проєкту %(project)s"
+
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions. Please check the email configuration of the server or "
+"contact the administrator."
 msgstr ""
 
 msgid "No token provided"
-msgstr ""
+msgstr "Не надано токен"
 
 msgid "Invalid token"
-msgstr ""
+msgstr "Недійсний токен"
 
 msgid "Unknown project"
-msgstr ""
+msgstr "Невідомий проєкт"
 
 msgid "Password successfully reset."
-msgstr ""
+msgstr "Пароль з успіхом відновлено."
 
 msgid "Project successfully uploaded"
-msgstr ""
+msgstr "Проєкт з успіхом завантажено"
 
 msgid "Invalid JSON"
-msgstr ""
+msgstr "Недійсний JSON"
 
 msgid "Project successfully deleted"
-msgstr ""
+msgstr "Проєкт з успіхом видалено"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
-msgstr ""
+msgstr "Вас запросили поділитися своїми витратами у %(project)s"
 
 msgid "Your invitations have been sent"
+msgstr "Ваші запрошення відправленні"
+
+msgid ""
+"Sorry, there was an error while trying to send the invitation emails. "
+"Please check the email configuration of the server or contact the "
+"administrator."
 msgstr ""
 
 #, python-format
 msgid "%(member)s has been added"
-msgstr ""
+msgstr "%(member)s додано"
 
 #, python-format
 msgid "%(name)s is part of this project again"
-msgstr ""
+msgstr "%(name)s знову частина цього проекту"
 
 #, python-format
 msgid ""
@@ -210,7 +245,7 @@ msgstr ""
 
 #, python-format
 msgid "User '%(name)s' has been removed"
-msgstr ""
+msgstr "Користвача '%(name)s' видалено"
 
 #, python-format
 msgid "User '%(name)s' has been edited"
@@ -270,7 +305,7 @@ msgstr ""
 msgid "delete"
 msgstr ""
 
-msgid "see"
+msgid "show"
 msgstr ""
 
 msgid "The Dashboard is currently deactivated."
@@ -408,12 +443,6 @@ msgstr ""
 msgid "owers list"
 msgstr ""
 
-msgid "Who?"
-msgstr ""
-
-msgid "Balance"
-msgstr ""
-
 #, python-format
 msgid ""
 "\n"
@@ -498,6 +527,10 @@ msgstr ""
 msgid "Amount"
 msgstr ""
 
+#, python-format
+msgid "Amount in %(currency)s"
+msgstr ""
+
 msgid "modified"
 msgstr ""
 
@@ -544,8 +577,8 @@ msgid "Create"
 msgstr ""
 
 msgid ""
-"This access code will be sent to your friends. It is stored as-is by the "
-"server, so don\\'t reuse a personal password!"
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
 msgstr ""
 
 msgid "Account manager"
@@ -605,10 +638,8 @@ msgstr ""
 msgid "you can contribute and improve it!"
 msgstr ""
 
-msgid "deactivate"
-msgstr ""
-
-msgid "reactivate"
+#, python-format
+msgid "%(amount)s each"
 msgstr ""
 
 msgid "Invite people"
@@ -647,9 +678,6 @@ msgstr ""
 
 #, python-format
 msgid "Everyone but %(excluded)s"
-msgstr ""
-
-msgid "each"
 msgstr ""
 
 msgid "No bills"
@@ -720,6 +748,18 @@ msgstr ""
 msgid "To whom?"
 msgstr ""
 
+msgid "Who?"
+msgstr ""
+
+msgid "Balance"
+msgstr ""
+
+msgid "deactivate"
+msgstr ""
+
+msgid "reactivate"
+msgstr ""
+
 msgid "Paid"
 msgstr ""
 
@@ -731,3 +771,20 @@ msgstr ""
 
 msgid "Period"
 msgstr ""
+
+#~ msgid "%(msg_compl)sThe project identifier is %(project)s"
+#~ msgstr ""
+
+#~ msgid "each"
+#~ msgstr ""
+
+#~ msgid "Error while sending reminder email"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This access code will be sent to"
+#~ " your friends. It is stored as-"
+#~ "is by the server, so don\\'t reuse"
+#~ " a personal password!"
+#~ msgstr ""
+

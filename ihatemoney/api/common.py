@@ -85,7 +85,7 @@ class ProjectStatsHandler(Resource):
 
 
 class APIMemberForm(MemberForm):
-    """ Member is not disablable via a Form.
+    """Member is not disablable via a Form.
 
     But we want Member.enabled to be togglable via the API.
     """

@@ -50,16 +50,28 @@ body {
   font-size: 2.4em;
 }
 
-#header .tryout {
-  margin-right: 10em;
+#header .tryout, #header .showcase {
   color: #fff;
   background-color: #414141;
   border-color: #414141;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
-#header .tryout:hover {
+#header .tryout:hover, #header .showcase:hover {
   background-color: #606060;
   border-color: #606060;
+  cursor: pointer;
+}
+
+#header .showcaseimg {
+  width: 55px;
+}
+
+#header .shareimg {
+  width: 80px;
+  margin-left: 5px;
+  margin-bottom: 8px;
 }
 
 #header .additional-content {
@@ -150,7 +162,7 @@ body {
   margin-bottom: 20px;
   margin-left: 25px;
 }
-@media (max-width: 400px) {
+@media (max-width: 450px) {
   .home .card {
     min-width: unset;
   }
@@ -168,10 +180,10 @@ body {
   border: 0;
 }
 
-.empty-bill .hand-holding-heart svg {
+.empty-bill .billimg svg {
   fill: lightgray;
-  height: 5em;
-  width: 5em;
+  height: 6em;
+  width: 4em;
 }
 
 .invites textarea {
@@ -303,7 +315,7 @@ footer .footer-left {
 
 .bill-actions > .delete,
 .bill-actions > .edit,
-.bill-actions > .see {
+.bill-actions > .show {
   font-size: 0px;
   display: block;
   width: 16px;
@@ -321,8 +333,8 @@ footer .footer-left {
   background: url("../images/edit.png") no-repeat right;
 }
 
-.bill-actions > .see {
-  background: url("../images/see.png") no-repeat right;
+.bill-actions > .show {
+  background: url("../images/show.png") no-repeat right;
 }
 
 #bill_table,
@@ -342,7 +354,7 @@ footer .footer-left {
 
 .project-actions > .delete,
 .project-actions > .edit,
-.project-actions > .see {
+.project-actions > .show {
   font-size: 0px;
   display: block;
   width: 16px;
@@ -360,8 +372,8 @@ footer .footer-left {
   background: url("../images/edit.png") no-repeat right;
 }
 
-.project-actions > .see {
-  background: url("../images/see.png") no-repeat right;
+.project-actions > .show {
+  background: url("../images/show.png") no-repeat right;
 }
 
 .history_icon > .delete,
@@ -535,11 +547,17 @@ tr:hover .extra-info {
   width: 1.2em; /* protection for IE11 */
 }
 
+.icon.high svg {
+  height: 2em;
+  margin-top: -0.2em;
+  margin-bottom: -0.2em;
+}
+
 .download-project .icon svg {
   fill: white;
 }
 
-.icon.plus svg {
+.icon.before-text svg {
   margin-right: 3px;
 }
 footer .icon svg {
@@ -560,6 +578,10 @@ footer .icon svg {
 #monthly_stats tr *:first-child {
   text-align: right;
   width: 200px;
+}
+
+.hiddenpswp {
+  display: none;
 }
 
 #history_warnings {

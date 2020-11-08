@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-25 13:02+0200\n"
-"PO-Revision-Date: 2019-11-12 09:04+0000\n"
+"POT-Creation-Date: 2020-05-30 21:50+0200\n"
+"PO-Revision-Date: 2020-06-18 10:41+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"i-hate-money/i-hate-money/nb_NO/>\n"
 "Language: nb_NO\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/i"
-"-hate-money/i-hate-money/nb_NO/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.1.1-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 msgid ""
@@ -32,16 +32,19 @@ msgid "Email"
 msgstr "E-post"
 
 msgid "Enable project history"
-msgstr ""
+msgstr "Skru på prosjekthistorikk"
 
 msgid "Use IP tracking for project history"
-msgstr ""
+msgstr "Bruk IP-sporing for prosjekthistorikk"
+
+msgid "Default Currency"
+msgstr "Forvalgt valuta"
 
 msgid "Import previously exported JSON file"
-msgstr ""
+msgstr "Importer tidligere eksportert JSON-fil"
 
 msgid "Import"
-msgstr ""
+msgstr "Importer"
 
 msgid "Project identifier"
 msgstr "Prosjektidentifikator"
@@ -94,6 +97,9 @@ msgstr "Betaler"
 msgid "Amount paid"
 msgstr "Beløp betalt"
 
+msgid "Currency"
+msgstr "Valuta"
+
 msgid "External link"
 msgstr "Ekstern lenke"
 
@@ -108,6 +114,10 @@ msgstr "Send inn"
 
 msgid "Submit and add a new one"
 msgstr "Send inn og legg til ny"
+
+#, python-format
+msgid "Project default: %(currency)s"
+msgstr "Prosjektforvalg: %(currency)s"
 
 msgid "Bills can't be null"
 msgstr "Regninger kan ikke være null"
@@ -142,13 +152,16 @@ msgid "The email %(email)s is not valid"
 msgstr "E-posten \"%(email)s\" er ikke gyldig"
 
 msgid "Participant"
-msgstr ""
+msgstr "Deltager"
 
 msgid "Bill"
-msgstr ""
+msgstr "Regning"
 
 msgid "Project"
 msgstr "Prosjekt"
+
+msgid "No Currency"
+msgstr "Ingen valuta"
 
 msgid "Too many failed login attempts, please retry later."
 msgstr "For mange mislykkede innloggingsforsøk, prøv igjen senere."
@@ -169,9 +182,23 @@ msgstr "Denne private koden er ikke rett"
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr "Du har akkurat opprettet \"%(project)s\" for å dele dine utgifter"
 
-#, fuzzy, python-format
-msgid "%(msg_compl)sThe project identifier is %(project)s"
-msgstr "%(msg_compl)sProsjektidentifikatoren er %(project)s"
+msgid "A reminder email has just been sent to you"
+msgstr "En påminnelse har blitt sendt til deg per e-post"
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
+
+#, python-format
+msgid "The project identifier is %(project)s"
+msgstr "Prosjektidentifikatoren er %(project)s"
+
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions. Please check the email configuration of the server or "
+"contact the administrator."
+msgstr ""
 
 msgid "No token provided"
 msgstr "Inget symbol angitt"
@@ -190,7 +217,7 @@ msgid "Project successfully uploaded"
 msgstr ""
 
 msgid "Invalid JSON"
-msgstr ""
+msgstr "Ugyldig JSON"
 
 #, fuzzy
 msgid "Project successfully deleted"
@@ -204,6 +231,12 @@ msgstr ""
 
 msgid "Your invitations have been sent"
 msgstr "Invitasjonene dine har blitt sendt"
+
+msgid ""
+"Sorry, there was an error while trying to send the invitation emails. "
+"Please check the email configuration of the server or contact the "
+"administrator."
+msgstr ""
 
 #, python-format
 msgid "%(member)s has been added"
@@ -285,9 +318,8 @@ msgstr "rediger"
 msgid "delete"
 msgstr "slett"
 
-#, fuzzy
-msgid "see"
-msgstr "se"
+msgid "show"
+msgstr ""
 
 msgid "The Dashboard is currently deactivated."
 msgstr "Oversikten er for tiden avskrudd."
@@ -299,10 +331,10 @@ msgid "Edit project"
 msgstr "Rediger prosjekt"
 
 msgid "Import JSON"
-msgstr ""
+msgstr "Importer JSON"
 
 msgid "Choose file"
-msgstr ""
+msgstr "Velg fil"
 
 msgid "Download project's data"
 msgstr "Last ned prosjektets data"
@@ -329,7 +361,7 @@ msgid "Cancel"
 msgstr "Avbryt"
 
 msgid "Privacy Settings"
-msgstr ""
+msgstr "Personvernsinnstillinger"
 
 msgid "Edit the project"
 msgstr "Rediger prosjektet"
@@ -384,13 +416,13 @@ msgid "History Settings Changed"
 msgstr ""
 
 msgid "changed"
-msgstr ""
+msgstr "endret"
 
 msgid "from"
-msgstr ""
+msgstr "fra"
 
 msgid "to"
-msgstr ""
+msgstr "til"
 
 msgid "Confirm Remove IP Adresses"
 msgstr ""
@@ -403,7 +435,7 @@ msgid ""
 msgstr ""
 
 msgid "Close"
-msgstr ""
+msgstr "Lukk"
 
 msgid "Confirm Delete"
 msgstr ""
@@ -426,14 +458,7 @@ msgid "and"
 msgstr ""
 
 msgid "owers list"
-msgstr ""
-
-msgid "Who?"
-msgstr "Hvem?"
-
-#, fuzzy
-msgid "Balance"
-msgstr "Kontobalanse"
+msgstr "eierliste"
 
 #, python-format
 msgid ""
@@ -460,13 +485,13 @@ msgid ""
 msgstr ""
 
 msgid "Delete stored IP addresses"
-msgstr ""
+msgstr "Slett lagrede IP-adresser"
 
 msgid "No history to erase"
-msgstr ""
+msgstr "Ingen historikk å slette"
 
 msgid "Clear Project History"
-msgstr ""
+msgstr "Tøm prosjekthistorikk"
 
 msgid "No IP Addresses to erase"
 msgstr ""
@@ -475,10 +500,10 @@ msgid "Delete Stored IP Addresses"
 msgstr ""
 
 msgid "Time"
-msgstr ""
+msgstr "Tid"
 
 msgid "Event"
-msgstr ""
+msgstr "Hendelse"
 
 msgid "IP address recording can be enabled on the settings page"
 msgstr ""
@@ -487,7 +512,7 @@ msgid "IP address recording can be disabled on the settings page"
 msgstr ""
 
 msgid "From IP"
-msgstr ""
+msgstr "Fra IP"
 
 msgid "added"
 msgstr ""
@@ -496,13 +521,13 @@ msgid "Project private code changed"
 msgstr ""
 
 msgid "Project renamed to"
-msgstr ""
+msgstr "Prosjektnavn endret til"
 
 msgid "Project contact email changed to"
 msgstr ""
 
 msgid "Project settings modified"
-msgstr ""
+msgstr "Prosjektinnstillinger endret"
 
 msgid "deactivated"
 msgstr ""
@@ -517,7 +542,11 @@ msgid "External link changed to"
 msgstr ""
 
 msgid "Amount"
-msgstr ""
+msgstr "Beløp"
+
+#, python-format
+msgid "Amount in %(currency)s"
+msgstr "Beløp i %(currency)s"
 
 msgid "modified"
 msgstr ""
@@ -565,13 +594,10 @@ msgstr "glemt passordet ditt?"
 msgid "Create"
 msgstr "Opprett"
 
-#, fuzzy
 msgid ""
-"This access code will be sent to your friends. It is stored as-is by the "
-"server, so don\\'t reuse a personal password!"
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
 msgstr ""
-"Denne tilgangskoden vil bli sendt til venne dine. Den lagres som den er "
-"på tjeneren, så ikke gjenbruk et personlig passord."
 
 msgid "Account manager"
 msgstr "Kontobehandler"
@@ -586,7 +612,7 @@ msgid "Statistics"
 msgstr "Statistikk"
 
 msgid "History"
-msgstr ""
+msgstr "Historikk"
 
 msgid "Settings"
 msgstr "Innstillinger"
@@ -633,11 +659,9 @@ msgstr "\"Jeg hater penger\" er fri programvare"
 msgid "you can contribute and improve it!"
 msgstr "du kan bidra og forbedre den."
 
-msgid "deactivate"
-msgstr "skru av"
-
-msgid "reactivate"
-msgstr "skru på igjen"
+#, python-format
+msgid "%(amount)s each"
+msgstr "%(amount)s hver"
 
 msgid "Invite people"
 msgstr "Inviter folk"
@@ -676,9 +700,6 @@ msgstr "Alle"
 #, python-format
 msgid "Everyone but %(excluded)s"
 msgstr "Alle, unntagen %(excluded)s"
-
-msgid "each"
-msgstr "hver"
 
 msgid "No bills"
 msgstr "Ingen regninger"
@@ -759,6 +780,19 @@ msgstr "Hvem betaler?"
 
 msgid "To whom?"
 msgstr "Til hvem?"
+
+msgid "Who?"
+msgstr "Hvem?"
+
+#, fuzzy
+msgid "Balance"
+msgstr "Kontobalanse"
+
+msgid "deactivate"
+msgstr "skru av"
+
+msgid "reactivate"
+msgstr "skru på igjen"
 
 msgid "Paid"
 msgstr "Betalt"
@@ -888,3 +922,23 @@ msgstr ""
 
 #~ msgid "%(member)s had been added"
 #~ msgstr "%(member)s lagt til"
+
+#~ msgid "%(msg_compl)sThe project identifier is %(project)s"
+#~ msgstr "%(msg_compl)sProsjektidentifikatoren er %(project)s"
+
+#~ msgid "each"
+#~ msgstr "hver"
+
+#~ msgid "Error while sending reminder email"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This access code will be sent to"
+#~ " your friends. It is stored as-"
+#~ "is by the server, so don\\'t reuse"
+#~ " a personal password!"
+#~ msgstr ""
+#~ "Denne tilgangskoden vil bli sendt til"
+#~ " venne dine. Den lagres som den "
+#~ "er på tjeneren, så ikke gjenbruk "
+#~ "et personlig passord."

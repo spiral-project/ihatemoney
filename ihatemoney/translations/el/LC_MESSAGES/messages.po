@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-25 13:02+0200\n"
+"POT-Creation-Date: 2020-05-30 21:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language: el\n"
@@ -32,6 +32,9 @@ msgid "Enable project history"
 msgstr ""
 
 msgid "Use IP tracking for project history"
+msgstr ""
+
+msgid "Default Currency"
 msgstr ""
 
 msgid "Import previously exported JSON file"
@@ -88,6 +91,9 @@ msgstr ""
 msgid "Amount paid"
 msgstr ""
 
+msgid "Currency"
+msgstr ""
+
 msgid "External link"
 msgstr ""
 
@@ -101,6 +107,10 @@ msgid "Submit"
 msgstr ""
 
 msgid "Submit and add a new one"
+msgstr ""
+
+#, python-format
+msgid "Project default: %(currency)s"
 msgstr ""
 
 msgid "Bills can't be null"
@@ -143,6 +153,9 @@ msgstr ""
 msgid "Project"
 msgstr ""
 
+msgid "No Currency"
+msgstr ""
+
 msgid "Too many failed login attempts, please retry later."
 msgstr ""
 
@@ -160,8 +173,22 @@ msgstr ""
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr ""
 
+msgid "A reminder email has just been sent to you"
+msgstr ""
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
+
 #, python-format
-msgid "%(msg_compl)sThe project identifier is %(project)s"
+msgid "The project identifier is %(project)s"
+msgstr ""
+
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions. Please check the email configuration of the server or "
+"contact the administrator."
 msgstr ""
 
 msgid "No token provided"
@@ -190,6 +217,12 @@ msgid "You have been invited to share your expenses for %(project)s"
 msgstr ""
 
 msgid "Your invitations have been sent"
+msgstr ""
+
+msgid ""
+"Sorry, there was an error while trying to send the invitation emails. "
+"Please check the email configuration of the server or contact the "
+"administrator."
 msgstr ""
 
 #, python-format
@@ -268,7 +301,7 @@ msgstr ""
 msgid "delete"
 msgstr ""
 
-msgid "see"
+msgid "show"
 msgstr ""
 
 msgid "The Dashboard is currently deactivated."
@@ -406,12 +439,6 @@ msgstr ""
 msgid "owers list"
 msgstr ""
 
-msgid "Who?"
-msgstr ""
-
-msgid "Balance"
-msgstr ""
-
 #, python-format
 msgid ""
 "\n"
@@ -496,6 +523,10 @@ msgstr ""
 msgid "Amount"
 msgstr ""
 
+#, python-format
+msgid "Amount in %(currency)s"
+msgstr ""
+
 msgid "modified"
 msgstr ""
 
@@ -542,8 +573,8 @@ msgid "Create"
 msgstr ""
 
 msgid ""
-"This access code will be sent to your friends. It is stored as-is by the "
-"server, so don\\'t reuse a personal password!"
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
 msgstr ""
 
 msgid "Account manager"
@@ -603,10 +634,8 @@ msgstr ""
 msgid "you can contribute and improve it!"
 msgstr ""
 
-msgid "deactivate"
-msgstr ""
-
-msgid "reactivate"
+#, python-format
+msgid "%(amount)s each"
 msgstr ""
 
 msgid "Invite people"
@@ -645,9 +674,6 @@ msgstr ""
 
 #, python-format
 msgid "Everyone but %(excluded)s"
-msgstr ""
-
-msgid "each"
 msgstr ""
 
 msgid "No bills"
@@ -718,6 +744,18 @@ msgstr ""
 msgid "To whom?"
 msgstr ""
 
+msgid "Who?"
+msgstr ""
+
+msgid "Balance"
+msgstr ""
+
+msgid "deactivate"
+msgstr ""
+
+msgid "reactivate"
+msgstr ""
+
 msgid "Paid"
 msgstr ""
 
@@ -729,3 +767,20 @@ msgstr ""
 
 msgid "Period"
 msgstr ""
+
+#~ msgid "%(msg_compl)sThe project identifier is %(project)s"
+#~ msgstr ""
+
+#~ msgid "each"
+#~ msgstr ""
+
+#~ msgid "Error while sending reminder email"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This access code will be sent to"
+#~ " your friends. It is stored as-"
+#~ "is by the server, so don\\'t reuse"
+#~ " a personal password!"
+#~ msgstr ""
+

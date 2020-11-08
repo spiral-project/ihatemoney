@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
-"Project-Id-Version:  \n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-04-25 13:02+0200\n"
-"PO-Revision-Date: 2019-10-07 22:56+0000\n"
-"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"POT-Creation-Date: 2020-05-30 21:50+0200\n"
+"PO-Revision-Date: 2020-09-06 15:36+0000\n"
+"Last-Translator: Sander Kooijmans <weblate@gogognome.nl>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/nl/>\n"
 "Language: nl\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/i-hate-money/i"
-"-hate-money/nl/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 msgid ""
@@ -30,16 +30,19 @@ msgid "Email"
 msgstr "E-mailadres"
 
 msgid "Enable project history"
-msgstr ""
+msgstr "Projectgeschiedenis inschakelen"
 
 msgid "Use IP tracking for project history"
-msgstr ""
+msgstr "IP-tracking voor projectgeschiedenis gebruiken"
+
+msgid "Default Currency"
+msgstr "Standaard munteenheid"
 
 msgid "Import previously exported JSON file"
-msgstr ""
+msgstr "Eerder geëxporteerd JSON-bestand importeren"
 
 msgid "Import"
-msgstr ""
+msgstr "Importeren"
 
 msgid "Project identifier"
 msgstr "Project-id"
@@ -89,6 +92,9 @@ msgstr "Betaler"
 msgid "Amount paid"
 msgstr "Betaald bedrag"
 
+msgid "Currency"
+msgstr "Munteenheid"
+
 msgid "External link"
 msgstr "Externe link"
 
@@ -103,6 +109,10 @@ msgstr "Versturen"
 
 msgid "Submit and add a new one"
 msgstr "Versturen en nieuwe toevoegen"
+
+#, python-format
+msgid "Project default: %(currency)s"
+msgstr ""
 
 msgid "Bills can't be null"
 msgstr "Rekeningen mogen niet null zijn"
@@ -136,13 +146,16 @@ msgid "The email %(email)s is not valid"
 msgstr "Het e-mailadres '%(email)s' is onjuist"
 
 msgid "Participant"
-msgstr ""
+msgstr "Deelnemer"
 
 msgid "Bill"
-msgstr ""
+msgstr "Rekening"
 
 msgid "Project"
 msgstr "Project"
+
+msgid "No Currency"
+msgstr "Geen munteenheid"
 
 msgid "Too many failed login attempts, please retry later."
 msgstr "Te vaak onjuist ingelogd. Probeer het later opnieuw."
@@ -163,9 +176,23 @@ msgstr ""
 "Je hebt zojuist het project '%(project)s' aangemaakt om je uitgaven te "
 "verdelen"
 
+msgid "A reminder email has just been sent to you"
+msgstr ""
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
+
 #, python-format
-msgid "%(msg_compl)sThe project identifier is %(project)s"
-msgstr "%(msg_compl)sDe project-id is %(project)s"
+msgid "The project identifier is %(project)s"
+msgstr ""
+
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions. Please check the email configuration of the server or "
+"contact the administrator."
+msgstr ""
 
 msgid "No token provided"
 msgstr "Geen toegangssleutel opgegeven"
@@ -183,7 +210,7 @@ msgid "Project successfully uploaded"
 msgstr ""
 
 msgid "Invalid JSON"
-msgstr ""
+msgstr "Ongeldige JSON"
 
 msgid "Project successfully deleted"
 msgstr "Project is verwijderd"
@@ -195,9 +222,15 @@ msgstr "Je bent uitgenodigd om je uitgaven te delen met %(project)s"
 msgid "Your invitations have been sent"
 msgstr "Je uitnodigingen zijn verstuurd"
 
+msgid ""
+"Sorry, there was an error while trying to send the invitation emails. "
+"Please check the email configuration of the server or contact the "
+"administrator."
+msgstr ""
+
 #, python-format
 msgid "%(member)s has been added"
-msgstr ""
+msgstr "%(member)s zijn toegevoegd"
 
 #, python-format
 msgid "%(name)s is part of this project again"
@@ -273,8 +306,8 @@ msgstr "bewerken"
 msgid "delete"
 msgstr "verwijderen"
 
-msgid "see"
-msgstr "bekijk"
+msgid "show"
+msgstr "tonen"
 
 msgid "The Dashboard is currently deactivated."
 msgstr "De overzichtspagina is momenteel uitgeschakeld."
@@ -286,10 +319,10 @@ msgid "Edit project"
 msgstr "Project aanpassen"
 
 msgid "Import JSON"
-msgstr ""
+msgstr "JSON importeren"
 
 msgid "Choose file"
-msgstr ""
+msgstr "Bestand kiezen"
 
 msgid "Download project's data"
 msgstr "Projectgegevens downloaden"
@@ -369,13 +402,13 @@ msgid "History Settings Changed"
 msgstr ""
 
 msgid "changed"
-msgstr ""
+msgstr "gewijzigd"
 
 msgid "from"
-msgstr ""
+msgstr "van"
 
 msgid "to"
-msgstr ""
+msgstr "naar"
 
 msgid "Confirm Remove IP Adresses"
 msgstr ""
@@ -388,7 +421,7 @@ msgid ""
 msgstr ""
 
 msgid "Close"
-msgstr ""
+msgstr "Sluiten"
 
 msgid "Confirm Delete"
 msgstr ""
@@ -402,22 +435,16 @@ msgid ""
 msgstr ""
 
 msgid "Added"
-msgstr ""
+msgstr "Toegevoegd"
 
 msgid "Removed"
-msgstr ""
+msgstr "Verwijderd"
 
 msgid "and"
-msgstr ""
+msgstr "en"
 
 msgid "owers list"
 msgstr ""
-
-msgid "Who?"
-msgstr "Wie?"
-
-msgid "Balance"
-msgstr "Saldo"
 
 #, python-format
 msgid ""
@@ -503,6 +530,10 @@ msgstr ""
 msgid "Amount"
 msgstr ""
 
+#, python-format
+msgid "Amount in %(currency)s"
+msgstr ""
+
 msgid "modified"
 msgstr ""
 
@@ -549,11 +580,9 @@ msgid "Create"
 msgstr "Maken"
 
 msgid ""
-"This access code will be sent to your friends. It is stored as-is by the "
-"server, so don\\'t reuse a personal password!"
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
 msgstr ""
-"Deze toegangscode wordt verstuurd aan je vrienden. Deze wordt in platte "
-"tekst opgeslagen op de server, dus gebruik geen persoonlijk wachtwoord!"
 
 msgid "Account manager"
 msgstr "Accountbeheer"
@@ -612,11 +641,9 @@ msgstr "\"I hate money\" is vrije software"
 msgid "you can contribute and improve it!"
 msgstr "je kunt bijdragen en de code verbeteren!"
 
-msgid "deactivate"
-msgstr "deactiveren"
-
-msgid "reactivate"
-msgstr "heractiveren"
+#, python-format
+msgid "%(amount)s each"
+msgstr ""
 
 msgid "Invite people"
 msgstr "Anderen uitnodigen"
@@ -655,9 +682,6 @@ msgstr "Iedereen"
 #, python-format
 msgid "Everyone but %(excluded)s"
 msgstr "Iedereen, behalve %(excluded)s"
-
-msgid "each"
-msgstr "per persoon"
 
 msgid "No bills"
 msgstr "Geen rekeningen"
@@ -735,6 +759,18 @@ msgstr "Wie betaalt?"
 msgid "To whom?"
 msgstr "Aan wie?"
 
+msgid "Who?"
+msgstr "Wie?"
+
+msgid "Balance"
+msgstr "Saldo"
+
+msgid "deactivate"
+msgstr "deactiveren"
+
+msgid "reactivate"
+msgstr "heractiveren"
+
 msgid "Paid"
 msgstr "Betaald"
 
@@ -746,3 +782,23 @@ msgstr ""
 
 msgid "Period"
 msgstr ""
+
+#~ msgid "%(msg_compl)sThe project identifier is %(project)s"
+#~ msgstr "%(msg_compl)sDe project-id is %(project)s"
+
+#~ msgid "each"
+#~ msgstr "per persoon"
+
+#~ msgid "Error while sending reminder email"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This access code will be sent to"
+#~ " your friends. It is stored as-"
+#~ "is by the server, so don\\'t reuse"
+#~ " a personal password!"
+#~ msgstr ""
+#~ "Deze toegangscode wordt verstuurd aan je"
+#~ " vrienden. Deze wordt in platte tekst"
+#~ " opgeslagen op de server, dus gebruik"
+#~ " geen persoonlijk wachtwoord!"

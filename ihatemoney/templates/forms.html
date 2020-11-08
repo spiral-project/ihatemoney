@@ -75,6 +75,7 @@
     {{ input(form.name) }}
     {{ input(form.password) }}
     {{ input(form.contact_email) }}
+    {{ input(form.default_currency) }}
     {% if not home %}
     {{ submit(form.submit, home=True) }}
     {% endif %}
@@ -96,6 +97,7 @@
         </div>
     </div>
 
+    {{ input(form.default_currency) }}
     <div class="actions">
         <button class="btn btn-primary">{{ _("Edit the project") }}</button>
         <a id="delete-project" style="color:red; margin-left:10px; cursor:pointer; ">{{ _("delete") }}</a>
@@ -122,6 +124,9 @@
     {{ input(form.what, inline=True) }}
     {{ input(form.payer, inline=True, class="form-control custom-select") }}
     {{ input(form.amount, inline=True) }}
+    {% if g.project.default_currency != "XXX" %}
+        {{ input(form.original_currency, inline=True) }}
+    {% endif %}
     {{ input(form.external_link, inline=True) }}
 
     <div class="form-group row">

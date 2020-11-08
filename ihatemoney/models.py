@@ -15,6 +15,7 @@ from sqlalchemy import orm
 from sqlalchemy.sql import func
 from sqlalchemy_continuum import make_versioned, version_class
 from sqlalchemy_continuum.plugins import FlaskPlugin
+from werkzeug.security import generate_password_hash
 
 from ihatemoney.patch_sqlalchemy_continuum import PatchedBuilder
 from ihatemoney.versioning import (
@@ -71,6 +72,7 @@ class Project(db.Model):
     members = db.relationship("Person", backref="project")
 
     query_class = ProjectQuery
+    default_currency = db.Column(db.String(3))
 
     @property
     def _to_serialize(self):
@@ -80,6 +82,7 @@ class Project(db.Model):
             "contact_email": self.contact_email,
             "logging_preference": self.logging_preference.value,
             "members": [],
+            "default_currency": self.default_currency,
         }
 
         balance = self.balance
@@ -128,7 +131,10 @@ class Project(db.Model):
             {
                 "member": member,
                 "paid": sum(
-                    [bill.amount for bill in self.get_member_bills(member.id).all()]
+                    [
+                        bill.converted_amount
+                        for bill in self.get_member_bills(member.id).all()
+                    ]
                 ),
                 "spent": sum(
                     [
@@ -151,7 +157,7 @@ class Project(db.Model):
         """
         monthly = defaultdict(lambda: defaultdict(float))
         for bill in self.get_bills().all():
-            monthly[bill.date.year][bill.date.month] += bill.amount
+            monthly[bill.date.year][bill.date.month] += bill.converted_amount
         return monthly
 
     @property
@@ -162,8 +168,7 @@ class Project(db.Model):
         """Return a list of transactions that could be made to settle the bill"""
 
         def prettify(transactions, pretty_output):
-            """ Return pretty transactions
-            """
+            """Return pretty transactions"""
             if not pretty_output:
                 return transactions
             pretty_transactions = []
@@ -267,9 +272,8 @@ class Project(db.Model):
         This method returns the status DELETED or DEACTIVATED regarding the
         changes made.
         """
-        try:
-            person = Person.query.get(member_id, self)
-        except orm.exc.NoResultFound:
+        person = Person.query.get(member_id, self)
+        if person is None:
             return None
         if not person.has_bills():
             db.session.delete(person)
@@ -325,14 +329,57 @@ class Project(db.Model):
     def __repr__(self):
         return f"<Project {self.name}>"
 
+    @staticmethod
+    def create_demo_project():
+        project = Project(
+            id="demo",
+            name="demonstration",
+            password=generate_password_hash("demo"),
+            contact_email="demo@notmyidea.org",
+            default_currency="EUR",
+        )
+        db.session.add(project)
+        db.session.commit()
+
+        members = {}
+        for name in ("Amina", "Georg", "Alice"):
+            person = Person()
+            person.name = name
+            person.project = project
+            person.weight = 1
+            db.session.add(person)
+
+            members[name] = person
+
+        db.session.commit()
+
+        operations = (
+            ("Georg", 200, ("Amina", "Georg", "Alice"), "Food shopping"),
+            ("Alice", 20, ("Amina", "Alice"), "Beer !"),
+            ("Amina", 50, ("Amina", "Alice", "Georg"), "AMAP"),
+        )
+        for (payer, amount, owers, subject) in operations:
+            bill = Bill()
+            bill.payer_id = members[payer].id
+            bill.what = subject
+            bill.owers = [members[name] for name in owers]
+            bill.amount = amount
+            bill.original_currency = "EUR"
+            bill.converted_amount = amount
+
+            db.session.add(bill)
+
+        db.session.commit()
+        return project
+
 
 class Person(db.Model):
     class PersonQuery(BaseQuery):
         def get_by_name(self, name, project):
             return (
                 Person.query.filter(Person.name == name)
-                .filter(Project.id == project.id)
-                .one()
+                .filter(Person.project_id == project.id)
+                .one_or_none()
             )
 
         def get(self, id, project=None):
@@ -340,8 +387,8 @@ class Person(db.Model):
                 project = g.project
             return (
                 Person.query.filter(Person.id == id)
-                .filter(Project.id == project.id)
-                .one()
+                .filter(Person.project_id == project.id)
+                .one_or_none()
             )
 
     query_class = PersonQuery
@@ -432,6 +479,9 @@ class Bill(db.Model):
     what = db.Column(db.UnicodeText)
     external_link = db.Column(db.UnicodeText)
 
+    original_currency = db.Column(db.String(3))
+    converted_amount = db.Column(db.Float)
+
     archive = db.Column(db.Integer, db.ForeignKey("archive.id"))
 
     @property
@@ -445,9 +495,11 @@ class Bill(db.Model):
             "creation_date": self.creation_date,
             "what": self.what,
             "external_link": self.external_link,
+            "original_currency": self.original_currency,
+            "converted_amount": self.converted_amount,
         }
 
-    def pay_each(self):
+    def pay_each_default(self, amount):
         """Compute what each share has to pay"""
         if self.owers:
             weights = (
@@ -455,12 +507,15 @@ class Bill(db.Model):
                 .join(billowers, Bill)
                 .filter(Bill.id == self.id)
             ).scalar()
-            return self.amount / weights
+            return amount / weights
         else:
             return 0
 
     def __str__(self):
         return self.what
+
+    def pay_each(self):
+        return self.pay_each_default(self.converted_amount)
 
     def __repr__(self):
         return (

@@ -99,23 +99,7 @@
 
 {% block sidebar %}
     <div id="table_overflow">
-    <table class="balance table">
-    <thead>
-        <tr class="d-none d-md-table-row">
-            <th>{{ _("Who?") }}</th>
-            <th class="balance-value">{{ _("Balance") }}</th>
-        </tr>
-    </thead>
-    {% set balance = g.project.balance %}
-    {% for member in g.project.members | sort(attribute='name') if member.activated or balance[member.id]|round(2) != 0 %}
-    <tr id="bal-member-{{ member.id }}" action={% if member.activated %}delete{% else %}reactivate{% endif %}>
-        <td class="balance-name">{{ member.name }}</td>
-        <td class="balance-value {% if balance[member.id]|round(2) > 0 %}positive{% elif balance[member.id]|round(2) < 0 %}negative{% endif %}">
-            {% if balance[member.id]|round(2) > 0 %}+{% endif %}{{ "%.2f" | format(balance[member.id]) }}
-        </td>
-    </tr>
-    {% endfor %}
-    </table>
+        {{ balance_table(show_weight=False, show_header=True) }}
     </div>
 {% endblock %}
 
@@ -251,7 +235,11 @@
                     {% elif event.prop_changed == "amount" %}
                         {{ bill_property_change(event, _("amount")) }}
                     {% elif event.prop_changed == "date" %}
-                        {{ bill_property_change(event, _("date")) }}
+                        {{ simple_property_change(event, _("Date")) }}
+                    {% elif event.prop_changed == "original_currency" %}
+                        {{ simple_property_change(event, _("Currency")) }}
+                    {% elif event.prop_changed == "converted_amount" %}
+                        {{ simple_property_change(event, _("Amount in %(currency)s", currency=g.project.default_currency)) }}
                     {% else %}
                         {% if event.object_type == "Bill" %}
                             {% set bill_description=em_surround(event.object_desc) %}
@@ -293,7 +281,7 @@
         <div class="py-3 d-flex justify-content-center empty-bill">
         <div class="card d-inline-flex p-2">
             <div class="card-body text-center text-muted">
-                <i class="icon icon-white hand-holding-heart">{{ static_include("images/hand-holding-heart.svg") | safe }}</i>
+                <i class="icon icon-white billimg">{{ static_include("images/bill.svg") | safe }}</i>
                 <h3>{{ _('Nothing to list')}}</h3>
                 <p>
                     {{ _("Someone probably cleared the project history.") }}

@@ -12,7 +12,6 @@ from datetime import datetime
 from functools import wraps
 import json
 import os
-from smtplib import SMTPRecipientsRefused
 
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
@@ -30,13 +29,14 @@ from flask import (
     session,
     url_for,
 )
-from flask_babel import get_locale, gettext as _
+from flask_babel import gettext as _
 from flask_mail import Message
 from sqlalchemy import orm
 from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash, generate_password_hash
 
+from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.forms import (
     AdminAuthenticationForm,
     AuthenticationForm,
@@ -57,7 +57,9 @@ from ihatemoney.utils import (
     get_members,
     list_of_dicts2csv,
     list_of_dicts2json,
+    render_localized_template,
     same_bill,
+    send_email,
 )
 
 main = Blueprint("main", __name__)
@@ -301,27 +303,28 @@ def create_project():
                 project=g.project.name,
             )
 
-            message_body = render_template(f"reminder_mail.{get_locale().language}.j2")
+            message_body = render_localized_template("reminder_mail")
 
             msg = Message(
                 message_title, body=message_body, recipients=[project.contact_email]
             )
-            try:
-                current_app.mail.send(msg)
-            except SMTPRecipientsRefused:
-                msg_compl = "Problem sending mail. "
-                # TODO: destroy the project and cancel instead?
-            else:
-                msg_compl = ""
-
-            # redirect the user to the next step (invite)
-            flash(
-                _(
-                    "%(msg_compl)sThe project identifier is %(project)s",
-                    msg_compl=msg_compl,
-                    project=project.id,
+            success = send_email(msg)
+            if success:
+                flash(
+                    _("A reminder email has just been sent to you"), category="success"
                 )
-            )
+            else:
+                # Display the error as a simple "info" alert, because it's
+                # not critical and doesn't prevent using the project.
+                flash(
+                    _(
+                        "We tried to send you an reminder email, but there was an error. "
+                        "You can still use the project normally."
+                    ),
+                    category="info",
+                )
+            # redirect the user to the next step (invite)
+            flash(_("The project identifier is %(project)s", project=project.id))
             return redirect(url_for(".list_bills", project_id=project.id))
 
     return render_template("create_project.html", form=form)
@@ -335,16 +338,25 @@ def remind_password():
             # get the project
             project = Project.query.get(form.id.data)
             # send a link to reset the password
-            password_reminder = f"password_reminder.{get_locale().language}.j2"
-            current_app.mail.send(
-                Message(
-                    "password recovery",
-                    body=render_template(password_reminder, project=project),
-                    recipients=[project.contact_email],
-                )
+            remind_message = Message(
+                "password recovery",
+                body=render_localized_template("password_reminder", project=project),
+                recipients=[project.contact_email],
             )
-            return redirect(url_for(".password_reminder_sent"))
-
+            success = send_email(remind_message)
+            if success:
+                return redirect(url_for(".password_reminder_sent"))
+            else:
+                flash(
+                    _(
+                        "Sorry, there was an error while sending you an email "
+                        "with password reset instructions. "
+                        "Please check the email configuration of the server "
+                        "or contact the administrator."
+                    ),
+                    category="danger",
+                )
+                # Fall-through: we stay on the same page and display the form again
     return render_template("password_reminder.html", form=form)
 
 
@@ -393,11 +405,23 @@ def edit_project():
 
             return redirect(url_for("main.list_bills"))
         except ValueError:
-            flash(_("Invalid JSON"), category="error")
+            flash(_("Invalid JSON"), category="danger")
 
     # Edit form
     if edit_form.validate_on_submit():
         project = edit_form.update(g.project)
+        # Update converted currency
+        if project.default_currency != CurrencyConverter.no_currency:
+            for bill in project.get_bills():
+
+                if bill.original_currency == CurrencyConverter.no_currency:
+                    bill.original_currency = project.default_currency
+
+                bill.converted_amount = CurrencyConverter().exchange_currency(
+                    bill.amount, bill.original_currency, project.default_currency
+                )
+                db.session.add(bill)
+
         db.session.add(project)
         db.session.commit()
 
@@ -411,6 +435,7 @@ def edit_project():
                 edit_form.ip_recording.data = True
 
         edit_form.contact_email.data = g.project.contact_email
+        edit_form.default_currency.data = g.project.default_currency
 
     return render_template(
         "edit_project.html",
@@ -485,6 +510,7 @@ def import_project(file, project):
         form.date = parse(b["date"])
         form.payer = id_dict[b["payer_name"]]
         form.payed_for = owers_id
+        form.original_currency = b.get("original_currency")
 
         db.session.add(form.fake_form(bill, project))
 
@@ -533,11 +559,11 @@ def exit():
 @main.route("/demo")
 def demo():
     """
-    Authenticate the user for the demonstration project and redirect him to
+    Authenticate the user for the demonstration project and redirects to
     the bills list for this project.
 
     Create a demo project if it doesn't exists yet (or has been deleted)
-    If the demo project is deactivated, one is redirected to the create project form
+    If the demo project is deactivated, redirects to the create project form.
     """
     is_demo_project_activated = current_app.config["ACTIVATE_DEMO_PROJECT"]
     project = Project.query.get("demo")
@@ -545,14 +571,7 @@ def demo():
     if not project and not is_demo_project_activated:
         raise Redirect303(url_for(".create_project", project_id="demo"))
     if not project and is_demo_project_activated:
-        project = Project(
-            id="demo",
-            name="demonstration",
-            password=generate_password_hash("demo"),
-            contact_email="demo@notmyidea.org",
-        )
-        db.session.add(project)
-        db.session.commit()
+        project = Project.create_demo_project()
     session[project.id] = True
     return redirect(url_for(".list_bills", project_id=project.id))
 
@@ -566,11 +585,7 @@ def invite():
     if request.method == "POST":
         if form.validate():
             # send the email
-
-            message_body = render_template(
-                f"invitation_mail.{get_locale().language}.j2"
-            )
-
+            message_body = render_localized_template("invitation_mail")
             message_title = _(
                 "You have been invited to share your " "expenses for %(project)s",
                 project=g.project.name,
@@ -580,10 +595,20 @@ def invite():
                 body=message_body,
                 recipients=[email.strip() for email in form.emails.data.split(",")],
             )
-            current_app.mail.send(msg)
-            flash(_("Your invitations have been sent"))
-            return redirect(url_for(".list_bills"))
-
+            success = send_email(msg)
+            if success:
+                flash(_("Your invitations have been sent"), category="success")
+                return redirect(url_for(".list_bills"))
+            else:
+                flash(
+                    _(
+                        "Sorry, there was an error while trying to send the invitation emails. "
+                        "Please check the email configuration of the server "
+                        "or contact the administrator."
+                    ),
+                    category="danger",
+                )
+                # Fall-through: we stay on the same page and display the form again
     return render_template("send_invites.html", form=form)
 
 
@@ -728,7 +753,7 @@ def edit_bill(bill_id):
         return redirect(url_for(".list_bills"))
 
     if not form.errors:
-        form.fill(bill)
+        form.fill(bill, g.project)
 
     return render_template("add_bill.html", form=form, edit=True)
 

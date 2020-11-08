@@ -2,22 +2,7 @@
 
 {% block sidebar %}
     <div id="table_overflow" class="statistics mr-md-n3">
-    <table class="balance table">
-    <thead>
-        <tr class="d-none d-md-table-row">
-            <th>{{ _("Who?") }}</th>
-            <th class="balance-value">{{ _("Balance") }}</th>
-        </tr>
-    </thead>
-    {% for stat in members_stats| sort(attribute='member.name') %}
-    <tr>
-        <td class="balance-name">{{ stat.member.name }}</td>
-        <td class="balance-value {% if stat.balance|round(2) > 0 %}positive{% elif stat.balance|round(2) < 0 %}negative{% endif %}">
-            {% if stat.balance|round(2) > 0 %}+{% endif %}{{ "%.2f" | format(stat.balance) }}
-        </td>
-    </tr>
-    {% endfor %}
-    </table>
+        {{ balance_table(show_weight=False, show_header=True) }}
     </div>
 {% endblock %}
 
@@ -27,11 +12,11 @@
         <table id="bill_table" class="split_bills table table-striped ml-md-n3">
             <thead><tr><th class="d-md-none">{{ _("Who?") }}</th><th>{{ _("Paid") }}</th><th>{{ _("Spent") }}</th></tr></thead>
         <tbody>
-        {% for stat in members_stats %}
+        {% for stat in members_stats|sort(attribute='member.name') %}
         <tr>
             <td class="d-md-none">{{ stat.member.name }}</td>
-            <td>{{ "%0.2f"|format(stat.paid) }}</td>
-            <td>{{ "%0.2f"|format(stat.spent) }}</td>
+            <td>{{ stat.paid|currency }}</td>
+            <td>{{ stat.spent|currency }}</td>
         </tr>
         {% endfor %}
         </tbody>
@@ -43,7 +28,7 @@
         {% for month in months %}
                 <tr>
                     <td>{{ _(month.strftime("%B")) }} {{ month.year }}</td>
-                    <td>{{ "%0.2f"|format(monthly_stats[month.year][month.month]) }}</td>
+                    <td>{{ monthly_stats[month.year][month.month]|currency }}</td>
                 </tr>
         {% endfor %}
         </tbody>

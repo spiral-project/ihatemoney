@@ -8,7 +8,7 @@ from flask_wtf.file import FileAllowed, FileField, FileRequired
 from flask_wtf.form import FlaskForm
 from jinja2 import Markup
 from werkzeug.security import check_password_hash, generate_password_hash
-from wtforms.fields.core import SelectField, SelectMultipleField
+from wtforms.fields.core import Label, SelectField, SelectMultipleField
 from wtforms.fields.html5 import DateField, DecimalField, URLField
 from wtforms.fields.simple import BooleanField, PasswordField, StringField, SubmitField
 from wtforms.validators import (
@@ -20,8 +20,13 @@ from wtforms.validators import (
     ValidationError,
 )
 
+from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.models import LoggingMode, Person, Project
-from ihatemoney.utils import eval_arithmetic_expression, slugify
+from ihatemoney.utils import (
+    eval_arithmetic_expression,
+    render_localized_currency,
+    slugify,
+)
 
 
 def strip_filter(string):
@@ -39,6 +44,18 @@ def get_billform_for(project, set_default=True, **kwargs):
 
     """
     form = BillForm(**kwargs)
+    if form.original_currency.data == "None":
+        form.original_currency.data = project.default_currency
+
+    show_no_currency = form.original_currency.data == CurrencyConverter.no_currency
+
+    form.original_currency.choices = [
+        (currency_name, render_localized_currency(currency_name, detailed=False))
+        for currency_name in form.currency_helper.get_currencies(
+            with_no_currency=show_no_currency
+        )
+    ]
+
     active_members = [(m.id, m.name) for m in project.active_members]
 
     form.payed_for.choices = form.payer.choices = active_members
@@ -89,6 +106,15 @@ class EditProjectForm(FlaskForm):
     contact_email = StringField(_("Email"), validators=[DataRequired(), Email()])
     project_history = BooleanField(_("Enable project history"))
     ip_recording = BooleanField(_("Use IP tracking for project history"))
+    currency_helper = CurrencyConverter()
+    default_currency = SelectField(_("Default Currency"), validators=[DataRequired()])
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.default_currency.choices = [
+            (currency_name, render_localized_currency(currency_name, detailed=True))
+            for currency_name in self.currency_helper.get_currencies()
+        ]
 
     @property
     def logging_preference(self):
@@ -112,6 +138,7 @@ class EditProjectForm(FlaskForm):
             password=generate_password_hash(self.password.data),
             contact_email=self.contact_email.data,
             logging_preference=self.logging_preference,
+            default_currency=self.default_currency.data,
         )
         return project
 
@@ -125,6 +152,7 @@ class EditProjectForm(FlaskForm):
 
         project.contact_email = self.contact_email.data
         project.logging_preference = self.logging_preference
+        project.default_currency = self.default_currency.data
 
         return project
 
@@ -199,6 +227,8 @@ class BillForm(FlaskForm):
     what = StringField(_("What?"), validators=[DataRequired()])
     payer = SelectField(_("Payer"), validators=[DataRequired()], coerce=int)
     amount = CalculatorStringField(_("Amount paid"), validators=[DataRequired()])
+    currency_helper = CurrencyConverter()
+    original_currency = SelectField(_("Currency"), validators=[DataRequired()])
     external_link = URLField(
         _("External link"),
         validators=[Optional()],
@@ -217,6 +247,10 @@ class BillForm(FlaskForm):
         bill.external_link = self.external_link.data
         bill.date = self.date.data
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for.data]
+        bill.original_currency = self.original_currency.data
+        bill.converted_amount = self.currency_helper.exchange_currency(
+            bill.amount, bill.original_currency, project.default_currency
+        )
         return bill
 
     def fake_form(self, bill, project):
@@ -226,16 +260,29 @@ class BillForm(FlaskForm):
         bill.external_link = ""
         bill.date = self.date
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for]
+        bill.original_currency = CurrencyConverter.no_currency
+        bill.converted_amount = self.currency_helper.exchange_currency(
+            bill.amount, bill.original_currency, project.default_currency
+        )
 
         return bill
 
-    def fill(self, bill):
+    def fill(self, bill, project):
         self.payer.data = bill.payer_id
         self.amount.data = bill.amount
         self.what.data = bill.what
         self.external_link.data = bill.external_link
+        self.original_currency.data = bill.original_currency
         self.date.data = bill.date
         self.payed_for.data = [int(ower.id) for ower in bill.owers]
+
+        self.original_currency.label = Label("original_currency", _("Currency"))
+        self.original_currency.description = _(
+            "Project default: %(currency)s",
+            currency=render_localized_currency(
+                project.default_currency, detailed=False
+            ),
+        )
 
     def set_default(self):
         self.payed_for.data = self.payed_for.default
@@ -265,7 +312,7 @@ class MemberForm(FlaskForm):
             and Person.query.filter(
                 Person.name == field.data,
                 Person.project == form.project,
-                Person.activated == True,
+                Person.activated,
             ).all()
         ):  # NOQA
             raise ValidationError(_("This project already have this member"))

@@ -1,9 +1,9 @@
-Hey,
+Salut,
 
 Vous venez de créer le projet "{{ g.project.name }}" pour partager vos dépenses.
 
-Vous pouvez y accéder ici: {{ url_for(".list_bills", _external=True) }} (l'identifiant est {{ g.project.id }}).
-Si vous voulez partager ce projet avec vos amis, vous pouvez partager son identifiant et son code d'accès avec eux ou leur envoyer une invitation avec le lien suivant :
+Vous pouvez y accéder ici : {{ url_for(".list_bills", _external=True) }} (l'identifiant est {{ g.project.id }}).
+Si vous voulez partager ce projet avec vos amis, vous pouvez soit leur transmettre l'identifiant et le code d'accès, soit leur envoyer une invitation personnelle grâce au lien suivant :
 {{ url_for(".invite", _external=True) }}
 
-Faites en bon usage !
+Faites-en bon usage !

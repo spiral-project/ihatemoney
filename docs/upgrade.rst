@@ -15,7 +15,7 @@ General procedure
 
 *(sufficient for minor/patch upgrades)*
 
-1. From the virtualenv (if any)::
+1. From the virtual environment (if any)::
 
     pip install -U ihatemoney
 
@@ -34,6 +34,37 @@ Version-specific instructions
 
 When upgrading from a major version to another, you **must** follow special
 instructions:
+
+4.x → 5.x
+---------
+
+Switch to a supported version of Python
++++++++++++++++++++++++++++++++++++++++
+
+.. note:: If you are already using Python ≥ 3.6, you can skip this section, no
+          special action is required.
+
+If you were running IHateMoney using Python < 3.6, you must, **before** upgrading:
+
+1. Ensure to have a Python ≥ 3.6 available on your system
+2. Rebuild your virtual environment (if any). It will *not* alter your database nor configuration. For example, if your virtual environment is in `/home/john/ihatemoney/`::
+
+     rm -rf /home/john/ihatemoney
+     pyhton3 -m venv /home/john/ihatemoney
+     source /home/john/ihatemoney/bin/activate
+
+  You might need to ``pip install`` additional dependencies if you are using one
+  or several of the following deployment options :
+
+  - Gunicorn (Nginx)
+  - MySQL
+  - PostgreSQL
+
+If so, pick the ``pip`` commands to use in the relevant section(s) of
+:ref:`installation`.
+
+Then follow :ref:`general-procedure` from step 1. in order to complete the update.
+
 
 2.x → 3.x
 ---------
@@ -58,7 +89,7 @@ development only.
 1. Delete the cloned folder
 
 
-.. note:: If you are using a virtualenv, then the following commands should be run inside it (see
+.. note:: If you are using a virtual environment, then the following commands should be run inside it (see
           :ref:`virtualenv-preparation`).
 
 

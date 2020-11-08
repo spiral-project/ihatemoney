@@ -1,4 +1,4 @@
-VIRTUALENV = virtualenv --python=python3
+VIRTUALENV = python3 -m venv
 SPHINX_BUILDDIR = docs/_build
 VENV := $(shell realpath $${VIRTUAL_ENV-.venv})
 PYTHON = $(VENV)/bin/python3
@@ -50,7 +50,7 @@ black: install-dev ## Run the tests
 
 .PHONY: isort
 isort: install-dev ## Run the tests
-	$(VENV)/bin/isort -rc .
+	$(VENV)/bin/isort .
 
 .PHONY: release
 release: install-dev ## Release a new version (see https://ihatemoney.readthedocs.io/en/latest/contributing.html#how-to-release)

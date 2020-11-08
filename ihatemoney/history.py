@@ -103,7 +103,15 @@ def get_history(project, human_readable_names=True):
                             if removed:
                                 changeset["owers_removed"] = (None, removed)
 
-                    for (prop, (val_before, val_after),) in changeset.items():
+                        # Remove converted_amount if amount changed in the same way.
+                        if (
+                            "amount" in changeset
+                            and "converted_amount" in changeset
+                            and changeset["amount"] == changeset["converted_amount"]
+                        ):
+                            del changeset["converted_amount"]
+
+                    for (prop, (val_before, val_after)) in changeset.items():
                         if human_readable_names:
                             if prop == "payer_id":
                                 prop = "payer"

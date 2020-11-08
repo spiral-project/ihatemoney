@@ -16,6 +16,7 @@
     <link rel=stylesheet type=text/css href="{{ url_for("static", filename='css/datatables.min.css') }}">
     <script src="{{ url_for("static", filename="js/datatables.min.js") }}"></script>
     {%- endif %}
+
     {% block head %}{% endblock %}
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function(){
@@ -32,6 +33,7 @@
     </script>
 </head>
 <body class="d-flex flex-column h-100">
+  {% if g.lang == 'fr' %}{% include "showcase.html" %}{% endif %}
   <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -85,7 +87,7 @@
           <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarProjectsLinks">
             <li>
               <a class="dropdown-item" href="{{ url_for("main.create_project") }}">
-                <i class="icon plus">{{ static_include("images/plus.svg") | safe }}</i>
+                <i class="icon before-text">{{ static_include("images/plus.svg") | safe }}</i>
                 {{ _("Start a new project") }}
               </a>
             </li>
@@ -125,9 +127,13 @@
   </div>
 
   <div class="messages">
-      {% for message in get_flashed_messages() %}
-      <div class="flash alert alert-success">{{ message }}</div>
-      {% endfor %}
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+      {% if category == "message" %}{# Default category for flash(msg) #}
+        <div class="flash alert alert-success">{{ message }}</div>
+      {% else %}
+        <div class="flash alert alert-{{ category }}">{{ message }}</div>
+      {% endif %}
+    {% endfor %}
   </div>
 
   {% block footer %}
@@ -138,7 +144,7 @@
             <a target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="{{ _('Code') }}" href="https://github.com/spiral-project/ihatemoney">
               <i class="icon git">{{ static_include("images/git.svg") | safe }}</i>
             </a>
-            <a target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="{{ _('Mobile Application') }}" href="https://gitlab.com/eneiluj/moneybuster">
+            <a target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="{{ _('Mobile Application') }}" href="https://gitlab.com/eneiluj/moneybuster#moneybuster-for-android">
               <i class="icon mobile">{{ static_include("images/mobile-alt.svg") | safe }}</i>
             </a>
             <a target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="{{ _('Documentation') }}" href="https://ihatemoney.readthedocs.io/en/latest/">

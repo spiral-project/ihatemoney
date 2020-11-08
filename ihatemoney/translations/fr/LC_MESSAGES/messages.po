@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-04-25 13:02+0200\n"
-"PO-Revision-Date: 2020-04-25 11:14+0000\n"
-"Last-Translator: Rémy Hubscher <hubscher.remy@gmail.com>\n"
+"POT-Creation-Date: 2020-05-30 14:26+0200\n"
+"PO-Revision-Date: 2020-06-01 16:41+0000\n"
+"Last-Translator: Glandos <bugs-github@antipoul.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/fr/>\n"
 "Language: fr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.0.2-dev\n"
+"X-Generator: Weblate 4.1-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 msgid ""
@@ -41,6 +41,9 @@ msgstr "Activer l'historique de projet"
 
 msgid "Use IP tracking for project history"
 msgstr "Collecter les adresses IP dans l'historique de projet"
+
+msgid "Default Currency"
+msgstr "Devise par défaut"
 
 msgid "Import previously exported JSON file"
 msgstr "Importer un fichier JSON précédemment exporté"
@@ -98,6 +101,9 @@ msgstr "Payeur"
 msgid "Amount paid"
 msgstr "Montant"
 
+msgid "Currency"
+msgstr "Devise"
+
 msgid "External link"
 msgstr "Lien externe"
 
@@ -112,6 +118,10 @@ msgstr "Valider"
 
 msgid "Submit and add a new one"
 msgstr "Valider et ajouter une autre facture"
+
+#, python-format
+msgid "Project default: %(currency)s"
+msgstr "Devise du projet : %(currency)s"
 
 msgid "Bills can't be null"
 msgstr "Le montant d’une facture ne peut pas être nul"
@@ -153,6 +163,9 @@ msgstr "Facture"
 msgid "Project"
 msgstr "Projet"
 
+msgid "No Currency"
+msgstr "Aucune devise"
+
 msgid "Too many failed login attempts, please retry later."
 msgstr "Trop d'échecs d’authentification successifs, veuillez réessayer plus tard."
 
@@ -172,9 +185,29 @@ msgstr "Le code que vous avez entré n’est pas correct"
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr "Vous venez de créer « %(project)s » pour partager vos dépenses"
 
+msgid "A reminder email has just been sent to you"
+msgstr "Un courriel de rappel vient de vous être envoyé"
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
+"Nous avons essayé de vous envoyer un courriel de rappel, mais une erreur "
+"s’est produite. Il est toujours possible d’utiliser le projet "
+"normalement."
+
 #, python-format
-msgid "%(msg_compl)sThe project identifier is %(project)s"
-msgstr "%(msg_compl)sL’identifiant de ce projet est %(project)s"
+msgid "The project identifier is %(project)s"
+msgstr "L’identifiant de ce projet est %(project)s"
+
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions. Please check the email configuration of the server or "
+"contact the administrator."
+msgstr ""
+"Désolé, une erreur s’est produite lors de l’envoi du courriel contenant "
+"les instructions de réinitialisation de mot de passe. Veuillez vérifier "
+"la configuration des courriels du serveur ou contacter l’administrateur."
 
 msgid "No token provided"
 msgstr "Aucun token n’a été fourni"
@@ -203,6 +236,15 @@ msgstr "Vous avez été invité à partager vos dépenses pour %(project)s"
 
 msgid "Your invitations have been sent"
 msgstr "Vos invitations ont bien été envoyées"
+
+msgid ""
+"Sorry, there was an error while trying to send the invitation emails. "
+"Please check the email configuration of the server or contact the "
+"administrator."
+msgstr ""
+"Désolé, une erreur s’est produite lors de l’envoi du courriel "
+"d’invitation. Veuillez vérifier la configuration des courriels du serveur"
+" ou contacter l’administrateur."
 
 #, python-format
 msgid "%(member)s has been added"
@@ -282,7 +324,7 @@ msgstr "éditer"
 msgid "delete"
 msgstr "supprimer"
 
-msgid "see"
+msgid "show"
 msgstr "voir"
 
 msgid "The Dashboard is currently deactivated."
@@ -393,8 +435,8 @@ msgid ""
 "                The rest of the project history will be unaffected. This "
 "action cannot be undone."
 msgstr ""
-"Êtes-vous sur de vouloir supprimer toutes les adresses IP enregistrées pour "
-"ce projet ?\n"
+"Êtes-vous sur de vouloir supprimer toutes les adresses IP enregistrées "
+"pour ce projet ?\n"
 "Le reste de l'historique ne sera pas affecté. Cette action n'est pas "
 "réversible."
 
@@ -425,12 +467,6 @@ msgstr "et"
 
 msgid "owers list"
 msgstr "Liste des débiteurs"
-
-msgid "Who?"
-msgstr "Qui ?"
-
-msgid "Balance"
-msgstr "Solde"
 
 #, python-format
 msgid ""
@@ -535,6 +571,10 @@ msgstr "Le lien d'accès a été modifié en"
 msgid "Amount"
 msgstr "Montant"
 
+#, python-format
+msgid "Amount in %(currency)s"
+msgstr "Montant en %(currency)s"
+
 msgid "modified"
 msgstr "modifié"
 
@@ -581,11 +621,11 @@ msgid "Create"
 msgstr "Créer"
 
 msgid ""
-"This access code will be sent to your friends. It is stored as-is by the "
-"server, so don\\'t reuse a personal password!"
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
 msgstr ""
-"Ce code d’accès va être envoyé à vos amis et stocké en clair sur le "
-"serveur. N’utilisez pas un mot de passe personnel !"
+"Ne réutilisez pas un de vos mots de passe. Choisissez un code personnel et "
+"envoyez le à vos amis"
 
 msgid "Account manager"
 msgstr "Gestion de comptes"
@@ -644,11 +684,9 @@ msgstr "« I hate money » est un logiciel libre"
 msgid "you can contribute and improve it!"
 msgstr "vous pouvez y contribuer et l’améliorer !"
 
-msgid "deactivate"
-msgstr "désactiver"
-
-msgid "reactivate"
-msgstr "ré-activer"
+#, python-format
+msgid "%(amount)s each"
+msgstr "%(amount)s chacun"
 
 msgid "Invite people"
 msgstr "Inviter des gens"
@@ -687,9 +725,6 @@ msgstr "Tout le monde"
 #, python-format
 msgid "Everyone but %(excluded)s"
 msgstr "Tout le monde sauf %(excluded)s"
-
-msgid "each"
-msgstr "chacun"
 
 msgid "No bills"
 msgstr "Pas encore de factures"
@@ -764,6 +799,18 @@ msgstr "Qui doit payer ?"
 
 msgid "To whom?"
 msgstr "Pour qui ?"
+
+msgid "Who?"
+msgstr "Qui ?"
+
+msgid "Balance"
+msgstr "Solde"
+
+msgid "deactivate"
+msgstr "désactiver"
+
+msgid "reactivate"
+msgstr "ré-activer"
 
 msgid "Paid"
 msgstr "A payé"
@@ -992,3 +1039,23 @@ msgstr "Période"
 #~ "Êtes vous sûr de supprimer la "
 #~ "totalité de l’historique de ce projet"
 #~ " ? Cette action est irréversible."
+
+#~ msgid "%(msg_compl)sThe project identifier is %(project)s"
+#~ msgstr "%(msg_compl)sL’identifiant de ce projet est %(project)s"
+
+#~ msgid "each"
+#~ msgstr "chacun"
+
+#~ msgid "Error while sending reminder email"
+#~ msgstr "Erreur lors de l’envoi du courriel de rappel"
+
+#~ msgid ""
+#~ "This access code will be sent to"
+#~ " your friends. It is stored as-"
+#~ "is by the server, so don\\'t reuse"
+#~ " a personal password!"
+#~ msgstr ""
+#~ "Ce code d’accès va être envoyé à"
+#~ " vos amis et stocké en clair "
+#~ "sur le serveur. N’utilisez pas un "
+#~ "mot de passe personnel !"

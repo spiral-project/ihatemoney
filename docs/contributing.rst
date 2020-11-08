@@ -67,7 +67,7 @@ If System :ref:`installation-requirements` are fulfilled, you can just issue::
 
     make serve
 
-It will setup a `virtualenv <https://pypi.python.org/pypi/virtualenv>`_,
+It will setup a `Virtual environment <https://docs.python.org/3/tutorial/venv.html>`_,
 install dependencies, and run the test server.
 
 The hard way
@@ -193,7 +193,7 @@ The documentation is using `sphinx <http://www.sphinx-doc.org/en/stable/>`_ and
 its source is located inside the `docs folder
 <https://github.com/spiral-project/ihatemoney/tree/master/docs>`_.
 
-Install doc dependencies (within the virtualenv, if any)::
+Install doc dependencies (within the virtual environment, if any)::
 
   pip install -r docs/requirements.txt
 

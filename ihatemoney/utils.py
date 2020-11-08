@@ -7,10 +7,13 @@ from json import JSONEncoder, dumps
 import operator
 import os
 import re
+import smtplib
+import socket
 
 from babel import Locale
-from flask import current_app, escape, redirect
-from flask_babel import gettext as _
+from babel.numbers import get_currency_name, get_currency_symbol
+from flask import current_app, redirect, render_template, escape
+from flask_babel import get_locale, lazy_gettext as _
 import jinja2
 from werkzeug.routing import HTTPException, RoutingException
 
@@ -25,6 +28,22 @@ def slugify(value):
         value = unicodedata.normalize("NFKD", value)
     value = str(re.sub(r"[^\w\s-]", "", value).strip().lower())
     return re.sub(r"[-\s]+", "-", value)
+
+
+def send_email(mail_message):
+    """Send an email using Flask-Mail, with proper error handling.
+
+    Return True if everything went well, and False if there was an error.
+    """
+    # Since Python 3.4, SMTPException and socket.error are actually
+    # identical, but this was not the case before.  Also, it is more clear
+    # to check for both.
+    try:
+        current_app.mail.send(mail_message)
+    except (smtplib.SMTPException, socket.error):
+        return False
+    # Email was sent successfully
+    return True
 
 
 class Redirect303(HTTPException, RoutingException):
@@ -79,7 +98,7 @@ class PrefixedWSGI(object):
 
 
 def minimal_round(*args, **kw):
-    """ Jinja2 filter: rounds, but display only non-zero decimals
+    """Jinja2 filter: rounds, but display only non-zero decimals
 
     from http://stackoverflow.com/questions/28458524/
     """
@@ -98,7 +117,7 @@ def static_include(filename):
 
 
 def locale_from_iso(iso_code):
-    return Locale(iso_code)
+    return Locale.parse(iso_code)
 
 
 def list_of_dicts2json(dict_to_convert):
@@ -343,3 +362,31 @@ def localize_list(list, surround_with_em=True):
         output_str = output_str.format(previous_object=item_wrapper(list.pop()))
         output_str = start.format(start_object="{start_object}", next_object=output_str)
         return output_str.format(start_object=item_wrapper(list.pop()))
+
+def render_localized_currency(code, detailed=True):
+    if code == "XXX":
+        return _("No Currency")
+    locale = get_locale() or "en_US"
+    symbol = get_currency_symbol(code, locale=locale)
+    details = ""
+    if detailed:
+        details = f" − {get_currency_name(code, locale=locale)}"
+    if symbol == code:
+        return f"{code}{details}"
+    else:
+        return f"{code} − {symbol}{details}"
+
+
+def render_localized_template(template_name_prefix, **context):
+    """Like render_template(), but selects the right template according to the
+    current user language.  Fallback to English if a template for the
+    current language does not exist.
+    """
+    fallback = "en"
+    templates = [
+        f"{template_name_prefix}.{lang}.j2"
+        for lang in (get_locale().language, fallback)
+    ]
+    # render_template() supports a list of templates to try in order
+    return render_template(templates, **context)
+

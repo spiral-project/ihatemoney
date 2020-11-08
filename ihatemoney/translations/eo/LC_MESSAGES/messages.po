@@ -1,39 +1,38 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-25 13:02+0200\n"
-"PO-Revision-Date: 2020-02-09 12:01+0000\n"
-"Last-Translator: Muge Niu <mugeniu12138@gmail.com>\n"
-"Language: zh_HANS_CN\n"
-"Language-Team: Chinese (Simplified) "
-"<https://hosted.weblate.org/projects/i-hate-money/i-hate-money/zh_Hans/>"
-"\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"POT-Creation-Date: 2020-09-22 14:01+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: eo\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"X-Generator: Translate Toolkit 3.0.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
-msgstr "金额或符号无效。仅限数字与+-*/符号。"
+msgstr ""
 
 msgid "Project name"
-msgstr "账目名称"
+msgstr ""
 
 msgid "Private code"
-msgstr "共享密钥"
+msgstr ""
 
 msgid "Email"
-msgstr "邮箱"
+msgstr ""
 
 msgid "Enable project history"
 msgstr ""
 
 msgid "Use IP tracking for project history"
+msgstr ""
+
+msgid "Default Currency"
 msgstr ""
 
 msgid "Import previously exported JSON file"
@@ -43,73 +42,80 @@ msgid "Import"
 msgstr ""
 
 msgid "Project identifier"
-msgstr "账目名称"
+msgstr ""
 
 msgid "Create the project"
-msgstr "创建账目明细"
+msgstr ""
 
 #, python-format
 msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
-msgstr "账目(“%(project)s”)已存在，请选择一个新名称"
+msgstr ""
 
 msgid "Get in"
 msgstr ""
 
 msgid "Admin password"
-msgstr "管理密码"
+msgstr ""
 
 msgid "Send me the code by email"
-msgstr "通过邮件发送"
+msgstr ""
 
 msgid "This project does not exists"
-msgstr "账目不存在"
+msgstr ""
 
 msgid "Password mismatch"
-msgstr "密码错误"
+msgstr ""
 
 msgid "Password"
-msgstr "密码"
+msgstr ""
 
 msgid "Password confirmation"
-msgstr "密码确认"
+msgstr ""
 
 msgid "Reset password"
-msgstr "密码重置"
+msgstr ""
 
 msgid "Date"
-msgstr "日期"
+msgstr ""
 
 msgid "What?"
-msgstr "什么？"
+msgstr ""
 
 msgid "Payer"
-msgstr "支付人"
+msgstr ""
 
 msgid "Amount paid"
-msgstr "支付金额"
+msgstr ""
+
+msgid "Currency"
+msgstr ""
 
 msgid "External link"
-msgstr "外部链接"
+msgstr ""
 
 msgid "A link to an external document, related to this bill"
-msgstr "与此账单有关的外部链接"
+msgstr ""
 
 msgid "For whom?"
-msgstr "成员？"
+msgstr ""
 
 msgid "Submit"
-msgstr "确定"
+msgstr ""
 
 msgid "Submit and add a new one"
-msgstr "确定并添加另一个"
+msgstr ""
+
+#, python-format
+msgid "Project default: %(currency)s"
+msgstr ""
 
 msgid "Bills can't be null"
-msgstr "数字不能为零"
+msgstr ""
 
 msgid "Name"
-msgstr "姓名"
+msgstr ""
 
 msgid "Weights should be positive"
 msgstr ""
@@ -145,6 +151,9 @@ msgstr ""
 msgid "Project"
 msgstr ""
 
+msgid "No Currency"
+msgstr ""
+
 msgid "Too many failed login attempts, please retry later."
 msgstr ""
 
@@ -162,8 +171,22 @@ msgstr ""
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr ""
 
+msgid "A reminder email has just been sent to you"
+msgstr ""
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
+
 #, python-format
-msgid "%(msg_compl)sThe project identifier is %(project)s"
+msgid "The project identifier is %(project)s"
+msgstr ""
+
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions. Please check the email configuration of the server or "
+"contact the administrator."
 msgstr ""
 
 msgid "No token provided"
@@ -192,6 +215,12 @@ msgid "You have been invited to share your expenses for %(project)s"
 msgstr ""
 
 msgid "Your invitations have been sent"
+msgstr ""
+
+msgid ""
+"Sorry, there was an error while trying to send the invitation emails. "
+"Please check the email configuration of the server or contact the "
+"administrator."
 msgstr ""
 
 #, python-format
@@ -244,7 +273,7 @@ msgid "create it"
 msgstr ""
 
 msgid "?"
-msgstr "？"
+msgstr ""
 
 msgid "Create a new project"
 msgstr ""
@@ -270,7 +299,7 @@ msgstr ""
 msgid "delete"
 msgstr ""
 
-msgid "see"
+msgid "show"
 msgstr ""
 
 msgid "The Dashboard is currently deactivated."
@@ -307,7 +336,7 @@ msgid "Can't remember the password?"
 msgstr ""
 
 msgid "Cancel"
-msgstr "取消"
+msgstr ""
 
 msgid "Privacy Settings"
 msgstr ""
@@ -340,7 +369,7 @@ msgid "Send the invitations"
 msgstr ""
 
 msgid "Download"
-msgstr "下载"
+msgstr ""
 
 msgid "Disabled Project History"
 msgstr ""
@@ -406,12 +435,6 @@ msgid "and"
 msgstr ""
 
 msgid "owers list"
-msgstr ""
-
-msgid "Who?"
-msgstr "谁？"
-
-msgid "Balance"
 msgstr ""
 
 #, python-format
@@ -498,6 +521,10 @@ msgstr ""
 msgid "Amount"
 msgstr ""
 
+#, python-format
+msgid "Amount in %(currency)s"
+msgstr ""
+
 msgid "modified"
 msgstr ""
 
@@ -529,7 +556,7 @@ msgid "Simply sharing money with others?"
 msgstr ""
 
 msgid "We can help!"
-msgstr "我们可以帮助！"
+msgstr ""
 
 msgid "Log in to an existing project"
 msgstr ""
@@ -544,8 +571,8 @@ msgid "Create"
 msgstr ""
 
 msgid ""
-"This access code will be sent to your friends. It is stored as-is by the "
-"server, so don\\'t reuse a personal password!"
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
 msgstr ""
 
 msgid "Account manager"
@@ -585,7 +612,7 @@ msgid "Dashboard"
 msgstr ""
 
 msgid "Logout"
-msgstr "签出"
+msgstr ""
 
 msgid "Code"
 msgstr ""
@@ -605,10 +632,8 @@ msgstr ""
 msgid "you can contribute and improve it!"
 msgstr ""
 
-msgid "deactivate"
-msgstr ""
-
-msgid "reactivate"
+#, python-format
+msgid "%(amount)s each"
 msgstr ""
 
 msgid "Invite people"
@@ -627,7 +652,7 @@ msgid "Older bills"
 msgstr ""
 
 msgid "When?"
-msgstr "什么时候？"
+msgstr ""
 
 msgid "Who paid?"
 msgstr ""
@@ -636,7 +661,7 @@ msgid "For what?"
 msgstr ""
 
 msgid "How much?"
-msgstr "多少？"
+msgstr ""
 
 #, python-format
 msgid "Added on %(date)s"
@@ -647,9 +672,6 @@ msgstr ""
 
 #, python-format
 msgid "Everyone but %(excluded)s"
-msgstr ""
-
-msgid "each"
 msgstr ""
 
 msgid "No bills"
@@ -718,6 +740,18 @@ msgid "Who pays?"
 msgstr ""
 
 msgid "To whom?"
+msgstr ""
+
+msgid "Who?"
+msgstr ""
+
+msgid "Balance"
+msgstr ""
+
+msgid "deactivate"
+msgstr ""
+
+msgid "reactivate"
 msgstr ""
 
 msgid "Paid"
