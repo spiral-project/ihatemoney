@@ -24,4 +24,5 @@ SUPPORTED_LANGUAGES = [
     "tr",
     "uk",
     "zh_Hans",
+    "ja",
 ]
