@@ -3,49 +3,53 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-22 14:01+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2020-11-11 16:28+0000\n"
+"Last-Translator: Puyma <puyma@amyup.xyz>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 3.0.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.4-dev\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
+"Cantidad o expresión no válida. Solo se aceptan números y los operadores + - "
+"* /."
 
 msgid "Project name"
-msgstr ""
+msgstr "Nombre del proyecto"
 
 msgid "Private code"
-msgstr ""
+msgstr "Código privado"
 
 msgid "Email"
-msgstr ""
+msgstr "Correo electrónico"
 
 msgid "Enable project history"
-msgstr ""
+msgstr "Habilitar historial del proyecto"
 
 msgid "Use IP tracking for project history"
 msgstr ""
 
 msgid "Default Currency"
-msgstr ""
+msgstr "Moneda por defecto"
 
 msgid "Import previously exported JSON file"
-msgstr ""
+msgstr "Importar .JSON previamente exportado"
 
 msgid "Import"
-msgstr ""
+msgstr "Importar"
 
 msgid "Project identifier"
-msgstr ""
+msgstr "Identificador del proyecto"
 
 msgid "Create the project"
-msgstr ""
+msgstr "Crear proyecto"
 
 #, python-format
 msgid ""
@@ -57,49 +61,49 @@ msgid "Get in"
 msgstr ""
 
 msgid "Admin password"
-msgstr ""
+msgstr "Contraseña de administrador"
 
 msgid "Send me the code by email"
-msgstr ""
+msgstr "Envíame el código por correo electrónico"
 
 msgid "This project does not exists"
-msgstr ""
+msgstr "Proyecto inexistente"
 
 msgid "Password mismatch"
-msgstr ""
+msgstr "La contraseña no coincide"
 
 msgid "Password"
-msgstr ""
+msgstr "Contraseña"
 
 msgid "Password confirmation"
-msgstr ""
+msgstr "Confirmar contraseña"
 
 msgid "Reset password"
-msgstr ""
+msgstr "Reestablecer contraseña"
 
 msgid "Date"
-msgstr ""
+msgstr "Fecha"
 
 msgid "What?"
-msgstr ""
+msgstr "¿Qué?"
 
 msgid "Payer"
 msgstr ""
 
 msgid "Amount paid"
-msgstr ""
+msgstr "Cantidad pagada"
 
 msgid "Currency"
-msgstr ""
+msgstr "Divisa"
 
 msgid "External link"
-msgstr ""
+msgstr "Enlace externo"
 
 msgid "A link to an external document, related to this bill"
 msgstr ""
 
 msgid "For whom?"
-msgstr ""
+msgstr "¿Para quién?"
 
 msgid "Submit"
 msgstr ""
@@ -115,7 +119,7 @@ msgid "Bills can't be null"
 msgstr ""
 
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 msgid "Weights should be positive"
 msgstr ""
@@ -124,10 +128,10 @@ msgid "Weight"
 msgstr ""
 
 msgid "Add"
-msgstr ""
+msgstr "Añadir"
 
 msgid "User name incorrect"
-msgstr ""
+msgstr "Usuario incorrecto"
 
 msgid "This project already have this member"
 msgstr ""
@@ -136,20 +140,20 @@ msgid "People to notify"
 msgstr ""
 
 msgid "Send invites"
-msgstr ""
+msgstr "Enviar invitaciones"
 
 #, python-format
 msgid "The email %(email)s is not valid"
-msgstr ""
+msgstr "El correo %(email)s no es válido"
 
 msgid "Participant"
-msgstr ""
+msgstr "Participante"
 
 msgid "Bill"
-msgstr ""
+msgstr "Factura"
 
 msgid "Project"
-msgstr ""
+msgstr "Proyecto"
 
 msgid "No Currency"
 msgstr ""
@@ -291,16 +295,16 @@ msgid "Oldest bill"
 msgstr ""
 
 msgid "Actions"
-msgstr ""
+msgstr "Acciones"
 
 msgid "edit"
-msgstr ""
+msgstr "editar"
 
 msgid "delete"
-msgstr ""
+msgstr "eliminar"
 
 msgid "show"
-msgstr ""
+msgstr "mostrar"
 
 msgid "The Dashboard is currently deactivated."
 msgstr ""
@@ -336,49 +340,49 @@ msgid "Can't remember the password?"
 msgstr ""
 
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 msgid "Privacy Settings"
-msgstr ""
+msgstr "Ajustes de privacidad"
 
 msgid "Edit the project"
-msgstr ""
+msgstr "Editar el proyecto"
 
 msgid "Edit this bill"
-msgstr ""
+msgstr "Editar esta factura"
 
 msgid "Add a bill"
-msgstr ""
+msgstr "Añadir una factura"
 
 msgid "Select all"
-msgstr ""
+msgstr "Seleccionar todo"
 
 msgid "Select none"
 msgstr ""
 
 msgid "Add participant"
-msgstr ""
+msgstr "Añadir participante"
 
 msgid "Edit this member"
-msgstr ""
+msgstr "Editar miembro"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr ""
 
 msgid "Send the invitations"
-msgstr ""
+msgstr "Enviar invitaciones"
 
 msgid "Download"
-msgstr ""
+msgstr "Descargar"
 
 msgid "Disabled Project History"
-msgstr ""
+msgstr "Historial del proyecto desactivado"
 
 msgid "Disabled Project History & IP Address Recording"
 msgstr ""
 
 msgid "Enabled Project History"
-msgstr ""
+msgstr "Historial del proyecto activado"
 
 msgid "Disabled IP Address Recording"
 msgstr ""
@@ -396,10 +400,10 @@ msgid "changed"
 msgstr ""
 
 msgid "from"
-msgstr ""
+msgstr "de"
 
 msgid "to"
-msgstr ""
+msgstr "para"
 
 msgid "Confirm Remove IP Adresses"
 msgstr ""
@@ -412,7 +416,7 @@ msgid ""
 msgstr ""
 
 msgid "Close"
-msgstr ""
+msgstr "Cerrar"
 
 msgid "Confirm Delete"
 msgstr ""
@@ -426,10 +430,10 @@ msgid ""
 msgstr ""
 
 msgid "Added"
-msgstr ""
+msgstr "Añadido"
 
 msgid "Removed"
-msgstr ""
+msgstr "Eliminado"
 
 msgid "and"
 msgstr ""
@@ -477,10 +481,10 @@ msgid "Delete Stored IP Addresses"
 msgstr ""
 
 msgid "Time"
-msgstr ""
+msgstr "Hora"
 
 msgid "Event"
-msgstr ""
+msgstr "Evento"
 
 msgid "IP address recording can be enabled on the settings page"
 msgstr ""
@@ -492,7 +496,7 @@ msgid "From IP"
 msgstr ""
 
 msgid "added"
-msgstr ""
+msgstr "añadido"
 
 msgid "Project private code changed"
 msgstr ""
@@ -519,17 +523,17 @@ msgid "External link changed to"
 msgstr ""
 
 msgid "Amount"
-msgstr ""
+msgstr "Cantidad"
 
 #, python-format
 msgid "Amount in %(currency)s"
-msgstr ""
+msgstr "Cantidad en %(currency)s"
 
 msgid "modified"
-msgstr ""
+msgstr "modificado"
 
 msgid "removed"
-msgstr ""
+msgstr "eliminado"
 
 msgid "changed in a unknown way"
 msgstr ""
@@ -556,57 +560,59 @@ msgid "Simply sharing money with others?"
 msgstr ""
 
 msgid "We can help!"
-msgstr ""
+msgstr "Podemos ayudar!"
 
 msgid "Log in to an existing project"
-msgstr ""
+msgstr "Acceder a un proyecto existente"
 
 msgid "Log in"
 msgstr ""
 
 msgid "can't remember your password?"
-msgstr ""
+msgstr "¿no recuerdas tu contraseña?"
 
 msgid "Create"
-msgstr ""
+msgstr "Crear"
 
 msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
 msgstr ""
+"No reutilizes una contraseña personal. Escoge un código privado i envíalo a "
+"tus amigos"
 
 msgid "Account manager"
 msgstr ""
 
 msgid "Bills"
-msgstr ""
+msgstr "Facturas"
 
 msgid "Settle"
 msgstr ""
 
 msgid "Statistics"
-msgstr ""
+msgstr "Estadísticas"
 
 msgid "History"
-msgstr ""
+msgstr "Historia"
 
 msgid "Settings"
-msgstr ""
+msgstr "Ajustes"
 
 msgid "Languages"
-msgstr ""
+msgstr "Idiomas"
 
 msgid "Projects"
-msgstr ""
+msgstr "Proyectos"
 
 msgid "Start a new project"
 msgstr ""
 
 msgid "Other projects :"
-msgstr ""
+msgstr "Otros proyectos :"
 
 msgid "switch to"
-msgstr ""
+msgstr "cambiar a"
 
 msgid "Dashboard"
 msgstr ""
@@ -615,16 +621,16 @@ msgid "Logout"
 msgstr ""
 
 msgid "Code"
-msgstr ""
+msgstr "Código"
 
 msgid "Mobile Application"
-msgstr ""
+msgstr "Aplicación móvil"
 
 msgid "Documentation"
-msgstr ""
+msgstr "Documentación"
 
 msgid "Administation Dashboard"
-msgstr ""
+msgstr "Panel de administración"
 
 msgid "\"I hate money\" is a free software"
 msgstr ""
@@ -652,7 +658,7 @@ msgid "Older bills"
 msgstr ""
 
 msgid "When?"
-msgstr ""
+msgstr "¿Cuándo?"
 
 msgid "Who paid?"
 msgstr ""
@@ -675,19 +681,19 @@ msgid "Everyone but %(excluded)s"
 msgstr ""
 
 msgid "No bills"
-msgstr ""
+msgstr "Sin facturas"
 
 msgid "Nothing to list yet."
-msgstr ""
+msgstr "No hay nada que mostrar todavía."
 
 msgid "You probably want to"
-msgstr ""
+msgstr "Probablemente quieras"
 
 msgid "add a bill"
-msgstr ""
+msgstr "añadir una factura"
 
 msgid "add participants"
-msgstr ""
+msgstr "añadir participantes"
 
 msgid "Password reminder"
 msgstr ""
@@ -698,19 +704,19 @@ msgid ""
 msgstr ""
 
 msgid "Return to home page"
-msgstr ""
+msgstr "Volver a la página de inicio"
 
 msgid "Your projects"
-msgstr ""
+msgstr "Tus proyectos"
 
 msgid "Reset your password"
-msgstr ""
+msgstr "Reestablecer tu contraseña"
 
 msgid "Invite people to join this project"
 msgstr ""
 
 msgid "Share Identifier & code"
-msgstr ""
+msgstr "Compartir identificador i código"
 
 msgid ""
 "You can share the project identifier and the private code by any "
@@ -718,10 +724,10 @@ msgid ""
 msgstr ""
 
 msgid "Identifier:"
-msgstr ""
+msgstr "Identificador:"
 
 msgid "Share the Link"
-msgstr ""
+msgstr "Compartir el enlace"
 
 msgid "You can directly share the following link via your prefered medium"
 msgstr ""
@@ -740,28 +746,28 @@ msgid "Who pays?"
 msgstr ""
 
 msgid "To whom?"
-msgstr ""
+msgstr "¿Para quién?"
 
 msgid "Who?"
-msgstr ""
+msgstr "¿Quién?"
 
 msgid "Balance"
 msgstr ""
 
 msgid "deactivate"
-msgstr ""
+msgstr "desactivar"
 
 msgid "reactivate"
-msgstr ""
+msgstr "reactivar"
 
 msgid "Paid"
-msgstr ""
+msgstr "Pagado"
 
 msgid "Spent"
-msgstr ""
+msgstr "Gastado"
 
 msgid "Expenses by Month"
-msgstr ""
+msgstr "Gastos por mes"
 
 msgid "Period"
-msgstr ""
+msgstr "Período"
