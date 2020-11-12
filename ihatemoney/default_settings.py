@@ -18,6 +18,7 @@ SUPPORTED_LANGUAGES = [
     "nb_NO",
     "nl",
     "pl",
+    "pt",
     "pt_BR",
     "ru",
     "ta",
