@@ -20,7 +20,12 @@
         </tr>
         {% endfor %}
         </tbody>
-        </table>
+        </table>      
+
+        </br></br>
+        <div id="container" style=" height:600px; overflow: scroll;"></div>
+        </br></br></br>
+
         <h2>{{ _("Expenses by Month") }}</h2>
         <table id="monthly_stats" class="table table-striped">
             <thead><tr><th>{{ _("Period") }}</th><th>{{ _("Spent") }}</th></tr></thead>
@@ -32,7 +37,135 @@
                 </tr>
         {% endfor %}
         </tbody>
-        </table>
+        </table>        
+
+        </br></br>
+        <div id="container2" style="height:700px; overflow: scroll;"></div>
+        </br></br>
+
     </div>
+
+    
+    
+   
+    <script>
+      anychart.onDocumentReady(function() {
+       
+        ////////////////////////////////////////////////////////
+        // Work for Bar Graph - Expenditure per participant //
+        ////////////////////////////////////////////////////////
+
+       var Data =[];
+       
+        {% for stat in members_stats|sort(attribute='member.name') %}
+        var rowData={};
+       rowData.Name= "{{ stat.member.name }}"       
+       rowData.spent= "{{ stat.spent }}"
+       Data.push(rowData);
+        {% endfor %}      
+        
+        // create the chart
+        var chart = anychart.column();
+ 
+        // add the data
+        chart.data(Data);
+       
+        // adjust chart settings
+        var title = chart.title();
+        title.enabled(true);
+        title.text("Statistics - Money Spent per Participant");
+        title.fontSize(24);        
+        title.fontDecoration("underline");        
+        title.fontFamily("Tahoma");
+        title.fontColor("black");
+        title.fontWeight("bold");
+
+
+        // set titles for axises
+        chart.yAxis().title('Money Spent');
+        var y_title = chart.yAxis().title();
+        y_title.fontSize(16);
+        y_title.fontColor("black");
+        y_title.fontWeight("bold");
+
+        var labels = chart.xAxis().labels();
+        labels.fontFamily("Tahoma");
+        labels.fontSize(16);
+        labels.fontColor("black");        
+        
+        var labels = chart.yAxis().labels();
+        labels.fontFamily("Tahoma");
+        labels.fontSize(16);
+        labels.fontColor("black");  
+
+        // draw
+        chart.container("container");
+        chart.draw();
+
+
+        ////////////////////////////////////////////////////////
+         // Work for Line Graph - Trend Monthly Expenditure //
+        ////////////////////////////////////////////////////////
+
+        var Data2 =[];
+
+
+         {% for month in months |sort(attribute='year,month')  %}
+        var rowData2={};
+        rowData2.Xaxis=  "{{ _(month.strftime("%B")) }} {{ month.year }}"
+        rowData2.Yaxis = "{{ monthly_stats[month.year][month.month] }}"
+        
+        Data2.push(rowData2);
+        {% endfor %}   
+
+       // create the chart
+       var chart = anychart.line();
+
+       // add the data
+       chart.data(Data2);
+
+           
+        // adjust chart settings
+        var title = chart.title();       
+        title.enabled(true);        
+        title.text("Trend - Combined Monthly Expenditure");        
+        title.fontSize(24);        
+        title.fontDecoration("underline");        
+        title.fontFamily("Tahoma");
+        title.fontColor("black");
+        title.fontWeight("bold");
+        chart.xAxis().title('Participants');
+        chart.yAxis().title('Money Spent');
+
+        var y_title = chart.yAxis().title();
+        y_title.fontSize(16);
+        y_title.fontColor("black");
+        y_title.fontWeight("bold");
+
+        var x_title = chart.xAxis().title();
+        x_title.fontSize(16);
+        x_title.fontColor("black");
+        x_title.fontWeight("bold");
+        
+        
+       
+        var labels = chart.xAxis().labels();
+        labels.fontFamily("Tahoma");
+        labels.fontSize(16);
+        labels.fontColor("black");        
+        
+        var labels = chart.yAxis().labels();
+        labels.fontFamily("Tahoma");
+        labels.fontSize(16);
+        labels.fontColor("black");  
+
+       chart.container("container2");
+       chart.draw();
+
+      });
+
+
+
+    </script>
 
 {% endblock %}
