@@ -170,7 +170,7 @@ def create_app(
             number,
             currency if currency != CurrencyConverter.no_currency else "",
             *args,
-            **kwargs
+            **kwargs,
         ).strip()
 
     app.jinja_env.filters["currency"] = currency
