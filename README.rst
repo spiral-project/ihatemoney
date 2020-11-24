@@ -25,7 +25,7 @@ encouraged to do so.
 Requirements
 ============
 
-* **Python**: 3.6, 3.7, 3.8.
+* **Python**: version 3.6 to 3.9.
 * **Backends**: MySQL, PostgreSQL, SQLite, Memory.
 
 Contributing
