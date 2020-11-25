@@ -77,7 +77,7 @@ def run_migrations_online():
         target_metadata=target_metadata,
         include_object=include_object,
         process_revision_directives=process_revision_directives,
-        **current_app.extensions["migrate"].configure_args
+        **current_app.extensions["migrate"].configure_args,
     )
 
     try:

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel=stylesheet type=text/css href="{{ url_for("static", filename='css/main.css') }}">
     <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+    {% block css %}{% endblock %}
     <script src="{{ url_for("static", filename="js/jquery-3.1.1.min.js") }}"></script>
     <script src="{{ url_for("static", filename="js/ihatemoney.js") }}"></script>
     <script src="{{ url_for("static", filename="js/tether.min.js") }}"></script>
@@ -145,14 +146,14 @@
             <a target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="{{ _('Code') }}" href="https://github.com/spiral-project/ihatemoney">
               <i class="icon git">{{ static_include("images/git.svg") | safe }}</i>
             </a>
-            <a target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="{{ _('Mobile Application') }}" href="https://gitlab.com/eneiluj/moneybuster#moneybuster-for-android">
+            <a data-toggle="tooltip" data-placement="top" title="{{ _('Mobile Application') }}" href="{{url_for('main.mobile')}}">
               <i class="icon mobile">{{ static_include("images/mobile-alt.svg") | safe }}</i>
             </a>
             <a target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="{{ _('Documentation') }}" href="https://ihatemoney.readthedocs.io/en/latest/">
               <i class="icon book">{{ static_include("images/book.svg") | safe }}</i>
             </a>
             {% if g.show_admin_dashboard_link %}
-            <a target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="{{ _('Administation Dashboard') }}" href="{{ url_for("main.dashboard") }}">
+            <a target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="{{ _('Administation Dashboard') }}" href="{{ url_for('main.dashboard') }}">
               <i class="icon admin">{{ static_include("images/cog.svg") | safe }}</i>
             </a>
             {% endif %}
