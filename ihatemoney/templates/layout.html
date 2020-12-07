@@ -42,7 +42,7 @@
     <h1><a class="navbar-brand" href="{{ url_for("main.home") }}"><span>#!</span> money?</a></h1>
 
     <div class="collapse navbar-collapse" id="navbarToggler">
-      <ul class="navbar-nav ml-auto mr-auto">
+      <ul class="navbar-nav nav-fill w-100">
         {% if g.project %}
           {% block navbar %}
           <li class="nav-item{% if current_view == 'list_bills' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.list_bills") }}">{{ _("Bills") }}</a></li>
