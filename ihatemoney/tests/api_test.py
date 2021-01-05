@@ -1,0 +1,748 @@
+import base64
+import datetime
+import json
+import unittest
+
+from ihatemoney.tests.common.help_functions import em_surround
+from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
+
+
+class APITestCase(IhatemoneyTestCase):
+
+    """Tests the API"""
+
+    def api_create(self, name, id=None, password=None, contact=None):
+        id = id or name
+        password = password or name
+        contact = contact or f"{name}@notmyidea.org"
+
+        return self.client.post(
+            "/api/projects",
+            data={
+                "name": name,
+                "id": id,
+                "password": password,
+                "contact_email": contact,
+                "default_currency": "USD",
+            },
+        )
+
+    def api_add_member(self, project, name, weight=1):
+        self.client.post(
+            f"/api/projects/{project}/members",
+            data={"name": name, "weight": weight},
+            headers=self.get_auth(project),
+        )
+
+    def get_auth(self, username, password=None):
+        password = password or username
+        base64string = (
+            base64.encodebytes(f"{username}:{password}".encode("utf-8"))
+            .decode("utf-8")
+            .replace("\n", "")
+        )
+        return {"Authorization": f"Basic {base64string}"}
+
+    def test_cors_requests(self):
+        # Create a project and test that CORS headers are present if requested.
+        resp = self.api_create("raclette")
+        self.assertStatus(201, resp)
+
+        # Try to do an OPTIONS requests and see if the headers are correct.
+        resp = self.client.options(
+            "/api/projects/raclette", headers=self.get_auth("raclette")
+        )
+        self.assertEqual(resp.headers["Access-Control-Allow-Origin"], "*")
+
+    def test_basic_auth(self):
+        # create a project
+        resp = self.api_create("raclette")
+        self.assertStatus(201, resp)
+
+        # try to do something on it being unauth should return a 401
+        resp = self.client.get("/api/projects/raclette")
+        self.assertStatus(401, resp)
+
+        # PUT / POST / DELETE / GET on the different resources
+        # should also return a 401
+        for verb in ("post",):
+            for resource in ("/raclette/members", "/raclette/bills"):
+                url = "/api/projects" + resource
+                self.assertStatus(401, getattr(self.client, verb)(url), verb + resource)
+
+        for verb in ("get", "delete", "put"):
+            for resource in ("/raclette", "/raclette/members/1", "/raclette/bills/1"):
+                url = "/api/projects" + resource
+
+                self.assertStatus(401, getattr(self.client, verb)(url), verb + resource)
+
+    def test_project(self):
+        # wrong email should return an error
+        resp = self.client.post(
+            "/api/projects",
+            data={
+                "name": "raclette",
+                "id": "raclette",
+                "password": "raclette",
+                "contact_email": "not-an-email",
+                "default_currency": "USD",
+            },
+        )
+
+        self.assertTrue(400, resp.status_code)
+        self.assertEqual(
+            '{"contact_email": ["Invalid email address."]}\n', resp.data.decode("utf-8")
+        )
+
+        # create it
+        resp = self.api_create("raclette")
+        self.assertTrue(201, resp.status_code)
+
+        # create it twice should return a 400
+        resp = self.api_create("raclette")
+
+        self.assertTrue(400, resp.status_code)
+        self.assertIn("id", json.loads(resp.data.decode("utf-8")))
+
+        # get information about it
+        resp = self.client.get(
+            "/api/projects/raclette", headers=self.get_auth("raclette")
+        )
+
+        self.assertTrue(200, resp.status_code)
+        expected = {
+            "members": [],
+            "name": "raclette",
+            "contact_email": "raclette@notmyidea.org",
+            "default_currency": "USD",
+            "id": "raclette",
+            "logging_preference": 1,
+        }
+        decoded_resp = json.loads(resp.data.decode("utf-8"))
+        self.assertDictEqual(decoded_resp, expected)
+
+        # edit should work
+        resp = self.client.put(
+            "/api/projects/raclette",
+            data={
+                "contact_email": "yeah@notmyidea.org",
+                "default_currency": "USD",
+                "password": "raclette",
+                "name": "The raclette party",
+                "project_history": "y",
+            },
+            headers=self.get_auth("raclette"),
+        )
+
+        self.assertEqual(200, resp.status_code)
+
+        resp = self.client.get(
+            "/api/projects/raclette", headers=self.get_auth("raclette")
+        )
+
+        self.assertEqual(200, resp.status_code)
+        expected = {
+            "name": "The raclette party",
+            "contact_email": "yeah@notmyidea.org",
+            "default_currency": "USD",
+            "members": [],
+            "id": "raclette",
+            "logging_preference": 1,
+        }
+        decoded_resp = json.loads(resp.data.decode("utf-8"))
+        self.assertDictEqual(decoded_resp, expected)
+
+        # password change is possible via API
+        resp = self.client.put(
+            "/api/projects/raclette",
+            data={
+                "contact_email": "yeah@notmyidea.org",
+                "default_currency": "USD",
+                "password": "tartiflette",
+                "name": "The raclette party",
+            },
+            headers=self.get_auth("raclette"),
+        )
+
+        self.assertEqual(200, resp.status_code)
+
+        resp = self.client.get(
+            "/api/projects/raclette", headers=self.get_auth("raclette", "tartiflette")
+        )
+        self.assertEqual(200, resp.status_code)
+
+        # delete should work
+        resp = self.client.delete(
+            "/api/projects/raclette", headers=self.get_auth("raclette", "tartiflette")
+        )
+
+        # get should return a 401 on an unknown resource
+        resp = self.client.get(
+            "/api/projects/raclette", headers=self.get_auth("raclette")
+        )
+        self.assertEqual(401, resp.status_code)
+
+    def test_token_creation(self):
+        """Test that token of project is generated"""
+
+        # Create project
+        resp = self.api_create("raclette")
+        self.assertTrue(201, resp.status_code)
+
+        # Get token
+        resp = self.client.get(
+            "/api/projects/raclette/token", headers=self.get_auth("raclette")
+        )
+
+        self.assertEqual(200, resp.status_code)
+
+        decoded_resp = json.loads(resp.data.decode("utf-8"))
+
+        # Access with token
+        resp = self.client.get(
+            "/api/projects/raclette/token",
+            headers={"Authorization": f"Basic {decoded_resp['token']}"},
+        )
+
+        self.assertEqual(200, resp.status_code)
+
+    def test_token_login(self):
+        resp = self.api_create("raclette")
+        # Get token
+        resp = self.client.get(
+            "/api/projects/raclette/token", headers=self.get_auth("raclette")
+        )
+        decoded_resp = json.loads(resp.data.decode("utf-8"))
+        resp = self.client.get("/authenticate?token={}".format(decoded_resp["token"]))
+        # Test that we are redirected.
+        self.assertEqual(302, resp.status_code)
+
+    def test_member(self):
+        # create a project
+        self.api_create("raclette")
+
+        # get the list of members (should be empty)
+        req = self.client.get(
+            "/api/projects/raclette/members", headers=self.get_auth("raclette")
+        )
+
+        self.assertStatus(200, req)
+        self.assertEqual("[]\n", req.data.decode("utf-8"))
+
+        # add a member
+        req = self.client.post(
+            "/api/projects/raclette/members",
+            data={"name": "Zorglub"},
+            headers=self.get_auth("raclette"),
+        )
+
+        # the id of the new member should be returned
+        self.assertStatus(201, req)
+        self.assertEqual("1\n", req.data.decode("utf-8"))
+
+        # the list of members should contain one member
+        req = self.client.get(
+            "/api/projects/raclette/members", headers=self.get_auth("raclette")
+        )
+
+        self.assertStatus(200, req)
+        self.assertEqual(len(json.loads(req.data.decode("utf-8"))), 1)
+
+        # Try to add another member with the same name.
+        req = self.client.post(
+            "/api/projects/raclette/members",
+            data={"name": "Zorglub"},
+            headers=self.get_auth("raclette"),
+        )
+        self.assertStatus(400, req)
+
+        # edit the member
+        req = self.client.put(
+            "/api/projects/raclette/members/1",
+            data={"name": "Fred", "weight": 2},
+            headers=self.get_auth("raclette"),
+        )
+
+        self.assertStatus(200, req)
+
+        # get should return the new name
+        req = self.client.get(
+            "/api/projects/raclette/members/1", headers=self.get_auth("raclette")
+        )
+
+        self.assertStatus(200, req)
+        self.assertEqual("Fred", json.loads(req.data.decode("utf-8"))["name"])
+        self.assertEqual(2, json.loads(req.data.decode("utf-8"))["weight"])
+
+        # edit this member with same information
+        # (test PUT idemopotence)
+        req = self.client.put(
+            "/api/projects/raclette/members/1",
+            data={"name": "Fred"},
+            headers=self.get_auth("raclette"),
+        )
+
+        self.assertStatus(200, req)
+
+        # de-activate the user
+        req = self.client.put(
+            "/api/projects/raclette/members/1",
+            data={"name": "Fred", "activated": False},
+            headers=self.get_auth("raclette"),
+        )
+        self.assertStatus(200, req)
+
+        req = self.client.get(
+            "/api/projects/raclette/members/1", headers=self.get_auth("raclette")
+        )
+        self.assertStatus(200, req)
+        self.assertEqual(False, json.loads(req.data.decode("utf-8"))["activated"])
+
+        # re-activate the user
+        req = self.client.put(
+            "/api/projects/raclette/members/1",
+            data={"name": "Fred", "activated": True},
+            headers=self.get_auth("raclette"),
+        )
+
+        req = self.client.get(
+            "/api/projects/raclette/members/1", headers=self.get_auth("raclette")
+        )
+        self.assertStatus(200, req)
+        self.assertEqual(True, json.loads(req.data.decode("utf-8"))["activated"])
+
+        # delete a member
+
+        req = self.client.delete(
+            "/api/projects/raclette/members/1", headers=self.get_auth("raclette")
+        )
+
+        self.assertStatus(200, req)
+
+        # the list of members should be empty
+        req = self.client.get(
+            "/api/projects/raclette/members", headers=self.get_auth("raclette")
+        )
+
+        self.assertStatus(200, req)
+        self.assertEqual("[]\n", req.data.decode("utf-8"))
+
+    def test_bills(self):
+        # create a project
+        self.api_create("raclette")
+
+        # add members
+        self.api_add_member("raclette", "zorglub")
+        self.api_add_member("raclette", "fred")
+        self.api_add_member("raclette", "quentin")
+
+        # get the list of bills (should be empty)
+        req = self.client.get(
+            "/api/projects/raclette/bills", headers=self.get_auth("raclette")
+        )
+        self.assertStatus(200, req)
+
+        self.assertEqual("[]\n", req.data.decode("utf-8"))
+
+        # add a bill
+        req = self.client.post(
+            "/api/projects/raclette/bills",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage",
+                "payer": "1",
+                "payed_for": ["1", "2"],
+                "amount": "25",
+                "external_link": "https://raclette.fr",
+            },
+            headers=self.get_auth("raclette"),
+        )
+
+        # should return the id
+        self.assertStatus(201, req)
+        self.assertEqual(req.data.decode("utf-8"), "1\n")
+
+        # get this bill details
+        req = self.client.get(
+            "/api/projects/raclette/bills/1", headers=self.get_auth("raclette")
+        )
+
+        # compare with the added info
+        self.assertStatus(200, req)
+        expected = {
+            "what": "fromage",
+            "payer_id": 1,
+            "owers": [
+                {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
+                {"activated": True, "id": 2, "name": "fred", "weight": 1},
+            ],
+            "amount": 25.0,
+            "date": "2011-08-10",
+            "id": 1,
+            "converted_amount": 25.0,
+            "original_currency": "USD",
+            "external_link": "https://raclette.fr",
+        }
+
+        got = json.loads(req.data.decode("utf-8"))
+        self.assertEqual(
+            datetime.date.today(),
+            datetime.datetime.strptime(got["creation_date"], "%Y-%m-%d").date(),
+        )
+        del got["creation_date"]
+        self.assertDictEqual(expected, got)
+
+        # the list of bills should length 1
+        req = self.client.get(
+            "/api/projects/raclette/bills", headers=self.get_auth("raclette")
+        )
+        self.assertStatus(200, req)
+        self.assertEqual(1, len(json.loads(req.data.decode("utf-8"))))
+
+        # edit with errors should return an error
+        req = self.client.put(
+            "/api/projects/raclette/bills/1",
+            data={
+                "date": "201111111-08-10",  # not a date
+                "what": "fromage",
+                "payer": "1",
+                "payed_for": ["1", "2"],
+                "amount": "25",
+                "external_link": "https://raclette.fr",
+            },
+            headers=self.get_auth("raclette"),
+        )
+
+        self.assertStatus(400, req)
+        self.assertEqual(
+            '{"date": ["This field is required."]}\n', req.data.decode("utf-8")
+        )
+
+        # edit a bill
+        req = self.client.put(
+            "/api/projects/raclette/bills/1",
+            data={
+                "date": "2011-09-10",
+                "what": "beer",
+                "payer": "2",
+                "payed_for": ["1", "2"],
+                "amount": "25",
+                "external_link": "https://raclette.fr",
+            },
+            headers=self.get_auth("raclette"),
+        )
+
+        # check its fields
+        req = self.client.get(
+            "/api/projects/raclette/bills/1", headers=self.get_auth("raclette")
+        )
+        creation_date = datetime.datetime.strptime(
+            json.loads(req.data.decode("utf-8"))["creation_date"], "%Y-%m-%d"
+        ).date()
+
+        expected = {
+            "what": "beer",
+            "payer_id": 2,
+            "owers": [
+                {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
+                {"activated": True, "id": 2, "name": "fred", "weight": 1},
+            ],
+            "amount": 25.0,
+            "date": "2011-09-10",
+            "external_link": "https://raclette.fr",
+            "converted_amount": 25.0,
+            "original_currency": "USD",
+            "id": 1,
+        }
+
+        got = json.loads(req.data.decode("utf-8"))
+        self.assertEqual(
+            creation_date,
+            datetime.datetime.strptime(got["creation_date"], "%Y-%m-%d").date(),
+        )
+        del got["creation_date"]
+        self.assertDictEqual(expected, got)
+
+        # delete a bill
+        req = self.client.delete(
+            "/api/projects/raclette/bills/1", headers=self.get_auth("raclette")
+        )
+        self.assertStatus(200, req)
+
+        # getting it should return a 404
+        req = self.client.get(
+            "/api/projects/raclette/bills/1", headers=self.get_auth("raclette")
+        )
+        self.assertStatus(404, req)
+
+    def test_bills_with_calculation(self):
+        # create a project
+        self.api_create("raclette")
+
+        # add members
+        self.api_add_member("raclette", "zorglub")
+        self.api_add_member("raclette", "fred")
+
+        # valid amounts
+        input_expected = [
+            ("((100 + 200.25) * 2 - 100) / 2", 250.25),
+            ("3/2", 1.5),
+            ("2 + 1 * 5 - 2 / 1", 5),
+        ]
+
+        for i, pair in enumerate(input_expected):
+            input_amount, expected_amount = pair
+            id = i + 1
+
+            req = self.client.post(
+                "/api/projects/raclette/bills",
+                data={
+                    "date": "2011-08-10",
+                    "what": "fromage",
+                    "payer": "1",
+                    "payed_for": ["1", "2"],
+                    "amount": input_amount,
+                },
+                headers=self.get_auth("raclette"),
+            )
+
+            # should return the id
+            self.assertStatus(201, req)
+            self.assertEqual(req.data.decode("utf-8"), "{}\n".format(id))
+
+            # get this bill's details
+            req = self.client.get(
+                "/api/projects/raclette/bills/{}".format(id),
+                headers=self.get_auth("raclette"),
+            )
+
+            # compare with the added info
+            self.assertStatus(200, req)
+            expected = {
+                "what": "fromage",
+                "payer_id": 1,
+                "owers": [
+                    {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
+                    {"activated": True, "id": 2, "name": "fred", "weight": 1},
+                ],
+                "amount": expected_amount,
+                "date": "2011-08-10",
+                "id": id,
+                "external_link": "",
+                "original_currency": "USD",
+                "converted_amount": expected_amount,
+            }
+
+            got = json.loads(req.data.decode("utf-8"))
+            self.assertEqual(
+                datetime.date.today(),
+                datetime.datetime.strptime(got["creation_date"], "%Y-%m-%d").date(),
+            )
+            del got["creation_date"]
+            self.assertDictEqual(expected, got)
+
+        # should raise errors
+        erroneous_amounts = [
+            "lambda ",  # letters
+            "(20 + 2",  # invalid expression
+            "20/0",  # invalid calc
+            "9999**99999999999999999",  # exponents
+            "2" * 201,  # greater than 200 chars,
+        ]
+
+        for amount in erroneous_amounts:
+            req = self.client.post(
+                "/api/projects/raclette/bills",
+                data={
+                    "date": "2011-08-10",
+                    "what": "fromage",
+                    "payer": "1",
+                    "payed_for": ["1", "2"],
+                    "amount": amount,
+                },
+                headers=self.get_auth("raclette"),
+            )
+            self.assertStatus(400, req)
+
+    def test_statistics(self):
+        # create a project
+        self.api_create("raclette")
+
+        # add members
+        self.api_add_member("raclette", "zorglub")
+        self.api_add_member("raclette", "fred")
+
+        # add a bill
+        req = self.client.post(
+            "/api/projects/raclette/bills",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage",
+                "payer": "1",
+                "payed_for": ["1", "2"],
+                "amount": "25",
+            },
+            headers=self.get_auth("raclette"),
+        )
+
+        # get the list of bills (should be empty)
+        req = self.client.get(
+            "/api/projects/raclette/statistics", headers=self.get_auth("raclette")
+        )
+        self.assertStatus(200, req)
+        self.assertEqual(
+            [
+                {
+                    "balance": 12.5,
+                    "member": {
+                        "activated": True,
+                        "id": 1,
+                        "name": "zorglub",
+                        "weight": 1.0,
+                    },
+                    "paid": 25.0,
+                    "spent": 12.5,
+                },
+                {
+                    "balance": -12.5,
+                    "member": {
+                        "activated": True,
+                        "id": 2,
+                        "name": "fred",
+                        "weight": 1.0,
+                    },
+                    "paid": 0,
+                    "spent": 12.5,
+                },
+            ],
+            json.loads(req.data.decode("utf-8")),
+        )
+
+    def test_username_xss(self):
+        # create a project
+        # self.api_create("raclette")
+        self.post_project("raclette")
+        self.login("raclette")
+
+        # add members
+        self.api_add_member("raclette", "<script>")
+
+        result = self.client.get("/raclette/")
+        self.assertNotIn("<script>", result.data.decode("utf-8"))
+
+    def test_weighted_bills(self):
+        # create a project
+        self.api_create("raclette")
+
+        # add members
+        self.api_add_member("raclette", "zorglub")
+        self.api_add_member("raclette", "freddy familly", 4)
+        self.api_add_member("raclette", "quentin")
+
+        # add a bill
+        req = self.client.post(
+            "/api/projects/raclette/bills",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage",
+                "payer": "1",
+                "payed_for": ["1", "2"],
+                "amount": "25",
+            },
+            headers=self.get_auth("raclette"),
+        )
+
+        # get this bill details
+        req = self.client.get(
+            "/api/projects/raclette/bills/1", headers=self.get_auth("raclette")
+        )
+        creation_date = datetime.datetime.strptime(
+            json.loads(req.data.decode("utf-8"))["creation_date"], "%Y-%m-%d"
+        ).date()
+
+        # compare with the added info
+        self.assertStatus(200, req)
+        expected = {
+            "what": "fromage",
+            "payer_id": 1,
+            "owers": [
+                {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
+                {"activated": True, "id": 2, "name": "freddy familly", "weight": 4},
+            ],
+            "amount": 25.0,
+            "date": "2011-08-10",
+            "id": 1,
+            "external_link": "",
+            "converted_amount": 25.0,
+            "original_currency": "USD",
+        }
+        got = json.loads(req.data.decode("utf-8"))
+        self.assertEqual(
+            creation_date,
+            datetime.datetime.strptime(got["creation_date"], "%Y-%m-%d").date(),
+        )
+        del got["creation_date"]
+        self.assertDictEqual(expected, got)
+
+        # getting it should return a 404
+        req = self.client.get(
+            "/api/projects/raclette", headers=self.get_auth("raclette")
+        )
+
+        expected = {
+            "members": [
+                {
+                    "activated": True,
+                    "id": 1,
+                    "name": "zorglub",
+                    "weight": 1.0,
+                    "balance": 20.0,
+                },
+                {
+                    "activated": True,
+                    "id": 2,
+                    "name": "freddy familly",
+                    "weight": 4.0,
+                    "balance": -20.0,
+                },
+                {
+                    "activated": True,
+                    "id": 3,
+                    "name": "quentin",
+                    "weight": 1.0,
+                    "balance": 0,
+                },
+            ],
+            "contact_email": "raclette@notmyidea.org",
+            "id": "raclette",
+            "name": "raclette",
+            "logging_preference": 1,
+            "default_currency": "USD",
+        }
+
+        self.assertStatus(200, req)
+        decoded_req = json.loads(req.data.decode("utf-8"))
+        self.assertDictEqual(decoded_req, expected)
+
+    def test_log_created_from_api_call(self):
+        # create a project
+        self.api_create("raclette")
+        self.login("raclette")
+
+        # add members
+        self.api_add_member("raclette", "zorglub")
+
+        resp = self.client.get("/raclette/history", follow_redirects=True)
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn(
+            f"Participant {em_surround('zorglub')} added", resp.data.decode("utf-8")
+        )
+        self.assertIn(
+            f"Project {em_surround('raclette')} added", resp.data.decode("utf-8")
+        )
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 2)
+        self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+
+
+if __name__ == "__main__":
+    unittest.main()
