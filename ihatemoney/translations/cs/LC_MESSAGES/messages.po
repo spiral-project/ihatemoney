@@ -1,163 +1,167 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-30 21:50+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2021-01-08 14:32+0000\n"
+"Last-Translator: Oliver Klimt <klimt.oliver@gmail.com>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/cs/>\n"
 "Language: cs\n"
-"Language-Team: none\n"
-"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 4.4.1-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
+"Neplatná částka nebo výraz. Pouze čísla a operátory + - * / jsou přípustná"
 
 msgid "Project name"
-msgstr ""
+msgstr "Název projektu"
 
 msgid "Private code"
-msgstr ""
+msgstr "Přístupový kód"
 
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 msgid "Enable project history"
-msgstr ""
+msgstr "Povolit historii projektu"
 
 msgid "Use IP tracking for project history"
-msgstr ""
+msgstr "Záznam IP adres pro historii projektu"
 
 msgid "Default Currency"
-msgstr ""
+msgstr "Výchozí měna"
 
 msgid "Import previously exported JSON file"
-msgstr ""
+msgstr "Import exportovaného JSON souboru"
 
 msgid "Import"
-msgstr ""
+msgstr "Import"
 
 msgid "Project identifier"
-msgstr ""
+msgstr "Identifikátor projektu"
 
 msgid "Create the project"
-msgstr ""
+msgstr "Vytvořit projekt"
 
 #, python-format
 msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
+"Projekt s tímto identifikátorem (\"%(project)s\") již existuje, zvolte nový "
+"identifikátor"
 
 msgid "Get in"
-msgstr ""
+msgstr "Vstoupit"
 
 msgid "Admin password"
-msgstr ""
+msgstr "Administrátorské heslo"
 
 msgid "Send me the code by email"
-msgstr ""
+msgstr "Poslat kód na e-mail"
 
 msgid "This project does not exists"
-msgstr ""
+msgstr "Tento projekt neexistuje"
 
 msgid "Password mismatch"
-msgstr ""
+msgstr "Heslo nesouhlasí"
 
 msgid "Password"
-msgstr ""
+msgstr "Heslo"
 
 msgid "Password confirmation"
-msgstr ""
+msgstr "Potvrzení hesla"
 
 msgid "Reset password"
-msgstr ""
+msgstr "Obnova hesla"
 
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 msgid "What?"
-msgstr ""
+msgstr "Co?"
 
 msgid "Payer"
-msgstr ""
+msgstr "Platící"
 
 msgid "Amount paid"
-msgstr ""
+msgstr "Zaplacená částka"
 
 msgid "Currency"
-msgstr ""
+msgstr "Měna"
 
 msgid "External link"
-msgstr ""
+msgstr "Externí odkaz"
 
 msgid "A link to an external document, related to this bill"
-msgstr ""
+msgstr "Externí odkaz k této účtence"
 
 msgid "For whom?"
-msgstr ""
+msgstr "Od koho?"
 
 msgid "Submit"
-msgstr ""
+msgstr "Odeslat"
 
 msgid "Submit and add a new one"
-msgstr ""
+msgstr "Odeslat a přidat nový"
 
 #, python-format
 msgid "Project default: %(currency)s"
-msgstr ""
+msgstr "Výchozí měna projektu: %(currency)s"
 
 msgid "Bills can't be null"
-msgstr ""
+msgstr "Účtenka nemůže být nulová"
 
 msgid "Name"
-msgstr ""
+msgstr "Jméno"
 
 msgid "Weights should be positive"
 msgstr ""
 
 msgid "Weight"
-msgstr ""
+msgstr "Váha"
 
 msgid "Add"
-msgstr ""
+msgstr "Přidat"
 
 msgid "User name incorrect"
-msgstr ""
+msgstr "Nesprávné uživatelské jméno"
 
 msgid "This project already have this member"
-msgstr ""
+msgstr "Projekt již obsahuje tohoto člena"
 
 msgid "People to notify"
-msgstr ""
+msgstr "Osoby k informování"
 
 msgid "Send invites"
-msgstr ""
+msgstr "Poslat pozvánky"
 
 #, python-format
 msgid "The email %(email)s is not valid"
-msgstr ""
+msgstr "Toto (%(email)s) není validní e-mail"
 
 msgid "Participant"
-msgstr ""
+msgstr "Účastník"
 
 msgid "Bill"
-msgstr ""
+msgstr "Účet"
 
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 msgid "No Currency"
-msgstr ""
+msgstr "Žádná měna"
 
 msgid "Too many failed login attempts, please retry later."
-msgstr ""
+msgstr "Příliš mnoho pokusů, zkuste to později."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
@@ -783,4 +787,3 @@ msgstr ""
 #~ "is by the server, so don\\'t reuse"
 #~ " a personal password!"
 #~ msgstr ""
-
