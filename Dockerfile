@@ -16,7 +16,7 @@ ENV NIGHTLY="" \
     ADMIN_PASSWORD="" \
     ALLOW_PUBLIC_PROJECT_CREATION="True" \
     ACTIVATE_ADMIN_DASHBOARD="False" \
-    BABEL_DEFAULT_TIMEZONE=""
+    BABEL_DEFAULT_TIMEZONE="UTC"
 
 RUN apk update && apk add git gcc libc-dev libffi-dev openssl-dev wget &&\
     mkdir -p /etc/ihatemoney &&\
