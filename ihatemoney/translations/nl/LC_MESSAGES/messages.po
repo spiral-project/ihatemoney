@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2020-05-30 21:50+0200\n"
-"PO-Revision-Date: 2021-02-15 16:46+0000\n"
-"Last-Translator: Sander Kooijmans <weblate@gogognome.nl>\n"
+"PO-Revision-Date: 2021-02-17 02:50+0000\n"
+"Last-Translator: Rens <hallo@rensoliemans.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/nl/>\n"
 "Language: nl\n"
@@ -12,13 +12,15 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5-dev\n"
+"X-Generator: Weblate 4.5\n"
 "Generated-By: Babel 2.8.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
-msgstr "Geen geldig bedrag of expressie. Gebruik alleen getallen en + - * /"
+msgstr ""
+"Geen geldig bedrag of expressie. Gebruik alleen getallen en + - * / "
+"operatoren."
 
 msgid "Project name"
 msgstr "Projectnaam"
@@ -54,7 +56,7 @@ msgstr "Project aanmaken"
 msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
-msgstr "Er is al een project genaamd (\"%(project)s\"). Kies een andere naam."
+msgstr "Er is al een project genaamd (\"%(project)s\"). Kies een andere naam"
 
 msgid "Get in"
 msgstr "Inloggen"
@@ -350,7 +352,7 @@ msgstr ""
 " te schikken."
 
 msgid "Can't remember the password?"
-msgstr "Ben je je wachtwoord vergeten?"
+msgstr "Wachtwoord vergeten?"
 
 msgid "Cancel"
 msgstr "Annuleren"
@@ -389,13 +391,13 @@ msgid "Download"
 msgstr "Downloaden"
 
 msgid "Disabled Project History"
-msgstr "Uitgeschakelde Projecthistorie"
+msgstr "Uitgeschakelde Projectgeschiedenis"
 
 msgid "Disabled Project History & IP Address Recording"
 msgstr "Uitgeschakelde Projecthistorie & IP-Adres Vastlegging"
 
 msgid "Enabled Project History"
-msgstr "Ingeschakelde Projecthistorie"
+msgstr "Ingeschakelde Projectgeschiedenis"
 
 msgid "Disabled IP Address Recording"
 msgstr ""
@@ -482,19 +484,19 @@ msgid "Delete stored IP addresses"
 msgstr ""
 
 msgid "No history to erase"
-msgstr ""
+msgstr "Geen geschiedenis om te wissen"
 
 msgid "Clear Project History"
-msgstr ""
+msgstr "Verwijder Projectgeschiedenis"
 
 msgid "No IP Addresses to erase"
-msgstr ""
+msgstr "Geen IP-adressen te verwijderen"
 
 msgid "Delete Stored IP Addresses"
-msgstr ""
+msgstr "Verwijder opgeslagen IP-adressen"
 
 msgid "Time"
-msgstr ""
+msgstr "Tijd"
 
 msgid "Event"
 msgstr ""
@@ -509,44 +511,44 @@ msgid "From IP"
 msgstr ""
 
 msgid "added"
-msgstr ""
+msgstr "toegevoegd"
 
 msgid "Project private code changed"
-msgstr ""
+msgstr "Privécode van project gewijzigd"
 
 msgid "Project renamed to"
-msgstr ""
+msgstr "Project hernoemd tot"
 
 msgid "Project contact email changed to"
 msgstr ""
 
 msgid "Project settings modified"
-msgstr ""
+msgstr "Projectinstellingen gewijzigd"
 
 msgid "deactivated"
-msgstr ""
+msgstr "gedeactiveerd"
 
 msgid "reactivated"
-msgstr ""
+msgstr "gereactiveerd"
 
 msgid "renamed to"
-msgstr ""
+msgstr "hernoemd naar"
 
 msgid "External link changed to"
 msgstr ""
 
 msgid "Amount"
-msgstr ""
+msgstr "Hoeveelheid"
 
 #, python-format
 msgid "Amount in %(currency)s"
-msgstr ""
+msgstr "Hoeveelheid in %(currency)s"
 
 msgid "modified"
-msgstr ""
+msgstr "gewijzigd"
 
 msgid "removed"
-msgstr ""
+msgstr "verwijderd"
 
 msgid "changed in a unknown way"
 msgstr ""
@@ -555,7 +557,7 @@ msgid "Nothing to list"
 msgstr ""
 
 msgid "Someone probably cleared the project history."
-msgstr ""
+msgstr "Iemand heeft waarschijnlijk de projectgeschiedenis verwijderd."
 
 msgid "Manage your shared <br />expenses, easily"
 msgstr "Beheer eenvoudig je <br />gedeelde uitgaven"
@@ -582,7 +584,7 @@ msgid "Log in"
 msgstr "Inloggen"
 
 msgid "can't remember your password?"
-msgstr "ben je je wachtwoord vergeten?"
+msgstr "wachtwoord vergeten?"
 
 msgid "Create"
 msgstr "Maken"
@@ -591,6 +593,8 @@ msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
 msgstr ""
+"Hergebruik geen persoonlijk wachtwoord. Kies een privécode en stuur het naar "
+"je vrienden"
 
 msgid "Account manager"
 msgstr "Accountbeheer"
@@ -605,7 +609,7 @@ msgid "Statistics"
 msgstr "Statistieken"
 
 msgid "History"
-msgstr ""
+msgstr "Geschiedenis"
 
 msgid "Settings"
 msgstr "Instellingen"
@@ -789,7 +793,7 @@ msgid "Expenses by Month"
 msgstr ""
 
 msgid "Period"
-msgstr ""
+msgstr "Periode"
 
 #~ msgid "%(msg_compl)sThe project identifier is %(project)s"
 #~ msgstr "%(msg_compl)sDe project-id is %(project)s"
