@@ -602,6 +602,9 @@ class APITestCase(IhatemoneyTestCase):
                     },
                     "paid": 25.0,
                     "spent": 12.5,
+                    "monthly_exp": [
+                        ["2011-08-01T00:00:00", 25.0]
+                    ],  # Day returned will always be 01, and h/m/s always 00
                 },
                 {
                     "balance": -12.5,
@@ -613,6 +616,7 @@ class APITestCase(IhatemoneyTestCase):
                     },
                     "paid": 0,
                     "spent": 12.5,
+                    "monthly_exp": [],
                 },
             ],
             json.loads(req.data.decode("utf-8")),

@@ -144,6 +144,7 @@ class Project(db.Model):
                     ]
                 ),
                 "balance": self.balance[member.id],
+                "monthly_exp": self.get_monthly_expenditure(member.id),
             }
             for member in self.active_members
         ]
@@ -163,6 +164,32 @@ class Project(db.Model):
     @property
     def uses_weights(self):
         return len([i for i in self.members if i.weight != 1]) > 0
+
+    def get_monthly_expenditure(self, member_id):
+        """
+        Computes monthly expenses for member_id
+
+        :return: a list of tuples of the form (date, expenditure)
+        """
+        query_result = {}
+        member_monthly = defaultdict(lambda: defaultdict(float))
+        member_monthly_exp = []
+        query_result[member_id] = self.get_member_bills(member_id).all()
+        for bill in query_result[member_id]:
+            member_monthly[bill.date.year][bill.date.month] += bill.converted_amount
+        for year in member_monthly:
+            for month in member_monthly[year]:
+                amount = member_monthly[year][month]
+                str_month = ""
+                # Datetime requires month as a zero padded decimal number (ie, 01, 02.. 11, 12)
+                if month > 9:
+                    str_month = str(month)
+                else:
+                    str_month = "0" + str(month)
+                # Convert date into datetime object
+                date = datetime.strptime(str(year) + " " + str_month, "%Y %m")
+                member_monthly_exp.append((date, amount))
+        return member_monthly_exp
 
     def get_transactions_to_settle_bill(self, pretty_output=False):
         """Return a list of transactions that could be made to settle the bill"""
