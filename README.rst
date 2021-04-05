@@ -39,6 +39,8 @@ Do you wish to contribute to IHateMoney? Fantastic! There's a lot of very
 useful help on the official `contributing
 <https://ihatemoney.readthedocs.io/en/latest/contributing.html>`_ page.
 
+You can also `donate some money <https://liberapay.com/IHateMoney/donate>`_. All funds will be used to maintain the `hosted version <https://ihatemoney.org>`_.
+
 Translation status
 ==================
 
