@@ -9,6 +9,10 @@ I hate money
    :target: https://hosted.weblate.org/engage/i-hate-money/?utm_source=widget
    :alt: Translation status from Weblate
 
+.. image:: https://img.shields.io/liberapay/receives/IHateMoney.svg?logo=liberapay
+   :target: https://liberapay.com/IHateMoney/donate
+   :alt: Donate
+
 *I hate money* is a web application made to ease shared budget management.
 It keeps track of who bought what, when, and for whom; and helps to settle the
 bills.
