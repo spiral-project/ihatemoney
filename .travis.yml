@@ -9,4 +9,5 @@ script: tox
 before_install:
   - python -m pip install --upgrade pip
 install:
+  - pip --version
   - pip install tox-travis
