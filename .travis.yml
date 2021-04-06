@@ -7,4 +7,5 @@ python:
   - "3.9"
 script: tox
 install:
+  - pip install --upgrade pip
   - pip install tox-travis
