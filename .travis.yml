@@ -6,5 +6,7 @@ python:
   - "3.8"
   - "3.9"
 script: tox
+before_install:
+  - python -m pip install --upgrade pip virtualenv
 install:
   - pip install tox-travis
