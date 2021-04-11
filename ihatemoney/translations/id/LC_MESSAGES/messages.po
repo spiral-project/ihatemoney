@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-30 21:50+0200\n"
-"PO-Revision-Date: 2020-09-26 09:40+0000\n"
-"Last-Translator: Fakhruddin Ahmad Darwis <fakhri.satu@gmail.com>\n"
+"PO-Revision-Date: 2021-02-21 04:50+0000\n"
+"Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/id/>\n"
 "Language: id\n"
@@ -12,14 +12,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Weblate 4.5\n"
 "Generated-By: Babel 2.8.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
-"Jumlah atau operator tidak valid. Hanya angka dan opertaor +-* yang "
+"Bukan jumlah atau operator yang valid. Hanya angka dan operator + -* / yang "
 "diterima."
 
 msgid "Project name"
@@ -116,7 +116,7 @@ msgstr "Ajukan dan tambah yang baru"
 
 #, python-format
 msgid "Project default: %(currency)s"
-msgstr ""
+msgstr "Default proyek: %(currency)s"
 
 msgid "Bills can't be null"
 msgstr "Tagihan tidak boleh kosong"
@@ -150,16 +150,16 @@ msgid "The email %(email)s is not valid"
 msgstr "Surel %(email)s tidak valid"
 
 msgid "Participant"
-msgstr ""
+msgstr "Partisipan"
 
 msgid "Bill"
-msgstr ""
+msgstr "Tagihan"
 
 msgid "Project"
 msgstr "Proyek"
 
 msgid "No Currency"
-msgstr ""
+msgstr "Tidak ada mata uang"
 
 msgid "Too many failed login attempts, please retry later."
 msgstr "Terlalu banyak percobaan masuk, silakan coba lagi nanti."
@@ -179,22 +179,26 @@ msgid "You have just created '%(project)s' to share your expenses"
 msgstr "Anda baru saja membuat %(project)s untuk membagikan harga Anda"
 
 msgid "A reminder email has just been sent to you"
-msgstr ""
+msgstr "Email pengingat baru saja dikirimkan kepada Anda"
 
 msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
+"Kami telah mengirimi Anda email pengingat, tetapi ada kesalahan. Anda masih "
+"dapat menggunakan proyek secara normal."
 
 #, python-format
 msgid "The project identifier is %(project)s"
-msgstr ""
+msgstr "Pengidentifikasi proyek adalah %(project)s"
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
 "instructions. Please check the email configuration of the server or "
 "contact the administrator."
 msgstr ""
+"Maaf, ada galat saat mengirim email berisi instruksi pengaturan ulang kata "
+"sandi. Silakan periksa konfigurasi email peladen atau hubungi administrator."
 
 msgid "No token provided"
 msgstr "Belum ada token diberikan"
@@ -209,10 +213,10 @@ msgid "Password successfully reset."
 msgstr "Kata sandi berhasil diatur ulang."
 
 msgid "Project successfully uploaded"
-msgstr ""
+msgstr "Proyek berhasil diunggah"
 
 msgid "Invalid JSON"
-msgstr ""
+msgstr "JSON tidak valid"
 
 msgid "Project successfully deleted"
 msgstr "Proyek berhasil dihapus"
@@ -229,10 +233,12 @@ msgid ""
 "Please check the email configuration of the server or contact the "
 "administrator."
 msgstr ""
+"Maaf, ada galat saat mencoba mengirim email undangan. Silakan periksa "
+"konfigurasi email peladen atau hubungi administrator."
 
 #, python-format
 msgid "%(member)s has been added"
-msgstr ""
+msgstr "%(member)s telah ditambahkan"
 
 #, python-format
 msgid "%(name)s is part of this project again"
@@ -309,7 +315,7 @@ msgid "delete"
 msgstr "hapus"
 
 msgid "show"
-msgstr ""
+msgstr "tampilkan"
 
 msgid "The Dashboard is currently deactivated."
 msgstr "Dasbor sekarang ini sedang dinonaktifkan."
@@ -321,10 +327,10 @@ msgid "Edit project"
 msgstr "Ubah proyek"
 
 msgid "Import JSON"
-msgstr ""
+msgstr "Impor JSON"
 
 msgid "Choose file"
-msgstr ""
+msgstr "Pilih berkas"
 
 msgid "Download project's data"
 msgstr "Unduh data proyek"
@@ -348,7 +354,7 @@ msgid "Cancel"
 msgstr "Batalkan"
 
 msgid "Privacy Settings"
-msgstr ""
+msgstr "Pengaturan Privasi"
 
 msgid "Edit the project"
 msgstr "Ubah proyek"
@@ -381,16 +387,16 @@ msgid "Download"
 msgstr "Unduh"
 
 msgid "Disabled Project History"
-msgstr ""
+msgstr "Nonaktifkan riwayat proyek"
 
 msgid "Disabled Project History & IP Address Recording"
-msgstr ""
+msgstr "Nonaktifkan riwayat proyek & rekaman alamat IP"
 
 msgid "Enabled Project History"
-msgstr ""
+msgstr "Riwayat Proyek yang Diaktifkan"
 
 msgid "Disabled IP Address Recording"
-msgstr ""
+msgstr "Perekaman Alamat IP Dinonaktifkan"
 
 msgid "Enabled Project History & IP Address Recording"
 msgstr ""
@@ -399,19 +405,19 @@ msgid "Enabled IP Address Recording"
 msgstr ""
 
 msgid "History Settings Changed"
-msgstr ""
+msgstr "Setelan Riwayat Diubah"
 
 msgid "changed"
-msgstr ""
+msgstr "diubah"
 
 msgid "from"
-msgstr ""
+msgstr "dari"
 
 msgid "to"
-msgstr ""
+msgstr "ke"
 
 msgid "Confirm Remove IP Adresses"
-msgstr ""
+msgstr "Konfirmasi Hapus Alamat IP"
 
 msgid ""
 "Are you sure you want to delete all recorded IP addresses from this "
@@ -419,32 +425,37 @@ msgid ""
 "                The rest of the project history will be unaffected. This "
 "action cannot be undone."
 msgstr ""
+"Anda yakin ingin menghapus semua alamat IP yang direkam dari proyek ini?\n"
+"                Sisa riwayat proyek tidak akan terpengaruh. Tindakan ini "
+"tidak bisa dibatalkan."
 
 msgid "Close"
-msgstr ""
+msgstr "Tutup"
 
 msgid "Confirm Delete"
-msgstr ""
+msgstr "Konfirmasi Hapus"
 
 msgid "Delete Confirmation"
-msgstr ""
+msgstr "Hapus Konfirmasi"
 
 msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
 msgstr ""
+"Anda yakin ingin menghapus semua riwayat untuk proyek ini? Tindakan ini "
+"tidak bisa dibatalkan."
 
 msgid "Added"
-msgstr ""
+msgstr "Ditambahkan"
 
 msgid "Removed"
-msgstr ""
+msgstr "Dihapus"
 
 msgid "and"
-msgstr ""
+msgstr "dan"
 
 msgid "owers list"
-msgstr ""
+msgstr "daftar owers"
 
 #, python-format
 msgid ""
@@ -454,6 +465,12 @@ msgid ""
 "            <a href=\"%(url)s\">settings page</a>\n"
 "            "
 msgstr ""
+"\n"
+"            <i> Proyek ini memiliki riwayat yang dinonaktifkan. Tindakan "
+"baru tidak akan muncul di bawah ini. Anda dapat mengaktifkan riwayat pada</i>"
+"\n"
+"            <a href=\"%(url)s\">halaman pengaturan</a>\n"
+"            "
 
 msgid ""
 "\n"

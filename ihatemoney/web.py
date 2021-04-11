@@ -270,6 +270,11 @@ def home():
     )
 
 
+@main.route("/mobile")
+def mobile():
+    return render_template("download_mobile_app.html")
+
+
 @main.route("/create", methods=["GET", "POST"])
 @requires_admin(bypass=("ALLOW_PUBLIC_PROJECT_CREATION", True))
 def create_project():

@@ -96,7 +96,7 @@ class PatchedRelationShipBuilder(RelationshipBuilder):
                         association_col
                         == self.association_version_table.c[association_col.name]
                         for association_col in association_cols
-                    ]
+                    ],
                 )
             )
             .group_by(*association_cols)

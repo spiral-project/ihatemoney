@@ -31,6 +31,7 @@ connection string. This will look like::
 
     SQLALCHEMY_DATABASE_URI = 'postgresql://myuser:mypass@localhost/dbname?client_encoding=utf8'
 
+.. _the SQLAlchemy documentation: http://docs.sqlalchemy.org/en/latest/core/engines.html#database-urls
 
 `SECRET_KEY`
 ------------
@@ -96,7 +97,26 @@ if set to ``"somestring"``, it will be served from a "folder"
 
 - **Default value:** ``""`` (empty string)
 
-.. _the SQLAlchemy documentation: http://docs.sqlalchemy.org/en/latest/core/engines.html#database-urls
+`BABEL_DEFAULT_TIMEZONE`
+------------------------
+
+The timezone that will be used to convert date and time when displaying them
+to the user (all times are always stored in UTC internally).
+If not set, it will default to the timezone configured on the Operating System
+of the server running ihatemoney, which may or may not be what you want.
+
+- **Default value:** *unset* (use the timezone of the server Operating System)
+- **Production value:** Set to the timezone of your expected users, with a
+  format such as ``"Europe/Paris"``. See `this list of TZ database names`_
+  for a complete list.
+
+Note: this setting is actually interpreted by Flask-Babel, see the
+`Flask-Babel guide for formatting dates`_ for details.
+
+.. _this list of TZ database name: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
+
+.. _Flask-Babel guide for formatting dates: https://pythonhosted.org/Flask-Babel/#formatting-dates
+
 
 Configuring emails sending
 --------------------------

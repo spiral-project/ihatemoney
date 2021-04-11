@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2020-05-30 21:50+0200\n"
-"PO-Revision-Date: 2020-09-06 15:36+0000\n"
+"PO-Revision-Date: 2021-02-17 02:50+0000\n"
 "Last-Translator: Sander Kooijmans <weblate@gogognome.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/nl/>\n"
@@ -12,13 +12,15 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3-dev\n"
+"X-Generator: Weblate 4.5\n"
 "Generated-By: Babel 2.8.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
-msgstr "Geen geldig bedrag of expressie. Gebruik alleen getallen en + - * /"
+msgstr ""
+"Geen geldig bedrag of expressie. Gebruik alleen getallen en + - * / "
+"operatoren."
 
 msgid "Project name"
 msgstr "Projectnaam"
@@ -54,7 +56,7 @@ msgstr "Project aanmaken"
 msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
-msgstr "Er is al een project genaamd (\"%(project)s\"). Kies een andere naam."
+msgstr "Er is al een project genaamd (\"%(project)s\"). Kies een andere naam"
 
 msgid "Get in"
 msgstr "Inloggen"
@@ -112,7 +114,7 @@ msgstr "Versturen en nieuwe toevoegen"
 
 #, python-format
 msgid "Project default: %(currency)s"
-msgstr ""
+msgstr "Projectstandaard: %(currency)s"
 
 msgid "Bills can't be null"
 msgstr "Rekeningen mogen niet null zijn"
@@ -177,22 +179,27 @@ msgstr ""
 "verdelen"
 
 msgid "A reminder email has just been sent to you"
-msgstr ""
+msgstr "Een herinneringsmail is zojuist naar u verzonden"
 
 msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
+"We hebben geprobeerd een herinneringsmail te versturen, maar er is iets fout "
+"gegaan. Je kunt het project nog steeds normaal gebruiken."
 
 #, python-format
 msgid "The project identifier is %(project)s"
-msgstr ""
+msgstr "Het project-id is %(project)s"
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
 "instructions. Please check the email configuration of the server or "
 "contact the administrator."
 msgstr ""
+"Sorry, er is iets fout gegaan bij het verzenden van een e-mail met "
+"instructies om je wachtwoord te herstellen. Controleer de e-mailinstellingen "
+"van de server of neem contact op met de beheerder."
 
 msgid "No token provided"
 msgstr "Geen toegangssleutel opgegeven"
@@ -207,7 +214,7 @@ msgid "Password successfully reset."
 msgstr "Wachtwoord is hersteld."
 
 msgid "Project successfully uploaded"
-msgstr ""
+msgstr "Project succesvol geüpload"
 
 msgid "Invalid JSON"
 msgstr "Ongeldige JSON"
@@ -227,6 +234,9 @@ msgid ""
 "Please check the email configuration of the server or contact the "
 "administrator."
 msgstr ""
+"Sorry, er is iets fout gegaan bij het verzenden van de uitnodigingsmails. "
+"Controleer de e-mailinstellingen van de server of neem contact op met de "
+"beheerder."
 
 #, python-format
 msgid "%(member)s has been added"
@@ -342,13 +352,13 @@ msgstr ""
 " te schikken."
 
 msgid "Can't remember the password?"
-msgstr "Ben je je wachtwoord vergeten?"
+msgstr "Wachtwoord vergeten?"
 
 msgid "Cancel"
 msgstr "Annuleren"
 
 msgid "Privacy Settings"
-msgstr ""
+msgstr "Privacy-instellingen"
 
 msgid "Edit the project"
 msgstr "Project bewerken"
@@ -381,13 +391,13 @@ msgid "Download"
 msgstr "Downloaden"
 
 msgid "Disabled Project History"
-msgstr ""
+msgstr "Uitgeschakelde Projectgeschiedenis"
 
 msgid "Disabled Project History & IP Address Recording"
-msgstr ""
+msgstr "Uitgeschakelde Projecthistorie & IP-Adres Vastlegging"
 
 msgid "Enabled Project History"
-msgstr ""
+msgstr "Ingeschakelde Projectgeschiedenis"
 
 msgid "Disabled IP Address Recording"
 msgstr ""
@@ -399,7 +409,7 @@ msgid "Enabled IP Address Recording"
 msgstr ""
 
 msgid "History Settings Changed"
-msgstr ""
+msgstr "Geschiedenisinstellingen Gewijzigd"
 
 msgid "changed"
 msgstr "gewijzigd"
@@ -419,20 +429,26 @@ msgid ""
 "                The rest of the project history will be unaffected. This "
 "action cannot be undone."
 msgstr ""
+"Weet je zeker dat je alle vastgelegde IP-adressen wilt verwijderen van dit "
+"project?\n"
+"De rest van de projectgeschiedenis blijft onveranderd. Deze actie kan niet "
+"ongedaan worden gemaakt."
 
 msgid "Close"
 msgstr "Sluiten"
 
 msgid "Confirm Delete"
-msgstr ""
+msgstr "Bevestig Verwijdering"
 
 msgid "Delete Confirmation"
-msgstr ""
+msgstr "Bevestiging Verwijdering"
 
 msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
 msgstr ""
+"Weet je zeker dat je de gehele geschiedenis wilt verwijderen voor dit "
+"project? Deze actie kan niet ongedaan worden gemaakt."
 
 msgid "Added"
 msgstr "Toegevoegd"
@@ -454,6 +470,12 @@ msgid ""
 "            <a href=\"%(url)s\">settings page</a>\n"
 "            "
 msgstr ""
+"\n"
+"            <i>Dit project heeft de geschiedenis uitgeschakeld. Nieuwe "
+"acties zullen niet hieronder verschijnen. Je kunt de geschiedenis aanzetten "
+"op de </i>\n"
+"            <a href=\"%(url)s\">instellingen-pagina</a>\n"
+"            "
 
 msgid ""
 "\n"
@@ -474,19 +496,19 @@ msgid "Delete stored IP addresses"
 msgstr ""
 
 msgid "No history to erase"
-msgstr ""
+msgstr "Geen geschiedenis om te wissen"
 
 msgid "Clear Project History"
-msgstr ""
+msgstr "Verwijder Projectgeschiedenis"
 
 msgid "No IP Addresses to erase"
-msgstr ""
+msgstr "Geen IP-adressen te verwijderen"
 
 msgid "Delete Stored IP Addresses"
-msgstr ""
+msgstr "Verwijder opgeslagen IP-adressen"
 
 msgid "Time"
-msgstr ""
+msgstr "Tijd"
 
 msgid "Event"
 msgstr ""
@@ -501,44 +523,44 @@ msgid "From IP"
 msgstr ""
 
 msgid "added"
-msgstr ""
+msgstr "toegevoegd"
 
 msgid "Project private code changed"
-msgstr ""
+msgstr "Privécode van project gewijzigd"
 
 msgid "Project renamed to"
-msgstr ""
+msgstr "Project hernoemd tot"
 
 msgid "Project contact email changed to"
 msgstr ""
 
 msgid "Project settings modified"
-msgstr ""
+msgstr "Projectinstellingen gewijzigd"
 
 msgid "deactivated"
-msgstr ""
+msgstr "gedeactiveerd"
 
 msgid "reactivated"
-msgstr ""
+msgstr "gereactiveerd"
 
 msgid "renamed to"
-msgstr ""
+msgstr "hernoemd naar"
 
 msgid "External link changed to"
 msgstr ""
 
 msgid "Amount"
-msgstr ""
+msgstr "Hoeveelheid"
 
 #, python-format
 msgid "Amount in %(currency)s"
-msgstr ""
+msgstr "Hoeveelheid in %(currency)s"
 
 msgid "modified"
-msgstr ""
+msgstr "gewijzigd"
 
 msgid "removed"
-msgstr ""
+msgstr "verwijderd"
 
 msgid "changed in a unknown way"
 msgstr ""
@@ -547,7 +569,7 @@ msgid "Nothing to list"
 msgstr ""
 
 msgid "Someone probably cleared the project history."
-msgstr ""
+msgstr "Iemand heeft waarschijnlijk de projectgeschiedenis verwijderd."
 
 msgid "Manage your shared <br />expenses, easily"
 msgstr "Beheer eenvoudig je <br />gedeelde uitgaven"
@@ -574,7 +596,7 @@ msgid "Log in"
 msgstr "Inloggen"
 
 msgid "can't remember your password?"
-msgstr "ben je je wachtwoord vergeten?"
+msgstr "wachtwoord vergeten?"
 
 msgid "Create"
 msgstr "Maken"
@@ -583,6 +605,8 @@ msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
 msgstr ""
+"Hergebruik geen persoonlijk wachtwoord. Kies een privécode en stuur het naar "
+"je vrienden"
 
 msgid "Account manager"
 msgstr "Accountbeheer"
@@ -597,7 +621,7 @@ msgid "Statistics"
 msgstr "Statistieken"
 
 msgid "History"
-msgstr ""
+msgstr "Geschiedenis"
 
 msgid "Settings"
 msgstr "Instellingen"
@@ -781,7 +805,7 @@ msgid "Expenses by Month"
 msgstr ""
 
 msgid "Period"
-msgstr ""
+msgstr "Periode"
 
 #~ msgid "%(msg_compl)sThe project identifier is %(project)s"
 #~ msgstr "%(msg_compl)sDe project-id is %(project)s"

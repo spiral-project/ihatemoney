@@ -110,7 +110,7 @@
         <tr owers="{{bill.owers|join(',','id')}}" payer="{{bill.payer.id}}">
                 <td>
                     <span data-toggle="tooltip" data-placement="top"
-                        title="{{ _('Added on %(date)s', date=bill.creation_date if bill.creation_date else bill.date) }}">
+                        title="{{ _('Added on %(date)s', date=bill.creation_date|dateformat("long") if bill.creation_date else bill.date|dateformat("long")) }}">
                         {{ bill.date }}
                     </span>
                 </td>

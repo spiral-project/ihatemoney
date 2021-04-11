@@ -162,7 +162,7 @@
     <tbody>
     {% for event in history %}
     <tr>
-            <td><script>document.write(localizeTime("{{ event.time }}"));</script></td>
+            <td>{{ event.time|datetimeformat("medium") }}</td>
             <td >
                 <div class="history_icon">
                     <i {% if event.operation_type == OperationType.INSERT  %}

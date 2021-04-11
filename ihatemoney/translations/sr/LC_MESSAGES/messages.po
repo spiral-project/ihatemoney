@@ -2,54 +2,53 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-22 14:01+0200\n"
-"PO-Revision-Date: 2020-11-11 16:28+0000\n"
-"Last-Translator: Puyma <puyma@amyup.xyz>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/es/>\n"
-"Language: es\n"
+"POT-Creation-Date: 2021-04-08 13:59+0200\n"
+"PO-Revision-Date: 2021-04-09 13:26+0000\n"
+"Last-Translator: Rastko Sarcevic <ralesarcevic@gmail.com>\n"
+"Language-Team: Serbian <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/sr/>\n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.6-dev\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
-"Cantidad o expresión no válida. Solo se aceptan números y los operadores + - "
-"* /."
 
 msgid "Project name"
-msgstr "Nombre del proyecto"
+msgstr ""
 
 msgid "Private code"
-msgstr "Código privado"
+msgstr ""
 
 msgid "Email"
-msgstr "Correo electrónico"
+msgstr "Email"
 
 msgid "Enable project history"
-msgstr "Habilitar historial del proyecto"
+msgstr ""
 
 msgid "Use IP tracking for project history"
 msgstr ""
 
 msgid "Default Currency"
-msgstr "Moneda por defecto"
+msgstr "Podrazumevana Valuta"
 
 msgid "Import previously exported JSON file"
-msgstr "Importar .JSON previamente exportado"
+msgstr ""
 
 msgid "Import"
-msgstr "Importar"
+msgstr "Uvezi"
 
 msgid "Project identifier"
-msgstr "Identificador del proyecto"
+msgstr ""
 
 msgid "Create the project"
-msgstr "Crear proyecto"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -61,52 +60,52 @@ msgid "Get in"
 msgstr ""
 
 msgid "Admin password"
-msgstr "Contraseña de administrador"
+msgstr "Administratorska lozinka"
 
 msgid "Send me the code by email"
-msgstr "Envíame el código por correo electrónico"
+msgstr "Pošalji mi kod putem email-a"
 
 msgid "This project does not exists"
-msgstr "Proyecto inexistente"
+msgstr ""
 
 msgid "Password mismatch"
-msgstr "La contraseña no coincide"
+msgstr "Lozinke se ne slažu"
 
 msgid "Password"
-msgstr "Contraseña"
+msgstr "Lozinka"
 
 msgid "Password confirmation"
-msgstr "Confirmar contraseña"
+msgstr "Potvrda lozinke"
 
 msgid "Reset password"
-msgstr "Reestablecer contraseña"
+msgstr "Resetuj lozinku"
 
 msgid "Date"
-msgstr "Fecha"
+msgstr "Datum"
 
 msgid "What?"
-msgstr "¿Qué?"
+msgstr ""
 
 msgid "Payer"
 msgstr ""
 
 msgid "Amount paid"
-msgstr "Cantidad pagada"
+msgstr "Plaćeni iznos"
 
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Valuta"
 
 msgid "External link"
-msgstr "Enlace externo"
+msgstr ""
 
 msgid "A link to an external document, related to this bill"
 msgstr ""
 
 msgid "For whom?"
-msgstr "¿Para quién?"
+msgstr "Za koga?"
 
 msgid "Submit"
-msgstr ""
+msgstr "Unesi"
 
 msgid "Submit and add a new one"
 msgstr ""
@@ -119,19 +118,19 @@ msgid "Bills can't be null"
 msgstr ""
 
 msgid "Name"
-msgstr "Nombre"
+msgstr "Ime"
 
 msgid "Weights should be positive"
-msgstr ""
+msgstr "Težine moraju biti pozitivne"
 
 msgid "Weight"
-msgstr ""
+msgstr "Težina"
 
 msgid "Add"
-msgstr "Añadir"
+msgstr "Dodaj"
 
 msgid "User name incorrect"
-msgstr "Usuario incorrecto"
+msgstr ""
 
 msgid "This project already have this member"
 msgstr ""
@@ -140,20 +139,20 @@ msgid "People to notify"
 msgstr ""
 
 msgid "Send invites"
-msgstr "Enviar invitaciones"
+msgstr ""
 
 #, python-format
 msgid "The email %(email)s is not valid"
-msgstr "El correo %(email)s no es válido"
+msgstr "Email %(email)s nije validan"
 
 msgid "Participant"
-msgstr "Participante"
+msgstr "Učesnik"
 
 msgid "Bill"
-msgstr "Factura"
+msgstr "Račun"
 
 msgid "Project"
-msgstr "Proyecto"
+msgstr "Projekat"
 
 msgid "No Currency"
 msgstr ""
@@ -203,7 +202,7 @@ msgid "Unknown project"
 msgstr ""
 
 msgid "Password successfully reset."
-msgstr ""
+msgstr "Lozinka uspešno resetovana."
 
 msgid "Project successfully uploaded"
 msgstr ""
@@ -243,20 +242,20 @@ msgstr ""
 
 #, python-format
 msgid "User '%(name)s' has been removed"
-msgstr ""
+msgstr "Korisnik %(name)s je uklonjen"
 
 #, python-format
 msgid "User '%(name)s' has been edited"
 msgstr ""
 
 msgid "The bill has been added"
-msgstr ""
+msgstr "Račun je dodat"
 
 msgid "The bill has been deleted"
-msgstr ""
+msgstr "Račun je uklonjen"
 
 msgid "The bill has been modified"
-msgstr ""
+msgstr "Račun je izmenjen"
 
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr ""
@@ -265,7 +264,7 @@ msgid "The best thing to do is probably to get back to the main page."
 msgstr ""
 
 msgid "Back to the list"
-msgstr ""
+msgstr "Nazad na listu"
 
 msgid "Administration tasks are currently disabled."
 msgstr ""
@@ -277,34 +276,34 @@ msgid "create it"
 msgstr ""
 
 msgid "?"
-msgstr ""
+msgstr "?"
 
 msgid "Create a new project"
 msgstr ""
 
 msgid "Number of members"
-msgstr ""
+msgstr "Broj korisnika"
 
 msgid "Number of bills"
-msgstr ""
+msgstr "Broj računa"
 
 msgid "Newest bill"
-msgstr ""
+msgstr "Najnoviji račun"
 
 msgid "Oldest bill"
-msgstr ""
+msgstr "Najstariji račun"
 
 msgid "Actions"
-msgstr "Acciones"
+msgstr ""
 
 msgid "edit"
-msgstr "editar"
+msgstr "izmeni"
 
 msgid "delete"
-msgstr "eliminar"
+msgstr "ukloni"
 
 msgid "show"
-msgstr "mostrar"
+msgstr "prikaži"
 
 msgid "The Dashboard is currently deactivated."
 msgstr ""
@@ -319,13 +318,13 @@ msgid "Import JSON"
 msgstr ""
 
 msgid "Choose file"
-msgstr ""
+msgstr "Izaberi fajl"
 
 msgid "Download project's data"
 msgstr ""
 
 msgid "Bill items"
-msgstr ""
+msgstr "Stavke računa"
 
 msgid "Download the list of bills with owner, amount, reason,... "
 msgstr ""
@@ -340,49 +339,49 @@ msgid "Can't remember the password?"
 msgstr ""
 
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Otkaži"
 
 msgid "Privacy Settings"
-msgstr "Ajustes de privacidad"
+msgstr "Podešavanja Privatnosti"
 
 msgid "Edit the project"
-msgstr "Editar el proyecto"
+msgstr ""
 
 msgid "Edit this bill"
-msgstr "Editar esta factura"
+msgstr "Izmeni ovaj račun"
 
 msgid "Add a bill"
-msgstr "Añadir una factura"
+msgstr "Dodaj račun"
 
 msgid "Select all"
-msgstr "Seleccionar todo"
+msgstr "Izaberi sve"
 
 msgid "Select none"
 msgstr ""
 
 msgid "Add participant"
-msgstr "Añadir participante"
+msgstr ""
 
 msgid "Edit this member"
-msgstr "Editar miembro"
+msgstr ""
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr ""
 
 msgid "Send the invitations"
-msgstr "Enviar invitaciones"
+msgstr ""
 
 msgid "Download"
-msgstr "Descargar"
+msgstr "Preuzmi"
 
 msgid "Disabled Project History"
-msgstr "Historial del proyecto desactivado"
+msgstr ""
 
 msgid "Disabled Project History & IP Address Recording"
 msgstr ""
 
 msgid "Enabled Project History"
-msgstr "Historial del proyecto activado"
+msgstr ""
 
 msgid "Disabled IP Address Recording"
 msgstr ""
@@ -400,10 +399,10 @@ msgid "changed"
 msgstr ""
 
 msgid "from"
-msgstr "de"
+msgstr ""
 
 msgid "to"
-msgstr "para"
+msgstr ""
 
 msgid "Confirm Remove IP Adresses"
 msgstr ""
@@ -416,7 +415,7 @@ msgid ""
 msgstr ""
 
 msgid "Close"
-msgstr "Cerrar"
+msgstr ""
 
 msgid "Confirm Delete"
 msgstr ""
@@ -430,13 +429,13 @@ msgid ""
 msgstr ""
 
 msgid "Added"
-msgstr "Añadido"
+msgstr "Dodato"
 
 msgid "Removed"
-msgstr "Eliminado"
+msgstr "Uklonjeno"
 
 msgid "and"
-msgstr ""
+msgstr "i"
 
 msgid "owers list"
 msgstr ""
@@ -481,10 +480,10 @@ msgid "Delete Stored IP Addresses"
 msgstr ""
 
 msgid "Time"
-msgstr "Hora"
+msgstr "Vreme"
 
 msgid "Event"
-msgstr "Evento"
+msgstr "Događaj"
 
 msgid "IP address recording can be enabled on the settings page"
 msgstr ""
@@ -496,7 +495,7 @@ msgid "From IP"
 msgstr ""
 
 msgid "added"
-msgstr "añadido"
+msgstr ""
 
 msgid "Project private code changed"
 msgstr ""
@@ -523,17 +522,17 @@ msgid "External link changed to"
 msgstr ""
 
 msgid "Amount"
-msgstr "Cantidad"
+msgstr "Iznos"
 
 #, python-format
 msgid "Amount in %(currency)s"
-msgstr "Cantidad en %(currency)s"
+msgstr "Iznos u %(currency)s"
 
 msgid "modified"
-msgstr "modificado"
+msgstr "izmenjeno"
 
 msgid "removed"
-msgstr "eliminado"
+msgstr "uklonjeno"
 
 msgid "changed in a unknown way"
 msgstr ""
@@ -548,7 +547,7 @@ msgid "Manage your shared <br />expenses, easily"
 msgstr ""
 
 msgid "Try out the demo"
-msgstr ""
+msgstr "Isprobaj demo verziju"
 
 msgid "You're sharing a house?"
 msgstr ""
@@ -560,59 +559,57 @@ msgid "Simply sharing money with others?"
 msgstr ""
 
 msgid "We can help!"
-msgstr "Podemos ayudar!"
+msgstr ""
 
 msgid "Log in to an existing project"
-msgstr "Acceder a un proyecto existente"
+msgstr ""
 
 msgid "Log in"
 msgstr ""
 
 msgid "can't remember your password?"
-msgstr "¿no recuerdas tu contraseña?"
+msgstr ""
 
 msgid "Create"
-msgstr "Crear"
+msgstr ""
 
 msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
 msgstr ""
-"No reutilizes una contraseña personal. Escoge un código privado i envíalo a "
-"tus amigos"
 
 msgid "Account manager"
 msgstr ""
 
 msgid "Bills"
-msgstr "Facturas"
+msgstr "Računi"
 
 msgid "Settle"
 msgstr ""
 
 msgid "Statistics"
-msgstr "Estadísticas"
+msgstr "Statistika"
 
 msgid "History"
-msgstr "Historia"
+msgstr "Istorija"
 
 msgid "Settings"
-msgstr "Ajustes"
+msgstr "Podešavanja"
 
 msgid "Languages"
-msgstr "Idiomas"
+msgstr "Jezici"
 
 msgid "Projects"
-msgstr "Proyectos"
+msgstr ""
 
 msgid "Start a new project"
 msgstr ""
 
 msgid "Other projects :"
-msgstr "Otros proyectos :"
+msgstr ""
 
 msgid "switch to"
-msgstr "cambiar a"
+msgstr ""
 
 msgid "Dashboard"
 msgstr ""
@@ -621,16 +618,16 @@ msgid "Logout"
 msgstr ""
 
 msgid "Code"
-msgstr "Código"
+msgstr "Kod"
 
 msgid "Mobile Application"
-msgstr "Aplicación móvil"
+msgstr "Mobilna Aplikacija"
 
 msgid "Documentation"
-msgstr "Documentación"
+msgstr "Dokumentacija"
 
 msgid "Administation Dashboard"
-msgstr "Panel de administración"
+msgstr ""
 
 msgid "\"I hate money\" is a free software"
 msgstr ""
@@ -640,7 +637,7 @@ msgstr ""
 
 #, python-format
 msgid "%(amount)s each"
-msgstr ""
+msgstr "%(amount)s svako"
 
 msgid "Invite people"
 msgstr ""
@@ -649,51 +646,51 @@ msgid "You should start by adding participants"
 msgstr ""
 
 msgid "Add a new bill"
-msgstr ""
+msgstr "Dodaj novi račun"
 
 msgid "Newer bills"
-msgstr ""
+msgstr "Noviji računi"
 
 msgid "Older bills"
-msgstr ""
+msgstr "Stariji računi"
 
 msgid "When?"
-msgstr "¿Cuándo?"
+msgstr "Kada?"
 
 msgid "Who paid?"
-msgstr ""
+msgstr "Ko je platio?"
 
 msgid "For what?"
-msgstr ""
+msgstr "Za šta?"
 
 msgid "How much?"
-msgstr ""
+msgstr "Koliko?"
 
 #, python-format
 msgid "Added on %(date)s"
-msgstr ""
+msgstr "Dodato %(date)s"
 
 msgid "Everyone"
-msgstr ""
+msgstr "Svi"
 
 #, python-format
 msgid "Everyone but %(excluded)s"
-msgstr ""
+msgstr "Svi osim %(excluded)s"
 
 msgid "No bills"
-msgstr "Sin facturas"
+msgstr ""
 
 msgid "Nothing to list yet."
-msgstr "No hay nada que mostrar todavía."
+msgstr ""
 
 msgid "You probably want to"
-msgstr "Probablemente quieras"
+msgstr ""
 
 msgid "add a bill"
-msgstr "añadir una factura"
+msgstr ""
 
 msgid "add participants"
-msgstr "añadir participantes"
+msgstr ""
 
 msgid "Password reminder"
 msgstr ""
@@ -704,19 +701,19 @@ msgid ""
 msgstr ""
 
 msgid "Return to home page"
-msgstr "Volver a la página de inicio"
+msgstr "Vrati se na početnu stranu"
 
 msgid "Your projects"
-msgstr "Tus proyectos"
+msgstr ""
 
 msgid "Reset your password"
-msgstr "Reestablecer tu contraseña"
+msgstr "Resetuj lozinku"
 
 msgid "Invite people to join this project"
 msgstr ""
 
 msgid "Share Identifier & code"
-msgstr "Compartir identificador i código"
+msgstr ""
 
 msgid ""
 "You can share the project identifier and the private code by any "
@@ -724,10 +721,10 @@ msgid ""
 msgstr ""
 
 msgid "Identifier:"
-msgstr "Identificador:"
+msgstr ""
 
 msgid "Share the Link"
-msgstr "Compartir el enlace"
+msgstr "Podelite link"
 
 msgid "You can directly share the following link via your prefered medium"
 msgstr ""
@@ -743,31 +740,31 @@ msgid ""
 msgstr ""
 
 msgid "Who pays?"
-msgstr ""
+msgstr "Ko plaća?"
 
 msgid "To whom?"
-msgstr "¿Para quién?"
+msgstr "Kome?"
 
 msgid "Who?"
-msgstr "¿Quién?"
+msgstr "Ko?"
 
 msgid "Balance"
-msgstr ""
+msgstr "Stanje"
 
 msgid "deactivate"
-msgstr "desactivar"
+msgstr ""
 
 msgid "reactivate"
-msgstr "reactivar"
+msgstr ""
 
 msgid "Paid"
-msgstr "Pagado"
+msgstr "Plaćeno"
 
 msgid "Spent"
-msgstr "Gastado"
+msgstr "Potrošeno"
 
 msgid "Expenses by Month"
-msgstr "Gastos por mes"
+msgstr "Mesečni troškovi"
 
 msgid "Period"
-msgstr "Período"
+msgstr "Period"

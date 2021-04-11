@@ -9,6 +9,10 @@ I hate money
    :target: https://hosted.weblate.org/engage/i-hate-money/?utm_source=widget
    :alt: Translation status from Weblate
 
+.. image:: https://img.shields.io/liberapay/receives/IHateMoney.svg?logo=liberapay
+   :target: https://liberapay.com/IHateMoney/donate
+   :alt: Donate
+
 *I hate money* is a web application made to ease shared budget management.
 It keeps track of who bought what, when, and for whom; and helps to settle the
 bills.
@@ -25,7 +29,7 @@ encouraged to do so.
 Requirements
 ============
 
-* **Python**: 3.6, 3.7, 3.8.
+* **Python**: version 3.6 to 3.9.
 * **Backends**: MySQL, PostgreSQL, SQLite, Memory.
 
 Contributing
@@ -34,6 +38,8 @@ Contributing
 Do you wish to contribute to IHateMoney? Fantastic! There's a lot of very
 useful help on the official `contributing
 <https://ihatemoney.readthedocs.io/en/latest/contributing.html>`_ page.
+
+You can also `donate some money <https://liberapay.com/IHateMoney/donate>`_. All funds will be used to maintain the `hosted version <https://ihatemoney.org>`_.
 
 Translation status
 ==================

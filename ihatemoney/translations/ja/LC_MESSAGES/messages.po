@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-22 06:40+0200\n"
-"PO-Revision-Date: 2020-11-04 17:27+0000\n"
+"PO-Revision-Date: 2020-11-11 16:28+0000\n"
 "Last-Translator: Jwen921 <yangjingwen0921@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/ja/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.3.2-dev\n"
+"X-Generator: Weblate 4.4-dev\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -129,282 +129,283 @@ msgid "Add"
 msgstr "追加"
 
 msgid "User name incorrect"
-msgstr ""
+msgstr "ユーザー名が正しくない"
 
 msgid "This project already have this member"
-msgstr ""
+msgstr "プロジェクトはすでにこのメンバーを含めています"
 
 msgid "People to notify"
-msgstr ""
+msgstr "知らせたい人"
 
 msgid "Send invites"
-msgstr ""
+msgstr "招待状を出す"
 
 #, python-format
 msgid "The email %(email)s is not valid"
-msgstr ""
+msgstr "メールアドレス%(email)sは無効"
 
 msgid "Participant"
-msgstr ""
+msgstr "参加者"
 
 msgid "Bill"
-msgstr ""
+msgstr "明細"
 
 msgid "Project"
-msgstr ""
+msgstr "プロジェクト"
 
 msgid "No Currency"
-msgstr ""
+msgstr "通貨なし"
 
 msgid "Too many failed login attempts, please retry later."
-msgstr ""
+msgstr "何度もログインに失敗したので、時間をおいてから再度ログインして下さい。"
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
-msgstr ""
+msgstr "この管理者パスワードは正しくないでウ。%(num)d試行しか残っていません。"
 
 msgid "You either provided a bad token or no project identifier."
-msgstr ""
+msgstr "無効な入力かプロジェクト名なし。"
 
 msgid "This private code is not the right one"
-msgstr ""
+msgstr "私用コードは正しくない"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
+msgstr "費用を共有するため、%(project)sが作られました"
 
 msgid "A reminder email has just been sent to you"
-msgstr ""
+msgstr "催促メールがただいまあなたに送りました"
 
 msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
-msgstr ""
+msgstr "催促メールを送った時、エラーが発生しました。このプロジェクトはまだ使えます。"
 
 #, python-format
 msgid "The project identifier is %(project)s"
-msgstr ""
+msgstr "プロジェクト名は%(project)s"
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
 "instructions. Please check the email configuration of the server or "
 "contact the administrator."
 msgstr ""
+"申し訳ございませんが、パスワード再設定の説明メールを送った時、エラーが発生しました。メールアドレスを一度確認してまたは管理者に連絡してください。"
 
 msgid "No token provided"
-msgstr ""
+msgstr "印が入力されていない"
 
 msgid "Invalid token"
-msgstr ""
+msgstr "無効な印"
 
 msgid "Unknown project"
-msgstr ""
+msgstr "未知のプロジェクト"
 
 msgid "Password successfully reset."
-msgstr ""
+msgstr "パスワードを再設定できました。"
 
 msgid "Project successfully uploaded"
-msgstr ""
+msgstr "プロジェクトをアップロードできました"
 
 msgid "Invalid JSON"
-msgstr ""
+msgstr "無効なJSON"
 
 msgid "Project successfully deleted"
-msgstr ""
+msgstr "プロジェクトを削除できました"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
-msgstr ""
+msgstr "%(project)sの費用を共有すると、あなたが誘われた"
 
 msgid "Your invitations have been sent"
-msgstr ""
+msgstr "あなたの招待状が送られました"
 
 msgid ""
 "Sorry, there was an error while trying to send the invitation emails. "
 "Please check the email configuration of the server or contact the "
 "administrator."
-msgstr ""
+msgstr "申し訳ございませんが、招待メールを送ったとき、エラーが発生しました。メールアドレスを再度チェックするかまたは管理者に連絡ください。"
 
 #, python-format
 msgid "%(member)s has been added"
-msgstr ""
+msgstr "%(member)sが追加されました"
 
 #, python-format
 msgid "%(name)s is part of this project again"
-msgstr ""
+msgstr "%(name)sはまたこのプロジェクトの一部になりました"
 
 #, python-format
 msgid ""
 "User '%(name)s' has been deactivated. It will still appear in the users "
 "list until its balance becomes zero."
-msgstr ""
+msgstr "ユーザー%(name)sが無効にされました。このユーザーは残高がゼロになるまでリストに出ています。"
 
 #, python-format
 msgid "User '%(name)s' has been removed"
-msgstr ""
+msgstr "ユーザー%(name)sが既に取り除かれました"
 
 #, python-format
 msgid "User '%(name)s' has been edited"
-msgstr ""
+msgstr "ユーザー%(name)sが既に編集されました"
 
 msgid "The bill has been added"
-msgstr ""
+msgstr "明細が追加されました"
 
 msgid "The bill has been deleted"
-msgstr ""
+msgstr "明細が削除されました"
 
 msgid "The bill has been modified"
-msgstr ""
+msgstr "明細が変更されました"
 
 msgid "Sorry, we were unable to find the page you've asked for."
-msgstr ""
+msgstr "申し訳ございませんが、求められるページが見つかりませんでした。"
 
 msgid "The best thing to do is probably to get back to the main page."
-msgstr ""
+msgstr "メーンページに戻ったほうがいいかもしれません。"
 
 msgid "Back to the list"
-msgstr ""
+msgstr "リストに戻る"
 
 msgid "Administration tasks are currently disabled."
-msgstr ""
+msgstr "現在管理者タスクが操作できません。"
 
 msgid "The project you are trying to access do not exist, do you want to"
-msgstr ""
+msgstr "アクセスしたいプロジェクトは存在していなくて、…したいですか"
 
 msgid "create it"
-msgstr ""
+msgstr "作る"
 
 msgid "?"
-msgstr ""
+msgstr "？"
 
 msgid "Create a new project"
-msgstr ""
+msgstr "プロジェクトを新規作成する"
 
 msgid "Number of members"
-msgstr ""
+msgstr "メンバー数"
 
 msgid "Number of bills"
-msgstr ""
+msgstr "明細書数"
 
 msgid "Newest bill"
-msgstr ""
+msgstr "最新の明細"
 
 msgid "Oldest bill"
-msgstr ""
+msgstr "一番古い明細"
 
 msgid "Actions"
-msgstr ""
+msgstr "操作"
 
 msgid "edit"
-msgstr ""
+msgstr "編集"
 
 msgid "delete"
-msgstr ""
+msgstr "削除"
 
 msgid "show"
-msgstr ""
+msgstr "表示"
 
 msgid "The Dashboard is currently deactivated."
-msgstr ""
+msgstr "現在ダッシュボードは操作できません。"
 
 msgid "you sure?"
-msgstr ""
+msgstr "確認？"
 
 msgid "Edit project"
-msgstr ""
+msgstr "プロジェクトを編集する"
 
 msgid "Import JSON"
-msgstr ""
+msgstr "JSONを導入する"
 
 msgid "Choose file"
-msgstr ""
+msgstr "ファイルを選択する"
 
 msgid "Download project's data"
-msgstr ""
+msgstr "プロジェクトのデータをダウンロードする"
 
 msgid "Bill items"
-msgstr ""
+msgstr "明細項目"
 
 msgid "Download the list of bills with owner, amount, reason,... "
-msgstr ""
+msgstr "所有者や金額、理由などの情報を含む明細リストをダウンロードする "
 
 msgid "Settle plans"
-msgstr ""
+msgstr "解決計画"
 
 msgid "Download the list of transactions needed to settle the current bills."
-msgstr ""
+msgstr "この明細に必要な取引リストをダウンロードします。"
 
 msgid "Can't remember the password?"
-msgstr ""
+msgstr "パスワードを覚えていないです？"
 
 msgid "Cancel"
-msgstr ""
+msgstr "キャンセル"
 
 msgid "Privacy Settings"
-msgstr ""
+msgstr "プライバシーの設定"
 
 msgid "Edit the project"
-msgstr ""
+msgstr "プロジェクトを編集する"
 
 msgid "Edit this bill"
-msgstr ""
+msgstr "明細を編集する"
 
 msgid "Add a bill"
-msgstr ""
+msgstr "新しい明細書を追加する"
 
 msgid "Select all"
-msgstr ""
+msgstr "全て選択"
 
 msgid "Select none"
-msgstr ""
+msgstr "選択解除"
 
 msgid "Add participant"
-msgstr ""
+msgstr "参加者を追加する"
 
 msgid "Edit this member"
-msgstr ""
+msgstr "このメンバーを編集する"
 
 msgid "john.doe@example.com, mary.moe@site.com"
-msgstr ""
+msgstr "john.doe@example.com, mary.moe@site.com"
 
 msgid "Send the invitations"
-msgstr ""
+msgstr "招待状を送る"
 
 msgid "Download"
-msgstr ""
+msgstr "ダウンロードする"
 
 msgid "Disabled Project History"
-msgstr ""
+msgstr "操作できないプロジェクト歴史"
 
 msgid "Disabled Project History & IP Address Recording"
-msgstr ""
+msgstr "操作できないプロジェクトの歴史＆IPアドレス記録"
 
 msgid "Enabled Project History"
-msgstr ""
+msgstr "操作可能なプロジェクト歴史"
 
 msgid "Disabled IP Address Recording"
-msgstr ""
+msgstr "操作できないIPアドレス記録"
 
 msgid "Enabled Project History & IP Address Recording"
-msgstr ""
+msgstr "操作可能なプロジェクト歴史＆IPアドレス記録"
 
 msgid "Enabled IP Address Recording"
-msgstr ""
+msgstr "操作可能なIPアドレス記録"
 
 msgid "History Settings Changed"
-msgstr ""
+msgstr "歴史設定が変更された"
 
 msgid "changed"
-msgstr ""
+msgstr "変更された"
 
 msgid "from"
-msgstr ""
+msgstr "から"
 
 msgid "to"
-msgstr ""
+msgstr "まで"
 
 msgid "Confirm Remove IP Adresses"
-msgstr ""
+msgstr "IPアドレスの取り除きを確認する"
 
 msgid ""
 "Are you sure you want to delete all recorded IP addresses from this "
@@ -412,32 +413,34 @@ msgid ""
 "                The rest of the project history will be unaffected. This "
 "action cannot be undone."
 msgstr ""
+"本当にこのプロジェクトから記録されたIPアドレスを全部削除したいですか。\n"
+"残りのプロジェクト歴史が影響されていません。この操作は元に戻せません。"
 
 msgid "Close"
-msgstr ""
+msgstr "閉じる"
 
 msgid "Confirm Delete"
-msgstr ""
+msgstr "削除を確認する"
 
 msgid "Delete Confirmation"
-msgstr ""
+msgstr "確認を削除する"
 
 msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
-msgstr ""
+msgstr "本当にこのプロジェクトの歴史をすべて消しますか。この操作は元に戻せません。"
 
 msgid "Added"
-msgstr ""
+msgstr "追加された"
 
 msgid "Removed"
-msgstr ""
+msgstr "取り除かれた"
 
 msgid "and"
-msgstr ""
+msgstr "と"
 
 msgid "owers list"
-msgstr ""
+msgstr "全員リスト"
 
 #, python-format
 msgid ""
@@ -447,6 +450,10 @@ msgid ""
 "            <a href=\"%(url)s\">settings page</a>\n"
 "            "
 msgstr ""
+"\n"
+"            <i>このプロジェクトの歴史は操作できません。新しい操作は下に出ません。</i>で歴史を操作可能にすることができます。\n"
+"<a href=\"%(url)s\">設定ページ</a>\n"
+"            "
 
 msgid ""
 "\n"
@@ -457,279 +464,284 @@ msgid ""
 "them.</i></p>\n"
 "            "
 msgstr ""
+"\n"
+"            <i>下の表では操作不可になる前に、プロジェクトの歴史に対して記録された操作が反映されています。…できます。\n"
+"<a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" data-target"
+"=\"#confirm-erase\">プロジェクトの歴史を取り除く</a> で取り除きます.</i></p>\n"
+"            "
 
 msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
 "recording disabled. "
-msgstr ""
+msgstr "このプロジェクトのIP記録が操作できない一方、下の入り口の一部がIPアドレスを含めています。 "
 
 msgid "Delete stored IP addresses"
-msgstr ""
+msgstr "保存されたIPアドレスを削除する"
 
 msgid "No history to erase"
-msgstr ""
+msgstr "削除できる歴史はない"
 
 msgid "Clear Project History"
-msgstr ""
+msgstr "プロジェクトの歴史を取り除く"
 
 msgid "No IP Addresses to erase"
-msgstr ""
+msgstr "削除できるIPアドレスはない"
 
 msgid "Delete Stored IP Addresses"
-msgstr ""
+msgstr "保存されたIPアドレスを削除する"
 
 msgid "Time"
-msgstr ""
+msgstr "時間"
 
 msgid "Event"
-msgstr ""
+msgstr "イベント"
 
 msgid "IP address recording can be enabled on the settings page"
-msgstr ""
+msgstr "設定ページでIPアドレス記録を編集可能にすることができる"
 
 msgid "IP address recording can be disabled on the settings page"
-msgstr ""
+msgstr "設定ページでIPアドレス記録を編集不可にすることができる"
 
 msgid "From IP"
-msgstr ""
+msgstr "IPから"
 
 msgid "added"
-msgstr ""
+msgstr "追加された"
 
 msgid "Project private code changed"
-msgstr ""
+msgstr "プロジェクトの私用コードが変更された"
 
 msgid "Project renamed to"
-msgstr ""
+msgstr "プロジェクト名が…に変更された"
 
 msgid "Project contact email changed to"
-msgstr ""
+msgstr "プロジェクトの連絡メールが…に変更された"
 
 msgid "Project settings modified"
-msgstr ""
+msgstr "プロジェクトの設定が修正された"
 
 msgid "deactivated"
-msgstr ""
+msgstr "操作不可にされた"
 
 msgid "reactivated"
-msgstr ""
+msgstr "再び変更可能にされた"
 
 msgid "renamed to"
-msgstr ""
+msgstr "…という名前に変更された"
 
 msgid "External link changed to"
-msgstr ""
+msgstr "外部リンクが…に変更された"
 
 msgid "Amount"
-msgstr ""
+msgstr "金額"
 
 #, python-format
 msgid "Amount in %(currency)s"
-msgstr ""
+msgstr "%(currency)sでの金額"
 
 msgid "modified"
-msgstr ""
+msgstr "修正された"
 
 msgid "removed"
-msgstr ""
+msgstr "取り除かれた"
 
 msgid "changed in a unknown way"
-msgstr ""
+msgstr "未知の方法で変更された"
 
 msgid "Nothing to list"
-msgstr ""
+msgstr "表示できるものがない"
 
 msgid "Someone probably cleared the project history."
-msgstr ""
+msgstr "プロジェクトの歴史が誰かに取り除かれたかもしれません。"
 
 msgid "Manage your shared <br />expenses, easily"
-msgstr ""
+msgstr "あなたが共有した<br />費用を簡単に管理する"
 
 msgid "Try out the demo"
-msgstr ""
+msgstr "デモを試す"
 
 msgid "You're sharing a house?"
-msgstr ""
+msgstr "誰かと家を共有していますか？"
 
 msgid "Going on holidays with friends?"
-msgstr ""
+msgstr "友達と旅行していますか？"
 
 msgid "Simply sharing money with others?"
-msgstr ""
+msgstr "ただ他人とお金を割り当てていますか？"
 
 msgid "We can help!"
-msgstr ""
+msgstr "助けてあげます！"
 
 msgid "Log in to an existing project"
-msgstr ""
+msgstr "存在するプロジェクトにログインする"
 
 msgid "Log in"
-msgstr ""
+msgstr "ログイン"
 
 msgid "can't remember your password?"
-msgstr ""
+msgstr "パスワードを忘れた？"
 
 msgid "Create"
-msgstr ""
+msgstr "作る"
 
 msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
-msgstr ""
+msgstr "自分のパスワードを再利用しないでください。私用コードを選んで、友達に送る"
 
 msgid "Account manager"
-msgstr ""
+msgstr "アカウント管理者"
 
 msgid "Bills"
-msgstr ""
+msgstr "明細書"
 
 msgid "Settle"
-msgstr ""
+msgstr "解決"
 
 msgid "Statistics"
-msgstr ""
+msgstr "統計"
 
 msgid "History"
-msgstr ""
+msgstr "歴史"
 
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 msgid "Languages"
-msgstr ""
+msgstr "言語"
 
 msgid "Projects"
-msgstr ""
+msgstr "プロジェクト"
 
 msgid "Start a new project"
-msgstr ""
+msgstr "新しいプロジェクトを始める"
 
 msgid "Other projects :"
-msgstr ""
+msgstr "他のプロジェクト："
 
 msgid "switch to"
-msgstr ""
+msgstr "…に切り替える"
 
 msgid "Dashboard"
-msgstr ""
+msgstr "ダッシュボード"
 
 msgid "Logout"
-msgstr ""
+msgstr "ログアウト"
 
 msgid "Code"
-msgstr ""
+msgstr "コード"
 
 msgid "Mobile Application"
-msgstr ""
+msgstr "携帯アプリ"
 
 msgid "Documentation"
-msgstr ""
+msgstr "書類"
 
 msgid "Administation Dashboard"
-msgstr ""
+msgstr "管理ダッシュボード"
 
 msgid "\"I hate money\" is a free software"
-msgstr ""
+msgstr "\"I hate money\"は無料のソフトウェアです"
 
 msgid "you can contribute and improve it!"
-msgstr ""
+msgstr "あなたは貢献して、向上させることができます！"
 
 #, python-format
 msgid "%(amount)s each"
-msgstr ""
+msgstr "各自に%(amount)s"
 
 msgid "Invite people"
-msgstr ""
+msgstr "人を誘う"
 
 msgid "You should start by adding participants"
-msgstr ""
+msgstr "参加者を追加して始めましょう"
 
 msgid "Add a new bill"
-msgstr ""
+msgstr "新しい明細を追加する"
 
 msgid "Newer bills"
-msgstr ""
+msgstr "もっと新しい明細"
 
 msgid "Older bills"
-msgstr ""
+msgstr "もっと古い明細"
 
 msgid "When?"
-msgstr ""
+msgstr "いつ？"
 
 msgid "Who paid?"
-msgstr ""
+msgstr "誰が支払った？"
 
 msgid "For what?"
-msgstr ""
+msgstr "何のため？"
 
 msgid "How much?"
-msgstr ""
+msgstr "いくら？"
 
 #, python-format
 msgid "Added on %(date)s"
-msgstr ""
+msgstr "%(date)sに追加された"
 
 msgid "Everyone"
-msgstr ""
+msgstr "皆"
 
 #, python-format
 msgid "Everyone but %(excluded)s"
-msgstr ""
+msgstr "%(excluded)s以外にみんな"
 
 msgid "No bills"
-msgstr ""
+msgstr "明細なし"
 
 msgid "Nothing to list yet."
-msgstr ""
+msgstr "表示できるものはありません。"
 
 msgid "You probably want to"
-msgstr ""
+msgstr "…したいかもしれない"
 
 msgid "add a bill"
-msgstr ""
+msgstr "明細を追加する"
 
 msgid "add participants"
-msgstr ""
+msgstr "参加者を追加する"
 
 msgid "Password reminder"
-msgstr ""
+msgstr "パスワードを思いさせる"
 
 msgid ""
 "A link to reset your password has been sent to you, please check your "
 "emails."
-msgstr ""
+msgstr "パスワードを再設定するリンクを送りました。メールをチェックしてください。"
 
 msgid "Return to home page"
-msgstr ""
+msgstr "ホームページに戻る"
 
 msgid "Your projects"
-msgstr ""
+msgstr "あなたのプロジェクト"
 
 msgid "Reset your password"
-msgstr ""
+msgstr "パスワードを再設定する"
 
 msgid "Invite people to join this project"
-msgstr ""
+msgstr "他人をこのプロジェクトに招待する"
 
 msgid "Share Identifier & code"
-msgstr ""
+msgstr "名前とコードを共有する"
 
 msgid ""
 "You can share the project identifier and the private code by any "
 "communication means."
-msgstr ""
+msgstr "プロジェクト名と私用コードは何の方法でも共有できます。"
 
 msgid "Identifier:"
-msgstr ""
+msgstr "名前："
 
 msgid "Share the Link"
-msgstr ""
+msgstr "リンクを共有する"
 
 msgid "You can directly share the following link via your prefered medium"
-msgstr ""
+msgstr "好きの手段で以下のリンクを直接に共有できる"
 
 msgid "Send via Emails"
-msgstr ""
+msgstr "メールで送る"
 
 msgid ""
 "Specify a (comma separated) list of email adresses you want to notify "
@@ -737,33 +749,35 @@ msgid ""
 "                creation of this budget management project and we will "
 "send them an email for you."
 msgstr ""
+"…を知らせたいメールアドレスのリストを特定する（カンマ区切り）\n"
+"彼らにこの予算管理プロジェクトの作成をメールでお知らせします。"
 
 msgid "Who pays?"
-msgstr ""
+msgstr "誰が支払った？"
 
 msgid "To whom?"
-msgstr ""
+msgstr "誰まで？"
 
 msgid "Who?"
-msgstr ""
+msgstr "誰？"
 
 msgid "Balance"
-msgstr ""
+msgstr "残高"
 
 msgid "deactivate"
-msgstr ""
+msgstr "操作不可にする"
 
 msgid "reactivate"
-msgstr ""
+msgstr "再び調査可能にする"
 
 msgid "Paid"
-msgstr ""
+msgstr "支払われた"
 
 msgid "Spent"
-msgstr ""
+msgstr "使われた"
 
 msgid "Expenses by Month"
-msgstr ""
+msgstr "月別の費用"
 
 msgid "Period"
-msgstr ""
+msgstr "期間"

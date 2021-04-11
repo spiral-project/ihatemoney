@@ -12,7 +12,7 @@ import socket
 
 from babel import Locale
 from babel.numbers import get_currency_name, get_currency_symbol
-from flask import current_app, redirect, render_template, escape
+from flask import current_app, escape, redirect, render_template
 from flask_babel import get_locale, lazy_gettext as _
 import jinja2
 from werkzeug.routing import HTTPException, RoutingException
@@ -363,6 +363,7 @@ def localize_list(list, surround_with_em=True):
         output_str = start.format(start_object="{start_object}", next_object=output_str)
         return output_str.format(start_object=item_wrapper(list.pop()))
 
+
 def render_localized_currency(code, detailed=True):
     if code == "XXX":
         return _("No Currency")
@@ -389,4 +390,3 @@ def render_localized_template(template_name_prefix, **context):
     ]
     # render_template() supports a list of templates to try in order
     return render_template(templates, **context)
-

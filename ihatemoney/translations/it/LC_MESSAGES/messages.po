@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-30 21:50+0200\n"
-"PO-Revision-Date: 2020-10-26 19:27+0000\n"
-"Last-Translator: Sylphystia <yuidirnt@gmail.com>\n"
+"PO-Revision-Date: 2021-03-17 15:18+0000\n"
+"Last-Translator: TomSolGit <Tommaso.solfa@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/it/>\n"
 "Language: it\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2-dev\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 msgid ""
@@ -40,7 +40,7 @@ msgid "Default Currency"
 msgstr "Valuta predefinita"
 
 msgid "Import previously exported JSON file"
-msgstr "Importare il file esportato JSON"
+msgstr "Importare il file JSON esportato precedentemente"
 
 msgid "Import"
 msgstr "Importare"
@@ -49,7 +49,7 @@ msgid "Project identifier"
 msgstr "Identificatore del progetto"
 
 msgid "Create the project"
-msgstr "Creare il progetto"
+msgstr "Crea il progetto"
 
 #, python-format
 msgid ""
@@ -57,13 +57,13 @@ msgid ""
 "choose a new identifier"
 msgstr ""
 "Un progetto con questo identificatore (\"%(project)s\") esiste già. Per "
-"favore scegliere un identificatore nuovo"
+"favore scegli un identificatore nuovo"
 
 msgid "Get in"
 msgstr "Entra"
 
 msgid "Admin password"
-msgstr "Password di amministrazione"
+msgstr "Password dell'amministratore"
 
 msgid "Send me the code by email"
 msgstr "Inviami il codice per email"
@@ -102,7 +102,7 @@ msgid "External link"
 msgstr "Link esterno"
 
 msgid "A link to an external document, related to this bill"
-msgstr "Un link a un documento esterno in relazione a questa spesa"
+msgstr "Un link ad un documento esterno, relativo a questa spesa"
 
 msgid "For whom?"
 msgstr "Per chi?"
@@ -111,7 +111,7 @@ msgid "Submit"
 msgstr "Invia"
 
 msgid "Submit and add a new one"
-msgstr "Inviare e aggiungerne uno nuovo"
+msgstr "Invia ed aggiungine uno nuovo"
 
 #, python-format
 msgid "Project default: %(currency)s"
@@ -124,7 +124,7 @@ msgid "Name"
 msgstr "Nome"
 
 msgid "Weights should be positive"
-msgstr "Il peso deve essere positivo"
+msgstr "I pesi dovrebbero essere positivi"
 
 msgid "Weight"
 msgstr "Peso"
@@ -139,10 +139,10 @@ msgid "This project already have this member"
 msgstr "Membro già presente in questo progetto"
 
 msgid "People to notify"
-msgstr "Persone da notificare"
+msgstr "Persone da informare"
 
 msgid "Send invites"
-msgstr "Spedisci inviti"
+msgstr "Invia inviti"
 
 #, python-format
 msgid "The email %(email)s is not valid"
@@ -166,8 +166,8 @@ msgstr "Troppi tentativi di accesso non riusciti. Riprova più tardi."
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr ""
-"Questa password di amministrazione non è corretta. Solo %(num)d tentativi"
-" rimasti."
+"Questa password di amministrazione non è quella corretta. Solo %(num)d "
+"tentativi rimasti."
 
 msgid "You either provided a bad token or no project identifier."
 msgstr ""

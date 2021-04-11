@@ -46,7 +46,7 @@ test: install-dev ## Run the tests
 
 .PHONY: black
 black: install-dev ## Run the tests
-	$(VENV)/bin/black --target-version=py34 .
+	$(VENV)/bin/black --target-version=py36 .
 
 .PHONY: isort
 isort: install-dev ## Run the tests

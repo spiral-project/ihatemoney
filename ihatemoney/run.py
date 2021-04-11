@@ -2,6 +2,7 @@ import os
 import os.path
 import warnings
 
+from babel.dates import LOCALTZ
 from flask import Flask, g, render_template, request, session
 from flask_babel import Babel, format_currency
 from flask_mail import Mail
@@ -152,8 +153,10 @@ def create_app(
     app.jinja_env.filters["minimal_round"] = minimal_round
     app.jinja_env.filters["localize_list"] = localize_list
 
-    # Translations
-    babel = Babel(app)
+    # Translations and time zone (used to display dates).  The timezone is
+    # taken from the BABEL_DEFAULT_TIMEZONE settings, and falls back to
+    # the local timezone of the server OS by using LOCALTZ.
+    babel = Babel(app, default_timezone=str(LOCALTZ))
 
     # Undocumented currencyformat filter from flask_babel is forwarding to Babel format_currency
     # We overwrite it to remove the currency sign ¤ when there is no currency
@@ -169,7 +172,7 @@ def create_app(
             number,
             currency if currency != CurrencyConverter.no_currency else "",
             *args,
-            **kwargs
+            **kwargs,
         ).strip()
 
     app.jinja_env.filters["currency"] = currency
