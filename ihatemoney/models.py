@@ -129,7 +129,7 @@ class Project(db.Model):
         """
         return [
             {
-                "member": member,
+                "member": member._to_serialize,
                 "paid": sum(
                     [
                         bill.converted_amount
