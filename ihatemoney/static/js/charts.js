@@ -12,7 +12,7 @@ function populateCharts(member_stats, months_in, monthly_stats) {
     });
 
         
-    //Start of chart for total expenditure per month
+    //Start of chart for total expenses per month
     var month_to_int = {
         "Jan": 1,
         "Feb": 2,
@@ -43,12 +43,12 @@ function populateCharts(member_stats, months_in, monthly_stats) {
         
     months.reverse();
     exp_per_month.reverse()
-    exp_per_month.splice(0,0,"Combined Monthly Expenditure");
+    exp_per_month.splice(0,0,"Combined Monthly Expenses");
     
 
     var exp_per_month_chart = bb.generate({
         title: {
-            text: "Combined Monthly Expenditure"
+            text: "Combined Monthly Expenses"
         },
         data: {
             columns: [
@@ -62,15 +62,15 @@ function populateCharts(member_stats, months_in, monthly_stats) {
                 categories: months
             },
             y: {
-                label: "Expenditure"
+                label: "Amount"
             }
         },
         bindto: "#combinedPerMonth"
     }); 
 
-    // End of total expenditure per month chart
+    // End of total expenses per month chart
 
-    // Start of expenditure per member per month chart
+    // Start of expenses per member per month chart
     var members_exp_by_month = [];
     member_stats.forEach(function(stat) {
         var month_dict = [];
@@ -105,7 +105,7 @@ function populateCharts(member_stats, months_in, monthly_stats) {
     var chart_columns = [];
     months.forEach(function(month) {
         members_exp_by_month.forEach(function(member) {  
-            // If current member had expenditure on current month
+            // If current member had expenses on current month
             if (month in member.member_months) {
                 member_exp_dict[member.name].push(member.member_months[month]);
             } else {
@@ -113,14 +113,14 @@ function populateCharts(member_stats, months_in, monthly_stats) {
             }
         });
     });
-    // Pushing each individual member's expenditure per month array into the chart array
+    // Pushing each individual member's expenses per month array into the chart array
     // chart array is what is given to bb.generate
     members_exp_by_month.forEach(function(member) {
         chart_columns.push(member_exp_dict[member.name]);
     });
     var members_exp_month_chart = bb.generate({
         title: {
-            text: "Monthly Expenditure Per Member"
+            text: "Monthly Expenses Per Member"
         },
         data: {
             columns: chart_columns,
@@ -132,20 +132,20 @@ function populateCharts(member_stats, months_in, monthly_stats) {
                 categories: months,
             },
             y: {
-                label: "Expenditure"
+                label: "Amounts"
             }
         },
         bindto: "#memberPerMonth"
     });
     
-    //end of expenditure per month per member
+    //end of expenses per month per member
 
-    // Start of Expenditure Pie Chart
+    // Start of Expenses Pie Chart
     pie_cols = [];
     members_exp_by_month.forEach(function(member) {
-        var particpant = member.name;
+        var participant = member.name;
         var spent = total_exp_per_member[member.name];
-        var exp_arr = [particpant, spent];
+        var exp_arr = [participant, spent];
         pie_cols.push(exp_arr);
     });
 
@@ -157,7 +157,7 @@ function populateCharts(member_stats, months_in, monthly_stats) {
         bindto: "#expPie"
     });
 
-    // End of Expenditure Pie Chart
+    // End of Expenses Pie Chart
 }
 
 

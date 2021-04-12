@@ -144,7 +144,7 @@ class Project(db.Model):
                     ]
                 ),
                 "balance": self.balance[member.id],
-                "monthly_exp": self.get_monthly_expenditure(member.id),
+                "monthly_exp": self.get_monthly_expenses(member.id),
             }
             for member in self.active_members
         ]
@@ -165,11 +165,11 @@ class Project(db.Model):
     def uses_weights(self):
         return len([i for i in self.members if i.weight != 1]) > 0
 
-    def get_monthly_expenditure(self, member_id):
+    def get_monthly_expenses(self, member_id):
         """
         Computes monthly expenses for member_id
 
-        :return: a list of tuples of the form (date, expenditure)
+        :return: a list of tuples of the form (date, expenses)
         """
         query_result = {}
         member_monthly = defaultdict(lambda: defaultdict(float))
