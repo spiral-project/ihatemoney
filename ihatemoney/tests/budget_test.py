@@ -4,6 +4,7 @@ import json
 import re
 from time import sleep
 import unittest
+from unittest.mock import MagicMock
 
 from flask import session
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -1442,6 +1443,112 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.client.post("/raclette/members/1/delete")
         member = models.Person.query.filter(models.Person.id == 1).one_or_none()
         self.assertEqual(member, None)
+
+    def test_currency_switch(self):
+
+        mock_data = {"USD": 1, "EUR": 0.8, "CAD": 1.2}
+        converter = CurrencyConverter()
+        converter.get_rates = MagicMock(return_value=mock_data)
+
+        # A project should be editable
+        self.post_project("raclette")
+
+        # add members
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
+        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "tata"})
+
+        # create bills
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-31",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1, 2, 3],
+                "amount": "10.0",
+            },
+        )
+
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-31",
+                "what": "red wine",
+                "payer": 2,
+                "payed_for": [1, 3],
+                "amount": "20",
+            },
+        )
+
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2017-01-01",
+                "what": "refund",
+                "payer": 3,
+                "payed_for": [2],
+                "amount": "13.33",
+            },
+        )
+
+        project = models.Project.query.get("raclette")
+
+        # First, no currency
+        project.switch_currency(CurrencyConverter.no_currency)
+        bills = project.get_bills()
+        for bill in bills:
+            self.assertEqual(bill.original_currency, CurrencyConverter.no_currency)
+
+        # Switch to USD.
+        project.switch_currency("USD")
+        bills = project.get_bills()
+        for bill in bills:
+            self.assertEqual(bill.original_currency, "USD")
+
+        # Add bill in EUR.
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2017-01-01",
+                "what": "other country",
+                "payer": 3,
+                "payed_for": [2],
+                "amount": "13",
+                "original_currency": "EUR",
+            },
+        )
+
+        # Add one bill in CAD.
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2017-01-01",
+                "what": "other country",
+                "payer": 3,
+                "payed_for": [2],
+                "amount": "10",
+                "original_currency": "CAD",
+            },
+        )
+
+        # Check that the amount is entered as 10CAD and converted to USD.
+        assert project.get_bills().first().converted_amount == 8.33
+
+        # If we switch back to CAD.
+        project.switch_currency("CAD")
+        converted = [
+            (b.amount, b.original_currency, b.converted_amount)
+            for b in project.get_bills()
+        ]
+
+        assert converted == [
+            (10.0, "CAD", 10.0),
+            (13.0, "EUR", 19.5),
+            (13.33, "USD", 16.0),
+            (20.0, "USD", 24.0),
+            (10.0, "USD", 12.0),
+        ]
 
 
 if __name__ == "__main__":
