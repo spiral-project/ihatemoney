@@ -1568,6 +1568,11 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertEqual(member, None)
 
     def test_currency_switch(self):
+
+        mock_data = {"USD": 1, "EUR": 0.8, "CAD": 1.2}
+        converter = CurrencyConverter()
+        converter.get_rates = MagicMock(return_value=mock_data)
+
         # A project should be editable
         self.post_project("raclette")
 
@@ -1618,13 +1623,13 @@ class BudgetTestCase(IhatemoneyTestCase):
         for bill in bills:
             self.assertEqual(bill.original_currency, CurrencyConverter.no_currency)
 
-        # Switch back to USD
+        # Switch to USD.
         project.switch_currency("USD")
         bills = project.get_bills()
         for bill in bills:
             self.assertEqual(bill.original_currency, "USD")
 
-        # Add bill with other currency
+        # Add bill in EUR.
         self.client.post(
             "/raclette/add",
             data={
@@ -1637,14 +1642,36 @@ class BudgetTestCase(IhatemoneyTestCase):
             },
         )
 
-        new_currency = "CAD"
-        project.switch_currency(new_currency)
-        bills = project.get_bills()
-        for bill in bills:
-            if bill.original_currency == new_currency:
-                self.assertEqual(bill.amount, bill.converted_amount)
-            else:
-                self.assertNotEqual(bill.amount, bill.converted_amount)
+        # Add one bill in CAD.
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2017-01-01",
+                "what": "other country",
+                "payer": 3,
+                "payed_for": [2],
+                "amount": "10",
+                "original_currency": "CAD",
+            },
+        )
+
+        # Check that the amount is entered as 10CAD and converted to USD.
+        assert project.get_bills().first().converted_amount == 8.33
+
+        # If we switch back to CAD.
+        project.switch_currency("CAD")
+        converted = [
+            (b.amount, b.original_currency, b.converted_amount)
+            for b in project.get_bills()
+        ]
+
+        assert converted == [
+            (10.0, 'CAD', 10.0),
+            (13.0, 'EUR', 19.5),
+            (13.33, 'USD', 16.0),
+            (20.0, 'USD', 24.0),
+            (10.0, 'USD', 12.0), 
+        ]
 
 
 class APITestCase(IhatemoneyTestCase):
@@ -3180,7 +3207,7 @@ class HistoryTestCase(IhatemoneyTestCase):
 
 class TestCurrencyConverter(unittest.TestCase):
     converter = CurrencyConverter()
-    mock_data = {"USD": 1, "EUR": 0.8115, "CAD": 1.2699}
+    mock_data = {"USD": 1, "EUR": 0.8, "CAD": 1.2}
     converter.get_rates = MagicMock(return_value=mock_data)
 
     def test_only_one_instance(self):
@@ -3193,7 +3220,7 @@ class TestCurrencyConverter(unittest.TestCase):
 
     def test_exchange_currency(self):
         result = self.converter.exchange_currency(100, "USD", "EUR")
-        self.assertEqual(result, 81.15)
+        self.assertEqual(result, 80.00)
 
 
 if __name__ == "__main__":

@@ -268,8 +268,6 @@ class Project(db.Model):
         # Update converted currency
         if new_currency != self.default_currency:
             for bill in self.get_bills():
-                if bill.original_currency == new_currency:
-                    continue
 
                 if new_currency == CurrencyConverter.no_currency:
                     # Use old currency to flatten all amount before stripping
