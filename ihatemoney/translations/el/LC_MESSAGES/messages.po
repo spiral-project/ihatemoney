@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-30 21:50+0200\n"
-"PO-Revision-Date: 2021-02-23 14:50+0000\n"
-"Last-Translator: Michalis <michalisntovas@yahoo.gr>\n"
+"PO-Revision-Date: 2021-04-16 14:26+0000\n"
+"Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/el/>\n"
 "Language: el\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5\n"
+"X-Generator: Weblate 4.6-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 msgid ""
@@ -21,34 +21,34 @@ msgid ""
 msgstr ""
 
 msgid "Project name"
-msgstr ""
+msgstr "Τίτλος εργασίας"
 
 msgid "Private code"
-msgstr ""
+msgstr "Ιδιωτικός κωδικός"
 
 msgid "Email"
-msgstr ""
+msgstr "Ηλεκτρονικό ταχυδρομείο"
 
 msgid "Enable project history"
-msgstr ""
+msgstr "Ενεργοποίηση ιστορικού έργων"
 
 msgid "Use IP tracking for project history"
-msgstr ""
+msgstr "Χρήση παρακολούθησης IP για ιστορικό έργων"
 
 msgid "Default Currency"
-msgstr ""
+msgstr "Προεπιλεγμένο Νόμισμα"
 
 msgid "Import previously exported JSON file"
-msgstr ""
+msgstr "Εισαγωγή αρχείου JSON που έχει εξαχθεί προηγουμένως"
 
 msgid "Import"
-msgstr ""
+msgstr "Εισαγωγή"
 
 msgid "Project identifier"
-msgstr ""
+msgstr "Αναγνωριστικό έργου"
 
 msgid "Create the project"
-msgstr ""
+msgstr "Δημιουργήστε το έργο"
 
 #, python-format
 msgid ""
@@ -60,25 +60,25 @@ msgid "Get in"
 msgstr ""
 
 msgid "Admin password"
-msgstr ""
+msgstr "Κωδικός πρόσβασης διαχειριστή"
 
 msgid "Send me the code by email"
 msgstr "Στείλε μου τον κωδικό μέσω εμάιλ"
 
 msgid "This project does not exists"
-msgstr "Το πρότζεκτ αυτό δεν υπάρχει"
+msgstr "Το έργο αυτό δεν υφίσταται"
 
 msgid "Password mismatch"
-msgstr "Ο κωδικός δεν ταιριάζει"
+msgstr "Ασυμφωνία κωδικού πρόσβασης"
 
 msgid "Password"
-msgstr "Κωδικός"
+msgstr "Κωδικός πρόσβασης"
 
 msgid "Password confirmation"
-msgstr "Επιβεβαίωση κωδικού"
+msgstr "Επιβεβαίωση κωδικού πρόσβασης"
 
 msgid "Reset password"
-msgstr "Επαναφορά κωδικού"
+msgstr "Επαναφορά κωδικού πρόσβασης"
 
 msgid "Date"
 msgstr "Ημερομηνία"
@@ -87,25 +87,27 @@ msgid "What?"
 msgstr "Τι?"
 
 msgid "Payer"
-msgstr "Πληρωτής"
+msgstr "Φορέας πληρωμής"
 
 msgid "Amount paid"
-msgstr "Πληρωμένο ποσό"
+msgstr "Καταβληθέν ποσό"
 
 msgid "Currency"
 msgstr "Νόμισμα"
 
 msgid "External link"
-msgstr ""
+msgstr "Εξωτερική σύνδεση"
 
 msgid "A link to an external document, related to this bill"
 msgstr ""
+"Ένας σύνδεσμος προς ένα εξωτερικό έγγραφο, που σχετίζεται με αυτόν τον "
+"λογαριασμό"
 
 msgid "For whom?"
-msgstr "Για ποιόν?"
+msgstr "Για ποιον;"
 
 msgid "Submit"
-msgstr "Υποβολή"
+msgstr "Yποβολή"
 
 msgid "Submit and add a new one"
 msgstr "Υποβολή και προσθήκη νέου"
@@ -115,7 +117,7 @@ msgid "Project default: %(currency)s"
 msgstr ""
 
 msgid "Bills can't be null"
-msgstr ""
+msgstr "Οι λογαριασμοί δεν μπορούν να είναι μηδενικοί"
 
 msgid "Name"
 msgstr "Όνομα"
@@ -133,17 +135,17 @@ msgid "User name incorrect"
 msgstr "Λανθασμένο όνομα χρήστη"
 
 msgid "This project already have this member"
-msgstr "Το πρότζεκτ έχει ήδη αυτό το μέλος"
+msgstr "Αυτό το έργο έχει ήδη αυτό το μέλος"
 
 msgid "People to notify"
-msgstr "Άτομα να ειδοποιήσεις"
+msgstr "Πρόσωπα προς ενημέρωση"
 
 msgid "Send invites"
-msgstr "Στείλε πρόσκληση"
+msgstr "Αποστολή προσκλήσεων"
 
 #, python-format
 msgid "The email %(email)s is not valid"
-msgstr ""
+msgstr "Το μήνυμα ηλεκτρονικού ταχυδρομείου %(email)s δεν είναι έγκυρο"
 
 msgid "Participant"
 msgstr "Συμμέτοχος"
@@ -168,9 +170,10 @@ msgstr ""
 
 msgid "You either provided a bad token or no project identifier."
 msgstr ""
+"Είτε δώσατε ένα εσφαλμένο διακριτικό είτε δεν δώσατε αναγνωριστικό έργου."
 
 msgid "This private code is not the right one"
-msgstr ""
+msgstr "Αυτός ο ιδιωτικός κωδικός δεν είναι ο σωστός"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -188,7 +191,7 @@ msgstr ""
 
 #, python-format
 msgid "The project identifier is %(project)s"
-msgstr ""
+msgstr "Το αναγνωριστικό έργου είναι %(project)s"
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
@@ -197,10 +200,10 @@ msgid ""
 msgstr ""
 
 msgid "No token provided"
-msgstr ""
+msgstr "Δεν παρέχεται διακριτικό"
 
 msgid "Invalid token"
-msgstr ""
+msgstr "Το διακριτικό δεν είναι έγκυρο"
 
 msgid "Unknown project"
 msgstr "Άγνωστο πρότζεκτ"
@@ -209,10 +212,10 @@ msgid "Password successfully reset."
 msgstr "Επαναφορά του κωδικού επιτυχώς."
 
 msgid "Project successfully uploaded"
-msgstr ""
+msgstr "Έργο που φορτώθηκε επιτυχώς"
 
 msgid "Invalid JSON"
-msgstr ""
+msgstr "Η JSON δεν είναι έγκυρη"
 
 msgid "Project successfully deleted"
 msgstr "Το πρότζεκτ διαγράφηκε επιτυχώς"
