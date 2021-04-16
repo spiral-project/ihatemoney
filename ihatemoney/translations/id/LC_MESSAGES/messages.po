@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-30 21:50+0200\n"
-"PO-Revision-Date: 2021-02-21 04:50+0000\n"
+"PO-Revision-Date: 2021-04-14 08:27+0000\n"
 "Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/id/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.5\n"
+"X-Generator: Weblate 4.6-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 msgid ""
@@ -481,6 +481,13 @@ msgid ""
 "them.</i></p>\n"
 "            "
 msgstr ""
+"\n"
+"            <i> Tabel di bawah mencerminkan tindakan yang direkam sebelum "
+"menonaktifkan riwayat proyek. Anda bisa\n"
+"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" data-"
+"target=\"#confirm-erase\"> membersihkan riwayat proyek </a> untuk "
+"menghapusnya. </i> </ p >\n"
+"            "
 
 msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
@@ -488,83 +495,83 @@ msgid ""
 msgstr ""
 
 msgid "Delete stored IP addresses"
-msgstr ""
+msgstr "Hapus alamat IP yang disimpan"
 
 msgid "No history to erase"
-msgstr ""
+msgstr "Tidak ada riwayat untuk dihapus"
 
 msgid "Clear Project History"
-msgstr ""
+msgstr "Bersihkan Riwayat Proyek"
 
 msgid "No IP Addresses to erase"
-msgstr ""
+msgstr "Tidak ada Alamat IP untuk dihapus"
 
 msgid "Delete Stored IP Addresses"
-msgstr ""
+msgstr "Hapus alamat IP yang disimpan"
 
 msgid "Time"
-msgstr ""
+msgstr "Waktu"
 
 msgid "Event"
-msgstr ""
+msgstr "Peristiwa"
 
 msgid "IP address recording can be enabled on the settings page"
-msgstr ""
+msgstr "Perekaman alamat IP dapat diaktifkan di halaman pengaturan"
 
 msgid "IP address recording can be disabled on the settings page"
-msgstr ""
+msgstr "Perekaman alamat IP dapat dinonaktifkan di halaman pengaturan"
 
 msgid "From IP"
-msgstr ""
+msgstr "Dari IP"
 
 msgid "added"
-msgstr ""
+msgstr "ditambahkan"
 
 msgid "Project private code changed"
-msgstr ""
+msgstr "Kode pribadi proyek berubah"
 
 msgid "Project renamed to"
-msgstr ""
+msgstr "Proyek berganti nama menjadi"
 
 msgid "Project contact email changed to"
-msgstr ""
+msgstr "Email kontak proyek diubah menjadi"
 
 msgid "Project settings modified"
-msgstr ""
+msgstr "Pengaturan proyek diubah"
 
 msgid "deactivated"
-msgstr ""
+msgstr "dinonaktifkan"
 
 msgid "reactivated"
-msgstr ""
+msgstr "aktivasi ulang"
 
 msgid "renamed to"
-msgstr ""
+msgstr "berganti nama menjadi"
 
 msgid "External link changed to"
-msgstr ""
+msgstr "Tautan eksternal diubah menjadi"
 
 msgid "Amount"
-msgstr ""
+msgstr "Jumlah"
 
 #, python-format
 msgid "Amount in %(currency)s"
-msgstr ""
+msgstr "Jumlah dalam %(currency)s"
 
 msgid "modified"
-msgstr ""
+msgstr "diubah"
 
 msgid "removed"
-msgstr ""
+msgstr "dihapus"
 
 msgid "changed in a unknown way"
-msgstr ""
+msgstr "berubah dengan cara yang tidak diketahui"
 
 msgid "Nothing to list"
-msgstr ""
+msgstr "Tidak ada yang dicantumkan"
 
 msgid "Someone probably cleared the project history."
-msgstr ""
+msgstr "Seseorang mungkin membersihkan riwayat proyek."
 
 msgid "Manage your shared <br />expenses, easily"
 msgstr "Atur pembagian harga <br />Anda, dengan mudah"
@@ -600,6 +607,8 @@ msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
 msgstr ""
+"Jangan gunakan kembali kata sandi pribadi. Pilih kode pribadi dan kirimkan "
+"ke teman Anda"
 
 msgid "Account manager"
 msgstr "Pengatur akun"
@@ -614,7 +623,7 @@ msgid "Statistics"
 msgstr "Statistik"
 
 msgid "History"
-msgstr ""
+msgstr "Riwayat"
 
 msgid "Settings"
 msgstr "Pengaturan"
@@ -660,7 +669,7 @@ msgstr "kamu bisa berkontribusi dan meningkatkannya!"
 
 #, python-format
 msgid "%(amount)s each"
-msgstr ""
+msgstr "%(amount)s masing-masing"
 
 msgid "Invite people"
 msgstr "Undang orang"
@@ -672,10 +681,10 @@ msgid "Add a new bill"
 msgstr "Tambah tagihan baru"
 
 msgid "Newer bills"
-msgstr ""
+msgstr "Tagihan terbaru"
 
 msgid "Older bills"
-msgstr ""
+msgstr "Tagihan terdahulu"
 
 msgid "When?"
 msgstr "Kapan?"
@@ -797,10 +806,10 @@ msgid "Spent"
 msgstr "Dihabiskan"
 
 msgid "Expenses by Month"
-msgstr ""
+msgstr "Pengeluaran menurut Bulan"
 
 msgid "Period"
-msgstr ""
+msgstr "Periode"
 
 #~ msgid "%(member)s had been added"
 #~ msgstr "%(member)s telah ditambahkan"
