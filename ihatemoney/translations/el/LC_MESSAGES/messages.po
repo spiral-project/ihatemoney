@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-30 21:50+0200\n"
-"PO-Revision-Date: 2021-04-16 14:26+0000\n"
+"PO-Revision-Date: 2021-05-26 07:33+0000\n"
 "Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/el/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.7-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 msgid ""
@@ -57,7 +57,7 @@ msgid ""
 msgstr ""
 
 msgid "Get in"
-msgstr ""
+msgstr "Συνδεθείτε"
 
 msgid "Admin password"
 msgstr "Κωδικός πρόσβασης διαχειριστή"
@@ -114,7 +114,7 @@ msgstr "Υποβολή και προσθήκη νέου"
 
 #, python-format
 msgid "Project default: %(currency)s"
-msgstr ""
+msgstr "Προεπιλογή έργου: %(currency)s"
 
 msgid "Bills can't be null"
 msgstr "Οι λογαριασμοί δεν μπορούν να είναι μηδενικοί"
@@ -222,7 +222,7 @@ msgstr "Το πρότζεκτ διαγράφηκε επιτυχώς"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
-msgstr ""
+msgstr "Έχετε κληθεί να μοιραστείτε τα έξοδά σας για %(project)s"
 
 msgid "Your invitations have been sent"
 msgstr "Οι προσκλήσεις έχουν σταλθεί"
@@ -235,11 +235,11 @@ msgstr ""
 
 #, python-format
 msgid "%(member)s has been added"
-msgstr ""
+msgstr "%(member)s έχει προστεθεί"
 
 #, python-format
 msgid "%(name)s is part of this project again"
-msgstr ""
+msgstr "%(name)s είναι και πάλι μέρος αυτού του έργου"
 
 #, python-format
 msgid ""
@@ -249,146 +249,151 @@ msgstr ""
 
 #, python-format
 msgid "User '%(name)s' has been removed"
-msgstr ""
+msgstr "Ο χρήστης '%(name)s' έχει αφαιρεθεί"
 
 #, python-format
 msgid "User '%(name)s' has been edited"
-msgstr ""
+msgstr "Ο χρήστης \"%(name)s\" έχει τροποποιηθεί"
 
 msgid "The bill has been added"
 msgstr "Ο λογαριασμός προστέθηκε"
 
 msgid "The bill has been deleted"
-msgstr ""
+msgstr "Ο λογαριασμός έχει διαγραφεί"
 
 msgid "The bill has been modified"
-msgstr ""
+msgstr "Ο λογαριασμός έχει τροποποιηθεί"
 
 msgid "Sorry, we were unable to find the page you've asked for."
-msgstr ""
+msgstr "Λυπούμαστε, δεν ήταν δυνατή η εύρεση της σελίδας που ζητήσατε."
 
 msgid "The best thing to do is probably to get back to the main page."
 msgstr ""
+"Το καλύτερο που έχετε να κάνετε είναι να επιστρέψετε στην κεντρική σελίδα."
 
 msgid "Back to the list"
-msgstr ""
+msgstr "Επιστροφή στη λίστα"
 
 msgid "Administration tasks are currently disabled."
-msgstr ""
+msgstr "Οι εργασίες διαχείρισης είναι προς το παρόν απενεργοποιημένες."
 
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr ""
+"Το έργο στο οποίο προσπαθείτε να αποκτήσετε πρόσβαση δεν υπάρχει, θέλετε να"
 
 msgid "create it"
-msgstr ""
+msgstr "δημιουργήστε αυτό"
 
 msgid "?"
-msgstr ""
+msgstr ";"
 
 msgid "Create a new project"
-msgstr ""
+msgstr "Δημιουργία νέου έργου"
 
 msgid "Number of members"
-msgstr ""
+msgstr "Αριθμός μελών"
 
 msgid "Number of bills"
-msgstr ""
+msgstr "Αριθμός λογαριασμών"
 
 msgid "Newest bill"
-msgstr ""
+msgstr "Νεώτερος λογαριασμός"
 
 msgid "Oldest bill"
-msgstr ""
+msgstr "Παλαιότερος λογαριασμός"
 
 msgid "Actions"
-msgstr ""
+msgstr "Ενέργειες"
 
 msgid "edit"
-msgstr ""
+msgstr "επιμελειθήτε"
 
 msgid "delete"
-msgstr ""
+msgstr "διαγραφή"
 
 msgid "show"
-msgstr ""
+msgstr "εμφάνιση"
 
 msgid "The Dashboard is currently deactivated."
-msgstr ""
+msgstr "Ο πίνακας ελέγχου είναι προς το παρόν απενεργοποιημένος."
 
 msgid "you sure?"
-msgstr ""
+msgstr "Είστε σίγουρος;"
 
 msgid "Edit project"
-msgstr ""
+msgstr "Επεξεργασία έργου"
 
 msgid "Import JSON"
-msgstr ""
+msgstr "Εισαγωγή JSON"
 
 msgid "Choose file"
-msgstr ""
+msgstr "Επιλογή αρχείου"
 
 msgid "Download project's data"
-msgstr ""
+msgstr "Κατεβάστε τα δεδομένα του έργου"
 
 msgid "Bill items"
-msgstr ""
+msgstr "Στοιχεία λογαριασμού"
 
 msgid "Download the list of bills with owner, amount, reason,... "
 msgstr ""
+"Κατεβάστε τη λίστα των λογαριασμών με τον ιδιοκτήτη, το ποσό, την αιτία,... "
 
 msgid "Settle plans"
-msgstr ""
+msgstr "Διευθέτηση σχεδίων"
 
 msgid "Download the list of transactions needed to settle the current bills."
 msgstr ""
+"Κατεβάστε τη λίστα των συναλλαγών που απαιτούνται για την εξόφληση των "
+"τρεχόντων λογαριασμών."
 
 msgid "Can't remember the password?"
-msgstr ""
+msgstr "Δεν μπορείτε να θυμηθείτε τον κωδικό πρόσβασης;"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Ακύρωση"
 
 msgid "Privacy Settings"
-msgstr ""
+msgstr "Ρυθμίσεις απορρήτου"
 
 msgid "Edit the project"
-msgstr ""
+msgstr "Επεξεργαστείτε το έργο"
 
 msgid "Edit this bill"
-msgstr ""
+msgstr "Επεξεργαστείτε αυτόν τον λογαριασμό"
 
 msgid "Add a bill"
-msgstr ""
+msgstr "Προσθήκη λογαριασμού"
 
 msgid "Select all"
-msgstr ""
+msgstr "Επιλογή όλων"
 
 msgid "Select none"
-msgstr ""
+msgstr "Επιλογή κανενός"
 
 msgid "Add participant"
-msgstr ""
+msgstr "Προσθήκη συμμετέχοντος"
 
 msgid "Edit this member"
-msgstr ""
+msgstr "Επεξεργασία αυτού του μέλους"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr ""
 
 msgid "Send the invitations"
-msgstr ""
+msgstr "Αποστολή των προσκλήσεων"
 
 msgid "Download"
-msgstr ""
+msgstr "Κατεβάστε"
 
 msgid "Disabled Project History"
-msgstr ""
+msgstr "Απενεργοποιημένο ιστορικό έργου"
 
 msgid "Disabled Project History & IP Address Recording"
 msgstr ""
 
 msgid "Enabled Project History"
-msgstr ""
+msgstr "Ενεργοποιημένο ιστορικό έργου"
 
 msgid "Disabled IP Address Recording"
 msgstr ""
@@ -400,16 +405,16 @@ msgid "Enabled IP Address Recording"
 msgstr ""
 
 msgid "History Settings Changed"
-msgstr ""
+msgstr "Αλλαγή ρυθμίσεων ιστορικού"
 
 msgid "changed"
-msgstr ""
+msgstr "μεταβολή"
 
 msgid "from"
-msgstr ""
+msgstr "από"
 
 msgid "to"
-msgstr ""
+msgstr "προς"
 
 msgid "Confirm Remove IP Adresses"
 msgstr ""
@@ -422,13 +427,13 @@ msgid ""
 msgstr ""
 
 msgid "Close"
-msgstr ""
+msgstr "Κλείστε"
 
 msgid "Confirm Delete"
-msgstr ""
+msgstr "Επιβεβαίωση Διαγραφής;"
 
 msgid "Delete Confirmation"
-msgstr ""
+msgstr "Επιβεβαίωση Διαγραφής"
 
 msgid ""
 "Are you sure you want to erase all history for this project? This action "
@@ -436,16 +441,16 @@ msgid ""
 msgstr ""
 
 msgid "Added"
-msgstr ""
+msgstr "Προστέθηκε"
 
 msgid "Removed"
-msgstr ""
+msgstr "Καταργήθηκε"
 
 msgid "and"
-msgstr ""
+msgstr "και"
 
 msgid "owers list"
-msgstr ""
+msgstr "λίστα οφειλών"
 
 #, python-format
 msgid ""
@@ -472,25 +477,25 @@ msgid ""
 msgstr ""
 
 msgid "Delete stored IP addresses"
-msgstr ""
+msgstr "Διαγραφή αποθηκευμένων διευθύνσεων IP"
 
 msgid "No history to erase"
-msgstr ""
+msgstr "Δεν υπάρχει ιστορία για διαγραφή"
 
 msgid "Clear Project History"
-msgstr ""
+msgstr "Απαλοιφή ιστορικού έργου"
 
 msgid "No IP Addresses to erase"
-msgstr ""
+msgstr "Δεν υπάρχουν διευθύνσεις IP προς διαγραφή"
 
 msgid "Delete Stored IP Addresses"
-msgstr ""
+msgstr "Διαγραφή αποθηκευμένων διευθύνσεων IP"
 
 msgid "Time"
-msgstr ""
+msgstr "Ώρα"
 
 msgid "Event"
-msgstr ""
+msgstr "Εκδήλωση"
 
 msgid "IP address recording can be enabled on the settings page"
 msgstr ""
@@ -762,19 +767,19 @@ msgid "deactivate"
 msgstr ""
 
 msgid "reactivate"
-msgstr ""
+msgstr "επανενεργοποιήστε το"
 
 msgid "Paid"
-msgstr ""
+msgstr "Εξοφλήθη"
 
 msgid "Spent"
-msgstr ""
+msgstr "Ξοδεύτηκε"
 
 msgid "Expenses by Month"
-msgstr ""
+msgstr "Δαπάνες ανά μήνα"
 
 msgid "Period"
-msgstr ""
+msgstr "Περίοδος"
 
 #~ msgid "%(msg_compl)sThe project identifier is %(project)s"
 #~ msgstr ""
