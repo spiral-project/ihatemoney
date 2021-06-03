@@ -195,7 +195,7 @@ its source is located inside the `docs folder
 
 Install doc dependencies (within the virtual environment, if any)::
 
-  pip install -r docs/requirements.txt
+  pip install -e .[doc]
 
 And to produce a HTML doc in the `docs/_output` folder::
 
