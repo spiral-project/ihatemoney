@@ -61,7 +61,7 @@ Test it
 
 Once installed, you can start a test server::
 
-  ihatemoney runserver
+  ihatemoney run
 
 And point your browser at `http://localhost:5000 <http://localhost:5000>`_.
 
