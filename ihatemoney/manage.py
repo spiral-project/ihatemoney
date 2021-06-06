@@ -34,10 +34,14 @@ def runserver(ctx):
 
 
 @click.command(name="generate_password_hash")
-def password_hash():
+@click.option(
+    "--method",
+    help="""Password method. See https://werkzeug.palletsprojects.com/en/2.0.x/utils/#werkzeug.security.generate_password_hash""",  # NOQA
+)
+def password_hash(method):
     """Get password from user and hash it without printing it in clear text."""
     password = getpass.getpass(prompt="Password: ")
-    print(generate_password_hash(password))
+    print(generate_password_hash(password, method=method))
 
 
 @click.command()

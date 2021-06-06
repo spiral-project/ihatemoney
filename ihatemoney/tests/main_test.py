@@ -89,8 +89,8 @@ class CommandTestCase(BaseTestCase):
     def test_generate_password_hash(self):
         runner = self.app.test_cli_runner()
         with patch("getpass.getpass", new=lambda prompt: "secret"):
-            result = runner.invoke(password_hash)
-            self.assertEqual(len(result.output.strip()), 94)
+            result = runner.invoke(password_hash, ["--method", "pbkdf2:sha256:260000"])
+            self.assertEqual(len(result.output.strip()), 102)
 
     def test_demo_project_deletion(self):
         self.create_project("demo")
