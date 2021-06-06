@@ -38,7 +38,7 @@ update: remove-install-stamp install ## Update the dependencies
 .PHONY: serve
 serve: install ## Run the ihatemoney server
 	@echo 'Running ihatemoney on http://localhost:5000'
-	$(PYTHON) -m ihatemoney.manage runserver
+	$(PYTHON) -m ihatemoney.manage run
 
 .PHONY: test
 test: install-dev ## Run the tests

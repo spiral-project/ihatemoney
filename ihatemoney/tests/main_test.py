@@ -1,4 +1,3 @@
-import io
 import os
 import smtplib
 import socket
@@ -9,7 +8,7 @@ from sqlalchemy import orm
 
 from ihatemoney import models
 from ihatemoney.currency_convertor import CurrencyConverter
-from ihatemoney.manage import DeleteProject, GenerateConfig, GeneratePasswordHash
+from ihatemoney.manage import delete_project, generate_config, password_hash
 from ihatemoney.run import load_configuration
 from ihatemoney.tests.common.ihatemoney_testcase import BaseTestCase, IhatemoneyTestCase
 
@@ -82,28 +81,23 @@ class CommandTestCase(BaseTestCase):
         - raise no exception
         - produce something non-empty
         """
-        cmd = GenerateConfig()
-        for config_file in cmd.get_options()[0].kwargs["choices"]:
-            with patch("sys.stdout", new=io.StringIO()) as stdout:
-                cmd.run(config_file)
-                print(stdout.getvalue())
-                self.assertNotEqual(len(stdout.getvalue().strip()), 0)
+        runner = self.app.test_cli_runner()
+        for config_file in generate_config.params[0].type.choices:
+            result = runner.invoke(generate_config, config_file)
+            self.assertNotEqual(len(result.output.strip()), 0)
 
     def test_generate_password_hash(self):
-        cmd = GeneratePasswordHash()
-        with patch("sys.stdout", new=io.StringIO()) as stdout, patch(
-            "getpass.getpass", new=lambda prompt: "secret"
-        ):  # NOQA
-            cmd.run()
-            print(stdout.getvalue())
-            self.assertEqual(len(stdout.getvalue().strip()), 189)
+        runner = self.app.test_cli_runner()
+        with patch("getpass.getpass", new=lambda prompt: "secret"):
+            result = runner.invoke(password_hash)
+            self.assertEqual(len(result.output.strip()), 94)
 
     def test_demo_project_deletion(self):
         self.create_project("demo")
         self.assertEquals(models.Project.query.get("demo").name, "demo")
 
-        cmd = DeleteProject()
-        cmd.run("demo")
+        runner = self.app.test_cli_runner()
+        runner.invoke(delete_project, "demo")
 
         self.assertEqual(len(models.Project.query.all()), 0)
 
