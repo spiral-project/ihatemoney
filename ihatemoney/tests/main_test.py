@@ -5,6 +5,7 @@ import unittest
 from unittest.mock import MagicMock, patch
 
 from sqlalchemy import orm
+from werkzeug.security import check_password_hash
 
 from ihatemoney import models
 from ihatemoney.currency_convertor import CurrencyConverter
@@ -90,7 +91,7 @@ class CommandTestCase(BaseTestCase):
         runner = self.app.test_cli_runner()
         with patch("getpass.getpass", new=lambda prompt: "secret"):
             result = runner.invoke(password_hash)
-            self.assertEqual(len(result.output.strip()), 94)
+            self.assertTrue(check_password_hash(result.output.strip(), "secret"))
 
     def test_demo_project_deletion(self):
         self.create_project("demo")
