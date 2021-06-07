@@ -5,13 +5,13 @@ import unittest
 from unittest.mock import MagicMock, patch
 
 from sqlalchemy import orm
+from werkzeug.security import check_password_hash
 
 from ihatemoney import models
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.manage import delete_project, generate_config, password_hash
 from ihatemoney.run import load_configuration
 from ihatemoney.tests.common.ihatemoney_testcase import BaseTestCase, IhatemoneyTestCase
-from werkzeug.security import check_password_hash
 
 # Unset configuration file env var if previously set
 os.environ.pop("IHATEMONEY_SETTINGS_FILE_PATH", None)
