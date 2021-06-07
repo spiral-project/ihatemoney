@@ -11,6 +11,7 @@ from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.manage import delete_project, generate_config, password_hash
 from ihatemoney.run import load_configuration
 from ihatemoney.tests.common.ihatemoney_testcase import BaseTestCase, IhatemoneyTestCase
+from werkzeug.security import check_password_hash
 
 # Unset configuration file env var if previously set
 os.environ.pop("IHATEMONEY_SETTINGS_FILE_PATH", None)
@@ -89,8 +90,8 @@ class CommandTestCase(BaseTestCase):
     def test_generate_password_hash(self):
         runner = self.app.test_cli_runner()
         with patch("getpass.getpass", new=lambda prompt: "secret"):
-            result = runner.invoke(password_hash, ["--method", "pbkdf2:sha256:260000"])
-            self.assertEqual(len(result.output.strip()), 102)
+            result = runner.invoke(password_hash)
+            self.assertTrue(check_password_hash(result.output.strip(), "secret"))
 
     def test_demo_project_deletion(self):
         self.create_project("demo")
