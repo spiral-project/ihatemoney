@@ -95,7 +95,7 @@ class CommandTestCase(BaseTestCase):
 
     def test_demo_project_deletion(self):
         self.create_project("demo")
-        self.assertEquals(models.Project.query.get("demo").name, "demo")
+        self.assertEqual(models.Project.query.get("demo").name, "demo")
 
         runner = self.app.test_cli_runner()
         runner.invoke(delete_project, "demo")

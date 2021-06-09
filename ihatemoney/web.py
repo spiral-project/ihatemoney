@@ -549,7 +549,7 @@ def export_project(file, format):
 
     return send_file(
         file2export,
-        attachment_filename=f"{g.project.id}-{file}.{format}",
+        download_name=f"{g.project.id}-{file}.{format}",
         as_attachment=True,
     )
 
