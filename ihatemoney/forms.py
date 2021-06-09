@@ -44,7 +44,7 @@ def get_billform_for(project, set_default=True, **kwargs):
 
     """
     form = BillForm(**kwargs)
-    if form.original_currency.data == "None":
+    if form.original_currency.data is None:
         form.original_currency.data = project.default_currency
 
     show_no_currency = form.original_currency.data == CurrencyConverter.no_currency
