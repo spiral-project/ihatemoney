@@ -161,7 +161,7 @@ def admin():
         client_ip = request.remote_addr
         if not login_throttler.is_login_allowed(client_ip):
             msg = _("Too many failed login attempts, please retry later.")
-            form.errors["admin_password"] = [msg]
+            form["admin_password"].errors = [msg]
             return render_template(
                 "admin.html",
                 form=form,
@@ -183,7 +183,7 @@ def admin():
                 "This admin password is not the right one. Only %(num)d attempts left.",
                 num=login_throttler.get_remaining_attempts(client_ip),
             )
-            form.errors["admin_password"] = [msg]
+            form["admin_password"].errors = [msg]
     return render_template(
         "admin.html",
         form=form,
@@ -210,7 +210,7 @@ def authenticate(project_id=None):
         # User doesn't provide project identifier or a valid token
         # return to authenticate form
         msg = _("You either provided a bad token or no project identifier.")
-        form.errors["id"] = [msg]
+        form["id"].errors = [msg]
         return render_template("authenticate.html", form=form)
 
     project = Project.query.get(project_id)
@@ -246,7 +246,7 @@ def authenticate(project_id=None):
         return redirect(url_for(".list_bills"))
     if is_post_auth and not check_password_hash(project.password, form.password.data):
         msg = _("This private code is not the right one")
-        form.errors["password"] = [msg]
+        form["password"].errors = [msg]
 
     return render_template("authenticate.html", form=form)
 
