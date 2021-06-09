@@ -8,7 +8,7 @@ import unittest
 from flask import session
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from ihatemoney import models, utils
+from ihatemoney import models
 from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
 from ihatemoney.versioning import LoggingMode
 
