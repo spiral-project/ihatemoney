@@ -494,12 +494,9 @@ class BudgetTestCase(IhatemoneyTestCase):
             resp.data.decode("utf-8"),
         )
         # Change throttling delay
-        import gc
+        from ihatemoney.web import login_throttler
 
-        for obj in gc.get_objects():
-            if isinstance(obj, utils.LoginThrottler):
-                obj._delay = 0.005
-                break
+        login_throttler._delay = 0.005
         # Wait for delay to expire and retry logging in
         sleep(1)
         resp = self.client.post(
