@@ -7,7 +7,7 @@ from flask import Flask, g, render_template, request, session
 from flask_babel import Babel, format_currency
 from flask_mail import Mail
 from flask_migrate import Migrate, stamp, upgrade
-from jinja2 import contextfilter
+from jinja2 import pass_context
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 from ihatemoney import default_settings
@@ -158,7 +158,7 @@ def create_app(
 
     # Undocumented currencyformat filter from flask_babel is forwarding to Babel format_currency
     # We overwrite it to remove the currency sign ¤ when there is no currency
-    @contextfilter
+    @pass_context
     def currency(context, number, currency=None, *args, **kwargs):
         if currency is None:
             currency = context.get("g").project.default_currency
