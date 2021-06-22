@@ -817,12 +817,4 @@ msgid "Expenses by Month"
 msgstr "Gastos por Mês"
 
 msgid "Period"
-<<<<<<< HEAD
 msgstr "Período"
-=======
-msgstr ""
-<<<<<<< HEAD
-
->>>>>>> 8c98695 (Add warning in edit project form)
-=======
->>>>>>> 74bc2f8 (Revert "Add warning in edit project form")
