@@ -30,7 +30,7 @@ class BaseTestCase(TestCase):
             follow_redirects=True,
         )
 
-    def post_project(self, name, follow_redirects=True):
+    def post_project(self, name, follow_redirects=True, default_currency="XXX"):
         """Create a fake project"""
         # create the project
         return self.client.post(
@@ -40,18 +40,18 @@ class BaseTestCase(TestCase):
                 "id": name,
                 "password": name,
                 "contact_email": f"{name}@notmyidea.org",
-                "default_currency": "USD",
+                "default_currency": default_currency,
             },
             follow_redirects=follow_redirects,
         )
 
-    def create_project(self, name):
+    def create_project(self, name, default_currency="XXX"):
         project = models.Project(
             id=name,
             name=str(name),
             password=generate_password_hash(name),
             contact_email=f"{name}@notmyidea.org",
-            default_currency="USD",
+            default_currency=default_currency,
         )
         models.db.session.add(project)
         models.db.session.commit()

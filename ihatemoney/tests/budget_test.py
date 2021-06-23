@@ -804,7 +804,8 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_statistics(self):
-        self.post_project("raclette")
+        # Output is checked with the USD sign
+        self.post_project("raclette", default_currency="USD")
 
         # add members
         self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
@@ -1447,7 +1448,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
     def test_currency_switch(self):
 
-        mock_data = {"USD": 1, "EUR": 0.8, "CAD": 1.2}
+        mock_data = {"USD": 1, "EUR": 0.8, "CAD": 1.2, CurrencyConverter.no_currency: 1}
         converter = CurrencyConverter()
         converter.get_rates = MagicMock(return_value=mock_data)
 
