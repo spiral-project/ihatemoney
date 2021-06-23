@@ -28,3 +28,6 @@ jobs:
     - name: Run Tox
       # Run tox using the version of Python in `PATH`
       run: tox -e py
+    - name: Run Lint & Docs
+      run: tox -e lint_docs
+      if: matrix.python-version == '3.8'
