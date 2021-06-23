@@ -282,7 +282,7 @@ class Project(db.Model):
                     bill.converted_amount = CurrencyConverter().exchange_currency(
                         bill.amount, bill.original_currency, new_currency
                     )
-                    # Add the currency for previously un-currency-ied
+                    # Add the currency for bills that were created without currency
                     if bill.original_currency == CurrencyConverter.no_currency:
                         bill.original_currency = new_currency
                 db.session.add(bill)
