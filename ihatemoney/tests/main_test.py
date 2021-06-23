@@ -249,7 +249,10 @@ class TestCurrencyConverter(unittest.TestCase):
         self.assertEqual(one, two)
 
     def test_get_currencies(self):
-        self.assertCountEqual(self.converter.get_currencies(), ["USD", "EUR", "CAD", CurrencyConverter.no_currency])
+        self.assertCountEqual(
+            self.converter.get_currencies(),
+            ["USD", "EUR", "CAD", CurrencyConverter.no_currency],
+        )
 
     def test_exchange_currency(self):
         result = self.converter.exchange_currency(100, "USD", "EUR")
