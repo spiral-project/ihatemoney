@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-30 21:50+0200\n"
-"PO-Revision-Date: 2021-05-26 07:33+0000\n"
+"PO-Revision-Date: 2021-06-24 18:34+0000\n"
 "Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/el/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7-dev\n"
+"X-Generator: Weblate 4.7.1-dev\n"
 "Generated-By: Babel 2.8.0\n"
 
 msgid ""
@@ -504,56 +504,56 @@ msgid "IP address recording can be disabled on the settings page"
 msgstr ""
 
 msgid "From IP"
-msgstr ""
+msgstr "Από IP"
 
 msgid "added"
-msgstr ""
+msgstr "προστέθηκε"
 
 msgid "Project private code changed"
-msgstr ""
+msgstr "Ο ιδιωτικός κωδικός έργου άλλαξε"
 
 msgid "Project renamed to"
-msgstr ""
+msgstr "Το έργο μετονομάστηκε σε"
 
 msgid "Project contact email changed to"
-msgstr ""
+msgstr "Το μήνυμα ηλεκτρονικού ταχυδρομείου επικοινωνίας έργου άλλαξε σε"
 
 msgid "Project settings modified"
-msgstr ""
+msgstr "Τροποποιημένες ρυθμίσεις έργου"
 
 msgid "deactivated"
-msgstr ""
+msgstr "απενεργοποιήθη"
 
 msgid "reactivated"
-msgstr ""
+msgstr "επανενεργοποιήθη"
 
 msgid "renamed to"
-msgstr ""
+msgstr "μετονομάστηκε σε"
 
 msgid "External link changed to"
-msgstr ""
+msgstr "Ο εξωτερικός σύνδεσμος άλλαξε σε"
 
 msgid "Amount"
-msgstr ""
+msgstr "Ποσό"
 
 #, python-format
 msgid "Amount in %(currency)s"
-msgstr ""
+msgstr "Ποσό σε %(currency)s"
 
 msgid "modified"
-msgstr ""
+msgstr "τροποποιήθη"
 
 msgid "removed"
-msgstr ""
+msgstr "αφαιρέθηκε"
 
 msgid "changed in a unknown way"
-msgstr ""
+msgstr "άλλαξε με άγνωστο τρόπο"
 
 msgid "Nothing to list"
-msgstr ""
+msgstr "Τίποτα προς καταγραφή"
 
 msgid "Someone probably cleared the project history."
-msgstr ""
+msgstr "Κάποιος πιθανώς διέγραψε το ιστορικό του έργου."
 
 msgid "Manage your shared <br />expenses, easily"
 msgstr ""
