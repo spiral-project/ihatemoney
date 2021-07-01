@@ -69,7 +69,7 @@ class ProjectHandler(Resource):
         return "DELETED"
 
     def put(self, project):
-        form = EditProjectForm(meta={"csrf": False})
+        form = EditProjectForm(id=project.id, meta={"csrf": False})
         if form.validate() and current_app.config.get("ALLOW_PUBLIC_PROJECT_CREATION"):
             form.update(project)
             db.session.commit()

@@ -399,7 +399,7 @@ def reset_password():
 
 @main.route("/<project_id>/edit", methods=["GET", "POST"])
 def edit_project():
-    edit_form = EditProjectForm()
+    edit_form = EditProjectForm(id=g.project.id)
     import_form = UploadForm()
     # Import form
     if import_form.validate_on_submit():

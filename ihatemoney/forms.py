@@ -1,5 +1,6 @@
 from datetime import datetime
 from re import match
+from types import SimpleNamespace
 
 import email_validator
 from flask import request
@@ -110,6 +111,10 @@ class EditProjectForm(FlaskForm):
     default_currency = SelectField(_("Default Currency"), validators=[DataRequired()])
 
     def __init__(self, *args, **kwargs):
+        if not hasattr(self, "id"):
+            # We must access the project to validate the default currency.
+            # Mimics a StringField. Defaut to empty string to ensure that query run smoothly.
+            self.id = SimpleNamespace(data=kwargs.pop("id", ""))
         super().__init__(*args, **kwargs)
         self.default_currency.choices = [
             (currency_name, render_localized_currency(currency_name, detailed=True))
@@ -141,6 +146,23 @@ class EditProjectForm(FlaskForm):
             default_currency=self.default_currency.data,
         )
         return project
+
+    def validate_default_currency(form, field):
+        project = Project.query.get(form.id.data)
+        if (
+            project is not None
+            and field.data == CurrencyConverter.no_currency
+            and project.has_multiple_currencies()
+        ):
+            raise ValidationError(
+                _(
+                    (
+                        "This project already uses different currencies"
+                        "and can't be set to 'No Currency'"
+                    )
+                )
+            )
+        pass
 
     def update(self, project):
         """Update the project with the information from the form"""
