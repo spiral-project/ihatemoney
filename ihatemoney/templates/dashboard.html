@@ -5,7 +5,7 @@
     <thead><tr><th>{{ _("Project") }}</th><th>{{ _("Number of members") }}</th><th>{{ _("Number of bills") }}</th><th>{{_("Newest bill")}}</th><th>{{_("Oldest bill")}}</th><th>{{_("Actions")}}</th></tr></thead>
     <tbody>{% for project in projects|sort(attribute='name') %}
         <tr>
-        <td><a href="{{ url_for(".list_bills", project_id=project.id) }}" title="{{ project.name }}">{{ project.name }}</a></td><td>{{ project.members | count }}</td><td>{{ project.get_bills().count() }}</td>
+        <td><a href="{{ url_for(".list_bills", project_id=project.id) }}" title="{{ project.name }}">{{ project.name }}</a></td><td>{{ project.members | count }}</td><td>{{ project.get_bills_unordered().count() }}</td>
         {% if project.has_bills() %}
         <td>{{ project.get_bills().all()[0].date }}</td>
         <td>{{ project.get_bills().all()[-1].date }}</td>

@@ -140,7 +140,7 @@ class Project(db.Model):
                 "spent": sum(
                     [
                         bill.pay_each() * member.weight
-                        for bill in self.get_bills().all()
+                        for bill in self.get_bills_unordered().all()
                         if member in bill.owers
                     ]
                 ),
@@ -157,7 +157,7 @@ class Project(db.Model):
         :rtype dict:
         """
         monthly = defaultdict(lambda: defaultdict(float))
-        for bill in self.get_bills().all():
+        for bill in self.get_bills_unordered().all():
             monthly[bill.date.year][bill.date.month] += bill.converted_amount
         return monthly
 
@@ -216,15 +216,25 @@ class Project(db.Model):
 
     def has_bills(self):
         """return if the project do have bills or not"""
-        return self.get_bills().count() > 0
+        return self.get_bills_unordered().count() > 0
 
-    def get_bills(self):
-        """Return the list of bills related to this project"""
+    def has_multiple_currencies(self):
+        """Return if multiple currencies are used"""
+        return self.get_bills_unordered().group_by(Bill.original_currency).count() > 1
+
+    def get_bills_unordered(self):
+        """Base query for bill list"""
         return (
             Bill.query.join(Person, Project)
             .filter(Bill.payer_id == Person.id)
             .filter(Person.project_id == Project.id)
             .filter(Project.id == self.id)
+        )
+
+    def get_bills(self):
+        """Return the list of bills related to this project"""
+        return (
+            self.get_bills_unordered()
             .order_by(Bill.date.desc())
             .order_by(Bill.creation_date.desc())
             .order_by(Bill.id.desc())
@@ -233,11 +243,8 @@ class Project(db.Model):
     def get_member_bills(self, member_id):
         """Return the list of bills related to a specific member"""
         return (
-            Bill.query.join(Person, Project)
-            .filter(Bill.payer_id == Person.id)
-            .filter(Person.project_id == Project.id)
+            self.get_bills_unordered()
             .filter(Person.id == member_id)
-            .filter(Project.id == self.id)
             .order_by(Bill.date.desc())
             .order_by(Bill.id.desc())
         )
