@@ -274,7 +274,12 @@ class Project(db.Model):
     def switch_currency(self, new_currency):
         # Update converted currency
         if new_currency != self.default_currency:
-            for bill in self.get_bills():
+            if (
+                new_currency == CurrencyConverter.no_currency
+                and self.has_multiple_currencies()
+            ):
+                raise ValueError(f"Can't unset currency of project {self.id}")
+            for bill in self.get_bills_unordered():
 
                 if new_currency == CurrencyConverter.no_currency:
                     # Use old currency to flatten all amount before stripping
