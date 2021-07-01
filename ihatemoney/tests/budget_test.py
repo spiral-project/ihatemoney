@@ -7,6 +7,7 @@ import unittest
 from unittest.mock import MagicMock
 
 from flask import session
+import pytest
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from ihatemoney import models
@@ -1496,61 +1497,120 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         project = models.Project.query.get("raclette")
 
-        # First, no currency
-        project.switch_currency(CurrencyConverter.no_currency)
-        bills = project.get_bills()
-        for bill in bills:
-            self.assertEqual(bill.original_currency, CurrencyConverter.no_currency)
+        # First all converted_amount should be the same as amount, with no currency
+        for bill in project.get_bills():
+            assert bill.original_currency == CurrencyConverter.no_currency
+            assert bill.amount == bill.converted_amount
 
-        # Switch to USD.
-        project.switch_currency("USD")
-        bills = project.get_bills()
-        for bill in bills:
-            self.assertEqual(bill.original_currency, "USD")
+        # Then, switch to EUR, all bills must have been changed to this currency
+        project.switch_currency("EUR")
+        for bill in project.get_bills():
+            assert bill.original_currency == "EUR"
+            assert bill.amount == bill.converted_amount
 
-        # Add bill in EUR.
+        # Add a bill in EUR, the current default currency
         self.client.post(
             "/raclette/add",
             data={
                 "date": "2017-01-01",
-                "what": "other country",
+                "what": "refund from EUR",
                 "payer": 3,
                 "payed_for": [2],
-                "amount": "13",
+                "amount": "20",
+                "original_currency": "EUR",
+            },
+        )
+        last_bill = project.get_bills().first()
+        assert last_bill.converted_amount == last_bill.amount
+
+        # Erase all currencies
+        project.switch_currency(CurrencyConverter.no_currency)
+        for bill in project.get_bills():
+            assert bill.original_currency == CurrencyConverter.no_currency
+            assert bill.amount == bill.converted_amount
+
+        # Let's go back to EUR to test conversion
+        project.switch_currency("EUR")
+        # This is a bill in CAD
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2017-01-01",
+                "what": "Poutine",
+                "payer": 3,
+                "payed_for": [2],
+                "amount": "18",
+                "original_currency": "CAD",
+            },
+        )
+        last_bill = project.get_bills().first()
+        expected_amount = converter.exchange_currency(last_bill.amount, "CAD", "EUR")
+        assert last_bill.converted_amount == expected_amount
+
+        # Switch to USD. Now, NO bill should be in USD, since they already had a currency
+        project.switch_currency("USD")
+        for bill in project.get_bills():
+            assert bill.original_currency != "USD"
+            expected_amount = converter.exchange_currency(
+                bill.amount, bill.original_currency, "USD"
+            )
+            assert bill.converted_amount == expected_amount
+
+        # Switching back to no currency must fail
+        with pytest.raises(ValueError):
+            project.switch_currency(CurrencyConverter.no_currency)
+
+        # It also must fails with a nice error using the form
+        resp = self.client.post(
+            "/raclette/edit",
+            data={
+                "name": "demonstration",
+                "password": "demo",
+                "contact_email": "demo@notmyidea.org",
+                "project_history": "y",
+                "default_currency": converter.no_currency,
+            },
+        )
+        # A user displayed error should be generated, and its currency should be the same.
+        self.assertStatus(200, resp)
+        self.assertIn('<p class="alert alert-danger">', resp.data.decode("utf-8"))
+        self.assertEqual(models.Project.query.get("raclette").default_currency, "USD")
+
+    def test_currency_switch_to_bill_currency(self):
+
+        mock_data = {"USD": 1, "EUR": 0.8, "CAD": 1.2, CurrencyConverter.no_currency: 1}
+        converter = CurrencyConverter()
+        converter.get_rates = MagicMock(return_value=mock_data)
+
+        # A project should be editable
+        self.post_project("raclette", default_currency="USD")
+
+        # add members
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
+        self.client.post("/raclette/members/add", data={"name": "fred"})
+
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-31",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "amount": "10.0",
                 "original_currency": "EUR",
             },
         )
 
-        # Add one bill in CAD.
-        self.client.post(
-            "/raclette/add",
-            data={
-                "date": "2017-01-01",
-                "what": "other country",
-                "payer": 3,
-                "payed_for": [2],
-                "amount": "10",
-                "original_currency": "CAD",
-            },
+        project = models.Project.query.get("raclette")
+
+        bill = project.get_bills().first()
+        assert bill.converted_amount == converter.exchange_currency(
+            bill.amount, "EUR", "USD"
         )
 
-        # Check that the amount is entered as 10CAD and converted to USD.
-        assert project.get_bills().first().converted_amount == 8.33
-
-        # If we switch back to CAD.
-        project.switch_currency("CAD")
-        converted = [
-            (b.amount, b.original_currency, b.converted_amount)
-            for b in project.get_bills()
-        ]
-
-        assert converted == [
-            (10.0, "CAD", 10.0),
-            (13.0, "EUR", 19.5),
-            (13.33, "USD", 16.0),
-            (20.0, "USD", 24.0),
-            (10.0, "USD", 12.0),
-        ]
+        project.switch_currency("EUR")
+        bill = project.get_bills().first()
+        assert bill.converted_amount == bill.amount
 
 
 if __name__ == "__main__":
