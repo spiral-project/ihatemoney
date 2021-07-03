@@ -157,12 +157,11 @@ class EditProjectForm(FlaskForm):
             raise ValidationError(
                 _(
                     (
-                        "This project already uses different currencies"
-                        "and can't be set to 'No Currency'"
+                        "This project cannot be set to 'no currency'"
+                        " because it contains bills in multiple currencies."
                     )
                 )
             )
-        pass
 
     def update(self, project):
         """Update the project with the information from the form"""
