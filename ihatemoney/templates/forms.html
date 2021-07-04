@@ -2,7 +2,7 @@
     <div class="form-group{% if inline %} row{% endif %}">
     {% if field.type != "SubmitField" %}
         {% if inline %}
-          {{ field.label(class="col-3") }}
+          {{ field.label(class="col-3 mt-2") }}
         {% else %}
           {{ field.label() }}
         {% endif %}
@@ -120,20 +120,23 @@
         {% if title %}<legend>{% if edit %}{{ _("Edit this bill") }} {% else %}{{ _("Add a bill") }} {% endif %}</legend>{% endif %}
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
-    {{ input(form.date, class="form-control", inline=True) }}
+    {{ input(form.date, inline=True) }}
     {{ input(form.what, inline=True) }}
     {{ input(form.payer, inline=True, class="form-control custom-select") }}
     {{ input(form.amount, inline=True) }}
-    {% if g.project.default_currency != "XXX" %}
-        {{ input(form.original_currency, inline=True) }}
-    {% endif %}
-    {{ input(form.external_link, inline=True) }}
+    <details class="mb-2">
+        <summary class="mb-2">Options avancées</summary>
+        {% if g.project.default_currency != "XXX" %}
+            {{ input(form.original_currency, inline=True, class="form-control custom-select") }}
+        {% endif %}
+        {{ input(form.external_link, inline=True) }}
+    </details>
 
     <div class="form-group row">
         <label class="col-3" for="payed_for">{{ _("For whom?") }}</label>
         <div class="controls col-9">
-            <ul id="payed_for" class="inputs-list">
-                <p><a href="#" id="selectall" onclick="selectCheckboxes(true)">{{ _("Select all") }}</a> | <a href="#" id="selectnone" onclick="selectCheckboxes(false)">{{_("Select none")}}</a></p>
+            <div id="payed_for" class="inputs-list">
+                <p><a href="#" id="selectall" onclick="selectCheckboxes(true)">{{ _("Everybody") }}</a> | <a href="#" id="selectnone" onclick="selectCheckboxes(false)">{{_("Nobody")}}</a></p>
             {% for key, value, checked in form.payed_for.iter_choices() | sort(attribute='1') %}
                 <p class="form-check">
                    <label for="payed_for-{{key}}" class="form-check-label">
@@ -142,7 +145,7 @@
                     </label>
                  </p>
             {% endfor %}
-            </ul>
+            </div>
         </div>
     </div>
     </fieldset>
