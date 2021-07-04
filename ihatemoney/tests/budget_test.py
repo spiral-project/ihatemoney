@@ -1614,6 +1614,56 @@ class BudgetTestCase(IhatemoneyTestCase):
         bill = project.get_bills().first()
         assert bill.converted_amount == bill.amount
 
+    def test_currency_switch_to_no_currency(self):
+
+        mock_data = {"USD": 1, "EUR": 0.8, "CAD": 1.2, CurrencyConverter.no_currency: 1}
+        converter = CurrencyConverter()
+        converter.get_rates = MagicMock(return_value=mock_data)
+
+        # Default currency is 'XXX', but we should start from a project with a currency
+        self.post_project("raclette", default_currency="USD")
+
+        # add members
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
+        self.client.post("/raclette/members/add", data={"name": "fred"})
+
+        # Bills with a different currency than project's default
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-31",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "amount": "10.0",
+                "original_currency": "EUR",
+            },
+        )
+
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2017-01-01",
+                "what": "aspirine",
+                "payer": 2,
+                "payed_for": [1, 2],
+                "amount": "5.0",
+                "original_currency": "EUR",
+            },
+        )
+
+        project = models.Project.query.get("raclette")
+
+        for bill in project.get_bills_unordered():
+            assert bill.converted_amount == converter.exchange_currency(
+                bill.amount, "EUR", "USD"
+            )
+
+        # And switch project to no currency: amount should be equal to what was submitted
+        project.switch_currency(converter.no_currency)
+        no_currency_bills = [(bill.amount, bill.converted_amount) for bill in project.get_bills()]
+        assert no_currency_bills == [(5.0, 5.0), (10.0, 10.0)]
+
 
 if __name__ == "__main__":
     unittest.main()
