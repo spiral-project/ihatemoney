@@ -136,21 +136,6 @@ class EditProjectForm(FlaskForm):
             else:
                 return LoggingMode.ENABLED
 
-    def save(self):
-        """Create a new project with the information given by this form.
-
-        Returns the created instance
-        """
-        project = Project(
-            name=self.name.data,
-            id=self.id.data,
-            password=generate_password_hash(self.password.data),
-            contact_email=self.contact_email.data,
-            logging_preference=self.logging_preference,
-            default_currency=self.default_currency.data,
-        )
-        return project
-
     def validate_default_currency(form, field):
         project = Project.query.get(form.id.data)
         if (
@@ -191,16 +176,30 @@ class UploadForm(FlaskForm):
 
 class ProjectForm(EditProjectForm):
     id = StringField(_("Project identifier"), validators=[DataRequired()])
+    # This field overrides the one from EditProjectForm
     password = PasswordField(_("Private code"), validators=[DataRequired()])
     submit = SubmitField(_("Create the project"))
 
     def save(self):
+        """Create a new project with the information given by this form.
+
+        Returns the created instance
+        """
         # WTForms Boolean Fields don't insert the default value when the
         # request doesn't include any value the way that other fields do,
         # so we'll manually do it here
         self.project_history.data = LoggingMode.default() != LoggingMode.DISABLED
         self.ip_recording.data = LoggingMode.default() == LoggingMode.RECORD_IP
-        return super().save()
+        # Create project
+        project = Project(
+            name=self.name.data,
+            id=self.id.data,
+            password=generate_password_hash(self.password.data),
+            contact_email=self.contact_email.data,
+            logging_preference=self.logging_preference,
+            default_currency=self.default_currency.data,
+        )
+        return project
 
     def validate_id(form, field):
         form.id.data = slugify(field.data)
