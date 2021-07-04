@@ -103,7 +103,8 @@ class CalculatorStringField(StringField):
 
 class EditProjectForm(FlaskForm):
     name = StringField(_("Project name"), validators=[DataRequired()])
-    password = StringField(_("Private code"), validators=[DataRequired()])
+    # If empty -> don't change the password
+    password = PasswordField(_("New private code"))
     contact_email = StringField(_("Email"), validators=[DataRequired(), Email()])
     project_history = BooleanField(_("Enable project history"))
     ip_recording = BooleanField(_("Use IP tracking for project history"))
@@ -154,8 +155,13 @@ class EditProjectForm(FlaskForm):
         """Update the project with the information from the form"""
         project.name = self.name.data
 
-        # Only update password if changed to prevent spurious log entries
-        if not check_password_hash(project.password, self.password.data):
+        if (
+            # Only update password if a new one is provided
+            self.password.data
+            # Only update password if different from the previous one,
+            # to prevent spurious log entries
+            and not check_password_hash(project.password, self.password.data)
+        ):
             project.password = generate_password_hash(self.password.data)
 
         project.contact_email = self.contact_email.data
