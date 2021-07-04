@@ -1,19 +1,19 @@
+
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-05-30 21:50+0200\n"
+"POT-Creation-Date: 2021-07-07 01:01+0200\n"
 "PO-Revision-Date: 2021-02-17 02:50+0000\n"
 "Last-Translator: Sander Kooijmans <weblate@gogognome.nl>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/nl/>\n"
 "Language: nl\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/nl/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -25,7 +25,8 @@ msgstr ""
 msgid "Project name"
 msgstr "Projectnaam"
 
-msgid "Private code"
+#, fuzzy
+msgid "New private code"
 msgstr "Privécode"
 
 msgid "Email"
@@ -40,6 +41,11 @@ msgstr "IP-tracking voor projectgeschiedenis gebruiken"
 msgid "Default Currency"
 msgstr "Standaard munteenheid"
 
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+
 msgid "Import previously exported JSON file"
 msgstr "Eerder geëxporteerd JSON-bestand importeren"
 
@@ -48,6 +54,9 @@ msgstr "Importeren"
 
 msgid "Project identifier"
 msgstr "Project-id"
+
+msgid "Private code"
+msgstr "Privécode"
 
 msgid "Create the project"
 msgstr "Project aanmaken"
@@ -185,8 +194,8 @@ msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
-"We hebben geprobeerd een herinneringsmail te versturen, maar er is iets fout "
-"gegaan. Je kunt het project nog steeds normaal gebruiken."
+"We hebben geprobeerd een herinneringsmail te versturen, maar er is iets "
+"fout gegaan. Je kunt het project nog steeds normaal gebruiken."
 
 #, python-format
 msgid "The project identifier is %(project)s"
@@ -198,8 +207,8 @@ msgid ""
 "contact the administrator."
 msgstr ""
 "Sorry, er is iets fout gegaan bij het verzenden van een e-mail met "
-"instructies om je wachtwoord te herstellen. Controleer de e-mailinstellingen "
-"van de server of neem contact op met de beheerder."
+"instructies om je wachtwoord te herstellen. Controleer de "
+"e-mailinstellingen van de server of neem contact op met de beheerder."
 
 msgid "No token provided"
 msgstr "Geen toegangssleutel opgegeven"
@@ -234,9 +243,9 @@ msgid ""
 "Please check the email configuration of the server or contact the "
 "administrator."
 msgstr ""
-"Sorry, er is iets fout gegaan bij het verzenden van de uitnodigingsmails. "
-"Controleer de e-mailinstellingen van de server of neem contact op met de "
-"beheerder."
+"Sorry, er is iets fout gegaan bij het verzenden van de uitnodigingsmails."
+" Controleer de e-mailinstellingen van de server of neem contact op met de"
+" beheerder."
 
 #, python-format
 msgid "%(member)s has been added"
@@ -321,6 +330,14 @@ msgstr "tonen"
 
 msgid "The Dashboard is currently deactivated."
 msgstr "De overzichtspagina is momenteel uitgeschakeld."
+
+#, fuzzy
+msgid "Download Mobile Application"
+msgstr "Mobiele app"
+
+#, fuzzy
+msgid "Get it on"
+msgstr "Inloggen"
 
 msgid "you sure?"
 msgstr "weet je het zeker?"
@@ -429,10 +446,10 @@ msgid ""
 "                The rest of the project history will be unaffected. This "
 "action cannot be undone."
 msgstr ""
-"Weet je zeker dat je alle vastgelegde IP-adressen wilt verwijderen van dit "
-"project?\n"
-"De rest van de projectgeschiedenis blijft onveranderd. Deze actie kan niet "
-"ongedaan worden gemaakt."
+"Weet je zeker dat je alle vastgelegde IP-adressen wilt verwijderen van "
+"dit project?\n"
+"De rest van de projectgeschiedenis blijft onveranderd. Deze actie kan "
+"niet ongedaan worden gemaakt."
 
 msgid "Close"
 msgstr "Sluiten"
@@ -472,8 +489,8 @@ msgid ""
 msgstr ""
 "\n"
 "            <i>Dit project heeft de geschiedenis uitgeschakeld. Nieuwe "
-"acties zullen niet hieronder verschijnen. Je kunt de geschiedenis aanzetten "
-"op de </i>\n"
+"acties zullen niet hieronder verschijnen. Je kunt de geschiedenis "
+"aanzetten op de </i>\n"
 "            <a href=\"%(url)s\">instellingen-pagina</a>\n"
 "            "
 
@@ -605,8 +622,8 @@ msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
 msgstr ""
-"Hergebruik geen persoonlijk wachtwoord. Kies een privécode en stuur het naar "
-"je vrienden"
+"Hergebruik geen persoonlijk wachtwoord. Kies een privécode en stuur het "
+"naar je vrienden"
 
 msgid "Account manager"
 msgstr "Accountbeheer"
@@ -620,12 +637,6 @@ msgstr "Schikken"
 msgid "Statistics"
 msgstr "Statistieken"
 
-msgid "History"
-msgstr "Geschiedenis"
-
-msgid "Settings"
-msgstr "Instellingen"
-
 msgid "Languages"
 msgstr "Talen"
 
@@ -634,6 +645,12 @@ msgstr "Projecten"
 
 msgid "Start a new project"
 msgstr "Nieuw project starten"
+
+msgid "History"
+msgstr "Geschiedenis"
+
+msgid "Settings"
+msgstr "Instellingen"
 
 msgid "Other projects :"
 msgstr "Overige projecten:"
@@ -826,3 +843,4 @@ msgstr "Periode"
 #~ " vrienden. Deze wordt in platte tekst"
 #~ " opgeslagen op de server, dus gebruik"
 #~ " geen persoonlijk wachtwoord!"
+

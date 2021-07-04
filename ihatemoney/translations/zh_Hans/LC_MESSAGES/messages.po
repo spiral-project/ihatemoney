@@ -1,19 +1,20 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-30 21:50+0200\n"
+"POT-Creation-Date: 2021-07-07 01:01+0200\n"
 "PO-Revision-Date: 2020-10-12 04:47+0000\n"
 "Last-Translator: Jwen921 <yangjingwen0921@gmail.com>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
-"i-hate-money/i-hate-money/zh_Hans/>\n"
 "Language: zh_Hans\n"
+"Language-Team: Chinese (Simplified) "
+"<https://hosted.weblate.org/projects/i-hate-money/i-hate-money/zh_Hans/>"
+"\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.3-dev\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -23,7 +24,8 @@ msgstr "金额或符号无效。仅限数字与+-*/符号。"
 msgid "Project name"
 msgstr "账目名称"
 
-msgid "Private code"
+#, fuzzy
+msgid "New private code"
 msgstr "共享密钥"
 
 msgid "Email"
@@ -38,6 +40,11 @@ msgstr "用IP追踪项目历史"
 msgid "Default Currency"
 msgstr "默认货币"
 
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+
 msgid "Import previously exported JSON file"
 msgstr "导入之前的JSON 文件"
 
@@ -46,6 +53,9 @@ msgstr "导入"
 
 msgid "Project identifier"
 msgstr "账目名称"
+
+msgid "Private code"
+msgstr "共享密钥"
 
 msgid "Create the project"
 msgstr "创建账目明细"
@@ -307,6 +317,14 @@ msgstr "显示"
 
 msgid "The Dashboard is currently deactivated."
 msgstr "操作面板失效"
+
+#, fuzzy
+msgid "Download Mobile Application"
+msgstr "手机软件"
+
+#, fuzzy
+msgid "Get it on"
+msgstr "进入"
 
 msgid "you sure?"
 msgstr "确定？"
@@ -602,12 +620,6 @@ msgstr "解决"
 msgid "Statistics"
 msgstr "统计"
 
-msgid "History"
-msgstr "历史"
-
-msgid "Settings"
-msgstr "设置"
-
 msgid "Languages"
 msgstr "语言"
 
@@ -616,6 +628,12 @@ msgstr "项目"
 
 msgid "Start a new project"
 msgstr "开始一个新项目"
+
+msgid "History"
+msgstr "历史"
+
+msgid "Settings"
+msgstr "设置"
 
 msgid "Other projects :"
 msgstr "其他项目："
@@ -798,3 +816,4 @@ msgstr "期间"
 #~ "is by the server, so don\\'t reuse"
 #~ " a personal password!"
 #~ msgstr "进入码已发送给朋友，会被保存在服务器，不要重复使用私人密码!"
+

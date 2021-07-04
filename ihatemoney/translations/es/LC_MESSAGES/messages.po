@@ -1,30 +1,32 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-22 14:01+0200\n"
+"POT-Creation-Date: 2021-07-07 01:01+0200\n"
 "PO-Revision-Date: 2021-04-14 08:27+0000\n"
 "Last-Translator: fcoterroba <fcoterroba@gmail.com>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/es/>\n"
 "Language: es\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
-"Cantidad o expresión no válida. Solo se aceptan números y los operadores + - "
-"* /."
+"Cantidad o expresión no válida. Solo se aceptan números y los operadores "
+"+ - * /."
 
 msgid "Project name"
 msgstr "Nombre del proyecto"
 
-msgid "Private code"
+#, fuzzy
+msgid "New private code"
 msgstr "Código privado"
 
 msgid "Email"
@@ -39,6 +41,11 @@ msgstr "Usar trackeo IP para historial de proyecto"
 msgid "Default Currency"
 msgstr "Moneda por defecto"
 
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+
 msgid "Import previously exported JSON file"
 msgstr "Importar .JSON previamente exportado"
 
@@ -47,6 +54,9 @@ msgstr "Importar"
 
 msgid "Project identifier"
 msgstr "Identificador del proyecto"
+
+msgid "Private code"
+msgstr "Código privado"
 
 msgid "Create the project"
 msgstr "Crear proyecto"
@@ -309,6 +319,13 @@ msgid "show"
 msgstr "mostrar"
 
 msgid "The Dashboard is currently deactivated."
+msgstr ""
+
+#, fuzzy
+msgid "Download Mobile Application"
+msgstr "Aplicación móvil"
+
+msgid "Get it on"
 msgstr ""
 
 msgid "you sure?"
@@ -580,8 +597,8 @@ msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
 msgstr ""
-"No reutilizes una contraseña personal. Escoge un código privado i envíalo a "
-"tus amigos"
+"No reutilizes una contraseña personal. Escoge un código privado i envíalo"
+" a tus amigos"
 
 msgid "Account manager"
 msgstr ""
@@ -595,12 +612,6 @@ msgstr ""
 msgid "Statistics"
 msgstr "Estadísticas"
 
-msgid "History"
-msgstr "Historia"
-
-msgid "Settings"
-msgstr "Ajustes"
-
 msgid "Languages"
 msgstr "Idiomas"
 
@@ -609,6 +620,12 @@ msgstr "Proyectos"
 
 msgid "Start a new project"
 msgstr ""
+
+msgid "History"
+msgstr "Historia"
+
+msgid "Settings"
+msgstr "Ajustes"
 
 msgid "Other projects :"
 msgstr "Otros proyectos :"
@@ -773,3 +790,4 @@ msgstr "Gastos por mes"
 
 msgid "Period"
 msgstr "Período"
+
