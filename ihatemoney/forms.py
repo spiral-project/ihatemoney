@@ -112,8 +112,12 @@ class EditProjectForm(FlaskForm):
 
     def __init__(self, *args, **kwargs):
         if not hasattr(self, "id"):
-            # We must access the project to validate the default currency.
-            # Mimics a StringField. Defaut to empty string to ensure that query run smoothly.
+            # We must access the project to validate the default currency, using its id.
+            # In ProjectForm, 'id' is provided, but not in this base class, so it *must*
+            # be provided by callers.
+            # Since id can be defined as a WTForms.StringField, we mimics it,
+            # using an object that can have a 'data' attribute.
+            # It defaults to empty string to ensure that query run smoothly.
             self.id = SimpleNamespace(data=kwargs.pop("id", ""))
         super().__init__(*args, **kwargs)
         self.default_currency.choices = [
