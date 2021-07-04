@@ -1582,13 +1582,14 @@ class BudgetTestCase(IhatemoneyTestCase):
         converter = CurrencyConverter()
         converter.get_rates = MagicMock(return_value=mock_data)
 
-        # A project should be editable
+        # Default currency is 'XXX', but we should start from a project with a currency
         self.post_project("raclette", default_currency="USD")
 
         # add members
         self.client.post("/raclette/members/add", data={"name": "zorglub"})
         self.client.post("/raclette/members/add", data={"name": "fred"})
 
+        # Bill with a different currency than project's default
         self.client.post(
             "/raclette/add",
             data={
@@ -1608,6 +1609,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             bill.amount, "EUR", "USD"
         )
 
+        # And switch project to the currency from the bill we created
         project.switch_currency("EUR")
         bill = project.get_bills().first()
         assert bill.converted_amount == bill.amount
