@@ -57,7 +57,7 @@ If you were running IHateMoney using Python < 3.6, you must, **before** upgradin
   or several of the following deployment options :
 
   - Gunicorn (Nginx)
-  - MySQL
+  - MariaDB
   - PostgreSQL
 
 If so, pick the ``pip`` commands to use in the relevant section(s) of
@@ -65,6 +65,30 @@ If so, pick the ``pip`` commands to use in the relevant section(s) of
 
 Then follow :ref:`general-procedure` from step 1. in order to complete the update.
 
+Switch to MariaDB >= 10.3.2 instead of MySQL
+++++++++++++++++++++++++++++++++++++++++++++
+
+.. note:: If you are using SQLite or PostgreSQL, you can skip this section, no
+          special action is required.
+
+If you were running IHateMoney with MySQL, you must switch to MariaDB.
+MySQL is no longer a supported database option.
+
+In addition, the minimum supported version of MariaDB is 10.3.2.
+See `this MySQL / MariaDB issue <https://github.com/spiral-project/ihatemoney/issues/632>`_
+for details.
+
+To upgrade:
+
+1. Ensure you have a MariaDB server installed and configured, and that its
+   version is at least 10.3.2.
+
+2. Copy your database from MySQL to MariaDB.
+
+3. Ensure that IHateMoney is correctly configured to use your MariaDB database,
+   see :ref:`configuration`.
+
+Then follow :ref:`general-procedure` from step 1. in order to complete the update.
 
 2.x → 3.x
 ---------

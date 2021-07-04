@@ -20,7 +20,7 @@ Requirements
 «Ihatemoney» depends on:
 
 * **Python**: version 3.6 to 3.9 included will work.
-* **A Backend**: to choose among MySQL, PostgreSQL, SQLite or Memory.
+* **A Backend**: to choose among SQLite, PostgreSQL, MariaDB (>= 10.3.2) or Memory.
 * **Virtual environment** (recommended): `python3-venv` package under Debian/Ubuntu.
 
 We recommend to use `virtual environment <https://docs.python.org/3/tutorial/venv.html>`_ but
@@ -65,10 +65,10 @@ Once installed, you can start a test server::
 
 And point your browser at `http://localhost:5000 <http://localhost:5000>`_.
 
-Configure database with MySQL/MariaDB (optional)
+Configure database with MariaDB (optional)
 ================================================
 
-.. note:: Only required if you use MySQL/MariaDB.
+.. note:: Only required if you use MariaDB.  Make sure to use MariaDB 10.3.2 or newer.
 
 1. Install PyMySQL dependencies. On Debian or Ubuntu, that would be::
 
@@ -184,7 +184,7 @@ Install Gunicorn::
      Obviously, adapt the ``ExecStart`` path for your installation folder.
 
      If you use SQLite as database: remove mentions of ``postgresql.service`` in ``ihatemoney.service``.
-     If you use MySQL or MariaDB as database: replace mentions of ``postgresql.service`` by ``mysql.service`` or ``mariadb.service`` in ``ihatemoney.service``.
+     If you use MariaDB as database: replace mentions of ``postgresql.service`` by ``mariadb.service`` in ``ihatemoney.service``.
 
      Then reload systemd, enable and start ``ihatemoney``::
 

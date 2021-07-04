@@ -30,7 +30,7 @@ Requirements
 ============
 
 * **Python**: version 3.6 to 3.9.
-* **Backends**: MySQL, PostgreSQL, SQLite, Memory.
+* **Backends**: SQLite, PostgreSQL, MariaDB (version 10.3.2 or above), Memory.
 
 Contributing
 ============
