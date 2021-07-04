@@ -289,14 +289,15 @@ class Project(db.Model):
                     # Strip currency
                     bill.amount = bill.converted_amount
                     bill.original_currency = CurrencyConverter.no_currency
+                elif bill.original_currency == CurrencyConverter.no_currency:
+                    # Bills that were created without currency will be set to the new currency
+                    bill.original_currency = new_currency
+                    bill.converted_amount = bill.amount
                 else:
-                    # Switch to new currency for everyone
+                    # Convert amount for others, without touching original_currency
                     bill.converted_amount = CurrencyConverter().exchange_currency(
                         bill.amount, bill.original_currency, new_currency
                     )
-                    # Add the currency for bills that were created without currency
-                    if bill.original_currency == CurrencyConverter.no_currency:
-                        bill.original_currency = new_currency
                 db.session.add(bill)
         self.default_currency = new_currency
         db.session.add(self)
