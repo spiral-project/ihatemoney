@@ -1,19 +1,19 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-30 21:50+0200\n"
+"POT-Creation-Date: 2021-07-07 01:01+0200\n"
 "PO-Revision-Date: 2021-06-24 18:34+0000\n"
 "Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
-"Language-Team: Greek <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/el/>\n"
 "Language: el\n"
+"Language-Team: Greek <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/el/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7.1-dev\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -23,7 +23,8 @@ msgstr ""
 msgid "Project name"
 msgstr "Τίτλος εργασίας"
 
-msgid "Private code"
+#, fuzzy
+msgid "New private code"
 msgstr "Ιδιωτικός κωδικός"
 
 msgid "Email"
@@ -38,6 +39,11 @@ msgstr "Χρήση παρακολούθησης IP για ιστορικό έρ�
 msgid "Default Currency"
 msgstr "Προεπιλεγμένο Νόμισμα"
 
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+
 msgid "Import previously exported JSON file"
 msgstr "Εισαγωγή αρχείου JSON που έχει εξαχθεί προηγουμένως"
 
@@ -46,6 +52,9 @@ msgstr "Εισαγωγή"
 
 msgid "Project identifier"
 msgstr "Αναγνωριστικό έργου"
+
+msgid "Private code"
+msgstr "Ιδιωτικός κωδικός"
 
 msgid "Create the project"
 msgstr "Δημιουργήστε το έργο"
@@ -169,8 +178,7 @@ msgstr ""
 "προσπάθειες."
 
 msgid "You either provided a bad token or no project identifier."
-msgstr ""
-"Είτε δώσατε ένα εσφαλμένο διακριτικό είτε δεν δώσατε αναγνωριστικό έργου."
+msgstr "Είτε δώσατε ένα εσφαλμένο διακριτικό είτε δεν δώσατε αναγνωριστικό έργου."
 
 msgid "This private code is not the right one"
 msgstr "Αυτός ο ιδιωτικός κωδικός δεν είναι ο σωστός"
@@ -186,8 +194,8 @@ msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
-"Προσπαθήσαμε να σας στείλουμε ένα εμάιλ υπενθύμισης, αλλά υπήρξε ένα λάθος. "
-"Μπορείτε ακόμα να χρησιμοποιήσετε το πρότζεκτ κανονικά."
+"Προσπαθήσαμε να σας στείλουμε ένα εμάιλ υπενθύμισης, αλλά υπήρξε ένα "
+"λάθος. Μπορείτε ακόμα να χρησιμοποιήσετε το πρότζεκτ κανονικά."
 
 #, python-format
 msgid "The project identifier is %(project)s"
@@ -268,8 +276,7 @@ msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Λυπούμαστε, δεν ήταν δυνατή η εύρεση της σελίδας που ζητήσατε."
 
 msgid "The best thing to do is probably to get back to the main page."
-msgstr ""
-"Το καλύτερο που έχετε να κάνετε είναι να επιστρέψετε στην κεντρική σελίδα."
+msgstr "Το καλύτερο που έχετε να κάνετε είναι να επιστρέψετε στην κεντρική σελίδα."
 
 msgid "Back to the list"
 msgstr "Επιστροφή στη λίστα"
@@ -279,7 +286,8 @@ msgstr "Οι εργασίες διαχείρισης είναι προς το π
 
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr ""
-"Το έργο στο οποίο προσπαθείτε να αποκτήσετε πρόσβαση δεν υπάρχει, θέλετε να"
+"Το έργο στο οποίο προσπαθείτε να αποκτήσετε πρόσβαση δεν υπάρχει, θέλετε "
+"να"
 
 msgid "create it"
 msgstr "δημιουργήστε αυτό"
@@ -317,6 +325,13 @@ msgstr "εμφάνιση"
 msgid "The Dashboard is currently deactivated."
 msgstr "Ο πίνακας ελέγχου είναι προς το παρόν απενεργοποιημένος."
 
+msgid "Download Mobile Application"
+msgstr ""
+
+#, fuzzy
+msgid "Get it on"
+msgstr "Συνδεθείτε"
+
 msgid "you sure?"
 msgstr "Είστε σίγουρος;"
 
@@ -337,7 +352,8 @@ msgstr "Στοιχεία λογαριασμού"
 
 msgid "Download the list of bills with owner, amount, reason,... "
 msgstr ""
-"Κατεβάστε τη λίστα των λογαριασμών με τον ιδιοκτήτη, το ποσό, την αιτία,... "
+"Κατεβάστε τη λίστα των λογαριασμών με τον ιδιοκτήτη, το ποσό, την "
+"αιτία,... "
 
 msgid "Settle plans"
 msgstr "Διευθέτηση σχεδίων"
@@ -602,12 +618,6 @@ msgstr ""
 msgid "Statistics"
 msgstr ""
 
-msgid "History"
-msgstr ""
-
-msgid "Settings"
-msgstr ""
-
 msgid "Languages"
 msgstr ""
 
@@ -615,6 +625,12 @@ msgid "Projects"
 msgstr ""
 
 msgid "Start a new project"
+msgstr ""
+
+msgid "History"
+msgstr ""
+
+msgid "Settings"
 msgstr ""
 
 msgid "Other projects :"
@@ -796,3 +812,4 @@ msgstr "Περίοδος"
 #~ "is by the server, so don\\'t reuse"
 #~ " a personal password!"
 #~ msgstr ""
+

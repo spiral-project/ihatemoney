@@ -1,18 +1,20 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-30 01:37+0200\n"
+"POT-Creation-Date: 2021-07-07 01:01+0200\n"
 "PO-Revision-Date: 2021-05-26 07:33+0000\n"
-"Last-Translator: Kristoffer Grundström <swedishsailfishosuser@tutanota.com>\n"
-"Language-Team: Swedish <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/sv/>\n"
+"Last-Translator: Kristoffer Grundström "
+"<swedishsailfishosuser@tutanota.com>\n"
 "Language: sv\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/sv/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7-dev\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -22,7 +24,8 @@ msgstr ""
 msgid "Project name"
 msgstr "Namn på projektet"
 
-msgid "Private code"
+#, fuzzy
+msgid "New private code"
 msgstr "Privat kod"
 
 msgid "Email"
@@ -37,6 +40,11 @@ msgstr "Använd IP-spårning för projekthistorik"
 msgid "Default Currency"
 msgstr "Standardvaluta"
 
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+
 msgid "Import previously exported JSON file"
 msgstr "Importera tidigare exporterad JSON-fil"
 
@@ -45,6 +53,9 @@ msgstr "Importera"
 
 msgid "Project identifier"
 msgstr "Projektidentifierare"
+
+msgid "Private code"
+msgstr "Privat kod"
 
 msgid "Create the project"
 msgstr "Skapa projektet"
@@ -164,7 +175,8 @@ msgstr "För många misslyckade inloggningsförsök, försök igen senare."
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr ""
-"Det här lösenordet för admin är inte det rätta. Endast %(num)d försök kvar."
+"Det här lösenordet för admin är inte det rätta. Endast %(num)d försök "
+"kvar."
 
 msgid "You either provided a bad token or no project identifier."
 msgstr ""
@@ -183,8 +195,8 @@ msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
-"Vi försökte skicka en påminnelse till din e-postadress, men det uppstod ett "
-"fel. Du kan fortfarande använda det här projektet normalt."
+"Vi försökte skicka en påminnelse till din e-postadress, men det uppstod "
+"ett fel. Du kan fortfarande använda det här projektet normalt."
 
 #, python-format
 msgid "The project identifier is %(project)s"
@@ -312,6 +324,13 @@ msgstr "visa"
 msgid "The Dashboard is currently deactivated."
 msgstr "Instrumentpanelen är för närvarande inaktiverad."
 
+#, fuzzy
+msgid "Download Mobile Application"
+msgstr "Mobilapplikation"
+
+msgid "Get it on"
+msgstr ""
+
 msgid "you sure?"
 msgstr "säker?"
 
@@ -431,8 +450,8 @@ msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
 msgstr ""
-"Är du säker på att du vill ta bort alla historik för det här projektet? Den "
-"här åtgärden kan inte göras ogjord."
+"Är du säker på att du vill ta bort alla historik för det här projektet? "
+"Den här åtgärden kan inte göras ogjord."
 
 msgid "Added"
 msgstr "Lades till"
@@ -469,8 +488,8 @@ msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
 "recording disabled. "
 msgstr ""
-"Några poster här nedan innehåller IP-adresser, fastän det här projektet har "
-"IP-inspelning inaktiverat. "
+"Några poster här nedan innehåller IP-adresser, fastän det här projektet "
+"har IP-inspelning inaktiverat. "
 
 msgid "Delete stored IP addresses"
 msgstr "Ta bort lagrade IP-adresser"
@@ -598,12 +617,6 @@ msgstr ""
 msgid "Statistics"
 msgstr "Statistik"
 
-msgid "History"
-msgstr "Historik"
-
-msgid "Settings"
-msgstr "Inställningar"
-
 msgid "Languages"
 msgstr "Språk"
 
@@ -612,6 +625,12 @@ msgstr "Projekt"
 
 msgid "Start a new project"
 msgstr "Starta ett nytt projekt"
+
+msgid "History"
+msgstr "Historik"
+
+msgid "Settings"
+msgstr "Inställningar"
 
 msgid "Other projects :"
 msgstr "Andra projekt :"
@@ -776,3 +795,4 @@ msgstr "Kostnader per månad"
 
 msgid "Period"
 msgstr "Period"
+

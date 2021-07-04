@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-30 21:50+0200\n"
+"POT-Creation-Date: 2021-07-07 01:01+0200\n"
 "PO-Revision-Date: 2020-05-21 18:48+0000\n"
 "Last-Translator: Andrew Zaplitnyak <zaplitnyak@gmail.com>\n"
 "Language: uk\n"
@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -24,7 +24,8 @@ msgstr "Не вірна сума чи вираз. Приймаються тіл�
 msgid "Project name"
 msgstr "Назва проєкту"
 
-msgid "Private code"
+#, fuzzy
+msgid "New private code"
 msgstr "Приватний код"
 
 msgid "Email"
@@ -39,6 +40,11 @@ msgstr "Слідкувати за мережевою адресою(IP) для �
 msgid "Default Currency"
 msgstr "Стандартна валюта"
 
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+
 msgid "Import previously exported JSON file"
 msgstr "Імпортувати попередньо експортований JSON файл"
 
@@ -47,6 +53,9 @@ msgstr "Імпортувати"
 
 msgid "Project identifier"
 msgstr "Ідентифікатор проєкту"
+
+msgid "Private code"
+msgstr "Приватний код"
 
 msgid "Create the project"
 msgstr "Створити проєкт"
@@ -310,6 +319,13 @@ msgstr ""
 
 msgid "The Dashboard is currently deactivated."
 msgstr ""
+
+msgid "Download Mobile Application"
+msgstr ""
+
+#, fuzzy
+msgid "Get it on"
+msgstr "Отримати в"
 
 msgid "you sure?"
 msgstr ""
@@ -593,12 +609,6 @@ msgstr ""
 msgid "Statistics"
 msgstr ""
 
-msgid "History"
-msgstr ""
-
-msgid "Settings"
-msgstr ""
-
 msgid "Languages"
 msgstr ""
 
@@ -606,6 +616,12 @@ msgid "Projects"
 msgstr ""
 
 msgid "Start a new project"
+msgstr ""
+
+msgid "History"
+msgstr ""
+
+msgid "Settings"
 msgstr ""
 
 msgid "Other projects :"

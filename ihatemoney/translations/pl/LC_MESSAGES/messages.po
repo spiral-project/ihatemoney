@@ -1,20 +1,20 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-30 21:50+0200\n"
+"POT-Creation-Date: 2021-07-07 01:01+0200\n"
 "PO-Revision-Date: 2020-06-03 15:41+0000\n"
 "Last-Translator: Szylu <chipolade@gmail.com>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/pl/>\n"
 "Language: pl\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/pl/>\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && "
+"(n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.1-dev\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -26,7 +26,8 @@ msgstr ""
 msgid "Project name"
 msgstr "Nazwa projektu"
 
-msgid "Private code"
+#, fuzzy
+msgid "New private code"
 msgstr "Kod prywatny"
 
 msgid "Email"
@@ -41,6 +42,11 @@ msgstr "Użyj śledzenia IP do historii projektu"
 msgid "Default Currency"
 msgstr "Domyślna waluta"
 
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+
 msgid "Import previously exported JSON file"
 msgstr "Zaimportuj wcześniej wyeksportowany plik JSON"
 
@@ -49,6 +55,9 @@ msgstr "Importuj"
 
 msgid "Project identifier"
 msgstr "Identyfikator projektu"
+
+msgid "Private code"
+msgstr "Kod prywatny"
 
 msgid "Create the project"
 msgstr "Stwórz projekt"
@@ -186,8 +195,8 @@ msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
-"Próbowaliśmy wysłać Ci wiadomość e-mail z przypomnieniem, ale wystąpił błąd. "
-"Nadal możesz normalnie korzystać z projektu."
+"Próbowaliśmy wysłać Ci wiadomość e-mail z przypomnieniem, ale wystąpił "
+"błąd. Nadal możesz normalnie korzystać z projektu."
 
 #, python-format
 msgid "The project identifier is %(project)s"
@@ -324,6 +333,14 @@ msgstr "pokaż"
 
 msgid "The Dashboard is currently deactivated."
 msgstr "Pulpit nawigacyjny jest obecnie dezaktywowany."
+
+#, fuzzy
+msgid "Download Mobile Application"
+msgstr "Aplikacja mobilna"
+
+#, fuzzy
+msgid "Get it on"
+msgstr "Wejdź"
 
 msgid "you sure?"
 msgstr "jesteś pewny?"
@@ -629,12 +646,6 @@ msgstr "Rozliczenia"
 msgid "Statistics"
 msgstr "Statystyki"
 
-msgid "History"
-msgstr "Historia"
-
-msgid "Settings"
-msgstr "Ustawienia"
-
 msgid "Languages"
 msgstr "Języki"
 
@@ -643,6 +654,12 @@ msgstr "Projekty"
 
 msgid "Start a new project"
 msgstr "Rozpocznij nowy projekt"
+
+msgid "History"
+msgstr "Historia"
+
+msgid "Settings"
+msgstr "Ustawienia"
 
 msgid "Other projects :"
 msgstr "Inne projekty:"
@@ -837,3 +854,4 @@ msgstr "Okres"
 #~ "znajomych. Jest przechowywany w stanie "
 #~ "niezmienionym przez serwer, więc nie "
 #~ "używaj ponownie osobistego hasła!"
+
