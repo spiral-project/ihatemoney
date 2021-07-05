@@ -1661,7 +1661,9 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         # And switch project to no currency: amount should be equal to what was submitted
         project.switch_currency(converter.no_currency)
-        no_currency_bills = [(bill.amount, bill.converted_amount) for bill in project.get_bills()]
+        no_currency_bills = [
+            (bill.amount, bill.converted_amount) for bill in project.get_bills()
+        ]
         assert no_currency_bills == [(5.0, 5.0), (10.0, 10.0)]
 
 
