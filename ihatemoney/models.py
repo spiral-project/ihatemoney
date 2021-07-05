@@ -272,24 +272,26 @@ class Project(db.Model):
         return pretty_bills
 
     def switch_currency(self, new_currency):
+        if new_currency == self.default_currency:
+            return
         # Update converted currency
-        if new_currency != self.default_currency:
-            if (
-                new_currency == CurrencyConverter.no_currency
-                and self.has_multiple_currencies()
-            ):
+        if new_currency == CurrencyConverter.no_currency:
+            if self.has_multiple_currencies():
                 raise ValueError(f"Can't unset currency of project {self.id}")
-            for bill in self.get_bills_unordered():
 
-                if new_currency == CurrencyConverter.no_currency:
-                    # Use old currency to flatten all amount before stripping
-                    bill.converted_amount = CurrencyConverter().exchange_currency(
-                        bill.amount, bill.original_currency, self.default_currency
-                    )
-                    # Strip currency
-                    bill.amount = bill.converted_amount
-                    bill.original_currency = CurrencyConverter.no_currency
-                elif bill.original_currency == CurrencyConverter.no_currency:
+            for bill in self.get_bills_unordered():
+                # We are removing the currency, and we already checked that all bills
+                # had the same currency: it means that we can simply strip the currency
+                # without converting the amounts. We basically ignore the current default_currency
+
+                # Reset converted amount in case it was different from the original amount
+                bill.converted_amount = bill.amount
+                # Strip currency
+                bill.original_currency = CurrencyConverter.no_currency
+                db.session.add(bill)
+        else:
+            for bill in self.get_bills_unordered():
+                if bill.original_currency == CurrencyConverter.no_currency:
                     # Bills that were created without currency will be set to the new currency
                     bill.original_currency = new_currency
                     bill.converted_amount = bill.amount
@@ -299,6 +301,7 @@ class Project(db.Model):
                         bill.amount, bill.original_currency, new_currency
                     )
                 db.session.add(bill)
+
         self.default_currency = new_currency
         db.session.add(self)
         db.session.commit()
