@@ -160,10 +160,8 @@ class EditProjectForm(FlaskForm):
         ):
             raise ValidationError(
                 _(
-                    (
-                        "This project cannot be set to 'no currency'"
-                        " because it contains bills in multiple currencies."
-                    )
+                    "This project cannot be set to 'no currency'"
+                    " because it contains bills in multiple currencies."
                 )
             )
 
