@@ -17,6 +17,7 @@ from sqlalchemy_continuum import make_versioned, version_class
 from sqlalchemy_continuum.plugins import FlaskPlugin
 from werkzeug.security import generate_password_hash
 
+from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.patch_sqlalchemy_continuum import PatchedBuilder
 from ihatemoney.versioning import (
     ConditionalVersioningManager,
@@ -139,7 +140,7 @@ class Project(db.Model):
                 "spent": sum(
                     [
                         bill.pay_each() * member.weight
-                        for bill in self.get_bills().all()
+                        for bill in self.get_bills_unordered().all()
                         if member in bill.owers
                     ]
                 ),
@@ -156,7 +157,7 @@ class Project(db.Model):
         :rtype dict:
         """
         monthly = defaultdict(lambda: defaultdict(float))
-        for bill in self.get_bills().all():
+        for bill in self.get_bills_unordered().all():
             monthly[bill.date.year][bill.date.month] += bill.converted_amount
         return monthly
 
@@ -215,15 +216,25 @@ class Project(db.Model):
 
     def has_bills(self):
         """return if the project do have bills or not"""
-        return self.get_bills().count() > 0
+        return self.get_bills_unordered().count() > 0
 
-    def get_bills(self):
-        """Return the list of bills related to this project"""
+    def has_multiple_currencies(self):
+        """Return if multiple currencies are used"""
+        return self.get_bills_unordered().group_by(Bill.original_currency).count() > 1
+
+    def get_bills_unordered(self):
+        """Base query for bill list"""
         return (
             Bill.query.join(Person, Project)
             .filter(Bill.payer_id == Person.id)
             .filter(Person.project_id == Project.id)
             .filter(Project.id == self.id)
+        )
+
+    def get_bills(self):
+        """Return the list of bills related to this project"""
+        return (
+            self.get_bills_unordered()
             .order_by(Bill.date.desc())
             .order_by(Bill.creation_date.desc())
             .order_by(Bill.id.desc())
@@ -232,11 +243,8 @@ class Project(db.Model):
     def get_member_bills(self, member_id):
         """Return the list of bills related to a specific member"""
         return (
-            Bill.query.join(Person, Project)
-            .filter(Bill.payer_id == Person.id)
-            .filter(Person.project_id == Project.id)
+            self.get_bills_unordered()
             .filter(Person.id == member_id)
-            .filter(Project.id == self.id)
             .order_by(Bill.date.desc())
             .order_by(Bill.id.desc())
         )
@@ -262,6 +270,41 @@ class Project(db.Model):
                 }
             )
         return pretty_bills
+
+    def switch_currency(self, new_currency):
+        if new_currency == self.default_currency:
+            return
+        # Update converted currency
+        if new_currency == CurrencyConverter.no_currency:
+            if self.has_multiple_currencies():
+                raise ValueError(f"Can't unset currency of project {self.id}")
+
+            for bill in self.get_bills_unordered():
+                # We are removing the currency, and we already checked that all bills
+                # had the same currency: it means that we can simply strip the currency
+                # without converting the amounts. We basically ignore the current default_currency
+
+                # Reset converted amount in case it was different from the original amount
+                bill.converted_amount = bill.amount
+                # Strip currency
+                bill.original_currency = CurrencyConverter.no_currency
+                db.session.add(bill)
+        else:
+            for bill in self.get_bills_unordered():
+                if bill.original_currency == CurrencyConverter.no_currency:
+                    # Bills that were created without currency will be set to the new currency
+                    bill.original_currency = new_currency
+                    bill.converted_amount = bill.amount
+                else:
+                    # Convert amount for others, without touching original_currency
+                    bill.converted_amount = CurrencyConverter().exchange_currency(
+                        bill.amount, bill.original_currency, new_currency
+                    )
+                db.session.add(bill)
+
+        self.default_currency = new_currency
+        db.session.add(self)
+        db.session.commit()
 
     def remove_member(self, member_id):
         """Remove a member from the project.

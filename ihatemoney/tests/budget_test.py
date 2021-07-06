@@ -4,11 +4,14 @@ import json
 import re
 from time import sleep
 import unittest
+from unittest.mock import MagicMock
 
 from flask import session
+import pytest
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from ihatemoney import models
+from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
 from ihatemoney.versioning import LoggingMode
 
@@ -802,7 +805,8 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_statistics(self):
-        self.post_project("raclette")
+        # Output is checked with the USD sign
+        self.post_project("raclette", default_currency="USD")
 
         # add members
         self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
@@ -1442,6 +1446,225 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.client.post("/raclette/members/1/delete")
         member = models.Person.query.filter(models.Person.id == 1).one_or_none()
         self.assertEqual(member, None)
+
+    def test_currency_switch(self):
+
+        mock_data = {"USD": 1, "EUR": 0.8, "CAD": 1.2, CurrencyConverter.no_currency: 1}
+        converter = CurrencyConverter()
+        converter.get_rates = MagicMock(return_value=mock_data)
+
+        # A project should be editable
+        self.post_project("raclette")
+
+        # add members
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
+        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "tata"})
+
+        # create bills
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-31",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1, 2, 3],
+                "amount": "10.0",
+            },
+        )
+
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-31",
+                "what": "red wine",
+                "payer": 2,
+                "payed_for": [1, 3],
+                "amount": "20",
+            },
+        )
+
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2017-01-01",
+                "what": "refund",
+                "payer": 3,
+                "payed_for": [2],
+                "amount": "13.33",
+            },
+        )
+
+        project = models.Project.query.get("raclette")
+
+        # First all converted_amount should be the same as amount, with no currency
+        for bill in project.get_bills():
+            assert bill.original_currency == CurrencyConverter.no_currency
+            assert bill.amount == bill.converted_amount
+
+        # Then, switch to EUR, all bills must have been changed to this currency
+        project.switch_currency("EUR")
+        for bill in project.get_bills():
+            assert bill.original_currency == "EUR"
+            assert bill.amount == bill.converted_amount
+
+        # Add a bill in EUR, the current default currency
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2017-01-01",
+                "what": "refund from EUR",
+                "payer": 3,
+                "payed_for": [2],
+                "amount": "20",
+                "original_currency": "EUR",
+            },
+        )
+        last_bill = project.get_bills().first()
+        assert last_bill.converted_amount == last_bill.amount
+
+        # Erase all currencies
+        project.switch_currency(CurrencyConverter.no_currency)
+        for bill in project.get_bills():
+            assert bill.original_currency == CurrencyConverter.no_currency
+            assert bill.amount == bill.converted_amount
+
+        # Let's go back to EUR to test conversion
+        project.switch_currency("EUR")
+        # This is a bill in CAD
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2017-01-01",
+                "what": "Poutine",
+                "payer": 3,
+                "payed_for": [2],
+                "amount": "18",
+                "original_currency": "CAD",
+            },
+        )
+        last_bill = project.get_bills().first()
+        expected_amount = converter.exchange_currency(last_bill.amount, "CAD", "EUR")
+        assert last_bill.converted_amount == expected_amount
+
+        # Switch to USD. Now, NO bill should be in USD, since they already had a currency
+        project.switch_currency("USD")
+        for bill in project.get_bills():
+            assert bill.original_currency != "USD"
+            expected_amount = converter.exchange_currency(
+                bill.amount, bill.original_currency, "USD"
+            )
+            assert bill.converted_amount == expected_amount
+
+        # Switching back to no currency must fail
+        with pytest.raises(ValueError):
+            project.switch_currency(CurrencyConverter.no_currency)
+
+        # It also must fails with a nice error using the form
+        resp = self.client.post(
+            "/raclette/edit",
+            data={
+                "name": "demonstration",
+                "password": "demo",
+                "contact_email": "demo@notmyidea.org",
+                "project_history": "y",
+                "default_currency": converter.no_currency,
+            },
+        )
+        # A user displayed error should be generated, and its currency should be the same.
+        self.assertStatus(200, resp)
+        self.assertIn('<p class="alert alert-danger">', resp.data.decode("utf-8"))
+        self.assertEqual(models.Project.query.get("raclette").default_currency, "USD")
+
+    def test_currency_switch_to_bill_currency(self):
+
+        mock_data = {"USD": 1, "EUR": 0.8, "CAD": 1.2, CurrencyConverter.no_currency: 1}
+        converter = CurrencyConverter()
+        converter.get_rates = MagicMock(return_value=mock_data)
+
+        # Default currency is 'XXX', but we should start from a project with a currency
+        self.post_project("raclette", default_currency="USD")
+
+        # add members
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
+        self.client.post("/raclette/members/add", data={"name": "fred"})
+
+        # Bill with a different currency than project's default
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-31",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "amount": "10.0",
+                "original_currency": "EUR",
+            },
+        )
+
+        project = models.Project.query.get("raclette")
+
+        bill = project.get_bills().first()
+        assert bill.converted_amount == converter.exchange_currency(
+            bill.amount, "EUR", "USD"
+        )
+
+        # And switch project to the currency from the bill we created
+        project.switch_currency("EUR")
+        bill = project.get_bills().first()
+        assert bill.converted_amount == bill.amount
+
+    def test_currency_switch_to_no_currency(self):
+
+        mock_data = {"USD": 1, "EUR": 0.8, "CAD": 1.2, CurrencyConverter.no_currency: 1}
+        converter = CurrencyConverter()
+        converter.get_rates = MagicMock(return_value=mock_data)
+
+        # Default currency is 'XXX', but we should start from a project with a currency
+        self.post_project("raclette", default_currency="USD")
+
+        # add members
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
+        self.client.post("/raclette/members/add", data={"name": "fred"})
+
+        # Bills with a different currency than project's default
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-31",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "amount": "10.0",
+                "original_currency": "EUR",
+            },
+        )
+
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2017-01-01",
+                "what": "aspirine",
+                "payer": 2,
+                "payed_for": [1, 2],
+                "amount": "5.0",
+                "original_currency": "EUR",
+            },
+        )
+
+        project = models.Project.query.get("raclette")
+
+        for bill in project.get_bills_unordered():
+            assert bill.converted_amount == converter.exchange_currency(
+                bill.amount, "EUR", "USD"
+            )
+
+        # And switch project to no currency: amount should be equal to what was submitted
+        project.switch_currency(converter.no_currency)
+        no_currency_bills = [
+            (bill.amount, bill.converted_amount) for bill in project.get_bills()
+        ]
+        assert no_currency_bills == [(5.0, 5.0), (10.0, 10.0)]
 
 
 if __name__ == "__main__":

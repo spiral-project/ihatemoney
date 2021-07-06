@@ -1,5 +1,6 @@
 from datetime import datetime
 from re import match
+from types import SimpleNamespace
 
 import email_validator
 from flask import request
@@ -110,6 +111,14 @@ class EditProjectForm(FlaskForm):
     default_currency = SelectField(_("Default Currency"), validators=[DataRequired()])
 
     def __init__(self, *args, **kwargs):
+        if not hasattr(self, "id"):
+            # We must access the project to validate the default currency, using its id.
+            # In ProjectForm, 'id' is provided, but not in this base class, so it *must*
+            # be provided by callers.
+            # Since id can be defined as a WTForms.StringField, we mimics it,
+            # using an object that can have a 'data' attribute.
+            # It defaults to empty string to ensure that query run smoothly.
+            self.id = SimpleNamespace(data=kwargs.pop("id", ""))
         super().__init__(*args, **kwargs)
         self.default_currency.choices = [
             (currency_name, render_localized_currency(currency_name, detailed=True))
@@ -142,6 +151,22 @@ class EditProjectForm(FlaskForm):
         )
         return project
 
+    def validate_default_currency(form, field):
+        project = Project.query.get(form.id.data)
+        if (
+            project is not None
+            and field.data == CurrencyConverter.no_currency
+            and project.has_multiple_currencies()
+        ):
+            raise ValidationError(
+                _(
+                    (
+                        "This project cannot be set to 'no currency'"
+                        " because it contains bills in multiple currencies."
+                    )
+                )
+            )
+
     def update(self, project):
         """Update the project with the information from the form"""
         project.name = self.name.data
@@ -152,7 +177,7 @@ class EditProjectForm(FlaskForm):
 
         project.contact_email = self.contact_email.data
         project.logging_preference = self.logging_preference
-        project.default_currency = self.default_currency.data
+        project.switch_currency(self.default_currency.data)
 
         return project
 
