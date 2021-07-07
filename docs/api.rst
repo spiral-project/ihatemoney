@@ -18,13 +18,38 @@ same thing, curl is not a requirement.
 Authentication
 --------------
 
-To interact with bills and members, and to do something else than creating
-a project, you need to be authenticated. The only way to authenticate yourself
-currently is using the "basic" HTTP authentication.
+To interact with bills and members, and for any action other than creating a new
+project, you need to be authenticated. The simplest way to authenticate is to use
+"basic" HTTP authentication with the project ID and private code.
 
-For instance, here is how to see the what's in a project, using curl::
+For instance, to obtain information about a project, using curl::
 
     $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo
+
+It is also possible to generate a token, and then use it later to authenticate
+instead of basic auth.
+For instance, start by generating the token (of course, you need to authenticate)::
+
+    $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo/token
+    {"token": "eyJwcm9qZWN0X2lkIjoiZGVtbyJ9.M86C3AiZa_SFEyiddYXdTh2-OOI"}
+
+Make sure to store this token securely: it allows full access to the project.
+For instance, use it to obtain information about the project (replace PROJECT_TOKEN with
+the actual token)::
+
+    $ curl --oauth2-bearer "PROJECT_TOKEN" https://ihatemoney.org/api/projects/demo
+
+This works by sending the token in the Authorization header, so doing it "manually" with curl
+looks like::
+
+    $ curl --header "Authorization: Bearer PROJECT_TOKEN" https://ihatemoney.org/api/projects/demo
+
+This token can also be used to authenticate for a project on the web interface, which can be useful
+to generate invitation links. You would simply create an URL of the form::
+
+    https://ihatemoney.org/authenticate?token=PROJECT_TOKEN
+
+Such a link grants full access to the project associated with the token.
 
 Projects
 --------
