@@ -40,7 +40,11 @@ connection string. This will look like::
 `SECRET_KEY`
 ------------
 
-The secret key used to encrypt the cookies.
+The secret key used to encrypt cookies and generate secure tokens.  They are used
+to authenticate access to projects, both through the web interface and through the API.
+
+As such, you should never use a predictible secret key: an attacker with the knowledge
+of the secret key could easily access any project and bypass the private code verification.
 
 - **Production value:** `ihatemoney conf-example ihatemoney.cfg` sets it to
   something random, which is good.
