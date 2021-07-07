@@ -124,13 +124,6 @@
     {{ input(form.what, inline=True) }}
     {{ input(form.payer, inline=True, class="form-control custom-select") }}
     {{ input(form.amount, inline=True) }}
-    <details class="mb-2">
-        <summary class="mb-2">Options avancées</summary>
-        {% if g.project.default_currency != "XXX" %}
-            {{ input(form.original_currency, inline=True, class="form-control custom-select") }}
-        {% endif %}
-        {{ input(form.external_link, inline=True) }}
-    </details>
 
     <div class="form-group row">
         <label class="col-3" for="payed_for">{{ _("For whom?") }}</label>
@@ -148,6 +141,14 @@
             </div>
         </div>
     </div>
+    
+    <details class="mb-2">
+        <summary class="mb-2">{{ _("More options") }}</summary>
+        {% if g.project.default_currency != "XXX" %}
+            {{ input(form.original_currency, inline=True, class="form-control custom-select") }}
+        {% endif %}
+        {{ input(form.external_link, inline=True) }}
+    </details>
     </fieldset>
     <div class="actions">
         {{ form.submit(class="btn btn-primary") }}
