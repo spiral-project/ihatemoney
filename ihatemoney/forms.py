@@ -104,7 +104,10 @@ class CalculatorStringField(StringField):
 class EditProjectForm(FlaskForm):
     name = StringField(_("Project name"), validators=[DataRequired()])
     # If empty -> don't change the password
-    password = PasswordField(_("New private code"))
+    password = PasswordField(
+        _("New private code"),
+        description=_("Enter a new code if you want to change it"),
+    )
     contact_email = StringField(_("Email"), validators=[DataRequired(), Email()])
     project_history = BooleanField(_("Enable project history"))
     ip_recording = BooleanField(_("Use IP tracking for project history"))
