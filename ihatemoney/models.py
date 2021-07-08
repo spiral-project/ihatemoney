@@ -219,8 +219,14 @@ class Project(db.Model):
         return self.get_bills_unordered().count() > 0
 
     def has_multiple_currencies(self):
-        """Return if multiple currencies are used"""
-        return self.get_bills_unordered().group_by(Bill.original_currency).count() > 1
+        """Returns True if multiple currencies are used"""
+        # It would be more efficient to do the counting in the database,
+        # but this is called very rarely so we can tolerate if it's a bit
+        # slow. And doing this in Python is much more readable, see #784.
+        nb_currencies = len(
+            set(bill.original_currency for bill in self.get_bills_unordered())
+        )
+        return nb_currencies > 1
 
     def get_bills_unordered(self):
         """Base query for bill list"""
