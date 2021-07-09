@@ -130,7 +130,7 @@
         <div id="payed_for" class="controls col-9">
             <p>
                 <a class="badge badge-secondary" href="#" classid="selectall" onclick="selectCheckboxes(true)">{{ _("Everyone") }}</a>
-                <a class="badge badge-secondary" href="#" id="selectnone" onclick="selectCheckboxes(false)">{{_("Noone")}}</a>
+                <a class="badge badge-secondary" href="#" id="selectnone" onclick="selectCheckboxes(false)">{{_("No one")}}</a>
             </p>
             <div  class="d-flex flex-column flex-wrap overflow-auto" style="max-height: 20em;">
                 {% for key, value, checked in form.payed_for.iter_choices() | sort(attribute='1') %}
