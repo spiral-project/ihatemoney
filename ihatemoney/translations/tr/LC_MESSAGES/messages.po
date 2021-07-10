@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-07 01:01+0200\n"
-"PO-Revision-Date: 2020-06-01 16:41+0000\n"
+"PO-Revision-Date: 2021-07-10 15:34+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/tr/>\n"
 "Language: tr\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/tr/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.8-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 msgid ""
@@ -25,9 +25,8 @@ msgstr ""
 msgid "Project name"
 msgstr "Proje adı"
 
-#, fuzzy
 msgid "New private code"
-msgstr "Özel kod"
+msgstr "Yeni özel kod"
 
 msgid "Email"
 msgstr "E-posta"
@@ -45,6 +44,8 @@ msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
+"Bu proje, birden fazla para biriminde faturalar içerdiğinden 'para birimi "
+"yok' olarak ayarlanamaz."
 
 msgid "Import previously exported JSON file"
 msgstr "Önceden dışa aktarılan JSON dosyasını içe aktar"
@@ -333,11 +334,9 @@ msgstr "göster"
 msgid "The Dashboard is currently deactivated."
 msgstr "Gösterge paneli şu anda devre dışı."
 
-#, fuzzy
 msgid "Download Mobile Application"
-msgstr "Telefon Uygulaması"
+msgstr "Telefon Uygulamasını İndir"
 
-#, fuzzy
 msgid "Get it on"
 msgstr "Alın"
 
@@ -854,4 +853,3 @@ msgstr "Dönem"
 #~ " Sunucu tarafından olduğu gibi "
 #~ "saklanmaktadır, bu yüzden kişisel bir "
 #~ "parolayı tekrar kullanmayın!"
-
