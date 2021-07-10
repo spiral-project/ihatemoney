@@ -1,31 +1,32 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-30 21:50+0200\n"
-"PO-Revision-Date: 2021-02-21 04:50+0000\n"
-"Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/id/>\n"
+"POT-Creation-Date: 2021-07-07 01:01+0200\n"
+"PO-Revision-Date: 2021-04-14 08:27+0000\n"
+"Last-Translator: whenwesober <naomi16i_1298q@cikuh.com>\n"
 "Language: id\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/id/>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.5\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
-"Bukan jumlah atau operator yang valid. Hanya angka dan operator + -* / yang "
-"diterima."
+"Bukan jumlah atau operator yang valid. Hanya angka dan operator + -* / "
+"yang diterima."
 
 msgid "Project name"
 msgstr "Nama proyek"
 
-msgid "Private code"
+#, fuzzy
+msgid "New private code"
 msgstr "Kode pribadi"
 
 msgid "Email"
@@ -40,6 +41,11 @@ msgstr "Gunakan pelacakan IP untuk riwayat proyek"
 msgid "Default Currency"
 msgstr "Mata Uang Standar"
 
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+
 msgid "Import previously exported JSON file"
 msgstr "Impor file JSON yang sudah diekspor sebelumnya"
 
@@ -48,6 +54,9 @@ msgstr "Impor"
 
 msgid "Project identifier"
 msgstr "Pengidentifikasi proyek"
+
+msgid "Private code"
+msgstr "Kode pribadi"
 
 msgid "Create the project"
 msgstr "Buat proyek"
@@ -185,8 +194,8 @@ msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
-"Kami telah mengirimi Anda email pengingat, tetapi ada kesalahan. Anda masih "
-"dapat menggunakan proyek secara normal."
+"Kami telah mengirimi Anda email pengingat, tetapi ada kesalahan. Anda "
+"masih dapat menggunakan proyek secara normal."
 
 #, python-format
 msgid "The project identifier is %(project)s"
@@ -197,8 +206,9 @@ msgid ""
 "instructions. Please check the email configuration of the server or "
 "contact the administrator."
 msgstr ""
-"Maaf, ada galat saat mengirim email berisi instruksi pengaturan ulang kata "
-"sandi. Silakan periksa konfigurasi email peladen atau hubungi administrator."
+"Maaf, ada galat saat mengirim email berisi instruksi pengaturan ulang "
+"kata sandi. Silakan periksa konfigurasi email peladen atau hubungi "
+"administrator."
 
 msgid "No token provided"
 msgstr "Belum ada token diberikan"
@@ -320,6 +330,14 @@ msgstr "tampilkan"
 msgid "The Dashboard is currently deactivated."
 msgstr "Dasbor sekarang ini sedang dinonaktifkan."
 
+#, fuzzy
+msgid "Download Mobile Application"
+msgstr "Aplikasi Gawai"
+
+#, fuzzy
+msgid "Get it on"
+msgstr "Masuk"
+
 msgid "you sure?"
 msgstr "Anda yakin?"
 
@@ -399,10 +417,10 @@ msgid "Disabled IP Address Recording"
 msgstr "Perekaman Alamat IP Dinonaktifkan"
 
 msgid "Enabled Project History & IP Address Recording"
-msgstr ""
+msgstr "Aktifkan Riwayat Proyek & Rekaman Alamat IP"
 
 msgid "Enabled IP Address Recording"
-msgstr ""
+msgstr "Aktifkan Rekaman Alamat IP"
 
 msgid "History Settings Changed"
 msgstr "Setelan Riwayat Diubah"
@@ -467,8 +485,8 @@ msgid ""
 msgstr ""
 "\n"
 "            <i> Proyek ini memiliki riwayat yang dinonaktifkan. Tindakan "
-"baru tidak akan muncul di bawah ini. Anda dapat mengaktifkan riwayat pada</i>"
-"\n"
+"baru tidak akan muncul di bawah ini. Anda dapat mengaktifkan riwayat "
+"pada</i>\n"
 "            <a href=\"%(url)s\">halaman pengaturan</a>\n"
 "            "
 
@@ -481,90 +499,99 @@ msgid ""
 "them.</i></p>\n"
 "            "
 msgstr ""
+"\n"
+"            <i> Tabel di bawah mencerminkan tindakan yang direkam sebelum"
+" menonaktifkan riwayat proyek. Anda bisa\n"
+"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
+"data-target=\"#confirm-erase\"> membersihkan riwayat proyek </a> untuk "
+"menghapusnya. </i> </ p >\n"
+"            "
 
 msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
 "recording disabled. "
 msgstr ""
+"Beberapa entri dibawah mengandung alamat IP, walaupun proyek ini "
+"menonaktifkan rekaman alamat IP. "
 
 msgid "Delete stored IP addresses"
-msgstr ""
+msgstr "Hapus alamat IP yang disimpan"
 
 msgid "No history to erase"
-msgstr ""
+msgstr "Tidak ada riwayat untuk dihapus"
 
 msgid "Clear Project History"
-msgstr ""
+msgstr "Bersihkan Riwayat Proyek"
 
 msgid "No IP Addresses to erase"
-msgstr ""
+msgstr "Tidak ada Alamat IP untuk dihapus"
 
 msgid "Delete Stored IP Addresses"
-msgstr ""
+msgstr "Hapus alamat IP yang disimpan"
 
 msgid "Time"
-msgstr ""
+msgstr "Waktu"
 
 msgid "Event"
-msgstr ""
+msgstr "Peristiwa"
 
 msgid "IP address recording can be enabled on the settings page"
-msgstr ""
+msgstr "Perekaman alamat IP dapat diaktifkan di halaman pengaturan"
 
 msgid "IP address recording can be disabled on the settings page"
-msgstr ""
+msgstr "Perekaman alamat IP dapat dinonaktifkan di halaman pengaturan"
 
 msgid "From IP"
-msgstr ""
+msgstr "Dari IP"
 
 msgid "added"
-msgstr ""
+msgstr "ditambahkan"
 
 msgid "Project private code changed"
-msgstr ""
+msgstr "Kode pribadi proyek berubah"
 
 msgid "Project renamed to"
-msgstr ""
+msgstr "Proyek berganti nama menjadi"
 
 msgid "Project contact email changed to"
-msgstr ""
+msgstr "Email kontak proyek diubah menjadi"
 
 msgid "Project settings modified"
-msgstr ""
+msgstr "Pengaturan proyek diubah"
 
 msgid "deactivated"
-msgstr ""
+msgstr "dinonaktifkan"
 
 msgid "reactivated"
-msgstr ""
+msgstr "aktivasi ulang"
 
 msgid "renamed to"
-msgstr ""
+msgstr "berganti nama menjadi"
 
 msgid "External link changed to"
-msgstr ""
+msgstr "Tautan eksternal diubah menjadi"
 
 msgid "Amount"
-msgstr ""
+msgstr "Jumlah"
 
 #, python-format
 msgid "Amount in %(currency)s"
-msgstr ""
+msgstr "Jumlah dalam %(currency)s"
 
 msgid "modified"
-msgstr ""
+msgstr "diubah"
 
 msgid "removed"
-msgstr ""
+msgstr "dihapus"
 
 msgid "changed in a unknown way"
-msgstr ""
+msgstr "berubah dengan cara yang tidak diketahui"
 
 msgid "Nothing to list"
-msgstr ""
+msgstr "Tidak ada yang dicantumkan"
 
 msgid "Someone probably cleared the project history."
-msgstr ""
+msgstr "Seseorang mungkin membersihkan riwayat proyek."
 
 msgid "Manage your shared <br />expenses, easily"
 msgstr "Atur pembagian harga <br />Anda, dengan mudah"
@@ -600,6 +627,8 @@ msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
 msgstr ""
+"Jangan gunakan kembali kata sandi pribadi. Pilih kode pribadi dan "
+"kirimkan ke teman Anda"
 
 msgid "Account manager"
 msgstr "Pengatur akun"
@@ -613,12 +642,6 @@ msgstr "Atur"
 msgid "Statistics"
 msgstr "Statistik"
 
-msgid "History"
-msgstr ""
-
-msgid "Settings"
-msgstr "Pengaturan"
-
 msgid "Languages"
 msgstr "Bahasa"
 
@@ -627,6 +650,12 @@ msgstr "Proyek"
 
 msgid "Start a new project"
 msgstr "Mulai proyek baru"
+
+msgid "History"
+msgstr "Riwayat"
+
+msgid "Settings"
+msgstr "Pengaturan"
 
 msgid "Other projects :"
 msgstr "Proyek lainnya:"
@@ -660,7 +689,7 @@ msgstr "kamu bisa berkontribusi dan meningkatkannya!"
 
 #, python-format
 msgid "%(amount)s each"
-msgstr ""
+msgstr "%(amount)s masing-masing"
 
 msgid "Invite people"
 msgstr "Undang orang"
@@ -672,10 +701,10 @@ msgid "Add a new bill"
 msgstr "Tambah tagihan baru"
 
 msgid "Newer bills"
-msgstr ""
+msgstr "Tagihan terbaru"
 
 msgid "Older bills"
-msgstr ""
+msgstr "Tagihan terdahulu"
 
 msgid "When?"
 msgstr "Kapan?"
@@ -797,10 +826,10 @@ msgid "Spent"
 msgstr "Dihabiskan"
 
 msgid "Expenses by Month"
-msgstr ""
+msgstr "Pengeluaran menurut Bulan"
 
 msgid "Period"
-msgstr ""
+msgstr "Periode"
 
 #~ msgid "%(member)s had been added"
 #~ msgstr "%(member)s telah ditambahkan"
@@ -830,3 +859,4 @@ msgstr ""
 #~ "teman Anda. Kode ini disimpan dalam "
 #~ "bentuk teks biasa dalam server, jadi "
 #~ "jangan gunakan password Anda!"
+

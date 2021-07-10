@@ -1,18 +1,20 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-30 01:37+0200\n"
-"PO-Revision-Date: 2020-10-31 01:26+0000\n"
-"Last-Translator: Kristoffer Grundström <swedishsailfishosuser@tutanota.com>\n"
-"Language-Team: Swedish <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/sv/>\n"
+"POT-Creation-Date: 2021-07-07 01:01+0200\n"
+"PO-Revision-Date: 2021-05-26 07:33+0000\n"
+"Last-Translator: Kristoffer Grundström "
+"<swedishsailfishosuser@tutanota.com>\n"
 "Language: sv\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/sv/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2-dev\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -22,7 +24,8 @@ msgstr ""
 msgid "Project name"
 msgstr "Namn på projektet"
 
-msgid "Private code"
+#, fuzzy
+msgid "New private code"
 msgstr "Privat kod"
 
 msgid "Email"
@@ -32,158 +35,172 @@ msgid "Enable project history"
 msgstr "Aktiva projekthistorik"
 
 msgid "Use IP tracking for project history"
-msgstr ""
+msgstr "Använd IP-spårning för projekthistorik"
 
 msgid "Default Currency"
+msgstr "Standardvaluta"
+
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
 msgstr ""
 
 msgid "Import previously exported JSON file"
-msgstr ""
+msgstr "Importera tidigare exporterad JSON-fil"
 
 msgid "Import"
-msgstr ""
+msgstr "Importera"
 
 msgid "Project identifier"
-msgstr ""
+msgstr "Projektidentifierare"
+
+msgid "Private code"
+msgstr "Privat kod"
 
 msgid "Create the project"
-msgstr ""
+msgstr "Skapa projektet"
 
 #, python-format
 msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
+"Ett projekt med den här identifieraren (\"%(project)s\") finns redan. "
+"Vänligen välj en annan identifierare"
 
 msgid "Get in"
 msgstr ""
 
 msgid "Admin password"
-msgstr ""
+msgstr "Lösenord för admin"
 
 msgid "Send me the code by email"
-msgstr ""
+msgstr "Skicka koden till mig via e-post"
 
 msgid "This project does not exists"
-msgstr ""
+msgstr "Det här projektet finns inte"
 
 msgid "Password mismatch"
 msgstr ""
 
 msgid "Password"
-msgstr ""
+msgstr "Lösenord"
 
 msgid "Password confirmation"
-msgstr ""
+msgstr "Lösenordsbekräftelse"
 
 msgid "Reset password"
-msgstr ""
+msgstr "Återställ lösenord"
 
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 msgid "What?"
-msgstr ""
+msgstr "Vad?"
 
 msgid "Payer"
-msgstr ""
+msgstr "Betalare"
 
 msgid "Amount paid"
-msgstr ""
+msgstr "Betald summa"
 
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 msgid "External link"
-msgstr ""
+msgstr "Extern länk"
 
 msgid "A link to an external document, related to this bill"
-msgstr ""
+msgstr "En länk till ett externt dokument, relaterad till den här räkningen"
 
 msgid "For whom?"
-msgstr ""
+msgstr "För vem?"
 
 msgid "Submit"
-msgstr ""
+msgstr "Skicka in"
 
 msgid "Submit and add a new one"
-msgstr ""
+msgstr "Skicka in och lägg till en ny"
 
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr ""
 
 msgid "Bills can't be null"
-msgstr ""
+msgstr "Räkningar kan inte vara null"
 
 msgid "Name"
-msgstr ""
+msgstr "Namn"
 
 msgid "Weights should be positive"
-msgstr ""
+msgstr "Vikter borde vara positiva"
 
 msgid "Weight"
-msgstr ""
+msgstr "Vikt"
 
 msgid "Add"
-msgstr ""
+msgstr "Lägg till"
 
 msgid "User name incorrect"
-msgstr ""
+msgstr "Användarnamnet felaktigt"
 
 msgid "This project already have this member"
-msgstr ""
+msgstr "Det här projektet har redan den här medlemmen"
 
 msgid "People to notify"
-msgstr ""
+msgstr "Personer att meddela"
 
 msgid "Send invites"
-msgstr ""
+msgstr "Skicka inbjudningar"
 
 #, python-format
 msgid "The email %(email)s is not valid"
 msgstr ""
 
 msgid "Participant"
-msgstr ""
+msgstr "Deltagare"
 
 msgid "Bill"
-msgstr ""
+msgstr "Räkning"
 
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 msgid "No Currency"
-msgstr ""
+msgstr "Ingen valuta"
 
 msgid "Too many failed login attempts, please retry later."
-msgstr ""
+msgstr "För många misslyckade inloggningsförsök, försök igen senare."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr ""
+"Det här lösenordet för admin är inte det rätta. Endast %(num)d försök "
+"kvar."
 
 msgid "You either provided a bad token or no project identifier."
 msgstr ""
 
 msgid "This private code is not the right one"
-msgstr ""
+msgstr "Den här privata koden är inte den rätta"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
+msgstr "Du har just skapat '%(project)s' för att dela ut dina kostnader"
 
 msgid "A reminder email has just been sent to you"
-msgstr ""
+msgstr "Ett e-postmeddelande med påminnelse har just skickats till dig"
 
 msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
+"Vi försökte skicka en påminnelse till din e-postadress, men det uppstod "
+"ett fel. Du kan fortfarande använda det här projektet normalt."
 
 #, python-format
 msgid "The project identifier is %(project)s"
-msgstr ""
+msgstr "Projektets identifierare är %(project)s"
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
@@ -192,32 +209,32 @@ msgid ""
 msgstr ""
 
 msgid "No token provided"
-msgstr ""
+msgstr "Ingen symbol tillhandahölls"
 
 msgid "Invalid token"
-msgstr ""
+msgstr "Ogiltig symbol"
 
 msgid "Unknown project"
-msgstr ""
+msgstr "Okänt projekt"
 
 msgid "Password successfully reset."
-msgstr ""
+msgstr "Återställningen av lösenordet lyckades."
 
 msgid "Project successfully uploaded"
-msgstr ""
+msgstr "Uppladdningen av projektet lyckades"
 
 msgid "Invalid JSON"
-msgstr ""
+msgstr "Ogiltig JSON"
 
 msgid "Project successfully deleted"
-msgstr ""
+msgstr "Borttagningen av projektet lyckades"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
-msgstr ""
+msgstr "Du har bjudits in att dela ut dina kostnader för %(project)s"
 
 msgid "Your invitations have been sent"
-msgstr ""
+msgstr "Dina inbjudningar har skickats"
 
 msgid ""
 "Sorry, there was an error while trying to send the invitation emails. "
@@ -227,11 +244,11 @@ msgstr ""
 
 #, python-format
 msgid "%(member)s has been added"
-msgstr ""
+msgstr "%(member)s har lagts till"
 
 #, python-format
 msgid "%(name)s is part of this project again"
-msgstr ""
+msgstr "%(name)s är en del av det här projektet igen"
 
 #, python-format
 msgid ""
@@ -241,86 +258,93 @@ msgstr ""
 
 #, python-format
 msgid "User '%(name)s' has been removed"
-msgstr ""
+msgstr "Användaren '%(name)s' har tagits bort"
 
 #, python-format
 msgid "User '%(name)s' has been edited"
-msgstr ""
+msgstr "Användaren '%(name)s' har blivit redigerad"
 
 msgid "The bill has been added"
-msgstr ""
+msgstr "Räkningen har lagts till"
 
 msgid "The bill has been deleted"
-msgstr ""
+msgstr "Räkningen har tagits bort"
 
 msgid "The bill has been modified"
-msgstr ""
+msgstr "Räkningen har blivit modifierad"
 
 msgid "Sorry, we were unable to find the page you've asked for."
-msgstr ""
+msgstr "Ledsen, men vi kunde inte hitta sidan som du frågade efter."
 
 msgid "The best thing to do is probably to get back to the main page."
-msgstr ""
+msgstr "Det bästa du kan göra är förmodligen att gå tillbaka till huvudsidan."
 
 msgid "Back to the list"
-msgstr ""
+msgstr "Tillbaka till listan"
 
 msgid "Administration tasks are currently disabled."
 msgstr ""
 
 msgid "The project you are trying to access do not exist, do you want to"
-msgstr ""
+msgstr "Projektet som du försöker komma åt finns inte, vill du"
 
 msgid "create it"
-msgstr ""
+msgstr "skapa det"
 
 msgid "?"
-msgstr ""
+msgstr "?"
 
 msgid "Create a new project"
-msgstr ""
+msgstr "Skapa ett nytt projekt"
 
 msgid "Number of members"
-msgstr ""
+msgstr "Antalet medlemmar"
 
 msgid "Number of bills"
-msgstr ""
+msgstr "Antalet räkningar"
 
 msgid "Newest bill"
-msgstr ""
+msgstr "Nyaste räkningen"
 
 msgid "Oldest bill"
-msgstr ""
+msgstr "Äldsta räkningen"
 
 msgid "Actions"
-msgstr ""
+msgstr "Åtgärder"
 
 msgid "edit"
-msgstr ""
+msgstr "redigera"
 
 msgid "delete"
-msgstr ""
+msgstr "ta bort"
 
 msgid "show"
-msgstr ""
+msgstr "visa"
 
 msgid "The Dashboard is currently deactivated."
+msgstr "Instrumentpanelen är för närvarande inaktiverad."
+
+#, fuzzy
+msgid "Download Mobile Application"
+msgstr "Mobilapplikation"
+
+msgid "Get it on"
 msgstr ""
 
 msgid "you sure?"
-msgstr ""
+msgstr "säker?"
 
 msgid "Edit project"
-msgstr ""
+msgstr "Redigera projekt"
 
 msgid "Import JSON"
-msgstr ""
+msgstr "Importera JSON"
 
 msgid "Choose file"
-msgstr ""
+msgstr "Välj fil"
 
 msgid "Download project's data"
-msgstr ""
+msgstr "Ladda ner projektets data"
 
 msgid "Bill items"
 msgstr ""
@@ -335,61 +359,61 @@ msgid "Download the list of transactions needed to settle the current bills."
 msgstr ""
 
 msgid "Can't remember the password?"
-msgstr ""
+msgstr "Kan du inte komma ihåg lösenordet?"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 msgid "Privacy Settings"
-msgstr ""
+msgstr "Inställningar för privatliv"
 
 msgid "Edit the project"
-msgstr ""
+msgstr "Redigera projektet"
 
 msgid "Edit this bill"
-msgstr ""
+msgstr "Redigera den här räkningen"
 
 msgid "Add a bill"
-msgstr ""
+msgstr "Lägg till en räkning"
 
 msgid "Select all"
-msgstr ""
+msgstr "Välj alla"
 
 msgid "Select none"
-msgstr ""
+msgstr "Välj ingen"
 
 msgid "Add participant"
-msgstr ""
+msgstr "Lägg till deltagare"
 
 msgid "Edit this member"
-msgstr ""
+msgstr "Redigera det här numret"
 
 msgid "john.doe@example.com, mary.moe@site.com"
-msgstr ""
+msgstr "john.doe@exempel.com, mary.moe@sida.com"
 
 msgid "Send the invitations"
-msgstr ""
+msgstr "Skicka inbjudningarna"
 
 msgid "Download"
-msgstr ""
+msgstr "Ladda ner"
 
 msgid "Disabled Project History"
-msgstr ""
+msgstr "Inaktiverade projekthistorik"
 
 msgid "Disabled Project History & IP Address Recording"
-msgstr ""
+msgstr "Inaktiverade projekthistorik och inspelning av IP-adress"
 
 msgid "Enabled Project History"
-msgstr ""
+msgstr "Aktiverade projekthistorik"
 
 msgid "Disabled IP Address Recording"
-msgstr ""
+msgstr "Inaktiverade inspelning av IP-adress"
 
 msgid "Enabled Project History & IP Address Recording"
-msgstr ""
+msgstr "Aktiverade projekthistorik & inspelning av IP-adress"
 
 msgid "Enabled IP Address Recording"
-msgstr ""
+msgstr "Aktiverade inspelning av IP-adress"
 
 msgid "History Settings Changed"
 msgstr ""
@@ -398,10 +422,10 @@ msgid "changed"
 msgstr ""
 
 msgid "from"
-msgstr ""
+msgstr "från"
 
 msgid "to"
-msgstr ""
+msgstr "till"
 
 msgid "Confirm Remove IP Adresses"
 msgstr ""
@@ -414,27 +438,29 @@ msgid ""
 msgstr ""
 
 msgid "Close"
-msgstr ""
+msgstr "Stäng"
 
 msgid "Confirm Delete"
-msgstr ""
+msgstr "Bekräfta borttagning"
 
 msgid "Delete Confirmation"
-msgstr ""
+msgstr "Ta bort bekräftelse"
 
 msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
 msgstr ""
+"Är du säker på att du vill ta bort alla historik för det här projektet? "
+"Den här åtgärden kan inte göras ogjord."
 
 msgid "Added"
-msgstr ""
+msgstr "Lades till"
 
 msgid "Removed"
-msgstr ""
+msgstr "Togs bort"
 
 msgid "and"
-msgstr ""
+msgstr "och"
 
 msgid "owers list"
 msgstr ""
@@ -462,27 +488,29 @@ msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
 "recording disabled. "
 msgstr ""
+"Några poster här nedan innehåller IP-adresser, fastän det här projektet "
+"har IP-inspelning inaktiverat. "
 
 msgid "Delete stored IP addresses"
-msgstr ""
+msgstr "Ta bort lagrade IP-adresser"
 
 msgid "No history to erase"
-msgstr ""
+msgstr "Ingen historik att ta bort"
 
 msgid "Clear Project History"
-msgstr ""
+msgstr "Rensa projektets historik"
 
 msgid "No IP Addresses to erase"
-msgstr ""
+msgstr "Inga IP-adresser att ta bort"
 
 msgid "Delete Stored IP Addresses"
 msgstr ""
 
 msgid "Time"
-msgstr ""
+msgstr "Tid"
 
 msgid "Event"
-msgstr ""
+msgstr "Händelse"
 
 msgid "IP address recording can be enabled on the settings page"
 msgstr ""
@@ -491,86 +519,86 @@ msgid "IP address recording can be disabled on the settings page"
 msgstr ""
 
 msgid "From IP"
-msgstr ""
+msgstr "Från IP"
 
 msgid "added"
-msgstr ""
+msgstr "lades till"
 
 msgid "Project private code changed"
-msgstr ""
+msgstr "Projektets privata kod ändrades"
 
 msgid "Project renamed to"
-msgstr ""
+msgstr "Projektet döptes om till"
 
 msgid "Project contact email changed to"
-msgstr ""
+msgstr "Projektets e-post för kontakt ändrades till"
 
 msgid "Project settings modified"
-msgstr ""
+msgstr "Projektets inställningar ändrades"
 
 msgid "deactivated"
-msgstr ""
+msgstr "inaktiverades"
 
 msgid "reactivated"
-msgstr ""
+msgstr "återaktiverades"
 
 msgid "renamed to"
-msgstr ""
+msgstr "döptes om till"
 
 msgid "External link changed to"
-msgstr ""
+msgstr "Extern länk ändrades till"
 
 msgid "Amount"
-msgstr ""
+msgstr "Summa"
 
 #, python-format
 msgid "Amount in %(currency)s"
-msgstr ""
+msgstr "Summa i %(currency)s"
 
 msgid "modified"
-msgstr ""
+msgstr "ändrades"
 
 msgid "removed"
-msgstr ""
+msgstr "togs bort"
 
 msgid "changed in a unknown way"
-msgstr ""
+msgstr "ändrades på ett okänt sätt"
 
 msgid "Nothing to list"
-msgstr ""
+msgstr "Inget att lista"
 
 msgid "Someone probably cleared the project history."
 msgstr ""
 
 msgid "Manage your shared <br />expenses, easily"
-msgstr ""
+msgstr "Hantera dina utdelade <br />kostnader, lätt"
 
 msgid "Try out the demo"
-msgstr ""
+msgstr "Prova demot"
 
 msgid "You're sharing a house?"
-msgstr ""
+msgstr "Delar du ett hus?"
 
 msgid "Going on holidays with friends?"
-msgstr ""
+msgstr "Ska du på semester med dina vänner?"
 
 msgid "Simply sharing money with others?"
-msgstr ""
+msgstr "Delar du helt enkelt pengar med andra?"
 
 msgid "We can help!"
-msgstr ""
+msgstr "Vi kan hjälpa!"
 
 msgid "Log in to an existing project"
-msgstr ""
+msgstr "Logga in i ett befintligt projekt"
 
 msgid "Log in"
-msgstr ""
+msgstr "Logga in"
 
 msgid "can't remember your password?"
-msgstr ""
+msgstr "kan du inte komma ihåg ditt lösenord?"
 
 msgid "Create"
-msgstr ""
+msgstr "Skapa"
 
 msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
@@ -578,121 +606,121 @@ msgid ""
 msgstr ""
 
 msgid "Account manager"
-msgstr ""
+msgstr "Kontoansvarig"
 
 msgid "Bills"
-msgstr ""
+msgstr "Räkningar"
 
 msgid "Settle"
 msgstr ""
 
 msgid "Statistics"
-msgstr ""
-
-msgid "History"
-msgstr ""
-
-msgid "Settings"
-msgstr ""
+msgstr "Statistik"
 
 msgid "Languages"
-msgstr ""
+msgstr "Språk"
 
 msgid "Projects"
-msgstr ""
+msgstr "Projekt"
 
 msgid "Start a new project"
-msgstr ""
+msgstr "Starta ett nytt projekt"
+
+msgid "History"
+msgstr "Historik"
+
+msgid "Settings"
+msgstr "Inställningar"
 
 msgid "Other projects :"
-msgstr ""
+msgstr "Andra projekt :"
 
 msgid "switch to"
-msgstr ""
+msgstr "byt till"
 
 msgid "Dashboard"
-msgstr ""
+msgstr "Instrumentpanel"
 
 msgid "Logout"
-msgstr ""
+msgstr "Logga ut"
 
 msgid "Code"
-msgstr ""
+msgstr "Kod"
 
 msgid "Mobile Application"
-msgstr ""
+msgstr "Mobilapplikation"
 
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentation"
 
 msgid "Administation Dashboard"
 msgstr ""
 
 msgid "\"I hate money\" is a free software"
-msgstr ""
+msgstr "\"Jag hatar pengar\" är en fri mjukvara"
 
 msgid "you can contribute and improve it!"
-msgstr ""
+msgstr "du kan bidra och förbättra det!"
 
 #, python-format
 msgid "%(amount)s each"
-msgstr ""
+msgstr "%(amount)s var"
 
 msgid "Invite people"
-msgstr ""
+msgstr "Bjud in personer"
 
 msgid "You should start by adding participants"
-msgstr ""
+msgstr "Du borde börja med att lägga till deltagare"
 
 msgid "Add a new bill"
-msgstr ""
+msgstr "Lägg till en ny räkning"
 
 msgid "Newer bills"
-msgstr ""
+msgstr "Nyare räkningar"
 
 msgid "Older bills"
-msgstr ""
+msgstr "Äldre räkningar"
 
 msgid "When?"
-msgstr ""
+msgstr "När?"
 
 msgid "Who paid?"
-msgstr ""
+msgstr "Vem betalade?"
 
 msgid "For what?"
-msgstr ""
+msgstr "För vad?"
 
 msgid "How much?"
-msgstr ""
+msgstr "Hur mycket?"
 
 #, python-format
 msgid "Added on %(date)s"
-msgstr ""
+msgstr "Lades till %(date)s"
 
 msgid "Everyone"
-msgstr ""
+msgstr "Alla"
 
 #, python-format
 msgid "Everyone but %(excluded)s"
-msgstr ""
+msgstr "Alla förutom %(excluded)s"
 
 msgid "No bills"
-msgstr ""
+msgstr "Inga räkningar"
 
 msgid "Nothing to list yet."
-msgstr ""
+msgstr "Ingenting att lista än."
 
 msgid "You probably want to"
-msgstr ""
+msgstr "Du kanske vill"
 
 msgid "add a bill"
-msgstr ""
+msgstr "lägg till en räkning"
 
 msgid "add participants"
-msgstr ""
+msgstr "lägg till deltagare"
 
 msgid "Password reminder"
-msgstr ""
+msgstr "Lösenordspåminnare"
 
 msgid ""
 "A link to reset your password has been sent to you, please check your "
@@ -700,19 +728,19 @@ msgid ""
 msgstr ""
 
 msgid "Return to home page"
-msgstr ""
+msgstr "Återgå till första-sidan"
 
 msgid "Your projects"
-msgstr ""
+msgstr "Dina projekt"
 
 msgid "Reset your password"
-msgstr ""
+msgstr "Återställ ditt lösenord"
 
 msgid "Invite people to join this project"
-msgstr ""
+msgstr "Bjud in personer att ansluta till det här projektet"
 
 msgid "Share Identifier & code"
-msgstr ""
+msgstr "Dela ut identifierare & kod"
 
 msgid ""
 "You can share the project identifier and the private code by any "
@@ -720,13 +748,13 @@ msgid ""
 msgstr ""
 
 msgid "Identifier:"
-msgstr ""
+msgstr "Identifierare:"
 
 msgid "Share the Link"
-msgstr ""
+msgstr "Dela ut länken"
 
 msgid "You can directly share the following link via your prefered medium"
-msgstr ""
+msgstr "Du kan direkt dela ut följande länk via föredraget media"
 
 msgid "Send via Emails"
 msgstr ""
@@ -739,31 +767,32 @@ msgid ""
 msgstr ""
 
 msgid "Who pays?"
-msgstr ""
+msgstr "Vem betalar?"
 
 msgid "To whom?"
-msgstr ""
+msgstr "Till vem?"
 
 msgid "Who?"
-msgstr ""
+msgstr "Vem?"
 
 msgid "Balance"
-msgstr ""
+msgstr "Saldo"
 
 msgid "deactivate"
-msgstr ""
+msgstr "inaktivera"
 
 msgid "reactivate"
-msgstr ""
+msgstr "återaktivera"
 
 msgid "Paid"
-msgstr ""
+msgstr "Betald"
 
 msgid "Spent"
 msgstr ""
 
 msgid "Expenses by Month"
-msgstr ""
+msgstr "Kostnader per månad"
 
 msgid "Period"
-msgstr ""
+msgstr "Period"
+

@@ -24,7 +24,11 @@ format used can be found on `the SQLAlchemy documentation`_.
   ``sqlite:///home/ihatemoney/ihatemoney.db``. Do *not* store it under
   ``/tmp`` as this folder is cleared at each boot.
 
-If you're using PostgreSQL, Your client must use utf8. Unfortunately,
+For example, if you're using MariaDB, use a configuration similar to the following::
+
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://user:pass@localhost/dbname'
+
+If you're using PostgreSQL, your client must use utf8. Unfortunately,
 PostgreSQL default is to use ASCII. Either change your client settings,
 or specify the encoding by appending ``?client_encoding=utf8`` to the
 connection string. This will look like::

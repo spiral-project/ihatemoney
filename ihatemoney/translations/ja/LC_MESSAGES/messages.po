@@ -1,18 +1,19 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-22 06:40+0200\n"
+"POT-Creation-Date: 2021-07-07 01:01+0200\n"
 "PO-Revision-Date: 2020-11-11 16:28+0000\n"
 "Last-Translator: Jwen921 <yangjingwen0921@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/ja/>\n"
 "Language: ja\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/ja/>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.4-dev\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -22,7 +23,8 @@ msgstr "無効な入力です。数字と「+ - * / 」の演算子しか入力�
 msgid "Project name"
 msgstr "プロジェクトの名前"
 
-msgid "Private code"
+#, fuzzy
+msgid "New private code"
 msgstr "暗証コード"
 
 msgid "Email"
@@ -37,6 +39,11 @@ msgstr "IPでプロジェクトの歴史を追跡する"
 msgid "Default Currency"
 msgstr "初期設定にする通貨"
 
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+
 msgid "Import previously exported JSON file"
 msgstr "以前のJSONファイルをインポートする"
 
@@ -45,6 +52,9 @@ msgstr "インポート"
 
 msgid "Project identifier"
 msgstr "プロジェクトの名前"
+
+msgid "Private code"
+msgstr "暗証コード"
 
 msgid "Create the project"
 msgstr "プロジェクトを新規作成する"
@@ -189,8 +199,7 @@ msgid ""
 "Sorry, there was an error while sending you an email with password reset "
 "instructions. Please check the email configuration of the server or "
 "contact the administrator."
-msgstr ""
-"申し訳ございませんが、パスワード再設定の説明メールを送った時、エラーが発生しました。メールアドレスを一度確認してまたは管理者に連絡してください。"
+msgstr "申し訳ございませんが、パスワード再設定の説明メールを送った時、エラーが発生しました。メールアドレスを一度確認してまたは管理者に連絡してください。"
 
 msgid "No token provided"
 msgstr "印が入力されていない"
@@ -307,6 +316,14 @@ msgstr "表示"
 
 msgid "The Dashboard is currently deactivated."
 msgstr "現在ダッシュボードは操作できません。"
+
+#, fuzzy
+msgid "Download Mobile Application"
+msgstr "携帯アプリ"
+
+#, fuzzy
+msgid "Get it on"
+msgstr "入る"
 
 msgid "you sure?"
 msgstr "確認？"
@@ -601,12 +618,6 @@ msgstr "解決"
 msgid "Statistics"
 msgstr "統計"
 
-msgid "History"
-msgstr "歴史"
-
-msgid "Settings"
-msgstr "設定"
-
 msgid "Languages"
 msgstr "言語"
 
@@ -615,6 +626,12 @@ msgstr "プロジェクト"
 
 msgid "Start a new project"
 msgstr "新しいプロジェクトを始める"
+
+msgid "History"
+msgstr "歴史"
+
+msgid "Settings"
+msgstr "設定"
 
 msgid "Other projects :"
 msgstr "他のプロジェクト："
@@ -781,3 +798,4 @@ msgstr "月別の費用"
 
 msgid "Period"
 msgstr "期間"
+

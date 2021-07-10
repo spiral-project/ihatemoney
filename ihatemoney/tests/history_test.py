@@ -25,7 +25,7 @@ class HistoryTestCase(IhatemoneyTestCase):
             "name": "demo",
             "contact_email": "demo@notmyidea.org",
             "password": "demo",
-            "default_currency": "USD",
+            "default_currency": "XXX",
         }
 
         if logging_preference != LoggingMode.DISABLED:
@@ -78,7 +78,7 @@ class HistoryTestCase(IhatemoneyTestCase):
             "contact_email": "demo2@notmyidea.org",
             "password": "123456",
             "project_history": "y",
-            "default_currency": "USD",
+            "default_currency": "USD",  # Currency changed from default
         }
 
         resp = self.client.post("/demo/edit", data=new_data, follow_redirects=True)
@@ -103,7 +103,7 @@ class HistoryTestCase(IhatemoneyTestCase):
             resp.data.decode("utf-8").index("Project renamed "),
             resp.data.decode("utf-8").index("Project private code changed"),
         )
-        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 4)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 5)
         self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
 
     def test_project_privacy_edit(self):
@@ -284,7 +284,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertIn(
             "Some entries below contain IP addresses,", resp.data.decode("utf-8")
         )
-        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 10)
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 12)
         self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 1)
 
         # Generate more operations to confirm additional IP info isn't recorded
@@ -292,8 +292,8 @@ class HistoryTestCase(IhatemoneyTestCase):
 
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
-        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 10)
-        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 6)
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 12)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 7)
 
         # Clear IP Data
         resp = self.client.post("/demo/strip_ip_addresses", follow_redirects=True)
@@ -311,7 +311,7 @@ class HistoryTestCase(IhatemoneyTestCase):
             "Some entries below contain IP addresses,", resp.data.decode("utf-8")
         )
         self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 0)
-        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 16)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 19)
 
     def test_logs_for_common_actions(self):
         # adds a member to this project

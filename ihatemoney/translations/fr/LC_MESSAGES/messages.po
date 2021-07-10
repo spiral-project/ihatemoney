@@ -7,18 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-05-30 14:26+0200\n"
+"POT-Creation-Date: 2021-07-07 01:01+0200\n"
 "PO-Revision-Date: 2020-06-01 16:41+0000\n"
 "Last-Translator: Glandos <bugs-github@antipoul.fr>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/fr/>\n"
 "Language: fr\n"
+"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/fr/>\n"
+"Plural-Forms: nplurals=2; plural=n > 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.1-dev\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -30,7 +29,8 @@ msgstr ""
 msgid "Project name"
 msgstr "Nom de projet"
 
-msgid "Private code"
+#, fuzzy
+msgid "New private code"
 msgstr "Code d’accès"
 
 msgid "Email"
@@ -45,6 +45,11 @@ msgstr "Collecter les adresses IP dans l'historique de projet"
 msgid "Default Currency"
 msgstr "Devise par défaut"
 
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+
 msgid "Import previously exported JSON file"
 msgstr "Importer un fichier JSON précédemment exporté"
 
@@ -53,6 +58,9 @@ msgstr "Importer"
 
 msgid "Project identifier"
 msgstr "Identifiant du projet"
+
+msgid "Private code"
+msgstr "Code d’accès"
 
 msgid "Create the project"
 msgstr "Créer le projet"
@@ -329,6 +337,14 @@ msgstr "voir"
 
 msgid "The Dashboard is currently deactivated."
 msgstr "Le tableau de bord est actuellement désactivée."
+
+#, fuzzy
+msgid "Download Mobile Application"
+msgstr "Application mobile"
+
+#, fuzzy
+msgid "Get it on"
+msgstr "Entrer"
 
 msgid "you sure?"
 msgstr "c’est sûr ?"
@@ -624,8 +640,8 @@ msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
 msgstr ""
-"Ne réutilisez pas un de vos mots de passe. Choisissez un code personnel et "
-"envoyez le à vos amis"
+"Ne réutilisez pas un de vos mots de passe. Choisissez un code personnel "
+"et envoyez le à vos amis"
 
 msgid "Account manager"
 msgstr "Gestion de comptes"
@@ -639,12 +655,6 @@ msgstr "Remboursements"
 msgid "Statistics"
 msgstr "Statistiques"
 
-msgid "History"
-msgstr "Historique"
-
-msgid "Settings"
-msgstr "Options"
-
 msgid "Languages"
 msgstr "Langues"
 
@@ -653,6 +663,12 @@ msgstr "Projets"
 
 msgid "Start a new project"
 msgstr "Nouveau projet"
+
+msgid "History"
+msgstr "Historique"
+
+msgid "Settings"
+msgstr "Options"
 
 msgid "Other projects :"
 msgstr "Autres projets :"
@@ -1059,3 +1075,4 @@ msgstr "Période"
 #~ " vos amis et stocké en clair "
 #~ "sur le serveur. N’utilisez pas un "
 #~ "mot de passe personnel !"
+

@@ -1,4 +1,3 @@
-import io
 import os
 import smtplib
 import socket
@@ -6,10 +5,11 @@ import unittest
 from unittest.mock import MagicMock, patch
 
 from sqlalchemy import orm
+from werkzeug.security import check_password_hash
 
 from ihatemoney import models
 from ihatemoney.currency_convertor import CurrencyConverter
-from ihatemoney.manage import DeleteProject, GenerateConfig, GeneratePasswordHash
+from ihatemoney.manage import delete_project, generate_config, password_hash
 from ihatemoney.run import load_configuration
 from ihatemoney.tests.common.ihatemoney_testcase import BaseTestCase, IhatemoneyTestCase
 
@@ -33,7 +33,8 @@ class ConfigurationTestCase(BaseTestCase):
         )
 
     def test_env_var_configuration_file(self):
-        """Test that settings are loaded from the specified configuration file"""
+        """Test that settings are loaded from a configuration file specified
+        with an environment variable."""
         os.environ["IHATEMONEY_SETTINGS_FILE_PATH"] = os.path.join(
             __HERE__, "ihatemoney_envvar.cfg"
         )
@@ -42,6 +43,7 @@ class ConfigurationTestCase(BaseTestCase):
 
         # Test that the specified configuration file is loaded
         # even if the default configuration file ihatemoney.cfg exists
+        # in the current directory.
         os.environ["IHATEMONEY_SETTINGS_FILE_PATH"] = os.path.join(
             __HERE__, "ihatemoney_envvar.cfg"
         )
@@ -52,7 +54,8 @@ class ConfigurationTestCase(BaseTestCase):
         os.environ.pop("IHATEMONEY_SETTINGS_FILE_PATH", None)
 
     def test_default_configuration_file(self):
-        """Test that settings are loaded from the default configuration file"""
+        """Test that settings are loaded from a configuration file if one is found
+        in the current directory."""
         self.app.config.root_path = __HERE__
         load_configuration(self.app)
         self.assertEqual(self.app.config["SECRET_KEY"], "supersecret")
@@ -82,28 +85,23 @@ class CommandTestCase(BaseTestCase):
         - raise no exception
         - produce something non-empty
         """
-        cmd = GenerateConfig()
-        for config_file in cmd.get_options()[0].kwargs["choices"]:
-            with patch("sys.stdout", new=io.StringIO()) as stdout:
-                cmd.run(config_file)
-                print(stdout.getvalue())
-                self.assertNotEqual(len(stdout.getvalue().strip()), 0)
+        runner = self.app.test_cli_runner()
+        for config_file in generate_config.params[0].type.choices:
+            result = runner.invoke(generate_config, config_file)
+            self.assertNotEqual(len(result.output.strip()), 0)
 
     def test_generate_password_hash(self):
-        cmd = GeneratePasswordHash()
-        with patch("sys.stdout", new=io.StringIO()) as stdout, patch(
-            "getpass.getpass", new=lambda prompt: "secret"
-        ):  # NOQA
-            cmd.run()
-            print(stdout.getvalue())
-            self.assertEqual(len(stdout.getvalue().strip()), 189)
+        runner = self.app.test_cli_runner()
+        with patch("getpass.getpass", new=lambda prompt: "secret"):
+            result = runner.invoke(password_hash)
+            self.assertTrue(check_password_hash(result.output.strip(), "secret"))
 
     def test_demo_project_deletion(self):
         self.create_project("demo")
-        self.assertEquals(models.Project.query.get("demo").name, "demo")
+        self.assertEqual(models.Project.query.get("demo").name, "demo")
 
-        cmd = DeleteProject()
-        cmd.run("demo")
+        runner = self.app.test_cli_runner()
+        runner.invoke(delete_project, "demo")
 
         self.assertEqual(len(models.Project.query.all()), 0)
 
@@ -245,7 +243,7 @@ class EmailFailureTestCase(IhatemoneyTestCase):
 
 class TestCurrencyConverter(unittest.TestCase):
     converter = CurrencyConverter()
-    mock_data = {"USD": 1, "EUR": 0.8115}
+    mock_data = {"USD": 1, "EUR": 0.8, "CAD": 1.2, CurrencyConverter.no_currency: 1}
     converter.get_rates = MagicMock(return_value=mock_data)
 
     def test_only_one_instance(self):
@@ -254,11 +252,14 @@ class TestCurrencyConverter(unittest.TestCase):
         self.assertEqual(one, two)
 
     def test_get_currencies(self):
-        self.assertCountEqual(self.converter.get_currencies(), ["USD", "EUR"])
+        self.assertCountEqual(
+            self.converter.get_currencies(),
+            ["USD", "EUR", "CAD", CurrencyConverter.no_currency],
+        )
 
     def test_exchange_currency(self):
         result = self.converter.exchange_currency(100, "USD", "EUR")
-        self.assertEqual(result, 81.15)
+        self.assertEqual(result, 80.0)
 
 
 if __name__ == "__main__":

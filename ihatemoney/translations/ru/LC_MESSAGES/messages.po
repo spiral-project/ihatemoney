@@ -1,20 +1,20 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-30 21:50+0200\n"
-"PO-Revision-Date: 2020-08-17 17:32+0000\n"
-"Last-Translator: Alexey Napalkov <flynbit@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/ru/>\n"
+"POT-Creation-Date: 2021-07-07 01:01+0200\n"
+"PO-Revision-Date: 2021-05-10 11:33+0000\n"
+"Last-Translator: Vsevolod <sevauserg.com@gmail.com>\n"
 "Language: ru\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/ru/>\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.2-dev\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -26,7 +26,8 @@ msgstr ""
 msgid "Project name"
 msgstr "Имя проекта"
 
-msgid "Private code"
+#, fuzzy
+msgid "New private code"
 msgstr "Приватный код"
 
 msgid "Email"
@@ -41,6 +42,11 @@ msgstr "Использовать отслеживание по IP для ист�
 msgid "Default Currency"
 msgstr "Валюта по умолчанию"
 
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+
 msgid "Import previously exported JSON file"
 msgstr "Импортировать ранее экспортированный JSON файл"
 
@@ -49,6 +55,9 @@ msgstr "Импортировать"
 
 msgid "Project identifier"
 msgstr "Идентификатор проекта"
+
+msgid "Private code"
+msgstr "Приватный код"
 
 msgid "Create the project"
 msgstr "Создать проект"
@@ -188,8 +197,9 @@ msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
-"Мы попытались отправить вам напоминание по электронной почте, но произошла "
-"ошибка. Вы по-прежнему можете использовать проект в обычном режиме."
+"Мы попытались отправить вам напоминание по электронной почте, но "
+"произошла ошибка. Вы по-прежнему можете использовать проект в обычном "
+"режиме."
 
 #, python-format
 msgid "The project identifier is %(project)s"
@@ -200,9 +210,9 @@ msgid ""
 "instructions. Please check the email configuration of the server or "
 "contact the administrator."
 msgstr ""
-"К сожалению, при отправке вам электронного письма с инструкциями по сбросу "
-"пароля произошла ошибка. Пожалуйста, проверьте конфигурацию электронной "
-"почты сервера или свяжитесь с администратором."
+"К сожалению, при отправке вам электронного письма с инструкциями по "
+"сбросу пароля произошла ошибка. Пожалуйста, проверьте конфигурацию "
+"электронной почты сервера или свяжитесь с администратором."
 
 msgid "No token provided"
 msgstr "Не предоставлен токен"
@@ -325,6 +335,14 @@ msgstr "показать"
 msgid "The Dashboard is currently deactivated."
 msgstr "Панель инструментов в данный момент отключена."
 
+#, fuzzy
+msgid "Download Mobile Application"
+msgstr "Мобильное приложение"
+
+#, fuzzy
+msgid "Get it on"
+msgstr "Войти"
+
 msgid "you sure?"
 msgstr "вы уверены?"
 
@@ -347,7 +365,7 @@ msgid "Download the list of bills with owner, amount, reason,... "
 msgstr "Скачать список счетов с владельцем, суммой, причиной, .. "
 
 msgid "Settle plans"
-msgstr "Урегулировать планы"
+msgstr "Планы оплаты"
 
 msgid "Download the list of transactions needed to settle the current bills."
 msgstr "Скачать список переводов нужных, чтобы урегулировать данные счета."
@@ -614,8 +632,8 @@ msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
 msgstr ""
-"Не используйте повторно личный пароль. Выберите приватный код и отправьте "
-"его своим друзьям"
+"Не используйте повторно личный пароль. Выберите приватный код и отправьте"
+" его своим друзьям"
 
 msgid "Account manager"
 msgstr "Менеджер аккаунтов"
@@ -624,16 +642,10 @@ msgid "Bills"
 msgstr "Счета"
 
 msgid "Settle"
-msgstr "Отрегулировать"
+msgstr "Оплаты"
 
 msgid "Statistics"
 msgstr "Статистика"
-
-msgid "History"
-msgstr "История"
-
-msgid "Settings"
-msgstr "Настройки"
 
 msgid "Languages"
 msgstr "Языки"
@@ -643,6 +655,12 @@ msgstr "Проекты"
 
 msgid "Start a new project"
 msgstr "Начать новый проект"
+
+msgid "History"
+msgstr "История"
+
+msgid "Settings"
+msgstr "Настройки"
 
 msgid "Other projects :"
 msgstr "Остальные проекты :"
@@ -833,3 +851,4 @@ msgstr "Период"
 #~ " друзьям. Он хранится на сервере как"
 #~ " есть, поэтому не используйте личный "
 #~ "пароль!"
+

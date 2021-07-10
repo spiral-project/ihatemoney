@@ -36,7 +36,6 @@ from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.forms import (
     AdminAuthenticationForm,
     AuthenticationForm,
@@ -161,7 +160,7 @@ def admin():
         client_ip = request.remote_addr
         if not login_throttler.is_login_allowed(client_ip):
             msg = _("Too many failed login attempts, please retry later.")
-            form.errors["admin_password"] = [msg]
+            form["admin_password"].errors = [msg]
             return render_template(
                 "admin.html",
                 form=form,
@@ -183,7 +182,7 @@ def admin():
                 "This admin password is not the right one. Only %(num)d attempts left.",
                 num=login_throttler.get_remaining_attempts(client_ip),
             )
-            form.errors["admin_password"] = [msg]
+            form["admin_password"].errors = [msg]
     return render_template(
         "admin.html",
         form=form,
@@ -210,7 +209,7 @@ def authenticate(project_id=None):
         # User doesn't provide project identifier or a valid token
         # return to authenticate form
         msg = _("You either provided a bad token or no project identifier.")
-        form.errors["id"] = [msg]
+        form["id"].errors = [msg]
         return render_template("authenticate.html", form=form)
 
     project = Project.query.get(project_id)
@@ -246,7 +245,7 @@ def authenticate(project_id=None):
         return redirect(url_for(".list_bills"))
     if is_post_auth and not check_password_hash(project.password, form.password.data):
         msg = _("This private code is not the right one")
-        form.errors["password"] = [msg]
+        form["password"].errors = [msg]
 
     return render_template("authenticate.html", form=form)
 
@@ -400,7 +399,7 @@ def reset_password():
 
 @main.route("/<project_id>/edit", methods=["GET", "POST"])
 def edit_project():
-    edit_form = EditProjectForm()
+    edit_form = EditProjectForm(id=g.project.id)
     import_form = UploadForm()
     # Import form
     if import_form.validate_on_submit():
@@ -415,17 +414,6 @@ def edit_project():
     # Edit form
     if edit_form.validate_on_submit():
         project = edit_form.update(g.project)
-        # Update converted currency
-        if project.default_currency != CurrencyConverter.no_currency:
-            for bill in project.get_bills():
-
-                if bill.original_currency == CurrencyConverter.no_currency:
-                    bill.original_currency = project.default_currency
-
-                bill.converted_amount = CurrencyConverter().exchange_currency(
-                    bill.amount, bill.original_currency, project.default_currency
-                )
-                db.session.add(bill)
 
         db.session.add(project)
         db.session.commit()
@@ -549,7 +537,7 @@ def export_project(file, format):
 
     return send_file(
         file2export,
-        attachment_filename=f"{g.project.id}-{file}.{format}",
+        download_name=f"{g.project.id}-{file}.{format}",
         as_attachment=True,
     )
 

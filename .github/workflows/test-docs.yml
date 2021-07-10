@@ -1,0 +1,76 @@
+name: Test & Docs
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    # Use postgresql and MariaDB versions of Debian buster
+    services:
+      postgres:
+        image: postgres:11
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: ihatemoney
+          POSTGRES_DB: ihatemoney_ci
+        options:
+          --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+      mariadb:
+        image: mariadb:10.3
+        env:
+          MARIADB_ROOT_PASSWORD: ihatemoney
+          MARIADB_DATABASE: ihatemoney_ci
+        options: >-
+          --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        ports:
+          - 3306:3306
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [3.6, 3.7, 3.8, 3.9]
+        database: [sqlite]
+        # Test other databases only with one version of Python (Debian buster has 3.7)
+        include:
+          - python-version: 3.7
+            database: postgresql
+          - python-version: 3.7
+            database: mariadb
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install tox
+    # Run tox using the version of Python in `PATH`
+    - name: Run Tox with sqlite
+      run: tox -e py
+      if: matrix.database == 'sqlite'
+      env:
+        TESTING_SQLALCHEMY_DATABASE_URI: 'sqlite:///budget.db'
+    - name: Run Tox with postgresql
+      run: tox -e py
+      if: matrix.database == 'postgresql'
+      env:
+        TESTING_SQLALCHEMY_DATABASE_URI: 'postgresql+psycopg2://postgres:ihatemoney@localhost:5432/ihatemoney_ci'
+    - name: Run Tox with mariadb
+      run: tox -e py
+      if: matrix.database == 'mariadb'
+      env:
+        TESTING_SQLALCHEMY_DATABASE_URI: 'mysql+pymysql://root:ihatemoney@localhost:3306/ihatemoney_ci'
+    - name: Run Lint & Docs
+      run: tox -e lint_docs
+      if: matrix.python-version == '3.8'

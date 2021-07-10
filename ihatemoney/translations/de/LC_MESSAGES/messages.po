@@ -1,19 +1,19 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-30 21:50+0200\n"
+"POT-Creation-Date: 2021-07-07 01:01+0200\n"
 "PO-Revision-Date: 2020-11-04 17:27+0000\n"
 "Last-Translator: mdmdmdmdmd <exe_tmp@gmx.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/de/>\n"
 "Language: de\n"
+"Language-Team: German <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/de/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2-dev\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -25,7 +25,8 @@ msgstr ""
 msgid "Project name"
 msgstr "Projektname"
 
-msgid "Private code"
+#, fuzzy
+msgid "New private code"
 msgstr "Privater Code"
 
 msgid "Email"
@@ -40,6 +41,11 @@ msgstr "IP-Tracking für Verlauf benutzen"
 msgid "Default Currency"
 msgstr "Standardwährung"
 
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+
 msgid "Import previously exported JSON file"
 msgstr "Zuvor exportierte JSON-Datei importieren"
 
@@ -48,6 +54,9 @@ msgstr "Import"
 
 msgid "Project identifier"
 msgstr "Projektkennung"
+
+msgid "Private code"
+msgstr "Privater Code"
 
 msgid "Create the project"
 msgstr "Projekt erstellen"
@@ -325,6 +334,14 @@ msgstr "Zeigen"
 
 msgid "The Dashboard is currently deactivated."
 msgstr "Das Dashboard ist aktuell deaktiviert."
+
+#, fuzzy
+msgid "Download Mobile Application"
+msgstr "Handy-Applikation"
+
+#, fuzzy
+msgid "Get it on"
+msgstr "Eintreten"
 
 msgid "you sure?"
 msgstr "Bist du sicher?"
@@ -630,12 +647,6 @@ msgstr "Bilanz"
 msgid "Statistics"
 msgstr "Statistik"
 
-msgid "History"
-msgstr "Verlauf"
-
-msgid "Settings"
-msgstr "Einstellungen"
-
 msgid "Languages"
 msgstr "Sprachen"
 
@@ -644,6 +655,12 @@ msgstr "Projekte"
 
 msgid "Start a new project"
 msgstr "Starte ein neues Projekt"
+
+msgid "History"
+msgstr "Verlauf"
+
+msgid "Settings"
+msgstr "Einstellungen"
 
 msgid "Other projects :"
 msgstr "Andere Projekte:"
@@ -842,3 +859,4 @@ msgstr "Zeitraum"
 #~ " gesendet. Es wird als Klartext auf"
 #~ " dem Server gespeichert. Bitte verwenden"
 #~ " daher kein persönliches Passwort!"
+

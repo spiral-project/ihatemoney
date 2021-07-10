@@ -1,9 +1,9 @@
 I hate money
 ############
 
-.. image:: https://travis-ci.org/spiral-project/ihatemoney.svg?branch=master
-   :target: https://travis-ci.org/spiral-project/ihatemoney
-   :alt: Travis CI Build Status
+.. image:: https://github.com/spiral-project/ihatemoney/actions/workflows/test-docs.yml/badge.svg
+   :target: https://github.com/spiral-project/ihatemoney/actions/workflows/test-docs.yml
+   :alt: GitHub Actions Status
 
 .. image:: https://hosted.weblate.org/widgets/i-hate-money/-/i-hate-money/svg-badge.svg
    :target: https://hosted.weblate.org/engage/i-hate-money/?utm_source=widget
@@ -30,7 +30,7 @@ Requirements
 ============
 
 * **Python**: version 3.6 to 3.9.
-* **Backends**: MySQL, PostgreSQL, SQLite, Memory.
+* **Backends**: SQLite, PostgreSQL, MariaDB (version 10.3.2 or above), Memory.
 
 Contributing
 ============

@@ -6,7 +6,7 @@ msgstr ""
 msgid "Project name"
 msgstr ""
 
-msgid "Private code"
+msgid "New private code"
 msgstr ""
 
 msgid "Email"
@@ -21,6 +21,11 @@ msgstr ""
 msgid "Default Currency"
 msgstr ""
 
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+
 msgid "Import previously exported JSON file"
 msgstr ""
 
@@ -28,6 +33,9 @@ msgid "Import"
 msgstr ""
 
 msgid "Project identifier"
+msgstr ""
+
+msgid "Private code"
 msgstr ""
 
 msgid "Create the project"
@@ -289,6 +297,12 @@ msgid "show"
 msgstr ""
 
 msgid "The Dashboard is currently deactivated."
+msgstr ""
+
+msgid "Download Mobile Application"
+msgstr ""
+
+msgid "Get it on"
 msgstr ""
 
 msgid "you sure?"
@@ -573,12 +587,6 @@ msgstr ""
 msgid "Statistics"
 msgstr ""
 
-msgid "History"
-msgstr ""
-
-msgid "Settings"
-msgstr ""
-
 msgid "Languages"
 msgstr ""
 
@@ -586,6 +594,12 @@ msgid "Projects"
 msgstr ""
 
 msgid "Start a new project"
+msgstr ""
+
+msgid "History"
+msgstr ""
+
+msgid "Settings"
 msgstr ""
 
 msgid "Other projects :"

@@ -1,12 +1,13 @@
 from datetime import datetime
 from re import match
+from types import SimpleNamespace
 
 import email_validator
 from flask import request
 from flask_babel import lazy_gettext as _
 from flask_wtf.file import FileAllowed, FileField, FileRequired
 from flask_wtf.form import FlaskForm
-from jinja2 import Markup
+from markupsafe import Markup
 from werkzeug.security import check_password_hash, generate_password_hash
 from wtforms.fields.core import Label, SelectField, SelectMultipleField
 from wtforms.fields.html5 import DateField, DecimalField, URLField
@@ -44,7 +45,7 @@ def get_billform_for(project, set_default=True, **kwargs):
 
     """
     form = BillForm(**kwargs)
-    if form.original_currency.data == "None":
+    if form.original_currency.data is None:
         form.original_currency.data = project.default_currency
 
     show_no_currency = form.original_currency.data == CurrencyConverter.no_currency
@@ -102,7 +103,11 @@ class CalculatorStringField(StringField):
 
 class EditProjectForm(FlaskForm):
     name = StringField(_("Project name"), validators=[DataRequired()])
-    password = StringField(_("Private code"), validators=[DataRequired()])
+    # If empty -> don't change the password
+    password = PasswordField(
+        _("New private code"),
+        description=_("Enter a new code if you want to change it"),
+    )
     contact_email = StringField(_("Email"), validators=[DataRequired(), Email()])
     project_history = BooleanField(_("Enable project history"))
     ip_recording = BooleanField(_("Use IP tracking for project history"))
@@ -110,6 +115,14 @@ class EditProjectForm(FlaskForm):
     default_currency = SelectField(_("Default Currency"), validators=[DataRequired()])
 
     def __init__(self, *args, **kwargs):
+        if not hasattr(self, "id"):
+            # We must access the project to validate the default currency, using its id.
+            # In ProjectForm, 'id' is provided, but not in this base class, so it *must*
+            # be provided by callers.
+            # Since id can be defined as a WTForms.StringField, we mimics it,
+            # using an object that can have a 'data' attribute.
+            # It defaults to empty string to ensure that query run smoothly.
+            self.id = SimpleNamespace(data=kwargs.pop("id", ""))
         super().__init__(*args, **kwargs)
         self.default_currency.choices = [
             (currency_name, render_localized_currency(currency_name, detailed=True))
@@ -127,32 +140,36 @@ class EditProjectForm(FlaskForm):
             else:
                 return LoggingMode.ENABLED
 
-    def save(self):
-        """Create a new project with the information given by this form.
-
-        Returns the created instance
-        """
-        project = Project(
-            name=self.name.data,
-            id=self.id.data,
-            password=generate_password_hash(self.password.data),
-            contact_email=self.contact_email.data,
-            logging_preference=self.logging_preference,
-            default_currency=self.default_currency.data,
-        )
-        return project
+    def validate_default_currency(form, field):
+        project = Project.query.get(form.id.data)
+        if (
+            project is not None
+            and field.data == CurrencyConverter.no_currency
+            and project.has_multiple_currencies()
+        ):
+            raise ValidationError(
+                _(
+                    "This project cannot be set to 'no currency'"
+                    " because it contains bills in multiple currencies."
+                )
+            )
 
     def update(self, project):
         """Update the project with the information from the form"""
         project.name = self.name.data
 
-        # Only update password if changed to prevent spurious log entries
-        if not check_password_hash(project.password, self.password.data):
+        if (
+            # Only update password if a new one is provided
+            self.password.data
+            # Only update password if different from the previous one,
+            # to prevent spurious log entries
+            and not check_password_hash(project.password, self.password.data)
+        ):
             project.password = generate_password_hash(self.password.data)
 
         project.contact_email = self.contact_email.data
         project.logging_preference = self.logging_preference
-        project.default_currency = self.default_currency.data
+        project.switch_currency(self.default_currency.data)
 
         return project
 
@@ -168,16 +185,30 @@ class UploadForm(FlaskForm):
 
 class ProjectForm(EditProjectForm):
     id = StringField(_("Project identifier"), validators=[DataRequired()])
+    # This field overrides the one from EditProjectForm
     password = PasswordField(_("Private code"), validators=[DataRequired()])
     submit = SubmitField(_("Create the project"))
 
     def save(self):
+        """Create a new project with the information given by this form.
+
+        Returns the created instance
+        """
         # WTForms Boolean Fields don't insert the default value when the
         # request doesn't include any value the way that other fields do,
         # so we'll manually do it here
         self.project_history.data = LoggingMode.default() != LoggingMode.DISABLED
         self.ip_recording.data = LoggingMode.default() == LoggingMode.RECORD_IP
-        return super().save()
+        # Create project
+        project = Project(
+            name=self.name.data,
+            id=self.id.data,
+            password=generate_password_hash(self.password.data),
+            contact_email=self.contact_email.data,
+            logging_preference=self.logging_preference,
+            default_currency=self.default_currency.data,
+        )
+        return project
 
     def validate_id(form, field):
         form.id.data = slugify(field.data)

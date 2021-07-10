@@ -11,6 +11,8 @@ Breaking changes
 
 - Drop support for Python 2 (#483)
 - Drop support for Python 3.5 (#571)
+- Drop support for MySQL (#743)
+- Require MariaDB version 10.3.2 or above (#632)
 
 The minimum supported version is now Python 3.6
 
