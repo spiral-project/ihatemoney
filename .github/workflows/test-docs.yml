@@ -38,12 +38,16 @@ jobs:
       matrix:
         python-version: [3.6, 3.7, 3.8, 3.9]
         database: [sqlite]
+        dependencies: [normal]
         # Test other databases only with one version of Python (Debian buster has 3.7)
         include:
           - python-version: 3.7
             database: postgresql
           - python-version: 3.7
             database: mariadb
+          # Try with the minimal versions supported
+          - python-version: 3.9
+            dependencies: minimal
 
     steps:
     - uses: actions/checkout@v2
@@ -51,6 +55,9 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Change dependencies to minimal supported versions
+      run: sed -i -e 's/>=/==/g; s/~=.*==\(.*\)/==\1/g; s/~=/==/g;' setup.cfg
+      if: matrix.dependencies == 'minimal'
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
