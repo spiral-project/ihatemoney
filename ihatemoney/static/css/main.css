@@ -313,7 +313,7 @@ footer .footer-left {
   text-align: center;
 }
 
-.bill-actions > .delete,
+.bill-actions > form > .delete,
 .bill-actions > .edit,
 .bill-actions > .show {
   font-size: 0px;
@@ -323,9 +323,10 @@ footer .footer-left {
   margin: 2px;
   margin-left: 5px;
   float: left;
+  border: none;
 }
 
-.bill-actions > .delete {
+.bill-actions > form > .delete {
   background: url("../images/delete.png") no-repeat right;
 }
 

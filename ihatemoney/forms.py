@@ -373,3 +373,9 @@ class InviteForm(FlaskForm):
                 raise ValidationError(
                     _("The email %(email)s is not valid", email=email)
                 )
+
+
+class EmptyForm(FlaskForm):
+    """Used for CSRF validation"""
+
+    pass
