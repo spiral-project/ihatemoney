@@ -10,6 +10,9 @@ from ihatemoney.run import create_app, db
 class BaseTestCase(TestCase):
 
     SECRET_KEY = "TEST SESSION"
+    SQLALCHEMY_DATABASE_URI = os.environ.get(
+        "TESTING_SQLALCHEMY_DATABASE_URI", "sqlite://"
+    )
 
     def create_app(self):
         # Pass the test object as a configuration.
@@ -60,9 +63,6 @@ class BaseTestCase(TestCase):
 
 
 class IhatemoneyTestCase(BaseTestCase):
-    SQLALCHEMY_DATABASE_URI = os.environ.get(
-        "TESTING_SQLALCHEMY_DATABASE_URI", "sqlite://"
-    )
     TESTING = True
     WTF_CSRF_ENABLED = False  # Simplifies the tests.
 
