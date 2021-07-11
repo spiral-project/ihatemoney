@@ -311,7 +311,7 @@ def em_surround(string, regex_escape=False):
         return f'<em class="font-italic">{string}</em>'
 
 
-def localize_list(list, surround_with_em=True):
+def localize_list(items, surround_with_em=True):
     """
     Localize a list, optionally surrounding each item in <em> tags.
 
@@ -332,36 +332,40 @@ def localize_list(list, surround_with_em=True):
     :param surround_with_em: Optionally surround each object with <em> tags
     :return: A locally formatted list of objects
     """
-    list = list[:]
-    two = _("{dual_object_0} and {dual_object_1}")
-    start = _("{start_object}, {next_object}")
-    middle = _("{previous_object}, {next_object}")
-    end = _("{previous_object}, and {end_object}")
+
+    if len(items) == 0:
+        return ""
 
     item_wrapper = em_surround if surround_with_em else lambda x: x
+    wrapped_items = list(map(item_wrapper, items))
 
-    if len(list) == 0:
-        return ""
-    if len(list) == 1:
-        return str(item_wrapper(list[0]))
-    elif len(list) == 2:
-        return two.format(
-            dual_object_0=item_wrapper(list[0]), dual_object_1=item_wrapper(list[1])
+    if len(wrapped_items) == 1:
+        return str(wrapped_items[0])
+    elif len(wrapped_items) == 2:
+        # I18N: List with two items only
+        return _("{dual_object_0} and {dual_object_1}").format(
+            dual_object_0=wrapped_items[0], dual_object_1=wrapped_items[1]
         )
     else:
-        output_str = end.format(
-            previous_object="{previous_object}", end_object=item_wrapper(list.pop())
+        # I18N: Last two items of a list with more than 3 items
+        output_str = _("{previous_object}, and {end_object}").format(
+            previous_object="{previous_object}", end_object=wrapped_items.pop()
         )
-        while len(list) > 2:
+        # I18N: Two items in a middle of a list with more than 5 objects
+        middle = _("{previous_object}, {next_object}")
+        while len(wrapped_items) > 2:
             temp = middle.format(
                 previous_object="{previous_object}",
-                next_object=item_wrapper(list.pop()),
+                next_object=wrapped_items.pop(),
             )
             output_str = output_str.format(previous_object=temp)
 
-        output_str = output_str.format(previous_object=item_wrapper(list.pop()))
-        output_str = start.format(start_object="{start_object}", next_object=output_str)
-        return output_str.format(start_object=item_wrapper(list.pop()))
+        output_str = output_str.format(previous_object=wrapped_items.pop())
+        # I18N: First two itmes of a list with more than 3 items
+        output_str = _("{start_object}, {next_object}").format(
+            start_object="{start_object}", next_object=output_str
+        )
+        return output_str.format(start_object=wrapped_items.pop())
 
 
 def render_localized_currency(code, detailed=True):
