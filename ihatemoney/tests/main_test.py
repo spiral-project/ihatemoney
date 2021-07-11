@@ -23,14 +23,14 @@ class ConfigurationTestCase(BaseTestCase):
     def test_default_configuration(self):
         """Test that default settings are loaded when no other configuration file is specified"""
         self.assertFalse(self.app.config["DEBUG"])
-        self.assertEqual(
-            self.app.config["SQLALCHEMY_DATABASE_URI"], "sqlite:////tmp/ihatemoney.db"
-        )
         self.assertFalse(self.app.config["SQLALCHEMY_TRACK_MODIFICATIONS"])
         self.assertEqual(
             self.app.config["MAIL_DEFAULT_SENDER"],
             ("Budget manager", "budget@notmyidea.org"),
         )
+        self.assertTrue(self.app.config["ACTIVATE_DEMO_PROJECT"])
+        self.assertTrue(self.app.config["ALLOW_PUBLIC_PROJECT_CREATION"])
+        self.assertFalse(self.app.config["ACTIVATE_ADMIN_DASHBOARD"])
 
     def test_env_var_configuration_file(self):
         """Test that settings are loaded from a configuration file specified
