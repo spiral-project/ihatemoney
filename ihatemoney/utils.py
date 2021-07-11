@@ -306,9 +306,9 @@ def em_surround(string, regex_escape=False):
     string = escape(string)
 
     if regex_escape:
-        return r'<em class="font-italic">%s<\/em>' % string
+        return fr'<em class="font-italic">{string}<\/em>'
     else:
-        return '<em class="font-italic">%s</em>' % string
+        return f'<em class="font-italic">{string}</em>'
 
 
 def localize_list(list, surround_with_em=True):
