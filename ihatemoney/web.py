@@ -40,6 +40,7 @@ from ihatemoney.forms import (
     AdminAuthenticationForm,
     AuthenticationForm,
     EditProjectForm,
+    EmptyForm,
     InviteForm,
     MemberForm,
     PasswordReminder,
@@ -608,6 +609,7 @@ def invite():
 @main.route("/<project_id>/")
 def list_bills():
     bill_form = get_billform_for(g.project)
+    csrf_form = EmptyForm()
     # set the last selected payer as default choice if exists
     if "last_selected_payer" in session:
         bill_form.payer.data = session["last_selected_payer"]
@@ -623,6 +625,7 @@ def list_bills():
         bills=bills,
         member_form=MemberForm(g.project),
         bill_form=bill_form,
+        csrf_form=csrf_form,
         add_bill=request.values.get("add_bill", False),
         current_view="list_bills",
     )
@@ -644,6 +647,12 @@ def add_member():
 
 @main.route("/<project_id>/members/<member_id>/reactivate", methods=["POST"])
 def reactivate(member_id):
+    # Used for CSRF validation
+    form = EmptyForm()
+    if not form.validate():
+        flash(_("CSRF Token: The CSRF token is invalid."), category="danger")
+        return redirect(url_for(".list_bills"))
+
     person = (
         Person.query.filter(Person.id == member_id)
         .filter(Project.id == g.project.id)
@@ -658,6 +667,12 @@ def reactivate(member_id):
 
 @main.route("/<project_id>/members/<member_id>/delete", methods=["POST"])
 def remove_member(member_id):
+    # Used for CSRF validation
+    form = EmptyForm()
+    if not form.validate():
+        flash(_("CSRF Token: The CSRF token is invalid."), category="danger")
+        return redirect(url_for(".list_bills"))
+
     member = g.project.remove_member(member_id)
     if member:
         if not member.activated:
@@ -715,9 +730,14 @@ def add_bill():
     return render_template("add_bill.html", form=form)
 
 
-@main.route("/<project_id>/delete/<int:bill_id>")
+@main.route("/<project_id>/delete/<int:bill_id>", methods=["POST"])
 def delete_bill(bill_id):
-    # fixme: everyone is able to delete a bill
+    # Used for CSRF validation
+    form = EmptyForm()
+    if not form.validate():
+        flash(_("CSRF Token: The CSRF token is invalid."), category="danger")
+        return redirect(url_for(".list_bills"))
+
     bill = Bill.query.get(g.project, bill_id)
     if not bill:
         return redirect(url_for(".list_bills"))

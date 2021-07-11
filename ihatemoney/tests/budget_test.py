@@ -550,7 +550,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertEqual(bill.amount, 10, "bill edition")
 
         # delete the bill
-        self.client.get(f"/raclette/delete/{bill.id}")
+        self.client.post(f"/raclette/delete/{bill.id}")
         self.assertEqual(0, len(models.Bill.query.all()), "bill deletion")
 
         # test balance
@@ -1375,10 +1375,10 @@ class BudgetTestCase(IhatemoneyTestCase):
         resp = self.client.post("/tartiflette/edit/1", data=modified_bill)
         self.assertStatus(404, resp)
         # Try to delete bill
-        resp = self.client.get("/raclette/delete/1")
+        resp = self.client.post("/raclette/delete/1")
         self.assertStatus(303, resp)
         # Try to delete bill by ID
-        resp = self.client.get("/tartiflette/delete/1")
+        resp = self.client.post("/tartiflette/delete/1")
         self.assertStatus(302, resp)
 
         # Additional check that the bill was indeed not modified or deleted
@@ -1396,7 +1396,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         bill = models.Bill.query.filter(models.Bill.id == 1).one_or_none()
         self.assertNotEqual(bill, None, "bill not found")
         self.assertEqual(bill.what, "roblochon")
-        self.client.get("/raclette/delete/1")
+        self.client.post("/raclette/delete/1")
         bill = models.Bill.query.filter(models.Bill.id == 1).one_or_none()
         self.assertEqual(bill, None)
 

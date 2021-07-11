@@ -222,7 +222,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         )
         self.assertEqual(resp.status_code, 200)
         # delete the bill
-        resp = self.client.get(f"/demo/delete/{bill_id}", follow_redirects=True)
+        resp = self.client.post(f"/demo/delete/{bill_id}", follow_redirects=True)
         self.assertEqual(resp.status_code, 200)
 
         # delete user using POST method
@@ -389,7 +389,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         )
 
         # delete the bill
-        resp = self.client.get("/demo/delete/1", follow_redirects=True)
+        resp = self.client.post("/demo/delete/1", follow_redirects=True)
         self.assertEqual(resp.status_code, 200)
 
         resp = self.client.get("/demo/history")
@@ -527,7 +527,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         )
 
         # delete the bill
-        self.client.get("/demo/delete/1", follow_redirects=True)
+        self.client.post("/demo/delete/1", follow_redirects=True)
 
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
