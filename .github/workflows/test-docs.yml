@@ -37,17 +37,29 @@ jobs:
       fail-fast: false
       matrix:
         python-version: [3.6, 3.7, 3.8, 3.9]
-        database: [sqlite]
         dependencies: [normal]
+        database: [sqlite]
         # Test other databases only with one version of Python (Debian buster has 3.7)
         include:
           - python-version: 3.7
+            dependencies: normal
             database: postgresql
           - python-version: 3.7
+            dependencies: normal
             database: mariadb
-          # Try with the minimal versions supported
+          # Try a few variants with the minimal versions supported
+          - python-version: 3.6
+            dependencies: minimal
+            database: sqlite
+          - python-version: 3.7
+            dependencies: minimal
+            database: postgresql
+          - python-version: 3.7
+            dependencies: minimal
+            database: mariadb
           - python-version: 3.9
             dependencies: minimal
+            database: sqlite
 
     steps:
     - uses: actions/checkout@v2
