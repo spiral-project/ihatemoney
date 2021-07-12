@@ -361,7 +361,7 @@ def localize_list(items, surround_with_em=True):
             output_str = output_str.format(previous_object=temp)
 
         output_str = output_str.format(previous_object=wrapped_items.pop())
-        # I18N: First two itmes of a list with more than 3 items
+        # I18N: First two items of a list with more than 3 items
         output_str = _("{start_object}, {next_object}").format(
             start_object="{start_object}", next_object=output_str
         )
