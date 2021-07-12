@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-07 01:01+0200\n"
-"PO-Revision-Date: 2021-04-14 08:27+0000\n"
-"Last-Translator: whenwesober <naomi16i_1298q@cikuh.com>\n"
+"PO-Revision-Date: 2021-07-12 01:33+0000\n"
+"Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/id/>\n"
 "Language: id\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/id/>\n"
-"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.8-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 msgid ""
@@ -25,9 +25,8 @@ msgstr ""
 msgid "Project name"
 msgstr "Nama proyek"
 
-#, fuzzy
 msgid "New private code"
-msgstr "Kode pribadi"
+msgstr "Kode pribadi baru"
 
 msgid "Email"
 msgstr "Surel"
@@ -45,6 +44,8 @@ msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
+"Proyek ini tidak dapat disetel ke 'tanpa mata uang' karena berisi tagihan "
+"dalam berbagai mata uang."
 
 msgid "Import previously exported JSON file"
 msgstr "Impor file JSON yang sudah diekspor sebelumnya"
@@ -330,13 +331,11 @@ msgstr "tampilkan"
 msgid "The Dashboard is currently deactivated."
 msgstr "Dasbor sekarang ini sedang dinonaktifkan."
 
-#, fuzzy
 msgid "Download Mobile Application"
-msgstr "Aplikasi Gawai"
+msgstr "Unduh Aplikasi Seluler"
 
-#, fuzzy
 msgid "Get it on"
-msgstr "Masuk"
+msgstr "Dapatkan di"
 
 msgid "you sure?"
 msgstr "Anda yakin?"
@@ -859,4 +858,3 @@ msgstr "Periode"
 #~ "teman Anda. Kode ini disimpan dalam "
 #~ "bentuk teks biasa dalam server, jadi "
 #~ "jangan gunakan password Anda!"
-
