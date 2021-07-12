@@ -369,7 +369,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         )
         self.assertRegex(
             resp.data.decode("utf-8"),
-            r"Bill %s:\s* amount changed\s* from %s\s* to %s"
+            r"Bill %s:\s* Amount changed\s* from %s\s* to %s"
             % (
                 em_surround("fromage à raclette", regex_escape=True),
                 em_surround("25.0", regex_escape=True),
@@ -385,7 +385,7 @@ class HistoryTestCase(IhatemoneyTestCase):
             resp.data.decode("utf-8").index(
                 f"Bill {em_surround('fromage à raclette')} renamed to"
             ),
-            resp.data.decode("utf-8").index("amount changed"),
+            resp.data.decode("utf-8").index("Amount changed"),
         )
 
         # delete the bill
@@ -489,7 +489,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertRegex(
             resp.data.decode("utf-8"),
-            r"Bill {}:\s* amount changed\s* from {}\s* to {}".format(
+            r"Bill {}:\s* Amount changed\s* from {}\s* to {}".format(
                 em_surround("Bill 1", regex_escape=True),
                 em_surround("25.0", regex_escape=True),
                 em_surround("88.0", regex_escape=True),
