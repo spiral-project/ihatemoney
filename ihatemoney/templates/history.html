@@ -220,9 +220,9 @@
                     {% elif event.prop_changed == "owers_removed" %}
                         {{ owers_changed(event, False)}}
                     {% elif event.prop_changed == "payer" %}
-                        {{ bill_property_change(event, _("payer"))}}
+                        {{ bill_property_change(event, _("Payer"))}}
                     {% elif event.prop_changed == "amount" %}
-                        {{ bill_property_change(event, _("amount")) }}
+                        {{ bill_property_change(event, _("Amount")) }}
                     {% elif event.prop_changed == "date" %}
                         {{ bill_property_change(event, _("Date")) }}
                     {% elif event.prop_changed == "original_currency" %}
