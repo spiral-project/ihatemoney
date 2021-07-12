@@ -76,7 +76,7 @@ Configure database with MariaDB (optional)
 
 2. Install PyMySQL (within your virtual environment)::
 
-    pip install 'PyMySQL>=0.9,<0.10'
+    pip install 'PyMySQL>=0.9,<1.1'
 
 3. Create an empty database and a database user
 4. Configure :ref:`SQLALCHEMY_DATABASE_URI <configuration>` accordingly
