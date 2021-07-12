@@ -29,13 +29,14 @@
 {% endif %}
 {% endmacro %}
 
-{% macro describe_object(event) %}{{ event.object_type }} <em class="font-italic">{{ event.object_desc }}</em>{% endmacro %}
-
-{% macro simple_property_change(event, localized_property_name, from=True) %}
-    {{ describe_object(event) }}:
-    {{ localized_property_name }} {{ _("changed") }}
-    {% if from %}{{ _("from") }} <em class="font-italic">{{ event.val_before }}</em>{% endif %}
-    {{ _("to") }} <em class="font-italic">{{ event.val_after }}</em>
+{% macro bill_property_change(event, localized_property_name, before=event.val_before|em_surround, after=event.val_after|em_surround) %}
+    {% set name=event.object_desc|em_surround %}
+    {% set property_name=localized_property_name %}
+    {% if before %}
+        {% trans %}Bill {{ name }}: {{ property_name }} changed from {{ before }} to {{ after }}{% endtrans %}
+    {% else %}
+        {% trans %}Bill {{ name }}: {{ property_name }} changed to {{ after }}{% endtrans %}
+    {% endif %}
 {% endmacro %}
 
 {% macro clear_history_modals() %}
@@ -83,17 +84,13 @@
 {% endmacro %}
 
 {% macro owers_changed(event, add) %}
-    {{ describe_object(event) }}: {% if add %}{{ _("Added") }}{% else %}{{ _("Removed") }}{% endif %}
-    {% if event.val_after|length > 1 %}
-        {% for name in event.val_after %}
-            <em class="font-italic">{{ name }}</em>{% if event.val_after|length > 2 and loop.index != event.val_after|length %},{% endif %}
-            {% if loop.index == event.val_after|length - 1 %} {{ _("and") }} {% endif %}
-        {% endfor %}
+    {% set name=event.object_desc|em_surround %}
+    {% set owers_list_str=event.val_after|localize_list|safe %}
+    {% if add %}
+        {% trans %}Bill {{ name }}: added {{ owers_list_str }} to owers list{% endtrans %}
     {% else %}
-        <em class="font-italic">{{ event.val_after[0] }}</em>
+        {% trans %}Bill {{ name }}: removed {{ owers_list_str }} from owers list{% endtrans %}
     {% endif %}
-    {% if add %}{{ _("to") }}{% else %}{{ _("from") }}{% endif %}
-    {{ _("owers list") }}
 {% endmacro %}
 
 {% block sidebar %}
@@ -174,53 +171,86 @@
                     ></i>
                 </div>
                 <div class="history_text">
+                {# Common value setting #}
+                {% set name=event.object_desc|em_surround %}
+
                 {% if event.operation_type == OperationType.INSERT %}
-                    {{ event.object_type }} <em class="font-italic">{{ event.object_desc }}</em> {{ _("added") }}
+                    {% if event.object_type == "Project" %}
+                        {% trans %}Project {{ name }} added{% endtrans %}
+                    {% elif event.object_type == "Bill" %}
+                        {% trans %}Bill {{ name }} added{% endtrans %}
+                    {% elif event.object_type == "Person" %}
+                        {% trans %}Participant {{ name }} added{% endtrans %}
+                    {% endif %}
                 {% elif event.operation_type == OperationType.UPDATE  %}
-                    {% if event.object_type == _("Project") %}
+                    {% if event.object_type == "Project" %}
                         {% if event.prop_changed == "password" %}
                            {{ _("Project private code changed") }}
                         {% elif event.prop_changed == "logging_preference" %}
                             {{ change_to_logging_preference(event) }}
                         {% elif event.prop_changed == "name" %}
-                            {{ _("Project renamed to") }} <em class="font-italic">{{ event.val_after }}</em>
+                            {% set new_project_name=event.val_after|em_surround %}
+                            {% trans %}Project renamed to {{ new_project_name }}{% endtrans %}
                         {% elif event.prop_changed == "contact_email" %}
-                            {{ _("Project contact email changed to") }} <em class="font-italic">{{ event.val_after }}</em>
+                            {% set new_email=event.val_after|em_surround %}
+                            {% trans %}Project contact email changed to {{ new_email }}{% endtrans %}
                         {% else %}
                             {{ _("Project settings modified") }}
                         {% endif %}
                     {% elif event.prop_changed == "activated" %}
-                        {{ event.object_type }} <em class="font-italic">{{ event.object_desc }}</em>
-                        {% if event.val_after == False %}{{ _("deactivated") }}{% else %}{{ _("reactivated") }}{% endif %}
-                    {% elif event.prop_changed == "name" or event.prop_changed == "what" %}
-                        {{ describe_object(event) }} {{ _("renamed to") }} <em class="font-italic">{{ event.val_after }}</em>
+                        {% if event.val_after == False %}
+                            {% trans %}Participant {{ name }} deactivated{% endtrans %}
+                        {% else %}
+                            {% trans %}Participant {{ name }} reactivated{% endtrans %}
+                        {% endif %}
+                    {% elif event.prop_changed == "name" %}
+                            {% set new_name=event.val_after|em_surround %}
+                            {% trans %}Participant {{ name }} renamed to {{ new_name }}{% endtrans %}
+                    {% elif event.prop_changed == "what" %}
+                            {% set new_description=event.val_after|em_surround %}
+                            {% trans %}Bill {{ name }} renamed to {{ new_description }}{% endtrans %}
                     {% elif event.prop_changed == "weight" %}
-                        {{ simple_property_change(event, _("Weight")) }}
+                        {% set old_weight=event.val_before|em_surround %}
+                        {% set new_weight=event.val_after|em_surround %}
+                        {% trans %}Participant {{ name }}: weight changed from {{ old_weight }} to {{ new_weight }}{% endtrans %}
                     {% elif event.prop_changed == "external_link" %}
-                        {{ describe_object(event) }}: {{ _("External link changed to") }}
-                        <a href="{{ event.val_after }}" class="font-italic">{{ event.val_after }}</a>
+                        {{ bill_property_change(event, _("External link"), None, "<a href='{link}' >{link}</a>".format(link=event.val_after | escape) | safe | em_surround) }}
                     {% elif event.prop_changed == "owers_added" %}
                         {{ owers_changed(event, True)}}
                     {% elif event.prop_changed == "owers_removed" %}
                         {{ owers_changed(event, False)}}
                     {% elif event.prop_changed == "payer" %}
-                        {{ simple_property_change(event, _("Payer"))}}
+                        {{ bill_property_change(event, _("Payer"))}}
                     {% elif event.prop_changed == "amount" %}
-                        {{ simple_property_change(event, _("Amount")) }}
+                        {{ bill_property_change(event, _("Amount")) }}
                     {% elif event.prop_changed == "date" %}
-                        {{ simple_property_change(event, _("Date")) }}
+                        {{ bill_property_change(event, _("Date")) }}
                     {% elif event.prop_changed == "original_currency" %}
-                        {{ simple_property_change(event, _("Currency")) }}
+                        {{ bill_property_change(event, _("Currency")) }}
                     {% elif event.prop_changed == "converted_amount" %}
-                        {{ simple_property_change(event, _("Amount in %(currency)s", currency=g.project.default_currency)) }}
+                        {{ bill_property_change(event, _("Amount in %(currency)s", currency=g.project.default_currency)) }}
                     {% else %}
-                       {{ describe_object(event) }} {{ _("modified") }}
+                        {% if event.object_type == "Bill" %}
+                            {% trans %}Bill {{ name }} modified{% endtrans %}
+                        {% elif event.object_type == "Person" %}
+                            {% trans %}Participant {{ name }} modified{% endtrans %}
+                        {% endif %}
                     {% endif %}
                 {% elif event.operation_type == OperationType.DELETE %}
-                    {{ event.object_type }} <em class="font-italic">{{ event.object_desc }}</em> {{ _("removed") }}
+                    {% if event.object_type == "Bill" %}
+                        {% trans %}Bill {{ name }} removed{% endtrans %}
+                    {% elif event.object_type == "Person" %}
+                        {% trans %}Participant {{ name }} removed{% endtrans %}
+                    {% endif %}
                 {% else %}
-                {# Should be unreachable #}
-                {{ describe_object(event) }} {{ _("changed in a unknown way") }}
+                    {# Should be unreachable #}
+                    {% if event.object_type == "Project" %}
+                        {% trans %}Project {{ name }} changed in an unknown way{% endtrans %}
+                    {% elif event.object_type == "Bill" %}
+                        {% trans %}Bill {{ name }} changed in an unknown way{% endtrans %}
+                    {% elif event.object_type == "Person" %}
+                        {% trans %}Participant {{ name }} changed in an unknown way{% endtrans %}
+                    {% endif %}
                 {% endif %}
                 </div>
             </td>

@@ -71,7 +71,7 @@ build-translations: ## Build the translations
 
 .PHONY: update-translations
 update-translations: ## Extract new translations from source code
-	$(VENV)/bin/pybabel extract --strip-comments --omit-header --no-location --mapping-file ihatemoney/babel.cfg -o ihatemoney/messages.pot ihatemoney
+	$(VENV)/bin/pybabel extract --add-comments "I18N:" --strip-comments --omit-header --no-location --mapping-file ihatemoney/babel.cfg -o ihatemoney/messages.pot ihatemoney
 	$(VENV)/bin/pybabel update -i ihatemoney/messages.pot -d ihatemoney/translations/
 
 .PHONY: create-database-revision

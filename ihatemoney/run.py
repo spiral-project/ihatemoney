@@ -8,6 +8,7 @@ from flask_babel import Babel, format_currency
 from flask_mail import Mail
 from flask_migrate import Migrate, stamp, upgrade
 from jinja2 import pass_context
+from markupsafe import Markup
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 from ihatemoney import default_settings
@@ -17,7 +18,9 @@ from ihatemoney.models import db
 from ihatemoney.utils import (
     IhmJSONEncoder,
     PrefixedWSGI,
+    em_surround,
     locale_from_iso,
+    localize_list,
     minimal_round,
     static_include,
 )
@@ -150,6 +153,8 @@ def create_app(
     app.jinja_env.globals["static_include"] = static_include
     app.jinja_env.globals["locale_from_iso"] = locale_from_iso
     app.jinja_env.filters["minimal_round"] = minimal_round
+    app.jinja_env.filters["em_surround"] = lambda text: Markup(em_surround(text))
+    app.jinja_env.filters["localize_list"] = localize_list
 
     # Translations and time zone (used to display dates).  The timezone is
     # taken from the BABEL_DEFAULT_TIMEZONE settings, and falls back to

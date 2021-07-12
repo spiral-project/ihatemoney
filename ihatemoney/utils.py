@@ -12,7 +12,7 @@ import socket
 
 from babel import Locale
 from babel.numbers import get_currency_name, get_currency_symbol
-from flask import current_app, redirect, render_template
+from flask import current_app, escape, redirect, render_template
 from flask_babel import get_locale, lazy_gettext as _
 import jinja2
 from werkzeug.routing import HTTPException, RoutingException
@@ -298,6 +298,74 @@ class FormEnum(Enum):
 
     def __str__(self):
         return str(self.value)
+
+
+def em_surround(string, regex_escape=False):
+    # Needed since we're going to assume this is safe later in order to render
+    # the <em> tag we're adding
+    string = escape(string)
+
+    if regex_escape:
+        return fr'<em class="font-italic">{string}<\/em>'
+    else:
+        return f'<em class="font-italic">{string}</em>'
+
+
+def localize_list(items, surround_with_em=True):
+    """
+    Localize a list, optionally surrounding each item in <em> tags.
+
+    Uses the appropriate joining character, oxford comma behavior, and handles
+    1, and 2 object lists, all according to localizable behavior.
+
+    Examples (using en locale):
+        >>> localize_list([1,2,3,4,5], False)
+        1, 2, 3, 4, and 5
+
+        >>> localize_list([1,2], False)
+        1 and 2
+
+    Based on the LUA example from:
+    https://stackoverflow.com/a/58033018
+
+    :param list: The list of objects to localize by a call to str()
+    :param surround_with_em: Optionally surround each object with <em> tags
+    :return: A locally formatted list of objects
+    """
+
+    if len(items) == 0:
+        return ""
+
+    item_wrapper = em_surround if surround_with_em else lambda x: x
+    wrapped_items = list(map(item_wrapper, items))
+
+    if len(wrapped_items) == 1:
+        return str(wrapped_items[0])
+    elif len(wrapped_items) == 2:
+        # I18N: List with two items only
+        return _("{dual_object_0} and {dual_object_1}").format(
+            dual_object_0=wrapped_items[0], dual_object_1=wrapped_items[1]
+        )
+    else:
+        # I18N: Last two items of a list with more than 3 items
+        output_str = _("{previous_object}, and {end_object}").format(
+            previous_object="{previous_object}", end_object=wrapped_items.pop()
+        )
+        # I18N: Two items in a middle of a list with more than 5 objects
+        middle = _("{previous_object}, {next_object}")
+        while len(wrapped_items) > 2:
+            temp = middle.format(
+                previous_object="{previous_object}",
+                next_object=wrapped_items.pop(),
+            )
+            output_str = output_str.format(previous_object=temp)
+
+        output_str = output_str.format(previous_object=wrapped_items.pop())
+        # I18N: First two items of a list with more than 3 items
+        output_str = _("{start_object}, {next_object}").format(
+            start_object="{start_object}", next_object=output_str
+        )
+        return output_str.format(start_object=wrapped_items.pop())
 
 
 def render_localized_currency(code, detailed=True):

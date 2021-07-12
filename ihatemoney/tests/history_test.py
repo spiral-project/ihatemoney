@@ -410,7 +410,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertRegex(
             resp.data.decode("utf-8"),
-            r"Participant %s:\s* Weight changed\s* from %s\s* to %s"
+            r"Participant %s:\s* weight changed\s* from %s\s* to %s"
             % (
                 em_surround("zorglub", regex_escape=True),
                 em_surround("1.0", regex_escape=True),
@@ -426,7 +426,7 @@ class HistoryTestCase(IhatemoneyTestCase):
             resp.data.decode("utf-8").index(
                 f"Participant {em_surround('zorglub')} renamed"
             ),
-            resp.data.decode("utf-8").index("Weight changed"),
+            resp.data.decode("utf-8").index("weight changed"),
         )
 
         # delete user using POST method
