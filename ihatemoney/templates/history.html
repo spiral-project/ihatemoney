@@ -55,6 +55,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _("Close") }}</button>
                 <form action="{{ url_for(".strip_ip_addresses") }}" method="post">
+                    {{ csrf_form.csrf_token }}
                     <input type="submit" class="btn btn-danger" value="{{ _("Confirm Delete") }}" name="{{ _("Confirm Delete") }}"/>
                 </form>
               </div>
@@ -75,6 +76,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _("Close") }}</button>
                 <form action="{{ url_for(".erase_history") }}" method="post">
+                    {{ csrf_form.csrf_token }}
                     <input type="submit" class="btn btn-danger" value="{{ _("Confirm Delete") }}" name="{{ _("Confirm Delete") }}"/>
                 </form>
               </div>
