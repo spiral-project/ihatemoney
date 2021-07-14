@@ -799,6 +799,7 @@ def settle_bill():
 @main.route("/<project_id>/history")
 def history():
     """Query for the version entries associated with this project."""
+    csrf_form = EmptyForm()
     history = get_history(g.project, human_readable_names=True)
 
     any_ip_addresses = any(event["ip"] for event in history)
@@ -811,12 +812,19 @@ def history():
         LoggingMode=LoggingMode,
         OperationType=Operation,
         current_log_pref=g.project.logging_preference,
+        csrf_form=csrf_form,
     )
 
 
 @main.route("/<project_id>/erase_history", methods=["POST"])
 def erase_history():
     """Erase all history entries associated with this project."""
+    # Used for CSRF validation
+    form = EmptyForm()
+    if not form.validate():
+        flash(_("CSRF Token: The CSRF token is invalid."), category="danger")
+        return redirect(url_for(".history"))
+
     for query in get_history_queries(g.project):
         query.delete(synchronize_session="fetch")
 
@@ -827,6 +835,12 @@ def erase_history():
 @main.route("/<project_id>/strip_ip_addresses", methods=["POST"])
 def strip_ip_addresses():
     """Strip ip addresses from history entries associated with this project."""
+    # Used for CSRF validation
+    form = EmptyForm()
+    if not form.validate():
+        flash(_("CSRF Token: The CSRF token is invalid."), category="danger")
+        return redirect(url_for(".history"))
+
     for query in get_history_queries(g.project):
         for version_object in query.all():
             version_object.transaction.remote_addr = None
