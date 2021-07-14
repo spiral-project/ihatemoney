@@ -14,7 +14,7 @@
             {{ field(class=class, placeholder=placeholder) | safe }}
         {% endif %}
         {% if field.description %}
-            <small id="{{field.name}}_description"" class="form-text text-muted">{{ field.description }}</small>
+            <small id="{{field.name}}_description" class="form-text text-muted">{{ field.description }}</small>
         {% endif %}
         </div>
     </div>
@@ -25,7 +25,7 @@
         {{ field(id=field.name) }}
         <label for="{{ field.name }}">{{ field.label() }}</label>
     {% if field.description %}
-        <small id="{{field.name}}_description"" class="form-text text-muted">{{ field.description }}</small>
+        <small id="{{field.name}}_description" class="form-text text-muted">{{ field.description }}</small>
     {% endif %}
     </div>
 {% endmacro %}
