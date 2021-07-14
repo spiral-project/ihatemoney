@@ -39,7 +39,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from ihatemoney.forms import (
     AdminAuthenticationForm,
     AuthenticationForm,
-    DeleteProjectForm,
+    DestructiveActionProjectForm,
     EditProjectForm,
     EmptyForm,
     InviteForm,
@@ -402,7 +402,7 @@ def reset_password():
 @main.route("/<project_id>/edit", methods=["GET", "POST"])
 def edit_project():
     edit_form = EditProjectForm(id=g.project.id)
-    delete_form = DeleteProjectForm(id=g.project.id)
+    delete_form = DestructiveActionProjectForm(id=g.project.id)
     import_form = UploadForm()
     # Import form
     if import_form.validate_on_submit():
@@ -517,7 +517,7 @@ def import_project(file, project):
 
 @main.route("/<project_id>/delete", methods=["POST"])
 def delete_project():
-    form = DeleteProjectForm(id=g.project.id)
+    form = DestructiveActionProjectForm(id=g.project.id)
     if form.validate():
         g.project.remove_project()
         flash(_("Project successfully deleted"))
@@ -799,11 +799,11 @@ def settle_bill():
 @main.route("/<project_id>/history")
 def history():
     """Query for the version entries associated with this project."""
-    csrf_form = EmptyForm()
     history = get_history(g.project, human_readable_names=True)
 
     any_ip_addresses = any(event["ip"] for event in history)
 
+    delete_form = DestructiveActionProjectForm()
     return render_template(
         "history.html",
         current_view="history",
@@ -812,33 +812,40 @@ def history():
         LoggingMode=LoggingMode,
         OperationType=Operation,
         current_log_pref=g.project.logging_preference,
-        csrf_form=csrf_form,
+        delete_form=delete_form,
     )
 
 
 @main.route("/<project_id>/erase_history", methods=["POST"])
 def erase_history():
     """Erase all history entries associated with this project."""
-    # Used for CSRF validation
-    form = EmptyForm()
+    form = DestructiveActionProjectForm(id=g.project.id)
     if not form.validate():
-        flash(_("CSRF Token: The CSRF token is invalid."), category="danger")
+        flash(
+            _("Error deleting project history: wrong private code or wrong CSRF token"),
+            category="danger",
+        )
         return redirect(url_for(".history"))
 
     for query in get_history_queries(g.project):
         query.delete(synchronize_session="fetch")
 
     db.session.commit()
+    flash(_("Deleted project history."))
     return redirect(url_for(".history"))
 
 
 @main.route("/<project_id>/strip_ip_addresses", methods=["POST"])
 def strip_ip_addresses():
     """Strip ip addresses from history entries associated with this project."""
-    # Used for CSRF validation
-    form = EmptyForm()
+    form = DestructiveActionProjectForm(id=g.project.id)
     if not form.validate():
-        flash(_("CSRF Token: The CSRF token is invalid."), category="danger")
+        flash(
+            _(
+                "Error deleting recorded IP addresses: wrong private code or wrong CSRF token"
+            ),
+            category="danger",
+        )
         return redirect(url_for(".history"))
 
     for query in get_history_queries(g.project):
@@ -846,6 +853,7 @@ def strip_ip_addresses():
             version_object.transaction.remote_addr = None
 
     db.session.commit()
+    flash(_("Deleted recorded IP addresses in project history."))
     return redirect(url_for(".history"))
 
 

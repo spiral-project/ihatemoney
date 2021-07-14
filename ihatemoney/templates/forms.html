@@ -125,6 +125,28 @@
     </div>
 {% endmacro %}
 
+{% macro delete_project_history(form) %}
+
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }}
+    {{ input(form.password, inline=True) }}
+    <div class="actions">
+        <button class="btn btn-danger">{{ _("Confirm deletion") }}</button>
+    </div>
+
+{% endmacro %}
+
+{% macro delete_ip_addresses(form) %}
+
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }}
+    {{ input(form.password) }}
+    <div class="actions">
+        <button class="btn btn-danger">{{ _("Confirm deletion") }}</button>
+    </div>
+
+{% endmacro %}
+
 {% macro add_bill(form, edit=False, title=True) %}
 
     <fieldset>

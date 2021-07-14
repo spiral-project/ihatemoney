@@ -221,7 +221,17 @@ class ProjectForm(EditProjectForm):
             raise ValidationError(Markup(message))
 
 
-class DeleteProjectForm(FlaskForm):
+class DestructiveActionProjectForm(FlaskForm):
+    """Used for any important "delete" action linked to a project:
+
+    - delete project itself
+    - delete history
+    - delete IP addresses in history
+    - possibly others in the future
+
+    It asks the user to enter the private code to confirm deletion.
+    """
+
     password = PasswordField(
         _("Private code"),
         description=_("Enter private code to confirm deletion"),
