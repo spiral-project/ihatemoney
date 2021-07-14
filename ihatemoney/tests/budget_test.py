@@ -252,6 +252,14 @@ class BudgetTestCase(IhatemoneyTestCase):
             # project added
             self.assertEqual(len(models.Project.query.all()), 1)
 
+            # Check that we can't delete project with a GET or with a
+            # password-less POST.
+            resp = self.client.get("/raclette/delete")
+            self.assertEqual(resp.status_code, 405)
+            self.client.post("/raclette/delete")
+            self.assertEqual(len(models.Project.query.all()), 1)
+
+            # Delete for real
             c.post(
                 "/raclette/delete",
                 data={"password": "party"},
@@ -552,7 +560,11 @@ class BudgetTestCase(IhatemoneyTestCase):
         bill = models.Bill.query.one()
         self.assertEqual(bill.amount, 10, "bill edition")
 
-        # delete the bill
+        # Try to delete the bill with a GET: it should fail
+        response = self.client.get(f"/raclette/delete/{bill.id}")
+        self.assertEqual(response.status_code, 405)
+        self.assertEqual(1, len(models.Bill.query.all()), "bill deletion")
+        # Really delete the bill
         self.client.post(f"/raclette/delete/{bill.id}")
         self.assertEqual(0, len(models.Bill.query.all()), "bill deletion")
 

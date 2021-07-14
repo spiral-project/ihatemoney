@@ -235,6 +235,16 @@ class HistoryTestCase(IhatemoneyTestCase):
         # Disable logging
         self.change_privacy_to(LoggingMode.DISABLED)
 
+        # Ensure we can't clear history with a GET or with a password-less POST
+        resp = self.client.get("/demo/erase_history")
+        self.assertEqual(resp.status_code, 405)
+        resp = self.client.post("/demo/erase_history", follow_redirects=True)
+        self.assertIn(
+            "Error deleting project history",
+            resp.data.decode("utf-8"),
+        )
+
+        # List history
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
         self.assertIn(
@@ -293,6 +303,20 @@ class HistoryTestCase(IhatemoneyTestCase):
 
         # Generate more operations to confirm additional IP info isn't recorded
         self.do_misc_database_operations(LoggingMode.ENABLED)
+
+        resp = self.client.get("/demo/history")
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 12)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 7)
+
+        # Ensure we can't clear IP data with a GET or with a password-less POST
+        resp = self.client.get("/demo/strip_ip_addresses")
+        self.assertEqual(resp.status_code, 405)
+        resp = self.client.post("/demo/strip_ip_addresses", follow_redirects=True)
+        self.assertIn(
+            "Error deleting recorded IP addresses",
+            resp.data.decode("utf-8"),
+        )
 
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
