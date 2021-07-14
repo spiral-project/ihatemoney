@@ -1,9 +1,17 @@
 {% extends "layout.html" %}
 
 {% block js %}
-    $('#delete-project').click(function ()
-    {
-        $(this).html("<a style='color:red; ' href='{{ url_for('.delete_project') }}' >{{_("you sure?")}}</a>");
+
+    $('#delete-project').click(function(){
+        var link = $(this).find('button');
+        link.click(function(){
+            if ($(this).hasClass("confirm")){
+                return true;
+            }
+            $(this).html("{{_("Are you sure?")}}");
+            $(this).addClass("confirm");
+            return false;
+        });
     });
 
     $('.custom-file-input').on('change', function(event) {
@@ -21,6 +29,10 @@
         {{ forms.edit_project(edit_form) }}
     </form>
 
+    <h2>{{ _("Delete project") }}</h2>
+    <form id="delete-project" class="form-horizontal" action="{{ url_for(".delete_project") }}" method="post" >
+        {{ forms.delete_project(delete_form) }}
+    </form>
 
     <h2>{{ _("Import JSON") }}</h2>
     <form class="form-horizontal" method="post" enctype="multipart/form-data">

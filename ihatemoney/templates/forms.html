@@ -100,7 +100,18 @@
     {{ input(form.default_currency) }}
     <div class="actions">
         <button class="btn btn-primary">{{ _("Edit the project") }}</button>
-        <a id="delete-project" style="color:red; margin-left:10px; cursor:pointer; ">{{ _("delete") }}</a>
+    </div>
+
+{% endmacro %}
+
+{% macro delete_project(form) %}
+
+    {% include "display_errors.html" %}
+    <p><strong>{{ _("This will remove all bills and participants in this project!") }}</strong></p>
+    {{ form.hidden_tag() }}
+    {{ input(form.password) }}
+    <div class="actions">
+        <button class="btn btn-danger">{{ _("Delete project") }}</button>
     </div>
 
 {% endmacro %}

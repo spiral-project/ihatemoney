@@ -39,6 +39,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from ihatemoney.forms import (
     AdminAuthenticationForm,
     AuthenticationForm,
+    DeleteProjectForm,
     EditProjectForm,
     EmptyForm,
     InviteForm,
@@ -401,6 +402,7 @@ def reset_password():
 @main.route("/<project_id>/edit", methods=["GET", "POST"])
 def edit_project():
     edit_form = EditProjectForm(id=g.project.id)
+    delete_form = DeleteProjectForm(id=g.project.id)
     import_form = UploadForm()
     # Import form
     if import_form.validate_on_submit():
@@ -434,6 +436,7 @@ def edit_project():
     return render_template(
         "edit_project.html",
         edit_form=edit_form,
+        delete_form=delete_form,
         import_form=import_form,
         current_view="edit_project",
     )
@@ -512,11 +515,18 @@ def import_project(file, project):
     db.session.commit()
 
 
-@main.route("/<project_id>/delete")
+@main.route("/<project_id>/delete", methods=["POST"])
 def delete_project():
-    g.project.remove_project()
-    flash(_("Project successfully deleted"))
-
+    form = DeleteProjectForm(id=g.project.id)
+    if form.validate():
+        g.project.remove_project()
+        flash(_("Project successfully deleted"))
+        return redirect(url_for(".home"))
+    else:
+        flash(
+            _("Error deleting project: wrong private code or wrong CSRF token"),
+            category="danger",
+        )
     return redirect(request.headers.get("Referer") or url_for(".home"))
 
 

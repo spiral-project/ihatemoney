@@ -221,6 +221,26 @@ class ProjectForm(EditProjectForm):
             raise ValidationError(Markup(message))
 
 
+class DeleteProjectForm(FlaskForm):
+    password = PasswordField(
+        _("Private code"),
+        description=_("Enter private code to confirm deletion"),
+        validators=[DataRequired()],
+    )
+
+    def __init__(self, *args, **kwargs):
+        # Same trick as EditProjectForm: we need to know the project ID
+        self.id = SimpleNamespace(data=kwargs.pop("id", ""))
+        super().__init__(*args, **kwargs)
+
+    def validate_password(form, field):
+        project = Project.query.get(form.id.data)
+        if project is None:
+            raise ValidationError(_("Unknown error"))
+        if not check_password_hash(project.password, form.password.data):
+            raise ValidationError(_("Invalid private code."))
+
+
 class AuthenticationForm(FlaskForm):
     id = StringField(_("Project identifier"), validators=[DataRequired()])
     password = PasswordField(_("Private code"), validators=[DataRequired()])
