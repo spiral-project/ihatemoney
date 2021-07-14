@@ -92,6 +92,39 @@ class BudgetTestCase(IhatemoneyTestCase):
         resp = self.client.get("/authenticate?token=token")
         self.assertIn("You either provided a bad token", resp.data.decode("utf-8"))
 
+    def test_invite_expiration_with_code(self):
+        """Test that invitation link expire after code change"""
+        self.login("raclette")
+        self.post_project("raclette")
+        response = self.client.get("/raclette/invite").data.decode("utf-8")
+        base_index = response.find("share the following link")
+        start = response.find('href="', base_index) + 6
+        end = response.find('">', base_index)
+        link = response[start:end]
+
+        self.client.get("/exit")
+        response = self.client.get(link)
+        # Link is valid
+        assert response.status_code == 302
+
+        response = self.client.post(
+            "/raclette/edit",
+            data={
+                "name": "raclette",
+                "contact_email": "zorglub@notmyidea.org",
+                "password": "didoudida",
+                "default_currency": "XXX",
+            },
+            follow_redirects=True,
+        )
+        assert response.status_code == 200
+        assert "alert-danger" not in response.data.decode("utf-8")
+
+        self.client.get("/exit")
+        response = self.client.get(link, follow_redirects=True)
+        # Link is invalid
+        self.assertIn("You either provided a bad token", response.data.decode("utf-8"))
+
     def test_password_reminder(self):
         # test that it is possible to have an email containing the password of a
         # project in case people forget it (and it happens!)

@@ -202,7 +202,7 @@ def authenticate(project_id=None):
     # Try to get project_id from token first
     token = request.args.get("token")
     if token:
-        project_id = Project.verify_token(token, token_type="non_timed_token")
+        project_id = Project.verify_token(token, token_type="auth")
         token_auth = True
     else:
         if not form.id.data and request.args.get("project_id"):
@@ -381,7 +381,7 @@ def reset_password():
         return render_template(
             "reset_password.html", form=form, error=_("No token provided")
         )
-    project_id = Project.verify_token(token)
+    project_id = Project.verify_token(token, token_type="reset")
     if not project_id:
         return render_template(
             "reset_password.html", form=form, error=_("Invalid token")

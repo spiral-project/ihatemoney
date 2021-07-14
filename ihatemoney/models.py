@@ -7,8 +7,8 @@ from flask_sqlalchemy import BaseQuery, SQLAlchemy
 from itsdangerous import (
     BadSignature,
     SignatureExpired,
-    TimedJSONWebSignatureSerializer,
     URLSafeSerializer,
+    URLSafeTimedSerializer,
 )
 import sqlalchemy
 from sqlalchemy import orm
@@ -339,41 +339,60 @@ class Project(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-    def generate_token(self, expiration=0):
+    def generate_token(self, token_type="auth"):
         """Generate a timed and serialized JsonWebToken
 
-        :param expiration: Token expiration time (in seconds)
+        :param token_type: Either "auth" for authentication (invalidated when project code changed),
+                        or "reset" for password reset (invalidated after expiration)
         """
-        if expiration:
-            serializer = TimedJSONWebSignatureSerializer(
-                current_app.config["SECRET_KEY"], expiration
+
+        if token_type == "reset":
+            serializer = URLSafeTimedSerializer(
+                current_app.config["SECRET_KEY"], salt=token_type
             )
-            token = serializer.dumps({"project_id": self.id}).decode("utf-8")
-        else:
-            serializer = URLSafeSerializer(current_app.config["SECRET_KEY"])
             token = serializer.dumps({"project_id": self.id})
+        else:
+            serializer = URLSafeSerializer(
+                current_app.config["SECRET_KEY"], salt=token_type
+            )
+            token = serializer.dumps({"project_id": self.id, "password": self.password})
+
         return token
 
     @staticmethod
-    def verify_token(token, token_type="timed_token"):
+    def verify_token(token, token_type="auth", max_age=3600):
         """Return the project id associated to the provided token,
         None if the provided token is expired or not valid.
 
         :param token: Serialized TimedJsonWebToken
+        :param token_type: Either "auth" for authentication (invalidated when project code changed),
+                        or "reset" for password reset (invalidated after expiration)
+        :param max_age: Token expiration time (in seconds). Only used with token_type "reset"
         """
-        if token_type == "timed_token":
-            serializer = TimedJSONWebSignatureSerializer(
-                current_app.config["SECRET_KEY"]
+        loads_kwargs = {}
+        if token_type == "reset":
+            serializer = URLSafeTimedSerializer(
+                current_app.config["SECRET_KEY"], salt=token_type
             )
+            loads_kwargs["max_age"] = max_age
         else:
-            serializer = URLSafeSerializer(current_app.config["SECRET_KEY"])
+            serializer = URLSafeSerializer(
+                current_app.config["SECRET_KEY"], salt=token_type
+            )
         try:
-            data = serializer.loads(token)
+            data = serializer.loads(token, **loads_kwargs)
         except SignatureExpired:
             return None
         except BadSignature:
             return None
-        return data["project_id"]
+
+        password = data.get("password", None)
+        project_id = data["project_id"]
+        if password is not None:
+            project = Project.query.get(project_id)
+            if project is None or project.password != password:
+                return None
+        return project_id
 
     def __str__(self):
         return self.name
