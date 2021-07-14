@@ -252,7 +252,10 @@ class BudgetTestCase(IhatemoneyTestCase):
             # project added
             self.assertEqual(len(models.Project.query.all()), 1)
 
-            c.get("/raclette/delete")
+            c.post(
+                "/raclette/delete",
+                data={"password": "party"},
+            )
 
             # project removed
             self.assertEqual(len(models.Project.query.all()), 0)
