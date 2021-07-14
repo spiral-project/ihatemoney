@@ -251,7 +251,11 @@ class HistoryTestCase(IhatemoneyTestCase):
         )
 
         # Clear Existing Entries
-        resp = self.client.post("/demo/erase_history", follow_redirects=True)
+        resp = self.client.post(
+            "/demo/erase_history",
+            data={"password": "demo"},
+            follow_redirects=True,
+        )
         self.assertEqual(resp.status_code, 200)
         self.assert_empty_history_logging_disabled()
 
@@ -296,7 +300,12 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 7)
 
         # Clear IP Data
-        resp = self.client.post("/demo/strip_ip_addresses", follow_redirects=True)
+        resp = self.client.post(
+            "/demo/strip_ip_addresses",
+            data={"password": "123456"},
+            follow_redirects=True,
+        )
+
         self.assertEqual(resp.status_code, 200)
         self.assertNotIn(
             "This project has history disabled. New actions won't appear below. ",
