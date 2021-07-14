@@ -23,24 +23,6 @@ ACTIVATE_ADMIN_DASHBOARD = $ACTIVATE_ADMIN_DASHBOARD
 BABEL_DEFAULT_TIMEZONE = "$BABEL_DEFAULT_TIMEZONE"
 EOF
 
-if [ "$NIGHTLY" == "True" -o "$NIGHTLY" == "true" ]; then
-    # Clone or update repository into /ihatemoney.
-    if [ ! -d /ihatemoney/.git ]; then
-        echo "Cloning..."
-        git clone --depth 1 https://github.com/spiral-project/ihatemoney /ihatemoney
-        echo "Done cloning."
-    else
-        cd /ihatemoney
-        echo "Updating..."
-        git pull || echo "Couldn't update; maybe Github is unreachable?"
-        echo "Done updating."
-    fi
-    pip install --no-cache-dir -e /ihatemoney
-else
-    # Get the latest release from PyPI.
-    pip install --no-cache-dir --upgrade ihatemoney
-fi
-
 # Start gunicorn without forking
 exec gunicorn ihatemoney.wsgi:application \
      -b 0.0.0.0:8000 \
