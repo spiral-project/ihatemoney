@@ -207,7 +207,7 @@ With Docker
 
 Build the image::
 
-    docker build -t ihatemoney --build-arg INSTALL_FROM_PYPI=True .
+    docker build -t ihatemoney .
 
 Start a daemonized Ihatemoney container::
 
@@ -233,7 +233,17 @@ A volume can also be specified to persist the default database file::
 
     docker run -d -p 8000:8000 -v /host/path/to/database:/database ihatemoney
 
-If you want to run the latest version, you can pass `-e NIGHTLY="true"`.
+To enable the Admin dashboard, first generate a hashed password with::
+
+    docker run -it --rm --entrypoint ihatemoney ihatemoney generate_password_hash
+
+At the prompt, enter a password to use for the admin dashboard. The
+command will print the hashed password string.
+
+Add these additional environment variables to the docker run invocation::
+
+    -e ACTIVATE_ADMIN_DASHBOARD=True \
+    -e ADMIN_PASSWORD=<hashed_password_string> \
 
 Additional gunicorn parameters can be passed using the docker ``CMD``
 parameter.

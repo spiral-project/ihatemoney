@@ -1,7 +1,6 @@
 FROM python:3.7-alpine
 
-ENV NIGHTLY="" \
-    DEBUG="False" \
+ENV DEBUG="False" \
     SQLALCHEMY_DATABASE_URI="sqlite:////database/ihatemoney.db" \
     SQLALCHEMY_TRACK_MODIFICATIONS="False" \
     SECRET_KEY="tralala" \
@@ -19,12 +18,13 @@ ENV NIGHTLY="" \
     BABEL_DEFAULT_TIMEZONE="UTC" \
     GREENLET_TEST_CPP="no"
 
-RUN apk update && apk add git gcc libc-dev libffi-dev openssl-dev wget &&\
-    mkdir -p /etc/ihatemoney &&\
+RUN mkdir -p /etc/ihatemoney &&\
     pip install --no-cache-dir gunicorn pymysql;
 
-COPY ./conf/entrypoint.sh /entrypoint.sh
+ADD . /src
+
+RUN pip install --no-cache-dir -e /src
 
 VOLUME /database
 EXPOSE 8000
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/src/conf/entrypoint.sh"]
