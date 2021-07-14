@@ -303,11 +303,6 @@ footer .footer-left {
   color: #fff;
 }
 
-.confirm,
-.confirm:hover {
-  color: red;
-}
-
 .bill-actions {
   padding-top: 10px;
   text-align: center;
