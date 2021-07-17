@@ -55,6 +55,7 @@ from ihatemoney.models import Bill, LoggingMode, Person, Project, db
 from ihatemoney.utils import (
     LoginThrottler,
     Redirect303,
+    format_form_errors,
     get_members,
     list_of_dicts2csv,
     list_of_dicts2json,
@@ -524,7 +525,7 @@ def delete_project():
         return redirect(url_for(".home"))
     else:
         flash(
-            _("Error deleting project: wrong private code or wrong CSRF token"),
+            format_form_errors(form, _("Error deleting project")),
             category="danger",
         )
     return redirect(request.headers.get("Referer") or url_for(".home"))
@@ -619,6 +620,7 @@ def invite():
 @main.route("/<project_id>/")
 def list_bills():
     bill_form = get_billform_for(g.project)
+    # Used for CSRF validation
     csrf_form = EmptyForm()
     # set the last selected payer as default choice if exists
     if "last_selected_payer" in session:
@@ -660,7 +662,7 @@ def reactivate(member_id):
     # Used for CSRF validation
     form = EmptyForm()
     if not form.validate():
-        flash(_("CSRF Token: The CSRF token is invalid."), category="danger")
+        flash(format_form_errors(form, _("Error activating member")), category="danger")
         return redirect(url_for(".list_bills"))
 
     person = (
@@ -680,7 +682,7 @@ def remove_member(member_id):
     # Used for CSRF validation
     form = EmptyForm()
     if not form.validate():
-        flash(_("CSRF Token: The CSRF token is invalid."), category="danger")
+        flash(format_form_errors(form, _("Error removing member")), category="danger")
         return redirect(url_for(".list_bills"))
 
     member = g.project.remove_member(member_id)
@@ -745,7 +747,7 @@ def delete_bill(bill_id):
     # Used for CSRF validation
     form = EmptyForm()
     if not form.validate():
-        flash(_("CSRF Token: The CSRF token is invalid."), category="danger")
+        flash(format_form_errors(form, _("Error deleting bill")), category="danger")
         return redirect(url_for(".list_bills"))
 
     bill = Bill.query.get(g.project, bill_id)
@@ -822,7 +824,7 @@ def erase_history():
     form = DestructiveActionProjectForm(id=g.project.id)
     if not form.validate():
         flash(
-            _("Error deleting project history: wrong private code or wrong CSRF token"),
+            format_form_errors(form, _("Error deleting project history")),
             category="danger",
         )
         return redirect(url_for(".history"))
@@ -841,9 +843,7 @@ def strip_ip_addresses():
     form = DestructiveActionProjectForm(id=g.project.id)
     if not form.validate():
         flash(
-            _(
-                "Error deleting recorded IP addresses: wrong private code or wrong CSRF token"
-            ),
+            format_form_errors(form, _("Error deleting recorded IP addresses")),
             category="danger",
         )
         return redirect(url_for(".history"))

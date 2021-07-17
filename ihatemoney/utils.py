@@ -15,6 +15,7 @@ from babel.numbers import get_currency_name, get_currency_symbol
 from flask import current_app, escape, redirect, render_template
 from flask_babel import get_locale, lazy_gettext as _
 import jinja2
+from markupsafe import Markup
 from werkzeug.routing import HTTPException, RoutingException
 
 
@@ -394,3 +395,23 @@ def render_localized_template(template_name_prefix, **context):
     ]
     # render_template() supports a list of templates to try in order
     return render_template(templates, **context)
+
+
+def format_form_errors(form, prefix):
+    """Format all form errors into a single string, with a string prefix in
+    front.  Useful for flashing the result.
+    """
+    if len(form.errors) == 0:
+        return ""
+    elif len(form.errors) == 1:
+        # I18N: Form error with only one error
+        return _("{prefix}: {error}").format(
+            prefix=prefix, error=form.errors.popitem()[1][0]
+        )
+    else:
+        error_list = "</li><li>".join(
+            str(error) for (field, errors) in form.errors.items() for error in errors
+        )
+        errors = f"<ul><li>{error_list}</li></ul>"
+        # I18N: Form error with a list of errors
+        return Markup(_("{prefix}:<br />{errors}").format(prefix=prefix, errors=errors))
