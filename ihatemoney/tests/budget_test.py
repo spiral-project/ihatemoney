@@ -5,7 +5,7 @@ import re
 from time import sleep
 import unittest
 from unittest.mock import MagicMock
-from urllib.parse import urlparse, urlencode, parse_qs, urlunparse
+from urllib.parse import parse_qs, urlencode, urlparse, urlunparse
 
 from flask import session
 from markupsafe import Markup
@@ -93,8 +93,10 @@ class BudgetTestCase(IhatemoneyTestCase):
         # Use another project_id
         parsed_url = urlparse(url)
         query = parse_qs(parsed_url.query)
-        query['project_id'] = 'invalid'
-        resp = self.client.get(urlunparse(parsed_url._replace(query=urlencode(query, doseq=True))))
+        query["project_id"] = "invalid"
+        resp = self.client.get(
+            urlunparse(parsed_url._replace(query=urlencode(query, doseq=True)))
+        )
         assert "You either provided a bad token" in resp.data.decode("utf-8")
 
         resp = self.client.get("/authenticate")
