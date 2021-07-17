@@ -199,15 +199,16 @@ def admin():
 def authenticate(project_id=None):
     """Authentication form"""
     form = AuthenticationForm()
+
+    if not form.id.data and request.args.get("project_id"):
+        form.id.data = request.args["project_id"]
+    project_id = form.id.data
     # Try to get project_id from token first
     token = request.args.get("token")
     if token:
-        project_id = Project.verify_token(token, token_type="auth")
+        project_id = Project.verify_token(token, token_type="auth", project_id=project_id)
         token_auth = True
     else:
-        if not form.id.data and request.args.get("project_id"):
-            form.id.data = request.args["project_id"]
-        project_id = form.id.data
         token_auth = False
     if project_id is None:
         # User doesn't provide project identifier or a valid token

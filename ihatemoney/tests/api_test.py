@@ -213,7 +213,7 @@ class APITestCase(IhatemoneyTestCase):
             "/api/projects/raclette/token", headers=self.get_auth("raclette")
         )
         decoded_resp = json.loads(resp.data.decode("utf-8"))
-        resp = self.client.get("/authenticate?token={}".format(decoded_resp["token"]))
+        resp = self.client.get(f"/authenticate?token={decoded_resp['token']}&project_id=raclette")
         # Test that we are redirected.
         self.assertEqual(302, resp.status_code)
 

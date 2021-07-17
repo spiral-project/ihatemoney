@@ -6,6 +6,7 @@ from time import sleep
 import unittest
 
 from flask import session
+from markupsafe import Markup
 import pytest
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -100,7 +101,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         base_index = response.find("share the following link")
         start = response.find('href="', base_index) + 6
         end = response.find('">', base_index)
-        link = response[start:end]
+        link = Markup(response[start:end]).unescape()
 
         self.client.get("/exit")
         response = self.client.get(link)
