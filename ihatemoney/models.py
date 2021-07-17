@@ -378,7 +378,7 @@ class Project(db.Model):
             )
             loads_kwargs["max_age"] = max_age
         else:
-            project = Project.query.get(project_id)
+            project = Project.query.get(project_id) if project_id is not None else None
             password = project.password if project is not None else ""
             serializer = URLSafeSerializer(
                 current_app.config["SECRET_KEY"] + password, salt=token_type
