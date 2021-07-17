@@ -65,9 +65,7 @@
           <div class="dropdown-menu" aria-labelledby="langMenuButton">
               <h6 class="dropdown-header">{{ _('Languages') }}</h6>
               {% for lang in config['SUPPORTED_LANGUAGES'] %}
-                {% if g.lang != lang %}
-                  <a class="dropdown-item" href="{{ url_for("main.change_lang", lang=lang)}}">{{ locale_from_iso(lang).display_name | capitalize }}</a>
-                {% endif %}
+                  <a class="dropdown-item{% if g.lang == lang %} active{% endif %}" href="{{ url_for("main.change_lang", lang=lang)}}">{{ locale_from_iso(lang).display_name | capitalize }}</a>
               {% endfor %}
           </div>
         </li>
