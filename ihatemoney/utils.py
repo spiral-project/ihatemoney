@@ -271,7 +271,7 @@ def get_members(file):
 
 
 def same_bill(bill1, bill2):
-    attr = ["what", "payer_name", "payer_weight", "amount", "date", "owers"]
+    attr = ["what", "payer_name", "payer_weight", "amount", "currency", "date", "owers"]
     for a in attr:
         if bill1[a] != bill2[a]:
             return False
@@ -370,6 +370,7 @@ def localize_list(items, surround_with_em=True):
 
 
 def render_localized_currency(code, detailed=True):
+    # We cannot use CurrencyConvertor.no_currency here because of circular dependencies
     if code == "XXX":
         return _("No Currency")
     locale = get_locale() or "en_US"

@@ -321,7 +321,7 @@ class BillForm(FlaskForm):
         bill.external_link = ""
         bill.date = self.date
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for]
-        bill.original_currency = CurrencyConverter.no_currency
+        bill.original_currency = self.original_currency
         bill.converted_amount = self.currency_helper.exchange_currency(
             bill.amount, bill.original_currency, project.default_currency
         )
