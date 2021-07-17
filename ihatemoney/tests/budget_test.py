@@ -4,7 +4,6 @@ import json
 import re
 from time import sleep
 import unittest
-from unittest.mock import MagicMock
 
 from flask import session
 import pytest
@@ -1464,10 +1463,6 @@ class BudgetTestCase(IhatemoneyTestCase):
 
     def test_currency_switch(self):
 
-        mock_data = {"USD": 1, "EUR": 0.8, "CAD": 1.2, CurrencyConverter.no_currency: 1}
-        converter = CurrencyConverter()
-        converter.get_rates = MagicMock(return_value=mock_data)
-
         # A project should be editable
         self.post_project("raclette")
 
@@ -1559,14 +1554,16 @@ class BudgetTestCase(IhatemoneyTestCase):
             },
         )
         last_bill = project.get_bills().first()
-        expected_amount = converter.exchange_currency(last_bill.amount, "CAD", "EUR")
+        expected_amount = self.converter.exchange_currency(
+            last_bill.amount, "CAD", "EUR"
+        )
         assert last_bill.converted_amount == expected_amount
 
         # Switch to USD. Now, NO bill should be in USD, since they already had a currency
         project.switch_currency("USD")
         for bill in project.get_bills():
             assert bill.original_currency != "USD"
-            expected_amount = converter.exchange_currency(
+            expected_amount = self.converter.exchange_currency(
                 bill.amount, bill.original_currency, "USD"
             )
             assert bill.converted_amount == expected_amount
@@ -1583,7 +1580,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "password": "demo",
                 "contact_email": "demo@notmyidea.org",
                 "project_history": "y",
-                "default_currency": converter.no_currency,
+                "default_currency": CurrencyConverter.no_currency,
             },
         )
         # A user displayed error should be generated, and its currency should be the same.
@@ -1592,10 +1589,6 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertEqual(models.Project.query.get("raclette").default_currency, "USD")
 
     def test_currency_switch_to_bill_currency(self):
-
-        mock_data = {"USD": 1, "EUR": 0.8, "CAD": 1.2, CurrencyConverter.no_currency: 1}
-        converter = CurrencyConverter()
-        converter.get_rates = MagicMock(return_value=mock_data)
 
         # Default currency is 'XXX', but we should start from a project with a currency
         self.post_project("raclette", default_currency="USD")
@@ -1620,7 +1613,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         project = models.Project.query.get("raclette")
 
         bill = project.get_bills().first()
-        assert bill.converted_amount == converter.exchange_currency(
+        assert bill.converted_amount == self.converter.exchange_currency(
             bill.amount, "EUR", "USD"
         )
 
@@ -1630,10 +1623,6 @@ class BudgetTestCase(IhatemoneyTestCase):
         assert bill.converted_amount == bill.amount
 
     def test_currency_switch_to_no_currency(self):
-
-        mock_data = {"USD": 1, "EUR": 0.8, "CAD": 1.2, CurrencyConverter.no_currency: 1}
-        converter = CurrencyConverter()
-        converter.get_rates = MagicMock(return_value=mock_data)
 
         # Default currency is 'XXX', but we should start from a project with a currency
         self.post_project("raclette", default_currency="USD")
@@ -1670,12 +1659,12 @@ class BudgetTestCase(IhatemoneyTestCase):
         project = models.Project.query.get("raclette")
 
         for bill in project.get_bills_unordered():
-            assert bill.converted_amount == converter.exchange_currency(
+            assert bill.converted_amount == self.converter.exchange_currency(
                 bill.amount, "EUR", "USD"
             )
 
         # And switch project to no currency: amount should be equal to what was submitted
-        project.switch_currency(converter.no_currency)
+        project.switch_currency(CurrencyConverter.no_currency)
         no_currency_bills = [
             (bill.amount, bill.converted_amount) for bill in project.get_bills()
         ]
