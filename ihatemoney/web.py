@@ -206,7 +206,9 @@ def authenticate(project_id=None):
     # Try to get project_id from token first
     token = request.args.get("token")
     if token:
-        project_id = Project.verify_token(token, token_type="auth", project_id=project_id)
+        project_id = Project.verify_token(
+            token, token_type="auth", project_id=project_id
+        )
         token_auth = True
     else:
         token_auth = False

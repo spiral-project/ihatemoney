@@ -35,7 +35,9 @@ def need_auth(f):
                 auth_token = auth_header.split(" ")[1]
             except IndexError:
                 abort(401)
-            project_id = Project.verify_token(auth_token, token_type="auth", project_id=project_id)
+            project_id = Project.verify_token(
+                auth_token, token_type="auth", project_id=project_id
+            )
             if auth_token and project_id:
                 project = Project.query.get(project_id)
                 if project:

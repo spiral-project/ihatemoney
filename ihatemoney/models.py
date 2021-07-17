@@ -367,7 +367,8 @@ class Project(db.Model):
         :param token: Serialized TimedJsonWebToken
         :param token_type: Either "auth" for authentication (invalidated when project code changed),
                         or "reset" for password reset (invalidated after expiration)
-        :param project_id: Project ID. Used for token_type "auth" to use the password as serializer secret key.
+        :param project_id: Project ID. Used for token_type "auth" to use the password as serializer
+                        secret key.
         :param max_age: Token expiration time (in seconds). Only used with token_type "reset"
         """
         loads_kwargs = {}
@@ -378,7 +379,7 @@ class Project(db.Model):
             loads_kwargs["max_age"] = max_age
         else:
             project = Project.query.get(project_id)
-            password = project.password if project is not None else ''
+            password = project.password if project is not None else ""
             serializer = URLSafeSerializer(
                 current_app.config["SECRET_KEY"] + password, salt=token_type
             )
@@ -390,7 +391,9 @@ class Project(db.Model):
             return None
 
         data_project = data.get("project_id")
-        return data_project if project_id is None or data_project == project_id else None
+        return (
+            data_project if project_id is None or data_project == project_id else None
+        )
 
     def __str__(self):
         return self.name
