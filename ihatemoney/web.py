@@ -36,6 +36,7 @@ from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash, generate_password_hash
 
+from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.forms import (
     AdminAuthenticationForm,
     AuthenticationForm,
@@ -412,8 +413,8 @@ def edit_project():
             flash(_("Project successfully uploaded"))
 
             return redirect(url_for("main.list_bills"))
-        except ValueError:
-            flash(_("Invalid JSON"), category="danger")
+        except ValueError as e:
+            flash(e.args[0], category="danger")
 
     # Edit form
     if edit_form.validate_on_submit():
@@ -447,17 +448,45 @@ def import_project(file, project):
     json_file = json.load(file)
 
     # Check if JSON is correct
-    attr = ["what", "payer_name", "payer_weight", "amount", "date", "owers"]
+    attr = ["what", "payer_name", "payer_weight", "amount", "currency", "date", "owers"]
     attr.sort()
+    currencies = set()
     for e in json_file:
+        # Add compatibility with versions < 5 that did not have currencies
+        if "currency" not in e:
+            e["currency"] = CurrencyConverter.no_currency
+        # Empty currency should be converted to "XXX"
+        if e["currency"] == "":
+            e["currency"] = CurrencyConverter.no_currency
         if len(e) != len(attr):
-            raise ValueError
+            raise ValueError(_("Invalid JSON"))
         list_attr = []
         for i in e:
             list_attr.append(i)
         list_attr.sort()
         if list_attr != attr:
-            raise ValueError
+            raise ValueError(_("Invalid JSON"))
+        # If the project has a default currency, convert bills that have no currency
+        if (
+            project.default_currency != CurrencyConverter.no_currency
+            and e["currency"] == CurrencyConverter.no_currency
+        ):
+            e["currency"] = project.default_currency
+        # Keep track of currencies
+        currencies.add(e["currency"])
+
+    # Additional checks if project has no default currency
+    if project.default_currency == CurrencyConverter.no_currency:
+        # If bills have currencies, they must be consistent
+        if len(currencies - {CurrencyConverter.no_currency}) >= 2:
+            raise ValueError(
+                _(
+                    "Cannot add bills in multiple currencies to a project without default currency"
+                )
+            )
+        # Strip currency from bills (since it's the same for every bill)
+        for e in json_file:
+            e["currency"] = CurrencyConverter.no_currency
 
     # From json : export list of members
     members_json = get_members(json_file)
@@ -505,10 +534,10 @@ def import_project(file, project):
         form = get_billform_for(project)
         form.what = b["what"]
         form.amount = b["amount"]
+        form.original_currency = b["currency"]
         form.date = parse(b["date"])
         form.payer = id_dict[b["payer_name"]]
         form.payed_for = owers_id
-        form.original_currency = b.get("original_currency")
 
         db.session.add(form.fake_form(bill, project))
 

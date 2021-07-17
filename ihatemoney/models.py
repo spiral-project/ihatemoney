@@ -179,6 +179,7 @@ class Project(db.Model):
                         "ower": transaction["ower"].name,
                         "receiver": transaction["receiver"].name,
                         "amount": round(transaction["amount"], 2),
+                        "currency": transaction["currency"],
                     }
                 )
             return pretty_transactions
@@ -192,6 +193,7 @@ class Project(db.Model):
                 "ower": members[ower_id],
                 "receiver": members[receiver_id],
                 "amount": amount,
+                "currency": self.default_currency,
             }
             for ower_id, amount, receiver_id in settle_plan
         ]
@@ -269,6 +271,7 @@ class Project(db.Model):
                 {
                     "what": bill.what,
                     "amount": round(bill.amount, 2),
+                    "currency": bill.original_currency,
                     "date": str(bill.date),
                     "payer_name": Person.query.get(bill.payer_id).name,
                     "payer_weight": Person.query.get(bill.payer_id).weight,
