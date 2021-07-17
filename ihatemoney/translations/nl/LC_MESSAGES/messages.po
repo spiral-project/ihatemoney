@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-07-07 01:01+0200\n"
+"POT-Creation-Date: 2021-07-17 17:31+0200\n"
 "PO-Revision-Date: 2021-02-17 02:50+0000\n"
 "Last-Translator: Sander Kooijmans <weblate@gogognome.nl>\n"
 "Language: nl\n"
@@ -28,6 +28,9 @@ msgstr "Projectnaam"
 #, fuzzy
 msgid "New private code"
 msgstr "Privécode"
+
+msgid "Enter a new code if you want to change it"
+msgstr ""
 
 msgid "Email"
 msgstr "E-mailadres"
@@ -66,6 +69,17 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr "Er is al een project genaamd (\"%(project)s\"). Kies een andere naam"
+
+msgid "Enter private code to confirm deletion"
+msgstr ""
+
+#, fuzzy
+msgid "Unknown error"
+msgstr "Onbekend project"
+
+#, fuzzy
+msgid "Invalid private code."
+msgstr "Privécode"
 
 msgid "Get in"
 msgstr "Inloggen"
@@ -156,17 +170,32 @@ msgstr "Uitnodigingen versturen"
 msgid "The email %(email)s is not valid"
 msgstr "Het e-mailadres '%(email)s' is onjuist"
 
-msgid "Participant"
-msgstr "Deelnemer"
+#. List with two items only
+msgid "{dual_object_0} and {dual_object_1}"
+msgstr ""
 
-msgid "Bill"
-msgstr "Rekening"
+#. Last two items of a list with more than 3 items
+msgid "{previous_object}, and {end_object}"
+msgstr ""
 
-msgid "Project"
-msgstr "Project"
+#. Two items in a middle of a list with more than 5 objects
+msgid "{previous_object}, {next_object}"
+msgstr ""
+
+#. First two items of a list with more than 3 items
+msgid "{start_object}, {next_object}"
+msgstr ""
 
 msgid "No Currency"
 msgstr "Geen munteenheid"
+
+#. Form error with only one error
+msgid "{prefix}: {error}"
+msgstr ""
+
+#. Form error with a list of errors
+msgid "{prefix}:<br />{errors}"
+msgstr ""
 
 msgid "Too many failed login attempts, please retry later."
 msgstr "Te vaak onjuist ingelogd. Probeer het later opnieuw."
@@ -231,6 +260,9 @@ msgstr "Ongeldige JSON"
 msgid "Project successfully deleted"
 msgstr "Project is verwijderd"
 
+msgid "Error deleting project"
+msgstr ""
+
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
 msgstr "Je bent uitgenodigd om je uitgaven te delen met %(project)s"
@@ -251,9 +283,15 @@ msgstr ""
 msgid "%(member)s has been added"
 msgstr "%(member)s zijn toegevoegd"
 
+msgid "Error activating member"
+msgstr ""
+
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr "%(name)s is wederom lid geworden van dit project"
+
+msgid "Error removing member"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -274,11 +312,29 @@ msgstr "De gebruiker '%(name)s' is aangepast"
 msgid "The bill has been added"
 msgstr "De rekening is toegevoegd"
 
+msgid "Error deleting bill"
+msgstr ""
+
 msgid "The bill has been deleted"
 msgstr "De rekening is verwijderd"
 
 msgid "The bill has been modified"
 msgstr "De rekening is aangepast"
+
+#, fuzzy
+msgid "Error deleting project history"
+msgstr "Projectgeschiedenis inschakelen"
+
+#, fuzzy
+msgid "Deleted project history."
+msgstr "Projectgeschiedenis inschakelen"
+
+#, fuzzy
+msgid "Error deleting recorded IP addresses"
+msgstr "Verwijder opgeslagen IP-adressen"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr ""
 
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Sorry, de pagina die je zoekt kan niet worden gevonden."
@@ -303,6 +359,9 @@ msgstr "?"
 
 msgid "Create a new project"
 msgstr "Nieuw project aanmaken"
+
+msgid "Project"
+msgstr "Project"
 
 msgid "Number of members"
 msgstr "Aantal deelnemers"
@@ -339,10 +398,15 @@ msgstr "Mobiele app"
 msgid "Get it on"
 msgstr "Inloggen"
 
-msgid "you sure?"
+#, fuzzy
+msgid "Are you sure?"
 msgstr "weet je het zeker?"
 
 msgid "Edit project"
+msgstr "Project aanpassen"
+
+#, fuzzy
+msgid "Delete project"
 msgstr "Project aanpassen"
 
 msgid "Import JSON"
@@ -380,17 +444,23 @@ msgstr "Privacy-instellingen"
 msgid "Edit the project"
 msgstr "Project bewerken"
 
+msgid "This will remove all bills and participants in this project!"
+msgstr ""
+
 msgid "Edit this bill"
 msgstr "Deze rekening bewerken"
 
 msgid "Add a bill"
 msgstr "Rekening toevoegen"
 
-msgid "Select all"
-msgstr "Alles selecteren"
+msgid "Everyone"
+msgstr "Iedereen"
 
-msgid "Select none"
-msgstr "Niets selecteren"
+msgid "No one"
+msgstr ""
+
+msgid "More options"
+msgstr ""
 
 msgid "Add participant"
 msgstr "Deelnemer toevoegen"
@@ -428,14 +498,13 @@ msgstr ""
 msgid "History Settings Changed"
 msgstr "Geschiedenisinstellingen Gewijzigd"
 
-msgid "changed"
-msgstr "gewijzigd"
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
+msgstr ""
 
-msgid "from"
-msgstr "van"
-
-msgid "to"
-msgstr "naar"
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
+msgstr ""
 
 msgid "Confirm Remove IP Adresses"
 msgstr ""
@@ -451,11 +520,12 @@ msgstr ""
 "De rest van de projectgeschiedenis blijft onveranderd. Deze actie kan "
 "niet ongedaan worden gemaakt."
 
+#, fuzzy
+msgid "Confirm deletion"
+msgstr "Bevestig Verwijdering"
+
 msgid "Close"
 msgstr "Sluiten"
-
-msgid "Confirm Delete"
-msgstr "Bevestig Verwijdering"
 
 msgid "Delete Confirmation"
 msgstr "Bevestiging Verwijdering"
@@ -467,16 +537,12 @@ msgstr ""
 "Weet je zeker dat je de gehele geschiedenis wilt verwijderen voor dit "
 "project? Deze actie kan niet ongedaan worden gemaakt."
 
-msgid "Added"
-msgstr "Toegevoegd"
+#, python-format
+msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
+msgstr ""
 
-msgid "Removed"
-msgstr "Verwijderd"
-
-msgid "and"
-msgstr "en"
-
-msgid "owers list"
+#, python-format
+msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr ""
 
 #, python-format
@@ -539,31 +605,50 @@ msgstr ""
 msgid "From IP"
 msgstr ""
 
-msgid "added"
-msgstr "toegevoegd"
+#, fuzzy, python-format
+msgid "Project %(name)s added"
+msgstr "Projectnaam"
+
+#, fuzzy, python-format
+msgid "Bill %(name)s added"
+msgstr "De rekening is toegevoegd"
+
+#, python-format
+msgid "Participant %(name)s added"
+msgstr ""
 
 msgid "Project private code changed"
 msgstr "Privécode van project gewijzigd"
 
-msgid "Project renamed to"
-msgstr "Project hernoemd tot"
+#, fuzzy, python-format
+msgid "Project renamed to %(new_project_name)s"
+msgstr "Het project-id is %(project)s"
 
-msgid "Project contact email changed to"
+#, python-format
+msgid "Project contact email changed to %(new_email)s"
 msgstr ""
 
 msgid "Project settings modified"
 msgstr "Projectinstellingen gewijzigd"
 
-msgid "deactivated"
-msgstr "gedeactiveerd"
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr ""
 
-msgid "reactivated"
-msgstr "gereactiveerd"
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr ""
 
-msgid "renamed to"
-msgstr "hernoemd naar"
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr ""
 
-msgid "External link changed to"
+#, python-format
+msgid "Bill %(name)s renamed to %(new_description)s"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
 msgid "Amount"
@@ -573,13 +658,32 @@ msgstr "Hoeveelheid"
 msgid "Amount in %(currency)s"
 msgstr "Hoeveelheid in %(currency)s"
 
-msgid "modified"
-msgstr "gewijzigd"
+#, fuzzy, python-format
+msgid "Bill %(name)s modified"
+msgstr "De rekening is aangepast"
 
-msgid "removed"
-msgstr "verwijderd"
+#, python-format
+msgid "Participant %(name)s modified"
+msgstr ""
 
-msgid "changed in a unknown way"
+#, fuzzy, python-format
+msgid "Bill %(name)s removed"
+msgstr "De gebruiker '%(name)s' is verwijderd"
+
+#, fuzzy, python-format
+msgid "Participant %(name)s removed"
+msgstr "De gebruiker '%(name)s' is verwijderd"
+
+#, python-format
+msgid "Project %(name)s changed in an unknown way"
+msgstr ""
+
+#, python-format
+msgid "Bill %(name)s changed in an unknown way"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s changed in an unknown way"
 msgstr ""
 
 msgid "Nothing to list"
@@ -686,6 +790,9 @@ msgstr "je kunt bijdragen en de code verbeteren!"
 msgid "%(amount)s each"
 msgstr ""
 
+msgid "you sure?"
+msgstr "weet je het zeker?"
+
 msgid "Invite people"
 msgstr "Anderen uitnodigen"
 
@@ -716,9 +823,6 @@ msgstr "Hoeveel?"
 #, python-format
 msgid "Added on %(date)s"
 msgstr "Toegevoegd op %(date)s"
-
-msgid "Everyone"
-msgstr "Iedereen"
 
 #, python-format
 msgid "Everyone but %(excluded)s"
@@ -843,4 +947,67 @@ msgstr "Periode"
 #~ " vrienden. Deze wordt in platte tekst"
 #~ " opgeslagen op de server, dus gebruik"
 #~ " geen persoonlijk wachtwoord!"
+
+#~ msgid "Participant"
+#~ msgstr "Deelnemer"
+
+#~ msgid "Bill"
+#~ msgstr "Rekening"
+
+#~ msgid "Select all"
+#~ msgstr "Alles selecteren"
+
+#~ msgid "Select none"
+#~ msgstr "Niets selecteren"
+
+#~ msgid "changed"
+#~ msgstr "gewijzigd"
+
+#~ msgid "from"
+#~ msgstr "van"
+
+#~ msgid "to"
+#~ msgstr "naar"
+
+#~ msgid "Added"
+#~ msgstr "Toegevoegd"
+
+#~ msgid "Removed"
+#~ msgstr "Verwijderd"
+
+#~ msgid "and"
+#~ msgstr "en"
+
+#~ msgid "owers list"
+#~ msgstr ""
+
+#~ msgid "added"
+#~ msgstr "toegevoegd"
+
+#~ msgid "Project renamed to"
+#~ msgstr "Project hernoemd tot"
+
+#~ msgid "Project contact email changed to"
+#~ msgstr ""
+
+#~ msgid "deactivated"
+#~ msgstr "gedeactiveerd"
+
+#~ msgid "reactivated"
+#~ msgstr "gereactiveerd"
+
+#~ msgid "renamed to"
+#~ msgstr "hernoemd naar"
+
+#~ msgid "External link changed to"
+#~ msgstr ""
+
+#~ msgid "modified"
+#~ msgstr "gewijzigd"
+
+#~ msgid "removed"
+#~ msgstr "verwijderd"
+
+#~ msgid "changed in a unknown way"
+#~ msgstr ""
 

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-07 01:01+0200\n"
+"POT-Creation-Date: 2021-07-17 17:31+0200\n"
 "PO-Revision-Date: 2020-06-14 14:41+0000\n"
 "Last-Translator: raghupalash <singhpalash0@gmail.com>\n"
 "Language: hi\n"
@@ -28,6 +28,9 @@ msgstr "परियोजना का नाम"
 #, fuzzy
 msgid "New private code"
 msgstr "निजी कोड"
+
+msgid "Enter a new code if you want to change it"
+msgstr ""
 
 msgid "Email"
 msgstr "ईमेल"
@@ -68,6 +71,17 @@ msgid ""
 msgstr ""
 "इस पहचानकर्ता के साथ एक परियोजना (\"%(project)s\") पहले से मौजूद है। "
 "कृपया एक नया पहचानकर्ता चुनें"
+
+msgid "Enter private code to confirm deletion"
+msgstr ""
+
+#, fuzzy
+msgid "Unknown error"
+msgstr "अज्ञात परियोजना"
+
+#, fuzzy
+msgid "Invalid private code."
+msgstr "निजी कोड"
 
 msgid "Get in"
 msgstr "अंदर जाइये"
@@ -158,17 +172,32 @@ msgstr "आमंत्रण भेजें"
 msgid "The email %(email)s is not valid"
 msgstr "ईमेल %(email)s मान्य नहीं है"
 
-msgid "Participant"
-msgstr "प्रतिभागी"
+#. List with two items only
+msgid "{dual_object_0} and {dual_object_1}"
+msgstr ""
 
-msgid "Bill"
-msgstr "बिल"
+#. Last two items of a list with more than 3 items
+msgid "{previous_object}, and {end_object}"
+msgstr ""
 
-msgid "Project"
-msgstr "परियोजना"
+#. Two items in a middle of a list with more than 5 objects
+msgid "{previous_object}, {next_object}"
+msgstr ""
+
+#. First two items of a list with more than 3 items
+msgid "{start_object}, {next_object}"
+msgstr ""
 
 msgid "No Currency"
 msgstr "कोई मुद्रा नहीं"
+
+#. Form error with only one error
+msgid "{prefix}: {error}"
+msgstr ""
+
+#. Form error with a list of errors
+msgid "{prefix}:<br />{errors}"
+msgstr ""
 
 msgid "Too many failed login attempts, please retry later."
 msgstr "बहुत से विफल लॉगिन प्रयास, कृपया बाद में पुनः प्रयास करें।"
@@ -233,6 +262,9 @@ msgstr "अमान्य JSON"
 msgid "Project successfully deleted"
 msgstr "प्रोजेक्ट सफलतापूर्वक हटा दिया गया"
 
+msgid "Error deleting project"
+msgstr ""
+
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
 msgstr ""
@@ -254,9 +286,15 @@ msgstr ""
 msgid "%(member)s has been added"
 msgstr "%(member)s को जोड़ लिया गया है"
 
+msgid "Error activating member"
+msgstr ""
+
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr "%(name)s फिर से इस परियोजना का हिस्सा है"
+
+msgid "Error removing member"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -277,11 +315,29 @@ msgstr "उपयोगकर्ता '%(name)s' को संपादित �
 msgid "The bill has been added"
 msgstr "बिल जोड़ दिया गया है"
 
+msgid "Error deleting bill"
+msgstr ""
+
 msgid "The bill has been deleted"
 msgstr "बिल को हटा दिया गया है"
 
 msgid "The bill has been modified"
 msgstr "बिल को संशोधित कर दिया गया है"
+
+#, fuzzy
+msgid "Error deleting project history"
+msgstr "प्रोजेक्ट इतिहास सक्षम करें"
+
+#, fuzzy
+msgid "Deleted project history."
+msgstr "प्रोजेक्ट इतिहास सक्षम करें"
+
+#, fuzzy
+msgid "Error deleting recorded IP addresses"
+msgstr "संग्रहीत IP पते हटाएं"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr ""
 
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "क्षमा करें, हम आपके द्वारा मांगे गए पृष्ठ को खोजने में असमर्थ थे।"
@@ -308,6 +364,9 @@ msgstr "?"
 
 msgid "Create a new project"
 msgstr "नयी परियोजना बनाये"
+
+msgid "Project"
+msgstr "परियोजना"
 
 msgid "Number of members"
 msgstr "सदस्यों की संख्या"
@@ -344,10 +403,15 @@ msgstr "मोबाइल एप्लीकेशन"
 msgid "Get it on"
 msgstr "अंदर जाइये"
 
-msgid "you sure?"
+#, fuzzy
+msgid "Are you sure?"
 msgstr "आपको यकीन है?"
 
 msgid "Edit project"
+msgstr "परियोजना संपादित करें"
+
+#, fuzzy
+msgid "Delete project"
 msgstr "परियोजना संपादित करें"
 
 msgid "Import JSON"
@@ -383,17 +447,23 @@ msgstr "प्राइवेसी सेटिंग्स"
 msgid "Edit the project"
 msgstr "प्रोजेक्ट संपादित करें"
 
+msgid "This will remove all bills and participants in this project!"
+msgstr ""
+
 msgid "Edit this bill"
 msgstr "इस बिल को संपादित करें"
 
 msgid "Add a bill"
 msgstr "बिल जोड़ें"
 
-msgid "Select all"
-msgstr "सब को चुने"
+msgid "Everyone"
+msgstr "सब"
 
-msgid "Select none"
-msgstr "किसी का चयन न करें"
+msgid "No one"
+msgstr ""
+
+msgid "More options"
+msgstr ""
 
 msgid "Add participant"
 msgstr "प्रतिभागी जोड़ें"
@@ -431,14 +501,13 @@ msgstr "IP एड्रेस रिकॉर्डिंग को सक्ष
 msgid "History Settings Changed"
 msgstr "इतिहास सेटिंग्स बदल दी गई है"
 
-msgid "changed"
-msgstr "बदल दिया है"
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
+msgstr ""
 
-msgid "from"
-msgstr "से"
-
-msgid "to"
-msgstr "तक"
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
+msgstr ""
 
 msgid "Confirm Remove IP Adresses"
 msgstr "IP पतों को हटाने की पुष्टि करें"
@@ -454,11 +523,12 @@ msgstr ""
 "                  परियोजना का बाकी इतिहास अप्रभावित रहेगा। इस कार्य को "
 "पूर्ववत नहीं किया जा सकता।"
 
+#, fuzzy
+msgid "Confirm deletion"
+msgstr "हटाने की पुष्टि करें"
+
 msgid "Close"
 msgstr "बंद करे"
-
-msgid "Confirm Delete"
-msgstr "हटाने की पुष्टि करें"
 
 msgid "Delete Confirmation"
 msgstr "पुष्टिकरण हटाएं"
@@ -470,17 +540,13 @@ msgstr ""
 "क्या आप वाकई इस परियोजना के लिए सभी इतिहास मिटाना चाहते हैं? इस कार्य को "
 "पूर्ववत नहीं किया जा सकता।"
 
-msgid "Added"
-msgstr "जोड़ा गया"
+#, python-format
+msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
+msgstr ""
 
-msgid "Removed"
-msgstr "हटाया गया"
-
-msgid "and"
-msgstr "और"
-
-msgid "owers list"
-msgstr "देनदारों की सूची"
+#, python-format
+msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -550,32 +616,51 @@ msgstr "आईपी पता रिकॉर्डिंग को सेट�
 msgid "From IP"
 msgstr "IP से"
 
-msgid "added"
-msgstr "को जोड़ा गया"
+#, fuzzy, python-format
+msgid "Project %(name)s added"
+msgstr "परियोजना का नाम"
+
+#, fuzzy, python-format
+msgid "Bill %(name)s added"
+msgstr "बिल जोड़ दिया गया है"
+
+#, python-format
+msgid "Participant %(name)s added"
+msgstr ""
 
 msgid "Project private code changed"
 msgstr "परियोजना के निजी कोड को बदल दिया गया"
 
-msgid "Project renamed to"
-msgstr "परियोजना पुन:नामकरण कर दिया गया| नया नाम है"
+#, fuzzy, python-format
+msgid "Project renamed to %(new_project_name)s"
+msgstr "प्रोजेक्ट पहचानकर्ता %(project)s है"
 
-msgid "Project contact email changed to"
+#, fuzzy, python-format
+msgid "Project contact email changed to %(new_email)s"
 msgstr "परियोजना संपर्क ईमेल को बदल दिया गया| नया ईमेल है"
 
 msgid "Project settings modified"
 msgstr "परियोजना सेटिंग्स संशोधित"
 
-msgid "deactivated"
-msgstr "निष्क्रिय"
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr ""
 
-msgid "reactivated"
-msgstr "पुन: सक्रिय"
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr ""
 
-msgid "renamed to"
-msgstr "पुनः नामकरण किया गया| नया नाम है"
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr ""
 
-msgid "External link changed to"
-msgstr "बाहरी लिंक को बदल कर यह कर दिया गया है"
+#, python-format
+msgid "Bill %(name)s renamed to %(new_description)s"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr ""
 
 msgid "Amount"
 msgstr "रकम"
@@ -584,13 +669,32 @@ msgstr "रकम"
 msgid "Amount in %(currency)s"
 msgstr "%(currency)s में राशि"
 
-msgid "modified"
-msgstr "संशोधित"
+#, fuzzy, python-format
+msgid "Bill %(name)s modified"
+msgstr "बिल को संशोधित कर दिया गया है"
 
-msgid "removed"
-msgstr "हटाया गया"
+#, python-format
+msgid "Participant %(name)s modified"
+msgstr ""
 
-msgid "changed in a unknown way"
+#, fuzzy, python-format
+msgid "Bill %(name)s removed"
+msgstr "उपयोगकर्ता '%(name)s' को हटा दिया गया है"
+
+#, fuzzy, python-format
+msgid "Participant %(name)s removed"
+msgstr "उपयोगकर्ता '%(name)s' को हटा दिया गया है"
+
+#, fuzzy, python-format
+msgid "Project %(name)s changed in an unknown way"
+msgstr "अज्ञात तरीके से बदल गया"
+
+#, fuzzy, python-format
+msgid "Bill %(name)s changed in an unknown way"
+msgstr "अज्ञात तरीके से बदल गया"
+
+#, fuzzy, python-format
+msgid "Participant %(name)s changed in an unknown way"
 msgstr "अज्ञात तरीके से बदल गया"
 
 msgid "Nothing to list"
@@ -697,6 +801,9 @@ msgstr "आप इसमें योगदान और सुधार कर 
 msgid "%(amount)s each"
 msgstr "%(amount)s प्रत्येक"
 
+msgid "you sure?"
+msgstr "आपको यकीन है?"
+
 msgid "Invite people"
 msgstr "लोगों को निमंत्रण भेजें"
 
@@ -727,9 +834,6 @@ msgstr "कितना?"
 #, python-format
 msgid "Added on %(date)s"
 msgstr "%(date)s पर जोड़ा गया"
-
-msgid "Everyone"
-msgstr "सब"
 
 #, python-format
 msgid "Everyone but %(excluded)s"
@@ -834,4 +938,61 @@ msgstr "मासिक खर्च"
 
 msgid "Period"
 msgstr "अवधि"
+
+#~ msgid "Participant"
+#~ msgstr "प्रतिभागी"
+
+#~ msgid "Bill"
+#~ msgstr "बिल"
+
+#~ msgid "Select all"
+#~ msgstr "सब को चुने"
+
+#~ msgid "Select none"
+#~ msgstr "किसी का चयन न करें"
+
+#~ msgid "changed"
+#~ msgstr "बदल दिया है"
+
+#~ msgid "from"
+#~ msgstr "से"
+
+#~ msgid "to"
+#~ msgstr "तक"
+
+#~ msgid "Added"
+#~ msgstr "जोड़ा गया"
+
+#~ msgid "Removed"
+#~ msgstr "हटाया गया"
+
+#~ msgid "and"
+#~ msgstr "और"
+
+#~ msgid "owers list"
+#~ msgstr "देनदारों की सूची"
+
+#~ msgid "added"
+#~ msgstr "को जोड़ा गया"
+
+#~ msgid "Project renamed to"
+#~ msgstr "परियोजना पुन:नामकरण कर दिया गया| नया नाम है"
+
+#~ msgid "deactivated"
+#~ msgstr "निष्क्रिय"
+
+#~ msgid "reactivated"
+#~ msgstr "पुन: सक्रिय"
+
+#~ msgid "renamed to"
+#~ msgstr "पुनः नामकरण किया गया| नया नाम है"
+
+#~ msgid "External link changed to"
+#~ msgstr "बाहरी लिंक को बदल कर यह कर दिया गया है"
+
+#~ msgid "modified"
+#~ msgstr "संशोधित"
+
+#~ msgid "removed"
+#~ msgstr "हटाया गया"
 

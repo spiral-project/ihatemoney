@@ -1,18 +1,18 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-07 01:01+0200\n"
+"POT-Creation-Date: 2021-07-17 17:31+0200\n"
 "PO-Revision-Date: 2021-07-10 15:34+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/tr/>\n"
 "Language: tr\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/tr/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 msgid ""
@@ -27,6 +27,9 @@ msgstr "Proje adı"
 
 msgid "New private code"
 msgstr "Yeni özel kod"
+
+msgid "Enter a new code if you want to change it"
+msgstr ""
 
 msgid "Email"
 msgstr "E-posta"
@@ -44,8 +47,8 @@ msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
-"Bu proje, birden fazla para biriminde faturalar içerdiğinden 'para birimi "
-"yok' olarak ayarlanamaz."
+"Bu proje, birden fazla para biriminde faturalar içerdiğinden 'para birimi"
+" yok' olarak ayarlanamaz."
 
 msgid "Import previously exported JSON file"
 msgstr "Önceden dışa aktarılan JSON dosyasını içe aktar"
@@ -69,6 +72,17 @@ msgid ""
 msgstr ""
 "Bu tanımlayıcıya sahip bir proje (\"%(project)s\") zaten var. Lütfen yeni"
 " bir tanımlayıcı seçin"
+
+msgid "Enter private code to confirm deletion"
+msgstr ""
+
+#, fuzzy
+msgid "Unknown error"
+msgstr "Bilinmeyen proje"
+
+#, fuzzy
+msgid "Invalid private code."
+msgstr "Yeni özel kod"
 
 msgid "Get in"
 msgstr "Alın"
@@ -159,17 +173,32 @@ msgstr "Davet gönder"
 msgid "The email %(email)s is not valid"
 msgstr "%(email)s e-posta adresi geçerli değil"
 
-msgid "Participant"
-msgstr "Katılımcı"
+#. List with two items only
+msgid "{dual_object_0} and {dual_object_1}"
+msgstr ""
 
-msgid "Bill"
-msgstr "Fatura"
+#. Last two items of a list with more than 3 items
+msgid "{previous_object}, and {end_object}"
+msgstr ""
 
-msgid "Project"
-msgstr "Proje"
+#. Two items in a middle of a list with more than 5 objects
+msgid "{previous_object}, {next_object}"
+msgstr ""
+
+#. First two items of a list with more than 3 items
+msgid "{start_object}, {next_object}"
+msgstr ""
 
 msgid "No Currency"
 msgstr "Para Birimi Yok"
+
+#. Form error with only one error
+msgid "{prefix}: {error}"
+msgstr ""
+
+#. Form error with a list of errors
+msgid "{prefix}:<br />{errors}"
+msgstr ""
 
 msgid "Too many failed login attempts, please retry later."
 msgstr ""
@@ -234,6 +263,9 @@ msgstr "Geçersiz JSON"
 msgid "Project successfully deleted"
 msgstr "Proje başarıyla silindi"
 
+msgid "Error deleting project"
+msgstr ""
+
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
 msgstr "%(project)s için giderlerinizi paylaşmaya davet edildiniz"
@@ -254,9 +286,15 @@ msgstr ""
 msgid "%(member)s has been added"
 msgstr "%(member)s eklendi"
 
+msgid "Error activating member"
+msgstr ""
+
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr "%(name)s yine bu projenin bir parçası"
+
+msgid "Error removing member"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -277,11 +315,29 @@ msgstr "'%(name)s' kullanıcısı düzenlendi"
 msgid "The bill has been added"
 msgstr "Fatura eklendi"
 
+msgid "Error deleting bill"
+msgstr ""
+
 msgid "The bill has been deleted"
 msgstr "Fatura silindi"
 
 msgid "The bill has been modified"
 msgstr "Fatura değiştirildi"
+
+#, fuzzy
+msgid "Error deleting project history"
+msgstr "Proje geçmişini etkinleştir"
+
+#, fuzzy
+msgid "Deleted project history."
+msgstr "Proje geçmişini etkinleştir"
+
+#, fuzzy
+msgid "Error deleting recorded IP addresses"
+msgstr "Kaydedilen IP adreslerini sil"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr ""
 
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Maalesef, istediğiniz sayfayı bulamadık."
@@ -306,6 +362,9 @@ msgstr "?"
 
 msgid "Create a new project"
 msgstr "Yeni bir proje oluştur"
+
+msgid "Project"
+msgstr "Proje"
 
 msgid "Number of members"
 msgstr "Üye sayısı"
@@ -340,10 +399,15 @@ msgstr "Telefon Uygulamasını İndir"
 msgid "Get it on"
 msgstr "Alın"
 
-msgid "you sure?"
+#, fuzzy
+msgid "Are you sure?"
 msgstr "emin misiniz?"
 
 msgid "Edit project"
+msgstr "Projeyi düzenle"
+
+#, fuzzy
+msgid "Delete project"
 msgstr "Projeyi düzenle"
 
 msgid "Import JSON"
@@ -379,17 +443,23 @@ msgstr "Gizlilik Ayarları"
 msgid "Edit the project"
 msgstr "Projeyi düzenle"
 
+msgid "This will remove all bills and participants in this project!"
+msgstr ""
+
 msgid "Edit this bill"
 msgstr "Bu faturayı düzenle"
 
 msgid "Add a bill"
 msgstr "Bir fatura ekle"
 
-msgid "Select all"
-msgstr "Hepsini seç"
+msgid "Everyone"
+msgstr "Herkes"
 
-msgid "Select none"
-msgstr "Hiçbirini seçme"
+msgid "No one"
+msgstr ""
+
+msgid "More options"
+msgstr ""
 
 msgid "Add participant"
 msgstr "Katılımcı ekle"
@@ -427,14 +497,13 @@ msgstr "IP Adresi Kaydetme Etkin"
 msgid "History Settings Changed"
 msgstr "Geçmiş Ayarları Değişti"
 
-msgid "changed"
-msgstr "değişti"
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
+msgstr ""
 
-msgid "from"
-msgstr "nereden"
-
-msgid "to"
-msgstr "nereye"
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
+msgstr ""
 
 msgid "Confirm Remove IP Adresses"
 msgstr "IP Adresini Kaldırmayı Onayla"
@@ -450,11 +519,12 @@ msgstr ""
 "                Proje geçmişinin geri kalanı bundan etkilenmeyecektir. Bu"
 " işlem geri alınamaz."
 
+#, fuzzy
+msgid "Confirm deletion"
+msgstr "Silmeyi Onayla"
+
 msgid "Close"
 msgstr "Kapat"
-
-msgid "Confirm Delete"
-msgstr "Silmeyi Onayla"
 
 msgid "Delete Confirmation"
 msgstr "Onaylamayı Sil"
@@ -466,17 +536,13 @@ msgstr ""
 "Bu proje için tüm geçmişi silmek istediğinize emin misiniz? Bu işlem geri"
 " alınamaz."
 
-msgid "Added"
-msgstr "Eklendi"
+#, python-format
+msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
+msgstr ""
 
-msgid "Removed"
-msgstr "Kaldırıldı"
-
-msgid "and"
-msgstr "ve"
-
-msgid "owers list"
-msgstr "borçluların listesi"
+#, python-format
+msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -547,32 +613,51 @@ msgstr "IP adresi kaydetme ayarlar sayfasında devre dışı bırakılabilir"
 msgid "From IP"
 msgstr "IP'den"
 
-msgid "added"
-msgstr "eklendi"
+#, fuzzy, python-format
+msgid "Project %(name)s added"
+msgstr "Proje adı"
+
+#, fuzzy, python-format
+msgid "Bill %(name)s added"
+msgstr "Fatura eklendi"
+
+#, python-format
+msgid "Participant %(name)s added"
+msgstr ""
 
 msgid "Project private code changed"
 msgstr "Proje özel kodu değiştirildi"
 
-msgid "Project renamed to"
-msgstr "Proje yeniden adlandırıldı"
+#, fuzzy, python-format
+msgid "Project renamed to %(new_project_name)s"
+msgstr "Proje tanımlayıcısı %(project)s"
 
-msgid "Project contact email changed to"
+#, fuzzy, python-format
+msgid "Project contact email changed to %(new_email)s"
 msgstr "Proje iletişim e-posta adresi değiştirildi"
 
 msgid "Project settings modified"
 msgstr "Proje ayarları değiştirildi"
 
-msgid "deactivated"
-msgstr "devre dışı bırakıldı"
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr ""
 
-msgid "reactivated"
-msgstr "yeniden etkinleştirildi"
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr ""
 
-msgid "renamed to"
-msgstr "yeniden adlandırıldı"
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr ""
 
-msgid "External link changed to"
-msgstr "Harici bağlantı değiştirildi"
+#, python-format
+msgid "Bill %(name)s renamed to %(new_description)s"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr ""
 
 msgid "Amount"
 msgstr "Miktar"
@@ -581,13 +666,32 @@ msgstr "Miktar"
 msgid "Amount in %(currency)s"
 msgstr "%(currency)s olarak miktar"
 
-msgid "modified"
-msgstr "değiştirildi"
+#, fuzzy, python-format
+msgid "Bill %(name)s modified"
+msgstr "Fatura değiştirildi"
 
-msgid "removed"
-msgstr "kaldırıldı"
+#, python-format
+msgid "Participant %(name)s modified"
+msgstr ""
 
-msgid "changed in a unknown way"
+#, fuzzy, python-format
+msgid "Bill %(name)s removed"
+msgstr "'%(name)s' kullanıcısı kaldırıldı"
+
+#, fuzzy, python-format
+msgid "Participant %(name)s removed"
+msgstr "'%(name)s' kullanıcısı kaldırıldı"
+
+#, fuzzy, python-format
+msgid "Project %(name)s changed in an unknown way"
+msgstr "bilinmeyen bir şekilde değiştirildi"
+
+#, fuzzy, python-format
+msgid "Bill %(name)s changed in an unknown way"
+msgstr "bilinmeyen bir şekilde değiştirildi"
+
+#, fuzzy, python-format
+msgid "Participant %(name)s changed in an unknown way"
 msgstr "bilinmeyen bir şekilde değiştirildi"
 
 msgid "Nothing to list"
@@ -694,6 +798,9 @@ msgstr "katkıda bulunabilir ve geliştirebilirsiniz!"
 msgid "%(amount)s each"
 msgstr "her biri %(amount)s"
 
+msgid "you sure?"
+msgstr "emin misiniz?"
+
 msgid "Invite people"
 msgstr "İnsanları davet et"
 
@@ -724,9 +831,6 @@ msgstr "Ne kadar?"
 #, python-format
 msgid "Added on %(date)s"
 msgstr "%(date)s tarihinde eklendi"
-
-msgid "Everyone"
-msgstr "Herkes"
 
 #, python-format
 msgid "Everyone but %(excluded)s"
@@ -853,3 +957,61 @@ msgstr "Dönem"
 #~ " Sunucu tarafından olduğu gibi "
 #~ "saklanmaktadır, bu yüzden kişisel bir "
 #~ "parolayı tekrar kullanmayın!"
+
+#~ msgid "Participant"
+#~ msgstr "Katılımcı"
+
+#~ msgid "Bill"
+#~ msgstr "Fatura"
+
+#~ msgid "Select all"
+#~ msgstr "Hepsini seç"
+
+#~ msgid "Select none"
+#~ msgstr "Hiçbirini seçme"
+
+#~ msgid "changed"
+#~ msgstr "değişti"
+
+#~ msgid "from"
+#~ msgstr "nereden"
+
+#~ msgid "to"
+#~ msgstr "nereye"
+
+#~ msgid "Added"
+#~ msgstr "Eklendi"
+
+#~ msgid "Removed"
+#~ msgstr "Kaldırıldı"
+
+#~ msgid "and"
+#~ msgstr "ve"
+
+#~ msgid "owers list"
+#~ msgstr "borçluların listesi"
+
+#~ msgid "added"
+#~ msgstr "eklendi"
+
+#~ msgid "Project renamed to"
+#~ msgstr "Proje yeniden adlandırıldı"
+
+#~ msgid "deactivated"
+#~ msgstr "devre dışı bırakıldı"
+
+#~ msgid "reactivated"
+#~ msgstr "yeniden etkinleştirildi"
+
+#~ msgid "renamed to"
+#~ msgstr "yeniden adlandırıldı"
+
+#~ msgid "External link changed to"
+#~ msgstr "Harici bağlantı değiştirildi"
+
+#~ msgid "modified"
+#~ msgstr "değiştirildi"
+
+#~ msgid "removed"
+#~ msgstr "kaldırıldı"
+

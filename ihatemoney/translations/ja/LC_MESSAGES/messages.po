@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-07 01:01+0200\n"
+"POT-Creation-Date: 2021-07-17 17:31+0200\n"
 "PO-Revision-Date: 2020-11-11 16:28+0000\n"
 "Last-Translator: Jwen921 <yangjingwen0921@gmail.com>\n"
 "Language: ja\n"
@@ -26,6 +26,9 @@ msgstr "プロジェクトの名前"
 #, fuzzy
 msgid "New private code"
 msgstr "暗証コード"
+
+msgid "Enter a new code if you want to change it"
+msgstr ""
 
 msgid "Email"
 msgstr "メールアドレス"
@@ -64,6 +67,17 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr "(\"%(project)s\")というプロジェクトは既に存在します。別の名前にしてください"
+
+msgid "Enter private code to confirm deletion"
+msgstr ""
+
+#, fuzzy
+msgid "Unknown error"
+msgstr "未知のプロジェクト"
+
+#, fuzzy
+msgid "Invalid private code."
+msgstr "暗証コード"
 
 msgid "Get in"
 msgstr "入る"
@@ -154,17 +168,32 @@ msgstr "招待状を出す"
 msgid "The email %(email)s is not valid"
 msgstr "メールアドレス%(email)sは無効"
 
-msgid "Participant"
-msgstr "参加者"
+#. List with two items only
+msgid "{dual_object_0} and {dual_object_1}"
+msgstr ""
 
-msgid "Bill"
-msgstr "明細"
+#. Last two items of a list with more than 3 items
+msgid "{previous_object}, and {end_object}"
+msgstr ""
 
-msgid "Project"
-msgstr "プロジェクト"
+#. Two items in a middle of a list with more than 5 objects
+msgid "{previous_object}, {next_object}"
+msgstr ""
+
+#. First two items of a list with more than 3 items
+msgid "{start_object}, {next_object}"
+msgstr ""
 
 msgid "No Currency"
 msgstr "通貨なし"
+
+#. Form error with only one error
+msgid "{prefix}: {error}"
+msgstr ""
+
+#. Form error with a list of errors
+msgid "{prefix}:<br />{errors}"
+msgstr ""
 
 msgid "Too many failed login attempts, please retry later."
 msgstr "何度もログインに失敗したので、時間をおいてから再度ログインして下さい。"
@@ -222,6 +251,9 @@ msgstr "無効なJSON"
 msgid "Project successfully deleted"
 msgstr "プロジェクトを削除できました"
 
+msgid "Error deleting project"
+msgstr ""
+
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
 msgstr "%(project)sの費用を共有すると、あなたが誘われた"
@@ -239,9 +271,15 @@ msgstr "申し訳ございませんが、招待メールを送ったとき、エ
 msgid "%(member)s has been added"
 msgstr "%(member)sが追加されました"
 
+msgid "Error activating member"
+msgstr ""
+
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr "%(name)sはまたこのプロジェクトの一部になりました"
+
+msgid "Error removing member"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -260,11 +298,29 @@ msgstr "ユーザー%(name)sが既に編集されました"
 msgid "The bill has been added"
 msgstr "明細が追加されました"
 
+msgid "Error deleting bill"
+msgstr ""
+
 msgid "The bill has been deleted"
 msgstr "明細が削除されました"
 
 msgid "The bill has been modified"
 msgstr "明細が変更されました"
+
+#, fuzzy
+msgid "Error deleting project history"
+msgstr "プロジェクトの歴史を有効にする"
+
+#, fuzzy
+msgid "Deleted project history."
+msgstr "プロジェクトの歴史を有効にする"
+
+#, fuzzy
+msgid "Error deleting recorded IP addresses"
+msgstr "保存されたIPアドレスを削除する"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr ""
 
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "申し訳ございませんが、求められるページが見つかりませんでした。"
@@ -289,6 +345,9 @@ msgstr "？"
 
 msgid "Create a new project"
 msgstr "プロジェクトを新規作成する"
+
+msgid "Project"
+msgstr "プロジェクト"
 
 msgid "Number of members"
 msgstr "メンバー数"
@@ -325,10 +384,15 @@ msgstr "携帯アプリ"
 msgid "Get it on"
 msgstr "入る"
 
-msgid "you sure?"
+#, fuzzy
+msgid "Are you sure?"
 msgstr "確認？"
 
 msgid "Edit project"
+msgstr "プロジェクトを編集する"
+
+#, fuzzy
+msgid "Delete project"
 msgstr "プロジェクトを編集する"
 
 msgid "Import JSON"
@@ -364,17 +428,23 @@ msgstr "プライバシーの設定"
 msgid "Edit the project"
 msgstr "プロジェクトを編集する"
 
+msgid "This will remove all bills and participants in this project!"
+msgstr ""
+
 msgid "Edit this bill"
 msgstr "明細を編集する"
 
 msgid "Add a bill"
 msgstr "新しい明細書を追加する"
 
-msgid "Select all"
-msgstr "全て選択"
+msgid "Everyone"
+msgstr "皆"
 
-msgid "Select none"
-msgstr "選択解除"
+msgid "No one"
+msgstr ""
+
+msgid "More options"
+msgstr ""
 
 msgid "Add participant"
 msgstr "参加者を追加する"
@@ -412,14 +482,13 @@ msgstr "操作可能なIPアドレス記録"
 msgid "History Settings Changed"
 msgstr "歴史設定が変更された"
 
-msgid "changed"
-msgstr "変更された"
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
+msgstr ""
 
-msgid "from"
-msgstr "から"
-
-msgid "to"
-msgstr "まで"
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
+msgstr ""
 
 msgid "Confirm Remove IP Adresses"
 msgstr "IPアドレスの取り除きを確認する"
@@ -433,11 +502,12 @@ msgstr ""
 "本当にこのプロジェクトから記録されたIPアドレスを全部削除したいですか。\n"
 "残りのプロジェクト歴史が影響されていません。この操作は元に戻せません。"
 
+#, fuzzy
+msgid "Confirm deletion"
+msgstr "削除を確認する"
+
 msgid "Close"
 msgstr "閉じる"
-
-msgid "Confirm Delete"
-msgstr "削除を確認する"
 
 msgid "Delete Confirmation"
 msgstr "確認を削除する"
@@ -447,17 +517,13 @@ msgid ""
 "cannot be undone."
 msgstr "本当にこのプロジェクトの歴史をすべて消しますか。この操作は元に戻せません。"
 
-msgid "Added"
-msgstr "追加された"
+#, python-format
+msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
+msgstr ""
 
-msgid "Removed"
-msgstr "取り除かれた"
-
-msgid "and"
-msgstr "と"
-
-msgid "owers list"
-msgstr "全員リスト"
+#, python-format
+msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -522,32 +588,51 @@ msgstr "設定ページでIPアドレス記録を編集不可にすることが�
 msgid "From IP"
 msgstr "IPから"
 
-msgid "added"
-msgstr "追加された"
+#, fuzzy, python-format
+msgid "Project %(name)s added"
+msgstr "プロジェクトの名前"
+
+#, fuzzy, python-format
+msgid "Bill %(name)s added"
+msgstr "明細が追加されました"
+
+#, python-format
+msgid "Participant %(name)s added"
+msgstr ""
 
 msgid "Project private code changed"
 msgstr "プロジェクトの私用コードが変更された"
 
-msgid "Project renamed to"
-msgstr "プロジェクト名が…に変更された"
+#, fuzzy, python-format
+msgid "Project renamed to %(new_project_name)s"
+msgstr "プロジェクト名は%(project)s"
 
-msgid "Project contact email changed to"
+#, fuzzy, python-format
+msgid "Project contact email changed to %(new_email)s"
 msgstr "プロジェクトの連絡メールが…に変更された"
 
 msgid "Project settings modified"
 msgstr "プロジェクトの設定が修正された"
 
-msgid "deactivated"
-msgstr "操作不可にされた"
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr ""
 
-msgid "reactivated"
-msgstr "再び変更可能にされた"
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr ""
 
-msgid "renamed to"
-msgstr "…という名前に変更された"
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr ""
 
-msgid "External link changed to"
-msgstr "外部リンクが…に変更された"
+#, python-format
+msgid "Bill %(name)s renamed to %(new_description)s"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr ""
 
 msgid "Amount"
 msgstr "金額"
@@ -556,13 +641,32 @@ msgstr "金額"
 msgid "Amount in %(currency)s"
 msgstr "%(currency)sでの金額"
 
-msgid "modified"
-msgstr "修正された"
+#, fuzzy, python-format
+msgid "Bill %(name)s modified"
+msgstr "明細が変更されました"
 
-msgid "removed"
-msgstr "取り除かれた"
+#, python-format
+msgid "Participant %(name)s modified"
+msgstr ""
 
-msgid "changed in a unknown way"
+#, fuzzy, python-format
+msgid "Bill %(name)s removed"
+msgstr "ユーザー%(name)sが既に取り除かれました"
+
+#, fuzzy, python-format
+msgid "Participant %(name)s removed"
+msgstr "ユーザー%(name)sが既に取り除かれました"
+
+#, fuzzy, python-format
+msgid "Project %(name)s changed in an unknown way"
+msgstr "未知の方法で変更された"
+
+#, fuzzy, python-format
+msgid "Bill %(name)s changed in an unknown way"
+msgstr "未知の方法で変更された"
+
+#, fuzzy, python-format
+msgid "Participant %(name)s changed in an unknown way"
 msgstr "未知の方法で変更された"
 
 msgid "Nothing to list"
@@ -667,6 +771,9 @@ msgstr "あなたは貢献して、向上させることができます！"
 msgid "%(amount)s each"
 msgstr "各自に%(amount)s"
 
+msgid "you sure?"
+msgstr "確認？"
+
 msgid "Invite people"
 msgstr "人を誘う"
 
@@ -697,9 +804,6 @@ msgstr "いくら？"
 #, python-format
 msgid "Added on %(date)s"
 msgstr "%(date)sに追加された"
-
-msgid "Everyone"
-msgstr "皆"
 
 #, python-format
 msgid "Everyone but %(excluded)s"
@@ -798,4 +902,61 @@ msgstr "月別の費用"
 
 msgid "Period"
 msgstr "期間"
+
+#~ msgid "Participant"
+#~ msgstr "参加者"
+
+#~ msgid "Bill"
+#~ msgstr "明細"
+
+#~ msgid "Select all"
+#~ msgstr "全て選択"
+
+#~ msgid "Select none"
+#~ msgstr "選択解除"
+
+#~ msgid "changed"
+#~ msgstr "変更された"
+
+#~ msgid "from"
+#~ msgstr "から"
+
+#~ msgid "to"
+#~ msgstr "まで"
+
+#~ msgid "Added"
+#~ msgstr "追加された"
+
+#~ msgid "Removed"
+#~ msgstr "取り除かれた"
+
+#~ msgid "and"
+#~ msgstr "と"
+
+#~ msgid "owers list"
+#~ msgstr "全員リスト"
+
+#~ msgid "added"
+#~ msgstr "追加された"
+
+#~ msgid "Project renamed to"
+#~ msgstr "プロジェクト名が…に変更された"
+
+#~ msgid "deactivated"
+#~ msgstr "操作不可にされた"
+
+#~ msgid "reactivated"
+#~ msgstr "再び変更可能にされた"
+
+#~ msgid "renamed to"
+#~ msgstr "…という名前に変更された"
+
+#~ msgid "External link changed to"
+#~ msgstr "外部リンクが…に変更された"
+
+#~ msgid "modified"
+#~ msgstr "修正された"
+
+#~ msgid "removed"
+#~ msgstr "取り除かれた"
 

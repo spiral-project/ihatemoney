@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-07 01:01+0200\n"
+"POT-Creation-Date: 2021-07-17 17:31+0200\n"
 "PO-Revision-Date: 2021-05-09 04:33+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language: nb_NO\n"
@@ -28,6 +28,9 @@ msgstr "Prosjektnavn"
 #, fuzzy
 msgid "New private code"
 msgstr "Privat kode"
+
+msgid "Enter a new code if you want to change it"
+msgstr ""
 
 msgid "Email"
 msgstr "E-post"
@@ -68,6 +71,17 @@ msgid ""
 msgstr ""
 "Et prosjekt med denne identifikatoren (\"%(project)s\") finnes allerede. "
 "Velg en ny identifikator."
+
+msgid "Enter private code to confirm deletion"
+msgstr ""
+
+#, fuzzy
+msgid "Unknown error"
+msgstr "Ukjent prosjekt"
+
+#, fuzzy
+msgid "Invalid private code."
+msgstr "Privat kode"
 
 #, fuzzy
 msgid "Get in"
@@ -160,17 +174,32 @@ msgstr "Send invitasjoner"
 msgid "The email %(email)s is not valid"
 msgstr "E-posten \"%(email)s\" er ikke gyldig"
 
-msgid "Participant"
-msgstr "Deltager"
+#. List with two items only
+msgid "{dual_object_0} and {dual_object_1}"
+msgstr ""
 
-msgid "Bill"
-msgstr "Regning"
+#. Last two items of a list with more than 3 items
+msgid "{previous_object}, and {end_object}"
+msgstr ""
 
-msgid "Project"
-msgstr "Prosjekt"
+#. Two items in a middle of a list with more than 5 objects
+msgid "{previous_object}, {next_object}"
+msgstr ""
+
+#. First two items of a list with more than 3 items
+msgid "{start_object}, {next_object}"
+msgstr ""
 
 msgid "No Currency"
 msgstr "Ingen valuta"
+
+#. Form error with only one error
+msgid "{prefix}: {error}"
+msgstr ""
+
+#. Form error with a list of errors
+msgid "{prefix}:<br />{errors}"
+msgstr ""
 
 msgid "Too many failed login attempts, please retry later."
 msgstr "For mange mislykkede innloggingsforsøk, prøv igjen senere."
@@ -232,6 +261,9 @@ msgstr "Ugyldig JSON"
 msgid "Project successfully deleted"
 msgstr "Prosjekt slettet"
 
+msgid "Error deleting project"
+msgstr ""
+
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
 msgstr ""
@@ -251,9 +283,15 @@ msgstr ""
 msgid "%(member)s has been added"
 msgstr "%(member)s har blitt lagt til"
 
+msgid "Error activating member"
+msgstr ""
+
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr "%(name)s er en del av dette prosjektet igjen"
+
+msgid "Error removing member"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -274,11 +312,29 @@ msgstr "Brukeren \"%(name)s\" har blitt endret"
 msgid "The bill has been added"
 msgstr "Regningen har blitt lagt til"
 
+msgid "Error deleting bill"
+msgstr ""
+
 msgid "The bill has been deleted"
 msgstr "Regningen har blitt slettet"
 
 msgid "The bill has been modified"
 msgstr "Regningen har blitt endret"
+
+#, fuzzy
+msgid "Error deleting project history"
+msgstr "Skru på prosjekthistorikk"
+
+#, fuzzy
+msgid "Deleted project history."
+msgstr "Skru på prosjekthistorikk"
+
+#, fuzzy
+msgid "Error deleting recorded IP addresses"
+msgstr "Slett lagrede IP-adresser"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr ""
 
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Fant ikke siden du forespurte."
@@ -305,6 +361,9 @@ msgstr "?"
 
 msgid "Create a new project"
 msgstr "Opprett et nytt prosjekt"
+
+msgid "Project"
+msgstr "Prosjekt"
 
 msgid "Number of members"
 msgstr "Antall medlemmer"
@@ -341,10 +400,15 @@ msgstr "Mobilprogram"
 msgid "Get it on"
 msgstr "Til prosjektet"
 
-msgid "you sure?"
+#, fuzzy
+msgid "Are you sure?"
 msgstr "er du sikker?"
 
 msgid "Edit project"
+msgstr "Rediger prosjekt"
+
+#, fuzzy
+msgid "Delete project"
 msgstr "Rediger prosjekt"
 
 msgid "Import JSON"
@@ -383,17 +447,23 @@ msgstr "Personvernsinnstillinger"
 msgid "Edit the project"
 msgstr "Rediger prosjektet"
 
+msgid "This will remove all bills and participants in this project!"
+msgstr ""
+
 msgid "Edit this bill"
 msgstr "Rediger denne regningen"
 
 msgid "Add a bill"
 msgstr "Legg til en regning"
 
-msgid "Select all"
-msgstr "Velg alt"
+msgid "Everyone"
+msgstr "Alle"
 
-msgid "Select none"
-msgstr "Fravelg alt"
+msgid "No one"
+msgstr ""
+
+msgid "More options"
+msgstr ""
 
 msgid "Add participant"
 msgstr "Legg til deltager"
@@ -432,14 +502,13 @@ msgstr ""
 msgid "History Settings Changed"
 msgstr ""
 
-msgid "changed"
-msgstr "endret"
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
+msgstr ""
 
-msgid "from"
-msgstr "fra"
-
-msgid "to"
-msgstr "til"
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
+msgstr ""
 
 msgid "Confirm Remove IP Adresses"
 msgstr ""
@@ -451,11 +520,11 @@ msgid ""
 "action cannot be undone."
 msgstr ""
 
+msgid "Confirm deletion"
+msgstr ""
+
 msgid "Close"
 msgstr "Lukk"
-
-msgid "Confirm Delete"
-msgstr ""
 
 msgid "Delete Confirmation"
 msgstr ""
@@ -465,17 +534,13 @@ msgid ""
 "cannot be undone."
 msgstr ""
 
-msgid "Added"
+#, python-format
+msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
 msgstr ""
 
-msgid "Removed"
-msgstr "Fjernet"
-
-msgid "and"
-msgstr "og"
-
-msgid "owers list"
-msgstr "eierliste"
+#, python-format
+msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -531,31 +596,50 @@ msgstr ""
 msgid "From IP"
 msgstr "Fra IP"
 
-msgid "added"
+#, fuzzy, python-format
+msgid "Project %(name)s added"
+msgstr "Prosjektnavn"
+
+#, fuzzy, python-format
+msgid "Bill %(name)s added"
+msgstr "Regningen har blitt lagt til"
+
+#, python-format
+msgid "Participant %(name)s added"
 msgstr ""
 
 msgid "Project private code changed"
 msgstr ""
 
-msgid "Project renamed to"
-msgstr "Prosjektnavn endret til"
+#, fuzzy, python-format
+msgid "Project renamed to %(new_project_name)s"
+msgstr "Prosjektidentifikatoren er %(project)s"
 
-msgid "Project contact email changed to"
+#, python-format
+msgid "Project contact email changed to %(new_email)s"
 msgstr ""
 
 msgid "Project settings modified"
 msgstr "Prosjektinnstillinger endret"
 
-msgid "deactivated"
+#, python-format
+msgid "Participant %(name)s deactivated"
 msgstr ""
 
-msgid "reactivated"
+#, python-format
+msgid "Participant %(name)s reactivated"
 msgstr ""
 
-msgid "renamed to"
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
 msgstr ""
 
-msgid "External link changed to"
+#, python-format
+msgid "Bill %(name)s renamed to %(new_description)s"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
 msgid "Amount"
@@ -565,13 +649,32 @@ msgstr "Beløp"
 msgid "Amount in %(currency)s"
 msgstr "Beløp i %(currency)s"
 
-msgid "modified"
+#, fuzzy, python-format
+msgid "Bill %(name)s modified"
+msgstr "Regningen har blitt endret"
+
+#, python-format
+msgid "Participant %(name)s modified"
 msgstr ""
 
-msgid "removed"
+#, fuzzy, python-format
+msgid "Bill %(name)s removed"
+msgstr "Brukeren \"%(name)s\" har blitt fjernet"
+
+#, fuzzy, python-format
+msgid "Participant %(name)s removed"
+msgstr "Brukeren \"%(name)s\" har blitt fjernet"
+
+#, python-format
+msgid "Project %(name)s changed in an unknown way"
 msgstr ""
 
-msgid "changed in a unknown way"
+#, python-format
+msgid "Bill %(name)s changed in an unknown way"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s changed in an unknown way"
 msgstr ""
 
 msgid "Nothing to list"
@@ -680,6 +783,9 @@ msgstr "du kan bidra og forbedre den."
 msgid "%(amount)s each"
 msgstr "%(amount)s hver"
 
+msgid "you sure?"
+msgstr "er du sikker?"
+
 msgid "Invite people"
 msgstr "Inviter folk"
 
@@ -710,9 +816,6 @@ msgstr "Hvor meget?"
 #, python-format
 msgid "Added on %(date)s"
 msgstr "Lagt til %(date)s"
-
-msgid "Everyone"
-msgstr "Alle"
 
 #, python-format
 msgid "Everyone but %(excluded)s"
@@ -959,4 +1062,70 @@ msgstr ""
 #~ " venne dine. Den lagres som den "
 #~ "er på tjeneren, så ikke gjenbruk "
 #~ "et personlig passord."
+
+#~ msgid "Participant"
+#~ msgstr "Deltager"
+
+#~ msgid "Bill"
+#~ msgstr "Regning"
+
+#~ msgid "Select all"
+#~ msgstr "Velg alt"
+
+#~ msgid "Select none"
+#~ msgstr "Fravelg alt"
+
+#~ msgid "changed"
+#~ msgstr "endret"
+
+#~ msgid "from"
+#~ msgstr "fra"
+
+#~ msgid "to"
+#~ msgstr "til"
+
+#~ msgid "Confirm Delete"
+#~ msgstr ""
+
+#~ msgid "Added"
+#~ msgstr ""
+
+#~ msgid "Removed"
+#~ msgstr "Fjernet"
+
+#~ msgid "and"
+#~ msgstr "og"
+
+#~ msgid "owers list"
+#~ msgstr "eierliste"
+
+#~ msgid "added"
+#~ msgstr ""
+
+#~ msgid "Project renamed to"
+#~ msgstr "Prosjektnavn endret til"
+
+#~ msgid "Project contact email changed to"
+#~ msgstr ""
+
+#~ msgid "deactivated"
+#~ msgstr ""
+
+#~ msgid "reactivated"
+#~ msgstr ""
+
+#~ msgid "renamed to"
+#~ msgstr ""
+
+#~ msgid "External link changed to"
+#~ msgstr ""
+
+#~ msgid "modified"
+#~ msgstr ""
+
+#~ msgid "removed"
+#~ msgstr ""
+
+#~ msgid "changed in a unknown way"
+#~ msgstr ""
 
