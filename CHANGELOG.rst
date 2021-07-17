@@ -14,7 +14,17 @@ Breaking changes
 - Drop support for MySQL (#743)
 - Require MariaDB version 10.3.2 or above (#632)
 
-The minimum supported version is now Python 3.6
+The minimum supported version is now Python 3.6, and the project is tested
+with up to Python 3.9
+
+See `upgrade instructions <https://ihatemoney.readthedocs.io/en/latest/upgrade.html>`_
+to make sure the upgrade goes smoothly.
+
+Security
+--------
+
+- Add CSRF validation on destructive actions (#796)
+- Ask for private code to delete project or project history (#796)
 
 Added
 -----
@@ -28,8 +38,9 @@ Added
 - Add Project History page that records all changes (#553)
 - Add token-based authentication to the API (#504)
 - Add translations for Hindi, Portuguese (Brazil), Tamil
-- Integrate illustrations as a showcase (#544)
-- Differenciate "flash alerts" notifications (#594)
+- Add illustrations as a showcase, currently only for French (#544)
+- Add a page for downloading mobile application (#688)
+- Add translations for Greek, Esperanto, Italian, Japanese, Portuguese and Swedish
 
 Changed
 -------
@@ -37,16 +48,24 @@ Changed
 - Use the external debts lib to solve settlements (#476)
 - Remove balance column in statistics view (#323)
 - Make language choice persistent (#547)
-- compress jpeg with mozjpeg and png with zopfli (#611)
-- Reorganize "Contributing" documentation to be more accessible to new contributors
-- Improve documentation regarding database migrations (#569)
-
+- Localize date strings in the current language (#590)
+- Differenciate "flash alerts" notifications (#594)
+- Improve menu bar spacing, put history and settings in a submenu (#739)
+- Change Dockerfile to install python dependencies at build time (#793)
 
 Fixed
 -----
 
 - Improve input of email addresses when inviting people to join a project (#133)
 - Fix order of participants in the statistics page (#608)
+- Clarify project edition form: private code is not required (#774)
+- Fix Python dependency contraints to be less strict
+
+Documentation
+-------------
+
+- Reorganize "Contributing" documentation to be more accessible to new contributors
+- Improve documentation regarding database migrations (#569)
 
 4.1.5 (2020-07-26)
 ==================
