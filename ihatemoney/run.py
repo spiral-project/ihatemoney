@@ -9,6 +9,7 @@ from flask_mail import Mail
 from flask_migrate import Migrate, stamp, upgrade
 from jinja2 import pass_context
 from markupsafe import Markup
+import pytz
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 from ihatemoney import default_settings
@@ -159,7 +160,15 @@ def create_app(
     # Translations and time zone (used to display dates).  The timezone is
     # taken from the BABEL_DEFAULT_TIMEZONE settings, and falls back to
     # the local timezone of the server OS by using LOCALTZ.
-    babel = Babel(app, default_timezone=str(LOCALTZ))
+
+    # On some bare systems, LOCALTZ is a fake object unusable by Flask-Babel, so use UTC instead
+    default_timezone = "UTC"
+    try:
+        pytz.timezone(str(LOCALTZ))
+        default_timezone = str(LOCALTZ)
+    except pytz.exceptions.UnknownTimeZoneError:
+        pass
+    babel = Babel(app, default_timezone=default_timezone)
 
     # Undocumented currencyformat filter from flask_babel is forwarding to Babel format_currency
     # We overwrite it to remove the currency sign ¤ when there is no currency
