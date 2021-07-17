@@ -43,7 +43,7 @@
 <!-- Modal -->
 <div id="confirm-ip-delete" class="modal fade show" role="dialog">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <form class="modal-content" action="{{ url_for(".strip_ip_addresses") }}" method="post">
             <div class="modal-header">
                 <h3 class="modal-title">{{ _('Confirm Remove IP Adresses') }}</h3>
                 <a href="#" class="close" data-dismiss="modal">&times;</a>
@@ -51,34 +51,32 @@
             <div class="modal-body">
                 <p>{{ _("Are you sure you want to delete all recorded IP addresses from this project?
                 The rest of the project history will be unaffected. This action cannot be undone.") }}</p>
+                {{ forms.delete_ip_addresses(delete_form) }}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _("Close") }}</button>
-                <form action="{{ url_for(".strip_ip_addresses") }}" method="post">
-                    {{ forms.delete_ip_addresses(delete_form) }}
-                </form>
-              </div>
-        </div>
+              <button type="submit" class="btn btn-danger">{{ _("Confirm deletion") }}</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _("Close") }}</button>
+            </div>
+        </form>
     </div>
 </div>
 <!-- Modal -->
     <div id="confirm-erase" class="modal fade show" role="dialog">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <form class="modal-content" action="{{ url_for(".erase_history") }}" method="post">
             <div class="modal-header">
                 <h3 class="modal-title">{{ _('Delete Confirmation') }}</h3>
                 <a href="#" class="close" data-dismiss="modal">&times;</a>
             </div>
             <div class="modal-body">
                 <p>{{ _("Are you sure you want to erase all history for this project? This action cannot be undone.") }}</p>
+                {{ forms.delete_project_history(delete_form) }}
             </div>
             <div class="modal-footer">
+                <button type="submit" class="btn btn-danger">{{ _("Confirm deletion") }}</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _("Close") }}</button>
-                <form action="{{ url_for(".erase_history") }}" method="post">
-                    {{ forms.delete_project_history(delete_form) }}
-                </form>
-              </div>
-        </div>
+            </div>
+        </form>
     </div>
 </div>
 {% endmacro %}
