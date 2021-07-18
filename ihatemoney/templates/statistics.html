@@ -27,7 +27,7 @@
         <tbody>
         {% for month in months %}
                 <tr>
-                    <td>{{ _(month.strftime("%B")) }} {{ month.year }}</td>
+                    <td>{{ month|dateformat("MMMM yyyy") }}</td>
                     <td>{{ monthly_stats[month.year][month.month]|currency }}</td>
                 </tr>
         {% endfor %}
