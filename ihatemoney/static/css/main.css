@@ -536,6 +536,10 @@ tr:hover .extra-info {
 .navbar-dark .navbar-nav .show > .nav-link svg {
   fill: white;
 }
+.navbar-dark .dropdown-menu {
+  max-height: 50vh;
+  overflow-y: auto;
+}
 .icon svg {
   display: inline-block;
   border-bottom: 0.2em solid transparent;
