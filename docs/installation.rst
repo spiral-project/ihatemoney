@@ -56,12 +56,16 @@ Install the latest release with pip::
 
   pip install ihatemoney
 
+.. warning:: The current release of ihatemoney (4.1.5) does not work with SQLAlchemy 1.4.
+             The dependency will be fixed in the next version, but in the meantime you
+             can work around the issue with: ``pip install 'SQLAlchemy>=1.3,<1.4'``.
+
 Test it
 =======
 
 Once installed, you can start a test server::
 
-  ihatemoney run
+  ihatemoney runserver
 
 And point your browser at `http://localhost:5000 <http://localhost:5000>`_.
 
