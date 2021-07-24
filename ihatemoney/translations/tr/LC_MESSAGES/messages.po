@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-17 17:31+0200\n"
-"PO-Revision-Date: 2021-07-10 15:34+0000\n"
+"PO-Revision-Date: 2021-07-23 07:53+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/tr/>\n"
 "Language: tr\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/tr/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.7.2-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 msgid ""
@@ -76,13 +76,11 @@ msgstr ""
 msgid "Enter private code to confirm deletion"
 msgstr ""
 
-#, fuzzy
 msgid "Unknown error"
-msgstr "Bilinmeyen proje"
+msgstr "Bilinmeyen hata"
 
-#, fuzzy
 msgid "Invalid private code."
-msgstr "Yeni özel kod"
+msgstr "Geçersiz özel kod."
 
 msgid "Get in"
 msgstr "Alın"
@@ -194,11 +192,11 @@ msgstr "Para Birimi Yok"
 
 #. Form error with only one error
 msgid "{prefix}: {error}"
-msgstr ""
+msgstr "{prefix}: {error}"
 
 #. Form error with a list of errors
 msgid "{prefix}:<br />{errors}"
-msgstr ""
+msgstr "{prefix}:<br />{errors}"
 
 msgid "Too many failed login attempts, please retry later."
 msgstr ""
@@ -324,17 +322,14 @@ msgstr "Fatura silindi"
 msgid "The bill has been modified"
 msgstr "Fatura değiştirildi"
 
-#, fuzzy
 msgid "Error deleting project history"
-msgstr "Proje geçmişini etkinleştir"
+msgstr "Proje geçmişi silinirken hata oluştu"
 
-#, fuzzy
 msgid "Deleted project history."
-msgstr "Proje geçmişini etkinleştir"
+msgstr "Proje geçmişi silindi."
 
-#, fuzzy
 msgid "Error deleting recorded IP addresses"
-msgstr "Kaydedilen IP adreslerini sil"
+msgstr "Kaydedilen IP adresleri silinirken hata oluştu"
 
 msgid "Deleted recorded IP addresses in project history."
 msgstr ""
@@ -399,16 +394,14 @@ msgstr "Telefon Uygulamasını İndir"
 msgid "Get it on"
 msgstr "Alın"
 
-#, fuzzy
 msgid "Are you sure?"
-msgstr "emin misiniz?"
+msgstr "Emin misiniz?"
 
 msgid "Edit project"
 msgstr "Projeyi düzenle"
 
-#, fuzzy
 msgid "Delete project"
-msgstr "Projeyi düzenle"
+msgstr "Projeyi sil"
 
 msgid "Import JSON"
 msgstr "JSON'u içe aktar"
@@ -1014,4 +1007,3 @@ msgstr "Dönem"
 
 #~ msgid "removed"
 #~ msgstr "kaldırıldı"
-
