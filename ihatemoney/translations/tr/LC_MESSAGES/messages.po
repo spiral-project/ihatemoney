@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-17 17:31+0200\n"
-"PO-Revision-Date: 2021-07-23 07:53+0000\n"
-"Last-Translator: ToldYouThat <itoldyouthat@protonmail.com>\n"
+"PO-Revision-Date: 2021-07-24 08:34+0000\n"
+"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/tr/>\n"
 "Language: tr\n"
@@ -436,7 +436,6 @@ msgstr "Gizlilik Ayarları"
 msgid "Edit the project"
 msgstr "Projeyi düzenle"
 
-#, fuzzy
 msgid "This will remove all bills and participants in this project!"
 msgstr "Bu, bu projedeki tüm faturaları ve katılımcıları kaldıracaktır!"
 
@@ -499,7 +498,7 @@ msgstr ""
 
 #, python-format
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
-msgstr ""
+msgstr "Fatura %(name)s: %(property_name)s, %(after)s olarak değiştirildi"
 
 msgid "Confirm Remove IP Adresses"
 msgstr "IP Adresini Kaldırmayı Onayla"
@@ -515,9 +514,8 @@ msgstr ""
 "                Proje geçmişinin geri kalanı bundan etkilenmeyecektir. Bu"
 " işlem geri alınamaz."
 
-#, fuzzy
 msgid "Confirm deletion"
-msgstr "Silmeyi Onayla"
+msgstr "Silmeyi onayla"
 
 msgid "Close"
 msgstr "Kapat"
@@ -534,11 +532,11 @@ msgstr ""
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
-msgstr ""
+msgstr "Fatura %(name)s: %(owers_list_str)s borçlular listesine eklendi"
 
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
-msgstr ""
+msgstr "Fatura %(name)s: %(owers_list_str)s borçlular listesinden kaldırıldı"
 
 #, python-format
 msgid ""
@@ -609,13 +607,13 @@ msgstr "IP adresi kaydetme ayarlar sayfasında devre dışı bırakılabilir"
 msgid "From IP"
 msgstr "IP'den"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project %(name)s added"
-msgstr "Proje adı"
+msgstr "%(name)s projesi eklendi"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s added"
-msgstr "Fatura eklendi"
+msgstr "%(name)s faturası eklendi"
 
 #, python-format
 msgid "Participant %(name)s added"
@@ -624,13 +622,13 @@ msgstr "Katılımcı %(name)s eklendi"
 msgid "Project private code changed"
 msgstr "Proje özel kodu değiştirildi"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project renamed to %(new_project_name)s"
-msgstr "Proje tanımlayıcısı %(project)s"
+msgstr "Proje %(new_project_name)s olarak yeniden adlandırıldı"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project contact email changed to %(new_email)s"
-msgstr "Proje iletişim e-posta adresi değiştirildi"
+msgstr "Proje iletişim e-posta adresi %(new_email)s olarak değiştirildi"
 
 msgid "Project settings modified"
 msgstr "Proje ayarları değiştirildi"
@@ -649,11 +647,13 @@ msgstr "Katılımcı %(name)s, %(new_name)s olarak yeniden adlandırıldı"
 
 #, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
-msgstr ""
+msgstr "Fatura %(name)s, %(new_description)s olarak yeniden adlandırıldı"
 
 #, python-format
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
+"Katılımcı %(name)s: %(old_weight)s olan ağırlık %(new_weight)s olarak "
+"değiştirildi"
 
 msgid "Amount"
 msgstr "Miktar"
@@ -662,33 +662,33 @@ msgstr "Miktar"
 msgid "Amount in %(currency)s"
 msgstr "%(currency)s olarak miktar"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s modified"
-msgstr "Fatura değiştirildi"
+msgstr "%(name)s faturası değiştirildi"
 
 #, python-format
 msgid "Participant %(name)s modified"
-msgstr ""
+msgstr "%(name)s katılımcısı değiştirildi"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s removed"
-msgstr "'%(name)s' kullanıcısı kaldırıldı"
+msgstr "%(name)s faturası kaldırıldı"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Participant %(name)s removed"
-msgstr "'%(name)s' kullanıcısı kaldırıldı"
+msgstr "%(name)s katılımcısı kaldırıldı"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project %(name)s changed in an unknown way"
-msgstr "bilinmeyen bir şekilde değiştirildi"
+msgstr "%(name)s projesi bilinmeyen bir şekilde değiştirildi"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s changed in an unknown way"
-msgstr "bilinmeyen bir şekilde değiştirildi"
+msgstr "%(name)s faturası bilinmeyen bir şekilde değiştirildi"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Participant %(name)s changed in an unknown way"
-msgstr "bilinmeyen bir şekilde değiştirildi"
+msgstr "%(name)s katılımcısı bilinmeyen bir şekilde değiştirildi"
 
 msgid "Nothing to list"
 msgstr "Listelenecek bir şey yok"
