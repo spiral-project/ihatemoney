@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-17 17:31+0200\n"
 "PO-Revision-Date: 2021-07-23 07:53+0000\n"
-"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
+"Last-Translator: ToldYouThat <itoldyouthat@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/tr/>\n"
 "Language: tr\n"
@@ -29,7 +29,7 @@ msgid "New private code"
 msgstr "Yeni özel kod"
 
 msgid "Enter a new code if you want to change it"
-msgstr ""
+msgstr "Kodu değiştirmek istiyorsanız yenisini girin"
 
 msgid "Email"
 msgstr "E-posta"
@@ -74,7 +74,7 @@ msgstr ""
 " bir tanımlayıcı seçin"
 
 msgid "Enter private code to confirm deletion"
-msgstr ""
+msgstr "Silme işlemini onaylamak için özel kodu girin"
 
 msgid "Unknown error"
 msgstr "Bilinmeyen hata"
@@ -173,19 +173,19 @@ msgstr "%(email)s e-posta adresi geçerli değil"
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
-msgstr ""
+msgstr "{dual_object_0} ve {dual_object_1}"
 
 #. Last two items of a list with more than 3 items
 msgid "{previous_object}, and {end_object}"
-msgstr ""
+msgstr "{previous_object} ve {end_object}"
 
 #. Two items in a middle of a list with more than 5 objects
 msgid "{previous_object}, {next_object}"
-msgstr ""
+msgstr "{previous_object}, {next_object}"
 
 #. First two items of a list with more than 3 items
 msgid "{start_object}, {next_object}"
-msgstr ""
+msgstr "{start_object}, {next_object}"
 
 msgid "No Currency"
 msgstr "Para Birimi Yok"
@@ -262,7 +262,7 @@ msgid "Project successfully deleted"
 msgstr "Proje başarıyla silindi"
 
 msgid "Error deleting project"
-msgstr ""
+msgstr "Proje silinirken hata oluştu"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
@@ -285,14 +285,14 @@ msgid "%(member)s has been added"
 msgstr "%(member)s eklendi"
 
 msgid "Error activating member"
-msgstr ""
+msgstr "Üye etkinleştirilirken hata oluştu"
 
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr "%(name)s yine bu projenin bir parçası"
 
 msgid "Error removing member"
-msgstr ""
+msgstr "Üye kaldırılırken hata oluştu"
 
 #, python-format
 msgid ""
@@ -314,7 +314,7 @@ msgid "The bill has been added"
 msgstr "Fatura eklendi"
 
 msgid "Error deleting bill"
-msgstr ""
+msgstr "Fatura silinirken hata oluştu"
 
 msgid "The bill has been deleted"
 msgstr "Fatura silindi"
@@ -332,7 +332,7 @@ msgid "Error deleting recorded IP addresses"
 msgstr "Kaydedilen IP adresleri silinirken hata oluştu"
 
 msgid "Deleted recorded IP addresses in project history."
-msgstr ""
+msgstr "Proje geçmişinde kaydedilen IP adresleri silindi."
 
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Maalesef, istediğiniz sayfayı bulamadık."
@@ -436,8 +436,9 @@ msgstr "Gizlilik Ayarları"
 msgid "Edit the project"
 msgstr "Projeyi düzenle"
 
+#, fuzzy
 msgid "This will remove all bills and participants in this project!"
-msgstr ""
+msgstr "Bu, bu projedeki tüm faturaları ve katılımcıları kaldıracaktır!"
 
 msgid "Edit this bill"
 msgstr "Bu faturayı düzenle"
@@ -449,10 +450,10 @@ msgid "Everyone"
 msgstr "Herkes"
 
 msgid "No one"
-msgstr ""
+msgstr "Hiç kimse"
 
 msgid "More options"
-msgstr ""
+msgstr "Diğer seçenekler"
 
 msgid "Add participant"
 msgstr "Katılımcı ekle"
@@ -493,6 +494,8 @@ msgstr "Geçmiş Ayarları Değişti"
 #, python-format
 msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
 msgstr ""
+"Fatura %(name)s: %(property_name)s %(before)s yerine %(after)s olarak "
+"değiştirildi"
 
 #, python-format
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
@@ -616,7 +619,7 @@ msgstr "Fatura eklendi"
 
 #, python-format
 msgid "Participant %(name)s added"
-msgstr ""
+msgstr "Katılımcı %(name)s eklendi"
 
 msgid "Project private code changed"
 msgstr "Proje özel kodu değiştirildi"
@@ -634,15 +637,15 @@ msgstr "Proje ayarları değiştirildi"
 
 #, python-format
 msgid "Participant %(name)s deactivated"
-msgstr ""
+msgstr "Katılımcı %(name)s devre dışı bırakıldı"
 
 #, python-format
 msgid "Participant %(name)s reactivated"
-msgstr ""
+msgstr "Katılımcı %(name)s yeniden etkinleştirildi"
 
 #, python-format
 msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr ""
+msgstr "Katılımcı %(name)s, %(new_name)s olarak yeniden adlandırıldı"
 
 #, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
