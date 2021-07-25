@@ -40,11 +40,14 @@ Choose an installation path, here the current user's home directory (`~`).
 
 Create a virtual environment::
 
-    python3 -m venv ~/ihatemoney
+    cd ~
+    mkdir ihatemoney
+    cd ihatemoney
+    python3 -m venv .
 
 Activate the virtual environment::
 
-    source ~/ihatemoney/bin/activate
+    source bin/activate
 
 .. note:: You will have to re-issue that ``source`` command if you open a new
           terminal.
