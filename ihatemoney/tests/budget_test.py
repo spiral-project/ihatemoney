@@ -119,6 +119,8 @@ class BudgetTestCase(IhatemoneyTestCase):
         # Link is valid
         assert response.status_code == 302
 
+        # Change password to invalidate token
+        # Other data are required, but useless for the test
         response = self.client.post(
             "/raclette/edit",
             data={
