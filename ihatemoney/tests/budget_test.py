@@ -104,7 +104,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         resp = self.client.get("/authenticate?token=token")
         self.assertIn("You either provided a bad token", resp.data.decode("utf-8"))
 
-    def test_invite_expiration_with_code(self):
+    def test_invite_code_invalidation(self):
         """Test that invitation link expire after code change"""
         self.login("raclette")
         self.post_project("raclette")
