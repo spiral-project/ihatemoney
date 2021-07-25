@@ -788,7 +788,7 @@ msgstr "Belgelendirme"
 msgid "Administation Dashboard"
 msgstr "Yönetici Gösterge Paneli"
 
-msgid "\"I hate money\" is a free software"
+msgid "\"I hate money\" is free software"
 msgstr "\"I hate money\" özgür bir yazılımdır"
 
 msgid "you can contribute and improve it!"
@@ -1014,4 +1014,3 @@ msgstr "Dönem"
 
 #~ msgid "removed"
 #~ msgstr "kaldırıldı"
-

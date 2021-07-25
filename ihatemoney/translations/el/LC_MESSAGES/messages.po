@@ -761,7 +761,7 @@ msgstr ""
 msgid "Administation Dashboard"
 msgstr ""
 
-msgid "\"I hate money\" is a free software"
+msgid "\"I hate money\" is free software"
 msgstr ""
 
 msgid "you can contribute and improve it!"
@@ -973,4 +973,3 @@ msgstr "Περίοδος"
 
 #~ msgid "removed"
 #~ msgstr "αφαιρέθηκε"
-

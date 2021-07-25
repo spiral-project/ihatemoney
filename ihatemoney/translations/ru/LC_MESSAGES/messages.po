@@ -790,7 +790,7 @@ msgstr "Документация"
 msgid "Administation Dashboard"
 msgstr "Панель инструментов администратора"
 
-msgid "\"I hate money\" is a free software"
+msgid "\"I hate money\" is free software"
 msgstr "\" I hate money \" - бесплатная программа"
 
 msgid "you can contribute and improve it!"
@@ -1012,4 +1012,3 @@ msgstr "Период"
 
 #~ msgid "removed"
 #~ msgstr "удалено"
-

@@ -791,7 +791,7 @@ msgstr "प्रलेखन"
 msgid "Administation Dashboard"
 msgstr "व्यवस्थापन डैशबोर्ड"
 
-msgid "\"I hate money\" is a free software"
+msgid "\"I hate money\" is free software"
 msgstr "\"I hate money\" एक मुफ्त सॉफ्टवेयर है"
 
 msgid "you can contribute and improve it!"
@@ -995,4 +995,3 @@ msgstr "अवधि"
 
 #~ msgid "removed"
 #~ msgstr "हटाया गया"
-

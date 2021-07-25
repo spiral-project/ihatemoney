@@ -821,7 +821,7 @@ msgid "Administation Dashboard"
 msgstr "Administrasjonsoversiktspanel"
 
 #, fuzzy
-msgid "\"I hate money\" is a free software"
+msgid "\"I hate money\" is free software"
 msgstr "\"Jeg hater penger\" er fri programvare"
 
 msgid "you can contribute and improve it!"
@@ -1045,7 +1045,7 @@ msgstr "Periode"
 #~ msgid "Project settings"
 #~ msgstr "Prosjektinnstillinger"
 
-#~ msgid "This is a free software"
+#~ msgid "This is free software"
 #~ msgstr "Dette er fri programvare"
 
 #~ msgid "Invite people to join this project!"

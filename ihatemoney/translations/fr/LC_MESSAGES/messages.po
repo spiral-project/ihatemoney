@@ -794,7 +794,7 @@ msgstr "Documentation"
 msgid "Administation Dashboard"
 msgstr "Panneau d'aministration"
 
-msgid "\"I hate money\" is a free software"
+msgid "\"I hate money\" is free software"
 msgstr "« I hate money » est un logiciel libre"
 
 msgid "you can contribute and improve it!"
@@ -1050,7 +1050,7 @@ msgstr "Période"
 #~ msgid "Project settings"
 #~ msgstr "Options du projet"
 
-#~ msgid "This is a free software"
+#~ msgid "This is free software"
 #~ msgstr "Ceci est un logiciel libre"
 
 #~ msgid "Invite people to join this project!"

@@ -784,7 +784,7 @@ msgstr "Dokumentasi"
 msgid "Administation Dashboard"
 msgstr "Dasbor Administrasi"
 
-msgid "\"I hate money\" is a free software"
+msgid "\"I hate money\" is free software"
 msgstr "\"I hate money\" adalah perangkat lunak gratis"
 
 msgid "you can contribute and improve it!"
@@ -1019,4 +1019,3 @@ msgstr "Periode"
 
 #~ msgid "removed"
 #~ msgstr "dihapus"
-

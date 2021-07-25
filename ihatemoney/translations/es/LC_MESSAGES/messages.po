@@ -751,7 +751,7 @@ msgstr "Documentación"
 msgid "Administation Dashboard"
 msgstr "Panel de administración"
 
-msgid "\"I hate money\" is a free software"
+msgid "\"I hate money\" is free software"
 msgstr ""
 
 msgid "you can contribute and improve it!"
@@ -956,4 +956,3 @@ msgstr "Período"
 
 #~ msgid "changed in a unknown way"
 #~ msgstr ""
-
