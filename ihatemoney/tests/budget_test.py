@@ -8,12 +8,12 @@ from unittest.mock import MagicMock
 from urllib.parse import parse_qs, urlencode, urlparse, urlunparse
 
 from flask import session
-from markupsafe import Markup
 import pytest
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from ihatemoney import models
 from ihatemoney.currency_convertor import CurrencyConverter
+from ihatemoney.tests.common.help_functions import extract_link
 from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
 from ihatemoney.versioning import LoggingMode
 
@@ -109,10 +109,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.login("raclette")
         self.post_project("raclette")
         response = self.client.get("/raclette/invite").data.decode("utf-8")
-        base_index = response.find("share the following link")
-        start = response.find('href="', base_index) + 6
-        end = response.find('">', base_index)
-        link = Markup(response[start:end]).unescape()
+        link = extract_link(response, "share the following link")
 
         self.client.get("/exit")
         response = self.client.get(link)
