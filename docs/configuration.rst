@@ -26,7 +26,7 @@ format used can be found on `the SQLAlchemy documentation`_.
 
 For example, if you're using MariaDB, use a configuration similar to the following::
 
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://user:pass@localhost/dbname'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://user:pass@localhost/mydb'
 
 If you're using PostgreSQL, your client must use utf8. Unfortunately,
 PostgreSQL default is to use ASCII. Either change your client settings,
