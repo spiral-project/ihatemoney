@@ -40,10 +40,8 @@ Choose an installation path, here the current user's home directory (`~`).
 
 Create a virtual environment::
 
-    cd ~
-    mkdir ihatemoney
-    cd ihatemoney
-    python3 -m venv .
+    python3 -m venv ~/ihatemoney
+    cd ~/ihatemoney
 
 Activate the virtual environment::
 
