@@ -26,14 +26,14 @@ format used can be found on `the SQLAlchemy documentation`_.
 
 For example, if you're using MariaDB, use a configuration similar to the following::
 
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://user:pass@localhost/dbname'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://user:pass@localhost/mydb'
 
 If you're using PostgreSQL, your client must use utf8. Unfortunately,
 PostgreSQL default is to use ASCII. Either change your client settings,
 or specify the encoding by appending ``?client_encoding=utf8`` to the
 connection string. This will look like::
 
-    SQLALCHEMY_DATABASE_URI = 'postgresql://myuser:mypass@localhost/dbname?client_encoding=utf8'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://myuser:mypass@localhost/mydb?client_encoding=utf8'
 
 .. _the SQLAlchemy documentation: http://docs.sqlalchemy.org/en/latest/core/engines.html#database-urls
 

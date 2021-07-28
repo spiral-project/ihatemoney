@@ -36,15 +36,16 @@ most small to medium setups.
 Prepare virtual environment (recommended)
 =========================================
 
-Choose an installation path, here `/home/john/ihatemoney`.
+Choose an installation path, here the current user's home directory (`~`).
 
 Create a virtual environment::
 
-    python3 -m venv /home/john/ihatemoney
+    python3 -m venv ~/ihatemoney
+    cd ~/ihatemoney
 
 Activate the virtual environment::
 
-    source /home/john/ihatemoney/bin/activate
+    source bin/activate
 
 .. note:: You will have to re-issue that ``source`` command if you open a new
           terminal.
@@ -179,7 +180,7 @@ Install Gunicorn::
       [Service]
       Type=simple
       User=ihatemoney
-      ExecStart=/home/john/ihatemoney/bin/gunicorn -c /etc/ihatemoney/gunicorn.conf.py ihatemoney.wsgi:application
+      ExecStart=%h/ihatemoney/bin/gunicorn -c /etc/ihatemoney/gunicorn.conf.py ihatemoney.wsgi:application
       SyslogIdentifier=ihatemoney
 
       [Install]
