@@ -85,24 +85,14 @@ Getting information about the project::
 
     $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo
     {
+        "id": "demo",
         "name": "demonstration",
         "contact_email": "demo@notmyidea.org",
-        "password": "demo",
-        "id": "demo",
-        "active_members": [{"activated": true, "weight": 1, "id": 31, "name": "Arnaud"},
-                            {"activated": true, "weight": 1, "id": 32, "name": "Alexis"},
-                            {"activated": true, "weight": 1, "id": 33, "name": "Olivier"},
-                            {"activated": true, "weight": 1, "id": 34, "name": "Fred"}],
-        "members": [{"activated": true, "weight": 1, "id": 31, "name": "Arnaud"},
-                    {"activated": true, "weight": 1, "id": 32, "name": "Alexis"},
-                    {"activated": true, "weight": 1, "id": 33, "name": "Olivier"},
-                    {"activated": true, "weight": 1, "id": 34, "name": "Fred"}],
-        "balance": {
-            "31": 6.0,
-            "32": 6.0
-            "33": -6.0
-            "34": -6.0
-        }
+        "members": [{"id": 11515, "name": "f", "weight": 1.0, "activated": true, "balance": 0}, 
+                    {"id": 11531, "name": "g", "weight": 1.0, "activated": true, "balance": 0}, 
+                    {"id": 11532, "name": "peter", "weight": 1.0, "activated": true, "balance": 5.0},
+                    {"id": 11558, "name": "Monkey", "weight": 1.0, "activated": true, "balance": 0}, 
+                    {"id": 11559, "name": "GG", "weight": 1.0, "activated": true, "balance": -5.0}]
     }
 
 
