@@ -1762,29 +1762,12 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         from ihatemoney.web import import_project
 
-        try:
+        for data in [json_1, json_2]:
             file = io.StringIO()
-            json.dump(json_1, file)
+            json.dump(data, file)
             file.seek(0)
-            import_project(file, project)
-        except ValueError:
-            self.assertTrue(True)
-        except Exception:
-            self.fail("unexpected exception raised")
-        else:
-            self.fail("ExpectedException not raised")
-
-        try:
-            file = io.StringIO()
-            json.dump(json_2, file)
-            file.seek(0)
-            import_project(file, project)
-        except ValueError:
-            self.assertTrue(True)
-        except Exception:
-            self.fail("unexpected exception raised")
-        else:
-            self.fail("ExpectedException not raised")
+            with pytest.raises(ValueError):
+                import_project(file, project)
 
     def test_access_other_projects(self):
         """Test that accessing or editing bills and members from another project fails"""
