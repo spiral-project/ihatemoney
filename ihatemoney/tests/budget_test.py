@@ -1300,8 +1300,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                 set(line.split(",")), set(received_lines[i].strip("\r").split(","))
             )
 
-    def test_import_new_project(self):
-        # Import JSON in an empty project
+    def test_import_currencies_in_empty_project_with_currency(self):
+        # Import JSON with currencies in an empty project with a default currency
 
         self.post_project("raclette", default_currency="EUR")
         self.login("raclette")
@@ -1347,7 +1347,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         bills = project.get_pretty_bills()
 
-        # Check if all bills has been add
+        # Check if all bills have been added
         self.assertEqual(len(bills), len(json_to_import))
 
         # Check if name of bills are ok
@@ -1375,8 +1375,205 @@ class BudgetTestCase(IhatemoneyTestCase):
 
                     self.assertEqual(list_project, list_json)
 
-    def test_import_without_currencies(self):
-        # Import JSON without currencies (from ihatemoney < 5) in an empty project
+    def test_import_single_currency_in_empty_project_without_currency(self):
+        # Import JSON with a single currency in an empty project with no
+        # default currency. It should work by stripping the currency from
+        # bills.
+
+        self.post_project("raclette")
+        self.login("raclette")
+
+        project = models.Project.query.get("raclette")
+
+        json_to_import = [
+            {
+                "date": "2017-01-01",
+                "what": "refund",
+                "amount": 13.33,
+                "currency": "EUR",
+                "payer_name": "tata",
+                "payer_weight": 1.0,
+                "owers": ["fred"],
+            },
+            {
+                "date": "2016-12-31",
+                "what": "fromage a raclette",
+                "amount": 10.0,
+                "currency": "EUR",
+                "payer_name": "zorglub",
+                "payer_weight": 2.0,
+                "owers": ["zorglub", "fred", "tata", "pepe"],
+            },
+        ]
+
+        from ihatemoney.web import import_project
+
+        file = io.StringIO()
+        json.dump(json_to_import, file)
+        file.seek(0)
+        import_project(file, project)
+
+        bills = project.get_pretty_bills()
+
+        # Check if all bills have been added
+        self.assertEqual(len(bills), len(json_to_import))
+
+        # Check if name of bills are ok
+        b = [e["what"] for e in bills]
+        b.sort()
+        ref = [e["what"] for e in json_to_import]
+        ref.sort()
+
+        self.assertEqual(b, ref)
+
+        # Check if other informations in bill are ok
+        for i in json_to_import:
+            for j in bills:
+                if j["what"] == i["what"]:
+                    self.assertEqual(j["payer_name"], i["payer_name"])
+                    self.assertEqual(j["amount"], i["amount"])
+                    # Currency should have been stripped
+                    self.assertEqual(j["currency"], "XXX")
+                    self.assertEqual(j["payer_weight"], i["payer_weight"])
+                    self.assertEqual(j["date"], i["date"])
+
+                    list_project = [ower for ower in j["owers"]]
+                    list_project.sort()
+                    list_json = [ower for ower in i["owers"]]
+                    list_json.sort()
+
+                    self.assertEqual(list_project, list_json)
+
+    def test_import_multiple_currencies_in_empty_project_without_currency(self):
+        # Import JSON with multiple currencies in an empty project with no
+        # default currency. It should fail.
+
+        self.post_project("raclette")
+        self.login("raclette")
+
+        project = models.Project.query.get("raclette")
+
+        json_to_import = [
+            {
+                "date": "2017-01-01",
+                "what": "refund",
+                "amount": 13.33,
+                "currency": "EUR",
+                "payer_name": "tata",
+                "payer_weight": 1.0,
+                "owers": ["fred"],
+            },
+            {
+                "date": "2016-12-31",
+                "what": "poutine from québec",
+                "amount": 50.0,
+                "currency": "CAD",
+                "payer_name": "fred",
+                "payer_weight": 1.0,
+                "owers": ["zorglub", "tata"],
+            },
+            {
+                "date": "2016-12-31",
+                "what": "fromage a raclette",
+                "amount": 10.0,
+                "currency": "EUR",
+                "payer_name": "zorglub",
+                "payer_weight": 2.0,
+                "owers": ["zorglub", "fred", "tata", "pepe"],
+            },
+        ]
+
+        from ihatemoney.web import import_project
+
+        file = io.StringIO()
+        json.dump(json_to_import, file)
+        file.seek(0)
+        # Import should fail
+        with pytest.raises(ValueError):
+            import_project(file, project)
+
+        bills = project.get_pretty_bills()
+
+        # Check that there are no bills
+        self.assertEqual(len(bills), 0)
+
+    def test_import_no_currency_in_empty_project_with_currency(self):
+        # Import JSON without currencies (from ihatemoney < 5) in an empty
+        # project with a default currency.
+
+        self.post_project("raclette", default_currency="EUR")
+        self.login("raclette")
+
+        project = models.Project.query.get("raclette")
+
+        json_to_import = [
+            {
+                "date": "2017-01-01",
+                "what": "refund",
+                "amount": 13.33,
+                "payer_name": "tata",
+                "payer_weight": 1.0,
+                "owers": ["fred"],
+            },
+            {
+                "date": "2016-12-31",
+                "what": "red wine",
+                "amount": 200.0,
+                "payer_name": "fred",
+                "payer_weight": 1.0,
+                "owers": ["zorglub", "tata"],
+            },
+            {
+                "date": "2016-12-31",
+                "what": "fromage a raclette",
+                "amount": 10.0,
+                "payer_name": "zorglub",
+                "payer_weight": 2.0,
+                "owers": ["zorglub", "fred", "tata", "pepe"],
+            },
+        ]
+
+        from ihatemoney.web import import_project
+
+        file = io.StringIO()
+        json.dump(json_to_import, file)
+        file.seek(0)
+        import_project(file, project)
+
+        bills = project.get_pretty_bills()
+
+        # Check if all bills have been added
+        self.assertEqual(len(bills), len(json_to_import))
+
+        # Check if name of bills are ok
+        b = [e["what"] for e in bills]
+        b.sort()
+        ref = [e["what"] for e in json_to_import]
+        ref.sort()
+
+        self.assertEqual(b, ref)
+
+        # Check if other informations in bill are ok
+        for i in json_to_import:
+            for j in bills:
+                if j["what"] == i["what"]:
+                    self.assertEqual(j["payer_name"], i["payer_name"])
+                    self.assertEqual(j["amount"], i["amount"])
+                    # All bills are converted to default project currency
+                    self.assertEqual(j["currency"], "EUR")
+                    self.assertEqual(j["payer_weight"], i["payer_weight"])
+                    self.assertEqual(j["date"], i["date"])
+
+                    list_project = [ower for ower in j["owers"]]
+                    list_project.sort()
+                    list_json = [ower for ower in i["owers"]]
+                    list_json.sort()
+
+                    self.assertEqual(list_project, list_json)
+
+    def test_import_no_currency_in_empty_project_without_currency(self):
+        # Import JSON without currencies (from ihatemoney < 5) in an empty
+        # project with no default currency.
 
         self.post_project("raclette")
         self.login("raclette")
@@ -1419,7 +1616,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         bills = project.get_pretty_bills()
 
-        # Check if all bills has been add
+        # Check if all bills have been added
         self.assertEqual(len(bills), len(json_to_import))
 
         # Check if name of bills are ok
@@ -1508,7 +1705,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         bills = project.get_pretty_bills()
 
-        # Check if all bills has been add
+        # Check if all bills have been added
         self.assertEqual(len(bills), len(json_to_import))
 
         # Check if name of bills are ok
