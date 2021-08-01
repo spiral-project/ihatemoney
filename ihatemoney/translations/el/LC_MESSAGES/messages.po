@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-17 17:31+0200\n"
-"PO-Revision-Date: 2021-07-03 22:35+0000\n"
+"PO-Revision-Date: 2021-08-01 08:34+0000\n"
 "Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
+"Language-Team: Greek <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/el/>\n"
 "Language: el\n"
-"Language-Team: Greek <https://hosted.weblate.org/projects/i-hate-money/i"
-"-hate-money/el/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.8-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 msgid ""
@@ -28,7 +28,7 @@ msgid "New private code"
 msgstr "Ιδιωτικός κωδικός"
 
 msgid "Enter a new code if you want to change it"
-msgstr ""
+msgstr "Εισαγάγετε έναν νέο κωδικό εάν θέλετε να τον αλλάξετε"
 
 msgid "Email"
 msgstr "Ηλεκτρονικό ταχυδρομείο"
@@ -46,6 +46,8 @@ msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
+"Αυτό το έργο δεν μπορεί να οριστεί σε \"χωρίς νόμισμα\" επειδή περιέχει "
+"λογαριασμούς σε πολλαπλά νομίσματα."
 
 msgid "Import previously exported JSON file"
 msgstr "Εισαγωγή αρχείου JSON που έχει εξαχθεί προηγουμένως"
@@ -67,9 +69,11 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
+"Ένα έργο με αυτό το αναγνωριστικό (\"%(project)s\") υπάρχει ήδη. Παρακαλώ "
+"επιλέξτε ένα νέο αναγνωριστικό"
 
 msgid "Enter private code to confirm deletion"
-msgstr ""
+msgstr "Εισαγάγετε ιδιωτικό κωδικό για επιβεβαίωση της διαγραφής"
 
 #, fuzzy
 msgid "Unknown error"
@@ -191,7 +195,7 @@ msgstr "Κανένα νόμισμα"
 
 #. Form error with only one error
 msgid "{prefix}: {error}"
-msgstr ""
+msgstr "{prefix}: {error}"
 
 #. Form error with a list of errors
 msgid "{prefix}:<br />{errors}"
@@ -973,4 +977,3 @@ msgstr "Περίοδος"
 
 #~ msgid "removed"
 #~ msgstr "αφαιρέθηκε"
-
