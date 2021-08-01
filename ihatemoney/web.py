@@ -452,12 +452,10 @@ def import_project(file, project):
     attr.sort()
     currencies = set()
     for e in json_file:
-        # Add compatibility with versions < 5 that did not have currencies
-        if "currency" not in e:
-            e["currency"] = CurrencyConverter.no_currency
-        # Empty currency should be converted to "XXX"
-        if e["currency"] == "":
-            e["currency"] = CurrencyConverter.no_currency
+        # If currency is absent, empty, or explicitly set to XXX
+        # set it to project default.
+        if e.get("currency", "") in ["", "XXX"]:
+            e["currency"] = project.default_currency
         if len(e) != len(attr):
             raise ValueError(_("Invalid JSON"))
         list_attr = []
@@ -466,12 +464,6 @@ def import_project(file, project):
         list_attr.sort()
         if list_attr != attr:
             raise ValueError(_("Invalid JSON"))
-        # If the project has a default currency, convert bills that have no currency
-        if (
-            project.default_currency != CurrencyConverter.no_currency
-            and e["currency"] == CurrencyConverter.no_currency
-        ):
-            e["currency"] = project.default_currency
         # Keep track of currencies
         currencies.add(e["currency"])
 
