@@ -350,12 +350,12 @@ class Project(db.Model):
             serializer = URLSafeTimedSerializer(
                 current_app.config["SECRET_KEY"], salt=token_type
             )
-            token = serializer.dumps({"project_id": self.id})
+            token = serializer.dumps([self.id])
         else:
             serializer = URLSafeSerializer(
                 current_app.config["SECRET_KEY"] + self.password, salt=token_type
             )
-            token = serializer.dumps({"project_id": self.id})
+            token = serializer.dumps([self.id])
 
         return token
 
@@ -390,7 +390,7 @@ class Project(db.Model):
         except BadSignature:
             return None
 
-        data_project = data.get("project_id")
+        data_project = data[0] if isinstance(data, list) else None
         return (
             data_project if project_id is None or data_project == project_id else None
         )
