@@ -763,7 +763,7 @@ msgstr "文件"
 msgid "Administation Dashboard"
 msgstr "管理面板"
 
-msgid "\"I hate money\" is a free software"
+msgid "\"I hate money\" is free software"
 msgstr "“I hate money\"是一个免费软件"
 
 msgid "you can contribute and improve it!"
@@ -977,4 +977,3 @@ msgstr "期间"
 
 #~ msgid "removed"
 #~ msgstr "移除"
-

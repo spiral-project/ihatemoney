@@ -790,7 +790,7 @@ msgstr "Dokumentation"
 msgid "Administation Dashboard"
 msgstr "Dashboard Administration"
 
-msgid "\"I hate money\" is a free software"
+msgid "\"I hate money\" is free software"
 msgstr "\"I hate money\" ist freie Software"
 
 msgid "you can contribute and improve it!"
@@ -1020,4 +1020,3 @@ msgstr "Zeitraum"
 
 #~ msgid "removed"
 #~ msgstr "entfernt"
-

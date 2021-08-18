@@ -791,7 +791,7 @@ msgstr "Documentación"
 msgid "Administation Dashboard"
 msgstr "Panel de administración"
 
-msgid "\"I hate money\" is a free software"
+msgid "\"I hate money\" is free software"
 msgstr "\"I hate money\" es un software libre"
 
 msgid "you can contribute and improve it!"
@@ -1020,4 +1020,3 @@ msgstr "Período"
 
 #~ msgid "removed"
 #~ msgstr "removido"
-

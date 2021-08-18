@@ -756,7 +756,7 @@ msgstr "Dokumentation"
 msgid "Administation Dashboard"
 msgstr ""
 
-msgid "\"I hate money\" is a free software"
+msgid "\"I hate money\" is free software"
 msgstr "\"Jag hatar pengar\" är en fri mjukvara"
 
 msgid "you can contribute and improve it!"

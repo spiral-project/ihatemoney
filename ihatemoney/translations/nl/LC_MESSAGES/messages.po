@@ -780,7 +780,7 @@ msgstr "Documentatie"
 msgid "Administation Dashboard"
 msgstr "Administratie-overzicht"
 
-msgid "\"I hate money\" is a free software"
+msgid "\"I hate money\" is free software"
 msgstr "\"I hate money\" is vrije software"
 
 msgid "you can contribute and improve it!"
@@ -1010,4 +1010,3 @@ msgstr "Periode"
 
 #~ msgid "changed in a unknown way"
 #~ msgstr ""
-

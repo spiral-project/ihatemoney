@@ -761,7 +761,7 @@ msgstr "書類"
 msgid "Administation Dashboard"
 msgstr "管理ダッシュボード"
 
-msgid "\"I hate money\" is a free software"
+msgid "\"I hate money\" is free software"
 msgstr "\"I hate money\"は無料のソフトウェアです"
 
 msgid "you can contribute and improve it!"
@@ -959,4 +959,3 @@ msgstr "期間"
 
 #~ msgid "removed"
 #~ msgstr "取り除かれた"
-
