@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-17 17:31+0200\n"
-"PO-Revision-Date: 2020-11-04 17:27+0000\n"
-"Last-Translator: mdmdmdmdmd <exe_tmp@gmx.de>\n"
+"PO-Revision-Date: 2021-08-19 20:34+0000\n"
+"Last-Translator: corny <nico.eckstein+weblate@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/de/>\n"
 "Language: de\n"
-"Language-Team: German <https://hosted.weblate.org/projects/i-hate-money/i"
-"-hate-money/de/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.8-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 msgid ""
@@ -25,9 +25,8 @@ msgstr ""
 msgid "Project name"
 msgstr "Projektname"
 
-#, fuzzy
 msgid "New private code"
-msgstr "Privater Code"
+msgstr "Neuer privater Code"
 
 msgid "Enter a new code if you want to change it"
 msgstr ""
@@ -39,7 +38,7 @@ msgid "Enable project history"
 msgstr "Projekthistorie aktivieren"
 
 msgid "Use IP tracking for project history"
-msgstr "IP-Tracking für Verlauf benutzen"
+msgstr "IP Tracking für die Projekt-Historie verwenden"
 
 msgid "Default Currency"
 msgstr "Standardwährung"
@@ -48,12 +47,14 @@ msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
+"Dieses Projekt kann nicht auf \"ohne Währung\" eingestellt werden, weil es "
+"Rechnungen unterschiedlicher Währungen enthält."
 
 msgid "Import previously exported JSON file"
 msgstr "Zuvor exportierte JSON-Datei importieren"
 
 msgid "Import"
-msgstr "Import"
+msgstr "Importieren"
 
 msgid "Project identifier"
 msgstr "Projektkennung"
@@ -75,13 +76,11 @@ msgstr ""
 msgid "Enter private code to confirm deletion"
 msgstr ""
 
-#, fuzzy
 msgid "Unknown error"
-msgstr "Unbekanntes Projekt"
+msgstr "Unbekannter Fehler"
 
-#, fuzzy
 msgid "Invalid private code."
-msgstr "Privater Code"
+msgstr "ungültiger privater Code."
 
 msgid "Get in"
 msgstr "Eintreten"
@@ -126,7 +125,8 @@ msgid "External link"
 msgstr "Externer Link"
 
 msgid "A link to an external document, related to this bill"
-msgstr "Link zu einem externen Dokument, zu dieser Rechnung gehörend"
+msgstr ""
+"Ein Link zu einem externen Dokument, welches sich auf diese Rechnung bezieht"
 
 msgid "For whom?"
 msgstr "Für wen?"
@@ -174,30 +174,30 @@ msgstr "Die E-Mail-Adresse(n) %(email)s ist/sind nicht gültig"
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
-msgstr ""
+msgstr "{dual_object_0} und {dual_object_1}"
 
 #. Last two items of a list with more than 3 items
 msgid "{previous_object}, and {end_object}"
-msgstr ""
+msgstr "{previous_object} und {end_object}"
 
 #. Two items in a middle of a list with more than 5 objects
 msgid "{previous_object}, {next_object}"
-msgstr ""
+msgstr "{previous_object}, {next_object}"
 
 #. First two items of a list with more than 3 items
 msgid "{start_object}, {next_object}"
-msgstr ""
+msgstr "{start_object}, {next_object}"
 
 msgid "No Currency"
 msgstr "Keine Währung"
 
 #. Form error with only one error
 msgid "{prefix}: {error}"
-msgstr ""
+msgstr "{prefix}: {error}"
 
 #. Form error with a list of errors
 msgid "{prefix}:<br />{errors}"
-msgstr ""
+msgstr "{prefix}:<br />{errors}"
 
 msgid "Too many failed login attempts, please retry later."
 msgstr "Zu viele fehlgeschlagene Anmeldeversuche, bitte versuche es später."
@@ -265,7 +265,7 @@ msgid "Project successfully deleted"
 msgstr "Projekt erfolgreich gelöscht"
 
 msgid "Error deleting project"
-msgstr ""
+msgstr "Fehler bei Projektlöschung"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
@@ -288,14 +288,14 @@ msgid "%(member)s has been added"
 msgstr "%(member)s wurde hinzugefügt"
 
 msgid "Error activating member"
-msgstr ""
+msgstr "Fehler beim Aktivieren des Benutzers"
 
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr "%(name)s ist/sind wieder Teil von diesem Projekt"
 
 msgid "Error removing member"
-msgstr ""
+msgstr "Fehler beim Löschen des Benutzers"
 
 #, python-format
 msgid ""
@@ -317,7 +317,7 @@ msgid "The bill has been added"
 msgstr "Die Ausgabe wurde hinzugefügt"
 
 msgid "Error deleting bill"
-msgstr ""
+msgstr "Fehler beim Löschen der Ausgabe"
 
 msgid "The bill has been deleted"
 msgstr "Die Ausgabe wurde entfernt"
@@ -325,20 +325,17 @@ msgstr "Die Ausgabe wurde entfernt"
 msgid "The bill has been modified"
 msgstr "Die Ausgabe wurde bearbeitet"
 
-#, fuzzy
 msgid "Error deleting project history"
-msgstr "Projekthistorie aktivieren"
+msgstr "Projekthistorie konnte nicht gelöscht werden"
 
-#, fuzzy
 msgid "Deleted project history."
-msgstr "Projekthistorie aktivieren"
+msgstr "Projekthistorie gelöscht."
 
-#, fuzzy
 msgid "Error deleting recorded IP addresses"
-msgstr "Gespeicherte IP-Adressen löschen"
+msgstr "Gespeicherte IP-Adressen konnten nicht gelöscht werden"
 
 msgid "Deleted recorded IP addresses in project history."
-msgstr ""
+msgstr "Gespeicherte IP-Adresse wurde in Projekthistorie gelöscht."
 
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Entschuldigung, wir können die angefragte Seite nicht finden."
@@ -394,24 +391,20 @@ msgstr "Zeigen"
 msgid "The Dashboard is currently deactivated."
 msgstr "Das Dashboard ist aktuell deaktiviert."
 
-#, fuzzy
 msgid "Download Mobile Application"
-msgstr "Handy-Applikation"
+msgstr "Handy-Applikation herunterladen"
 
-#, fuzzy
 msgid "Get it on"
-msgstr "Eintreten"
+msgstr "Mach mit"
 
-#, fuzzy
 msgid "Are you sure?"
 msgstr "Bist du sicher?"
 
 msgid "Edit project"
 msgstr "Projekt bearbeiten"
 
-#, fuzzy
 msgid "Delete project"
-msgstr "Projekt bearbeiten"
+msgstr "Projekt löschen"
 
 msgid "Import JSON"
 msgstr "JSON importieren"
@@ -447,7 +440,7 @@ msgid "Edit the project"
 msgstr "Projekt bearbeiten"
 
 msgid "This will remove all bills and participants in this project!"
-msgstr ""
+msgstr "Dies wird alle Ausgaben und Mitglieder dieses Projektes löschen!"
 
 msgid "Edit this bill"
 msgstr "Ausgabe bearbeiten"
@@ -459,10 +452,10 @@ msgid "Everyone"
 msgstr "Jeder"
 
 msgid "No one"
-msgstr ""
+msgstr "Keiner"
 
 msgid "More options"
-msgstr ""
+msgstr "Mehr Optionen"
 
 msgid "Add participant"
 msgstr "Teilnehmer hinzufügen"
@@ -503,10 +496,12 @@ msgstr "Verlaufseinstellungen geändert"
 #, python-format
 msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
 msgstr ""
+"Ausgabe %(name)s: %(property_name)s wurde von %(before)s auf %(after)s "
+"geändert"
 
 #, python-format
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
-msgstr ""
+msgstr "Ausgabe %(name)s: %(property_name)s geändert zu %(after)s"
 
 msgid "Confirm Remove IP Adresses"
 msgstr "Bestätige IP-Adressentfernung"
@@ -522,9 +517,8 @@ msgstr ""
 "Der restliche Projektverlauf bleibt unverändert. Diese Aktion kann nicht "
 "rückgängig gemacht werden."
 
-#, fuzzy
 msgid "Confirm deletion"
-msgstr "Bestätige die Löschung"
+msgstr "Löschung bestätigen"
 
 msgid "Close"
 msgstr "Schließen"
@@ -615,43 +609,43 @@ msgstr "Die IP-Adresserfassung kann in den Einstellungen deaktiviert werden"
 msgid "From IP"
 msgstr "Von IP"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project %(name)s added"
-msgstr "Projektname"
+msgstr "Projekt %(name)s hinzugefügt"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s added"
-msgstr "Die Ausgabe wurde hinzugefügt"
+msgstr "Ausgabe %(name)s wurde hinzugefügt"
 
 #, python-format
 msgid "Participant %(name)s added"
-msgstr ""
+msgstr "Teilnehmer %(name)s hinzugefügt"
 
 msgid "Project private code changed"
 msgstr "Privater Projekt-Code geändert"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project renamed to %(new_project_name)s"
-msgstr "Die Projektkennung ist %(project)s"
+msgstr "Projekt auf %(new_project_name)s umbenannt"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project contact email changed to %(new_email)s"
-msgstr "E-Mailkontakt des Projekts geändert zu"
+msgstr "E-Mailkontakt des Projekts geändert zu %(new_email)s"
 
 msgid "Project settings modified"
 msgstr "Projekteinstellungen geändert"
 
 #, python-format
 msgid "Participant %(name)s deactivated"
-msgstr ""
+msgstr "Teilnehmer %(name)s gelöscht"
 
 #, python-format
 msgid "Participant %(name)s reactivated"
-msgstr ""
+msgstr "Teilnehmer %(name)s reaktiviert"
 
 #, python-format
 msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr ""
+msgstr "Teilnehmer %(name)s zu %(new_name)s umbenannt"
 
 #, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
@@ -660,6 +654,7 @@ msgstr ""
 #, python-format
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
+"Teinehmer %(name)s: Gewichtung von %(old_weight)s auf %(new_weight)s geändert"
 
 msgid "Amount"
 msgstr "Betrag"
@@ -668,33 +663,33 @@ msgstr "Betrag"
 msgid "Amount in %(currency)s"
 msgstr "Betrag in %(currency)s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s modified"
-msgstr "Die Ausgabe wurde bearbeitet"
+msgstr "Ausgabe %(name)s wurde bearbeitet"
 
 #, python-format
 msgid "Participant %(name)s modified"
-msgstr ""
+msgstr "Teilnehmer %(name)s bearbeitet"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s removed"
-msgstr "Der Benutzer '%(name)s' wurde entfernt"
+msgstr "Ausgabe %(name)s wurde entfernt"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Participant %(name)s removed"
-msgstr "Der Benutzer '%(name)s' wurde entfernt"
+msgstr "Teilnehmer %(name)s wurde entfernt"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project %(name)s changed in an unknown way"
-msgstr "auf unbekannte Weise geändert"
+msgstr "Projekt %(name)s wurde auf unbekannte Weise geändert"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s changed in an unknown way"
-msgstr "auf unbekannte Weise geändert"
+msgstr "Rechnung %(name)s auf unbekannte Weise geändert"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Participant %(name)s changed in an unknown way"
-msgstr "auf unbekannte Weise geändert"
+msgstr "Teilnehmer %(name)s auf unbekannte Weise geändert"
 
 msgid "Nothing to list"
 msgstr "keine Einträge vorhanden"
@@ -736,11 +731,11 @@ msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
 msgstr ""
-"Verwenden Sie ein persönliches Passwort nicht nochmal. Wählen Sie einen "
-"privaten Code und senden Sie ihn an Ihre Freunde"
+"Verwende ein persönliches Passwort nicht erneut. Wähle einen privaten Code "
+"und sende ihn an deine Freunde"
 
 msgid "Account manager"
-msgstr "Konten"
+msgstr "Kontoverwalter"
 
 msgid "Bills"
 msgstr "Ausgaben"
