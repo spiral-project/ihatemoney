@@ -28,6 +28,7 @@ body {
 }
 .navbar-brand {
   font-family: "Lobster", arial, serif;
+  font-size: 2rem;
 }
 
 @media (min-width: 992px) {
