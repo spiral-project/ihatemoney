@@ -30,7 +30,7 @@ msgid "New private code"
 msgstr "ব্যক্তিগত কোড"
 
 msgid "Enter a new code if you want to change it"
-msgstr ""
+msgstr "আপনি যদি এটি পরিবর্তন করতে চান তবে একটি নতুন কোড লিখুন"
 
 msgid "Email"
 msgstr "ইমেইল"
@@ -39,10 +39,10 @@ msgid "Enable project history"
 msgstr "প্রকল্পের ইতিহাস সক্রিয় করো"
 
 msgid "Use IP tracking for project history"
-msgstr ""
+msgstr "প্রকল্পের ইতিহাসের জন্য আইপি ট্র্যাকিং ব্যবহার করুন"
 
 msgid "Default Currency"
-msgstr ""
+msgstr "ডিফল্ট মুদ্রা"
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
@@ -50,19 +50,19 @@ msgid ""
 msgstr ""
 
 msgid "Import previously exported JSON file"
-msgstr ""
+msgstr "পূর্বে রপ্তানি করা JSON ফাইল আমদানি করুন"
 
 msgid "Import"
-msgstr ""
+msgstr "আমদানি"
 
 msgid "Project identifier"
-msgstr ""
+msgstr "প্রকল্প শনাক্তকারী"
 
 msgid "Private code"
 msgstr "ব্যক্তিগত কোড"
 
 msgid "Create the project"
-msgstr ""
+msgstr "প্রকল্প তৈরি করুন"
 
 #, python-format
 msgid ""
@@ -71,20 +71,21 @@ msgid ""
 msgstr ""
 
 msgid "Enter private code to confirm deletion"
-msgstr ""
+msgstr "মুছে ফেলার জন্য ব্যক্তিগত কোড লিখুন"
 
 msgid "Unknown error"
-msgstr ""
+msgstr "অজানা ত্রুটি
+"
 
 #, fuzzy
 msgid "Invalid private code."
 msgstr "ব্যক্তিগত কোড"
 
 msgid "Get in"
-msgstr ""
+msgstr "ভিতরে আস"
 
 msgid "Admin password"
-msgstr ""
+msgstr "অ্যাডমিন পাসওয়ার্ড"
 
 msgid "Send me the code by email"
 msgstr ""
