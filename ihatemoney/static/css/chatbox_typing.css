@@ -1,0 +1,53 @@
+.messages__item--typing {
+    will-change: transform;
+    width: auto;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 15px 20px;
+    display: table;
+    margin-right: auto;
+    position: relative;
+    animation: 2s bulge infinite ease-out;
+}
+
+.messages__item--typing::before,
+.messages__item--typing::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: -2px;
+      height: 10px;
+      width: 10px;
+      border-radius: 50%;
+}
+.messages__item--typing::after {
+      height: 10px;
+      width: 10px;
+      left: -10px;
+      bottom: -10px;
+}
+span.messages__dot {
+    height: 8px;
+    width: 8px;
+    float: left;
+    margin: 0 1px;
+    background-color: #9E9EA1;
+    display: block;
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: 1s blink infinite;
+}
+  
+@keyframes blink {
+    50% {
+        opacity: 1;
+    }
+}
+  
+@keyframes bulge {
+    50% {
+        transform: scale(1.05);
+    }
+}
+  
