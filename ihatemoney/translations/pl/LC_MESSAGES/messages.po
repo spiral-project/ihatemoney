@@ -1,19 +1,19 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-17 17:31+0200\n"
-"PO-Revision-Date: 2020-06-03 15:41+0000\n"
-"Last-Translator: Szylu <chipolade@gmail.com>\n"
+"PO-Revision-Date: 2021-08-31 18:34+0000\n"
+"Last-Translator: Michał Kowalski <norbertkowalski1994@gmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/pl/>\n"
 "Language: pl\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/i-hate-money/i"
-"-hate-money/pl/>\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && "
-"(n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.8.1-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 msgid ""
@@ -26,12 +26,11 @@ msgstr ""
 msgid "Project name"
 msgstr "Nazwa projektu"
 
-#, fuzzy
 msgid "New private code"
-msgstr "Kod prywatny"
+msgstr "Nowy kod prywatny"
 
 msgid "Enter a new code if you want to change it"
-msgstr ""
+msgstr "Wprowadź nowy kod jeżeli chcesz go zmienić"
 
 msgid "Email"
 msgstr "E-mail"
@@ -74,15 +73,13 @@ msgstr ""
 "identyfikator"
 
 msgid "Enter private code to confirm deletion"
-msgstr ""
+msgstr "Wprowadź kod prywatny w celu potwierdzenia usunięcia"
 
-#, fuzzy
 msgid "Unknown error"
-msgstr "Nieznany projekt"
+msgstr "Nieznany błąd"
 
-#, fuzzy
 msgid "Invalid private code."
-msgstr "Kod prywatny"
+msgstr "Kod prywatny."
 
 msgid "Get in"
 msgstr "Wejdź"
