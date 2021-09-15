@@ -15,7 +15,7 @@
       <tr id="bal-member-{{ member.id }}" action="{% if member.activated %}delete{% else %}reactivate{% endif %}">
         <td class="balance-name">{{ member.name }}
           {%- if show_weight -%}
-            <span class="light{% if not g.project.uses_weights %} extra-info{% endif %}">(x{{ member.weight|minimal_round(1) }})</span>
+            <span class="light{% if not g.project.uses_weights %} extra-info{% endif %}">(x{{ member.weight|minimal_round(2) }})</span>
           {%- endif -%}
         </td>
         {%- if member_edit %}
