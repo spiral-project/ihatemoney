@@ -13,6 +13,7 @@ Breaking changes
 - Drop support for Python 3.5 (#571)
 - Drop support for MySQL (#743)
 - Require MariaDB version 10.3.2 or above (#632)
+- Authentication page URL needs a `project_id` parameter (#802)
 
 The minimum supported version is now Python 3.6, and the project is tested
 with up to Python 3.9
@@ -52,8 +53,9 @@ Changed
 - Differenciate "flash alerts" notifications (#594)
 - Improve menu bar spacing, put history and settings in a submenu (#739)
 - Change Dockerfile to install python dependencies at build time (#793)
-- Project code is not required when updating other project settings (#774)
+- Updating project settings doesn't require to enter or update project code (#774)
 - Bump dependencies: WTForms (#768) jinja2 (#753) itsdangerous (#756) flask (#755 #757 #764)
+- Authentication token are invalidate on project code change (#802)
 
 Fixed
 -----
@@ -63,7 +65,6 @@ Fixed
 - Clarify project edition form: private code is not required (#774)
 - Fix Python dependency contraints to be less strict
 - Improve documentation (#781 #819 #821)
-- Add CSRF protection for destructive actions (#796)
 
 Documentation
 -------------
