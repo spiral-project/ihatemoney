@@ -4,7 +4,6 @@ import json
 import re
 from time import sleep
 import unittest
-from unittest.mock import MagicMock
 from urllib.parse import parse_qs, urlencode, urlparse, urlunparse
 
 from flask import session
