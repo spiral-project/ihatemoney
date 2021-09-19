@@ -2107,15 +2107,24 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.post_project("raclette")
 
         # add three users with different weights
-        self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 1.0})
+        self.client.post(
+            "/raclette/members/add", data={"name": "zorglub", "weight": 1.0}
+        )
         self.client.post("/raclette/members/add", data={"name": "tata", "weight": 1.10})
         self.client.post("/raclette/members/add", data={"name": "fred", "weight": 1.15})
 
         # check if weights of the users are 1, 1.1, 1.15 respectively
         resp = self.client.get("/raclette/")
-        self.assertIn("zorglub<span class=\"light\">(x1)</span>", resp.data.decode("utf-8"))
-        self.assertIn("tata<span class=\"light\">(x1.1)</span>", resp.data.decode("utf-8"))
-        self.assertIn("fred<span class=\"light\">(x1.15)</span>", resp.data.decode("utf-8"))
+        self.assertIn(
+            'zorglub<span class="light">(x1)</span>', resp.data.decode("utf-8")
+        )
+        self.assertIn(
+            'tata<span class="light">(x1.1)</span>', resp.data.decode("utf-8")
+        )
+        self.assertIn(
+            'fred<span class="light">(x1.15)</span>', resp.data.decode("utf-8")
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
