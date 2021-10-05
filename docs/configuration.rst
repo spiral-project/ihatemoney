@@ -125,6 +125,12 @@ Note: this setting is actually interpreted by Flask-Babel, see the
 
 .. _Flask-Babel guide for formatting dates: https://pythonhosted.org/Flask-Babel/#formatting-dates
 
+`USE_RECAPTCHA`
+---------------
+
+It is possible to add Google ReCaptcha in order to filter out spammer bots on the form creation.
+In order to do so, you will need to configure the `RECAPTCHA_PUBLIC_KEY` and `RECAPTCHA_PRIVATE_KEY`
+settings, in addition to `USE_RECAPTCHA = True`.
 
 Configuring emails sending
 --------------------------

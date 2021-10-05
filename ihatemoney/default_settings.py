@@ -31,3 +31,4 @@ SUPPORTED_LANGUAGES = [
     "uk",
     "zh_Hans",
 ]
+ENABLE_RECAPTCHA = False

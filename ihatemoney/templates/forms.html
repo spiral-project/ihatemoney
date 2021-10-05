@@ -76,6 +76,7 @@
     {{ input(form.password) }}
     {{ input(form.contact_email) }}
     {{ input(form.default_currency) }}
+    {{ form.recaptcha }}
     {% if not home %}
     {{ submit(form.submit, home=True) }}
     {% endif %}
@@ -171,7 +172,7 @@
             </div>
         </div>
     </div>
-    
+
     <details class="mb-3">
         <summary class="mb-2">{{ _("More options") }}</summary>
         {% if g.project.default_currency != "XXX" %}
