@@ -3,12 +3,13 @@ from re import match
 from types import SimpleNamespace
 
 import email_validator
-from flask import request
+from flask import current_app, request
 from flask_babel import lazy_gettext as _
 from flask_wtf.file import FileAllowed, FileField, FileRequired
 from flask_wtf.form import FlaskForm
 from markupsafe import Markup
 from werkzeug.security import check_password_hash, generate_password_hash
+from wtforms.fields import Field
 from wtforms.fields.core import Label, SelectField, SelectMultipleField
 from wtforms.fields.html5 import DateField, DecimalField, URLField
 from wtforms.fields.simple import BooleanField, PasswordField, StringField, SubmitField
@@ -219,6 +220,16 @@ class ProjectForm(EditProjectForm):
                 "Please choose a new identifier",
                 project=form.id.data,
             )
+            raise ValidationError(Markup(message))
+
+    @classmethod
+    def enable_captcha(cls):
+        captchaField = StringField(_("Which is a real currency: Euro or Petro dollar?"))
+        setattr(cls, "captcha", captchaField)
+
+    def validate_captcha(form, field):
+        if not field.data.lower() == _("euro"):
+            message = _("Please, validate the captcha to proceed.")
             raise ValidationError(Markup(message))
 
 

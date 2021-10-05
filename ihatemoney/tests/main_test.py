@@ -31,6 +31,7 @@ class ConfigurationTestCase(BaseTestCase):
         self.assertTrue(self.app.config["ACTIVATE_DEMO_PROJECT"])
         self.assertTrue(self.app.config["ALLOW_PUBLIC_PROJECT_CREATION"])
         self.assertFalse(self.app.config["ACTIVATE_ADMIN_DASHBOARD"])
+        self.assertFalse(self.app.config["ENABLE_CAPTCHA"])
 
     def test_env_var_configuration_file(self):
         """Test that settings are loaded from a configuration file specified

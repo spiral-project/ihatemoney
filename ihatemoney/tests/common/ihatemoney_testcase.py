@@ -15,6 +15,7 @@ class BaseTestCase(TestCase):
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         "TESTING_SQLALCHEMY_DATABASE_URI", "sqlite://"
     )
+    ENABLE_CAPTCHA = False
 
     def create_app(self):
         # Pass the test object as a configuration.
