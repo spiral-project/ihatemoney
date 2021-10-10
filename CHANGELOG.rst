@@ -9,6 +9,7 @@ This document describes changes between each past release.
 Breaking changes
 ----------------
 
+- Enable session cookie security by default (#845)
 - Drop support for Python 2 (#483)
 - Drop support for Python 3.5 (#571)
 - Drop support for MySQL (#743)
@@ -25,6 +26,7 @@ Security
 
 - Add CSRF validation on destructive actions (#796)
 - Ask for private code to delete project or project history (#796)
+- Add headers to mitigate Clickjacking, XSS, and other attacks: `X-Frame-Options`, `X-XSS-Protection`, `X-Content-Type-Options`, `Content-Security-Policy`, `Referrer-Policy` (#845)
 
 Added
 -----
