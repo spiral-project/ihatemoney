@@ -260,6 +260,7 @@ def authenticate(project_id=None):
 
     return render_template("authenticate.html", form=form)
 
+
 def get_project_form():
     class _ProjectForm(ProjectForm):
         pass
@@ -267,6 +268,7 @@ def get_project_form():
     if current_app.config.get("ENABLE_RECAPTCHA", False):
         setattr(_ProjectForm, "recaptcha", RecaptchaField())
     return _ProjectForm()
+
 
 @main.route("/", strict_slashes=False)
 def home():
