@@ -203,9 +203,8 @@ def join_project(token):
         token, token_type="auth", project_id=project_id
     )
     if verified_project_id != project_id:
-        # User doesn't provide project identifier or a valid token
-        # redirect to authenticate form
-        return redirect(url_for(".authenticate", project_id=project_id, bad_token=1))
+        flash(_("Provided token is invalid"), "danger")
+        return redirect("/")
 
     # maintain a list of visited projects
     if "projects" not in session:
@@ -227,13 +226,6 @@ def authenticate(project_id=None):
     if not form.id.data and request.args.get("project_id"):
         form.id.data = request.args["project_id"]
     project_id = form.id.data
-
-    if project_id is None or request.args.get("bad_token") is not None:
-        # User doesn't provide project identifier or a valid token
-        # return to authenticate form
-        msg = _("You either provided a bad token or no project identifier.")
-        form["id"].errors = [msg]
-        return render_template("authenticate.html", form=form)
 
     project = Project.query.get(project_id)
     if not project:
