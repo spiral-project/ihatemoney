@@ -64,6 +64,21 @@ of the secret key could easily access any project and bypass the private code ve
 - **Production value:** `ihatemoney conf-example ihatemoney.cfg` sets it to
   something random, which is good.
 
+`SESSION_COOKIE_SECURE`
+-----------------------
+
+A boolean that controls whether the session cookie will be marked "secure".
+If this is the case, browsers will refuse to send the session cookie over plain HTTP.
+
+- **Default value:** ``True``
+- **Production value:** ``True`` if you run your service over HTTPS, ``False`` if you run
+  your service over plain HTTP.
+
+Note: this setting is actually interpreted by Flask, see the
+`Flask documentation`_ for details.
+
+.. _Flask documentation: https://flask.palletsprojects.com/en/2.0.x/config/#SESSION_COOKIE_SECURE
+
 `MAIL_DEFAULT_SENDER`
 ---------------------
 

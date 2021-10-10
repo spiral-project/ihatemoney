@@ -65,6 +65,17 @@ If so, pick the ``pip`` commands to use in the relevant section(s) of
 
 Then follow :ref:`general-procedure` from step 1. in order to complete the update.
 
+Disable session cookie security if running over plain HTTP
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. note:: If you are running Ihatemoney over HTTPS, no special action is required.
+
+Session cookies are now marked "secure" by default to increase security.
+
+If you run Ihatemoney over plain HTTP, you need to explicitly disable this security
+feature by setting ``SESSION_COOKIE_SECURE`` to ``False``, see :ref:`configuration`.
+
+
 Switch to MariaDB >= 10.3.2 instead of MySQL
 ++++++++++++++++++++++++++++++++++++++++++++
 
