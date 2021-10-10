@@ -4,6 +4,7 @@ import json
 import re
 from time import sleep
 import unittest
+from urllib.parse import parse_qs, urlencode, urlparse, urlunparse
 
 from flask import session
 import pytest
@@ -11,6 +12,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from ihatemoney import models
 from ihatemoney.currency_convertor import CurrencyConverter
+from ihatemoney.tests.common.help_functions import extract_link
 from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
 from ihatemoney.versioning import LoggingMode
 
@@ -87,10 +89,51 @@ class BudgetTestCase(IhatemoneyTestCase):
         )
         # Test empty and invalid tokens
         self.client.get("/exit")
+        # Use another project_id
+        parsed_url = urlparse(url)
+        query = parse_qs(parsed_url.query)
+        query["project_id"] = "invalid"
+        resp = self.client.get(
+            urlunparse(parsed_url._replace(query=urlencode(query, doseq=True)))
+        )
+        assert "You either provided a bad token" in resp.data.decode("utf-8")
+
         resp = self.client.get("/authenticate")
         self.assertIn("You either provided a bad token", resp.data.decode("utf-8"))
         resp = self.client.get("/authenticate?token=token")
         self.assertIn("You either provided a bad token", resp.data.decode("utf-8"))
+
+    def test_invite_code_invalidation(self):
+        """Test that invitation link expire after code change"""
+        self.login("raclette")
+        self.post_project("raclette")
+        response = self.client.get("/raclette/invite").data.decode("utf-8")
+        link = extract_link(response, "share the following link")
+
+        self.client.get("/exit")
+        response = self.client.get(link)
+        # Link is valid
+        assert response.status_code == 302
+
+        # Change password to invalidate token
+        # Other data are required, but useless for the test
+        response = self.client.post(
+            "/raclette/edit",
+            data={
+                "name": "raclette",
+                "contact_email": "zorglub@notmyidea.org",
+                "password": "didoudida",
+                "default_currency": "XXX",
+            },
+            follow_redirects=True,
+        )
+        assert response.status_code == 200
+        assert "alert-danger" not in response.data.decode("utf-8")
+
+        self.client.get("/exit")
+        response = self.client.get(link, follow_redirects=True)
+        # Link is invalid
+        self.assertIn("You either provided a bad token", response.data.decode("utf-8"))
 
     def test_password_reminder(self):
         # test that it is possible to have an email containing the password of a
