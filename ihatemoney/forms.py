@@ -3,7 +3,7 @@ from re import match
 from types import SimpleNamespace
 
 import email_validator
-from flask import current_app, request
+from flask import request
 from flask_babel import lazy_gettext as _
 from flask_wtf.file import FileAllowed, FileField, FileRequired
 from flask_wtf.form import FlaskForm
