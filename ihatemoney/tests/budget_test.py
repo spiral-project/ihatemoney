@@ -17,8 +17,6 @@ from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
 from ihatemoney.versioning import LoggingMode
 
 
-
-
 class BudgetTestCase(IhatemoneyTestCase):
     def test_notifications(self):
         """Test that the notifications are sent, and that email addresses
@@ -311,7 +309,6 @@ class BudgetTestCase(IhatemoneyTestCase):
 
             # project removed
             self.assertEqual(len(models.Project.query.all()), 0)
-
 
     def test_bill_placeholder(self):
         self.post_project("raclette")

@@ -224,7 +224,10 @@ class ProjectForm(EditProjectForm):
 
     @classmethod
     def enable_captcha(cls):
-        captchaField = StringField(_("Which is a real currency: Euro or Petro dollar?"))
+        captchaField = StringField(
+            _("Which is a real currency: Euro or Petro dollar?"),
+            validators=[DataRequired()],
+        )
         setattr(cls, "captcha", captchaField)
 
     def validate_captcha(form, field):
