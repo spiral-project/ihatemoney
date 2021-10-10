@@ -3,13 +3,12 @@ from re import match
 from types import SimpleNamespace
 
 import email_validator
-from flask import current_app, request
+from flask import request
 from flask_babel import lazy_gettext as _
 from flask_wtf.file import FileAllowed, FileField, FileRequired
 from flask_wtf.form import FlaskForm
 from markupsafe import Markup
 from werkzeug.security import check_password_hash, generate_password_hash
-from wtforms.fields import Field
 from wtforms.fields.core import Label, SelectField, SelectMultipleField
 from wtforms.fields.html5 import DateField, DecimalField, URLField
 from wtforms.fields.simple import BooleanField, PasswordField, StringField, SubmitField

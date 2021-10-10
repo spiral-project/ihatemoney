@@ -247,7 +247,7 @@ class CaptchaTestCase(IhatemoneyTestCase):
 
     def test_project_creation_with_captcha(self):
         with self.app.test_client() as c:
-            res = c.post(
+            c.post(
                 "/create",
                 data={
                     "name": "raclette party",
@@ -259,7 +259,7 @@ class CaptchaTestCase(IhatemoneyTestCase):
             )
             assert len(models.Project.query.all()) == 0
 
-            res = c.post(
+            c.post(
                 "/create",
                 data={
                     "name": "raclette party",
@@ -272,7 +272,7 @@ class CaptchaTestCase(IhatemoneyTestCase):
             )
             assert len(models.Project.query.all()) == 0
 
-            res = c.post(
+            c.post(
                 "/create",
                 data={
                     "name": "raclette party",
