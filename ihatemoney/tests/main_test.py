@@ -242,6 +242,50 @@ class EmailFailureTestCase(IhatemoneyTestCase):
             )
 
 
+class CaptchaTestCase(IhatemoneyTestCase):
+    ENABLE_CAPTCHA = True
+
+    def test_project_creation_with_captcha(self):
+        with self.app.test_client() as c:
+            res = c.post(
+                "/create",
+                data={
+                    "name": "raclette party",
+                    "id": "raclette",
+                    "password": "party",
+                    "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
+                },
+            )
+            assert len(models.Project.query.all()) == 0
+
+            res = c.post(
+                "/create",
+                data={
+                    "name": "raclette party",
+                    "id": "raclette",
+                    "password": "party",
+                    "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
+                    "captcha": "nope",
+                },
+            )
+            assert len(models.Project.query.all()) == 0
+
+            res = c.post(
+                "/create",
+                data={
+                    "name": "raclette party",
+                    "id": "raclette",
+                    "password": "party",
+                    "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
+                    "captcha": "euro",
+                },
+            )
+            assert len(models.Project.query.all()) == 1
+
+
 class TestCurrencyConverter(unittest.TestCase):
     converter = CurrencyConverter()
     mock_data = {"USD": 1, "EUR": 0.8, "CAD": 1.2, CurrencyConverter.no_currency: 1}
