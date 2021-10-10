@@ -16,7 +16,7 @@ from flask import current_app, escape, redirect, render_template
 from flask_babel import get_locale, lazy_gettext as _
 import jinja2
 from markupsafe import Markup
-from werkzeug.routing import BaseConverter, HTTPException, RoutingException
+from werkzeug.routing import HTTPException, RoutingException
 
 
 def slugify(value):
@@ -416,10 +416,3 @@ def format_form_errors(form, prefix):
         errors = f"<ul><li>{error_list}</li></ul>"
         # I18N: Form error with a list of errors
         return Markup(_("{prefix}:<br />{errors}").format(prefix=prefix, errors=errors))
-
-
-# Taken from https://stackoverflow.com/a/5872904
-class RegexConverter(BaseConverter):
-    def __init__(self, url_map, *items):
-        super(RegexConverter, self).__init__(url_map)
-        self.regex = items[0]

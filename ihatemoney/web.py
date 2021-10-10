@@ -199,7 +199,7 @@ def admin():
 # To avoid matching other endpoint with a malformed token,
 # ensure that it has a point in the middle, since it's the
 # default separator between payload and signature.
-@main.route("/<project_id>/<regex('.+\\..+'):token>", methods=["GET"])
+@main.route("/<project_id>/join/<string:token>", methods=["GET"])
 def invitation(token):
     project_id = g.project.id
     verified_project_id = Project.verify_token(

@@ -104,7 +104,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         resp = self.client.get("/authenticate")
         self.assertIn("You either provided a bad token", resp.data.decode("utf-8"))
         # A token MUST have a point between payload and signature
-        resp = self.client.get("/raclette/token.invalid", follow_redirects=True)
+        resp = self.client.get("/raclette/join/token.invalid", follow_redirects=True)
         self.assertIn("You either provided a bad token", resp.data.decode("utf-8"))
 
     def test_invite_code_invalidation(self):
