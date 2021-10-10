@@ -37,7 +37,6 @@ Added
 - Add sorting, pagination, and searching to the admin dashboard (#538)
 - Add Project History page that records all changes (#553)
 - Add token-based authentication to the API (#504)
-- Add translations for Hindi, Portuguese (Brazil), Tamil
 - Add illustrations as a showcase, currently only for French (#544)
 - Add a page for downloading mobile application (#688)
 - Add translations for Greek, Esperanto, Italian, Japanese, Portuguese and Swedish
