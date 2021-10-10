@@ -675,6 +675,35 @@ class BudgetTestCase(IhatemoneyTestCase):
         bill = models.Bill.query.filter(models.Bill.date == "2011-08-01")[0]
         self.assertEqual(bill.amount, 25.02)
 
+        # add a bill with a valid external link
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2015-05-05",
+                "what": "fromage à raclette",
+                "payer": members_ids[0],
+                "payed_for": members_ids,
+                "amount": "42",
+                "external_link": "https://example.com/fromage",
+            },
+        )
+        bill = models.Bill.query.filter(models.Bill.date == "2015-05-05")[0]
+        self.assertEqual(bill.external_link, "https://example.com/fromage")
+
+        # add a bill with an invalid external link
+        resp = self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2015-05-06",
+                "what": "mauvais fromage à raclette",
+                "payer": members_ids[0],
+                "payed_for": members_ids,
+                "amount": "42000",
+                "external_link": "javascript:alert('Tu bluffes, Martoni.')",
+            },
+        )
+        self.assertIn("Invalid URL", resp.data.decode("utf-8"))
+
     def test_weighted_balance(self):
         self.post_project("raclette")
 
