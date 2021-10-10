@@ -11,20 +11,31 @@ class APITestCase(IhatemoneyTestCase):
 
     """Tests the API"""
 
-    def api_create(self, name, id=None, password=None, contact=None):
+    def api_create(
+        self, name, id=None, password=None, contact=None, default_currency=None
+    ):
         id = id or name
         password = password or name
         contact = contact or f"{name}@notmyidea.org"
 
-        return self.client.post(
-            "/api/projects",
-            data={
+        if default_currency:
+            data = {
                 "name": name,
                 "id": id,
                 "password": password,
                 "contact_email": contact,
-                "default_currency": "USD",
-            },
+                "default_currency": default_currency,
+            }
+        else:
+            data = {
+                "name": name,
+                "id": id,
+                "password": password,
+                "contact_email": contact,
+            }
+        return self.client.post(
+            "/api/projects",
+            data=data,
         )
 
     def api_add_member(self, project, name, weight=1):
@@ -85,7 +96,7 @@ class APITestCase(IhatemoneyTestCase):
                 "id": "raclette",
                 "password": "raclette",
                 "contact_email": "not-an-email",
-                "default_currency": "USD",
+                "default_currency": "XXX",
             },
         )
 
@@ -114,7 +125,7 @@ class APITestCase(IhatemoneyTestCase):
             "members": [],
             "name": "raclette",
             "contact_email": "raclette@notmyidea.org",
-            "default_currency": "USD",
+            "default_currency": "XXX",
             "id": "raclette",
             "logging_preference": 1,
         }
@@ -126,7 +137,7 @@ class APITestCase(IhatemoneyTestCase):
             "/api/projects/raclette",
             data={
                 "contact_email": "yeah@notmyidea.org",
-                "default_currency": "USD",
+                "default_currency": "XXX",
                 "password": "raclette",
                 "name": "The raclette party",
                 "project_history": "y",
@@ -144,7 +155,7 @@ class APITestCase(IhatemoneyTestCase):
         expected = {
             "name": "The raclette party",
             "contact_email": "yeah@notmyidea.org",
-            "default_currency": "USD",
+            "default_currency": "XXX",
             "members": [],
             "id": "raclette",
             "logging_preference": 1,
@@ -157,7 +168,7 @@ class APITestCase(IhatemoneyTestCase):
             "/api/projects/raclette",
             data={
                 "contact_email": "yeah@notmyidea.org",
-                "default_currency": "USD",
+                "default_currency": "XXX",
                 "password": "tartiflette",
                 "name": "The raclette party",
             },
@@ -380,7 +391,7 @@ class APITestCase(IhatemoneyTestCase):
             "date": "2011-08-10",
             "id": 1,
             "converted_amount": 25.0,
-            "original_currency": "USD",
+            "original_currency": "XXX",
             "external_link": "https://raclette.fr",
         }
 
@@ -451,7 +462,7 @@ class APITestCase(IhatemoneyTestCase):
             "date": "2011-09-10",
             "external_link": "https://raclette.fr",
             "converted_amount": 25.0,
-            "original_currency": "USD",
+            "original_currency": "XXX",
             "id": 1,
         }
 
@@ -529,7 +540,7 @@ class APITestCase(IhatemoneyTestCase):
                 "date": "2011-08-10",
                 "id": id,
                 "external_link": "",
-                "original_currency": "USD",
+                "original_currency": "XXX",
                 "converted_amount": expected_amount,
             }
 
@@ -674,7 +685,7 @@ class APITestCase(IhatemoneyTestCase):
             "id": 1,
             "external_link": "",
             "converted_amount": 25.0,
-            "original_currency": "USD",
+            "original_currency": "XXX",
         }
         got = json.loads(req.data.decode("utf-8"))
         self.assertEqual(
@@ -717,7 +728,7 @@ class APITestCase(IhatemoneyTestCase):
             "id": "raclette",
             "name": "raclette",
             "logging_preference": 1,
-            "default_currency": "USD",
+            "default_currency": "XXX",
         }
 
         self.assertStatus(200, req)
