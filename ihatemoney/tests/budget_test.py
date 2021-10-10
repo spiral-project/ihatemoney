@@ -4,7 +4,7 @@ import json
 import re
 from time import sleep
 import unittest
-from urllib.parse import parse_qs, urlencode, urlparse, urlunparse
+from urllib.parse import urlparse, urlunparse
 
 from flask import session
 import pytest
@@ -91,16 +91,20 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.client.get("/exit")
         # Use another project_id
         parsed_url = urlparse(url)
-        query = parse_qs(parsed_url.query)
-        query["project_id"] = "invalid"
         resp = self.client.get(
-            urlunparse(parsed_url._replace(query=urlencode(query, doseq=True)))
+            urlunparse(
+                parsed_url._replace(
+                    path=parsed_url.path.replace("raclette/", "invalid_project/")
+                )
+            ),
+            follow_redirects=True,
         )
-        assert "You either provided a bad token" in resp.data.decode("utf-8")
+        assert "Create a new project" in resp.data.decode("utf-8")
 
         resp = self.client.get("/authenticate")
         self.assertIn("You either provided a bad token", resp.data.decode("utf-8"))
-        resp = self.client.get("/authenticate?token=token")
+        # A token MUST have a point between payload and signature
+        resp = self.client.get("/raclette/token.invalid", follow_redirects=True)
         self.assertIn("You either provided a bad token", resp.data.decode("utf-8"))
 
     def test_invite_code_invalidation(self):

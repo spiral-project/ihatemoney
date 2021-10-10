@@ -19,6 +19,7 @@ from ihatemoney.models import db
 from ihatemoney.utils import (
     IhmJSONEncoder,
     PrefixedWSGI,
+    RegexConverter,
     em_surround,
     locale_from_iso,
     localize_list,
@@ -125,6 +126,8 @@ def create_app(
         instance_path=instance_path,
         instance_relative_config=instance_relative_config,
     )
+
+    app.url_map.converters["regex"] = RegexConverter
 
     # If a configuration object is passed, use it. Otherwise try to find one.
     load_configuration(app, configuration)

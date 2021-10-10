@@ -143,7 +143,8 @@ def pull_project(endpoint, values):
             raise Redirect303(url_for(".create_project", project_id=project_id))
 
         is_admin = session.get("is_admin")
-        if session.get(project.id) or is_admin:
+        is_invitation = endpoint == "main.invitation"
+        if session.get(project.id) or is_admin or is_invitation:
             # add project into kwargs and call the original function
             g.project = project
         else:
@@ -195,6 +196,32 @@ def admin():
     )
 
 
+# To avoid matching other endpoint with a malformed token,
+# ensure that it has a point in the middle, since it's the
+# default separator between payload and signature.
+@main.route("/<project_id>/<regex('.+\\..+'):token>", methods=["GET"])
+def invitation(token):
+    project_id = g.project.id
+    verified_project_id = Project.verify_token(
+        token, token_type="auth", project_id=project_id
+    )
+    if verified_project_id != project_id:
+        # User doesn't provide project identifier or a valid token
+        # redirect to authenticate form
+        return redirect(url_for(".authenticate", project_id=project_id, bad_token=1))
+
+    # maintain a list of visited projects
+    if "projects" not in session:
+        session["projects"] = []
+    # add the project on the top of the list
+    session["projects"].insert(0, (project_id, g.project.name))
+    session[project_id] = True
+    # Set session to permanent to make language choice persist
+    session.permanent = True
+    session.update()
+    return redirect(url_for(".list_bills"))
+
+
 @main.route("/authenticate", methods=["GET", "POST"])
 def authenticate(project_id=None):
     """Authentication form"""
@@ -203,19 +230,8 @@ def authenticate(project_id=None):
     if not form.id.data and request.args.get("project_id"):
         form.id.data = request.args["project_id"]
     project_id = form.id.data
-    # Try to get project_id from token first
-    token = request.args.get("token")
-    if token:
-        verified_project_id = Project.verify_token(
-            token, token_type="auth", project_id=project_id
-        )
-        if verified_project_id == project_id:
-            token_auth = True
-        else:
-            project_id = None
-    else:
-        token_auth = False
-    if project_id is None:
+
+    if project_id is None or request.args.get("bad_token") is not None:
         # User doesn't provide project identifier or a valid token
         # return to authenticate form
         msg = _("You either provided a bad token or no project identifier.")
@@ -235,13 +251,9 @@ def authenticate(project_id=None):
         setattr(g, "project", project)
         return redirect(url_for(".list_bills"))
 
-    # else do form authentication or token authentication
+    # else do form authentication authentication
     is_post_auth = request.method == "POST" and form.validate()
-    if (
-        is_post_auth
-        and check_password_hash(project.password, form.password.data)
-        or token_auth
-    ):
+    if is_post_auth and check_password_hash(project.password, form.password.data):
         # maintain a list of visited projects
         if "projects" not in session:
             session["projects"] = []

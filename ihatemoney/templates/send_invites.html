@@ -21,8 +21,8 @@
             </td>
             <td>
                 {{ _("You can directly share the following link via your prefered medium") }}</br>
-                <a href="{{ url_for(".authenticate", _external=True, project_id=g.project.id, token=g.project.generate_token()) }}">
-                    {{ url_for(".authenticate", _external=True, project_id=g.project.id, token=g.project.generate_token()) }}
+                <a href="{{ url_for(".invitation", _external=True, project_id=g.project.id, token=g.project.generate_token()) }}">
+                    {{ url_for(".invitation", _external=True, project_id=g.project.id, token=g.project.generate_token()) }}
                 </a>
             </td>
         </tr>
