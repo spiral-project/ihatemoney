@@ -13,6 +13,21 @@ To know defaults on your deployed instance, simply look at your
 
 "Production values" are the recommended values for use in production.
 
+Configuration files
+-------------------
+
+By default, Ihatemoney loads its configuration from ``/etc/ihatemoney/ihatemoney.cfg``.
+
+If you need to load the configuration from a custom path, you can define the
+``IHATEMONEY_SETTINGS_FILE_PATH`` environment variable with the path to the configuration
+file.
+For instance ::
+
+    export IHATEMONEY_SETTINGS_FILE_PATH="/path/to/your/conf/file.cfg"
+
+The path should be absolute. A relative path will be interpreted as being
+inside ``/etc/ihatemoney/``.
+
 `SQLALCHEMY_DATABASE_URI`
 -------------------------
 
@@ -48,6 +63,21 @@ of the secret key could easily access any project and bypass the private code ve
 
 - **Production value:** `ihatemoney conf-example ihatemoney.cfg` sets it to
   something random, which is good.
+
+`SESSION_COOKIE_SECURE`
+-----------------------
+
+A boolean that controls whether the session cookie will be marked "secure".
+If this is the case, browsers will refuse to send the session cookie over plain HTTP.
+
+- **Default value:** ``True``
+- **Production value:** ``True`` if you run your service over HTTPS, ``False`` if you run
+  your service over plain HTTP.
+
+Note: this setting is actually interpreted by Flask, see the
+`Flask documentation`_ for details.
+
+.. _Flask documentation: https://flask.palletsprojects.com/en/2.0.x/config/#SESSION_COOKIE_SECURE
 
 `MAIL_DEFAULT_SENDER`
 ---------------------
@@ -148,12 +178,3 @@ possible to configure it to act differently, thanks to the great
 * **MAIL_PASSWORD** : default **None**
 * **DEFAULT_MAIL_SENDER** : default **None**
 
-Using an alternate settings path
---------------------------------
-
-You can put your settings file where you want, and pass its path to the
-application using the ``IHATEMONEY_SETTINGS_FILE_PATH`` environment variable.
-
-For instance ::
-
-    export IHATEMONEY_SETTINGS_FILE_PATH="/path/to/your/conf/file.cfg"

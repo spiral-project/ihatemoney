@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-17 17:31+0200\n"
-"PO-Revision-Date: 2021-07-10 15:34+0000\n"
+"PO-Revision-Date: 2021-10-01 20:35+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
+"Language-Team: Esperanto <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/eo/>\n"
 "Language: eo\n"
-"Language-Team: Esperanto <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/eo/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.9-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 msgid ""
@@ -76,13 +76,11 @@ msgstr ""
 msgid "Enter private code to confirm deletion"
 msgstr ""
 
-#, fuzzy
 msgid "Unknown error"
-msgstr "Nekonata projekto"
+msgstr "Nekonata eraro"
 
-#, fuzzy
 msgid "Invalid private code."
-msgstr "Nova privata kodo"
+msgstr "Nevalida privata kodo."
 
 msgid "Get in"
 msgstr "Eniri"
@@ -175,30 +173,30 @@ msgstr "La retpoŝta adreso %(email)s ne validas"
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
-msgstr ""
+msgstr "{dual_object_0} kaj {dual_object_1}"
 
 #. Last two items of a list with more than 3 items
 msgid "{previous_object}, and {end_object}"
-msgstr ""
+msgstr "{previous_object} kaj {end_object}"
 
 #. Two items in a middle of a list with more than 5 objects
 msgid "{previous_object}, {next_object}"
-msgstr ""
+msgstr "{previous_object}, {next_object}"
 
 #. First two items of a list with more than 3 items
 msgid "{start_object}, {next_object}"
-msgstr ""
+msgstr "{start_object}, {next_object}"
 
 msgid "No Currency"
 msgstr "Neniu valuto"
 
 #. Form error with only one error
 msgid "{prefix}: {error}"
-msgstr ""
+msgstr "{prefix}: {error}"
 
 #. Form error with a list of errors
 msgid "{prefix}:<br />{errors}"
-msgstr ""
+msgstr "{prefix}:<br />{errors}"
 
 msgid "Too many failed login attempts, please retry later."
 msgstr "Tro da malsukcesaj provoj de salutado; bonvolu reprovi poste."
@@ -396,16 +394,14 @@ msgstr "Elŝuti programon por poŝaparato"
 msgid "Get it on"
 msgstr "Elŝuti ĝin ĉe"
 
-#, fuzzy
 msgid "Are you sure?"
-msgstr "ĉu vi certas?"
+msgstr "Ĉu vi certas?"
 
 msgid "Edit project"
 msgstr "Redakti projekton"
 
-#, fuzzy
 msgid "Delete project"
-msgstr "Redakti projekton"
+msgstr "Forviŝi projekton"
 
 msgid "Import JSON"
 msgstr "Enporti JSON-dosieron"
@@ -453,7 +449,7 @@ msgid "Everyone"
 msgstr "Ĉiuj"
 
 msgid "No one"
-msgstr ""
+msgstr "Neniu"
 
 msgid "More options"
 msgstr ""

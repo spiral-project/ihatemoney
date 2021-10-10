@@ -104,11 +104,19 @@ You can create a ``settings.cfg`` file, with the following content::
     DEBUG = True
     SQLACHEMY_ECHO = DEBUG
 
-You can also set the `TESTING` flag to `True` so no mails are sent
-(and no exception is raised) while you're on development mode.
 Then before running the application, declare its path with ::
 
   export IHATEMONEY_SETTINGS_FILE_PATH="$(pwd)/settings.cfg"
+
+You can also set the ``TESTING`` flag to ``True`` so no mails are sent
+(and no exception is raised) while you're on development mode.
+
+In some cases, you may need to disable secure cookies by setting
+``SESSION_COOKIE_SECURE`` to ``False``. This is needed if you
+access your dev server over the network: with the default value
+of ``SESSION_COOKIE_SECURE``, the browser will refuse to send
+the session cookie over insecure HTTP, so many features of Ihatemoney
+won't work (project login, language change, etc).
 
 .. _contributing-developer:
 

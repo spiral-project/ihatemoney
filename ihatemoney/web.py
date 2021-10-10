@@ -200,15 +200,21 @@ def admin():
 def authenticate(project_id=None):
     """Authentication form"""
     form = AuthenticationForm()
+
+    if not form.id.data and request.args.get("project_id"):
+        form.id.data = request.args["project_id"]
+    project_id = form.id.data
     # Try to get project_id from token first
     token = request.args.get("token")
     if token:
-        project_id = Project.verify_token(token, token_type="non_timed_token")
-        token_auth = True
+        verified_project_id = Project.verify_token(
+            token, token_type="auth", project_id=project_id
+        )
+        if verified_project_id == project_id:
+            token_auth = True
+        else:
+            project_id = None
     else:
-        if not form.id.data and request.args.get("project_id"):
-            form.id.data = request.args["project_id"]
-        project_id = form.id.data
         token_auth = False
     if project_id is None:
         # User doesn't provide project identifier or a valid token
@@ -389,7 +395,7 @@ def reset_password():
         return render_template(
             "reset_password.html", form=form, error=_("No token provided")
         )
-    project_id = Project.verify_token(token)
+    project_id = Project.verify_token(token, token_type="reset")
     if not project_id:
         return render_template(
             "reset_password.html", form=form, error=_("Invalid token")
