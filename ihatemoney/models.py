@@ -408,7 +408,7 @@ class Project(db.Model):
             name="demonstration",
             password=generate_password_hash("demo"),
             contact_email="demo@notmyidea.org",
-            default_currency="EUR",
+            default_currency="XXX",
         )
         db.session.add(project)
         db.session.commit()
@@ -436,7 +436,7 @@ class Project(db.Model):
             bill.what = subject
             bill.owers = [members[name] for name in owers]
             bill.amount = amount
-            bill.original_currency = "EUR"
+            bill.original_currency = "XXX"
             bill.converted_amount = amount
 
             db.session.add(bill)
