@@ -13,6 +13,7 @@ from wtforms.fields.core import Label, SelectField, SelectMultipleField
 from wtforms.fields.html5 import DateField, DecimalField, URLField
 from wtforms.fields.simple import BooleanField, PasswordField, StringField, SubmitField
 from wtforms.validators import (
+    URL,
     DataRequired,
     Email,
     EqualTo,
@@ -292,7 +293,7 @@ class BillForm(FlaskForm):
     original_currency = SelectField(_("Currency"), validators=[DataRequired()])
     external_link = URLField(
         _("External link"),
-        validators=[Optional()],
+        validators=[Optional(), URL()],
         description=_("A link to an external document, related to this bill"),
     )
     payed_for = SelectMultipleField(
