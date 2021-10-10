@@ -143,7 +143,7 @@ def pull_project(endpoint, values):
             raise Redirect303(url_for(".create_project", project_id=project_id))
 
         is_admin = session.get("is_admin")
-        is_invitation = endpoint == "main.invitation"
+        is_invitation = endpoint == "main.join_project"
         if session.get(project.id) or is_admin or is_invitation:
             # add project into kwargs and call the original function
             g.project = project
@@ -196,11 +196,8 @@ def admin():
     )
 
 
-# To avoid matching other endpoint with a malformed token,
-# ensure that it has a point in the middle, since it's the
-# default separator between payload and signature.
 @main.route("/<project_id>/join/<string:token>", methods=["GET"])
-def invitation(token):
+def join_project(token):
     project_id = g.project.id
     verified_project_id = Project.verify_token(
         token, token_type="auth", project_id=project_id
