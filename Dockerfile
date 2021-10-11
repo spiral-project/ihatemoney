@@ -16,7 +16,8 @@ ENV DEBUG="False" \
     ALLOW_PUBLIC_PROJECT_CREATION="True" \
     ACTIVATE_ADMIN_DASHBOARD="False" \
     BABEL_DEFAULT_TIMEZONE="UTC" \
-    GREENLET_TEST_CPP="no"
+    GREENLET_TEST_CPP="no" \
+    SESSION_COOKIE_SECURE=False
 
 RUN mkdir -p /etc/ihatemoney &&\
     pip install --no-cache-dir gunicorn pymysql;
