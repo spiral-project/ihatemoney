@@ -2,13 +2,11 @@ name: CI to Docker Hub
 
 on:
   push:
-    tags:
-      - '*'
-    branches:
-      - master
+    tags: ['*']
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
-env:
-  TEST_TAG: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}:test
 
 jobs:
   test:
@@ -22,6 +20,8 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+    needs: test
+    if: github.event_name != 'pull_request'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -58,7 +58,7 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           labels: ${{ steps.meta.outputs.labels }}
-          tags: ${{ steps.meta.outputs.tags }}, ${{ env.TEST_TAG }}
+          tags: ${{ steps.meta.outputs.tags }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
