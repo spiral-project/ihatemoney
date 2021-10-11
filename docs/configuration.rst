@@ -155,6 +155,11 @@ Note: this setting is actually interpreted by Flask-Babel, see the
 
 .. _Flask-Babel guide for formatting dates: https://pythonhosted.org/Flask-Babel/#formatting-dates
 
+`ENABLE_CAPTCHA`
+---------------
+
+It is possible to add a simple captcha in order to filter out spammer bots on the form creation.
+In order to do so, you just have to set `ENABLE_CAPTCHA = True`.
 
 Configuring emails sending
 --------------------------

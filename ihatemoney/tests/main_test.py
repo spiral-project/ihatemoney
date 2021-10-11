@@ -31,6 +31,7 @@ class ConfigurationTestCase(BaseTestCase):
         self.assertTrue(self.app.config["ACTIVATE_DEMO_PROJECT"])
         self.assertTrue(self.app.config["ALLOW_PUBLIC_PROJECT_CREATION"])
         self.assertFalse(self.app.config["ACTIVATE_ADMIN_DASHBOARD"])
+        self.assertFalse(self.app.config["ENABLE_CAPTCHA"])
 
     def test_env_var_configuration_file(self):
         """Test that settings are loaded from a configuration file specified
@@ -239,6 +240,50 @@ class EmailFailureTestCase(IhatemoneyTestCase):
             self.assertIn(
                 "Invite people to join this project", resp.data.decode("utf-8")
             )
+
+
+class CaptchaTestCase(IhatemoneyTestCase):
+    ENABLE_CAPTCHA = True
+
+    def test_project_creation_with_captcha(self):
+        with self.app.test_client() as c:
+            c.post(
+                "/create",
+                data={
+                    "name": "raclette party",
+                    "id": "raclette",
+                    "password": "party",
+                    "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
+                },
+            )
+            assert len(models.Project.query.all()) == 0
+
+            c.post(
+                "/create",
+                data={
+                    "name": "raclette party",
+                    "id": "raclette",
+                    "password": "party",
+                    "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
+                    "captcha": "nope",
+                },
+            )
+            assert len(models.Project.query.all()) == 0
+
+            c.post(
+                "/create",
+                data={
+                    "name": "raclette party",
+                    "id": "raclette",
+                    "password": "party",
+                    "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
+                    "captcha": "euro",
+                },
+            )
+            assert len(models.Project.query.all()) == 1
 
 
 class TestCurrencyConverter(unittest.TestCase):

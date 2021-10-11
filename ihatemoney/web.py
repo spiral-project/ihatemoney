@@ -260,9 +260,16 @@ def authenticate(project_id=None):
     return render_template("authenticate.html", form=form)
 
 
+def get_project_form():
+    if current_app.config.get("ENABLE_CAPTCHA", False):
+        ProjectForm.enable_captcha()
+
+    return ProjectForm()
+
+
 @main.route("/", strict_slashes=False)
 def home():
-    project_form = ProjectForm()
+    project_form = get_project_form()
     auth_form = AuthenticationForm()
     is_demo_project_activated = current_app.config["ACTIVATE_DEMO_PROJECT"]
     is_public_project_creation_allowed = current_app.config[
@@ -287,7 +294,7 @@ def mobile():
 @main.route("/create", methods=["GET", "POST"])
 @requires_admin(bypass=("ALLOW_PUBLIC_PROJECT_CREATION", True))
 def create_project():
-    form = ProjectForm()
+    form = get_project_form()
     if request.method == "GET" and "project_id" in request.values:
         form.name.data = request.values["project_id"]
 

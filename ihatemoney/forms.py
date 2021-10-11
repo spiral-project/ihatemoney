@@ -221,6 +221,19 @@ class ProjectForm(EditProjectForm):
             )
             raise ValidationError(Markup(message))
 
+    @classmethod
+    def enable_captcha(cls):
+        captchaField = StringField(
+            _("Which is a real currency: Euro or Petro dollar?"),
+            validators=[DataRequired()],
+        )
+        setattr(cls, "captcha", captchaField)
+
+    def validate_captcha(form, field):
+        if not field.data.lower() == _("euro"):
+            message = _("Please, validate the captcha to proceed.")
+            raise ValidationError(Markup(message))
+
 
 class DestructiveActionProjectForm(FlaskForm):
     """Used for any important "delete" action linked to a project:
