@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  ihatemoney:
+    build: .
+    ports:
+      - "8000:8000"
+  sut:
+    image: alpine
+    command: wget --spider ihatemoney:8000
+    depends_on:
+      - ihatemoney
