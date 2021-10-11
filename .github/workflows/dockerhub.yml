@@ -7,6 +7,9 @@ on:
     branches:
       - master
 
+env:
+  TEST_TAG: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}:test
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -46,9 +49,12 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           labels: ${{ steps.meta.outputs.labels }}
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}, ${{ env.TEST_TAG }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+
+      - name: Test image
+        run: docker run --rm ${{ env.TEST_TAG }}
