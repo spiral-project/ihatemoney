@@ -575,6 +575,157 @@ class APITestCase(IhatemoneyTestCase):
             )
             self.assertStatus(400, req)
 
+    def test_currencies(self):
+        # create project with a default currency
+        resp = self.api_create("raclette", default_currency="EUR")
+        self.assertTrue(201, resp.status_code)
+
+        # get information about it
+        resp = self.client.get(
+            "/api/projects/raclette", headers=self.get_auth("raclette")
+        )
+
+        self.assertTrue(200, resp.status_code)
+        expected = {
+            "members": [],
+            "name": "raclette",
+            "contact_email": "raclette@notmyidea.org",
+            "default_currency": "EUR",
+            "id": "raclette",
+            "logging_preference": 1,
+        }
+        decoded_resp = json.loads(resp.data.decode("utf-8"))
+        self.assertDictEqual(decoded_resp, expected)
+
+        # Add members
+        self.api_add_member("raclette", "zorglub")
+        self.api_add_member("raclette", "fred")
+        self.api_add_member("raclette", "quentin")
+
+        # Add a bill without explicit currency
+        req = self.client.post(
+            "/api/projects/raclette/bills",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage",
+                "payer": "1",
+                "payed_for": ["1", "2"],
+                "amount": "25",
+                "external_link": "https://raclette.fr",
+            },
+            headers=self.get_auth("raclette"),
+        )
+
+        # should return the id
+        self.assertStatus(201, req)
+        self.assertEqual(req.data.decode("utf-8"), "1\n")
+
+        # get this bill details
+        req = self.client.get(
+            "/api/projects/raclette/bills/1", headers=self.get_auth("raclette")
+        )
+
+        # compare with the added info
+        self.assertStatus(200, req)
+        expected = {
+            "what": "fromage",
+            "payer_id": 1,
+            "owers": [
+                {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
+                {"activated": True, "id": 2, "name": "fred", "weight": 1},
+            ],
+            "amount": 25.0,
+            "date": "2011-08-10",
+            "id": 1,
+            "converted_amount": 25.0,
+            "original_currency": "EUR",
+            "external_link": "https://raclette.fr",
+        }
+
+        got = json.loads(req.data.decode("utf-8"))
+        self.assertEqual(
+            datetime.date.today(),
+            datetime.datetime.strptime(got["creation_date"], "%Y-%m-%d").date(),
+        )
+        del got["creation_date"]
+        self.assertDictEqual(expected, got)
+
+        # Change bill amount and currency
+        req = self.client.put(
+            "/api/projects/raclette/bills/1",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage",
+                "payer": "1",
+                "payed_for": ["1", "2"],
+                "amount": "30",
+                "external_link": "https://raclette.fr",
+                "original_currency": "CAD",
+            },
+            headers=self.get_auth("raclette"),
+        )
+        self.assertStatus(200, req)
+
+        # Check result
+        req = self.client.get(
+            "/api/projects/raclette/bills/1", headers=self.get_auth("raclette")
+        )
+        self.assertStatus(200, req)
+        expected_amount = self.converter.exchange_currency(30.0, "CAD", "EUR")
+        expected = {
+            "what": "fromage",
+            "payer_id": 1,
+            "owers": [
+                {"activated": True, "id": 1, "name": "zorglub", "weight": 1.0},
+                {"activated": True, "id": 2, "name": "fred", "weight": 1.0},
+            ],
+            "amount": 30.0,
+            "date": "2011-08-10",
+            "id": 1,
+            "converted_amount": expected_amount,
+            "original_currency": "CAD",
+            "external_link": "https://raclette.fr",
+        }
+
+        got = json.loads(req.data.decode("utf-8"))
+        del got["creation_date"]
+        self.assertDictEqual(expected, got)
+
+        # Add a bill with yet another currency
+        req = self.client.post(
+            "/api/projects/raclette/bills",
+            data={
+                "date": "2011-09-10",
+                "what": "Pierogi",
+                "payer": "1",
+                "payed_for": ["2", "3"],
+                "amount": "80",
+                "original_currency": "PLN",
+            },
+            headers=self.get_auth("raclette"),
+        )
+
+        # should return the id
+        self.assertStatus(201, req)
+        self.assertEqual(req.data.decode("utf-8"), "2\n")
+
+        # Try to remove default project currency, it should fail
+        req = self.client.put(
+            "/api/projects/raclette",
+            data={
+                "contact_email": "yeah@notmyidea.org",
+                "default_currency": "XXX",
+                "password": "raclette",
+                "name": "The raclette party",
+            },
+            headers=self.get_auth("raclette"),
+        )
+        self.assertStatus(400, req)
+        self.assertIn("This project cannot be set", req.data.decode("utf-8"))
+        self.assertIn(
+            "because it contains bills in multiple currencies", req.data.decode("utf-8")
+        )
+
     def test_statistics(self):
         # create a project
         self.api_create("raclette")
