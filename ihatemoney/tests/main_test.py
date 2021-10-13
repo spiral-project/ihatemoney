@@ -288,7 +288,13 @@ class CaptchaTestCase(IhatemoneyTestCase):
 
 class TestCurrencyConverter(unittest.TestCase):
     converter = CurrencyConverter()
-    mock_data = {"USD": 1, "EUR": 0.8, "CAD": 1.2, CurrencyConverter.no_currency: 1}
+    mock_data = {
+        "USD": 1,
+        "EUR": 0.8,
+        "CAD": 1.2,
+        "PLN": 4,
+        CurrencyConverter.no_currency: 1,
+    }
     converter.get_rates = MagicMock(return_value=mock_data)
 
     def test_only_one_instance(self):
@@ -299,7 +305,7 @@ class TestCurrencyConverter(unittest.TestCase):
     def test_get_currencies(self):
         self.assertCountEqual(
             self.converter.get_currencies(),
-            ["USD", "EUR", "CAD", CurrencyConverter.no_currency],
+            ["USD", "EUR", "CAD", "PLN", CurrencyConverter.no_currency],
         )
 
     def test_exchange_currency(self):

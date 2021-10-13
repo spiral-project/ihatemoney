@@ -24,7 +24,13 @@ class BaseTestCase(TestCase):
     def setUp(self):
         db.create_all()
         # Add dummy data to CurrencyConverter for all tests (since it's a singleton)
-        mock_data = {"USD": 1, "EUR": 0.8, "CAD": 1.2, CurrencyConverter.no_currency: 1}
+        mock_data = {
+            "USD": 1,
+            "EUR": 0.8,
+            "CAD": 1.2,
+            "PLN": 4,
+            CurrencyConverter.no_currency: 1,
+        }
         converter = CurrencyConverter()
         converter.get_rates = MagicMock(return_value=mock_data)
         # Also add it to an attribute to make tests clearer
