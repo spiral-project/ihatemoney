@@ -4,7 +4,7 @@ import json
 import re
 from time import sleep
 import unittest
-from urllib.parse import parse_qs, urlencode, urlparse, urlunparse
+from urllib.parse import urlparse, urlunparse
 
 from flask import session
 import pytest
@@ -91,17 +91,19 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.client.get("/exit")
         # Use another project_id
         parsed_url = urlparse(url)
-        query = parse_qs(parsed_url.query)
-        query["project_id"] = "invalid"
         resp = self.client.get(
-            urlunparse(parsed_url._replace(query=urlencode(query, doseq=True)))
+            urlunparse(
+                parsed_url._replace(
+                    path=parsed_url.path.replace("raclette/", "invalid_project/")
+                )
+            ),
+            follow_redirects=True,
         )
-        assert "You either provided a bad token" in resp.data.decode("utf-8")
+        assert "Create a new project" in resp.data.decode("utf-8")
 
-        resp = self.client.get("/authenticate")
-        self.assertIn("You either provided a bad token", resp.data.decode("utf-8"))
-        resp = self.client.get("/authenticate?token=token")
-        self.assertIn("You either provided a bad token", resp.data.decode("utf-8"))
+        # A token MUST have a point between payload and signature
+        resp = self.client.get("/raclette/join/token.invalid", follow_redirects=True)
+        self.assertIn("Provided token is invalid", resp.data.decode("utf-8"))
 
     def test_invite_code_invalidation(self):
         """Test that invitation link expire after code change"""
@@ -133,7 +135,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.client.get("/exit")
         response = self.client.get(link, follow_redirects=True)
         # Link is invalid
-        self.assertIn("You either provided a bad token", response.data.decode("utf-8"))
+        self.assertIn("Provided token is invalid", response.data.decode("utf-8"))
 
     def test_password_reminder(self):
         # test that it is possible to have an email containing the password of a
