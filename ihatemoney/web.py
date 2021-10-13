@@ -227,7 +227,7 @@ def authenticate(project_id=None):
         form.id.data = request.args["project_id"]
     project_id = form.id.data
 
-    project = Project.query.get(project_id)
+    project = Project.query.get(project_id) if project_id is not None else None
     if not project:
         # If the user try to connect to an unexisting project, we will
         # propose him a link to the creation form.
