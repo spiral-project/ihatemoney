@@ -9,11 +9,12 @@ This document describes changes between each past release.
 Breaking changes
 ----------------
 
-- Enable session cookie security by default (#845)
+- Include project code into project authentication token. This invalidates all existing API tokens and invitation links from previous versions (#802)
 - Drop support for Python 2 (#483)
 - Drop support for Python 3.5 (#571)
 - Drop support for MySQL (#743)
 - Require MariaDB version 10.3.2 or above (#632)
+- Enable session cookie security by default (#845)
 
 The minimum supported version is now Python 3.6, and the project is tested
 with up to Python 3.9
@@ -41,7 +42,9 @@ Added
 - Add token-based authentication to the API (#504)
 - Add illustrations as a showcase, currently only for French (#544)
 - Add a page for downloading mobile application (#688)
+- Add optional support for a simple CAPTCHA (#844)
 - Add translations for Greek, Esperanto, Italian, Japanese, Portuguese and Swedish
+- Publish an `official docker image <https://hub.docker.com/r/ihatemoney/ihatemoney>`_
 
 Changed
 -------
@@ -51,6 +54,7 @@ Changed
 - Make language choice persistent (#547)
 - Localize date strings in the current language (#590)
 - Differenciate "flash alerts" notifications (#594)
+- Display "flash messages" persistently instead of making them disappear (#856)
 - Improve menu bar spacing, put history and settings in a submenu (#739)
 - Change Dockerfile to install python dependencies at build time (#793)
 
