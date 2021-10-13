@@ -4,7 +4,9 @@ The REST API
 All of what's possible to do with the website is also possible via a web API.
 This document explains how the API is organized and how you can query it.
 
-The only supported data format is JSON.
+The main supported data format is JSON. When using POST or PUT, you can
+either pass data encoded in JSON or in ``application/x-www-form-urlencoded``
+format.
 
 Overall organisation
 ====================
@@ -31,7 +33,7 @@ instead of basic auth.
 For instance, start by generating the token (of course, you need to authenticate)::
 
     $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo/token
-    {"token": "eyJwcm9qZWN0X2lkIjoiZGVtbyJ9.M86C3AiZa_SFEyiddYXdTh2-OOI"}
+    {"token": "WyJ0ZXN0Il0.Rt04fNMmxp9YslCRq8hB6jE9s1Q"}
 
 Make sure to store this token securely: it allows full access to the project.
 For instance, use it to obtain information about the project (replace PROJECT_TOKEN with
@@ -47,7 +49,7 @@ looks like::
 This token can also be used to authenticate for a project on the web interface, which can be useful
 to generate invitation links. You would simply create an URL of the form::
 
-    https://ihatemoney.org/authenticate?token=PROJECT_TOKEN
+    https://ihatemoney.org/demo/join/PROJECT_TOKEN
 
 Such a link grants full access to the project associated with the token.
 
@@ -64,10 +66,16 @@ Creating a project
 
 A project needs the following arguments:
 
-* ``name``: The project name (string)
+* ``name``: the project name (string)
 * ``id``: the project identifier (string without special chars or spaces)
 * ``password``: the project password / secret code (string)
-* ``contact_email``: the contact email
+* ``contact_email``: the contact email (string)
+
+Optional arguments:
+
+* ``default_currency``: the default currency to use for a multi-currency project,
+  in ISO 4217 format. Bills are converted to this currency for operations like balance
+  or statistics. Default value: ``XXX`` (no currency).
 
 ::
 
@@ -75,7 +83,7 @@ A project needs the following arguments:
     -d 'name=yay&id=yay&password=yay&contact_email=yay@notmyidea.org'
     "yay"
 
-As you can see, the API returns the identifier of the project
+As you can see, the API returns the identifier of the project.
 
 Getting information about the project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -88,6 +96,7 @@ Getting information about the project::
         "id": "demo",
         "name": "demonstration",
         "contact_email": "demo@notmyidea.org",
+        "default_currency": "XXX",
         "members": [{"id": 11515, "name": "f", "weight": 1.0, "activated": true, "balance": 0}, 
                     {"id": 11531, "name": "g", "weight": 1.0, "activated": true, "balance": 0}, 
                     {"id": 11532, "name": "peter", "weight": 1.0, "activated": true, "balance": 5.0},
@@ -151,22 +160,55 @@ You can get the list of bills by doing a ``GET`` on
 
     $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo/bills
 
-Add a bill with a ``POST`` query on ``/api/projects/<id>/bills``. you need the
-following params:
+Or get a specific bill by ID::
 
-* ``date``: the date of the bill; defaults to current date if not
-  provided. (format is ``yyyy-mm-dd``)
-* ``what``: what have been payed
-* ``payer``: by who ? (id)
-* ``payed_for``: for who ? (id, to set multiple id use a list,
-  e.g. ``["id1", "id2"]``)
-* ``amount``: amount payed
+    $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo/bills/42
+    {
+      "id": 42,
+      "payer_id": 11,
+      "owers": [
+        {
+          "id": 22,
+          "name": "Alexis",
+          "weight": 1,
+          "activated": true
+        }
+      ],
+      "amount": 100,
+      "date": "2020-12-24",
+      "creation_date": "2021-01-13",
+      "what": "Raclette du nouvel an",
+      "external_link": "",
+      "original_currency": "XXX",
+      "converted_amount": 100
+    }
+
+``amount`` is expressed in the ``original_currency`` of the bill, while
+``converted_amount`` is expressed in the project ``default_currency``.
+Here, they are the same.
+
+Add a bill with a ``POST`` query on ``/api/projects/<id>/bills``. You need the
+following required parameters:
+
+* ``what``: what has been paid (string)
+* ``payer``: paid by who? (id)
+* ``payed_for``: for who ? (id). To set multiple id, simply pass
+  the parameter multiple times (x-www-form-urlencoded) or pass a list of id (JSON).
+* ``amount``: amount payed (float)
+
+And optional parameters:
+
+* ``date``: the date of the bill (``yyyy-mm-dd`` format). Defaults to current date
+  if not provided.
+* ``original_currency``: the currency in which ``amount`` has been paid (ISO 4217 code).
+  Only makes sense for a project with currencies. Defaults to the project ``default_currency``.
+* ``external_link``: an optional URL associated with the bill.
 
 Returns the id of the created bill ::
 
     $ curl --basic -u demo:demo -X POST\
     https://ihatemoney.org/api/projects/demo/bills\
-    -d "date=2011-09-10&what=raclette&payer=31&payed_for=31&amount=200"
+    -d "date=2011-09-10&what=raclette&payer=1&payed_for=3&payed_for=5&amount=200"
     80
 
 You can also ``PUT`` a new version of the bill at
@@ -174,7 +216,7 @@ You can also ``PUT`` a new version of the bill at
 
     $ curl --basic -u demo:demo -X PUT\
     https://ihatemoney.org/api/projects/demo/bills/80\
-    -d "date=2011-09-10&what=raclette&payer=31&payed_for=31&amount=250"
+    -d "date=2011-09-10&what=raclette&payer=1&payed_for=3&payed_for=5&payed_for=1&amount=250"
     80
 
 And you can of course ``DELETE`` them at
@@ -194,15 +236,15 @@ You can get some project stats with a ``GET`` on
     $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo/statistics
     [
         {
-            "balance": 12.5,
-            "member": {"activated": True, "id": 1, "name": "alexis", "weight": 1.0},
-            "paid": 25.0,
-            "spent": 12.5
+            "member": {"activated": true, "id": 1, "name": "alexis", "weight": 1.0},
+            "paid": 25.5,
+            "spent": 15,
+            "balance": 10.5
         },
         {
-            "balance": -12.5,
-            "member": {"activated": True, "id": 2, "name": "fred", "weight": 1.0},
-            "paid": 0,
-            "spent": 12.5
+            "member": {"activated": true, "id": 2, "name": "fred", "weight": 1.0},
+            "paid": 5,
+            "spent": 15.5,
+            "balance": -10.5
         }
     ]
