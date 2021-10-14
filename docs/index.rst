@@ -19,6 +19,7 @@ Table of contents
    configuration
    upgrade
    api
+   security
    contributing
 
 Indices and tables
