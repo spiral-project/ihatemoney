@@ -21,12 +21,6 @@
     {% block head %}{% endblock %}
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function(){
-            setTimeout(function(){
-                $(".flash").fadeOut("slow", function () {
-                    $(".flash").remove();
-                });
-            }, 4000);
-
             $('.dropdown-toggle').dropdown();
             $('[data-toggle="tooltip"]').tooltip();
             {% block js %}{% endblock %}
@@ -128,11 +122,12 @@
 
   <div class="messages">
     {% for category, message in get_flashed_messages(with_categories=true) %}
-      {% if category == "message" %}{# Default category for flash(msg) #}
-        <div class="flash alert alert-success">{{ message }}</div>
-      {% else %}
-        <div class="flash alert alert-{{ category }}">{{ message }}</div>
-      {% endif %}
+      <div class="flash alert alert-{{ "success" if category == "message" else category }} alert-dismissible fade show">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
     {% endfor %}
   </div>
 

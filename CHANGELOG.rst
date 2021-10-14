@@ -9,11 +9,12 @@ This document describes changes between each past release.
 Breaking changes
 ----------------
 
+- Include project code into project authentication token. This invalidates all existing API tokens and invitation links from previous versions (#802)
 - Drop support for Python 2 (#483)
 - Drop support for Python 3.5 (#571)
 - Drop support for MySQL (#743)
 - Require MariaDB version 10.3.2 or above (#632)
-- Authentication page URL needs a `project_id` parameter (#802)
+- Enable session cookie security by default (#845)
 
 The minimum supported version is now Python 3.6, and the project is tested
 with up to Python 3.9
@@ -26,6 +27,7 @@ Security
 
 - Add CSRF validation on destructive actions (#796)
 - Ask for private code to delete project or project history (#796)
+- Add headers to mitigate Clickjacking, XSS, and other attacks: `X-Frame-Options`, `X-XSS-Protection`, `X-Content-Type-Options`, `Content-Security-Policy`, `Referrer-Policy` (#845)
 
 Added
 -----
@@ -38,10 +40,11 @@ Added
 - Add sorting, pagination, and searching to the admin dashboard (#538)
 - Add Project History page that records all changes (#553)
 - Add token-based authentication to the API (#504)
-- Add translations for Hindi, Portuguese (Brazil), Tamil
 - Add illustrations as a showcase, currently only for French (#544)
 - Add a page for downloading mobile application (#688)
+- Add optional support for a simple CAPTCHA (#844)
 - Add translations for Greek, Esperanto, Italian, Japanese, Portuguese and Swedish
+- Publish an `official docker image <https://hub.docker.com/r/ihatemoney/ihatemoney>`_
 
 Changed
 -------
@@ -51,6 +54,7 @@ Changed
 - Make language choice persistent (#547)
 - Localize date strings in the current language (#590)
 - Differenciate "flash alerts" notifications (#594)
+- Display "flash messages" persistently instead of making them disappear (#856)
 - Improve menu bar spacing, put history and settings in a submenu (#739)
 - Change Dockerfile to install python dependencies at build time (#793)
 - Updating project settings doesn't require to enter or update project code (#774)

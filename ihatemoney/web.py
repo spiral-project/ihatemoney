@@ -36,6 +36,7 @@ from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash, generate_password_hash
 
+from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.forms import (
     AdminAuthenticationForm,
     AuthenticationForm,
@@ -142,7 +143,8 @@ def pull_project(endpoint, values):
             raise Redirect303(url_for(".create_project", project_id=project_id))
 
         is_admin = session.get("is_admin")
-        if session.get(project.id) or is_admin:
+        is_invitation = endpoint == "main.join_project"
+        if session.get(project.id) or is_admin or is_invitation:
             # add project into kwargs and call the original function
             g.project = project
         else:
@@ -194,28 +196,38 @@ def admin():
     )
 
 
+@main.route("/<project_id>/join/<string:token>", methods=["GET"])
+def join_project(token):
+    project_id = g.project.id
+    verified_project_id = Project.verify_token(
+        token, token_type="auth", project_id=project_id
+    )
+    if verified_project_id != project_id:
+        flash(_("Provided token is invalid"), "danger")
+        return redirect("/")
+
+    # maintain a list of visited projects
+    if "projects" not in session:
+        session["projects"] = []
+    # add the project on the top of the list
+    session["projects"].insert(0, (project_id, g.project.name))
+    session[project_id] = True
+    # Set session to permanent to make language choice persist
+    session.permanent = True
+    session.update()
+    return redirect(url_for(".list_bills"))
+
+
 @main.route("/authenticate", methods=["GET", "POST"])
 def authenticate(project_id=None):
     """Authentication form"""
     form = AuthenticationForm()
-    # Try to get project_id from token first
-    token = request.args.get("token")
-    if token:
-        project_id = Project.verify_token(token, token_type="non_timed_token")
-        token_auth = True
-    else:
-        if not form.id.data and request.args.get("project_id"):
-            form.id.data = request.args["project_id"]
-        project_id = form.id.data
-        token_auth = False
-    if project_id is None:
-        # User doesn't provide project identifier or a valid token
-        # return to authenticate form
-        msg = _("You either provided a bad token or no project identifier.")
-        form["id"].errors = [msg]
-        return render_template("authenticate.html", form=form)
 
-    project = Project.query.get(project_id)
+    if not form.id.data and request.args.get("project_id"):
+        form.id.data = request.args["project_id"]
+    project_id = form.id.data
+
+    project = Project.query.get(project_id) if project_id is not None else None
     if not project:
         # If the user try to connect to an unexisting project, we will
         # propose him a link to the creation form.
@@ -228,13 +240,9 @@ def authenticate(project_id=None):
         setattr(g, "project", project)
         return redirect(url_for(".list_bills"))
 
-    # else do form authentication or token authentication
+    # else do form authentication authentication
     is_post_auth = request.method == "POST" and form.validate()
-    if (
-        is_post_auth
-        and check_password_hash(project.password, form.password.data)
-        or token_auth
-    ):
+    if is_post_auth and check_password_hash(project.password, form.password.data):
         # maintain a list of visited projects
         if "projects" not in session:
             session["projects"] = []
@@ -253,9 +261,16 @@ def authenticate(project_id=None):
     return render_template("authenticate.html", form=form)
 
 
+def get_project_form():
+    if current_app.config.get("ENABLE_CAPTCHA", False):
+        ProjectForm.enable_captcha()
+
+    return ProjectForm()
+
+
 @main.route("/", strict_slashes=False)
 def home():
-    project_form = ProjectForm()
+    project_form = get_project_form()
     auth_form = AuthenticationForm()
     is_demo_project_activated = current_app.config["ACTIVATE_DEMO_PROJECT"]
     is_public_project_creation_allowed = current_app.config[
@@ -280,7 +295,7 @@ def mobile():
 @main.route("/create", methods=["GET", "POST"])
 @requires_admin(bypass=("ALLOW_PUBLIC_PROJECT_CREATION", True))
 def create_project():
-    form = ProjectForm()
+    form = get_project_form()
     if request.method == "GET" and "project_id" in request.values:
         form.name.data = request.values["project_id"]
 
@@ -380,7 +395,7 @@ def reset_password():
         return render_template(
             "reset_password.html", form=form, error=_("No token provided")
         )
-    project_id = Project.verify_token(token)
+    project_id = Project.verify_token(token, token_type="reset")
     if not project_id:
         return render_template(
             "reset_password.html", form=form, error=_("Invalid token")
@@ -412,8 +427,8 @@ def edit_project():
             flash(_("Project successfully uploaded"))
 
             return redirect(url_for("main.list_bills"))
-        except ValueError:
-            flash(_("Invalid JSON"), category="danger")
+        except ValueError as e:
+            flash(e.args[0], category="danger")
 
     # Edit form
     if edit_form.validate_on_submit():
@@ -447,17 +462,37 @@ def import_project(file, project):
     json_file = json.load(file)
 
     # Check if JSON is correct
-    attr = ["what", "payer_name", "payer_weight", "amount", "date", "owers"]
+    attr = ["what", "payer_name", "payer_weight", "amount", "currency", "date", "owers"]
     attr.sort()
+    currencies = set()
     for e in json_file:
+        # If currency is absent, empty, or explicitly set to XXX
+        # set it to project default.
+        if e.get("currency", "") in ["", "XXX"]:
+            e["currency"] = project.default_currency
         if len(e) != len(attr):
-            raise ValueError
+            raise ValueError(_("Invalid JSON"))
         list_attr = []
         for i in e:
             list_attr.append(i)
         list_attr.sort()
         if list_attr != attr:
-            raise ValueError
+            raise ValueError(_("Invalid JSON"))
+        # Keep track of currencies
+        currencies.add(e["currency"])
+
+    # Additional checks if project has no default currency
+    if project.default_currency == CurrencyConverter.no_currency:
+        # If bills have currencies, they must be consistent
+        if len(currencies - {CurrencyConverter.no_currency}) >= 2:
+            raise ValueError(
+                _(
+                    "Cannot add bills in multiple currencies to a project without default currency"
+                )
+            )
+        # Strip currency from bills (since it's the same for every bill)
+        for e in json_file:
+            e["currency"] = CurrencyConverter.no_currency
 
     # From json : export list of members
     members_json = get_members(json_file)
@@ -505,10 +540,10 @@ def import_project(file, project):
         form = get_billform_for(project)
         form.what = b["what"]
         form.amount = b["amount"]
+        form.original_currency = b["currency"]
         form.date = parse(b["date"])
         form.payer = id_dict[b["payer_name"]]
         form.payed_for = owers_id
-        form.original_currency = b.get("original_currency")
 
         db.session.add(form.fake_form(bill, project))
 

@@ -31,6 +31,7 @@ class ConfigurationTestCase(BaseTestCase):
         self.assertTrue(self.app.config["ACTIVATE_DEMO_PROJECT"])
         self.assertTrue(self.app.config["ALLOW_PUBLIC_PROJECT_CREATION"])
         self.assertFalse(self.app.config["ACTIVATE_ADMIN_DASHBOARD"])
+        self.assertFalse(self.app.config["ENABLE_CAPTCHA"])
 
     def test_env_var_configuration_file(self):
         """Test that settings are loaded from a configuration file specified
@@ -241,9 +242,59 @@ class EmailFailureTestCase(IhatemoneyTestCase):
             )
 
 
+class CaptchaTestCase(IhatemoneyTestCase):
+    ENABLE_CAPTCHA = True
+
+    def test_project_creation_with_captcha(self):
+        with self.app.test_client() as c:
+            c.post(
+                "/create",
+                data={
+                    "name": "raclette party",
+                    "id": "raclette",
+                    "password": "party",
+                    "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
+                },
+            )
+            assert len(models.Project.query.all()) == 0
+
+            c.post(
+                "/create",
+                data={
+                    "name": "raclette party",
+                    "id": "raclette",
+                    "password": "party",
+                    "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
+                    "captcha": "nope",
+                },
+            )
+            assert len(models.Project.query.all()) == 0
+
+            c.post(
+                "/create",
+                data={
+                    "name": "raclette party",
+                    "id": "raclette",
+                    "password": "party",
+                    "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
+                    "captcha": "euro",
+                },
+            )
+            assert len(models.Project.query.all()) == 1
+
+
 class TestCurrencyConverter(unittest.TestCase):
     converter = CurrencyConverter()
-    mock_data = {"USD": 1, "EUR": 0.8, "CAD": 1.2, CurrencyConverter.no_currency: 1}
+    mock_data = {
+        "USD": 1,
+        "EUR": 0.8,
+        "CAD": 1.2,
+        "PLN": 4,
+        CurrencyConverter.no_currency: 1,
+    }
     converter.get_rates = MagicMock(return_value=mock_data)
 
     def test_only_one_instance(self):
@@ -254,7 +305,7 @@ class TestCurrencyConverter(unittest.TestCase):
     def test_get_currencies(self):
         self.assertCountEqual(
             self.converter.get_currencies(),
-            ["USD", "EUR", "CAD", CurrencyConverter.no_currency],
+            ["USD", "EUR", "CAD", "PLN", CurrencyConverter.no_currency],
         )
 
     def test_exchange_currency(self):

@@ -13,6 +13,7 @@ from wtforms.fields.core import Label, SelectField, SelectMultipleField
 from wtforms.fields.html5 import DateField, DecimalField, URLField
 from wtforms.fields.simple import BooleanField, PasswordField, StringField, SubmitField
 from wtforms.validators import (
+    URL,
     DataRequired,
     Email,
     EqualTo,
@@ -112,7 +113,11 @@ class EditProjectForm(FlaskForm):
     project_history = BooleanField(_("Enable project history"))
     ip_recording = BooleanField(_("Use IP tracking for project history"))
     currency_helper = CurrencyConverter()
-    default_currency = SelectField(_("Default Currency"), validators=[DataRequired()])
+    default_currency = SelectField(
+        _("Default Currency"),
+        validators=[DataRequired()],
+        default=CurrencyConverter.no_currency,
+    )
 
     def __init__(self, *args, **kwargs):
         if not hasattr(self, "id"):
@@ -220,6 +225,19 @@ class ProjectForm(EditProjectForm):
             )
             raise ValidationError(Markup(message))
 
+    @classmethod
+    def enable_captcha(cls):
+        captchaField = StringField(
+            _("Which is a real currency: Euro or Petro dollar?"),
+            validators=[DataRequired()],
+        )
+        setattr(cls, "captcha", captchaField)
+
+    def validate_captcha(form, field):
+        if not field.data.lower() == _("euro"):
+            message = _("Please, validate the captcha to proceed.")
+            raise ValidationError(Markup(message))
+
 
 class DestructiveActionProjectForm(FlaskForm):
     """Used for any important "delete" action linked to a project:
@@ -292,7 +310,7 @@ class BillForm(FlaskForm):
     original_currency = SelectField(_("Currency"), validators=[DataRequired()])
     external_link = URLField(
         _("External link"),
-        validators=[Optional()],
+        validators=[Optional(), URL()],
         description=_("A link to an external document, related to this bill"),
     )
     payed_for = SelectMultipleField(
@@ -321,7 +339,7 @@ class BillForm(FlaskForm):
         bill.external_link = ""
         bill.date = self.date
         bill.owers = [Person.query.get(ower, project) for ower in self.payed_for]
-        bill.original_currency = CurrencyConverter.no_currency
+        bill.original_currency = self.original_currency
         bill.converted_amount = self.currency_helper.exchange_currency(
             bill.amount, bill.original_currency, project.default_currency
         )
