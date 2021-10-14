@@ -1,19 +1,19 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-17 17:31+0200\n"
+"POT-Creation-Date: 2021-10-14 22:10+0200\n"
 "PO-Revision-Date: 2021-10-01 20:35+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
-"Language-Team: Esperanto <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/eo/>\n"
 "Language: eo\n"
+"Language-Team: Esperanto <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/eo/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -72,6 +72,16 @@ msgid ""
 msgstr ""
 "Projekto kun ĉi tiu identigilo («%(project)s») jam ekzistas. Bonvolu "
 "elekti alian identigilon"
+
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr ""
+
+#, fuzzy
+msgid "euro"
+msgstr "Periodo"
+
+msgid "Please, validate the captcha to proceed."
+msgstr ""
 
 msgid "Enter private code to confirm deletion"
 msgstr ""
@@ -205,8 +215,8 @@ msgstr "Tro da malsukcesaj provoj de salutado; bonvolu reprovi poste."
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr "Ĉi tiu administra pasvorto ne estas ĝusta. Restas nur %(num)d provoj."
 
-msgid "You either provided a bad token or no project identifier."
-msgstr "Vi donis aŭ nevalidan ĵetonon aŭ neniun identigilon de projekto."
+msgid "Provided token is invalid"
+msgstr ""
 
 msgid "This private code is not the right one"
 msgstr "Ĉi tiu privata kodo ne ĝustas"
@@ -255,6 +265,11 @@ msgstr "Projekto sukcese alŝutita"
 
 msgid "Invalid JSON"
 msgstr "Nevalida JSON"
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
+msgstr ""
 
 msgid "Project successfully deleted"
 msgstr "La projekto estis sukcese forigitaj"
@@ -982,3 +997,7 @@ msgstr "Periodo"
 
 #~ msgid "removed"
 #~ msgstr "forigis"
+
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr "Vi donis aŭ nevalidan ĵetonon aŭ neniun identigilon de projekto."
+

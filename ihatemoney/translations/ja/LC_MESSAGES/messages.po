@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-17 17:31+0200\n"
+"POT-Creation-Date: 2021-10-14 22:10+0200\n"
 "PO-Revision-Date: 2020-11-11 16:28+0000\n"
 "Last-Translator: Jwen921 <yangjingwen0921@gmail.com>\n"
 "Language: ja\n"
@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -67,6 +67,16 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr "(\"%(project)s\")というプロジェクトは既に存在します。別の名前にしてください"
+
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr ""
+
+#, fuzzy
+msgid "euro"
+msgstr "期間"
+
+msgid "Please, validate the captcha to proceed."
+msgstr ""
 
 msgid "Enter private code to confirm deletion"
 msgstr ""
@@ -202,8 +212,8 @@ msgstr "何度もログインに失敗したので、時間をおいてから再
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr "この管理者パスワードは正しくないでウ。%(num)d試行しか残っていません。"
 
-msgid "You either provided a bad token or no project identifier."
-msgstr "無効な入力かプロジェクト名なし。"
+msgid "Provided token is invalid"
+msgstr ""
 
 msgid "This private code is not the right one"
 msgstr "私用コードは正しくない"
@@ -247,6 +257,11 @@ msgstr "プロジェクトをアップロードできました"
 
 msgid "Invalid JSON"
 msgstr "無効なJSON"
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
+msgstr ""
 
 msgid "Project successfully deleted"
 msgstr "プロジェクトを削除できました"
@@ -959,3 +974,7 @@ msgstr "期間"
 
 #~ msgid "removed"
 #~ msgstr "取り除かれた"
+
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr "無効な入力かプロジェクト名なし。"
+

@@ -1,19 +1,20 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-17 17:31+0200\n"
+"POT-Creation-Date: 2021-10-14 22:10+0200\n"
 "PO-Revision-Date: 2021-07-20 14:32+0000\n"
-"Last-Translator: Kristoffer Grundström <swedishsailfishosuser@tutanota.com>\n"
-"Language-Team: Swedish <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/sv/>\n"
+"Last-Translator: Kristoffer Grundström "
+"<swedishsailfishosuser@tutanota.com>\n"
 "Language: sv\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/sv/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7.2-dev\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -68,6 +69,16 @@ msgid ""
 msgstr ""
 "Ett projekt med den här identifieraren (\"%(project)s\") finns redan. "
 "Vänligen välj en annan identifierare"
+
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr ""
+
+#, fuzzy
+msgid "euro"
+msgstr "Period"
+
+msgid "Please, validate the captcha to proceed."
+msgstr ""
 
 msgid "Enter private code to confirm deletion"
 msgstr "Ange privat kod för att bekräfta borttagning"
@@ -203,7 +214,7 @@ msgstr ""
 "Det här lösenordet för admin är inte det rätta. Endast %(num)d försök "
 "kvar."
 
-msgid "You either provided a bad token or no project identifier."
+msgid "Provided token is invalid"
 msgstr ""
 
 msgid "This private code is not the right one"
@@ -250,6 +261,11 @@ msgstr "Uppladdningen av projektet lyckades"
 
 msgid "Invalid JSON"
 msgstr "Ogiltig JSON"
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
+msgstr ""
 
 msgid "Project successfully deleted"
 msgstr "Borttagningen av projektet lyckades"
@@ -952,3 +968,7 @@ msgstr "Period"
 
 #~ msgid "removed"
 #~ msgstr "togs bort"
+
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr ""
+

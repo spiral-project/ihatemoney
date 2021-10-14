@@ -50,6 +50,15 @@ msgid ""
 "choose a new identifier"
 msgstr ""
 
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr ""
+
+msgid "euro"
+msgstr ""
+
+msgid "Please, validate the captcha to proceed."
+msgstr ""
+
 msgid "Enter private code to confirm deletion"
 msgstr ""
 
@@ -182,7 +191,7 @@ msgstr ""
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr ""
 
-msgid "You either provided a bad token or no project identifier."
+msgid "Provided token is invalid"
 msgstr ""
 
 msgid "This private code is not the right one"
@@ -226,6 +235,11 @@ msgid "Project successfully uploaded"
 msgstr ""
 
 msgid "Invalid JSON"
+msgstr ""
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
 msgstr ""
 
 msgid "Project successfully deleted"
@@ -861,3 +875,4 @@ msgstr ""
 
 msgid "Period"
 msgstr ""
+

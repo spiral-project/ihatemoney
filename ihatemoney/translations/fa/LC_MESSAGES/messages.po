@@ -1,16 +1,18 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-22 06:18+0200\n"
+"POT-Creation-Date: 2021-10-14 22:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
 "Language: fa\n"
+"Language-Team: none\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 3.3.6\n"
+"Generated-By: Babel 2.9.1\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -62,6 +64,15 @@ msgstr ""
 msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
+msgstr ""
+
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr ""
+
+msgid "euro"
+msgstr ""
+
+msgid "Please, validate the captcha to proceed."
 msgstr ""
 
 msgid "Enter private code to confirm deletion"
@@ -196,7 +207,7 @@ msgstr ""
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr ""
 
-msgid "You either provided a bad token or no project identifier."
+msgid "Provided token is invalid"
 msgstr ""
 
 msgid "This private code is not the right one"
@@ -240,6 +251,11 @@ msgid "Project successfully uploaded"
 msgstr ""
 
 msgid "Invalid JSON"
+msgstr ""
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
 msgstr ""
 
 msgid "Project successfully deleted"
@@ -736,7 +752,7 @@ msgstr ""
 msgid "Administation Dashboard"
 msgstr ""
 
-msgid "\"I hate money\" is a free software"
+msgid "\"I hate money\" is free software"
 msgstr ""
 
 msgid "you can contribute and improve it!"
@@ -875,3 +891,10 @@ msgstr ""
 
 msgid "Period"
 msgstr ""
+
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr ""
+
+#~ msgid "\"I hate money\" is a free software"
+#~ msgstr ""
+

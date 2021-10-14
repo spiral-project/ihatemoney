@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-17 17:31+0200\n"
+"POT-Creation-Date: 2021-10-14 22:10+0200\n"
 "PO-Revision-Date: 2020-07-01 18:41+0000\n"
 "Last-Translator: rohitn01 <rohitmen01@gmail.com>\n"
 "Language: ta\n"
@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -71,6 +71,15 @@ msgid ""
 msgstr ""
 "இந்த அடையாளங்காட்டியுடன் ஒரு திட்டம் (\"%(project)s\") ஏற்கனவே "
 "இருக்கிறது. புதிய அடையாளங்காட்டியைத் தேர்ந்தெடுக்கவும்"
+
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr ""
+
+msgid "euro"
+msgstr ""
+
+msgid "Please, validate the captcha to proceed."
+msgstr ""
 
 msgid "Enter private code to confirm deletion"
 msgstr ""
@@ -208,10 +217,8 @@ msgstr ""
 "இந்த நிர்வாகி கடவுச்சொல் சரியானது அல்ல. மட்டும் %(num)d முயற்சிகள் "
 "எஞ்சியுள்ளன."
 
-msgid "You either provided a bad token or no project identifier."
+msgid "Provided token is invalid"
 msgstr ""
-"நீங்கள் ஒரு மோசமான டோக்கனை வழங்கியுள்ளீர்கள் அல்லது திட்ட அடையாளங்காட்டி "
-"இல்லை."
 
 msgid "This private code is not the right one"
 msgstr "இந்த தனிப்பட்ட குறியீடு சரியானது அல்ல"
@@ -262,6 +269,11 @@ msgstr "திட்டம் வெற்றிகரமாக பதிவே�
 
 msgid "Invalid JSON"
 msgstr "தவறான JSON"
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
+msgstr ""
 
 msgid "Project successfully deleted"
 msgstr "திட்டம் வெற்றிகரமாக நீக்கப்பட்டது"
@@ -969,3 +981,9 @@ msgstr ""
 
 #~ msgid "changed in a unknown way"
 #~ msgstr ""
+
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr ""
+#~ "நீங்கள் ஒரு மோசமான டோக்கனை வழங்கியுள்ளீர்கள்"
+#~ " அல்லது திட்ட அடையாளங்காட்டி இல்லை."
+
