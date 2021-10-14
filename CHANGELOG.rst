@@ -9,7 +9,7 @@ This document describes changes between each past release.
 Breaking changes
 ----------------
 
-- Include project code into project authentication token. This invalidates all existing API tokens and invitation links from previous versions (#802)
+- Include project code into project authentication token. This invalidates all existing API tokens and invitation links from previous versions (#802 #843)
 - Drop support for Python 2 (#483)
 - Drop support for Python 3.5 (#571)
 - Drop support for MySQL (#743)
@@ -59,7 +59,6 @@ Changed
 - Change Dockerfile to install python dependencies at build time (#793)
 - Updating project settings doesn't require to enter or update project code (#774)
 - Bump dependencies: WTForms (#768) jinja2 (#753) itsdangerous (#756) flask (#755 #757 #764)
-- Authentication token are invalidate on project code change (#802)
 
 Fixed
 -----
@@ -75,6 +74,7 @@ Documentation
 
 - Reorganize "Contributing" documentation to be more accessible to new contributors
 - Improve documentation regarding database migrations (#569)
+- 
 
 4.1.5 (2020-07-26)
 ==================
