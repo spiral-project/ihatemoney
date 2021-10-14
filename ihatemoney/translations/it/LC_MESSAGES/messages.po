@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-17 17:31+0200\n"
+"POT-Creation-Date: 2021-10-14 22:10+0200\n"
 "PO-Revision-Date: 2021-03-17 15:18+0000\n"
 "Last-Translator: TomSolGit <Tommaso.solfa@gmail.com>\n"
 "Language: it\n"
@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -71,6 +71,16 @@ msgid ""
 msgstr ""
 "Un progetto con questo identificatore (\"%(project)s\") esiste già. Per "
 "favore scegli un identificatore nuovo"
+
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr ""
+
+#, fuzzy
+msgid "euro"
+msgstr "Periodo"
+
+msgid "Please, validate the captcha to proceed."
+msgstr ""
 
 msgid "Enter private code to confirm deletion"
 msgstr ""
@@ -208,10 +218,8 @@ msgstr ""
 "Questa password di amministrazione non è quella corretta. Solo %(num)d "
 "tentativi rimasti."
 
-msgid "You either provided a bad token or no project identifier."
+msgid "Provided token is invalid"
 msgstr ""
-"Hai fornito un token invalido o l'identificatore del progetto non è "
-"valido."
 
 msgid "This private code is not the right one"
 msgstr "Questo codice privato non è quello corretto"
@@ -260,6 +268,11 @@ msgstr "Progetto caricato con successo"
 
 msgid "Invalid JSON"
 msgstr "JSON non valido"
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
+msgstr ""
 
 msgid "Project successfully deleted"
 msgstr "Progetto rimosso con successo"
@@ -1023,3 +1036,10 @@ msgstr "Periodo"
 
 #~ msgid "removed"
 #~ msgstr "rimosso"
+
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr ""
+#~ "Hai fornito un token invalido o "
+#~ "l'identificatore del progetto non è "
+#~ "valido."
+

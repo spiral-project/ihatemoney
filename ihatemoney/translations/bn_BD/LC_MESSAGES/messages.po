@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-17 17:31+0200\n"
+"POT-Creation-Date: 2021-10-14 22:10+0200\n"
 "PO-Revision-Date: 2020-08-01 10:41+0000\n"
 "Last-Translator: Oymate <dhruboadittya96@gmail.com>\n"
 "Language: bn_BD\n"
@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -70,12 +70,20 @@ msgid ""
 "choose a new identifier"
 msgstr ""
 
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr ""
+
+msgid "euro"
+msgstr ""
+
+msgid "Please, validate the captcha to proceed."
+msgstr ""
+
 msgid "Enter private code to confirm deletion"
 msgstr "মুছে ফেলার জন্য ব্যক্তিগত কোড লিখুন"
 
 msgid "Unknown error"
-msgstr "অজানা ত্রুটি
-"
+msgstr "অজানা ত্রুট"
 
 #, fuzzy
 msgid "Invalid private code."
@@ -204,7 +212,7 @@ msgstr ""
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr ""
 
-msgid "You either provided a bad token or no project identifier."
+msgid "Provided token is invalid"
 msgstr ""
 
 msgid "This private code is not the right one"
@@ -248,6 +256,11 @@ msgid "Project successfully uploaded"
 msgstr ""
 
 msgid "Invalid JSON"
+msgstr ""
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
 msgstr ""
 
 msgid "Project successfully deleted"
@@ -951,3 +964,7 @@ msgstr ""
 
 #~ msgid "changed in a unknown way"
 #~ msgstr ""
+
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr ""
+

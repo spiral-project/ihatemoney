@@ -1,19 +1,20 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-17 17:31+0200\n"
+"POT-Creation-Date: 2021-10-14 22:10+0200\n"
 "PO-Revision-Date: 2021-10-10 05:05+0000\n"
 "Last-Translator: Frank.wu <me@wuzhiping.top>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
-"i-hate-money/i-hate-money/zh_Hans/>\n"
 "Language: zh_Hans\n"
+"Language-Team: Chinese (Simplified) "
+"<https://hosted.weblate.org/projects/i-hate-money/i-hate-money/zh_Hans/>"
+"\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.9-dev\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -66,6 +67,16 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr "账目(“%(project)s”)已存在，请选择一个新名称"
+
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr ""
+
+#, fuzzy
+msgid "euro"
+msgstr "期间"
+
+msgid "Please, validate the captcha to proceed."
+msgstr ""
 
 msgid "Enter private code to confirm deletion"
 msgstr "请输入专用代码以确认删除"
@@ -199,8 +210,8 @@ msgstr "登录失败次数过多，请稍后重试。"
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr "管理密码有误，只剩 %(num)d次尝试机会。"
 
-msgid "You either provided a bad token or no project identifier."
-msgstr "你输入了错误的令牌或没有项目标识符。"
+msgid "Provided token is invalid"
+msgstr ""
 
 msgid "This private code is not the right one"
 msgstr "专用码不正确"
@@ -244,6 +255,11 @@ msgstr "项目成功上传"
 
 msgid "Invalid JSON"
 msgstr "JSON无效"
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
+msgstr ""
 
 msgid "Project successfully deleted"
 msgstr "项目成功删除"
@@ -965,3 +981,7 @@ msgstr "期间"
 
 #~ msgid "removed"
 #~ msgstr "移除"
+
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr "你输入了错误的令牌或没有项目标识符。"
+

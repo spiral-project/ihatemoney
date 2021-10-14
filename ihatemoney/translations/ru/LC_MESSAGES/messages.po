@@ -1,20 +1,20 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-17 17:31+0200\n"
+"POT-Creation-Date: 2021-10-14 22:10+0200\n"
 "PO-Revision-Date: 2021-09-20 12:38+0000\n"
 "Last-Translator: Роман Прокопов <pochta.romana.iz.vyborga@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/ru/>\n"
 "Language: ru\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/ru/>\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.9-dev\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -71,6 +71,16 @@ msgid ""
 msgstr ""
 "Проект с идентификатором (\"%(project)s\") уже существует. Пожалуйста, "
 "выберете новый идентификатор"
+
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr ""
+
+#, fuzzy
+msgid "euro"
+msgstr "Период"
+
+msgid "Please, validate the captcha to proceed."
+msgstr ""
 
 msgid "Enter private code to confirm deletion"
 msgstr ""
@@ -206,10 +216,8 @@ msgstr "Слишком много неудачных попыток входа, 
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr "Этот пароль администратора неправильный. Осталось только %(num)d попыток."
 
-msgid "You either provided a bad token or no project identifier."
+msgid "Provided token is invalid"
 msgstr ""
-"Вы либо предоставили неверный токен, либо не указали идентификатор "
-"проекта."
 
 msgid "This private code is not the right one"
 msgstr "Этот приватный код не подходит"
@@ -259,6 +267,11 @@ msgstr "Проект успешно загружен"
 
 msgid "Invalid JSON"
 msgstr "Неправильный JSON"
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
+msgstr ""
 
 msgid "Project successfully deleted"
 msgstr "Проект удалён"
@@ -1011,3 +1024,9 @@ msgstr "Период"
 
 #~ msgid "removed"
 #~ msgstr "удалено"
+
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr ""
+#~ "Вы либо предоставили неверный токен, "
+#~ "либо не указали идентификатор проекта."
+

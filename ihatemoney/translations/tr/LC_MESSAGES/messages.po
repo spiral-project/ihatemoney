@@ -1,19 +1,19 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-17 17:31+0200\n"
+"POT-Creation-Date: 2021-10-14 22:10+0200\n"
 "PO-Revision-Date: 2021-07-24 08:34+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/tr/>\n"
 "Language: tr\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/tr/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7.2-dev\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -72,6 +72,16 @@ msgid ""
 msgstr ""
 "Bu tanımlayıcıya sahip bir proje (\"%(project)s\") zaten var. Lütfen yeni"
 " bir tanımlayıcı seçin"
+
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr ""
+
+#, fuzzy
+msgid "euro"
+msgstr "Dönem"
+
+msgid "Please, validate the captcha to proceed."
+msgstr ""
 
 msgid "Enter private code to confirm deletion"
 msgstr "Silme işlemini onaylamak için özel kodu girin"
@@ -207,8 +217,8 @@ msgstr ""
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr "Bu yönetici parolası doğru değil. Sadece %(num)d tane deneme kaldı."
 
-msgid "You either provided a bad token or no project identifier."
-msgstr "Yanlış bir belirteç sağladınız veya proje tanımlayıcısı belirtmediniz."
+msgid "Provided token is invalid"
+msgstr ""
 
 msgid "This private code is not the right one"
 msgstr "Bu özel kod doğru değil"
@@ -257,6 +267,11 @@ msgstr "Proje başarıyla karşıya yüklendi"
 
 msgid "Invalid JSON"
 msgstr "Geçersiz JSON"
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
+msgstr ""
 
 msgid "Project successfully deleted"
 msgstr "Proje başarıyla silindi"
@@ -1010,3 +1025,7 @@ msgstr "Dönem"
 
 #~ msgid "removed"
 #~ msgstr "kaldırıldı"
+
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr "Yanlış bir belirteç sağladınız veya proje tanımlayıcısı belirtmediniz."
+

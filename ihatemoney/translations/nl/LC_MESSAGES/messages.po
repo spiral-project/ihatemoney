@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-07-17 17:31+0200\n"
+"POT-Creation-Date: 2021-10-14 22:10+0200\n"
 "PO-Revision-Date: 2021-02-17 02:50+0000\n"
 "Last-Translator: Sander Kooijmans <weblate@gogognome.nl>\n"
 "Language: nl\n"
@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -69,6 +69,16 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr "Er is al een project genaamd (\"%(project)s\"). Kies een andere naam"
+
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr ""
+
+#, fuzzy
+msgid "euro"
+msgstr "Periode"
+
+msgid "Please, validate the captcha to proceed."
+msgstr ""
 
 msgid "Enter private code to confirm deletion"
 msgstr ""
@@ -204,8 +214,8 @@ msgstr "Te vaak onjuist ingelogd. Probeer het later opnieuw."
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr "Het admin-wachtwoord is onjuist. Je kunt het nog %(num)d keer proberen."
 
-msgid "You either provided a bad token or no project identifier."
-msgstr "Je hebt een onjuiste toegangssleutel of geen project-id opgegeven."
+msgid "Provided token is invalid"
+msgstr ""
 
 msgid "This private code is not the right one"
 msgstr "Deze privécode is onjuist"
@@ -256,6 +266,11 @@ msgstr "Project succesvol geüpload"
 
 msgid "Invalid JSON"
 msgstr "Ongeldige JSON"
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
+msgstr ""
 
 msgid "Project successfully deleted"
 msgstr "Project is verwijderd"
@@ -1010,3 +1025,7 @@ msgstr "Periode"
 
 #~ msgid "changed in a unknown way"
 #~ msgstr ""
+
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr "Je hebt een onjuiste toegangssleutel of geen project-id opgegeven."
+

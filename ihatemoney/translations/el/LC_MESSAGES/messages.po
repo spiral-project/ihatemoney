@@ -1,19 +1,19 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-17 17:31+0200\n"
+"POT-Creation-Date: 2021-10-14 22:10+0200\n"
 "PO-Revision-Date: 2021-08-01 08:34+0000\n"
 "Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
-"Language-Team: Greek <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/el/>\n"
 "Language: el\n"
+"Language-Team: Greek <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/el/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -69,8 +69,18 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
-"Ένα έργο με αυτό το αναγνωριστικό (\"%(project)s\") υπάρχει ήδη. Παρακαλώ "
-"επιλέξτε ένα νέο αναγνωριστικό"
+"Ένα έργο με αυτό το αναγνωριστικό (\"%(project)s\") υπάρχει ήδη. Παρακαλώ"
+" επιλέξτε ένα νέο αναγνωριστικό"
+
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr ""
+
+#, fuzzy
+msgid "euro"
+msgstr "Περίοδος"
+
+msgid "Please, validate the captcha to proceed."
+msgstr ""
 
 msgid "Enter private code to confirm deletion"
 msgstr "Εισαγάγετε ιδιωτικό κωδικό για επιβεβαίωση της διαγραφής"
@@ -210,8 +220,8 @@ msgstr ""
 "Αυτός ο κωδικός διαχειριστή δεν είναι σωστός. Μένουν μόνο %(num)d "
 "προσπάθειες."
 
-msgid "You either provided a bad token or no project identifier."
-msgstr "Είτε δώσατε ένα εσφαλμένο διακριτικό είτε δεν δώσατε αναγνωριστικό έργου."
+msgid "Provided token is invalid"
+msgstr ""
 
 msgid "This private code is not the right one"
 msgstr "Αυτός ο ιδιωτικός κωδικός δεν είναι ο σωστός"
@@ -257,6 +267,11 @@ msgstr "Έργο που φορτώθηκε επιτυχώς"
 
 msgid "Invalid JSON"
 msgstr "Η JSON δεν είναι έγκυρη"
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
+msgstr ""
 
 msgid "Project successfully deleted"
 msgstr "Το πρότζεκτ διαγράφηκε επιτυχώς"
@@ -977,3 +992,9 @@ msgstr "Περίοδος"
 
 #~ msgid "removed"
 #~ msgstr "αφαιρέθηκε"
+
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr ""
+#~ "Είτε δώσατε ένα εσφαλμένο διακριτικό "
+#~ "είτε δεν δώσατε αναγνωριστικό έργου."
+
