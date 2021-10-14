@@ -74,7 +74,6 @@ Documentation
 
 - Reorganize "Contributing" documentation to be more accessible to new contributors
 - Improve documentation regarding database migrations (#569)
-- 
 
 4.1.5 (2020-07-26)
 ==================
