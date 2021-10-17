@@ -42,7 +42,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}
+          images: ${{ secrets.DOCKERHUB_ORGANISATION }}/${{ secrets.DOCKERHUB_REPOSITORY }}
 
       - uses: docker/login-action@v1
         with:
