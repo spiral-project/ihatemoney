@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-14 22:10+0200\n"
-"PO-Revision-Date: 2021-10-13 20:00+0000\n"
+"PO-Revision-Date: 2021-10-17 04:56+0000\n"
 "Last-Translator: a-g-rao <athrigrao@gmail.com>\n"
+"Language-Team: Kannada <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/kn/>\n"
 "Language: kn\n"
-"Language-Team: Kannada <https://hosted.weblate.org/projects/i-hate-money/i-"
-"hate-money/kn/>\n"
-"Plural-Forms: nplurals=2; plural=n > 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.9-dev\n"
 "Generated-By: Babel 2.9.1\n"
 
 msgid ""
@@ -71,7 +72,7 @@ msgid "Which is a real currency: Euro or Petro dollar?"
 msgstr ""
 
 msgid "euro"
-msgstr ""
+msgstr "ಯೂರೋ"
 
 msgid "Please, validate the captcha to proceed."
 msgstr ""
@@ -300,29 +301,29 @@ msgstr ""
 
 #, python-format
 msgid "User '%(name)s' has been removed"
-msgstr ""
+msgstr "ಬಳಸುಗ %(name)s ರನ್ನು ತೆಗೆಯಲಾಗಿದೆ"
 
 #, python-format
 msgid "User '%(name)s' has been edited"
-msgstr ""
+msgstr "ಬಳಸುಗ %(name)s ರನ್ನು ಪರಿಷ್ಕರಿಸಲಾಗಿದೆ"
 
 msgid "The bill has been added"
-msgstr ""
+msgstr "ಬೆಲೆಪಟ್ಟಿಯನ್ನು ಸೇರಿಸಲಾಗಿದೆ"
 
 msgid "Error deleting bill"
-msgstr ""
+msgstr "ಬೆಲೆಪಟ್ಟಿಹನ್ನು ತೆಗೆಯಲು ದೋಷವಾಗಿದೆ"
 
 msgid "The bill has been deleted"
-msgstr ""
+msgstr "ಬೆಲೆಪಟ್ಟಿಯನ್ನುತೆಗೆಯಲಾಗಿದೆ"
 
 msgid "The bill has been modified"
-msgstr ""
+msgstr "ಬೆಲೆಪಟ್ಟಿಯನ್ನು ಮಾರ್ಪಡಿಸಲಾಗಿದೆ"
 
 msgid "Error deleting project history"
-msgstr ""
+msgstr "ಯೋಜನೆಯ ಇತಿಹಾಸವನ್ನು ತೆಗೆಯಲು ದೋಷವಾಗಿದೆ"
 
 msgid "Deleted project history."
-msgstr ""
+msgstr "ಯೋಜನೆ ಇತಿಹಾಸವನ್ನು ತೆಗೆಯಲಾಗಿದೆ."
 
 msgid "Error deleting recorded IP addresses"
 msgstr ""
@@ -331,13 +332,13 @@ msgid "Deleted recorded IP addresses in project history."
 msgstr ""
 
 msgid "Sorry, we were unable to find the page you've asked for."
-msgstr ""
+msgstr "ಕ್ಷಮಿಸಿ, ನೀವು ಕೇಳಿದ ಪುಟವನ್ನುಹೂಡುಕಲಾಗುತ್ತಿಲ್ಲ."
 
 msgid "The best thing to do is probably to get back to the main page."
 msgstr ""
 
 msgid "Back to the list"
-msgstr ""
+msgstr "ಪಟ್ಟಿಗೆ ವಾಪಸಾಗಿದ್ದೇವೆ"
 
 msgid "Administration tasks are currently disabled."
 msgstr ""
