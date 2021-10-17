@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Test image
+      - name: Test image # Checks we are able to run the container.
         run: docker compose -f docker-compose.test.yml run sut
 
   build:

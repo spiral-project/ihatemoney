@@ -1,3 +1,5 @@
+# This is an example. Please change the configuration variables listed here.
+
 version: "3.9"
 
 services:
