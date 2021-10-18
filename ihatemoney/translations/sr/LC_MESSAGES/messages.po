@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-14 22:10+0200\n"
+"POT-Creation-Date: 2021-10-18 23:00+0200\n"
 "PO-Revision-Date: 2021-04-09 13:26+0000\n"
 "Last-Translator: Rastko Sarcevic <ralesarcevic@gmail.com>\n"
 "Language: sr\n"
@@ -41,6 +41,9 @@ msgstr ""
 
 msgid "Default Currency"
 msgstr "Podrazumevana Valuta"
+
+msgid "Setting a default currency enables currency conversion between bills"
+msgstr ""
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "

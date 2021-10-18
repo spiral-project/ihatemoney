@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-14 22:10+0200\n"
+"POT-Creation-Date: 2021-10-18 23:00+0200\n"
 "PO-Revision-Date: 2021-10-10 05:05+0000\n"
 "Last-Translator: Frank.wu <me@wuzhiping.top>\n"
 "Language: zh_Hans\n"
@@ -41,6 +41,9 @@ msgstr "用IP追踪项目历史"
 
 msgid "Default Currency"
 msgstr "默认货币"
+
+msgid "Setting a default currency enables currency conversion between bills"
+msgstr ""
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "

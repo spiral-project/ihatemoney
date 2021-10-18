@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-14 22:10+0200\n"
+"POT-Creation-Date: 2021-10-18 23:00+0200\n"
 "PO-Revision-Date: 2020-08-01 10:41+0000\n"
 "Last-Translator: Oymate <dhruboadittya96@gmail.com>\n"
 "Language: bn_BD\n"
@@ -43,6 +43,9 @@ msgstr "প্রকল্পের ইতিহাসের জন্য আই
 
 msgid "Default Currency"
 msgstr "ডিফল্ট মুদ্রা"
+
+msgid "Setting a default currency enables currency conversion between bills"
+msgstr ""
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "

@@ -117,6 +117,9 @@ class EditProjectForm(FlaskForm):
         _("Default Currency"),
         validators=[DataRequired()],
         default=CurrencyConverter.no_currency,
+        description=_(
+            "Setting a default currency enables currency conversion between bills"
+        ),
     )
 
     def __init__(self, *args, **kwargs):

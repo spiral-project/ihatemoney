@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-14 22:10+0200\n"
+"POT-Creation-Date: 2021-10-18 23:00+0200\n"
 "PO-Revision-Date: 2021-02-17 02:50+0000\n"
 "Last-Translator: Sander Kooijmans <weblate@gogognome.nl>\n"
 "Language: nl\n"
@@ -43,6 +43,9 @@ msgstr "IP-tracking voor projectgeschiedenis gebruiken"
 
 msgid "Default Currency"
 msgstr "Standaard munteenheid"
+
+msgid "Setting a default currency enables currency conversion between bills"
+msgstr ""
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "

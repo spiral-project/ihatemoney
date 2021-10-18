@@ -78,7 +78,6 @@
     {% if config['ENABLE_CAPTCHA'] %}
     {{ input(form.captcha) }}
     {% endif %}
-    {{ input(form.default_currency) }}
     {% if not home %}
     {{ submit(form.submit, home=True) }}
     {% endif %}

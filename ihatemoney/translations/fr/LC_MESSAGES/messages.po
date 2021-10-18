@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-14 22:10+0200\n"
+"POT-Creation-Date: 2021-10-18 23:00+0200\n"
 "PO-Revision-Date: 2021-07-17 21:52+0000\n"
 "Last-Translator: Baptiste <weblate@bitsofnetworks.org>\n"
 "Language: fr\n"
@@ -46,6 +46,9 @@ msgstr "Collecter les adresses IP dans l'historique de projet"
 
 msgid "Default Currency"
 msgstr "Devise par défaut"
+
+msgid "Setting a default currency enables currency conversion between bills"
+msgstr ""
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
