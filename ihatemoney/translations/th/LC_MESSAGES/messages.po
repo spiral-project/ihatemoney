@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-14 22:10+0200\n"
+"POT-Creation-Date: 2021-10-18 23:00+0200\n"
 "PO-Revision-Date: 2021-09-16 14:36+0000\n"
 "Last-Translator: PPNplus <ppnplus@protonmail.com>\n"
 "Language: th\n"
@@ -40,6 +40,9 @@ msgstr "ใช้การติดตามที่อยู่ IP สำห�
 
 msgid "Default Currency"
 msgstr "สกุลเงินค่าเริ่มต้น"
+
+msgid "Setting a default currency enables currency conversion between bills"
+msgstr ""
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "

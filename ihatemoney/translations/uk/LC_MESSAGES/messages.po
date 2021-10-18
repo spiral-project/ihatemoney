@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-14 22:10+0200\n"
+"POT-Creation-Date: 2021-10-18 23:00+0200\n"
 "PO-Revision-Date: 2020-05-21 18:48+0000\n"
 "Last-Translator: Andrew Zaplitnyak <zaplitnyak@gmail.com>\n"
 "Language: uk\n"
@@ -42,6 +42,9 @@ msgstr "Слідкувати за мережевою адресою(IP) для �
 
 msgid "Default Currency"
 msgstr "Стандартна валюта"
+
+msgid "Setting a default currency enables currency conversion between bills"
+msgstr ""
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "

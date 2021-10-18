@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-14 22:10+0200\n"
+"POT-Creation-Date: 2021-10-18 23:00+0200\n"
 "PO-Revision-Date: 2021-03-17 15:18+0000\n"
 "Last-Translator: TomSolGit <Tommaso.solfa@gmail.com>\n"
 "Language: it\n"
@@ -43,6 +43,9 @@ msgstr "Utilizzare la localizzazione IP per lo storico del progetto"
 
 msgid "Default Currency"
 msgstr "Valuta predefinita"
+
+msgid "Setting a default currency enables currency conversion between bills"
+msgstr ""
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "

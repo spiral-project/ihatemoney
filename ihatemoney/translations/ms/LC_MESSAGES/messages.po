@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-14 22:10+0200\n"
+"POT-Creation-Date: 2021-10-18 23:00+0200\n"
 "PO-Revision-Date: 2021-07-18 12:32+0000\n"
 "Last-Translator: Kemystra <izzmin97@gmail.com>\n"
 "Language: ms\n"
@@ -43,6 +43,9 @@ msgstr "Gunakan penjejakan IP untuk sejarah projek"
 #, fuzzy
 msgid "Default Currency"
 msgstr "Mata wang asal"
+
+msgid "Setting a default currency enables currency conversion between bills"
+msgstr ""
 
 #, fuzzy
 msgid ""

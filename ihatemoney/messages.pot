@@ -24,6 +24,9 @@ msgstr ""
 msgid "Default Currency"
 msgstr ""
 
+msgid "Setting a default currency enables currency conversion between bills"
+msgstr ""
+
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."

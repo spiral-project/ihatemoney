@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-14 22:10+0200\n"
+"POT-Creation-Date: 2021-10-18 23:00+0200\n"
 "PO-Revision-Date: 2021-09-23 19:36+0000\n"
 "Last-Translator: Christian H. <sunrisechain@gmail.com>\n"
 "Language: de\n"
@@ -42,6 +42,9 @@ msgstr "IP Tracking für die Projekt-Historie verwenden"
 
 msgid "Default Currency"
 msgstr "Standardwährung"
+
+msgid "Setting a default currency enables currency conversion between bills"
+msgstr ""
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
