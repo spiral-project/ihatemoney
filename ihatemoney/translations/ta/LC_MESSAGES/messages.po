@@ -623,7 +623,7 @@ msgstr ""
 
 #, fuzzy, python-format
 msgid "Project renamed to %(new_project_name)s"
-msgstr "திட்ட அடையாளங்காட்டி %(project)s"
+msgstr "திட்ட அடையாளங்காட்டி %(new_project_name)s"
 
 #, python-format
 msgid "Project contact email changed to %(new_email)s"
@@ -989,4 +989,3 @@ msgstr ""
 #~ msgstr ""
 #~ "நீங்கள் ஒரு மோசமான டோக்கனை வழங்கியுள்ளீர்கள்"
 #~ " அல்லது திட்ட அடையாளங்காட்டி இல்லை."
-

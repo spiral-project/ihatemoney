@@ -623,7 +623,7 @@ msgstr "プロジェクトの私用コードが変更された"
 
 #, fuzzy, python-format
 msgid "Project renamed to %(new_project_name)s"
-msgstr "プロジェクト名は%(project)s"
+msgstr "プロジェクト名は%(new_project_name)s"
 
 #, fuzzy, python-format
 msgid "Project contact email changed to %(new_email)s"
@@ -980,4 +980,3 @@ msgstr "期間"
 
 #~ msgid "You either provided a bad token or no project identifier."
 #~ msgstr "無効な入力かプロジェクト名なし。"
-

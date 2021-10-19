@@ -627,7 +627,7 @@ msgstr "Ο ιδιωτικός κωδικός έργου άλλαξε"
 
 #, fuzzy, python-format
 msgid "Project renamed to %(new_project_name)s"
-msgstr "Το αναγνωριστικό έργου είναι %(project)s"
+msgstr "Το αναγνωριστικό έργου είναι %(new_project_name)s"
 
 #, fuzzy, python-format
 msgid "Project contact email changed to %(new_email)s"
@@ -1000,4 +1000,3 @@ msgstr "Περίοδος"
 #~ msgstr ""
 #~ "Είτε δώσατε ένα εσφαλμένο διακριτικό "
 #~ "είτε δεν δώσατε αναγνωριστικό έργου."
-

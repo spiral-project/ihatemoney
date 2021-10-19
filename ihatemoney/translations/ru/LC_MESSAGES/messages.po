@@ -647,7 +647,7 @@ msgstr "Приватный код проекта изменен"
 
 #, fuzzy, python-format
 msgid "Project renamed to %(new_project_name)s"
-msgstr "Идентификатор проекта: %(project)s"
+msgstr "Идентификатор проекта: %(new_project_name)s"
 
 #, fuzzy, python-format
 msgid "Project contact email changed to %(new_email)s"
@@ -1032,4 +1032,3 @@ msgstr "Период"
 #~ msgstr ""
 #~ "Вы либо предоставили неверный токен, "
 #~ "либо не указали идентификатор проекта."
-

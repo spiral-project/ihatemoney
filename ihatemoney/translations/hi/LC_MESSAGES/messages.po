@@ -649,7 +649,7 @@ msgstr "परियोजना के निजी कोड को बदल 
 
 #, fuzzy, python-format
 msgid "Project renamed to %(new_project_name)s"
-msgstr "प्रोजेक्ट पहचानकर्ता %(project)s है"
+msgstr "प्रोजेक्ट पहचानकर्ता %(new_project_name)s है"
 
 #, fuzzy, python-format
 msgid "Project contact email changed to %(new_email)s"
@@ -1017,4 +1017,3 @@ msgstr "अवधि"
 #~ "आपने या तो एक खराब टोकन प्रदान "
 #~ "किया है या कोई प्रोजेक्ट पहचानकर्ता "
 #~ "नहीं है।"
-

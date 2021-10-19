@@ -640,7 +640,7 @@ msgstr "Privécode van project gewijzigd"
 
 #, fuzzy, python-format
 msgid "Project renamed to %(new_project_name)s"
-msgstr "Het project-id is %(project)s"
+msgstr "Het project-id is %(new_project_name)s"
 
 #, python-format
 msgid "Project contact email changed to %(new_email)s"
@@ -1031,4 +1031,3 @@ msgstr "Periode"
 
 #~ msgid "You either provided a bad token or no project identifier."
 #~ msgstr "Je hebt een onjuiste toegangssleutel of geen project-id opgegeven."
-
