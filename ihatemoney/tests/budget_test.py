@@ -318,7 +318,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         result = self.client.get("/raclette/")
 
-        # Empty bill list and no members, should now propose to add participants first
+        # Empty bill list and no participant, should now propose to add participants first
         self.assertIn(
             'You probably want to <a href="/raclette/members/add"',
             result.data.decode("utf-8"),
@@ -883,7 +883,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             follow_redirects=True,
         )
         self.assertIn(
-            "<thead><tr><th>Project</th><th>Number of members",
+            "<thead><tr><th>Project</th><th>Number of participants",
             resp.data.decode("utf-8"),
         )
 
@@ -1844,11 +1844,11 @@ class BudgetTestCase(IhatemoneyTestCase):
                 import_project(file, project)
 
     def test_access_other_projects(self):
-        """Test that accessing or editing bills and members from another project fails"""
+        """Test that accessing or editing bills and participants from another project fails"""
         # Create project
         self.post_project("raclette")
 
-        # Add members
+        # Add participants
         self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
         self.client.post("/raclette/members/add", data={"name": "fred"})
         self.client.post("/raclette/members/add", data={"name": "tata"})
