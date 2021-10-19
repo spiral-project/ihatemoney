@@ -3,10 +3,16 @@ Changelog
 
 This document describes changes between each past release.
 
-5.0.1 (unreleased)
+5.0.2 (unreleased)
 ==================
 
 - Nothing changed yet.
+
+
+5.0.1 (2021-10-20)
+==================
+
+- Include images in the package archives (#872)
 
 
 5.0.0 (2021-10-19)
