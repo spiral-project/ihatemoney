@@ -60,6 +60,13 @@ Added
 - Add translations for Greek, Esperanto, Italian, Japanese, Portuguese and Swedish
 - Publish an `official docker image <https://hub.docker.com/r/ihatemoney/ihatemoney>`_
 
+New settings
+------------
+
+- Add `ENABLE_CAPTCHA <https://ihatemoney.readthedocs.io/en/latest/configuration.html#enable-captcha>`_ setting (#844)
+- Use and document `SESSION_COOKIE_SECURE <https://ihatemoney.readthedocs.io/en/latest/configuration.html#session-cookie-secure>`_ setting (#845)
+- Use and document `BABEL_DEFAULT_TIMEZONE <https://ihatemoney.readthedocs.io/en/latest/configuration.html#babel-default-timezone>`_ setting (#590)
+
 Changed
 -------
 
