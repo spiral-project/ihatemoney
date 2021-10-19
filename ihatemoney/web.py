@@ -73,7 +73,7 @@ login_throttler = LoginThrottler(max_attempts=3, delay=1)
 def requires_admin(bypass=None):
     """Require admin permissions for @requires_admin decorated endpoints.
 
-    This has no effect if ADMIN_PASSWORD is empty.
+    This has no effect if the ADMIN_PASSWORD is empty.
 
     :param bypass: Used to conditionnaly bypass the admin authentication.
                    It expects a tuple containing the name of an application
@@ -697,7 +697,7 @@ def reactivate(member_id):
     # Used for CSRF validation
     form = EmptyForm()
     if not form.validate():
-        flash(format_form_errors(form, _("Error activating member")), category="danger")
+        flash(format_form_errors(form, _("Error activating participant")), category="danger")
         return redirect(url_for(".list_bills"))
 
     person = (
@@ -717,7 +717,7 @@ def remove_member(member_id):
     # Used for CSRF validation
     form = EmptyForm()
     if not form.validate():
-        flash(format_form_errors(form, _("Error removing member")), category="danger")
+        flash(format_form_errors(form, _("Error removing participant")), category="danger")
         return redirect(url_for(".list_bills"))
 
     member = g.project.remove_member(member_id)
@@ -725,14 +725,13 @@ def remove_member(member_id):
         if not member.activated:
             flash(
                 _(
-                    "User '%(name)s' has been deactivated. It will still "
-                    "appear in the users list until its balance "
-                    "becomes zero.",
+                    "Participant '%(name)s' has been deactivated. It will still "
+                    "appear in the list until its balance reach zero.",
                     name=member.name,
                 )
             )
         else:
-            flash(_("User '%(name)s' has been removed", name=member.name))
+            flash(_("Participant '%(name)s' has been removed", name=member.name))
     return redirect(url_for(".list_bills"))
 
 
@@ -746,7 +745,7 @@ def edit_member(member_id):
     if request.method == "POST" and form.validate():
         form.save(g.project, member)
         db.session.commit()
-        flash(_("User '%(name)s' has been edited", name=member.name))
+        flash(_("Participant '%(name)s' has been modified", name=member.name))
         return redirect(url_for(".list_bills"))
 
     form.fill(member)
@@ -894,7 +893,7 @@ def strip_ip_addresses():
 
 @main.route("/<project_id>/statistics")
 def statistics():
-    """Compute what each member has paid and spent and display it"""
+    """Compute what each participant has paid and spent and display it"""
     today = datetime.now()
     return render_template(
         "statistics.html",

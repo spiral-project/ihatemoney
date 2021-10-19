@@ -41,8 +41,8 @@ def strip_filter(string):
 def get_billform_for(project, set_default=True, **kwargs):
     """Return an instance of BillForm configured for a particular project.
 
-    :set_default: if set to True, on GET methods (usually when we want to
-                  display the default form, it will call set_default on it.
+    :set_default: if set to True, it will call set_default on GET methods (usually
+                  when we want to display the default form).
 
     """
     form = BillForm(**kwargs)
@@ -248,9 +248,8 @@ class DestructiveActionProjectForm(FlaskForm):
     - delete project itself
     - delete history
     - delete IP addresses in history
-    - possibly others in the future
 
-    It asks the user to enter the private code to confirm deletion.
+    It asks the participant to enter the private code to confirm deletion.
     """
 
     password = PasswordField(
@@ -388,7 +387,7 @@ class MemberForm(FlaskForm):
 
     def validate_name(form, field):
         if field.data == form.name.default:
-            raise ValidationError(_("User name incorrect"))
+            raise ValidationError(_("The participant name is invalid"))
         if (
             not form.edit
             and Person.query.filter(
@@ -397,7 +396,7 @@ class MemberForm(FlaskForm):
                 Person.activated,
             ).all()
         ):  # NOQA
-            raise ValidationError(_("This project already have this member"))
+            raise ValidationError(_("This project already have this participant"))
 
     def save(self, project, person):
         # if the user is already bound to the project, just reactivate him
@@ -413,7 +412,7 @@ class MemberForm(FlaskForm):
 
 
 class InviteForm(FlaskForm):
-    emails = StringField(_("People to notify"), render_kw={"class": "tag"})
+    emails = StringField(_("Participants to notify"), render_kw={"class": "tag"})
     submit = SubmitField(_("Send invites"))
 
     def validate_emails(form, field):

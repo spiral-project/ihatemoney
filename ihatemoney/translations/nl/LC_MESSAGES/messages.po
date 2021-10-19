@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-19 19:34+0200\n"
+"POT-Creation-Date: 2021-10-20 00:25+0200\n"
 "PO-Revision-Date: 2021-02-17 02:50+0000\n"
 "Last-Translator: Sander Kooijmans <weblate@gogognome.nl>\n"
 "Language: nl\n"
@@ -167,14 +167,17 @@ msgstr "Gewicht"
 msgid "Add"
 msgstr "Toevoegen"
 
-msgid "User name incorrect"
-msgstr "Verkeerde gebruikersnaam"
+#, fuzzy, python-format
+msgid "The participant name is invalid"
+msgstr "De gebruiker '%(name)s' is verwijderd"
 
-msgid "This project already have this member"
+#, fuzzy
+msgid "This project already have this participant"
 msgstr "Deze deelnemer is al lid van het project"
 
-msgid "People to notify"
-msgstr "Te melden personen"
+#, fuzzy
+msgid "Participants to notify"
+msgstr "deelnemers toevoegen"
 
 msgid "Send invites"
 msgstr "Uitnodigingen versturen"
@@ -301,31 +304,31 @@ msgstr ""
 msgid "%(member)s has been added"
 msgstr "%(member)s zijn toegevoegd"
 
-msgid "Error activating member"
+msgid "Error activating participant"
 msgstr ""
 
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr "%(name)s is wederom lid geworden van dit project"
 
-msgid "Error removing member"
+msgid "Error removing participant"
 msgstr ""
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
-"User '%(name)s' has been deactivated. It will still appear in the users "
-"list until its balance becomes zero."
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
 msgstr ""
 "De gebruiker '%(name)s' is gedeactiveerd. Hij/zij wordt nog steeds in de "
 "gebruikerslijst getoond totdat zijn/haar saldo op nul staat."
 
-#, python-format
-msgid "User '%(name)s' has been removed"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been removed"
 msgstr "De gebruiker '%(name)s' is verwijderd"
 
-#, python-format
-msgid "User '%(name)s' has been edited"
-msgstr "De gebruiker '%(name)s' is aangepast"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been modified"
+msgstr "De gebruiker '%(name)s' is verwijderd"
 
 msgid "The bill has been added"
 msgstr "De rekening is toegevoegd"
@@ -366,6 +369,10 @@ msgstr "Terug naar de lijst"
 msgid "Administration tasks are currently disabled."
 msgstr "Beheerderstaken zijn momenteel uitgeschakeld."
 
+#, fuzzy
+msgid "Authentication"
+msgstr "Documentatie"
+
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr "Het project dat je probeert te benaderen bestaat niet. Wil je"
 
@@ -381,8 +388,9 @@ msgstr "Nieuw project aanmaken"
 msgid "Project"
 msgstr "Project"
 
-msgid "Number of members"
-msgstr "Aantal deelnemers"
+#, fuzzy
+msgid "Number of participants"
+msgstr "deelnemers toevoegen"
 
 msgid "Number of bills"
 msgstr "Aantal rekeningen"
@@ -483,8 +491,9 @@ msgstr ""
 msgid "Add participant"
 msgstr "Deelnemer toevoegen"
 
-msgid "Edit this member"
-msgstr "Deze deelnemer bewerken"
+#, fuzzy
+msgid "Edit this participant"
+msgstr "Deelnemer toevoegen"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "jan.jansen@voorbeeld.nl, maria.magdalena@website.nl"
@@ -1031,3 +1040,25 @@ msgstr "Periode"
 
 #~ msgid "You either provided a bad token or no project identifier."
 #~ msgstr "Je hebt een onjuiste toegangssleutel of geen project-id opgegeven."
+
+#~ msgid "User name incorrect"
+#~ msgstr "Verkeerde gebruikersnaam"
+
+#~ msgid "People to notify"
+#~ msgstr "Te melden personen"
+
+#~ msgid "Error activating member"
+#~ msgstr ""
+
+#~ msgid "Error removing member"
+#~ msgstr ""
+
+#~ msgid "User '%(name)s' has been edited"
+#~ msgstr "De gebruiker '%(name)s' is aangepast"
+
+#~ msgid "Number of members"
+#~ msgstr "Aantal deelnemers"
+
+#~ msgid "Edit this member"
+#~ msgstr "Deze deelnemer bewerken"
+

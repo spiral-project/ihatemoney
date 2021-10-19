@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-19 19:34+0200\n"
+"POT-Creation-Date: 2021-10-20 00:25+0200\n"
 "PO-Revision-Date: 2021-09-23 19:36+0000\n"
 "Last-Translator: Christian H. <sunrisechain@gmail.com>\n"
 "Language: de\n"
@@ -170,14 +170,17 @@ msgstr "Gewichtung"
 msgid "Add"
 msgstr "Hinzufügen"
 
-msgid "User name incorrect"
-msgstr "Benutzername inkorrekt"
+#, fuzzy, python-format
+msgid "The participant name is invalid"
+msgstr "Teilnehmer %(name)s reaktiviert"
 
-msgid "This project already have this member"
+#, fuzzy
+msgid "This project already have this participant"
 msgstr "Der Benutzer ist bereits dem Projekt zugeordnet"
 
-msgid "People to notify"
-msgstr "Personen, die informiert werden sollen"
+#, fuzzy
+msgid "Participants to notify"
+msgstr "Teilnehmer hinzufügen"
 
 msgid "Send invites"
 msgstr "Einladung senden"
@@ -306,31 +309,33 @@ msgstr ""
 msgid "%(member)s has been added"
 msgstr "%(member)s wurde hinzugefügt"
 
-msgid "Error activating member"
+#, fuzzy
+msgid "Error activating participant"
 msgstr "Fehler beim Aktivieren des Benutzers"
 
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr "%(name)s ist/sind wieder Teil von diesem Projekt"
 
-msgid "Error removing member"
+#, fuzzy
+msgid "Error removing participant"
 msgstr "Fehler beim Löschen des Benutzers"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
-"User '%(name)s' has been deactivated. It will still appear in the users "
-"list until its balance becomes zero."
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
 msgstr ""
 "Der Benutzer '%(name)s' wurde deaktiviert. Er wird weiterhin in der "
 "Benutzerliste erscheinen, bis sein Saldo Null ist."
 
-#, python-format
-msgid "User '%(name)s' has been removed"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been removed"
 msgstr "Der Benutzer '%(name)s' wurde entfernt"
 
-#, python-format
-msgid "User '%(name)s' has been edited"
-msgstr "Der Benutzer '%(name)s' wurde bearbeitet"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been modified"
+msgstr "Teilnehmer %(name)s bearbeitet"
 
 msgid "The bill has been added"
 msgstr "Die Ausgabe wurde hinzugefügt"
@@ -368,6 +373,10 @@ msgstr "Zurück zur Liste"
 msgid "Administration tasks are currently disabled."
 msgstr "Administrationsaufgaben sind aktuell deaktiviert."
 
+#, fuzzy
+msgid "Authentication"
+msgstr "Dokumentation"
+
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr "Das Projekt existiert nicht, willst du"
 
@@ -383,8 +392,9 @@ msgstr "Neues Projekt erstellen"
 msgid "Project"
 msgstr "Projekt"
 
-msgid "Number of members"
-msgstr "Anzahl der Teilnehmer"
+#, fuzzy
+msgid "Number of participants"
+msgstr "Teilnehmer hinzufügen"
 
 msgid "Number of bills"
 msgstr "Anzahl der Ausgaben"
@@ -479,8 +489,9 @@ msgstr "Mehr Optionen"
 msgid "Add participant"
 msgstr "Teilnehmer hinzufügen"
 
-msgid "Edit this member"
-msgstr "Teilnehmer bearbeiten"
+#, fuzzy
+msgid "Edit this participant"
+msgstr "Teilnehmer hinzufügen"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "max.mustermann@beispiel.com, mary.moe@site.com"
@@ -1040,4 +1051,19 @@ msgstr "Zeitraum"
 #~ msgstr ""
 #~ "Du hast entweder einen ungültigen Token"
 #~ " oder keine Projekt-ID angegeben."
+
+#~ msgid "User name incorrect"
+#~ msgstr "Benutzername inkorrekt"
+
+#~ msgid "People to notify"
+#~ msgstr "Personen, die informiert werden sollen"
+
+#~ msgid "User '%(name)s' has been edited"
+#~ msgstr "Der Benutzer '%(name)s' wurde bearbeitet"
+
+#~ msgid "Number of members"
+#~ msgstr "Anzahl der Teilnehmer"
+
+#~ msgid "Edit this member"
+#~ msgstr "Teilnehmer bearbeiten"
 

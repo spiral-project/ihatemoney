@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-19 19:34+0200\n"
+"POT-Creation-Date: 2021-10-20 00:25+0200\n"
 "PO-Revision-Date: 2021-10-10 05:05+0000\n"
 "Last-Translator: Frank.wu <me@wuzhiping.top>\n"
 "Language: zh_Hans\n"
@@ -163,14 +163,17 @@ msgstr "权重"
 msgid "Add"
 msgstr "添加"
 
-msgid "User name incorrect"
-msgstr "用户名称不正确"
+#, fuzzy, python-format
+msgid "The participant name is invalid"
+msgstr "成员 %(name)s 被重新激活"
 
-msgid "This project already have this member"
+#, fuzzy
+msgid "This project already have this participant"
 msgstr "此项目已经包含此成员了"
 
-msgid "People to notify"
-msgstr "通知的人"
+#, fuzzy
+msgid "Participants to notify"
+msgstr "添加参与人"
 
 msgid "Send invites"
 msgstr "发送邀请"
@@ -287,29 +290,31 @@ msgstr "对不起，在发送邀请邮件时发生了错误。请检查邮箱的
 msgid "%(member)s has been added"
 msgstr "已添加%(member)s"
 
-msgid "Error activating member"
+#, fuzzy
+msgid "Error activating participant"
 msgstr "激活成员时出错"
 
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr "%(name)s 已经在项目里了"
 
-msgid "Error removing member"
+#, fuzzy
+msgid "Error removing participant"
 msgstr "删除成员时出错"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
-"User '%(name)s' has been deactivated. It will still appear in the users "
-"list until its balance becomes zero."
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
 msgstr "用户 '%(name)s'已被暂停，在余额为0之前会继续显示在用户列表里。"
 
-#, python-format
-msgid "User '%(name)s' has been removed"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been removed"
 msgstr "用户 '%(name)s'已被移除"
 
-#, python-format
-msgid "User '%(name)s' has been edited"
-msgstr "用户'%(name)s'已编辑"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been modified"
+msgstr "成员 %(name)s 已修改"
 
 msgid "The bill has been added"
 msgstr "帐单已添加"
@@ -347,6 +352,10 @@ msgstr "返回列表"
 msgid "Administration tasks are currently disabled."
 msgstr "管理任务目前禁用。"
 
+#, fuzzy
+msgid "Authentication"
+msgstr "文件"
+
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr "该项目不存在，你是否要"
 
@@ -362,8 +371,9 @@ msgstr "新建项目"
 msgid "Project"
 msgstr "项目"
 
-msgid "Number of members"
-msgstr "会员人数"
+#, fuzzy
+msgid "Number of participants"
+msgstr "添加参与人"
 
 msgid "Number of bills"
 msgstr "帐单数目"
@@ -458,8 +468,9 @@ msgstr "更多选项"
 msgid "Add participant"
 msgstr "添加参与人"
 
-msgid "Edit this member"
-msgstr "编辑成员"
+#, fuzzy
+msgid "Edit this participant"
+msgstr "添加参与人"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
@@ -987,4 +998,19 @@ msgstr "期间"
 
 #~ msgid "You either provided a bad token or no project identifier."
 #~ msgstr "你输入了错误的令牌或没有项目标识符。"
+
+#~ msgid "User name incorrect"
+#~ msgstr "用户名称不正确"
+
+#~ msgid "People to notify"
+#~ msgstr "通知的人"
+
+#~ msgid "User '%(name)s' has been edited"
+#~ msgstr "用户'%(name)s'已编辑"
+
+#~ msgid "Number of members"
+#~ msgstr "会员人数"
+
+#~ msgid "Edit this member"
+#~ msgstr "编辑成员"
 

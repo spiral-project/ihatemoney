@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-19 19:34+0200\n"
+"POT-Creation-Date: 2021-10-20 00:25+0200\n"
 "PO-Revision-Date: 2021-08-01 08:34+0000\n"
 "Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
 "Language: el\n"
@@ -171,14 +171,16 @@ msgstr "Βάρος"
 msgid "Add"
 msgstr "Προσθήκη"
 
-msgid "User name incorrect"
-msgstr "Λανθασμένο όνομα χρήστη"
+#, fuzzy, python-format
+msgid "The participant name is invalid"
+msgstr "Ο χρήστης '%(name)s' έχει αφαιρεθεί"
 
-msgid "This project already have this member"
+#, fuzzy
+msgid "This project already have this participant"
 msgstr "Αυτό το έργο έχει ήδη αυτό το μέλος"
 
-msgid "People to notify"
-msgstr "Πρόσωπα προς ενημέρωση"
+msgid "Participants to notify"
+msgstr ""
 
 msgid "Send invites"
 msgstr "Αποστολή προσκλήσεων"
@@ -299,29 +301,29 @@ msgstr ""
 msgid "%(member)s has been added"
 msgstr "%(member)s έχει προστεθεί"
 
-msgid "Error activating member"
+msgid "Error activating participant"
 msgstr ""
 
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr "%(name)s είναι και πάλι μέρος αυτού του έργου"
 
-msgid "Error removing member"
+msgid "Error removing participant"
 msgstr ""
 
 #, python-format
 msgid ""
-"User '%(name)s' has been deactivated. It will still appear in the users "
-"list until its balance becomes zero."
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
 msgstr ""
 
-#, python-format
-msgid "User '%(name)s' has been removed"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been removed"
 msgstr "Ο χρήστης '%(name)s' έχει αφαιρεθεί"
 
-#, python-format
-msgid "User '%(name)s' has been edited"
-msgstr "Ο χρήστης \"%(name)s\" έχει τροποποιηθεί"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been modified"
+msgstr "Ο χρήστης '%(name)s' έχει αφαιρεθεί"
 
 msgid "The bill has been added"
 msgstr "Ο λογαριασμός προστέθηκε"
@@ -362,6 +364,9 @@ msgstr "Επιστροφή στη λίστα"
 msgid "Administration tasks are currently disabled."
 msgstr "Οι εργασίες διαχείρισης είναι προς το παρόν απενεργοποιημένες."
 
+msgid "Authentication"
+msgstr ""
+
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr ""
 "Το έργο στο οποίο προσπαθείτε να αποκτήσετε πρόσβαση δεν υπάρχει, θέλετε "
@@ -379,8 +384,9 @@ msgstr "Δημιουργία νέου έργου"
 msgid "Project"
 msgstr "Πρότζεκτ"
 
-msgid "Number of members"
-msgstr "Αριθμός μελών"
+#, fuzzy
+msgid "Number of participants"
+msgstr "Προσθήκη συμμετέχοντος"
 
 msgid "Number of bills"
 msgstr "Αριθμός λογαριασμών"
@@ -482,8 +488,9 @@ msgstr ""
 msgid "Add participant"
 msgstr "Προσθήκη συμμετέχοντος"
 
-msgid "Edit this member"
-msgstr "Επεξεργασία αυτού του μέλους"
+#, fuzzy
+msgid "Edit this participant"
+msgstr "Προσθήκη συμμετέχοντος"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr ""
@@ -1000,3 +1007,31 @@ msgstr "Περίοδος"
 #~ msgstr ""
 #~ "Είτε δώσατε ένα εσφαλμένο διακριτικό "
 #~ "είτε δεν δώσατε αναγνωριστικό έργου."
+
+#~ msgid "User name incorrect"
+#~ msgstr "Λανθασμένο όνομα χρήστη"
+
+#~ msgid "People to notify"
+#~ msgstr "Πρόσωπα προς ενημέρωση"
+
+#~ msgid "Error activating member"
+#~ msgstr ""
+
+#~ msgid "Error removing member"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "User '%(name)s' has been deactivated. It"
+#~ " will still appear in the users "
+#~ "list until its balance becomes zero."
+#~ msgstr ""
+
+#~ msgid "User '%(name)s' has been edited"
+#~ msgstr "Ο χρήστης \"%(name)s\" έχει τροποποιηθεί"
+
+#~ msgid "Number of members"
+#~ msgstr "Αριθμός μελών"
+
+#~ msgid "Edit this member"
+#~ msgstr "Επεξεργασία αυτού του μέλους"
+

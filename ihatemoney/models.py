@@ -123,9 +123,9 @@ class Project(db.Model):
 
     @property
     def members_stats(self):
-        """Compute what each member has paid
+        """Compute what each participant has paid
 
-        :return: one stat dict per member
+        :return: one stat dict per participant
         :rtype list:
         """
         return [
@@ -488,7 +488,7 @@ class Person(db.Model):
         }
 
     def has_bills(self):
-        """return if the user do have bills or not"""
+        """return if the participant do have bills or not"""
         bills_as_ower_number = (
             db.session.query(billowers)
             .filter(billowers.columns.get("person_id") == self.id)
