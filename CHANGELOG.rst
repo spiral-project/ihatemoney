@@ -6,7 +6,7 @@ This document describes changes between each past release.
 5.0.1 (unreleased)
 ==================
 
-- Nothing changed yet.
+- Include images in the package archives (#872)
 
 
 5.0.0 (2021-10-19)
