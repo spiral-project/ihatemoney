@@ -84,13 +84,17 @@
     </div>
 
 {% if bills.pages > 1 %}
-    <span id="previous-page" class="float-left">
-      <a class="btn btn-outline-secondary float-left {% if bills.page == 1 %}disabled{% endif %}" href="{{ url_for('main.list_bills', page=bills.prev_num) }}">&laquo; {{ _("Newer bills") }}</a>
-    </span>
-
-    <span id="next-page" class="float-left">
-      <a class="btn btn-outline-secondary float-left {% if bills.page == bills.pages %}disabled{% endif %}" href="{{ url_for('main.list_bills', page=bills.next_num) }}">{{ _("Older bills") }} &raquo;</a>
-    </span>
+<ul class="pagination" id="pagination-top">
+  <li class="page-item {% if bills.page == 1 %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.prev_num) }}">&laquo; {{ _("Newer bills") }}</a></li>
+  {%- for page in bills.iter_pages() %}
+  {% if page %}
+  <li class="page-item {% if page == bills.page %}active{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=page) }}">{{ page }}</a></li>
+  {% else %}
+  <li class="page-item disabled"><span class="ellipsis page-link">…</span></li>
+  {% endif %}
+  {%- endfor %}
+  <li class="page-item {% if bills.page == bills.pages %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.next_num) }}">{{ _("Older bills") }} &raquo;</a></li>
+</ul>
 {% endif %}
 
     {% if bills.total > 0 %}
@@ -146,7 +150,7 @@
 
 {% if bills.pages > 1 %}
 <ul class="pagination">
-  <li class="page-item {% if bills.page == 1 %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.prev_num) }}">&laquo; Newer bills</a></li>
+  <li class="page-item {% if bills.page == 1 %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.prev_num) }}">&laquo; {{ _("Newer bills") }}</a></li>
   {%- for page in bills.iter_pages() %}
   {% if page %}
   <li class="page-item {% if page == bills.page %}active{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=page) }}">{{ page }}</a></li>
@@ -154,7 +158,7 @@
   <li class="page-item disabled"><span class="ellipsis page-link">…</span></li>
   {% endif %}
   {%- endfor %}
-  <li class="page-item {% if bills.page == bills.pages %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.next_num) }}">Older bills &raquo;</a></li>
+  <li class="page-item {% if bills.page == bills.pages %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.next_num) }}">{{ _("Older bills") }} &raquo;</a></li>
 </ul>
 {% endif %}
 

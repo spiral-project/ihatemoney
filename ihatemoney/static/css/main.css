@@ -290,13 +290,8 @@ footer .footer-left {
   margin-top: 30px;
 }
 
-#previous-page {
+#pagination-top {
   margin-top: 30px;
-}
-
-#next-page {
-  margin-top: 30px;
-  padding-left: 2em;
 }
 
 /* Avoid text color flickering when it loose focus as the modal appears */
