@@ -232,7 +232,7 @@ class APITestCase(IhatemoneyTestCase):
         # create a project
         self.api_create("raclette")
 
-        # get the list of members (should be empty)
+        # get the list of participants (should be empty)
         req = self.client.get(
             "/api/projects/raclette/members", headers=self.get_auth("raclette")
         )
@@ -251,7 +251,7 @@ class APITestCase(IhatemoneyTestCase):
         self.assertStatus(201, req)
         self.assertEqual("1\n", req.data.decode("utf-8"))
 
-        # the list of members should contain one member
+        # the list of participants should contain one member
         req = self.client.get(
             "/api/projects/raclette/members", headers=self.get_auth("raclette")
         )
@@ -267,7 +267,7 @@ class APITestCase(IhatemoneyTestCase):
         )
         self.assertStatus(400, req)
 
-        # edit the member
+        # edit the participant
         req = self.client.put(
             "/api/projects/raclette/members/1",
             data={"name": "Fred", "weight": 2},
@@ -295,7 +295,7 @@ class APITestCase(IhatemoneyTestCase):
 
         self.assertStatus(200, req)
 
-        # de-activate the user
+        # de-activate the participant
         req = self.client.put(
             "/api/projects/raclette/members/1",
             data={"name": "Fred", "activated": False},
@@ -309,7 +309,7 @@ class APITestCase(IhatemoneyTestCase):
         self.assertStatus(200, req)
         self.assertEqual(False, json.loads(req.data.decode("utf-8"))["activated"])
 
-        # re-activate the user
+        # re-activate the participant
         req = self.client.put(
             "/api/projects/raclette/members/1",
             data={"name": "Fred", "activated": True},
@@ -330,7 +330,7 @@ class APITestCase(IhatemoneyTestCase):
 
         self.assertStatus(200, req)
 
-        # the list of members should be empty
+        # the list of participants should be empty
         req = self.client.get(
             "/api/projects/raclette/members", headers=self.get_auth("raclette")
         )
@@ -342,7 +342,7 @@ class APITestCase(IhatemoneyTestCase):
         # create a project
         self.api_create("raclette")
 
-        # add members
+        # add participants
         self.api_add_member("raclette", "zorglub")
         self.api_add_member("raclette", "fred")
         self.api_add_member("raclette", "quentin")
@@ -490,7 +490,7 @@ class APITestCase(IhatemoneyTestCase):
         # create a project
         self.api_create("raclette")
 
-        # add members
+        # add participants
         self.api_add_member("raclette", "zorglub")
         self.api_add_member("raclette", "fred")
 
@@ -597,7 +597,7 @@ class APITestCase(IhatemoneyTestCase):
         decoded_resp = json.loads(resp.data.decode("utf-8"))
         self.assertDictEqual(decoded_resp, expected)
 
-        # Add members
+        # Add participants
         self.api_add_member("raclette", "zorglub")
         self.api_add_member("raclette", "fred")
         self.api_add_member("raclette", "quentin")
@@ -730,7 +730,7 @@ class APITestCase(IhatemoneyTestCase):
         # create a project
         self.api_create("raclette")
 
-        # add members
+        # add participants
         self.api_add_member("raclette", "zorglub")
         self.api_add_member("raclette", "fred")
 
@@ -786,7 +786,7 @@ class APITestCase(IhatemoneyTestCase):
         self.post_project("raclette")
         self.login("raclette")
 
-        # add members
+        # add participants
         self.api_add_member("raclette", "<script>")
 
         result = self.client.get("/raclette/")
@@ -796,7 +796,7 @@ class APITestCase(IhatemoneyTestCase):
         # create a project
         self.api_create("raclette")
 
-        # add members
+        # add participants
         self.api_add_member("raclette", "zorglub")
         self.api_add_member("raclette", "freddy familly", 4)
         self.api_add_member("raclette", "quentin")
@@ -891,7 +891,7 @@ class APITestCase(IhatemoneyTestCase):
         self.api_create("raclette")
         self.login("raclette")
 
-        # add members
+        # add participants
         self.api_add_member("raclette", "zorglub")
 
         resp = self.client.get("/raclette/history", follow_redirects=True)

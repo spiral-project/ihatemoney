@@ -697,7 +697,10 @@ def reactivate(member_id):
     # Used for CSRF validation
     form = EmptyForm()
     if not form.validate():
-        flash(format_form_errors(form, _("Error activating participant")), category="danger")
+        flash(
+            format_form_errors(form, _("Error activating participant")),
+            category="danger",
+        )
         return redirect(url_for(".list_bills"))
 
     person = (
@@ -717,7 +720,9 @@ def remove_member(member_id):
     # Used for CSRF validation
     form = EmptyForm()
     if not form.validate():
-        flash(format_form_errors(form, _("Error removing participant")), category="danger")
+        flash(
+            format_form_errors(form, _("Error removing participant")), category="danger"
+        )
         return redirect(url_for(".list_bills"))
 
     member = g.project.remove_member(member_id)
