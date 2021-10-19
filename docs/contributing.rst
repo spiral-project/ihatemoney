@@ -218,11 +218,7 @@ In order to prepare a new release, we are following the following steps:
 - Merge remaining pull requests;
 - Update :file:`CHANGELOG.rst` with the last changes;
 - Update :file:`CONTRIBUTORS`;
-- Update known good versions of dependencies in ``requirements.txt`` with this
-  command (from inside the venv)::
-
-    make build-requirements
-
+- Update known good versions of dependencies in ``setup.cfg``
 - If needed, recompress assets. It requires zopflipng::
 
     make compress-assets
