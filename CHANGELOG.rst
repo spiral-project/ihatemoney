@@ -3,44 +3,90 @@ Changelog
 
 This document describes changes between each past release.
 
-5.0 (unreleased)
-================
+5.0.0 (unreleased)
+==================
 
 Breaking changes
 ----------------
 
+- Include project code into project authentication token. This invalidates all existing API tokens and invitation links from previous versions (#802 #843)
 - Drop support for Python 2 (#483)
 - Drop support for Python 3.5 (#571)
+- Drop support for MySQL (#743)
+- Require MariaDB version 10.3.2 or above (#632)
+- Enable session cookie security by default (#845)
+- Change token path authentication to /{project}/join/{token} (#843)
 
-The minimum supported version is now Python 3.6
+The minimum supported version is now Python 3.6, and the project is tested
+with up to Python 3.9
+
+See `upgrade instructions <https://ihatemoney.readthedocs.io/en/latest/upgrade.html>`_
+to make sure the upgrade goes smoothly.
+
+Security
+--------
+
+- Add CSRF validation on destructive actions (#796)
+- Ask for private code to delete project or project history (#796)
+- Add headers to mitigate Clickjacking, XSS, and other attacks: `X-Frame-Options`, `X-XSS-Protection`, `X-Content-Type-Options`, `Content-Security-Policy`, `Referrer-Policy` (#845)
+- Add URL validation to external link to prevent XSS (#846)
 
 Added
 -----
 
 - Add espanol latino america (es_419) translation
 - Add German translation (#492)
+
 - Allow to import previously exported json data (#518)
 - Add new optional field "external link" in bill form (#429)
-- Add currencies to project and bills (#541)
+- Add optional currencies to project and bills (#541, #864)
 - Add new statistics showing monthly expenses (#526)
 - Add pagination to the list of bills (#480)
 - Add sorting, pagination, and searching to the admin dashboard (#538)
 - Add Project History page that records all changes (#553)
 - Add token-based authentication to the API (#504)
+- Add illustrations as a showcase, currently only for French (#544)
+- Add a page for downloading mobile application (#688)
+- Add optional support for a simple CAPTCHA (#844)
+- Add translations for Greek, Esperanto, Italian, Japanese, Portuguese and Swedish
+- Publish an `official docker image <https://hub.docker.com/r/ihatemoney/ihatemoney>`_
 
 Changed
 -------
 
 - Use the external debts lib to solve settlements (#476)
 - Remove balance column in statistics view (#323)
+- Make language choice persistent (#547)
+- Localize date strings in the current language (#590)
+- Differenciate "flash alerts" notifications (#594)
+- Display "flash messages" persistently instead of making them disappear (#856)
+- Improve menu bar spacing, put history and settings in a submenu (#739)
+- Change Dockerfile to install python dependencies at build time (#793)
+- Updating project settings doesn't require to enter or update project code (#774)
+- Bump dependencies: WTForms (#768) jinja2 (#753) itsdangerous (#756) flask (#755 #757 #764)
 - Remove requirements files in favor of setup.cfg pinning (#558)
 - Make language choice persistent (#547)
+- Flash messages must be dimissed manually (#856)
+- Increased the font size of the logo (#828)
 
 Fixed
 -----
 
 - Improve input of email addresses when inviting people to join a project (#133)
+- Fix order of participants in the statistics page (#608)
+- Clarify project edition form: private code is not required (#774)
+- Fix Python dependency contraints to be less strict
+- Improve documentation (#781 #819 #821)
 - Fix datepicker that was displayed twice on some browsers (#221)
+- Members weight are now rounded to 2 decimal (#838)
+
+Documentation
+-------------
+
+- Reorganize "Contributing" documentation to be more accessible to new contributors
+- Improve documentation regarding database migrations (#569)
+- Added a page about `the security model <https://ihatemoney.readthedocs.io/en/latest/security.html>`_ (#858)
+
 
 4.1.3 (2019-09-18)
 ==================
