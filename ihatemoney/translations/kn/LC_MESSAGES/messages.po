@@ -1,13 +1,14 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-18 23:00+0200\n"
+"POT-Creation-Date: 2021-10-19 19:34+0200\n"
 "PO-Revision-Date: 2021-10-17 04:56+0000\n"
 "Last-Translator: a-g-rao <athrigrao@gmail.com>\n"
 "Language: kn\n"
-"Language-Team: Kannada <https://hosted.weblate.org/projects/i-hate-money/i-"
-"hate-money/kn/>\n"
+"Language-Team: Kannada <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/kn/>\n"
 "Plural-Forms: nplurals=2; plural=n > 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -18,7 +19,8 @@ msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
-"ಮೊತ್ತ ಅಥವಾ ಪದಕಂತೆ ಸರಿಯಿಲ್ಲ. ಸಂಖ್ಯೆ ಮತ್ತು +-*/ ಎಣಿಕೆಬಳಕಗಳನ್ನು ಮಾತ್ರ ಸ್ವೀಕರಿಸಲಾಗುವುದು."
+"ಮೊತ್ತ ಅಥವಾ ಪದಕಂತೆ ಸರಿಯಿಲ್ಲ. ಸಂಖ್ಯೆ ಮತ್ತು +-*/ ಎಣಿಕೆಬಳಕಗಳನ್ನು ಮಾತ್ರ "
+"ಸ್ವೀಕರಿಸಲಾಗುವುದು."
 
 msgid "Project name"
 msgstr "ಯೋಜನೆಯ ಹೆಸರು"
@@ -219,7 +221,9 @@ msgstr ""
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
-msgstr "ನೀವು ನಿಮ್ಮ ಖರ್ಚು/ವೆಚ್ಚವನ್ನು ಹಂಚಿಕೊಳ್ಳಲು %(project)s ಯೋಜನೆಯನ್ನು ಸೃಷ್ಟಿಸಿದ್ದೀರಿ"
+msgstr ""
+"ನೀವು ನಿಮ್ಮ ಖರ್ಚು/ವೆಚ್ಚವನ್ನು ಹಂಚಿಕೊಳ್ಳಲು %(project)s ಯೋಜನೆಯನ್ನು "
+"ಸೃಷ್ಟಿಸಿದ್ದೀರಿ"
 
 msgid "A reminder email has just been sent to you"
 msgstr "ನಿಮಗೆ ನೆನೆವಿ ಮಿನ್ನಂಚೆಯನ್ನು ಈಗ ಕಳುಹಿಸಲಾಗಿದೆ"
@@ -228,8 +232,8 @@ msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
-"ನಿಮಗೆ ನೆನವಿ ಮಿನ್ನಂಚೆ ಕಳುಹಿಸಲು ಪ್ರಯತ್ನಿಸಿದ್ದೆವೆ, ಆದರೆ ದೋಷವಿತ್ತು. ನೀವು ಯೋಜನೆಯನ್ನು "
-"ಸಾಮಾನ್ಯ ಪದತಿಯಂತೆ ಉಪಯೋಗಿಸ ಬಹುದು."
+"ನಿಮಗೆ ನೆನವಿ ಮಿನ್ನಂಚೆ ಕಳುಹಿಸಲು ಪ್ರಯತ್ನಿಸಿದ್ದೆವೆ, ಆದರೆ ದೋಷವಿತ್ತು. ನೀವು "
+"ಯೋಜನೆಯನ್ನು ಸಾಮಾನ್ಯ ಪದತಿಯಂತೆ ಉಪಯೋಗಿಸ ಬಹುದು."
 
 #, python-format
 msgid "The project identifier is %(project)s"
@@ -237,8 +241,8 @@ msgstr ""
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
-"instructions. Please check the email configuration of the server or contact "
-"the administrator."
+"instructions. Please check the email configuration of the server or "
+"contact the administrator."
 msgstr ""
 
 msgid "No token provided"
@@ -260,7 +264,8 @@ msgid "Invalid JSON"
 msgstr ""
 
 msgid ""
-"Cannot add bills in multiple currencies to a project without default currency"
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
 msgstr ""
 
 msgid "Project successfully deleted"
@@ -271,14 +276,17 @@ msgstr ""
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
-msgstr "%(project)s ಗಾಗಿ ನಿಮ್ಮ ಖರ್ಚು/ವೆಚ್ಚವನ್ನುಹಂಚಿಕೊಳಲ್ಲು ನಿಮ್ಮನ್ನು ಆಮಂತ್ರಿಸಲಾಗಿದೆ"
+msgstr ""
+"%(project)s ಗಾಗಿ ನಿಮ್ಮ ಖರ್ಚು/ವೆಚ್ಚವನ್ನುಹಂಚಿಕೊಳಲ್ಲು ನಿಮ್ಮನ್ನು "
+"ಆಮಂತ್ರಿಸಲಾಗಿದೆ"
 
 msgid "Your invitations have been sent"
 msgstr "ನಿಮ್ಮ ಆಮಂತ್ರಣವನ್ನು ಕಳುಹಿಸಲಾಗಿದೆ"
 
 msgid ""
-"Sorry, there was an error while trying to send the invitation emails. Please "
-"check the email configuration of the server or contact the administrator."
+"Sorry, there was an error while trying to send the invitation emails. "
+"Please check the email configuration of the server or contact the "
+"administrator."
 msgstr ""
 
 #, python-format
@@ -297,8 +305,8 @@ msgstr ""
 
 #, python-format
 msgid ""
-"User '%(name)s' has been deactivated. It will still appear in the users list "
-"until its balance becomes zero."
+"User '%(name)s' has been deactivated. It will still appear in the users "
+"list until its balance becomes zero."
 msgstr ""
 
 #, python-format
@@ -532,18 +540,19 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"            <i>This project has history disabled. New actions won't appear "
-"below. You can enable history on the</i>\n"
+"            <i>This project has history disabled. New actions won't "
+"appear below. You can enable history on the</i>\n"
 "            <a href=\"%(url)s\">settings page</a>\n"
 "            "
 msgstr ""
 
 msgid ""
 "\n"
-"            <i>The table below reflects actions recorded prior to disabling "
-"project history. You can\n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" data-"
-"target=\"#confirm-erase\">clear project history</a> to remove them.</i></p>\n"
+"            <i>The table below reflects actions recorded prior to "
+"disabling project history. You can\n"
+"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
+"data-target=\"#confirm-erase\">clear project history</a> to remove "
+"them.</i></p>\n"
 "            "
 msgstr ""
 
@@ -625,8 +634,7 @@ msgid "Bill %(name)s renamed to %(new_description)s"
 msgstr ""
 
 #, python-format
-msgid ""
-"Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
 msgid "Amount"
@@ -701,8 +709,8 @@ msgid "Create"
 msgstr ""
 
 msgid ""
-"Don\\'t reuse a personal password. Choose a private code and send it to your "
-"friends"
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
 msgstr ""
 
 msgid "Account manager"
@@ -823,7 +831,8 @@ msgid "Password reminder"
 msgstr ""
 
 msgid ""
-"A link to reset your password has been sent to you, please check your emails."
+"A link to reset your password has been sent to you, please check your "
+"emails."
 msgstr ""
 
 msgid "Return to home page"
@@ -859,10 +868,10 @@ msgid "Send via Emails"
 msgstr ""
 
 msgid ""
-"Specify a (comma separated) list of email adresses you want to notify about "
-"the\n"
-"                creation of this budget management project and we will send "
-"them an email for you."
+"Specify a (comma separated) list of email adresses you want to notify "
+"about the\n"
+"                creation of this budget management project and we will "
+"send them an email for you."
 msgstr ""
 
 msgid "Who pays?"
@@ -895,5 +904,6 @@ msgstr ""
 msgid "Period"
 msgstr ""
 
-msgid "You either provided a bad token or no project identifier."
-msgstr ""
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr ""
+

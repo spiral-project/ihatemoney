@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-18 23:00+0200\n"
+"POT-Creation-Date: 2021-10-19 19:34+0200\n"
 "PO-Revision-Date: 2020-06-14 14:41+0000\n"
 "Last-Translator: raghupalash <singhpalash0@gmail.com>\n"
 "Language: hi\n"
@@ -649,7 +649,7 @@ msgstr "परियोजना के निजी कोड को बदल 
 
 #, fuzzy, python-format
 msgid "Project renamed to %(new_project_name)s"
-msgstr "प्रोजेक्ट पहचानकर्ता %(project)s है"
+msgstr "प्रोजेक्ट पहचानकर्ता %(new_project_name)s है"
 
 #, fuzzy, python-format
 msgid "Project contact email changed to %(new_email)s"
@@ -1017,4 +1017,3 @@ msgstr "अवधि"
 #~ "आपने या तो एक खराब टोकन प्रदान "
 #~ "किया है या कोई प्रोजेक्ट पहचानकर्ता "
 #~ "नहीं है।"
-

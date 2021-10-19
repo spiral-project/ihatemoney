@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-18 23:00+0200\n"
+"POT-Creation-Date: 2021-10-19 19:34+0200\n"
 "PO-Revision-Date: 2021-09-20 12:38+0000\n"
 "Last-Translator: Роман Прокопов <pochta.romana.iz.vyborga@gmail.com>\n"
 "Language: ru\n"
@@ -647,7 +647,7 @@ msgstr "Приватный код проекта изменен"
 
 #, fuzzy, python-format
 msgid "Project renamed to %(new_project_name)s"
-msgstr "Идентификатор проекта: %(project)s"
+msgstr "Идентификатор проекта: %(new_project_name)s"
 
 #, fuzzy, python-format
 msgid "Project contact email changed to %(new_email)s"
@@ -1032,4 +1032,3 @@ msgstr "Период"
 #~ msgstr ""
 #~ "Вы либо предоставили неверный токен, "
 #~ "либо не указали идентификатор проекта."
-

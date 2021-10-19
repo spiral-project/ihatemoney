@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-18 23:00+0200\n"
+"POT-Creation-Date: 2021-10-19 19:34+0200\n"
 "PO-Revision-Date: 2021-03-17 15:18+0000\n"
 "Last-Translator: TomSolGit <Tommaso.solfa@gmail.com>\n"
 "Language: it\n"
@@ -655,7 +655,7 @@ msgstr "Codice privato del progetto modificato"
 
 #, fuzzy, python-format
 msgid "Project renamed to %(new_project_name)s"
-msgstr "L'identificatore del progetto è %(project)s"
+msgstr "L'identificatore del progetto è %(new_project_name)s"
 
 #, fuzzy, python-format
 msgid "Project contact email changed to %(new_email)s"
@@ -1045,4 +1045,3 @@ msgstr "Periodo"
 #~ "Hai fornito un token invalido o "
 #~ "l'identificatore del progetto non è "
 #~ "valido."
-

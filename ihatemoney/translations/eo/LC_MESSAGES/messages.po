@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-18 23:00+0200\n"
+"POT-Creation-Date: 2021-10-19 19:34+0200\n"
 "PO-Revision-Date: 2021-10-01 20:35+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language: eo\n"
@@ -640,7 +640,7 @@ msgstr "La privata kodo de la projekto estis ŝanĝita"
 
 #, fuzzy, python-format
 msgid "Project renamed to %(new_project_name)s"
-msgstr "La identigilo de la projekto estas %(project)s"
+msgstr "La identigilo de la projekto estas %(new_project_name)s"
 
 #, fuzzy, python-format
 msgid "Project contact email changed to %(new_email)s"
@@ -1003,4 +1003,3 @@ msgstr "Periodo"
 
 #~ msgid "You either provided a bad token or no project identifier."
 #~ msgstr "Vi donis aŭ nevalidan ĵetonon aŭ neniun identigilon de projekto."
-
