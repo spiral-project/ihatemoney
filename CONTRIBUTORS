@@ -1,7 +1,11 @@
-The project has been started by Alexis Métaireau and Frédéric Sureau. Friends are
-helping since that. Here is the complete list of people who gave a hand:
+The project has been started by Alexis Métaireau and Frédéric Sureau. External
+contributors are helping since that.
+
+Here is the complete list of people who gave a hand. You can regenerate this
+list with `git log --format='%aN' | sort -u` and some manual filtering.
 
 0livd
+A.Avenel
 Adam Chainz
 Adrien CLERC
 Alexandre Avenel
@@ -13,22 +17,28 @@ Arnaud Bos
 Baptiste Jonglez
 Benjamin Bouvier
 Berteh
-bmatticus
+bmatt
 Brice Maron
 Byron Ullauri
 Carey Metcalfe
+Charles Rose
 Daniel Schreiber
 DavidRThrashJr
+Diego Caraballo
 donkers
 Edwin Smulders
 Elizabeth Sherrock
 eMerzh
 Feth AREZKI
 Frédéric Sureau
+freetim
 Glandos
 Heimen Stoffels
 James Leong
 Jocelyn Delalande
+John-Michael Reed
+José Antonio de la Torre
+Leo Mouyna
 Lucas Verney
 Luc Didry
 Marien Fressinaud
@@ -38,10 +48,13 @@ mduret
 Mesut Akcan
 Michal Čihař
 nailyk-fr
+nautilusx
+Nicolas Vanvyve
 Quentin Roy
-Rémy HUBSCHER
+Rémy Hubscher
 Richard Coates
 THANOS SIOURDAKIS
+Tom Biju
 Toover
 Xavier Mehrenberger
 zorun
