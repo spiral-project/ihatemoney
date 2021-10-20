@@ -161,6 +161,15 @@ Note: this setting is actually interpreted by Flask-Babel, see the
 It is possible to add a simple captcha in order to filter out spammer bots on the form creation.
 In order to do so, you just have to set `ENABLE_CAPTCHA = True`.
 
+`LEGAL_LINK`
+------------
+
+You may want to point to a special legal page, for instance to give information
+about GDPR, or how you handle the data of your users.
+
+If you want to do this, you can use the `LEGAL_LINK` setting. Set it to the URL
+you want.
+
 Configuring emails sending
 --------------------------
 
@@ -176,4 +185,3 @@ possible to configure it to act differently, thanks to the great
 * **MAIL_USERNAME** : default **None**
 * **MAIL_PASSWORD** : default **None**
 * **DEFAULT_MAIL_SENDER** : default **None**
-
