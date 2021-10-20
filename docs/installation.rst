@@ -3,19 +3,77 @@
 Installation
 ############
 
-We lack some knowledge about packaging to make Ihatemoney installable on mainstream
-Linux distributions. If you want to give us a hand on the topic, please
-check-out `the issue about debian packaging <https://github.com/spiral-project/ihatemoney/issues/227>`_.
+There are multiple ways to install «Ihatemoney» on your system :
 
-If you are using Yunohost (a server operating system aiming to make self-hosting accessible to anyone),
-you can use the `Ihatemoney package <https://github.com/YunoHost-Apps/ihatemoney_ynh>`_.
+1. :ref:`Via Docker<Docker>`.
+2. `Via Yunohost <https://github.com/YunoHost-Apps/ihatemoney_ynh>`_
+   (a server operating system aiming to make self-hosting accessible to anyone)
+3. Do a :ref:`manual installation<manual-installation>`.
 
-Otherwise, follow these instructions to install it manually:
+.. note:: We lack some knowledge about packaging to make Ihatemoney installable
+   on mainstream Linux distributions. If you want to give us a hand on the topic,
+   please check-out `the issue about debian packaging <https://github.com/spiral-project/ihatemoney/issues/227>`_.
+
+.. _docker:
+
+With Docker
+===========
+
+Docker images are published `on the Docker hub <https://hub.docker.com/repository/docker/ihatemoney/ihatemoney>`_.
+
+This is probably the simplest way to get something running. Once you have Docker installed
+on your system, just issue ::
+
+  docker run -d -p 8000:8000 ihatemoney/ihatemoney
+
+Ihatemoney is now available on http://localhost:8000.
+
+All Ihatemoney settings can be passed with ``-e`` parameters
+e.g. with a secure ``SECRET_KEY``, an external mail server and an
+external database::
+
+   docker run -d -p 8000:8000 \
+   -e SECRET_KEY="supersecure" \
+   -e SQLALCHEMY_DATABASE_URI="mysql+pymysql://user:pass@172.17.0.5/ihm" \
+   -e MAIL_SERVER=smtp.gmail.com \
+   -e MAIL_PORT=465 \
+   -e MAIL_USERNAME=your-email@gmail.com \
+   -e MAIL_PASSWORD=your-password \
+   -e MAIL_USE_SSL=True \
+   ihatemoney/ihatemoney
+
+A volume can also be specified to persist the default database file::
+
+   docker run -d -p 8000:8000 -v /host/path/to/database:/database ihatemoney/ihatemoney
+
+To enable the Admin dashboard, first generate a hashed password with::
+
+   docker run -it --rm --entrypoint ihatemoney ihatemoney/ihatemoney generate_password_hash
+
+At the prompt, enter a password to use for the admin dashboard. The
+command will print the hashed password string.
+
+Add these additional environment variables to the docker run invocation::
+
+   -e ACTIVATE_ADMIN_DASHBOARD=True \
+   -e ADMIN_PASSWORD=<hashed_password_string> \
+
+Additional gunicorn parameters can be passed using the docker ``CMD``
+parameter.
+For example, use the following command to add more gunicorn workers::
+
+   docker run -d -p 8000:8000 ihatemoney/ihatemoney -w 3
+
+
+.. _manual-installation:
+
+Manual Installation
+===================
 
 .. _installation-requirements:
 
 Requirements
-============
+------------
 
 «Ihatemoney» depends on:
 
@@ -23,18 +81,19 @@ Requirements
 * **A Backend**: to choose among SQLite, PostgreSQL, MariaDB (>= 10.3.2) or Memory.
 * **Virtual environment** (recommended): `python3-venv` package under Debian/Ubuntu.
 
-We recommend to use `virtual environment <https://docs.python.org/3/tutorial/venv.html>`_ but
-it will work without if you prefer.
+We recommend using `virtual environments <https://docs.python.org/3/tutorial/venv.html>`_
+to isolate the installation from other softwares on your machine, but it's not mandatory.
 
 If wondering about the backend, SQLite is the simplest and will work fine for
 most small to medium setups.
 
-.. note:: If curious, source config templates can be found in the `project git repository <https://github.com/spiral-project/ihatemoney/tree/master/ihatemoney/conf-templates>`_.
+.. note:: If curious, source config templates can be found in the
+   `project git repository <https://github.com/spiral-project/ihatemoney/tree/master/ihatemoney/conf-templates>`_.
 
 .. _virtualenv-preparation:
 
 Prepare virtual environment (recommended)
-=========================================
+-----------------------------------------
 
 Choose an installation path, here the current user's home directory (`~`).
 
@@ -51,18 +110,14 @@ Activate the virtual environment::
           terminal.
 
 Install
-=======
+-------
 
 Install the latest release with pip::
 
   pip install ihatemoney
 
-.. warning:: The current release of ihatemoney (4.1.5) does not work with SQLAlchemy 1.4.
-             The dependency will be fixed in the next version, but in the meantime you
-             can work around the issue with: ``pip install 'SQLAlchemy>=1.3,<1.4'``.
-
 Test it
-=======
+-------
 
 Once installed, you can start a test server::
 
@@ -70,8 +125,24 @@ Once installed, you can start a test server::
 
 And point your browser at `http://localhost:5000 <http://localhost:5000>`_.
 
+Generate your configuration
+---------------------------
+
+You need to generate
+1. Initialize the ihatemoney directories::
+
+    mkdir /etc/ihatemoney /var/lib/ihatemoney
+
+2. Generate settings::
+
+    ihatemoney generate-config ihatemoney.cfg > /etc/ihatemoney/ihatemoney.cfg
+    chmod 740 /etc/ihatemoney/ihatemoney.cfg
+
+You probably want to adjust ``/etc/ihatemoney/ihatemoney.cfg`` contents,
+you may do it later, see :ref:`configuration`.
+
 Configure database with MariaDB (optional)
-================================================
+------------------------------------------
 
 .. note:: Only required if you use MariaDB.  Make sure to use MariaDB 10.3.2 or newer.
 
@@ -86,9 +157,8 @@ Configure database with MariaDB (optional)
 3. Create an empty database and a database user
 4. Configure :ref:`SQLALCHEMY_DATABASE_URI <configuration>` accordingly
 
-
 Configure database with PostgreSQL (optional)
-=============================================
+---------------------------------------------
 
 .. note:: Only required if you use Postgresql.
 
@@ -105,32 +175,17 @@ Configure database with PostgreSQL (optional)
 
 3. Configure :ref:`SQLALCHEMY_DATABASE_URI <configuration>` accordingly.
 
+Configure a reverse proxy
+-------------------------
 
-Deploy it
-=========
+When deploying this service in production, you want to have a reverse proxy
+in front of the python application.
 
-Now, if you want to deploy it on your own server, you have many options.
-Three of them are documented at the moment.
+Here are documented two stacks. You can of course use another one if you want.
+Don't hesitate to contribute a small tutorial here if you want.
 
-*Of course, if you want to contribute another configuration, feel free
-to open a pull-request against this repository!*
-
-
-Whatever your installation option is…
---------------------------------------
-
-1. Initialize the ihatemoney directories::
-
-    mkdir /etc/ihatemoney /var/lib/ihatemoney
-
-2. Generate settings::
-
-    ihatemoney generate-config ihatemoney.cfg > /etc/ihatemoney/ihatemoney.cfg
-    chmod 740 /etc/ihatemoney/ihatemoney.cfg
-
-You probably want to adjust ``/etc/ihatemoney/ihatemoney.cfg`` contents,
-you may do it later, see :ref:`configuration`.
-
+1. Apache and `mod_wsgi`
+2. Nginx, Gunicorn and Supervisord/Systemd
 
 With Apache and mod_wsgi
 ------------------------
@@ -206,52 +261,3 @@ Install Gunicorn::
 
 .. [#systemd-services] ``/etc/systemd/system/ihatemoney.service``
                        path may change depending on your distribution.
-
-With Docker
------------
-
-Build the image::
-
-    docker build -t ihatemoney .
-
-Start a daemonized Ihatemoney container::
-
-    docker run -d -p 8000:8000 ihatemoney
-
-Ihatemoney is now available on http://localhost:8000.
-
-All Ihatemoney settings can be passed with ``-e`` parameters
-e.g. with a secure ``SECRET_KEY``, an external mail server and an
-external database::
-
-    docker run -d -p 8000:8000 \
-    -e SECRET_KEY="supersecure" \
-    -e SQLALCHEMY_DATABASE_URI="mysql+pymysql://user:pass@172.17.0.5/ihm" \
-    -e MAIL_SERVER=smtp.gmail.com \
-    -e MAIL_PORT=465 \
-    -e MAIL_USERNAME=your-email@gmail.com \
-    -e MAIL_PASSWORD=your-password \
-    -e MAIL_USE_SSL=True \
-    ihatemoney
-
-A volume can also be specified to persist the default database file::
-
-    docker run -d -p 8000:8000 -v /host/path/to/database:/database ihatemoney
-
-To enable the Admin dashboard, first generate a hashed password with::
-
-    docker run -it --rm --entrypoint ihatemoney ihatemoney generate_password_hash
-
-At the prompt, enter a password to use for the admin dashboard. The
-command will print the hashed password string.
-
-Add these additional environment variables to the docker run invocation::
-
-    -e ACTIVATE_ADMIN_DASHBOARD=True \
-    -e ADMIN_PASSWORD=<hashed_password_string> \
-
-Additional gunicorn parameters can be passed using the docker ``CMD``
-parameter.
-For example, use the following command to add more gunicorn workers::
-
-    docker run -d -p 8000:8000 ihatemoney -w 3
