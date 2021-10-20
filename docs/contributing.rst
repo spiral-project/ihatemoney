@@ -82,6 +82,13 @@ And then run the application::
     cd ihatemoney
     python run.py
 
+The docker way
+--------------
+
+If you prefer to use docker, then you can build your image with::
+
+  docker build -t ihatemoney .
+  
 Accessing dev server
 --------------------
 

@@ -19,7 +19,7 @@ There are multiple ways to install «Ihatemoney» on your system :
 With Docker
 ===========
 
-Docker images are published `on the Docker hub <https://hub.docker.com/repository/docker/ihatemoney/ihatemoney>`_.
+Docker images are published `on the Docker hub <https://hub.docker.com/r/ihatemoney/ihatemoney/>`_.
 
 This is probably the simplest way to get something running. Once you have Docker installed
 on your system, just issue ::
@@ -28,19 +28,22 @@ on your system, just issue ::
 
 Ihatemoney is now available on http://localhost:8000.
 
-All Ihatemoney settings can be passed with ``-e`` parameters
+All :ref:`settings<configuration>` can be passed with ``-e`` parameters
 e.g. with a secure ``SECRET_KEY``, an external mail server and an
 external database::
 
    docker run -d -p 8000:8000 \
    -e SECRET_KEY="supersecure" \
-   -e SQLALCHEMY_DATABASE_URI="mysql+pymysql://user:pass@172.17.0.5/ihm" \
+   -e SQLALCHEMY_DATABASE_URI="mysql+pymysql://user:pass@78.198.38.17/ihm" \
    -e MAIL_SERVER=smtp.gmail.com \
    -e MAIL_PORT=465 \
    -e MAIL_USERNAME=your-email@gmail.com \
    -e MAIL_PASSWORD=your-password \
    -e MAIL_USE_SSL=True \
    ihatemoney/ihatemoney
+
+.. note: Connecting to a postgresql database is not supported for now in the
+   docker container.
 
 A volume can also be specified to persist the default database file::
 
@@ -128,7 +131,6 @@ And point your browser at `http://localhost:5000 <http://localhost:5000>`_.
 Generate your configuration
 ---------------------------
 
-You need to generate
 1. Initialize the ihatemoney directories::
 
     mkdir /etc/ihatemoney /var/lib/ihatemoney
