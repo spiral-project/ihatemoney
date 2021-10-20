@@ -213,12 +213,13 @@ And to produce a HTML doc in the `docs/_output` folder::
 How to release?
 ===============
 
-In order to prepare a new release, we are following the following steps:
+In order to issue a new release, follow the following steps:
 
 - Merge remaining pull requests;
+- Switch to the master branch;
 - Update :file:`CHANGELOG.rst` with the last changes;
-- Update :file:`CONTRIBUTORS`;
-- Update known good versions of dependencies in ``setup.cfg``
+- Update :file:`CONTRIBUTORS` (instructions inside the file);
+- Update known good versions of dependencies in ``setup.cfg`` manually;
 - If needed, recompress assets. It requires zopflipng::
 
     make compress-assets
@@ -228,11 +229,11 @@ In order to prepare a new release, we are following the following steps:
     make update-translations
     make build-translations
 
-Once this is done, use the "release" instruction::
+Once this is done, let's release!::
 
     make release
 
-And the new version should be published on PyPI.
+This will publish the new version to `the Python Package Index <https://pypi.org>`_ (PyPI).
 
 .. note:: The above command will prompt for version number, handle
           :file:`CHANGELOG.rst` and :file:`setup.cfg` updates, package creation,
