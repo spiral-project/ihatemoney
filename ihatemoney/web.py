@@ -8,12 +8,10 @@ Basically, this blueprint takes care of the authentication and provides
 some shortcuts to make your life better when coding (see `pull_project`
 and `add_project_id` for a quick overview)
 """
-from datetime import datetime
 from functools import wraps
 import json
 import os
 
-from dateutil.relativedelta import relativedelta
 from flask import (
     Blueprint,
     abort,
@@ -852,12 +850,13 @@ def strip_ip_addresses():
 @main.route("/<project_id>/statistics")
 def statistics():
     """Compute what each participant has paid and spent and display it"""
-    today = datetime.now()
+    # Determine range of months between which there are bills
+    months = g.project.active_months_range()
     return render_template(
         "statistics.html",
         members_stats=g.project.members_stats,
         monthly_stats=g.project.monthly_stats,
-        months=[today - relativedelta(months=i) for i in range(12)],
+        months=months,
         current_view="statistics",
     )
 

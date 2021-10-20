@@ -1,4 +1,5 @@
 from collections import defaultdict
+import datetime
 import re
 from time import sleep
 import unittest
@@ -913,6 +914,19 @@ class BudgetTestCase(IhatemoneyTestCase):
         # Add a participant with a balance at 0 :
         self.client.post("/raclette/members/add", data={"name": "pépé"})
 
+        # Check that there are no monthly statistics and no active months
+        project = self.get_project("raclette")
+        self.assertEqual(len(project.active_months_range()), 0)
+        self.assertEqual(len(project.monthly_stats), 0)
+
+        # Check that the "monthly expenses" table is empty
+        response = self.client.get("/raclette/statistics")
+        regex = (
+            r"<table id=\"monthly_stats\".*>\s*<thead>\s*<tr>\s*<th>Period</th>\s*"
+            r"<th>Spent</th>\s*</tr>\s*</thead>\s*<tbody>\s*</tbody>\s*</table>"
+        )
+        self.assertRegex(response.data.decode("utf-8"), regex)
+
         # create bills
         self.client.post(
             "/raclette/add",
@@ -948,7 +962,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         )
 
         response = self.client.get("/raclette/statistics")
-        regex = r"<td class=\"d-md-none\">{}</td>\s+<td>{}</td>\s+<td>{}</td>"
+        regex = r"<td class=\"d-md-none\">{}</td>\s*<td>{}</td>\s*<td>{}</td>"
         self.assertRegex(
             response.data.decode("utf-8"),
             regex.format("zorglub", r"\$20\.00", r"\$31\.67"),
@@ -977,6 +991,99 @@ class BudgetTestCase(IhatemoneyTestCase):
         # (so that ".*" matches newlines)
         self.assertRegex(response.data.decode("utf-8"), re.compile(regex1, re.DOTALL))
         self.assertRegex(response.data.decode("utf-8"), re.compile(regex2, re.DOTALL))
+
+        # Check monthly expenses again: it should have a single month and the correct amount
+        august = datetime.date(year=2011, month=8, day=1)
+        self.assertEqual(project.active_months_range(), [august])
+        self.assertEqual(dict(project.monthly_stats[2011]), {8: 40.0})
+
+        # Add bills for other months and check monthly expenses again
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-12-20",
+                "what": "fromage à raclette",
+                "payer": 2,
+                "payed_for": [1, 2],
+                "amount": "30",
+            },
+        )
+        months = [
+            datetime.date(year=2011, month=12, day=1),
+            datetime.date(year=2011, month=11, day=1),
+            datetime.date(year=2011, month=10, day=1),
+            datetime.date(year=2011, month=9, day=1),
+            datetime.date(year=2011, month=8, day=1),
+        ]
+        amounts_2011 = {
+            12: 30.0,
+            8: 40.0,
+        }
+        self.assertEqual(project.active_months_range(), months)
+        self.assertEqual(dict(project.monthly_stats[2011]), amounts_2011)
+
+        # Test more corner cases: first day of month as oldest bill
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-08-01",
+                "what": "ice cream",
+                "payer": 2,
+                "payed_for": [1, 2],
+                "amount": "10",
+            },
+        )
+        amounts_2011[8] += 10.0
+        self.assertEqual(project.active_months_range(), months)
+        self.assertEqual(dict(project.monthly_stats[2011]), amounts_2011)
+
+        # Last day of month as newest bill
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-12-31",
+                "what": "champomy",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "amount": "10",
+            },
+        )
+        amounts_2011[12] += 10.0
+        self.assertEqual(project.active_months_range(), months)
+        self.assertEqual(dict(project.monthly_stats[2011]), amounts_2011)
+
+        # Last day of month as oldest bill
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-07-31",
+                "what": "smoothie",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "amount": "20",
+            },
+        )
+        months.append(datetime.date(year=2011, month=7, day=1))
+        amounts_2011[7] = 20.0
+        self.assertEqual(project.active_months_range(), months)
+        self.assertEqual(dict(project.monthly_stats[2011]), amounts_2011)
+
+        # First day of month as newest bill
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2012-01-01",
+                "what": "more champomy",
+                "payer": 2,
+                "payed_for": [1, 2],
+                "amount": "30",
+            },
+        )
+        months.insert(0, datetime.date(year=2012, month=1, day=1))
+        amounts_2012 = {1: 30.0}
+        self.assertEqual(project.active_months_range(), months)
+        self.assertEqual(dict(project.monthly_stats[2011]), amounts_2011)
+        self.assertEqual(dict(project.monthly_stats[2012]), amounts_2012)
 
     def test_settle_page(self):
         self.post_project("raclette")

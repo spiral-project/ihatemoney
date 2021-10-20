@@ -1,7 +1,9 @@
 from collections import defaultdict
 import datetime
+import itertools
 
 from dateutil.parser import parse
+from dateutil.relativedelta import relativedelta
 from debts import settle
 from flask import current_app, g
 from flask_sqlalchemy import BaseQuery, SQLAlchemy
@@ -263,6 +265,41 @@ class Project(db.Model):
             .order_by(Bill.date.desc())
             .order_by(Bill.id.desc())
         )
+
+    def get_newest_bill(self):
+        """Returns the most recent bill (according to bill date) or None if there are no bills"""
+        # Note that the ORM performs an optimized query with LIMIT
+        return self.get_bills_unordered().order_by(Bill.date.desc()).first()
+
+    def get_oldest_bill(self):
+        """Returns the least recent bill (according to bill date) or None if there are no bills"""
+        # Note that the ORM performs an optimized query with LIMIT
+        return self.get_bills_unordered().order_by(Bill.date.asc()).first()
+
+    def active_months_range(self):
+        """Returns a list of dates, representing the range of consecutive months
+        for which the project was active (i.e. has bills).
+
+        Note that the list might contain months during which there was no
+        bills.  We only guarantee that there were bills during the first
+        and last month in the list.
+        """
+        oldest_bill = self.get_oldest_bill()
+        newest_bill = self.get_newest_bill()
+        if oldest_bill is None or newest_bill is None:
+            return []
+        oldest_date = oldest_bill.date
+        newest_date = newest_bill.date
+        newest_month = datetime.date(
+            year=newest_date.year, month=newest_date.month, day=1
+        )
+        # Infinite iterator towards the past
+        all_months = (newest_month - relativedelta(months=i) for i in itertools.count())
+        # Stop when reaching one month before the first date
+        months = itertools.takewhile(
+            lambda x: x > oldest_date - relativedelta(months=1), all_months
+        )
+        return list(months)
 
     def get_pretty_bills(self, export_format="json"):
         """Return a list of project's bills with pretty formatting"""
