@@ -33,3 +33,4 @@ SUPPORTED_LANGUAGES = [
     "zh_Hans",
 ]
 ENABLE_CAPTCHA = False
+LEGAL_LINK = ""
