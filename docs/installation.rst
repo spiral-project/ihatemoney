@@ -34,7 +34,7 @@ external database::
 
    docker run -d -p 8000:8000 \
    -e SECRET_KEY="supersecure" \
-   -e SQLALCHEMY_DATABASE_URI="mysql+pymysql://user:pass@78.198.38.17/ihm" \
+   -e SQLALCHEMY_DATABASE_URI="mysql+pymysql://user:pass@10.42.58.250/ihm" \
    -e MAIL_SERVER=smtp.gmail.com \
    -e MAIL_PORT=465 \
    -e MAIL_USERNAME=your-email@gmail.com \
