@@ -99,27 +99,37 @@ class Project(db.Model):
         return [m for m in self.members if m.activated]
 
     @property
-    def balance(self):
+    def full_balance(self):
+        """Returns a triple of dicts:
 
+        - dict mapping each member to its balance
+
+        - dict mapping each member to how much he/she should pay others
+          (i.e. how much he/she benefited from bills)
+
+        - dict mapping each member to how much he/she should be paid by
+          others (i.e. how much he/she has paid for bills)
+
+        """
         balances, should_pay, should_receive = (defaultdict(int) for time in (1, 2, 3))
 
-        # for each person
-        for person in self.members:
-            # get the list of bills he has to pay
-            bills = Bill.query.options(orm.subqueryload(Bill.owers)).filter(
-                Bill.owers.contains(person)
-            )
-            for bill in bills.all():
-                if person != bill.payer:
-                    share = bill.pay_each() * person.weight
-                    should_pay[person] += share
-                    should_receive[bill.payer] += share
+        for bill in self.get_bills_unordered().all():
+            should_receive[bill.payer.id] += bill.converted_amount
+            total_weight = sum(ower.weight for ower in bill.owers)
+            for ower in bill.owers:
+                should_pay[ower.id] += (
+                    ower.weight * bill.converted_amount / total_weight
+                )
 
         for person in self.members:
-            balance = should_receive[person] - should_pay[person]
+            balance = should_receive[person.id] - should_pay[person.id]
             balances[person.id] = balance
 
-        return balances
+        return balances, should_pay, should_receive
+
+    @property
+    def balance(self):
+        return self.full_balance[0]
 
     @property
     def members_stats(self):
@@ -128,23 +138,13 @@ class Project(db.Model):
         :return: one stat dict per member
         :rtype list:
         """
+        balance, spent, paid = self.full_balance
         return [
             {
                 "member": member,
-                "paid": sum(
-                    [
-                        bill.converted_amount
-                        for bill in self.get_member_bills(member.id).all()
-                    ]
-                ),
-                "spent": sum(
-                    [
-                        bill.pay_each() * member.weight
-                        for bill in self.get_bills_unordered().all()
-                        if member in bill.owers
-                    ]
-                ),
-                "balance": self.balance[member.id],
+                "paid": paid[member.id],
+                "spent": spent[member.id],
+                "balance": balance[member.id],
             }
             for member in self.active_members
         ]
@@ -232,8 +232,13 @@ class Project(db.Model):
 
     def get_bills_unordered(self):
         """Base query for bill list"""
+        # The subqueryload option allows to pre-load data from the
+        # billowers table, which makes access to this data much faster.
+        # Without this option, any access to bill.owers would trigger a
+        # new SQL query, ruining overall performance.
         return (
-            Bill.query.join(Person, Project)
+            Bill.query.options(orm.subqueryload(Bill.owers))
+            .join(Person, Project)
             .filter(Bill.payer_id == Person.id)
             .filter(Person.project_id == Project.id)
             .filter(Project.id == self.id)
@@ -572,7 +577,10 @@ class Bill(db.Model):
         }
 
     def pay_each_default(self, amount):
-        """Compute what each share has to pay"""
+        """Compute what each share has to pay. Warning: this is slow, if you need
+        to compute this for many bills, do it differently (see
+        balance_full function)
+        """
         if self.owers:
             weights = (
                 db.session.query(func.sum(Person.weight))
@@ -587,6 +595,9 @@ class Bill(db.Model):
         return self.what
 
     def pay_each(self):
+        """Warning: this is slow, if you need to compute this for many bills, do
+        it differently (see balance_full function)
+        """
         return self.pay_each_default(self.converted_amount)
 
     def __repr__(self):
