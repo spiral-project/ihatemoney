@@ -306,7 +306,7 @@ class ResetPasswordForm(FlaskForm):
 
 class BillForm(FlaskForm):
     date = DateField(_("Date"), validators=[DataRequired()], default=datetime.now)
-    what = StringField(_("What?"), validators=[DataRequired()])
+    what = StringField(_("Description"), validators=[DataRequired()])
     payer = SelectField(_("Payer"), validators=[DataRequired()], coerce=int)
     amount = CalculatorStringField(_("Amount paid"), validators=[DataRequired()])
     currency_helper = CurrencyConverter()

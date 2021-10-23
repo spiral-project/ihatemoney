@@ -150,9 +150,9 @@
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
     {{ input(form.date, inline=True) }}
-    {{ input(form.what, inline=True) }}
-    {{ input(form.payer, inline=True, class="form-control custom-select") }}
-    {{ input(form.amount, inline=True) }}
+    {{ input(form.what, inline=True, placeholder="Payment for...") }}
+    {{ input(form.payer, inline=True, class="form-control custom-select", placeholder="Who paid?") }}
+    {{ input(form.amount, inline=True, placeholder="How much?") }}
 
     <div class="form-group row">
         <label class="col-3" for="payed_for">{{ _("For whom?") }}</label>
