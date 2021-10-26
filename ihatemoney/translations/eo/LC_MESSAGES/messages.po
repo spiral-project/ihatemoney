@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-19 19:34+0200\n"
+"POT-Creation-Date: 2021-10-26 23:38+0200\n"
 "PO-Revision-Date: 2021-10-01 20:35+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language: eo\n"
@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -798,6 +798,10 @@ msgstr "Dokumentaro"
 msgid "Administation Dashboard"
 msgstr "Administra panelo"
 
+#, fuzzy
+msgid "Legal information"
+msgstr "Konfirmo de forigo"
+
 msgid "\"I hate money\" is free software"
 msgstr "«I hate money» estas libera programo"
 
@@ -1003,3 +1007,4 @@ msgstr "Periodo"
 
 #~ msgid "You either provided a bad token or no project identifier."
 #~ msgstr "Vi donis aŭ nevalidan ĵetonon aŭ neniun identigilon de projekto."
+
