@@ -1,19 +1,19 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-18 23:00+0200\n"
+"POT-Creation-Date: 2021-10-26 23:38+0200\n"
 "PO-Revision-Date: 2021-10-19 21:01+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/tr/>\n"
 "Language: tr\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/tr/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -805,6 +805,10 @@ msgstr "Belgelendirme"
 msgid "Administation Dashboard"
 msgstr "Yönetici Gösterge Paneli"
 
+#, fuzzy
+msgid "Legal information"
+msgstr "Onaylamayı Sil"
+
 msgid "\"I hate money\" is free software"
 msgstr "\"I hate money\" özgür bir yazılımdır"
 
@@ -1034,3 +1038,4 @@ msgstr "Dönem"
 
 #~ msgid "You either provided a bad token or no project identifier."
 #~ msgstr "Yanlış bir belirteç sağladınız veya proje tanımlayıcısı belirtmediniz."
+

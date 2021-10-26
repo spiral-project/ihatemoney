@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-19 19:34+0200\n"
+"POT-Creation-Date: 2021-10-26 23:38+0200\n"
 "PO-Revision-Date: 2020-11-11 16:28+0000\n"
 "Last-Translator: Jwen921 <yangjingwen0921@gmail.com>\n"
 "Language: ja\n"
@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -779,6 +779,10 @@ msgstr "書類"
 msgid "Administation Dashboard"
 msgstr "管理ダッシュボード"
 
+#, fuzzy
+msgid "Legal information"
+msgstr "確認を削除する"
+
 msgid "\"I hate money\" is free software"
 msgstr "\"I hate money\"は無料のソフトウェアです"
 
@@ -980,3 +984,4 @@ msgstr "期間"
 
 #~ msgid "You either provided a bad token or no project identifier."
 #~ msgstr "無効な入力かプロジェクト名なし。"
+

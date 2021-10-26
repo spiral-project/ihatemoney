@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-19 19:34+0200\n"
+"POT-Creation-Date: 2021-10-26 23:38+0200\n"
 "PO-Revision-Date: 2021-03-17 15:18+0000\n"
 "Last-Translator: TomSolGit <Tommaso.solfa@gmail.com>\n"
 "Language: it\n"
@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -813,6 +813,10 @@ msgstr "Documentazione"
 msgid "Administation Dashboard"
 msgstr "Cruscotto Amministrazione"
 
+#, fuzzy
+msgid "Legal information"
+msgstr "Cancella Conferma"
+
 msgid "\"I hate money\" is free software"
 msgstr "\"I hate money\" è un software libero"
 
@@ -1045,3 +1049,4 @@ msgstr "Periodo"
 #~ "Hai fornito un token invalido o "
 #~ "l'identificatore del progetto non è "
 #~ "valido."
+
