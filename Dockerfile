@@ -17,7 +17,9 @@ ENV DEBUG="False" \
     SECRET_KEY="tralala" \
     SESSION_COOKIE_SECURE="True" \
     SQLALCHEMY_DATABASE_URI="sqlite:////database/ihatemoney.db" \
-    SQLALCHEMY_TRACK_MODIFICATIONS="False"
+    SQLALCHEMY_TRACK_MODIFICATIONS="False" \
+    ENABLE_CAPTCHA="False" \
+    LEGAL_LINK="False"
 
 RUN mkdir -p /etc/ihatemoney &&\
     pip install --no-cache-dir gunicorn pymysql;
