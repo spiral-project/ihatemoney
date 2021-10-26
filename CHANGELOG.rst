@@ -3,10 +3,10 @@ Changelog
 
 This document describes changes between each past release.
 
-5.1.1 (unreleased)
+5.1.1 (2021-10-26)
 ==================
 
-- Nothing changed yet.
+- No actual change, fixup release because 5.1.0 did not upload to pypi
 
 
 5.1.0 (2021-10-26)
