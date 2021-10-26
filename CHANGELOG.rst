@@ -3,10 +3,25 @@ Changelog
 
 This document describes changes between each past release.
 
-5.0.2 (unreleased)
+5.1.0 (2021-10-26)
 ==================
 
-- Nothing changed yet.
+Added
+-----
+
+- Add the option to display a "legal link" at the bottom of pages (#883)
+
+New settings
+------------
+
+- Add `LEGAL_LINK <https://ihatemoney.readthedocs.io/en/latest/configuration.html#legal-link>`_ setting (#883)
+
+Changed
+-------
+
+- Improve performance of balance and statistics computation (#890)
+- Reduce the resolution of showcase pictures by 50% (#880)
+- Improve pagination style in the list of bills (#873)
 
 
 5.0.1 (2021-10-20)
