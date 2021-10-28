@@ -7,6 +7,7 @@ DOC_STAMP = $(VENV)/.doc_env_installed.stamp
 INSTALL_STAMP = $(VENV)/.install.stamp
 TEMPDIR := $(shell mktemp -d)
 ZOPFLIPNG := zopflipng
+MAGICK_MOGRIFY := mogrify
 
 .PHONY: all
 all: install ## Alias for install
@@ -56,8 +57,13 @@ isort: install-dev ## Run the tests
 release: install-dev ## Release a new version (see https://ihatemoney.readthedocs.io/en/latest/contributing.html#how-to-release)
 	$(VENV)/bin/fullrelease
 
+.PHONY: compress-showcase
+compress-showcase:
+	@which $(MAGICK_MOGRIFY) >/dev/null || (echo "ImageMagick 'mogrify' ($(MAGICK_MOGRIFY)) is missing" && exit 1)
+	$(MAGICK_MOGRIFY) -format webp -resize '75%>' -quality 50 -define webp:method=6:auto-filter=true -path ihatemoney/static/showcase/ 'assets/showcase/*.jpg'
+
 .PHONY: compress-assets
-compress-assets: ## Compress static assets
+compress-assets: compress-showcase ## Compress static assets
 	@which $(ZOPFLIPNG) >/dev/null || (echo "ZopfliPNG ($(ZOPFLIPNG)) is missing" && exit 1)
 	mkdir $(TEMPDIR)/zopfli
 	$(eval CPUCOUNT := $(shell python -c "import psutil; print(psutil.cpu_count(logical=False))"))
