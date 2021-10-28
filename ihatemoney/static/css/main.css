@@ -69,6 +69,11 @@ body {
   width: 55px;
 }
 
+#header .side-to-side {
+  /* avoid the man with his hand pointing at nothing */
+  white-space: nowrap;
+}
+
 #header .shareimg {
   width: 80px;
   margin-left: 5px;
