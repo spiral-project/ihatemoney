@@ -305,10 +305,10 @@ class ResetPasswordForm(FlaskForm):
 
 
 class BillForm(FlaskForm):
-    date = DateField(_("Date"), validators=[DataRequired()], default=datetime.now)
+    date = DateField(_("When?"), validators=[DataRequired()], default=datetime.now)
     what = StringField(_("What?"), validators=[DataRequired()])
-    payer = SelectField(_("Payer"), validators=[DataRequired()], coerce=int)
-    amount = CalculatorStringField(_("Amount paid"), validators=[DataRequired()])
+    payer = SelectField(_("Who paid?"), validators=[DataRequired()], coerce=int)
+    amount = CalculatorStringField(_("How much?"), validators=[DataRequired()])
     currency_helper = CurrencyConverter()
     original_currency = SelectField(_("Currency"), validators=[DataRequired()])
     external_link = URLField(
