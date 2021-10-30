@@ -6,7 +6,10 @@ This document describes changes between each past release.
 5.1.2 (unreleased)
 ==================
 
-- Nothing changed yet.
+Changed
+-------
+
+- Minor presentation fixes (901)
 
 
 5.1.1 (2021-10-26)
