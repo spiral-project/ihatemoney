@@ -226,7 +226,7 @@ In order to issue a new release, follow the following steps:
 - Switch to the master branch;
 - Update :file:`CHANGELOG.rst` with the last changes;
 - Update :file:`CONTRIBUTORS` (instructions inside the file);
-- If needed, recompress assets. It requires zopflipng::
+- If needed, recompress assets. It requires zopflipng and ImageMagick `mogrify`::
 
     make compress-assets
 
