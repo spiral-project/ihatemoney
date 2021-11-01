@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -790,6 +790,10 @@ msgstr ""
 msgid "Administation Dashboard"
 msgstr ""
 
+#, fuzzy
+msgid "Legal information"
+msgstr "Επιβεβαίωση Διαγραφής"
+
 msgid "\"I hate money\" is free software"
 msgstr ""
 
@@ -1013,28 +1017,3 @@ msgstr "Περίοδος"
 
 #~ msgid "People to notify"
 #~ msgstr "Πρόσωπα προς ενημέρωση"
-
-#~ msgid "Error activating member"
-#~ msgstr ""
-
-#~ msgid "Error removing member"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "User '%(name)s' has been deactivated. It"
-#~ " will still appear in the users "
-#~ "list until its balance becomes zero."
-#~ msgstr ""
-
-#~ msgid "User '%(name)s' has been edited"
-#~ msgstr "Ο χρήστης \"%(name)s\" έχει τροποποιηθεί"
-
-#~ msgid "Number of members"
-#~ msgstr "Αριθμός μελών"
-
-#~ msgid "Edit this member"
-#~ msgstr "Επεξεργασία αυτού του μέλους"
-
-#~ msgid "Participants to notify"
-#~ msgstr ""
-

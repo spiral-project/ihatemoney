@@ -3,7 +3,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2021-11-01 18:01+0100\n"
+=======
+"POT-Creation-Date: 2021-10-26 23:38+0200\n"
+>>>>>>> master
 "PO-Revision-Date: 2021-10-17 04:56+0000\n"
 "Last-Translator: a-g-rao <athrigrao@gmail.com>\n"
 "Language: kn\n"
@@ -13,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -766,6 +770,9 @@ msgid "Documentation"
 msgstr ""
 
 msgid "Administation Dashboard"
+msgstr ""
+
+msgid "Legal information"
 msgstr ""
 
 msgid "\"I hate money\" is free software"

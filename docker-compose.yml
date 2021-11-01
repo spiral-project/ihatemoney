@@ -24,5 +24,7 @@ services:
       - SESSION_COOKIE_SECURE=True
       - SQLALCHEMY_DATABASE_URI=sqlite:////database/ihatemoney.db
       - SQLALCHEMY_TRACK_MODIFICATIONS=False
+      - ENABLE_CAPTCHA=False
+      - LEGAL_LINK=
     ports:
       - "8000:8000"

@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -813,6 +813,10 @@ msgstr "Документация"
 msgid "Administation Dashboard"
 msgstr "Панель инструментов администратора"
 
+#, fuzzy
+msgid "Legal information"
+msgstr "Подтверждение удаления"
+
 msgid "\"I hate money\" is free software"
 msgstr "\" I hate money \" - бесплатная программа"
 
@@ -1046,22 +1050,3 @@ msgstr "Период"
 
 #~ msgid "People to notify"
 #~ msgstr "Люди для уведомления"
-
-#~ msgid "Error activating member"
-#~ msgstr ""
-
-#~ msgid "Error removing member"
-#~ msgstr ""
-
-#~ msgid "User '%(name)s' has been edited"
-#~ msgstr "Пользователь '%(name)s' был изменён"
-
-#~ msgid "Number of members"
-#~ msgstr "Число участников"
-
-#~ msgid "Edit this member"
-#~ msgstr "Изменить этого участника"
-
-#~ msgid "Participants to notify"
-#~ msgstr "добавить пользователя"
-

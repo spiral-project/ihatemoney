@@ -742,6 +742,9 @@ msgstr ""
 msgid "Administation Dashboard"
 msgstr ""
 
+msgid "Legal information"
+msgstr ""
+
 msgid "\"I hate money\" is free software"
 msgstr ""
 

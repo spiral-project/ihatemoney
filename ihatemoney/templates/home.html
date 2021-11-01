@@ -10,8 +10,11 @@
         </a>
     {% endif %}
     {% if g.lang == 'fr' %}
-        ou <a class="showcase btn" onclick="javascript:showGallery(); return false;">Voir la BD explicative</a>
-        <img class="showcaseimg" src="{{ url_for("static", filename='images/indicate.svg') }}" />
+        ou
+        <span class="side-to-side">
+          <a class="showcase btn" onclick="javascript:showGallery(); return false;">Voir la BD explicative</a>
+          <img class="showcaseimg" src="{{ url_for("static", filename='images/indicate.svg') }}" />
+        </span>
     {% endif %}
   </div>
   <div class="col-xs-12 col-sm-4">

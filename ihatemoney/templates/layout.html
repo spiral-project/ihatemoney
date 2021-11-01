@@ -150,6 +150,11 @@
               <i class="icon admin">{{ static_include("images/cog.svg") | safe }}</i>
             </a>
             {% endif %}
+            {% if config.LEGAL_LINK %}
+            <a target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="{{ _('Legal information') }}" href="{{ config.LEGAL_LINK }}">
+              <i class="icon legal">{{ static_include("images/legal.svg") | safe }}</i>
+            </a>
+            {% endif %}
           </div>
 
           <div class="footer-left">

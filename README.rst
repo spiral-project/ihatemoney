@@ -13,11 +13,16 @@ I hate money
    :target: https://liberapay.com/IHateMoney/donate
    :alt: Donate
 
+.. image:: https://img.shields.io/badge/-Docker%20image-black?logo=docker
+   :target: https://hub.docker.com/r/ihatemoney/ihatemoney/general
+   :alt: Docker image
+
+
 *I hate money* is a web application made to ease shared budget management.
 It keeps track of who bought what, when, and for whom; and helps to settle the
 bills.
 
-* `Online documentation <https://ihatemoney.readthedocs.org>`_
+* `Online documentation <https://ihatemoney.readthedocs.io>`_
 * `Hosted version <https://ihatemoney.org>`_
 * `Mailing list <https://mailman.alwaysdata.com/postorius/lists/info.ihatemoney.org/>`_
   (to get updates when needed).

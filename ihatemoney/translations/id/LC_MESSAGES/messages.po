@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -810,6 +810,10 @@ msgstr "Dokumentasi"
 msgid "Administation Dashboard"
 msgstr "Dasbor Administrasi"
 
+#, fuzzy
+msgid "Legal information"
+msgstr "Hapus Konfirmasi"
+
 msgid "\"I hate money\" is free software"
 msgstr "\"I hate money\" adalah perangkat lunak gratis"
 
@@ -1054,22 +1058,3 @@ msgstr "Periode"
 
 #~ msgid "People to notify"
 #~ msgstr "Orang yang akan diberi pemberitahuan"
-
-#~ msgid "Error activating member"
-#~ msgstr ""
-
-#~ msgid "Error removing member"
-#~ msgstr ""
-
-#~ msgid "User '%(name)s' has been edited"
-#~ msgstr "Pengguna %(name)s telah diperbarui"
-
-#~ msgid "Number of members"
-#~ msgstr "Jumlah anggota"
-
-#~ msgid "Edit this member"
-#~ msgstr "Ubah anggota ini"
-
-#~ msgid "Participants to notify"
-#~ msgstr "tambah partisipan"
-

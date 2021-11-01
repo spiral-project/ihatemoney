@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -815,6 +815,10 @@ msgstr "प्रलेखन"
 msgid "Administation Dashboard"
 msgstr "व्यवस्थापन डैशबोर्ड"
 
+#, fuzzy
+msgid "Legal information"
+msgstr "पुष्टिकरण हटाएं"
+
 msgid "\"I hate money\" is free software"
 msgstr "\"I hate money\" एक मुफ्त सॉफ्टवेयर है"
 
@@ -1031,22 +1035,3 @@ msgstr "अवधि"
 
 #~ msgid "People to notify"
 #~ msgstr "सूचित किये जाने वाले लोग"
-
-#~ msgid "Error activating member"
-#~ msgstr ""
-
-#~ msgid "Error removing member"
-#~ msgstr ""
-
-#~ msgid "User '%(name)s' has been edited"
-#~ msgstr "उपयोगकर्ता '%(name)s' को संपादित कर दिया गया है"
-
-#~ msgid "Number of members"
-#~ msgstr "सदस्यों की संख्या"
-
-#~ msgid "Edit this member"
-#~ msgstr "इस सदस्य को संपादित करें"
-
-#~ msgid "Participants to notify"
-#~ msgstr "प्रतिभागियों को जोड़ें"
-

@@ -82,6 +82,13 @@ And then run the application::
     cd ihatemoney
     python run.py
 
+The docker way
+--------------
+
+If you prefer to use docker, then you can build your image with::
+
+  docker build -t ihatemoney .
+  
 Accessing dev server
 --------------------
 
@@ -213,13 +220,52 @@ And to produce a HTML doc in the `docs/_output` folder::
 How to release?
 ===============
 
-In order to prepare a new release, we are following the following steps:
+Requirements
+------------
+
+To create a new release, make sure you fullfil all requirements:
+
+- Are you a maintainer of the pypi package?
+- Are you sure you have no local tags?  They will all be published
+  to the github process as part of the release process
+- Make sure you have a ``~/.pypirc`` file with the following content,
+  replacing ``YOUR_PYPI_USERNAME`` with your real username::
+
+    [distutils]
+    index-servers =
+        pypi
+    
+    [pypi]
+    username:YOUR_PYPI_USERNAME
+
+Choosing a version number
+-------------------------
+
+The project follows `semantic versioning <https://semver.org/>`_.
+To sum things up:
+
+- **if there is a breaking change since the last release:** increase the major
+  version number (11.X.Y -> 12.0.0). Example of breaking changes: drop support
+  for an old version of python, new setting without default value (requires
+  an admin to configure the new setting), changed URL paths, any other incompatible
+  change. Make sure to :ref:`document the upgrade process<upgrade>`.
+
+- **if there is a significant new feature or a new setting:** increase the minor
+  version number (11.4.Y -> 11.5.0). Make sure to :ref:`document any new settings<configuration>`.
+
+- **if it's mostly bugfixes and small changes:** increase the patch version number
+  (11.4.8 -> 11.4.9)
+
+Making the release
+------------------
+
+In order to issue a new release, follow the following steps:
 
 - Merge remaining pull requests;
+- Switch to the master branch;
 - Update :file:`CHANGELOG.rst` with the last changes;
-- Update :file:`CONTRIBUTORS`;
-- Update known good versions of dependencies in ``setup.cfg``
-- If needed, recompress assets. It requires zopflipng::
+- Update :file:`CONTRIBUTORS` (instructions inside the file);
+- If needed, recompress assets. It requires zopflipng and ImageMagick `mogrify`::
 
     make compress-assets
 
@@ -228,12 +274,22 @@ In order to prepare a new release, we are following the following steps:
     make update-translations
     make build-translations
 
-Once this is done, use the "release" instruction::
+- If you're not completely sure of yourself at this point, you
+  can optionally: create a new branch, push it, open a pull request,
+  check the CI result, and then merge the branch to master.
+
+Once this is done, make sure your local git repository is on the master branch,
+and let's release!::
 
     make release
 
-And the new version should be published on PyPI.
+This will publish the new version to `the Python Package Index <https://pypi.org>`_ (PyPI)
+and publish a tag in the git repository.
 
 .. note:: The above command will prompt for version number, handle
           :file:`CHANGELOG.rst` and :file:`setup.cfg` updates, package creation,
           pypi upload. It will prompt you before each step to get your consent.
+
+Finally, create a release on Github and copy the relevant changelog extract into it.
+Unfortunately, you need to manually convert links to Markdown...
+We have a `discussion to automate this step <https://github.com/spiral-project/ihatemoney/issues/894>`_.

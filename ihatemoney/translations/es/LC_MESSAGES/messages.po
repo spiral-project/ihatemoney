@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -775,6 +775,9 @@ msgstr "Documentación"
 msgid "Administation Dashboard"
 msgstr "Panel de administración"
 
+msgid "Legal information"
+msgstr ""
+
 msgid "\"I hate money\" is free software"
 msgstr ""
 
@@ -1019,4 +1022,3 @@ msgstr "Período"
 
 #~ msgid "Participants to notify"
 #~ msgstr "añadir participantes"
-

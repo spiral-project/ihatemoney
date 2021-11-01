@@ -3,10 +3,40 @@ Changelog
 
 This document describes changes between each past release.
 
-5.0.2 (unreleased)
+5.1.2 (unreleased)
 ==================
 
-- Nothing changed yet.
+Changed
+-------
+
+- Minor presentation fixes (901)
+
+
+5.1.1 (2021-10-26)
+==================
+
+- No actual change, fixup release because 5.1.0 did not upload to pypi
+
+
+5.1.0 (2021-10-26)
+==================
+
+Added
+-----
+
+- Add the option to display a "legal link" at the bottom of pages (#883)
+
+New settings
+------------
+
+- Add `LEGAL_LINK <https://ihatemoney.readthedocs.io/en/latest/configuration.html#legal-link>`_ setting (#883)
+
+Changed
+-------
+
+- Improve performance of balance and statistics computation (#890)
+- Reduce the resolution of showcase pictures by 50% (#880)
+- Improve pagination style in the list of bills (#873)
 
 
 5.0.1 (2021-10-20)
@@ -59,6 +89,13 @@ Added
 - Add optional support for a simple CAPTCHA (#844)
 - Add translations for Greek, Esperanto, Italian, Japanese, Portuguese and Swedish
 - Publish an `official docker image <https://hub.docker.com/r/ihatemoney/ihatemoney>`_
+
+New settings
+------------
+
+- Add `ENABLE_CAPTCHA <https://ihatemoney.readthedocs.io/en/latest/configuration.html#enable-captcha>`_ setting (#844)
+- Use and document `SESSION_COOKIE_SECURE <https://ihatemoney.readthedocs.io/en/latest/configuration.html#session-cookie-secure>`_ setting (#845)
+- Use and document `BABEL_DEFAULT_TIMEZONE <https://ihatemoney.readthedocs.io/en/latest/configuration.html#babel-default-timezone>`_ setting (#590)
 
 Changed
 -------
