@@ -9,3 +9,9 @@ version = "5.0"
 release = "5.0"
 exclude_patterns = ["_build"]
 pygments_style = "sphinx"
+extensions = ["myst_parser", "sphinx.ext.autosectionlabel"]
+
+myst_enable_extensions = [
+    "colon_fence",
+]
+autosectionlabel_prefix_document = True

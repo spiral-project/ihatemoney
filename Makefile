@@ -3,7 +3,6 @@ SPHINX_BUILDDIR = docs/_build
 VENV := $(shell realpath $${VIRTUAL_ENV-.venv})
 PYTHON = $(VENV)/bin/python3
 DEV_STAMP = $(VENV)/.dev_env_installed.stamp
-DOC_STAMP = $(VENV)/.doc_env_installed.stamp
 INSTALL_STAMP = $(VENV)/.install.stamp
 TEMPDIR := $(shell mktemp -d)
 ZOPFLIPNG := zopflipng
