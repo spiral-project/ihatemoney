@@ -339,6 +339,7 @@ footer .footer-left {
 #history_table {
   margin-top: 30px;
   margin-bottom: 30px;
+  flex-basis: auto;
 }
 
 @media (min-width: 768px) {

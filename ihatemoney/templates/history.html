@@ -126,20 +126,21 @@
     </div>
     {% endif %}
     {{ clear_history_modals() }}
-    <span class="float-right mt-3" {% if not history %} data-toggle="tooltip" title="{{_('No history to erase')}}" {% endif %}>
-        <a href="#" class="btn btn-outline-danger float-right {% if not history %} disabled {% endif %}" data-toggle="modal" data-keyboard="false" data-target="#confirm-erase">
-            <i class="icon icon-red plus">{{ static_include("images/x.svg") | safe }}</i>
-            {{ _("Clear Project History") }}
-        </a>
-    </span>
-    <span class="float-right mt-3" {% if not any_ip_addresses %}data-placement="top" data-toggle="tooltip" title="{{_('No IP Addresses to erase')}}" {% endif %}>
-        <a href="#" class="btn btn-outline-danger float-right mr-2 {% if not any_ip_addresses %} disabled {% endif %}" data-toggle="modal" data-keyboard="false" data-target="#confirm-ip-delete">
-            <i class="icon icon-red plus">{{ static_include("images/x.svg") | safe }}</i>
-            {{ _("Delete Stored IP Addresses") }}
-        </a>
-    </span>
+    <div class="d-flex mt-3 justify-content-end">
+        <span class="mr-2" {% if not any_ip_addresses %}data-placement="top" data-toggle="tooltip" title="{{_('No IP Addresses to erase')}}" {% endif %}>
+            <a href="#" class="btn btn-outline-danger {% if not any_ip_addresses %} disabled {% endif %}" data-toggle="modal" data-keyboard="false" data-target="#confirm-ip-delete">
+                <i class="icon icon-red plus">{{ static_include("images/x.svg") | safe }}</i>
+                {{ _("Delete Stored IP Addresses") }}
+            </a>
+        </span>
+        <span {% if not history %} data-toggle="tooltip" title="{{_('No history to erase')}}" {% endif %}>
+            <a href="#" class="btn btn-outline-danger {% if not history %} disabled {% endif %}" data-toggle="modal" data-keyboard="false" data-target="#confirm-erase">
+                <i class="icon icon-red plus">{{ static_include("images/x.svg") | safe }}</i>
+                {{ _("Clear Project History") }}
+            </a>
+        </span>
+    </div>
 
-    <div class="clearfix"></div>
     {% if history %}
     <table id="history_table" class="split_bills table table-striped">
         <thead><tr>
