@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 00:25+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2020-10-05 12:12+0000\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
 "Language: pt\n"
@@ -169,7 +169,7 @@ msgstr "Peso"
 msgid "Add"
 msgstr "Adicionar"
 
-#, fuzzy, python-format
+#, fuzzy
 msgid "The participant name is invalid"
 msgstr "Utilizador '%(name)s' foi removido"
 
@@ -177,9 +177,8 @@ msgstr "Utilizador '%(name)s' foi removido"
 msgid "This project already have this participant"
 msgstr "Este projeto já tem este membro"
 
-#, fuzzy
-msgid "Participants to notify"
-msgstr "adicionar participantes"
+msgid "People to notify"
+msgstr ""
 
 msgid "Send invites"
 msgstr "Enviar convites"
@@ -1047,4 +1046,7 @@ msgstr "Período"
 
 #~ msgid "Edit this member"
 #~ msgstr "Editar este membro"
+
+#~ msgid "Participants to notify"
+#~ msgstr "adicionar participantes"
 

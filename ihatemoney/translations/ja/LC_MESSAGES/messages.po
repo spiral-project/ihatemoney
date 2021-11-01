@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 00:25+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2020-11-11 16:28+0000\n"
 "Last-Translator: Jwen921 <yangjingwen0921@gmail.com>\n"
 "Language: ja\n"
@@ -165,7 +165,7 @@ msgstr "重み"
 msgid "Add"
 msgstr "追加"
 
-#, fuzzy, python-format
+#, fuzzy
 msgid "The participant name is invalid"
 msgstr "ユーザー%(name)sが既に取り除かれました"
 
@@ -173,9 +173,8 @@ msgstr "ユーザー%(name)sが既に取り除かれました"
 msgid "This project already have this participant"
 msgstr "プロジェクトはすでにこのメンバーを含めています"
 
-#, fuzzy
-msgid "Participants to notify"
-msgstr "参加者を追加する"
+msgid "People to notify"
+msgstr ""
 
 msgid "Send invites"
 msgstr "招待状を出す"
@@ -1010,4 +1009,7 @@ msgstr "期間"
 
 #~ msgid "Edit this member"
 #~ msgstr "このメンバーを編集する"
+
+#~ msgid "Participants to notify"
+#~ msgstr "参加者を追加する"
 

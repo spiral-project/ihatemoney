@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 00:25+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2021-09-23 19:36+0000\n"
 "Last-Translator: Christian H. <sunrisechain@gmail.com>\n"
 "Language: de\n"
@@ -170,7 +170,7 @@ msgstr "Gewichtung"
 msgid "Add"
 msgstr "Hinzufügen"
 
-#, fuzzy, python-format
+#, fuzzy
 msgid "The participant name is invalid"
 msgstr "Teilnehmer %(name)s reaktiviert"
 
@@ -178,9 +178,8 @@ msgstr "Teilnehmer %(name)s reaktiviert"
 msgid "This project already have this participant"
 msgstr "Der Benutzer ist bereits dem Projekt zugeordnet"
 
-#, fuzzy
-msgid "Participants to notify"
-msgstr "Teilnehmer hinzufügen"
+msgid "People to notify"
+msgstr ""
 
 msgid "Send invites"
 msgstr "Einladung senden"
@@ -1066,4 +1065,7 @@ msgstr "Zeitraum"
 
 #~ msgid "Edit this member"
 #~ msgstr "Teilnehmer bearbeiten"
+
+#~ msgid "Participants to notify"
+#~ msgstr "Teilnehmer hinzufügen"
 

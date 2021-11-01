@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 00:25+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2021-04-14 08:27+0000\n"
 "Last-Translator: fcoterroba <fcoterroba@gmail.com>\n"
 "Language: es\n"
@@ -174,9 +174,8 @@ msgstr ""
 msgid "This project already have this participant"
 msgstr ""
 
-#, fuzzy
-msgid "Participants to notify"
-msgstr "añadir participantes"
+msgid "People to notify"
+msgstr ""
 
 msgid "Send invites"
 msgstr "Enviar invitaciones"
@@ -1017,4 +1016,7 @@ msgstr "Período"
 
 #~ msgid "Edit this member"
 #~ msgstr "Editar miembro"
+
+#~ msgid "Participants to notify"
+#~ msgstr "añadir participantes"
 

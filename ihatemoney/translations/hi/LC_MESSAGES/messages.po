@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 00:25+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2020-06-14 14:41+0000\n"
 "Last-Translator: raghupalash <singhpalash0@gmail.com>\n"
 "Language: hi\n"
@@ -169,7 +169,7 @@ msgstr "वजन"
 msgid "Add"
 msgstr "जोड़ें"
 
-#, fuzzy, python-format
+#, fuzzy
 msgid "The participant name is invalid"
 msgstr "उपयोगकर्ता '%(name)s' को हटा दिया गया है"
 
@@ -177,9 +177,8 @@ msgstr "उपयोगकर्ता '%(name)s' को हटा दिया 
 msgid "This project already have this participant"
 msgstr "इस परियोजना में पहले से ही यह सदस्य है"
 
-#, fuzzy
-msgid "Participants to notify"
-msgstr "प्रतिभागियों को जोड़ें"
+msgid "People to notify"
+msgstr ""
 
 msgid "Send invites"
 msgstr "आमंत्रण भेजें"
@@ -1047,4 +1046,7 @@ msgstr "अवधि"
 
 #~ msgid "Edit this member"
 #~ msgstr "इस सदस्य को संपादित करें"
+
+#~ msgid "Participants to notify"
+#~ msgstr "प्रतिभागियों को जोड़ें"
 

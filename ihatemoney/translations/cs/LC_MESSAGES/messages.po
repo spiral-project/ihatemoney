@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 00:25+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2021-09-05 13:34+0000\n"
 "Last-Translator: Clonewayx <fillip1@seznam.cz>\n"
 "Language: cs\n"
@@ -172,7 +172,7 @@ msgstr ""
 msgid "This project already have this participant"
 msgstr "Projekt již obsahuje tohoto člena"
 
-msgid "Participants to notify"
+msgid "People to notify"
 msgstr ""
 
 msgid "Send invites"
@@ -1026,5 +1026,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Edit this member"
+#~ msgstr ""
+
+#~ msgid "Participants to notify"
 #~ msgstr ""
 

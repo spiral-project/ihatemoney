@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 00:25+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2021-07-20 14:32+0000\n"
 "Last-Translator: Kristoffer Grundström "
 "<swedishsailfishosuser@tutanota.com>\n"
@@ -165,7 +165,7 @@ msgstr "Vikt"
 msgid "Add"
 msgstr "Lägg till"
 
-#, fuzzy, python-format
+#, fuzzy
 msgid "The participant name is invalid"
 msgstr "Användaren '%(name)s' har tagits bort"
 
@@ -173,9 +173,8 @@ msgstr "Användaren '%(name)s' har tagits bort"
 msgid "This project already have this participant"
 msgstr "Det här projektet har redan den här medlemmen"
 
-#, fuzzy
-msgid "Participants to notify"
-msgstr "lägg till deltagare"
+msgid "People to notify"
+msgstr ""
 
 msgid "Send invites"
 msgstr "Skicka inbjudningar"
@@ -1010,4 +1009,7 @@ msgstr "Period"
 
 #~ msgid "Edit this member"
 #~ msgstr "Redigera det här numret"
+
+#~ msgid "Participants to notify"
+#~ msgstr "lägg till deltagare"
 

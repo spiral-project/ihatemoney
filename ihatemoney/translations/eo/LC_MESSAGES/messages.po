@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 00:25+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2021-10-01 20:35+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language: eo\n"
@@ -168,7 +168,7 @@ msgstr "Pondo"
 msgid "Add"
 msgstr "Aldoni"
 
-#, fuzzy, python-format
+#, fuzzy
 msgid "The participant name is invalid"
 msgstr "Uzanto «%(name)s» estis forigita"
 
@@ -176,9 +176,8 @@ msgstr "Uzanto «%(name)s» estis forigita"
 msgid "This project already have this participant"
 msgstr "Ĉi tiu projekto jam havas ĉi tiun anon"
 
-#, fuzzy
-msgid "Participants to notify"
-msgstr "aldoni partoprenantojn"
+msgid "People to notify"
+msgstr ""
 
 msgid "Send invites"
 msgstr "Sendi invitojn"
@@ -1033,4 +1032,7 @@ msgstr "Periodo"
 
 #~ msgid "Edit this member"
 #~ msgstr "Redakti ĉi tiun anon"
+
+#~ msgid "Participants to notify"
+#~ msgstr "aldoni partoprenantojn"
 

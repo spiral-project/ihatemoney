@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 00:25+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2021-03-17 15:18+0000\n"
 "Last-Translator: TomSolGit <Tommaso.solfa@gmail.com>\n"
 "Language: it\n"
@@ -169,7 +169,7 @@ msgstr "Peso"
 msgid "Add"
 msgstr "Aggiungi"
 
-#, fuzzy, python-format
+#, fuzzy
 msgid "The participant name is invalid"
 msgstr "L'utente '%(name)s' è stato rimosso"
 
@@ -177,9 +177,8 @@ msgstr "L'utente '%(name)s' è stato rimosso"
 msgid "This project already have this participant"
 msgstr "Membro già presente in questo progetto"
 
-#, fuzzy
-msgid "Participants to notify"
-msgstr "aggiunti partecipanti"
+msgid "People to notify"
+msgstr ""
 
 msgid "Send invites"
 msgstr "Invia inviti"
@@ -1075,4 +1074,7 @@ msgstr "Periodo"
 
 #~ msgid "Edit this member"
 #~ msgstr "Modifica questo membro"
+
+#~ msgid "Participants to notify"
+#~ msgstr "aggiunti partecipanti"
 

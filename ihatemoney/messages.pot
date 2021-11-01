@@ -150,7 +150,7 @@ msgstr ""
 msgid "This project already have this participant"
 msgstr ""
 
-msgid "Participants to notify"
+msgid "People to notify"
 msgstr ""
 
 msgid "Send invites"

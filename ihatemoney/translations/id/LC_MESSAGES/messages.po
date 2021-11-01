@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 00:25+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2021-07-12 01:33+0000\n"
 "Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
 "Language: id\n"
@@ -170,7 +170,7 @@ msgstr "Bobot"
 msgid "Add"
 msgstr "Tambah"
 
-#, fuzzy, python-format
+#, fuzzy
 msgid "The participant name is invalid"
 msgstr "Pengguna %(name)s telah dihapus"
 
@@ -178,9 +178,8 @@ msgstr "Pengguna %(name)s telah dihapus"
 msgid "This project already have this participant"
 msgstr "Proyek ini sudah mempunyai anggota ini"
 
-#, fuzzy
-msgid "Participants to notify"
-msgstr "tambah partisipan"
+msgid "People to notify"
+msgstr ""
 
 msgid "Send invites"
 msgstr "Kirim undangan"
@@ -1070,4 +1069,7 @@ msgstr "Periode"
 
 #~ msgid "Edit this member"
 #~ msgstr "Ubah anggota ini"
+
+#~ msgid "Participants to notify"
+#~ msgstr "tambah partisipan"
 

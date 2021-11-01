@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 00:25+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2021-08-01 08:34+0000\n"
 "Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
 "Language: el\n"
@@ -171,7 +171,7 @@ msgstr "Βάρος"
 msgid "Add"
 msgstr "Προσθήκη"
 
-#, fuzzy, python-format
+#, fuzzy
 msgid "The participant name is invalid"
 msgstr "Ο χρήστης '%(name)s' έχει αφαιρεθεί"
 
@@ -179,7 +179,7 @@ msgstr "Ο χρήστης '%(name)s' έχει αφαιρεθεί"
 msgid "This project already have this participant"
 msgstr "Αυτό το έργο έχει ήδη αυτό το μέλος"
 
-msgid "Participants to notify"
+msgid "People to notify"
 msgstr ""
 
 msgid "Send invites"
@@ -1034,4 +1034,7 @@ msgstr "Περίοδος"
 
 #~ msgid "Edit this member"
 #~ msgstr "Επεξεργασία αυτού του μέλους"
+
+#~ msgid "Participants to notify"
+#~ msgstr ""
 

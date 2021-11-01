@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 00:25+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2021-10-10 05:05+0000\n"
 "Last-Translator: Frank.wu <me@wuzhiping.top>\n"
 "Language: zh_Hans\n"
@@ -163,7 +163,7 @@ msgstr "权重"
 msgid "Add"
 msgstr "添加"
 
-#, fuzzy, python-format
+#, fuzzy
 msgid "The participant name is invalid"
 msgstr "成员 %(name)s 被重新激活"
 
@@ -171,9 +171,8 @@ msgstr "成员 %(name)s 被重新激活"
 msgid "This project already have this participant"
 msgstr "此项目已经包含此成员了"
 
-#, fuzzy
-msgid "Participants to notify"
-msgstr "添加参与人"
+msgid "People to notify"
+msgstr ""
 
 msgid "Send invites"
 msgstr "发送邀请"
@@ -1013,4 +1012,7 @@ msgstr "期间"
 
 #~ msgid "Edit this member"
 #~ msgstr "编辑成员"
+
+#~ msgid "Participants to notify"
+#~ msgstr "添加参与人"
 

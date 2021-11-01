@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 00:25+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2021-10-19 21:01+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language: tr\n"
@@ -169,7 +169,7 @@ msgstr "Ağırlık"
 msgid "Add"
 msgstr "Ekle"
 
-#, fuzzy, python-format
+#, fuzzy
 msgid "The participant name is invalid"
 msgstr "Katılımcı %(name)s yeniden etkinleştirildi"
 
@@ -177,9 +177,8 @@ msgstr "Katılımcı %(name)s yeniden etkinleştirildi"
 msgid "This project already have this participant"
 msgstr "Bu proje zaten bu üyeye sahip"
 
-#, fuzzy
-msgid "Participants to notify"
-msgstr "katılımcılar ekle"
+msgid "People to notify"
+msgstr ""
 
 msgid "Send invites"
 msgstr "Davet gönder"
@@ -1060,4 +1059,7 @@ msgstr "Dönem"
 
 #~ msgid "Edit this member"
 #~ msgstr "Bu üyeyi düzenle"
+
+#~ msgid "Participants to notify"
+#~ msgstr "katılımcılar ekle"
 

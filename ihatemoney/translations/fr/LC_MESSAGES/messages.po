@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-20 00:25+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2021-10-19 21:01+0000\n"
 "Last-Translator: Alexis Metaireau <alexis@notmyidea.org>\n"
 "Language: fr\n"
@@ -173,7 +173,7 @@ msgstr "Parts"
 msgid "Add"
 msgstr "Ajouter"
 
-#, fuzzy, python-format
+#, fuzzy
 msgid "The participant name is invalid"
 msgstr "Participant⋅e %(name)s réactivé⋅e"
 
@@ -181,9 +181,8 @@ msgstr "Participant⋅e %(name)s réactivé⋅e"
 msgid "This project already have this participant"
 msgstr "Ce membre existe déjà pour ce projet"
 
-#, fuzzy
-msgid "Participants to notify"
-msgstr "ajouter des participant⋅e⋅s"
+msgid "People to notify"
+msgstr ""
 
 msgid "Send invites"
 msgstr "Envoyer les invitations"
@@ -1268,4 +1267,7 @@ msgstr "Période"
 
 #~ msgid "Edit this member"
 #~ msgstr "Éditer ce⋅tte participant⋅e"
+
+#~ msgid "Participants to notify"
+#~ msgstr "ajouter des participant⋅e⋅s"
 

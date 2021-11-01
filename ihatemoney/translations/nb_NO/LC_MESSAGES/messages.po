@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 00:25+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2021-07-18 20:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language: nb_NO\n"
@@ -170,7 +170,7 @@ msgstr "Vekt"
 msgid "Add"
 msgstr "Legg til"
 
-#, fuzzy, python-format
+#, fuzzy
 msgid "The participant name is invalid"
 msgstr "Deltageren %(name)s ble reaktivert"
 
@@ -178,9 +178,8 @@ msgstr "Deltageren %(name)s ble reaktivert"
 msgid "This project already have this participant"
 msgstr "Allerede medlem av prosjektet"
 
-#, fuzzy
-msgid "Participants to notify"
-msgstr "legge til deltagere"
+msgid "People to notify"
+msgstr ""
 
 msgid "Send invites"
 msgstr "Send invitasjoner"
@@ -1219,4 +1218,7 @@ msgstr "Periode"
 
 #~ msgid "Edit this member"
 #~ msgstr "Rediger dette medlemmet"
+
+#~ msgid "Participants to notify"
+#~ msgstr "legge til deltagere"
 

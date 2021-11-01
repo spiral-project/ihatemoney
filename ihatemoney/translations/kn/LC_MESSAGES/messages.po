@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 00:25+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2021-10-17 04:56+0000\n"
 "Last-Translator: a-g-rao <athrigrao@gmail.com>\n"
 "Language: kn\n"
@@ -170,7 +170,7 @@ msgstr ""
 msgid "This project already have this participant"
 msgstr "ಈ ಸದಸ್ಯರು ಈಗಾಗಲೆ ಈ ಯೋಜನೆಯ ಸದಸ್ಯರಾಗಿದ್ದಾರೆ"
 
-msgid "Participants to notify"
+msgid "People to notify"
 msgstr ""
 
 msgid "Send invites"
@@ -936,5 +936,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Edit this member"
+#~ msgstr ""
+
+#~ msgid "Participants to notify"
 #~ msgstr ""
 
