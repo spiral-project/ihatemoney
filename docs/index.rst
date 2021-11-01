@@ -15,12 +15,12 @@ Table of contents
 .. toctree::
    :maxdepth: 1
 
-   installation
-   configuration
-   upgrade
-   api
-   security
-   contributing
+   installation.md
+   configuration.md
+   upgrade.md
+   api.md
+   security.md
+   contributing.md
 
 Indices and tables
 ==================
