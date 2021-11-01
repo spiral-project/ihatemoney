@@ -82,7 +82,7 @@
             </div>
         </div>
     </div>
-
+<div class="clearfix"></div>
 {% if bills.pages > 1 %}
 <ul class="pagination" id="pagination-top">
   <li class="page-item {% if bills.page == 1 %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.prev_num) }}">&laquo; {{ _("Newer bills") }}</a></li>
@@ -98,12 +98,12 @@
 {% endif %}
 
     {% if bills.total > 0 %}
-        <div class="clearfix"></div>
+
 
         <table id="bill_table" class="col table table-striped table-hover table-responsive-sm">
             <thead>
                 <tr><th>{{ _("When?") }}
-                </th><th>{{ _("Who paid?") }}   
+                </th><th>{{ _("Who paid?") }}
                 </th><th>{{ _("For what?") }}
                 </th><th>{{ _("For whom?") }}
                 </th><th>{{ _("How much?") }}
