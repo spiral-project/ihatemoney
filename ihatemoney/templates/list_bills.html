@@ -76,9 +76,9 @@
             </div>
         </div>
     </div>
-<div class="d-flex flex-wrap w-100">
+<div class="d-flex flex-wrap-reverse w-100">
 {% if bills.pages > 1 %}
-<ul class="pagination" id="pagination-top">
+<ul class="pagination mr-2" id="pagination-top">
   <li class="page-item {% if bills.page == 1 %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.prev_num) }}">&laquo; {{ _("Newer bills") }}</a></li>
   {%- for page in bills.iter_pages() %}
   {% if page %}
