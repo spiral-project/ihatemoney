@@ -3,11 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-<<<<<<< HEAD
 "POT-Creation-Date: 2021-11-01 18:01+0100\n"
-=======
-"POT-Creation-Date: 2021-10-26 23:38+0200\n"
->>>>>>> master
 "PO-Revision-Date: 2021-07-18 20:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language: nb_NO\n"
@@ -1229,4 +1225,3 @@ msgstr "Periode"
 
 #~ msgid "Participants to notify"
 #~ msgstr "legge til deltagere"
-
