@@ -3,7 +3,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
+=======
 "POT-Creation-Date: 2021-10-26 23:38+0200\n"
+>>>>>>> master
 "PO-Revision-Date: 2021-07-18 12:32+0000\n"
 "Last-Translator: Kemystra <izzmin97@gmail.com>\n"
 "Language: ms\n"
@@ -176,10 +180,11 @@ msgstr "Berat"
 msgid "Add"
 msgstr "Tambah"
 
-msgid "User name incorrect"
-msgstr "Nama pengguna tidak tepat"
+msgid "The participant name is invalid"
+msgstr ""
 
-msgid "This project already have this member"
+#, fuzzy
+msgid "This project already have this participant"
 msgstr "Projek ini sudah mempunyai ahli"
 
 msgid "People to notify"
@@ -300,28 +305,28 @@ msgstr ""
 msgid "%(member)s has been added"
 msgstr ""
 
-msgid "Error activating member"
+msgid "Error activating participant"
 msgstr ""
 
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr ""
 
-msgid "Error removing member"
+msgid "Error removing participant"
 msgstr ""
 
 #, python-format
 msgid ""
-"User '%(name)s' has been deactivated. It will still appear in the users "
-"list until its balance becomes zero."
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
 msgstr ""
 
 #, python-format
-msgid "User '%(name)s' has been removed"
+msgid "Participant '%(name)s' has been removed"
 msgstr ""
 
 #, python-format
-msgid "User '%(name)s' has been edited"
+msgid "Participant '%(name)s' has been modified"
 msgstr ""
 
 msgid "The bill has been added"
@@ -360,6 +365,9 @@ msgstr ""
 msgid "Administration tasks are currently disabled."
 msgstr ""
 
+msgid "Authentication"
+msgstr ""
+
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr ""
 
@@ -375,7 +383,7 @@ msgstr ""
 msgid "Project"
 msgstr ""
 
-msgid "Number of members"
+msgid "Number of participants"
 msgstr ""
 
 msgid "Number of bills"
@@ -471,7 +479,7 @@ msgstr ""
 msgid "Add participant"
 msgstr ""
 
-msgid "Edit this member"
+msgid "Edit this participant"
 msgstr ""
 
 msgid "john.doe@example.com, mary.moe@site.com"
@@ -915,5 +923,38 @@ msgid "Period"
 msgstr ""
 
 #~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr ""
+
+#~ msgid "User name incorrect"
+#~ msgstr "Nama pengguna tidak tepat"
+
+#~ msgid "People to notify"
+#~ msgstr ""
+
+#~ msgid "Error activating member"
+#~ msgstr ""
+
+#~ msgid "Error removing member"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "User '%(name)s' has been deactivated. It"
+#~ " will still appear in the users "
+#~ "list until its balance becomes zero."
+#~ msgstr ""
+
+#~ msgid "User '%(name)s' has been removed"
+#~ msgstr ""
+
+#~ msgid "User '%(name)s' has been edited"
+#~ msgstr ""
+
+#~ msgid "Number of members"
+#~ msgstr ""
+
+#~ msgid "Edit this member"
+#~ msgstr ""
+
+#~ msgid "Participants to notify"
 #~ msgstr ""
 

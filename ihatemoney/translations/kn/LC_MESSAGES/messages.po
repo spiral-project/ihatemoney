@@ -3,7 +3,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
+=======
 "POT-Creation-Date: 2021-10-26 23:38+0200\n"
+>>>>>>> master
 "PO-Revision-Date: 2021-10-17 04:56+0000\n"
 "Last-Translator: a-g-rao <athrigrao@gmail.com>\n"
 "Language: kn\n"
@@ -163,14 +167,15 @@ msgstr "ತೂಕ"
 msgid "Add"
 msgstr "ಕೂಡು"
 
-msgid "User name incorrect"
-msgstr "ತಪ್ಪು ಬಳಕೆದಾರನ ಹೆಸರು"
+msgid "The participant name is invalid"
+msgstr ""
 
-msgid "This project already have this member"
+#, fuzzy
+msgid "This project already have this participant"
 msgstr "ಈ ಸದಸ್ಯರು ಈಗಾಗಲೆ ಈ ಯೋಜನೆಯ ಸದಸ್ಯರಾಗಿದ್ದಾರೆ"
 
 msgid "People to notify"
-msgstr "ಸೂಚಿಸಬೇಕಾದ ಜನರು"
+msgstr ""
 
 msgid "Send invites"
 msgstr "ಆಮಂತ್ರಣ ಕಳುಹಿಸು"
@@ -293,29 +298,29 @@ msgstr ""
 msgid "%(member)s has been added"
 msgstr "%(member)s ನ್ನು ಸೇರಿಸಲಾಗಿದೆ"
 
-msgid "Error activating member"
+msgid "Error activating participant"
 msgstr ""
 
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr ""
 
-msgid "Error removing member"
+msgid "Error removing participant"
 msgstr ""
 
 #, python-format
 msgid ""
-"User '%(name)s' has been deactivated. It will still appear in the users "
-"list until its balance becomes zero."
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
 msgstr ""
 
-#, python-format
-msgid "User '%(name)s' has been removed"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been removed"
 msgstr "ಬಳಸುಗ %(name)s ರನ್ನು ತೆಗೆಯಲಾಗಿದೆ"
 
-#, python-format
-msgid "User '%(name)s' has been edited"
-msgstr "ಬಳಸುಗ %(name)s ರನ್ನು ಪರಿಷ್ಕರಿಸಲಾಗಿದೆ"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been modified"
+msgstr "ಬಳಸುಗ %(name)s ರನ್ನು ತೆಗೆಯಲಾಗಿದೆ"
 
 msgid "The bill has been added"
 msgstr "ಬೆಲೆಪಟ್ಟಿಯನ್ನು ಸೇರಿಸಲಾಗಿದೆ"
@@ -353,6 +358,9 @@ msgstr "ಪಟ್ಟಿಗೆ ವಾಪಸಾಗಿದ್ದೇವೆ"
 msgid "Administration tasks are currently disabled."
 msgstr ""
 
+msgid "Authentication"
+msgstr ""
+
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr ""
 
@@ -368,7 +376,7 @@ msgstr "ಹೊಸ ಯೋಜನೆಯನ್ನು ಸೃಷ್ಟಿಸಿ"
 msgid "Project"
 msgstr "ಯೋಜನೆ"
 
-msgid "Number of members"
+msgid "Number of participants"
 msgstr ""
 
 msgid "Number of bills"
@@ -464,7 +472,7 @@ msgstr ""
 msgid "Add participant"
 msgstr ""
 
-msgid "Edit this member"
+msgid "Edit this participant"
 msgstr ""
 
 msgid "john.doe@example.com, mary.moe@site.com"
@@ -908,5 +916,35 @@ msgid "Period"
 msgstr ""
 
 #~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr ""
+
+#~ msgid "User name incorrect"
+#~ msgstr "ತಪ್ಪು ಬಳಕೆದಾರನ ಹೆಸರು"
+
+#~ msgid "People to notify"
+#~ msgstr "ಸೂಚಿಸಬೇಕಾದ ಜನರು"
+
+#~ msgid "Error activating member"
+#~ msgstr ""
+
+#~ msgid "Error removing member"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "User '%(name)s' has been deactivated. It"
+#~ " will still appear in the users "
+#~ "list until its balance becomes zero."
+#~ msgstr ""
+
+#~ msgid "User '%(name)s' has been edited"
+#~ msgstr "ಬಳಸುಗ %(name)s ರನ್ನು ಪರಿಷ್ಕರಿಸಲಾಗಿದೆ"
+
+#~ msgid "Number of members"
+#~ msgstr ""
+
+#~ msgid "Edit this member"
+#~ msgstr ""
+
+#~ msgid "Participants to notify"
 #~ msgstr ""
 

@@ -7,12 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-26 23:38+0200\n"
-"PO-Revision-Date: 2021-10-28 20:02+0000\n"
-"Last-Translator: Glandos <bugs-github@antipoul.fr>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/fr/>\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
+"PO-Revision-Date: 2021-10-19 21:01+0000\n"
+"Last-Translator: Alexis Metaireau <alexis@notmyidea.org>\n"
 "Language: fr\n"
+"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/fr/>\n"
+"Plural-Forms: nplurals=2; plural=n > 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -174,14 +175,16 @@ msgstr "Parts"
 msgid "Add"
 msgstr "Ajouter"
 
-msgid "User name incorrect"
-msgstr "Nom d’utilisateur incorrect"
+#, fuzzy
+msgid "The participant name is invalid"
+msgstr "Participant⋅e %(name)s réactivé⋅e"
 
-msgid "This project already have this member"
+#, fuzzy
+msgid "This project already have this participant"
 msgstr "Ce membre existe déjà pour ce projet"
 
 msgid "People to notify"
-msgstr "Personnes à prévenir"
+msgstr ""
 
 msgid "Send invites"
 msgstr "Envoyer les invitations"
@@ -309,31 +312,33 @@ msgstr ""
 msgid "%(member)s has been added"
 msgstr "%(member)s a été ajouté"
 
-msgid "Error activating member"
+#, fuzzy
+msgid "Error activating participant"
 msgstr "Erreur lors de l'activation du participant"
 
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr "%(name)s a rejoint le projet"
 
-msgid "Error removing member"
+#, fuzzy
+msgid "Error removing participant"
 msgstr "Erreur lors de la suppression du participant"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
-"User '%(name)s' has been deactivated. It will still appear in the users "
-"list until its balance becomes zero."
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
 msgstr ""
 "Le membre « %(name)s » a été désactivé. Il continuera d’apparaître "
 "jusqu'à ce que son solde soit nul."
 
-#, python-format
-msgid "User '%(name)s' has been removed"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been removed"
 msgstr "Le membre « %(name)s » a été supprimé"
 
-#, python-format
-msgid "User '%(name)s' has been edited"
-msgstr "Le membre « %(name)s » a été édité"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been modified"
+msgstr "Participant⋅e %(name)s modifié⋅e"
 
 msgid "The bill has been added"
 msgstr "La facture a bien été ajoutée"
@@ -371,6 +376,10 @@ msgstr "Retourner à la liste"
 msgid "Administration tasks are currently disabled."
 msgstr "Les tâches d’administration sont actuellement désactivées."
 
+#, fuzzy
+msgid "Authentication"
+msgstr "Documentation"
+
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr "Le projet auquel vous essayez d’accéder n’existe pas, souhaitez vous"
 
@@ -386,8 +395,9 @@ msgstr "Créer un nouveau projet"
 msgid "Project"
 msgstr "Projet"
 
-msgid "Number of members"
-msgstr "Nombre de membres"
+#, fuzzy
+msgid "Number of participants"
+msgstr "ajouter des participant⋅e⋅s"
 
 msgid "Number of bills"
 msgstr "Nombre de factures"
@@ -482,8 +492,9 @@ msgstr "Plus d'options"
 msgid "Add participant"
 msgstr "Ajouter un⋅e participant⋅e"
 
-msgid "Edit this member"
-msgstr "Éditer ce⋅tte participant⋅e"
+#, fuzzy
+msgid "Edit this participant"
+msgstr "Ajouter un⋅e participant⋅e"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "marie@site.com, jean.dupont@example.com"
@@ -1246,3 +1257,21 @@ msgstr "Période"
 
 #~ msgid "You either provided a bad token or no project identifier."
 #~ msgstr "L’identifiant du projet ou le token fourni n’est pas correct."
+
+#~ msgid "User name incorrect"
+#~ msgstr "Nom d’utilisateur incorrect"
+
+#~ msgid "People to notify"
+#~ msgstr "Personnes à prévenir"
+
+#~ msgid "User '%(name)s' has been edited"
+#~ msgstr "Le membre « %(name)s » a été édité"
+
+#~ msgid "Number of members"
+#~ msgstr "Nombre de membres"
+
+#~ msgid "Edit this member"
+#~ msgstr "Éditer ce⋅tte participant⋅e"
+
+#~ msgid "Participants to notify"
+#~ msgstr "ajouter des participant⋅e⋅s"

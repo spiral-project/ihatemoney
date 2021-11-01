@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-26 23:38+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2021-09-20 12:38+0000\n"
 "Last-Translator: Роман Прокопов <pochta.romana.iz.vyborga@gmail.com>\n"
 "Language: ru\n"
@@ -169,14 +169,16 @@ msgstr "Вес"
 msgid "Add"
 msgstr "Добавить"
 
-msgid "User name incorrect"
-msgstr "Неправильное имя пользователя"
+#, fuzzy
+msgid "The participant name is invalid"
+msgstr "Пользователь '%(name)s' был удалён"
 
-msgid "This project already have this member"
+#, fuzzy
+msgid "This project already have this participant"
 msgstr "В этом проекте уже есть такой участник"
 
 msgid "People to notify"
-msgstr "Люди для уведомления"
+msgstr ""
 
 msgid "Send invites"
 msgstr "Отправить приглашения"
@@ -302,31 +304,31 @@ msgstr ""
 msgid "%(member)s has been added"
 msgstr "%(member)s был добавлен"
 
-msgid "Error activating member"
+msgid "Error activating participant"
 msgstr ""
 
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr "%(name)s снова часть этого проекта"
 
-msgid "Error removing member"
+msgid "Error removing participant"
 msgstr ""
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
-"User '%(name)s' has been deactivated. It will still appear in the users "
-"list until its balance becomes zero."
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
 msgstr ""
 "Пользователь '%(name)s' был деактивирован. Он будет отображаться в списке"
 " пользователей до тех пор, пока его баланс не станет равным нулю."
 
-#, python-format
-msgid "User '%(name)s' has been removed"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been removed"
 msgstr "Пользователь '%(name)s' был удалён"
 
-#, python-format
-msgid "User '%(name)s' has been edited"
-msgstr "Пользователь '%(name)s' был изменён"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been modified"
+msgstr "Пользователь '%(name)s' был удалён"
 
 msgid "The bill has been added"
 msgstr "Счёт был добавлен"
@@ -367,6 +369,10 @@ msgstr "Вернутся к списку"
 msgid "Administration tasks are currently disabled."
 msgstr "Задачи администратора в данный момент отключены."
 
+#, fuzzy
+msgid "Authentication"
+msgstr "Документация"
+
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr "Проект, к которому вы пытаетесь получить доступ, не существует, вы хотите"
 
@@ -382,8 +388,9 @@ msgstr "Создать новый проект"
 msgid "Project"
 msgstr "Проект"
 
-msgid "Number of members"
-msgstr "Число участников"
+#, fuzzy
+msgid "Number of participants"
+msgstr "добавить пользователя"
 
 msgid "Number of bills"
 msgstr "Число счетов"
@@ -482,8 +489,9 @@ msgstr ""
 msgid "Add participant"
 msgstr "Добавить участника"
 
-msgid "Edit this member"
-msgstr "Изменить этого участника"
+#, fuzzy
+msgid "Edit this participant"
+msgstr "Добавить участника"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
@@ -1037,3 +1045,8 @@ msgstr "Период"
 #~ "Вы либо предоставили неверный токен, "
 #~ "либо не указали идентификатор проекта."
 
+#~ msgid "User name incorrect"
+#~ msgstr "Неправильное имя пользователя"
+
+#~ msgid "People to notify"
+#~ msgstr "Люди для уведомления"

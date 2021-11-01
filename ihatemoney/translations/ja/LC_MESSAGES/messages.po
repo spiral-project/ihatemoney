@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-26 23:38+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2020-11-11 16:28+0000\n"
 "Last-Translator: Jwen921 <yangjingwen0921@gmail.com>\n"
 "Language: ja\n"
@@ -165,14 +165,16 @@ msgstr "重み"
 msgid "Add"
 msgstr "追加"
 
-msgid "User name incorrect"
-msgstr "ユーザー名が正しくない"
+#, fuzzy
+msgid "The participant name is invalid"
+msgstr "ユーザー%(name)sが既に取り除かれました"
 
-msgid "This project already have this member"
+#, fuzzy
+msgid "This project already have this participant"
 msgstr "プロジェクトはすでにこのメンバーを含めています"
 
 msgid "People to notify"
-msgstr "知らせたい人"
+msgstr ""
 
 msgid "Send invites"
 msgstr "招待状を出す"
@@ -289,29 +291,29 @@ msgstr "申し訳ございませんが、招待メールを送ったとき、エ
 msgid "%(member)s has been added"
 msgstr "%(member)sが追加されました"
 
-msgid "Error activating member"
+msgid "Error activating participant"
 msgstr ""
 
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr "%(name)sはまたこのプロジェクトの一部になりました"
 
-msgid "Error removing member"
+msgid "Error removing participant"
 msgstr ""
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
-"User '%(name)s' has been deactivated. It will still appear in the users "
-"list until its balance becomes zero."
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
 msgstr "ユーザー%(name)sが無効にされました。このユーザーは残高がゼロになるまでリストに出ています。"
 
-#, python-format
-msgid "User '%(name)s' has been removed"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been removed"
 msgstr "ユーザー%(name)sが既に取り除かれました"
 
-#, python-format
-msgid "User '%(name)s' has been edited"
-msgstr "ユーザー%(name)sが既に編集されました"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been modified"
+msgstr "ユーザー%(name)sが既に取り除かれました"
 
 msgid "The bill has been added"
 msgstr "明細が追加されました"
@@ -352,6 +354,10 @@ msgstr "リストに戻る"
 msgid "Administration tasks are currently disabled."
 msgstr "現在管理者タスクが操作できません。"
 
+#, fuzzy
+msgid "Authentication"
+msgstr "書類"
+
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr "アクセスしたいプロジェクトは存在していなくて、…したいですか"
 
@@ -367,8 +373,9 @@ msgstr "プロジェクトを新規作成する"
 msgid "Project"
 msgstr "プロジェクト"
 
-msgid "Number of members"
-msgstr "メンバー数"
+#, fuzzy
+msgid "Number of participants"
+msgstr "参加者を追加する"
 
 msgid "Number of bills"
 msgstr "明細書数"
@@ -467,8 +474,9 @@ msgstr ""
 msgid "Add participant"
 msgstr "参加者を追加する"
 
-msgid "Edit this member"
-msgstr "このメンバーを編集する"
+#, fuzzy
+msgid "Edit this participant"
+msgstr "参加者を追加する"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
@@ -985,3 +993,8 @@ msgstr "期間"
 #~ msgid "You either provided a bad token or no project identifier."
 #~ msgstr "無効な入力かプロジェクト名なし。"
 
+#~ msgid "User name incorrect"
+#~ msgstr "ユーザー名が正しくない"
+
+#~ msgid "People to notify"
+#~ msgstr "知らせたい人"

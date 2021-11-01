@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-26 23:38+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2021-07-20 14:32+0000\n"
 "Last-Translator: Kristoffer Grundström "
 "<swedishsailfishosuser@tutanota.com>\n"
@@ -165,14 +165,16 @@ msgstr "Vikt"
 msgid "Add"
 msgstr "Lägg till"
 
-msgid "User name incorrect"
-msgstr "Användarnamnet felaktigt"
+#, fuzzy
+msgid "The participant name is invalid"
+msgstr "Användaren '%(name)s' har tagits bort"
 
-msgid "This project already have this member"
+#, fuzzy
+msgid "This project already have this participant"
 msgstr "Det här projektet har redan den här medlemmen"
 
 msgid "People to notify"
-msgstr "Personer att meddela"
+msgstr ""
 
 msgid "Send invites"
 msgstr "Skicka inbjudningar"
@@ -293,29 +295,29 @@ msgstr ""
 msgid "%(member)s has been added"
 msgstr "%(member)s har lagts till"
 
-msgid "Error activating member"
+msgid "Error activating participant"
 msgstr ""
 
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr "%(name)s är en del av det här projektet igen"
 
-msgid "Error removing member"
+msgid "Error removing participant"
 msgstr ""
 
 #, python-format
 msgid ""
-"User '%(name)s' has been deactivated. It will still appear in the users "
-"list until its balance becomes zero."
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
 msgstr ""
 
-#, python-format
-msgid "User '%(name)s' has been removed"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been removed"
 msgstr "Användaren '%(name)s' har tagits bort"
 
-#, python-format
-msgid "User '%(name)s' has been edited"
-msgstr "Användaren '%(name)s' har blivit redigerad"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been modified"
+msgstr "Användaren '%(name)s' har tagits bort"
 
 msgid "The bill has been added"
 msgstr "Räkningen har lagts till"
@@ -356,6 +358,10 @@ msgstr "Tillbaka till listan"
 msgid "Administration tasks are currently disabled."
 msgstr ""
 
+#, fuzzy
+msgid "Authentication"
+msgstr "Dokumentation"
+
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr "Projektet som du försöker komma åt finns inte, vill du"
 
@@ -371,8 +377,9 @@ msgstr "Skapa ett nytt projekt"
 msgid "Project"
 msgstr "Projekt"
 
-msgid "Number of members"
-msgstr "Antalet medlemmar"
+#, fuzzy
+msgid "Number of participants"
+msgstr "lägg till deltagare"
 
 msgid "Number of bills"
 msgstr "Antalet räkningar"
@@ -470,8 +477,9 @@ msgstr ""
 msgid "Add participant"
 msgstr "Lägg till deltagare"
 
-msgid "Edit this member"
-msgstr "Redigera det här numret"
+#, fuzzy
+msgid "Edit this participant"
+msgstr "Lägg till deltagare"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@exempel.com, mary.moe@sida.com"
@@ -979,3 +987,8 @@ msgstr "Period"
 #~ msgid "You either provided a bad token or no project identifier."
 #~ msgstr ""
 
+#~ msgid "User name incorrect"
+#~ msgstr "Användarnamnet felaktigt"
+
+#~ msgid "People to notify"
+#~ msgstr "Personer att meddela"

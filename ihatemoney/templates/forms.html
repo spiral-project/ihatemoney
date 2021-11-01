@@ -203,7 +203,7 @@
 
 {% macro edit_member(form, title=True) %}
     <fieldset>
-        {% if title %}<legend>{{ _("Edit this member") }}</legend>{% endif %}
+        {% if title %}<legend>{{ _("Edit this participant") }}</legend>{% endif %}
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
     {{ input(form.name) }}

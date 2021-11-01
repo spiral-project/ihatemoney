@@ -3,7 +3,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
+=======
 "POT-Creation-Date: 2021-10-26 23:38+0200\n"
+>>>>>>> master
 "PO-Revision-Date: 2021-04-09 13:26+0000\n"
 "Last-Translator: Rastko Sarcevic <ralesarcevic@gmail.com>\n"
 "Language: sr\n"
@@ -163,10 +167,11 @@ msgstr "Težina"
 msgid "Add"
 msgstr "Dodaj"
 
-msgid "User name incorrect"
-msgstr ""
+#, fuzzy
+msgid "The participant name is invalid"
+msgstr "Korisnik %(name)s je uklonjen"
 
-msgid "This project already have this member"
+msgid "This project already have this participant"
 msgstr ""
 
 msgid "People to notify"
@@ -287,29 +292,29 @@ msgstr ""
 msgid "%(member)s has been added"
 msgstr ""
 
-msgid "Error activating member"
+msgid "Error activating participant"
 msgstr ""
 
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr ""
 
-msgid "Error removing member"
+msgid "Error removing participant"
 msgstr ""
 
 #, python-format
 msgid ""
-"User '%(name)s' has been deactivated. It will still appear in the users "
-"list until its balance becomes zero."
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
 msgstr ""
 
-#, python-format
-msgid "User '%(name)s' has been removed"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been removed"
 msgstr "Korisnik %(name)s je uklonjen"
 
-#, python-format
-msgid "User '%(name)s' has been edited"
-msgstr ""
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been modified"
+msgstr "Korisnik %(name)s je uklonjen"
 
 msgid "The bill has been added"
 msgstr "Račun je dodat"
@@ -347,6 +352,10 @@ msgstr "Nazad na listu"
 msgid "Administration tasks are currently disabled."
 msgstr ""
 
+#, fuzzy
+msgid "Authentication"
+msgstr "Dokumentacija"
+
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr ""
 
@@ -362,8 +371,8 @@ msgstr ""
 msgid "Project"
 msgstr "Projekat"
 
-msgid "Number of members"
-msgstr "Broj korisnika"
+msgid "Number of participants"
+msgstr ""
 
 msgid "Number of bills"
 msgstr "Broj računa"
@@ -460,7 +469,7 @@ msgstr ""
 msgid "Add participant"
 msgstr ""
 
-msgid "Edit this member"
+msgid "Edit this participant"
 msgstr ""
 
 msgid "john.doe@example.com, mary.moe@site.com"
@@ -970,5 +979,38 @@ msgstr "Period"
 #~ msgstr ""
 
 #~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr ""
+
+#~ msgid "User name incorrect"
+#~ msgstr ""
+
+#~ msgid "This project already have this member"
+#~ msgstr ""
+
+#~ msgid "People to notify"
+#~ msgstr ""
+
+#~ msgid "Error activating member"
+#~ msgstr ""
+
+#~ msgid "Error removing member"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "User '%(name)s' has been deactivated. It"
+#~ " will still appear in the users "
+#~ "list until its balance becomes zero."
+#~ msgstr ""
+
+#~ msgid "User '%(name)s' has been edited"
+#~ msgstr ""
+
+#~ msgid "Number of members"
+#~ msgstr "Broj korisnika"
+
+#~ msgid "Edit this member"
+#~ msgstr ""
+
+#~ msgid "Participants to notify"
 #~ msgstr ""
 

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-26 23:38+0200\n"
+"POT-Creation-Date: 2021-11-01 18:01+0100\n"
 "PO-Revision-Date: 2020-08-27 19:22+0000\n"
 "Last-Translator: André Oliveira <andre_pinto_oliveira@outlook.pt>\n"
 "Language: pt_BR\n"
@@ -169,14 +169,16 @@ msgstr "Peso"
 msgid "Add"
 msgstr "Adicionar"
 
-msgid "User name incorrect"
-msgstr "Nome de usuário incorreto"
+#, fuzzy
+msgid "The participant name is invalid"
+msgstr "Usuário '%(name)s' foi removido"
 
-msgid "This project already have this member"
+#, fuzzy
+msgid "This project already have this participant"
 msgstr "Este projeto já tem este membro"
 
 msgid "People to notify"
-msgstr "Pessoas para notificar"
+msgstr ""
 
 msgid "Send invites"
 msgstr "Enviar convites"
@@ -303,31 +305,31 @@ msgstr ""
 msgid "%(member)s has been added"
 msgstr "%(member)s foram adicionados"
 
-msgid "Error activating member"
+msgid "Error activating participant"
 msgstr ""
 
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr "%(name)s faz parte deste projeto novamente"
 
-msgid "Error removing member"
+msgid "Error removing participant"
 msgstr ""
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
-"User '%(name)s' has been deactivated. It will still appear in the users "
-"list until its balance becomes zero."
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
 msgstr ""
 "Usuário '%(name)s' foi desativado. Ele continuará aparecendo na lista de "
 "usuários até que o seu balanço seja zero."
 
-#, python-format
-msgid "User '%(name)s' has been removed"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been removed"
 msgstr "Usuário '%(name)s' foi removido"
 
-#, python-format
-msgid "User '%(name)s' has been edited"
-msgstr "Usuário '%(name)s' foi editado"
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been modified"
+msgstr "Usuário '%(name)s' foi removido"
 
 msgid "The bill has been added"
 msgstr "A conta foi adicionada"
@@ -368,6 +370,10 @@ msgstr "Voltar para a lista"
 msgid "Administration tasks are currently disabled."
 msgstr "Tarefas de administração estão atualmente desativadas."
 
+#, fuzzy
+msgid "Authentication"
+msgstr "Documentação"
+
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr "O projeto que você está tentando acessar não existe, você quer"
 
@@ -383,8 +389,9 @@ msgstr "Criar um novo projeto"
 msgid "Project"
 msgstr "Projeto"
 
-msgid "Number of members"
-msgstr "Número de membros"
+#, fuzzy
+msgid "Number of participants"
+msgstr "adicionar participantes"
 
 msgid "Number of bills"
 msgstr "Número de contas"
@@ -483,8 +490,9 @@ msgstr ""
 msgid "Add participant"
 msgstr "Adicionar participante"
 
-msgid "Edit this member"
-msgstr "Editar este membro"
+#, fuzzy
+msgid "Edit this participant"
+msgstr "Adicionar participante"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
@@ -1020,3 +1028,8 @@ msgstr "Período"
 #~ msgid "You either provided a bad token or no project identifier."
 #~ msgstr "Você forneceu um token ruim ou não forneceu o identificador do projeto."
 
+#~ msgid "User name incorrect"
+#~ msgstr "Nome de usuário incorreto"
+
+#~ msgid "People to notify"
+#~ msgstr "Pessoas para notificar"
