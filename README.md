@@ -1,11 +1,8 @@
 # I hate money
 
 [![GitHub Actions Status](https://github.com/spiral-project/ihatemoney/actions/workflows/test-docs.yml/badge.svg)](https://github.com/spiral-project/ihatemoney/actions/workflows/test-docs.yml)
-
 [![Translation status from Weblate](https://hosted.weblate.org/widgets/i-hate-money/-/i-hate-money/svg-badge.svg)](https://hosted.weblate.org/engage/i-hate-money/?utm_source=widget)
-
 [![Donate](https://img.shields.io/liberapay/receives/IHateMoney.svg?logo=liberapay)](https://liberapay.com/IHateMoney/donate)
-
 [![Docker image](https://img.shields.io/badge/-Docker%20image-black?logo=docker)](https://hub.docker.com/r/ihatemoney/ihatemoney/general)
 
 *I hate money* is a web application made to ease shared budget
