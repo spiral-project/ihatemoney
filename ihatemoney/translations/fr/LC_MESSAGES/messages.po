@@ -460,7 +460,7 @@ msgid "Download the list of transactions needed to settle the current bills."
 msgstr "Télécharger la liste des transactions nécessaires pour les remboursements."
 
 msgid "Can't remember the password?"
-msgstr "Vous ne vous souvenez plus du code d’accès ?"
+msgstr "Vous avez oublié le code d’accès ?"
 
 msgid "Cancel"
 msgstr "Annuler"
@@ -848,7 +848,7 @@ msgid "Add a new bill"
 msgstr "Nouvelle facture"
 
 msgid "Newer bills"
-msgstr "Factures récentes"
+msgstr "Factures suivantes"
 
 msgid "Older bills"
 msgstr "Factures précédentes"
