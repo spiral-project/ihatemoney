@@ -1,15 +1,13 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-01 18:01+0100\n"
-"PO-Revision-Date: 2021-10-19 21:01+0000\n"
+"PO-Revision-Date: 2021-11-07 16:52+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/tr/>\n"
 "Language: tr\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/tr/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -171,16 +169,14 @@ msgstr "Ağırlık"
 msgid "Add"
 msgstr "Ekle"
 
-#, fuzzy
 msgid "The participant name is invalid"
-msgstr "Katılımcı %(name)s yeniden etkinleştirildi"
+msgstr "Katılımcı adı geçersiz"
 
-#, fuzzy
 msgid "This project already have this participant"
-msgstr "Bu proje zaten bu üyeye sahip"
+msgstr "Bu projede bu katılımcı zaten var"
 
 msgid "People to notify"
-msgstr ""
+msgstr "Bildirilecek kişiler"
 
 msgid "Send invites"
 msgstr "Davet gönder"
@@ -309,33 +305,31 @@ msgstr ""
 msgid "%(member)s has been added"
 msgstr "%(member)s eklendi"
 
-#, fuzzy
 msgid "Error activating participant"
-msgstr "Üye etkinleştirilirken hata oluştu"
+msgstr "Katılımcı etkinleştirilirken hata oluştu"
 
 #, python-format
 msgid "%(name)s is part of this project again"
 msgstr "%(name)s yine bu projenin bir parçası"
 
-#, fuzzy
 msgid "Error removing participant"
-msgstr "Üye kaldırılırken hata oluştu"
+msgstr "Katılımcı kaldırılırken hata oluştu"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Participant '%(name)s' has been deactivated. It will still appear in the "
 "list until its balance reach zero."
 msgstr ""
-"'%(name)s' kullanıcısı devre dışı bırakıldı. Bakiyesi sıfır oluncaya "
-"kadar kullanıcılar listesinde görünmeye devam edecektir."
+"'%(name)s' katılımcısı devre dışı bırakıldı. Bakiyesi sıfır oluncaya kadar "
+"listede görünmeye devam edecektir."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Participant '%(name)s' has been removed"
-msgstr "'%(name)s' kullanıcısı kaldırıldı"
+msgstr "'%(name)s' katılımcısı kaldırıldı"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Participant '%(name)s' has been modified"
-msgstr "%(name)s katılımcısı değiştirildi"
+msgstr "'%(name)s' katılımcısı değiştirildi"
 
 msgid "The bill has been added"
 msgstr "Fatura eklendi"
@@ -373,9 +367,8 @@ msgstr "Listeye geri dön"
 msgid "Administration tasks are currently disabled."
 msgstr "Yönetim görevleri şu anda devre dışı."
 
-#, fuzzy
 msgid "Authentication"
-msgstr "Belgelendirme"
+msgstr "Kimlik doğrulama"
 
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr "Erişmeye çalıştığınız proje mevcut değil, ister misiniz"
@@ -392,9 +385,8 @@ msgstr "Yeni bir proje oluştur"
 msgid "Project"
 msgstr "Proje"
 
-#, fuzzy
 msgid "Number of participants"
-msgstr "katılımcılar ekle"
+msgstr "Katılımcı sayısı"
 
 msgid "Number of bills"
 msgstr "Fatura sayısı"
@@ -489,9 +481,8 @@ msgstr "Diğer seçenekler"
 msgid "Add participant"
 msgstr "Katılımcı ekle"
 
-#, fuzzy
 msgid "Edit this participant"
-msgstr "Katılımcı ekle"
+msgstr "Bu katılımcıyı düzenle"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
