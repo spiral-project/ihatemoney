@@ -3,7 +3,7 @@ from functools import wraps
 from flask import current_app, request
 from flask_restful import Resource, abort
 from werkzeug.security import check_password_hash
-from wtforms.fields.core import BooleanField
+from wtforms.fields import BooleanField
 
 from ihatemoney.forms import EditProjectForm, MemberForm, ProjectForm, get_billform_for
 from ihatemoney.models import Bill, Person, Project, db

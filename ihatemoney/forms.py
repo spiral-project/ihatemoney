@@ -9,9 +9,22 @@ from flask_wtf.file import FileAllowed, FileField, FileRequired
 from flask_wtf.form import FlaskForm
 from markupsafe import Markup
 from werkzeug.security import check_password_hash, generate_password_hash
-from wtforms.fields.core import Label, SelectField, SelectMultipleField
-from wtforms.fields.html5 import DateField, DecimalField, URLField
-from wtforms.fields.simple import BooleanField, PasswordField, StringField, SubmitField
+from wtforms.fields import (
+    BooleanField,
+    DateField,
+    DecimalField,
+    Label,
+    PasswordField,
+    SelectField,
+    SelectMultipleField,
+    StringField,
+    SubmitField,
+)
+try:
+    # Compat for WTForms <= 2.3.3
+    from wtforms.fields.html5 import URLField
+except ModuleNotFoundError:
+    from wtforms.fields import URLField
 from wtforms.validators import (
     URL,
     DataRequired,
