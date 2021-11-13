@@ -1,5 +1,8 @@
 FROM python:3.7-alpine
 
+ENV PORT="8000"
+
+# ihatemoney configuration
 ENV DEBUG="False" \
     ACTIVATE_ADMIN_DASHBOARD="False" \
     ACTIVATE_DEMO_PROJECT="True" \
@@ -29,5 +32,5 @@ ADD . /src
 RUN pip install --no-cache-dir -e /src
 
 VOLUME /database
-EXPOSE 8000
+EXPOSE ${PORT}
 ENTRYPOINT ["/src/conf/entrypoint.sh"]

@@ -26,5 +26,6 @@ services:
       - SQLALCHEMY_TRACK_MODIFICATIONS=False
       - ENABLE_CAPTCHA=False
       - LEGAL_LINK=
+      - PORT=8000
     ports:
       - "8000:8000"

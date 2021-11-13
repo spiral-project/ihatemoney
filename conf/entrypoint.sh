@@ -3,7 +3,7 @@
 # Fail the whole script on the first failure.
 set -e
 
-cat <<EOF > /etc/ihatemoney/ihatemoney.cfg
+cat <<EOF >/etc/ihatemoney/ihatemoney.cfg
 DEBUG = $DEBUG
 ACTIVATE_ADMIN_DASHBOARD = $ACTIVATE_ADMIN_DASHBOARD
 ACTIVATE_DEMO_PROJECT = $ACTIVATE_DEMO_PROJECT
@@ -28,6 +28,6 @@ EOF
 
 # Start gunicorn without forking
 exec gunicorn ihatemoney.wsgi:application \
-     -b 0.0.0.0:8000 \
+     -b 0.0.0.0:"$PORT" \
      --log-syslog \
      "$@"
