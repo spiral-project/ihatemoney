@@ -539,7 +539,7 @@ class APITestCase(IhatemoneyTestCase):
                 "amount": expected_amount,
                 "date": "2011-08-10",
                 "id": id,
-                "external_link": None,
+                "external_link": "",
                 "original_currency": "XXX",
                 "converted_amount": expected_amount,
             }
@@ -834,7 +834,7 @@ class APITestCase(IhatemoneyTestCase):
             "amount": 25.0,
             "date": "2011-08-10",
             "id": 1,
-            "external_link": None,
+            "external_link": "",
             "converted_amount": 25.0,
             "original_currency": "XXX",
         }
