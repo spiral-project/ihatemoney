@@ -325,6 +325,7 @@ class BillForm(FlaskForm):
     original_currency = SelectField(_("Currency"), validators=[DataRequired()])
     external_link = URLField(
         _("External link"),
+        default=None,
         validators=[Optional(), URL()],
         description=_("A link to an external document, related to this bill"),
     )
