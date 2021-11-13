@@ -20,6 +20,7 @@ from wtforms.fields import (
     StringField,
     SubmitField,
 )
+
 try:
     # Compat for WTForms <= 2.3.3
     from wtforms.fields.html5 import URLField
