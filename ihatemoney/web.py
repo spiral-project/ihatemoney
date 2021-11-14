@@ -151,7 +151,7 @@ def pull_project(endpoint, values):
             # redirect to authentication page
             raise Redirect303(url_for(".authenticate", project_id=project_id))
 
-@main.route("/health", methods=["GET"])
+@main.route("/healthcheck", methods=["GET"])
 def health():
     return "OK"
 
