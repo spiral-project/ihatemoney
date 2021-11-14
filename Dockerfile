@@ -24,12 +24,21 @@ ENV DEBUG="False" \
     ENABLE_CAPTCHA="False" \
     LEGAL_LINK="False"
 
-RUN mkdir -p /etc/ihatemoney &&\
-    pip install --no-cache-dir gunicorn pymysql;
-
 ADD . /src
 
-RUN pip install --no-cache-dir -e /src
+RUN echo "**** install runtime packages ****" && \
+    apk add --no-cache \
+    shadow && \
+    echo "**** create runtime folder ****" && \
+    mkdir -p /etc/ihatemoney &&\
+    echo "**** install pip packages ****" && \
+    pip install --no-cache-dir gunicorn pymysql && \
+    pip install --no-cache-dir -e /src && \
+    echo "**** create user abc:abc ****" && \
+    useradd -u 1000 -U -d /src abc && \
+    echo "**** cleanup ****" && \
+    rm -rf \
+    /tmp/*
 
 VOLUME /database
 EXPOSE ${PORT}

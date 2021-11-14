@@ -27,5 +27,7 @@ services:
       - ENABLE_CAPTCHA=False
       - LEGAL_LINK=
       - PORT=8000
+      - PUID=0
+      - PGID=0
     ports:
       - "8000:8000"
