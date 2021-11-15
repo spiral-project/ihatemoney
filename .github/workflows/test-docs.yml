@@ -57,9 +57,6 @@ jobs:
           - python-version: 3.7
             dependencies: minimal
             database: mariadb
-          - python-version: 3.8
-            dependencies: minimal
-            database: sqlite
           - python-version: 3.9
             dependencies: minimal
             database: sqlite
