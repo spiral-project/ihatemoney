@@ -2,6 +2,9 @@ FROM python:3.10-alpine
 
 ENV PORT="8000"
 
+# Keeps Python from generating .pyc files in the container
+ENV PYTHONDONTWRITEBYTECODE=1
+
 # ihatemoney configuration
 ENV DEBUG="False" \
     ACTIVATE_ADMIN_DASHBOARD="False" \
