@@ -1,9 +1,10 @@
 FROM python:3.10-alpine
 
-ENV PORT="8000"
-
-# Keeps Python from generating .pyc files in the container
-ENV PYTHONDONTWRITEBYTECODE=1
+ENV PORT="8000" \
+    # Keeps Python from generating .pyc files in the container
+    PYTHONDONTWRITEBYTECODE=1 \
+    # Turns off buffering for easier container logging
+    PYTHONUNBUFFERED=1
 
 # ihatemoney configuration
 ENV DEBUG="False" \
