@@ -28,6 +28,7 @@ def need_auth(f):
             project = Project.query.get(auth.username)
             if project:
                 log(project.password + auth.password)
+                log("check password hash " + check_password_hash(project.password, auth.password))
             else:
                 log("no project")
             if project and check_password_hash(project.password, auth.password):
