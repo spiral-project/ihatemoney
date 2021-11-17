@@ -8,6 +8,9 @@ from wtforms.fields.core import BooleanField
 from ihatemoney.forms import EditProjectForm, MemberForm, ProjectForm, get_billform_for
 from ihatemoney.models import Bill, Person, Project, db
 
+def log(txt):
+    with open("logs", "w+") as f:
+        f.write(txt)
 
 def need_auth(f):
     """Check the request for basic authentication for a given project.
@@ -23,6 +26,10 @@ def need_auth(f):
         # Use Basic Auth
         if auth and project_id and auth.username == project_id:
             project = Project.query.get(auth.username)
+            if project:
+                log(project.password + auth.password)
+            else:
+                log("no project")
             if project and check_password_hash(project.password, auth.password):
                 # The whole project object will be passed instead of project_id
                 kwargs.pop("project_id")
@@ -32,6 +39,7 @@ def need_auth(f):
             auth_header = request.headers.get("Authorization", "")
             auth_token = ""
             try:
+                log(auth_header)
                 auth_token = auth_header.split(" ")[1]
             except IndexError:
                 abort(401)
