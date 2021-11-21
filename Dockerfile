@@ -23,7 +23,8 @@ ENV DEBUG="False" \
 
 RUN mkdir -p /etc/ihatemoney &&\
     apk update && apk add postgresql-dev gcc python3-dev musl-dev &&\
-    pip install --no-cache-dir gunicorn pymysql psycopg2;
+    pip install --no-cache-dir gunicorn pymysql psycopg2 &&\
+    apk del gcc python3-dev musl-dev; # Keep postgresql-dev installed, sine it is needed at runtime
 
 ADD . /src
 
