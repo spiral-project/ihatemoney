@@ -285,6 +285,19 @@ class CaptchaTestCase(IhatemoneyTestCase):
             )
             assert len(models.Project.query.all()) == 1
 
+    def test_api_project_creation_does_not_need_captcha(self):
+        resp = self.client.post(
+            "/api/projects",
+            data={
+                "name": "raclette",
+                "id": "raclette",
+                "password": "raclette",
+                "contact_email": "raclette@notmyidea.org",
+            },
+        )
+        self.assertTrue(resp.status, 201)
+        assert len(models.Project.query.all()) == 1
+
 
 class TestCurrencyConverter(unittest.TestCase):
     converter = CurrencyConverter()
