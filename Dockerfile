@@ -22,7 +22,8 @@ ENV DEBUG="False" \
     LEGAL_LINK="False"
 
 RUN mkdir -p /etc/ihatemoney &&\
-    pip install --no-cache-dir gunicorn pymysql;
+    apk update && apk add postgresql-dev gcc python3-dev musl-dev &&\
+    pip install --no-cache-dir gunicorn pymysql psycopg2;
 
 ADD . /src
 
