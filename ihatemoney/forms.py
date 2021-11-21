@@ -11,7 +11,13 @@ from markupsafe import Markup
 from werkzeug.security import check_password_hash, generate_password_hash
 from wtforms.fields.core import Label, SelectField, SelectMultipleField
 from wtforms.fields.html5 import DateField, DecimalField, URLField
-from wtforms.fields.simple import BooleanField, PasswordField, StringField, SubmitField, HiddenField
+from wtforms.fields.simple import (
+    BooleanField,
+    HiddenField,
+    PasswordField,
+    StringField,
+    SubmitField,
+)
 from wtforms.validators import (
     URL,
     DataRequired,
@@ -326,7 +332,7 @@ class BillForm(FlaskForm):
         bill.payer_id = self.payer.data
         bill.amount = self.amount.data
         bill.what = self.what.data
-        tag = list(set(part[1:] for part in bill.what.split() if part.startswith('#')))
+        tag = list(set(part[1:] for part in bill.what.split() if part.startswith("#")))
         if tag:
             bill.tag = tag[0]
         bill.external_link = self.external_link.data

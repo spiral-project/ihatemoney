@@ -462,7 +462,16 @@ def import_project(file, project):
     json_file = json.load(file)
 
     # Check if JSON is correct
-    attr = ["what", "tag", "payer_name", "payer_weight", "amount", "currency", "date", "owers"]
+    attr = [
+        "what",
+        "tag",
+        "payer_name",
+        "payer_weight",
+        "amount",
+        "currency",
+        "date",
+        "owers",
+    ]
     attr.sort()
     currencies = set()
     for e in json_file:
