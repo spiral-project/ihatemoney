@@ -18,21 +18,15 @@ class APITestCase(IhatemoneyTestCase):
         password = password or name
         contact = contact or f"{name}@notmyidea.org"
 
+        data = {
+            "name": name,
+            "id": id,
+            "password": password,
+            "contact_email": contact,
+        }
         if default_currency:
-            data = {
-                "name": name,
-                "id": id,
-                "password": password,
-                "contact_email": contact,
-                "default_currency": default_currency,
-            }
-        else:
-            data = {
-                "name": name,
-                "id": id,
-                "password": password,
-                "contact_email": contact,
-            }
+            data["default_currency"] = default_currency
+
         return self.client.post(
             "/api/projects",
             data=data,
@@ -904,6 +898,14 @@ class APITestCase(IhatemoneyTestCase):
         )
         self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 2)
         self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
+
+    def test_project_creation_with_mixed_case(self):
+        self.api_create("Raclette")
+        # get information about it
+        resp = self.client.get(
+            "/api/projects/Raclette", headers=self.get_auth("Raclette")
+        )
+        self.assertStatus(200, resp)
 
 
 if __name__ == "__main__":
