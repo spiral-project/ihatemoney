@@ -511,6 +511,19 @@ class BudgetTestCase(IhatemoneyTestCase):
             self.assertNotIn("Authentication", resp.data.decode("utf-8"))
             self.assertTrue(session["is_admin"])
 
+    def test_authentication_with_upper_case(self):
+        self.create_project("Raclette")
+
+        # try to connect with the right credentials should work
+        with self.app.test_client() as c:
+            resp = c.post(
+                "/authenticate", data={"id": "Raclette", "password": "Raclette"}
+            )
+
+            self.assertNotIn("Authentication", resp.data.decode("utf-8"))
+            self.assertIn("Raclette", session)
+            self.assertTrue(session["Raclette"])
+
     def test_admin_authentication(self):
         self.app.config["ADMIN_PASSWORD"] = generate_password_hash("pass")
         # Disable public project creation so we have an admin endpoint to test

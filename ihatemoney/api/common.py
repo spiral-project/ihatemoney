@@ -18,11 +18,11 @@ def need_auth(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
         auth = request.authorization
-        project_id = kwargs.get("project_id")
+        project_id = kwargs.get("project_id").lower()
 
         # Use Basic Auth
-        if auth and project_id and auth.username == project_id:
-            project = Project.query.get(auth.username)
+        if auth and project_id and auth.username.lower() == project_id:
+            project = Project.query.get(auth.username.lower())
             if project and check_password_hash(project.password, auth.password):
                 # The whole project object will be passed instead of project_id
                 kwargs.pop("project_id")
