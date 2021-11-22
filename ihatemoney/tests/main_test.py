@@ -286,7 +286,7 @@ class CaptchaTestCase(IhatemoneyTestCase):
             assert len(models.Project.query.all()) == 1
 
     def test_api_project_creation_does_not_need_captcha(self):
-        self.client.get('/')
+        self.client.get("/")
         resp = self.client.post(
             "/api/projects",
             data={

@@ -198,7 +198,7 @@ class ProjectForm(EditProjectForm):
     submit = SubmitField(_("Create the project"))
 
     def __init__(self, *args, **kwargs):
-        self.bypass_captcha = kwargs.get('bypass_captcha', False)
+        self.bypass_captcha = kwargs.get("bypass_captcha", False)
         super().__init__(*args, **kwargs)
 
     def save(self):
