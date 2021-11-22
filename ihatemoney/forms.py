@@ -197,6 +197,10 @@ class ProjectForm(EditProjectForm):
     password = PasswordField(_("Private code"), validators=[DataRequired()])
     submit = SubmitField(_("Create the project"))
 
+    def __init__(self, *args, **kwargs):
+        self.bypass_captcha = kwargs.get('bypass_captcha', False)
+        super().__init__(*args, **kwargs)
+
     def save(self):
         """Create a new project with the information given by this form.
 
@@ -232,12 +236,11 @@ class ProjectForm(EditProjectForm):
     def enable_captcha(cls):
         captchaField = StringField(
             _("Which is a real currency: Euro or Petro dollar?"),
-            validators=[DataRequired()],
         )
         setattr(cls, "captcha", captchaField)
 
     def validate_captcha(form, field):
-        if not field.data.lower() == _("euro"):
+        if not field.data.lower() == _("euro") and not form.bypass_captcha:
             message = _("Please, validate the captcha to proceed.")
             raise ValidationError(Markup(message))
 

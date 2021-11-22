@@ -50,7 +50,7 @@ def need_auth(f):
 
 class ProjectsHandler(Resource):
     def post(self):
-        form = ProjectForm(meta={"csrf": False})
+        form = ProjectForm(meta={"csrf": False}, bypass_captcha=True)
         if form.validate() and current_app.config.get("ALLOW_PUBLIC_PROJECT_CREATION"):
             project = form.save()
             db.session.add(project)
@@ -71,7 +71,7 @@ class ProjectHandler(Resource):
         return "DELETED"
 
     def put(self, project):
-        form = EditProjectForm(id=project.id, meta={"csrf": False})
+        form = EditProjectForm(id=project.id, meta={"csrf": False}, bypass_captcha=True)
         if form.validate() and current_app.config.get("ALLOW_PUBLIC_PROJECT_CREATION"):
             form.update(project)
             db.session.commit()
