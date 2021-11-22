@@ -136,8 +136,9 @@ def pull_project(endpoint, values):
         return
     if not values:
         values = {}
-    project_id = values.pop("project_id", None)
-    if project_id:
+    entered_project_id = values.pop("project_id", None)
+    if entered_project_id:
+        project_id = entered_project_id.lower()
         project = Project.query.get(project_id)
         if not project:
             raise Redirect303(url_for(".create_project", project_id=project_id))
@@ -225,7 +226,7 @@ def authenticate(project_id=None):
 
     if not form.id.data and request.args.get("project_id"):
         form.id.data = request.args["project_id"]
-    project_id = form.id.data
+    project_id = form.id.data.lower() if form.id.data else None
 
     project = Project.query.get(project_id) if project_id is not None else None
     if not project:
