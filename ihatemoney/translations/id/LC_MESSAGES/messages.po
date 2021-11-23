@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-01 18:01+0100\n"
-"PO-Revision-Date: 2021-07-12 01:33+0000\n"
-"Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
+"PO-Revision-Date: 2021-11-23 00:51+0000\n"
+"Last-Translator: whenwesober <naomi16i_1298q@cikuh.com>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/id/>\n"
 "Language: id\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/id/>\n"
-"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.10-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 msgid ""
@@ -29,7 +29,7 @@ msgid "New private code"
 msgstr "Kode pribadi baru"
 
 msgid "Enter a new code if you want to change it"
-msgstr ""
+msgstr "Masukkan sebuah kode baru jika Anda ingin menggantinya"
 
 msgid "Email"
 msgstr "Surel"
@@ -84,18 +84,16 @@ msgid "euro"
 msgstr "Periode"
 
 msgid "Please, validate the captcha to proceed."
-msgstr ""
+msgstr "Mohon, silahkan validasi captcha untuk melanjutkan."
 
 msgid "Enter private code to confirm deletion"
-msgstr ""
+msgstr "Masukkan kode pribadi untuk mengkonfirmasi penghapusan"
 
-#, fuzzy
 msgid "Unknown error"
-msgstr "Proyek tidak diketahui"
+msgstr "Kesalahan tidak diketahui"
 
-#, fuzzy
 msgid "Invalid private code."
-msgstr "Kode pribadi baru"
+msgstr "Kode pribadi tidak valid."
 
 msgid "Get in"
 msgstr "Masuk"
@@ -170,16 +168,14 @@ msgstr "Bobot"
 msgid "Add"
 msgstr "Tambah"
 
-#, fuzzy
 msgid "The participant name is invalid"
-msgstr "Pengguna %(name)s telah dihapus"
+msgstr "Nama pengguna tidak valid"
 
-#, fuzzy
 msgid "This project already have this participant"
-msgstr "Proyek ini sudah mempunyai anggota ini"
+msgstr "Proyek ini sudah mempunyai /ada anggota ini"
 
 msgid "People to notify"
-msgstr ""
+msgstr "Orang yang akan dinotifikasi"
 
 msgid "Send invites"
 msgstr "Kirim undangan"
@@ -190,30 +186,30 @@ msgstr "Surel %(email)s tidak valid"
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
-msgstr ""
+msgstr "{dual_object_0} dan {dual_object_1}"
 
 #. Last two items of a list with more than 3 items
 msgid "{previous_object}, and {end_object}"
-msgstr ""
+msgstr "{previous_object}, dan {end_object}"
 
 #. Two items in a middle of a list with more than 5 objects
 msgid "{previous_object}, {next_object}"
-msgstr ""
+msgstr "{previous_object}, {next_object}"
 
 #. First two items of a list with more than 3 items
 msgid "{start_object}, {next_object}"
-msgstr ""
+msgstr "{start_object}, {next_object}"
 
 msgid "No Currency"
 msgstr "Tidak ada mata uang"
 
 #. Form error with only one error
 msgid "{prefix}: {error}"
-msgstr ""
+msgstr "{prefix}: {error}"
 
 #. Form error with a list of errors
 msgid "{prefix}:<br />{errors}"
-msgstr ""
+msgstr "{prefix}:1<br />{errors}"
 
 msgid "Too many failed login attempts, please retry later."
 msgstr "Terlalu banyak percobaan masuk, silakan coba lagi nanti."
@@ -223,7 +219,7 @@ msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr "Kata sandi admin ini tidak cocok. Hanya tinggal %(num)d percobaan lagi."
 
 msgid "Provided token is invalid"
-msgstr ""
+msgstr "Token yang disediakan tidak valid"
 
 msgid "This private code is not the right one"
 msgstr "Kode pribadi ini tidak benar"
@@ -313,27 +309,27 @@ msgstr "%(name)s adalah bagian dari proyek ini lagi"
 msgid "Error removing participant"
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Participant '%(name)s' has been deactivated. It will still appear in the "
 "list until its balance reach zero."
 msgstr ""
-"Pengguna %(name)s telah dinonaktifkan. Pengguna akan tetap muncul dalam "
+"Pengguna %(name)s' telah dinonaktifkan. Pengguna akan tetap muncul dalam "
 "daftar pengguna sampai saldonya menjadi kosong."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Participant '%(name)s' has been removed"
-msgstr "Pengguna %(name)s telah dihapus"
+msgstr "Pengguna %(name)s' telah dihapus"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Participant '%(name)s' has been modified"
-msgstr "Pengguna %(name)s telah dihapus"
+msgstr "Pengguna %(name)s' telah dihapus"
 
 msgid "The bill has been added"
 msgstr "Tagihan telah ditambahkan"
 
 msgid "Error deleting bill"
-msgstr ""
+msgstr "Kesalahan saat menghapus tagihan"
 
 msgid "The bill has been deleted"
 msgstr "Tagihan telah dihapus"
@@ -341,20 +337,17 @@ msgstr "Tagihan telah dihapus"
 msgid "The bill has been modified"
 msgstr "Tagihan telah diperbarui"
 
-#, fuzzy
 msgid "Error deleting project history"
-msgstr "Aktifkan riwayat proyek"
+msgstr "Kesalahan saat menghapus riwayat proyek"
 
-#, fuzzy
 msgid "Deleted project history."
-msgstr "Aktifkan riwayat proyek"
+msgstr "Rriwayat proyek terhapus."
 
-#, fuzzy
 msgid "Error deleting recorded IP addresses"
-msgstr "Hapus alamat IP yang disimpan"
+msgstr "Kesalahan menghapus alamat IP yang disimpan"
 
 msgid "Deleted recorded IP addresses in project history."
-msgstr ""
+msgstr "Terhapus alamat IP yang disimpan dalam riwayat proyek."
 
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Maaf, kami tidak bisa menemukan halaman yang Anda minta."
@@ -368,9 +361,8 @@ msgstr "Kembali ke daftar"
 msgid "Administration tasks are currently disabled."
 msgstr "Tugas adiministrasi saat sekarang dinonaktifkan."
 
-#, fuzzy
 msgid "Authentication"
-msgstr "Dokumentasi"
+msgstr "Otentikasi"
 
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr "Anda mencoba mengakses proyek yang tidak ada, apakah Anda ingin"
@@ -387,9 +379,8 @@ msgstr "Buat proyek baru"
 msgid "Project"
 msgstr "Proyek"
 
-#, fuzzy
 msgid "Number of participants"
-msgstr "tambah partisipan"
+msgstr "Jumlah anggota"
 
 msgid "Number of bills"
 msgstr "Jumlah tagihan"
@@ -421,16 +412,14 @@ msgstr "Unduh Aplikasi Seluler"
 msgid "Get it on"
 msgstr "Dapatkan di"
 
-#, fuzzy
 msgid "Are you sure?"
-msgstr "Anda yakin?"
+msgstr "Apakah Anda yakin?"
 
 msgid "Edit project"
 msgstr "Ubah proyek"
 
-#, fuzzy
 msgid "Delete project"
-msgstr "Ubah proyek"
+msgstr "Hapus proyek"
 
 msgid "Import JSON"
 msgstr "Impor JSON"
@@ -478,17 +467,16 @@ msgid "Everyone"
 msgstr "Semua orang"
 
 msgid "No one"
-msgstr ""
+msgstr "Tidak ada"
 
 msgid "More options"
-msgstr ""
+msgstr "Lebih banyak opsi"
 
 msgid "Add participant"
 msgstr "Tambah partisipan"
 
-#, fuzzy
 msgid "Edit this participant"
-msgstr "Tambah partisipan"
+msgstr "Sunting anggota ini"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
@@ -635,51 +623,51 @@ msgstr "Perekaman alamat IP dapat dinonaktifkan di halaman pengaturan"
 msgid "From IP"
 msgstr "Dari IP"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project %(name)s added"
-msgstr "Nama proyek"
+msgstr "Proyek %(name)s telah ditambahkan"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s added"
-msgstr "Tagihan telah ditambahkan"
+msgstr "Tagihan %(name)s telah ditambahkan"
 
 #, python-format
 msgid "Participant %(name)s added"
-msgstr ""
+msgstr "Pengguna %(name)s ditambahkan"
 
 msgid "Project private code changed"
 msgstr "Kode pribadi proyek berubah"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project renamed to %(new_project_name)s"
-msgstr "Pengidentifikasi proyek adalah %(new_project_name)s"
+msgstr "Proyek diganti ke %(new_project_name)s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project contact email changed to %(new_email)s"
-msgstr "Email kontak proyek diubah menjadi"
+msgstr "Email kontak proyek diubah menjadi %(new_email)s"
 
 msgid "Project settings modified"
 msgstr "Pengaturan proyek diubah"
 
 #, python-format
 msgid "Participant %(name)s deactivated"
-msgstr ""
+msgstr "Pengguna %(name)s dinonaktifkan"
 
 #, python-format
 msgid "Participant %(name)s reactivated"
-msgstr ""
+msgstr "Pengguna %(name)s diaktifkan kembali"
 
 #, python-format
 msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr ""
+msgstr "Pengguna %(name)s diganti ke %(new_name)s"
 
 #, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
-msgstr ""
+msgstr "Tagihan %(name)s diganti ke %(new_description)s"
 
 #, python-format
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
-msgstr ""
+msgstr "Pengguna %(name)s: berat berubah dari %(old_weight)s ke %(new_weight)s"
 
 msgid "Amount"
 msgstr "Jumlah"
@@ -688,33 +676,33 @@ msgstr "Jumlah"
 msgid "Amount in %(currency)s"
 msgstr "Jumlah dalam %(currency)s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s modified"
-msgstr "Tagihan telah diperbarui"
+msgstr "Tagihan %(name)s telah dimodifikasi"
 
 #, python-format
 msgid "Participant %(name)s modified"
-msgstr ""
+msgstr "Pengguna %(name)s telah dimodifikasi"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s removed"
-msgstr "Pengguna %(name)s telah dihapus"
+msgstr "Tagihan %(name)s telah dihapus"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Participant %(name)s removed"
-msgstr "Pengguna %(name)s telah dihapus"
+msgstr "Pengguina %(name)s telah dihapus"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project %(name)s changed in an unknown way"
-msgstr "berubah dengan cara yang tidak diketahui"
+msgstr "%(name)s proyek berubah dengan cara yang tidak diketahui"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s changed in an unknown way"
-msgstr "berubah dengan cara yang tidak diketahui"
+msgstr "%(name)s tagihan berubah dengan cara yang tidak diketahui"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Participant %(name)s changed in an unknown way"
-msgstr "berubah dengan cara yang tidak diketahui"
+msgstr "%(name)s anggota berubah dengan cara yang tidak diketahui"
 
 msgid "Nothing to list"
 msgstr "Tidak ada yang dicantumkan"
@@ -810,9 +798,8 @@ msgstr "Dokumentasi"
 msgid "Administation Dashboard"
 msgstr "Dasbor Administrasi"
 
-#, fuzzy
 msgid "Legal information"
-msgstr "Hapus Konfirmasi"
+msgstr "Informasi legalitas"
 
 msgid "\"I hate money\" is free software"
 msgstr "\"I hate money\" adalah perangkat lunak gratis"
