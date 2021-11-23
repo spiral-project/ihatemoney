@@ -37,6 +37,7 @@ from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from ihatemoney.currency_convertor import CurrencyConverter
+from ihatemoney.emails import send_creation_email
 from ihatemoney.forms import (
     AdminAuthenticationForm,
     AuthenticationForm,
@@ -320,18 +321,7 @@ def create_project():
 
             # send reminder email
             g.project = project
-
-            message_title = _(
-                "You have just created '%(project)s' " "to share your expenses",
-                project=g.project.name,
-            )
-
-            message_body = render_localized_template("reminder_mail")
-
-            msg = Message(
-                message_title, body=message_body, recipients=[project.contact_email]
-            )
-            success = send_email(msg)
+            success = send_creation_email(project)
             if success:
                 flash(
                     _("A reminder email has just been sent to you"), category="success"

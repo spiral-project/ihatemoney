@@ -100,8 +100,14 @@ class APITestCase(IhatemoneyTestCase):
         )
 
         # create it
-        resp = self.api_create("raclette")
-        self.assertTrue(201, resp.status_code)
+        with self.app.mail.record_messages() as outbox:
+
+            resp = self.api_create("raclette")
+            self.assertTrue(201, resp.status_code)
+
+            # Check that email messages have been sent.
+            self.assertEqual(len(outbox), 1)
+            self.assertEqual(outbox[0].recipients, ["raclette@notmyidea.org"])
 
         # create it twice should return a 400
         resp = self.api_create("raclette")

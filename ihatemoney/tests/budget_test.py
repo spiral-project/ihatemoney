@@ -206,7 +206,8 @@ class BudgetTestCase(IhatemoneyTestCase):
                     },
                     follow_redirects=True,
                 )
-                # an email is sent to the owner with a reminder of the password
+
+                # An email is sent to the owner with a reminder of the password.
                 self.assertEqual(len(outbox), 1)
                 self.assertEqual(outbox[0].recipients, ["raclette@notmyidea.org"])
                 self.assertIn(
