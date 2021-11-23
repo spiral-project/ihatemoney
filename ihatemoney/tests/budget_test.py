@@ -512,7 +512,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             self.assertTrue(session["is_admin"])
 
     def test_authentication_with_upper_case(self):
-        self.create_project("Raclette")
+        self.post_project("Raclette")
 
         # try to connect with the right credentials should work
         with self.app.test_client() as c:
@@ -521,8 +521,8 @@ class BudgetTestCase(IhatemoneyTestCase):
             )
 
             self.assertNotIn("Authentication", resp.data.decode("utf-8"))
-            self.assertIn("Raclette", session)
-            self.assertTrue(session["Raclette"])
+            self.assertIn("raclette", session)
+            self.assertTrue(session["raclette"])
 
     def test_admin_authentication(self):
         self.app.config["ADMIN_PASSWORD"] = generate_password_hash("pass")

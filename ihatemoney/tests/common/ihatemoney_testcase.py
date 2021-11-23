@@ -51,31 +51,36 @@ class BaseTestCase(TestCase):
         )
 
     def post_project(
-        self, id, follow_redirects=True, default_currency="XXX", name=None
+        self,
+        id,
+        follow_redirects=True,
+        default_currency="XXX",
+        name=None,
+        password=None,
     ):
         """Create a fake project"""
-        if name is None:
-            name = id
+        name = name or id
+        password = password or id
         # create the project
         return self.client.post(
             "/create",
             data={
                 "name": name,
                 "id": id,
-                "password": id,
+                "password": password,
                 "contact_email": f"{id}@notmyidea.org",
                 "default_currency": default_currency,
             },
             follow_redirects=follow_redirects,
         )
 
-    def create_project(self, id, default_currency="XXX", name=None):
-        if name is None:
-            name = str(id)
+    def create_project(self, id, default_currency="XXX", name=None, password=None):
+        name = name or str(id)
+        password = password or id
         project = models.Project(
             id=id,
             name=name,
-            password=generate_password_hash(id),
+            password=generate_password_hash(password),
             contact_email=f"{id}@notmyidea.org",
             default_currency=default_currency,
         )
