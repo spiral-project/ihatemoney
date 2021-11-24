@@ -228,13 +228,11 @@ class ProjectForm(EditProjectForm):
             )
             raise ValidationError(Markup(message))
 
-    @classmethod
-    def enable_captcha(cls):
-        captchaField = StringField(
-            _("Which is a real currency: Euro or Petro dollar?"),
-            validators=[DataRequired()],
-        )
-        setattr(cls, "captcha", captchaField)
+
+class ProjectFormWithCaptcha(ProjectForm):
+    captcha = StringField(
+        _("Which is a real currency: Euro or Petro dollar?"),
+    )
 
     def validate_captcha(form, field):
         if not field.data.lower() == _("euro"):

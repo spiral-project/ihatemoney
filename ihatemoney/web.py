@@ -47,6 +47,7 @@ from ihatemoney.forms import (
     MemberForm,
     PasswordReminder,
     ProjectForm,
+    ProjectFormWithCaptcha,
     ResetPasswordForm,
     UploadForm,
     get_billform_for,
@@ -264,8 +265,7 @@ def authenticate(project_id=None):
 
 def get_project_form():
     if current_app.config.get("ENABLE_CAPTCHA", False):
-        ProjectForm.enable_captcha()
-
+        return ProjectFormWithCaptcha()
     return ProjectForm()
 
 
