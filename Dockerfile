@@ -43,10 +43,8 @@ RUN echo "**** install build dependencies ****" &&\
     mkdir -p /etc/ihatemoney &&\
     echo "**** install pip packages ****" && \
     pip install --no-cache-dir \
-    gunicorn \
-    pymysql \
-    psycopg2 && \
-    pip install --no-cache-dir -e /src && \
+    gunicorn && \
+    pip install --no-cache-dir -e /src[database] && \
     echo "**** create user abc:abc ****" && \
     useradd -u 1000 -U -d /src abc && \
     echo "**** cleanup ****" && \
