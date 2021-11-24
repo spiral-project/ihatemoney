@@ -30,17 +30,27 @@ ENV DEBUG="False" \
 
 ADD . /src
 
-RUN echo "**** install runtime packages ****" && \
+RUN echo "**** install build dependencies ****" &&\
+    apk add --no-cache --virtual=build-dependencies \
+    gcc \
+    musl-dev \
+    postgresql-dev &&\
+    echo "**** install runtime packages ****" && \
     apk add --no-cache \
-    shadow && \
+    shadow \
+    postgresql-libs && \
     echo "**** create runtime folder ****" && \
     mkdir -p /etc/ihatemoney &&\
     echo "**** install pip packages ****" && \
-    pip install --no-cache-dir gunicorn pymysql && \
+    pip install --no-cache-dir \
+    gunicorn \
+    pymysql \
+    psycopg2 && \
     pip install --no-cache-dir -e /src && \
     echo "**** create user abc:abc ****" && \
     useradd -u 1000 -U -d /src abc && \
     echo "**** cleanup ****" && \
+    apk del --purge build-dependencies &&\
     rm -rf \
     /tmp/*
 
