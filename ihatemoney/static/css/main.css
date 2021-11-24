@@ -470,6 +470,11 @@ tr.payer_line .balance-name {
   position: absolute;
   top: 4.5rem;
   width: 100%;
+  pointer-events: none;
+}
+
+.messages .alert {
+  pointer-events: auto;
 }
 
 .light {
