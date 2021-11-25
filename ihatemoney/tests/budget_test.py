@@ -305,7 +305,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             # Delete for real
             c.post(
                 "/raclette/delete",
-                data={"password": "party"},
+                data={"id_confirmation": "raclette"},
             )
 
             # project removed
@@ -856,7 +856,6 @@ class BudgetTestCase(IhatemoneyTestCase):
         new_data = {
             "name": "Super raclette party!",
             "contact_email": "zorglub@notmyidea.org",
-            "password": "didoudida",
             "logging_preference": LoggingMode.ENABLED.value,
             "default_currency": "USD",
         }
@@ -868,7 +867,6 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertEqual(project.name, new_data["name"])
         self.assertEqual(project.contact_email, new_data["contact_email"])
         self.assertEqual(project.default_currency, new_data["default_currency"])
-        self.assertTrue(check_password_hash(project.password, new_data["password"]))
 
         # Editing a project with a wrong email address should fail
         new_data["contact_email"] = "wrong_email"
