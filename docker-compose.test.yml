@@ -4,10 +4,8 @@ version: "3.9"
 services:
   ihatemoney:
     build: .
-    ports:
-      - "8000:8000"
   sut:
     image: alpine
-    command: wget --spider ihatemoney:8000
+    command: sh -c 'wget -qO- ihatemoney:8000/healthcheck | grep "OK"'
     depends_on:
       - ihatemoney

@@ -1,5 +1,12 @@
-FROM python:3.7-alpine
+FROM python:3.10-alpine
 
+ENV PORT="8000" \
+    # Keeps Python from generating .pyc files in the container
+    PYTHONDONTWRITEBYTECODE=1 \
+    # Turns off buffering for easier container logging
+    PYTHONUNBUFFERED=1
+
+# ihatemoney configuration
 ENV DEBUG="False" \
     ACTIVATE_ADMIN_DASHBOARD="False" \
     ACTIVATE_DEMO_PROJECT="True" \
@@ -21,13 +28,30 @@ ENV DEBUG="False" \
     ENABLE_CAPTCHA="False" \
     LEGAL_LINK="False"
 
-RUN mkdir -p /etc/ihatemoney &&\
-    pip install --no-cache-dir gunicorn pymysql;
-
 ADD . /src
 
-RUN pip install --no-cache-dir -e /src
+RUN echo "**** install build dependencies ****" &&\
+    apk add --no-cache --virtual=build-dependencies \
+    gcc \
+    musl-dev \
+    postgresql-dev &&\
+    echo "**** install runtime packages ****" && \
+    apk add --no-cache \
+    shadow \
+    postgresql-libs && \
+    echo "**** create runtime folder ****" && \
+    mkdir -p /etc/ihatemoney &&\
+    echo "**** install pip packages ****" && \
+    pip install --no-cache-dir \
+    gunicorn && \
+    pip install --no-cache-dir -e /src[database] && \
+    echo "**** create user abc:abc ****" && \
+    useradd -u 1000 -U -d /src abc && \
+    echo "**** cleanup ****" && \
+    apk del --purge build-dependencies &&\
+    rm -rf \
+    /tmp/*
 
 VOLUME /database
-EXPOSE 8000
+EXPOSE ${PORT}
 ENTRYPOINT ["/src/conf/entrypoint.sh"]

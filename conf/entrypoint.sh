@@ -3,7 +3,7 @@
 # Fail the whole script on the first failure.
 set -e
 
-cat <<EOF > /etc/ihatemoney/ihatemoney.cfg
+cat <<EOF >/etc/ihatemoney/ihatemoney.cfg
 DEBUG = $DEBUG
 ACTIVATE_ADMIN_DASHBOARD = $ACTIVATE_ADMIN_DASHBOARD
 ACTIVATE_DEMO_PROJECT = $ACTIVATE_DEMO_PROJECT
@@ -26,8 +26,24 @@ ENABLE_CAPTCHA = $ENABLE_CAPTCHA
 LEGAL_LINK = "$LEGAL_LINK"
 EOF
 
+PUID=${PUID:-0}
+PGID=${PGID:-0}
+
+echo "
+User uid: $PUID
+User gid: $PGID
+"
+
 # Start gunicorn without forking
-exec gunicorn ihatemoney.wsgi:application \
-     -b 0.0.0.0:8000 \
+cmd="exec gunicorn ihatemoney.wsgi:application \
+     -b 0.0.0.0:$PORT \
      --log-syslog \
-     "$@"
+     $@"
+
+if [ "$PGID" -ne 0 -a "$PUID" -ne 0 ]; then
+     groupmod -o -g "$PGID" abc
+     usermod -o -u "$PUID" abc
+     cmd="su - abc -c '$cmd'"
+fi
+
+eval "$cmd"
