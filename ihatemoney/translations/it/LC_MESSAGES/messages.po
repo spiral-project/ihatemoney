@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-01 18:01+0100\n"
-"PO-Revision-Date: 2021-03-17 15:18+0000\n"
-"Last-Translator: TomSolGit <Tommaso.solfa@gmail.com>\n"
+"PO-Revision-Date: 2021-11-25 23:51+0000\n"
+"Last-Translator: Paolo Campetto <fbok61hw@anonaddy.me>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/it/>\n"
 "Language: it\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/it/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.10-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 msgid ""
@@ -94,7 +94,7 @@ msgstr "Progetto non conosciuto"
 
 #, fuzzy
 msgid "Invalid private code."
-msgstr "Codice privato"
+msgstr "Codice privato non valido."
 
 msgid "Get in"
 msgstr "Entra"
@@ -177,8 +177,9 @@ msgstr "L'utente '%(name)s' è stato rimosso"
 msgid "This project already have this participant"
 msgstr "Membro già presente in questo progetto"
 
+#, fuzzy
 msgid "People to notify"
-msgstr ""
+msgstr "Persone da avvisare"
 
 msgid "Send invites"
 msgstr "Invia inviti"
@@ -349,7 +350,7 @@ msgstr "Attivare la cronologia del progetto"
 
 #, fuzzy
 msgid "Deleted project history."
-msgstr "Attivare la cronologia del progetto"
+msgstr "Cronologia del progetto cancellata."
 
 #, fuzzy
 msgid "Error deleting recorded IP addresses"
@@ -605,18 +606,20 @@ msgstr ""
 "per rimuoverle.</i></p>\n"
 "            "
 
+#, fuzzy
 msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
 "recording disabled. "
 msgstr ""
-"Alcune voci qui sotto contengono un indirizzo IP, nonostante in questo "
-"progetto la registrazione degli IP è disabilitata. "
+"Alcune voci qui sotto contengono indirizzi IP, anche se in questo progetto "
+"la registrazione degli IP è disabilitata. "
 
 msgid "Delete stored IP addresses"
 msgstr "Cancella indirizzi IP conservati"
 
+#, fuzzy
 msgid "No history to erase"
-msgstr "Nessuno storico da cancellare"
+msgstr "Nessuna cronologia da cancellare"
 
 msgid "Clear Project History"
 msgstr "Cancella Cronologia Progetto"
@@ -646,9 +649,9 @@ msgstr ""
 msgid "From IP"
 msgstr "Dall'IP"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project %(name)s added"
-msgstr "Nome del progetto"
+msgstr "Progetto %(name)s aggiunto"
 
 #, fuzzy, python-format
 msgid "Bill %(name)s added"
