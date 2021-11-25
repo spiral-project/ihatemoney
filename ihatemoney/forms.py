@@ -2,6 +2,7 @@ from datetime import datetime
 import decimal
 from re import match
 from types import SimpleNamespace
+import secrets
 
 import email_validator
 from flask import request
@@ -120,11 +121,6 @@ class CalculatorStringField(StringField):
 
 class EditProjectForm(FlaskForm):
     name = StringField(_("Project name"), validators=[DataRequired()])
-    # If empty -> don't change the password
-    password = PasswordField(
-        _("New private code"),
-        description=_("Enter a new code if you want to change it"),
-    )
     contact_email = StringField(_("Email"), validators=[DataRequired(), Email()])
     project_history = BooleanField(_("Enable project history"))
     ip_recording = BooleanField(_("Use IP tracking for project history"))
@@ -182,15 +178,6 @@ class EditProjectForm(FlaskForm):
         """Update the project with the information from the form"""
         project.name = self.name.data
 
-        if (
-            # Only update password if a new one is provided
-            self.password.data
-            # Only update password if different from the previous one,
-            # to prevent spurious log entries
-            and not check_password_hash(project.password, self.password.data)
-        ):
-            project.password = generate_password_hash(self.password.data)
-
         project.contact_email = self.contact_email.data
         project.logging_preference = self.logging_preference
         project.switch_currency(self.default_currency.data)
@@ -211,8 +198,6 @@ class ImportProjectForm(FlaskForm):
 
 class ProjectForm(EditProjectForm):
     id = StringField(_("Project identifier"), validators=[DataRequired()])
-    # This field overrides the one from EditProjectForm
-    password = PasswordField(_("Private code"), validators=[DataRequired()])
     submit = SubmitField(_("Create the project"))
 
     def save(self):
@@ -225,11 +210,12 @@ class ProjectForm(EditProjectForm):
         # so we'll manually do it here
         self.project_history.data = LoggingMode.default() != LoggingMode.DISABLED
         self.ip_recording.data = LoggingMode.default() == LoggingMode.RECORD_IP
+        password = secrets.token_urlsafe(16)
         # Create project
         project = Project(
             name=self.name.data,
             id=self.id.data,
-            password=generate_password_hash(self.password.data),
+            password=generate_password_hash(password),
             contact_email=self.contact_email.data,
             logging_preference=self.logging_preference,
             default_currency=self.default_currency.data,
@@ -268,9 +254,9 @@ class DestructiveActionProjectForm(FlaskForm):
     It asks the participant to enter the private code to confirm deletion.
     """
 
-    password = PasswordField(
-        _("Private code"),
-        description=_("Enter private code to confirm deletion"),
+    id_confirmation = StringField(
+        _("Project identifier"),
+        description=_("Enter project identifier to confirm"),
         validators=[DataRequired()],
     )
 
@@ -279,12 +265,12 @@ class DestructiveActionProjectForm(FlaskForm):
         self.id = SimpleNamespace(data=kwargs.pop("id", ""))
         super().__init__(*args, **kwargs)
 
-    def validate_password(self, field):
+    def validate_id_confirmation(self, field):
         project = Project.query.get(self.id.data)
         if project is None:
             raise ValidationError(_("Unknown error"))
-        if not check_password_hash(project.password, self.password.data):
-            raise ValidationError(_("Invalid private code."))
+        if project.id != self.id_confirmation.data:
+            raise ValidationError(_("Invalid project identifier."))
 
 
 class AuthenticationForm(FlaskForm):

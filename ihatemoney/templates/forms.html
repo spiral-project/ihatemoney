@@ -48,7 +48,6 @@
 
     {{ form.hidden_tag() }}
     {{ input(form.id) }}
-    {{ input(form.password) }}
     {% if not home %}
     {{ submit(form.submit, home=True) }}
     {% endif %}
@@ -73,7 +72,6 @@
     {{ input(form.id) }}
     {% endif %}
     {{ input(form.name) }}
-    {{ input(form.password) }}
     {{ input(form.contact_email) }}
     {% if config['ENABLE_CAPTCHA'] %}
     {{ input(form.captcha) }}
@@ -89,7 +87,6 @@
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
     {{ input(form.name) }}
-    {{ input(form.password) }}
     {{ input(form.contact_email) }}
     <div class="form-group">
         <label for="privacy_checkboxes">{{ _("Privacy Settings") }}</label>
@@ -111,7 +108,7 @@
     {% include "display_errors.html" %}
     <p><strong>{{ _("This will remove all bills and participants in this project!") }}</strong></p>
     {{ form.hidden_tag() }}
-    {{ input(form.password) }}
+    {{ input(form.id_confirmation) }}
     <div class="actions">
         <button class="btn btn-primary">{{ _("Delete project") }}</button>
     </div>
@@ -145,7 +142,7 @@
 
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
-    {{ input(form.password, inline=True) }}
+    {{ input(form.id_confirmation) }}
 
 {% endmacro %}
 
@@ -153,7 +150,7 @@
 
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
-    {{ input(form.password) }}
+    {{ input(form.id_confirmation) }}
 
 {% endmacro %}
 
