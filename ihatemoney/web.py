@@ -341,8 +341,6 @@ def create_project():
                     ),
                     category="info",
                 )
-            # redirect the user to the next step (invite)
-            flash(_("The project identifier is %(project)s", project=project.id))
             return redirect(url_for(".list_bills", project_id=project.id))
 
     return render_template("create_project.html", form=form)
