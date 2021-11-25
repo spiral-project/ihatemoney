@@ -40,7 +40,7 @@
 
 {% block sidebar %}
     <div class="sidebar_content">
-        <form id="add-member-form" action="{{ url_for(".add_member") }}" method="post">
+        <form id="add-member-form" action="{{ url_for(".add_member") }}" method="post" class="py-3">
             {{ forms.add_member(member_form) }}
         </form>
 
