@@ -39,14 +39,8 @@ class APITestCase(IhatemoneyTestCase):
             headers=self.get_auth(project),
         )
 
-    def get_auth(self, username, password=None):
-        password = password or username
-        base64string = (
-            base64.encodebytes(f"{username}:{password}".encode("utf-8"))
-            .decode("utf-8")
-            .replace("\n", "")
-        )
-        return {"Authorization": f"Basic {base64string}"}
+    def get_auth(self, username):
+        return {"Authorization": f"Bearer {self.get_token(username)}"}
 
     def test_cors_requests(self):
         # Create a project and test that CORS headers are present if requested.
