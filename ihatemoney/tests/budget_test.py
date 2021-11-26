@@ -514,9 +514,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         # try to connect with the right credentials should work
         with self.client as c:
-            resp = c.post(
-                "/authenticate", data={"id": "Raclette", "password": "Raclette"}
-            )
+            resp = self.login("Raclette", client=c)
 
             self.assertNotIn("Authentication", resp.data.decode("utf-8"))
             self.assertIn("raclette", session)
@@ -1262,9 +1260,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         # This ensures that modifying and deleting the bill can actually work
 
         self.client.get("/exit")
-        self.client.post(
-            "/authenticate", data={"id": "raclette", "password": "raclette"}
-        )
+        self.login("raclette")
         self.client.post("/raclette/edit/1", data=modified_bill)
         bill = models.Bill.query.filter(models.Bill.id == 1).one_or_none()
         self.assertNotEqual(bill, None, "bill not found")
@@ -1275,9 +1271,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         # Switch back to the second project
         self.client.get("/exit")
-        self.client.post(
-            "/authenticate", data={"id": "tartiflette", "password": "tartiflette"}
-        )
+        self.login("tartiflette")
         modified_member = {
             "name": "bulgroz",
             "weight": 42,
@@ -1310,9 +1304,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         # Use the correct credentials to modify and delete the member.
         # This ensures that modifying and deleting the member can actually work
         self.client.get("/exit")
-        self.client.post(
-            "/authenticate", data={"id": "raclette", "password": "raclette"}
-        )
+        self.login("raclette")
         self.client.post("/raclette/members/1/edit", data=modified_member)
         member = models.Person.query.filter(models.Person.id == 1).one()
         self.assertEqual(member.name, "bulgroz")
