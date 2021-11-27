@@ -654,11 +654,8 @@ def list_bills():
     # set the last selected payer as default choice if exists
     if "last_selected_payer" in session:
         bill_form.payer.data = session["last_selected_payer"]
-    # Preload the "owers" relationship for all bills
-    bills = (
-        g.project.get_bills()
-        .options(orm.subqueryload(Bill.owers))
-        .paginate(per_page=100, error_out=True)
+    bills = g.project.get_bill_weights_ordered().paginate(
+        per_page=500, error_out=True
     )
 
     return render_template(

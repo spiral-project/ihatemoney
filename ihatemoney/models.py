@@ -246,12 +246,28 @@ class Project(db.Model):
 
     def get_bills(self):
         """Return the list of bills related to this project"""
+        return self.ordered_bills(self.get_bills_unordered())
+
+    def ordered_bills(self, query):
         return (
-            self.get_bills_unordered()
-            .order_by(Bill.date.desc())
+            query.order_by(Bill.date.desc())
             .order_by(Bill.creation_date.desc())
             .order_by(Bill.id.desc())
         )
+
+    def get_bill_weights(self):
+        return (
+            db.session.query(func.sum(Person.weight), Bill)
+            .options(orm.subqueryload(Bill.owers))
+            .select_from(Person)
+            .join(billowers, Bill, Project)
+            .filter(Person.project_id == Project.id)
+            .filter(Project.id == self.id)
+            .group_by(Bill.id)
+        )
+
+    def get_bill_weights_ordered(self):
+        return self.ordered_bills(self.get_bill_weights())
 
     def get_member_bills(self, member_id):
         """Return the list of bills related to a specific member"""

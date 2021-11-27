@@ -1,7 +1,7 @@
 {% extends "sidebar_table_layout.html" %}
 
-{%- macro bill_amount(bill, currency=bill.original_currency, amount=bill.amount) %}
-    {{ amount|currency(currency) }} ({{ _("%(amount)s each", amount=bill.pay_each_default(amount)|currency(currency)) }})
+{%- macro bill_amount_weighted(bill, weights, currency=bill.original_currency, amount=bill.amount) %}
+    {{ amount|currency(currency) }} ({{ _("%(amount)s each", amount=(amount / weights)|currency(currency)) }})
 {% endmacro -%}
 
 {% block title %} - {{ g.project.name }}{% endblock %}
@@ -109,7 +109,7 @@
                 </th><th>{{ _("Actions") }}</th></tr>
             </thead>
         <tbody>
-        {% for bill in bills.items %}
+        {% for (weights, bill) in bills.items %}
         <tr owers="{{bill.owers|join(',','id')}}" payer="{{bill.payer.id}}">
                 <td>
                     <span data-toggle="tooltip" data-placement="top"
@@ -128,8 +128,8 @@
                 {%- endif %}</td>
                 <td>
                     <span data-toggle="tooltip" data-placement="top"
-                        title="{{ bill_amount(bill, g.project.default_currency, bill.converted_amount) if bill.original_currency != g.project.default_currency else '' }}">
-                        {{ bill_amount(bill) }}
+                        title="{{ bill_amount_weighted(bill, weights, g.project.default_currency, bill.converted_amount) if bill.original_currency != g.project.default_currency else '' }}">
+                        {{ bill_amount_weighted(bill, weights) }}
                     </span>
                 </td>
                 <td class="bill-actions">
