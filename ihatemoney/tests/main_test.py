@@ -164,7 +164,6 @@ class ModelsTestCase(IhatemoneyTestCase):
                 pay_each_expected = 10 / 3
                 self.assertEqual(bill.amount / weight, pay_each_expected)
 
-
     def test_bill_pay_each(self):
 
         self.post_project("raclette")

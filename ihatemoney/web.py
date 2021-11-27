@@ -654,9 +654,7 @@ def list_bills():
     # set the last selected payer as default choice if exists
     if "last_selected_payer" in session:
         bill_form.payer.data = session["last_selected_payer"]
-    bills = g.project.get_bill_weights_ordered().paginate(
-        per_page=500, error_out=True
-    )
+    bills = g.project.get_bill_weights_ordered().paginate(per_page=500, error_out=True)
 
     return render_template(
         "list_bills.html",
