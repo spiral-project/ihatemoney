@@ -256,6 +256,12 @@ class Project(db.Model):
         )
 
     def get_bill_weights(self):
+        """
+        Return all bills for this project, along with the sum of weight for each bill.
+        Each line is a (float, Bill) tuple.
+
+        Result is unordered.
+        """
         return (
             db.session.query(func.sum(Person.weight), Bill)
             .options(orm.subqueryload(Bill.owers))
@@ -267,6 +273,7 @@ class Project(db.Model):
         )
 
     def get_bill_weights_ordered(self):
+        """Ordered version of get_bill_weights"""
         return self.ordered_bills(self.get_bill_weights())
 
     def get_member_bills(self, member_id):
