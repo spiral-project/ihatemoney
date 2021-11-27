@@ -118,13 +118,25 @@
 
 {% endmacro %}
 
-{% macro upload_json(form) %}
+{% macro import_project(form) %}
+
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
-    {{ form.file }}
+
+    <div class="custom-file">
+        <div class="form-group">
+            {{ form.file(class="custom-file-input") }}
+            <small class="form-text text-muted">
+                {{ form.file.description }}
+            </small>
+        </div>
+        <label class="custom-file-label" for="customFile">{{ _('Choose file') }}</label>
+    </div>
+
     <div class="actions">
         <button class="btn btn-primary">{{ _("Import") }}</button>
     </div>
+
 {% endmacro %}
 
 {% macro delete_project_history(form) %}

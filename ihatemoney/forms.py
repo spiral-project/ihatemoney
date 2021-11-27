@@ -182,13 +182,16 @@ class EditProjectForm(FlaskForm):
         return project
 
 
-class UploadForm(FlaskForm):
+class ImportProjectForm(FlaskForm):
     file = FileField(
+        "File",
+        validators=[
+            FileRequired(),
         "JSON",
         validators=[FileRequired(), FileAllowed(["json", "JSON"], "JSON only!")],
+        ],
         description=_("Import previously exported JSON file"),
     )
-    submit = SubmitField(_("Import"))
 
 
 class ProjectForm(EditProjectForm):
@@ -240,7 +243,7 @@ class ProjectFormWithCaptcha(ProjectForm):
             raise ValidationError(Markup(message))
 
 
-class DestructiveActionProjectForm(FlaskForm):
+class DeleteProjectForm(FlaskForm):
     """Used for any important "delete" action linked to a project:
 
     - delete project itself
