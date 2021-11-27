@@ -31,7 +31,6 @@ from flask import (
 )
 from flask_babel import gettext as _
 from flask_mail import Message
-from sqlalchemy import orm
 from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash, generate_password_hash
