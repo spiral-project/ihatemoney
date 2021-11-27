@@ -26,7 +26,7 @@ ENV DEBUG="False" \
     SQLALCHEMY_DATABASE_URI="sqlite:////database/ihatemoney.db" \
     SQLALCHEMY_TRACK_MODIFICATIONS="False" \
     ENABLE_CAPTCHA="False" \
-    LEGAL_LINK="False"
+    LEGAL_LINK=""
 
 ADD . /src
 
