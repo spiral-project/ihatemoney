@@ -655,7 +655,9 @@ def list_bills():
         bill_form.payer.data = session["last_selected_payer"]
 
     # Each item will be (weight_sum, Bill) tuple
-    weights_bills = g.project.get_bill_weights_ordered().paginate(per_page=100, error_out=True)
+    weights_bills = g.project.get_bill_weights_ordered().paginate(
+        per_page=100, error_out=True
+    )
 
     return render_template(
         "list_bills.html",
