@@ -477,14 +477,9 @@ def import_project():
                 # set it to project default.
                 if e.get("currency", "") in ["", "XXX"]:
                     e["currency"] = g.project.default_currency
-                if len(e) != len(attr):
-                    raise ValueError(_("Invalid JSON"))
-                list_attr = []
-                for i in e:
-                    list_attr.append(i)
-                list_attr.sort()
-                if list_attr != attr:
-                    raise ValueError(_("Invalid JSON"))
+                for a in attr:
+                    if a not in e:
+                        raise ValueError(_("Missing attribute {}").format(a))
                 # Keep track of currencies
                 currencies.add(e["currency"])
 

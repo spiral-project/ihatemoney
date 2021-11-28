@@ -154,10 +154,15 @@ def csv2list_of_dicts(csv_to_convert):
     """Take a csv in-memory file and turns it into
     a list of dictionnaries
     """
-    csv_file = TextIOWrapper(csv_to_convert)
+    csv_file = TextIOWrapper(csv_to_convert, encoding="utf-8")
     reader = csv.DictReader(csv_file)
     result = []
     for r in reader:
+        # cospend filtering
+        if r["what"] == "deleteMeIfYouWant":
+            continue
+        elif r["what"] == "categoryname":
+            break
         r["amount"] = float(r["amount"])
         r["payer_weight"] = float(r["payer_weight"])
         r["owers"] = [o.strip() for o in r["owers"].split(",")]
