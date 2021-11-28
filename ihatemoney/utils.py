@@ -2,7 +2,7 @@ import ast
 import csv
 from datetime import datetime, timedelta
 from enum import Enum
-from io import BytesIO, StringIO
+from io import BytesIO, StringIO, TextIOWrapper
 from json import JSONEncoder, dumps
 import operator
 import os
@@ -148,6 +148,21 @@ def list_of_dicts2csv(dict_to_convert):
     csv_file.seek(0)
     csv_file = BytesIO(csv_file.getvalue().encode("utf-8"))
     return csv_file
+
+
+def csv2list_of_dicts(csv_to_convert):
+    """Take a csv in-memory file and turns it into
+    a list of dictionnaries
+    """
+    csv_file = TextIOWrapper(csv_to_convert)
+    reader = csv.DictReader(csv_file)
+    result = []
+    for r in reader:
+        r["amount"] = float(r["amount"])
+        r["payer_weight"] = float(r["payer_weight"])
+        r["owers"] = [o.strip() for o in r["owers"].split(",")]
+        result.append(r)
+    return result
 
 
 class LoginThrottler:

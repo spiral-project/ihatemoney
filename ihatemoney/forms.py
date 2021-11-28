@@ -187,8 +187,7 @@ class ImportProjectForm(FlaskForm):
         "File",
         validators=[
             FileRequired(),
-        "JSON",
-        validators=[FileRequired(), FileAllowed(["json", "JSON"], "JSON only!")],
+            FileAllowed(["json", "JSON", "csv", "CSV"], "Incorrect file format"),
         ],
         description=_("Import previously exported JSON file"),
     )

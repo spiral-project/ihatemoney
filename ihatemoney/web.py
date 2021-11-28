@@ -58,6 +58,7 @@ from ihatemoney.models import Bill, LoggingMode, Person, Project, db
 from ihatemoney.utils import (
     LoginThrottler,
     Redirect303,
+    csv2list_of_dicts,
     format_form_errors,
     get_members,
     list_of_dicts2csv,
@@ -451,6 +452,11 @@ def import_project():
             data = form.file.data
             if data.mimetype == "application/json":
                 json_file = json.load(data.stream)
+            elif data.mimetype == "text/csv":
+                try:
+                    json_file = csv2list_of_dicts(data)
+                except Exception as e:
+                    raise ValueError(_("Unable to parse CSV"))
             else:
                 raise ValueError("Unsupported file type")
 
@@ -554,10 +560,7 @@ def import_project():
             return redirect(url_for("main.list_bills"))
         except ValueError as e:
             flash(e.args[0], category="danger")
-            return render_template(
-                "edit_project.html",
-                current_view="edit_project",
-            )
+        return redirect(url_for(".edit_project"))
     else:
         for component, errors in form.errors.items():
             flash(_(component + ": ") + ", ".join(errors), category="danger")
