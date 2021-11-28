@@ -50,8 +50,11 @@ msgid ""
 "multiple currencies."
 msgstr ""
 
-msgid "Import previously exported JSON file"
-msgstr "Importera tidigare exporterad JSON-fil"
+msgid "Compatible with Cospend"
+msgstr "Kompatibel med Cospend"
+
+msgid "Import previously exported project"
+msgstr "Importera tidigare exporterat projekt"
 
 msgid "Import"
 msgstr "Importera"
@@ -423,8 +426,8 @@ msgstr "Redigera projekt"
 msgid "Delete project"
 msgstr "Redigera projekt"
 
-msgid "Import JSON"
-msgstr "Importera JSON"
+msgid "Import project"
+msgstr "Importera projekt"
 
 msgid "Choose file"
 msgstr "Välj fil"

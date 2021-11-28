@@ -53,8 +53,11 @@ msgstr ""
 "Ĉi tiu projekto ne povas esti agordita al «neniu valuto», ĉar ĝi enhavas "
 "fakturojn en pluraj valutoj."
 
-msgid "Import previously exported JSON file"
-msgstr "Importi antaŭe elportitan JSON-dosieron"
+msgid "Compatible with Cospend"
+msgstr "Kongrua kun Cospend"
+
+msgid "Import previously exported project"
+msgstr "Importi antaŭe eksportitan projekton"
 
 msgid "Import"
 msgstr "Enporti"
@@ -428,8 +431,8 @@ msgstr "Redakti projekton"
 msgid "Delete project"
 msgstr "Forviŝi projekton"
 
-msgid "Import JSON"
-msgstr "Enporti JSON-dosieron"
+msgid "Import project"
+msgstr "Enporti projeckton"
 
 msgid "Choose file"
 msgstr "Elekti dosieron"

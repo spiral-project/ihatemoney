@@ -60,8 +60,11 @@ msgstr ""
 "Ce projet ne peut pas être sans devise car il contient des factures "
 "utilisant des devises différentes."
 
-msgid "Import previously exported JSON file"
-msgstr "Importer un fichier JSON précédemment exporté"
+msgid "Compatible with Cospend"
+msgstr "Compatible avec Cospend"
+
+msgid "Import previously exported project"
+msgstr "Importer le projet précédemment exporté"
 
 msgid "Import"
 msgstr "Importer"
@@ -431,8 +434,8 @@ msgstr "Éditer le projet"
 msgid "Delete project"
 msgstr "Supprimer le projet"
 
-msgid "Import JSON"
-msgstr "Importer le fichier JSON"
+msgid "Import project"
+msgstr "Importer le projet"
 
 msgid "Choose file"
 msgstr "Choisir un fichier"

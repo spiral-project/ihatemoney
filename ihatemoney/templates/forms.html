@@ -123,6 +123,8 @@
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
 
+    <p><strong>{{ _("Import previously exported project") }}</strong></p>
+
     <div class="custom-file">
         <div class="form-group">
             {{ form.file(class="custom-file-input") }}
@@ -134,7 +136,7 @@
     </div>
 
     <div class="actions">
-        <button class="btn btn-primary">{{ _("Import") }}</button>
+        <button class="btn btn-primary">{{ _("Import project") }}</button>
     </div>
 
 {% endmacro %}

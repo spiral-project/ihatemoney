@@ -56,8 +56,11 @@ msgstr ""
 "ini mempunyai wang dalam beberapa bentuk mata wang"
 
 #, fuzzy
-msgid "Import previously exported JSON file"
-msgstr "Import fail JSON yang telah dieksport sebelum ini"
+msgid "Compatible with Cospend"
+msgstr "Serasi dengan Cospend"
+
+msgid "Import previously exported project"
+msgstr "Mengimport projek yang dieksport sebelumnya"
 
 msgid "Import"
 msgstr "Import"
@@ -421,8 +424,8 @@ msgstr ""
 msgid "Delete project"
 msgstr ""
 
-msgid "Import JSON"
-msgstr ""
+msgid "Import project"
+msgstr "Projek Import"
 
 msgid "Choose file"
 msgstr ""

@@ -50,8 +50,11 @@ msgid ""
 "multiple currencies."
 msgstr ""
 
-msgid "Import previously exported JSON file"
-msgstr "以前のJSONファイルをインポートする"
+msgid "Compatible with Cospend"
+msgstr "Cospendとの互換性"
+
+msgid "Import previously exported project"
+msgstr "以前にエクスポートされたプロジェクトをインポートします"
 
 msgid "Import"
 msgstr "インポート"
@@ -420,8 +423,8 @@ msgstr "プロジェクトを編集する"
 msgid "Delete project"
 msgstr "プロジェクトを編集する"
 
-msgid "Import JSON"
-msgstr "JSONを導入する"
+msgid "Import project"
+msgstr "プロジェクトのインポート"
 
 msgid "Choose file"
 msgstr "ファイルを選択する"

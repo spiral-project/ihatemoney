@@ -51,8 +51,11 @@ msgid ""
 "multiple currencies."
 msgstr ""
 
-msgid "Import previously exported JSON file"
-msgstr ""
+msgid "Compatible with Cospend"
+msgstr "Cospend ಹೊಂದಬಲ್ಲ"
+
+msgid "Import previously exported project"
+msgstr "ಹಿಂದೆ ರಫ್ತು ಮಾಡಿದ ಯೋಜನೆಯನ್ನು ಆಮದು ಮಾಡಿ"
 
 msgid "Import"
 msgstr "ಆಮದು"
@@ -414,8 +417,8 @@ msgstr ""
 msgid "Delete project"
 msgstr ""
 
-msgid "Import JSON"
-msgstr ""
+msgid "Import project"
+msgstr "ಆಮದು ಯೋಜನೆ"
 
 msgid "Choose file"
 msgstr ""

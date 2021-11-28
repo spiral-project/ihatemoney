@@ -189,7 +189,7 @@ class ImportProjectForm(FlaskForm):
             FileRequired(),
             FileAllowed(["json", "JSON", "csv", "CSV"], "Incorrect file format"),
         ],
-        description=_("Import previously exported JSON file"),
+        description=_("Compatible with Cospend"),
     )
 
 
