@@ -1,6 +1,7 @@
 from collections import defaultdict
 from datetime import datetime
 
+from dateutil.parser import parse
 from debts import settle
 from flask import current_app, g
 from flask_sqlalchemy import BaseQuery, SQLAlchemy
@@ -19,6 +20,7 @@ from werkzeug.security import generate_password_hash
 
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.patch_sqlalchemy_continuum import PatchedBuilder
+from ihatemoney.utils import get_members, same_bill
 from ihatemoney.versioning import (
     ConditionalVersioningManager,
     LoggingMode,
@@ -320,6 +322,42 @@ class Project(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    def import_bills(self, bills: list[dict]):
+        """Import bills from a list of dictionaries"""
+        # Add members not already in the project
+        members_project = [str(m) for m in self.members]
+        members_new = [
+            m for m in get_members(bills) if str(m[0]) not in members_project
+        ]
+        for m in members_new:
+            Person(name=m[0], project=self, weight=m[1])
+        db.session.commit()
+
+        # Import bills not already in the project
+        bills_project = self.get_pretty_bills()
+        id_dict = {m.name: m.id for m in self.members}
+        for b in bills:
+            same = False
+            for b_p in bills_project:
+                if same_bill(b_p, b):
+                    same = True
+                    break
+            if not same:
+                # Create bills
+                db.session.add(
+                    Bill(
+                        b["amount"],
+                        parse(b["date"]),
+                        "",
+                        b["currency"],
+                        Person.query.get_by_names(b["owers"], self),
+                        id_dict[b["payer_name"]],
+                        self.default_currency,
+                        b["what"],
+                    )
+                )
+        db.session.commit()
+
     def remove_member(self, member_id):
         """Remove a member from the project.
 
@@ -435,16 +473,19 @@ class Project(db.Model):
             ("Alice", 20, ("Amina", "Alice"), "Beer !"),
             ("Amina", 50, ("Amina", "Alice", "Georg"), "AMAP"),
         )
-        for (payer, amount, owers, subject) in operations:
-            bill = Bill()
-            bill.payer_id = members[payer].id
-            bill.what = subject
-            bill.owers = [members[name] for name in owers]
-            bill.amount = amount
-            bill.original_currency = "XXX"
-            bill.converted_amount = amount
-
-            db.session.add(bill)
+        for (payer, amount, owers, what) in operations:
+            db.session.add(
+                Bill(
+                    amount,
+                    None,
+                    None,
+                    "XXX",
+                    [members[name] for name in owers],
+                    members[payer].id,
+                    project.default_currency,
+                    what,
+                )
+            )
 
         db.session.commit()
         return project
@@ -459,6 +500,13 @@ class Person(db.Model):
                 .one_or_none()
             )
 
+        def get_by_names(self, names, project):
+            return (
+                Person.query.filter(Person.name.in_(names))
+                .filter(Person.project_id == project.id)
+                .all()
+            )
+
         def get(self, id, project=None):
             if not project:
                 project = g.project
@@ -466,6 +514,15 @@ class Person(db.Model):
                 Person.query.filter(Person.id == id)
                 .filter(Person.project_id == project.id)
                 .one_or_none()
+            )
+
+        def get_by_ids(self, ids, project=None):
+            if not project:
+                project = g.project
+            return (
+                Person.query.filter(Person.id.in_(ids))
+                .filter(Person.project_id == project.id)
+                .all()
             )
 
     query_class = PersonQuery
@@ -560,6 +617,31 @@ class Bill(db.Model):
     converted_amount = db.Column(db.Float)
 
     archive = db.Column(db.Integer, db.ForeignKey("archive.id"))
+
+    currency_helper = CurrencyConverter()
+
+    def __init__(
+        self,
+        amount,
+        date,
+        external_link,
+        original_currency,
+        owers,
+        payer_id,
+        project_default_currency,
+        what,
+    ) -> None:
+        super().__init__()
+        self.amount = amount
+        self.date = date
+        self.external_link = external_link
+        self.original_currency = original_currency
+        self.owers = owers
+        self.payer_id = payer_id
+        self.what = what
+        self.converted_amount = self.currency_helper.exchange_currency(
+            self.amount, self.original_currency, project_default_currency
+        )
 
     @property
     def _to_serialize(self):

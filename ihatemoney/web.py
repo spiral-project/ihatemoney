@@ -60,11 +60,9 @@ from ihatemoney.utils import (
     Redirect303,
     csv2list_of_dicts,
     format_form_errors,
-    get_members,
     list_of_dicts2csv,
     list_of_dicts2json,
     render_localized_template,
-    same_bill,
     send_email,
 )
 
@@ -451,37 +449,33 @@ def import_project():
         try:
             data = form.file.data
             if data.mimetype == "application/json":
-                json_file = json.load(data.stream)
+                bills = json.load(data.stream)
             elif data.mimetype == "text/csv":
                 try:
-                    json_file = csv2list_of_dicts(data)
-                except Exception as e:
+                    bills = csv2list_of_dicts(data)
+                except Exception as b:
                     raise ValueError(_("Unable to parse CSV"))
             else:
                 raise ValueError("Unsupported file type")
 
-            # Check if JSON is correct
+            # Check data
             attr = [
-                "what",
-                "payer_name",
-                "payer_weight",
                 "amount",
                 "currency",
                 "date",
                 "owers",
+                "payer_name",
+                "payer_weight",
+                "what",
             ]
-            attr.sort()
             currencies = set()
-            for e in json_file:
-                # If currency is absent, empty, or explicitly set to XXX
-                # set it to project default.
-                if e.get("currency", "") in ["", "XXX"]:
-                    e["currency"] = g.project.default_currency
+            for b in bills:
+                if b.get("currency", "") in ["", "XXX"]:
+                    b["currency"] = g.project.default_currency
                 for a in attr:
-                    if a not in e:
+                    if a not in b:
                         raise ValueError(_("Missing attribute {}").format(a))
-                # Keep track of currencies
-                currencies.add(e["currency"])
+                currencies.add(b["currency"])
 
             # Additional checks if project has no default currency
             if g.project.default_currency == CurrencyConverter.no_currency:
@@ -493,68 +487,15 @@ def import_project():
                         )
                     )
                 # Strip currency from bills (since it's the same for every bill)
-                for e in json_file:
-                    e["currency"] = CurrencyConverter.no_currency
+                for b in bills:
+                    b["currency"] = CurrencyConverter.no_currency
 
-            # From json : export list of members
-            members_json = get_members(json_file)
-            members = g.project.members
-            members_already_here = list()
-            for m in members:
-                members_already_here.append(str(m))
+            g.project.import_bills(bills)
 
-            # List all members not in the project and weight associated
-            # List of tuples (name,weight)
-            members_to_add = list()
-            for i in members_json:
-                if str(i[0]) not in members_already_here:
-                    members_to_add.append(i)
-
-            # List bills not in the project
-            # Same format than JSON element
-            project_bills = g.project.get_pretty_bills()
-            bill_to_add = list()
-            for j in json_file:
-                same = False
-                for p in project_bills:
-                    if same_bill(p, j):
-                        same = True
-                        break
-                if not same:
-                    bill_to_add.append(j)
-
-            # Add users to DB
-            for m in members_to_add:
-                Person(name=m[0], project=g.project, weight=m[1])
-            db.session.commit()
-
-            id_dict = {}
-            for i in g.project.members:
-                id_dict[i.name] = i.id
-
-            # Create bills
-            for b in bill_to_add:
-                owers_id = list()
-                for ower in b["owers"]:
-                    owers_id.append(id_dict[ower])
-
-                bill = Bill()
-                form = get_billform_for(g.project)
-                form.what = b["what"]
-                form.amount = b["amount"]
-                form.original_currency = b["currency"]
-                form.date = parse(b["date"])
-                form.payer = id_dict[b["payer_name"]]
-                form.payed_for = owers_id
-
-                db.session.add(form.fake_form(bill, g.project))
-
-            # Add bills to DB
-            db.session.commit()
             flash(_("Project successfully uploaded"))
             return redirect(url_for("main.list_bills"))
-        except ValueError as e:
-            flash(e.args[0], category="danger")
+        except ValueError as b:
+            flash(b.args[0], category="danger")
         return redirect(url_for(".edit_project"))
     else:
         for component, errors in form.errors.items():
@@ -777,8 +718,7 @@ def add_bill():
             session["last_selected_payer"] = form.payer.data
             session.update()
 
-            bill = Bill()
-            db.session.add(form.save(bill, g.project))
+            db.session.add(form.export(g.project))
             db.session.commit()
 
             flash(_("The bill has been added"))
