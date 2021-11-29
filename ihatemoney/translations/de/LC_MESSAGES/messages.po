@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-01 18:01+0100\n"
-"PO-Revision-Date: 2021-09-23 19:36+0000\n"
-"Last-Translator: Christian H. <sunrisechain@gmail.com>\n"
+"PO-Revision-Date: 2021-11-28 23:21+0000\n"
+"Last-Translator: Jannik Lang <jannik.lang@posteo.de>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/de/>\n"
 "Language: de\n"
-"Language-Team: German <https://hosted.weblate.org/projects/i-hate-money/i"
-"-hate-money/de/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.10-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 msgid ""
@@ -45,6 +45,8 @@ msgstr "Standardwährung"
 
 msgid "Setting a default currency enables currency conversion between bills"
 msgstr ""
+"Das Festlegen einer Standardwährung ermöglicht die Währungsumrechnung "
+"zwischen Rechnungen"
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
@@ -77,14 +79,13 @@ msgstr ""
 "wähle eine andere Kennung"
 
 msgid "Which is a real currency: Euro or Petro dollar?"
-msgstr ""
+msgstr "Welche ist eine echte Währung? Euro oder Petro-Dollar?"
 
-#, fuzzy
 msgid "euro"
-msgstr "Zeitraum"
+msgstr "Euro"
 
 msgid "Please, validate the captcha to proceed."
-msgstr ""
+msgstr "Bitte bestätige das Captcha, um fortzufahren."
 
 msgid "Enter private code to confirm deletion"
 msgstr "Geben Sie Ihren privaten Code ein, um die Löschung zu bestätigen"
@@ -170,19 +171,17 @@ msgstr "Gewichtung"
 msgid "Add"
 msgstr "Hinzufügen"
 
-#, fuzzy
 msgid "The participant name is invalid"
-msgstr "Teilnehmer %(name)s reaktiviert"
+msgstr "Der Benutzername ist ungültig"
 
-#, fuzzy
 msgid "This project already have this participant"
-msgstr "Der Benutzer ist bereits dem Projekt zugeordnet"
+msgstr "Dieses Projekt hat bereits einen solchen Benutzer"
 
 msgid "People to notify"
-msgstr ""
+msgstr "Personen, die informiert werden sollen"
 
 msgid "Send invites"
-msgstr "Einladung senden"
+msgstr "Einladungen senden"
 
 #, python-format
 msgid "The email %(email)s is not valid"
@@ -216,7 +215,8 @@ msgid "{prefix}:<br />{errors}"
 msgstr "{prefix}:<br />{errors}"
 
 msgid "Too many failed login attempts, please retry later."
-msgstr "Zu viele fehlgeschlagene Anmeldeversuche, bitte versuche es später."
+msgstr ""
+"Zu viele fehlgeschlagene Anmeldeversuche, bitte versuche es später nochmal."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
@@ -225,7 +225,7 @@ msgstr ""
 "verbleibend."
 
 msgid "Provided token is invalid"
-msgstr ""
+msgstr "Bereitgestelltes Token ist ungültig"
 
 msgid "This private code is not the right one"
 msgstr "Der private Code ist nicht korrekt"
@@ -237,7 +237,7 @@ msgstr ""
 "teilen"
 
 msgid "A reminder email has just been sent to you"
-msgstr "Dir wurde eine Erinnerungsmail gesendet"
+msgstr "Dir wurde soeben eine Erinnerungsmail gesendet"
 
 msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
@@ -281,6 +281,8 @@ msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
 msgstr ""
+"Rechnungen in mehreren Währungen können einem Projekt ohne Standardwährung "
+"nicht hinzugefügt werden"
 
 msgid "Project successfully deleted"
 msgstr "Projekt erfolgreich gelöscht"
@@ -308,7 +310,6 @@ msgstr ""
 msgid "%(member)s has been added"
 msgstr "%(member)s wurde hinzugefügt"
 
-#, fuzzy
 msgid "Error activating participant"
 msgstr "Fehler beim Aktivieren des Benutzers"
 
@@ -316,25 +317,24 @@ msgstr "Fehler beim Aktivieren des Benutzers"
 msgid "%(name)s is part of this project again"
 msgstr "%(name)s ist/sind wieder Teil von diesem Projekt"
 
-#, fuzzy
 msgid "Error removing participant"
 msgstr "Fehler beim Löschen des Benutzers"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Participant '%(name)s' has been deactivated. It will still appear in the "
 "list until its balance reach zero."
 msgstr ""
 "Der Benutzer '%(name)s' wurde deaktiviert. Er wird weiterhin in der "
-"Benutzerliste erscheinen, bis sein Saldo Null ist."
+"Benutzerliste erscheinen, bis sein Saldo Null erreicht."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Participant '%(name)s' has been removed"
 msgstr "Der Benutzer '%(name)s' wurde entfernt"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Participant '%(name)s' has been modified"
-msgstr "Teilnehmer %(name)s bearbeitet"
+msgstr "Benutzer %(name)s wurde bearbeitet"
 
 msgid "The bill has been added"
 msgstr "Die Ausgabe wurde hinzugefügt"
@@ -372,9 +372,8 @@ msgstr "Zurück zur Liste"
 msgid "Administration tasks are currently disabled."
 msgstr "Administrationsaufgaben sind aktuell deaktiviert."
 
-#, fuzzy
 msgid "Authentication"
-msgstr "Dokumentation"
+msgstr "Authentifizierung"
 
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr "Das Projekt existiert nicht, willst du"
@@ -391,9 +390,8 @@ msgstr "Neues Projekt erstellen"
 msgid "Project"
 msgstr "Projekt"
 
-#, fuzzy
 msgid "Number of participants"
-msgstr "Teilnehmer hinzufügen"
+msgstr "Anzahl der Benutzer"
 
 msgid "Number of bills"
 msgstr "Anzahl der Ausgaben"
@@ -488,9 +486,8 @@ msgstr "Mehr Optionen"
 msgid "Add participant"
 msgstr "Teilnehmer hinzufügen"
 
-#, fuzzy
 msgid "Edit this participant"
-msgstr "Teilnehmer hinzufügen"
+msgstr "Diesen Benutzer bearbeiten"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "max.mustermann@beispiel.com, mary.moe@site.com"
@@ -564,11 +561,11 @@ msgstr ""
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
-msgstr ""
+msgstr "Rechnung %(name)s: %(owers_list_str)s zur Eigentümerliste hinzugefügt"
 
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
-msgstr ""
+msgstr "Rechnung %(name)s: %(owers_list_str)s von der Eigentümerliste entfernt"
 
 #, python-format
 msgid ""
@@ -678,7 +675,7 @@ msgstr "Teilnehmer %(name)s zu %(new_name)s umbenannt"
 
 #, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
-msgstr ""
+msgstr "Ausgabe %(name)s wurde zu %(new_description)s umbenannt"
 
 #, python-format
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
@@ -815,9 +812,8 @@ msgstr "Dokumentation"
 msgid "Administation Dashboard"
 msgstr "Dashboard Administration"
 
-#, fuzzy
 msgid "Legal information"
-msgstr "Bestätigung löschen"
+msgstr "Rechtliche Informationen"
 
 msgid "\"I hate money\" is free software"
 msgstr "\"I hate money\" ist freie Software"
