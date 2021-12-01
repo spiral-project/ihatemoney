@@ -456,17 +456,8 @@ tr.payer_line .balance-name {
   margin-top: 10px;
 }
 
-.messages {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  top: 4.5rem;
-  width: 100%;
-  pointer-events: none;
-}
-
-.messages .alert {
-  pointer-events: auto;
+.flash {
+  z-index: 1031;
 }
 
 .light {

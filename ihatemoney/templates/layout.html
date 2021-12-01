@@ -1,4 +1,22 @@
 {% import "forms.html" as forms %}
+
+{% macro flash_messages(classes='') %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<div class="position-absolute d-flex flex-wrap mt-2 mr-1 {{ classes }}">
+  {% for category, message in messages %}
+    <div class="flash mr-2 text-center alert alert-{{ "success" if category == "message" else category }} alert-dismissible fade show">
+      {{ message }}
+      <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+{% endmacro %}
+
 <!DOCTYPE html>
 <html class="h-100">
 <head>
@@ -120,16 +138,9 @@
   {% endblock %}
   </div>
 
-  <div class="messages">
-    {% for category, message in get_flashed_messages(with_categories=true) %}
-      <div class="flash alert alert-{{ "success" if category == "message" else category }} alert-dismissible fade show">
-        {{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    {% endfor %}
-  </div>
+  {% if not messages_shown %}
+  {{ flash_messages(classes="w-100 justify-content-center") }}
+  {% endif %}
 
   {% block footer %}
   <footer class="footer mt-auto py-3">
