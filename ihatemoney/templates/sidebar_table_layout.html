@@ -53,8 +53,12 @@
 </aside>
 
 <main class="offset-md-3 col-xs-12 col-md-9 d-flex flex-column">
+  {{ flash_messages() }}
   {% block content %}{% endblock %}
 </main>
 
 </div>
 {% endblock %}
+
+{# It must be set outside of the block definition #}
+{% set messages_shown = True %}
