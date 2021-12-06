@@ -20,6 +20,7 @@ from wtforms.validators import (
     NumberRange,
     Optional,
     ValidationError,
+    Length,
 )
 
 from ihatemoney.currency_convertor import CurrencyConverter
@@ -305,7 +306,7 @@ class BillForm(FlaskForm):
     date = DateField(_("When?"), validators=[DataRequired()], default=datetime.now)
     what = StringField(_("What?"), validators=[DataRequired()])
     payer = SelectField(_("Who paid?"), validators=[DataRequired()], coerce=int)
-    amount = CalculatorStringField(_("How much?"), validators=[DataRequired()])
+    amount = CalculatorStringField(_("How much?"), validators=[DataRequired(), Length(max=20)])
     currency_helper = CurrencyConverter()
     original_currency = SelectField(_("Currency"), validators=[DataRequired()])
     external_link = URLField(
