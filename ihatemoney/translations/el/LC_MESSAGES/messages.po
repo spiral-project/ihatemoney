@@ -52,11 +52,8 @@ msgstr ""
 "Αυτό το έργο δεν μπορεί να οριστεί σε \"χωρίς νόμισμα\" επειδή περιέχει "
 "λογαριασμούς σε πολλαπλά νομίσματα."
 
-msgid "Compatible with Cospend"
-msgstr "Συμβατό με το Cospend"
-
-msgid "Import previously exported project"
-msgstr "Εισαγωγή προηγουμένως εξαγόμενου έργου"
+msgid "Import previously exported JSON file"
+msgstr "Εισαγωγή αρχείου JSON που έχει εξαχθεί προηγουμένως"
 
 msgid "Import"
 msgstr "Εισαγωγή"
@@ -433,8 +430,8 @@ msgstr "Επεξεργασία έργου"
 msgid "Delete project"
 msgstr "Επεξεργασία έργου"
 
-msgid "Import project"
-msgstr "Εισαγωγή έργου"
+msgid "Import JSON"
+msgstr "Εισαγωγή JSON"
 
 msgid "Choose file"
 msgstr "Επιλογή αρχείου"

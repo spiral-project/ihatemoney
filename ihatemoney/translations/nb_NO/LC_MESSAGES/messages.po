@@ -54,11 +54,8 @@ msgstr ""
 "Dette prosjektet kan ikke settes til «Ingen valuta» fordi det inneholder "
 "regninger i flere valutaer."
 
-msgid "Compatible with Cospend"
-msgstr "Kompatibel med Cospend"
-
-msgid "Import previously exported project"
-msgstr "Importer tidligere eksportert prosjekt"
+msgid "Import previously exported JSON file"
+msgstr "Importer tidligere eksportert JSON-fil"
 
 msgid "Import"
 msgstr "Importer"
@@ -448,8 +445,8 @@ msgstr "Rediger prosjekt"
 msgid "Delete project"
 msgstr "Slett prosjekt"
 
-msgid "Import project"
-msgstr "Importer prosjekt"
+msgid "Import JSON"
+msgstr "Importer JSON"
 
 msgid "Choose file"
 msgstr "Velg fil"

@@ -52,11 +52,8 @@ msgid ""
 "multiple currencies."
 msgstr ""
 
-msgid "Compatible with Cospend"
-msgstr "Compatibel met Cospend"
-
-msgid "Import previously exported project"
-msgstr "Importeer eerder geëxporteerd project"
+msgid "Import previously exported JSON file"
+msgstr "Eerder geëxporteerd JSON-bestand importeren"
 
 msgid "Import"
 msgstr "Importeren"
@@ -437,8 +434,8 @@ msgstr "Project aanpassen"
 msgid "Delete project"
 msgstr "Project aanpassen"
 
-msgid "Import project"
-msgstr "Project importeren"
+msgid "Import JSON"
+msgstr "JSON importeren"
 
 msgid "Choose file"
 msgstr "Bestand kiezen"

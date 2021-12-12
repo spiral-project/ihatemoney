@@ -50,11 +50,8 @@ msgid ""
 "multiple currencies."
 msgstr "此项目不能设置为“无货币”，因为它包含多种货币的账单。"
 
-msgid "Compatible with Cospend"
-msgstr "与Cospend兼容"
-
-msgid "Import previously exported project"
-msgstr "导入以前导出的项目"
+msgid "Import previously exported JSON file"
+msgstr "导入之前的JSON 文件"
 
 msgid "Import"
 msgstr "导入"
@@ -416,8 +413,8 @@ msgstr "编辑项目"
 msgid "Delete project"
 msgstr "删除项目"
 
-msgid "Import project"
-msgstr "导入项目"
+msgid "Import JSON"
+msgstr "导入json文件"
 
 msgid "Choose file"
 msgstr "选择文件"

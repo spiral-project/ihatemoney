@@ -55,11 +55,8 @@ msgstr ""
 "Bu proje, birden fazla para biriminde faturalar içerdiğinden 'para birimi"
 " yok' olarak ayarlanamaz."
 
-msgid "Compatible with Cospend"
-msgstr "Cospend ile uyumlu"
-
-msgid "Import previously exported project"
-msgstr "Daha önce ihraç edilen proje ithalatı"
+msgid "Import previously exported JSON file"
+msgstr "Önceden dışa aktarılan JSON dosyasını içe aktar"
 
 msgid "Import"
 msgstr "İçe aktar"
@@ -430,8 +427,8 @@ msgstr "Projeyi düzenle"
 msgid "Delete project"
 msgstr "Projeyi sil"
 
-msgid "Import project"
-msgstr "Projeyi içeri aktar"
+msgid "Import JSON"
+msgstr "JSON'u içe aktar"
 
 msgid "Choose file"
 msgstr "Dosya seç"

@@ -53,11 +53,8 @@ msgstr ""
 "Proyek ini tidak dapat disetel ke 'tanpa mata uang' karena berisi tagihan"
 " dalam berbagai mata uang."
 
-msgid "Compatible with Cospend"
-msgstr "Kompatibel dengan Cospend"
-
-msgid "Import previously exported project"
-msgstr "Impor proyek yang diekspor sebelumnya"
+msgid "Import previously exported JSON file"
+msgstr "Impor file JSON yang sudah diekspor sebelumnya"
 
 msgid "Import"
 msgstr "Impor"
@@ -424,8 +421,8 @@ msgstr "Ubah proyek"
 msgid "Delete project"
 msgstr "Hapus proyek"
 
-msgid "Import project"
-msgstr "Impor proyek"
+msgid "Import JSON"
+msgstr "Impor JSON"
 
 msgid "Choose file"
 msgstr "Pilih berkas"

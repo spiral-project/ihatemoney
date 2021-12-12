@@ -51,11 +51,8 @@ msgstr ""
 "Tento projekt nemůže být nastaven na  'bez měny' protože obsahuje účty v "
 "různých měnáh."
 
-msgid "Compatible with Cospend"
-msgstr "Kompatibilní s Cospend"
-
-msgid "Import previously exported project"
-msgstr "Import dříve exportovaný projekt"
+msgid "Import previously exported JSON file"
+msgstr "Import exportovaného JSON souboru"
 
 msgid "Import"
 msgstr "Import"
@@ -422,8 +419,8 @@ msgstr ""
 msgid "Delete project"
 msgstr "Vytvořit projekt"
 
-msgid "Import project"
-msgstr "Importovat projekt"
+msgid "Import JSON"
+msgstr ""
 
 msgid "Choose file"
 msgstr ""

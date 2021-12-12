@@ -53,11 +53,8 @@ msgstr ""
 "Dieses Projekt kann nicht auf \"ohne Währung\" eingestellt werden, weil "
 "es Rechnungen unterschiedlicher Währungen enthält."
 
-msgid "Compatible with Cospend"
-msgstr "Kompatibel mit der Cospend"
-
-msgid "Import previously exported project"
-msgstr "Import zuvor exportiertes Projekt"
+msgid "Import previously exported JSON file"
+msgstr "Zuvor exportierte JSON-Datei importieren"
 
 msgid "Import"
 msgstr "Importieren"
@@ -437,8 +434,8 @@ msgstr "Projekt bearbeiten"
 msgid "Delete project"
 msgstr "Projekt löschen"
 
-msgid "Import project"
-msgstr "Projekt importieren"
+msgid "Import JSON"
+msgstr "JSON importieren"
 
 msgid "Choose file"
 msgstr "Datei auswählen"
