@@ -346,14 +346,14 @@ class Project(db.Model):
                 # Create bills
                 db.session.add(
                     Bill(
-                        b["amount"],
-                        parse(b["date"]),
-                        "",
-                        b["currency"],
-                        Person.query.get_by_names(b["owers"], self),
-                        id_dict[b["payer_name"]],
-                        self.default_currency,
-                        b["what"],
+                        amount=b["amount"],
+                        date=parse(b["date"]),
+                        external_link="",
+                        original_currency=b["currency"],
+                        owers=Person.query.get_by_names(b["owers"], self),
+                        payer_id=id_dict[b["payer_name"]],
+                        project_default_currency=self.default_currency,
+                        what=b["what"],
                     )
                 )
         db.session.commit()
@@ -476,14 +476,12 @@ class Project(db.Model):
         for (payer, amount, owers, what) in operations:
             db.session.add(
                 Bill(
-                    amount,
-                    None,
-                    None,
-                    "XXX",
-                    [members[name] for name in owers],
-                    members[payer].id,
-                    project.default_currency,
-                    what,
+                    amount=amount,
+                    original_currency=project.default_currency,
+                    owers=[members[name] for name in owers],
+                    payer_id=members[payer].id,
+                    project_default_currency=project.default_currency,
+                    what=what,
                 )
             )
 
@@ -622,14 +620,14 @@ class Bill(db.Model):
 
     def __init__(
         self,
-        amount,
-        date,
-        external_link,
-        original_currency,
-        owers,
-        payer_id,
-        project_default_currency,
-        what,
+        amount: float,
+        date: object = None,
+        external_link: str = "",
+        original_currency: str = "",
+        owers: list[Person] = [],
+        payer_id: int = None,
+        project_default_currency: str = "",
+        what: str = "",
     ) -> None:
         super().__init__()
         self.amount = amount
