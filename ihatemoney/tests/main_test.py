@@ -246,7 +246,7 @@ class CaptchaTestCase(IhatemoneyTestCase):
     ENABLE_CAPTCHA = True
 
     def test_project_creation_with_captcha(self):
-        with self.app.test_client() as c:
+        with self.client as c:
             c.post(
                 "/create",
                 data={

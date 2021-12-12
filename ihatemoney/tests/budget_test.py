@@ -1,5 +1,4 @@
 from collections import defaultdict
-import io
 import json
 import re
 from time import sleep
@@ -191,8 +190,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertIn("Invalid token", resp.data.decode("utf-8"))
 
     def test_project_creation(self):
-        with self.app.test_client() as c:
-
+        with self.client as c:
             with self.app.mail.record_messages() as outbox:
                 # add a valid project
                 resp = c.post(
@@ -240,7 +238,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
     def test_project_creation_without_public_permissions(self):
         self.app.config["ALLOW_PUBLIC_PROJECT_CREATION"] = False
-        with self.app.test_client() as c:
+        with self.client as c:
             # add a valid project
             c.post(
                 "/create",
@@ -261,7 +259,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
     def test_project_creation_with_public_permissions(self):
         self.app.config["ALLOW_PUBLIC_PROJECT_CREATION"] = True
-        with self.app.test_client() as c:
+        with self.client as c:
             # add a valid project
             c.post(
                 "/create",
@@ -282,7 +280,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
     def test_project_deletion(self):
 
-        with self.app.test_client() as c:
+        with self.client as c:
             c.post(
                 "/create",
                 data={
@@ -485,14 +483,14 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertIn("Authentication", resp.data.decode("utf-8"))
 
         # try to connect with wrong credentials should not work
-        with self.app.test_client() as c:
+        with self.client as c:
             resp = c.post("/authenticate", data={"id": "raclette", "password": "nope"})
 
             self.assertIn("Authentication", resp.data.decode("utf-8"))
             self.assertNotIn("raclette", session)
 
         # try to connect with the right credentials should work
-        with self.app.test_client() as c:
+        with self.client as c:
             resp = c.post(
                 "/authenticate", data={"id": "raclette", "password": "raclette"}
             )
@@ -507,7 +505,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         # test that with admin credentials, one can access every project
         self.app.config["ADMIN_PASSWORD"] = generate_password_hash("pass")
-        with self.app.test_client() as c:
+        with self.client as c:
             resp = c.post("/admin?goto=%2Fraclette", data={"admin_password": "pass"})
             self.assertNotIn("Authentication", resp.data.decode("utf-8"))
             self.assertTrue(session["is_admin"])
@@ -516,7 +514,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.post_project("Raclette")
 
         # try to connect with the right credentials should work
-        with self.app.test_client() as c:
+        with self.client as c:
             resp = c.post(
                 "/authenticate", data={"id": "Raclette", "password": "Raclette"}
             )
@@ -1426,12 +1424,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             },
         ]
 
-        from ihatemoney.web import import_project
-
-        file = io.StringIO()
-        json.dump(json_to_import, file)
-        file.seek(0)
-        import_project(file, project)
+        self.import_project("raclette", json_to_import)
 
         bills = project.get_pretty_bills()
 
@@ -1447,18 +1440,18 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertEqual(b, ref)
 
         # Check if other informations in bill are ok
-        for i in json_to_import:
-            for j in bills:
-                if j["what"] == i["what"]:
-                    self.assertEqual(j["payer_name"], i["payer_name"])
-                    self.assertEqual(j["amount"], i["amount"])
-                    self.assertEqual(j["currency"], i["currency"])
-                    self.assertEqual(j["payer_weight"], i["payer_weight"])
-                    self.assertEqual(j["date"], i["date"])
+        for j in json_to_import:
+            for b in bills:
+                if b["what"] == j["what"]:
+                    self.assertEqual(b["payer_name"], j["payer_name"])
+                    self.assertEqual(b["amount"], j["amount"])
+                    self.assertEqual(b["currency"], j["currency"])
+                    self.assertEqual(b["payer_weight"], j["payer_weight"])
+                    self.assertEqual(b["date"], j["date"])
 
-                    list_project = [ower for ower in j["owers"]]
+                    list_project = [ower for ower in b["owers"]]
                     list_project.sort()
-                    list_json = [ower for ower in i["owers"]]
+                    list_json = [ower for ower in j["owers"]]
                     list_json.sort()
 
                     self.assertEqual(list_project, list_json)
@@ -1494,12 +1487,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             },
         ]
 
-        from ihatemoney.web import import_project
-
-        file = io.StringIO()
-        json.dump(json_to_import, file)
-        file.seek(0)
-        import_project(file, project)
+        self.import_project("raclette", json_to_import)
 
         bills = project.get_pretty_bills()
 
@@ -1571,14 +1559,8 @@ class BudgetTestCase(IhatemoneyTestCase):
             },
         ]
 
-        from ihatemoney.web import import_project
-
-        file = io.StringIO()
-        json.dump(json_to_import, file)
-        file.seek(0)
         # Import should fail
-        with pytest.raises(ValueError):
-            import_project(file, project)
+        self.import_project("raclette", json_to_import, 400)
 
         bills = project.get_pretty_bills()
 
@@ -1621,12 +1603,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             },
         ]
 
-        from ihatemoney.web import import_project
-
-        file = io.StringIO()
-        json.dump(json_to_import, file)
-        file.seek(0)
-        import_project(file, project)
+        self.import_project("raclette", json_to_import)
 
         bills = project.get_pretty_bills()
 
@@ -1695,12 +1672,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             },
         ]
 
-        from ihatemoney.web import import_project
-
-        file = io.StringIO()
-        json.dump(json_to_import, file)
-        file.seek(0)
-        import_project(file, project)
+        self.import_project("raclette", json_to_import)
 
         bills = project.get_pretty_bills()
 
@@ -1784,12 +1756,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             },
         ]
 
-        from ihatemoney.web import import_project
-
-        file = io.StringIO()
-        json.dump(json_to_import, file)
-        file.seek(0)
-        import_project(file, project)
+        self.import_project("raclette", json_to_import)
 
         bills = project.get_pretty_bills()
 
@@ -1824,8 +1791,7 @@ class BudgetTestCase(IhatemoneyTestCase):
     def test_import_wrong_json(self):
         self.post_project("raclette")
         self.login("raclette")
-
-        project = models.Project.query.get("raclette")
+        models.Project.query.get("raclette")
 
         json_1 = [
             {  # wrong keys
@@ -1848,14 +1814,9 @@ class BudgetTestCase(IhatemoneyTestCase):
             }
         ]
 
-        from ihatemoney.web import import_project
-
-        for data in [json_1, json_2]:
-            file = io.StringIO()
-            json.dump(data, file)
-            file.seek(0)
-            with pytest.raises(ValueError):
-                import_project(file, project)
+        for json_to_import in [json_1, json_2]:
+            # Import should fail
+            self.import_project("raclette", json_to_import, 400)
 
     def test_access_other_projects(self):
         """Test that accessing or editing bills and participants from another project fails"""
