@@ -445,6 +445,7 @@ def edit_project():
 @main.route("/<project_id>/import", methods=["POST"])
 def import_project():
     form = ImportProjectForm()
+    result = 200
     if form.validate():
         try:
             data = form.file.data
@@ -496,11 +497,13 @@ def import_project():
             return redirect(url_for("main.list_bills"))
         except ValueError as b:
             flash(b.args[0], category="danger")
-        return redirect(url_for(".edit_project"))
+            result = 400
     else:
         for component, errors in form.errors.items():
             flash(_(component + ": ") + ", ".join(errors), category="danger")
-        return redirect(url_for(".edit_project"))
+        result = 400
+
+    return redirect(url_for(".edit_project"), code=result)
 
 
 @main.route("/<project_id>/delete", methods=["POST"])
