@@ -153,7 +153,7 @@ class ModelsTestCase(IhatemoneyTestCase):
             },
         )
 
-        project = self.get_project_by_name(name="raclette")
+        project = models.Project.query.get_by_name(name="raclette")
         zorglub = models.Person.query.get_by_name(name="zorglub", project=project)
         zorglub_bills = models.Bill.query.options(
             orm.subqueryload(models.Bill.owers)

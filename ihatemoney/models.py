@@ -322,7 +322,7 @@ class Project(db.Model):
         db.session.add(self)
         db.session.commit()
 
-    def import_bills(self, bills: list[dict]):
+    def import_bills(self, bills: list):
         """Import bills from a list of dictionaries"""
         # Add members not already in the project
         members_project = [str(m) for m in self.members]
@@ -621,14 +621,14 @@ class Bill(db.Model):
     def __init__(
         self,
         amount: float,
-        date: object = None,
+        date: datetime = None,
         external_link: str = "",
         original_currency: str = "",
-        owers: list[Person] = [],
+        owers: list = [],
         payer_id: int = None,
         project_default_currency: str = "",
         what: str = "",
-    ) -> None:
+    ):
         super().__init__()
         self.amount = amount
         self.date = date

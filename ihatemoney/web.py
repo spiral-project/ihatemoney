@@ -13,7 +13,6 @@ from functools import wraps
 import json
 import os
 
-from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
 from flask import (
     Blueprint,
@@ -454,7 +453,7 @@ def import_project():
             elif data.mimetype == "text/csv":
                 try:
                     bills = csv2list_of_dicts(data)
-                except Exception as b:
+                except Exception:
                     raise ValueError(_("Unable to parse CSV"))
             else:
                 raise ValueError("Unsupported file type")
@@ -484,7 +483,8 @@ def import_project():
                 if len(currencies - {CurrencyConverter.no_currency}) >= 2:
                     raise ValueError(
                         _(
-                            "Cannot add bills in multiple currencies to a project without default currency"
+                            "Cannot add bills in multiple currencies to a project without default "
+                            "currency"
                         )
                     )
                 # Strip currency from bills (since it's the same for every bill)
