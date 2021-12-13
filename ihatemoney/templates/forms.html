@@ -127,7 +127,7 @@
 
     <div class="custom-file">
         <div class="form-group">
-            {{ form.file(class="custom-file-input") }}
+            {{ form.file(class="custom-file-input", accept=".json,.csv") }}
             <small class="form-text text-muted">
                 {{ form.file.description }}
             </small>
