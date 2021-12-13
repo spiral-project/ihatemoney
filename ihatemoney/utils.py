@@ -3,6 +3,7 @@ import csv
 from datetime import datetime, timedelta
 from enum import Enum
 from io import BytesIO, StringIO, TextIOWrapper
+import json
 from json import JSONEncoder, dumps
 import operator
 import os
@@ -165,7 +166,7 @@ def csv2list_of_dicts(csv_to_convert):
             break
         r["amount"] = float(r["amount"])
         r["payer_weight"] = float(r["payer_weight"])
-        r["owers"] = [o.strip() for o in r["owers"].split(",")]
+        r["owers"] = json.loads(r["owers"].replace("'", '"'))
         result.append(r)
     return result
 
