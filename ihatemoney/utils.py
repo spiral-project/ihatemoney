@@ -166,7 +166,7 @@ def csv2list_of_dicts(csv_to_convert):
             break
         r["amount"] = float(r["amount"])
         r["payer_weight"] = float(r["payer_weight"])
-        r["owers"] = json.loads(r["owers"].replace("'", '"'))
+        r["owers"] = [o.strip() for o in r["owers"].split(",")]
         result.append(r)
     return result
 

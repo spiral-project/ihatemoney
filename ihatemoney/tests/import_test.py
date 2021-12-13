@@ -1,3 +1,4 @@
+import copy
 import json
 import unittest
 
@@ -603,7 +604,10 @@ class ImportTestCaseJSON(CommonTestCase.Import):
 
 class ImportTestCaseCSV(CommonTestCase.Import):
     def generate_form_data(self, data):
-        return {"file": (list_of_dicts2csv(data), "test.csv")}
+        formatted_data = copy.deepcopy(data)
+        for d in formatted_data:
+            d["owers"] = ", ".join([o for o in d.get("owers", [])])
+        return {"file": (list_of_dicts2csv(formatted_data), "test.csv")}
 
 
 if __name__ == "__main__":
