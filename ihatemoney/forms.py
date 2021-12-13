@@ -242,7 +242,7 @@ class ProjectFormWithCaptcha(ProjectForm):
             raise ValidationError(Markup(message))
 
 
-class DeleteProjectForm(FlaskForm):
+class DestructiveActionProjectForm(FlaskForm):
     """Used for any important "delete" action linked to a project:
 
     - delete project itself

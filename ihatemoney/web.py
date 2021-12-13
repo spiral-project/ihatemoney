@@ -40,7 +40,7 @@ from ihatemoney.emails import send_creation_email
 from ihatemoney.forms import (
     AdminAuthenticationForm,
     AuthenticationForm,
-    DeleteProjectForm,
+    DestructiveActionProjectForm,
     EditProjectForm,
     EmptyForm,
     ImportProjectForm,
@@ -411,7 +411,7 @@ def reset_password():
 def edit_project():
     edit_form = EditProjectForm(id=g.project.id)
     import_form = ImportProjectForm(id=g.project.id)
-    delete_form = DeleteProjectForm(id=g.project.id)
+    delete_form = DestructiveActionProjectForm(id=g.project.id)
 
     # Edit form
     if edit_form.validate_on_submit():
@@ -508,7 +508,7 @@ def import_project():
 
 @main.route("/<project_id>/delete", methods=["POST"])
 def delete_project():
-    form = DeleteProjectForm(id=g.project.id)
+    form = DestructiveActionProjectForm(id=g.project.id)
     if form.validate():
         g.project.remove_project()
         flash(_("Project successfully deleted"))
@@ -798,7 +798,7 @@ def history():
 
     any_ip_addresses = any(event["ip"] for event in history)
 
-    delete_form = DeleteProjectForm()
+    delete_form = DestructiveActionProjectForm()
     return render_template(
         "history.html",
         current_view="history",
@@ -814,7 +814,7 @@ def history():
 @main.route("/<project_id>/erase_history", methods=["POST"])
 def erase_history():
     """Erase all history entries associated with this project."""
-    form = DeleteProjectForm(id=g.project.id)
+    form = DestructiveActionProjectForm(id=g.project.id)
     if not form.validate():
         flash(
             format_form_errors(form, _("Error deleting project history")),
@@ -833,7 +833,7 @@ def erase_history():
 @main.route("/<project_id>/strip_ip_addresses", methods=["POST"])
 def strip_ip_addresses():
     """Strip ip addresses from history entries associated with this project."""
-    form = DeleteProjectForm(id=g.project.id)
+    form = DestructiveActionProjectForm(id=g.project.id)
     if not form.validate():
         flash(
             format_form_errors(form, _("Error deleting recorded IP addresses")),
