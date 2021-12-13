@@ -1,5 +1,3 @@
-import io
-import json
 import os
 from unittest.mock import MagicMock
 
@@ -79,7 +77,7 @@ class BaseTestCase(TestCase):
     def import_project(self, id, data, expected_code=200):
         resp = self.client.post(
             f"/{id}/import",
-            data={"file": (io.BytesIO(json.dumps(data).encode()), "test.json")},
+            data=data,
             follow_redirects=True,
         )
         self.assertEqual(resp.status_code, expected_code)
