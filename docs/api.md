@@ -242,3 +242,23 @@ You can get some project stats with a `GET` on
             "balance": -10.5
         }
     ]
+
+### Currencies
+
+You can get a list of supported currencies with a `GET` on
+`/api/currencies`:
+
+    $ curl --basic https://ihatemoney.org/api/currencies
+    [
+        "XXX",
+        "AED",
+        "AFN",
+        .
+        .
+        .
+        "ZAR",
+        "ZMW",
+        "ZWL"
+    ]
+
+

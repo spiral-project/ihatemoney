@@ -576,6 +576,11 @@ class APITestCase(IhatemoneyTestCase):
             self.assertStatus(400, req)
 
     def test_currencies(self):
+        # check /currencies for list of supported currencies
+        resp = self.client.get("/api/currencies")
+        self.assertTrue(201, resp.status_code)
+        self.assertIn("XXX", json.loads(resp.data.decode("utf-8")))
+
         # create project with a default currency
         resp = self.api_create("raclette", default_currency="EUR")
         self.assertTrue(201, resp.status_code)
