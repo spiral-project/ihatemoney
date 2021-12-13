@@ -99,7 +99,7 @@ class CommandTestCase(BaseTestCase):
 
     def test_demo_project_deletion(self):
         self.create_project("demo")
-        self.assertEqual(models.Project.query.get("demo").name, "demo")
+        self.assertEqual(self.get_project("demo").name, "demo")
 
         runner = self.app.test_cli_runner()
         runner.invoke(delete_project, "demo")
@@ -153,7 +153,7 @@ class ModelsTestCase(IhatemoneyTestCase):
             },
         )
 
-        project = models.Project.query.get_by_name(name="raclette")
+        project = self.get_project_by_name(name="raclette")
         zorglub = models.Person.query.get_by_name(name="zorglub", project=project)
         zorglub_bills = models.Bill.query.options(
             orm.subqueryload(models.Bill.owers)

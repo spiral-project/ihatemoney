@@ -97,6 +97,9 @@ class BaseTestCase(TestCase):
         models.db.session.add(project)
         models.db.session.commit()
 
+    def get_project(self, id) -> models.Project:
+        return models.Project.query.get(id)
+
 
 class IhatemoneyTestCase(BaseTestCase):
     TESTING = True

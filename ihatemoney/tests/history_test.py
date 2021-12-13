@@ -614,14 +614,14 @@ class HistoryTestCase(IhatemoneyTestCase):
         models.db.session.add(b2)
         models.db.session.commit()
 
-        history_list = history.get_history(models.Project.query.get("demo"))
+        history_list = history.get_history(self.get_project("demo"))
         self.assertEqual(len(history_list), 5)
 
         # Change just the amount
         b1.amount = 5
         models.db.session.commit()
 
-        history_list = history.get_history(models.Project.query.get("demo"))
+        history_list = history.get_history(self.get_project("demo"))
         for entry in history_list:
             if "prop_changed" in entry:
                 self.assertNotIn("owers", entry["prop_changed"])

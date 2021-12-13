@@ -220,7 +220,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             self.assertEqual(len(models.Project.query.all()), 1)
 
             # Add a second project with the same id
-            models.Project.query.get("raclette")
+            self.get_project("raclette")
 
             c.post(
                 "/create",
@@ -338,17 +338,17 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         # adds a member to this project
         self.client.post("/raclette/members/add", data={"name": "zorglub"})
-        self.assertEqual(len(models.Project.query.get("raclette").members), 1)
+        self.assertEqual(len(self.get_project("raclette").members), 1)
 
         # adds him twice
         result = self.client.post("/raclette/members/add", data={"name": "zorglub"})
 
         # should not accept him
-        self.assertEqual(len(models.Project.query.get("raclette").members), 1)
+        self.assertEqual(len(self.get_project("raclette").members), 1)
 
         # add fred
         self.client.post("/raclette/members/add", data={"name": "fred"})
-        self.assertEqual(len(models.Project.query.get("raclette").members), 2)
+        self.assertEqual(len(self.get_project("raclette").members), 2)
 
         # check fred is present in the bills page
         result = self.client.get("/raclette/")
@@ -356,16 +356,15 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         # remove fred
         self.client.post(
-            "/raclette/members/%s/delete"
-            % models.Project.query.get("raclette").members[-1].id
+            "/raclette/members/%s/delete" % self.get_project("raclette").members[-1].id
         )
 
         # as fred is not bound to any bill, he is removed
-        self.assertEqual(len(models.Project.query.get("raclette").members), 1)
+        self.assertEqual(len(self.get_project("raclette").members), 1)
 
         # add fred again
         self.client.post("/raclette/members/add", data={"name": "fred"})
-        fred_id = models.Project.query.get("raclette").members[-1].id
+        fred_id = self.get_project("raclette").members[-1].id
 
         # bound him to a bill
         result = self.client.post(
@@ -383,8 +382,8 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.client.post(f"/raclette/members/{fred_id}/delete")
 
         # he is still in the database, but is deactivated
-        self.assertEqual(len(models.Project.query.get("raclette").members), 2)
-        self.assertEqual(len(models.Project.query.get("raclette").active_members), 1)
+        self.assertEqual(len(self.get_project("raclette").members), 2)
+        self.assertEqual(len(self.get_project("raclette").active_members), 1)
 
         # as fred is now deactivated, check that he is not listed when adding
         # a bill or displaying the balance
@@ -398,14 +397,14 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         # adding him again should reactivate him
         self.client.post("/raclette/members/add", data={"name": "fred"})
-        self.assertEqual(len(models.Project.query.get("raclette").active_members), 2)
+        self.assertEqual(len(self.get_project("raclette").active_members), 2)
 
         # adding an user with the same name as another user from a different
         # project should not cause any troubles
         self.post_project("randomid")
         self.login("randomid")
         self.client.post("/randomid/members/add", data={"name": "fred"})
-        self.assertEqual(len(models.Project.query.get("randomid").active_members), 1)
+        self.assertEqual(len(self.get_project("randomid").active_members), 1)
 
     def test_person_model(self):
         self.post_project("raclette")
@@ -413,7 +412,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         # adds a member to this project
         self.client.post("/raclette/members/add", data={"name": "zorglub"})
-        zorglub = models.Project.query.get("raclette").members[-1]
+        zorglub = self.get_project("raclette").members[-1]
 
         # should not have any bills
         self.assertFalse(zorglub.has_bills())
@@ -431,7 +430,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         )
 
         # should have a bill now
-        zorglub = models.Project.query.get("raclette").members[-1]
+        zorglub = self.get_project("raclette").members[-1]
         self.assertTrue(zorglub.has_bills())
 
     def test_member_delete_method(self):
@@ -447,7 +446,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         # delete user using POST method
         self.client.post("/raclette/members/1/delete")
-        self.assertEqual(len(models.Project.query.get("raclette").active_members), 0)
+        self.assertEqual(len(self.get_project("raclette").active_members), 0)
         # try to delete an user already deleted
         self.client.post("/raclette/members/1/delete")
 
@@ -455,7 +454,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         # test that a demo project is created if none is defined
         self.assertEqual([], models.Project.query.all())
         self.client.get("/demo")
-        demo = models.Project.query.get("demo")
+        demo = self.get_project("demo")
         self.assertTrue(demo is not None)
 
         self.assertEqual(["Amina", "Georg", "Alice"], [m.name for m in demo.members])
@@ -584,7 +583,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.client.post("/raclette/members/add", data={"name": "zorglub"})
         self.client.post("/raclette/members/add", data={"name": "fred"})
 
-        members_ids = [m.id for m in models.Project.query.get("raclette").members]
+        members_ids = [m.id for m in self.get_project("raclette").members]
 
         # create a bill
         self.client.post(
@@ -597,7 +596,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "amount": "25",
             },
         )
-        models.Project.query.get("raclette")
+        self.get_project("raclette")
         bill = models.Bill.query.one()
         self.assertEqual(bill.amount, 25)
 
@@ -658,7 +657,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             },
         )
 
-        balance = models.Project.query.get("raclette").balance
+        balance = self.get_project("raclette").balance
         self.assertEqual(set(balance.values()), set([19.0, -19.0]))
 
         # Bill with negative amount
@@ -727,7 +726,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             "/raclette/members/add", data={"name": "freddy familly", "weight": 4}
         )
 
-        members_ids = [m.id for m in models.Project.query.get("raclette").members]
+        members_ids = [m.id for m in self.get_project("raclette").members]
 
         # test balance
         self.client.post(
@@ -752,7 +751,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             },
         )
 
-        balance = models.Project.query.get("raclette").balance
+        balance = self.get_project("raclette").balance
         self.assertEqual(set(balance.values()), set([6, -6]))
 
     def test_trimmed_members(self):
@@ -761,7 +760,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         # Add two times the same person (with a space at the end).
         self.client.post("/raclette/members/add", data={"name": "zorglub"})
         self.client.post("/raclette/members/add", data={"name": "zorglub "})
-        members = models.Project.query.get("raclette").members
+        members = self.get_project("raclette").members
 
         self.assertEqual(len(members), 1)
 
@@ -793,8 +792,8 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         # An error should be generated, and its weight should still be 1.
         self.assertIn('<p class="alert alert-danger">', resp.data.decode("utf-8"))
-        self.assertEqual(len(models.Project.query.get("raclette").members), 1)
-        self.assertEqual(models.Project.query.get("raclette").members[0].weight, 1)
+        self.assertEqual(len(self.get_project("raclette").members), 1)
+        self.assertEqual(self.get_project("raclette").members[0].weight, 1)
 
     def test_rounding(self):
         self.post_project("raclette")
@@ -838,11 +837,11 @@ class BudgetTestCase(IhatemoneyTestCase):
             },
         )
 
-        balance = models.Project.query.get("raclette").balance
+        balance = self.get_project("raclette").balance
         result = {}
-        result[models.Project.query.get("raclette").members[0].id] = 8.12
-        result[models.Project.query.get("raclette").members[1].id] = 0.0
-        result[models.Project.query.get("raclette").members[2].id] = -8.12
+        result[self.get_project("raclette").members[0].id] = 8.12
+        result[self.get_project("raclette").members[1].id] = 0.0
+        result[self.get_project("raclette").members[2].id] = -8.12
         # Since we're using floating point to store currency, we can have some
         # rounding issues that prevent test from working.
         # However, we should obtain the same values as the theoretical ones if we
@@ -864,7 +863,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         resp = self.client.post("/raclette/edit", data=new_data, follow_redirects=True)
         self.assertEqual(resp.status_code, 200)
-        project = models.Project.query.get("raclette")
+        project = self.get_project("raclette")
 
         self.assertEqual(project.name, new_data["name"])
         self.assertEqual(project.contact_email, new_data["contact_email"])
@@ -1028,14 +1027,14 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "amount": "10",
             },
         )
-        project = models.Project.query.get("raclette")
+        project = self.get_project("raclette")
         transactions = project.get_transactions_to_settle_bill()
         members = defaultdict(int)
         # We should have the same values between transactions and project balances
         for t in transactions:
             members[t["ower"]] -= t["amount"]
             members[t["receiver"]] += t["amount"]
-        balance = models.Project.query.get("raclette").balance
+        balance = self.get_project("raclette").balance
         for m, a in members.items():
             assert abs(a - balance[m.id]) < 0.01
         return
@@ -1081,7 +1080,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "amount": "13.33",
             },
         )
-        project = models.Project.query.get("raclette")
+        project = self.get_project("raclette")
         transactions = project.get_transactions_to_settle_bill()
 
         # There should not be any zero-amount transfer after rounding
@@ -1352,7 +1351,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             )
 
         # Change project currency to CAD
-        project = models.Project.query.get("raclette")
+        project = self.get_project("raclette")
         project.switch_currency("CAD")
 
         # generate json export of transactions (now in CAD!)
@@ -1392,7 +1391,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.post_project("raclette", default_currency="EUR")
         self.login("raclette")
 
-        project = models.Project.query.get("raclette")
+        project = self.get_project("raclette")
 
         json_to_import = [
             {
@@ -1464,7 +1463,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.post_project("raclette")
         self.login("raclette")
 
-        project = models.Project.query.get("raclette")
+        project = self.get_project("raclette")
 
         json_to_import = [
             {
@@ -1527,7 +1526,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.post_project("raclette")
         self.login("raclette")
 
-        project = models.Project.query.get("raclette")
+        project = self.get_project("raclette")
 
         json_to_import = [
             {
@@ -1574,7 +1573,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.post_project("raclette", default_currency="EUR")
         self.login("raclette")
 
-        project = models.Project.query.get("raclette")
+        project = self.get_project("raclette")
 
         json_to_import = [
             {
@@ -1643,7 +1642,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.post_project("raclette")
         self.login("raclette")
 
-        project = models.Project.query.get("raclette")
+        project = self.get_project("raclette")
 
         json_to_import = [
             {
@@ -1710,7 +1709,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.post_project("raclette")
         self.login("raclette")
 
-        project = models.Project.query.get("raclette")
+        project = self.get_project("raclette")
 
         self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
         self.client.post("/raclette/members/add", data={"name": "fred"})
@@ -1791,7 +1790,7 @@ class BudgetTestCase(IhatemoneyTestCase):
     def test_import_wrong_json(self):
         self.post_project("raclette")
         self.login("raclette")
-        models.Project.query.get("raclette")
+        self.get_project("raclette")
 
         json_1 = [
             {  # wrong keys
@@ -1841,7 +1840,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             },
         )
         # Ensure it has been created
-        raclette = models.Project.query.get("raclette")
+        raclette = self.get_project("raclette")
         self.assertEqual(raclette.get_bills().count(), 1)
 
         # Log out
@@ -1986,7 +1985,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             },
         )
 
-        project = models.Project.query.get("raclette")
+        project = self.get_project("raclette")
 
         # First all converted_amount should be the same as amount, with no currency
         for bill in project.get_bills():
@@ -2067,7 +2066,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         # A user displayed error should be generated, and its currency should be the same.
         self.assertStatus(200, resp)
         self.assertIn('<p class="alert alert-danger">', resp.data.decode("utf-8"))
-        self.assertEqual(models.Project.query.get("raclette").default_currency, "USD")
+        self.assertEqual(self.get_project("raclette").default_currency, "USD")
 
     def test_currency_switch_to_bill_currency(self):
 
@@ -2091,7 +2090,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             },
         )
 
-        project = models.Project.query.get("raclette")
+        project = self.get_project("raclette")
 
         bill = project.get_bills().first()
         assert bill.converted_amount == self.converter.exchange_currency(
@@ -2137,7 +2136,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             },
         )
 
-        project = models.Project.query.get("raclette")
+        project = self.get_project("raclette")
 
         for bill in project.get_bills_unordered():
             assert bill.converted_amount == self.converter.exchange_currency(
