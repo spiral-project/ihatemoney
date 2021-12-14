@@ -76,9 +76,9 @@
             </div>
         </div>
     </div>
-<div class="d-flex flex-wrap-reverse w-100">
+<div class="d-flex flex-wrap w-100 pt-2 mt-2" id="bill-toolbar">
 {% if bills.pages > 1 %}
-<ul class="pagination mr-2" id="pagination-top">
+<ul class="pagination mr-2 mb-0 pb-2 flex-wrap" id="pagination-top">
   <li class="page-item {% if bills.page == 1 %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.prev_num) }}">&laquo; {{ _("Newer bills") }}</a></li>
   {%- for page in bills.iter_pages() %}
   {% if page %}
@@ -90,7 +90,7 @@
   <li class="page-item {% if bills.page == bills.pages %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.next_num) }}">{{ _("Older bills") }} &raquo;</a></li>
 </ul>
 {% endif %}
-<span id="new-bill" class="ml-auto" {% if not g.project.members %} data-toggle="tooltip" title="{{_('You should start by adding participants')}}" {% endif %}>
+<span id="new-bill" class="ml-auto pb-2" {% if not g.project.members %} data-toggle="tooltip" title="{{_('You should start by adding participants')}}" {% endif %}>
     <a href="{{ url_for('.add_bill') }}" class="btn btn-primary {% if not g.project.members %} disabled {% endif %}" data-toggle="modal" data-keyboard="false" data-target="#bill-form">
         <i class="icon icon-white before-text">{{ static_include("images/plus.svg") | safe }}</i>
         {{ _("Add a new bill") }}
@@ -146,21 +146,6 @@
         {% endfor %}
         </tbody>
         </table>
-
-{% if bills.pages > 1 %}
-<ul class="pagination w-100">
-  <li class="page-item {% if bills.page == 1 %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.prev_num) }}">&laquo; {{ _("Newer bills") }}</a></li>
-  {%- for page in bills.iter_pages() %}
-  {% if page %}
-  <li class="page-item {% if page == bills.page %}active{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=page) }}">{{ page }}</a></li>
-  {% else %}
-  <li class="page-item disabled"><span class="ellipsis page-link">…</span></li>
-  {% endif %}
-  {%- endfor %}
-  <li class="page-item {% if bills.page == bills.pages %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.next_num) }}">{{ _("Older bills") }} &raquo;</a></li>
-</ul>
-{% endif %}
-
     {% else %}
         <div class="py-3 d-flex justify-content-center empty-bill">
         <div class="card d-inline-flex p-2">

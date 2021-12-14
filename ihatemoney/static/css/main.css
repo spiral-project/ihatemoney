@@ -283,14 +283,6 @@ footer .footer-left {
   }
 }
 
-#new-bill {
-  margin-top: 30px;
-}
-
-#pagination-top {
-  margin-top: 30px;
-}
-
 /* Avoid text color flickering when it loose focus as the modal appears */
 .btn-primary[data-toggle="modal"] {
   color: #fff;
@@ -332,6 +324,13 @@ footer .footer-left {
   margin-top: 30px;
   margin-bottom: 30px;
   flex-basis: auto;
+}
+
+#bill-toolbar {
+  position: sticky;
+  top: 4em;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.75);
 }
 
 @media (min-width: 768px) {
