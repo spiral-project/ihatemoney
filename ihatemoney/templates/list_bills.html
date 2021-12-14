@@ -146,21 +146,6 @@
         {% endfor %}
         </tbody>
         </table>
-
-{% if bills.pages > 1 %}
-<ul class="pagination w-100">
-  <li class="page-item {% if bills.page == 1 %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.prev_num) }}">&laquo; {{ _("Newer bills") }}</a></li>
-  {%- for page in bills.iter_pages() %}
-  {% if page %}
-  <li class="page-item {% if page == bills.page %}active{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=page) }}">{{ page }}</a></li>
-  {% else %}
-  <li class="page-item disabled"><span class="ellipsis page-link">…</span></li>
-  {% endif %}
-  {%- endfor %}
-  <li class="page-item {% if bills.page == bills.pages %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.next_num) }}">{{ _("Older bills") }} &raquo;</a></li>
-</ul>
-{% endif %}
-
     {% else %}
         <div class="py-3 d-flex justify-content-center empty-bill">
         <div class="card d-inline-flex p-2">
