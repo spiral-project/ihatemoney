@@ -158,7 +158,12 @@ def csv2list_of_dicts(csv_to_convert):
     reader = csv.DictReader(csv_file)
     result = []
     for r in reader:
-        # cospend filtering
+        """
+        cospend embeds various data helping (cospend) imports
+        'deleteMeIfYouWant' lines contains users
+        'categoryname' table contains categories description
+        we don't need them as we determine users and categories from bills
+        """
         if r["what"] == "deleteMeIfYouWant":
             continue
         elif r["what"] == "categoryname":

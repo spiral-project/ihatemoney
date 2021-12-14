@@ -323,14 +323,14 @@ class BillForm(FlaskForm):
 
     def export(self, project):
         return Bill(
-            float(self.amount.data),
-            self.date.data,
-            self.external_link.data,
-            str(self.original_currency.data),
-            Person.query.get_by_ids(self.payed_for.data, project),
-            self.payer.data,
-            project.default_currency,
-            self.what.data,
+            amount=float(self.amount.data),
+            date=self.date.data,
+            external_link=self.external_link.data,
+            original_currency=str(self.original_currency.data),
+            owers=Person.query.get_by_ids(self.payed_for.data, project),
+            payer_id=self.payer.data,
+            project_default_currency=project.default_currency,
+            what=self.what.data,
         )
 
     def save(self, bill, project):

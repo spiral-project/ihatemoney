@@ -325,27 +325,27 @@ class Project(db.Model):
     def import_bills(self, bills: list):
         """Import bills from a list of dictionaries"""
         # Add members not already in the project
-        members_project = [str(m) for m in self.members]
-        members_new = [
-            m for m in get_members(bills) if str(m[0]) not in members_project
+        project_members = [str(m) for m in self.members]
+        new_members = [
+            m for m in get_members(bills) if str(m[0]) not in project_members
         ]
-        for m in members_new:
+        for m in new_members:
             Person(name=m[0], project=self, weight=m[1])
         db.session.commit()
 
         # Import bills not already in the project
-        bills_project = self.get_pretty_bills()
+        project_bills = self.get_pretty_bills()
         id_dict = {m.name: m.id for m in self.members}
         for b in bills:
             same = False
-            for b_p in bills_project:
-                if same_bill(b_p, b):
+            for p_b in project_bills:
+                if same_bill(p_b, b):
                     same = True
                     break
             if not same:
                 # Create bills
-                db.session.add(
-                    Bill(
+                try:
+                    new_bill = Bill(
                         amount=b["amount"],
                         date=parse(b["date"]),
                         external_link="",
@@ -355,7 +355,9 @@ class Project(db.Model):
                         project_default_currency=self.default_currency,
                         what=b["what"],
                     )
-                )
+                except Exception as e:
+                    raise ValueError(f"Unable to import csv data: {repr(e)}")
+                db.session.add(new_bill)
         db.session.commit()
 
     def remove_member(self, member_id):
