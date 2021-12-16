@@ -21,6 +21,10 @@ SECRET_KEY = "{{ secret_key }}"
 # A python tuple describing the name and email adress of the sender of the mails.
 MAIL_DEFAULT_SENDER = ("Budget manager", "admin@email.com") # CUSTOMIZE
 
+# A boolean that determines whether the admin email (MAIL_DEFAULT_SENDER) is
+# shown in error messages.
+SHOW_ADMIN_EMAIL = True
+
 # If set to True, a demonstration project will be activated.
 ACTIVATE_DEMO_PROJECT = True
 

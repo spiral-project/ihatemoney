@@ -49,16 +49,14 @@ def send_email(mail_message):
 
 def flash_email_error(error_message, category="danger"):
     """Helper to flash a message for email errors. It will also show the
-     admin email as a contact if public project creation is allowed and
-    the MAIL_DEFAULT_SENDER is not the default value.
-
+    admin email as a contact if SHOW_ADMIN_EMAIL is True.
     """
     admin_email = current_app.config.get("MAIL_DEFAULT_SENDER")
     error_extension = "."
     if (
         admin_email
         and admin_email[1] != "admin@email.com"
-        and current_app.config.get("ALLOW_PUBLIC_PROJECT_CREATION")
+        and current_app.config.get("SHOW_ADMIN_EMAIL")
     ):
         error_extension = " or contact the administrator at {}.".format(admin_email[1])
 

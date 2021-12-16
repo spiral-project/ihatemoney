@@ -82,6 +82,15 @@ emails.
 -   **Default value:** `("Budget manager", "admin@email.com")`
 -   **Production value:** Any tuple you want.
 
+## SHOW_ADMIN_EMAIL
+
+A boolean that determines whether the admin email (`MAIL_DEFAULT_SENDER`) is
+shown in error messages.
+
+-   **Default value:** `True`
+-   **Production value:** Usually `True` unless you don't want the admin
+    email to be shown for privacy reasons.
+
 ## ACTIVATE_DEMO_PROJECT
 
 If set to `True`, a demo project will be available on the frontpage.

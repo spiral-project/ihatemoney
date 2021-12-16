@@ -4,6 +4,7 @@ SQLALCHEMY_DATABASE_URI = "sqlite:////tmp/ihatemoney.db"
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 SECRET_KEY = "tralala"
 MAIL_DEFAULT_SENDER = ("Budget manager", "admin@email.com")
+SHOW_ADMIN_EMAIL = True
 ACTIVATE_DEMO_PROJECT = True
 ADMIN_PASSWORD = ""
 ALLOW_PUBLIC_PROJECT_CREATION = True

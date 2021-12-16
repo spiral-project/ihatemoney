@@ -23,6 +23,7 @@ ENV DEBUG="False" \
     MAIL_USERNAME="" \
     SECRET_KEY="tralala" \
     SESSION_COOKIE_SECURE="True" \
+    SHOW_ADMIN_EMAIL="True" \
     SQLALCHEMY_DATABASE_URI="sqlite:////database/ihatemoney.db" \
     SQLALCHEMY_TRACK_MODIFICATIONS="False" \
     ENABLE_CAPTCHA="False" \
