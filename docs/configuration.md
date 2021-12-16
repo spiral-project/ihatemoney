@@ -79,7 +79,7 @@ for details.
 A python tuple describing the name and email address to use when sending
 emails.
 
--   **Default value:** `("Budget manager", "budget@notmyidea.org")`
+-   **Default value:** `("Budget manager", "admin@email.com")`
 -   **Production value:** Any tuple you want.
 
 ## ACTIVATE_DEMO_PROJECT

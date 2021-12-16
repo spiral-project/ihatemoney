@@ -12,7 +12,7 @@ import socket
 
 from babel import Locale
 from babel.numbers import get_currency_name, get_currency_symbol
-from flask import current_app, escape, redirect, render_template
+from flask import current_app, escape, flash, redirect, render_template
 from flask_babel import get_locale, lazy_gettext as _
 import jinja2
 from markupsafe import Markup
@@ -45,6 +45,32 @@ def send_email(mail_message):
         return False
     # Email was sent successfully
     return True
+
+
+def flash_email_error(error_message, category="danger"):
+    """Helper to flash a message for email errors. It will also show the
+     admin email as a contact if public project creation is allowed and
+    the MAIL_DEFAULT_SENDER is not the default value.
+
+    """
+    admin_email = current_app.config.get("MAIL_DEFAULT_SENDER")
+    error_extension = "."
+    if (
+        admin_email
+        and admin_email[1] != "admin@email.com"
+        and current_app.config.get("ALLOW_PUBLIC_PROJECT_CREATION")
+    ):
+        error_extension = " or contact the administrator at {}.".format(admin_email[1])
+
+    flash(
+        _(
+            error_message
+            + " Please check the email configuration of the server {}".format(
+                error_extension
+            )
+        ),
+        category=category,
+    )
 
 
 class Redirect303(HTTPException, RoutingException):

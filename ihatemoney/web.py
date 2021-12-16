@@ -58,6 +58,7 @@ from ihatemoney.models import Bill, LoggingMode, Person, Project, db
 from ihatemoney.utils import (
     LoginThrottler,
     Redirect303,
+    flash_email_error,
     format_form_errors,
     get_members,
     list_of_dicts2csv,
@@ -334,11 +335,9 @@ def create_project():
             else:
                 # Display the error as a simple "info" alert, because it's
                 # not critical and doesn't prevent using the project.
-                flash(
-                    _(
-                        "We tried to send you an reminder email, but there was an error. "
-                        "You can still use the project normally."
-                    ),
+                flash_email_error(
+                    "We tried to send you an reminder email, but there was an error. "
+                    "You can still use the project normally.",
                     category="info",
                 )
             return redirect(url_for(".list_bills", project_id=project.id))
@@ -363,26 +362,9 @@ def remind_password():
             if success:
                 return redirect(url_for(".password_reminder_sent"))
             else:
-                # Only display admin email if its not the default and public creation is allowed
-                admin_email = current_app.config.get("MAIL_DEFAULT_SENDER")
-                error_extension = ""
-                if (
-                    admin_email
-                    and admin_email[1] != "budget@notmyidea.org"
-                    and current_app.config.get("ALLOW_PUBLIC_PROJECT_CREATION")
-                ):
-                    error_extension = "Contact the administrator at {}.".format(
-                        admin_email[1]
-                    )
-
-                flash(
-                    _(
-                        "Sorry, there was an error while sending you an email "
-                        "with password reset instructions. "
-                        "Please check the email configuration of the server "
-                        "or contact the administrator. {}".format(error_extension)
-                    ),
-                    category="danger",
+                flash_email_error(
+                    "Sorry, there was an error while sending you an email with "
+                    "password reset instructions."
                 )
                 # Fall-through: we stay on the same page and display the form again
     return render_template("password_reminder.html", form=form)
@@ -646,13 +628,8 @@ def invite():
                 flash(_("Your invitations have been sent"), category="success")
                 return redirect(url_for(".list_bills"))
             else:
-                flash(
-                    _(
-                        "Sorry, there was an error while trying to send the invitation emails. "
-                        "Please check the email configuration of the server "
-                        "or contact the administrator."
-                    ),
-                    category="danger",
+                flash_email_error(
+                    "Sorry, there was an error while trying to send the invitation emails."
                 )
                 # Fall-through: we stay on the same page and display the form again
     return render_template("send_invites.html", form=form)
