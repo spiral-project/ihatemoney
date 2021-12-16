@@ -69,12 +69,19 @@
 
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
+    <!-- Only display private code if not home page -->
     {% if not home %}
-    {{ input(form.id) }}
+    {{ input(form.id, placeholder="Unique ID used to login") }}
     {% endif %}
-    {{ input(form.name) }}
-    {{ input(form.password) }}
-    {{ input(form.contact_email) }}
+    <!-- Fields that are always shown -->
+    {{ input(form.name, placeholder="Example: Trip to Paris") }}
+    {{ input(form.password, placeholder="Password to access project") }}
+    {{ input(form.contact_email, placeholder="Your email") }}
+    <!-- Only display member name and default currency if not home page -->
+    {% if not home %}
+    {{ input(form.member_name, placeholder="(optional) Add your first project member!") }}
+    {{ input(form.default_currency) }}
+    {% endif %}
     {% if config['ENABLE_CAPTCHA'] %}
     {{ input(form.captcha) }}
     {% endif %}

@@ -23,7 +23,7 @@ from wtforms.validators import (
 )
 
 from ihatemoney.currency_convertor import CurrencyConverter
-from ihatemoney.models import LoggingMode, Person, Project
+from ihatemoney.models import LoggingMode, Person, Project, db
 from ihatemoney.utils import (
     eval_arithmetic_expression,
     render_localized_currency,
@@ -196,6 +196,8 @@ class ProjectForm(EditProjectForm):
     # This field overrides the one from EditProjectForm
     password = PasswordField(_("Private code"), validators=[DataRequired()])
     submit = SubmitField(_("Create the project"))
+    # Field to create a member for the project
+    member_name = StringField(_("Your name"), filters=[strip_filter])
 
     def save(self):
         """Create a new project with the information given by this form.
@@ -216,6 +218,15 @@ class ProjectForm(EditProjectForm):
             logging_preference=self.logging_preference,
             default_currency=self.default_currency.data,
         )
+        # Check that the member name is not empty so you don't insert an empty
+        # Person object if no member name is given
+        if self.member_name.data != "":
+            # Create a person object and link it to this project
+            member = Person(project_id=self.id.data, name=self.member_name.data)
+            # Add the new Person object to the database
+            db.session.add(member)
+            # Commit the database changes
+            db.session.commit()
         return project
 
     def validate_id(form, field):
