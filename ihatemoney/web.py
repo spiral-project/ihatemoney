@@ -37,7 +37,6 @@ from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from ihatemoney.currency_convertor import CurrencyConverter
-from ihatemoney.emails import send_creation_email
 from ihatemoney.forms import (
     AdminAuthenticationForm,
     AuthenticationForm,
@@ -48,7 +47,6 @@ from ihatemoney.forms import (
     MemberForm,
     PasswordReminder,
     ProjectForm,
-    ProjectFormWithCaptcha,
     ResetPasswordForm,
     UploadForm,
     get_billform_for,
@@ -138,9 +136,8 @@ def pull_project(endpoint, values):
         return
     if not values:
         values = {}
-    entered_project_id = values.pop("project_id", None)
-    if entered_project_id:
-        project_id = entered_project_id.lower()
+    project_id = values.pop("project_id", None)
+    if project_id:
         project = Project.query.get(project_id)
         if not project:
             raise Redirect303(url_for(".create_project", project_id=project_id))
@@ -153,11 +150,6 @@ def pull_project(endpoint, values):
         else:
             # redirect to authentication page
             raise Redirect303(url_for(".authenticate", project_id=project_id))
-
-
-@main.route("/healthcheck", methods=["GET"])
-def health():
-    return "OK"
 
 
 @main.route("/admin", methods=["GET", "POST"])
@@ -233,7 +225,7 @@ def authenticate(project_id=None):
 
     if not form.id.data and request.args.get("project_id"):
         form.id.data = request.args["project_id"]
-    project_id = form.id.data.lower() if form.id.data else None
+    project_id = form.id.data
 
     project = Project.query.get(project_id) if project_id is not None else None
     if not project:
@@ -271,7 +263,8 @@ def authenticate(project_id=None):
 
 def get_project_form():
     if current_app.config.get("ENABLE_CAPTCHA", False):
-        return ProjectFormWithCaptcha()
+        ProjectForm.enable_captcha()
+
     return ProjectForm()
 
 
@@ -326,7 +319,18 @@ def create_project():
 
             # send reminder email
             g.project = project
-            success = send_creation_email(project)
+
+            message_title = _(
+                "You have just created '%(project)s' " "to share your expenses",
+                project=g.project.name,
+            )
+
+            message_body = render_localized_template("reminder_mail")
+
+            msg = Message(
+                message_title, body=message_body, recipients=[project.contact_email]
+            )
+            success = send_email(msg)
             if success:
                 flash(
                     _("A reminder email has just been sent to you"), category="success"
@@ -341,6 +345,8 @@ def create_project():
                     ),
                     category="info",
                 )
+            # redirect the user to the next step (invite)
+            flash(_("The project identifier is %(project)s", project=project.id))
             return redirect(url_for(".list_bills", project_id=project.id))
 
     return render_template("create_project.html", form=form)
@@ -613,7 +619,7 @@ def demo():
 @main.route("/<project_id>/invite", methods=["GET", "POST"])
 def invite():
     """Send invitations for this particular project"""
-
+    print("anmutign")
     form = InviteForm()
 
     if request.method == "POST":

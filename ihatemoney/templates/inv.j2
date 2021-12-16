@@ -1,0 +1,13 @@
+Salut,
+
+Quelqu'un à l'aide de l'adresse e-mail {{g.project.contact_email}} vous a invité à partager vos dépenses pour "{{g.project.name}}".
+
+C'est aussi simple que de dire ce que vous avez payé, pour qui et combien cela vous a-t-il coûté, nous nous soucions du reste.
+
+Vous pouvez vous connecter à l'aide de ce lien: {{url_for (". Join_project", _external = true, project_id = g.project.id, jeton = g.project.generate_Token ())}}.
+
+Une fois connecté, vous pouvez utiliser le lien suivant qui est plus facile à retenir: {{url_for (". List_bills", _external = true)}}
+Si votre cookie est supprimé ou si vous vous déconnectez, vous devrez vous reconnecter à l'aide du premier lien.
+
+Prendre plaisir,
+À bientôt :-)
