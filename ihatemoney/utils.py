@@ -49,7 +49,8 @@ def send_email(mail_message):
 
 def flash_email_error(error_message, category="danger"):
     """Helper to flash a message for email errors. It will also show the
-    admin email as a contact if SHOW_ADMIN_EMAIL is True.
+    admin email as a contact if MAIL_DEFAULT_SENDER is set to not the
+    default value and SHOW_ADMIN_EMAIL is True.
     """
     admin_email = current_app.config.get("MAIL_DEFAULT_SENDER")
     error_extension = "."

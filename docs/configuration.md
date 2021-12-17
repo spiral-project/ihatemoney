@@ -85,7 +85,8 @@ emails.
 ## SHOW_ADMIN_EMAIL
 
 A boolean that determines whether the admin email (`MAIL_DEFAULT_SENDER`) is
-shown in error messages.
+shown in error messages. This also needs `MAIL_DEFAULT_SENDER` to be set to a 
+non default value to show it in the error messages.
 
 -   **Default value:** `True`
 -   **Production value:** Usually `True` unless you don't want the admin
