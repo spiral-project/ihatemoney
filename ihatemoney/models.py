@@ -246,9 +246,10 @@ class Project(db.Model):
 
     def get_bills(self):
         """Return the list of bills related to this project"""
-        return self.ordered_bills(self.get_bills_unordered())
+        return self.order_bills(self.get_bills_unordered())
 
-    def ordered_bills(self, query):
+    @staticmethod
+    def order_bills(query):
         return (
             query.order_by(Bill.date.desc())
             .order_by(Bill.creation_date.desc())
@@ -274,7 +275,7 @@ class Project(db.Model):
 
     def get_bill_weights_ordered(self):
         """Ordered version of get_bill_weights"""
-        return self.ordered_bills(self.get_bill_weights())
+        return self.order_bills(self.get_bill_weights())
 
     def get_member_bills(self, member_id):
         """Return the list of bills related to a specific member"""
