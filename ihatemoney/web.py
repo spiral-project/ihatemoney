@@ -654,7 +654,7 @@ def list_bills():
     if "last_selected_payer" in session:
         bill_form.payer.data = session["last_selected_payer"]
 
-    # Each item will be (weight_sum, Bill) tuple.
+    # Each item will be a (weight_sum, Bill) tuple.
     # TODO: improve this awkward result using column_property:
     # https://docs.sqlalchemy.org/en/14/orm/mapped_sql_expr.html.
     weighted_bills = g.project.get_bill_weights_ordered().paginate(
