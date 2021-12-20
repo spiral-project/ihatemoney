@@ -56,7 +56,7 @@ def flash_email_error(error_message, category="danger"):
     error_extension = "."
     if (
         admin_email
-        and admin_email[1] != "admin@email.com"
+        and admin_email[1] != "admin@example.com"
         and current_app.config.get("SHOW_ADMIN_EMAIL")
     ):
         error_extension = " or contact the administrator at {}.".format(admin_email[1])
