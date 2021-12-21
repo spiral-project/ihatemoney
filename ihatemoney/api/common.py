@@ -159,8 +159,7 @@ class BillsHandler(Resource):
     def post(self, project):
         form = get_billform_for(project, True, meta={"csrf": False})
         if form.validate():
-            bill = Bill()
-            form.save(bill, project)
+            bill = form.export(project)
             db.session.add(bill)
             db.session.commit()
             return bill.id, 201
