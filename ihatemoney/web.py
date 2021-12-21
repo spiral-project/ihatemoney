@@ -818,8 +818,11 @@ def edit_bill(bill_id):
 
 @main.route("/lang/<lang>")
 def change_lang(lang):
-    session["lang"] = lang
-    session.update()
+    if lang in current_app.config["SUPPORTED_LANGUAGES"]:
+        session["lang"] = lang
+        session.update()
+    else:
+        flash(_(f"{lang} is not a supported language"), category="warning")
 
     return redirect(request.headers.get("Referer") or url_for(".home"))
 
