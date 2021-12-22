@@ -12,11 +12,12 @@ import socket
 
 from babel import Locale
 from babel.numbers import get_currency_name, get_currency_symbol
-from flask import current_app, escape, redirect, render_template
+from flask import current_app, redirect, render_template
 from flask_babel import get_locale, lazy_gettext as _
 import jinja2
-from markupsafe import Markup
-from werkzeug.routing import HTTPException, RoutingException
+from markupsafe import Markup, escape
+from werkzeug.exceptions import HTTPException
+from werkzeug.routing import RoutingException
 
 
 def slugify(value):
