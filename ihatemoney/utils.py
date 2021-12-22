@@ -52,21 +52,16 @@ def flash_email_error(error_message, category="danger"):
     admin email as a contact if MAIL_DEFAULT_SENDER is set to not the
     default value and SHOW_ADMIN_EMAIL is True.
     """
-    admin_email = current_app.config.get("MAIL_DEFAULT_SENDER")
+    (admin_name, admin_email) = current_app.config.get("MAIL_DEFAULT_SENDER")
     error_extension = "."
-    if (
-        admin_email
-        and admin_email[1] != "admin@example.com"
-        and current_app.config.get("SHOW_ADMIN_EMAIL")
+    if admin_email != "admin@example.com" and current_app.config.get(
+        "SHOW_ADMIN_EMAIL"
     ):
-        error_extension = " or contact the administrator at {}.".format(admin_email[1])
+        error_extension = f" or contact the administrator at {admin_email}."
 
     flash(
         _(
-            error_message
-            + " Please check the email configuration of the server {}".format(
-                error_extension
-            )
+            f"{error_message} Please check the email configuration of the server{error_extension}"
         ),
         category=category,
     )
