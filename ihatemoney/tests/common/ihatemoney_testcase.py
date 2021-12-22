@@ -74,6 +74,14 @@ class BaseTestCase(TestCase):
             follow_redirects=follow_redirects,
         )
 
+    def import_project(self, id, data, success=True):
+        resp = self.client.post(
+            f"/{id}/import",
+            data=data,
+            # follow_redirects=True,
+        )
+        self.assertEqual("/{id}/edit" in str(resp.response), not success)
+
     def create_project(self, id, default_currency="XXX", name=None, password=None):
         name = name or str(id)
         password = password or id
@@ -86,6 +94,9 @@ class BaseTestCase(TestCase):
         )
         models.db.session.add(project)
         models.db.session.commit()
+
+    def get_project(self, id) -> models.Project:
+        return models.Project.query.get(id)
 
 
 class IhatemoneyTestCase(BaseTestCase):

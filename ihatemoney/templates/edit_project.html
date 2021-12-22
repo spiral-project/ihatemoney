@@ -29,7 +29,7 @@
 <div class="container edit-project">
 
     <h2>{{ _("Edit project") }}</h2>
-    <form class="form-horizontal" method="post">
+    <form id="edit-project" class="form-horizontal" method="post">
         {{ forms.edit_project(edit_form) }}
     </form>
 
@@ -38,23 +38,10 @@
         {{ forms.delete_project(delete_form) }}
     </form>
 
-    <h2>{{ _("Import JSON") }}</h2>
-    <form class="form-horizontal" method="post" enctype="multipart/form-data">
-        {{ import_form.hidden_tag() }}
 
-        <div class="custom-file">
-            <div class="form-group">
-                {{ import_form.file(class="custom-file-input") }}
-                <small class="form-text text-muted">
-                    {{ import_form.file.description }}
-                </small>
-            </div>
-            <label class="custom-file-label" for="customFile">{{ _('Choose file') }}</label>
-        </div>
-
-        <div class="actions">
-            {{ import_form.submit(class="btn btn-primary") }}
-        </div>
+    <h2>{{ _("Import project") }}</h2>
+    <form id="import-project" class="form-horizontal" action="{{ url_for(".import_project") }}" method="post" enctype="multipart/form-data">
+        {{ forms.import_project(import_form) }}
     </form>
 
     <h2>{{ _("Download project's data") }}</h2>

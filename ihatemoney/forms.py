@@ -23,7 +23,7 @@ from wtforms.validators import (
 )
 
 from ihatemoney.currency_convertor import CurrencyConverter
-from ihatemoney.models import LoggingMode, Person, Project
+from ihatemoney.models import Bill, LoggingMode, Person, Project
 from ihatemoney.utils import (
     eval_arithmetic_expression,
     render_localized_currency,
@@ -182,13 +182,15 @@ class EditProjectForm(FlaskForm):
         return project
 
 
-class UploadForm(FlaskForm):
+class ImportProjectForm(FlaskForm):
     file = FileField(
-        "JSON",
-        validators=[FileRequired(), FileAllowed(["json", "JSON"], "JSON only!")],
-        description=_("Import previously exported JSON file"),
+        "File",
+        validators=[
+            FileRequired(),
+            FileAllowed(["json", "JSON", "csv", "CSV"], "Incorrect file format"),
+        ],
+        description=_("Compatible with Cospend"),
     )
-    submit = SubmitField(_("Import"))
 
 
 class ProjectForm(EditProjectForm):
@@ -319,31 +321,29 @@ class BillForm(FlaskForm):
     submit = SubmitField(_("Submit"))
     submit2 = SubmitField(_("Submit and add a new one"))
 
+    def export(self, project):
+        return Bill(
+            amount=float(self.amount.data),
+            date=self.date.data,
+            external_link=self.external_link.data,
+            original_currency=str(self.original_currency.data),
+            owers=Person.query.get_by_ids(self.payed_for.data, project),
+            payer_id=self.payer.data,
+            project_default_currency=project.default_currency,
+            what=self.what.data,
+        )
+
     def save(self, bill, project):
         bill.payer_id = self.payer.data
         bill.amount = self.amount.data
         bill.what = self.what.data
         bill.external_link = self.external_link.data
         bill.date = self.date.data
-        bill.owers = [Person.query.get(ower, project) for ower in self.payed_for.data]
+        bill.owers = Person.query.get_by_ids(self.payed_for.data, project)
         bill.original_currency = self.original_currency.data
         bill.converted_amount = self.currency_helper.exchange_currency(
             bill.amount, bill.original_currency, project.default_currency
         )
-        return bill
-
-    def fake_form(self, bill, project):
-        bill.payer_id = self.payer
-        bill.amount = self.amount
-        bill.what = self.what
-        bill.external_link = ""
-        bill.date = self.date
-        bill.owers = [Person.query.get(ower, project) for ower in self.payed_for]
-        bill.original_currency = self.original_currency
-        bill.converted_amount = self.currency_helper.exchange_currency(
-            bill.amount, bill.original_currency, project.default_currency
-        )
-
         return bill
 
     def fill(self, bill, project):

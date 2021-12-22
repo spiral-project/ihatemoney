@@ -99,7 +99,7 @@ class CommandTestCase(BaseTestCase):
 
     def test_demo_project_deletion(self):
         self.create_project("demo")
-        self.assertEqual(models.Project.query.get("demo").name, "demo")
+        self.assertEqual(self.get_project("demo").name, "demo")
 
         runner = self.app.test_cli_runner()
         runner.invoke(delete_project, "demo")
@@ -246,7 +246,7 @@ class CaptchaTestCase(IhatemoneyTestCase):
     ENABLE_CAPTCHA = True
 
     def test_project_creation_with_captcha(self):
-        with self.app.test_client() as c:
+        with self.client as c:
             c.post(
                 "/create",
                 data={
