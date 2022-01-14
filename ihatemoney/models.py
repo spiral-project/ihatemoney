@@ -1,5 +1,5 @@
 from collections import defaultdict
-from datetime import datetime
+import datetime
 
 from dateutil.parser import parse
 from debts import settle
@@ -608,8 +608,8 @@ class Bill(db.Model):
     owers = db.relationship(Person, secondary=billowers)
 
     amount = db.Column(db.Float)
-    date = db.Column(db.Date, default=datetime.now)
-    creation_date = db.Column(db.Date, default=datetime.now)
+    date = db.Column(db.Date, default=datetime.datetime.now)
+    creation_date = db.Column(db.Date, default=datetime.datetime.now)
     what = db.Column(db.UnicodeText)
     external_link = db.Column(db.UnicodeText)
 
@@ -623,7 +623,7 @@ class Bill(db.Model):
     def __init__(
         self,
         amount: float,
-        date: datetime = None,
+        date: datetime.datetime = None,
         external_link: str = "",
         original_currency: str = "",
         owers: list = [],
