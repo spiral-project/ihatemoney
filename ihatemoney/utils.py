@@ -243,10 +243,7 @@ class IhmJSONEncoder(JSONEncoder):
                 from flask_babel import speaklater
 
                 if isinstance(o, speaklater.LazyString):
-                    try:
-                        return unicode(o)  # For python 2.
-                    except NameError:
-                        return str(o)  # For python 3.
+                    return str(o)
             except ImportError:
                 pass
             return JSONEncoder.default(self, o)
