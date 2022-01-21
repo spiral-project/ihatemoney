@@ -28,7 +28,6 @@ from flask import (
 )
 from flask_babel import gettext as _
 from flask_mail import Message
-from sqlalchemy import orm
 from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -609,16 +608,17 @@ def list_bills():
     # set the last selected payer as default choice if exists
     if "last_selected_payer" in session:
         bill_form.payer.data = session["last_selected_payer"]
-    # Preload the "owers" relationship for all bills
-    bills = (
-        g.project.get_bills()
-        .options(orm.subqueryload(Bill.owers))
-        .paginate(per_page=100, error_out=True)
+
+    # Each item will be a (weight_sum, Bill) tuple.
+    # TODO: improve this awkward result using column_property:
+    # https://docs.sqlalchemy.org/en/14/orm/mapped_sql_expr.html.
+    weighted_bills = g.project.get_bill_weights_ordered().paginate(
+        per_page=100, error_out=True
     )
 
     return render_template(
         "list_bills.html",
-        bills=bills,
+        bills=weighted_bills,
         member_form=MemberForm(g.project),
         bill_form=bill_form,
         csrf_form=csrf_form,
