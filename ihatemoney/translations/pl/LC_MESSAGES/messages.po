@@ -1,19 +1,19 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-01 18:01+0100\n"
-"PO-Revision-Date: 2021-08-31 18:34+0000\n"
-"Last-Translator: Michał Kowalski <norbertkowalski1994@gmail.com>\n"
+"PO-Revision-Date: 2022-01-20 20:55+0000\n"
+"Last-Translator: Piotr <promantix@gmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/pl/>\n"
 "Language: pl\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/i-hate-money/i"
-"-hate-money/pl/>\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && "
-"(n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.11-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 msgid ""
@@ -36,7 +36,7 @@ msgid "Email"
 msgstr "E-mail"
 
 msgid "Enable project history"
-msgstr "Włącz historię projektu"
+msgstr "Włącz historię projektu"
 
 msgid "Use IP tracking for project history"
 msgstr "Użyj śledzenia IP do historii projektu"
@@ -46,11 +46,14 @@ msgstr "Domyślna waluta"
 
 msgid "Setting a default currency enables currency conversion between bills"
 msgstr ""
+"Wybranie domyślnej waluty pozwala na konwersję walutową pomiędzy rachunkami"
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
+"Ten projekt nie może zostać oznaczony jako 'bez waluty', ponieważ zawiera on "
+"rachunki w różnych walutach."
 
 msgid "Import previously exported JSON file"
 msgstr "Zaimportuj wcześniej wyeksportowany plik JSON"
@@ -72,18 +75,17 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
-"Projekt o tym identyfikatorze („%(project)s”) już istnieje. Wybierz nowy "
+"Projekt o tym identyfikatorze (\"%(project)s\") już istnieje. Wybierz nowy "
 "identyfikator"
 
 msgid "Which is a real currency: Euro or Petro dollar?"
-msgstr ""
+msgstr "Która waluta jest prawdziwa: euro czy petrodolar?"
 
-#, fuzzy
 msgid "euro"
-msgstr "Okres"
+msgstr "euro"
 
 msgid "Please, validate the captcha to proceed."
-msgstr ""
+msgstr "Rozwiąż captcha, by kontynuować."
 
 msgid "Enter private code to confirm deletion"
 msgstr "Wprowadź kod prywatny w celu potwierdzenia usunięcia"
@@ -92,7 +94,7 @@ msgid "Unknown error"
 msgstr "Nieznany błąd"
 
 msgid "Invalid private code."
-msgstr "Kod prywatny."
+msgstr "Nieprawidłowy kod prywatny."
 
 msgid "Get in"
 msgstr "Wejdź"
@@ -101,13 +103,13 @@ msgid "Admin password"
 msgstr "Hasło administratora"
 
 msgid "Send me the code by email"
-msgstr "Wyślij mi kod emailem"
+msgstr "Wyślij mi kod e-mailem"
 
 msgid "This project does not exists"
 msgstr "Ten projekt nie istnieje"
 
 msgid "Password mismatch"
-msgstr "Hasło się różni"
+msgstr "Hasło się różni"
 
 msgid "Password"
 msgstr "Hasło"
@@ -116,7 +118,7 @@ msgid "Password confirmation"
 msgstr "Potwierdzenie hasła"
 
 msgid "Reset password"
-msgstr "Zresetuj hasło"
+msgstr "Zmień hasło"
 
 msgid "Date"
 msgstr "Data"
@@ -128,7 +130,7 @@ msgid "Payer"
 msgstr "Płatnik"
 
 msgid "Amount paid"
-msgstr "Opłata zapłacona"
+msgstr "Zapłacona kwota"
 
 msgid "Currency"
 msgstr "Waluta"
@@ -167,16 +169,14 @@ msgstr "Waga"
 msgid "Add"
 msgstr "Dodaj"
 
-#, fuzzy
 msgid "The participant name is invalid"
-msgstr "Użytkownik „%(name)s” został usunięty"
+msgstr "Nazwa członka jest nieprawidłowa"
 
-#, fuzzy
 msgid "This project already have this participant"
 msgstr "Ten projekt ma już tego członka"
 
 msgid "People to notify"
-msgstr ""
+msgstr "Osoby do powiadomienia"
 
 msgid "Send invites"
 msgstr "Wyślij zaproszenia"
