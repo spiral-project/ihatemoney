@@ -247,8 +247,7 @@ class ProjectForm(EditProjectForm):
 
 class ProjectFormWithCaptcha(ProjectForm):
     captcha = StringField(
-        _("Which is a real currency: Euro or Petro dollar?"),
-        default=""
+        _("Which is a real currency: Euro or Petro dollar?"), default=""
     )
 
     def validate_captcha(form, field):
