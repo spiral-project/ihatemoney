@@ -918,6 +918,26 @@ class APITestCase(IhatemoneyTestCase):
         )
         self.assertStatus(200, resp)
 
+    def test_amount_too_high(self):
+        self.api_create("raclette")
+        # add participants
+        self.api_add_member("raclette", "zorglub")
+
+        # add a bill with too high amount
+        # See https://github.com/python-babel/babel/issues/821
+        req = self.client.post(
+            "/api/projects/raclette/bills",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage",
+                "payer": "1",
+                "payed_for": ["1"],
+                "amount": "9347242149381274732472348728748723473278472843.12",
+            },
+            headers=self.get_auth("raclette"),
+        )
+        self.assertStatus(400, req)
+
 
 if __name__ == "__main__":
     unittest.main()
