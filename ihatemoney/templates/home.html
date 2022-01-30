@@ -42,8 +42,7 @@
           id="authentication-form"
           class="form-horizontal"
           action="{{ url_for('.authenticate') }}"
-          method="post"
-        >
+          method="post">
           <fieldset class="form-group">
             <legend></legend>
             {{ forms.authenticate(auth_form, home=True) }}

@@ -1,7 +1,9 @@
 from collections import defaultdict
-from datetime import datetime
+import datetime
+import itertools
 
 from dateutil.parser import parse
+from dateutil.relativedelta import relativedelta
 from debts import settle
 from flask import current_app, g
 from flask_sqlalchemy import BaseQuery, SQLAlchemy
@@ -248,12 +250,36 @@ class Project(db.Model):
 
     def get_bills(self):
         """Return the list of bills related to this project"""
+        return self.order_bills(self.get_bills_unordered())
+
+    @staticmethod
+    def order_bills(query):
         return (
-            self.get_bills_unordered()
-            .order_by(Bill.date.desc())
+            query.order_by(Bill.date.desc())
             .order_by(Bill.creation_date.desc())
             .order_by(Bill.id.desc())
         )
+
+    def get_bill_weights(self):
+        """
+        Return all bills for this project, along with the sum of weight for each bill.
+        Each line is a (float, Bill) tuple.
+
+        Result is unordered.
+        """
+        return (
+            db.session.query(func.sum(Person.weight), Bill)
+            .options(orm.subqueryload(Bill.owers))
+            .select_from(Person)
+            .join(billowers, Bill, Project)
+            .filter(Person.project_id == Project.id)
+            .filter(Project.id == self.id)
+            .group_by(Bill.id)
+        )
+
+    def get_bill_weights_ordered(self):
+        """Ordered version of get_bill_weights"""
+        return self.order_bills(self.get_bill_weights())
 
     def get_member_bills(self, member_id):
         """Return the list of bills related to a specific member"""
@@ -263,6 +289,41 @@ class Project(db.Model):
             .order_by(Bill.date.desc())
             .order_by(Bill.id.desc())
         )
+
+    def get_newest_bill(self):
+        """Returns the most recent bill (according to bill date) or None if there are no bills"""
+        # Note that the ORM performs an optimized query with LIMIT
+        return self.get_bills_unordered().order_by(Bill.date.desc()).first()
+
+    def get_oldest_bill(self):
+        """Returns the least recent bill (according to bill date) or None if there are no bills"""
+        # Note that the ORM performs an optimized query with LIMIT
+        return self.get_bills_unordered().order_by(Bill.date.asc()).first()
+
+    def active_months_range(self):
+        """Returns a list of dates, representing the range of consecutive months
+        for which the project was active (i.e. has bills).
+
+        Note that the list might contain months during which there was no
+        bills.  We only guarantee that there were bills during the first
+        and last month in the list.
+        """
+        oldest_bill = self.get_oldest_bill()
+        newest_bill = self.get_newest_bill()
+        if oldest_bill is None or newest_bill is None:
+            return []
+        oldest_date = oldest_bill.date
+        newest_date = newest_bill.date
+        newest_month = datetime.date(
+            year=newest_date.year, month=newest_date.month, day=1
+        )
+        # Infinite iterator towards the past
+        all_months = (newest_month - relativedelta(months=i) for i in itertools.count())
+        # Stop when reaching one month before the first date
+        months = itertools.takewhile(
+            lambda x: x > oldest_date - relativedelta(months=1), all_months
+        )
+        return list(months)
 
     def get_pretty_bills(self, export_format="json"):
         """Return a list of project's bills with pretty formatting"""
@@ -608,8 +669,8 @@ class Bill(db.Model):
     owers = db.relationship(Person, secondary=billowers)
 
     amount = db.Column(db.Float)
-    date = db.Column(db.Date, default=datetime.now)
-    creation_date = db.Column(db.Date, default=datetime.now)
+    date = db.Column(db.Date, default=datetime.datetime.now)
+    creation_date = db.Column(db.Date, default=datetime.datetime.now)
     what = db.Column(db.UnicodeText)
     external_link = db.Column(db.UnicodeText)
 
@@ -623,7 +684,7 @@ class Bill(db.Model):
     def __init__(
         self,
         amount: float,
-        date: datetime = None,
+        date: datetime.datetime = None,
         external_link: str = "",
         original_currency: str = "",
         owers: list = [],

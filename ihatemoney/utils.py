@@ -12,11 +12,12 @@ import socket
 
 from babel import Locale
 from babel.numbers import get_currency_name, get_currency_symbol
-from flask import current_app, escape, flash, redirect, render_template
+from flask import current_app, flash, redirect, render_template
 from flask_babel import get_locale, lazy_gettext as _
 import jinja2
-from markupsafe import Markup
-from werkzeug.routing import HTTPException, RoutingException
+from markupsafe import Markup, escape
+from werkzeug.exceptions import HTTPException
+from werkzeug.routing import RoutingException
 
 
 def slugify(value):
@@ -263,10 +264,7 @@ class IhmJSONEncoder(JSONEncoder):
                 from flask_babel import speaklater
 
                 if isinstance(o, speaklater.LazyString):
-                    try:
-                        return unicode(o)  # For python 2.
-                    except NameError:
-                        return str(o)  # For python 3.
+                    return str(o)
             except ImportError:
                 pass
             return JSONEncoder.default(self, o)
@@ -352,7 +350,7 @@ def em_surround(string, regex_escape=False):
     string = escape(string)
 
     if regex_escape:
-        return fr'<em class="font-italic">{string}<\/em>'
+        return rf'<em class="font-italic">{string}<\/em>'
     else:
         return f'<em class="font-italic">{string}</em>'
 

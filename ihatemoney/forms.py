@@ -9,9 +9,23 @@ from flask_wtf.file import FileAllowed, FileField, FileRequired
 from flask_wtf.form import FlaskForm
 from markupsafe import Markup
 from werkzeug.security import check_password_hash, generate_password_hash
-from wtforms.fields.core import Label, SelectField, SelectMultipleField
-from wtforms.fields.html5 import DateField, DecimalField, URLField
-from wtforms.fields.simple import BooleanField, PasswordField, StringField, SubmitField
+from wtforms.fields import (
+    BooleanField,
+    DateField,
+    DecimalField,
+    Label,
+    PasswordField,
+    SelectField,
+    SelectMultipleField,
+    StringField,
+    SubmitField,
+)
+
+try:
+    # Compat for WTForms <= 2.3.3
+    from wtforms.fields.html5 import URLField
+except ModuleNotFoundError:
+    from wtforms.fields import URLField
 from wtforms.validators import (
     URL,
     DataRequired,
@@ -148,8 +162,8 @@ class EditProjectForm(FlaskForm):
             else:
                 return LoggingMode.ENABLED
 
-    def validate_default_currency(form, field):
-        project = Project.query.get(form.id.data)
+    def validate_default_currency(self, field):
+        project = Project.query.get(self.id.data)
         if (
             project is not None
             and field.data == CurrencyConverter.no_currency
@@ -220,23 +234,23 @@ class ProjectForm(EditProjectForm):
         )
         return project
 
-    def validate_id(form, field):
-        form.id.data = slugify(field.data)
-        if (form.id.data == "dashboard") or Project.query.get(form.id.data):
+    def validate_id(self, field):
+        self.id.data = slugify(field.data)
+        if (self.id.data == "dashboard") or Project.query.get(self.id.data):
             message = _(
                 'A project with this identifier ("%(project)s") already exists. '
                 "Please choose a new identifier",
-                project=form.id.data,
+                project=self.id.data,
             )
             raise ValidationError(Markup(message))
 
 
 class ProjectFormWithCaptcha(ProjectForm):
     captcha = StringField(
-        _("Which is a real currency: Euro or Petro dollar?"),
+        _("Which is a real currency: Euro or Petro dollar?"), default=""
     )
 
-    def validate_captcha(form, field):
+    def validate_captcha(self, field):
         if not field.data.lower() == _("euro"):
             message = _("Please, validate the captcha to proceed.")
             raise ValidationError(Markup(message))
@@ -263,11 +277,11 @@ class DestructiveActionProjectForm(FlaskForm):
         self.id = SimpleNamespace(data=kwargs.pop("id", ""))
         super().__init__(*args, **kwargs)
 
-    def validate_password(form, field):
-        project = Project.query.get(form.id.data)
+    def validate_password(self, field):
+        project = Project.query.get(self.id.data)
         if project is None:
             raise ValidationError(_("Unknown error"))
-        if not check_password_hash(project.password, form.password.data):
+        if not check_password_hash(project.password, self.password.data):
             raise ValidationError(_("Invalid private code."))
 
 
@@ -286,7 +300,7 @@ class PasswordReminder(FlaskForm):
     id = StringField(_("Project identifier"), validators=[DataRequired()])
     submit = SubmitField(_("Send me the code by email"))
 
-    def validate_id(form, field):
+    def validate_id(self, field):
         if not Project.query.get(field.data):
             raise ValidationError(_("This project does not exists"))
 
@@ -312,6 +326,7 @@ class BillForm(FlaskForm):
     original_currency = SelectField(_("Currency"), validators=[DataRequired()])
     external_link = URLField(
         _("External link"),
+        default="",
         validators=[Optional(), URL()],
         description=_("A link to an external document, related to this bill"),
     )
@@ -383,14 +398,14 @@ class MemberForm(FlaskForm):
         self.project = project
         self.edit = edit
 
-    def validate_name(form, field):
-        if field.data == form.name.default:
+    def validate_name(self, field):
+        if field.data == self.name.default:
             raise ValidationError(_("The participant name is invalid"))
         if (
-            not form.edit
+            not self.edit
             and Person.query.filter(
                 Person.name == field.data,
-                Person.project == form.project,
+                Person.project == self.project,
                 Person.activated,
             ).all()
         ):  # NOQA
@@ -413,8 +428,8 @@ class InviteForm(FlaskForm):
     emails = StringField(_("People to notify"), render_kw={"class": "tag"})
     submit = SubmitField(_("Send invites"))
 
-    def validate_emails(form, field):
-        for email in [email.strip() for email in form.emails.data.split(",")]:
+    def validate_emails(self, field):
+        for email in [email.strip() for email in self.emails.data.split(",")]:
             try:
                 email_validator.validate_email(email)
             except email_validator.EmailNotValidError:

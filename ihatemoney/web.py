@@ -8,12 +8,10 @@ Basically, this blueprint takes care of the authentication and provides
 some shortcuts to make your life better when coding (see `pull_project`
 and `add_project_id` for a quick overview)
 """
-from datetime import datetime
 from functools import wraps
 import json
 import os
 
-from dateutil.relativedelta import relativedelta
 from flask import (
     Blueprint,
     abort,
@@ -30,7 +28,6 @@ from flask import (
 )
 from flask_babel import gettext as _
 from flask_mail import Message
-from sqlalchemy import orm
 from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -600,16 +597,17 @@ def list_bills():
     # set the last selected payer as default choice if exists
     if "last_selected_payer" in session:
         bill_form.payer.data = session["last_selected_payer"]
-    # Preload the "owers" relationship for all bills
-    bills = (
-        g.project.get_bills()
-        .options(orm.subqueryload(Bill.owers))
-        .paginate(per_page=100, error_out=True)
+
+    # Each item will be a (weight_sum, Bill) tuple.
+    # TODO: improve this awkward result using column_property:
+    # https://docs.sqlalchemy.org/en/14/orm/mapped_sql_expr.html.
+    weighted_bills = g.project.get_bill_weights_ordered().paginate(
+        per_page=100, error_out=True
     )
 
     return render_template(
         "list_bills.html",
-        bills=bills,
+        bills=weighted_bills,
         member_form=MemberForm(g.project),
         bill_form=bill_form,
         csrf_form=csrf_form,
@@ -841,12 +839,13 @@ def strip_ip_addresses():
 @main.route("/<project_id>/statistics")
 def statistics():
     """Compute what each participant has paid and spent and display it"""
-    today = datetime.now()
+    # Determine range of months between which there are bills
+    months = g.project.active_months_range()
     return render_template(
         "statistics.html",
         members_stats=g.project.members_stats,
         monthly_stats=g.project.monthly_stats,
-        months=[today - relativedelta(months=i) for i in range(12)],
+        months=months,
         current_view="statistics",
     )
 
