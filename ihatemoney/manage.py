@@ -62,7 +62,7 @@ def generate_config(config_file):
                 random.SystemRandom().choice(
                     "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)"
                 )
-                for i in range(50)
+                for _ in range(50)
             ]
         )
 
