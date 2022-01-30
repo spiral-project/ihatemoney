@@ -1531,6 +1531,30 @@ class BudgetTestCase(IhatemoneyTestCase):
         ]
         assert no_currency_bills == [(5.0, 5.0), (10.0, 10.0)]
 
+    def test_amount_is_null(self):
+        self.post_project("raclette")
+
+        # add participants
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
+
+        # null amount
+        resp = self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-31",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1],
+                "amount": "0",
+                "original_currency": "EUR",
+            },
+        )
+        assert '<p class="alert alert-danger">' in resp.data.decode("utf-8")
+
+        resp = self.client.get("/raclette/")
+        # No bills, the previous one was not added
+        assert "No bills" in resp.data.decode("utf-8")
+
     def test_decimals_on_weighted_members_list(self):
 
         self.post_project("raclette")

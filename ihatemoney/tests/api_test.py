@@ -910,6 +910,25 @@ class APITestCase(IhatemoneyTestCase):
         self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 2)
         self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
 
+    def test_amount_is_null(self):
+        self.api_create("raclette")
+        # add participants
+        self.api_add_member("raclette", "zorglub")
+
+        # add a bill null amount
+        req = self.client.post(
+            "/api/projects/raclette/bills",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage",
+                "payer": "1",
+                "payed_for": ["1"],
+                "amount": "0",
+            },
+            headers=self.get_auth("raclette"),
+        )
+        self.assertStatus(400, req)
+
     def test_project_creation_with_mixed_case(self):
         self.api_create("Raclette")
         # get information about it
