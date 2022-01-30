@@ -330,7 +330,7 @@ def em_surround(string, regex_escape=False):
     string = escape(string)
 
     if regex_escape:
-        return fr'<em class="font-italic">{string}<\/em>'
+        return rf'<em class="font-italic">{string}<\/em>'
     else:
         return f'<em class="font-italic">{string}</em>'
 
