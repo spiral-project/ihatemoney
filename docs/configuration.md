@@ -79,8 +79,18 @@ for details.
 A python tuple describing the name and email address to use when sending
 emails.
 
--   **Default value:** `("Budget manager", "budget@notmyidea.org")`
+-   **Default value:** `("Budget manager", "admin@example.com")`
 -   **Production value:** Any tuple you want.
+
+## SHOW_ADMIN_EMAIL
+
+A boolean that determines whether the admin email (`MAIL_DEFAULT_SENDER`) is
+shown in error messages. This also needs `MAIL_DEFAULT_SENDER` to be set to a 
+non default value to show it in the error messages.
+
+-   **Default value:** `True`
+-   **Production value:** Usually `True` unless you don't want the admin
+    email to be shown for privacy reasons.
 
 ## ACTIVATE_DEMO_PROJECT
 
