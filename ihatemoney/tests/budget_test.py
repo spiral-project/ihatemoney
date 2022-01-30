@@ -1554,6 +1554,32 @@ class BudgetTestCase(IhatemoneyTestCase):
             'fred<span class="light">(x1.15)</span>', resp.data.decode("utf-8")
         )
 
+    def test_amount_too_high(self):
+        self.post_project("raclette")
+
+        # add participants
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
+
+        # High amount should be rejected.
+        # See https://github.com/python-babel/babel/issues/821
+        resp = self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-31",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1],
+                "amount": "9347242149381274732472348728748723473278472843.12",
+                "original_currency": "EUR",
+            },
+        )
+        assert '<p class="alert alert-danger">' in resp.data.decode("utf-8")
+
+        # Without any check, the following request will fail.
+        resp = self.client.get("/raclette/")
+        # No bills, the previous one was not added
+        assert "No bills" in resp.data.decode('utf-8')
+
 
 if __name__ == "__main__":
     unittest.main()
