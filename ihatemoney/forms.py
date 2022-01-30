@@ -1,5 +1,5 @@
-import decimal
 from datetime import datetime
+import decimal
 from re import match
 from types import SimpleNamespace
 
@@ -27,6 +27,7 @@ try:
     from wtforms.fields.html5 import URLField
 except ModuleNotFoundError:
     from wtforms.fields import URLField
+
 from wtforms.validators import (
     URL,
     DataRequired,

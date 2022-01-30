@@ -1578,7 +1578,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         # Without any check, the following request will fail.
         resp = self.client.get("/raclette/")
         # No bills, the previous one was not added
-        assert "No bills" in resp.data.decode('utf-8')
+        assert "No bills" in resp.data.decode("utf-8")
 
 
 if __name__ == "__main__":
