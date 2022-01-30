@@ -11,7 +11,6 @@ and `add_project_id` for a quick overview)
 from functools import wraps
 import json
 import os
-from datetime import datetime
 
 from flask import (
     Blueprint,
