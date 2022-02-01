@@ -21,7 +21,6 @@ from sqlalchemy_continuum.plugins import FlaskPlugin
 from werkzeug.security import generate_password_hash
 
 from ihatemoney.currency_convertor import CurrencyConverter
-from ihatemoney.patch_sqlalchemy_continuum import PatchedBuilder
 from ihatemoney.utils import get_members, same_bill
 from ihatemoney.versioning import (
     ConditionalVersioningManager,
@@ -36,9 +35,6 @@ make_versioned(
         # Conditionally Disable the versioning based on each
         # project's privacy preferences
         tracking_predicate=version_privacy_predicate,
-        # Patch in a fix to a SQLAchemy-Continuum Bug.
-        # See patch_sqlalchemy_continuum.py
-        builder=PatchedBuilder(),
     ),
     plugins=[
         FlaskPlugin(
