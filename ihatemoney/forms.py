@@ -1,4 +1,5 @@
 from datetime import datetime
+import decimal
 from re import match
 from types import SimpleNamespace
 
@@ -26,6 +27,7 @@ try:
     from wtforms.fields.html5 import URLField
 except ModuleNotFoundError:
     from wtforms.fields import URLField
+
 from wtforms.validators import (
     URL,
     DataRequired,
@@ -384,6 +386,9 @@ class BillForm(FlaskForm):
     def validate_amount(self, field):
         if field.data == "0":
             raise ValidationError(_("Bills can't be null"))
+        elif decimal.Decimal(field.data) > decimal.MAX_EMAX:
+            # See https://github.com/python-babel/babel/issues/821
+            raise ValidationError(f"Result is too high: {field.data}")
 
 
 class MemberForm(FlaskForm):
