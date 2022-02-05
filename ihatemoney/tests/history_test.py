@@ -627,6 +627,38 @@ class HistoryTestCase(IhatemoneyTestCase):
                 self.assertNotIn("owers", entry["prop_changed"])
         self.assertEqual(len(history_list), 6)
 
+    def test_delete_history_with_project(self):
+        self.post_project("raclette", password="party")
+
+        # add participants
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
+
+        # add bill
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-31",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1],
+                "amount": "10",
+                "original_currency": "EUR",
+            },
+        )
+
+        # Delete project
+        self.client.post(
+            "/raclette/delete",
+            data={"password": "party"},
+        )
+
+        # Recreate it
+        self.post_project("raclette", password="party")
+
+        # History should be equal to project creation
+        history_list = history.get_history(self.get_project("raclette"))
+        assert len(history_list) == 1
+
 
 if __name__ == "__main__":
     unittest.main()

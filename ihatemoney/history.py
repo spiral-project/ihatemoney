@@ -135,3 +135,12 @@ def get_history(project, human_readable_names=True):
                 history.append(common_properties)
 
     return sorted(history, key=history_sort_key, reverse=True)
+
+
+def purge_history(project):
+    """
+    Erase history linked to a project.
+    You must commit the purge after calling this function.
+    """
+    for query in get_history_queries(project):
+        query.delete(synchronize_session="fetch")

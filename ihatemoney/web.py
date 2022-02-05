@@ -49,7 +49,7 @@ from ihatemoney.forms import (
     ResetPasswordForm,
     get_billform_for,
 )
-from ihatemoney.history import get_history, get_history_queries
+from ihatemoney.history import get_history, get_history_queries, purge_history
 from ihatemoney.models import Bill, LoggingMode, Person, Project, db
 from ihatemoney.utils import (
     LoginThrottler,
@@ -808,8 +808,7 @@ def erase_history():
         )
         return redirect(url_for(".history"))
 
-    for query in get_history_queries(g.project):
-        query.delete(synchronize_session="fetch")
+    purge_history(g.project)
 
     db.session.commit()
     flash(_("Deleted project history."))
