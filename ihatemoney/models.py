@@ -438,7 +438,12 @@ class Project(db.Model):
         return person
 
     def remove_project(self):
+        # We can't import at top level without circular dependencies
+        from ihatemoney.history import purge_history
+
         db.session.delete(self)
+        # Purge AFTER delete to be sure to purge the deletion from history
+        purge_history(self)
         db.session.commit()
 
     def generate_token(self, token_type="auth"):
