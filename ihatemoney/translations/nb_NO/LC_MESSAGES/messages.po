@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-01 18:01+0100\n"
-"PO-Revision-Date: 2021-07-18 20:48+0000\n"
+"PO-Revision-Date: 2022-02-13 16:54+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"i-hate-money/i-hate-money/nb_NO/>\n"
 "Language: nb_NO\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/i"
-"-hate-money/i-hate-money/nb_NO/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.11-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 msgid ""
@@ -44,7 +44,7 @@ msgid "Default Currency"
 msgstr "Forvalgt valuta"
 
 msgid "Setting a default currency enables currency conversion between bills"
-msgstr ""
+msgstr "En forvalg valutainnstilling skrur på konvertering mellom regninger"
 
 #, fuzzy
 msgid ""
@@ -78,14 +78,14 @@ msgstr ""
 "Velg en ny identifikator."
 
 msgid "Which is a real currency: Euro or Petro dollar?"
-msgstr ""
+msgstr "Hva er en ekte valuta: Euro eller petro-dollar?"
 
 #, fuzzy
 msgid "euro"
 msgstr "Periode"
 
 msgid "Please, validate the captcha to proceed."
-msgstr ""
+msgstr "Bekreft CAPTCHA-en for å fortsette."
 
 msgid "Enter private code to confirm deletion"
 msgstr "Skriv inn privat kode for å bekrefte sletting"
@@ -179,7 +179,7 @@ msgid "This project already have this participant"
 msgstr "Allerede medlem av prosjektet"
 
 msgid "People to notify"
-msgstr ""
+msgstr "Folk å varsle"
 
 msgid "Send invites"
 msgstr "Send invitasjoner"
@@ -223,7 +223,7 @@ msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr "Dette administratorpassordet er ikke rett. Kun %(num)d forsøk igjen."
 
 msgid "Provided token is invalid"
-msgstr ""
+msgstr "Angitt symbol er ugyldig"
 
 msgid "This private code is not the right one"
 msgstr "Denne private koden er ikke rett"
@@ -281,6 +281,8 @@ msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
 msgstr ""
+"Kan ikke legge til regninger i flere valutaer i et prosjekt uten forvalgt "
+"valuta"
 
 #, fuzzy
 msgid "Project successfully deleted"
@@ -1225,4 +1227,3 @@ msgstr "Periode"
 
 #~ msgid "Participants to notify"
 #~ msgstr "legge til deltagere"
-
