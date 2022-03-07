@@ -11,6 +11,7 @@ helps to settle the bills.
 
 -   [Online documentation](https://ihatemoney.readthedocs.io)
 -   [Hosted version](https://ihatemoney.org)
+-   [Cloud Providers](https://ihatemoney.readthedocs.io/en/latest/installation.html#cloud)
 -   [Mailing
     list](https://mailman.alwaysdata.com/postorius/lists/info.ihatemoney.org/)
     (to get updates when needed).
