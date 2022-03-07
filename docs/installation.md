@@ -44,6 +44,8 @@ mail server and an external database:
     -e MAIL_USE_SSL=True \
     ihatemoney/ihatemoney
 
+If you are running this locally, you might need to disable the secure session cookies, as they do not work locally. You need to pass `-e SESSION_COOKIE_SECURE=False` to docker run.
+
 A volume can also be specified to persist the default database file:
 
     docker run -d -p 8000:8000 -v /host/path/to/database:/database ihatemoney/ihatemoney
