@@ -2,11 +2,12 @@
 
 There are multiple ways to install «Ihatemoney» on your system :
 
-1.  {ref}`docker`.
+1.  {ref}`docker`
 2.  [Via Yunohost](https://github.com/YunoHost-Apps/ihatemoney_ynh) (a
     server operating system aiming to make self-hosting accessible to
     anyone)
-3.  {ref}`manual-installation`
+3.  {ref}`cloud`
+4.  {ref}`manual-installation`
 
 
 :::{note}
@@ -64,6 +65,13 @@ parameter. For example, use the following command to add more gunicorn
 workers:
 
     docker run -d -p 8000:8000 ihatemoney/ihatemoney -w 3
+
+(cloud)=
+## On a Cloud Provider
+
+Some Paas (Platform-as-a-Service), provide a documentation or even a quick installation process to deploy and enjoy your instance within a minute:
+
+  * [alwaysdata](https://www.alwaysdata.com/en/marketplace/ihatemoney/)
 
 (manual-installation)=
 ## Via a manual installation
