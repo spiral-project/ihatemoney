@@ -12,6 +12,7 @@ from functools import wraps
 from io import StringIO
 import json
 import os
+from urllib.parse import urlparse, urlunparse
 
 import qrcode
 import qrcode.image.svg
@@ -592,7 +593,9 @@ def invite():
                 # Fall-through: we stay on the same page and display the form again
 
     # Generate the SVG QRCode.
-    invite_link = url_for('.join_project', project_id=g.project.id, token=g.project.generate_token(), _scheme='ihatemoney', _external=True)
+    invite_link = url_for('.join_project', project_id=g.project.id, token=g.project.generate_token(), _external=True)
+    invite_link = urlunparse(urlparse(invite_link)._replace(scheme='ihatemoney'))
+    print(invite_link)
     qr = qrcode.QRCode(image_factory=qrcode.image.svg.SvgPathImage)
     qr.add_data(invite_link)
     qr.make(fit=True)
