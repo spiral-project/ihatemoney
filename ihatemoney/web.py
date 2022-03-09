@@ -14,9 +14,6 @@ import json
 import os
 from urllib.parse import urlparse, urlunparse
 
-import qrcode
-import qrcode.image.svg
-
 from flask import (
     Blueprint,
     abort,
@@ -33,6 +30,8 @@ from flask import (
 )
 from flask_babel import gettext as _
 from flask_mail import Message
+import qrcode
+import qrcode.image.svg
 from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash, generate_password_hash
