@@ -102,6 +102,15 @@ def validate_configuration(app):
         if "MAIL_DEFAULT_SENDER" not in app.config:
             app.config["MAIL_DEFAULT_SENDER"] = default_settings.DEFAULT_MAIL_SENDER
 
+    if type(app.config["MAIL_DEFAULT_SENDER"]) == tuple:
+        warnings.warn(
+            "MAIL_DEFAULT_SENDER is not a tuple anymore and should be converted to a simple string."
+            + " Auto-conversion will be removed in future version.",
+            UserWarning,
+        )
+        (name, address) = app.config["MAIL_DEFAULT_SENDER"]
+        app.config["MAIL_DEFAULT_SENDER"] = f"{name} <{address}>"
+
     if "pbkdf2:" not in app.config["ADMIN_PASSWORD"] and app.config["ADMIN_PASSWORD"]:
         # Since 2.0
         warnings.warn(

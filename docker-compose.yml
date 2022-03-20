@@ -13,7 +13,7 @@ services:
       - ALLOW_PUBLIC_PROJECT_CREATION=True
       - BABEL_DEFAULT_TIMEZONE=UTC
       - GREENLET_TEST_CPP=no
-      - MAIL_DEFAULT_SENDER=('Budget manager', 'admin@example.com')
+      - MAIL_DEFAULT_SENDER="Budget manager <admin@example.com>"
       - MAIL_PASSWORD=
       - MAIL_PORT=25
       - MAIL_SERVER=localhost
