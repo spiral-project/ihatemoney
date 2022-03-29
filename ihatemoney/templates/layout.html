@@ -24,6 +24,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel=stylesheet type=text/css href="{{ url_for("static", filename='css/main.css') }}">
+    <script src="{{ url_for("static", filename='js/chart.min.js')}}"></script>
     {% block css %}{% endblock %}
     <script src="{{ url_for("static", filename="js/jquery-3.6.0.min.js") }}"></script>
     <script src="{{ url_for("static", filename="js/ihatemoney.js") }}"></script>
@@ -31,6 +32,7 @@
     <script src="{{ url_for("static", filename="js/popper.min.js") }}"></script>
     <script src="{{ url_for("static", filename="js/tagsinput.js") }}"></script>
     <script src="{{ url_for("static", filename="js/bootstrap.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/graphs.js") }}"></script>
     {%- if request.path == "/dashboard" %}
     <link rel=stylesheet type=text/css href="{{ url_for("static", filename='css/datatables.min.css') }}">
     <script src="{{ url_for("static", filename="js/datatables.min.js") }}"></script>

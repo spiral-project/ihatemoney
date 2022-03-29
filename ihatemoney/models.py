@@ -141,7 +141,7 @@ class Project(db.Model):
         balance, spent, paid = self.full_balance
         return [
             {
-                "member": member,
+                "member": member._to_serialize,
                 "paid": paid[member.id],
                 "spent": spent[member.id],
                 "balance": balance[member.id],

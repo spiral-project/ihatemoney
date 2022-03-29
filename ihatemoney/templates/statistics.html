@@ -33,6 +33,11 @@
         {% endfor %}
         </tbody>
         </table>
+        <canvas id="balance" height="400"></canvas>
+        <canvas id="monthlySpending" height="400"></canvas>
+        <script>
+            createGraphs({{ members_stats|tojson }}, {{ monthly_stats|tojson }});
+        </script>
     </div>
 
 {% endblock %}
