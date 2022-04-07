@@ -2,11 +2,47 @@
 
 This document describes changes between each past release.
 
-## 5.1.2 (unreleased)
+## 5.2.0 (unreleased)
+
+### Added
+
+- Make docker image production-ready: support PostgreSQL, allow customizing port, PUID, PGID (#919)
+- List supported currencies in API under api/currencies (#961)
+- Allow to import bills in CSV format, compatible with Cospend (#951)
+  Note that there is a [known issue with this new feature](https://github.com/spiral-project/ihatemoney/issues/980)
+
+### New settings
+
+- Add [SHOW_ADMIN_EMAIL](https://ihatemoney.readthedocs.io/en/latest/configuration.html#show-admin-email)
+  setting (#965)
+
+### Changed settings
+
+- [MAIL_DEFAULT_SENDER](https://ihatemoney.readthedocs.io/en/latest/configuration.html#mail-default-sender)
+  is now a string instead of a tuple.  The old syntax is still accepted but support will be dropped on
+  the next major release (#1007)
+
+### Fixed
+
+- Fix support for project IDs with uppercase characters (#925, #934)
+- Purge project history on deletion (#989)
+- Prevent large integer inputs to avoid crash (#994)
+- [Performance] Get weight sum along with bills to scale (#949)
+- Do not require a captcha when using the API (#931)
+- Fix default "legal link" value in docker (#950)
+- Fix showcase images in case of subdir installation (#974)
+- Check that chosen language is in the supported list (#971)
 
 ### Changed
 
--   Minor presentation fixes (901)
+- User interface fixes, especially for mobile devices (#901, #904, #905, #929, #943, #944, #945, #991)
+- Always display topmost buttons in the list of bills: new bill button & pagination (#956)
+- Display monthly statistics for the range of months where the project was active (#885)
+- Hide "each" amount when there's only one recipient (#1008)
+- Display admin email in error message for password reminder (#965)
+- Send an email when the project is created via the API (#938)
+- Add compatibility with Python 3.10 (#921)
+- Support WTForms 3 (#916)
 
 ## 5.1.1 (2021-10-26)
 

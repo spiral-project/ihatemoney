@@ -83,9 +83,9 @@ Some Paas (Platform-as-a-Service), provide a documentation or even a quick insta
 
 «Ihatemoney» depends on:
 
--   **Python**: version 3.6 to 3.9 included will work.
--   **A Backend**: to choose among SQLite, PostgreSQL, MariaDB (>=
-    10.3.2) or Memory.
+-   **Python**: any version from 3.6 to 3.10 will work.
+-   **A database backend**: choose among SQLite, PostgreSQL, MariaDB (>=
+    10.3.2).
 -   **Virtual environment** (recommended): [python3-venv]{.title-ref}
     package under Debian/Ubuntu.
 
