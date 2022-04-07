@@ -2,6 +2,11 @@
 
 This document describes changes between each past release.
 
+## 5.2.1 (unreleased)
+
+- Nothing changed yet.
+
+
 ## 5.2.0 (2022-04-07)
 
 ### Added
