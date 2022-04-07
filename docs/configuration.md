@@ -76,11 +76,10 @@ for details.
 
 ## MAIL_DEFAULT_SENDER
 
-A python tuple describing the name and email address to use when sending
-emails.
+An email address to use when sending emails.
 
--   **Default value:** `("Budget manager", "admin@example.com")`
--   **Production value:** Any tuple you want.
+-   **Default value:** `Budget manager <admin@example.com>`
+-   **Production value:** Any valid email address.
 
 ## SHOW_ADMIN_EMAIL
 

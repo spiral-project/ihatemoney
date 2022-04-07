@@ -26,7 +26,7 @@ class ConfigurationTestCase(BaseTestCase):
         self.assertFalse(self.app.config["SQLALCHEMY_TRACK_MODIFICATIONS"])
         self.assertEqual(
             self.app.config["MAIL_DEFAULT_SENDER"],
-            ("Budget manager", "admin@example.com"),
+            ("Budget manager <admin@example.com>"),
         )
         self.assertTrue(self.app.config["ACTIVATE_DEMO_PROJECT"])
         self.assertTrue(self.app.config["ALLOW_PUBLIC_PROJECT_CREATION"])
