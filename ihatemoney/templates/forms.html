@@ -200,7 +200,11 @@
     </fieldset>
     <div class="actions">
         {{ form.submit(class="btn btn-primary") }}
-        {% if not edit %} {{ form.submit2(class="btn btn-light") }}{% endif %}
+        {% if edit %} 
+            <a href="{{ url_for(".list_bills") }}" class="btn btn-primary"> {{_("Cancel") }} </a>
+        {% else %} 
+            {{ form.submit2(class="btn btn-light") }}
+        {% endif %}
     </div>
 
 {% endmacro %}
