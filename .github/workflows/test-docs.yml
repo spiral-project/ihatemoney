@@ -36,7 +36,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.6, 3.7, 3.8, 3.9, "3.10"]
+        python-version: [3.7, 3.8, 3.9, "3.10"]
         dependencies: [normal]
         database: [sqlite]
         # Test other databases only with one version of Python (Debian buster has 3.7)
@@ -48,9 +48,6 @@ jobs:
             dependencies: normal
             database: mariadb
           # Try a few variants with the minimal versions supported
-          - python-version: 3.6
-            dependencies: minimal
-            database: sqlite
           - python-version: 3.7
             dependencies: minimal
             database: postgresql
@@ -99,5 +96,5 @@ jobs:
     - name: Run vermin to check Python compat
       run: |
         python -m pip install vermin
-        vermin --no-tips --violations -t=3.6 .
+        vermin --no-tips --violations -t=3.7 .
       if: matrix.python-version == '3.10'
