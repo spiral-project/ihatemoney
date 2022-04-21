@@ -1,19 +1,23 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 18:01+0100\n"
+"POT-Creation-Date: 2022-04-20 17:38-0400\n"
 "PO-Revision-Date: 2022-02-13 16:54+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
-"i-hate-money/i-hate-money/nb_NO/>\n"
 "Language: nb_NO\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/i"
+"-hate-money/i-hate-money/nb_NO/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11-dev\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr "Du har akkurat opprettet \"%(project)s\" for å dele dine utgifter"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -54,11 +58,8 @@ msgstr ""
 "Dette prosjektet kan ikke settes til «Ingen valuta» fordi det inneholder "
 "regninger i flere valutaer."
 
-msgid "Import previously exported JSON file"
-msgstr "Importer tidligere eksportert JSON-fil"
-
-msgid "Import"
-msgstr "Importer"
+msgid "Compatible with Cospend"
+msgstr ""
 
 msgid "Project identifier"
 msgstr "Prosjektidentifikator"
@@ -121,17 +122,17 @@ msgstr "Passordbekreftelse"
 msgid "Reset password"
 msgstr "Tilbakestill passord"
 
-msgid "Date"
-msgstr "Dato"
+msgid "When?"
+msgstr "Når?"
 
 msgid "What?"
 msgstr "Hva?"
 
-msgid "Payer"
-msgstr "Betaler"
+msgid "Who paid?"
+msgstr "Hvem betalte?"
 
-msgid "Amount paid"
-msgstr "Beløp betalt"
+msgid "How much?"
+msgstr "Hvor meget?"
 
 msgid "Currency"
 msgstr "Valuta"
@@ -188,6 +189,11 @@ msgstr "Send invitasjoner"
 msgid "The email %(email)s is not valid"
 msgstr "E-posten \"%(email)s\" er ikke gyldig"
 
+msgid ""
+"{error_message} Please check the email configuration of the "
+"server{error_extension}"
+msgstr ""
+
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
 msgstr "{dual_object_0} og {dual_object_1}"
@@ -228,34 +234,8 @@ msgstr "Angitt symbol er ugyldig"
 msgid "This private code is not the right one"
 msgstr "Denne private koden er ikke rett"
 
-#, python-format
-msgid "You have just created '%(project)s' to share your expenses"
-msgstr "Du har akkurat opprettet \"%(project)s\" for å dele dine utgifter"
-
 msgid "A reminder email has just been sent to you"
 msgstr "En påminnelse har blitt sendt til deg per e-post"
-
-#, fuzzy
-msgid ""
-"We tried to send you an reminder email, but there was an error. You can "
-"still use the project normally."
-msgstr ""
-"En påminnelse ble sendt til deg per e-post, men en feil inntraff. Du kan "
-"fremdeles bruke prosjektet normalt."
-
-#, python-format
-msgid "The project identifier is %(project)s"
-msgstr "Prosjektidentifikatoren er %(project)s"
-
-#, fuzzy
-msgid ""
-"Sorry, there was an error while sending you an email with password reset "
-"instructions. Please check the email configuration of the server or "
-"contact the administrator."
-msgstr ""
-"En feil inntraff under forsendelse av passordtilbakestilling til deg per "
-"e-post. Sjekk at e-postoppsettet til tjeneren er rett, eller kontakt "
-"administratoren."
 
 msgid "No token provided"
 msgstr "Inget symbol angitt"
@@ -270,19 +250,25 @@ msgstr "Ukjent prosjekt"
 msgid "Password successfully reset."
 msgstr "Passord tilbakestilt."
 
-#, fuzzy
-msgid "Project successfully uploaded"
-msgstr "Prosjekt opplastet"
+msgid "Unable to parse CSV"
+msgstr ""
 
-msgid "Invalid JSON"
-msgstr "Ugyldig JSON"
+msgid "Missing attribute {}"
+msgstr ""
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
 msgstr ""
-"Kan ikke legge til regninger i flere valutaer i et prosjekt uten forvalgt "
-"valuta"
+"Kan ikke legge til regninger i flere valutaer i et prosjekt uten forvalgt"
+" valuta"
+
+#, fuzzy
+msgid "Project successfully uploaded"
+msgstr "Prosjekt opplastet"
+
+msgid ": "
+msgstr ""
 
 #, fuzzy
 msgid "Project successfully deleted"
@@ -300,15 +286,6 @@ msgstr ""
 
 msgid "Your invitations have been sent"
 msgstr "Invitasjonene dine har blitt sendt"
-
-#, fuzzy
-msgid ""
-"Sorry, there was an error while trying to send the invitation emails. "
-"Please check the email configuration of the server or contact the "
-"administrator."
-msgstr ""
-"Kunne ikke sende invitasjoner per e-post. Sjekk at e-postoppsettet på "
-"tjeneren stemmer, eller kontakt administratoren."
 
 #, python-format
 msgid "%(member)s has been added"
@@ -353,6 +330,9 @@ msgstr "Regningen har blitt slettet"
 
 msgid "The bill has been modified"
 msgstr "Regningen har blitt endret"
+
+msgid "{lang} is not a supported language"
+msgstr ""
 
 #, fuzzy
 msgid "Error deleting project history"
@@ -447,11 +427,9 @@ msgstr "Rediger prosjekt"
 msgid "Delete project"
 msgstr "Slett prosjekt"
 
-msgid "Import JSON"
-msgstr "Importer JSON"
-
-msgid "Choose file"
-msgstr "Velg fil"
+#, fuzzy
+msgid "Import project"
+msgstr "Rediger prosjekt"
 
 msgid "Download project's data"
 msgstr "Last ned prosjektets data"
@@ -486,11 +464,21 @@ msgstr "Rediger prosjektet"
 msgid "This will remove all bills and participants in this project!"
 msgstr "Dette vil fjerne alle regninger og deltagere i prosjektet!"
 
+#, fuzzy
+msgid "Import previously exported project"
+msgstr "Importer tidligere eksportert JSON-fil"
+
+msgid "Choose file"
+msgstr "Velg fil"
+
 msgid "Edit this bill"
 msgstr "Rediger denne regningen"
 
 msgid "Add a bill"
 msgstr "Legg til en regning"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr ""
 
 msgid "Everyone"
 msgstr "Alle"
@@ -634,12 +622,6 @@ msgstr ""
 msgid "Delete stored IP addresses"
 msgstr "Slett lagrede IP-adresser"
 
-msgid "No history to erase"
-msgstr "Ingen historikk å slette"
-
-msgid "Clear Project History"
-msgstr "Tøm prosjekthistorikk"
-
 #, fuzzy
 msgid "No IP Addresses to erase"
 msgstr "Ingen IP-adresser å slette"
@@ -647,6 +629,12 @@ msgstr "Ingen IP-adresser å slette"
 #, fuzzy
 msgid "Delete Stored IP Addresses"
 msgstr "Slett lagrede IP-adresser"
+
+msgid "No history to erase"
+msgstr "Ingen historikk å slette"
+
+msgid "Clear Project History"
+msgstr "Tøm prosjekthistorikk"
 
 msgid "Time"
 msgstr "Tid"
@@ -711,8 +699,14 @@ msgstr "Regningen %(name)s fikk sitt navn endret til %(new_description)s"
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr "Deltager %(name)s: vekting endret fra %(old_weight)s til %(new_weight)s"
 
+msgid "Payer"
+msgstr "Betaler"
+
 msgid "Amount"
 msgstr "Beløp"
+
+msgid "Date"
+msgstr "Dato"
 
 #, python-format
 msgid "Amount in %(currency)s"
@@ -791,6 +785,37 @@ msgstr ""
 "Ikke gjenbruk et personlig passord. Velg en privat kode og send den til "
 "vennene dine."
 
+msgid "Hi"
+msgstr ""
+
+#, python-format
+msgid ""
+"Someone using the email address %(contact_email)sinvited you to share "
+"your expenses for \"%(name)s\"."
+msgstr ""
+
+msgid ""
+"It's as simple as saying what did you pay for, for whom, and how much did"
+" it cost you, we are caring about the rest."
+msgstr ""
+
+#, python-format
+msgid "You can log in using this link: %(link)s."
+msgstr ""
+
+#, python-format
+msgid ""
+"Once logged-in, you can use the following link which is easier to "
+"remember: %(short_link)s If your cookie gets deleted or if you log out, "
+"you will need to log back in using the first link."
+msgstr ""
+
+msgid "Enjoy"
+msgstr ""
+
+msgid "See you :-)"
+msgstr ""
+
 msgid "Account manager"
 msgstr "Kontobehandler"
 
@@ -865,29 +890,20 @@ msgstr "er du sikker?"
 msgid "Invite people"
 msgstr "Inviter folk"
 
-msgid "You should start by adding participants"
-msgstr "Du kan starte ved å legge til deltagere"
-
-msgid "Add a new bill"
-msgstr "Legg til en ny regning"
-
 msgid "Newer bills"
 msgstr "Nyere regninger"
 
 msgid "Older bills"
 msgstr "Eldre regninger"
 
-msgid "When?"
-msgstr "Når?"
+msgid "You should start by adding participants"
+msgstr "Du kan starte ved å legge til deltagere"
 
-msgid "Who paid?"
-msgstr "Hvem betalte?"
+msgid "Add a new bill"
+msgstr "Legg til en ny regning"
 
 msgid "For what?"
 msgstr "For hva?"
-
-msgid "How much?"
-msgstr "Hvor meget?"
 
 #, python-format
 msgid "Added on %(date)s"
@@ -1227,3 +1243,54 @@ msgstr "Periode"
 
 #~ msgid "Participants to notify"
 #~ msgstr "legge til deltagere"
+
+#~ msgid "Import"
+#~ msgstr "Importer"
+
+#~ msgid "Amount paid"
+#~ msgstr "Beløp betalt"
+
+#~ msgid ""
+#~ "We tried to send you an reminder"
+#~ " email, but there was an error. "
+#~ "You can still use the project "
+#~ "normally."
+#~ msgstr ""
+#~ "En påminnelse ble sendt til deg "
+#~ "per e-post, men en feil inntraff. "
+#~ "Du kan fremdeles bruke prosjektet "
+#~ "normalt."
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "Prosjektidentifikatoren er %(project)s"
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "sending you an email with password "
+#~ "reset instructions. Please check the "
+#~ "email configuration of the server or "
+#~ "contact the administrator."
+#~ msgstr ""
+#~ "En feil inntraff under forsendelse av"
+#~ " passordtilbakestilling til deg per e-post."
+#~ " Sjekk at e-postoppsettet til tjeneren "
+#~ "er rett, eller kontakt administratoren."
+
+#~ msgid "Invalid JSON"
+#~ msgstr "Ugyldig JSON"
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "trying to send the invitation emails."
+#~ " Please check the email configuration "
+#~ "of the server or contact the "
+#~ "administrator."
+#~ msgstr ""
+#~ "Kunne ikke sende invitasjoner per "
+#~ "e-post. Sjekk at e-postoppsettet på "
+#~ "tjeneren stemmer, eller kontakt "
+#~ "administratoren."
+
+#~ msgid "Import JSON"
+#~ msgstr "Importer JSON"
+

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 18:01+0100\n"
+"POT-Creation-Date: 2022-04-20 17:38-0400\n"
 "PO-Revision-Date: 2020-07-01 18:41+0000\n"
 "Last-Translator: rohitn01 <rohitmen01@gmail.com>\n"
 "Language: ta\n"
@@ -13,7 +13,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr ""
+"நீங்கள் இப்போது உருவாக்கியுள்ளீர்கள் '%(project)s' உங்கள் செலவுகளை "
+"பகிர்ந்து கொள்ள"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -52,11 +58,8 @@ msgid ""
 "multiple currencies."
 msgstr ""
 
-msgid "Import previously exported JSON file"
-msgstr "முன்னர் ஏற்றுமதி செய்யப்பட்ட JSON கோப்பை இறக்குமதி செய்க"
-
-msgid "Import"
-msgstr "இறக்குமதி"
+msgid "Compatible with Cospend"
+msgstr ""
 
 msgid "Project identifier"
 msgstr "திட்ட அடையாளங்காட்டி"
@@ -119,17 +122,17 @@ msgstr "கடவுச்சொல் உறுதிப்படுத்த�
 msgid "Reset password"
 msgstr "கடவுச்சொல்லை மீட்டமைக்க"
 
-msgid "Date"
-msgstr "தேதி"
+msgid "When?"
+msgstr ""
 
 msgid "What?"
 msgstr "என்ன?"
 
-msgid "Payer"
-msgstr "செலுத்துவோர்"
+msgid "Who paid?"
+msgstr ""
 
-msgid "Amount paid"
-msgstr "பணம் செலுத்தப்பட்டது"
+msgid "How much?"
+msgstr ""
 
 msgid "Currency"
 msgstr "நாணய"
@@ -185,6 +188,11 @@ msgstr "அழைப்புகளை அனுப்பு"
 msgid "The email %(email)s is not valid"
 msgstr "மின்னஞ்சல் %(email)s செல்லுபடியாகாது"
 
+msgid ""
+"{error_message} Please check the email configuration of the "
+"server{error_extension}"
+msgstr ""
+
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
 msgstr ""
@@ -227,34 +235,8 @@ msgstr ""
 msgid "This private code is not the right one"
 msgstr "இந்த தனிப்பட்ட குறியீடு சரியானது அல்ல"
 
-#, python-format
-msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
-"நீங்கள் இப்போது உருவாக்கியுள்ளீர்கள் '%(project)s' உங்கள் செலவுகளை "
-"பகிர்ந்து கொள்ள"
-
 msgid "A reminder email has just been sent to you"
 msgstr "ஒரு நினைவூட்டல் மின்னஞ்சல் உங்களுக்கு அனுப்பப்பட்டுள்ளது"
-
-msgid ""
-"We tried to send you an reminder email, but there was an error. You can "
-"still use the project normally."
-msgstr ""
-"உங்களுக்கு நினைவூட்டல் மின்னஞ்சலை அனுப்ப முயற்சித்தோம், ஆனால் பிழை "
-"ஏற்பட்டது. நீங்கள் இன்னும் திட்டத்தை சாதாரணமாக பயன்படுத்தலாம்."
-
-#, python-format
-msgid "The project identifier is %(project)s"
-msgstr "திட்ட அடையாளங்காட்டி %(project)s"
-
-msgid ""
-"Sorry, there was an error while sending you an email with password reset "
-"instructions. Please check the email configuration of the server or "
-"contact the administrator."
-msgstr ""
-"மன்னிக்கவும், கடவுச்சொல் மீட்டமைப்பு வழிமுறைகளுடன் உங்களுக்கு மின்னஞ்சல் "
-"அனுப்பும்போது பிழை ஏற்பட்டது. சேவையகத்தின் மின்னஞ்சல் உள்ளமைவை "
-"சரிபார்க்கவும் அல்லது நிர்வாகியைத் தொடர்பு கொள்ளவும்."
 
 msgid "No token provided"
 msgstr "டோக்கன் வழங்கப்படவில்லை"
@@ -268,15 +250,21 @@ msgstr "தெரியாத திட்டம்"
 msgid "Password successfully reset."
 msgstr "கடவுச்சொல் வெற்றிகரமாக மீட்டமைக்கப்படுகிறது."
 
-msgid "Project successfully uploaded"
-msgstr "திட்டம் வெற்றிகரமாக பதிவேற்றப்பட்டது"
+msgid "Unable to parse CSV"
+msgstr ""
 
-msgid "Invalid JSON"
-msgstr "தவறான JSON"
+msgid "Missing attribute {}"
+msgstr ""
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
+msgstr ""
+
+msgid "Project successfully uploaded"
+msgstr "திட்டம் வெற்றிகரமாக பதிவேற்றப்பட்டது"
+
+msgid ": "
 msgstr ""
 
 msgid "Project successfully deleted"
@@ -291,15 +279,6 @@ msgstr "உங்கள் செலவுகளை பகிர்ந்து 
 
 msgid "Your invitations have been sent"
 msgstr "உங்கள் அழைப்புகள் அனுப்பப்பட்டுள்ளன"
-
-msgid ""
-"Sorry, there was an error while trying to send the invitation emails. "
-"Please check the email configuration of the server or contact the "
-"administrator."
-msgstr ""
-"மன்னிக்கவும், அழைப்பிதழ் மின்னஞ்சல்களை அனுப்ப முயற்சிக்கும்போது பிழை "
-"ஏற்பட்டது. சேவையகத்தின் மின்னஞ்சல் உள்ளமைவை சரிபார்க்கவும் அல்லது "
-"நிர்வாகியைத் தொடர்பு கொள்ளவும்."
 
 #, python-format
 msgid "%(member)s has been added"
@@ -339,6 +318,9 @@ msgid "The bill has been deleted"
 msgstr ""
 
 msgid "The bill has been modified"
+msgstr ""
+
+msgid "{lang} is not a supported language"
 msgstr ""
 
 #, fuzzy
@@ -429,11 +411,9 @@ msgstr ""
 msgid "Delete project"
 msgstr "திட்டத்தை உருவாக்கவும்"
 
-msgid "Import JSON"
-msgstr ""
-
-msgid "Choose file"
-msgstr ""
+#, fuzzy
+msgid "Import project"
+msgstr "திட்டத்தை உருவாக்கவும்"
 
 msgid "Download project's data"
 msgstr ""
@@ -465,10 +445,20 @@ msgstr ""
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
 
+#, fuzzy
+msgid "Import previously exported project"
+msgstr "முன்னர் ஏற்றுமதி செய்யப்பட்ட JSON கோப்பை இறக்குமதி செய்க"
+
+msgid "Choose file"
+msgstr ""
+
 msgid "Edit this bill"
 msgstr ""
 
 msgid "Add a bill"
+msgstr ""
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
 msgstr ""
 
 msgid "Everyone"
@@ -583,16 +573,16 @@ msgstr ""
 msgid "Delete stored IP addresses"
 msgstr ""
 
-msgid "No history to erase"
-msgstr ""
-
-msgid "Clear Project History"
-msgstr ""
-
 msgid "No IP Addresses to erase"
 msgstr ""
 
 msgid "Delete Stored IP Addresses"
+msgstr ""
+
+msgid "No history to erase"
+msgstr ""
+
+msgid "Clear Project History"
 msgstr ""
 
 msgid "Time"
@@ -656,8 +646,14 @@ msgstr ""
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
+msgid "Payer"
+msgstr "செலுத்துவோர்"
+
 msgid "Amount"
 msgstr ""
+
+msgid "Date"
+msgstr "தேதி"
 
 #, python-format
 msgid "Amount in %(currency)s"
@@ -732,6 +728,37 @@ msgid ""
 "your friends"
 msgstr ""
 
+msgid "Hi"
+msgstr ""
+
+#, python-format
+msgid ""
+"Someone using the email address %(contact_email)sinvited you to share "
+"your expenses for \"%(name)s\"."
+msgstr ""
+
+msgid ""
+"It's as simple as saying what did you pay for, for whom, and how much did"
+" it cost you, we are caring about the rest."
+msgstr ""
+
+#, python-format
+msgid "You can log in using this link: %(link)s."
+msgstr ""
+
+#, python-format
+msgid ""
+"Once logged-in, you can use the following link which is easier to "
+"remember: %(short_link)s If your cookie gets deleted or if you log out, "
+"you will need to log back in using the first link."
+msgstr ""
+
+msgid "Enjoy"
+msgstr ""
+
+msgid "See you :-)"
+msgstr ""
+
 msgid "Account manager"
 msgstr ""
 
@@ -802,28 +829,19 @@ msgstr ""
 msgid "Invite people"
 msgstr ""
 
-msgid "You should start by adding participants"
-msgstr ""
-
-msgid "Add a new bill"
-msgstr ""
-
 msgid "Newer bills"
 msgstr ""
 
 msgid "Older bills"
 msgstr ""
 
-msgid "When?"
+msgid "You should start by adding participants"
 msgstr ""
 
-msgid "Who paid?"
+msgid "Add a new bill"
 msgstr ""
 
 msgid "For what?"
-msgstr ""
-
-msgid "How much?"
 msgstr ""
 
 #, python-format
@@ -1029,3 +1047,54 @@ msgstr ""
 
 #~ msgid "Participants to notify"
 #~ msgstr ""
+
+#~ msgid "Import"
+#~ msgstr "இறக்குமதி"
+
+#~ msgid "Amount paid"
+#~ msgstr "பணம் செலுத்தப்பட்டது"
+
+#~ msgid ""
+#~ "We tried to send you an reminder"
+#~ " email, but there was an error. "
+#~ "You can still use the project "
+#~ "normally."
+#~ msgstr ""
+#~ "உங்களுக்கு நினைவூட்டல் மின்னஞ்சலை அனுப்ப "
+#~ "முயற்சித்தோம், ஆனால் பிழை ஏற்பட்டது. நீங்கள்"
+#~ " இன்னும் திட்டத்தை சாதாரணமாக பயன்படுத்தலாம்."
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "திட்ட அடையாளங்காட்டி %(project)s"
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "sending you an email with password "
+#~ "reset instructions. Please check the "
+#~ "email configuration of the server or "
+#~ "contact the administrator."
+#~ msgstr ""
+#~ "மன்னிக்கவும், கடவுச்சொல் மீட்டமைப்பு வழிமுறைகளுடன்"
+#~ " உங்களுக்கு மின்னஞ்சல் அனுப்பும்போது பிழை "
+#~ "ஏற்பட்டது. சேவையகத்தின் மின்னஞ்சல் உள்ளமைவை "
+#~ "சரிபார்க்கவும் அல்லது நிர்வாகியைத் தொடர்பு "
+#~ "கொள்ளவும்."
+
+#~ msgid "Invalid JSON"
+#~ msgstr "தவறான JSON"
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "trying to send the invitation emails."
+#~ " Please check the email configuration "
+#~ "of the server or contact the "
+#~ "administrator."
+#~ msgstr ""
+#~ "மன்னிக்கவும், அழைப்பிதழ் மின்னஞ்சல்களை அனுப்ப "
+#~ "முயற்சிக்கும்போது பிழை ஏற்பட்டது. சேவையகத்தின் "
+#~ "மின்னஞ்சல் உள்ளமைவை சரிபார்க்கவும் அல்லது "
+#~ "நிர்வாகியைத் தொடர்பு கொள்ளவும்."
+
+#~ msgid "Import JSON"
+#~ msgstr ""
+

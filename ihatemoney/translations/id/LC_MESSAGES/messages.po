@@ -1,19 +1,23 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 18:01+0100\n"
+"POT-Creation-Date: 2022-04-20 17:38-0400\n"
 "PO-Revision-Date: 2021-11-23 00:51+0000\n"
 "Last-Translator: whenwesober <naomi16i_1298q@cikuh.com>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/id/>\n"
 "Language: id\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/id/>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.10-dev\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr "Anda baru saja membuat %(project)s untuk membagikan harga Anda"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -53,11 +57,8 @@ msgstr ""
 "Proyek ini tidak dapat disetel ke 'tanpa mata uang' karena berisi tagihan"
 " dalam berbagai mata uang."
 
-msgid "Import previously exported JSON file"
-msgstr "Impor file JSON yang sudah diekspor sebelumnya"
-
-msgid "Import"
-msgstr "Impor"
+msgid "Compatible with Cospend"
+msgstr ""
 
 msgid "Project identifier"
 msgstr "Pengidentifikasi proyek"
@@ -119,17 +120,17 @@ msgstr "Konfirmasi kata sandi"
 msgid "Reset password"
 msgstr "Atur ulang kata sandi"
 
-msgid "Date"
-msgstr "Tanggal"
+msgid "When?"
+msgstr "Kapan?"
 
 msgid "What?"
 msgstr "Apa?"
 
-msgid "Payer"
-msgstr "Pembayar"
+msgid "Who paid?"
+msgstr "Siapa yang bayar?"
 
-msgid "Amount paid"
-msgstr "Jumlah bayar"
+msgid "How much?"
+msgstr "Berapa banyak?"
 
 msgid "Currency"
 msgstr "Mata Uang"
@@ -184,6 +185,11 @@ msgstr "Kirim undangan"
 msgid "The email %(email)s is not valid"
 msgstr "Surel %(email)s tidak valid"
 
+msgid ""
+"{error_message} Please check the email configuration of the "
+"server{error_extension}"
+msgstr ""
+
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
 msgstr "{dual_object_0} dan {dual_object_1}"
@@ -224,32 +230,8 @@ msgstr "Token yang disediakan tidak valid"
 msgid "This private code is not the right one"
 msgstr "Kode pribadi ini tidak benar"
 
-#, python-format
-msgid "You have just created '%(project)s' to share your expenses"
-msgstr "Anda baru saja membuat %(project)s untuk membagikan harga Anda"
-
 msgid "A reminder email has just been sent to you"
 msgstr "Email pengingat baru saja dikirimkan kepada Anda"
-
-msgid ""
-"We tried to send you an reminder email, but there was an error. You can "
-"still use the project normally."
-msgstr ""
-"Kami telah mengirimi Anda email pengingat, tetapi ada kesalahan. Anda "
-"masih dapat menggunakan proyek secara normal."
-
-#, python-format
-msgid "The project identifier is %(project)s"
-msgstr "Pengidentifikasi proyek adalah %(project)s"
-
-msgid ""
-"Sorry, there was an error while sending you an email with password reset "
-"instructions. Please check the email configuration of the server or "
-"contact the administrator."
-msgstr ""
-"Maaf, ada galat saat mengirim email berisi instruksi pengaturan ulang "
-"kata sandi. Silakan periksa konfigurasi email peladen atau hubungi "
-"administrator."
 
 msgid "No token provided"
 msgstr "Belum ada token diberikan"
@@ -263,15 +245,21 @@ msgstr "Proyek tidak diketahui"
 msgid "Password successfully reset."
 msgstr "Kata sandi berhasil diatur ulang."
 
-msgid "Project successfully uploaded"
-msgstr "Proyek berhasil diunggah"
+msgid "Unable to parse CSV"
+msgstr ""
 
-msgid "Invalid JSON"
-msgstr "JSON tidak valid"
+msgid "Missing attribute {}"
+msgstr ""
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
+msgstr ""
+
+msgid "Project successfully uploaded"
+msgstr "Proyek berhasil diunggah"
+
+msgid ": "
 msgstr ""
 
 msgid "Project successfully deleted"
@@ -286,14 +274,6 @@ msgstr "Anda telah diundang untuk membagikan harga Anda untuk %(project)s"
 
 msgid "Your invitations have been sent"
 msgstr "Undangan Anda telah dikirim"
-
-msgid ""
-"Sorry, there was an error while trying to send the invitation emails. "
-"Please check the email configuration of the server or contact the "
-"administrator."
-msgstr ""
-"Maaf, ada galat saat mencoba mengirim email undangan. Silakan periksa "
-"konfigurasi email peladen atau hubungi administrator."
 
 #, python-format
 msgid "%(member)s has been added"
@@ -336,6 +316,9 @@ msgstr "Tagihan telah dihapus"
 
 msgid "The bill has been modified"
 msgstr "Tagihan telah diperbarui"
+
+msgid "{lang} is not a supported language"
+msgstr ""
 
 msgid "Error deleting project history"
 msgstr "Kesalahan saat menghapus riwayat proyek"
@@ -421,11 +404,9 @@ msgstr "Ubah proyek"
 msgid "Delete project"
 msgstr "Hapus proyek"
 
-msgid "Import JSON"
-msgstr "Impor JSON"
-
-msgid "Choose file"
-msgstr "Pilih berkas"
+#, fuzzy
+msgid "Import project"
+msgstr "Ubah proyek"
 
 msgid "Download project's data"
 msgstr "Unduh data proyek"
@@ -457,11 +438,21 @@ msgstr "Ubah proyek"
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
 
+#, fuzzy
+msgid "Import previously exported project"
+msgstr "Impor file JSON yang sudah diekspor sebelumnya"
+
+msgid "Choose file"
+msgstr "Pilih berkas"
+
 msgid "Edit this bill"
 msgstr "Ubah tagihan ini"
 
 msgid "Add a bill"
 msgstr "Tambah tagihan"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr ""
 
 msgid "Everyone"
 msgstr "Semua orang"
@@ -596,17 +587,17 @@ msgstr ""
 msgid "Delete stored IP addresses"
 msgstr "Hapus alamat IP yang disimpan"
 
-msgid "No history to erase"
-msgstr "Tidak ada riwayat untuk dihapus"
-
-msgid "Clear Project History"
-msgstr "Bersihkan Riwayat Proyek"
-
 msgid "No IP Addresses to erase"
 msgstr "Tidak ada Alamat IP untuk dihapus"
 
 msgid "Delete Stored IP Addresses"
 msgstr "Hapus alamat IP yang disimpan"
+
+msgid "No history to erase"
+msgstr "Tidak ada riwayat untuk dihapus"
+
+msgid "Clear Project History"
+msgstr "Bersihkan Riwayat Proyek"
 
 msgid "Time"
 msgstr "Waktu"
@@ -669,8 +660,14 @@ msgstr "Tagihan %(name)s diganti ke %(new_description)s"
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr "Pengguna %(name)s: berat berubah dari %(old_weight)s ke %(new_weight)s"
 
+msgid "Payer"
+msgstr "Pembayar"
+
 msgid "Amount"
 msgstr "Jumlah"
+
+msgid "Date"
+msgstr "Tanggal"
 
 #, python-format
 msgid "Amount in %(currency)s"
@@ -747,6 +744,37 @@ msgstr ""
 "Jangan gunakan kembali kata sandi pribadi. Pilih kode pribadi dan "
 "kirimkan ke teman Anda"
 
+msgid "Hi"
+msgstr ""
+
+#, python-format
+msgid ""
+"Someone using the email address %(contact_email)sinvited you to share "
+"your expenses for \"%(name)s\"."
+msgstr ""
+
+msgid ""
+"It's as simple as saying what did you pay for, for whom, and how much did"
+" it cost you, we are caring about the rest."
+msgstr ""
+
+#, python-format
+msgid "You can log in using this link: %(link)s."
+msgstr ""
+
+#, python-format
+msgid ""
+"Once logged-in, you can use the following link which is easier to "
+"remember: %(short_link)s If your cookie gets deleted or if you log out, "
+"you will need to log back in using the first link."
+msgstr ""
+
+msgid "Enjoy"
+msgstr ""
+
+msgid "See you :-)"
+msgstr ""
+
 msgid "Account manager"
 msgstr "Pengatur akun"
 
@@ -817,29 +845,20 @@ msgstr "Anda yakin?"
 msgid "Invite people"
 msgstr "Undang orang"
 
-msgid "You should start by adding participants"
-msgstr "Anda harus mulai dengan menambahkan partisipan"
-
-msgid "Add a new bill"
-msgstr "Tambah tagihan baru"
-
 msgid "Newer bills"
 msgstr "Tagihan terbaru"
 
 msgid "Older bills"
 msgstr "Tagihan terdahulu"
 
-msgid "When?"
-msgstr "Kapan?"
+msgid "You should start by adding participants"
+msgstr "Anda harus mulai dengan menambahkan partisipan"
 
-msgid "Who paid?"
-msgstr "Siapa yang bayar?"
+msgid "Add a new bill"
+msgstr "Tambah tagihan baru"
 
 msgid "For what?"
 msgstr "Untuk apa?"
-
-msgid "How much?"
-msgstr "Berapa banyak?"
 
 #, python-format
 msgid "Added on %(date)s"
@@ -1045,3 +1064,54 @@ msgstr "Periode"
 
 #~ msgid "People to notify"
 #~ msgstr "Orang yang akan diberi pemberitahuan"
+
+#~ msgid "Import"
+#~ msgstr "Impor"
+
+#~ msgid "Amount paid"
+#~ msgstr "Jumlah bayar"
+
+#~ msgid ""
+#~ "We tried to send you an reminder"
+#~ " email, but there was an error. "
+#~ "You can still use the project "
+#~ "normally."
+#~ msgstr ""
+#~ "Kami telah mengirimi Anda email "
+#~ "pengingat, tetapi ada kesalahan. Anda "
+#~ "masih dapat menggunakan proyek secara "
+#~ "normal."
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "Pengidentifikasi proyek adalah %(project)s"
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "sending you an email with password "
+#~ "reset instructions. Please check the "
+#~ "email configuration of the server or "
+#~ "contact the administrator."
+#~ msgstr ""
+#~ "Maaf, ada galat saat mengirim email "
+#~ "berisi instruksi pengaturan ulang kata "
+#~ "sandi. Silakan periksa konfigurasi email "
+#~ "peladen atau hubungi administrator."
+
+#~ msgid "Invalid JSON"
+#~ msgstr "JSON tidak valid"
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "trying to send the invitation emails."
+#~ " Please check the email configuration "
+#~ "of the server or contact the "
+#~ "administrator."
+#~ msgstr ""
+#~ "Maaf, ada galat saat mencoba mengirim"
+#~ " email undangan. Silakan periksa "
+#~ "konfigurasi email peladen atau hubungi "
+#~ "administrator."
+
+#~ msgid "Import JSON"
+#~ msgstr "Impor JSON"
+

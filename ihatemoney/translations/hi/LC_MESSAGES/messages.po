@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 18:01+0100\n"
+"POT-Creation-Date: 2022-04-20 17:38-0400\n"
 "PO-Revision-Date: 2020-06-14 14:41+0000\n"
 "Last-Translator: raghupalash <singhpalash0@gmail.com>\n"
 "Language: hi\n"
@@ -13,7 +13,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr "आपने अभी अभी अपने खर्चों को साझा करने के लिए '%(project)s' बनाया है"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -52,11 +56,8 @@ msgid ""
 "multiple currencies."
 msgstr ""
 
-msgid "Import previously exported JSON file"
-msgstr "पूर्व में निर्यात की गई JSON फ़ाइल आयात करें"
-
-msgid "Import"
-msgstr "आयात"
+msgid "Compatible with Cospend"
+msgstr ""
 
 msgid "Project identifier"
 msgstr "परियोजना पहचानकर्ता"
@@ -120,17 +121,17 @@ msgstr "पासवर्ड पुष्टीकरण"
 msgid "Reset password"
 msgstr "पासवर्ड रीसेट"
 
-msgid "Date"
-msgstr "तारीख"
+msgid "When?"
+msgstr "कब?"
 
 msgid "What?"
 msgstr "क्या?"
 
-msgid "Payer"
-msgstr "भुगतानकर्ता"
+msgid "Who paid?"
+msgstr "किसने भुगतान किया?"
 
-msgid "Amount paid"
-msgstr "भुगतान की गई राशि"
+msgid "How much?"
+msgstr "कितना?"
 
 msgid "Currency"
 msgstr "मुद्रा"
@@ -187,6 +188,11 @@ msgstr "आमंत्रण भेजें"
 msgid "The email %(email)s is not valid"
 msgstr "ईमेल %(email)s मान्य नहीं है"
 
+msgid ""
+"{error_message} Please check the email configuration of the "
+"server{error_extension}"
+msgstr ""
+
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
 msgstr ""
@@ -227,32 +233,8 @@ msgstr ""
 msgid "This private code is not the right one"
 msgstr "यह निजी कोड सही नहीं है"
 
-#, python-format
-msgid "You have just created '%(project)s' to share your expenses"
-msgstr "आपने अभी अभी अपने खर्चों को साझा करने के लिए '%(project)s' बनाया है"
-
 msgid "A reminder email has just been sent to you"
 msgstr "आपको अभी एक अनुस्मारक ईमेल भेजा गया है"
-
-msgid ""
-"We tried to send you an reminder email, but there was an error. You can "
-"still use the project normally."
-msgstr ""
-"हमने आपको एक अनुस्मारक ईमेल भेजने की कोशिश की, लेकिन कोई त्रुटि थी। आप "
-"अभी भी सामान्य रूप से प्रोजेक्ट का उपयोग कर सकते हैं।"
-
-#, python-format
-msgid "The project identifier is %(project)s"
-msgstr "प्रोजेक्ट पहचानकर्ता %(project)s है"
-
-msgid ""
-"Sorry, there was an error while sending you an email with password reset "
-"instructions. Please check the email configuration of the server or "
-"contact the administrator."
-msgstr ""
-"क्षमा करें, पासवर्ड रीसेट निर्देशों के साथ आपको एक ईमेल भेजते समय कोई "
-"त्रुटि हुई थी। कृपया सर्वर के ईमेल कॉन्फ़िगरेशन की जाँच करें या "
-"व्यवस्थापक से संपर्क करें।"
 
 msgid "No token provided"
 msgstr "कोई टोकन प्रदान नहीं किया गया"
@@ -266,15 +248,21 @@ msgstr "अज्ञात परियोजना"
 msgid "Password successfully reset."
 msgstr "पासवर्ड सफलतापूर्वक रीसेट हो गया है।"
 
-msgid "Project successfully uploaded"
-msgstr "प्रोजेक्ट सफलतापूर्वक अपलोड किया गया"
+msgid "Unable to parse CSV"
+msgstr ""
 
-msgid "Invalid JSON"
-msgstr "अमान्य JSON"
+msgid "Missing attribute {}"
+msgstr ""
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
+msgstr ""
+
+msgid "Project successfully uploaded"
+msgstr "प्रोजेक्ट सफलतापूर्वक अपलोड किया गया"
+
+msgid ": "
 msgstr ""
 
 msgid "Project successfully deleted"
@@ -291,14 +279,6 @@ msgstr ""
 
 msgid "Your invitations have been sent"
 msgstr "आपके निमंत्रण भेज दिए गए हैं"
-
-msgid ""
-"Sorry, there was an error while trying to send the invitation emails. "
-"Please check the email configuration of the server or contact the "
-"administrator."
-msgstr ""
-"क्षमा करें, आमंत्रण ईमेल भेजने का प्रयास करते समय कोई त्रुटि हुई। कृपया "
-"सर्वर के ईमेल कॉन्फ़िगरेशन की जाँच करें या व्यवस्थापक से संपर्क करें।"
 
 #, python-format
 msgid "%(member)s has been added"
@@ -341,6 +321,9 @@ msgstr "बिल को हटा दिया गया है"
 
 msgid "The bill has been modified"
 msgstr "बिल को संशोधित कर दिया गया है"
+
+msgid "{lang} is not a supported language"
+msgstr ""
 
 #, fuzzy
 msgid "Error deleting project history"
@@ -437,11 +420,9 @@ msgstr "परियोजना संपादित करें"
 msgid "Delete project"
 msgstr "परियोजना संपादित करें"
 
-msgid "Import JSON"
-msgstr "JSON को आयात करे"
-
-msgid "Choose file"
-msgstr "फ़ाइल चुनें"
+#, fuzzy
+msgid "Import project"
+msgstr "परियोजना संपादित करें"
 
 msgid "Download project's data"
 msgstr "प्रोजेक्ट का डेटा डाउनलोड करें"
@@ -473,11 +454,21 @@ msgstr "प्रोजेक्ट संपादित करें"
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
 
+#, fuzzy
+msgid "Import previously exported project"
+msgstr "पूर्व में निर्यात की गई JSON फ़ाइल आयात करें"
+
+msgid "Choose file"
+msgstr "फ़ाइल चुनें"
+
 msgid "Edit this bill"
 msgstr "इस बिल को संपादित करें"
 
 msgid "Add a bill"
 msgstr "बिल जोड़ें"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr ""
 
 msgid "Everyone"
 msgstr "सब"
@@ -613,17 +604,17 @@ msgstr ""
 msgid "Delete stored IP addresses"
 msgstr "संग्रहीत IP पते हटाएं"
 
-msgid "No history to erase"
-msgstr "मिटाने के लिए कोई इतिहास नहीं है"
-
-msgid "Clear Project History"
-msgstr "प्रोजेक्ट इतिहास हटाएं"
-
 msgid "No IP Addresses to erase"
 msgstr "मिटाने के लिए कोई IP पते नहीं हैं"
 
 msgid "Delete Stored IP Addresses"
 msgstr "संग्रहीत IP पते हटाएं"
+
+msgid "No history to erase"
+msgstr "मिटाने के लिए कोई इतिहास नहीं है"
+
+msgid "Clear Project History"
+msgstr "प्रोजेक्ट इतिहास हटाएं"
 
 msgid "Time"
 msgstr "समय"
@@ -686,8 +677,14 @@ msgstr ""
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
+msgid "Payer"
+msgstr "भुगतानकर्ता"
+
 msgid "Amount"
 msgstr "रकम"
+
+msgid "Date"
+msgstr "तारीख"
 
 #, python-format
 msgid "Amount in %(currency)s"
@@ -764,6 +761,37 @@ msgstr ""
 "व्यक्तिगत पासवर्ड का पुन: उपयोग न करें। एक निजी कोड चुनें और इसे अपने "
 "दोस्तों को भेजें"
 
+msgid "Hi"
+msgstr ""
+
+#, python-format
+msgid ""
+"Someone using the email address %(contact_email)sinvited you to share "
+"your expenses for \"%(name)s\"."
+msgstr ""
+
+msgid ""
+"It's as simple as saying what did you pay for, for whom, and how much did"
+" it cost you, we are caring about the rest."
+msgstr ""
+
+#, python-format
+msgid "You can log in using this link: %(link)s."
+msgstr ""
+
+#, python-format
+msgid ""
+"Once logged-in, you can use the following link which is easier to "
+"remember: %(short_link)s If your cookie gets deleted or if you log out, "
+"you will need to log back in using the first link."
+msgstr ""
+
+msgid "Enjoy"
+msgstr ""
+
+msgid "See you :-)"
+msgstr ""
+
 msgid "Account manager"
 msgstr "खाता प्रबंधक"
 
@@ -835,29 +863,20 @@ msgstr "आपको यकीन है?"
 msgid "Invite people"
 msgstr "लोगों को निमंत्रण भेजें"
 
-msgid "You should start by adding participants"
-msgstr "शुरू करने के लिए प्रतिभागियों को जोड़ें"
-
-msgid "Add a new bill"
-msgstr "नया बिल जोड़ें"
-
 msgid "Newer bills"
 msgstr "नए बिल"
 
 msgid "Older bills"
 msgstr "पुराने बिल"
 
-msgid "When?"
-msgstr "कब?"
+msgid "You should start by adding participants"
+msgstr "शुरू करने के लिए प्रतिभागियों को जोड़ें"
 
-msgid "Who paid?"
-msgstr "किसने भुगतान किया?"
+msgid "Add a new bill"
+msgstr "नया बिल जोड़ें"
 
 msgid "For what?"
 msgstr "किस लिए?"
-
-msgid "How much?"
-msgstr "कितना?"
 
 #, python-format
 msgid "Added on %(date)s"
@@ -1035,3 +1054,56 @@ msgstr "अवधि"
 
 #~ msgid "People to notify"
 #~ msgstr "सूचित किये जाने वाले लोग"
+
+#~ msgid "Import"
+#~ msgstr "आयात"
+
+#~ msgid "Amount paid"
+#~ msgstr "भुगतान की गई राशि"
+
+#~ msgid ""
+#~ "We tried to send you an reminder"
+#~ " email, but there was an error. "
+#~ "You can still use the project "
+#~ "normally."
+#~ msgstr ""
+#~ "हमने आपको एक अनुस्मारक ईमेल भेजने "
+#~ "की कोशिश की, लेकिन कोई त्रुटि थी।"
+#~ " आप अभी भी सामान्य रूप से "
+#~ "प्रोजेक्ट का उपयोग कर सकते हैं।"
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "प्रोजेक्ट पहचानकर्ता %(project)s है"
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "sending you an email with password "
+#~ "reset instructions. Please check the "
+#~ "email configuration of the server or "
+#~ "contact the administrator."
+#~ msgstr ""
+#~ "क्षमा करें, पासवर्ड रीसेट निर्देशों के"
+#~ " साथ आपको एक ईमेल भेजते समय कोई"
+#~ " त्रुटि हुई थी। कृपया सर्वर के "
+#~ "ईमेल कॉन्फ़िगरेशन की जाँच करें या "
+#~ "व्यवस्थापक से संपर्क करें।"
+
+#~ msgid "Invalid JSON"
+#~ msgstr "अमान्य JSON"
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "trying to send the invitation emails."
+#~ " Please check the email configuration "
+#~ "of the server or contact the "
+#~ "administrator."
+#~ msgstr ""
+#~ "क्षमा करें, आमंत्रण ईमेल भेजने का "
+#~ "प्रयास करते समय कोई त्रुटि हुई। "
+#~ "कृपया सर्वर के ईमेल कॉन्फ़िगरेशन की "
+#~ "जाँच करें या व्यवस्थापक से संपर्क "
+#~ "करें।"
+
+#~ msgid "Import JSON"
+#~ msgstr "JSON को आयात करे"
+

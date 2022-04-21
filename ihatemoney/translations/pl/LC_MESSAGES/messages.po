@@ -1,20 +1,24 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 18:01+0100\n"
+"POT-Creation-Date: 2022-04-20 17:38-0400\n"
 "PO-Revision-Date: 2022-01-20 20:55+0000\n"
 "Last-Translator: Piotr <promantix@gmail.com>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/pl/>\n"
 "Language: pl\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/pl/>\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && "
+"(n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.11-dev\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr "Właśnie utworzyłeś „%(project)s”, aby podzielić się wydatkami"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -46,20 +50,18 @@ msgstr "Domyślna waluta"
 
 msgid "Setting a default currency enables currency conversion between bills"
 msgstr ""
-"Wybranie domyślnej waluty pozwala na konwersję walutową pomiędzy rachunkami"
+"Wybranie domyślnej waluty pozwala na konwersję walutową pomiędzy "
+"rachunkami"
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
-"Ten projekt nie może zostać oznaczony jako 'bez waluty', ponieważ zawiera on "
-"rachunki w różnych walutach."
+"Ten projekt nie może zostać oznaczony jako 'bez waluty', ponieważ zawiera"
+" on rachunki w różnych walutach."
 
-msgid "Import previously exported JSON file"
-msgstr "Zaimportuj wcześniej wyeksportowany plik JSON"
-
-msgid "Import"
-msgstr "Importuj"
+msgid "Compatible with Cospend"
+msgstr ""
 
 msgid "Project identifier"
 msgstr "Identyfikator projektu"
@@ -75,8 +77,8 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
-"Projekt o tym identyfikatorze (\"%(project)s\") już istnieje. Wybierz nowy "
-"identyfikator"
+"Projekt o tym identyfikatorze (\"%(project)s\") już istnieje. Wybierz "
+"nowy identyfikator"
 
 msgid "Which is a real currency: Euro or Petro dollar?"
 msgstr "Która waluta jest prawdziwa: euro czy petrodolar?"
@@ -120,17 +122,17 @@ msgstr "Potwierdzenie hasła"
 msgid "Reset password"
 msgstr "Zmień hasło"
 
-msgid "Date"
-msgstr "Data"
+msgid "When?"
+msgstr "Kiedy?"
 
 msgid "What?"
 msgstr "Co?"
 
-msgid "Payer"
-msgstr "Płatnik"
+msgid "Who paid?"
+msgstr "Kto zapłacił?"
 
-msgid "Amount paid"
-msgstr "Zapłacona kwota"
+msgid "How much?"
+msgstr "Jak dużo?"
 
 msgid "Currency"
 msgstr "Waluta"
@@ -185,6 +187,11 @@ msgstr "Wyślij zaproszenia"
 msgid "The email %(email)s is not valid"
 msgstr "Ten email %(email)s jest nieprawidłowy"
 
+msgid ""
+"{error_message} Please check the email configuration of the "
+"server{error_extension}"
+msgstr ""
+
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
 msgstr ""
@@ -225,32 +232,8 @@ msgstr ""
 msgid "This private code is not the right one"
 msgstr "Ten prywatny kod jest niewłaściwy"
 
-#, python-format
-msgid "You have just created '%(project)s' to share your expenses"
-msgstr "Właśnie utworzyłeś „%(project)s”, aby podzielić się wydatkami"
-
 msgid "A reminder email has just been sent to you"
 msgstr "Wiadomość e-mail z przypomnieniem została właśnie wysłana"
-
-msgid ""
-"We tried to send you an reminder email, but there was an error. You can "
-"still use the project normally."
-msgstr ""
-"Próbowaliśmy wysłać Ci wiadomość e-mail z przypomnieniem, ale wystąpił "
-"błąd. Nadal możesz normalnie korzystać z projektu."
-
-#, python-format
-msgid "The project identifier is %(project)s"
-msgstr "Identyfikator projektu to %(project)s"
-
-msgid ""
-"Sorry, there was an error while sending you an email with password reset "
-"instructions. Please check the email configuration of the server or "
-"contact the administrator."
-msgstr ""
-"Przepraszamy, wystąpił błąd podczas wysyłania wiadomości e-mail z "
-"instrukcjami resetowania hasła. Sprawdź konfigurację e-mail serwera lub "
-"skontaktuj się z administratorem."
 
 msgid "No token provided"
 msgstr "Nie podano tokena"
@@ -264,15 +247,21 @@ msgstr "Nieznany projekt"
 msgid "Password successfully reset."
 msgstr "Hasło zostało pomyślnie zresetowane."
 
-msgid "Project successfully uploaded"
-msgstr "Projekt został pomyślnie przesłany"
+msgid "Unable to parse CSV"
+msgstr ""
 
-msgid "Invalid JSON"
-msgstr "Niepoprawny JSON"
+msgid "Missing attribute {}"
+msgstr ""
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
+msgstr ""
+
+msgid "Project successfully uploaded"
+msgstr "Projekt został pomyślnie przesłany"
+
+msgid ": "
 msgstr ""
 
 msgid "Project successfully deleted"
@@ -287,15 +276,6 @@ msgstr "Zostałeś zaproszony do podzielenia się swoimi wydatkami w %(project)s
 
 msgid "Your invitations have been sent"
 msgstr "Twoje zaproszenia zostały wysłane"
-
-msgid ""
-"Sorry, there was an error while trying to send the invitation emails. "
-"Please check the email configuration of the server or contact the "
-"administrator."
-msgstr ""
-"Przepraszamy, wystąpił błąd podczas próby wysłania wiadomości e-mail z "
-"zaproszeniem. Sprawdź konfigurację e-mail serwera lub skontaktuj się z "
-"administratorem."
 
 #, python-format
 msgid "%(member)s has been added"
@@ -338,6 +318,9 @@ msgstr "Rachunek został usunięty"
 
 msgid "The bill has been modified"
 msgstr "Rachunek został zmieniony"
+
+msgid "{lang} is not a supported language"
+msgstr ""
 
 #, fuzzy
 msgid "Error deleting project history"
@@ -434,11 +417,9 @@ msgstr "Edytuj projekt"
 msgid "Delete project"
 msgstr "Edytuj projekt"
 
-msgid "Import JSON"
-msgstr "Importuj JSON"
-
-msgid "Choose file"
-msgstr "Wybierz plik"
+#, fuzzy
+msgid "Import project"
+msgstr "Edytuj projekt"
 
 msgid "Download project's data"
 msgstr "Pobierz dane projektu"
@@ -470,11 +451,21 @@ msgstr "Edytuj projekt"
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
 
+#, fuzzy
+msgid "Import previously exported project"
+msgstr "Zaimportuj wcześniej wyeksportowany plik JSON"
+
+msgid "Choose file"
+msgstr "Wybierz plik"
+
 msgid "Edit this bill"
 msgstr "Edytuj ten rachunek"
 
 msgid "Add a bill"
 msgstr "Dodaj rachunek"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr ""
 
 msgid "Everyone"
 msgstr "Wszyscy"
@@ -610,17 +601,17 @@ msgstr ""
 msgid "Delete stored IP addresses"
 msgstr "Usuń przechowywane adresy IP"
 
-msgid "No history to erase"
-msgstr "Brak historii do usunięcia"
-
-msgid "Clear Project History"
-msgstr "Wyczyść historię projektu"
-
 msgid "No IP Addresses to erase"
 msgstr "Brak adresów IP do usunięcia"
 
 msgid "Delete Stored IP Addresses"
 msgstr "Usuń przechowywane adresy IP"
+
+msgid "No history to erase"
+msgstr "Brak historii do usunięcia"
+
+msgid "Clear Project History"
+msgstr "Wyczyść historię projektu"
 
 msgid "Time"
 msgstr "Czas"
@@ -683,8 +674,14 @@ msgstr ""
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
+msgid "Payer"
+msgstr "Płatnik"
+
 msgid "Amount"
 msgstr "Ilość"
+
+msgid "Date"
+msgstr "Data"
 
 #, python-format
 msgid "Amount in %(currency)s"
@@ -761,6 +758,37 @@ msgstr ""
 "Nie używaj ponownie osobistego hasła. Wybierz kod prywatny i wyślij go "
 "znajomym"
 
+msgid "Hi"
+msgstr ""
+
+#, python-format
+msgid ""
+"Someone using the email address %(contact_email)sinvited you to share "
+"your expenses for \"%(name)s\"."
+msgstr ""
+
+msgid ""
+"It's as simple as saying what did you pay for, for whom, and how much did"
+" it cost you, we are caring about the rest."
+msgstr ""
+
+#, python-format
+msgid "You can log in using this link: %(link)s."
+msgstr ""
+
+#, python-format
+msgid ""
+"Once logged-in, you can use the following link which is easier to "
+"remember: %(short_link)s If your cookie gets deleted or if you log out, "
+"you will need to log back in using the first link."
+msgstr ""
+
+msgid "Enjoy"
+msgstr ""
+
+msgid "See you :-)"
+msgstr ""
+
 msgid "Account manager"
 msgstr "Menadżer konta"
 
@@ -832,29 +860,20 @@ msgstr "jesteś pewny?"
 msgid "Invite people"
 msgstr "Zaproś ludzi"
 
-msgid "You should start by adding participants"
-msgstr "Powinieneś zacząć od dodania uczestników"
-
-msgid "Add a new bill"
-msgstr "Dodaj nowy rachunek"
-
 msgid "Newer bills"
 msgstr "Nowsze rachunki"
 
 msgid "Older bills"
 msgstr "Starsze rachunki"
 
-msgid "When?"
-msgstr "Kiedy?"
+msgid "You should start by adding participants"
+msgstr "Powinieneś zacząć od dodania uczestników"
 
-msgid "Who paid?"
-msgstr "Kto zapłacił?"
+msgid "Add a new bill"
+msgstr "Dodaj nowy rachunek"
 
 msgid "For what?"
 msgstr "Za co?"
-
-msgid "How much?"
-msgstr "Jak dużo?"
 
 #, python-format
 msgid "Added on %(date)s"
@@ -1051,3 +1070,55 @@ msgstr "Okres"
 
 #~ msgid "People to notify"
 #~ msgstr "Osoby do powiadomienia"
+
+#~ msgid "Import"
+#~ msgstr "Importuj"
+
+#~ msgid "Amount paid"
+#~ msgstr "Zapłacona kwota"
+
+#~ msgid ""
+#~ "We tried to send you an reminder"
+#~ " email, but there was an error. "
+#~ "You can still use the project "
+#~ "normally."
+#~ msgstr ""
+#~ "Próbowaliśmy wysłać Ci wiadomość e-mail "
+#~ "z przypomnieniem, ale wystąpił błąd. "
+#~ "Nadal możesz normalnie korzystać z "
+#~ "projektu."
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "Identyfikator projektu to %(project)s"
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "sending you an email with password "
+#~ "reset instructions. Please check the "
+#~ "email configuration of the server or "
+#~ "contact the administrator."
+#~ msgstr ""
+#~ "Przepraszamy, wystąpił błąd podczas wysyłania"
+#~ " wiadomości e-mail z instrukcjami "
+#~ "resetowania hasła. Sprawdź konfigurację e-mail"
+#~ " serwera lub skontaktuj się z "
+#~ "administratorem."
+
+#~ msgid "Invalid JSON"
+#~ msgstr "Niepoprawny JSON"
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "trying to send the invitation emails."
+#~ " Please check the email configuration "
+#~ "of the server or contact the "
+#~ "administrator."
+#~ msgstr ""
+#~ "Przepraszamy, wystąpił błąd podczas próby "
+#~ "wysłania wiadomości e-mail z zaproszeniem. "
+#~ "Sprawdź konfigurację e-mail serwera lub "
+#~ "skontaktuj się z administratorem."
+
+#~ msgid "Import JSON"
+#~ msgstr "Importuj JSON"
+

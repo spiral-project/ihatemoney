@@ -1,19 +1,23 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 18:01+0100\n"
+"POT-Creation-Date: 2022-04-20 17:38-0400\n"
 "PO-Revision-Date: 2021-11-07 16:52+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/tr/>\n"
 "Language: tr\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/tr/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr "Giderlerinizi paylaşmak için '%(project)s' oluşturdunuz"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -55,11 +59,8 @@ msgstr ""
 "Bu proje, birden fazla para biriminde faturalar içerdiğinden 'para birimi"
 " yok' olarak ayarlanamaz."
 
-msgid "Import previously exported JSON file"
-msgstr "Önceden dışa aktarılan JSON dosyasını içe aktar"
-
-msgid "Import"
-msgstr "İçe aktar"
+msgid "Compatible with Cospend"
+msgstr ""
 
 msgid "Project identifier"
 msgstr "Proje tanımlayıcısı"
@@ -120,17 +121,17 @@ msgstr "Parola onayı"
 msgid "Reset password"
 msgstr "Parolayı sıfırla"
 
-msgid "Date"
-msgstr "Tarih"
+msgid "When?"
+msgstr "Ne zaman?"
 
 msgid "What?"
 msgstr "Ne?"
 
-msgid "Payer"
-msgstr "Mükellefi"
+msgid "Who paid?"
+msgstr "Kim ödedi?"
 
-msgid "Amount paid"
-msgstr "Ödenen tutar"
+msgid "How much?"
+msgstr "Ne kadar?"
 
 msgid "Currency"
 msgstr "Para birimi"
@@ -185,6 +186,11 @@ msgstr "Davet gönder"
 msgid "The email %(email)s is not valid"
 msgstr "%(email)s e-posta adresi geçerli değil"
 
+msgid ""
+"{error_message} Please check the email configuration of the "
+"server{error_extension}"
+msgstr ""
+
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
 msgstr "{dual_object_0} ve {dual_object_1}"
@@ -227,32 +233,8 @@ msgstr "Sağlanan belirteç geçersiz"
 msgid "This private code is not the right one"
 msgstr "Bu özel kod doğru değil"
 
-#, python-format
-msgid "You have just created '%(project)s' to share your expenses"
-msgstr "Giderlerinizi paylaşmak için '%(project)s' oluşturdunuz"
-
 msgid "A reminder email has just been sent to you"
 msgstr "Size bir hatırlatma e-postası gönderildi"
-
-msgid ""
-"We tried to send you an reminder email, but there was an error. You can "
-"still use the project normally."
-msgstr ""
-"Size bir hatırlatma e-postası göndermeye çalıştık, ancak bir hata oluştu."
-" Projeyi yine de normal şekilde kullanabilirsiniz."
-
-#, python-format
-msgid "The project identifier is %(project)s"
-msgstr "Proje tanımlayıcısı %(project)s"
-
-msgid ""
-"Sorry, there was an error while sending you an email with password reset "
-"instructions. Please check the email configuration of the server or "
-"contact the administrator."
-msgstr ""
-"Maalesef, parola sıfırlama talimatlarını içeren e-posta gönderilirken bir"
-" hata oluştu. Lütfen sunucunun e-posta yapılandırmasına göz atın veya "
-"yöneticiye başvurun."
 
 msgid "No token provided"
 msgstr "Belirteç sağlanmadı"
@@ -266,11 +248,11 @@ msgstr "Bilinmeyen proje"
 msgid "Password successfully reset."
 msgstr "Parola başarıyla sıfırlandı."
 
-msgid "Project successfully uploaded"
-msgstr "Proje başarıyla karşıya yüklendi"
+msgid "Unable to parse CSV"
+msgstr ""
 
-msgid "Invalid JSON"
-msgstr "Geçersiz JSON"
+msgid "Missing attribute {}"
+msgstr ""
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
@@ -278,6 +260,12 @@ msgid ""
 msgstr ""
 "Öntanımlı para birimi olmayan bir projeye birden fazla para biriminde "
 "fatura eklenemez"
+
+msgid "Project successfully uploaded"
+msgstr "Proje başarıyla karşıya yüklendi"
+
+msgid ": "
+msgstr ""
 
 msgid "Project successfully deleted"
 msgstr "Proje başarıyla silindi"
@@ -291,15 +279,6 @@ msgstr "%(project)s için giderlerinizi paylaşmaya davet edildiniz"
 
 msgid "Your invitations have been sent"
 msgstr "Davetleriniz gönderildi"
-
-msgid ""
-"Sorry, there was an error while trying to send the invitation emails. "
-"Please check the email configuration of the server or contact the "
-"administrator."
-msgstr ""
-"Maalesef davet e-postalarını göndermeye çalışırken bir hata oluştu. "
-"Lütfen sunucunun e-posta yapılandırmasına göz atın veya yöneticiye "
-"başvurun."
 
 #, python-format
 msgid "%(member)s has been added"
@@ -320,8 +299,8 @@ msgid ""
 "Participant '%(name)s' has been deactivated. It will still appear in the "
 "list until its balance reach zero."
 msgstr ""
-"'%(name)s' katılımcısı devre dışı bırakıldı. Bakiyesi sıfır oluncaya kadar "
-"listede görünmeye devam edecektir."
+"'%(name)s' katılımcısı devre dışı bırakıldı. Bakiyesi sıfır oluncaya "
+"kadar listede görünmeye devam edecektir."
 
 #, python-format
 msgid "Participant '%(name)s' has been removed"
@@ -342,6 +321,9 @@ msgstr "Fatura silindi"
 
 msgid "The bill has been modified"
 msgstr "Fatura değiştirildi"
+
+msgid "{lang} is not a supported language"
+msgstr ""
 
 msgid "Error deleting project history"
 msgstr "Proje geçmişi silinirken hata oluştu"
@@ -427,11 +409,9 @@ msgstr "Projeyi düzenle"
 msgid "Delete project"
 msgstr "Projeyi sil"
 
-msgid "Import JSON"
-msgstr "JSON'u içe aktar"
-
-msgid "Choose file"
-msgstr "Dosya seç"
+#, fuzzy
+msgid "Import project"
+msgstr "Projeyi düzenle"
 
 msgid "Download project's data"
 msgstr "Proje verilerini indir"
@@ -463,11 +443,21 @@ msgstr "Projeyi düzenle"
 msgid "This will remove all bills and participants in this project!"
 msgstr "Bu, bu projedeki tüm faturaları ve katılımcıları kaldıracaktır!"
 
+#, fuzzy
+msgid "Import previously exported project"
+msgstr "Önceden dışa aktarılan JSON dosyasını içe aktar"
+
+msgid "Choose file"
+msgstr "Dosya seç"
+
 msgid "Edit this bill"
 msgstr "Bu faturayı düzenle"
 
 msgid "Add a bill"
 msgstr "Bir fatura ekle"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr ""
 
 msgid "Everyone"
 msgstr "Herkes"
@@ -604,17 +594,17 @@ msgstr ""
 msgid "Delete stored IP addresses"
 msgstr "Kaydedilen IP adreslerini sil"
 
-msgid "No history to erase"
-msgstr "Silinecek geçmiş yok"
-
-msgid "Clear Project History"
-msgstr "Proje Geçmişini Temizle"
-
 msgid "No IP Addresses to erase"
 msgstr "Silinecek IP adresi yok"
 
 msgid "Delete Stored IP Addresses"
 msgstr "Kaydedilen IP Adreslerini Sil"
+
+msgid "No history to erase"
+msgstr "Silinecek geçmiş yok"
+
+msgid "Clear Project History"
+msgstr "Proje Geçmişini Temizle"
 
 msgid "Time"
 msgstr "Zaman"
@@ -679,8 +669,14 @@ msgstr ""
 "Katılımcı %(name)s: %(old_weight)s olan ağırlık %(new_weight)s olarak "
 "değiştirildi"
 
+msgid "Payer"
+msgstr "Mükellefi"
+
 msgid "Amount"
 msgstr "Miktar"
+
+msgid "Date"
+msgstr "Tarih"
 
 #, python-format
 msgid "Amount in %(currency)s"
@@ -757,6 +753,37 @@ msgstr ""
 "Kişisel bir parolayı tekrar kullanmayın. Özel bir kod seçin ve "
 "arkadaşlarınıza gönderin"
 
+msgid "Hi"
+msgstr ""
+
+#, python-format
+msgid ""
+"Someone using the email address %(contact_email)sinvited you to share "
+"your expenses for \"%(name)s\"."
+msgstr ""
+
+msgid ""
+"It's as simple as saying what did you pay for, for whom, and how much did"
+" it cost you, we are caring about the rest."
+msgstr ""
+
+#, python-format
+msgid "You can log in using this link: %(link)s."
+msgstr ""
+
+#, python-format
+msgid ""
+"Once logged-in, you can use the following link which is easier to "
+"remember: %(short_link)s If your cookie gets deleted or if you log out, "
+"you will need to log back in using the first link."
+msgstr ""
+
+msgid "Enjoy"
+msgstr ""
+
+msgid "See you :-)"
+msgstr ""
+
 msgid "Account manager"
 msgstr "Hesap yöneticisi"
 
@@ -827,29 +854,20 @@ msgstr "emin misiniz?"
 msgid "Invite people"
 msgstr "İnsanları davet et"
 
-msgid "You should start by adding participants"
-msgstr "Katılımcıları ekleyerek başlamalısınız"
-
-msgid "Add a new bill"
-msgstr "Yeni bir fatura ekle"
-
 msgid "Newer bills"
 msgstr "Daha yeni faturalar"
 
 msgid "Older bills"
 msgstr "Daha eski faturalar"
 
-msgid "When?"
-msgstr "Ne zaman?"
+msgid "You should start by adding participants"
+msgstr "Katılımcıları ekleyerek başlamalısınız"
 
-msgid "Who paid?"
-msgstr "Kim ödedi?"
+msgid "Add a new bill"
+msgstr "Yeni bir fatura ekle"
 
 msgid "For what?"
 msgstr "Ne için?"
-
-msgid "How much?"
-msgstr "Ne kadar?"
 
 #, python-format
 msgid "Added on %(date)s"
@@ -1058,3 +1076,54 @@ msgstr "Dönem"
 
 #~ msgid "Participants to notify"
 #~ msgstr "katılımcılar ekle"
+
+#~ msgid "Import"
+#~ msgstr "İçe aktar"
+
+#~ msgid "Amount paid"
+#~ msgstr "Ödenen tutar"
+
+#~ msgid ""
+#~ "We tried to send you an reminder"
+#~ " email, but there was an error. "
+#~ "You can still use the project "
+#~ "normally."
+#~ msgstr ""
+#~ "Size bir hatırlatma e-postası göndermeye "
+#~ "çalıştık, ancak bir hata oluştu. Projeyi"
+#~ " yine de normal şekilde kullanabilirsiniz."
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "Proje tanımlayıcısı %(project)s"
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "sending you an email with password "
+#~ "reset instructions. Please check the "
+#~ "email configuration of the server or "
+#~ "contact the administrator."
+#~ msgstr ""
+#~ "Maalesef, parola sıfırlama talimatlarını "
+#~ "içeren e-posta gönderilirken bir hata "
+#~ "oluştu. Lütfen sunucunun e-posta "
+#~ "yapılandırmasına göz atın veya yöneticiye "
+#~ "başvurun."
+
+#~ msgid "Invalid JSON"
+#~ msgstr "Geçersiz JSON"
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "trying to send the invitation emails."
+#~ " Please check the email configuration "
+#~ "of the server or contact the "
+#~ "administrator."
+#~ msgstr ""
+#~ "Maalesef davet e-postalarını göndermeye "
+#~ "çalışırken bir hata oluştu. Lütfen "
+#~ "sunucunun e-posta yapılandırmasına göz atın"
+#~ " veya yöneticiye başvurun."
+
+#~ msgid "Import JSON"
+#~ msgstr "JSON'u içe aktar"
+

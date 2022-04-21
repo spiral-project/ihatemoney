@@ -567,7 +567,7 @@ def invite():
     if request.method == "POST":
         if form.validate():
             # send the email
-            message_body = render_localized_template("invitation_mail")
+            message_body = render_template("invitation_mail.j2")
             message_title = _(
                 "You have been invited to share your " "expenses for %(project)s",
                 project=g.project.name,
@@ -765,7 +765,10 @@ def change_lang(lang):
         session["lang"] = lang
         session.update()
     else:
-        flash(_(f"{lang} is not a supported language"), category="warning")
+        flash(
+            _("{lang} is not a supported language").format(lang=lang),
+            category="warning",
+        )
 
     return redirect(request.headers.get("Referer") or url_for(".home"))
 

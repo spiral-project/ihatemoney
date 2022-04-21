@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 18:01+0100\n"
+"POT-Creation-Date: 2022-04-20 17:38-0400\n"
 "PO-Revision-Date: 2021-09-16 14:36+0000\n"
 "Last-Translator: PPNplus <ppnplus@protonmail.com>\n"
 "Language: th\n"
@@ -13,7 +13,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr ""
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -49,11 +53,8 @@ msgid ""
 "multiple currencies."
 msgstr ""
 
-msgid "Import previously exported JSON file"
+msgid "Compatible with Cospend"
 msgstr ""
-
-msgid "Import"
-msgstr "นำเข้า"
 
 msgid "Project identifier"
 msgstr ""
@@ -112,17 +113,17 @@ msgstr "ยืนยันรหัสผ่าน"
 msgid "Reset password"
 msgstr "รีเซ็ตรหัสผ่าน"
 
-msgid "Date"
-msgstr "วันที่"
+msgid "When?"
+msgstr ""
 
 msgid "What?"
 msgstr "อะไร?"
 
-msgid "Payer"
-msgstr "ผู้จ่าย"
+msgid "Who paid?"
+msgstr ""
 
-msgid "Amount paid"
-msgstr "จำนวนเงินที่จ่าย"
+msgid "How much?"
+msgstr ""
 
 msgid "Currency"
 msgstr "สกุลเงิน"
@@ -177,6 +178,11 @@ msgstr "ส่งคำเชิญ"
 msgid "The email %(email)s is not valid"
 msgstr "อีเมล %(email)s ไม่ถูกต้อง"
 
+msgid ""
+"{error_message} Please check the email configuration of the "
+"server{error_extension}"
+msgstr ""
+
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
 msgstr "{dual_object_0} และ {dual_object_1}"
@@ -217,27 +223,8 @@ msgstr ""
 msgid "This private code is not the right one"
 msgstr ""
 
-#, python-format
-msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
-
 msgid "A reminder email has just been sent to you"
 msgstr "ส่งอีเมลเตือนความจำให้คุณแล้ว"
-
-msgid ""
-"We tried to send you an reminder email, but there was an error. You can "
-"still use the project normally."
-msgstr ""
-
-#, python-format
-msgid "The project identifier is %(project)s"
-msgstr ""
-
-msgid ""
-"Sorry, there was an error while sending you an email with password reset "
-"instructions. Please check the email configuration of the server or "
-"contact the administrator."
-msgstr ""
 
 msgid "No token provided"
 msgstr ""
@@ -251,15 +238,21 @@ msgstr ""
 msgid "Password successfully reset."
 msgstr ""
 
-msgid "Project successfully uploaded"
+msgid "Unable to parse CSV"
 msgstr ""
 
-msgid "Invalid JSON"
+msgid "Missing attribute {}"
 msgstr ""
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
+msgstr ""
+
+msgid "Project successfully uploaded"
+msgstr ""
+
+msgid ": "
 msgstr ""
 
 msgid "Project successfully deleted"
@@ -273,12 +266,6 @@ msgid "You have been invited to share your expenses for %(project)s"
 msgstr ""
 
 msgid "Your invitations have been sent"
-msgstr ""
-
-msgid ""
-"Sorry, there was an error while trying to send the invitation emails. "
-"Please check the email configuration of the server or contact the "
-"administrator."
 msgstr ""
 
 #, python-format
@@ -319,6 +306,9 @@ msgid "The bill has been deleted"
 msgstr ""
 
 msgid "The bill has been modified"
+msgstr ""
+
+msgid "{lang} is not a supported language"
 msgstr ""
 
 msgid "Error deleting project history"
@@ -405,11 +395,9 @@ msgstr ""
 msgid "Delete project"
 msgstr ""
 
-msgid "Import JSON"
-msgstr ""
-
-msgid "Choose file"
-msgstr ""
+#, fuzzy
+msgid "Import project"
+msgstr "สร้างโครงการ"
 
 msgid "Download project's data"
 msgstr ""
@@ -441,10 +429,19 @@ msgstr ""
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
 
+msgid "Import previously exported project"
+msgstr ""
+
+msgid "Choose file"
+msgstr ""
+
 msgid "Edit this bill"
 msgstr ""
 
 msgid "Add a bill"
+msgstr ""
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
 msgstr ""
 
 msgid "Everyone"
@@ -559,16 +556,16 @@ msgstr ""
 msgid "Delete stored IP addresses"
 msgstr ""
 
-msgid "No history to erase"
-msgstr ""
-
-msgid "Clear Project History"
-msgstr ""
-
 msgid "No IP Addresses to erase"
 msgstr ""
 
 msgid "Delete Stored IP Addresses"
+msgstr ""
+
+msgid "No history to erase"
+msgstr ""
+
+msgid "Clear Project History"
 msgstr ""
 
 msgid "Time"
@@ -632,8 +629,14 @@ msgstr ""
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
+msgid "Payer"
+msgstr "ผู้จ่าย"
+
 msgid "Amount"
 msgstr ""
+
+msgid "Date"
+msgstr "วันที่"
 
 #, python-format
 msgid "Amount in %(currency)s"
@@ -708,6 +711,37 @@ msgid ""
 "your friends"
 msgstr ""
 
+msgid "Hi"
+msgstr ""
+
+#, python-format
+msgid ""
+"Someone using the email address %(contact_email)sinvited you to share "
+"your expenses for \"%(name)s\"."
+msgstr ""
+
+msgid ""
+"It's as simple as saying what did you pay for, for whom, and how much did"
+" it cost you, we are caring about the rest."
+msgstr ""
+
+#, python-format
+msgid "You can log in using this link: %(link)s."
+msgstr ""
+
+#, python-format
+msgid ""
+"Once logged-in, you can use the following link which is easier to "
+"remember: %(short_link)s If your cookie gets deleted or if you log out, "
+"you will need to log back in using the first link."
+msgstr ""
+
+msgid "Enjoy"
+msgstr ""
+
+msgid "See you :-)"
+msgstr ""
+
 msgid "Account manager"
 msgstr ""
 
@@ -778,28 +812,19 @@ msgstr ""
 msgid "Invite people"
 msgstr ""
 
-msgid "You should start by adding participants"
-msgstr ""
-
-msgid "Add a new bill"
-msgstr ""
-
 msgid "Newer bills"
 msgstr ""
 
 msgid "Older bills"
 msgstr ""
 
-msgid "When?"
+msgid "You should start by adding participants"
 msgstr ""
 
-msgid "Who paid?"
+msgid "Add a new bill"
 msgstr ""
 
 msgid "For what?"
-msgstr ""
-
-msgid "How much?"
 msgstr ""
 
 #, python-format
@@ -940,3 +965,45 @@ msgstr ""
 
 #~ msgid "Participants to notify"
 #~ msgstr ""
+
+#~ msgid "Import previously exported JSON file"
+#~ msgstr ""
+
+#~ msgid "Import"
+#~ msgstr "นำเข้า"
+
+#~ msgid "Amount paid"
+#~ msgstr "จำนวนเงินที่จ่าย"
+
+#~ msgid ""
+#~ "We tried to send you an reminder"
+#~ " email, but there was an error. "
+#~ "You can still use the project "
+#~ "normally."
+#~ msgstr ""
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "sending you an email with password "
+#~ "reset instructions. Please check the "
+#~ "email configuration of the server or "
+#~ "contact the administrator."
+#~ msgstr ""
+
+#~ msgid "Invalid JSON"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "trying to send the invitation emails."
+#~ " Please check the email configuration "
+#~ "of the server or contact the "
+#~ "administrator."
+#~ msgstr ""
+
+#~ msgid "Import JSON"
+#~ msgstr ""
+

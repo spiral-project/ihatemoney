@@ -65,8 +65,8 @@ def flash_email_error(error_message, category="danger"):
 
     flash(
         _(
-            f"{error_message} Please check the email configuration of the server{error_extension}"
-        ),
+            "{error_message} Please check the email configuration of the server{error_extension}"
+        ).format(error_message=error_message, error_extension=error_extension),
         category=category,
     )
 

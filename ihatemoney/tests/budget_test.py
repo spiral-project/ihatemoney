@@ -104,6 +104,47 @@ class BudgetTestCase(IhatemoneyTestCase):
         resp = self.client.get("/raclette/join/token.invalid", follow_redirects=True)
         self.assertIn("Provided token is invalid", resp.data.decode("utf-8"))
 
+    def test_translated_invite(self):
+        """Test that invitation e-mails are translated properly"""
+        self.login("raclette")
+        self.post_project("raclette")
+        # Set default locale to France to trigger translation
+        self.app.config["BABEL_DEFAULT_LOCALE"] = "fr"
+        with self.app.mail.record_messages() as outbox:
+            self.client.post("/raclette/invite", data={"emails": "toto@notmyidea.org"})
+            self.assertEqual(len(outbox), 1)
+            url_start = (
+                outbox[0].body.find("Vous pouvez vous connecter grâce à ce lien :") + 45
+            )
+            url_end = outbox[0].body.find(".\n", url_start)
+            url = outbox[0].body[url_start:url_end]
+            self.client.get("/exit")
+            # Test that we got a valid token
+            resp = self.client.get(url, follow_redirects=True)
+            self.assertIn(
+                'Vous souhaitez sûrement <a href="/raclette/members/add"',
+                resp.data.decode("utf-8"),
+            )
+            # Test empty and invalid tokens
+            self.client.get("/exit")
+            # Use another project_id
+            parsed_url = urlparse(url)
+            resp = self.client.get(
+                urlunparse(
+                    parsed_url._replace(
+                        path=parsed_url.path.replace("raclette/", "invalid_project/")
+                    )
+                ),
+                follow_redirects=True,
+            )
+            assert "Créer un nouveau projet" in resp.data.decode("utf-8")
+
+            # A token MUST have a point between payload and signature
+            resp = self.client.get(
+                "/raclette/join/token.invalid", follow_redirects=True
+            )
+            self.assertIn("Ce jeton est invalide", resp.data.decode("utf-8"))
+
     def test_invite_code_invalidation(self):
         """Test that invitation link expire after code change"""
         self.login("raclette")

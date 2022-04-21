@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 18:01+0100\n"
+"POT-Creation-Date: 2022-04-20 17:38-0400\n"
 "PO-Revision-Date: 2021-07-20 14:32+0000\n"
 "Last-Translator: Kristoffer Grundström "
 "<swedishsailfishosuser@tutanota.com>\n"
@@ -14,7 +14,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr "Du har just skapat '%(project)s' för att dela ut dina kostnader"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -50,11 +54,8 @@ msgid ""
 "multiple currencies."
 msgstr ""
 
-msgid "Import previously exported JSON file"
-msgstr "Importera tidigare exporterad JSON-fil"
-
-msgid "Import"
-msgstr "Importera"
+msgid "Compatible with Cospend"
+msgstr ""
 
 msgid "Project identifier"
 msgstr "Projektidentifierare"
@@ -116,17 +117,17 @@ msgstr "Lösenordsbekräftelse"
 msgid "Reset password"
 msgstr "Återställ lösenord"
 
-msgid "Date"
-msgstr "Datum"
+msgid "When?"
+msgstr "När?"
 
 msgid "What?"
 msgstr "Vad?"
 
-msgid "Payer"
-msgstr "Betalare"
+msgid "Who paid?"
+msgstr "Vem betalade?"
 
-msgid "Amount paid"
-msgstr "Betald summa"
+msgid "How much?"
+msgstr "Hur mycket?"
 
 msgid "Currency"
 msgstr "Valuta"
@@ -183,6 +184,11 @@ msgstr "Skicka inbjudningar"
 msgid "The email %(email)s is not valid"
 msgstr ""
 
+msgid ""
+"{error_message} Please check the email configuration of the "
+"server{error_extension}"
+msgstr ""
+
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
 msgstr ""
@@ -225,29 +231,8 @@ msgstr ""
 msgid "This private code is not the right one"
 msgstr "Den här privata koden är inte den rätta"
 
-#, python-format
-msgid "You have just created '%(project)s' to share your expenses"
-msgstr "Du har just skapat '%(project)s' för att dela ut dina kostnader"
-
 msgid "A reminder email has just been sent to you"
 msgstr "Ett e-postmeddelande med påminnelse har just skickats till dig"
-
-msgid ""
-"We tried to send you an reminder email, but there was an error. You can "
-"still use the project normally."
-msgstr ""
-"Vi försökte skicka en påminnelse till din e-postadress, men det uppstod "
-"ett fel. Du kan fortfarande använda det här projektet normalt."
-
-#, python-format
-msgid "The project identifier is %(project)s"
-msgstr "Projektets identifierare är %(project)s"
-
-msgid ""
-"Sorry, there was an error while sending you an email with password reset "
-"instructions. Please check the email configuration of the server or "
-"contact the administrator."
-msgstr ""
 
 msgid "No token provided"
 msgstr "Ingen symbol tillhandahölls"
@@ -261,15 +246,21 @@ msgstr "Okänt projekt"
 msgid "Password successfully reset."
 msgstr "Återställningen av lösenordet lyckades."
 
-msgid "Project successfully uploaded"
-msgstr "Uppladdningen av projektet lyckades"
+msgid "Unable to parse CSV"
+msgstr ""
 
-msgid "Invalid JSON"
-msgstr "Ogiltig JSON"
+msgid "Missing attribute {}"
+msgstr ""
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
+msgstr ""
+
+msgid "Project successfully uploaded"
+msgstr "Uppladdningen av projektet lyckades"
+
+msgid ": "
 msgstr ""
 
 msgid "Project successfully deleted"
@@ -284,12 +275,6 @@ msgstr "Du har bjudits in att dela ut dina kostnader för %(project)s"
 
 msgid "Your invitations have been sent"
 msgstr "Dina inbjudningar har skickats"
-
-msgid ""
-"Sorry, there was an error while trying to send the invitation emails. "
-"Please check the email configuration of the server or contact the "
-"administrator."
-msgstr ""
 
 #, python-format
 msgid "%(member)s has been added"
@@ -330,6 +315,9 @@ msgstr "Räkningen har tagits bort"
 
 msgid "The bill has been modified"
 msgstr "Räkningen har blivit modifierad"
+
+msgid "{lang} is not a supported language"
+msgstr ""
 
 #, fuzzy
 msgid "Error deleting project history"
@@ -423,11 +411,9 @@ msgstr "Redigera projekt"
 msgid "Delete project"
 msgstr "Redigera projekt"
 
-msgid "Import JSON"
-msgstr "Importera JSON"
-
-msgid "Choose file"
-msgstr "Välj fil"
+#, fuzzy
+msgid "Import project"
+msgstr "Redigera projekt"
 
 msgid "Download project's data"
 msgstr "Ladda ner projektets data"
@@ -459,11 +445,21 @@ msgstr "Redigera projektet"
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
 
+#, fuzzy
+msgid "Import previously exported project"
+msgstr "Importera tidigare exporterad JSON-fil"
+
+msgid "Choose file"
+msgstr "Välj fil"
+
 msgid "Edit this bill"
 msgstr "Redigera den här räkningen"
 
 msgid "Add a bill"
 msgstr "Lägg till en räkning"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr ""
 
 msgid "Everyone"
 msgstr "Alla"
@@ -583,17 +579,17 @@ msgstr ""
 msgid "Delete stored IP addresses"
 msgstr "Ta bort lagrade IP-adresser"
 
-msgid "No history to erase"
-msgstr "Ingen historik att ta bort"
-
-msgid "Clear Project History"
-msgstr "Rensa projektets historik"
-
 msgid "No IP Addresses to erase"
 msgstr "Inga IP-adresser att ta bort"
 
 msgid "Delete Stored IP Addresses"
 msgstr ""
+
+msgid "No history to erase"
+msgstr "Ingen historik att ta bort"
+
+msgid "Clear Project History"
+msgstr "Rensa projektets historik"
 
 msgid "Time"
 msgstr "Tid"
@@ -656,8 +652,14 @@ msgstr ""
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
+msgid "Payer"
+msgstr "Betalare"
+
 msgid "Amount"
 msgstr "Summa"
+
+msgid "Date"
+msgstr "Datum"
 
 #, python-format
 msgid "Amount in %(currency)s"
@@ -732,6 +734,37 @@ msgid ""
 "your friends"
 msgstr ""
 
+msgid "Hi"
+msgstr ""
+
+#, python-format
+msgid ""
+"Someone using the email address %(contact_email)sinvited you to share "
+"your expenses for \"%(name)s\"."
+msgstr ""
+
+msgid ""
+"It's as simple as saying what did you pay for, for whom, and how much did"
+" it cost you, we are caring about the rest."
+msgstr ""
+
+#, python-format
+msgid "You can log in using this link: %(link)s."
+msgstr ""
+
+#, python-format
+msgid ""
+"Once logged-in, you can use the following link which is easier to "
+"remember: %(short_link)s If your cookie gets deleted or if you log out, "
+"you will need to log back in using the first link."
+msgstr ""
+
+msgid "Enjoy"
+msgstr ""
+
+msgid "See you :-)"
+msgstr ""
+
 msgid "Account manager"
 msgstr "Kontoansvarig"
 
@@ -803,29 +836,20 @@ msgstr "säker?"
 msgid "Invite people"
 msgstr "Bjud in personer"
 
-msgid "You should start by adding participants"
-msgstr "Du borde börja med att lägga till deltagare"
-
-msgid "Add a new bill"
-msgstr "Lägg till en ny räkning"
-
 msgid "Newer bills"
 msgstr "Nyare räkningar"
 
 msgid "Older bills"
 msgstr "Äldre räkningar"
 
-msgid "When?"
-msgstr "När?"
+msgid "You should start by adding participants"
+msgstr "Du borde börja med att lägga till deltagare"
 
-msgid "Who paid?"
-msgstr "Vem betalade?"
+msgid "Add a new bill"
+msgstr "Lägg till en ny räkning"
 
 msgid "For what?"
 msgstr "För vad?"
-
-msgid "How much?"
-msgstr "Hur mycket?"
 
 #, python-format
 msgid "Added on %(date)s"
@@ -992,3 +1016,46 @@ msgstr "Period"
 
 #~ msgid "People to notify"
 #~ msgstr "Personer att meddela"
+
+#~ msgid "Import"
+#~ msgstr "Importera"
+
+#~ msgid "Amount paid"
+#~ msgstr "Betald summa"
+
+#~ msgid ""
+#~ "We tried to send you an reminder"
+#~ " email, but there was an error. "
+#~ "You can still use the project "
+#~ "normally."
+#~ msgstr ""
+#~ "Vi försökte skicka en påminnelse till"
+#~ " din e-postadress, men det uppstod "
+#~ "ett fel. Du kan fortfarande använda "
+#~ "det här projektet normalt."
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "Projektets identifierare är %(project)s"
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "sending you an email with password "
+#~ "reset instructions. Please check the "
+#~ "email configuration of the server or "
+#~ "contact the administrator."
+#~ msgstr ""
+
+#~ msgid "Invalid JSON"
+#~ msgstr "Ogiltig JSON"
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "trying to send the invitation emails."
+#~ " Please check the email configuration "
+#~ "of the server or contact the "
+#~ "administrator."
+#~ msgstr ""
+
+#~ msgid "Import JSON"
+#~ msgstr "Importera JSON"
+

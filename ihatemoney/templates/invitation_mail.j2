@@ -1,0 +1,16 @@
+{% trans %}Hi{% endtrans %},
+{% trans trimmed contact_email=g.project.contact_email, name=g.project.name %}
+Someone using the email address {{ contact_email }}invited you to share your expenses for "{{ name }}".
+{% endtrans %}
+{% trans trimmed %}
+It's as simple as saying what did you pay for, for whom, and how much did it cost you, we are caring about the rest.
+{% endtrans %}
+{% trans trimmed link=url_for(".join_project", _external=True, project_id=g.project.id, token=g.project.generate_token()) %}
+You can log in using this link: {{ link }}.
+{% endtrans %}
+{% trans trimmed short_link=url_for(".list_bills", _external=True) %}
+Once logged-in, you can use the following link which is easier to remember: {{ short_link }}
+If your cookie gets deleted or if you log out, you will need to log back in using the first link.
+{% endtrans %}
+{% trans %}Enjoy{% endtrans %},
+{% trans %}See you :-){% endtrans %}
