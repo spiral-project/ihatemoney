@@ -201,7 +201,7 @@
     <div class="actions">
         {{ form.submit(class="btn btn-primary") }}
         {% if edit %} 
-            <a href="{{ url_for(".list_bills") }}" class="btn btn-primary"> {{_("Cancel") }} </a>
+            <a href="{{ url_for(".list_bills") }}" class="btn btn-outline-secondary"> {{_("Cancel") }} </a>
         {% else %} 
             {{ form.submit2(class="btn btn-light") }}
         {% endif %}
