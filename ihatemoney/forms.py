@@ -340,7 +340,7 @@ class BillForm(FlaskForm):
 
     def export(self, project):
         return Bill(
-            amount=float(self.amount.data),
+            amount=decimal.Decimal(self.amount.data),
             date=self.date.data,
             external_link=self.external_link.data,
             original_currency=str(self.original_currency.data),
@@ -352,7 +352,7 @@ class BillForm(FlaskForm):
 
     def save(self, bill, project):
         bill.payer_id = self.payer.data
-        bill.amount = self.amount.data
+        bill.amount = decimal.Decimal(self.amount.data)
         bill.what = self.what.data
         bill.external_link = self.external_link.data
         bill.date = self.date.data
