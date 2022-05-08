@@ -4,8 +4,10 @@ This document describes changes between each past release.
 
 ## 5.2.1 (unreleased)
 
-- Nothing changed yet.
-
+### Changed
+- Add a cancel button when editing a bill for better UX
+- Translations: Bengali, Indonesian, Polish
+- Pin Werkzeug to avoid dropping Python 3.6 compatibility
 
 ## 5.2.0 (2022-04-07)
 
