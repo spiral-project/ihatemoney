@@ -9,8 +9,10 @@ some shortcuts to make your life better when coding (see `pull_project`
 and `add_project_id` for a quick overview)
 """
 from functools import wraps
+from io import StringIO
 import json
 import os
+from urllib.parse import urlparse, urlunparse
 
 from flask import (
     Blueprint,
@@ -28,6 +30,8 @@ from flask import (
 )
 from flask_babel import gettext as _
 from flask_mail import Message
+import qrcode
+import qrcode.image.svg
 from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -586,7 +590,22 @@ def invite():
                     "Sorry, there was an error while trying to send the invitation emails."
                 )
                 # Fall-through: we stay on the same page and display the form again
-    return render_template("send_invites.html", form=form)
+
+    # Generate the SVG QRCode.
+    invite_link = url_for(
+        ".join_project",
+        project_id=g.project.id,
+        token=g.project.generate_token(),
+        _external=True,
+    )
+    invite_link = urlunparse(urlparse(invite_link)._replace(scheme="ihatemoney"))
+    qr = qrcode.QRCode(image_factory=qrcode.image.svg.SvgPathImage)
+    qr.add_data(invite_link)
+    qr.make(fit=True)
+    img = qr.make_image(attrib={"class": "qrcode"})
+    qrcode_svg = img.to_string().decode()
+
+    return render_template("send_invites.html", form=form, qrcode=qrcode_svg)
 
 
 @main.route("/<project_id>/")
