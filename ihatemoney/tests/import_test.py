@@ -596,6 +596,38 @@ class ExportTestCase(IhatemoneyTestCase):
                 set(line.split(",")), set(received_lines[i].strip("\r").split(","))
             )
 
+    def test_export_escape_formulae(self):
+        self.post_project("raclette", default_currency="EUR")
+
+        # add participants
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
+
+        # create bills
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-31",
+                "what": "=COS(36)",
+                "payer": 1,
+                "payed_for": [1],
+                "amount": "10.0",
+                "original_currency": "EUR",
+            },
+        )
+
+        # generate csv export of bills
+        resp = self.client.get("/raclette/export/bills.csv")
+        expected = [
+            "date,what,amount,currency,payer_name,payer_weight,owers",
+            "2016-12-31,'=COS(36),10.0,EUR,zorglub,1.0,zorglub",
+        ]
+        received_lines = resp.data.decode("utf-8").split("\n")
+
+        for i, line in enumerate(expected):
+            self.assertEqual(
+                set(line.split(",")), set(received_lines[i].strip("\r").split(","))
+            )
+
 
 class ImportTestCaseJSON(CommonTestCase.Import):
     def generate_form_data(self, data):
