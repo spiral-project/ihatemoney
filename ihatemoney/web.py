@@ -9,7 +9,6 @@ some shortcuts to make your life better when coding (see `pull_project`
 and `add_project_id` for a quick overview)
 """
 from functools import wraps
-from io import StringIO
 import json
 import os
 from urllib.parse import urlparse, urlunparse
