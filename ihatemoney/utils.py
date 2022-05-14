@@ -152,6 +152,17 @@ def list_of_dicts2json(dict_to_convert):
     return BytesIO(dumps(dict_to_convert).encode("utf-8"))
 
 
+def escape_csv_formulae(value):
+    # See https://owasp.org/www-community/attacks/CSV_Injection
+    if (
+        value
+        and isinstance(value, str)
+        and value[0] in ["=", "+", "-", "@", "\t", "\n"]
+    ):
+        return f"'{value}"
+    return value
+
+
 def list_of_dicts2csv(dict_to_convert):
     """Take a list of dictionnaries and turns it into
     a csv in-memory file, assume all dict have the same keys
@@ -164,7 +175,10 @@ def list_of_dicts2csv(dict_to_convert):
         # (expecting a sequence getting a view)
         csv_data = [list(dict_to_convert[0].keys())]
         for dic in dict_to_convert:
-            csv_data.append([dic[h] for h in dict_to_convert[0].keys()])
+            csv_data.append(
+                [escape_csv_formulae(dic[h]) for h in dict_to_convert[0].keys()]
+            )
+            # csv_data.append([dic[h] for h in dict_to_convert[0].keys()])
     except (KeyError, IndexError):
         csv_data = []
     writer = csv.writer(csv_file)
