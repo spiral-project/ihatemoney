@@ -538,11 +538,13 @@ def export_project(file, format):
 
 @main.route("/exit")
 def exit():
-    token = request.args.get("token")
-    try:
-        validate_csrf(token)
-    except ValidationError:
-        raise CSRFError()
+    # CSRF can be disabled manually (like in tests), otherwise it is enabled by default
+    if current_app.config.get("WTF_CSRF_ENABLED", True):
+        token = request.args.get("token")
+        try:
+            validate_csrf(token)
+        except ValidationError:
+            raise CSRFError()
     # delete the session
     session.clear()
     return redirect(url_for(".home"))
