@@ -119,7 +119,7 @@
             <li><a class="dropdown-item" href="{{ url_for("main.dashboard") }}">{{ _("Dashboard") }}</a></li>
             {% endif %}
             <li>
-              <a class="dropdown-item" href="{{ url_for("main.exit") }}">
+              <a class="dropdown-item" href="{{ url_for("main.exit") }}?token={{ csrf_token() }}">
                 {{ _("Logout") }}
               </a>
             </li>

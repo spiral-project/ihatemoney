@@ -29,11 +29,13 @@ from flask import (
 )
 from flask_babel import gettext as _
 from flask_mail import Message
+from flask_wtf.csrf import CSRFError, validate_csrf
 import qrcode
 import qrcode.image.svg
 from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash, generate_password_hash
+from wtforms import ValidationError
 
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.emails import send_creation_email
@@ -536,6 +538,11 @@ def export_project(file, format):
 
 @main.route("/exit")
 def exit():
+    token = request.args.get("token")
+    try:
+        validate_csrf(token)
+    except ValidationError:
+        raise CSRFError()
     # delete the session
     session.clear()
     return redirect(url_for(".home"))
