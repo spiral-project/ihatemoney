@@ -1,18 +1,19 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-01 18:01+0100\n"
-"PO-Revision-Date: 2021-04-14 08:27+0000\n"
-"Last-Translator: fcoterroba <fcoterroba@gmail.com>\n"
+"PO-Revision-Date: 2022-06-07 04:14+0000\n"
+"Last-Translator: Wilfredo Gomez Martinez <wilfredo.gomezmartinez@wallawalla."
+"edu>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/es/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 msgid ""
@@ -25,12 +26,11 @@ msgstr ""
 msgid "Project name"
 msgstr "Nombre del proyecto"
 
-#, fuzzy
 msgid "New private code"
-msgstr "Código privado"
+msgstr "Nuevo código privado"
 
 msgid "Enter a new code if you want to change it"
-msgstr ""
+msgstr "Ingrese un nuevo código si desea cambiarlo"
 
 msgid "Email"
 msgstr "Correo electrónico"
@@ -46,11 +46,15 @@ msgstr "Moneda por defecto"
 
 msgid "Setting a default currency enables currency conversion between bills"
 msgstr ""
+"Establecer una moneda predeterminada permite la conversión de moneda entre "
+"facturas"
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
+"Este proyecto no se puede configurar como \"sin moneda\" porque contiene "
+"facturas en varias monedas."
 
 msgid "Import previously exported JSON file"
 msgstr "Importar .JSON previamente exportado"
@@ -76,27 +80,25 @@ msgstr ""
 "nuevo identificador, por favor."
 
 msgid "Which is a real currency: Euro or Petro dollar?"
-msgstr ""
+msgstr "¿Cuál es una moneda real: el euro o el petrodólar?"
 
-#, fuzzy
 msgid "euro"
-msgstr "Período"
+msgstr "Euro"
 
 msgid "Please, validate the captcha to proceed."
-msgstr ""
+msgstr "Por favor, valide el captcha para proceder."
 
 msgid "Enter private code to confirm deletion"
-msgstr ""
+msgstr "Ingrese el código privado para confirmar la eliminación"
 
 msgid "Unknown error"
-msgstr ""
+msgstr "Error desconocido"
 
-#, fuzzy
 msgid "Invalid private code."
-msgstr "Código privado"
+msgstr "Código privado no válido."
 
 msgid "Get in"
-msgstr ""
+msgstr "Entra"
 
 msgid "Admin password"
 msgstr "Contraseña de administrador"
@@ -126,7 +128,7 @@ msgid "What?"
 msgstr "¿Qué?"
 
 msgid "Payer"
-msgstr ""
+msgstr "Pagador"
 
 msgid "Amount paid"
 msgstr "Cantidad pagada"
