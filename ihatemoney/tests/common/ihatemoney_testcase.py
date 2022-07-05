@@ -2,6 +2,7 @@ import os
 from unittest.mock import MagicMock
 
 from flask_testing import TestCase
+from itsdangerous import URLSafeSerializer
 from werkzeug.security import generate_password_hash
 
 from ihatemoney import models
@@ -41,14 +42,17 @@ class BaseTestCase(TestCase):
         db.session.remove()
         db.drop_all()
 
-    def login(self, project, password=None, test_client=None):
-        password = password or project
+    def login(self, project, password=None, client=None):
+        return (client if client is not None else self.client).get(f"/{project}/join/{self.get_token(project)}", follow_redirects=True)
 
-        return self.client.post(
-            "/authenticate",
-            data=dict(id=project, password=password),
-            follow_redirects=True,
+    def get_token(self, project_id="raclette"):
+        project = models.Project.query.get(project_id.lower())
+        if project is None:
+            return None
+        serializer = URLSafeSerializer(
+            self.SECRET_KEY + project.password, salt="auth"
         )
+        return serializer.dumps([project_id.lower()])
 
     def post_project(
         self,

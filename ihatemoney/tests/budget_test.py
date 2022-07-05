@@ -305,7 +305,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             # Delete for real
             c.post(
                 "/raclette/delete",
-                data={"password": "party"},
+                data={"id_confirmation": "raclette"},
             )
 
             # project removed
@@ -514,9 +514,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         # try to connect with the right credentials should work
         with self.client as c:
-            resp = c.post(
-                "/authenticate", data={"id": "Raclette", "password": "Raclette"}
-            )
+            resp = self.login("Raclette", client=c)
 
             self.assertNotIn("Authentication", resp.data.decode("utf-8"))
             self.assertIn("raclette", session)
@@ -856,7 +854,6 @@ class BudgetTestCase(IhatemoneyTestCase):
         new_data = {
             "name": "Super raclette party!",
             "contact_email": "zorglub@notmyidea.org",
-            "password": "didoudida",
             "logging_preference": LoggingMode.ENABLED.value,
             "default_currency": "USD",
         }
@@ -868,7 +865,6 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertEqual(project.name, new_data["name"])
         self.assertEqual(project.contact_email, new_data["contact_email"])
         self.assertEqual(project.default_currency, new_data["default_currency"])
-        self.assertTrue(check_password_hash(project.password, new_data["password"]))
 
         # Editing a project with a wrong email address should fail
         new_data["contact_email"] = "wrong_email"
@@ -1264,9 +1260,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         # This ensures that modifying and deleting the bill can actually work
 
         self.client.get("/exit")
-        self.client.post(
-            "/authenticate", data={"id": "raclette", "password": "raclette"}
-        )
+        self.login("raclette")
         self.client.post("/raclette/edit/1", data=modified_bill)
         bill = models.Bill.query.filter(models.Bill.id == 1).one_or_none()
         self.assertNotEqual(bill, None, "bill not found")
@@ -1277,9 +1271,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         # Switch back to the second project
         self.client.get("/exit")
-        self.client.post(
-            "/authenticate", data={"id": "tartiflette", "password": "tartiflette"}
-        )
+        self.login("tartiflette")
         modified_member = {
             "name": "bulgroz",
             "weight": 42,
@@ -1312,9 +1304,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         # Use the correct credentials to modify and delete the member.
         # This ensures that modifying and deleting the member can actually work
         self.client.get("/exit")
-        self.client.post(
-            "/authenticate", data={"id": "raclette", "password": "raclette"}
-        )
+        self.login("raclette")
         self.client.post("/raclette/members/1/edit", data=modified_member)
         member = models.Person.query.filter(models.Person.id == 1).one()
         self.assertEqual(member.name, "bulgroz")

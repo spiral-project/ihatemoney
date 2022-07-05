@@ -65,7 +65,8 @@ class ProjectsHandler(Resource):
             db.session.add(project)
             db.session.commit()
             send_creation_email(project)
-            return project.id, 201
+            token = project.generate_token()
+            return {"token": token, "id": project.id}, 201
         return form.errors, 400
 
 

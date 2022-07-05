@@ -76,7 +76,6 @@ class HistoryTestCase(IhatemoneyTestCase):
         new_data = {
             "name": "demo2",
             "contact_email": "demo2@notmyidea.org",
-            "password": "123456",
             "project_history": "y",
             "default_currency": "USD",  # Currency changed from default
         }
@@ -91,7 +90,6 @@ class HistoryTestCase(IhatemoneyTestCase):
             f"Project contact email changed to {em_surround('demo2@notmyidea.org')}",
             resp.data.decode("utf-8"),
         )
-        self.assertIn("Project private code changed", resp.data.decode("utf-8"))
         self.assertIn(
             f"Project renamed to {em_surround('demo2')}", resp.data.decode("utf-8")
         )
@@ -99,11 +97,7 @@ class HistoryTestCase(IhatemoneyTestCase):
             resp.data.decode("utf-8").index("Project renamed "),
             resp.data.decode("utf-8").index("Project contact email changed to "),
         )
-        self.assertLess(
-            resp.data.decode("utf-8").index("Project renamed "),
-            resp.data.decode("utf-8").index("Project private code changed"),
-        )
-        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 5)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 4)
         self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
 
     def test_project_privacy_edit(self):
@@ -263,7 +257,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         # Clear Existing Entries
         resp = self.client.post(
             "/demo/erase_history",
-            data={"password": "demo"},
+            data={"id_confirmation": "demo"},
             follow_redirects=True,
         )
         self.assertEqual(resp.status_code, 200)
@@ -298,7 +292,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertIn(
             "Some entries below contain IP addresses,", resp.data.decode("utf-8")
         )
-        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 12)
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 10)
         self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 1)
 
         # Generate more operations to confirm additional IP info isn't recorded
@@ -306,8 +300,8 @@ class HistoryTestCase(IhatemoneyTestCase):
 
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
-        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 12)
-        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 7)
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 10)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 6)
 
         # Ensure we can't clear IP data with a GET or with a password-less POST
         resp = self.client.get("/demo/strip_ip_addresses")
@@ -320,13 +314,13 @@ class HistoryTestCase(IhatemoneyTestCase):
 
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
-        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 12)
-        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 7)
+        self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 10)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 6)
 
         # Clear IP Data
         resp = self.client.post(
             "/demo/strip_ip_addresses",
-            data={"password": "123456"},
+            data={"id_confirmation": "demo"},
             follow_redirects=True,
         )
 
@@ -344,7 +338,7 @@ class HistoryTestCase(IhatemoneyTestCase):
             "Some entries below contain IP addresses,", resp.data.decode("utf-8")
         )
         self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 0)
-        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 19)
+        self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 16)
 
     def test_logs_for_common_actions(self):
         # adds a member to this project

@@ -39,14 +39,8 @@ class APITestCase(IhatemoneyTestCase):
             headers=self.get_auth(project),
         )
 
-    def get_auth(self, username, password=None):
-        password = password or username
-        base64string = (
-            base64.encodebytes(f"{username}:{password}".encode("utf-8"))
-            .decode("utf-8")
-            .replace("\n", "")
-        )
-        return {"Authorization": f"Basic {base64string}"}
+    def get_auth(self, username):
+        return {"Authorization": f"Bearer {self.get_token(username)}"}
 
     def test_cors_requests(self):
         # Create a project and test that CORS headers are present if requested.
@@ -163,28 +157,9 @@ class APITestCase(IhatemoneyTestCase):
         decoded_resp = json.loads(resp.data.decode("utf-8"))
         self.assertDictEqual(decoded_resp, expected)
 
-        # password change is possible via API
-        resp = self.client.put(
-            "/api/projects/raclette",
-            data={
-                "contact_email": "yeah@notmyidea.org",
-                "default_currency": "XXX",
-                "password": "tartiflette",
-                "name": "The raclette party",
-            },
-            headers=self.get_auth("raclette"),
-        )
-
-        self.assertEqual(200, resp.status_code)
-
-        resp = self.client.get(
-            "/api/projects/raclette", headers=self.get_auth("raclette", "tartiflette")
-        )
-        self.assertEqual(200, resp.status_code)
-
         # delete should work
         resp = self.client.delete(
-            "/api/projects/raclette", headers=self.get_auth("raclette", "tartiflette")
+            "/api/projects/raclette", headers=self.get_auth("raclette")
         )
 
         # get should return a 401 on an unknown resource
