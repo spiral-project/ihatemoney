@@ -1,3 +1,6 @@
+import traceback
+import warnings
+
 from cachetools import TTLCache, cached
 import requests
 
@@ -21,7 +24,14 @@ class CurrencyConverter(object, metaclass=Singleton):
 
     @cached(cache=TTLCache(maxsize=1, ttl=86400))
     def get_rates(self):
-        rates = requests.get(self.api_url).json()["rates"]
+        try:
+            rates = requests.get(self.api_url).json()["rates"]
+        except Exception as e:
+            warnings.warn(
+                f"Call to {self.api_url} failed: {traceback.format_exception_only(e)[0].strip()}"
+            )
+            # In case of any exception, let's have an empty value
+            rates = {}
         rates[self.no_currency] = 1.0
         return rates
 
