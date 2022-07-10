@@ -383,11 +383,14 @@ class TestCurrencyConverter(unittest.TestCase):
         self.assertEqual(result, 80.0)
 
     def test_failing_remote(self):
-        with patch("requests.Response.json", new=lambda _: {}):
+        rates = {}
+        with patch("requests.Response.json", new=lambda _: {}), self.assertWarns(
+            UserWarning
+        ):
             # we need a non-patched converter, but it seems that MagickMock
             # is mocking EVERY instance of the class method. Too bad.
             rates = CurrencyConverter.get_rates(self.converter)
-            self.assertDictEqual(rates, {CurrencyConverter.no_currency: 1})
+        self.assertDictEqual(rates, {CurrencyConverter.no_currency: 1})
 
 
 if __name__ == "__main__":
