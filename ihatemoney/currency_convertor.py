@@ -26,7 +26,7 @@ class CurrencyConverter(object, metaclass=Singleton):
     def get_rates(self):
         try:
             rates = requests.get(self.api_url).json()["rates"]
-        except Exception as e:
+        except Exception:
             warnings.warn(
                 f"Call to {self.api_url} failed: {traceback.format_exc(limit=0).strip()}"
             )
