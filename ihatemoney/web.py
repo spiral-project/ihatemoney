@@ -40,6 +40,7 @@ from ihatemoney.emails import send_creation_email
 from ihatemoney.forms import (
     AdminAuthenticationForm,
     AuthenticationForm,
+    ConfirmLogoutForm,
     DestructiveActionProjectForm,
     EditProjectForm,
     EmptyForm,
@@ -149,6 +150,7 @@ def pull_project(endpoint, values):
         if session.get(project.id) or is_admin or is_invitation:
             # add project into kwargs and call the original function
             g.project = project
+            g.confirm_logout_form = ConfirmLogoutForm()
         else:
             # redirect to authentication page
             raise Redirect303(url_for(".authenticate", project_id=project_id))
@@ -534,11 +536,23 @@ def export_project(file, format):
     )
 
 
-@main.route("/exit")
+@main.route("/exit", methods=["GET", "POST"])
 def exit():
-    # delete the session
-    session.clear()
-    return redirect(url_for(".home"))
+    # We must test it manually, because otherwise, it creates a project "exit"
+    if request.method == "GET":
+        abort(405)
+
+    form = ConfirmLogoutForm()
+    if form.validate():
+        # delete the session
+        session.clear()
+        return redirect(url_for(".home"))
+    else:
+        flash(
+            format_form_errors(form, _("Unable to logout")),
+            category="danger",
+        )
+        return redirect(request.headers.get("Referer") or url_for(".home"))
 
 
 @main.route("/demo")

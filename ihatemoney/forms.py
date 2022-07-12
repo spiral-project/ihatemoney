@@ -443,6 +443,10 @@ class InviteForm(FlaskForm):
                 )
 
 
+class ConfirmLogoutForm(FlaskForm):
+    submit = SubmitField(_("Logout"))
+
+
 class EmptyForm(FlaskForm):
     """Used for CSRF validation"""
 
