@@ -499,8 +499,8 @@ class BudgetTestCase(IhatemoneyTestCase):
             self.assertTrue(session["raclette"])
 
             # logout should work with POST only
-            c.get("/exit")
-            self.assertIn("raclette", session)
+            resp = c.get("/exit")
+            self.assertStatus(405, resp)
 
             # logout should wipe the session out
             c.post("/exit")
