@@ -40,12 +40,12 @@ from ihatemoney.emails import send_creation_email
 from ihatemoney.forms import (
     AdminAuthenticationForm,
     AuthenticationForm,
-    ConfirmLogoutForm,
     DestructiveActionProjectForm,
     EditProjectForm,
     EmptyForm,
     ImportProjectForm,
     InviteForm,
+    LogoutForm,
     MemberForm,
     PasswordReminder,
     ProjectForm,
@@ -123,7 +123,7 @@ def set_show_admin_dashboard_link(endpoint, values):
         current_app.config["ACTIVATE_ADMIN_DASHBOARD"]
         and current_app.config["ADMIN_PASSWORD"]
     )
-    g.confirm_logout_form = ConfirmLogoutForm()
+    g.logout_form = LogoutForm()
 
 
 @main.url_value_preprocessor
@@ -542,7 +542,7 @@ def exit():
     if request.method == "GET":
         abort(405)
 
-    form = ConfirmLogoutForm()
+    form = LogoutForm()
     if form.validate():
         # delete the session
         session.clear()

@@ -443,7 +443,7 @@ class InviteForm(FlaskForm):
                 )
 
 
-class ConfirmLogoutForm(FlaskForm):
+class LogoutForm(FlaskForm):
     submit = SubmitField(_("Logout"))
 
 
