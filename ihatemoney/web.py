@@ -123,6 +123,7 @@ def set_show_admin_dashboard_link(endpoint, values):
         current_app.config["ACTIVATE_ADMIN_DASHBOARD"]
         and current_app.config["ADMIN_PASSWORD"]
     )
+    g.confirm_logout_form = ConfirmLogoutForm()
 
 
 @main.url_value_preprocessor
@@ -150,7 +151,6 @@ def pull_project(endpoint, values):
         if session.get(project.id) or is_admin or is_invitation:
             # add project into kwargs and call the original function
             g.project = project
-            g.confirm_logout_form = ConfirmLogoutForm()
         else:
             # redirect to authentication page
             raise Redirect303(url_for(".authenticate", project_id=project_id))
