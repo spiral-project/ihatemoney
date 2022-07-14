@@ -79,7 +79,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             url_start = outbox[0].body.find("You can log in using this link: ") + 32
             url_end = outbox[0].body.find(".\n", url_start)
             url = outbox[0].body[url_start:url_end]
-        self.client.get("/exit")
+        self.client.post("/exit")
         # Test that we got a valid token
         resp = self.client.get(url, follow_redirects=True)
         self.assertIn(
@@ -87,7 +87,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             resp.data.decode("utf-8"),
         )
         # Test empty and invalid tokens
-        self.client.get("/exit")
+        self.client.post("/exit")
         # Use another project_id
         parsed_url = urlparse(url)
         resp = self.client.get(
@@ -111,7 +111,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         response = self.client.get("/raclette/invite").data.decode("utf-8")
         link = extract_link(response, "share the following link")
 
-        self.client.get("/exit")
+        self.client.post("/exit")
         response = self.client.get(link)
         # Link is valid
         assert response.status_code == 302
@@ -131,7 +131,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         assert response.status_code == 200
         assert "alert-danger" not in response.data.decode("utf-8")
 
-        self.client.get("/exit")
+        self.client.post("/exit")
         response = self.client.get(link, follow_redirects=True)
         # Link is invalid
         self.assertIn("Provided token is invalid", response.data.decode("utf-8"))
@@ -498,8 +498,12 @@ class BudgetTestCase(IhatemoneyTestCase):
             self.assertIn("raclette", session)
             self.assertTrue(session["raclette"])
 
+            # logout should work with POST only
+            resp = c.get("/exit")
+            self.assertStatus(405, resp)
+
             # logout should wipe the session out
-            c.get("/exit")
+            c.post("/exit")
             self.assertNotIn("raclette", session)
 
         # test that with admin credentials, one can access every project
@@ -1225,7 +1229,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertEqual(raclette.get_bills().count(), 1)
 
         # Log out
-        self.client.get("/exit")
+        self.client.post("/exit")
 
         # Create and log in as another project
         self.post_project("tartiflette")
@@ -1263,7 +1267,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         # Use the correct credentials to modify and delete the bill.
         # This ensures that modifying and deleting the bill can actually work
 
-        self.client.get("/exit")
+        self.client.post("/exit")
         self.client.post(
             "/authenticate", data={"id": "raclette", "password": "raclette"}
         )
@@ -1276,7 +1280,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertEqual(bill, None)
 
         # Switch back to the second project
-        self.client.get("/exit")
+        self.client.post("/exit")
         self.client.post(
             "/authenticate", data={"id": "tartiflette", "password": "tartiflette"}
         )
@@ -1311,7 +1315,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         # Use the correct credentials to modify and delete the member.
         # This ensures that modifying and deleting the member can actually work
-        self.client.get("/exit")
+        self.client.post("/exit")
         self.client.post(
             "/authenticate", data={"id": "raclette", "password": "raclette"}
         )

@@ -119,9 +119,10 @@
             <li><a class="dropdown-item" href="{{ url_for("main.dashboard") }}">{{ _("Dashboard") }}</a></li>
             {% endif %}
             <li>
-              <a class="dropdown-item" href="{{ url_for("main.exit") }}">
-                {{ _("Logout") }}
-              </a>
+              <form action="{{ url_for("main.exit") }}" method="post">
+                {{ g.logout_form.hidden_tag() }}
+                {{ g.logout_form.submit(class="dropdown-item") }}
+              </form>
             </li>
           </ul>
         </li>

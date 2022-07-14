@@ -45,6 +45,7 @@ from ihatemoney.forms import (
     EmptyForm,
     ImportProjectForm,
     InviteForm,
+    LogoutForm,
     MemberForm,
     PasswordReminder,
     ProjectForm,
@@ -122,6 +123,7 @@ def set_show_admin_dashboard_link(endpoint, values):
         current_app.config["ACTIVATE_ADMIN_DASHBOARD"]
         and current_app.config["ADMIN_PASSWORD"]
     )
+    g.logout_form = LogoutForm()
 
 
 @main.url_value_preprocessor
@@ -534,11 +536,23 @@ def export_project(file, format):
     )
 
 
-@main.route("/exit")
+@main.route("/exit", methods=["GET", "POST"])
 def exit():
-    # delete the session
-    session.clear()
-    return redirect(url_for(".home"))
+    # We must test it manually, because otherwise, it creates a project "exit"
+    if request.method == "GET":
+        abort(405)
+
+    form = LogoutForm()
+    if form.validate():
+        # delete the session
+        session.clear()
+        return redirect(url_for(".home"))
+    else:
+        flash(
+            format_form_errors(form, _("Unable to logout")),
+            category="danger",
+        )
+        return redirect(request.headers.get("Referer") or url_for(".home"))
 
 
 @main.route("/demo")
