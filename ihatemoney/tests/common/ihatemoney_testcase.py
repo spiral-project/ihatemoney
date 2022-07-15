@@ -103,7 +103,9 @@ class IhatemoneyTestCase(BaseTestCase):
     TESTING = True
     WTF_CSRF_ENABLED = False  # Simplifies the tests.
 
-    def assertStatus(self, expected, resp, url=""):
+    def assertStatus(self, expected, resp, url=None):
+        if url is None:
+            url = resp.request.path
         return self.assertEqual(
             expected,
             resp.status_code,
