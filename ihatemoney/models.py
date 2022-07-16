@@ -521,7 +521,7 @@ class Project(db.Model):
         db.session.commit()
 
         members = {}
-        for name in ("Amina", "Georg", "Alice"):
+        for name in ("Amina", "George", "Alice"):
             person = Person()
             person.name = name
             person.project = project
@@ -533,9 +533,9 @@ class Project(db.Model):
         db.session.commit()
 
         operations = (
-            ("Georg", 200, ("Amina", "Georg", "Alice"), "Food shopping"),
+            ("George", 200, ("Amina", "George", "Alice"), "Food shopping"),
             ("Alice", 20, ("Amina", "Alice"), "Beer !"),
-            ("Amina", 50, ("Amina", "Alice", "Georg"), "AMAP"),
+            ("Amina", 50, ("Amina", "Alice", "George"), "AMAP"),
         )
         for (payer, amount, owers, what) in operations:
             db.session.add(
