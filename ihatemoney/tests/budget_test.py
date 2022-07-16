@@ -71,7 +71,9 @@ class BudgetTestCase(IhatemoneyTestCase):
             )
             self.assertEqual(len(outbox), 0)  # no message sent
             self.assertIn(
-                'The email <em class="font-italic">&lt;img src=x onerror=alert(document.domain)&gt;</em> is not valid',
+                'The email <em class="font-italic">'
+                "&lt;img src=x onerror=alert(document.domain)&gt;"
+                "</em> is not valid",
                 response.data.decode("utf-8"),
             )
 
