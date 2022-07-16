@@ -41,6 +41,7 @@ from wtforms.validators import (
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.models import Bill, LoggingMode, Person, Project
 from ihatemoney.utils import (
+    em_surround,
     eval_arithmetic_expression,
     render_localized_currency,
     slugify,
@@ -439,7 +440,7 @@ class InviteForm(FlaskForm):
                 email_validator.validate_email(email)
             except email_validator.EmailNotValidError:
                 raise ValidationError(
-                    _("The email %(email)s is not valid", email=email)
+                    _("The email %(email)s is not valid", email=em_surround(email))
                 )
 
 

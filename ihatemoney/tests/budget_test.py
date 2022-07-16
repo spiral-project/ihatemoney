@@ -58,7 +58,24 @@ class BudgetTestCase(IhatemoneyTestCase):
         with self.app.mail.record_messages() as outbox:
             response = self.client.post("/raclette/invite", data={"emails": "toto"})
             self.assertEqual(len(outbox), 0)  # no message sent
-            self.assertIn("The email toto is not valid", response.data.decode("utf-8"))
+            self.assertIn(
+                'The email <em class="font-italic">toto</em> is not valid',
+                response.data.decode("utf-8"),
+            )
+
+        # mail address checking for escaping
+        with self.app.mail.record_messages() as outbox:
+            response = self.client.post(
+                "/raclette/invite",
+                data={"emails": "<img src=x onerror=alert(document.domain)>"},
+            )
+            self.assertEqual(len(outbox), 0)  # no message sent
+            self.assertIn(
+                'The email <em class="font-italic">'
+                "&lt;img src=x onerror=alert(document.domain)&gt;"
+                "</em> is not valid",
+                response.data.decode("utf-8"),
+            )
 
         # mixing good and wrong addresses shouldn't send any messages
         with self.app.mail.record_messages() as outbox:
