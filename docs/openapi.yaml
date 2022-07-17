@@ -1,0 +1,724 @@
+openapi: "3.0.3"
+servers:
+- url: "https://ihatemoney.org/api"
+  description: "The public I Hate Money test instance"
+info:
+  description: "All of what’s possible to do with the website is also possible via a web API. This document explains how the API is organized and how you can query it.\n\nThe main supported data format is JSON. When using POST or PUT, you can either pass data encoded in JSON or in `application/x-www-form-urlencoded` format.\n\nYou can access three different things: projects, members and bills. You can also get the balance for a project.\n\nThe examples here are using curl, feel free to use whatever you want to do the same thing, curl is not a requirement."
+  version: "5.2.0"
+  title: "I Hate Money"
+  license:
+    name: "I Hate Money license"
+    url: "https://github.com/spiral-project/ihatemoney/blob/master/LICENSE"
+externalDocs:
+  description: "I Hate Money documentation"
+  url: "http://swagger.io"
+security:
+- basic: []
+- token: []
+tags:
+- name: "Projects"
+  description: "You can’t list projects, for security reasons. But you can create, update and delete one directly from the API."
+- name: "Members"
+- name: "Bills"
+- name: "Statistics"
+- name: "Currencies"
+paths:
+  /projects:
+    post:
+      operationId: "createProject"
+      tags:
+      - "Projects"
+      summary: "Create a project"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewProject'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NewProject'
+      responses:
+        "201":
+          description: "Creation successful"
+          content:
+            application/json:
+              schema:
+                type: "string"
+                example: "yay"
+                description: "The id of the created project"
+        "400":
+          description: "Bad Request"
+      security:
+      - basic: []
+      - token: []
+      - {}
+  /projects/{id}:
+    get:
+      operationId: "getProject"
+      tags:
+      - "Projects"
+      summary: "Get information about a project"
+      parameters:
+      - in: "path"
+        name: "id"
+        schema:
+          type: "string"
+        required: true
+        example: "demo"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+        "400":
+          description: "Bad Request"
+        "401":
+          description: "Unauthorized"
+    put:
+      operationId: "updateProject"
+      tags:
+      - "Projects"
+      summary: "Update a project"
+      parameters:
+      - in: "path"
+        name: "id"
+        schema:
+          type: "string"
+        required: true
+        example: "demo"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewProject'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NewProject'
+      responses:
+        "200":
+          description: "Update successful"
+          content:
+            application/json:
+              schema:
+                type: "string"
+                example: "UPDATED"
+        "401":
+          description: "Unauthorized"
+    delete:
+      operationId: "deleteProject"
+      tags:
+      - "Projects"
+      summary: "Delete a project"
+      parameters:
+      - in: "path"
+        name: "id"
+        schema:
+          type: "string"
+        required: true
+        example: "demo"
+      responses:
+        "200":
+          description: "Deletion successful"
+          content:
+            application/json:
+              schema:
+                type: "string"
+                example: "DELETED"
+        "401":
+          description: "Unauthorized"
+  /projects/{id}/members:
+    get:
+      operationId: "getMembers"
+      tags:
+      - "Members"
+      summary: "Get all the members for a project"
+      parameters:
+      - in: "path"
+        name: "id"
+        schema:
+          type: "string"
+        required: true
+        example: "demo"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                type: "string"
+                example: "TODO"
+        "401":
+          description: "Unauthorized"
+    post:
+      operationId: "addMember"
+      tags:
+      - "Members"
+      summary: "Add a member to a project"
+      parameters:
+      - in: "path"
+        name: "id"
+        schema:
+          type: "string"
+        required: true
+        example: "demo"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewMember'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NewMember'
+      responses:
+        "201":
+          description: "Creation successful"
+          content:
+            application/json:
+              schema:
+                type: "integer"
+                example: 35
+                description: "The id of the added member"
+        "400":
+          description: "Bad Request"
+        "401":
+          description: "Unauthorized"
+  /projects/{id}/members/{member-id}:
+    get:
+      operationId: "getMemberById"
+      tags:
+      - "Members"
+      summary: "Get a specific member from a project"
+      parameters:
+      - in: "path"
+        name: "id"
+        schema:
+          type: "string"
+        required: true
+        example: "demo"
+      - in: "path"
+        name: "member-id"
+        schema:
+          type: "integer"
+        required: true
+        example: 35
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Member"
+        "401":
+          description: "Unauthorized"
+    put:
+      operationId: "updateMember"
+      tags:
+      - "Members"
+      summary: "Change a project member's name"
+      parameters:
+      - in: "path"
+        name: "id"
+        schema:
+          type: "string"
+        required: true
+        example: "demo"
+      - in: "path"
+        name: "member-id"
+        schema:
+          type: "integer"
+        required: true
+        example: 36
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewMember'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NewMember'
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Member"
+        "400":
+          description: "Bad Request"
+        "401":
+          description: "Unauthorized"
+    delete:
+      operationId: "deleteMember"
+      tags:
+      - "Members"
+      summary: "Delete a member from a project"
+      parameters:
+      - in: "path"
+        name: "id"
+        schema:
+          type: "string"
+        required: true
+        example: "demo"
+      - in: "path"
+        name: "member-id"
+        schema:
+          type: "integer"
+        required: true
+        example: 35
+      responses:
+        "200":
+          description: "Deletion Successful"
+          content:
+            application/json:
+              schema:
+                type: "string"
+                example: "OK"
+        "400":
+          description: "Bad Request"
+        "401":
+          description: "Unauthorized"
+  /projects/{id}/bills:
+    get:
+      operationId: "getBills"
+      tags:
+      - "Bills"
+      summary: "Get the list of bills for a project"
+      parameters:
+      - in: "path"
+        name: "id"
+        schema:
+          type: "string"
+        required: true
+        example: "demo"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/Bill"
+        "401":
+          description: "Unauthorized"
+    post:
+      operationId: "addBill"
+      tags:
+      - "Bills"
+      summary: "Add a bill to a project"
+      parameters:
+      - in: "path"
+        name: "id"
+        schema:
+          type: "string"
+        required: true
+        example: "demo"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewBill'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NewBill'
+      responses:
+        "201":
+          description: "Creation Successful"
+          content:
+            application/json:
+              schema:
+                type: "integer"
+                example: 80
+                description: "The id of the created bill"
+        "400":
+          description: "Bad Request"
+        "401":
+          description: "Unauthorized"
+  /projects/{id}/bills/{bill-id}:
+    get:
+      operationId: "getBillById"
+      tags:
+      - "Bills"
+      summary: "Get a specific bill from a project"
+      parameters:
+      - in: "path"
+        name: "id"
+        schema:
+          type: "string"
+        required: true
+        example: "demo"
+      - in: "path"
+        name: "bill-id"
+        schema:
+          type: "integer"
+        required: true
+        example: 42
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Bill"
+        "401":
+          description: "Unauthorized"
+    put:
+      operationId: "updateBill"
+      tags:
+      - "Bills"
+      summary: "Change the details of a bill"
+      parameters:
+      - in: "path"
+        name: "id"
+        schema:
+          type: "string"
+        required: true
+        example: "demo"
+      - in: "path"
+        name: "bill-id"
+        schema:
+          type: "integer"
+        required: true
+        example: 80
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewBill'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NewBill'
+      responses:
+        "200":
+          description: "Update successful"
+          content:
+            application/json:
+              schema:
+                type: "integer"
+                example: 80
+                description: "The id of the deleted bill"
+        "400":
+          description: "Bad Request"
+        "401":
+          description: "Unauthorized"
+    delete:
+      operationId: "deleteBill"
+      tags:
+      - "Bills"
+      summary: "Delete a bill from a project"
+      parameters:
+      - in: "path"
+        name: "id"
+        schema:
+          type: "string"
+        required: true
+        example: "demo"
+      - in: "path"
+        name: "bill-id"
+        schema:
+          type: "integer"
+        required: true
+        example: 80
+      responses:
+        "200":
+          description: "Deletion successful"
+          content:
+            application/json:
+              schema:
+                type: "string"
+                example: "OK"
+        "400":
+          description: "Bad Request"
+        "401":
+          description: "Unauthorized"
+  /projects/{id}/statistics:
+    get:
+      operationId: "getProjectStatistics"
+      tags:
+      - "Statistics"
+      summary: "Get some project stats"
+      parameters:
+      - in: "path"
+        name: "id"
+        schema:
+          type: "string"
+        required: true
+        example: "demo"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/StatisticsEntry"
+              example:
+              - member:
+                  activated: true
+                  id: 1
+                  name: "alexis"
+                  weight: 1.0
+                paid: 25.5
+                spent: 15
+                balance: 10.5
+              - member:
+                  activated: true
+                  id: 2
+                  name: "fred"
+                  weight: 1.0
+                paid: 5
+                spent: 15.5
+                balance: -10.5
+        "401":
+          description: "Unauthorized"
+  /currencies:
+    get:
+      operationId: "getCurrencies"
+      tags:
+      - "Currencies"
+      summary: "Get a list of supported currencies"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/Currency"
+                example:
+                - XXX
+                - AED
+                - AFN
+                - ...
+                - ZAR
+                - ZMW
+components:
+  schemas:
+    Project:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          example: "demo"
+        name:
+          type: "string"
+          example: "demonstration"
+        contact_email:
+          type: "string"
+          format: "email"
+          example: "demo@notmyidea.org"
+        default_currency:
+          allOf:
+          - $ref: "#/components/schemas/Currency"
+          example: "XXX"
+        members:
+          type: "array"
+          items:
+            allOf:
+            - $ref: "#/components/schemas/Member"
+          example:
+          - id: 11515
+            name: "f"
+            weight: 1.0
+            activated: true
+            balance: 0
+          - id: 11531
+            name: "g"
+            weight: 1.0
+            activated: true
+            balance: 0
+          - id: 11532
+            name: "peter"
+            weight: 1.0
+            activated: true
+            balance: 5.0
+          - id: 11558
+            name: "Monkey"
+            weight: 1.0
+            activated: true
+            balance: 0
+          - id: 11559
+            name: "GG"
+            weight: 1.0
+            activated: true
+            balance: -5.0
+    NewProject:
+      type: "object"
+      properties:
+        name:
+          description: "the project name"
+          type: "string"
+        id:
+          description: "the project identifier"
+          type: "string"
+        password:
+          description: "the project password / secret code"
+          type: "string"
+          format: "password"
+        contact_email:
+          description: "the contact email"
+          type: "string"
+          format: "email"
+        default_currency:
+          description: "the default currency to use for a multi-currency project, in ISO 4217 format. Bills are converted to this currency for operations like balance or statistics."
+          allOf:
+          - $ref: "#/components/schemas/Currency"
+      required:
+      - name
+      - id
+      - password
+      - contact_email
+      example:
+        name: "yay"
+        id: "yay"
+        password: "yay"
+        contact_email: "yay@notmyidea.org"
+    Member:
+      type: "object"
+      properties:
+        name:
+          description: "the member's name"
+          type: "string"
+        id:
+          type: "integer"
+        activated:
+          type: "boolean"
+        weight:
+          type: "number"
+      example:
+        name: "Arnaud"
+        id: 31
+        activated: true
+        weight: 1
+    NewMember:
+      type: "object"
+      properties:
+        name:
+          description: "the member's name"
+          type: "string"
+      required:
+      - name
+      example:
+        name: "tatayoyo"
+    Bill:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+        payer_id:
+          type: "integer"
+        owers:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Member"
+        amount:
+          type: "number"
+        date:
+          type: "string"
+          format: "date"
+        creation_date:
+          type: "string"
+          format: "date"
+        what:
+          type: "string"
+        external_link:
+          type: "string"
+          format: "url"
+        original_currency:
+          $ref: "#/components/schemas/Currency"
+        converted_amount:
+          type: "number"
+      example:
+        id: 42
+        payer_id: 11
+        owers:
+        - id: 22
+          name: "Alexis"
+          weight: 1
+          activated: true
+        amount: 100
+        date: "2020-12-24"
+        creation_date: "2021-01-13"
+        what: "Raclette du nouvel an"
+        external_link: ""
+        original_currency: "XXX"
+        converted_amount: 100
+    NewBill:
+      type: "object"
+      properties:
+        what:
+          type: "string"
+          description: "what has been paid"
+        payer:
+          type: "integer"
+          description: "paid by who?"
+        payed_for:
+          oneOf:
+          - type: "array"
+            items:
+              type: "integer"
+          - type: "integer"
+          description: "for who?"
+        amount:
+          type: "number"
+          description: "amount payed"
+        date:
+          type: "string"
+          format: "date"
+          description: "the date of the bill."
+        original_currency:
+          allOf:
+          - $ref: "#/components/schemas/Currency"
+          description: "the currency in which `amount` has been paid (ISO 4217 code). Only makes sense for a project with currencies."
+        external_link:
+          type: "string"
+          format: "url"
+          description: "an optional URL associated with the bill."
+      required:
+      - what
+      - payer
+      - payed_for
+      - amount
+      - date
+      - original_currency
+      example:
+        date: "2011-09-10"
+        what: "raclette"
+        payer: 1
+        payed_for:
+        - 3
+        - 5
+        amount: 200
+    StatisticsEntry:
+      type: "object"
+      properties:
+        member:
+          $ref: "#/components/schemas/Member"
+        paid:
+          type: "number"
+        spent:
+          type: "number"
+        balance:
+          type: "number"
+    Currency:
+      type: "string"
+      pattern: "[A-Z]{3}"
+  securitySchemes:
+    basic:
+      type: "http"
+      scheme: "Basic"
+      description: "To interact with bills and members, and for any action other than creating a new project, you need to be authenticated. The simplest way to authenticate is to use “basic” HTTP authentication with the project ID and private code."
+    token:
+      type: "http"
+      scheme: "Bearer"
+      description: "Authentication with token generated from /projects/{id}/token"
