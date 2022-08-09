@@ -19,7 +19,7 @@ upgrades can be applied blindly.
 
 You may also want to set new configuration variables (if any). They are
 mentioned in the
-[ChangeLog](https://github.com/spiral-project/ihatemoney/blob/master/CHANGELOG.rst),
+[ChangeLog](https://github.com/spiral-project/ihatemoney/blob/master/CHANGELOG.md),
 but this is **not required for minor/patch upgrades**, a safe default
 will be used automatically.
 
