@@ -192,11 +192,13 @@ def admin():
             session["is_admin"] = True
             session.update()
             return redirect(goto)
-        msg = _(
-            "This admin password is not the right one. Only %(num)d attempts left.",
-            num=limiter.current_limit.remaining,
-        )
-        form["admin_password"].errors = [msg]
+        if limiter.current_limit is not None:
+            msg = _(
+                "This admin password is not the right one. Only %(num)d attempts left.",
+                # If the limiter is disabled, there is no current limit
+                num=limiter.current_limit.remaining,
+            )
+            form["admin_password"].errors = [msg]
     return render_template(
         "admin.html",
         form=form,
