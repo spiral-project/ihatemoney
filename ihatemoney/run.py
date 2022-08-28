@@ -144,6 +144,8 @@ def create_app(
         # We have several inline javascript scripts :(
         "script-src": ["'self'", "'unsafe-inline'"],
         "object-src": "'none'",
+        "img-src": ["'self'", "data:"],
+        "style-src": ["'self'", "'unsafe-inline'"],
     }
 
     Talisman(
