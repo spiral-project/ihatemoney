@@ -24,6 +24,7 @@ from werkzeug.routing import RoutingException
 limiter = limiter = Limiter(
     current_app,
     key_func=get_remote_address,
+    storage_uri="memory://",
 )
 
 
