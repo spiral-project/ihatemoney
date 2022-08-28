@@ -145,7 +145,7 @@ def create_app(
         "script-src": ["'self'", "'unsafe-inline'"],
         "object-src": "'none'",
         "img-src": ["'self'", "data:"],
-        "style-src": ["'self'", "'unsafe-inline'"]
+        "style-src": ["'self'", "'unsafe-inline'"],
     }
 
     Talisman(
