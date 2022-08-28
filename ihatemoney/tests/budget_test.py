@@ -601,22 +601,23 @@ class BudgetTestCase(IhatemoneyTestCase):
         )
 
         self.assertIn(
-            "Too many failed login attempts, please retry later.",
+            "Too many failed login attempts.",
             resp.data.decode("utf-8"),
         )
-        # Change throttling delay
-        from ihatemoney.web import login_throttler
+        # Try with limiter disabled
+        from ihatemoney.utils import limiter
 
-        login_throttler._delay = 0.005
-        # Wait for delay to expire and retry logging in
-        sleep(1)
-        resp = self.client.post(
-            "/admin?goto=%2Fcreate", data={"admin_password": "wrong"}
-        )
-        self.assertNotIn(
-            "Too many failed login attempts, please retry later.",
-            resp.data.decode("utf-8"),
-        )
+        try:
+            limiter.enabled = False
+            resp = self.client.post(
+                "/admin?goto=%2Fcreate", data={"admin_password": "wrong"}
+            )
+            self.assertNotIn(
+                "Too many failed login attempts.",
+                resp.data.decode("utf-8"),
+            )
+        finally:
+            limiter.enabled = True
 
     def test_manage_bills(self):
         self.post_project("raclette")
