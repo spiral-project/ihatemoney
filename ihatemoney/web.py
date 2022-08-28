@@ -19,6 +19,7 @@ from flask import (
     current_app,
     flash,
     g,
+    make_response,
     redirect,
     render_template,
     request,
@@ -56,11 +57,11 @@ from ihatemoney.forms import (
 from ihatemoney.history import get_history, get_history_queries, purge_history
 from ihatemoney.models import Bill, LoggingMode, Person, Project, db
 from ihatemoney.utils import (
-    LoginThrottler,
     Redirect303,
     csv2list_of_dicts,
     flash_email_error,
     format_form_errors,
+    limiter,
     list_of_dicts2csv,
     list_of_dicts2json,
     render_localized_template,
@@ -68,8 +69,6 @@ from ihatemoney.utils import (
 )
 
 main = Blueprint("main", __name__)
-
-login_throttler = LoginThrottler(max_attempts=3, delay=1)
 
 
 def requires_admin(bypass=None):
@@ -161,7 +160,22 @@ def health():
     return "OK"
 
 
+def admin_limit(limit):
+    return make_response(
+        render_template(
+            "admin.html",
+            breached_limit=limit,
+            limit_message=_("Too many failed login attempts."),
+        )
+    )
+
+
 @main.route("/admin", methods=["GET", "POST"])
+@limiter.limit(
+    "3/minute",
+    on_breach=admin_limit,
+    methods=["POST"],
+)
 def admin():
     """Admin authentication.
 
@@ -170,33 +184,19 @@ def admin():
     form = AdminAuthenticationForm()
     goto = request.args.get("goto", url_for(".home"))
     is_admin_auth_enabled = bool(current_app.config["ADMIN_PASSWORD"])
-    if request.method == "POST":
-        client_ip = request.remote_addr
-        if not login_throttler.is_login_allowed(client_ip):
-            msg = _("Too many failed login attempts, please retry later.")
-            form["admin_password"].errors = [msg]
-            return render_template(
-                "admin.html",
-                form=form,
-                admin_auth=True,
-                is_admin_auth_enabled=is_admin_auth_enabled,
-            )
-        if form.validate():
-            # Valid password
-            if check_password_hash(
-                current_app.config["ADMIN_PASSWORD"], form.admin_password.data
-            ):
-                session["is_admin"] = True
-                session.update()
-                login_throttler.reset(client_ip)
-                return redirect(goto)
-            # Invalid password
-            login_throttler.increment_attempts_counter(client_ip)
-            msg = _(
-                "This admin password is not the right one. Only %(num)d attempts left.",
-                num=login_throttler.get_remaining_attempts(client_ip),
-            )
-            form["admin_password"].errors = [msg]
+    if request.method == "POST" and form.validate():
+        # Valid password
+        if check_password_hash(
+            current_app.config["ADMIN_PASSWORD"], form.admin_password.data
+        ):
+            session["is_admin"] = True
+            session.update()
+            return redirect(goto)
+        msg = _(
+            "This admin password is not the right one. Only %(num)d attempts left.",
+            num=limiter.current_limit.remaining,
+        )
+        form["admin_password"].errors = [msg]
     return render_template(
         "admin.html",
         form=form,
