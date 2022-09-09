@@ -301,6 +301,23 @@ class EmailFailureTestCase(IhatemoneyTestCase):
 class CaptchaTestCase(IhatemoneyTestCase):
     ENABLE_CAPTCHA = True
 
+    def test_project_creation_with_captcha_case_insensitive(self):
+        # Test that case doesn't matter
+        # Patch the lazy_gettext as it is imported as '_' in forms for captcha value check
+        with patch("ihatemoney.forms._", new=lambda x: "ÉÙÜẞ"), self.client as c:
+            c.post(
+                "/create",
+                data={
+                    "name": "raclette party",
+                    "id": "raclette",
+                    "password": "party",
+                    "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
+                    "captcha": "éùüß",
+                },
+            )
+            assert len(models.Project.query.all()) == 1
+
     def test_project_creation_with_captcha(self):
         with self.client as c:
             c.post(
