@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-29 18:51+0200\n"
-"PO-Revision-Date: 2022-09-07 18:23+0000\n"
+"PO-Revision-Date: 2022-09-12 15:25+0000\n"
 "Last-Translator: Maite Guix <maite.guix@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/ca/>\n"
@@ -439,14 +439,14 @@ msgid "Bill items"
 msgstr "Elements de factura"
 
 msgid "Download the list of bills with owner, amount, reason,... "
-msgstr "Descarregar el llistat de factures amb propietari, import, motiu,... "
+msgstr "Descarregar la llista de factures amb propietari, import, motiu,... "
 
 msgid "Settle plans"
 msgstr "Plans de liquidació"
 
 msgid "Download the list of transactions needed to settle the current bills."
 msgstr ""
-"Descarregar el llistat d'operacions necessàries per a liquidar les factures "
+"Descarregar la llista transaccions necessàries per a liquidar les factures "
 "actuals."
 
 msgid "Can't remember the password?"
@@ -523,7 +523,7 @@ msgstr ""
 
 #, python-format
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
-msgstr "Factura %(name)s: %(property_name)s s'ha canviat a %(after)s"
+msgstr "Factura %(name)s: %(property_name)s ha canviat a %(after)s"
 
 msgid "Confirm Remove IP Adresses"
 msgstr "Confirma l'eliminació d'adreces IP"
@@ -534,7 +534,7 @@ msgid ""
 "                The rest of the project history will be unaffected. This "
 "action cannot be undone."
 msgstr ""
-"Estàs segur que vols eliminar totes les adreces IP enregistrades d'aquest "
+"Estàs segur que vols suprimir totes les adreces IP enregistrades d'aquest "
 "projecte?\n"
 "                La resta de l'historial del projecte no es veurà afectat. "
 "Aquesta acció no es pot desfer."
@@ -552,18 +552,17 @@ msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
 msgstr ""
-"Estàs segur que vols netejar tot l'historial d'aquest projecte? Aquesta "
+"Estàs segur que vols esborrar tot l'historial d'aquest projecte? Aquesta "
 "acció no es pot desfer."
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
-msgstr ""
-"Factura %(name)s: s'ha afegit %(owers_list_str)s a la llista de pagaments"
+msgstr "Factura %(name)s: afegida a la llista de propietaris %(owers_list_str)s"
 
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr ""
-"Factura %(name)s: s'ha eliminat %(owers_list_str)s de la llista de pagaments"
+"Factura %(name)s: eliminada de la llista de propietaris %(owers_list_str)s"
 
 #, python-format
 msgid ""
@@ -592,7 +591,7 @@ msgstr ""
 "            <i>La taula següent reflecteix les accions enregistrades abans "
 "de deshabilitar l'historial de projectes. Pots \n"
 "            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" data-"
-"target=\"#confirm-erase\">netejar l'historial del projecte</a> per a "
+"target=\"#confirm-erase\"> netejar l'historial del projecte</a> per a "
 "eliminar-les.</i></p>\n"
 "            "
 
@@ -607,13 +606,13 @@ msgid "Delete stored IP addresses"
 msgstr "Suprimir les adreces IP emmagatzemades"
 
 msgid "No history to erase"
-msgstr "No hi ha historial a netejar"
+msgstr "No hi ha historial a esborrar"
 
 msgid "Clear Project History"
-msgstr "Esborra l'historial del projecte"
+msgstr "Netejar l'historial del projecte"
 
 msgid "No IP Addresses to erase"
-msgstr "No hi ha adreces IP per esborrar"
+msgstr "No hi ha adreces IP a esborrar"
 
 msgid "Delete Stored IP Addresses"
 msgstr "Suprimir les adreces IP emmagatzemades"
@@ -708,21 +707,21 @@ msgstr "Participant %(name)s eliminat"
 
 #, python-format
 msgid "Project %(name)s changed in an unknown way"
-msgstr "Projecte %(name)s ha canviat d'una manera desconeguda"
+msgstr "El projecte %(name)s ha canviat d'una manera desconeguda"
 
 #, python-format
 msgid "Bill %(name)s changed in an unknown way"
-msgstr "Factura %(name)s ha canviat d'una manera desconeguda"
+msgstr "La factura %(name)s ha canviat d'una manera desconeguda"
 
 #, python-format
 msgid "Participant %(name)s changed in an unknown way"
-msgstr "Participant %(name)s ha canviat d'una manera desconeguda"
+msgstr "El participant %(name)s ha canviat d'una manera desconeguda"
 
 msgid "Nothing to list"
 msgstr "Res a enumerar"
 
 msgid "Someone probably cleared the project history."
-msgstr "Probablement algú ha esborrat l'historial del projecte."
+msgstr "Probablement algú ha netejat l'historial del projecte."
 
 msgid "Manage your shared <br />expenses, easily"
 msgstr "Gestiona les teves despeses compartides <br />, fàcilment"
@@ -918,7 +917,7 @@ msgstr "Compartir l'enllaç"
 
 msgid "You can directly share the following link via your prefered medium"
 msgstr ""
-"Pots compartir directament el següent enllaç a través del teu mitjà preferit"
+"Pots compartir directament l'enllaç següent a través del teu mitjà preferit"
 
 msgid "Send via Emails"
 msgstr "Enviar per correu electrònic"
@@ -944,7 +943,7 @@ msgid "Who?"
 msgstr "Qui?"
 
 msgid "Balance"
-msgstr "Balanç"
+msgstr "Saldo"
 
 msgid "deactivate"
 msgstr "desactivar"
