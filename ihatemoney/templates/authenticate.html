@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
-<h2>{{ _("Authentication") }}</h2>
+<h2>{{ _("Authentication 🔐") }}</h2>
 
 {% if create_project %}
-<p class="info">{{ _("The project you are trying to access do not exist, do you want to") }}
+<p class="info">{{ _("The project you are trying to access does not exist, would you like to") }}
 <a href="{{ url_for(".create_project", project_id=create_project) }}">
     {{ _("create it") }}</a>{{ _("?") }}
 </p>

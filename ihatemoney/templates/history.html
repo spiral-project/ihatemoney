@@ -69,7 +69,7 @@
                 <a href="#" class="close" data-dismiss="modal">&times;</a>
             </div>
             <div class="modal-body">
-                <p>{{ _("Are you sure you want to erase all history for this project? This action cannot be undone.") }}</p>
+                <p>{{ _("Are you sure you want to erase all of the history for this project? This action cannot be undone.") }}</p>
                 {{ forms.delete_project_history(delete_form) }}
             </div>
             <div class="modal-footer">
@@ -105,7 +105,7 @@
     {% if current_log_pref == LoggingMode.DISABLED  %}
         <p>{% set url = url_for(".edit_project") %}
             {% trans %}
-            <i>This project has history disabled. New actions won't appear below. You can enable history on the</i>
+            <i>This project has history disabled. New actions will not appear below. You can enable history on the</i>
             <a href="{{ url }}">settings page</a>
             {% endtrans %}
         </p>
