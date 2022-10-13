@@ -37,7 +37,7 @@ You can also [donate some
 money](https://liberapay.com/IHateMoney/donate). All funds will be used
 to maintain the [hosted version](https://ihatemoney.org).
 
-**Join the other Contributors.**
+**Join the other contributors.**
 
 [![](https://contrib.rocks/image?repo=spiral-project/ihatemoney)](https://github.com/spiral-project/ihatemoney/graphs/contributors)
  
