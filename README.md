@@ -37,14 +37,10 @@ You can also [donate some
 money](https://liberapay.com/IHateMoney/donate). All funds will be used
 to maintain the [hosted version](https://ihatemoney.org).
 
-Join the Contributers already contributing to this Repository.
+**Join the other Contributors.**
 
-<a href="https://github.com/spiral-project/ihatemoney/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=spiral-project/ihatemoney" />
-</a>
-
-Made with [contrib.rocks](https://contrib.rocks).
-
+[![](https://contrib.rocks/image?repo=spiral-project/ihatemoney)](https://github.com/spiral-project/ihatemoney/graphs/contributors)
+ 
 ## Translation status
 
 [![Translation status for each language](https://hosted.weblate.org/widgets/i-hate-money/-/i-hate-money/multi-blue.svg)](https://hosted.weblate.org/engage/i-hate-money/?utm_source=widget)
