@@ -127,9 +127,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.post_project("raclette")
         project = self.get_project("raclette")
         invite_link = url_for(
-            ".join_project",
-            project_id="raclette",
-            token=project.generate_token()
+            ".join_project", project_id="raclette", token=project.generate_token()
         )
 
         self.post_project("tartiflette")
