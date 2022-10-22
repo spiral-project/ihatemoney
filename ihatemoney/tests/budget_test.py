@@ -5,7 +5,7 @@ from time import sleep
 import unittest
 from urllib.parse import urlparse, urlunparse
 
-from flask import session
+from flask import session, url_for
 import pytest
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -120,6 +120,28 @@ class BudgetTestCase(IhatemoneyTestCase):
         # A token MUST have a point between payload and signature
         resp = self.client.get("/raclette/join/token.invalid", follow_redirects=True)
         self.assertIn("Provided token is invalid", resp.data.decode("utf-8"))
+
+    def test_multiple_join(self):
+        """Test that joining multiple times a project doesn't add it multiple times in the session"""
+        self.login("raclette")
+        self.post_project("raclette")
+        project = self.get_project("raclette")
+        invite_link = url_for(
+            ".join_project",
+            project_id="raclette",
+            token=project.generate_token()
+        )
+
+        self.post_project("tartiflette")
+        self.client.get(invite_link)
+        data = self.client.get("/tartiflette/").data.decode("utf-8")
+        # First join is OK
+        assert 'href="/raclette/"' in data
+
+        # Second join shouldn't add a double link
+        self.client.get(invite_link)
+        data = self.client.get("/tartiflette/").data.decode("utf-8")
+        assert data.count('href="/raclette/"') == 1
 
     def test_invite_code_invalidation(self):
         """Test that invitation link expire after code change"""
