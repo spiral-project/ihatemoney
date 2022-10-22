@@ -122,7 +122,8 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertIn("Provided token is invalid", resp.data.decode("utf-8"))
 
     def test_multiple_join(self):
-        """Test that joining multiple times a project doesn't add it multiple times in the session"""
+        """Test that joining multiple times a project
+        doesn't add it multiple times in the session"""
         self.login("raclette")
         self.post_project("raclette")
         project = self.get_project("raclette")
