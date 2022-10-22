@@ -105,10 +105,10 @@
             <li><a class="dropdown-item" href="{{ url_for("main.edit_project") }}">{{ _("Settings") }}</a></li>
             {% endif %}
 
-            {% if session['projects'] and not ((session['projects'] | length) == 1 and g.project and session['projects'][0][0] == g.project.id) %}
+            {% if session['projects'] and not ((session['projects'] | length) == 1 and g.project and g.project.id in session['projects']) %}
             <li class="dropdown-divider"></li>
             <li class="dropdown-header">{{ _('Other projects :') }}</li>
-              {% for id, name in session['projects'] %}
+              {% for id, name in session['projects'].items() %}
                 {% if not g.project or id != g.project.id %}
                 <li><a class="dropdown-item" href="{{ url_for("main.list_bills", project_id=id) }}">{{ _("switch to") }} {{ name }}</a></li>
                 {% endif %}

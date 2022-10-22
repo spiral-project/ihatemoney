@@ -205,6 +205,20 @@ def admin():
     )
 
 
+def set_authorized_project(project: Project):
+    # maintain a list of visited projects
+    new_project = {project.id: project.name}
+    if "projects" not in session:
+        session["projects"] = new_project
+    else:
+        # add the project on the top of the list
+        session["projects"] = {**new_project, **session["projects"]}
+    session[project.id] = True
+    # Set session to permanent to make language choice persist
+    session.permanent = True
+    session.update()
+
+
 @main.route("/<project_id>/join/<string:token>", methods=["GET"])
 def join_project(token):
     project_id = g.project.id
@@ -215,15 +229,7 @@ def join_project(token):
         flash(_("Provided token is invalid"), "danger")
         return redirect("/")
 
-    # maintain a list of visited projects
-    if "projects" not in session:
-        session["projects"] = []
-    # add the project on the top of the list
-    session["projects"].insert(0, (project_id, g.project.name))
-    session[project_id] = True
-    # Set session to permanent to make language choice persist
-    session.permanent = True
-    session.update()
+    set_authorized_project(g.project)
     return redirect(url_for(".list_bills"))
 
 
@@ -252,15 +258,7 @@ def authenticate(project_id=None):
     # else do form authentication authentication
     is_post_auth = request.method == "POST" and form.validate()
     if is_post_auth and check_password_hash(project.password, form.password.data):
-        # maintain a list of visited projects
-        if "projects" not in session:
-            session["projects"] = []
-        # add the project on the top of the list
-        session["projects"].insert(0, (project_id, project.name))
-        session[project_id] = True
-        # Set session to permanent to make language choice persist
-        session.permanent = True
-        session.update()
+        set_authorized_project(project)
         setattr(g, "project", project)
         return redirect(url_for(".list_bills"))
     if is_post_auth and not check_password_hash(project.password, form.password.data):
