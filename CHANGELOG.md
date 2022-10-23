@@ -2,7 +2,14 @@
 
 This document describes changes between each past release.
 
-## 5.2.1 (unreleased)
+## 6.0.0 (unreleased)
+
+### Breaking
+- Drop Python 3.6 support
+- Add Python 3.11 support
+
+The minimum supported version is now Python 3.7, and the project is
+tested with up to Python 3.10
 
 ### Changed
 - Add a cancel button when editing a bill for better UX

@@ -35,14 +35,14 @@ special instructions:
 #### Switch to a supported version of Python
 
 ::: {note}
-If you are already using Python ≥ 3.6, you can skip this section, no
+If you are already using Python ≥ 3.7, you can skip this section, no
 special action is required.
 :::
 
-If you were running IHateMoney using Python < 3.6, you must, **before**
+If you were running IHateMoney using Python < 3.7, you must, **before**
 upgrading:
 
-1.  Ensure to have a Python ≥ 3.6 available on your system
+1.  Ensure to have a Python ≥ 3.7 available on your system
 
 2.  Rebuild your virtual environment (if any). It will *not* alter your
     database nor configuration. For example, if your virtual environment
