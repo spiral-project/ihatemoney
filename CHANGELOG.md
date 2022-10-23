@@ -9,7 +9,7 @@ This document describes changes between each past release.
 - Add Python 3.11 support
 
 The minimum supported version is now Python 3.7, and the project is
-tested with up to Python 3.10
+tested with up to Python 3.11
 
 ### Changed
 - Add a cancel button when editing a bill for better UX
