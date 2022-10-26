@@ -30,7 +30,7 @@ msgid "New private code"
 msgstr "निजी कोड"
 
 msgid "Enter a new code if you want to change it"
-msgstr ""
+msgstr "यदि आप इसे बदलना चाहते हैं तो एक नया कोड दर्ज करें"
 
 msgid "Email"
 msgstr "ईमेल"
@@ -45,7 +45,7 @@ msgid "Default Currency"
 msgstr "डिफ़ॉल्ट मुद्रा"
 
 msgid "Setting a default currency enables currency conversion between bills"
-msgstr ""
+msgstr "डिफ़ॉल्ट मुद्रा सेट करना बिलों के बीच मुद्रा रूपांतरण को सक्षम बनाता है"
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
@@ -76,17 +76,17 @@ msgstr ""
 "कृपया एक नया पहचानकर्ता चुनें"
 
 msgid "Which is a real currency: Euro or Petro dollar?"
-msgstr ""
+msgstr "वास्तविक मुद्रा कौन सी है: यूरो या पेट्रो डॉलर?"
 
 #, fuzzy
 msgid "euro"
 msgstr "अवधि"
 
 msgid "Please, validate the captcha to proceed."
-msgstr ""
+msgstr "कृपया, आगे बढ़ने के लिए कैप्चा की पुष्टि करें।"
 
 msgid "Enter private code to confirm deletion"
-msgstr ""
+msgstr "हटाने की पुष्टि करने के लिए निजी कोड दर्ज करें"
 
 #, fuzzy
 msgid "Unknown error"
@@ -178,7 +178,7 @@ msgid "This project already have this participant"
 msgstr "इस परियोजना में पहले से ही यह सदस्य है"
 
 msgid "People to notify"
-msgstr ""
+msgstr "लोगों को सूचित करें"
 
 msgid "Send invites"
 msgstr "आमंत्रण भेजें"
@@ -222,7 +222,7 @@ msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr "यह व्यवस्थापक पासवर्ड सही नहीं है। केवल %(num)d प्रयास बचे हैं।"
 
 msgid "Provided token is invalid"
-msgstr ""
+msgstr "दिया गया टोकन अमान्य है"
 
 msgid "This private code is not the right one"
 msgstr "यह निजी कोड सही नहीं है"
@@ -312,7 +312,7 @@ msgid "%(name)s is part of this project again"
 msgstr "%(name)s फिर से इस परियोजना का हिस्सा है"
 
 msgid "Error removing participant"
-msgstr ""
+msgstr "प्रतिभागी को हटाने में त्रुटि"
 
 #, fuzzy, python-format
 msgid ""
@@ -334,7 +334,7 @@ msgid "The bill has been added"
 msgstr "बिल जोड़ दिया गया है"
 
 msgid "Error deleting bill"
-msgstr ""
+msgstr "बिल हटाने में त्रुटि"
 
 msgid "The bill has been deleted"
 msgstr "बिल को हटा दिया गया है"
@@ -471,7 +471,7 @@ msgid "Edit the project"
 msgstr "प्रोजेक्ट संपादित करें"
 
 msgid "This will remove all bills and participants in this project!"
-msgstr ""
+msgstr "यह इस परियोजना के सभी बिलों और प्रतिभागियों को हटा देगा!"
 
 msgid "Edit this bill"
 msgstr "इस बिल को संपादित करें"
