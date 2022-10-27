@@ -1,7 +1,6 @@
 from collections import defaultdict
 import datetime
 import re
-from time import sleep
 import unittest
 from urllib.parse import urlparse, urlunparse
 
