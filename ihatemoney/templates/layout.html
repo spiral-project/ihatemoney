@@ -139,8 +139,9 @@
           {{ limit_message }}<br />
           {{ _("Please retry after %(date)s.", date=breached_limit.reset_at  | from_timestamp | datetimeformat("short") )}}
         </p>
-      {% endif %}
+      {% else %}
       {% block content %}{% endblock %}
+      {% endif %}
       </main>
   {% endblock %}
   </div>
