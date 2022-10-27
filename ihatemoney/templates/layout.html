@@ -137,7 +137,7 @@
       {% if breached_limit %}
         <p class="alert alert-danger">
           {{ limit_message }}<br />
-          {{ _("Please retry after %(date)s.", date=breached_limit.reset_at  | from_timestamp | datetimeformat )}}
+          {{ _("Please retry after %(date)s.", date=breached_limit.reset_at  | from_timestamp | datetimeformat("short") )}}
         </p>
       {% endif %}
       {% block content %}{% endblock %}
