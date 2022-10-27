@@ -295,7 +295,9 @@ class AuthenticationForm(FlaskForm):
 
 
 class AdminAuthenticationForm(FlaskForm):
-    admin_password = PasswordField(_("Admin password"), validators=[DataRequired()])
+    admin_password = PasswordField(
+        _("Admin password"), validators=[DataRequired()], render_kw={"autofocus": True}
+    )
     submit = SubmitField(_("Get in"))
 
 
