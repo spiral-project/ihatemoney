@@ -22,7 +22,7 @@ highly encouraged to do so.
 
 ## Requirements
 
--   **Python**: version 3.6 to 3.9.
+-   **Python**: version 3.7 to 3.11.
 -   **Backends**: SQLite, PostgreSQL, MariaDB (version 10.3.2 or above),
     Memory.
 
