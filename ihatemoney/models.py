@@ -678,7 +678,8 @@ class Bill(db.Model):
     original_currency = db.Column(db.String(3))
     converted_amount = db.Column(db.Float)
 
-    archive = db.Column(db.Integer, db.ForeignKey("archive.id"))
+    # archive = db.Column(db.Integer, db.ForeignKey("archive.id"))
+    archive = db.Column(db.Boolean)
 
     currency_helper = CurrencyConverter()
 
@@ -692,6 +693,7 @@ class Bill(db.Model):
         payer_id: int = None,
         project_default_currency: str = "",
         what: str = "",
+        archive: bool = False
     ):
         super().__init__()
         self.amount = amount
@@ -704,6 +706,7 @@ class Bill(db.Model):
         self.converted_amount = self.currency_helper.exchange_currency(
             self.amount, self.original_currency, project_default_currency
         )
+        self.archive = archive
 
     @property
     def _to_serialize(self):
@@ -749,6 +752,9 @@ class Bill(db.Model):
             f"<Bill of {self.amount} from {self.payer} for "
             f"{', '.join([o.name for o in self.owers])}>"
         )
+
+    def set_archived(self):
+        self.archive = True
 
 
 class Archive(db.Model):
