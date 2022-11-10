@@ -102,6 +102,7 @@
 </div>
 
     {% if bills.total > 0 %}
+    <h3>Active Bills</h3>
         <table id="bill_table" class="col table table-striped table-hover table-responsive-sm">
             <thead>
                 <tr><th>{{ _("When?") }}
@@ -113,6 +114,7 @@
             </thead>
         <tbody>
         {% for (weights, bill) in bills.items %}
+        {% if bill.archive == false %}
         <tr owers="{{bill.owers|join(',','id')}}" payer="{{bill.payer.id}}">
                 <td>
                     <span data-toggle="tooltip" data-placement="top"
@@ -141,11 +143,16 @@
                         {{ csrf_form.csrf_token }}
                         <button class="action delete" type="submit" title="{{ _("delete") }}"></button>
                     </form>
+                    <form action="{{ url_for(".archive_bill", bill_id=bill.id) }}" method="POST">
+                        {{ csrf_form.csrf_token }}
+                        <button class="archive" type="submit" title="{{ _("archive") }}"></button>
+                    </form>
                     {% if bill.external_link %}
                     <a class="show" href="{{ bill.external_link }}" ref="noopener" target="_blank" title="{{ _("show") }}">{{ _('show') }} </a>
                     {% endif %}
                 </td>
         </tr>
+        {% endif %}
         {% endfor %}
         </tbody>
         </table>
@@ -169,4 +176,5 @@
             </div>
         </div></div>
     {% endif %}
+    <a href="{{ url_for('.list_bills_archived')}}">archived</a>
 {% endblock %}
