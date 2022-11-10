@@ -314,6 +314,10 @@ footer .footer-left {
   background: url("../images/edit.png") no-repeat right;
 }
 
+.bill-actions > form > .archive {
+    background: url("../images/edit.png") no-repeat right;
+  }
+
 .bill-actions > .show {
   background: url("../images/show.png") no-repeat right;
 }
