@@ -295,6 +295,7 @@ footer .footer-left {
 
 .bill-actions > form > .delete,
 .bill-actions > .edit,
+.bill-actions > form > .archive,
 .bill-actions > .show {
   font-size: 0px;
   display: block;
@@ -315,8 +316,8 @@ footer .footer-left {
 }
 
 .bill-actions > form > .archive {
-    background: url("../images/edit.png") no-repeat right;
-  }
+  background: url("../images/archive.png") no-repeat right;
+}
 
 .bill-actions > .show {
   background: url("../images/show.png") no-repeat right;
