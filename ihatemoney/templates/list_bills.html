@@ -66,6 +66,29 @@
 {% endblock %}
 
 {% block content %}
+<script>
+    function myFunction() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value;
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
     <div id="bill-form" class="modal fade show" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -102,6 +125,7 @@
 </div>
 
     {% if bills.total > 0 %}
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Filter by year">
         <table id="bill_table" class="col table table-striped table-hover table-responsive-sm">
             <thead>
                 <tr><th>{{ _("When?") }}
@@ -111,7 +135,7 @@
                 </th><th>{{ _("How much?") }}
                 </th><th>{{ _("Actions") }}</th></tr>
             </thead>
-        <tbody>
+        <tbody id="myTable">
         {% for (weights, bill) in bills.items %}
         <tr owers="{{bill.owers|join(',','id')}}" payer="{{bill.payer.id}}">
                 <td>
@@ -170,3 +194,6 @@
         </div></div>
     {% endif %}
 {% endblock %}
+
+
+
