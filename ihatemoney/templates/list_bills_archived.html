@@ -66,29 +66,6 @@
 {% endblock %}
 
 {% block content %}
-<script>
-    function myFunction() {
-      // Declare variables
-      var input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById("myInput");
-      filter = input.value;
-      table = document.getElementById("myTable");
-      tr = table.getElementsByTagName("tr");
-    
-      // Loop through all table rows, and hide those who don't match the search query
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
-        }
-      }
-    }
-    </script>
     <div id="bill-form" class="modal fade show" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -117,7 +94,7 @@
 </ul>
 {% endif %}
 <span id="new-bill" class="ml-auto pb-2" {% if not g.project.members %} data-toggle="tooltip" title="{{_('You should start by adding participants')}}" {% endif %}>
-    <a href="{{ url_for('.list_bills_archived')}}"><button class="btn btn-primary" data-toggle="modal" data-keyboard="false">Go to Archive</button></a>
+    <a href="{{ url_for('.list_bills')}}"><button class="btn btn-primary" data-toggle="modal" data-keyboard="false">Go to Active Bills</button></a>
     <a href="{{ url_for('.add_bill') }}" class="btn btn-primary {% if not g.project.members %} disabled {% endif %}" data-toggle="modal" data-keyboard="false" data-target="#bill-form">
         <i class="icon icon-white before-text">{{ static_include("images/plus.svg") | safe }}</i>
         {{ _("Add a new bill") }}
@@ -126,8 +103,7 @@
 </div>
 
     {% if bills.total > 0 %}
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Filter by year">
-    <h3>Active Bills</h3>
+        <h3>Archived Bills</h3>
         <table id="bill_table" class="col table table-striped table-hover table-responsive-sm">
             <thead>
                 <tr><th>{{ _("When?") }}
@@ -137,9 +113,9 @@
                 </th><th>{{ _("How much?") }}
                 </th><th>{{ _("Actions") }}</th></tr>
             </thead>
-        <tbody id="myTable">
+        <tbody>
         {% for (weights, bill) in bills.items %}
-        {% if bill.archive == false %}
+        {% if bill.archive == true %}
         <tr owers="{{bill.owers|join(',','id')}}" payer="{{bill.payer.id}}">
                 <td>
                     <span data-toggle="tooltip" data-placement="top"
@@ -170,7 +146,7 @@
                     </form>
                     <form action="{{ url_for(".archive_bill", bill_id=bill.id) }}" method="POST">
                         {{ csrf_form.csrf_token }}
-                        <button class="archive" type="submit" title="{{ _("archive") }}"></button>
+                        <button class="archive" type="submit" title="{{ _("unarchive") }}"></button>
                     </form>
                     {% if bill.external_link %}
                     <a class="show" href="{{ bill.external_link }}" ref="noopener" target="_blank" title="{{ _("show") }}">{{ _('show') }} </a>
@@ -202,6 +178,3 @@
         </div></div>
     {% endif %}
 {% endblock %}
-
-
-
