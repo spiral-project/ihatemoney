@@ -114,12 +114,13 @@ class Project(db.Model):
         balances, should_pay, should_receive = (defaultdict(int) for time in (1, 2, 3))
 
         for bill in self.get_bills_unordered().all():
-            should_receive[bill.payer.id] += bill.converted_amount
-            total_weight = sum(ower.weight for ower in bill.owers)
-            for ower in bill.owers:
-                should_pay[ower.id] += (
-                    ower.weight * bill.converted_amount / total_weight
-                )
+            if not bill.archive:
+                should_receive[bill.payer.id] += bill.converted_amount
+                total_weight = sum(ower.weight for ower in bill.owers)
+                for ower in bill.owers:
+                    should_pay[ower.id] += (
+                        ower.weight * bill.converted_amount / total_weight
+                    )
 
         for person in self.members:
             balance = should_receive[person.id] - should_pay[person.id]
@@ -678,7 +679,8 @@ class Bill(db.Model):
     original_currency = db.Column(db.String(3))
     converted_amount = db.Column(db.Float)
 
-    archive = db.Column(db.Integer, db.ForeignKey("archive.id"))
+    # archive = db.Column(db.Integer, db.ForeignKey("archive.id"))
+    archive = db.Column(db.Boolean)
 
     currency_helper = CurrencyConverter()
 
@@ -692,6 +694,7 @@ class Bill(db.Model):
         payer_id: int = None,
         project_default_currency: str = "",
         what: str = "",
+        archive: bool = False
     ):
         super().__init__()
         self.amount = amount
@@ -704,6 +707,7 @@ class Bill(db.Model):
         self.converted_amount = self.currency_helper.exchange_currency(
             self.amount, self.original_currency, project_default_currency
         )
+        self.archive = archive
 
     @property
     def _to_serialize(self):
@@ -749,6 +753,9 @@ class Bill(db.Model):
             f"<Bill of {self.amount} from {self.payer} for "
             f"{', '.join([o.name for o in self.owers])}>"
         )
+
+    def set_archived(self):
+        self.archive = True
 
 
 class Archive(db.Model):

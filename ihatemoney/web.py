@@ -645,6 +645,31 @@ def list_bills():
         current_view="list_bills",
     )
 
+@main.route("/<project_id>/archived")
+def list_bills_archived():
+    bill_form = get_billform_for(g.project)
+    # Used for CSRF validation
+    csrf_form = EmptyForm()
+    # set the last selected payer as default choice if exists
+    if "last_selected_payer" in session:
+        bill_form.payer.data = session["last_selected_payer"]
+
+    # Each item will be a (weight_sum, Bill) tuple.
+    # TODO: improve this awkward result using column_property:
+    # https://docs.sqlalchemy.org/en/14/orm/mapped_sql_expr.html.
+    weighted_bills = g.project.get_bill_weights_ordered().paginate(
+        per_page=100, error_out=True
+    )
+
+    return render_template(
+        "list_bills_archived.html",
+        bills=weighted_bills,
+        member_form=MemberForm(g.project),
+        bill_form=bill_form,
+        csrf_form=csrf_form,
+        add_bill=request.values.get("add_bill", False),
+        current_view="list_bills",
+    )
 
 @main.route("/<project_id>/members/add", methods=["GET", "POST"])
 def add_member():
@@ -766,6 +791,29 @@ def delete_bill(bill_id):
 
     return redirect(url_for(".list_bills"))
 
+@main.route("/<project_id>/archive/<int:bill_id>", methods=["POST"])
+def archive_bill(bill_id):
+    form = EmptyForm()
+    if not form.validate():
+        flash(format_form_errors(form, _("Error archiving bill")), category="danger")
+        return redirect(url_for(".list_bills"))
+    
+    bill = Bill.query.get(g.project, bill_id)
+    if not bill:
+        return redirect(url_for(".list_bills"))
+    
+    if bill.archive == True:
+        bill.archive = False
+    else:
+        bill.archive = True
+    db.session.commit()
+
+    if (bill.archive == True):
+        flash(_("The bill has been archived"))
+        return redirect(url_for(".list_bills_archived"))
+    else:
+        flash(_("The bill has been unarchived"))
+        return redirect(url_for(".list_bills"))
 
 @main.route("/<project_id>/edit/<int:bill_id>", methods=["GET", "POST"])
 def edit_bill(bill_id):
