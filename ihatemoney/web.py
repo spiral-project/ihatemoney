@@ -645,6 +645,7 @@ def list_bills():
         current_view="list_bills",
     )
 
+
 @main.route("/<project_id>/archived")
 def list_bills_archived():
     bill_form = get_billform_for(g.project)
@@ -670,6 +671,7 @@ def list_bills_archived():
         add_bill=request.values.get("add_bill", False),
         current_view="list_bills",
     )
+
 
 @main.route("/<project_id>/members/add", methods=["GET", "POST"])
 def add_member():
@@ -791,29 +793,31 @@ def delete_bill(bill_id):
 
     return redirect(url_for(".list_bills"))
 
+
 @main.route("/<project_id>/archive/<int:bill_id>", methods=["POST"])
 def archive_bill(bill_id):
     form = EmptyForm()
     if not form.validate():
         flash(format_form_errors(form, _("Error archiving bill")), category="danger")
         return redirect(url_for(".list_bills"))
-    
+
     bill = Bill.query.get(g.project, bill_id)
     if not bill:
         return redirect(url_for(".list_bills"))
-    
-    if bill.archive == True:
+
+    if bill.archive:
         bill.archive = False
     else:
         bill.archive = True
     db.session.commit()
 
-    if (bill.archive == True):
+    if bill.archive:
         flash(_("The bill has been archived"))
         return redirect(url_for(".list_bills_archived"))
     else:
         flash(_("The bill has been unarchived"))
         return redirect(url_for(".list_bills"))
+
 
 @main.route("/<project_id>/edit/<int:bill_id>", methods=["GET", "POST"])
 def edit_bill(bill_id):

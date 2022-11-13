@@ -694,7 +694,7 @@ class Bill(db.Model):
         payer_id: int = None,
         project_default_currency: str = "",
         what: str = "",
-        archive: bool = False
+        archive: bool = False,
     ):
         super().__init__()
         self.amount = amount
