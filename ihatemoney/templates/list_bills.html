@@ -39,7 +39,28 @@
 
     $('#bill_table tbody tr').hover(highlight_owers, unhighlight_owers);
 
+
+
+    let link = $('#delete-bill').find('button');
+    let deleteOriginalHTML = link.html();
+    link.click(function() {
+        if (link.hasClass("confirm")){
+            return true;
+        }
+        link.html("{{_("Are you sure?")}}");
+        link.removeClass("action delete");
+        link.addClass("confirm btn-danger");
+        return false;
+    });
+
+    $('#delete-bill').focusout(function() {
+        link.removeClass("confirm btn-danger");
+        link.html(deleteOriginalHTML);
+        link.addClass("action delete");
+    });
+
 {% endblock %}
+
 
 {% block sidebar %}
     <div class="sidebar_content">
@@ -137,7 +158,7 @@
                 </td>
                 <td class="bill-actions">
                     <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">{{ _('edit') }}</a>
-                    <form action="{{ url_for(".delete_bill", bill_id=bill.id) }}" method="POST">
+                    <form id="delete-bill"action="{{ url_for(".delete_bill", bill_id=bill.id) }}" method="POST">
                         {{ csrf_form.csrf_token }}
                         <button class="action delete" type="submit" title="{{ _("delete") }}"></button>
                     </form>
