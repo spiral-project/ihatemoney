@@ -28,6 +28,7 @@ def upgrade():
             "external_link", sa.UnicodeText(), autoincrement=False, nullable=True
         ),
         sa.Column("archive", sa.Integer(), autoincrement=False, nullable=True),
+        sa.Column("is_reimbursement", sa.Boolean(), nullable=True),
         sa.Column(
             "transaction_id", sa.BigInteger(), autoincrement=False, nullable=False
         ),
