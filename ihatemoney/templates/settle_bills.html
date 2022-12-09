@@ -16,6 +16,11 @@
             <td>{{ bill.ower }}</td>
             <td>{{ bill.receiver }}</td>
             <td>{{ bill.amount|currency }}</td>
+            <!-- <td>
+                <a href="{{ url_for('.settle') }}" class="btn btn-primary " data-toggle="modal" data-keyboard="false" data-target="#bill-form">
+                    Settle
+                </a>
+            </td> -->
     </tr>
     {% endfor %}
     </tbody>
