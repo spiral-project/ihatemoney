@@ -71,9 +71,10 @@ def flash_email_error(error_message, category="danger"):
         error_extension = f" or contact the administrator at {admin_email}."
 
     flash(
+        # .format needed for pybabel https://github.com/python-babel/babel/issues/715
         _(
-            f"{error_message} Please check the email configuration of the server{error_extension}"
-        ),
+            "{error_message} Please check the email configuration of the server{error_extension}"
+        ).format(error_message=error_message, error_extension=error_extension),
         category=category,
     )
 
@@ -410,20 +411,6 @@ def render_localized_currency(code, detailed=True):
         return f"{code}{details}"
     else:
         return f"{code} − {symbol}{details}"
-
-
-def render_localized_template(template_name_prefix, **context):
-    """Like render_template(), but selects the right template according to the
-    current user language.  Fallback to English if a template for the
-    current language does not exist.
-    """
-    fallback = "en"
-    templates = [
-        f"{template_name_prefix}.{lang}.j2"
-        for lang in (get_locale().language, fallback)
-    ]
-    # render_template() supports a list of templates to try in order
-    return render_template(templates, **context)
 
 
 def format_form_errors(form, prefix):

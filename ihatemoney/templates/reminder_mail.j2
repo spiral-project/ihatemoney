@@ -1,0 +1,16 @@
+{% trans
+    project_id=g.project.id,
+    project_name=g.project_name,
+    project_link=url_for("main.list_bills", _external=True),
+    invite_link=url_for("main.invite", _external=True)
+%}
+Hi,
+
+You have just (or someone else using your email address) created the project "{{ project_name }}" to share your expenses.
+
+You can access it here: {{ project_link }} (the identifier is {{ project_id }}).
+If you want to share this project with your friends, you can share the identifier and the shared password with them or send them invitations with the following link:
+{{ invite_link }}
+
+Enjoy,
+{% endtrans %}
