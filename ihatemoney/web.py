@@ -800,6 +800,19 @@ def delete_bill(bill_id):
     if not bill:
         return redirect(url_for(".list_bills"))
 
+    # Prevent deleting if the bill involves deactivated user.
+    active_member_id = [m.id for m in g.project.active_members]
+    owers_id = [int(m.id) for m in bill.owers]
+    deactivated_members = set([bill.payer_id] + owers_id).difference(
+        set(active_member_id)
+    )
+    if len(deactivated_members):
+        flash(
+            _("Deactivated users involved. This bill cannot be deleted."),
+            category="warning",
+        )
+        return redirect(url_for(".list_bills"))
+
     db.session.delete(bill)
     db.session.commit()
     flash(_("The bill has been deleted"))
@@ -815,6 +828,19 @@ def edit_bill(bill_id):
         raise NotFound()
 
     form = get_billform_for(g.project, set_default=False)
+
+    # Prevent editing if the bill involves deactivated user.
+    active_member_id = [m.id for m in g.project.active_members]
+    owers_id = [int(m.id) for m in bill.owers]
+    deactivated_members = set([bill.payer_id] + owers_id).difference(
+        set(active_member_id)
+    )
+    if len(deactivated_members):
+        flash(
+            _("Deactivated users involved. This bill cannot be edited."),
+            category="warning",
+        )
+        return redirect(url_for(".list_bills"))
 
     if request.method == "POST" and form.validate():
         form.save(bill, g.project)
