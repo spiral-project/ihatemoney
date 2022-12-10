@@ -3,7 +3,7 @@ import smtplib
 import socket
 from unittest.mock import MagicMock, patch
 
-import pytest
+from flask import url_for
 from sqlalchemy import orm
 from werkzeug.security import check_password_hash
 
@@ -165,6 +165,91 @@ class TestModels(IhatemoneyTestCase):
             if bill.what == "delicatessen":
                 pay_each_expected = 10 / 3
                 assert bill.amount / weight == pay_each_expected
+
+    def test_remove_member(self):
+        # make project
+        self.post_project("raclette")
+
+        # add members
+        self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
+        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "tata"})
+
+        # make bills
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-08-10",
+                "what": "red wine",
+                "payer": 1,
+                "payed_for": [2],
+                "amount": "20",
+            },
+        )
+
+        project = models.Project.query.get_by_name(name="raclette")
+
+        zorglub = models.Person.query.get_by_name(name="zorglub", project=project)
+        tata = models.Person.query.get_by_name(name="tata", project=project)
+        fred = models.Person.query.get_by_name(name="fred", project=project)
+
+        project.remove_member(tata.id)
+        # tata should be fully removed because they are not connected to a bill
+        assert project.members == [zorglub, fred]
+
+        project.remove_member(zorglub.id)
+
+        # zorglub is connected to a bill so they should be deactivated
+        assert project.members == [zorglub, fred]
+        assert not zorglub.activated
+
+    def test_deactivated_user_bill(self):
+        self.post_project("raclette")
+
+        # add members
+        self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
+        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "tata"})
+
+        project = models.Project.query.get_by_name(name="raclette")
+        zorglub = models.Person.query.get_by_name(name="zorglub", project=project)
+
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-08-10",
+                "what": "red wine",
+                "payer": 1,
+                "payed_for": [2],
+                "amount": "20",
+            },
+        )
+
+        project.remove_member(zorglub.id)
+
+        self.client.post(
+            "/raclette/edit",
+            data={
+                "date": "2011-08-10",
+                "what": "red wine",
+                "payer": 1,
+                "payed_for": [2],
+                "amount": "30",
+            },
+        )
+
+        zorglub_bill = models.Bill.query.options(
+            orm.subqueryload(models.Bill.owers)
+        ).filter(models.Bill.owers.contains(zorglub))
+
+        for bill in zorglub_bill:
+            id = bill.id
+            resp = self.client.post("/<raclette/edit/" + str(id), follow_redirects=True)
+            self.assertEqual(resp.status_code, 200)
+            assert resp.path == url_for(".list_bills")
+
+        # user edits a form, redirect + error should occur
+        # Check that we were redirected to the list of bills page
 
     def test_bill_pay_each(self):
         self.post_project("raclette")
@@ -401,9 +486,7 @@ class TestCurrencyConverter:
 
     def test_failing_remote(self):
         rates = {}
-        with patch("requests.Response.json", new=lambda _: {}), pytest.warns(
-            UserWarning
-        ):
+        with patch("requests.Response.json", new=lambda _: {}):
             # we need a non-patched converter, but it seems that MagickMock
             # is mocking EVERY instance of the class method. Too bad.
             rates = CurrencyConverter.get_rates(self.converter)

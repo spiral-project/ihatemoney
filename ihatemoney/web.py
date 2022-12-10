@@ -8,6 +8,7 @@ Basically, this blueprint takes care of the authentication and provides
 some shortcuts to make your life better when coding (see `pull_project`
 and `add_project_id` for a quick overview)
 """
+
 import datetime
 from functools import wraps
 import hashlib
@@ -813,6 +814,12 @@ def edit_bill(bill_id):
     bill = Bill.query.get(g.project, bill_id)
     if not bill:
         raise NotFound()
+    payer_id = bill.payer_id
+    payer = Person.query.get(payer_id)
+
+    if not payer.activated:
+        flash(_("The payer is deactivated. You cannot edit the bill."))
+        return redirect(url_for(".list_bills"))
 
     form = get_billform_for(g.project, set_default=False)
 
