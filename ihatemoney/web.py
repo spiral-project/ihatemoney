@@ -888,8 +888,17 @@ def dashboard():
     return render_template(
         "dashboard.html",
         projects=Project.query.all(),
+        delete_project_form=DestructiveActionProjectForm,
         is_admin_dashboard_activated=is_admin_dashboard_activated,
     )
+
+
+@main.route("/dashboard/<project_id>/delete", methods=["POST"])
+@requires_admin()
+def dashboard_delete_project():
+    g.project.remove_project()
+    flash(_("Project successfully deleted"))
+    return redirect(request.headers.get("Referer") or url_for(".home"))
 
 
 @main.route("/favicon.ico")
