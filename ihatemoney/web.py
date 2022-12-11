@@ -747,6 +747,28 @@ def add_bill():
 
     return render_template("add_bill.html", form=form)
 
+@main.route("/<project_id>/settle", methods=["GET", "POST"])
+def settle_bill():
+    form = get_billform_for(g.project)
+    if request.method == "POST":
+        if form.validate():
+            # save last selected payer in session
+            session["last_selected_payer"] = form.payer.data
+            session.update()
+
+            db.session.add(form.export(g.project))
+            db.session.commit()
+
+            flash(_("The bill has been settled"))
+
+            args = {}
+            if form.submit2.data:
+                args["add_bill"] = True
+
+            return redirect(url_for(".list_bills", **args))
+
+    return render_template("add_bill.html", form=form)
+
 
 @main.route("/<project_id>/delete/<int:bill_id>", methods=["POST"])
 def delete_bill(bill_id):
