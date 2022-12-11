@@ -325,6 +325,7 @@ class BillForm(FlaskForm):
     what = StringField(_("What?"), validators=[DataRequired()])
     payer = SelectField(_("Who paid?"), validators=[DataRequired()], coerce=int)
     amount = CalculatorStringField(_("How much?"), validators=[DataRequired()])
+    is_reimbursement = BooleanField("Reimbursement", default=False)
     currency_helper = CurrencyConverter()
     original_currency = SelectField(_("Currency"), validators=[DataRequired()])
     external_link = URLField(
@@ -344,6 +345,7 @@ class BillForm(FlaskForm):
             amount=float(self.amount.data),
             date=self.date.data,
             external_link=self.external_link.data,
+            is_reimbursement=self.is_reimbursement.data,
             original_currency=str(self.original_currency.data),
             owers=Person.query.get_by_ids(self.payed_for.data, project),
             payer_id=self.payer.data,

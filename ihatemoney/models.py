@@ -158,8 +158,9 @@ class Project(db.Model):
         """
         monthly = defaultdict(lambda: defaultdict(float))
         for bill in self.get_bills_unordered().all():
-            # if (bill.is_reimbursement == False):
-            if (not bill.what.startswith("R-")):
+            monthly[bill.date.year][bill.date.month] += bill.converted_amount
+            if (bill.is_reimbursement == False):
+            # if (not bill.what.startswith("R-")):
                 monthly[bill.date.year][bill.date.month] += bill.converted_amount
         return monthly
 

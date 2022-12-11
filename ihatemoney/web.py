@@ -747,7 +747,7 @@ def add_bill():
 
     return render_template("add_bill.html", form=form)
 
-@main.route("/<project_id>/settle", methods=["GET", "POST"])
+@main.route("/<project_id>/settle_bills/add", methods=["GET", "POST"])
 def settle_paid():
     form = get_billform_for(g.project)
     if request.method == "POST":
@@ -759,7 +759,7 @@ def settle_paid():
             db.session.add(form.export(g.project))
             db.session.commit()
 
-            flash(_("The bill has been settled"))
+            flash(_("The bill has been added"))
 
             args = {}
             if form.submit2.data:

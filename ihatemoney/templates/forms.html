@@ -166,6 +166,7 @@
     {{ input(form.date, inline=True) }}
     {{ input(form.what, inline=True) }}
     {{ input(form.payer, inline=True, class="form-control custom-select") }}
+    {{ input(form.is_reimbursement, inline=True) }}
     <div data-toggle="tooltip" data-placement="top" title='{{ _("Simple operations are allowed, e.g. (18+36.2)/3") }}'>
         {{ input(form.amount, inline=True) }}
     </div>
