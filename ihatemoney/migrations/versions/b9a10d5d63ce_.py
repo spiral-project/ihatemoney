@@ -49,6 +49,7 @@ def upgrade():
         sa.Column("date", sa.Date(), nullable=True),
         sa.Column("what", sa.UnicodeText(), nullable=True),
         sa.Column("archive", sa.Integer(), nullable=True),
+        sa.Column("is_reimbursement", sa.Boolean(), nullable=True),
         sa.ForeignKeyConstraint(["archive"], ["archive.id"]),
         sa.ForeignKeyConstraint(["payer_id"], ["person.id"]),
         sa.PrimaryKeyConstraint("id"),
