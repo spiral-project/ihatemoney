@@ -127,6 +127,7 @@ class ModelsTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": 1,
                 "payed_for": [1, 2, 3],
+                "bill_type": "Expense",
                 "amount": "10.0",
             },
         )
@@ -138,6 +139,7 @@ class ModelsTestCase(IhatemoneyTestCase):
                 "what": "red wine",
                 "payer": 2,
                 "payed_for": [1],
+                "bill_type": "Expense",
                 "amount": "20",
             },
         )
@@ -149,6 +151,7 @@ class ModelsTestCase(IhatemoneyTestCase):
                 "what": "delicatessen",
                 "payer": 1,
                 "payed_for": [1, 2],
+                "bill_type": "Expense",
                 "amount": "10",
             },
         )
@@ -183,6 +186,7 @@ class ModelsTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": 1,
                 "payed_for": [1, 2, 3],
+                "bill_type": "Expense",
                 "amount": "10.0",
             },
         )
@@ -194,6 +198,7 @@ class ModelsTestCase(IhatemoneyTestCase):
                 "what": "red wine",
                 "payer": 2,
                 "payed_for": [1],
+                "bill_type": "Expense",
                 "amount": "20",
             },
         )
@@ -205,6 +210,7 @@ class ModelsTestCase(IhatemoneyTestCase):
                 "what": "delicatessen",
                 "payer": 1,
                 "payed_for": [1, 2],
+                "bill_type": "Expense",
                 "amount": "10",
             },
         )

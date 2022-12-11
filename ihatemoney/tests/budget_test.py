@@ -411,6 +411,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": fred_id,
                 "payed_for": [fred_id],
+                "bill_type": "Expense",
                 "amount": "25",
             },
         )
@@ -462,6 +463,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": zorglub.id,
                 "payed_for": [zorglub.id],
+                "bill_type": "Expense",
                 "amount": "25",
             },
         )
@@ -635,6 +637,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": members_ids[0],
                 "payed_for": members_ids,
+                "bill_type": "Expense",
                 "amount": "25",
             },
         )
@@ -650,6 +653,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": members_ids[0],
                 "payed_for": members_ids,
+                "bill_type": "Expense",
                 "amount": "10",
             },
         )
@@ -673,6 +677,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": members_ids[0],
                 "payed_for": members_ids,
+                "bill_type": "Expense",
                 "amount": "19",
             },
         )
@@ -684,6 +689,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": members_ids[1],
                 "payed_for": members_ids[0],
+                "bill_type": "Expense",
                 "amount": "20",
             },
         )
@@ -695,6 +701,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": members_ids[1],
                 "payed_for": members_ids,
+                "bill_type": "Expense",
                 "amount": "17",
             },
         )
@@ -710,6 +717,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": members_ids[0],
                 "payed_for": members_ids,
+                "bill_type": "Expense",
                 "amount": "-25",
             },
         )
@@ -724,6 +732,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": members_ids[0],
                 "payed_for": members_ids,
+                "bill_type": "Expense",
                 "amount": "25,02",
             },
         )
@@ -738,6 +747,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": members_ids[0],
                 "payed_for": members_ids,
+                "bill_type": "Expense",
                 "amount": "42",
                 "external_link": "https://example.com/fromage",
             },
@@ -753,6 +763,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "mauvais fromage à raclette",
                 "payer": members_ids[0],
                 "payed_for": members_ids,
+                "bill_type": "Expense",
                 "amount": "42000",
                 "external_link": "javascript:alert('Tu bluffes, Martoni.')",
             },
@@ -778,6 +789,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": members_ids[0],
                 "payed_for": members_ids,
+                "bill_type": "Expense",
                 "amount": "10",
             },
         )
@@ -789,6 +801,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "pommes de terre",
                 "payer": members_ids[1],
                 "payed_for": members_ids,
+                "bill_type": "Expense",
                 "amount": "10",
             },
         )
@@ -853,6 +866,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": 1,
                 "payed_for": [1, 2, 3],
+                "bill_type": "Expense",
                 "amount": "24.36",
             },
         )
@@ -864,6 +878,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "red wine",
                 "payer": 2,
                 "payed_for": [1],
+                "bill_type": "Expense",
                 "amount": "19.12",
             },
         )
@@ -875,6 +890,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "delicatessen",
                 "payer": 1,
                 "payed_for": [1, 2],
+                "bill_type": "Expense",
                 "amount": "22",
             },
         )
@@ -977,6 +993,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": 1,
                 "payed_for": [1, 2, 3],
+                "bill_type": "Expense",
                 "amount": "10.0",
             },
         )
@@ -988,6 +1005,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "red wine",
                 "payer": 2,
                 "payed_for": [1],
+                "bill_type": "Expense",
                 "amount": "20",
             },
         )
@@ -999,6 +1017,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "delicatessen",
                 "payer": 1,
                 "payed_for": [1, 2],
+                "bill_type": "Expense",
                 "amount": "10",
             },
         )
@@ -1047,6 +1066,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": 2,
                 "payed_for": [1, 2],
+                "bill_type": "Expense",
                 "amount": "30",
             },
         )
@@ -1072,6 +1092,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "ice cream",
                 "payer": 2,
                 "payed_for": [1, 2],
+                "bill_type": "Expense",
                 "amount": "10",
             },
         )
@@ -1087,6 +1108,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "champomy",
                 "payer": 1,
                 "payed_for": [1, 2],
+                "bill_type": "Expense",
                 "amount": "10",
             },
         )
@@ -1102,6 +1124,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "smoothie",
                 "payer": 1,
                 "payed_for": [1, 2],
+                "bill_type": "Expense",
                 "amount": "20",
             },
         )
@@ -1118,6 +1141,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "more champomy",
                 "payer": 2,
                 "payed_for": [1, 2],
+                "bill_type": "Expense",
                 "amount": "30",
             },
         )
@@ -1150,6 +1174,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": 1,
                 "payed_for": [1, 2, 3],
+                "bill_type": "Expense",
                 "amount": "10.0",
             },
         )
@@ -1161,6 +1186,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "red wine",
                 "payer": 2,
                 "payed_for": [1],
+                "bill_type": "Expense",
                 "amount": "20",
             },
         )
@@ -1172,6 +1198,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "delicatessen",
                 "payer": 1,
                 "payed_for": [1, 2],
+                "bill_type": "Expense",
                 "amount": "10",
             },
         )
@@ -1180,8 +1207,8 @@ class BudgetTestCase(IhatemoneyTestCase):
         members = defaultdict(int)
         # We should have the same values between transactions and project balances
         for t in transactions:
-            members[t["ower"]] -= t["amount"]
-            members[t["receiver"]] += t["amount"]
+            members[t["ower"]] -= t["bill_type":"Expense", "amount"]
+            members[t["receiver"]] += t["bill_type":"Expense", "amount"]
         balance = self.get_project("raclette").balance
         for m, a in members.items():
             assert abs(a - balance[m.id]) < 0.01
@@ -1203,6 +1230,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": 1,
                 "payed_for": [1, 2, 3],
+                "bill_type": "Expense",
                 "amount": "10.0",
             },
         )
@@ -1214,6 +1242,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "red wine",
                 "payer": 2,
                 "payed_for": [1, 3],
+                "bill_type": "Expense",
                 "amount": "20",
             },
         )
@@ -1225,6 +1254,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "refund",
                 "payer": 3,
                 "payed_for": [2],
+                "bill_type": "Expense",
                 "amount": "13.33",
             },
         )
@@ -1233,7 +1263,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         # There should not be any zero-amount transfer after rounding
         for t in transactions:
-            rounded_amount = round(t["amount"], 2)
+            rounded_amount = round(t["bill_type":"Expense", "amount"], 2)
             self.assertNotEqual(
                 0.0,
                 rounded_amount,
@@ -1259,6 +1289,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": 1,
                 "payed_for": [1, 2, 3, 4],
+                "bill_type": "Expense",
                 "amount": "10.0",
             },
         )
@@ -1277,6 +1308,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             "what": "roblochon",
             "payer": 2,
             "payed_for": [1, 3, 4],
+            "bill_type": "Expense",
             "amount": "100.0",
         }
         # Try to access bill of another project
@@ -1382,6 +1414,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": 1,
                 "payed_for": [1, 2, 3],
+                "bill_type": "Expense",
                 "amount": "10.0",
             },
         )
@@ -1393,6 +1426,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "red wine",
                 "payer": 2,
                 "payed_for": [1, 3],
+                "bill_type": "Expense",
                 "amount": "20",
             },
         )
@@ -1404,6 +1438,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "refund",
                 "payer": 3,
                 "payed_for": [2],
+                "bill_type": "Expense",
                 "amount": "13.33",
             },
         )
@@ -1429,6 +1464,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "refund from EUR",
                 "payer": 3,
                 "payed_for": [2],
+                "bill_type": "Expense",
                 "amount": "20",
                 "original_currency": "EUR",
             },
@@ -1452,6 +1488,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "Poutine",
                 "payer": 3,
                 "payed_for": [2],
+                "bill_type": "Expense",
                 "amount": "18",
                 "original_currency": "CAD",
             },
@@ -1508,6 +1545,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": 1,
                 "payed_for": [1, 2],
+                "bill_type": "Expense",
                 "amount": "10.0",
                 "original_currency": "EUR",
             },
@@ -1542,6 +1580,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": 1,
                 "payed_for": [1, 2],
+                "bill_type": "Expense",
                 "amount": "10.0",
                 "original_currency": "EUR",
             },
@@ -1554,6 +1593,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "aspirine",
                 "payer": 2,
                 "payed_for": [1, 2],
+                "bill_type": "Expense",
                 "amount": "5.0",
                 "original_currency": "EUR",
             },
@@ -1587,6 +1627,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": 1,
                 "payed_for": [1],
+                "bill_type": "Expense",
                 "amount": "0",
                 "original_currency": "EUR",
             },
@@ -1635,6 +1676,7 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "what": "fromage à raclette",
                 "payer": 1,
                 "payed_for": [1],
+                "bill_type": "Expense",
                 "amount": "9347242149381274732472348728748723473278472843.12",
                 "original_currency": "EUR",
             },

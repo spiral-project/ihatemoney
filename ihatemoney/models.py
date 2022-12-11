@@ -74,7 +74,7 @@ class Project(db.Model):
 
     query_class = ProjectQuery
     default_currency = db.Column(db.String(3))
-
+    bill_types = [("Expense","Expense"), ("Reimbursment","Reimbursment"), ("Refund","Refund"), ("Transfer","Transfer"), ("Payment","Payment")]
     @property
     def _to_serialize(self):
         obj = {
@@ -673,6 +673,7 @@ class Bill(db.Model):
     date = db.Column(db.Date, default=datetime.datetime.now)
     creation_date = db.Column(db.Date, default=datetime.datetime.now)
     what = db.Column(db.UnicodeText)
+    bill_type = db.Column(db.UnicodeText)
     external_link = db.Column(db.UnicodeText)
 
     original_currency = db.Column(db.String(3))
@@ -692,6 +693,7 @@ class Bill(db.Model):
         payer_id: int = None,
         project_default_currency: str = "",
         what: str = "",
+        bill_type: str = "",
     ):
         super().__init__()
         self.amount = amount
@@ -701,6 +703,7 @@ class Bill(db.Model):
         self.owers = owers
         self.payer_id = payer_id
         self.what = what
+        self.bill_type = bill_type
         self.converted_amount = self.currency_helper.exchange_currency(
             self.amount, self.original_currency, project_default_currency
         )
@@ -715,6 +718,7 @@ class Bill(db.Model):
             "date": self.date,
             "creation_date": self.creation_date,
             "what": self.what,
+            "bill_type": self.bill_type,
             "external_link": self.external_link,
             "original_currency": self.original_currency,
             "converted_amount": self.converted_amount,
