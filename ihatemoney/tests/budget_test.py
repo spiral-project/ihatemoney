@@ -1646,6 +1646,70 @@ class BudgetTestCase(IhatemoneyTestCase):
         # No bills, the previous one was not added
         assert "No bills" in resp.data.decode("utf-8")
 
+        
+    def test_add_duplicate_user(self):
+
+        '''
+        Adding a user with same name as a deactivated user with 0 balance 
+        and no associated bills should success
+        '''
+        self.post_project("raclette")
+        self.login("raclette")
+
+        # adds a member to this project
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
+
+        # delete user using POST method
+        self.client.post("/raclette/members/1/delete")
+        self.assertEqual(len(self.get_project("raclette").active_members), 0)
+        self.assertEqual(len(self.get_project("raclette").members), 0)
+        # try to add this deleted user should be successful
+        response = self.client.get("/raclette/members/add", data={"name": "zorglub"})
+        self.assertEqual(len(self.get_project("raclette").members), 1)
+        self.assertEqual(response.status_code, 200)
+    
+    
+    def test_add_duplicate_user_with_balance(self):
+        '''
+        Adding a user with same name as a deactivated user with non-zero balance 
+        and associated bills should fail
+        '''
+        self.post_project("raclette")
+
+        # add two participants
+        self.client.post("/raclette/members/add", data={"name": "Alice"})
+        self.client.post("/raclette/members/add", data={"name": "Bob"})
+
+        members_ids = [m.id for m in self.get_project("raclette").members]
+
+        # create one bill
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage à raclette",
+                "payer": members_ids[0],
+                "payed_for": members_ids,
+                "amount": "100",
+            },
+        )
+
+        # deactivate Bob
+        self.client.post(
+            "/raclette/members/%s/delete" % self.get_project("raclette").members[-1].id
+        )
+
+        self.assertEqual(len(self.get_project("raclette").members), 2)
+        self.client.post("/raclette/members/add", data={"name": "Bob"})
+
+        # adding a user with the same name should fail
+        self.assertEqual(len(self.get_project("raclette").members), 2)
+        # The only active_member is Alice, this means adding a new Bob failed
+        self.assertEqual(len(self.get_project("raclette").active_members), 1)
+
+        # Can't get this part to work
+        # response = self.client.get("/raclette/members/add", data={"name": "Bob"})
+        # self.assertEqual(response.status_code, 405)
 
 if __name__ == "__main__":
     unittest.main()
