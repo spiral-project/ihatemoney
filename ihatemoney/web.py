@@ -748,7 +748,7 @@ def add_bill():
     return render_template("add_bill.html", form=form)
 
 @main.route("/<project_id>/settle", methods=["GET", "POST"])
-def settle_bill():
+def settle_paid():
     form = get_billform_for(g.project)
     if request.method == "POST":
         if form.validate():
