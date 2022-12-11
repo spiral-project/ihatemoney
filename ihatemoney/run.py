@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 import os.path
 import warnings
@@ -21,6 +22,7 @@ from ihatemoney.utils import (
     IhmJSONEncoder,
     PrefixedWSGI,
     em_surround,
+    limiter,
     locale_from_iso,
     localize_list,
     minimal_round,
@@ -170,6 +172,7 @@ def create_app(
     app.register_blueprint(web_interface)
     app.register_blueprint(apiv1)
     app.register_error_handler(404, page_not_found)
+    limiter.init_app(app)
 
     # Configure the a, root="main"pplication
     setup_database(app)
@@ -187,6 +190,7 @@ def create_app(
     app.jinja_env.filters["minimal_round"] = minimal_round
     app.jinja_env.filters["em_surround"] = lambda text: Markup(em_surround(text))
     app.jinja_env.filters["localize_list"] = localize_list
+    app.jinja_env.filters["from_timestamp"] = datetime.fromtimestamp
 
     # Translations and time zone (used to display dates).  The timezone is
     # taken from the BABEL_DEFAULT_TIMEZONE settings, and falls back to
