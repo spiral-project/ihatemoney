@@ -133,6 +133,9 @@ Install the latest release with pip:
 
 Once installed, you can start a test server:
 
+    ihatemoney generate-config ihatemoney.cfg > ihatemoney.cfg
+    export IHATEMONEY_SETTINGS_FILE_PATH=$PWD/ihatemoney.cfg 
+    ihatemoney db upgrade head
     ihatemoney runserver
 
 And point your browser at <http://localhost:5000>.
