@@ -77,10 +77,8 @@ class Project(db.Model):
     bill_types = [
         ("Expense", "Expense"),
         ("Reimbursment", "Reimbursment"),
-        ("Refund", "Refund"),
         ("Transfer", "Transfer"),
-        ("Payment", "Payment"),
-    ]
+        ]
 
     @property
     def _to_serialize(self):
