@@ -14,6 +14,7 @@ class CommonTestCase(object):
                 {
                     "date": "2017-01-01",
                     "what": "refund",
+                    "bill_type": "Expense",
                     "amount": 13.33,
                     "payer_name": "tata",
                     "payer_weight": 1.0,
@@ -22,6 +23,7 @@ class CommonTestCase(object):
                 {
                     "date": "2016-12-31",
                     "what": "red wine",
+                    "bill_type": "Expense",
                     "amount": 200.0,
                     "payer_name": "fred",
                     "payer_weight": 1.0,
@@ -29,7 +31,8 @@ class CommonTestCase(object):
                 },
                 {
                     "date": "2016-12-31",
-                    "what": "fromage a raclette",
+                    "what": "a raclette",
+                    "bill_type": "Expense",
                     "amount": 10.0,
                     "payer_name": "zorglub",
                     "payer_weight": 2.0,
@@ -71,6 +74,7 @@ class CommonTestCase(object):
                     if b["what"] == d["what"]:
                         self.assertEqual(b["payer_name"], d["payer_name"])
                         self.assertEqual(b["amount"], d["amount"])
+                        self.assertEqual(b["bill_type"], d["bill_type"])
                         self.assertEqual(b["currency"], d["currency"])
                         self.assertEqual(b["payer_weight"], d["payer_weight"])
                         self.assertEqual(b["date"], d["date"])
@@ -114,6 +118,7 @@ class CommonTestCase(object):
                         self.assertEqual(b["amount"], d["amount"])
                         # Currency should have been stripped
                         self.assertEqual(b["currency"], "XXX")
+                        self.assertEqual(b["bill_type"], d["bill_type"])
                         self.assertEqual(b["payer_weight"], d["payer_weight"])
                         self.assertEqual(b["date"], d["date"])
                         list_project = [ower for ower in b["owers"]]
@@ -172,6 +177,7 @@ class CommonTestCase(object):
                         self.assertEqual(b["amount"], d["amount"])
                         # All bills are converted to default project currency
                         self.assertEqual(b["currency"], "EUR")
+                        self.assertEqual(b["bill_type"], d["bill_type"])
                         self.assertEqual(b["payer_weight"], d["payer_weight"])
                         self.assertEqual(b["date"], d["date"])
                         list_project = [ower for ower in b["owers"]]
@@ -210,6 +216,7 @@ class CommonTestCase(object):
                     if b["what"] == d["what"]:
                         self.assertEqual(b["payer_name"], d["payer_name"])
                         self.assertEqual(b["amount"], d["amount"])
+                        self.assertEqual(b["bill_type"], d["bill_type"])
                         self.assertEqual(b["currency"], "XXX")
                         self.assertEqual(b["payer_weight"], d["payer_weight"])
                         self.assertEqual(b["date"], d["date"])
@@ -237,6 +244,7 @@ class CommonTestCase(object):
                 data={
                     "date": "2016-12-31",
                     "what": "red wine",
+                    "bill_type": "Expense",
                     "payer": 2,
                     "payed_for": [1, 3],
                     "amount": "200",
@@ -266,6 +274,7 @@ class CommonTestCase(object):
                     if b["what"] == d["what"]:
                         self.assertEqual(b["payer_name"], d["payer_name"])
                         self.assertEqual(b["amount"], d["amount"])
+                        self.assertEqual(b["bill_type"], d["bill_type"])
                         self.assertEqual(b["currency"], d["currency"])
                         self.assertEqual(b["payer_weight"], d["payer_weight"])
                         self.assertEqual(b["date"], d["date"])
@@ -292,6 +301,7 @@ class CommonTestCase(object):
                 {
                     "date": "2017-01-01",
                     "what": "refund",
+                    "bill_type": "Refund",
                     "payer_name": "tata",
                     "payer_weight": 1.0,
                     "owers": ["fred"],
@@ -319,7 +329,8 @@ class ExportTestCase(IhatemoneyTestCase):
             "/raclette/add",
             data={
                 "date": "2016-12-31",
-                "what": "fromage à raclette",
+                "bill_type": "Expense",
+                "what": "à raclette",
                 "payer": 1,
                 "payed_for": [1, 2, 3, 4],
                 "amount": "10.0",
@@ -330,6 +341,7 @@ class ExportTestCase(IhatemoneyTestCase):
             "/raclette/add",
             data={
                 "date": "2016-12-31",
+                "bill_type": "Expense",
                 "what": "red wine",
                 "payer": 2,
                 "payed_for": [1, 3],
@@ -341,6 +353,7 @@ class ExportTestCase(IhatemoneyTestCase):
             "/raclette/add",
             data={
                 "date": "2017-01-01",
+                "bill_type": "Refund",
                 "what": "refund",
                 "payer": 3,
                 "payed_for": [2],
@@ -353,6 +366,7 @@ class ExportTestCase(IhatemoneyTestCase):
         expected = [
             {
                 "date": "2017-01-01",
+                "bill_type": "Refund",
                 "what": "refund",
                 "amount": 13.33,
                 "currency": "XXX",
@@ -362,6 +376,7 @@ class ExportTestCase(IhatemoneyTestCase):
             },
             {
                 "date": "2016-12-31",
+                "bill_type": "Expense",
                 "what": "red wine",
                 "amount": 200.0,
                 "currency": "XXX",
@@ -371,7 +386,8 @@ class ExportTestCase(IhatemoneyTestCase):
             },
             {
                 "date": "2016-12-31",
-                "what": "fromage \xe0 raclette",
+                "bill_type": "Expense",
+                "what": "\xe0 raclette",
                 "amount": 10.0,
                 "currency": "XXX",
                 "payer_name": "zorglub",
@@ -384,10 +400,10 @@ class ExportTestCase(IhatemoneyTestCase):
         # generate csv export of bills
         resp = self.client.get("/raclette/export/bills.csv")
         expected = [
-            "date,what,amount,currency,payer_name,payer_weight,owers",
-            "2017-01-01,refund,XXX,13.33,tata,1.0,fred",
-            '2016-12-31,red wine,XXX,200.0,fred,1.0,"zorglub, tata"',
-            '2016-12-31,fromage à raclette,10.0,XXX,zorglub,2.0,"zorglub, fred, tata, pépé"',
+            "date,what,bill_type,amount,currency,payer_name,payer_weight,owers",
+            "2017-01-01,refund,Refund,XXX,13.33,tata,1.0,fred",
+            '2016-12-31,red wine,Expense,XXX,200.0,fred,1.0,"zorglub, tata"',
+            '2016-12-31,à raclette,Expense,10.0,XXX,zorglub,2.0,"zorglub, fred, tata, pépé"',
         ]
         received_lines = resp.data.decode("utf-8").split("\n")
 
@@ -450,7 +466,8 @@ class ExportTestCase(IhatemoneyTestCase):
             "/raclette/add",
             data={
                 "date": "2016-12-31",
-                "what": "fromage à raclette",
+                "what": "à raclette",
+                "bill_type": "Expense",
                 "payer": 1,
                 "payed_for": [1, 2, 3, 4],
                 "amount": "10.0",
@@ -463,6 +480,7 @@ class ExportTestCase(IhatemoneyTestCase):
             data={
                 "date": "2016-12-31",
                 "what": "poutine from Québec",
+                "bill_type": "Expense",
                 "payer": 2,
                 "payed_for": [1, 3],
                 "amount": "100",
@@ -475,6 +493,7 @@ class ExportTestCase(IhatemoneyTestCase):
             data={
                 "date": "2017-01-01",
                 "what": "refund",
+                "bill_type": "Refund",
                 "payer": 3,
                 "payed_for": [2],
                 "amount": "13.33",
@@ -488,6 +507,7 @@ class ExportTestCase(IhatemoneyTestCase):
             {
                 "date": "2017-01-01",
                 "what": "refund",
+                "bill_type": "Refund",
                 "amount": 13.33,
                 "currency": "EUR",
                 "payer_name": "tata",
@@ -497,6 +517,7 @@ class ExportTestCase(IhatemoneyTestCase):
             {
                 "date": "2016-12-31",
                 "what": "poutine from Qu\xe9bec",
+                "bill_type": "Expense",
                 "amount": 100.0,
                 "currency": "CAD",
                 "payer_name": "fred",
@@ -505,7 +526,8 @@ class ExportTestCase(IhatemoneyTestCase):
             },
             {
                 "date": "2016-12-31",
-                "what": "fromage \xe0 raclette",
+                "what": "\xe0 raclette",
+                "bill_type": "Expense",
                 "amount": 10.0,
                 "currency": "EUR",
                 "payer_name": "zorglub",
@@ -518,10 +540,10 @@ class ExportTestCase(IhatemoneyTestCase):
         # generate csv export of bills
         resp = self.client.get("/raclette/export/bills.csv")
         expected = [
-            "date,what,amount,currency,payer_name,payer_weight,owers",
-            "2017-01-01,refund,13.33,EUR,tata,1.0,fred",
-            '2016-12-31,poutine from Québec,100.0,CAD,fred,1.0,"zorglub, tata"',
-            '2016-12-31,fromage à raclette,10.0,EUR,zorglub,2.0,"zorglub, fred, tata, pépé"',
+            "date,what,bill_type,amount,currency,payer_name,payer_weight,owers",
+            "2017-01-01,refund,Refund,13.33,EUR,tata,1.0,fred",
+            '2016-12-31,poutine from Québec,Expense,100.0,CAD,fred,1.0,"zorglub, tata"',
+            '2016-12-31,à raclette,Expense,10.0,EUR,zorglub,2.0,"zorglub, fred, tata, pépé"',
         ]
         received_lines = resp.data.decode("utf-8").split("\n")
 
@@ -608,6 +630,7 @@ class ExportTestCase(IhatemoneyTestCase):
             data={
                 "date": "2016-12-31",
                 "what": "=COS(36)",
+                "bill_type": "Expense",
                 "payer": 1,
                 "payed_for": [1],
                 "amount": "10.0",
@@ -618,8 +641,8 @@ class ExportTestCase(IhatemoneyTestCase):
         # generate csv export of bills
         resp = self.client.get("/raclette/export/bills.csv")
         expected = [
-            "date,what,amount,currency,payer_name,payer_weight,owers",
-            "2016-12-31,'=COS(36),10.0,EUR,zorglub,1.0,zorglub",
+            "date,what,bill_type,amount,currency,payer_name,payer_weight,owers",
+            "2016-12-31,'=COS(36),Expense,10.0,EUR,zorglub,1.0,zorglub",
         ]
         received_lines = resp.data.decode("utf-8").split("\n")
 

@@ -105,6 +105,7 @@
         <table id="bill_table" class="col table table-striped table-hover table-responsive-sm">
             <thead>
                 <tr><th>{{ _("When?") }}
+                </th><th>{{ _("Bill Type") }} 
                 </th><th>{{ _("Who paid?") }}
                 </th><th>{{ _("For what?") }}
                 </th><th>{{ _("For whom?") }}
@@ -120,6 +121,7 @@
                         {{ bill.date }}
                     </span>
                 </td>
+                <td>{{ bill.bill_type }}</td>
                 <td>{{ bill.payer }}</td>
                 <td>{{ bill.what }}</td>
                 <td>{% if bill.owers|length == g.project.members|length -%}

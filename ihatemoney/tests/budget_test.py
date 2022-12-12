@@ -1207,8 +1207,8 @@ class BudgetTestCase(IhatemoneyTestCase):
         members = defaultdict(int)
         # We should have the same values between transactions and project balances
         for t in transactions:
-            members[t["ower"]] -= t["bill_type":"Expense", "amount"]
-            members[t["receiver"]] += t["bill_type":"Expense", "amount"]
+            members[t["ower"]] -= t["amount"]
+            members[t["receiver"]] += t["amount"]
         balance = self.get_project("raclette").balance
         for m, a in members.items():
             assert abs(a - balance[m.id]) < 0.01
@@ -1263,7 +1263,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         # There should not be any zero-amount transfer after rounding
         for t in transactions:
-            rounded_amount = round(t["bill_type":"Expense", "amount"], 2)
+            rounded_amount = round(t["amount"], 2)
             self.assertNotEqual(
                 0.0,
                 rounded_amount,

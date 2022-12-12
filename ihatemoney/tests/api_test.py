@@ -96,7 +96,8 @@ class APITestCase(IhatemoneyTestCase):
 
         self.assertTrue(400, resp.status_code)
         self.assertEqual(
-            '{"contact_email": ["Invalid email address."]}\n', resp.data.decode("utf-8")
+            "".join('{"contact_email": ["Invalid email address."]}\n'.split()),
+            "".join(resp.data.decode("utf-8").split()),
         )
 
         # create it
@@ -429,7 +430,8 @@ class APITestCase(IhatemoneyTestCase):
 
         self.assertStatus(400, req)
         self.assertEqual(
-            '{"date": ["This field is required."]}\n', req.data.decode("utf-8")
+            "".join('{"date": ["This field is required."]}'.split()),
+            "".join(req.data.decode("utf-8").split()),
         )
 
         # edit a bill

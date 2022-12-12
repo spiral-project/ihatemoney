@@ -1,5 +1,5 @@
 # Verbose and documented settings are in conf-templates/ihatemoney.cfg.j2
-DEBUG = SQLACHEMY_ECHO = True
+DEBUG = SQLACHEMY_ECHO = False
 SQLALCHEMY_DATABASE_URI = "sqlite:////tmp/ihatemoney.db"
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 SECRET_KEY = "tralala"
@@ -10,7 +10,7 @@ ADMIN_PASSWORD = ""
 ALLOW_PUBLIC_PROJECT_CREATION = True
 ACTIVATE_ADMIN_DASHBOARD = False
 SESSION_COOKIE_SECURE = False
-TEMPLATES_AUTO_RELOAD=True
+TEMPLATES_AUTO_RELOAD = True
 SUPPORTED_LANGUAGES = [
     "de",
     "el",

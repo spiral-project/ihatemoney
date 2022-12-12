@@ -74,7 +74,14 @@ class Project(db.Model):
 
     query_class = ProjectQuery
     default_currency = db.Column(db.String(3))
-    bill_types = [("Expense","Expense"), ("Reimbursment","Reimbursment"), ("Refund","Refund"), ("Transfer","Transfer"), ("Payment","Payment")]
+    bill_types = [
+        ("Expense", "Expense"),
+        ("Reimbursment", "Reimbursment"),
+        ("Refund", "Refund"),
+        ("Transfer", "Transfer"),
+        ("Payment", "Payment"),
+    ]
+
     @property
     def _to_serialize(self):
         obj = {
@@ -334,6 +341,7 @@ class Project(db.Model):
             pretty_bills.append(
                 {
                     "what": bill.what,
+                    "bill_type": bill.bill_type,
                     "amount": round(bill.amount, 2),
                     "currency": bill.original_currency,
                     "date": str(bill.date),
@@ -405,6 +413,7 @@ class Project(db.Model):
                     new_bill = Bill(
                         amount=b["amount"],
                         date=parse(b["date"]),
+                        bill_type=b["bill_type"],
                         external_link="",
                         original_currency=b["currency"],
                         owers=Person.query.get_by_names(b["owers"], self),
@@ -533,14 +542,15 @@ class Project(db.Model):
         db.session.commit()
 
         operations = (
-            ("Georg", 200, ("Amina", "Georg", "Alice"), "Food shopping"),
-            ("Alice", 20, ("Amina", "Alice"), "Beer !"),
-            ("Amina", 50, ("Amina", "Alice", "Georg"), "AMAP"),
+            ("Georg", 200, ("Amina", "Georg", "Alice"), "Food shopping", "Expense"),
+            ("Alice", 20, ("Amina", "Alice"), "Beer !", "Expense"),
+            ("Amina", 50, ("Amina", "Alice", "Georg"), "AMAP", "Expense"),
         )
-        for (payer, amount, owers, what) in operations:
+        for (payer, amount, owers, what, bill_type) in operations:
             db.session.add(
                 Bill(
                     amount=amount,
+                    bill_type=bill_type,
                     original_currency=project.default_currency,
                     owers=[members[name] for name in owers],
                     payer_id=members[payer].id,

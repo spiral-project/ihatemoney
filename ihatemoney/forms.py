@@ -76,7 +76,7 @@ def get_billform_for(project, set_default=True, **kwargs):
     ]
 
     active_members = [(m.id, m.name) for m in project.active_members]
-    
+
     form.bill_type.choices = project.bill_types
     form.payed_for.choices = form.payer.choices = active_members
     form.payed_for.default = [m.id for m in project.active_members]
@@ -339,9 +339,7 @@ class BillForm(FlaskForm):
     payed_for = SelectMultipleField(
         _("For Who?"), validators=[DataRequired()], coerce=int
     )
-    bill_type = SelectField(
-        _("Bill Type"), validators=[DataRequired()], coerce=str
-    )
+    bill_type = SelectField(_("Bill Type"), validators=[DataRequired()], coerce=str)
     submit = SubmitField(_("Submit"))
     submit2 = SubmitField(_("Submit and add a new one"))
 
@@ -355,7 +353,7 @@ class BillForm(FlaskForm):
             payer_id=self.payer.data,
             project_default_currency=project.default_currency,
             what=self.what.data,
-            bill_type=self.bill_type.data
+            bill_type=self.bill_type.data,
         )
 
     def save(self, bill, project):
@@ -403,7 +401,7 @@ class BillForm(FlaskForm):
     def validate_bill_type(self, field):
         if (field.data, field.data) not in Project.bill_types:
             raise ValidationError(_("Invalid Bill Type"))
-        
+
 
 class MemberForm(FlaskForm):
     name = StringField(_("Name"), validators=[DataRequired()], filters=[strip_filter])
