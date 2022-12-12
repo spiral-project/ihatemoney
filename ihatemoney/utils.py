@@ -216,6 +216,7 @@ def csv2list_of_dicts(csv_to_convert):
         r["amount"] = float(r["amount"])
         r["payer_weight"] = float(r["payer_weight"])
         r["owers"] = [o.strip() for o in r["owers"].split(",")]
+        r["bill_type"] = str(r["bill_type"])
         result.append(r)
     return result
 
@@ -299,7 +300,16 @@ def get_members(file):
 
 
 def same_bill(bill1, bill2):
-    attr = ["what", "payer_name", "payer_weight", "amount", "currency", "date", "owers"]
+    attr = [
+        "what",
+        "bill_type",
+        "payer_name",
+        "payer_weight",
+        "amount",
+        "currency",
+        "date",
+        "owers",
+    ]
     for a in attr:
         if bill1[a] != bill2[a]:
             return False

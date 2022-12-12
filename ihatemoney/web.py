@@ -456,6 +456,7 @@ def import_project():
             # Check data
             attr = [
                 "amount",
+                "bill_type",
                 "currency",
                 "date",
                 "owers",
