@@ -805,6 +805,11 @@ class BudgetTestCase(IhatemoneyTestCase):
         #check balance 
         balance = self.get_project("rent").balance
         self.assertEqual(set(balance.values()), set([500, -500]))
+        #check paid
+        bob_paid = self.get_project("rent").full_balance[2][members_ids[0]]
+        alice_paid = self.get_project("rent").full_balance[2][members_ids[1]]
+        self.assertEqual(bob_paid, 1000)
+        self.assertEqual(alice_paid, 0)
 
         # test reimbursement bill
         self.client.post(
@@ -821,7 +826,11 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         balance = self.get_project("rent").balance
         self.assertEqual(set(balance.values()), set([0, 0]))
-
+        #check paid
+        bob_paid = self.get_project("rent").full_balance[2][members_ids[0]]
+        alice_paid = self.get_project("rent").full_balance[2][members_ids[1]]
+        self.assertEqual(bob_paid, 500)
+        self.assertEqual(alice_paid, 500)
     def test_transfer_bill(self):
         self.post_project("random")
 
