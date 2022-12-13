@@ -827,7 +827,7 @@ def settle(amount, ower_id, payer_id):
         payer_id=ower_id,
         project_default_currency=g.project.default_currency,
         bill_type="Reimbursement",
-        what="settlement"
+        what="settlement",
     )
     session.update()
 
