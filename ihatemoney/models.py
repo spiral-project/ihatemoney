@@ -78,7 +78,7 @@ class Project(db.Model):
         ("Expense", "Expense"),
         ("Reimbursement", "Reimbursement"),
         ("Transfer", "Transfer"),
-        ]
+    ]
 
     @property
     def _to_serialize(self):
