@@ -705,7 +705,19 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "amount": "17",
             },
         )
-
+        
+        #transfer bill should not affect balances at all
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-08-10",
+                "what": "Transfer",
+                "payer": members_ids[1],
+                "payed_for": members_ids[0],
+                "bill_type": "Transfer",
+                "amount": "500",
+            },
+        )
         balance = self.get_project("raclette").balance
         self.assertEqual(set(balance.values()), set([19.0, -19.0]))
 
@@ -769,6 +781,80 @@ class BudgetTestCase(IhatemoneyTestCase):
             },
         )
         self.assertIn("Invalid URL", resp.data.decode("utf-8"))
+
+    def test_reimbursement_bill(self):
+        self.post_project("rent")
+
+        # add two participants
+        self.client.post("/rent/members/add", data={"name": "bob"})
+        self.client.post("/rent/members/add", data={"name": "alice"})
+
+        members_ids = [m.id for m in self.get_project("rent").members]
+        # create a bill to test reimbursement 
+        self.client.post(
+            "/rent/add",
+            data={
+                "date": "2022-12-12",
+                "what": "december rent",
+                "payer": members_ids[0], #bob
+                "payed_for": members_ids, #bob and alice
+                "bill_type": "Expense",
+                "amount": "1000",
+            },
+        )
+        #check balance 
+        balance = self.get_project("rent").balance
+        self.assertEqual(set(balance.values()), set([500, -500]))
+
+        # test reimbursement bill
+        self.client.post(
+            "/rent/add",
+            data={
+                "date": "2022-12-13",
+                "what": "reimbursement for rent",
+                "payer": members_ids[1], #alice
+                "payed_for": members_ids[0], #bob  
+                "bill_type": "Reimbursement",
+                "amount": "500",
+            },
+        )
+
+        balance = self.get_project("rent").balance
+        self.assertEqual(set(balance.values()), set([0, 0]))
+
+    def test_transfer_bill(self):
+        self.post_project("random")
+
+        # add two participants
+        self.client.post("/random/members/add", data={"name": "zorglub"})
+        self.client.post("/random/members/add", data={"name": "fred"})
+
+        members_ids = [m.id for m in self.get_project("random").members]
+        self.client.post(
+            "/random/add",
+            data={
+                "date": "2022-10-10",
+                "what": "Rent",
+                "payer": members_ids[0], #zorglub
+                "payed_for": members_ids, #zorglub + fred  
+                "bill_type": "Expense",
+                "amount": "1000",
+            },
+        )
+        # test transfer bill (should not affect anything whatsoever)
+        self.client.post(
+            "/random/add",
+            data={
+                "date": "2022-10-10",
+                "what": "Transfer of 500 to fred",
+                "payer": members_ids[0], #zorglub
+                "payed_for": members_ids[1], #fred  
+                "bill_type": "Transfer",
+                "amount": "500",
+            },
+        )
+        balance = self.get_project("random").balance
+        self.assertEqual(set(balance.values()), set([500, -500]))
 
     def test_weighted_balance(self):
         self.post_project("raclette")
