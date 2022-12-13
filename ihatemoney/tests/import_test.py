@@ -301,7 +301,7 @@ class CommonTestCase(object):
                 {
                     "date": "2017-01-01",
                     "what": "refund",
-                    "bill_type": "Refund",
+                    "bill_type": "Reimbursement",
                     "payer_name": "tata",
                     "payer_weight": 1.0,
                     "owers": ["fred"],
@@ -353,7 +353,7 @@ class ExportTestCase(IhatemoneyTestCase):
             "/raclette/add",
             data={
                 "date": "2017-01-01",
-                "bill_type": "Refund",
+                "bill_type": "Reimbursement",
                 "what": "refund",
                 "payer": 3,
                 "payed_for": [2],
@@ -366,7 +366,7 @@ class ExportTestCase(IhatemoneyTestCase):
         expected = [
             {
                 "date": "2017-01-01",
-                "bill_type": "Refund",
+                "bill_type": "Reimbursement",
                 "what": "refund",
                 "amount": 13.33,
                 "currency": "XXX",
@@ -401,7 +401,7 @@ class ExportTestCase(IhatemoneyTestCase):
         resp = self.client.get("/raclette/export/bills.csv")
         expected = [
             "date,what,bill_type,amount,currency,payer_name,payer_weight,owers",
-            "2017-01-01,refund,Refund,XXX,13.33,tata,1.0,fred",
+            "2017-01-01,refund,Reimbursement,XXX,13.33,tata,1.0,fred",
             '2016-12-31,red wine,Expense,XXX,200.0,fred,1.0,"zorglub, tata"',
             '2016-12-31,à raclette,Expense,10.0,XXX,zorglub,2.0,"zorglub, fred, tata, pépé"',
         ]
@@ -493,7 +493,7 @@ class ExportTestCase(IhatemoneyTestCase):
             data={
                 "date": "2017-01-01",
                 "what": "refund",
-                "bill_type": "Refund",
+                "bill_type": "Reimbursement",
                 "payer": 3,
                 "payed_for": [2],
                 "amount": "13.33",
@@ -507,7 +507,7 @@ class ExportTestCase(IhatemoneyTestCase):
             {
                 "date": "2017-01-01",
                 "what": "refund",
-                "bill_type": "Refund",
+                "bill_type": "Reimbursement",
                 "amount": 13.33,
                 "currency": "EUR",
                 "payer_name": "tata",
@@ -541,7 +541,7 @@ class ExportTestCase(IhatemoneyTestCase):
         resp = self.client.get("/raclette/export/bills.csv")
         expected = [
             "date,what,bill_type,amount,currency,payer_name,payer_weight,owers",
-            "2017-01-01,refund,Refund,13.33,EUR,tata,1.0,fred",
+            "2017-01-01,refund,Reimbursement,13.33,EUR,tata,1.0,fred",
             '2016-12-31,poutine from Québec,Expense,100.0,CAD,fred,1.0,"zorglub, tata"',
             '2016-12-31,à raclette,Expense,10.0,EUR,zorglub,2.0,"zorglub, fred, tata, pépé"',
         ]
