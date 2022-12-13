@@ -76,7 +76,7 @@ class Project(db.Model):
     default_currency = db.Column(db.String(3))
     bill_types = [
         ("Expense", "Expense"),
-        ("Reimbursment", "Reimbursment"),
+        ("Reimbursement", "Reimbursement"),
         ("Transfer", "Transfer"),
         ]
 

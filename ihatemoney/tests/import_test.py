@@ -301,7 +301,7 @@ class CommonTestCase(object):
                 {
                     "date": "2017-01-01",
                     "what": "refund",
-                    "bill_type": "Refund",
+                    "bill_type": "Reimbursement",
                     "payer_name": "tata",
                     "payer_weight": 1.0,
                     "owers": ["fred"],
@@ -353,7 +353,7 @@ class ExportTestCase(IhatemoneyTestCase):
             "/raclette/add",
             data={
                 "date": "2017-01-01",
-                "bill_type": "Refund",
+                "bill_type": "Reimbursement",
                 "what": "refund",
                 "payer": 3,
                 "payed_for": [2],
@@ -366,7 +366,7 @@ class ExportTestCase(IhatemoneyTestCase):
         expected = [
             {
                 "date": "2017-01-01",
-                "bill_type": "Refund",
+                "bill_type": "Reimbursement",
                 "what": "refund",
                 "amount": 13.33,
                 "currency": "XXX",
@@ -493,7 +493,7 @@ class ExportTestCase(IhatemoneyTestCase):
             data={
                 "date": "2017-01-01",
                 "what": "refund",
-                "bill_type": "Refund",
+                "bill_type": "Reimbursement",
                 "payer": 3,
                 "payed_for": [2],
                 "amount": "13.33",
@@ -507,7 +507,7 @@ class ExportTestCase(IhatemoneyTestCase):
             {
                 "date": "2017-01-01",
                 "what": "refund",
-                "bill_type": "Refund",
+                "bill_type": "Reimbursement",
                 "amount": 13.33,
                 "currency": "EUR",
                 "payer_name": "tata",
