@@ -801,11 +801,7 @@ def delete_bill(bill_id):
         return redirect(url_for(".list_bills"))
 
     # Check if the bill contains deactivated member. If yes, stop deleting.
-    if bill.involves_deactivated_members(g.project):
-        flash(
-            _("Deactivated users involved. This bill cannot be deleted."),
-            category="warning",
-        )
+    if bill.involves_deactivated_members:
         return redirect(url_for(".list_bills"))
 
     db.session.delete(bill)
@@ -823,11 +819,7 @@ def edit_bill(bill_id):
         raise NotFound()
 
     # Check if the bill contains deactivated member. If yes, stop editing.
-    if bill.involves_deactivated_members(g.project):
-        flash(
-            _("Deactivated users involved. This bill cannot be edited."),
-            category="warning",
-        )
+    if bill.involves_deactivated_members:
         return redirect(url_for(".list_bills"))
 
     form = get_billform_for(g.project, set_default=False)
