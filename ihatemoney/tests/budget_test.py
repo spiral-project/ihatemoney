@@ -1213,6 +1213,67 @@ class BudgetTestCase(IhatemoneyTestCase):
         for m, a in members.items():
             assert abs(a - balance[m.id]) < 0.01
         return
+    
+    def SettleButtonTestCase(self):
+        self.post_project("raclette")
+
+        # add participants
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
+        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "tata"})
+        # Add a participant with a balance at 0 :
+        self.client.post("/raclette/members/add", data={"name": "pépé"})
+
+        # create bills
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1, 2, 3],
+                "bill_type": "Expense",
+                "amount": "10.0",
+            },
+        )
+
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-08-10",
+                "what": "red wine",
+                "payer": 2,
+                "payed_for": [1],
+                "bill_type": "Expense",
+                "amount": "20",
+            },
+        )
+
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-08-10",
+                "what": "delicatessen",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "bill_type": "Expense",
+                "amount": "10",
+            },
+        )
+        project = self.get_project("raclette")
+        transactions = project.get_transactions_to_settle_bill()
+        
+        
+        for t in transactions:
+            self.client.get("/raclette/settle"+"/"+str(t["amount"])+"/"+str(t["ower"].id)+"/"+str(t["receiver"]))
+            temp_transactions = project.get_transactions_to_settle_bill()
+            #test if the one has disappeared
+            assert len(temp_transactions) == len(transactions)-1
+        
+            #test if theres a new one with bill_type reimbursement
+            bill = models.Bill.query.one()
+            self.assertEqual(bill.amount, t["amount"])
+        return
 
     def test_settle_zero(self):
         self.post_project("raclette")
