@@ -735,7 +735,8 @@ class Bill(db.Model):
         else:
             return 0
 
-    def involves_deactivated_members(self, project):
+    @property
+    def involves_deactivated_members(self):
         """Check whether the bill contains deactivated member.
         Return:
         True if it contains deactivated member,
@@ -745,8 +746,7 @@ class Bill(db.Model):
         bill_member_id_list = owers_id + [self.payer_id]
         deactivated_member_number = (
             Person.query.filter(Person.id.in_(bill_member_id_list))
-            .filter(Person.project_id == project.id)
-            .filter(Person.activated == False)
+            .filter(Person.activated.is_(False))
             .count()
         )
         return deactivated_member_number != 0
