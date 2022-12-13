@@ -8,11 +8,11 @@ Basically, this blueprint takes care of the authentication and provides
 some shortcuts to make your life better when coding (see `pull_project`
 and `add_project_id` for a quick overview)
 """
+import datetime
 from functools import wraps
 import json
 import os
 from urllib.parse import urlparse, urlunparse
-import datetime
 
 from flask import (
     Blueprint,
@@ -810,8 +810,9 @@ def settle_bill():
     bills = g.project.get_transactions_to_settle_bill()
     return render_template("settle_bills.html", bills=bills, current_view="settle_bill")
 
+
 @main.route("/<project_id>/settle/<amount>/<int:ower_id>/<int:payer_id>")
-def settle(amount,ower_id,payer_id):
+def settle(amount, ower_id, payer_id):
     # FIXME: Test this bill belongs to this project !
     # form = get_billform_for(g.project, set_default=False)
     # form.bill_type = ("Refund", "Refund")
@@ -820,14 +821,14 @@ def settle(amount,ower_id,payer_id):
     # form.payedfor = payer
 
     new_reinbursement = Bill(
-                        amount=float(amount),
-                        date=datetime.datetime.today(),
-                        owers=[Person.query.get(payer_id)],
-                        payer_id=ower_id,
-                        project_default_currency=g.project.default_currency,
-                        bill_type= "Reimbursement",
-                        what="settlement"
-                        )
+        amount=float(amount),
+        date=datetime.datetime.today(),
+        owers=[Person.query.get(payer_id)],
+        payer_id=ower_id,
+        project_default_currency=g.project.default_currency,
+        bill_type="Reimbursement",
+        what="settlement",
+    )
     session.update()
 
     db.session.add(new_reinbursement)
@@ -836,6 +837,7 @@ def settle(amount,ower_id,payer_id):
     #     db.session.add(form.export(g.project))
     #     db.session.commit()
     return redirect(url_for(".settle_bill"))
+
 
 @main.route("/<project_id>/history")
 def history():
