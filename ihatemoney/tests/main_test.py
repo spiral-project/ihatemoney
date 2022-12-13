@@ -232,7 +232,6 @@ class ModelsTestCase(IhatemoneyTestCase):
                 self.assertEqual(bill.pay_each(), pay_each_expected)
 
 
-
 class EmailFailureTestCase(IhatemoneyTestCase):
     def test_creation_email_failure_smtp(self):
         self.login("raclette")

@@ -1213,7 +1213,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         for m, a in members.items():
             assert abs(a - balance[m.id]) < 0.01
         return
-    
+
     def SettleButtonTestCase(self):
         self.post_project("raclette")
 
@@ -1262,15 +1262,22 @@ class BudgetTestCase(IhatemoneyTestCase):
         )
         project = self.get_project("raclette")
         transactions = project.get_transactions_to_settle_bill()
-        
-        
+
         for t in transactions:
-            self.client.get("/raclette/settle"+"/"+str(t["amount"])+"/"+str(t["ower"].id)+"/"+str(t["receiver"]))
+            self.client.get(
+                "/raclette/settle"
+                + "/"
+                + str(t["amount"])
+                + "/"
+                + str(t["ower"].id)
+                + "/"
+                + str(t["receiver"])
+            )
             temp_transactions = project.get_transactions_to_settle_bill()
-            #test if the one has disappeared
-            assert len(temp_transactions) == len(transactions)-1
-        
-            #test if theres a new one with bill_type reimbursement
+            # test if the one has disappeared
+            assert len(temp_transactions) == len(transactions) - 1
+
+            # test if theres a new one with bill_type reimbursement
             bill = models.Bill.query.one()
             self.assertEqual(bill.amount, t["amount"])
         return
