@@ -1214,7 +1214,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             assert abs(a - balance[m.id]) < 0.01
         return
     
-    def SettleButtonTestCase(self):
+    def test_settle_button(self):
         self.post_project("raclette")
 
         # add participants
@@ -1263,16 +1263,17 @@ class BudgetTestCase(IhatemoneyTestCase):
         project = self.get_project("raclette")
         transactions = project.get_transactions_to_settle_bill()
         
-        
+        count = 0
         for t in transactions:
-            self.client.get("/raclette/settle"+"/"+str(t["amount"])+"/"+str(t["ower"].id)+"/"+str(t["receiver"]))
+            count+=1
+            self.client.get("/raclette/settle"+"/"+str(t["amount"])+"/"+str(t["ower"].id)+"/"+str(t["receiver"].id))
             temp_transactions = project.get_transactions_to_settle_bill()
             #test if the one has disappeared
-            assert len(temp_transactions) == len(transactions)-1
+            assert len(temp_transactions) == len(transactions)-count
         
             #test if theres a new one with bill_type reimbursement
-            bill = models.Bill.query.one()
-            self.assertEqual(bill.amount, t["amount"])
+            bill = project.get_newest_bill()
+            self.assertEqual(bill.bill_type, "Reimbursement")
         return
 
     def test_settle_zero(self):
