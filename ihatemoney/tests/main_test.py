@@ -106,6 +106,34 @@ class CommandTestCase(BaseTestCase):
 
         self.assertEqual(len(models.Project.query.all()), 0)
 
+    def test_get_all_projects_basic(self):
+        self.create_project("proj1")
+        self.create_project("proj2")
+        self.create_project("proj3")
+        self.create_project("proj4")
+
+        runner = self.app.test_cli_runner()
+        result = runner.invoke(get_all_projects)
+        self.assertEqual(result, 4)
+
+    def test_get_proj_emails(self):
+        self.create_project("test")
+        runner = self.app.test_cli_runner()
+        result = runner.invoke(get_all_projects(emails = True))
+        self.assertEqual(result, "1 \n demo@notmyidea.org")
+
+    def test_get_proj_names(self):
+        self.create_project("test")
+        runner = self.app.test_cli_runner()
+        result = runner.invoke(get_all_projects(days = 0))
+        self.assertEqual(result, 1)
+
+    def test_get_proj_days(self):
+        self.create_project("test")
+        runner = self.app.test_cli_runner()
+        result = runner.invoke(get_all_projects(low = 1, high =1))
+        self.assertEqual(result, 1)
+
 
 class ModelsTestCase(IhatemoneyTestCase):
     def test_weighted_bills(self):

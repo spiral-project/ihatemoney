@@ -4,6 +4,7 @@ import getpass
 import os
 import random
 import sys
+import datetime
 
 import click
 from flask.cli import FlaskGroup
@@ -92,6 +93,98 @@ def delete_project(project_name):
     else:
         db.session.delete(project)
         db.session.commit()
+
+
+@cli.command()
+@click.option(
+    "-l", "--bills_low", type=int, required=False, help="The minimum number of bills"
+)
+@click.option(
+    "-h", "--bills_high", type=int, required=False, help="Maximum number of bills"
+)
+@click.option(
+    "-d",
+    "--num_days",
+    required=False,
+    type=int,
+    help="Max number of days you want the oldest result to be",
+)
+@click.option(
+    "-e",
+    "--emails",
+    is_flag=True,
+    default=False,
+    help="Returns emails rather than project names",
+)
+@click.option(
+    "-n",
+    "--names",
+    is_flag=True,
+    default=False,
+    help="Returns list of names of projects",
+)
+def get_all_projects(
+    bills_low=None, bills_high=None, num_days=None, emails=None, names=None
+):
+    """Displays the number of projects. Options exist to specify for \
+        projects within the bounds of the specified number of bills (inclusive) and/or less than x days old. """
+    if bills_low and bills_high:
+
+        # Make sure low < high
+        if bills_high < bills_low:
+            temp = bills_high
+            bills_high = bills_low
+            bills_low = temp
+
+        if num_days:
+            projects = [
+                pr
+                for pr in Project.query.all()
+                if pr.get_bills().count() >= bills_low
+                and pr.get_bills().count() <= bills_high
+                and pr.get_bills()[0].date
+                > datetime.date.today() - datetime.timedelta(days=num_days)
+            ]
+        else:
+            projects = [
+                pr
+                for pr in Project.query.all()
+                if pr.get_bills().count() >= bills_low
+                and pr.get_bills().count() <= bills_high
+            ]
+        click.echo(len(projects))
+        if emails:
+            list_emails = ", ".join(set([pr.contact_email for pr in projects]))
+            click.echo(list_emails)
+        if names:
+            proj_names = [pr.name for pr in projects]
+            click.echo(proj_names)
+
+    elif (bills_low and bills_high == None) or (bills_low == None and bills_high):
+        click.secho(
+            f"Invalid number of bounds specified. Please include both a \
+            low and high bound by using (-l or --low) and (-h or --high)",
+            fg="red",
+        )
+
+    else:
+        if num_days:
+            projects = [
+                pr
+                for pr in Project.query.all()
+                if pr.get_bills()[0].date
+                > datetime.date.today() - datetime.timedelta(days=num_days)
+            ]
+        else:
+            projects = Project.query.all()
+
+        click.echo(len(projects))
+        if emails:
+            list_emails = ", ".join(set([pr.contact_email for pr in projects]))
+            click.echo(list_emails)
+        if names:
+            proj_names = [pr.name for pr in projects]
+            click.echo(proj_names)
 
 
 if __name__ == "__main__":
