@@ -1,6 +1,5 @@
 import ast
 import csv
-from datetime import datetime, timedelta
 import email.utils
 from enum import Enum
 from io import BytesIO, StringIO, TextIOWrapper
@@ -15,10 +14,18 @@ from babel import Locale
 from babel.numbers import get_currency_name, get_currency_symbol
 from flask import current_app, flash, redirect, render_template
 from flask_babel import get_locale, lazy_gettext as _
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 import jinja2
 from markupsafe import Markup, escape
 from werkzeug.exceptions import HTTPException
 from werkzeug.routing import RoutingException
+
+limiter = limiter = Limiter(
+    current_app,
+    key_func=get_remote_address,
+    storage_uri="memory://",
+)
 
 
 def slugify(value):
@@ -211,45 +218,6 @@ def csv2list_of_dicts(csv_to_convert):
         r["owers"] = [o.strip() for o in r["owers"].split(",")]
         result.append(r)
     return result
-
-
-class LoginThrottler:
-    """Simple login throttler used to limit authentication attempts based on client's ip address.
-    When using multiple workers, remaining number of attempts can get inconsistent
-    but will still be limited to num_workers * max_attempts.
-    """
-
-    def __init__(self, max_attempts=3, delay=1):
-        self._max_attempts = max_attempts
-        # Delay in minutes before resetting the attempts counter
-        self._delay = delay
-        self._attempts = {}
-
-    def get_remaining_attempts(self, ip):
-        return self._max_attempts - self._attempts.get(ip, [datetime.now(), 0])[1]
-
-    def increment_attempts_counter(self, ip):
-        # Reset all attempt counters when they get hungry for memory
-        if len(self._attempts) > 10000:
-            self.__init__()
-        if self._attempts.get(ip) is None:
-            # Store first attempt date and number of attempts since
-            self._attempts[ip] = [datetime.now(), 0]
-        self._attempts.get(ip)[1] += 1
-
-    def is_login_allowed(self, ip):
-        if self._attempts.get(ip) is None:
-            return True
-        # When the delay is expired, reset the counter
-        if datetime.now() - self._attempts.get(ip)[0] > timedelta(minutes=self._delay):
-            self.reset(ip)
-            return True
-        if self._attempts.get(ip)[1] >= self._max_attempts:
-            return False
-        return True
-
-    def reset(self, ip):
-        self._attempts.pop(ip, None)
 
 
 def create_jinja_env(folder, strict_rendering=False):

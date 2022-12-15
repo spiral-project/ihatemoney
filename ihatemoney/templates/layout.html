@@ -134,7 +134,14 @@
   <div class="container-fluid flex-shrink-0 {% if request.url_rule.endpoint == 'main.home' %} home-container {% endif %}">
   {% block body %}
       <main class="content offset-1 col-10">
+      {% if breached_limit %}
+        <p class="alert alert-danger">
+          {{ limit_message }}<br />
+          {{ _("Please retry after %(date)s.", date=breached_limit.reset_at  | from_timestamp | datetimeformat("short") )}}
+        </p>
+      {% else %}
       {% block content %}{% endblock %}
+      {% endif %}
       </main>
   {% endblock %}
   </div>
