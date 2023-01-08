@@ -9,13 +9,20 @@
 
 {% block content %}
     <table id="bill_table" class="split_bills table table-striped">
-        <thead><tr><th>{{ _("Who pays?") }}</th><th>{{ _("To whom?") }}</th><th>{{ _("How much?") }}</th></tr></thead>
+        <thead><tr><th>{{ _("Who pays?") }}</th><th>{{ _("To whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Settled?") }}</th></tr></thead>
     <tbody>
     {% for bill in bills %}
     <tr receiver={{bill.receiver.id}}>
             <td>{{ bill.ower }}</td>
             <td>{{ bill.receiver }}</td>
             <td>{{ bill.amount|currency }}</td>
+            <td>
+                <span id="settle-bill" class="ml-auto pb-2">
+                    <a href="{{ url_for('.settle', amount = bill.amount, ower_id = bill.ower.id, payer_id = bill.receiver.id) }}" class="btn btn-primary">
+                        {{ ("Settle") }}
+                    </a>
+                </span>
+            </td>
     </tr>
     {% endfor %}
     </tbody>

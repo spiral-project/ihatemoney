@@ -33,3 +33,6 @@ restful_api.add_resource(BillsHandler, "/projects/<string:project_id>/bills")
 restful_api.add_resource(
     BillHandler, "/projects/<string:project_id>/bills/<int:bill_id>"
 )
+# restful_api.add_resource(
+#     ProjectHandler, "/<project_id>/settle/<amount>/<ower>/<payer>"
+# )

@@ -77,6 +77,7 @@ def get_billform_for(project, set_default=True, **kwargs):
 
     active_members = [(m.id, m.name) for m in project.active_members]
 
+    form.bill_type.choices = project.bill_types
     form.payed_for.choices = form.payer.choices = active_members
     form.payed_for.default = [m.id for m in project.active_members]
 
@@ -336,8 +337,9 @@ class BillForm(FlaskForm):
         description=_("A link to an external document, related to this bill"),
     )
     payed_for = SelectMultipleField(
-        _("For whom?"), validators=[DataRequired()], coerce=int
+        _("For Who?"), validators=[DataRequired()], coerce=int
     )
+    bill_type = SelectField(_("Bill Type"), validators=[DataRequired()], coerce=str)
     submit = SubmitField(_("Submit"))
     submit2 = SubmitField(_("Submit and add a new one"))
 
@@ -351,12 +353,14 @@ class BillForm(FlaskForm):
             payer_id=self.payer.data,
             project_default_currency=project.default_currency,
             what=self.what.data,
+            bill_type=self.bill_type.data,
         )
 
     def save(self, bill, project):
         bill.payer_id = self.payer.data
         bill.amount = self.amount.data
         bill.what = self.what.data
+        bill.bill_type = self.bill_type.data
         bill.external_link = self.external_link.data
         bill.date = self.date.data
         bill.owers = Person.query.get_by_ids(self.payed_for.data, project)
@@ -370,6 +374,7 @@ class BillForm(FlaskForm):
         self.payer.data = bill.payer_id
         self.amount.data = bill.amount
         self.what.data = bill.what
+        self.bill_type.data = bill.bill_type
         self.external_link.data = bill.external_link
         self.original_currency.data = bill.original_currency
         self.date.data = bill.date
@@ -392,6 +397,10 @@ class BillForm(FlaskForm):
         elif decimal.Decimal(field.data) > decimal.MAX_EMAX:
             # See https://github.com/python-babel/babel/issues/821
             raise ValidationError(f"Result is too high: {field.data}")
+
+    def validate_bill_type(self, field):
+        if (field.data, field.data) not in Project.bill_types:
+            raise ValidationError(_("Invalid Bill Type"))
 
 
 class MemberForm(FlaskForm):
