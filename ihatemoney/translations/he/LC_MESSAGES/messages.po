@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-22 20:21+0200\n"
-"PO-Revision-Date: 2022-05-24 08:15+0000\n"
-"Last-Translator: G Pery <gpery+weblate@proton.me>\n"
+"PO-Revision-Date: 2022-11-07 10:07+0000\n"
+"Last-Translator: Raanan Katz <raakatz97@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/he/>\n"
 "Language: he\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 4.13-dev\n"
+"X-Generator: Weblate 4.14.2\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -213,7 +213,7 @@ msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr "סיסמת המנהל הזו שגויה. נותרו %(num)d ניסיונות."
 
 msgid "Provided token is invalid"
-msgstr ""
+msgstr "הטוקן שהוזן אינו תקין"
 
 msgid "This private code is not the right one"
 msgstr "קוד פרטי זה שגוי"
@@ -234,49 +234,51 @@ msgstr ""
 
 #, python-format
 msgid "The project identifier is %(project)s"
-msgstr ""
+msgstr "מזהה הפרויקט הוא %(project)s"
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
 "instructions. Please check the email configuration of the server or "
 "contact the administrator."
 msgstr ""
+"מצטערים, אך אירעה שגיאה בעת ששלחנו לכם את המייל עם הוראות איפוס הסיסמה. "
+"בבקשה תבדקו את הגדרות המייל בשרת או פנו למנהל השרת."
 
 msgid "No token provided"
-msgstr ""
+msgstr "טוקן לא הוזן"
 
 msgid "Invalid token"
-msgstr ""
+msgstr "טוקן לא תקין"
 
 msgid "Unknown project"
-msgstr ""
+msgstr "פרויקט לא ידוע"
 
 msgid "Password successfully reset."
-msgstr ""
+msgstr "הסיסמה אופסה בהצלחה."
 
 msgid "Project successfully uploaded"
-msgstr ""
+msgstr "הפרויקט הועלה בהצלחה"
 
 msgid "Invalid JSON"
-msgstr ""
+msgstr "פורמט JSON לא תקין"
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
-msgstr ""
+msgstr "לא ניתן להוסיף חשבונות במספר מטבעות לפרויקט ללא מטבע ברירת מחדל"
 
 msgid "Project successfully deleted"
-msgstr ""
+msgstr "הפרויקט נמחק בהצלחה"
 
 msgid "Error deleting project"
-msgstr ""
+msgstr "שגיאה במחיקת הפרויקט"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
-msgstr ""
+msgstr "הוזמנת לשתף הוצאות בפרויקט %(project)s"
 
 msgid "Your invitations have been sent"
-msgstr ""
+msgstr "ההזמנות שלך נשלחו"
 
 msgid ""
 "Sorry, there was an error while trying to send the invitation emails. "
@@ -286,7 +288,7 @@ msgstr ""
 
 #, python-format
 msgid "%(member)s has been added"
-msgstr ""
+msgstr "%(member)s נוסף"
 
 msgid "Error activating participant"
 msgstr ""
@@ -325,10 +327,10 @@ msgid "The bill has been modified"
 msgstr ""
 
 msgid "Error deleting project history"
-msgstr ""
+msgstr "שגיאה במחיקת הסטוריית הפרויקט"
 
 msgid "Deleted project history."
-msgstr ""
+msgstr "הסטוריית הפרויקט נמחקה."
 
 msgid "Error deleting recorded IP addresses"
 msgstr ""
@@ -340,16 +342,16 @@ msgid "Sorry, we were unable to find the page you've asked for."
 msgstr ""
 
 msgid "The best thing to do is probably to get back to the main page."
-msgstr ""
+msgstr "כנראה שהדבר הטוב ביותר לעשות הוא לחזור לעמוד הראשי."
 
 msgid "Back to the list"
-msgstr ""
+msgstr "חזרה לרשימה"
 
 msgid "Administration tasks are currently disabled."
-msgstr ""
+msgstr "פעולות ניהול מבוטלות לעת עתה."
 
 msgid "Authentication"
-msgstr ""
+msgstr "הזדהות"
 
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr ""
@@ -358,28 +360,28 @@ msgid "create it"
 msgstr ""
 
 msgid "?"
-msgstr ""
+msgstr "?"
 
 msgid "Create a new project"
-msgstr ""
+msgstr "צור פרויקט"
 
 msgid "Project"
-msgstr ""
+msgstr "פרויקט"
 
 msgid "Number of participants"
-msgstr ""
+msgstr "מספר משתתפים"
 
 msgid "Number of bills"
-msgstr ""
+msgstr "מספר חשבונות"
 
 msgid "Newest bill"
-msgstr ""
+msgstr "החשבון החדש ביותר"
 
 msgid "Oldest bill"
-msgstr ""
+msgstr "החשבון הישן ביותר"
 
 msgid "Actions"
-msgstr ""
+msgstr "פעולות"
 
 msgid "edit"
 msgstr ""
@@ -394,7 +396,7 @@ msgid "The Dashboard is currently deactivated."
 msgstr ""
 
 msgid "Download Mobile Application"
-msgstr ""
+msgstr "הורד אפליקציית מובייל"
 
 msgid "Get it on"
 msgstr ""
@@ -406,13 +408,13 @@ msgid "Edit project"
 msgstr ""
 
 msgid "Delete project"
-msgstr ""
+msgstr "מחק פרויקט"
 
 msgid "Import JSON"
-msgstr ""
+msgstr "ייבא JSON"
 
 msgid "Choose file"
-msgstr ""
+msgstr "בחר קובץ"
 
 msgid "Download project's data"
 msgstr ""
@@ -575,10 +577,10 @@ msgid "Delete Stored IP Addresses"
 msgstr ""
 
 msgid "Time"
-msgstr ""
+msgstr "זמן"
 
 msgid "Event"
-msgstr ""
+msgstr "אירוע"
 
 msgid "IP address recording can be enabled on the settings page"
 msgstr ""
@@ -587,7 +589,7 @@ msgid "IP address recording can be disabled on the settings page"
 msgstr ""
 
 msgid "From IP"
-msgstr ""
+msgstr "מכתובת IP"
 
 #, python-format
 msgid "Project %(name)s added"
@@ -636,7 +638,7 @@ msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)
 msgstr ""
 
 msgid "Amount"
-msgstr ""
+msgstr "סכום"
 
 #, python-format
 msgid "Amount in %(currency)s"
@@ -671,7 +673,7 @@ msgid "Participant %(name)s changed in an unknown way"
 msgstr ""
 
 msgid "Nothing to list"
-msgstr ""
+msgstr "אין מה להציג"
 
 msgid "Someone probably cleared the project history."
 msgstr ""
@@ -680,7 +682,7 @@ msgid "Manage your shared <br />expenses, easily"
 msgstr ""
 
 msgid "Try out the demo"
-msgstr ""
+msgstr "נסו את הדמו"
 
 msgid "You're sharing a house?"
 msgstr ""
@@ -692,16 +694,16 @@ msgid "Simply sharing money with others?"
 msgstr ""
 
 msgid "We can help!"
-msgstr ""
+msgstr "אנחנו יכולים לעזור!"
 
 msgid "Log in to an existing project"
-msgstr ""
+msgstr "התחבר לפרויקט קיים"
 
 msgid "Log in"
-msgstr ""
+msgstr "התחבר"
 
 msgid "can't remember your password?"
-msgstr ""
+msgstr "לא זוכרים את הסיסמה?"
 
 msgid "Create"
 msgstr ""
@@ -712,7 +714,7 @@ msgid ""
 msgstr ""
 
 msgid "Account manager"
-msgstr ""
+msgstr "מנהל החשבון"
 
 msgid "Bills"
 msgstr ""
@@ -724,19 +726,19 @@ msgid "Statistics"
 msgstr ""
 
 msgid "Languages"
-msgstr ""
+msgstr "שפות"
 
 msgid "Projects"
-msgstr ""
+msgstr "פרויקטים"
 
 msgid "Start a new project"
 msgstr ""
 
 msgid "History"
-msgstr ""
+msgstr "הסטוריה"
 
 msgid "Settings"
-msgstr ""
+msgstr "הגדרות"
 
 msgid "Other projects :"
 msgstr ""
@@ -751,22 +753,22 @@ msgid "Logout"
 msgstr ""
 
 msgid "Code"
-msgstr ""
+msgstr "קוד"
 
 msgid "Mobile Application"
 msgstr ""
 
 msgid "Documentation"
-msgstr ""
+msgstr "דוקומנטציה"
 
 msgid "Administation Dashboard"
 msgstr ""
 
 msgid "Legal information"
-msgstr ""
+msgstr "מידע משפטי"
 
 msgid "\"I hate money\" is free software"
-msgstr ""
+msgstr "\"אני שונא כסף\" היא תוכנה חינמית"
 
 msgid "you can contribute and improve it!"
 msgstr ""
@@ -794,20 +796,20 @@ msgid "Older bills"
 msgstr ""
 
 msgid "When?"
-msgstr ""
+msgstr "מתי?"
 
 msgid "Who paid?"
-msgstr ""
+msgstr "מי שילם?"
 
 msgid "For what?"
-msgstr ""
+msgstr "עבור מה?"
 
 msgid "How much?"
-msgstr ""
+msgstr "כמה?"
 
 #, python-format
 msgid "Added on %(date)s"
-msgstr ""
+msgstr "נוסף בתאריך %(date)s"
 
 #, python-format
 msgid "Everyone but %(excluded)s"
@@ -829,7 +831,7 @@ msgid "add participants"
 msgstr ""
 
 msgid "Password reminder"
-msgstr ""
+msgstr "תזכורת סיסמה"
 
 msgid ""
 "A link to reset your password has been sent to you, please check your "
@@ -837,10 +839,10 @@ msgid ""
 msgstr ""
 
 msgid "Return to home page"
-msgstr ""
+msgstr "חזור לעמוד הבית"
 
 msgid "Your projects"
-msgstr ""
+msgstr "הפרויקטים שלך"
 
 msgid "Reset your password"
 msgstr ""
@@ -857,7 +859,7 @@ msgid ""
 msgstr ""
 
 msgid "Identifier:"
-msgstr ""
+msgstr "מזהה:"
 
 msgid "Share the Link"
 msgstr ""
@@ -876,13 +878,13 @@ msgid ""
 msgstr ""
 
 msgid "Who pays?"
-msgstr ""
+msgstr "מי משלם?"
 
 msgid "To whom?"
-msgstr ""
+msgstr "למי?"
 
 msgid "Who?"
-msgstr ""
+msgstr "מי?"
 
 msgid "Balance"
 msgstr ""
@@ -894,7 +896,7 @@ msgid "reactivate"
 msgstr ""
 
 msgid "Paid"
-msgstr ""
+msgstr "שולם"
 
 msgid "Spent"
 msgstr ""
@@ -903,4 +905,4 @@ msgid "Expenses by Month"
 msgstr ""
 
 msgid "Period"
-msgstr ""
+msgstr "תקופה"
