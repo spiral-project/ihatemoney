@@ -3,9 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-01 18:01+0100\n"
-"PO-Revision-Date: 2022-06-07 04:14+0000\n"
-"Last-Translator: Wilfredo Gomez Martinez <wilfredo.gomezmartinez@wallawalla."
-"edu>\n"
+"PO-Revision-Date: 2022-11-14 05:48+0000\n"
+"Last-Translator: Sabtag3 <dioni1984@yahoo.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/es/>\n"
 "Language: es\n"
@@ -13,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 msgid ""
@@ -140,20 +139,20 @@ msgid "External link"
 msgstr "Enlace externo"
 
 msgid "A link to an external document, related to this bill"
-msgstr ""
+msgstr "Un enlace para un documento externo relacionado con esta cuenta/factura"
 
 msgid "For whom?"
 msgstr "¿Para quién?"
 
 msgid "Submit"
-msgstr ""
+msgstr "Enviar"
 
 msgid "Submit and add a new one"
-msgstr ""
+msgstr "Enviar y agregar uno nuevo"
 
 #, python-format
 msgid "Project default: %(currency)s"
-msgstr ""
+msgstr "Valor predeterminado del proyecto: %(currency)s%(divisa)s"
 
 msgid "Bills can't be null"
 msgstr ""
@@ -162,22 +161,22 @@ msgid "Name"
 msgstr "Nombre"
 
 msgid "Weights should be positive"
-msgstr ""
+msgstr "Los pesos deben ser positivos"
 
 msgid "Weight"
-msgstr ""
+msgstr "Peso"
 
 msgid "Add"
 msgstr "Añadir"
 
 msgid "The participant name is invalid"
-msgstr ""
+msgstr "El nombre del participante es invalido"
 
 msgid "This project already have this participant"
-msgstr ""
+msgstr "Este proyecto ya tiene a este participante"
 
 msgid "People to notify"
-msgstr ""
+msgstr "Personas a las que notificar"
 
 msgid "Send invites"
 msgstr "Enviar invitaciones"
@@ -188,107 +187,121 @@ msgstr "El correo %(email)s no es válido"
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
-msgstr ""
+msgstr "{doble_objecto_0} y {doble_objecto_1}"
 
 #. Last two items of a list with more than 3 items
 msgid "{previous_object}, and {end_object}"
-msgstr ""
+msgstr "{objecto_previo}, and {fin_objecto}"
 
 #. Two items in a middle of a list with more than 5 objects
 msgid "{previous_object}, {next_object}"
-msgstr ""
+msgstr "{objecto_previo}, y {proximo_objecto}"
 
 #. First two items of a list with more than 3 items
 msgid "{start_object}, {next_object}"
-msgstr ""
+msgstr "{comienzo_objecto}, {proximo_objecto}"
 
 msgid "No Currency"
-msgstr ""
+msgstr "Sin moneda"
 
 #. Form error with only one error
 msgid "{prefix}: {error}"
-msgstr ""
+msgstr "{prefijo}: {error}"
 
 #. Form error with a list of errors
 msgid "{prefix}:<br />{errors}"
-msgstr ""
+msgstr "{prefijo}:<br />{errores}"
 
 msgid "Too many failed login attempts, please retry later."
 msgstr ""
+"Demasiados intentos de inicio de sesión fallidos, por favor reinténtelo más "
+"tarde"
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr ""
+"Esta contraseña de administrador no es la correcta. Solo %(num)d intentos "
+"restantes."
 
 msgid "Provided token is invalid"
-msgstr ""
+msgstr "El token proporcionado no es válido"
 
 msgid "This private code is not the right one"
-msgstr ""
+msgstr "Este código privado no es el correcto"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
+msgstr "Acabas de crear '%(proyect)s' para compartir tus gastos"
 
 msgid "A reminder email has just been sent to you"
-msgstr ""
+msgstr "Se te acaba de enviar un email recordatorio"
 
 msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
+"Intentamos enviarte un email recordatorio, pero se produjo un error. Puedes "
+"continuar usando el proyecto normalmente"
 
 #, python-format
 msgid "The project identifier is %(project)s"
-msgstr ""
+msgstr "El identificador del proyecto es %(proyecto)s"
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
 "instructions. Please check the email configuration of the server or "
 "contact the administrator."
 msgstr ""
+"Lo sentimos, se ha producido un error al enviarle un correo electrónico con "
+"instrucciones para restablecer la contraseña. Compruebe la configuración de "
+"correo electrónico del servidor o póngase en contacto con el administrador."
 
 msgid "No token provided"
-msgstr ""
+msgstr "No se proporciona ningún token"
 
 msgid "Invalid token"
-msgstr ""
+msgstr "Token invalido"
 
 msgid "Unknown project"
-msgstr ""
+msgstr "Proyecto desconocido"
 
 msgid "Password successfully reset."
-msgstr ""
+msgstr "La contraseña se restableció correctamente."
 
 msgid "Project successfully uploaded"
-msgstr ""
+msgstr "Proyecto cargado correctamente"
 
 msgid "Invalid JSON"
-msgstr ""
+msgstr "JSON invalido"
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
 msgstr ""
+"No se pueden agregar billetes en varias monedas a un proyecto sin la moneda "
+"predeterminada"
 
 msgid "Project successfully deleted"
-msgstr ""
+msgstr "Proyecto eliminado correctamente"
 
 msgid "Error deleting project"
-msgstr ""
+msgstr "Error al eliminar el proyecto"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
-msgstr ""
+msgstr "Ha sido invitado a compartir sus gastos para %(proyecto)s"
 
 msgid "Your invitations have been sent"
-msgstr ""
+msgstr "Sus invitaciones han sido enviadas"
 
 msgid ""
 "Sorry, there was an error while trying to send the invitation emails. "
 "Please check the email configuration of the server or contact the "
 "administrator."
 msgstr ""
+"Lo sentimos, se ha producido un error al intentar enviar los correos "
+"electrónicos de invitación. Compruebe la configuración de correo electrónico "
+"del servidor o póngase en contacto con el administrador."
 
 #, python-format
 msgid "%(member)s has been added"
