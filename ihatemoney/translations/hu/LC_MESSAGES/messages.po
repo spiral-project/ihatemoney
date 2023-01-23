@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-22 21:15+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-01-23 21:52+0000\n"
+"Last-Translator: ANN_MLP <ANN_MLP@users.noreply.hosted.weblate.org>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 3.8.3\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -18,28 +20,30 @@ msgid ""
 msgstr ""
 
 msgid "Project name"
-msgstr ""
+msgstr "A projekt neve"
 
 msgid "New private code"
-msgstr ""
+msgstr "Új titkos kód"
 
 msgid "Enter a new code if you want to change it"
 msgstr ""
 
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 msgid "Enable project history"
 msgstr ""
 
 msgid "Use IP tracking for project history"
-msgstr ""
+msgstr "IP nyomkövetés használata a projekt előzményekhez"
 
 msgid "Default Currency"
-msgstr ""
+msgstr "Alapértelmezett Pénznem"
 
 msgid "Setting a default currency enables currency conversion between bills"
 msgstr ""
+"Alapértelmezett pénznem beállítása lehetővé teszi a számlák közötti "
+"pénzváltást"
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
@@ -47,70 +51,72 @@ msgid ""
 msgstr ""
 
 msgid "Import previously exported JSON file"
-msgstr ""
+msgstr "Korábban exportált JSON fájl importálása"
 
 msgid "Import"
 msgstr ""
 
 msgid "Project identifier"
-msgstr ""
+msgstr "Projekt azonosító"
 
 msgid "Private code"
-msgstr ""
+msgstr "Titkos kód"
 
 msgid "Create the project"
-msgstr ""
+msgstr "Projekt létrehozása"
 
 #, python-format
 msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
+"Már létezik egy projekt ezzel az azonosítóval (\"%(project)s\"). Kérjük, "
+"válasszon más azonosítót"
 
 msgid "Which is a real currency: Euro or Petro dollar?"
-msgstr ""
+msgstr "Melyik valódi pénznem, az euró vagy a petrodollár?"
 
 msgid "euro"
-msgstr ""
+msgstr "euró"
 
 msgid "Please, validate the captcha to proceed."
 msgstr ""
 
 msgid "Enter private code to confirm deletion"
-msgstr ""
+msgstr "Add meg a titkos kódot a törlés megerősítéséhez"
 
 msgid "Unknown error"
-msgstr ""
+msgstr "Ismeretlen hiba"
 
 msgid "Invalid private code."
-msgstr ""
+msgstr "Érvénytelen titkos kód."
 
 msgid "Get in"
 msgstr ""
 
 msgid "Admin password"
-msgstr ""
+msgstr "Adminisztrátori jelszó"
 
 msgid "Send me the code by email"
 msgstr ""
 
 msgid "This project does not exists"
-msgstr ""
+msgstr "Ez a projekt nem létezik"
 
 msgid "Password mismatch"
-msgstr ""
+msgstr "A jelszavak nem egyeznek"
 
 msgid "Password"
-msgstr ""
+msgstr "Jelszó"
 
 msgid "Password confirmation"
-msgstr ""
+msgstr "Jelszó megerősítése"
 
 msgid "Reset password"
-msgstr ""
+msgstr "Jelszó visszaállítása"
 
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
 msgid "What?"
 msgstr ""
@@ -119,25 +125,25 @@ msgid "Payer"
 msgstr ""
 
 msgid "Amount paid"
-msgstr ""
+msgstr "Kifizetett összeg"
 
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
 msgid "External link"
-msgstr ""
+msgstr "Külső hivatkozás"
 
 msgid "A link to an external document, related to this bill"
 msgstr ""
 
 msgid "For whom?"
-msgstr ""
+msgstr "Kinek?"
 
 msgid "Submit"
-msgstr ""
+msgstr "Mentés"
 
 msgid "Submit and add a new one"
-msgstr ""
+msgstr "Mentés és új hozzáadása"
 
 #, python-format
 msgid "Project default: %(currency)s"
@@ -147,28 +153,28 @@ msgid "Bills can't be null"
 msgstr ""
 
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgid "Weights should be positive"
-msgstr ""
+msgstr "A súlyoknak pozitív értékűnek kell lenni"
 
 msgid "Weight"
-msgstr ""
+msgstr "Súly"
 
 msgid "Add"
-msgstr ""
+msgstr "Hozzáadás"
 
 msgid "The participant name is invalid"
 msgstr ""
 
 msgid "This project already have this participant"
-msgstr ""
+msgstr "Ez a résztvevő már szerepel ebben a projektben"
 
 msgid "People to notify"
 msgstr ""
 
 msgid "Send invites"
-msgstr ""
+msgstr "Meghívók küldése"
 
 #, python-format
 msgid "The email %(email)s is not valid"
@@ -176,33 +182,34 @@ msgstr ""
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
-msgstr ""
+msgstr "{dual_object_0} és {dual_object_1}"
 
 #. Last two items of a list with more than 3 items
 msgid "{previous_object}, and {end_object}"
-msgstr ""
+msgstr "{previous_object} és {end_object}"
 
 #. Two items in a middle of a list with more than 5 objects
 msgid "{previous_object}, {next_object}"
-msgstr ""
+msgstr "{previous_object}, {next_object}"
 
 #. First two items of a list with more than 3 items
 msgid "{start_object}, {next_object}"
-msgstr ""
+msgstr "{start_object}, {next_object}"
 
 msgid "No Currency"
 msgstr ""
 
 #. Form error with only one error
 msgid "{prefix}: {error}"
-msgstr ""
+msgstr "{prefix}: {error}"
 
 #. Form error with a list of errors
 msgid "{prefix}:<br />{errors}"
-msgstr ""
+msgstr "{prefix}:<br />{errors}"
 
 msgid "Too many failed login attempts, please retry later."
 msgstr ""
+"Túl sok sikertelen bejelentkezési kísérlet, kérlek, próbáld újra később."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
@@ -212,7 +219,7 @@ msgid "Provided token is invalid"
 msgstr ""
 
 msgid "This private code is not the right one"
-msgstr ""
+msgstr "Ez a titkos kód nem megfelelő"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
