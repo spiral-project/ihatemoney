@@ -111,7 +111,7 @@ def get_history(project, human_readable_names=True):
                         ):
                             del changeset["converted_amount"]
 
-                    for (prop, (val_before, val_after)) in changeset.items():
+                    for prop, (val_before, val_after) in changeset.items():
                         if human_readable_names:
                             if prop == "payer_id":
                                 prop = "payer"

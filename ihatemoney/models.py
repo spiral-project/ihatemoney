@@ -537,7 +537,7 @@ class Project(db.Model):
             ("Alice", 20, ("Amina", "Alice"), "Beer !"),
             ("Amina", 50, ("Amina", "Alice", "Georg"), "AMAP"),
         )
-        for (payer, amount, owers, what) in operations:
+        for payer, amount, owers, what in operations:
             db.session.add(
                 Bill(
                     amount=amount,

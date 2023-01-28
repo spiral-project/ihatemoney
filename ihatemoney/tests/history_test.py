@@ -473,7 +473,6 @@ class HistoryTestCase(IhatemoneyTestCase):
         )
 
     def test_double_bill_double_person_edit_second(self):
-
         # add two members
         self.client.post("/demo/members/add", data={"name": "User 1"})
         self.client.post("/demo/members/add", data={"name": "User 2"})
