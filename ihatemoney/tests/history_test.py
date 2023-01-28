@@ -36,7 +36,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         # Disable History
         resp = self.client.post("/demo/edit", data=new_data, follow_redirects=True)
         self.assertEqual(resp.status_code, 200)
-        self.assertNotIn("danger", resp.data.decode("utf-8"))
+        self.assertNotIn("alert-danger", resp.data.decode("utf-8"))
 
         resp = self.client.get("/demo/edit")
         self.assertEqual(resp.status_code, 200)
