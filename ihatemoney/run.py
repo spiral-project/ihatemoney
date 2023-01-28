@@ -86,7 +86,6 @@ def load_configuration(app, configuration=None):
 
 
 def validate_configuration(app):
-
     if app.config["SECRET_KEY"] == default_settings.SECRET_KEY:
         warnings.warn(
             "Running a server without changing the SECRET_KEY can lead to"

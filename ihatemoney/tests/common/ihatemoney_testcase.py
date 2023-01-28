@@ -10,7 +10,6 @@ from ihatemoney.run import create_app, db
 
 
 class BaseTestCase(TestCase):
-
     SECRET_KEY = "TEST SESSION"
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         "TESTING_SQLALCHEMY_DATABASE_URI", "sqlite://"

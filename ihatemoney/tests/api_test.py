@@ -101,7 +101,6 @@ class APITestCase(IhatemoneyTestCase):
 
         # create it
         with self.app.mail.record_messages() as outbox:
-
             resp = self.api_create("raclette")
             self.assertTrue(201, resp.status_code)
 

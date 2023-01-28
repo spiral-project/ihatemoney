@@ -153,7 +153,7 @@ class ModelsTestCase(IhatemoneyTestCase):
             },
         )
         project = models.Project.query.get_by_name(name="raclette")
-        for (weight, bill) in project.get_bill_weights().all():
+        for weight, bill in project.get_bill_weights().all():
             if bill.what == "red wine":
                 pay_each_expected = 20 / 2
                 self.assertEqual(bill.amount / weight, pay_each_expected)
@@ -165,7 +165,6 @@ class ModelsTestCase(IhatemoneyTestCase):
                 self.assertEqual(bill.amount / weight, pay_each_expected)
 
     def test_bill_pay_each(self):
-
         self.post_project("raclette")
 
         # add members
