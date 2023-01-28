@@ -39,25 +39,8 @@
 
     $('#bill_table tbody tr').hover(highlight_owers, unhighlight_owers);
 
-
-
-    let link = $('#delete-bill').find('button');
-    let deleteOriginalHTML = link.html();
-    link.click(function() {
-        if (link.hasClass("confirm")){
-            return true;
-        }
-        link.html("{{_("Are you sure?")}}");
-        link.removeClass("action delete");
-        link.addClass("confirm btn-danger");
-        return false;
-    });
-
-    $('#delete-bill').focusout(function() {
-        link.removeClass("confirm btn-danger");
-        link.html(deleteOriginalHTML);
-        link.addClass("action delete");
-    });
+    {% include "helpers.js" %}
+    confirm_action(".delete-bill", { exclude_classes: "action delete", add_classes: "btn btn-sm" });
 
 {% endblock %}
 
@@ -156,9 +139,9 @@
                         {{ weighted_bill_amount(bill, weights) }}
                     </span>
                 </td>
-                <td class="bill-actions">
+                <td class="bill-actions d-flex align-items-center">
                     <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">{{ _('edit') }}</a>
-                    <form id="delete-bill"action="{{ url_for(".delete_bill", bill_id=bill.id) }}" method="POST">
+                    <form class="delete-bill" action="{{ url_for(".delete_bill", bill_id=bill.id) }}" method="POST">
                         {{ csrf_form.csrf_token }}
                         <button class="action delete" type="submit" title="{{ _("delete") }}"></button>
                     </form>

@@ -291,6 +291,11 @@ footer .footer-left {
 .bill-actions {
   padding-top: 10px;
   text-align: center;
+  column-gap: 8px;
+  min-height: 56px;
+
+  /* To be able to set absolute element positionning for confirm deletion */
+  position: relative;
 }
 
 .bill-actions > form > .delete,
@@ -300,19 +305,19 @@ footer .footer-left {
   display: block;
   width: 16px;
   height: 16px;
-  margin: 2px;
-  margin-left: 5px;
-  float: left;
   border: none;
+}
+
+.bill-actions .confirm {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
 }
 
 .bill-actions > form > .delete {
   background: url("../images/delete.png") no-repeat right;
-}
-
-.bill-actions > form > .confirm.btn-danger {
-  outline-color: #c82333;
-  box-shadow: none;
 }
 
 .bill-actions > .edit {
