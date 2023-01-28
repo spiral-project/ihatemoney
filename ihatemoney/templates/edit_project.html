@@ -1,22 +1,8 @@
 {% extends "layout.html" %}
 
 {% block js %}
-
-    let link = $('#delete-project').find('button');
-    let deleteOriginalHTML = link.html();
-    link.click(function() {
-        if (link.hasClass("confirm")){
-            return true;
-        }
-        link.html("{{_("Are you sure?")}}");
-        link.addClass("confirm btn-danger");
-        return false;
-    });
-
-    $('#delete-project').focusout(function() {
-        link.removeClass("confirm btn-danger");
-        link.html(deleteOriginalHTML);
-    });
+    {% include "helpers.js" %}
+    confirm_action("#delete-project")
 
     $('.custom-file-input').on('change', function(event) {
         var filename = [].slice.call(this.files).map(function (file) { return file.name}).join(',')
