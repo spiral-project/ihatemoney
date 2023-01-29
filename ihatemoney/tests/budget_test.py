@@ -926,13 +926,8 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertIn('<div class="alert alert-danger">', resp.data.decode("utf-8"))
 
         # test access to the dashboard when it is activated
-        self.app.config["ACTIVATE_ADMIN_DASHBOARD"] = True
-        self.app.config["ADMIN_PASSWORD"] = generate_password_hash("adminpass")
-        resp = self.client.post(
-            "/admin?goto=%2Fdashboard",
-            data={"admin_password": "adminpass"},
-            follow_redirects=True,
-        )
+        self.enable_admin()
+        resp = self.client.get("/dashboard")
         self.assertIn(
             """<thead>
         <tr>
@@ -940,6 +935,20 @@ class BudgetTestCase(IhatemoneyTestCase):
             <th>Number of participants</th>""",
             resp.data.decode("utf-8"),
         )
+
+    def test_dashboard_project_deletion(self):
+        self.post_project("raclette")
+        self.enable_admin()
+        resp = self.client.get("/dashboard")
+        pattern = re.compile(r"<form id=\"delete-project\" [^>]*?action=\"(.*?)\"")
+        match = pattern.search(resp.data.decode("utf-8"))
+        assert match is not None
+        assert match.group(1) is not None
+
+        resp = self.client.post(match.group(1))
+
+        # project removed
+        assert len(models.Project.query.all()) == 0
 
     def test_statistics_page(self):
         self.post_project("raclette")
