@@ -934,7 +934,10 @@ class BudgetTestCase(IhatemoneyTestCase):
             follow_redirects=True,
         )
         self.assertIn(
-            "<thead><tr><th>Project</th><th>Number of participants",
+            """<thead>
+        <tr>
+            <th>Project</th>
+            <th>Number of participants</th>""",
             resp.data.decode("utf-8"),
         )
 
