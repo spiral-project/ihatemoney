@@ -110,3 +110,12 @@ class IhatemoneyTestCase(BaseTestCase):
             resp.status_code,
             f"{url} expected {expected}, got {resp.status_code}",
         )
+
+    def enable_admin(self, password="adminpass"):
+        self.app.config["ACTIVATE_ADMIN_DASHBOARD"] = True
+        self.app.config["ADMIN_PASSWORD"] = generate_password_hash(password)
+        return self.client.post(
+            "/admin?goto=%2Fdashboard",
+            data={"admin_password": password},
+            follow_redirects=True,
+        )
