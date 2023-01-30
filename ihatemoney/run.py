@@ -213,7 +213,7 @@ def create_app(
         setattr(g, "lang", lang)
         return lang
 
-    if hasattr(Babel, 'localeselector'):
+    if hasattr(Babel, "localeselector"):
         # Compatibility for flask-babel <= 2
         babel = Babel(app, default_timezone=default_timezone)
         babel.localeselector(get_locale)
