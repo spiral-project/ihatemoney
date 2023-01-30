@@ -213,7 +213,12 @@ def create_app(
         setattr(g, "lang", lang)
         return lang
 
-    Babel(app, default_timezone=default_timezone, locale_selector=get_locale)
+    if hasattr(Babel, 'localeselector'):
+        # Compatibility for flask-babel <= 2
+        babel = Babel(app, default_timezone=default_timezone)
+        babel.localeselector(get_locale)
+    else:
+        Babel(app, default_timezone=default_timezone, locale_selector=get_locale)
 
     # Undocumented currencyformat filter from flask_babel is forwarding to Babel format_currency
     # We overwrite it to remove the currency sign ¤ when there is no currency
