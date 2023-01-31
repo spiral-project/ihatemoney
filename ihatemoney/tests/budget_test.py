@@ -1589,7 +1589,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.client.post("/raclette/members/add", data={"name": "zorglub"})
 
         # null amount
-        resp = self.client.post(
+        self.client.post(
             "/raclette/add",
             data={
                 "date": "2016-12-31",
@@ -1600,11 +1600,12 @@ class BudgetTestCase(IhatemoneyTestCase):
                 "original_currency": "EUR",
             },
         )
-        self.assertIn('<p class="alert alert-danger">', resp.data.decode("utf-8"))
 
-        resp = self.client.get("/raclette/")
-        # No bills, the previous one was not added
-        self.assertIn("No bills", resp.data.decode("utf-8"))
+        # Bill should have been accepted
+        project = self.get_project("raclette")
+        self.assertEqual(project.get_bills().count(), 1)
+        last_bill = project.get_bills().first()
+        self.assertEqual(last_bill.amount, 0)
 
     def test_decimals_on_weighted_members_list(self):
         self.post_project("raclette")
