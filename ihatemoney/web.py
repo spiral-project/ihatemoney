@@ -500,7 +500,7 @@ def import_project():
             flash(b.args[0], category="danger")
     else:
         for component, errors in form.errors.items():
-            flash(_(component + ": ") + ", ".join(errors), category="danger")
+            flash(component + ": " + ", ".join(errors), category="danger")
     return redirect(request.headers.get("Referer") or url_for(".edit_project"))
 
 
