@@ -315,7 +315,7 @@ class CaptchaTestCase(IhatemoneyTestCase):
                     "captcha": "éùüß",
                 },
             )
-            assert len(models.Project.query.all()) == 1
+            self.assertEqual(len(models.Project.query.all()), 1)
 
     def test_project_creation_with_captcha(self):
         with self.client as c:
@@ -329,7 +329,7 @@ class CaptchaTestCase(IhatemoneyTestCase):
                     "default_currency": "USD",
                 },
             )
-            assert len(models.Project.query.all()) == 0
+            self.assertEqual(len(models.Project.query.all()), 0)
 
             c.post(
                 "/create",
@@ -342,7 +342,7 @@ class CaptchaTestCase(IhatemoneyTestCase):
                     "captcha": "nope",
                 },
             )
-            assert len(models.Project.query.all()) == 0
+            self.assertEqual(len(models.Project.query.all()), 0)
 
             c.post(
                 "/create",
@@ -355,7 +355,7 @@ class CaptchaTestCase(IhatemoneyTestCase):
                     "captcha": "euro",
                 },
             )
-            assert len(models.Project.query.all()) == 1
+            self.assertEqual(len(models.Project.query.all()), 1)
 
     def test_api_project_creation_does_not_need_captcha(self):
         self.client.get("/")
@@ -369,7 +369,7 @@ class CaptchaTestCase(IhatemoneyTestCase):
             },
         )
         self.assertTrue(resp.status, 201)
-        assert len(models.Project.query.all()) == 1
+        self.assertEqual(len(models.Project.query.all()), 1)
 
 
 class TestCurrencyConverter(unittest.TestCase):
