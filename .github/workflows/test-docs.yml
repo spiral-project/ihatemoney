@@ -100,7 +100,7 @@ jobs:
         TESTING_SQLALCHEMY_DATABASE_URI: 'mysql+pymysql://root:ihatemoney@localhost:3306/ihatemoney_ci'
     - name: Run Lint & Docs
       run: tox -e lint_docs
-      if: matrix.python-version == '3.8'
+      if: matrix.python-version == '3.11'
     - name: Run vermin to check Python compat
       run: |
         python -m pip install vermin
