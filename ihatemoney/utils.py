@@ -64,15 +64,19 @@ def flash_email_error(error_message, category="danger"):
     (admin_name, admin_email) = email.utils.parseaddr(
         current_app.config.get("MAIL_DEFAULT_SENDER")
     )
-    error_extension = "."
+    error_extension = _("Please check the email configuration of the server.")
     if admin_email != "admin@example.com" and current_app.config.get(
         "SHOW_ADMIN_EMAIL"
     ):
-        error_extension = f" or contact the administrator at {admin_email}."
+        error_extension = _(
+            "Please check the email configuration of the server "
+            "or contact the administrator: %(admin_email)s",
+            admin_email=admin_email,
+        )
 
     flash(
-        _(
-            f"{error_message} Please check the email configuration of the server{error_extension}"
+        "{error_message} {error_extension}".format(
+            error_message=error_message, error_extension=error_extension
         ),
         category=category,
     )

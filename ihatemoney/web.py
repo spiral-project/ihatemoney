@@ -336,8 +336,10 @@ def create_project():
                 # Display the error as a simple "info" alert, because it's
                 # not critical and doesn't prevent using the project.
                 flash_email_error(
-                    "We tried to send you an reminder email, but there was an error. "
-                    "You can still use the project normally.",
+                    _(
+                        "We tried to send you an reminder email, but there was an error. "
+                        "You can still use the project normally."
+                    ),
                     category="info",
                 )
             return redirect(url_for(".list_bills", project_id=project.id))
@@ -363,8 +365,10 @@ def remind_password():
                 return redirect(url_for(".password_reminder_sent"))
             else:
                 flash_email_error(
-                    "Sorry, there was an error while sending you an email with "
-                    "password reset instructions."
+                    _(
+                        "Sorry, there was an error while sending you an email with "
+                        "password reset instructions."
+                    )
                 )
                 # Fall-through: we stay on the same page and display the form again
     return render_template("password_reminder.html", form=form)
@@ -469,7 +473,9 @@ def import_project():
                     b["currency"] = g.project.default_currency
                 for a in attr:
                     if a not in b:
-                        raise ValueError(_("Missing attribute {}").format(a))
+                        raise ValueError(
+                            _("Missing attribute: %(attribute)s", attribute=a)
+                        )
                 currencies.add(b["currency"])
 
             # Additional checks if project has no default currency
@@ -586,7 +592,7 @@ def invite():
             # send the email
             message_body = render_localized_template("invitation_mail")
             message_title = _(
-                "You have been invited to share your " "expenses for %(project)s",
+                "You have been invited to share your expenses for %(project)s",
                 project=g.project.name,
             )
             msg = Message(
@@ -600,7 +606,9 @@ def invite():
                 return redirect(url_for(".list_bills"))
             else:
                 flash_email_error(
-                    "Sorry, there was an error while trying to send the invitation emails."
+                    _(
+                        "Sorry, there was an error while trying to send the invitation emails."
+                    )
                 )
                 # Fall-through: we stay on the same page and display the form again
 
@@ -797,7 +805,10 @@ def change_lang(lang):
         session["lang"] = lang
         session.update()
     else:
-        flash(_(f"{lang} is not a supported language"), category="warning")
+        flash(
+            _("%(lang)s is not a supported language", lang=lang),
+            category="warning",
+        )
 
     return redirect(request.headers.get("Referer") or url_for(".home"))
 
