@@ -656,7 +656,7 @@ class HistoryTestCase(IhatemoneyTestCase):
 
         # History should be equal to project creation
         history_list = history.get_history(self.get_project("raclette"))
-        assert len(history_list) == 1
+        self.assertEqual(len(history_list), 1)
 
 
 if __name__ == "__main__":
