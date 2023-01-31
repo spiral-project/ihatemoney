@@ -152,7 +152,7 @@ msgstr "Enviar y agregar uno nuevo"
 
 #, python-format
 msgid "Project default: %(currency)s"
-msgstr "Valor predeterminado del proyecto: %(currency)s%(divisa)s"
+msgstr "Valor predeterminado del proyecto: %(currency)s"
 
 msgid "Bills can't be null"
 msgstr ""
@@ -231,7 +231,7 @@ msgstr "Este código privado no es el correcto"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
-msgstr "Acabas de crear '%(proyect)s' para compartir tus gastos"
+msgstr "Acabas de crear '%(project)s' para compartir tus gastos"
 
 msgid "A reminder email has just been sent to you"
 msgstr "Se te acaba de enviar un email recordatorio"
@@ -245,7 +245,7 @@ msgstr ""
 
 #, python-format
 msgid "The project identifier is %(project)s"
-msgstr "El identificador del proyecto es %(proyecto)s"
+msgstr "El identificador del proyecto es %(project)s"
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
@@ -289,7 +289,7 @@ msgstr "Error al eliminar el proyecto"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
-msgstr "Ha sido invitado a compartir sus gastos para %(proyecto)s"
+msgstr "Ha sido invitado a compartir sus gastos para %(project)s"
 
 msgid "Your invitations have been sent"
 msgstr "Sus invitaciones han sido enviadas"
