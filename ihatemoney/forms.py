@@ -387,9 +387,7 @@ class BillForm(FlaskForm):
         self.payed_for.data = self.payed_for.default
 
     def validate_amount(self, field):
-        if field.data == "0":
-            raise ValidationError(_("Bills can't be null"))
-        elif decimal.Decimal(field.data) > decimal.MAX_EMAX:
+        if decimal.Decimal(field.data) > decimal.MAX_EMAX:
             # See https://github.com/python-babel/babel/issues/821
             raise ValidationError(f"Result is too high: {field.data}")
 
