@@ -1715,9 +1715,6 @@ class BudgetTestCase(IhatemoneyTestCase):
         # The only active_member is Alice, this means adding a new Bob failed
         self.assertEqual(len(self.get_project("raclette").active_members), 1)
 
-        # Can't get this part to work
-        # response = self.client.get("/raclette/members/add", data={"name": "Bob"})
-        # self.assertEqual(response.status_code, 405)
 
 if __name__ == "__main__":
     unittest.main()
