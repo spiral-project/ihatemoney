@@ -1906,9 +1906,6 @@ class TestBudget(IhatemoneyTestCase):
         # The only active_member is Alice, this means adding a new Bob failed
         self.assertEqual(len(self.get_project("raclette").active_members), 1)
 
-        # Can't get this part to work
-        # response = self.client.get("/raclette/members/add", data={"name": "Bob"})
-        # self.assertEqual(response.status_code, 405)
 
     def test_session_projects_migration_to_list(self):
         """In https://github.com/spiral-project/ihatemoney/pull/1082, session["projects"]
