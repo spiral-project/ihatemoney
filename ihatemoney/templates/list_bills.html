@@ -39,7 +39,11 @@
 
     $('#bill_table tbody tr').hover(highlight_owers, unhighlight_owers);
 
+    {% include "helpers.js" %}
+    confirm_action(".delete-bill", { exclude_classes: "action delete", add_classes: "btn btn-sm" });
+
 {% endblock %}
+
 
 {% block sidebar %}
     <div class="sidebar_content">
@@ -135,9 +139,9 @@
                         {{ weighted_bill_amount(bill, weights) }}
                     </span>
                 </td>
-                <td class="bill-actions">
+                <td class="bill-actions d-flex align-items-center">
                     <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">{{ _('edit') }}</a>
-                    <form action="{{ url_for(".delete_bill", bill_id=bill.id) }}" method="POST">
+                    <form class="delete-bill" action="{{ url_for(".delete_bill", bill_id=bill.id) }}" method="POST">
                         {{ csrf_form.csrf_token }}
                         <button class="action delete" type="submit" title="{{ _("delete") }}"></button>
                     </form>

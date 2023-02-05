@@ -41,6 +41,7 @@ from wtforms.validators import (
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.models import Bill, LoggingMode, Person, Project
 from ihatemoney.utils import (
+    em_surround,
     eval_arithmetic_expression,
     render_localized_currency,
     slugify,
@@ -253,7 +254,7 @@ class ProjectFormWithCaptcha(ProjectForm):
     )
 
     def validate_captcha(self, field):
-        if not field.data.lower() == _("euro"):
+        if not field.data.lower() == _("euro").lower():
             message = _("Please, validate the captcha to proceed.")
             raise ValidationError(Markup(message))
 
@@ -294,7 +295,9 @@ class AuthenticationForm(FlaskForm):
 
 
 class AdminAuthenticationForm(FlaskForm):
-    admin_password = PasswordField(_("Admin password"), validators=[DataRequired()])
+    admin_password = PasswordField(
+        _("Admin password"), validators=[DataRequired()], render_kw={"autofocus": True}
+    )
     submit = SubmitField(_("Get in"))
 
 
@@ -384,9 +387,7 @@ class BillForm(FlaskForm):
         self.payed_for.data = self.payed_for.default
 
     def validate_amount(self, field):
-        if field.data == "0":
-            raise ValidationError(_("Bills can't be null"))
-        elif decimal.Decimal(field.data) > decimal.MAX_EMAX:
+        if decimal.Decimal(field.data) > decimal.MAX_EMAX:
             # See https://github.com/python-babel/babel/issues/821
             raise ValidationError(f"Result is too high: {field.data}")
 
@@ -439,8 +440,12 @@ class InviteForm(FlaskForm):
                 email_validator.validate_email(email)
             except email_validator.EmailNotValidError:
                 raise ValidationError(
-                    _("The email %(email)s is not valid", email=email)
+                    _("The email %(email)s is not valid", email=em_surround(email))
                 )
+
+
+class LogoutForm(FlaskForm):
+    submit = SubmitField(_("Logout"))
 
 
 class EmptyForm(FlaskForm):

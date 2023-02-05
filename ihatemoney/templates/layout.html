@@ -105,10 +105,10 @@
             <li><a class="dropdown-item" href="{{ url_for("main.edit_project") }}">{{ _("Settings") }}</a></li>
             {% endif %}
 
-            {% if session['projects'] and not ((session['projects'] | length) == 1 and g.project and session['projects'][0][0] == g.project.id) %}
+            {% if session['projects'] and not ((session['projects'] | length) == 1 and g.project and g.project.id in session['projects']) %}
             <li class="dropdown-divider"></li>
             <li class="dropdown-header">{{ _('Other projects :') }}</li>
-              {% for id, name in session['projects'] %}
+              {% for id, name in session['projects'].items() %}
                 {% if not g.project or id != g.project.id %}
                 <li><a class="dropdown-item" href="{{ url_for("main.list_bills", project_id=id) }}">{{ _("switch to") }} {{ name }}</a></li>
                 {% endif %}
@@ -119,9 +119,10 @@
             <li><a class="dropdown-item" href="{{ url_for("main.dashboard") }}">{{ _("Dashboard") }}</a></li>
             {% endif %}
             <li>
-              <a class="dropdown-item" href="{{ url_for("main.exit") }}">
-                {{ _("Logout") }}
-              </a>
+              <form action="{{ url_for("main.exit") }}" method="post">
+                {{ g.logout_form.hidden_tag() }}
+                {{ g.logout_form.submit(class="dropdown-item") }}
+              </form>
             </li>
           </ul>
         </li>
@@ -133,7 +134,14 @@
   <div class="container-fluid flex-shrink-0 {% if request.url_rule.endpoint == 'main.home' %} home-container {% endif %}">
   {% block body %}
       <main class="content offset-1 col-10">
+      {% if breached_limit %}
+        <p class="alert alert-danger">
+          {{ limit_message }}<br />
+          {{ _("Please retry after %(date)s.", date=breached_limit.reset_at  | from_timestamp | datetimeformat("short") )}}
+        </p>
+      {% else %}
       {% block content %}{% endblock %}
+      {% endif %}
       </main>
   {% endblock %}
   </div>

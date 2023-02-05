@@ -10,7 +10,6 @@ from ihatemoney.run import create_app, db
 
 
 class BaseTestCase(TestCase):
-
     SECRET_KEY = "TEST SESSION"
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         "TESTING_SQLALCHEMY_DATABASE_URI", "sqlite://"
@@ -103,9 +102,20 @@ class IhatemoneyTestCase(BaseTestCase):
     TESTING = True
     WTF_CSRF_ENABLED = False  # Simplifies the tests.
 
-    def assertStatus(self, expected, resp, url=""):
+    def assertStatus(self, expected, resp, url=None):
+        if url is None:
+            url = resp.request.path
         return self.assertEqual(
             expected,
             resp.status_code,
             f"{url} expected {expected}, got {resp.status_code}",
+        )
+
+    def enable_admin(self, password="adminpass"):
+        self.app.config["ACTIVATE_ADMIN_DASHBOARD"] = True
+        self.app.config["ADMIN_PASSWORD"] = generate_password_hash(password)
+        return self.client.post(
+            "/admin?goto=%2Fdashboard",
+            data={"admin_password": password},
+            follow_redirects=True,
         )

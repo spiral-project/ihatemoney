@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 import os.path
 import warnings
@@ -21,6 +22,7 @@ from ihatemoney.utils import (
     IhmJSONEncoder,
     PrefixedWSGI,
     em_surround,
+    limiter,
     locale_from_iso,
     localize_list,
     minimal_round,
@@ -84,7 +86,6 @@ def load_configuration(app, configuration=None):
 
 
 def validate_configuration(app):
-
     if app.config["SECRET_KEY"] == default_settings.SECRET_KEY:
         warnings.warn(
             "Running a server without changing the SECRET_KEY can lead to"
@@ -144,6 +145,8 @@ def create_app(
         # We have several inline javascript scripts :(
         "script-src": ["'self'", "'unsafe-inline'"],
         "object-src": "'none'",
+        "img-src": ["'self'", "data:"],
+        "style-src": ["'self'", "'unsafe-inline'"],
     }
 
     Talisman(
@@ -168,6 +171,7 @@ def create_app(
     app.register_blueprint(web_interface)
     app.register_blueprint(apiv1)
     app.register_error_handler(404, page_not_found)
+    limiter.init_app(app)
 
     # Configure the a, root="main"pplication
     setup_database(app)
@@ -185,6 +189,7 @@ def create_app(
     app.jinja_env.filters["minimal_round"] = minimal_round
     app.jinja_env.filters["em_surround"] = lambda text: Markup(em_surround(text))
     app.jinja_env.filters["localize_list"] = localize_list
+    app.jinja_env.filters["from_timestamp"] = datetime.fromtimestamp
 
     # Translations and time zone (used to display dates).  The timezone is
     # taken from the BABEL_DEFAULT_TIMEZONE settings, and falls back to
@@ -197,7 +202,23 @@ def create_app(
         default_timezone = str(LOCALTZ)
     except pytz.exceptions.UnknownTimeZoneError:
         pass
-    babel = Babel(app, default_timezone=default_timezone)
+
+    def get_locale():
+        # get the lang from the session if defined, fallback on the browser "accept
+        # languages" header.
+        lang = session.get(
+            "lang",
+            request.accept_languages.best_match(app.config["SUPPORTED_LANGUAGES"]),
+        )
+        setattr(g, "lang", lang)
+        return lang
+
+    if hasattr(Babel, "localeselector"):
+        # Compatibility for flask-babel <= 2
+        babel = Babel(app, default_timezone=default_timezone)
+        babel.localeselector(get_locale)
+    else:
+        Babel(app, default_timezone=default_timezone, locale_selector=get_locale)
 
     # Undocumented currencyformat filter from flask_babel is forwarding to Babel format_currency
     # We overwrite it to remove the currency sign ¤ when there is no currency
@@ -217,17 +238,6 @@ def create_app(
         ).strip()
 
     app.jinja_env.filters["currency"] = currency
-
-    @babel.localeselector
-    def get_locale():
-        # get the lang from the session if defined, fallback on the browser "accept
-        # languages" header.
-        lang = session.get(
-            "lang",
-            request.accept_languages.best_match(app.config["SUPPORTED_LANGUAGES"]),
-        )
-        setattr(g, "lang", lang)
-        return lang
 
     return app
 

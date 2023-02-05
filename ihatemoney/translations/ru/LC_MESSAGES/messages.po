@@ -1,19 +1,19 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-01 18:01+0100\n"
-"PO-Revision-Date: 2021-09-20 12:38+0000\n"
-"Last-Translator: Роман Прокопов <pochta.romana.iz.vyborga@gmail.com>\n"
+"PO-Revision-Date: 2022-06-05 11:15+0000\n"
+"Last-Translator: МАН69К <weblate@mah69k.net>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/ru/>\n"
 "Language: ru\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/ru/>\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.13-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 msgid ""
@@ -638,51 +638,51 @@ msgstr "Запись IP-адреса может быть отключена на
 msgid "From IP"
 msgstr "От IP"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project %(name)s added"
-msgstr "Имя проекта"
+msgstr "Проект %(name)s добавлен"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s added"
-msgstr "Счёт был добавлен"
+msgstr "Счёт %(name)s добавлен"
 
 #, python-format
 msgid "Participant %(name)s added"
-msgstr ""
+msgstr "Пользователь %(name)s добавлен"
 
 msgid "Project private code changed"
 msgstr "Приватный код проекта изменен"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project renamed to %(new_project_name)s"
-msgstr "Идентификатор проекта: %(new_project_name)s"
+msgstr "Проект переименован в %(new_project_name)s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project contact email changed to %(new_email)s"
-msgstr "Контактная почта проекта изменена на"
+msgstr "Контактная почта проекта изменена на %(new_email)s"
 
 msgid "Project settings modified"
 msgstr "Настройки проекта изменены"
 
 #, python-format
 msgid "Participant %(name)s deactivated"
-msgstr ""
+msgstr "Пользователь %(name)s отключён"
 
 #, python-format
 msgid "Participant %(name)s reactivated"
-msgstr ""
+msgstr "Пользователь %(name)s подключён"
 
 #, python-format
 msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr ""
+msgstr "Пользователь %(name)s переименован в %(new_name)s"
 
 #, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
-msgstr ""
+msgstr "Счёт %(name)s переименован в %(new_description)s"
 
 #, python-format
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
-msgstr ""
+msgstr "Участник %(name)s: масса изменена с %(old_weight)s на %(new_weight)s"
 
 msgid "Amount"
 msgstr "Количество"
@@ -691,33 +691,33 @@ msgstr "Количество"
 msgid "Amount in %(currency)s"
 msgstr "Количество в %(currency)s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s modified"
-msgstr "Счёт был изменён"
+msgstr "Счёт %(name)s изменён"
 
 #, python-format
 msgid "Participant %(name)s modified"
-msgstr ""
+msgstr "Пользователь %(name)s изменён"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s removed"
-msgstr "Пользователь '%(name)s' был удалён"
+msgstr "Счёт %(name)s удалён"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Participant %(name)s removed"
-msgstr "Пользователь '%(name)s' был удалён"
+msgstr "Пользователь %(name)s удалён"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project %(name)s changed in an unknown way"
-msgstr "изменилось неизвестным образом"
+msgstr "Проект %(name)s изменён неизвестным образом"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s changed in an unknown way"
-msgstr "изменилось неизвестным образом"
+msgstr "Счёт %(name)s изменён неизвестным образом"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Participant %(name)s changed in an unknown way"
-msgstr "изменилось неизвестным образом"
+msgstr "Пользователь %(name)s изменён неизвестным образом"
 
 msgid "Nothing to list"
 msgstr "Нечего перечислять"

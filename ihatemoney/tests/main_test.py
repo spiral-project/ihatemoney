@@ -153,7 +153,7 @@ class ModelsTestCase(IhatemoneyTestCase):
             },
         )
         project = models.Project.query.get_by_name(name="raclette")
-        for (weight, bill) in project.get_bill_weights().all():
+        for weight, bill in project.get_bill_weights().all():
             if bill.what == "red wine":
                 pay_each_expected = 20 / 2
                 self.assertEqual(bill.amount / weight, pay_each_expected)
@@ -165,7 +165,6 @@ class ModelsTestCase(IhatemoneyTestCase):
                 self.assertEqual(bill.amount / weight, pay_each_expected)
 
     def test_bill_pay_each(self):
-
         self.post_project("raclette")
 
         # add members
@@ -301,6 +300,23 @@ class EmailFailureTestCase(IhatemoneyTestCase):
 class CaptchaTestCase(IhatemoneyTestCase):
     ENABLE_CAPTCHA = True
 
+    def test_project_creation_with_captcha_case_insensitive(self):
+        # Test that case doesn't matter
+        # Patch the lazy_gettext as it is imported as '_' in forms for captcha value check
+        with patch("ihatemoney.forms._", new=lambda x: "ÉÙÜẞ"), self.client as c:
+            c.post(
+                "/create",
+                data={
+                    "name": "raclette party",
+                    "id": "raclette",
+                    "password": "party",
+                    "contact_email": "raclette@notmyidea.org",
+                    "default_currency": "USD",
+                    "captcha": "éùüß",
+                },
+            )
+            self.assertEqual(len(models.Project.query.all()), 1)
+
     def test_project_creation_with_captcha(self):
         with self.client as c:
             c.post(
@@ -313,7 +329,7 @@ class CaptchaTestCase(IhatemoneyTestCase):
                     "default_currency": "USD",
                 },
             )
-            assert len(models.Project.query.all()) == 0
+            self.assertEqual(len(models.Project.query.all()), 0)
 
             c.post(
                 "/create",
@@ -326,7 +342,7 @@ class CaptchaTestCase(IhatemoneyTestCase):
                     "captcha": "nope",
                 },
             )
-            assert len(models.Project.query.all()) == 0
+            self.assertEqual(len(models.Project.query.all()), 0)
 
             c.post(
                 "/create",
@@ -339,7 +355,7 @@ class CaptchaTestCase(IhatemoneyTestCase):
                     "captcha": "euro",
                 },
             )
-            assert len(models.Project.query.all()) == 1
+            self.assertEqual(len(models.Project.query.all()), 1)
 
     def test_api_project_creation_does_not_need_captcha(self):
         self.client.get("/")
@@ -353,7 +369,7 @@ class CaptchaTestCase(IhatemoneyTestCase):
             },
         )
         self.assertTrue(resp.status, 201)
-        assert len(models.Project.query.all()) == 1
+        self.assertEqual(len(models.Project.query.all()), 1)
 
 
 class TestCurrencyConverter(unittest.TestCase):
@@ -381,6 +397,16 @@ class TestCurrencyConverter(unittest.TestCase):
     def test_exchange_currency(self):
         result = self.converter.exchange_currency(100, "USD", "EUR")
         self.assertEqual(result, 80.0)
+
+    def test_failing_remote(self):
+        rates = {}
+        with patch("requests.Response.json", new=lambda _: {}), self.assertWarns(
+            UserWarning
+        ):
+            # we need a non-patched converter, but it seems that MagickMock
+            # is mocking EVERY instance of the class method. Too bad.
+            rates = CurrencyConverter.get_rates(self.converter)
+        self.assertDictEqual(rates, {CurrencyConverter.no_currency: 1})
 
 
 if __name__ == "__main__":

@@ -1,6 +1,5 @@
 import ast
 import csv
-from datetime import datetime, timedelta
 import email.utils
 from enum import Enum
 from io import BytesIO, StringIO, TextIOWrapper
@@ -15,10 +14,18 @@ from babel import Locale
 from babel.numbers import get_currency_name, get_currency_symbol
 from flask import current_app, flash, redirect, render_template
 from flask_babel import get_locale, lazy_gettext as _
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 import jinja2
 from markupsafe import Markup, escape
 from werkzeug.exceptions import HTTPException
 from werkzeug.routing import RoutingException
+
+limiter = limiter = Limiter(
+    current_app,
+    key_func=get_remote_address,
+    storage_uri="memory://",
+)
 
 
 def slugify(value):
@@ -57,15 +64,19 @@ def flash_email_error(error_message, category="danger"):
     (admin_name, admin_email) = email.utils.parseaddr(
         current_app.config.get("MAIL_DEFAULT_SENDER")
     )
-    error_extension = "."
+    error_extension = _("Please check the email configuration of the server.")
     if admin_email != "admin@example.com" and current_app.config.get(
         "SHOW_ADMIN_EMAIL"
     ):
-        error_extension = f" or contact the administrator at {admin_email}."
+        error_extension = _(
+            "Please check the email configuration of the server "
+            "or contact the administrator: %(admin_email)s",
+            admin_email=admin_email,
+        )
 
     flash(
-        _(
-            f"{error_message} Please check the email configuration of the server{error_extension}"
+        "{error_message} {error_extension}".format(
+            error_message=error_message, error_extension=error_extension
         ),
         category=category,
     )
@@ -152,6 +163,17 @@ def list_of_dicts2json(dict_to_convert):
     return BytesIO(dumps(dict_to_convert).encode("utf-8"))
 
 
+def escape_csv_formulae(value):
+    # See https://owasp.org/www-community/attacks/CSV_Injection
+    if (
+        value
+        and isinstance(value, str)
+        and value[0] in ["=", "+", "-", "@", "\t", "\n"]
+    ):
+        return f"'{value}"
+    return value
+
+
 def list_of_dicts2csv(dict_to_convert):
     """Take a list of dictionnaries and turns it into
     a csv in-memory file, assume all dict have the same keys
@@ -164,7 +186,10 @@ def list_of_dicts2csv(dict_to_convert):
         # (expecting a sequence getting a view)
         csv_data = [list(dict_to_convert[0].keys())]
         for dic in dict_to_convert:
-            csv_data.append([dic[h] for h in dict_to_convert[0].keys()])
+            csv_data.append(
+                [escape_csv_formulae(dic[h]) for h in dict_to_convert[0].keys()]
+            )
+            # csv_data.append([dic[h] for h in dict_to_convert[0].keys()])
     except (KeyError, IndexError):
         csv_data = []
     writer = csv.writer(csv_file)
@@ -197,45 +222,6 @@ def csv2list_of_dicts(csv_to_convert):
         r["owers"] = [o.strip() for o in r["owers"].split(",")]
         result.append(r)
     return result
-
-
-class LoginThrottler:
-    """Simple login throttler used to limit authentication attempts based on client's ip address.
-    When using multiple workers, remaining number of attempts can get inconsistent
-    but will still be limited to num_workers * max_attempts.
-    """
-
-    def __init__(self, max_attempts=3, delay=1):
-        self._max_attempts = max_attempts
-        # Delay in minutes before resetting the attempts counter
-        self._delay = delay
-        self._attempts = {}
-
-    def get_remaining_attempts(self, ip):
-        return self._max_attempts - self._attempts.get(ip, [datetime.now(), 0])[1]
-
-    def increment_attempts_counter(self, ip):
-        # Reset all attempt counters when they get hungry for memory
-        if len(self._attempts) > 10000:
-            self.__init__()
-        if self._attempts.get(ip) is None:
-            # Store first attempt date and number of attempts since
-            self._attempts[ip] = [datetime.now(), 0]
-        self._attempts.get(ip)[1] += 1
-
-    def is_login_allowed(self, ip):
-        if self._attempts.get(ip) is None:
-            return True
-        # When the delay is expired, reset the counter
-        if datetime.now() - self._attempts.get(ip)[0] > timedelta(minutes=self._delay):
-            self.reset(ip)
-            return True
-        if self._attempts.get(ip)[1] >= self._max_attempts:
-            return False
-        return True
-
-    def reset(self, ip):
-        self._attempts.pop(ip, None)
 
 
 def create_jinja_env(folder, strict_rendering=False):

@@ -11,6 +11,7 @@ and `add_project_id` for a quick overview)
 from functools import wraps
 import json
 import os
+from urllib.parse import urlparse, urlunparse
 
 from flask import (
     Blueprint,
@@ -18,6 +19,7 @@ from flask import (
     current_app,
     flash,
     g,
+    make_response,
     redirect,
     render_template,
     request,
@@ -28,6 +30,8 @@ from flask import (
 )
 from flask_babel import gettext as _
 from flask_mail import Message
+import qrcode
+import qrcode.image.svg
 from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -42,6 +46,7 @@ from ihatemoney.forms import (
     EmptyForm,
     ImportProjectForm,
     InviteForm,
+    LogoutForm,
     MemberForm,
     PasswordReminder,
     ProjectForm,
@@ -52,11 +57,11 @@ from ihatemoney.forms import (
 from ihatemoney.history import get_history, get_history_queries, purge_history
 from ihatemoney.models import Bill, LoggingMode, Person, Project, db
 from ihatemoney.utils import (
-    LoginThrottler,
     Redirect303,
     csv2list_of_dicts,
     flash_email_error,
     format_form_errors,
+    limiter,
     list_of_dicts2csv,
     list_of_dicts2json,
     render_localized_template,
@@ -64,8 +69,6 @@ from ihatemoney.utils import (
 )
 
 main = Blueprint("main", __name__)
-
-login_throttler = LoginThrottler(max_attempts=3, delay=1)
 
 
 def requires_admin(bypass=None):
@@ -119,6 +122,7 @@ def set_show_admin_dashboard_link(endpoint, values):
         current_app.config["ACTIVATE_ADMIN_DASHBOARD"]
         and current_app.config["ADMIN_PASSWORD"]
     )
+    g.logout_form = LogoutForm()
 
 
 @main.url_value_preprocessor
@@ -156,7 +160,22 @@ def health():
     return "OK"
 
 
+def admin_limit(limit):
+    return make_response(
+        render_template(
+            "admin.html",
+            breached_limit=limit,
+            limit_message=_("Too many failed login attempts."),
+        )
+    )
+
+
 @main.route("/admin", methods=["GET", "POST"])
+@limiter.limit(
+    "3/minute",
+    on_breach=admin_limit,
+    methods=["POST"],
+)
 def admin():
     """Admin authentication.
 
@@ -165,31 +184,19 @@ def admin():
     form = AdminAuthenticationForm()
     goto = request.args.get("goto", url_for(".home"))
     is_admin_auth_enabled = bool(current_app.config["ADMIN_PASSWORD"])
-    if request.method == "POST":
-        client_ip = request.remote_addr
-        if not login_throttler.is_login_allowed(client_ip):
-            msg = _("Too many failed login attempts, please retry later.")
-            form["admin_password"].errors = [msg]
-            return render_template(
-                "admin.html",
-                form=form,
-                admin_auth=True,
-                is_admin_auth_enabled=is_admin_auth_enabled,
-            )
-        if form.validate():
-            # Valid password
-            if check_password_hash(
-                current_app.config["ADMIN_PASSWORD"], form.admin_password.data
-            ):
-                session["is_admin"] = True
-                session.update()
-                login_throttler.reset(client_ip)
-                return redirect(goto)
-            # Invalid password
-            login_throttler.increment_attempts_counter(client_ip)
+    if request.method == "POST" and form.validate():
+        # Valid password
+        if check_password_hash(
+            current_app.config["ADMIN_PASSWORD"], form.admin_password.data
+        ):
+            session["is_admin"] = True
+            session.update()
+            return redirect(goto)
+        if limiter.current_limit is not None:
             msg = _(
                 "This admin password is not the right one. Only %(num)d attempts left.",
-                num=login_throttler.get_remaining_attempts(client_ip),
+                # If the limiter is disabled, there is no current limit
+                num=limiter.current_limit.remaining,
             )
             form["admin_password"].errors = [msg]
     return render_template(
@@ -198,6 +205,20 @@ def admin():
         admin_auth=True,
         is_admin_auth_enabled=is_admin_auth_enabled,
     )
+
+
+def set_authorized_project(project: Project):
+    # maintain a list of visited projects
+    new_project = {project.id: project.name}
+    if "projects" not in session:
+        session["projects"] = new_project
+    else:
+        # add the project on the top of the list
+        session["projects"] = {**new_project, **session["projects"]}
+    session[project.id] = True
+    # Set session to permanent to make language choice persist
+    session.permanent = True
+    session.update()
 
 
 @main.route("/<project_id>/join/<string:token>", methods=["GET"])
@@ -210,15 +231,7 @@ def join_project(token):
         flash(_("Provided token is invalid"), "danger")
         return redirect("/")
 
-    # maintain a list of visited projects
-    if "projects" not in session:
-        session["projects"] = []
-    # add the project on the top of the list
-    session["projects"].insert(0, (project_id, g.project.name))
-    session[project_id] = True
-    # Set session to permanent to make language choice persist
-    session.permanent = True
-    session.update()
+    set_authorized_project(g.project)
     return redirect(url_for(".list_bills"))
 
 
@@ -247,15 +260,7 @@ def authenticate(project_id=None):
     # else do form authentication authentication
     is_post_auth = request.method == "POST" and form.validate()
     if is_post_auth and check_password_hash(project.password, form.password.data):
-        # maintain a list of visited projects
-        if "projects" not in session:
-            session["projects"] = []
-        # add the project on the top of the list
-        session["projects"].insert(0, (project_id, project.name))
-        session[project_id] = True
-        # Set session to permanent to make language choice persist
-        session.permanent = True
-        session.update()
+        set_authorized_project(project)
         setattr(g, "project", project)
         return redirect(url_for(".list_bills"))
     if is_post_auth and not check_password_hash(project.password, form.password.data):
@@ -331,8 +336,10 @@ def create_project():
                 # Display the error as a simple "info" alert, because it's
                 # not critical and doesn't prevent using the project.
                 flash_email_error(
-                    "We tried to send you an reminder email, but there was an error. "
-                    "You can still use the project normally.",
+                    _(
+                        "We tried to send you an reminder email, but there was an error. "
+                        "You can still use the project normally."
+                    ),
                     category="info",
                 )
             return redirect(url_for(".list_bills", project_id=project.id))
@@ -358,8 +365,10 @@ def remind_password():
                 return redirect(url_for(".password_reminder_sent"))
             else:
                 flash_email_error(
-                    "Sorry, there was an error while sending you an email with "
-                    "password reset instructions."
+                    _(
+                        "Sorry, there was an error while sending you an email with "
+                        "password reset instructions."
+                    )
                 )
                 # Fall-through: we stay on the same page and display the form again
     return render_template("password_reminder.html", form=form)
@@ -464,7 +473,9 @@ def import_project():
                     b["currency"] = g.project.default_currency
                 for a in attr:
                     if a not in b:
-                        raise ValueError(_("Missing attribute {}").format(a))
+                        raise ValueError(
+                            _("Missing attribute: %(attribute)s", attribute=a)
+                        )
                 currencies.add(b["currency"])
 
             # Additional checks if project has no default currency
@@ -489,7 +500,7 @@ def import_project():
             flash(b.args[0], category="danger")
     else:
         for component, errors in form.errors.items():
-            flash(_(component + ": ") + ", ".join(errors), category="danger")
+            flash(component + ": " + ", ".join(errors), category="danger")
     return redirect(request.headers.get("Referer") or url_for(".edit_project"))
 
 
@@ -531,11 +542,23 @@ def export_project(file, format):
     )
 
 
-@main.route("/exit")
+@main.route("/exit", methods=["GET", "POST"])
 def exit():
-    # delete the session
-    session.clear()
-    return redirect(url_for(".home"))
+    # We must test it manually, because otherwise, it creates a project "exit"
+    if request.method == "GET":
+        abort(405)
+
+    form = LogoutForm()
+    if form.validate():
+        # delete the session
+        session.clear()
+        return redirect(url_for(".home"))
+    else:
+        flash(
+            format_form_errors(form, _("Unable to logout")),
+            category="danger",
+        )
+        return redirect(request.headers.get("Referer") or url_for(".home"))
 
 
 @main.route("/demo")
@@ -569,7 +592,7 @@ def invite():
             # send the email
             message_body = render_localized_template("invitation_mail")
             message_title = _(
-                "You have been invited to share your " "expenses for %(project)s",
+                "You have been invited to share your expenses for %(project)s",
                 project=g.project.name,
             )
             msg = Message(
@@ -583,10 +606,27 @@ def invite():
                 return redirect(url_for(".list_bills"))
             else:
                 flash_email_error(
-                    "Sorry, there was an error while trying to send the invitation emails."
+                    _(
+                        "Sorry, there was an error while trying to send the invitation emails."
+                    )
                 )
                 # Fall-through: we stay on the same page and display the form again
-    return render_template("send_invites.html", form=form)
+
+    # Generate the SVG QRCode.
+    invite_link = url_for(
+        ".join_project",
+        project_id=g.project.id,
+        token=g.project.generate_token(),
+        _external=True,
+    )
+    invite_link = urlunparse(urlparse(invite_link)._replace(scheme="ihatemoney"))
+    qr = qrcode.QRCode(image_factory=qrcode.image.svg.SvgPathImage)
+    qr.add_data(invite_link)
+    qr.make(fit=True)
+    img = qr.make_image(attrib={"class": "qrcode"})
+    qrcode_svg = img.to_string().decode()
+
+    return render_template("send_invites.html", form=form, qrcode=qrcode_svg)
 
 
 @main.route("/<project_id>/")
@@ -765,7 +805,10 @@ def change_lang(lang):
         session["lang"] = lang
         session.update()
     else:
-        flash(_(f"{lang} is not a supported language"), category="warning")
+        flash(
+            _("%(lang)s is not a supported language", lang=lang),
+            category="warning",
+        )
 
     return redirect(request.headers.get("Referer") or url_for(".home"))
 
@@ -856,8 +899,17 @@ def dashboard():
     return render_template(
         "dashboard.html",
         projects=Project.query.all(),
+        delete_project_form=DestructiveActionProjectForm,
         is_admin_dashboard_activated=is_admin_dashboard_activated,
     )
+
+
+@main.route("/dashboard/<project_id>/delete", methods=["POST"])
+@requires_admin()
+def dashboard_delete_project():
+    g.project.remove_project()
+    flash(_("Project successfully deleted"))
+    return redirect(request.headers.get("Referer") or url_for(".home"))
 
 
 @main.route("/favicon.ico")

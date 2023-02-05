@@ -22,7 +22,7 @@ highly encouraged to do so.
 
 ## Requirements
 
--   **Python**: version 3.6 to 3.9.
+-   **Python**: version 3.7 to 3.11.
 -   **Backends**: SQLite, PostgreSQL, MariaDB (version 10.3.2 or above),
     Memory.
 
@@ -37,6 +37,10 @@ You can also [donate some
 money](https://liberapay.com/IHateMoney/donate). All funds will be used
 to maintain the [hosted version](https://ihatemoney.org).
 
+**Join the other contributors.**
+
+[![](https://contrib.rocks/image?repo=spiral-project/ihatemoney)](https://github.com/spiral-project/ihatemoney/graphs/contributors)
+ 
 ## Translation status
 
 [![Translation status for each language](https://hosted.weblate.org/widgets/i-hate-money/-/i-hate-money/multi-blue.svg)](https://hosted.weblate.org/engage/i-hate-money/?utm_source=widget)

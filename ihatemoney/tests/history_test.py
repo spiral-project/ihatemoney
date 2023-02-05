@@ -36,7 +36,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         # Disable History
         resp = self.client.post("/demo/edit", data=new_data, follow_redirects=True)
         self.assertEqual(resp.status_code, 200)
-        self.assertNotIn("danger", resp.data.decode("utf-8"))
+        self.assertNotIn("alert-danger", resp.data.decode("utf-8"))
 
         resp = self.client.get("/demo/edit")
         self.assertEqual(resp.status_code, 200)
@@ -473,7 +473,6 @@ class HistoryTestCase(IhatemoneyTestCase):
         )
 
     def test_double_bill_double_person_edit_second(self):
-
         # add two members
         self.client.post("/demo/members/add", data={"name": "User 1"})
         self.client.post("/demo/members/add", data={"name": "User 2"})
@@ -657,7 +656,7 @@ class HistoryTestCase(IhatemoneyTestCase):
 
         # History should be equal to project creation
         history_list = history.get_history(self.get_project("raclette"))
-        assert len(history_list) == 1
+        self.assertEqual(len(history_list), 1)
 
 
 if __name__ == "__main__":

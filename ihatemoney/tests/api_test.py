@@ -101,7 +101,6 @@ class APITestCase(IhatemoneyTestCase):
 
         # create it
         with self.app.mail.record_messages() as outbox:
-
             resp = self.api_create("raclette")
             self.assertTrue(201, resp.status_code)
 
@@ -927,7 +926,7 @@ class APITestCase(IhatemoneyTestCase):
             },
             headers=self.get_auth("raclette"),
         )
-        self.assertStatus(400, req)
+        self.assertStatus(201, req)
 
     def test_project_creation_with_mixed_case(self):
         self.api_create("Raclette")
