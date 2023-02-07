@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-01 18:01+0100\n"
-"PO-Revision-Date: 2022-06-22 21:20+0000\n"
-"Last-Translator: Jonny Järnmark <jarnmark@gmail.com>\n"
+"PO-Revision-Date: 2023-02-07 21:51+0000\n"
+"Last-Translator: Kristoffer Grundström <swedishsailfishosuser@tutanota.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/sv/>\n"
 "Language: sv\n"
@@ -12,13 +12,15 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
+"Inte en giltig summa eller uttryck. Endast nummer och +-* /-operatörer "
+"accepteras."
 
 msgid "Project name"
 msgstr "Namn på projektet"
@@ -48,6 +50,8 @@ msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
+"Det här projektet kan inte ställas in till 'ingen valuta' eftersom att det "
+"innehåller sedlar i flera olika valutor."
 
 msgid "Import previously exported JSON file"
 msgstr "Importera tidigare exporterad JSON-fil"
@@ -73,14 +77,13 @@ msgstr ""
 "Vänligen välj en annan identifierare"
 
 msgid "Which is a real currency: Euro or Petro dollar?"
-msgstr ""
+msgstr "Vad är en riktig valuta: Euro eller Petro-dollar?"
 
-#, fuzzy
 msgid "euro"
-msgstr "Period"
+msgstr "euro"
 
 msgid "Please, validate the captcha to proceed."
-msgstr ""
+msgstr "Snälla, bekräfta captcha för att fortsätta."
 
 msgid "Enter private code to confirm deletion"
 msgstr "Ange privat kod för att bekräfta borttagning"
@@ -147,7 +150,7 @@ msgstr "Skicka in och lägg till en ny"
 
 #, python-format
 msgid "Project default: %(currency)s"
-msgstr ""
+msgstr "Standard för projektet: %(currency)s"
 
 msgid "Bills can't be null"
 msgstr "Räkningar kan inte vara null"
@@ -164,13 +167,11 @@ msgstr "Vikt"
 msgid "Add"
 msgstr "Lägg till"
 
-#, fuzzy
 msgid "The participant name is invalid"
-msgstr "Användaren '%(name)s' har tagits bort"
+msgstr "Deltagarens namn är ogiltigt"
 
-#, fuzzy
 msgid "This project already have this participant"
-msgstr "Det här projektet har redan den här medlemmen"
+msgstr "Det här projektet har redan den här deltagaren"
 
 msgid "People to notify"
 msgstr ""
@@ -196,18 +197,18 @@ msgstr "{previous_object}, {next_object}"
 
 #. First two items of a list with more than 3 items
 msgid "{start_object}, {next_object}"
-msgstr ""
+msgstr "{start_object}, {next_object}"
 
 msgid "No Currency"
 msgstr "Ingen valuta"
 
 #. Form error with only one error
 msgid "{prefix}: {error}"
-msgstr ""
+msgstr "{prefix}: {error}"
 
 #. Form error with a list of errors
 msgid "{prefix}:<br />{errors}"
-msgstr ""
+msgstr "{prefix}:<br />{errors}"
 
 msgid "Too many failed login attempts, please retry later."
 msgstr "För många misslyckade inloggningsförsök, försök igen senare."
@@ -273,12 +274,14 @@ msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
 msgstr ""
+"Kan inte lägga till sedlar i flera olika valutor till ett projekt utan "
+"standard-valuta"
 
 msgid "Project successfully deleted"
 msgstr "Borttagningen av projektet lyckades"
 
 msgid "Error deleting project"
-msgstr ""
+msgstr "Fel uppstod när projektet skulle tas bort"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
@@ -305,27 +308,29 @@ msgid "%(name)s is part of this project again"
 msgstr "%(name)s är en del av det här projektet igen"
 
 msgid "Error removing participant"
-msgstr ""
+msgstr "Fel uppstod när deltagaren skulle tas bort"
 
 #, python-format
 msgid ""
 "Participant '%(name)s' has been deactivated. It will still appear in the "
 "list until its balance reach zero."
 msgstr ""
+"Deltagaren '%(name)s' har inaktiverats. Den kommer fortfarande att synas i "
+"listan till dess att kontot blir tomt."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Participant '%(name)s' has been removed"
-msgstr "Användaren '%(name)s' har tagits bort"
+msgstr "Deltagaren '%(name)s' togs bort"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Participant '%(name)s' has been modified"
-msgstr "Användaren '%(name)s' har tagits bort"
+msgstr "Deltagaren '%(name)s' har ändrats"
 
 msgid "The bill has been added"
 msgstr "Räkningen har lagts till"
 
 msgid "Error deleting bill"
-msgstr ""
+msgstr "Fel uppstod när sedeln skulle tas bort"
 
 msgid "The bill has been deleted"
 msgstr "Räkningen har tagits bort"
@@ -333,20 +338,17 @@ msgstr "Räkningen har tagits bort"
 msgid "The bill has been modified"
 msgstr "Räkningen har blivit modifierad"
 
-#, fuzzy
 msgid "Error deleting project history"
-msgstr "Aktiva projekthistorik"
+msgstr "Fel uppstod när projektets historik skulle tas bort"
 
-#, fuzzy
 msgid "Deleted project history."
-msgstr "Aktiva projekthistorik"
+msgstr "Projektets historik togs bort."
 
-#, fuzzy
 msgid "Error deleting recorded IP addresses"
-msgstr "Ta bort lagrade IP-adresser"
+msgstr "Fel uppstod när insamlade IP-adresser skulle tas bort"
 
 msgid "Deleted recorded IP addresses in project history."
-msgstr ""
+msgstr "Tog bort insamlade IP-adresser i projektets historik."
 
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Ledsen, men vi kunde inte hitta sidan som du frågade efter."
@@ -358,11 +360,10 @@ msgid "Back to the list"
 msgstr "Tillbaka till listan"
 
 msgid "Administration tasks are currently disabled."
-msgstr ""
+msgstr "Administrativa uppgifter är för närvarande inaktiverade."
 
-#, fuzzy
 msgid "Authentication"
-msgstr "Dokumentation"
+msgstr "Autentisering"
 
 msgid "The project you are trying to access do not exist, do you want to"
 msgstr "Projektet som du försöker komma åt finns inte, vill du"
@@ -379,9 +380,8 @@ msgstr "Skapa ett nytt projekt"
 msgid "Project"
 msgstr "Projekt"
 
-#, fuzzy
 msgid "Number of participants"
-msgstr "lägg till deltagare"
+msgstr "Antalet deltagare"
 
 msgid "Number of bills"
 msgstr "Antalet räkningar"
@@ -407,9 +407,8 @@ msgstr "visa"
 msgid "The Dashboard is currently deactivated."
 msgstr "Instrumentpanelen är för närvarande inaktiverad."
 
-#, fuzzy
 msgid "Download Mobile Application"
-msgstr "Mobilapplikation"
+msgstr "Hämta mobilapplikation"
 
 msgid "Get it on"
 msgstr ""
@@ -421,9 +420,8 @@ msgstr "säker?"
 msgid "Edit project"
 msgstr "Redigera projekt"
 
-#, fuzzy
 msgid "Delete project"
-msgstr "Redigera projekt"
+msgstr "Ta bort projektet"
 
 msgid "Import JSON"
 msgstr "Importera JSON"
@@ -438,7 +436,7 @@ msgid "Bill items"
 msgstr ""
 
 msgid "Download the list of bills with owner, amount, reason,... "
-msgstr ""
+msgstr "Hämta faktura-lista med ägare, summa, anledning,... "
 
 msgid "Settle plans"
 msgstr ""
@@ -460,6 +458,7 @@ msgstr "Redigera projektet"
 
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
+"Det här kommer att ta bort alla fakturor och deltagare i det här projektet!"
 
 msgid "Edit this bill"
 msgstr "Redigera den här räkningen"
@@ -471,17 +470,16 @@ msgid "Everyone"
 msgstr "Alla"
 
 msgid "No one"
-msgstr ""
+msgstr "Ingen"
 
 msgid "More options"
-msgstr ""
+msgstr "Fler alternativ"
 
 msgid "Add participant"
 msgstr "Lägg till deltagare"
 
-#, fuzzy
 msgid "Edit this participant"
-msgstr "Lägg till deltagare"
+msgstr "Redigera den här deltagaren"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@exempel.com, mary.moe@sida.com"
@@ -511,18 +509,19 @@ msgid "Enabled IP Address Recording"
 msgstr "Aktiverade inspelning av IP-adress"
 
 msgid "History Settings Changed"
-msgstr ""
+msgstr "Inställningarna för historiken har ändrats"
 
 #, python-format
 msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
 msgstr ""
+"Faktura %(name)s: %(property_name)s ändrades från %(before)s till %(after)s"
 
 #, python-format
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
-msgstr ""
+msgstr "Faktura %(name)s: %(property_name)s ändrades till %(after)s"
 
 msgid "Confirm Remove IP Adresses"
-msgstr ""
+msgstr "Bekräfta borttagning av IP-adresser"
 
 msgid ""
 "Are you sure you want to delete all recorded IP addresses from this "
@@ -531,7 +530,6 @@ msgid ""
 "action cannot be undone."
 msgstr ""
 
-#, fuzzy
 msgid "Confirm deletion"
 msgstr "Bekräfta borttagning"
 
@@ -550,11 +548,11 @@ msgstr ""
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
-msgstr ""
+msgstr "Faktura %(name)s: lade till %(owers_list_str)s i ägarlistan"
 
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
-msgstr ""
+msgstr "Faktura %(name)s: tog bort %(owers_list_str)s från ägarlistan"
 
 #, python-format
 msgid ""
@@ -595,7 +593,7 @@ msgid "No IP Addresses to erase"
 msgstr "Inga IP-adresser att ta bort"
 
 msgid "Delete Stored IP Addresses"
-msgstr ""
+msgstr "Ta bort de lagrade IP-adresserna"
 
 msgid "Time"
 msgstr "Tid"
@@ -607,56 +605,58 @@ msgid "IP address recording can be enabled on the settings page"
 msgstr ""
 
 msgid "IP address recording can be disabled on the settings page"
-msgstr ""
+msgstr "Insamling av IP-adresser kan inaktiveras på Inställningar-sidan"
 
 msgid "From IP"
 msgstr "Från IP"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project %(name)s added"
-msgstr "Namn på projektet"
+msgstr "Projektet %(name)s lades till"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s added"
-msgstr "Räkningen har lagts till"
+msgstr "Faktura %(name)s lades till"
 
 #, python-format
 msgid "Participant %(name)s added"
-msgstr ""
+msgstr "Deltagaren %(name)s lades till"
 
 msgid "Project private code changed"
 msgstr "Projektets privata kod ändrades"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project renamed to %(new_project_name)s"
-msgstr "Projektets identifierare är %(new_project_name)s"
+msgstr "Projektet döptes om till %(new_project_name)s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project contact email changed to %(new_email)s"
-msgstr "Projektets e-post för kontakt ändrades till"
+msgstr ""
+"Kontaktens e-postadress för det här projektet ändrades till %(new_email)s"
 
 msgid "Project settings modified"
 msgstr "Projektets inställningar ändrades"
 
 #, python-format
 msgid "Participant %(name)s deactivated"
-msgstr ""
+msgstr "Projektet %(name)s inaktiverades"
 
 #, python-format
 msgid "Participant %(name)s reactivated"
-msgstr ""
+msgstr "Deltagaren %(name)s återaktiverades"
 
 #, python-format
 msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr ""
+msgstr "Deltagaren %(name)s döptes om till %(new_name)s"
 
 #, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
-msgstr ""
+msgstr "Faktura %(name)s döptes om till %(new_description)s"
 
 #, python-format
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
+"Deltagaren %(name)s: vikten ändrades från %(old_weight)s till %(new_weight)s"
 
 msgid "Amount"
 msgstr "Summa"
@@ -665,33 +665,33 @@ msgstr "Summa"
 msgid "Amount in %(currency)s"
 msgstr "Summa i %(currency)s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s modified"
-msgstr "Räkningen har blivit modifierad"
+msgstr "Fakturan %(name)s ändrades"
 
 #, python-format
 msgid "Participant %(name)s modified"
-msgstr ""
+msgstr "Deltagaren %(name)s ändrades"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s removed"
-msgstr "Användaren '%(name)s' har tagits bort"
+msgstr "Faktura '%(name)s' togs bort"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Participant %(name)s removed"
-msgstr "Användaren '%(name)s' har tagits bort"
+msgstr "Användaren %(name)s togs bort"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project %(name)s changed in an unknown way"
-msgstr "ändrades på ett okänt sätt"
+msgstr "Projektet %(name)s ändrades på ett okänt sätt"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s changed in an unknown way"
-msgstr "ändrades på ett okänt sätt"
+msgstr "Faktura %(name)s ändrades på ett okänt sätt"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Participant %(name)s changed in an unknown way"
-msgstr "ändrades på ett okänt sätt"
+msgstr "Deltagaren %(name)s ändrades på ett okänt sätt"
 
 msgid "Nothing to list"
 msgstr "Inget att lista"
@@ -733,6 +733,8 @@ msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
 msgstr ""
+"Återanvänd INTE ett personligt lösenord. Välj en privat kod och skicka den "
+"till dina vänner"
 
 msgid "Account manager"
 msgstr "Kontoansvarig"
@@ -783,11 +785,10 @@ msgid "Documentation"
 msgstr "Dokumentation"
 
 msgid "Administation Dashboard"
-msgstr ""
+msgstr "Översiktspanel för administration"
 
-#, fuzzy
 msgid "Legal information"
-msgstr "Ta bort bekräftelse"
+msgstr "Juridisk information"
 
 msgid "\"I hate money\" is free software"
 msgstr "\"Jag hatar pengar\" är en fri mjukvara"
@@ -859,6 +860,8 @@ msgid ""
 "A link to reset your password has been sent to you, please check your "
 "emails."
 msgstr ""
+"En länk för att återställa ditt lösenord har skickats till dig, vänligen "
+"kolla din e-post."
 
 msgid "Return to home page"
 msgstr "Återgå till första-sidan"
@@ -879,6 +882,8 @@ msgid ""
 "You can share the project identifier and the private code by any "
 "communication means."
 msgstr ""
+"Du kan dela projektets identifierare och den privata koden så som det passar "
+"dig."
 
 msgid "Identifier:"
 msgstr "Identifierare:"
@@ -890,7 +895,7 @@ msgid "You can directly share the following link via your prefered medium"
 msgstr "Du kan direkt dela ut följande länk via föredraget media"
 
 msgid "Send via Emails"
-msgstr ""
+msgstr "Skicka via e-post"
 
 msgid ""
 "Specify a (comma separated) list of email adresses you want to notify "
@@ -898,6 +903,10 @@ msgid ""
 "                creation of this budget management project and we will "
 "send them an email for you."
 msgstr ""
+"Ange en (delat med ett kommatecken)  lista över e-postadresser som du vill "
+"underrätta om\n"
+"                skapandet av det här budgethanteringsprojektet gör att de "
+"kommer att få ett e-postmeddelande om det."
 
 msgid "Who pays?"
 msgstr "Vem betalar?"
@@ -921,7 +930,7 @@ msgid "Paid"
 msgstr "Betald"
 
 msgid "Spent"
-msgstr ""
+msgstr "Spenderat"
 
 msgid "Expenses by Month"
 msgstr "Kostnader per månad"
