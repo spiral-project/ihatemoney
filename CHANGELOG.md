@@ -11,6 +11,9 @@ This document describes changes between each past release.
 The minimum supported version is now Python 3.7, and the project is
 tested with up to Python 3.11
 
+### Added
+- Build ARM64 and ARMv7 Docker image
+
 ### Changed
 - Add a cancel button when editing a bill for better UX
 - Translations: Bengali, Indonesian, Polish
