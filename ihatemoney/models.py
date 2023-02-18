@@ -21,6 +21,7 @@ from sqlalchemy_continuum.plugins import FlaskPlugin
 from werkzeug.security import generate_password_hash
 
 from ihatemoney.currency_convertor import CurrencyConverter
+from ihatemoney.monkeypath_continuum import PatchedTransactionFactory
 from ihatemoney.utils import get_members, same_bill
 from ihatemoney.versioning import (
     ConditionalVersioningManager,
@@ -35,6 +36,8 @@ make_versioned(
         # Conditionally Disable the versioning based on each
         # project's privacy preferences
         tracking_predicate=version_privacy_predicate,
+        # MonkeyPatching
+        transaction_cls=PatchedTransactionFactory(),
     ),
     plugins=[
         FlaskPlugin(
