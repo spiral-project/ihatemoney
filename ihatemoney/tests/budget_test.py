@@ -1374,6 +1374,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         member = models.Person.query.filter(models.Person.id == 1).one_or_none()
         self.assertEqual(member, None)
 
+    @pytest.mark.usefixtures("app_ctx")
     def test_currency_switch(self):
         # A project should be editable
         self.post_project("raclette")
@@ -1500,6 +1501,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.assertIn('<p class="alert alert-danger">', resp.data.decode("utf-8"))
         self.assertEqual(self.get_project("raclette").default_currency, "USD")
 
+    @pytest.mark.usefixtures("app_ctx")
     def test_currency_switch_to_bill_currency(self):
         # Default currency is 'XXX', but we should start from a project with a currency
         self.post_project("raclette", default_currency="USD")
@@ -1534,6 +1536,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         bill = project.get_bills().first()
         self.assertEqual(bill.converted_amount, bill.amount)
 
+    @pytest.mark.usefixtures("app_ctx")
     def test_currency_switch_to_no_currency(self):
         # Default currency is 'XXX', but we should start from a project with a currency
         self.post_project("raclette", default_currency="USD")
