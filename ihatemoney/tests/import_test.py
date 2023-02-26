@@ -1,6 +1,7 @@
 import copy
 import json
 import unittest
+
 import pytest
 
 from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
@@ -40,10 +41,8 @@ def import_data(request: pytest.FixtureRequest):
 
 
 class CommonTestCase(object):
-
     @pytest.mark.usefixtures("app_ctx", "import_data")
     class Import(IhatemoneyTestCase):
-
         def populate_data_with_currencies(self, currencies):
             for d in range(len(self.data)):
                 self.data[d]["currency"] = currencies[d]

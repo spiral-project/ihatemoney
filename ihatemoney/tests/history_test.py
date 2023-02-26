@@ -1,4 +1,5 @@
 import unittest
+
 import pytest
 
 from ihatemoney import history, models
