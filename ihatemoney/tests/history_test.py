@@ -1,4 +1,5 @@
 import unittest
+import pytest
 
 from ihatemoney import history, models
 from ihatemoney.tests.common.help_functions import em_surround
@@ -595,6 +596,7 @@ class HistoryTestCase(IhatemoneyTestCase):
             f"Bill {em_surround('Bill 1')} removed", resp.data.decode("utf-8")
         )
 
+    @pytest.mark.usefixtures("app_ctx")
     def test_double_bill_double_person_edit_second_no_web(self):
         u1 = models.Person(project_id="demo", name="User 1")
         u2 = models.Person(project_id="demo", name="User 1")

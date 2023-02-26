@@ -119,6 +119,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         resp = self.client.get("/raclette/join/token.invalid", follow_redirects=True)
         self.assertIn("Provided token is invalid", resp.data.decode("utf-8"))
 
+    @pytest.mark.usefixtures("app_ctx")
     def test_multiple_join(self):
         """Test that joining multiple times a project
         doesn't add it multiple times in the session"""

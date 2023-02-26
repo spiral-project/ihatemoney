@@ -1,41 +1,48 @@
 import copy
 import json
 import unittest
+import pytest
 
 from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
 from ihatemoney.utils import list_of_dicts2csv, list_of_dicts2json
 
 
+@pytest.fixture
+def import_data(request: pytest.FixtureRequest):
+    data = [
+        {
+            "date": "2017-01-01",
+            "what": "refund",
+            "amount": 13.33,
+            "payer_name": "tata",
+            "payer_weight": 1.0,
+            "owers": ["fred"],
+        },
+        {
+            "date": "2016-12-31",
+            "what": "red wine",
+            "amount": 200.0,
+            "payer_name": "fred",
+            "payer_weight": 1.0,
+            "owers": ["zorglub", "tata"],
+        },
+        {
+            "date": "2016-12-31",
+            "what": "fromage a raclette",
+            "amount": 10.0,
+            "payer_name": "zorglub",
+            "payer_weight": 2.0,
+            "owers": ["zorglub", "fred", "tata", "pepe"],
+        },
+    ]
+    request.cls.data = data
+    yield data
+
+
 class CommonTestCase(object):
+
+    @pytest.mark.usefixtures("app_ctx", "import_data")
     class Import(IhatemoneyTestCase):
-        def setUp(self):
-            super().setUp()
-            self.data = [
-                {
-                    "date": "2017-01-01",
-                    "what": "refund",
-                    "amount": 13.33,
-                    "payer_name": "tata",
-                    "payer_weight": 1.0,
-                    "owers": ["fred"],
-                },
-                {
-                    "date": "2016-12-31",
-                    "what": "red wine",
-                    "amount": 200.0,
-                    "payer_name": "fred",
-                    "payer_weight": 1.0,
-                    "owers": ["zorglub", "tata"],
-                },
-                {
-                    "date": "2016-12-31",
-                    "what": "fromage a raclette",
-                    "amount": 10.0,
-                    "payer_name": "zorglub",
-                    "payer_weight": 2.0,
-                    "owers": ["zorglub", "fred", "tata", "pepe"],
-                },
-            ]
 
         def populate_data_with_currencies(self, currencies):
             for d in range(len(self.data)):
@@ -563,7 +570,8 @@ class ExportTestCase(IhatemoneyTestCase):
 
         # Change project currency to CAD
         project = self.get_project("raclette")
-        project.switch_currency("CAD")
+        with self.app.app_context():
+            project.switch_currency("CAD")
 
         # generate json export of transactions (now in CAD!)
         resp = self.client.get("/raclette/export/transactions.json")

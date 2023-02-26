@@ -12,7 +12,8 @@ def app(request: pytest.FixtureRequest):
     """Create the Flask app with database"""
     app = create_app(request.cls)
 
-    db.create_all()
+    with app.app_context():
+        db.create_all()
     request.cls.app = app
 
     yield app
@@ -32,7 +33,12 @@ def client(app: Flask, request: pytest.FixtureRequest):
 
 @pytest.fixture
 def app_ctx(app):
-    with app.app_context():
+    """
+    This fixture add both app_context AND request context for ease of use.
+    If you only need an app_context locally, use `with self.app.app_context():`
+    in your code.
+    """
+    with app.app_context(), app.test_request_context():
         yield
 
 
