@@ -9,6 +9,7 @@ from ihatemoney import models
 
 @pytest.mark.usefixtures("client", "converter")
 class BaseTestCase(unittest.TestCase):
+    # Those entries will be used by app.config.from_object in run.py
     SECRET_KEY = "TEST SESSION"
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         "TESTING_SQLALCHEMY_DATABASE_URI", "sqlite://"
