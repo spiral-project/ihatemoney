@@ -134,7 +134,7 @@ To run the tests:
 
     make test
 
-Tests can be edited in `ihatemoney/tests/tests.py`. If some test cases
+Tests can be edited in `ihatemoney/tests/`. If some test cases
 fail because of your changes, first check whether your code correctly
 handle these cases. If you are confident that your code is correct and
 that the test cases simply need to be updated to match your changes,
@@ -143,6 +143,18 @@ update the test cases and send them as part of your pull request.
 If you are introducing a new feature, you need to either add tests to
 existing classes, or add a new class (if your new feature is
 significantly different from existing code).
+
+#### Old tests and new tests
+Historically, tests were written with unittest and Flask-Testing.
+Because the latter was dying, we removed it and switch as much as
+possible to pytest fixtures. However, a lot of tests were already written,
+and are still using class-based tests, albeit without setUp()/teardown().
+
+If you write new tests, please **try to write them with pytest in mind**:
+- standalone function (not in class)
+- plain asserts
+
+For further reading, go to [pytest project documentation](https://docs.pytest.org)
 
 ### Formatting code
 
