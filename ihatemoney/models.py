@@ -453,7 +453,8 @@ class Project(db.Model):
         """Generate a timed and serialized JsonWebToken
 
         :param token_type: Either "auth" for authentication (invalidated when project code changed),
-                        or "reset" for password reset (invalidated after expiration)
+                        or "reset" for password reset (invalidated after expiration),
+                        or "feed" for project feeds (invalidated when project code changed)
         """
 
         if token_type == "reset":
@@ -476,7 +477,8 @@ class Project(db.Model):
 
         :param token: Serialized TimedJsonWebToken
         :param token_type: Either "auth" for authentication (invalidated when project code changed),
-                        or "reset" for password reset (invalidated after expiration)
+                        or "reset" for password reset (invalidated after expiration),
+                        or "feed" for project feeds (invalidated when project code changed)
         :param project_id: Project ID. Used for token_type "auth" to use the password as serializer
                         secret key.
         :param max_age: Token expiration time (in seconds). Only used with token_type "reset"

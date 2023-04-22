@@ -56,6 +56,7 @@ class BaseTestCase(TestCase):
         default_currency="XXX",
         name=None,
         password=None,
+        project_history=True,
     ):
         """Create a fake project"""
         name = name or id
@@ -69,6 +70,7 @@ class BaseTestCase(TestCase):
                 "password": password,
                 "contact_email": f"{id}@notmyidea.org",
                 "default_currency": default_currency,
+                "project_history": project_history,
             },
             follow_redirects=follow_redirects,
         )

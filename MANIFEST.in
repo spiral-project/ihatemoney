@@ -1,3 +1,3 @@
 include *.rst
-recursive-include ihatemoney *.rst *.py *.yaml *.po *.mo *.html *.css *.js *.eot *.svg *.woff *.txt *.png *.webp *.ini *.cfg *.j2 *.jpg *.gif *.ico
+recursive-include ihatemoney *.rst *.py *.yaml *.po *.mo *.html *.css *.js *.eot *.svg *.woff *.txt *.png *.webp *.ini *.cfg *.j2 *.jpg *.gif *.ico *.xml
 include LICENSE CONTRIBUTORS CHANGELOG.rst
