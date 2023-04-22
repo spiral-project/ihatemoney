@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    >
+    <channel>
+        <title>I Hate Money — {{ g.project.name }}</title>
+        <description>{% trans project_name=g.project.name %}Latest bills from {{ project_name }}{% endtrans %}</description>
+        <atom:link href="{{ url_for(".feed", token=g.project.generate_token("feed"), _external=True) }}" rel="self" type="application/rss+xml" />
+        <link>{{ url_for(".list_bills", _external=True) }}</link>
+        {% for (weights, bill) in bills.items -%}
+        <item>
+            <title>{{ bill.what }} - {{ bill.amount|currency(bill.original_currency) }}</title>
+            <guid isPermaLink="false">{{ bill.id }}</guid>
+            <dc:creator>{{ bill.payer }}</dc:creator>
+            {% if bill.external_link %}<link>{{ bill.external_link }}</link>{% endif -%}
+            <description>{{ bill.date|dateformat("long") }} - {{ bill.owers|join(', ', 'name') }} : {{ (bill.amount/weights)|currency(bill.original_currency) }}</description>
+            <pubDate>{{ bill.creation_date.strftime("%a, %d %b %Y %T") }} +0000</pubDate>
+        </item>
+        {% endfor -%}
+    </channel>
+</rss>

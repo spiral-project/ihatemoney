@@ -44,6 +44,9 @@
 
 {% endblock %}
 
+{% block head %}
+    <link href="{{ url_for(".feed", token=g.project.generate_token("feed")) }}" type="application/rss+xml" rel="alternate" title="{{ g.project.name }}" />
+{% endblock %}
 
 {% block sidebar %}
     <div class="sidebar_content">

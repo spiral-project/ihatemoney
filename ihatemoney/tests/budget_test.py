@@ -5,6 +5,7 @@ import unittest
 from urllib.parse import urlparse, urlunparse
 
 from flask import session, url_for
+from libfaketime import fake_time
 import pytest
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -13,6 +14,7 @@ from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.tests.common.help_functions import extract_link
 from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
 from ihatemoney.versioning import LoggingMode
+from ihatemoney.web import build_etag
 
 
 class BudgetTestCase(IhatemoneyTestCase):
@@ -149,6 +151,16 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.client.get(invite_link)
         data = self.client.get("/tartiflette/").data.decode("utf-8")
         self.assertEqual(data.count('href="/raclette/"'), 1)
+
+    def test_invalid_invite_link_with_feed_token(self):
+        """Test that a 'feed' token is not valid to join a project"""
+        self.post_project("raclette")
+        project = self.get_project("raclette")
+        invite_link = url_for(
+            ".join_project", project_id="raclette", token=project.generate_token("feed")
+        )
+        response = self.client.get(invite_link, follow_redirects=True)
+        assert "Provided token is invalid" in response.data.decode()
 
     def test_invite_code_invalidation(self):
         """Test that invitation link expire after code change"""
@@ -1684,6 +1696,358 @@ class BudgetTestCase(IhatemoneyTestCase):
             c.get("/")
             self.assertIsInstance(session["projects"], dict)
             self.assertIn("raclette", session["projects"])
+
+    def test_rss_feed(self):
+        """
+        Tests that the RSS feed output content is expected.
+        """
+        with fake_time("2023-07-25 12:00:00"):
+            self.post_project("raclette")
+            self.client.post("/raclette/members/add", data={"name": "george"})
+            self.client.post("/raclette/members/add", data={"name": "peter"})
+            self.client.post("/raclette/members/add", data={"name": "steven"})
+
+            self.client.post(
+                "/raclette/add",
+                data={
+                    "date": "2016-12-31",
+                    "what": "fromage à raclette",
+                    "payer": 1,
+                    "payed_for": [1, 2, 3],
+                    "amount": "12",
+                    "original_currency": "EUR",
+                },
+            )
+            self.client.post(
+                "/raclette/add",
+                data={
+                    "date": "2016-12-30",
+                    "what": "charcuterie",
+                    "payer": 2,
+                    "payed_for": [1, 2],
+                    "amount": "15",
+                    "original_currency": "EUR",
+                },
+            )
+            self.client.post(
+                "/raclette/add",
+                data={
+                    "date": "2016-12-29",
+                    "what": "vin blanc",
+                    "payer": 2,
+                    "payed_for": [1, 2],
+                    "amount": "10",
+                    "original_currency": "EUR",
+                },
+            )
+
+        project = self.get_project("raclette")
+        token = project.generate_token("feed")
+        resp = self.client.get(f"/raclette/feed/{token}.xml")
+
+        expected_rss_content = f"""<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    >
+    <channel>
+        <title>I Hate Money — raclette</title>
+        <description>Latest bills from raclette</description>
+        <atom:link href="http://localhost/raclette/feed/{token}.xml" rel="self" type="application/rss+xml" />
+        <link>http://localhost/raclette/</link>
+        <item>
+            <title>fromage à raclette - €12.00</title>
+            <guid isPermaLink="false">1</guid>
+            <dc:creator>george</dc:creator>
+            <description>December 31, 2016 - george, peter, steven : €4.00</description>
+            <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>charcuterie - €15.00</title>
+            <guid isPermaLink="false">2</guid>
+            <dc:creator>peter</dc:creator>
+            <description>December 30, 2016 - george, peter : €7.50</description>
+            <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>vin blanc - €10.00</title>
+            <guid isPermaLink="false">3</guid>
+            <dc:creator>peter</dc:creator>
+            <description>December 29, 2016 - george, peter : €5.00</description>
+            <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
+        </item>
+        </channel>
+</rss>"""  # noqa: E501
+        assert resp.data.decode() == expected_rss_content
+
+    def test_rss_feed_history_disabled(self):
+        """
+        Tests that RSS feeds is correctly rendered even if the project
+        history is disabled.
+        """
+        with fake_time("2023-07-25 12:00:00"):
+            self.post_project("raclette", project_history=False)
+            self.client.post("/raclette/members/add", data={"name": "george"})
+            self.client.post("/raclette/members/add", data={"name": "peter"})
+            self.client.post("/raclette/members/add", data={"name": "steven"})
+
+            self.client.post(
+                "/raclette/add",
+                data={
+                    "date": "2016-12-31",
+                    "what": "fromage à raclette",
+                    "payer": 1,
+                    "payed_for": [1, 2, 3],
+                    "amount": "12",
+                    "original_currency": "EUR",
+                },
+            )
+            self.client.post(
+                "/raclette/add",
+                data={
+                    "date": "2016-12-30",
+                    "what": "charcuterie",
+                    "payer": 2,
+                    "payed_for": [1, 2],
+                    "amount": "15",
+                    "original_currency": "EUR",
+                },
+            )
+            self.client.post(
+                "/raclette/add",
+                data={
+                    "date": "2016-12-29",
+                    "what": "vin blanc",
+                    "payer": 2,
+                    "payed_for": [1, 2],
+                    "amount": "10",
+                    "original_currency": "EUR",
+                },
+            )
+
+        project = self.get_project("raclette")
+        token = project.generate_token("feed")
+        resp = self.client.get(f"/raclette/feed/{token}.xml")
+
+        expected_rss_content = f"""<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    >
+    <channel>
+        <title>I Hate Money — raclette</title>
+        <description>Latest bills from raclette</description>
+        <atom:link href="http://localhost/raclette/feed/{token}.xml" rel="self" type="application/rss+xml" />
+        <link>http://localhost/raclette/</link>
+        <item>
+            <title>fromage à raclette - €12.00</title>
+            <guid isPermaLink="false">1</guid>
+            <dc:creator>george</dc:creator>
+            <description>December 31, 2016 - george, peter, steven : €4.00</description>
+            <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>charcuterie - €15.00</title>
+            <guid isPermaLink="false">2</guid>
+            <dc:creator>peter</dc:creator>
+            <description>December 30, 2016 - george, peter : €7.50</description>
+            <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>vin blanc - €10.00</title>
+            <guid isPermaLink="false">3</guid>
+            <dc:creator>peter</dc:creator>
+            <description>December 29, 2016 - george, peter : €5.00</description>
+            <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
+        </item>
+        </channel>
+</rss>"""  # noqa: E501
+        assert resp.data.decode() == expected_rss_content
+
+    def test_rss_if_modified_since_header(self):
+        # Project creation
+        with fake_time("2023-07-26 13:00:00"):
+            self.post_project("raclette")
+            self.client.post("/raclette/members/add", data={"name": "george"})
+            project = self.get_project("raclette")
+            token = project.generate_token("feed")
+
+            resp = self.client.get(f"/raclette/feed/{token}.xml")
+            assert resp.status_code == 200
+            assert resp.headers.get("Last-Modified") == "Wed, 26 Jul 2023 13:00:00 UTC"
+
+        resp = self.client.get(
+            f"/raclette/feed/{token}.xml",
+            headers={"If-Modified-Since": "Tue, 26 Jul 2023 12:00:00 UTC"},
+        )
+        assert resp.status_code == 200
+
+        resp = self.client.get(
+            f"/raclette/feed/{token}.xml",
+            headers={"If-Modified-Since": "Tue, 26 Jul 2023 14:00:00 UTC"},
+        )
+        assert resp.status_code == 304
+
+        # Add bill
+        with fake_time("2023-07-27 13:00:00"):
+            self.login("raclette")
+            resp = self.client.post(
+                "/raclette/add",
+                data={
+                    "date": "2016-12-31",
+                    "what": "fromage à raclette",
+                    "payer": 1,
+                    "payed_for": [1],
+                    "amount": "12",
+                    "original_currency": "EUR",
+                },
+                follow_redirects=True,
+            )
+            assert resp.status_code == 200
+            assert "The bill has been added" in resp.data.decode()
+
+        resp = self.client.get(
+            f"/raclette/feed/{token}.xml",
+            headers={"If-Modified-Since": "Tue, 27 Jul 2023 12:00:00 UTC"},
+        )
+        assert resp.headers.get("Last-Modified") == "Thu, 27 Jul 2023 13:00:00 UTC"
+        assert resp.status_code == 200
+
+        resp = self.client.get(
+            f"/raclette/feed/{token}.xml",
+            headers={"If-Modified-Since": "Tue, 27 Jul 2023 14:00:00 UTC"},
+        )
+        assert resp.status_code == 304
+
+    def test_rss_etag_headers(self):
+        # Project creation
+        with fake_time("2023-07-26 13:00:00"):
+            self.post_project("raclette")
+            self.client.post("/raclette/members/add", data={"name": "george"})
+            project = self.get_project("raclette")
+            token = project.generate_token("feed")
+
+            resp = self.client.get(f"/raclette/feed/{token}.xml")
+            assert resp.headers.get("ETag") == build_etag(
+                project.id, "2023-07-26T13:00:00"
+            )
+            assert resp.status_code == 200
+
+        resp = self.client.get(
+            f"/raclette/feed/{token}.xml",
+            headers={
+                "If-None-Match": build_etag(project.id, "2023-07-26T12:00:00"),
+            },
+        )
+        assert resp.status_code == 200
+
+        resp = self.client.get(
+            f"/raclette/feed/{token}.xml",
+            headers={
+                "If-None-Match": build_etag(project.id, "2023-07-26T13:00:00"),
+            },
+        )
+        assert resp.status_code == 304
+
+        # Add bill
+        with fake_time("2023-07-27 13:00:00"):
+            self.login("raclette")
+            resp = self.client.post(
+                "/raclette/add",
+                data={
+                    "date": "2016-12-31",
+                    "what": "fromage à raclette",
+                    "payer": 1,
+                    "payed_for": [1],
+                    "amount": "12",
+                    "original_currency": "EUR",
+                },
+                follow_redirects=True,
+            )
+            assert resp.status_code == 200
+            assert "The bill has been added" in resp.data.decode()
+
+        resp = self.client.get(
+            f"/raclette/feed/{token}.xml",
+            headers={
+                "If-None-Match": build_etag(project.id, "2023-07-27T12:00:00"),
+            },
+        )
+        assert resp.headers.get("ETag") == build_etag(project.id, "2023-07-27T13:00:00")
+        assert resp.status_code == 200
+
+        resp = self.client.get(
+            f"/raclette/feed/{token}.xml",
+            headers={
+                "If-None-Match": build_etag(project.id, "2023-07-27T13:00:00"),
+            },
+        )
+        assert resp.status_code == 304
+
+    def test_rss_feed_bad_token(self):
+        self.post_project("raclette")
+        project = self.get_project("raclette")
+        token = project.generate_token("feed")
+
+        resp = self.client.get(f"/raclette/feed/{token}.xml")
+        self.assertEqual(resp.status_code, 200)
+        resp = self.client.get("/raclette/feed/invalid-token.xml")
+        self.assertEqual(resp.status_code, 404)
+
+    def test_rss_feed_different_project_with_same_password(
+        self,
+    ):
+        """
+        Test that a 'feed' token is not valid to access the feed of
+        another project with the same password.
+        """
+        self.post_project("raclette", password="password")
+        self.post_project("reblochon", password="password")
+        project = self.get_project("raclette")
+        token = project.generate_token("feed")
+
+        resp = self.client.get(f"/reblochon/feed/{token}.xml")
+        self.assertEqual(resp.status_code, 404)
+
+    def test_rss_feed_different_project_with_different_password(
+        self,
+    ):
+        """
+        Test that a 'feed' token is not valid to access the feed of
+        another project with a different password.
+        """
+        self.post_project("raclette", password="password")
+        self.post_project("reblochon", password="another-password")
+        project = self.get_project("raclette")
+        token = project.generate_token("feed")
+
+        resp = self.client.get(f"/reblochon/feed/{token}.xml")
+        self.assertEqual(resp.status_code, 404)
+
+    def test_rss_feed_invalidated_token(self):
+        """
+        Tests that a feed URL becames invalid when the project password changes.
+        """
+        self.post_project("raclette")
+        project = self.get_project("raclette")
+        token = project.generate_token("feed")
+
+        resp = self.client.get(f"/raclette/feed/{token}.xml")
+        self.assertEqual(resp.status_code, 200)
+
+        self.client.post(
+            "/raclette/edit",
+            data={
+                "name": "raclette",
+                "contact_email": "zorglub@notmyidea.org",
+                "password": "didoudida",
+                "default_currency": "XXX",
+            },
+            follow_redirects=True,
+        )
+
+        resp = self.client.get(f"/raclette/feed/{token}.xml")
+        self.assertEqual(resp.status_code, 404)
 
 
 if __name__ == "__main__":
