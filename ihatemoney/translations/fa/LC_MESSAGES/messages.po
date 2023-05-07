@@ -1,52 +1,55 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-01 18:01+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2023-03-19 21:40+0000\n"
+"Last-Translator: Sai Mohammad-Hossein Emami <emami@outlook.com>\n"
+"Language-Team: Persian <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/fa/>\n"
 "Language: fa\n"
-"Language-Team: none\n"
-"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
-msgstr ""
+msgstr "مقدار یا عبارت نامعتبر. فقط اعداد و عملیات‌های + - * / مجاز هستند."
 
 msgid "Project name"
-msgstr ""
+msgstr "نام پروژه"
 
 msgid "New private code"
-msgstr ""
+msgstr "کد خصوصی جدید"
 
 msgid "Enter a new code if you want to change it"
-msgstr ""
+msgstr "اگر مایل به تغییر هستید یه کد جدید وارد کنید"
 
 msgid "Email"
-msgstr ""
+msgstr "ایمیل"
 
 msgid "Enable project history"
-msgstr ""
+msgstr "فعال کردن تاریخچه‌ی پروژه"
 
 msgid "Use IP tracking for project history"
-msgstr ""
+msgstr "برای تاریخچه‌ی پروژه از ردیابی آدرس IP استفاده شود"
 
 msgid "Default Currency"
-msgstr ""
+msgstr "واحد پولی پیش فرض"
 
 msgid "Setting a default currency enables currency conversion between bills"
-msgstr ""
+msgstr "تنظیم واحد پولی پیش فرض امکان تبدیل ارز بین قبض‌ها رو فراهم می‌کنه"
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
+"این پروژه نمی‌تونه به صورت «بدون واحد پولی» تنظیم بشه چون شامل قبوض با "
+"ارزهای مختلفه."
 
 msgid "Import previously exported JSON file"
 msgstr ""
@@ -55,126 +58,128 @@ msgid "Import"
 msgstr ""
 
 msgid "Project identifier"
-msgstr ""
+msgstr "شناسه پروژه"
 
 msgid "Private code"
-msgstr ""
+msgstr "کد خصوصی"
 
 msgid "Create the project"
-msgstr ""
+msgstr "ساخت پروژه"
 
 #, python-format
 msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
+"پروژه‌ای با شناسه‌ی (\"%(project)s\") از قبل وجود داره. لطفا یه شناسه‌ی جدید "
+"وارد کن"
 
 msgid "Which is a real currency: Euro or Petro dollar?"
-msgstr ""
+msgstr "کدوم یکی واقعا واحد پولیه: یورو یا دلار نفتی؟"
 
 msgid "euro"
-msgstr ""
+msgstr "یورو"
 
 msgid "Please, validate the captcha to proceed."
-msgstr ""
+msgstr "لطفا برای ادامه کپچا رو تایید کن."
 
 msgid "Enter private code to confirm deletion"
-msgstr ""
+msgstr "کد خصوصی رو برای تایید حذف وارد کن"
 
 msgid "Unknown error"
-msgstr ""
+msgstr "خطای ناشناخته"
 
 msgid "Invalid private code."
-msgstr ""
+msgstr "کد خصوصی نامعتبر."
 
 msgid "Get in"
-msgstr ""
+msgstr "بیا تو"
 
 msgid "Admin password"
-msgstr ""
+msgstr "گذرواژه‌ی مدیر"
 
 msgid "Send me the code by email"
-msgstr ""
+msgstr "کد رو برام ایمیل کن"
 
 msgid "This project does not exists"
-msgstr ""
+msgstr "این پروژه وجود نداره"
 
 msgid "Password mismatch"
-msgstr ""
+msgstr "گذرواژه‌ها با هم نمی‌خونه"
 
 msgid "Password"
-msgstr ""
+msgstr "گذرواژه"
 
 msgid "Password confirmation"
-msgstr ""
+msgstr "تایید گذرواژه"
 
 msgid "Reset password"
-msgstr ""
+msgstr "بازنشانی گذرواژه"
 
 msgid "Date"
-msgstr ""
+msgstr "تاریخ"
 
 msgid "What?"
-msgstr ""
+msgstr "چی؟"
 
 msgid "Payer"
-msgstr ""
+msgstr "پرداخت کننده"
 
 msgid "Amount paid"
 msgstr ""
 
 msgid "Currency"
-msgstr ""
+msgstr "واحد پولی"
 
 msgid "External link"
-msgstr ""
+msgstr "لینک خارجی"
 
 msgid "A link to an external document, related to this bill"
-msgstr ""
+msgstr "یه لینک به سند خارجی به این قبض مربوطه"
 
 msgid "For whom?"
-msgstr ""
+msgstr "برای کی؟"
 
 msgid "Submit"
-msgstr ""
+msgstr "ثبت"
 
 msgid "Submit and add a new one"
-msgstr ""
+msgstr "ثبت و اضافه کردن جدید"
 
 #, python-format
 msgid "Project default: %(currency)s"
-msgstr ""
+msgstr "پیش فرض پروژه: %(currency)s"
 
 msgid "Bills can't be null"
-msgstr ""
+msgstr "قبض‌ها نمی‌تونند تهی باشن"
 
 msgid "Name"
-msgstr ""
+msgstr "نام"
 
 msgid "Weights should be positive"
-msgstr ""
+msgstr "وزن باید مثبت باشه"
 
 msgid "Weight"
-msgstr ""
+msgstr "وزن"
 
 msgid "Add"
-msgstr ""
+msgstr "اضافه"
 
 msgid "The participant name is invalid"
-msgstr ""
+msgstr "نام شرکت کننده نامعتبره"
 
 msgid "This project already have this participant"
-msgstr ""
+msgstr "این شرکت کننده از قبل عضو پروژه هست"
 
 msgid "People to notify"
-msgstr ""
+msgstr "افرادی که براشون نوتیفیکیشن ارسال میشه"
 
 msgid "Send invites"
-msgstr ""
+msgstr "فرستادن دعوت نامه"
 
 #, python-format
 msgid "The email %(email)s is not valid"
-msgstr ""
+msgstr "ایمیل %(email)s نامعتبره"
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
@@ -193,7 +198,7 @@ msgid "{start_object}, {next_object}"
 msgstr ""
 
 msgid "No Currency"
-msgstr ""
+msgstr "بدون واحد پولی"
 
 #. Form error with only one error
 msgid "{prefix}: {error}"
@@ -208,13 +213,13 @@ msgstr ""
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
-msgstr ""
+msgstr "گذرواژه‌ی مدیر صحیح نیست. فقط %(num)d بار دیگه میشه سعی کنی."
 
 msgid "Provided token is invalid"
-msgstr ""
+msgstr "توکن وارد شده نامعتبره"
 
 msgid "This private code is not the right one"
-msgstr ""
+msgstr "این کد خصوصی اون کد خصوصی درست نیست"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -942,4 +947,3 @@ msgstr ""
 
 #~ msgid "Participants to notify"
 #~ msgstr ""
-
