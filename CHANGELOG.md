@@ -4,7 +4,7 @@ This document describes changes between each past release.
 
 ## 6.0.0 (unreleased)
 
-### Breaking
+### Breaking changes
 - Drop Python 3.6 support
 - Add Python 3.11 support
 
@@ -12,12 +12,23 @@ The minimum supported version is now Python 3.7, and the project is
 tested with up to Python 3.11
 
 ### Added
-- Build ARM64 and ARMv7 Docker image
+- Enable new languages: Catalan, Czech, Spanish, Persian, Hebrew, Hungarian, Kannada, Serbian, Telugu, Thai
+- Build ARM64 and ARMv7 Docker image (#1141)
+- Allow bills with an amount of zero (#1133)
+- Add confirmation for expense deletion (#1096)
+- Display a QR code when inviting people (#1000)
+- Add a cancel button when editing a bill for better UX (#1013)
+
+### Fixed
+- Fix project deletion in the dashboard (#1094)
+- Fix duplicate project name in dropdown list (#1082)
+- Fix captcha validation, it should be case insensitive on both side (#1061)
+- Fix CSRF on logout (#1040)
+- Fix XSS when inviting people by email (#1044)
 
 ### Changed
-- Add a cancel button when editing a bill for better UX
-- Translations: Bengali, Indonesian, Polish
-- Pin Werkzeug to avoid dropping Python 3.6 compatibility
+- Use a better quality favicon (#1102)
+- Use Flask-Limiter to implement rate limiting (#1054)
 
 ## 5.2.0 (2022-04-07)
 
