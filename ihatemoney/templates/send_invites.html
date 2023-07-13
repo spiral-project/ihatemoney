@@ -29,7 +29,7 @@
         <tr>
             <td>
                 <h3>{{ _('Scan QR code') }}</h3>
-                <p><small>{% trans download_mobile=url_for(".mobile") %}On a mobile device, with <a href="{{ download_mobile }}">a compatible app installed</a>.{% endtrans %}</small></p>
+                <p><small><a href="{{ url_for(".mobile") }}">{{ _("Use a mobile device with a compatible app.") }}</a></small></p>
             </td>
             <td>
                 {{ qrcode | safe }}
