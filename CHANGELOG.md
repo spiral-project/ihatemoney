@@ -2,7 +2,7 @@
 
 This document describes changes between each past release.
 
-## 6.0.0 (unreleased)
+## 6.0.0 (2023-07-13)
 
 ### Breaking changes
 - Drop Python 3.6 support
