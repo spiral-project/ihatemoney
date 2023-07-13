@@ -55,7 +55,7 @@ class HistoryTestCase(IhatemoneyTestCase):
     def assert_empty_history_logging_disabled(self):
         resp = self.client.get("/demo/history")
         self.assertIn(
-            "This project has history disabled. New actions won't appear below. ",
+            "This project has history disabled. New actions won't appear below.",
             resp.data.decode("utf-8"),
         )
         self.assertIn("Nothing to list", resp.data.decode("utf-8"))
@@ -248,7 +248,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
         self.assertIn(
-            "This project has history disabled. New actions won't appear below. ",
+            "This project has history disabled. New actions won't appear below.",
             resp.data.decode("utf-8"),
         )
         self.assertIn(
@@ -287,7 +287,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
         self.assertNotIn(
-            "This project has history disabled. New actions won't appear below. ",
+            "This project has history disabled. New actions won't appear below.",
             resp.data.decode("utf-8"),
         )
         self.assertNotIn(
@@ -332,7 +332,7 @@ class HistoryTestCase(IhatemoneyTestCase):
 
         self.assertEqual(resp.status_code, 200)
         self.assertNotIn(
-            "This project has history disabled. New actions won't appear below. ",
+            "This project has history disabled. New actions won't appear below.",
             resp.data.decode("utf-8"),
         )
         self.assertNotIn(

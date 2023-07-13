@@ -103,18 +103,17 @@
     {% if current_log_pref == LoggingMode.DISABLED  or (current_log_pref != LoggingMode.RECORD_IP and any_ip_addresses) %}
     <div id="history_warnings" class="card card-body bg-light">
     {% if current_log_pref == LoggingMode.DISABLED  %}
-        <p>{% set url = url_for(".edit_project") %}
-            {% trans %}
-            <i>This project has history disabled. New actions won't appear below. You can enable history on the</i>
-            <a href="{{ url }}">settings page</a>
-            {% endtrans %}
+        <p>
+            <i>{{ _("This project has history disabled. New actions won't appear below.") }}
+               <a href="{{ url_for(".edit_project") }}">{{ _("You can enable history on the settings page.") }}</a>
+            </i>
         </p>
         {% if history %}
         <p>
-            {% trans %}
-            <i>The table below reflects actions recorded prior to disabling project history. You can
-            <a href="#" data-toggle="modal" data-keyboard="false" data-target="#confirm-erase">clear project history</a> to remove them.</i></p>
-            {% endtrans %}
+            <i>{{ _("The table below reflects actions recorded prior to disabling project history.") }}
+              <a href="#" data-toggle="modal" data-keyboard="false" data-target="#confirm-erase">{{ _("You can clear the project history to remove them.") }}</a>
+            </i>
+        </p>
         {% endif %}
     {% endif %}
     {% if current_log_pref != LoggingMode.RECORD_IP and any_ip_addresses %}
