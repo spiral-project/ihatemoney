@@ -1,19 +1,23 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 18:01+0100\n"
+"POT-Creation-Date: 2023-07-13 18:12+0200\n"
 "PO-Revision-Date: 2022-11-07 10:07+0000\n"
 "Last-Translator: Moshi Moshi <ifeeltiredboss@gmail.com>\n"
-"Language-Team: Czech <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/cs/>\n"
 "Language: cs\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/cs/>\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14.2\n"
 "Generated-By: Babel 2.9.0\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr ""
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -51,11 +55,8 @@ msgstr ""
 "Tento projekt nemůže být nastaven na 'bez měny' protože obsahuje účty v "
 "různých měnáh."
 
-msgid "Import previously exported JSON file"
-msgstr "Import exportovaného JSON souboru"
-
-msgid "Import"
-msgstr "Import"
+msgid "Compatible with Cospend"
+msgstr ""
 
 msgid "Project identifier"
 msgstr "Identifikátor projektu"
@@ -116,17 +117,17 @@ msgstr "Potvrzení hesla"
 msgid "Reset password"
 msgstr "Obnova hesla"
 
-msgid "Date"
-msgstr "Datum"
+msgid "When?"
+msgstr ""
 
 msgid "What?"
 msgstr "Co?"
 
-msgid "Payer"
-msgstr "Platící"
+msgid "Who paid?"
+msgstr ""
 
-msgid "Amount paid"
-msgstr "Zaplacená částka"
+msgid "How much?"
+msgstr ""
 
 msgid "Currency"
 msgstr "Měna"
@@ -149,9 +150,6 @@ msgstr "Odeslat a přidat nový"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "Výchozí měna projektu: %(currency)s"
-
-msgid "Bills can't be null"
-msgstr "Účtenka nemůže být nulová"
 
 msgid "Name"
 msgstr "Jméno"
@@ -182,6 +180,21 @@ msgstr "Poslat pozvánky"
 msgid "The email %(email)s is not valid"
 msgstr "Toto (%(email)s) není validní e-mail"
 
+msgid "Logout"
+msgstr ""
+
+msgid "Please check the email configuration of the server."
+msgstr ""
+
+#, fuzzy, python-format
+msgid ""
+"Please check the email configuration of the server or contact the "
+"administrator: %(admin_email)s"
+msgstr ""
+"Omlouváme se, během odesílání emailu s instrukcemi pro obnovení hesla se "
+"vyskytla chyba. Zkontrolujte si prosím nastavení vašeho emailového "
+"serveru nebo kontaktujte administrátora."
+
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
 msgstr "{dual_object_0} a {dual_object_1}"
@@ -209,7 +222,8 @@ msgstr ""
 msgid "{prefix}:<br />{errors}"
 msgstr ""
 
-msgid "Too many failed login attempts, please retry later."
+#, fuzzy
+msgid "Too many failed login attempts."
 msgstr "Příliš mnoho pokusů, zkuste to později."
 
 #, python-format
@@ -222,10 +236,6 @@ msgstr ""
 msgid "This private code is not the right one"
 msgstr ""
 
-#, python-format
-msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
-
 msgid "A reminder email has just been sent to you"
 msgstr ""
 
@@ -234,14 +244,10 @@ msgid ""
 "still use the project normally."
 msgstr ""
 
-#, python-format
-msgid "The project identifier is %(project)s"
-msgstr ""
-
+#, fuzzy
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
-"instructions. Please check the email configuration of the server or "
-"contact the administrator."
+"instructions."
 msgstr ""
 "Omlouváme se, během odesílání emailu s instrukcemi pro obnovení hesla se "
 "vyskytla chyba. Zkontrolujte si prosím nastavení vašeho emailového "
@@ -261,22 +267,29 @@ msgstr "Neznámý projekt"
 msgid "Password successfully reset."
 msgstr "Heslo bylo úspěšné obnoveno."
 
-msgid "Project successfully uploaded"
-msgstr "Projekt byl úspěšně nahrán."
+msgid "Unable to parse CSV"
+msgstr ""
 
-msgid "Invalid JSON"
-msgstr "Neplatný JSON"
+#, python-format
+msgid "Missing attribute: %(attribute)s"
+msgstr ""
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
 msgstr ""
 
+msgid "Project successfully uploaded"
+msgstr "Projekt byl úspěšně nahrán."
+
 msgid "Project successfully deleted"
 msgstr "Projekt byl úspěšně smazán"
 
 msgid "Error deleting project"
 msgstr "Nastala chyba při mazání projektu"
+
+msgid "Unable to logout"
+msgstr ""
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
@@ -285,10 +298,7 @@ msgstr ""
 msgid "Your invitations have been sent"
 msgstr "Vaše pozvánka byla odeslána"
 
-msgid ""
-"Sorry, there was an error while trying to send the invitation emails. "
-"Please check the email configuration of the server or contact the "
-"administrator."
+msgid "Sorry, there was an error while trying to send the invitation emails."
 msgstr ""
 
 #, python-format
@@ -329,6 +339,10 @@ msgid "The bill has been deleted"
 msgstr ""
 
 msgid "The bill has been modified"
+msgstr ""
+
+#, python-format
+msgid "%(lang)s is not a supported language"
 msgstr ""
 
 #, fuzzy
@@ -393,7 +407,11 @@ msgstr ""
 msgid "edit"
 msgstr ""
 
-msgid "delete"
+#, fuzzy
+msgid "Delete project"
+msgstr "Vytvořit projekt"
+
+msgid " show"
 msgstr ""
 
 msgid "show"
@@ -409,21 +427,12 @@ msgstr ""
 msgid "Get it on"
 msgstr "Vstoupit"
 
-msgid "Are you sure?"
-msgstr ""
-
 msgid "Edit project"
 msgstr ""
 
 #, fuzzy
-msgid "Delete project"
+msgid "Import project"
 msgstr "Vytvořit projekt"
-
-msgid "Import JSON"
-msgstr ""
-
-msgid "Choose file"
-msgstr ""
 
 msgid "Download project's data"
 msgstr ""
@@ -455,10 +464,20 @@ msgstr ""
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
 
+#, fuzzy
+msgid "Import previously exported project"
+msgstr "Import exportovaného JSON souboru"
+
+msgid "Choose file"
+msgstr ""
+
 msgid "Edit this bill"
 msgstr ""
 
 msgid "Add a bill"
+msgstr ""
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
 msgstr ""
 
 msgid "Everyone"
@@ -546,23 +565,18 @@ msgstr ""
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr ""
 
-#, python-format
-msgid ""
-"\n"
-"            <i>This project has history disabled. New actions won't "
-"appear below. You can enable history on the</i>\n"
-"            <a href=\"%(url)s\">settings page</a>\n"
-"            "
+msgid "This project has history disabled. New actions won't appear below."
+msgstr ""
+
+msgid "You can enable history on the settings page."
 msgstr ""
 
 msgid ""
-"\n"
-"            <i>The table below reflects actions recorded prior to "
-"disabling project history. You can\n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
-"data-target=\"#confirm-erase\">clear project history</a> to remove "
-"them.</i></p>\n"
-"            "
+"The table below reflects actions recorded prior to disabling project "
+"history."
+msgstr ""
+
+msgid "You can clear the project history to remove them."
 msgstr ""
 
 msgid ""
@@ -573,16 +587,16 @@ msgstr ""
 msgid "Delete stored IP addresses"
 msgstr ""
 
-msgid "No history to erase"
-msgstr ""
-
-msgid "Clear Project History"
-msgstr ""
-
 msgid "No IP Addresses to erase"
 msgstr ""
 
 msgid "Delete Stored IP Addresses"
+msgstr ""
+
+msgid "No history to erase"
+msgstr ""
+
+msgid "Clear Project History"
 msgstr ""
 
 msgid "Time"
@@ -646,8 +660,14 @@ msgstr ""
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
+msgid "Payer"
+msgstr "Platící"
+
 msgid "Amount"
 msgstr ""
+
+msgid "Date"
+msgstr "Datum"
 
 #, python-format
 msgid "Amount in %(currency)s"
@@ -758,7 +778,8 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-msgid "Logout"
+#, python-format
+msgid "Please retry after %(date)s."
 msgstr ""
 
 msgid "Code"
@@ -792,28 +813,19 @@ msgstr ""
 msgid "Invite people"
 msgstr ""
 
-msgid "You should start by adding participants"
-msgstr ""
-
-msgid "Add a new bill"
-msgstr ""
-
 msgid "Newer bills"
 msgstr ""
 
 msgid "Older bills"
 msgstr ""
 
-msgid "When?"
+msgid "You should start by adding participants"
 msgstr ""
 
-msgid "Who paid?"
+msgid "Add a new bill"
 msgstr ""
 
 msgid "For what?"
-msgstr ""
-
-msgid "How much?"
 msgstr ""
 
 #, python-format
@@ -822,6 +834,9 @@ msgstr ""
 
 #, python-format
 msgid "Everyone but %(excluded)s"
+msgstr ""
+
+msgid "delete"
 msgstr ""
 
 msgid "No bills"
@@ -874,6 +889,12 @@ msgid "Share the Link"
 msgstr ""
 
 msgid "You can directly share the following link via your prefered medium"
+msgstr ""
+
+msgid "Scan QR code"
+msgstr ""
+
+msgid "Use a mobile device with a compatible app."
 msgstr ""
 
 msgid "Send via Emails"
@@ -1033,3 +1054,55 @@ msgstr ""
 
 #~ msgid "Participants to notify"
 #~ msgstr ""
+
+#~ msgid "Import"
+#~ msgstr "Import"
+
+#~ msgid "Amount paid"
+#~ msgstr "Zaplacená částka"
+
+#~ msgid "Bills can't be null"
+#~ msgstr "Účtenka nemůže být nulová"
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr ""
+
+#~ msgid "Invalid JSON"
+#~ msgstr "Neplatný JSON"
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "trying to send the invitation emails."
+#~ " Please check the email configuration "
+#~ "of the server or contact the "
+#~ "administrator."
+#~ msgstr ""
+
+#~ msgid "Are you sure?"
+#~ msgstr ""
+
+#~ msgid "Import JSON"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>This project has history "
+#~ "disabled. New actions won't appear "
+#~ "below. You can enable history on "
+#~ "the</i>\n"
+#~ "            <a href=\"%(url)s\">settings page</a>\n"
+#~ "            "
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>The table below reflects "
+#~ "actions recorded prior to disabling "
+#~ "project history. You can\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">clear project history</a>"
+#~ " to remove them.</i></p>\n"
+#~ "            "
+#~ msgstr ""
+

@@ -1,19 +1,23 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 18:01+0100\n"
+"POT-Creation-Date: 2023-07-13 18:12+0200\n"
 "PO-Revision-Date: 2023-05-05 00:47+0000\n"
 "Last-Translator: MurkBRA <anjo1077@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
-"i-hate-money/i-hate-money/pt_BR/>\n"
 "Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/i"
+"-hate-money/i-hate-money/pt_BR/>\n"
+"Plural-Forms: nplurals=2; plural=n > 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.18-dev\n"
 "Generated-By: Babel 2.9.0\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr "Você acabou de criar '%(project)s' para compartilhar suas despesas"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -53,11 +57,8 @@ msgstr ""
 "O projeto não pode ser definido como 'sem moeda' porque contém contas em "
 "várias moedas."
 
-msgid "Import previously exported JSON file"
-msgstr "Importar arquivo JSON exportado anteriormente"
-
-msgid "Import"
-msgstr "Importar"
+msgid "Compatible with Cospend"
+msgstr ""
 
 msgid "Project identifier"
 msgstr "Identificador do projeto"
@@ -118,17 +119,17 @@ msgstr "Confirmação da senha"
 msgid "Reset password"
 msgstr "Redefinir senha"
 
-msgid "Date"
-msgstr "Data"
+msgid "When?"
+msgstr "Quando?"
 
 msgid "What?"
 msgstr "O quê?"
 
-msgid "Payer"
-msgstr "Pagador"
+msgid "Who paid?"
+msgstr "Quem pagou?"
 
-msgid "Amount paid"
-msgstr "Quantia paga"
+msgid "How much?"
+msgstr "Quanto?"
 
 msgid "Currency"
 msgstr "Moeda"
@@ -151,9 +152,6 @@ msgstr "Enviar e adicionar um novo"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "Projeto padrão: %(currency)s"
-
-msgid "Bills can't be null"
-msgstr "Contas não podem ser null"
 
 msgid "Name"
 msgstr "Nome"
@@ -183,6 +181,21 @@ msgstr "Enviar convites"
 msgid "The email %(email)s is not valid"
 msgstr "O email %(email)s não é válido"
 
+msgid "Logout"
+msgstr "Sair"
+
+msgid "Please check the email configuration of the server."
+msgstr ""
+
+#, fuzzy, python-format
+msgid ""
+"Please check the email configuration of the server or contact the "
+"administrator: %(admin_email)s"
+msgstr ""
+"Desculpe, houve um erro ao enviar os convites via e-mail. Por favor, "
+"confira a configuração de email do servidor ou entre em contato com um "
+"administrador."
+
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
 msgstr "{dual_object_0} e {dual_object_1}"
@@ -210,7 +223,8 @@ msgstr "{prefix}: {error}"
 msgid "{prefix}:<br />{errors}"
 msgstr "{prefix}:<br />{errors}"
 
-msgid "Too many failed login attempts, please retry later."
+#, fuzzy
+msgid "Too many failed login attempts."
 msgstr "Muitas tentativas de login falhas, por favor, tente novamente mais tarde."
 
 #, python-format
@@ -225,10 +239,6 @@ msgstr "Token invalido"
 msgid "This private code is not the right one"
 msgstr "Este código privado não é o correto"
 
-#, python-format
-msgid "You have just created '%(project)s' to share your expenses"
-msgstr "Você acabou de criar '%(project)s' para compartilhar suas despesas"
-
 msgid "A reminder email has just been sent to you"
 msgstr "Um email de lembrete acabou de ser enviado para você"
 
@@ -239,14 +249,10 @@ msgstr ""
 "Nós tentamos te enviar um email de lembrete, mas aconteceu um erro. Você "
 "pode continuar usando o projeto normalmente."
 
-#, python-format
-msgid "The project identifier is %(project)s"
-msgstr "O identificador do projeto é %(project)s"
-
+#, fuzzy
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
-"instructions. Please check the email configuration of the server or "
-"contact the administrator."
+"instructions."
 msgstr ""
 "Desculpe, houve um erro ao te enviar um email com as instruções de "
 "redefinição de senha. Por favor, confira a configuração de e-mail do "
@@ -264,11 +270,12 @@ msgstr "Projeto desconhecido"
 msgid "Password successfully reset."
 msgstr "Senha redefinida corretamente."
 
-msgid "Project successfully uploaded"
-msgstr "Projeto enviado corretamente"
+msgid "Unable to parse CSV"
+msgstr ""
 
-msgid "Invalid JSON"
-msgstr "JSON inválido"
+#, python-format
+msgid "Missing attribute: %(attribute)s"
+msgstr ""
 
 #, fuzzy
 msgid ""
@@ -278,11 +285,17 @@ msgstr ""
 "Não é possível adicionar contas em várias moedas a um projeto sem moeda "
 "padrão"
 
+msgid "Project successfully uploaded"
+msgstr "Projeto enviado corretamente"
+
 msgid "Project successfully deleted"
 msgstr "Projeto deletado com sucesso"
 
 msgid "Error deleting project"
 msgstr "Erro ao excluir o projeto"
+
+msgid "Unable to logout"
+msgstr ""
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
@@ -291,10 +304,8 @@ msgstr "Você foi convidado a compartilhar suas despesas com %(project)s"
 msgid "Your invitations have been sent"
 msgstr "Seus convites foram enviados"
 
-msgid ""
-"Sorry, there was an error while trying to send the invitation emails. "
-"Please check the email configuration of the server or contact the "
-"administrator."
+#, fuzzy
+msgid "Sorry, there was an error while trying to send the invitation emails."
 msgstr ""
 "Desculpe, houve um erro ao enviar os convites via e-mail. Por favor, "
 "confira a configuração de email do servidor ou entre em contato com um "
@@ -341,6 +352,10 @@ msgstr "A conta foi deletada"
 
 msgid "The bill has been modified"
 msgstr "A conta foi modificada"
+
+#, python-format
+msgid "%(lang)s is not a supported language"
+msgstr ""
 
 msgid "Error deleting project history"
 msgstr "Erro ao deletar o histórico do projeto"
@@ -402,8 +417,12 @@ msgstr "Ações"
 msgid "edit"
 msgstr "editar"
 
-msgid "delete"
-msgstr "deletar"
+msgid "Delete project"
+msgstr "Excluir projeto"
+
+#, fuzzy
+msgid " show"
+msgstr "exibir"
 
 msgid "show"
 msgstr "exibir"
@@ -417,21 +436,12 @@ msgstr "Baixar o APP"
 msgid "Get it on"
 msgstr "Pegue agora"
 
-#, fuzzy
-msgid "Are you sure?"
-msgstr "tem certeza?"
-
 msgid "Edit project"
 msgstr "Editar projeto"
 
-msgid "Delete project"
-msgstr "Excluir projeto"
-
-msgid "Import JSON"
-msgstr "Importar JSON"
-
-msgid "Choose file"
-msgstr "Escolher arquivo"
+#, fuzzy
+msgid "Import project"
+msgstr "Editar projeto"
 
 msgid "Download project's data"
 msgstr "Baixar dados do projeto"
@@ -463,11 +473,21 @@ msgstr "Editar o projeto"
 msgid "This will remove all bills and participants in this project!"
 msgstr "Isso vai remover todas as contas e participantes desse projeto!"
 
+#, fuzzy
+msgid "Import previously exported project"
+msgstr "Importar arquivo JSON exportado anteriormente"
+
+msgid "Choose file"
+msgstr "Escolher arquivo"
+
 msgid "Edit this bill"
 msgstr "Editar esta conta"
 
 msgid "Add a bill"
 msgstr "Adicionar uma conta"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr ""
 
 msgid "Everyone"
 msgstr "Todos"
@@ -560,36 +580,21 @@ msgstr "Conta %(name)s: adicionou %(owers_list_str)s a lista de devedores"
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr "Conta %(name)s: removeu %(owers_list_str)s da lista de devedores"
 
-#, python-format
-msgid ""
-"\n"
-"            <i>This project has history disabled. New actions won't "
-"appear below. You can enable history on the</i>\n"
-"            <a href=\"%(url)s\">settings page</a>\n"
-"            "
+msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
-"\n"
-"            <i>Este projeto tem o histórico desativado. Novas ações não "
-"serão exibidas abaixo. Você pode ativar o histórico na</i>\n"
-"            <a href=\"%(url)s\">página de configurações</a>\n"
-"            "
+
+#, fuzzy
+msgid "You can enable history on the settings page."
+msgstr "A gravação do endereço IP pode ser ativada na página de configurações"
 
 msgid ""
-"\n"
-"            <i>The table below reflects actions recorded prior to "
-"disabling project history. You can\n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
-"data-target=\"#confirm-erase\">clear project history</a> to remove "
-"them.</i></p>\n"
-"            "
+"The table below reflects actions recorded prior to disabling project "
+"history."
 msgstr ""
-"\n"
-"            <i>A tabela abaixo reflete as ações registradas antes da "
-"desativação do histórico do projeto. Você pode\n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
-"data-target=\"#confirm-erase\">limpar o histórico do projeto</a> para "
-"removê-las.</i></p>\n"
-"            "
+
+#, fuzzy
+msgid "You can clear the project history to remove them."
+msgstr "Alguém provavelmente limpou o histórico do projeto."
 
 msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
@@ -601,17 +606,17 @@ msgstr ""
 msgid "Delete stored IP addresses"
 msgstr "Deletar endereços IP salvos"
 
-msgid "No history to erase"
-msgstr "Não há histórico para apagar"
-
-msgid "Clear Project History"
-msgstr "Limpar Histórico do Projeto"
-
 msgid "No IP Addresses to erase"
 msgstr "Não há endereços IP para apagar"
 
 msgid "Delete Stored IP Addresses"
 msgstr "Deletar endereços IP salvos"
+
+msgid "No history to erase"
+msgstr "Não há histórico para apagar"
+
+msgid "Clear Project History"
+msgstr "Limpar Histórico do Projeto"
 
 msgid "Time"
 msgstr "Tempo"
@@ -674,8 +679,14 @@ msgstr "Conta %(name)s renomeada para %(new_description)s"
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr "Usuário %(name)s: a carga mudou de %(old_weight)s para %(new_weight)s"
 
+msgid "Payer"
+msgstr "Pagador"
+
 msgid "Amount"
 msgstr "Quantia"
+
+msgid "Date"
+msgstr "Data"
 
 #, python-format
 msgid "Amount in %(currency)s"
@@ -788,8 +799,9 @@ msgstr "mudar para"
 msgid "Dashboard"
 msgstr "Painel de controle"
 
-msgid "Logout"
-msgstr "Sair"
+#, python-format
+msgid "Please retry after %(date)s."
+msgstr ""
 
 msgid "Code"
 msgstr "Código"
@@ -822,29 +834,20 @@ msgstr "tem certeza?"
 msgid "Invite people"
 msgstr "Convidar pessoas"
 
-msgid "You should start by adding participants"
-msgstr "Você deveria começar adicionando pessoas"
-
-msgid "Add a new bill"
-msgstr "Adicionar uma nova conta"
-
 msgid "Newer bills"
 msgstr "Contas mais recentes"
 
 msgid "Older bills"
 msgstr "Contas mais antigas"
 
-msgid "When?"
-msgstr "Quando?"
+msgid "You should start by adding participants"
+msgstr "Você deveria começar adicionando pessoas"
 
-msgid "Who paid?"
-msgstr "Quem pagou?"
+msgid "Add a new bill"
+msgstr "Adicionar uma nova conta"
 
 msgid "For what?"
 msgstr "Para quê?"
-
-msgid "How much?"
-msgstr "Quanto?"
 
 #, python-format
 msgid "Added on %(date)s"
@@ -853,6 +856,9 @@ msgstr "Adicionado em %(date)s"
 #, python-format
 msgid "Everyone but %(excluded)s"
 msgstr "Todos menos %(excluded)s"
+
+msgid "delete"
+msgstr "deletar"
 
 msgid "No bills"
 msgstr "Sem contas"
@@ -911,6 +917,12 @@ msgid "You can directly share the following link via your prefered medium"
 msgstr ""
 "Você pode compartilhar diretamente o seguinte link através do seu meio "
 "preferido"
+
+msgid "Scan QR code"
+msgstr ""
+
+msgid "Use a mobile device with a compatible app."
+msgstr ""
 
 msgid "Send via Emails"
 msgstr "Enviar via E-mails"
@@ -1021,3 +1033,64 @@ msgstr "Período"
 
 #~ msgid "People to notify"
 #~ msgstr "Pessoas para notificar"
+
+#~ msgid "Import"
+#~ msgstr "Importar"
+
+#~ msgid "Amount paid"
+#~ msgstr "Quantia paga"
+
+#~ msgid "Bills can't be null"
+#~ msgstr "Contas não podem ser null"
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "O identificador do projeto é %(project)s"
+
+#~ msgid "Invalid JSON"
+#~ msgstr "JSON inválido"
+
+#~ msgid "Are you sure?"
+#~ msgstr "tem certeza?"
+
+#~ msgid "Import JSON"
+#~ msgstr "Importar JSON"
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>This project has history "
+#~ "disabled. New actions won't appear "
+#~ "below. You can enable history on "
+#~ "the</i>\n"
+#~ "            <a href=\"%(url)s\">settings page</a>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            <i>Este projeto tem o "
+#~ "histórico desativado. Novas ações não "
+#~ "serão exibidas abaixo. Você pode ativar"
+#~ " o histórico na</i>\n"
+#~ "            <a href=\"%(url)s\">página de configurações</a>\n"
+#~ "            "
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>The table below reflects "
+#~ "actions recorded prior to disabling "
+#~ "project history. You can\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">clear project history</a>"
+#~ " to remove them.</i></p>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            <i>A tabela abaixo reflete "
+#~ "as ações registradas antes da "
+#~ "desativação do histórico do projeto. "
+#~ "Você pode\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">limpar o histórico "
+#~ "do projeto</a> para removê-las.</i></p>\n"
+#~ "            "
+

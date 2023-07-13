@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 18:01+0100\n"
+"POT-Creation-Date: 2023-07-13 18:12+0200\n"
 "PO-Revision-Date: 2020-06-14 14:41+0000\n"
 "Last-Translator: raghupalash <singhpalash0@gmail.com>\n"
 "Language: hi\n"
@@ -14,6 +14,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.0\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr "आपने अभी अभी अपने खर्चों को साझा करने के लिए '%(project)s' बनाया है"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -52,11 +56,8 @@ msgid ""
 "multiple currencies."
 msgstr ""
 
-msgid "Import previously exported JSON file"
-msgstr "पूर्व में निर्यात की गई JSON फ़ाइल आयात करें"
-
-msgid "Import"
-msgstr "आयात"
+msgid "Compatible with Cospend"
+msgstr ""
 
 msgid "Project identifier"
 msgstr "परियोजना पहचानकर्ता"
@@ -120,17 +121,17 @@ msgstr "पासवर्ड पुष्टीकरण"
 msgid "Reset password"
 msgstr "पासवर्ड रीसेट"
 
-msgid "Date"
-msgstr "तारीख"
+msgid "When?"
+msgstr "कब?"
 
 msgid "What?"
 msgstr "क्या?"
 
-msgid "Payer"
-msgstr "भुगतानकर्ता"
+msgid "Who paid?"
+msgstr "किसने भुगतान किया?"
 
-msgid "Amount paid"
-msgstr "भुगतान की गई राशि"
+msgid "How much?"
+msgstr "कितना?"
 
 msgid "Currency"
 msgstr "मुद्रा"
@@ -153,9 +154,6 @@ msgstr "जमा करें और एक नया जोड़ें"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "प्रोजेक्ट डिफ़ॉल्ट:%(currency)s"
-
-msgid "Bills can't be null"
-msgstr "बिल शून्य नहीं हो सकते"
 
 msgid "Name"
 msgstr "नाम"
@@ -187,6 +185,20 @@ msgstr "आमंत्रण भेजें"
 msgid "The email %(email)s is not valid"
 msgstr "ईमेल %(email)s मान्य नहीं है"
 
+msgid "Logout"
+msgstr "लॉग आउट"
+
+msgid "Please check the email configuration of the server."
+msgstr ""
+
+#, fuzzy, python-format
+msgid ""
+"Please check the email configuration of the server or contact the "
+"administrator: %(admin_email)s"
+msgstr ""
+"क्षमा करें, आमंत्रण ईमेल भेजने का प्रयास करते समय कोई त्रुटि हुई। कृपया "
+"सर्वर के ईमेल कॉन्फ़िगरेशन की जाँच करें या व्यवस्थापक से संपर्क करें।"
+
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
 msgstr ""
@@ -214,7 +226,8 @@ msgstr ""
 msgid "{prefix}:<br />{errors}"
 msgstr ""
 
-msgid "Too many failed login attempts, please retry later."
+#, fuzzy
+msgid "Too many failed login attempts."
 msgstr "बहुत से विफल लॉगिन प्रयास, कृपया बाद में पुनः प्रयास करें।"
 
 #, python-format
@@ -227,10 +240,6 @@ msgstr ""
 msgid "This private code is not the right one"
 msgstr "यह निजी कोड सही नहीं है"
 
-#, python-format
-msgid "You have just created '%(project)s' to share your expenses"
-msgstr "आपने अभी अभी अपने खर्चों को साझा करने के लिए '%(project)s' बनाया है"
-
 msgid "A reminder email has just been sent to you"
 msgstr "आपको अभी एक अनुस्मारक ईमेल भेजा गया है"
 
@@ -241,14 +250,10 @@ msgstr ""
 "हमने आपको एक अनुस्मारक ईमेल भेजने की कोशिश की, लेकिन कोई त्रुटि थी। आप "
 "अभी भी सामान्य रूप से प्रोजेक्ट का उपयोग कर सकते हैं।"
 
-#, python-format
-msgid "The project identifier is %(project)s"
-msgstr "प्रोजेक्ट पहचानकर्ता %(project)s है"
-
+#, fuzzy
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
-"instructions. Please check the email configuration of the server or "
-"contact the administrator."
+"instructions."
 msgstr ""
 "क्षमा करें, पासवर्ड रीसेट निर्देशों के साथ आपको एक ईमेल भेजते समय कोई "
 "त्रुटि हुई थी। कृपया सर्वर के ईमेल कॉन्फ़िगरेशन की जाँच करें या "
@@ -266,21 +271,28 @@ msgstr "अज्ञात परियोजना"
 msgid "Password successfully reset."
 msgstr "पासवर्ड सफलतापूर्वक रीसेट हो गया है।"
 
-msgid "Project successfully uploaded"
-msgstr "प्रोजेक्ट सफलतापूर्वक अपलोड किया गया"
+msgid "Unable to parse CSV"
+msgstr ""
 
-msgid "Invalid JSON"
-msgstr "अमान्य JSON"
+#, python-format
+msgid "Missing attribute: %(attribute)s"
+msgstr ""
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
 msgstr ""
 
+msgid "Project successfully uploaded"
+msgstr "प्रोजेक्ट सफलतापूर्वक अपलोड किया गया"
+
 msgid "Project successfully deleted"
 msgstr "प्रोजेक्ट सफलतापूर्वक हटा दिया गया"
 
 msgid "Error deleting project"
+msgstr ""
+
+msgid "Unable to logout"
 msgstr ""
 
 #, python-format
@@ -292,10 +304,8 @@ msgstr ""
 msgid "Your invitations have been sent"
 msgstr "आपके निमंत्रण भेज दिए गए हैं"
 
-msgid ""
-"Sorry, there was an error while trying to send the invitation emails. "
-"Please check the email configuration of the server or contact the "
-"administrator."
+#, fuzzy
+msgid "Sorry, there was an error while trying to send the invitation emails."
 msgstr ""
 "क्षमा करें, आमंत्रण ईमेल भेजने का प्रयास करते समय कोई त्रुटि हुई। कृपया "
 "सर्वर के ईमेल कॉन्फ़िगरेशन की जाँच करें या व्यवस्थापक से संपर्क करें।"
@@ -341,6 +351,10 @@ msgstr "बिल को हटा दिया गया है"
 
 msgid "The bill has been modified"
 msgstr "बिल को संशोधित कर दिया गया है"
+
+#, python-format
+msgid "%(lang)s is not a supported language"
+msgstr ""
 
 #, fuzzy
 msgid "Error deleting project history"
@@ -409,8 +423,13 @@ msgstr "कार्य"
 msgid "edit"
 msgstr "संपादित करें"
 
-msgid "delete"
-msgstr "हटाइये"
+#, fuzzy
+msgid "Delete project"
+msgstr "परियोजना संपादित करें"
+
+#, fuzzy
+msgid " show"
+msgstr "प्रदर्शन"
 
 msgid "show"
 msgstr "प्रदर्शन"
@@ -426,22 +445,12 @@ msgstr "मोबाइल एप्लीकेशन"
 msgid "Get it on"
 msgstr "अंदर जाइये"
 
-#, fuzzy
-msgid "Are you sure?"
-msgstr "आपको यकीन है?"
-
 msgid "Edit project"
 msgstr "परियोजना संपादित करें"
 
 #, fuzzy
-msgid "Delete project"
+msgid "Import project"
 msgstr "परियोजना संपादित करें"
-
-msgid "Import JSON"
-msgstr "JSON को आयात करे"
-
-msgid "Choose file"
-msgstr "फ़ाइल चुनें"
 
 msgid "Download project's data"
 msgstr "प्रोजेक्ट का डेटा डाउनलोड करें"
@@ -473,11 +482,21 @@ msgstr "प्रोजेक्ट संपादित करें"
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
 
+#, fuzzy
+msgid "Import previously exported project"
+msgstr "पूर्व में निर्यात की गई JSON फ़ाइल आयात करें"
+
+msgid "Choose file"
+msgstr "फ़ाइल चुनें"
+
 msgid "Edit this bill"
 msgstr "इस बिल को संपादित करें"
 
 msgid "Add a bill"
 msgstr "बिल जोड़ें"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr ""
 
 msgid "Everyone"
 msgstr "सब"
@@ -572,36 +591,21 @@ msgstr ""
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr ""
 
-#, python-format
-msgid ""
-"\n"
-"            <i>This project has history disabled. New actions won't "
-"appear below. You can enable history on the</i>\n"
-"            <a href=\"%(url)s\">settings page</a>\n"
-"            "
+msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
-"\n"
-"            <i>इस प्रोजेक्ट में इतिहास अक्षम है। नई कार्रवाइयां नीचे "
-"दिखाई नहीं देंगी। आप इतिहास को यहाँ से सक्षम कर सकते हैं</i>\n"
-"              <a href=\"%(url)s\">सेटिंग्स पृष्ठ</a>\n"
-"            "
+
+#, fuzzy
+msgid "You can enable history on the settings page."
+msgstr "आईपी पता रिकॉर्डिंग को सेटिंग पेज पर सक्षम किया जा सकता है"
 
 msgid ""
-"\n"
-"            <i>The table below reflects actions recorded prior to "
-"disabling project history. You can\n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
-"data-target=\"#confirm-erase\">clear project history</a> to remove "
-"them.</i></p>\n"
-"            "
+"The table below reflects actions recorded prior to disabling project "
+"history."
 msgstr ""
-"\n"
-"            <i>नीचे दी गई तालिका परियोजना इतिहास को अक्षम करने से पहले "
-"दर्ज की गई कार्रवाइयों को दर्शाती है। आप उन्हें हटाने के लिए\n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
-"data-target=\"#confirm-erase\">प्रोजेक्ट इतिहास हटा</a>सकते हैं।</i></p>"
-"\n"
-"            "
+
+#, fuzzy
+msgid "You can clear the project history to remove them."
+msgstr "किसी ने शायद परियोजना के इतिहास को हटा दिया है।"
 
 msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
@@ -613,17 +617,17 @@ msgstr ""
 msgid "Delete stored IP addresses"
 msgstr "संग्रहीत IP पते हटाएं"
 
-msgid "No history to erase"
-msgstr "मिटाने के लिए कोई इतिहास नहीं है"
-
-msgid "Clear Project History"
-msgstr "प्रोजेक्ट इतिहास हटाएं"
-
 msgid "No IP Addresses to erase"
 msgstr "मिटाने के लिए कोई IP पते नहीं हैं"
 
 msgid "Delete Stored IP Addresses"
 msgstr "संग्रहीत IP पते हटाएं"
+
+msgid "No history to erase"
+msgstr "मिटाने के लिए कोई इतिहास नहीं है"
+
+msgid "Clear Project History"
+msgstr "प्रोजेक्ट इतिहास हटाएं"
 
 msgid "Time"
 msgstr "समय"
@@ -686,8 +690,14 @@ msgstr ""
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
+msgid "Payer"
+msgstr "भुगतानकर्ता"
+
 msgid "Amount"
 msgstr "रकम"
+
+msgid "Date"
+msgstr "तारीख"
 
 #, python-format
 msgid "Amount in %(currency)s"
@@ -800,8 +810,9 @@ msgstr "पर स्विच करें"
 msgid "Dashboard"
 msgstr "डैशबोर्ड"
 
-msgid "Logout"
-msgstr "लॉग आउट"
+#, python-format
+msgid "Please retry after %(date)s."
+msgstr ""
 
 msgid "Code"
 msgstr "कोड"
@@ -835,29 +846,20 @@ msgstr "आपको यकीन है?"
 msgid "Invite people"
 msgstr "लोगों को निमंत्रण भेजें"
 
-msgid "You should start by adding participants"
-msgstr "शुरू करने के लिए प्रतिभागियों को जोड़ें"
-
-msgid "Add a new bill"
-msgstr "नया बिल जोड़ें"
-
 msgid "Newer bills"
 msgstr "नए बिल"
 
 msgid "Older bills"
 msgstr "पुराने बिल"
 
-msgid "When?"
-msgstr "कब?"
+msgid "You should start by adding participants"
+msgstr "शुरू करने के लिए प्रतिभागियों को जोड़ें"
 
-msgid "Who paid?"
-msgstr "किसने भुगतान किया?"
+msgid "Add a new bill"
+msgstr "नया बिल जोड़ें"
 
 msgid "For what?"
 msgstr "किस लिए?"
-
-msgid "How much?"
-msgstr "कितना?"
 
 #, python-format
 msgid "Added on %(date)s"
@@ -866,6 +868,9 @@ msgstr "%(date)s पर जोड़ा गया"
 #, python-format
 msgid "Everyone but %(excluded)s"
 msgstr "%(excluded)s को छोड़ के बाकी सब"
+
+msgid "delete"
+msgstr "हटाइये"
 
 msgid "No bills"
 msgstr "कोई बिल नहीं"
@@ -922,6 +927,12 @@ msgstr "लिंक साझा करें"
 
 msgid "You can directly share the following link via your prefered medium"
 msgstr "आप नीचे दिए गए लिंक को सीधे अपने पसंदीदा माध्यम से साझा कर सकते हैं"
+
+msgid "Scan QR code"
+msgstr ""
+
+msgid "Use a mobile device with a compatible app."
+msgstr ""
 
 msgid "Send via Emails"
 msgstr "ईमेल के माध्यम से भेजें"
@@ -1035,3 +1046,65 @@ msgstr "अवधि"
 
 #~ msgid "People to notify"
 #~ msgstr "सूचित किये जाने वाले लोग"
+
+#~ msgid "Import"
+#~ msgstr "आयात"
+
+#~ msgid "Amount paid"
+#~ msgstr "भुगतान की गई राशि"
+
+#~ msgid "Bills can't be null"
+#~ msgstr "बिल शून्य नहीं हो सकते"
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "प्रोजेक्ट पहचानकर्ता %(project)s है"
+
+#~ msgid "Invalid JSON"
+#~ msgstr "अमान्य JSON"
+
+#~ msgid "Are you sure?"
+#~ msgstr "आपको यकीन है?"
+
+#~ msgid "Import JSON"
+#~ msgstr "JSON को आयात करे"
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>This project has history "
+#~ "disabled. New actions won't appear "
+#~ "below. You can enable history on "
+#~ "the</i>\n"
+#~ "            <a href=\"%(url)s\">settings page</a>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            <i>इस प्रोजेक्ट में इतिहास "
+#~ "अक्षम है। नई कार्रवाइयां नीचे दिखाई "
+#~ "नहीं देंगी। आप इतिहास को यहाँ से"
+#~ " सक्षम कर सकते हैं</i>\n"
+#~ "              <a href=\"%(url)s\">सेटिंग्स पृष्ठ</a>\n"
+#~ "            "
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>The table below reflects "
+#~ "actions recorded prior to disabling "
+#~ "project history. You can\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">clear project history</a>"
+#~ " to remove them.</i></p>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            <i>नीचे दी गई तालिका "
+#~ "परियोजना इतिहास को अक्षम करने से "
+#~ "पहले दर्ज की गई कार्रवाइयों को "
+#~ "दर्शाती है। आप उन्हें हटाने के लिए"
+#~ "\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">प्रोजेक्ट इतिहास "
+#~ "हटा</a>सकते हैं।</i></p>\n"
+#~ "            "
+
