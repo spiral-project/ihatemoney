@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 18:01+0100\n"
+"POT-Creation-Date: 2023-07-13 18:12+0200\n"
 "PO-Revision-Date: 2021-08-01 08:34+0000\n"
 "Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
 "Language: el\n"
@@ -14,6 +14,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.0\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr ""
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -52,11 +56,8 @@ msgstr ""
 "Αυτό το έργο δεν μπορεί να οριστεί σε \"χωρίς νόμισμα\" επειδή περιέχει "
 "λογαριασμούς σε πολλαπλά νομίσματα."
 
-msgid "Import previously exported JSON file"
-msgstr "Εισαγωγή αρχείου JSON που έχει εξαχθεί προηγουμένως"
-
-msgid "Import"
-msgstr "Εισαγωγή"
+msgid "Compatible with Cospend"
+msgstr ""
 
 msgid "Project identifier"
 msgstr "Αναγνωριστικό έργου"
@@ -120,17 +121,17 @@ msgstr "Επιβεβαίωση κωδικού πρόσβασης"
 msgid "Reset password"
 msgstr "Επαναφορά κωδικού πρόσβασης"
 
-msgid "Date"
-msgstr "Ημερομηνία"
+msgid "When?"
+msgstr ""
 
 msgid "What?"
 msgstr "Τι?"
 
-msgid "Payer"
-msgstr "Φορέας πληρωμής"
+msgid "Who paid?"
+msgstr ""
 
-msgid "Amount paid"
-msgstr "Καταβληθέν ποσό"
+msgid "How much?"
+msgstr ""
 
 msgid "Currency"
 msgstr "Νόμισμα"
@@ -155,9 +156,6 @@ msgstr "Υποβολή και προσθήκη νέου"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "Προεπιλογή έργου: %(currency)s"
-
-msgid "Bills can't be null"
-msgstr "Οι λογαριασμοί δεν μπορούν να είναι μηδενικοί"
 
 msgid "Name"
 msgstr "Όνομα"
@@ -189,6 +187,18 @@ msgstr "Αποστολή προσκλήσεων"
 msgid "The email %(email)s is not valid"
 msgstr "Το μήνυμα ηλεκτρονικού ταχυδρομείου %(email)s δεν είναι έγκυρο"
 
+msgid "Logout"
+msgstr ""
+
+msgid "Please check the email configuration of the server."
+msgstr ""
+
+#, python-format
+msgid ""
+"Please check the email configuration of the server or contact the "
+"administrator: %(admin_email)s"
+msgstr ""
+
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
 msgstr ""
@@ -216,7 +226,8 @@ msgstr "{prefix}: {error}"
 msgid "{prefix}:<br />{errors}"
 msgstr ""
 
-msgid "Too many failed login attempts, please retry later."
+#, fuzzy
+msgid "Too many failed login attempts."
 msgstr "Πάρα πολλές αποτυχημένες προσπάθειες σύνδεσης, δοκιμάστε ξανά αργότερα."
 
 #, python-format
@@ -231,10 +242,6 @@ msgstr ""
 msgid "This private code is not the right one"
 msgstr "Αυτός ο ιδιωτικός κωδικός δεν είναι ο σωστός"
 
-#, python-format
-msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
-
 msgid "A reminder email has just been sent to you"
 msgstr "Ένα εμάιλ υπενθύμισης μόλις σας στάλθηκε"
 
@@ -245,14 +252,9 @@ msgstr ""
 "Προσπαθήσαμε να σας στείλουμε ένα εμάιλ υπενθύμισης, αλλά υπήρξε ένα "
 "λάθος. Μπορείτε ακόμα να χρησιμοποιήσετε το πρότζεκτ κανονικά."
 
-#, python-format
-msgid "The project identifier is %(project)s"
-msgstr "Το αναγνωριστικό έργου είναι %(project)s"
-
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
-"instructions. Please check the email configuration of the server or "
-"contact the administrator."
+"instructions."
 msgstr ""
 
 msgid "No token provided"
@@ -267,21 +269,28 @@ msgstr "Άγνωστο πρότζεκτ"
 msgid "Password successfully reset."
 msgstr "Επαναφορά του κωδικού επιτυχώς."
 
-msgid "Project successfully uploaded"
-msgstr "Έργο που φορτώθηκε επιτυχώς"
+msgid "Unable to parse CSV"
+msgstr ""
 
-msgid "Invalid JSON"
-msgstr "Η JSON δεν είναι έγκυρη"
+#, python-format
+msgid "Missing attribute: %(attribute)s"
+msgstr ""
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
 msgstr ""
 
+msgid "Project successfully uploaded"
+msgstr "Έργο που φορτώθηκε επιτυχώς"
+
 msgid "Project successfully deleted"
 msgstr "Το πρότζεκτ διαγράφηκε επιτυχώς"
 
 msgid "Error deleting project"
+msgstr ""
+
+msgid "Unable to logout"
 msgstr ""
 
 #, python-format
@@ -291,10 +300,7 @@ msgstr "Έχετε κληθεί να μοιραστείτε τα έξοδά σα
 msgid "Your invitations have been sent"
 msgstr "Οι προσκλήσεις έχουν σταλθεί"
 
-msgid ""
-"Sorry, there was an error while trying to send the invitation emails. "
-"Please check the email configuration of the server or contact the "
-"administrator."
+msgid "Sorry, there was an error while trying to send the invitation emails."
 msgstr ""
 
 #, python-format
@@ -336,6 +342,10 @@ msgstr "Ο λογαριασμός έχει διαγραφεί"
 
 msgid "The bill has been modified"
 msgstr "Ο λογαριασμός έχει τροποποιηθεί"
+
+#, python-format
+msgid "%(lang)s is not a supported language"
+msgstr ""
 
 #, fuzzy
 msgid "Error deleting project history"
@@ -403,8 +413,13 @@ msgstr "Ενέργειες"
 msgid "edit"
 msgstr "επιμελειθήτε"
 
-msgid "delete"
-msgstr "διαγραφή"
+#, fuzzy
+msgid "Delete project"
+msgstr "Επεξεργασία έργου"
+
+#, fuzzy
+msgid " show"
+msgstr "εμφάνιση"
 
 msgid "show"
 msgstr "εμφάνιση"
@@ -419,22 +434,12 @@ msgstr ""
 msgid "Get it on"
 msgstr "Συνδεθείτε"
 
-#, fuzzy
-msgid "Are you sure?"
-msgstr "Είστε σίγουρος;"
-
 msgid "Edit project"
 msgstr "Επεξεργασία έργου"
 
 #, fuzzy
-msgid "Delete project"
+msgid "Import project"
 msgstr "Επεξεργασία έργου"
-
-msgid "Import JSON"
-msgstr "Εισαγωγή JSON"
-
-msgid "Choose file"
-msgstr "Επιλογή αρχείου"
 
 msgid "Download project's data"
 msgstr "Κατεβάστε τα δεδομένα του έργου"
@@ -470,11 +475,21 @@ msgstr "Επεξεργαστείτε το έργο"
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
 
+#, fuzzy
+msgid "Import previously exported project"
+msgstr "Εισαγωγή αρχείου JSON που έχει εξαχθεί προηγουμένως"
+
+msgid "Choose file"
+msgstr "Επιλογή αρχείου"
+
 msgid "Edit this bill"
 msgstr "Επεξεργαστείτε αυτόν τον λογαριασμό"
 
 msgid "Add a bill"
 msgstr "Προσθήκη λογαριασμού"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr ""
 
 msgid "Everyone"
 msgstr ""
@@ -563,24 +578,20 @@ msgstr ""
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr ""
 
-#, python-format
-msgid ""
-"\n"
-"            <i>This project has history disabled. New actions won't "
-"appear below. You can enable history on the</i>\n"
-"            <a href=\"%(url)s\">settings page</a>\n"
-"            "
+msgid "This project has history disabled. New actions won't appear below."
+msgstr ""
+
+msgid "You can enable history on the settings page."
 msgstr ""
 
 msgid ""
-"\n"
-"            <i>The table below reflects actions recorded prior to "
-"disabling project history. You can\n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
-"data-target=\"#confirm-erase\">clear project history</a> to remove "
-"them.</i></p>\n"
-"            "
+"The table below reflects actions recorded prior to disabling project "
+"history."
 msgstr ""
+
+#, fuzzy
+msgid "You can clear the project history to remove them."
+msgstr "Κάποιος πιθανώς διέγραψε το ιστορικό του έργου."
 
 msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
@@ -590,17 +601,17 @@ msgstr ""
 msgid "Delete stored IP addresses"
 msgstr "Διαγραφή αποθηκευμένων διευθύνσεων IP"
 
-msgid "No history to erase"
-msgstr "Δεν υπάρχει ιστορία για διαγραφή"
-
-msgid "Clear Project History"
-msgstr "Απαλοιφή ιστορικού έργου"
-
 msgid "No IP Addresses to erase"
 msgstr "Δεν υπάρχουν διευθύνσεις IP προς διαγραφή"
 
 msgid "Delete Stored IP Addresses"
 msgstr "Διαγραφή αποθηκευμένων διευθύνσεων IP"
+
+msgid "No history to erase"
+msgstr "Δεν υπάρχει ιστορία για διαγραφή"
+
+msgid "Clear Project History"
+msgstr "Απαλοιφή ιστορικού έργου"
 
 msgid "Time"
 msgstr "Ώρα"
@@ -663,8 +674,14 @@ msgstr ""
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
+msgid "Payer"
+msgstr "Φορέας πληρωμής"
+
 msgid "Amount"
 msgstr "Ποσό"
+
+msgid "Date"
+msgstr "Ημερομηνία"
 
 #, python-format
 msgid "Amount in %(currency)s"
@@ -775,7 +792,8 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-msgid "Logout"
+#, python-format
+msgid "Please retry after %(date)s."
 msgstr ""
 
 msgid "Code"
@@ -810,28 +828,19 @@ msgstr "Είστε σίγουρος;"
 msgid "Invite people"
 msgstr ""
 
-msgid "You should start by adding participants"
-msgstr ""
-
-msgid "Add a new bill"
-msgstr ""
-
 msgid "Newer bills"
 msgstr ""
 
 msgid "Older bills"
 msgstr ""
 
-msgid "When?"
+msgid "You should start by adding participants"
 msgstr ""
 
-msgid "Who paid?"
+msgid "Add a new bill"
 msgstr ""
 
 msgid "For what?"
-msgstr ""
-
-msgid "How much?"
 msgstr ""
 
 #, python-format
@@ -841,6 +850,9 @@ msgstr ""
 #, python-format
 msgid "Everyone but %(excluded)s"
 msgstr ""
+
+msgid "delete"
+msgstr "διαγραφή"
 
 msgid "No bills"
 msgstr ""
@@ -892,6 +904,12 @@ msgid "Share the Link"
 msgstr ""
 
 msgid "You can directly share the following link via your prefered medium"
+msgstr ""
+
+msgid "Scan QR code"
+msgstr ""
+
+msgid "Use a mobile device with a compatible app."
 msgstr ""
 
 msgid "Send via Emails"
@@ -1017,3 +1035,63 @@ msgstr "Περίοδος"
 
 #~ msgid "People to notify"
 #~ msgstr "Πρόσωπα προς ενημέρωση"
+
+#~ msgid "Import"
+#~ msgstr "Εισαγωγή"
+
+#~ msgid "Amount paid"
+#~ msgstr "Καταβληθέν ποσό"
+
+#~ msgid "Bills can't be null"
+#~ msgstr "Οι λογαριασμοί δεν μπορούν να είναι μηδενικοί"
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "Το αναγνωριστικό έργου είναι %(project)s"
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "sending you an email with password "
+#~ "reset instructions. Please check the "
+#~ "email configuration of the server or "
+#~ "contact the administrator."
+#~ msgstr ""
+
+#~ msgid "Invalid JSON"
+#~ msgstr "Η JSON δεν είναι έγκυρη"
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "trying to send the invitation emails."
+#~ " Please check the email configuration "
+#~ "of the server or contact the "
+#~ "administrator."
+#~ msgstr ""
+
+#~ msgid "Are you sure?"
+#~ msgstr "Είστε σίγουρος;"
+
+#~ msgid "Import JSON"
+#~ msgstr "Εισαγωγή JSON"
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>This project has history "
+#~ "disabled. New actions won't appear "
+#~ "below. You can enable history on "
+#~ "the</i>\n"
+#~ "            <a href=\"%(url)s\">settings page</a>\n"
+#~ "            "
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>The table below reflects "
+#~ "actions recorded prior to disabling "
+#~ "project history. You can\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">clear project history</a>"
+#~ " to remove them.</i></p>\n"
+#~ "            "
+#~ msgstr ""
+

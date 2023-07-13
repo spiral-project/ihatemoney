@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 18:01+0100\n"
+"POT-Creation-Date: 2023-07-13 18:12+0200\n"
 "PO-Revision-Date: 2021-10-17 04:56+0000\n"
 "Last-Translator: a-g-rao <athrigrao@gmail.com>\n"
 "Language: kn\n"
@@ -14,6 +14,12 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.0\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr ""
+"ನೀವು ನಿಮ್ಮ ಖರ್ಚು/ವೆಚ್ಚವನ್ನು ಹಂಚಿಕೊಳ್ಳಲು %(project)s ಯೋಜನೆಯನ್ನು "
+"ಸೃಷ್ಟಿಸಿದ್ದೀರಿ"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -51,11 +57,8 @@ msgid ""
 "multiple currencies."
 msgstr ""
 
-msgid "Import previously exported JSON file"
+msgid "Compatible with Cospend"
 msgstr ""
-
-msgid "Import"
-msgstr "ಆಮದು"
 
 msgid "Project identifier"
 msgstr ""
@@ -114,17 +117,17 @@ msgstr "ಪ್ರವೇಶಪದ ದೃಢೀಕರಿಸಿ"
 msgid "Reset password"
 msgstr "ಪ್ರವೇಶಪದ ಮರುಹೊಂದಿಸಿ"
 
-msgid "Date"
-msgstr "ದಿನಾಂಕ"
+msgid "When?"
+msgstr ""
 
 msgid "What?"
 msgstr "ಏನು?"
 
-msgid "Payer"
-msgstr "ಪಾವತಿಸಿದವರು"
+msgid "Who paid?"
+msgstr ""
 
-msgid "Amount paid"
-msgstr "ಪಾವತಿಸಿದ ಮೊತ್ತ"
+msgid "How much?"
+msgstr ""
 
 msgid "Currency"
 msgstr "ನಾಣ್ಯಪದ್ಧತಿ"
@@ -146,9 +149,6 @@ msgstr "ಕೋರಿಕೆ ಸಲ್ಲಿಸಿ ಹೊಸದನ್ನುಸೇ�
 
 #, python-format
 msgid "Project default: %(currency)s"
-msgstr ""
-
-msgid "Bills can't be null"
 msgstr ""
 
 msgid "Name"
@@ -180,6 +180,18 @@ msgstr "ಆಮಂತ್ರಣ ಕಳುಹಿಸು"
 msgid "The email %(email)s is not valid"
 msgstr "ಮಿನ್ನಂಚೆ %(email)s ಸಮಂಜಸವಾಗಿಲ್ಲ"
 
+msgid "Logout"
+msgstr ""
+
+msgid "Please check the email configuration of the server."
+msgstr ""
+
+#, python-format
+msgid ""
+"Please check the email configuration of the server or contact the "
+"administrator: %(admin_email)s"
+msgstr ""
+
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
 msgstr "{dual_object_0} ಮತ್ತು {dual_object_1}"
@@ -207,7 +219,7 @@ msgstr "{prefix}: {error}"
 msgid "{prefix}:<br />{errors}"
 msgstr "{prefix}:<br />{errors}"
 
-msgid "Too many failed login attempts, please retry later."
+msgid "Too many failed login attempts."
 msgstr ""
 
 #, python-format
@@ -220,12 +232,6 @@ msgstr ""
 msgid "This private code is not the right one"
 msgstr ""
 
-#, python-format
-msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
-"ನೀವು ನಿಮ್ಮ ಖರ್ಚು/ವೆಚ್ಚವನ್ನು ಹಂಚಿಕೊಳ್ಳಲು %(project)s ಯೋಜನೆಯನ್ನು "
-"ಸೃಷ್ಟಿಸಿದ್ದೀರಿ"
-
 msgid "A reminder email has just been sent to you"
 msgstr "ನಿಮಗೆ ನೆನೆವಿ ಮಿನ್ನಂಚೆಯನ್ನು ಈಗ ಕಳುಹಿಸಲಾಗಿದೆ"
 
@@ -236,14 +242,9 @@ msgstr ""
 "ನಿಮಗೆ ನೆನವಿ ಮಿನ್ನಂಚೆ ಕಳುಹಿಸಲು ಪ್ರಯತ್ನಿಸಿದ್ದೆವೆ, ಆದರೆ ದೋಷವಿತ್ತು. ನೀವು "
 "ಯೋಜನೆಯನ್ನು ಸಾಮಾನ್ಯ ಪದತಿಯಂತೆ ಉಪಯೋಗಿಸ ಬಹುದು."
 
-#, python-format
-msgid "The project identifier is %(project)s"
-msgstr ""
-
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
-"instructions. Please check the email configuration of the server or "
-"contact the administrator."
+"instructions."
 msgstr ""
 
 msgid "No token provided"
@@ -258,10 +259,11 @@ msgstr "ಗೊತ್ತಿಲ್ಲದ ಯೋಜನೆ"
 msgid "Password successfully reset."
 msgstr ""
 
-msgid "Project successfully uploaded"
+msgid "Unable to parse CSV"
 msgstr ""
 
-msgid "Invalid JSON"
+#, python-format
+msgid "Missing attribute: %(attribute)s"
 msgstr ""
 
 msgid ""
@@ -269,10 +271,16 @@ msgid ""
 "currency"
 msgstr ""
 
+msgid "Project successfully uploaded"
+msgstr ""
+
 msgid "Project successfully deleted"
 msgstr ""
 
 msgid "Error deleting project"
+msgstr ""
+
+msgid "Unable to logout"
 msgstr ""
 
 #, python-format
@@ -284,10 +292,7 @@ msgstr ""
 msgid "Your invitations have been sent"
 msgstr "ನಿಮ್ಮ ಆಮಂತ್ರಣವನ್ನು ಕಳುಹಿಸಲಾಗಿದೆ"
 
-msgid ""
-"Sorry, there was an error while trying to send the invitation emails. "
-"Please check the email configuration of the server or contact the "
-"administrator."
+msgid "Sorry, there was an error while trying to send the invitation emails."
 msgstr ""
 
 #, python-format
@@ -329,6 +334,10 @@ msgstr "ಬೆಲೆಪಟ್ಟಿಯನ್ನುತೆಗೆಯಲಾಗಿದ
 
 msgid "The bill has been modified"
 msgstr "ಬೆಲೆಪಟ್ಟಿಯನ್ನು ಮಾರ್ಪಡಿಸಲಾಗಿದೆ"
+
+#, python-format
+msgid "%(lang)s is not a supported language"
+msgstr ""
 
 msgid "Error deleting project history"
 msgstr "ಯೋಜನೆಯ ಇತಿಹಾಸವನ್ನು ತೆಗೆಯಲು ದೋಷವಾಗಿದೆ"
@@ -390,8 +399,12 @@ msgstr "ಕಾರ್ಯಗಳು"
 msgid "edit"
 msgstr "ಪರಿಷ್ಕರಿಸಿ"
 
-msgid "delete"
-msgstr "ತೆಗೆಯಿರಿ"
+msgid "Delete project"
+msgstr ""
+
+#, fuzzy
+msgid " show"
+msgstr "ತೋರಿಸಿ"
 
 msgid "show"
 msgstr "ತೋರಿಸಿ"
@@ -405,20 +418,12 @@ msgstr ""
 msgid "Get it on"
 msgstr ""
 
-msgid "Are you sure?"
-msgstr ""
-
 msgid "Edit project"
 msgstr ""
 
-msgid "Delete project"
-msgstr ""
-
-msgid "Import JSON"
-msgstr ""
-
-msgid "Choose file"
-msgstr ""
+#, fuzzy
+msgid "Import project"
+msgstr "ಯೋಜನೆಯನ್ನು ರಚಿಸಿ/ಸೃಷ್ಟಿಸಿ"
 
 msgid "Download project's data"
 msgstr ""
@@ -450,10 +455,19 @@ msgstr ""
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
 
+msgid "Import previously exported project"
+msgstr ""
+
+msgid "Choose file"
+msgstr ""
+
 msgid "Edit this bill"
 msgstr ""
 
 msgid "Add a bill"
+msgstr ""
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
 msgstr ""
 
 msgid "Everyone"
@@ -541,23 +555,18 @@ msgstr ""
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr ""
 
-#, python-format
-msgid ""
-"\n"
-"            <i>This project has history disabled. New actions won't "
-"appear below. You can enable history on the</i>\n"
-"            <a href=\"%(url)s\">settings page</a>\n"
-"            "
+msgid "This project has history disabled. New actions won't appear below."
+msgstr ""
+
+msgid "You can enable history on the settings page."
 msgstr ""
 
 msgid ""
-"\n"
-"            <i>The table below reflects actions recorded prior to "
-"disabling project history. You can\n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
-"data-target=\"#confirm-erase\">clear project history</a> to remove "
-"them.</i></p>\n"
-"            "
+"The table below reflects actions recorded prior to disabling project "
+"history."
+msgstr ""
+
+msgid "You can clear the project history to remove them."
 msgstr ""
 
 msgid ""
@@ -568,16 +577,16 @@ msgstr ""
 msgid "Delete stored IP addresses"
 msgstr ""
 
-msgid "No history to erase"
-msgstr ""
-
-msgid "Clear Project History"
-msgstr ""
-
 msgid "No IP Addresses to erase"
 msgstr ""
 
 msgid "Delete Stored IP Addresses"
+msgstr ""
+
+msgid "No history to erase"
+msgstr ""
+
+msgid "Clear Project History"
 msgstr ""
 
 msgid "Time"
@@ -641,8 +650,14 @@ msgstr ""
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
+msgid "Payer"
+msgstr "ಪಾವತಿಸಿದವರು"
+
 msgid "Amount"
 msgstr ""
+
+msgid "Date"
+msgstr "ದಿನಾಂಕ"
 
 #, python-format
 msgid "Amount in %(currency)s"
@@ -753,7 +768,8 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-msgid "Logout"
+#, python-format
+msgid "Please retry after %(date)s."
 msgstr ""
 
 msgid "Code"
@@ -787,28 +803,19 @@ msgstr ""
 msgid "Invite people"
 msgstr ""
 
-msgid "You should start by adding participants"
-msgstr ""
-
-msgid "Add a new bill"
-msgstr ""
-
 msgid "Newer bills"
 msgstr ""
 
 msgid "Older bills"
 msgstr ""
 
-msgid "When?"
+msgid "You should start by adding participants"
 msgstr ""
 
-msgid "Who paid?"
+msgid "Add a new bill"
 msgstr ""
 
 msgid "For what?"
-msgstr ""
-
-msgid "How much?"
 msgstr ""
 
 #, python-format
@@ -818,6 +825,9 @@ msgstr ""
 #, python-format
 msgid "Everyone but %(excluded)s"
 msgstr ""
+
+msgid "delete"
+msgstr "ತೆಗೆಯಿರಿ"
 
 msgid "No bills"
 msgstr ""
@@ -869,6 +879,12 @@ msgid "Share the Link"
 msgstr ""
 
 msgid "You can directly share the following link via your prefered medium"
+msgstr ""
+
+msgid "Scan QR code"
+msgstr ""
+
+msgid "Use a mobile device with a compatible app."
 msgstr ""
 
 msgid "Send via Emails"
@@ -942,5 +958,70 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Participants to notify"
+#~ msgstr ""
+
+#~ msgid "Import previously exported JSON file"
+#~ msgstr ""
+
+#~ msgid "Import"
+#~ msgstr "ಆಮದು"
+
+#~ msgid "Amount paid"
+#~ msgstr "ಪಾವತಿಸಿದ ಮೊತ್ತ"
+
+#~ msgid "Bills can't be null"
+#~ msgstr ""
+
+#~ msgid "Too many failed login attempts, please retry later."
+#~ msgstr ""
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "sending you an email with password "
+#~ "reset instructions. Please check the "
+#~ "email configuration of the server or "
+#~ "contact the administrator."
+#~ msgstr ""
+
+#~ msgid "Invalid JSON"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "trying to send the invitation emails."
+#~ " Please check the email configuration "
+#~ "of the server or contact the "
+#~ "administrator."
+#~ msgstr ""
+
+#~ msgid "Are you sure?"
+#~ msgstr ""
+
+#~ msgid "Import JSON"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>This project has history "
+#~ "disabled. New actions won't appear "
+#~ "below. You can enable history on "
+#~ "the</i>\n"
+#~ "            <a href=\"%(url)s\">settings page</a>\n"
+#~ "            "
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>The table below reflects "
+#~ "actions recorded prior to disabling "
+#~ "project history. You can\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">clear project history</a>"
+#~ " to remove them.</i></p>\n"
+#~ "            "
 #~ msgstr ""
 

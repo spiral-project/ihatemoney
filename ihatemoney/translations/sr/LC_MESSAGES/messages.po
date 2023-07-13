@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 18:01+0100\n"
+"POT-Creation-Date: 2023-07-13 18:12+0200\n"
 "PO-Revision-Date: 2021-04-09 13:26+0000\n"
 "Last-Translator: Rastko Sarcevic <ralesarcevic@gmail.com>\n"
 "Language: sr\n"
@@ -15,6 +15,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.0\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr ""
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -50,11 +54,8 @@ msgid ""
 "multiple currencies."
 msgstr ""
 
-msgid "Import previously exported JSON file"
+msgid "Compatible with Cospend"
 msgstr ""
-
-msgid "Import"
-msgstr "Uvezi"
 
 msgid "Project identifier"
 msgstr ""
@@ -114,17 +115,17 @@ msgstr "Potvrda lozinke"
 msgid "Reset password"
 msgstr "Resetuj lozinku"
 
-msgid "Date"
-msgstr "Datum"
+msgid "When?"
+msgstr "Kada?"
 
 msgid "What?"
 msgstr ""
 
-msgid "Payer"
-msgstr ""
+msgid "Who paid?"
+msgstr "Ko je platio?"
 
-msgid "Amount paid"
-msgstr "Plaćeni iznos"
+msgid "How much?"
+msgstr "Koliko?"
 
 msgid "Currency"
 msgstr "Valuta"
@@ -146,9 +147,6 @@ msgstr ""
 
 #, python-format
 msgid "Project default: %(currency)s"
-msgstr ""
-
-msgid "Bills can't be null"
 msgstr ""
 
 msgid "Name"
@@ -180,6 +178,18 @@ msgstr ""
 msgid "The email %(email)s is not valid"
 msgstr "Email %(email)s nije validan"
 
+msgid "Logout"
+msgstr ""
+
+msgid "Please check the email configuration of the server."
+msgstr ""
+
+#, python-format
+msgid ""
+"Please check the email configuration of the server or contact the "
+"administrator: %(admin_email)s"
+msgstr ""
+
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
 msgstr ""
@@ -207,7 +217,7 @@ msgstr ""
 msgid "{prefix}:<br />{errors}"
 msgstr ""
 
-msgid "Too many failed login attempts, please retry later."
+msgid "Too many failed login attempts."
 msgstr ""
 
 #, python-format
@@ -220,10 +230,6 @@ msgstr ""
 msgid "This private code is not the right one"
 msgstr ""
 
-#, python-format
-msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
-
 msgid "A reminder email has just been sent to you"
 msgstr ""
 
@@ -232,14 +238,9 @@ msgid ""
 "still use the project normally."
 msgstr ""
 
-#, python-format
-msgid "The project identifier is %(project)s"
-msgstr ""
-
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
-"instructions. Please check the email configuration of the server or "
-"contact the administrator."
+"instructions."
 msgstr ""
 
 msgid "No token provided"
@@ -254,10 +255,11 @@ msgstr ""
 msgid "Password successfully reset."
 msgstr "Lozinka uspešno resetovana."
 
-msgid "Project successfully uploaded"
+msgid "Unable to parse CSV"
 msgstr ""
 
-msgid "Invalid JSON"
+#, python-format
+msgid "Missing attribute: %(attribute)s"
 msgstr ""
 
 msgid ""
@@ -265,10 +267,16 @@ msgid ""
 "currency"
 msgstr ""
 
+msgid "Project successfully uploaded"
+msgstr ""
+
 msgid "Project successfully deleted"
 msgstr ""
 
 msgid "Error deleting project"
+msgstr ""
+
+msgid "Unable to logout"
 msgstr ""
 
 #, python-format
@@ -278,10 +286,7 @@ msgstr ""
 msgid "Your invitations have been sent"
 msgstr ""
 
-msgid ""
-"Sorry, there was an error while trying to send the invitation emails. "
-"Please check the email configuration of the server or contact the "
-"administrator."
+msgid "Sorry, there was an error while trying to send the invitation emails."
 msgstr ""
 
 #, python-format
@@ -323,6 +328,10 @@ msgstr "Račun je uklonjen"
 
 msgid "The bill has been modified"
 msgstr "Račun je izmenjen"
+
+#, python-format
+msgid "%(lang)s is not a supported language"
+msgstr ""
 
 msgid "Error deleting project history"
 msgstr ""
@@ -385,8 +394,13 @@ msgstr ""
 msgid "edit"
 msgstr "izmeni"
 
-msgid "delete"
+#, fuzzy
+msgid "Delete project"
 msgstr "ukloni"
+
+#, fuzzy
+msgid " show"
+msgstr "prikaži"
 
 msgid "show"
 msgstr "prikaži"
@@ -401,21 +415,12 @@ msgstr "Mobilna Aplikacija"
 msgid "Get it on"
 msgstr ""
 
-msgid "Are you sure?"
-msgstr ""
-
 msgid "Edit project"
 msgstr ""
 
 #, fuzzy
-msgid "Delete project"
+msgid "Import project"
 msgstr "ukloni"
-
-msgid "Import JSON"
-msgstr ""
-
-msgid "Choose file"
-msgstr "Izaberi fajl"
 
 msgid "Download project's data"
 msgstr ""
@@ -447,11 +452,20 @@ msgstr ""
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
 
+msgid "Import previously exported project"
+msgstr ""
+
+msgid "Choose file"
+msgstr "Izaberi fajl"
+
 msgid "Edit this bill"
 msgstr "Izmeni ovaj račun"
 
 msgid "Add a bill"
 msgstr "Dodaj račun"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr ""
 
 msgid "Everyone"
 msgstr "Svi"
@@ -538,23 +552,18 @@ msgstr ""
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr ""
 
-#, python-format
-msgid ""
-"\n"
-"            <i>This project has history disabled. New actions won't "
-"appear below. You can enable history on the</i>\n"
-"            <a href=\"%(url)s\">settings page</a>\n"
-"            "
+msgid "This project has history disabled. New actions won't appear below."
+msgstr ""
+
+msgid "You can enable history on the settings page."
 msgstr ""
 
 msgid ""
-"\n"
-"            <i>The table below reflects actions recorded prior to "
-"disabling project history. You can\n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
-"data-target=\"#confirm-erase\">clear project history</a> to remove "
-"them.</i></p>\n"
-"            "
+"The table below reflects actions recorded prior to disabling project "
+"history."
+msgstr ""
+
+msgid "You can clear the project history to remove them."
 msgstr ""
 
 msgid ""
@@ -565,16 +574,16 @@ msgstr ""
 msgid "Delete stored IP addresses"
 msgstr ""
 
-msgid "No history to erase"
-msgstr ""
-
-msgid "Clear Project History"
-msgstr ""
-
 msgid "No IP Addresses to erase"
 msgstr ""
 
 msgid "Delete Stored IP Addresses"
+msgstr ""
+
+msgid "No history to erase"
+msgstr ""
+
+msgid "Clear Project History"
 msgstr ""
 
 msgid "Time"
@@ -638,8 +647,14 @@ msgstr ""
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
+msgid "Payer"
+msgstr ""
+
 msgid "Amount"
 msgstr "Iznos"
+
+msgid "Date"
+msgstr "Datum"
 
 #, python-format
 msgid "Amount in %(currency)s"
@@ -750,7 +765,8 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-msgid "Logout"
+#, python-format
+msgid "Please retry after %(date)s."
 msgstr ""
 
 msgid "Code"
@@ -784,29 +800,20 @@ msgstr ""
 msgid "Invite people"
 msgstr ""
 
-msgid "You should start by adding participants"
-msgstr ""
-
-msgid "Add a new bill"
-msgstr "Dodaj novi račun"
-
 msgid "Newer bills"
 msgstr "Noviji računi"
 
 msgid "Older bills"
 msgstr "Stariji računi"
 
-msgid "When?"
-msgstr "Kada?"
+msgid "You should start by adding participants"
+msgstr ""
 
-msgid "Who paid?"
-msgstr "Ko je platio?"
+msgid "Add a new bill"
+msgstr "Dodaj novi račun"
 
 msgid "For what?"
 msgstr "Za šta?"
-
-msgid "How much?"
-msgstr "Koliko?"
 
 #, python-format
 msgid "Added on %(date)s"
@@ -815,6 +822,9 @@ msgstr "Dodato %(date)s"
 #, python-format
 msgid "Everyone but %(excluded)s"
 msgstr "Svi osim %(excluded)s"
+
+msgid "delete"
+msgstr "ukloni"
 
 msgid "No bills"
 msgstr ""
@@ -866,6 +876,12 @@ msgid "Share the Link"
 msgstr "Podelite link"
 
 msgid "You can directly share the following link via your prefered medium"
+msgstr ""
+
+msgid "Scan QR code"
+msgstr ""
+
+msgid "Use a mobile device with a compatible app."
 msgstr ""
 
 msgid "Send via Emails"
@@ -1008,5 +1024,70 @@ msgstr "Period"
 #~ msgstr ""
 
 #~ msgid "Participants to notify"
+#~ msgstr ""
+
+#~ msgid "Import previously exported JSON file"
+#~ msgstr ""
+
+#~ msgid "Import"
+#~ msgstr "Uvezi"
+
+#~ msgid "Amount paid"
+#~ msgstr "Plaćeni iznos"
+
+#~ msgid "Bills can't be null"
+#~ msgstr ""
+
+#~ msgid "Too many failed login attempts, please retry later."
+#~ msgstr ""
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "sending you an email with password "
+#~ "reset instructions. Please check the "
+#~ "email configuration of the server or "
+#~ "contact the administrator."
+#~ msgstr ""
+
+#~ msgid "Invalid JSON"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "trying to send the invitation emails."
+#~ " Please check the email configuration "
+#~ "of the server or contact the "
+#~ "administrator."
+#~ msgstr ""
+
+#~ msgid "Are you sure?"
+#~ msgstr ""
+
+#~ msgid "Import JSON"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>This project has history "
+#~ "disabled. New actions won't appear "
+#~ "below. You can enable history on "
+#~ "the</i>\n"
+#~ "            <a href=\"%(url)s\">settings page</a>\n"
+#~ "            "
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>The table below reflects "
+#~ "actions recorded prior to disabling "
+#~ "project history. You can\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">clear project history</a>"
+#~ " to remove them.</i></p>\n"
+#~ "            "
 #~ msgstr ""
 

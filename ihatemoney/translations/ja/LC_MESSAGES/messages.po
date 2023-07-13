@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 18:01+0100\n"
+"POT-Creation-Date: 2023-07-13 18:12+0200\n"
 "PO-Revision-Date: 2020-11-11 16:28+0000\n"
 "Last-Translator: Jwen921 <yangjingwen0921@gmail.com>\n"
 "Language: ja\n"
@@ -14,6 +14,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.0\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr "費用を共有するため、%(project)sが作られました"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -50,11 +54,8 @@ msgid ""
 "multiple currencies."
 msgstr ""
 
-msgid "Import previously exported JSON file"
-msgstr "以前のJSONファイルをインポートする"
-
-msgid "Import"
-msgstr "インポート"
+msgid "Compatible with Cospend"
+msgstr ""
 
 msgid "Project identifier"
 msgstr "プロジェクトの名前"
@@ -116,17 +117,17 @@ msgstr "パスワードの確認"
 msgid "Reset password"
 msgstr "パスワードの再設定"
 
-msgid "Date"
-msgstr "日付"
+msgid "When?"
+msgstr "いつ？"
 
 msgid "What?"
 msgstr "何ですか？"
 
-msgid "Payer"
-msgstr "支払人"
+msgid "Who paid?"
+msgstr "誰が支払った？"
 
-msgid "Amount paid"
-msgstr "支払額"
+msgid "How much?"
+msgstr "いくら？"
 
 msgid "Currency"
 msgstr "通貨"
@@ -149,9 +150,6 @@ msgstr "確認して、新しいのを作成します"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "初期プロジェクト: %(currency)s"
-
-msgid "Bills can't be null"
-msgstr "数値を空値にしてはいけません"
 
 msgid "Name"
 msgstr "名前"
@@ -183,6 +181,18 @@ msgstr "招待状を出す"
 msgid "The email %(email)s is not valid"
 msgstr "メールアドレス%(email)sは無効"
 
+msgid "Logout"
+msgstr "ログアウト"
+
+msgid "Please check the email configuration of the server."
+msgstr ""
+
+#, fuzzy, python-format
+msgid ""
+"Please check the email configuration of the server or contact the "
+"administrator: %(admin_email)s"
+msgstr "申し訳ございませんが、招待メールを送ったとき、エラーが発生しました。メールアドレスを再度チェックするかまたは管理者に連絡ください。"
+
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
 msgstr ""
@@ -210,7 +220,8 @@ msgstr ""
 msgid "{prefix}:<br />{errors}"
 msgstr ""
 
-msgid "Too many failed login attempts, please retry later."
+#, fuzzy
+msgid "Too many failed login attempts."
 msgstr "何度もログインに失敗したので、時間をおいてから再度ログインして下さい。"
 
 #, python-format
@@ -223,10 +234,6 @@ msgstr ""
 msgid "This private code is not the right one"
 msgstr "私用コードは正しくない"
 
-#, python-format
-msgid "You have just created '%(project)s' to share your expenses"
-msgstr "費用を共有するため、%(project)sが作られました"
-
 msgid "A reminder email has just been sent to you"
 msgstr "催促メールがただいまあなたに送りました"
 
@@ -235,14 +242,10 @@ msgid ""
 "still use the project normally."
 msgstr "催促メールを送った時、エラーが発生しました。このプロジェクトはまだ使えます。"
 
-#, python-format
-msgid "The project identifier is %(project)s"
-msgstr "プロジェクト名は%(project)s"
-
+#, fuzzy
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
-"instructions. Please check the email configuration of the server or "
-"contact the administrator."
+"instructions."
 msgstr "申し訳ございませんが、パスワード再設定の説明メールを送った時、エラーが発生しました。メールアドレスを一度確認してまたは管理者に連絡してください。"
 
 msgid "No token provided"
@@ -257,21 +260,28 @@ msgstr "未知のプロジェクト"
 msgid "Password successfully reset."
 msgstr "パスワードを再設定できました。"
 
-msgid "Project successfully uploaded"
-msgstr "プロジェクトをアップロードできました"
+msgid "Unable to parse CSV"
+msgstr ""
 
-msgid "Invalid JSON"
-msgstr "無効なJSON"
+#, python-format
+msgid "Missing attribute: %(attribute)s"
+msgstr ""
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
 msgstr ""
 
+msgid "Project successfully uploaded"
+msgstr "プロジェクトをアップロードできました"
+
 msgid "Project successfully deleted"
 msgstr "プロジェクトを削除できました"
 
 msgid "Error deleting project"
+msgstr ""
+
+msgid "Unable to logout"
 msgstr ""
 
 #, python-format
@@ -281,10 +291,8 @@ msgstr "%(project)sの費用を共有すると、あなたが誘われた"
 msgid "Your invitations have been sent"
 msgstr "あなたの招待状が送られました"
 
-msgid ""
-"Sorry, there was an error while trying to send the invitation emails. "
-"Please check the email configuration of the server or contact the "
-"administrator."
+#, fuzzy
+msgid "Sorry, there was an error while trying to send the invitation emails."
 msgstr "申し訳ございませんが、招待メールを送ったとき、エラーが発生しました。メールアドレスを再度チェックするかまたは管理者に連絡ください。"
 
 #, python-format
@@ -326,6 +334,10 @@ msgstr "明細が削除されました"
 
 msgid "The bill has been modified"
 msgstr "明細が変更されました"
+
+#, python-format
+msgid "%(lang)s is not a supported language"
+msgstr ""
 
 #, fuzzy
 msgid "Error deleting project history"
@@ -392,8 +404,13 @@ msgstr "操作"
 msgid "edit"
 msgstr "編集"
 
-msgid "delete"
-msgstr "削除"
+#, fuzzy
+msgid "Delete project"
+msgstr "プロジェクトを編集する"
+
+#, fuzzy
+msgid " show"
+msgstr "表示"
 
 msgid "show"
 msgstr "表示"
@@ -409,22 +426,12 @@ msgstr "携帯アプリ"
 msgid "Get it on"
 msgstr "入る"
 
-#, fuzzy
-msgid "Are you sure?"
-msgstr "確認？"
-
 msgid "Edit project"
 msgstr "プロジェクトを編集する"
 
 #, fuzzy
-msgid "Delete project"
+msgid "Import project"
 msgstr "プロジェクトを編集する"
-
-msgid "Import JSON"
-msgstr "JSONを導入する"
-
-msgid "Choose file"
-msgstr "ファイルを選択する"
 
 msgid "Download project's data"
 msgstr "プロジェクトのデータをダウンロードする"
@@ -456,11 +463,21 @@ msgstr "プロジェクトを編集する"
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
 
+#, fuzzy
+msgid "Import previously exported project"
+msgstr "以前のJSONファイルをインポートする"
+
+msgid "Choose file"
+msgstr "ファイルを選択する"
+
 msgid "Edit this bill"
 msgstr "明細を編集する"
 
 msgid "Add a bill"
 msgstr "新しい明細書を追加する"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr ""
 
 msgid "Everyone"
 msgstr "皆"
@@ -551,33 +568,21 @@ msgstr ""
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr ""
 
-#, python-format
-msgid ""
-"\n"
-"            <i>This project has history disabled. New actions won't "
-"appear below. You can enable history on the</i>\n"
-"            <a href=\"%(url)s\">settings page</a>\n"
-"            "
+msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
-"\n"
-"            <i>このプロジェクトの歴史は操作できません。新しい操作は下に出ません。</i>で歴史を操作可能にすることができます。\n"
-"<a href=\"%(url)s\">設定ページ</a>\n"
-"            "
+
+#, fuzzy
+msgid "You can enable history on the settings page."
+msgstr "設定ページでIPアドレス記録を編集可能にすることができる"
 
 msgid ""
-"\n"
-"            <i>The table below reflects actions recorded prior to "
-"disabling project history. You can\n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
-"data-target=\"#confirm-erase\">clear project history</a> to remove "
-"them.</i></p>\n"
-"            "
+"The table below reflects actions recorded prior to disabling project "
+"history."
 msgstr ""
-"\n"
-"            <i>下の表では操作不可になる前に、プロジェクトの歴史に対して記録された操作が反映されています。…できます。\n"
-"<a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" data-target"
-"=\"#confirm-erase\">プロジェクトの歴史を取り除く</a> で取り除きます.</i></p>\n"
-"            "
+
+#, fuzzy
+msgid "You can clear the project history to remove them."
+msgstr "プロジェクトの歴史が誰かに取り除かれたかもしれません。"
 
 msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
@@ -587,17 +592,17 @@ msgstr "このプロジェクトのIP記録が操作できない一方、下の�
 msgid "Delete stored IP addresses"
 msgstr "保存されたIPアドレスを削除する"
 
-msgid "No history to erase"
-msgstr "削除できる歴史はない"
-
-msgid "Clear Project History"
-msgstr "プロジェクトの歴史を取り除く"
-
 msgid "No IP Addresses to erase"
 msgstr "削除できるIPアドレスはない"
 
 msgid "Delete Stored IP Addresses"
 msgstr "保存されたIPアドレスを削除する"
+
+msgid "No history to erase"
+msgstr "削除できる歴史はない"
+
+msgid "Clear Project History"
+msgstr "プロジェクトの歴史を取り除く"
 
 msgid "Time"
 msgstr "時間"
@@ -660,8 +665,14 @@ msgstr ""
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
+msgid "Payer"
+msgstr "支払人"
+
 msgid "Amount"
 msgstr "金額"
+
+msgid "Date"
+msgstr "日付"
 
 #, python-format
 msgid "Amount in %(currency)s"
@@ -772,8 +783,9 @@ msgstr "…に切り替える"
 msgid "Dashboard"
 msgstr "ダッシュボード"
 
-msgid "Logout"
-msgstr "ログアウト"
+#, python-format
+msgid "Please retry after %(date)s."
+msgstr ""
 
 msgid "Code"
 msgstr "コード"
@@ -807,29 +819,20 @@ msgstr "確認？"
 msgid "Invite people"
 msgstr "人を誘う"
 
-msgid "You should start by adding participants"
-msgstr "参加者を追加して始めましょう"
-
-msgid "Add a new bill"
-msgstr "新しい明細を追加する"
-
 msgid "Newer bills"
 msgstr "もっと新しい明細"
 
 msgid "Older bills"
 msgstr "もっと古い明細"
 
-msgid "When?"
-msgstr "いつ？"
+msgid "You should start by adding participants"
+msgstr "参加者を追加して始めましょう"
 
-msgid "Who paid?"
-msgstr "誰が支払った？"
+msgid "Add a new bill"
+msgstr "新しい明細を追加する"
 
 msgid "For what?"
 msgstr "何のため？"
-
-msgid "How much?"
-msgstr "いくら？"
 
 #, python-format
 msgid "Added on %(date)s"
@@ -838,6 +841,9 @@ msgstr "%(date)sに追加された"
 #, python-format
 msgid "Everyone but %(excluded)s"
 msgstr "%(excluded)s以外にみんな"
+
+msgid "delete"
+msgstr "削除"
 
 msgid "No bills"
 msgstr "明細なし"
@@ -890,6 +896,12 @@ msgstr "リンクを共有する"
 
 msgid "You can directly share the following link via your prefered medium"
 msgstr "好きの手段で以下のリンクを直接に共有できる"
+
+msgid "Scan QR code"
+msgstr ""
+
+msgid "Use a mobile device with a compatible app."
+msgstr ""
 
 msgid "Send via Emails"
 msgstr "メールで送る"
@@ -998,3 +1010,58 @@ msgstr "期間"
 
 #~ msgid "People to notify"
 #~ msgstr "知らせたい人"
+
+#~ msgid "Import"
+#~ msgstr "インポート"
+
+#~ msgid "Amount paid"
+#~ msgstr "支払額"
+
+#~ msgid "Bills can't be null"
+#~ msgstr "数値を空値にしてはいけません"
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "プロジェクト名は%(project)s"
+
+#~ msgid "Invalid JSON"
+#~ msgstr "無効なJSON"
+
+#~ msgid "Are you sure?"
+#~ msgstr "確認？"
+
+#~ msgid "Import JSON"
+#~ msgstr "JSONを導入する"
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>This project has history "
+#~ "disabled. New actions won't appear "
+#~ "below. You can enable history on "
+#~ "the</i>\n"
+#~ "            <a href=\"%(url)s\">settings page</a>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            "
+#~ "<i>このプロジェクトの歴史は操作できません。新しい操作は下に出ません。</i>で歴史を操作可能にすることができます。\n"
+#~ "<a href=\"%(url)s\">設定ページ</a>\n"
+#~ "            "
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>The table below reflects "
+#~ "actions recorded prior to disabling "
+#~ "project history. You can\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">clear project history</a>"
+#~ " to remove them.</i></p>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            <i>下の表では操作不可になる前に、プロジェクトの歴史に対して記録された操作が反映されています。…できます。\n"
+#~ "<a href=\"#\" data-toggle=\"modal\" data-"
+#~ "keyboard=\"false\" data-target=\"#confirm-"
+#~ "erase\">プロジェクトの歴史を取り除く</a> で取り除きます.</i></p>\n"
+#~ "            "
+
