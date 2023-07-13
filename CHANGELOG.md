@@ -2,6 +2,12 @@
 
 This document describes changes between each past release.
 
+## 6.0.1 (unreleased)
+
+
+- Nothing changed yet.
+
+
 ## 6.0.0 (2023-07-13)
 
 ### Breaking changes
