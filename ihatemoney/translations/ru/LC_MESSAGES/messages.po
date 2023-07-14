@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 18:12+0200\n"
+"POT-Creation-Date: 2023-07-14 10:01+0200\n"
 "PO-Revision-Date: 2023-05-07 23:52+0000\n"
 "Last-Translator: Egor Dubenetskiy <egor@banka.space>\n"
 "Language: ru\n"
@@ -177,7 +177,7 @@ msgstr "В этом проекте уже есть такой участник"
 msgid "People to notify"
 msgstr "Кого уведомить"
 
-msgid "Send invites"
+msgid "Send the invitations"
 msgstr "Отправить приглашения"
 
 #, python-format
@@ -421,10 +421,6 @@ msgstr "изменить"
 msgid "Delete project"
 msgstr "Удалить проект"
 
-#, fuzzy
-msgid " show"
-msgstr "показать"
-
 msgid "show"
 msgstr "показать"
 
@@ -470,8 +466,8 @@ msgstr "Отменить"
 msgid "Privacy Settings"
 msgstr "Настройки приватности"
 
-msgid "Edit the project"
-msgstr "Изменить проект"
+msgid "Save changes"
+msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
 msgstr "Все счета и участники этого проекта будут удалены!"
@@ -509,9 +505,6 @@ msgstr "Редактировать участника"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
-
-msgid "Send the invitations"
-msgstr "Отправить приглашения"
 
 msgid "Download"
 msgstr "Скачать"
@@ -1119,4 +1112,13 @@ msgstr "Период"
 #~ "target=\"#confirm-erase\">очистить историю "
 #~ "проекта</a> to remove them.</i></p>\n"
 #~ "            "
+
+#~ msgid "Send invites"
+#~ msgstr "Отправить приглашения"
+
+#~ msgid " show"
+#~ msgstr "показать"
+
+#~ msgid "Edit the project"
+#~ msgstr "Изменить проект"
 

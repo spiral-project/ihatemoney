@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 18:12+0200\n"
+"POT-Creation-Date: 2023-07-14 10:01+0200\n"
 "PO-Revision-Date: 2020-11-11 16:28+0000\n"
 "Last-Translator: Jwen921 <yangjingwen0921@gmail.com>\n"
 "Language: ja\n"
@@ -174,8 +174,8 @@ msgstr "プロジェクトはすでにこのメンバーを含めています"
 msgid "People to notify"
 msgstr ""
 
-msgid "Send invites"
-msgstr "招待状を出す"
+msgid "Send the invitations"
+msgstr "招待状を送る"
 
 #, python-format
 msgid "The email %(email)s is not valid"
@@ -408,10 +408,6 @@ msgstr "編集"
 msgid "Delete project"
 msgstr "プロジェクトを編集する"
 
-#, fuzzy
-msgid " show"
-msgstr "表示"
-
 msgid "show"
 msgstr "表示"
 
@@ -457,8 +453,8 @@ msgstr "キャンセル"
 msgid "Privacy Settings"
 msgstr "プライバシーの設定"
 
-msgid "Edit the project"
-msgstr "プロジェクトを編集する"
+msgid "Save changes"
+msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
@@ -497,9 +493,6 @@ msgstr "参加者を追加する"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
-
-msgid "Send the invitations"
-msgstr "招待状を送る"
 
 msgid "Download"
 msgstr "ダウンロードする"
@@ -1064,4 +1057,13 @@ msgstr "期間"
 #~ "keyboard=\"false\" data-target=\"#confirm-"
 #~ "erase\">プロジェクトの歴史を取り除く</a> で取り除きます.</i></p>\n"
 #~ "            "
+
+#~ msgid "Send invites"
+#~ msgstr "招待状を出す"
+
+#~ msgid " show"
+#~ msgstr "表示"
+
+#~ msgid "Edit the project"
+#~ msgstr "プロジェクトを編集する"
 

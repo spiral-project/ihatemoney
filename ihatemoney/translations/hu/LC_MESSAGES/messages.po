@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 18:12+0200\n"
+"POT-Creation-Date: 2023-07-14 10:01+0200\n"
 "PO-Revision-Date: 2023-04-19 11:51+0000\n"
 "Last-Translator: Gergely Kocsis <koger23@gmail.com>\n"
 "Language: hu\n"
@@ -177,8 +177,8 @@ msgstr "Ez a résztvevő már szerepel ebben a projektben"
 msgid "People to notify"
 msgstr "Értesítendő személyek"
 
-msgid "Send invites"
-msgstr "Meghívók küldése"
+msgid "Send the invitations"
+msgstr ""
 
 #, python-format
 msgid "The email %(email)s is not valid"
@@ -405,9 +405,6 @@ msgstr ""
 msgid "Delete project"
 msgstr ""
 
-msgid " show"
-msgstr ""
-
 msgid "show"
 msgstr ""
 
@@ -451,7 +448,7 @@ msgstr ""
 msgid "Privacy Settings"
 msgstr ""
 
-msgid "Edit the project"
+msgid "Save changes"
 msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
@@ -489,9 +486,6 @@ msgid "Edit this participant"
 msgstr ""
 
 msgid "john.doe@example.com, mary.moe@site.com"
-msgstr ""
-
-msgid "Send the invitations"
 msgstr ""
 
 msgid "Download"
@@ -987,5 +981,14 @@ msgstr ""
 #~ "target=\"#confirm-erase\">clear project history</a>"
 #~ " to remove them.</i></p>\n"
 #~ "            "
+#~ msgstr ""
+
+#~ msgid "Send invites"
+#~ msgstr "Meghívók küldése"
+
+#~ msgid " show"
+#~ msgstr ""
+
+#~ msgid "Edit the project"
 #~ msgstr ""
 

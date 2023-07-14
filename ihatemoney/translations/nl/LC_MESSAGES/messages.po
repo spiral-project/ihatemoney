@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-07-13 18:12+0200\n"
+"POT-Creation-Date: 2023-07-14 10:01+0200\n"
 "PO-Revision-Date: 2021-02-17 02:50+0000\n"
 "Last-Translator: Sander Kooijmans <weblate@gogognome.nl>\n"
 "Language: nl\n"
@@ -178,7 +178,7 @@ msgstr "Deze deelnemer is al lid van het project"
 msgid "People to notify"
 msgstr ""
 
-msgid "Send invites"
+msgid "Send the invitations"
 msgstr "Uitnodigingen versturen"
 
 #, python-format
@@ -425,10 +425,6 @@ msgstr "bewerken"
 msgid "Delete project"
 msgstr "Project aanpassen"
 
-#, fuzzy
-msgid " show"
-msgstr "tonen"
-
 msgid "show"
 msgstr "tonen"
 
@@ -476,8 +472,8 @@ msgstr "Annuleren"
 msgid "Privacy Settings"
 msgstr "Privacy-instellingen"
 
-msgid "Edit the project"
-msgstr "Project bewerken"
+msgid "Save changes"
+msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
@@ -516,9 +512,6 @@ msgstr "Deelnemer toevoegen"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "jan.jansen@voorbeeld.nl, maria.magdalena@website.nl"
-
-msgid "Send the invitations"
-msgstr "Uitnodigingen versturen"
 
 msgid "Download"
 msgstr "Downloaden"
@@ -1117,4 +1110,13 @@ msgstr "Periode"
 #~ " to remove them.</i></p>\n"
 #~ "            "
 #~ msgstr ""
+
+#~ msgid "Send invites"
+#~ msgstr "Uitnodigingen versturen"
+
+#~ msgid " show"
+#~ msgstr "tonen"
+
+#~ msgid "Edit the project"
+#~ msgstr "Project bewerken"
 

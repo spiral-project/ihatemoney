@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 18:12+0200\n"
+"POT-Creation-Date: 2023-07-14 10:01+0200\n"
 "PO-Revision-Date: 2020-06-14 14:41+0000\n"
 "Last-Translator: raghupalash <singhpalash0@gmail.com>\n"
 "Language: hi\n"
@@ -178,8 +178,8 @@ msgstr "इस परियोजना में पहले से ही य
 msgid "People to notify"
 msgstr ""
 
-msgid "Send invites"
-msgstr "आमंत्रण भेजें"
+msgid "Send the invitations"
+msgstr "निमंत्रण भेजें"
 
 #, python-format
 msgid "The email %(email)s is not valid"
@@ -427,10 +427,6 @@ msgstr "संपादित करें"
 msgid "Delete project"
 msgstr "परियोजना संपादित करें"
 
-#, fuzzy
-msgid " show"
-msgstr "प्रदर्शन"
-
 msgid "show"
 msgstr "प्रदर्शन"
 
@@ -476,8 +472,8 @@ msgstr "रद्द करें"
 msgid "Privacy Settings"
 msgstr "प्राइवेसी सेटिंग्स"
 
-msgid "Edit the project"
-msgstr "प्रोजेक्ट संपादित करें"
+msgid "Save changes"
+msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
@@ -516,9 +512,6 @@ msgstr "प्रतिभागी जोड़ें"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
-
-msgid "Send the invitations"
-msgstr "निमंत्रण भेजें"
 
 msgid "Download"
 msgstr "डाउनलोड"
@@ -1107,4 +1100,13 @@ msgstr "अवधि"
 #~ "target=\"#confirm-erase\">प्रोजेक्ट इतिहास "
 #~ "हटा</a>सकते हैं।</i></p>\n"
 #~ "            "
+
+#~ msgid "Send invites"
+#~ msgstr "आमंत्रण भेजें"
+
+#~ msgid " show"
+#~ msgstr "प्रदर्शन"
+
+#~ msgid "Edit the project"
+#~ msgstr "प्रोजेक्ट संपादित करें"
 

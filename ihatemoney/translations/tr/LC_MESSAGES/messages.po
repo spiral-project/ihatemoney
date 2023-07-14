@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 18:12+0200\n"
+"POT-Creation-Date: 2023-07-14 10:01+0200\n"
 "PO-Revision-Date: 2022-11-07 10:07+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language: tr\n"
@@ -176,8 +176,8 @@ msgstr "Bu projede bu katılımcı zaten var"
 msgid "People to notify"
 msgstr "Bildirilecek kişiler"
 
-msgid "Send invites"
-msgstr "Davet gönder"
+msgid "Send the invitations"
+msgstr "Davetleri gönder"
 
 #, python-format
 msgid "The email %(email)s is not valid"
@@ -421,10 +421,6 @@ msgstr "düzenle"
 msgid "Delete project"
 msgstr "Projeyi sil"
 
-#, fuzzy
-msgid " show"
-msgstr "göster"
-
 msgid "show"
 msgstr "göster"
 
@@ -468,8 +464,8 @@ msgstr "İptal"
 msgid "Privacy Settings"
 msgstr "Gizlilik Ayarları"
 
-msgid "Edit the project"
-msgstr "Projeyi düzenle"
+msgid "Save changes"
+msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
 msgstr "Bu, bu projedeki tüm faturaları ve katılımcıları kaldıracaktır!"
@@ -507,9 +503,6 @@ msgstr "Bu katılımcıyı düzenle"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
-
-msgid "Send the invitations"
-msgstr "Davetleri gönder"
 
 msgid "Download"
 msgstr "İndir"
@@ -1130,4 +1123,13 @@ msgstr "Dönem"
 #~ "target=\"#confirm-erase\">proje geçmişini "
 #~ "temizleyebilirsiniz</a>.</i></p>\n"
 #~ "            "
+
+#~ msgid "Send invites"
+#~ msgstr "Davet gönder"
+
+#~ msgid " show"
+#~ msgstr "göster"
+
+#~ msgid "Edit the project"
+#~ msgstr "Projeyi düzenle"
 

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 18:12+0200\n"
+"POT-Creation-Date: 2023-07-14 10:01+0200\n"
 "PO-Revision-Date: 2022-02-13 16:54+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language: nb_NO\n"
@@ -179,8 +179,8 @@ msgstr "Allerede medlem av prosjektet"
 msgid "People to notify"
 msgstr "Folk å varsle"
 
-msgid "Send invites"
-msgstr "Send invitasjoner"
+msgid "Send the invitations"
+msgstr "Send ut invitasjonene"
 
 #, fuzzy, python-format
 msgid "The email %(email)s is not valid"
@@ -437,10 +437,6 @@ msgstr "rediger"
 msgid "Delete project"
 msgstr "Slett prosjekt"
 
-#, fuzzy
-msgid " show"
-msgstr "vis"
-
 msgid "show"
 msgstr "vis"
 
@@ -488,8 +484,8 @@ msgstr "Avbryt"
 msgid "Privacy Settings"
 msgstr "Personvernsinnstillinger"
 
-msgid "Edit the project"
-msgstr "Rediger prosjektet"
+msgid "Save changes"
+msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
 msgstr "Dette vil fjerne alle regninger og deltagere i prosjektet!"
@@ -529,9 +525,6 @@ msgstr "Legg til deltager"
 #, fuzzy
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "ola@eksempel.no, kari@eksempel.no"
-
-msgid "Send the invitations"
-msgstr "Send ut invitasjonene"
 
 msgid "Download"
 msgstr "Last nd"
@@ -1294,4 +1287,13 @@ msgstr "Periode"
 #~ "target=\"#confirm-erase\">tømme prosjekthistorikken</a>"
 #~ " for å fjerne dem.</i></p>\n"
 #~ "            "
+
+#~ msgid "Send invites"
+#~ msgstr "Send invitasjoner"
+
+#~ msgid " show"
+#~ msgstr "vis"
+
+#~ msgid "Edit the project"
+#~ msgstr "Rediger prosjektet"
 

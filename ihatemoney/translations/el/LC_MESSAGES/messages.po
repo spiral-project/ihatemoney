@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 18:12+0200\n"
+"POT-Creation-Date: 2023-07-14 10:01+0200\n"
 "PO-Revision-Date: 2021-08-01 08:34+0000\n"
 "Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
 "Language: el\n"
@@ -180,8 +180,8 @@ msgstr "Αυτό το έργο έχει ήδη αυτό το μέλος"
 msgid "People to notify"
 msgstr ""
 
-msgid "Send invites"
-msgstr "Αποστολή προσκλήσεων"
+msgid "Send the invitations"
+msgstr "Αποστολή των προσκλήσεων"
 
 #, python-format
 msgid "The email %(email)s is not valid"
@@ -417,10 +417,6 @@ msgstr "επιμελειθήτε"
 msgid "Delete project"
 msgstr "Επεξεργασία έργου"
 
-#, fuzzy
-msgid " show"
-msgstr "εμφάνιση"
-
 msgid "show"
 msgstr "εμφάνιση"
 
@@ -469,8 +465,8 @@ msgstr "Ακύρωση"
 msgid "Privacy Settings"
 msgstr "Ρυθμίσεις απορρήτου"
 
-msgid "Edit the project"
-msgstr "Επεξεργαστείτε το έργο"
+msgid "Save changes"
+msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
@@ -509,9 +505,6 @@ msgstr "Προσθήκη συμμετέχοντος"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr ""
-
-msgid "Send the invitations"
-msgstr "Αποστολή των προσκλήσεων"
 
 msgid "Download"
 msgstr "Κατεβάστε"
@@ -1094,4 +1087,13 @@ msgstr "Περίοδος"
 #~ " to remove them.</i></p>\n"
 #~ "            "
 #~ msgstr ""
+
+#~ msgid "Send invites"
+#~ msgstr "Αποστολή προσκλήσεων"
+
+#~ msgid " show"
+#~ msgstr "εμφάνιση"
+
+#~ msgid "Edit the project"
+#~ msgstr "Επεξεργαστείτε το έργο"
 

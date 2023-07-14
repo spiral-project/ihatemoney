@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 18:12+0200\n"
+"POT-Creation-Date: 2023-07-14 10:01+0200\n"
 "PO-Revision-Date: 2022-04-11 17:12+0000\n"
 "Last-Translator: Santiago José Gutiérrez Llanos "
 "<gutierrezapata17@gmail.com>\n"
@@ -175,7 +175,7 @@ msgstr "Proyek ini sudah mempunyai /ada anggota ini"
 msgid "People to notify"
 msgstr "Orang yang akan dinotifikasi"
 
-msgid "Send invites"
+msgid "Send the invitations"
 msgstr "Kirim undangan"
 
 #, python-format
@@ -414,10 +414,6 @@ msgstr "ubah"
 msgid "Delete project"
 msgstr "Hapus proyek"
 
-#, fuzzy
-msgid " show"
-msgstr "tampilkan"
-
 msgid "show"
 msgstr "tampilkan"
 
@@ -461,8 +457,8 @@ msgstr "Batalkan"
 msgid "Privacy Settings"
 msgstr "Pengaturan Privasi"
 
-msgid "Edit the project"
-msgstr "Ubah proyek"
+msgid "Save changes"
+msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
@@ -500,9 +496,6 @@ msgstr "Sunting anggota ini"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
-
-msgid "Send the invitations"
-msgstr "Kirim undangan"
 
 msgid "Download"
 msgstr "Unduh"
@@ -1118,4 +1111,13 @@ msgstr "Periode"
 #~ "proyek </a> untuk menghapusnya. </i> </"
 #~ " p >\n"
 #~ "            "
+
+#~ msgid "Send invites"
+#~ msgstr "Kirim undangan"
+
+#~ msgid " show"
+#~ msgstr "tampilkan"
+
+#~ msgid "Edit the project"
+#~ msgstr "Ubah proyek"
 

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 18:12+0200\n"
+"POT-Creation-Date: 2023-07-14 10:01+0200\n"
 "PO-Revision-Date: 2023-07-09 19:50+0000\n"
 "Last-Translator: Sebastian Lay <mail@sebastian-lay.de>\n"
 "Language: de\n"
@@ -180,8 +180,8 @@ msgstr "Der Benutzer ist bereits diesem Projekt zugeordnet"
 msgid "People to notify"
 msgstr "Personen, die informiert werden sollen"
 
-msgid "Send invites"
-msgstr "Einladungen senden"
+msgid "Send the invitations"
+msgstr "Einladung versenden"
 
 #, python-format
 msgid "The email %(email)s is not valid"
@@ -427,10 +427,6 @@ msgstr "Bearbeiten"
 msgid "Delete project"
 msgstr "Projekt löschen"
 
-#, fuzzy
-msgid " show"
-msgstr "Zeigen"
-
 msgid "show"
 msgstr "Zeigen"
 
@@ -474,8 +470,8 @@ msgstr "Abbrechen"
 msgid "Privacy Settings"
 msgstr "Datenschutzeinstellungen"
 
-msgid "Edit the project"
-msgstr "Projekt bearbeiten"
+msgid "Save changes"
+msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
 msgstr "Dies wird alle Ausgaben und Mitglieder dieses Projektes löschen!"
@@ -513,9 +509,6 @@ msgstr "Diesen Benutzer bearbeiten"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "max.mustermann@beispiel.com, mary.moe@site.com"
-
-msgid "Send the invitations"
-msgstr "Einladung versenden"
 
 msgid "Download"
 msgstr "Herunterladen"
@@ -1142,4 +1135,13 @@ msgstr "Zeitraum"
 #~ "target=\"#confirm-erase\">Projektverlauf löschen</a>, "
 #~ "um sie zu entfernen.</i></p>\n"
 #~ "            "
+
+#~ msgid "Send invites"
+#~ msgstr "Einladungen senden"
+
+#~ msgid " show"
+#~ msgstr "Zeigen"
+
+#~ msgid "Edit the project"
+#~ msgstr "Projekt bearbeiten"
 
