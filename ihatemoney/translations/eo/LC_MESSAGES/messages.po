@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 18:12+0200\n"
+"POT-Creation-Date: 2023-07-14 10:01+0200\n"
 "PO-Revision-Date: 2021-10-01 20:35+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language: eo\n"
@@ -177,8 +177,8 @@ msgstr "Ĉi tiu projekto jam havas ĉi tiun anon"
 msgid "People to notify"
 msgstr ""
 
-msgid "Send invites"
-msgstr "Sendi invitojn"
+msgid "Send the invitations"
+msgstr "Sendi la invitojn"
 
 #, python-format
 msgid "The email %(email)s is not valid"
@@ -421,10 +421,6 @@ msgstr "redakti"
 msgid "Delete project"
 msgstr "Forviŝi projekton"
 
-#, fuzzy
-msgid " show"
-msgstr "montri"
-
 msgid "show"
 msgstr "montri"
 
@@ -468,8 +464,8 @@ msgstr "Nuligi"
 msgid "Privacy Settings"
 msgstr "Agordoj pri privateco"
 
-msgid "Edit the project"
-msgstr "Redakti la projekton"
+msgid "Save changes"
+msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
@@ -508,9 +504,6 @@ msgstr "Aldono partoprenanton"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "johano.zamenhof@example.com, maria.baghy@example.net"
-
-msgid "Send the invitations"
-msgstr "Sendi la invitojn"
 
 msgid "Download"
 msgstr "Elŝuti"
@@ -1093,4 +1086,13 @@ msgstr "Periodo"
 #~ "historion</a> por forigi ilin.</i></ p >"
 #~ "\n"
 #~ "            "
+
+#~ msgid "Send invites"
+#~ msgstr "Sendi invitojn"
+
+#~ msgid " show"
+#~ msgstr "montri"
+
+#~ msgid "Edit the project"
+#~ msgstr "Redakti la projekton"
 

@@ -7,17 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-07-13 18:12+0200\n"
+"POT-Creation-Date: 2023-07-14 10:01+0200\n"
 "PO-Revision-Date: 2023-07-14 07:59+0000\n"
 "Last-Translator: Baptiste <weblate@bitsofnetworks.org>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/fr/>\n"
 "Language: fr\n"
+"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/fr/>\n"
+"Plural-Forms: nplurals=2; plural=n > 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.0-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #, python-format
@@ -181,7 +180,7 @@ msgstr "Ce⋅tte membre existe déjà pour ce projet"
 msgid "People to notify"
 msgstr "Personnes à inviter"
 
-msgid "Send invites"
+msgid "Send the invitations"
 msgstr "Envoyer les invitations"
 
 #, python-format
@@ -259,8 +258,8 @@ msgid ""
 "Sorry, there was an error while sending you an email with password reset "
 "instructions."
 msgstr ""
-"Désolé, une erreur s’est produite lors de l’envoi du courriel contenant les "
-"instructions de réinitialisation de mot de passe."
+"Désolé, une erreur s’est produite lors de l’envoi du courriel contenant "
+"les instructions de réinitialisation de mot de passe."
 
 msgid "No token provided"
 msgstr "Aucun jeton n’a été fourni"
@@ -307,7 +306,8 @@ msgstr "Vos invitations ont bien été envoyées"
 
 msgid "Sorry, there was an error while trying to send the invitation emails."
 msgstr ""
-"Désolé, une erreur s’est produite lors de l’envoi du courriel d’invitation."
+"Désolé, une erreur s’est produite lors de l’envoi du courriel "
+"d’invitation."
 
 #, python-format
 msgid "%(member)s has been added"
@@ -418,10 +418,6 @@ msgstr "éditer"
 msgid "Delete project"
 msgstr "Supprimer le projet"
 
-#, fuzzy
-msgid " show"
-msgstr "voir"
-
 msgid "show"
 msgstr "voir"
 
@@ -464,8 +460,8 @@ msgstr "Annuler"
 msgid "Privacy Settings"
 msgstr "Vie privée"
 
-msgid "Edit the project"
-msgstr "Éditer le projet"
+msgid "Save changes"
+msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
 msgstr "Cela supprimera toutes les factures et participant⋅es du projet !"
@@ -502,9 +498,6 @@ msgstr "Modifier un⋅e participant⋅e"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "marie@site.com, jean.dupont@exemple.com"
-
-msgid "Send the invitations"
-msgstr "Envoyer les invitations"
 
 msgid "Download"
 msgstr "Télécharger"
@@ -590,8 +583,8 @@ msgid ""
 "The table below reflects actions recorded prior to disabling project "
 "history."
 msgstr ""
-"Le tableau ci-dessous affiche uniquement les actions enregistrées avant que "
-"l'historique n'ait été désactivé pour ce projet."
+"Le tableau ci-dessous affiche uniquement les actions enregistrées avant "
+"que l'historique n'ait été désactivé pour ce projet."
 
 msgid "You can clear the project history to remove them."
 msgstr "Vous pouvez supprimer l'historique du projet pour les enlever."
@@ -1335,3 +1328,13 @@ msgstr "Période"
 #~ "target=\"#confirm-erase\">supprimer l'historique du"
 #~ " projet</a> pour les supprimer.</i></p>\n"
 #~ "            "
+
+#~ msgid "Send invites"
+#~ msgstr "Envoyer les invitations"
+
+#~ msgid " show"
+#~ msgstr "voir"
+
+#~ msgid "Edit the project"
+#~ msgstr "Éditer le projet"
+

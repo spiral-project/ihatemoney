@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 18:12+0200\n"
+"POT-Creation-Date: 2023-07-14 10:01+0200\n"
 "PO-Revision-Date: 2023-02-07 21:51+0000\n"
 "Last-Translator: Kristoffer Grundström "
 "<swedishsailfishosuser@tutanota.com>\n"
@@ -175,8 +175,8 @@ msgstr "Det här projektet har redan den här deltagaren"
 msgid "People to notify"
 msgstr ""
 
-msgid "Send invites"
-msgstr "Skicka inbjudningar"
+msgid "Send the invitations"
+msgstr "Skicka inbjudningarna"
 
 #, python-format
 msgid "The email %(email)s is not valid"
@@ -416,10 +416,6 @@ msgstr "redigera"
 msgid "Delete project"
 msgstr "Ta bort projektet"
 
-#, fuzzy
-msgid " show"
-msgstr "visa"
-
 msgid "show"
 msgstr "visa"
 
@@ -463,8 +459,8 @@ msgstr "Avbryt"
 msgid "Privacy Settings"
 msgstr "Inställningar för privatliv"
 
-msgid "Edit the project"
-msgstr "Redigera projektet"
+msgid "Save changes"
+msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
@@ -504,9 +500,6 @@ msgstr "Redigera den här deltagaren"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@exempel.com, mary.moe@sida.com"
-
-msgid "Send the invitations"
-msgstr "Skicka inbjudningarna"
 
 msgid "Download"
 msgstr "Ladda ner"
@@ -1079,4 +1072,13 @@ msgstr "Period"
 #~ " to remove them.</i></p>\n"
 #~ "            "
 #~ msgstr ""
+
+#~ msgid "Send invites"
+#~ msgstr "Skicka inbjudningar"
+
+#~ msgid " show"
+#~ msgstr "visa"
+
+#~ msgid "Edit the project"
+#~ msgstr "Redigera projektet"
 

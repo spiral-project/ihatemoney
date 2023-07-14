@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 18:12+0200\n"
+"POT-Creation-Date: 2023-07-14 10:01+0200\n"
 "PO-Revision-Date: 2022-10-04 14:19+0000\n"
 "Last-Translator: Sharan J <sharanjs1999@gmail.com>\n"
 "Language: te\n"
@@ -184,8 +184,8 @@ msgstr "ఈ ప్రాజెక్ట్‌లో ఇప్పటికే ఈ
 msgid "People to notify"
 msgstr "తెలియజేయాల్సిన వ్యక్తులు"
 
-msgid "Send invites"
-msgstr "ఆహ్వానాలు పంపు"
+msgid "Send the invitations"
+msgstr ""
 
 #, python-format
 msgid "The email %(email)s is not valid"
@@ -431,9 +431,6 @@ msgstr ""
 msgid "Delete project"
 msgstr ""
 
-msgid " show"
-msgstr ""
-
 msgid "show"
 msgstr ""
 
@@ -477,7 +474,7 @@ msgstr ""
 msgid "Privacy Settings"
 msgstr ""
 
-msgid "Edit the project"
+msgid "Save changes"
 msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
@@ -515,9 +512,6 @@ msgid "Edit this participant"
 msgstr ""
 
 msgid "john.doe@example.com, mary.moe@site.com"
-msgstr ""
-
-msgid "Send the invitations"
 msgstr ""
 
 msgid "Download"
@@ -997,5 +991,14 @@ msgstr ""
 #~ "target=\"#confirm-erase\">clear project history</a>"
 #~ " to remove them.</i></p>\n"
 #~ "            "
+#~ msgstr ""
+
+#~ msgid "Send invites"
+#~ msgstr "ఆహ్వానాలు పంపు"
+
+#~ msgid " show"
+#~ msgstr ""
+
+#~ msgid "Edit the project"
 #~ msgstr ""
 

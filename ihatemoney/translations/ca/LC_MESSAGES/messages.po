@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 18:12+0200\n"
+"POT-Creation-Date: 2023-07-14 10:01+0200\n"
 "PO-Revision-Date: 2022-09-12 15:25+0000\n"
 "Last-Translator: Maite Guix <maite.guix@gmail.com>\n"
 "Language: ca\n"
@@ -176,8 +176,8 @@ msgstr "Aquest projecte ja compta amb aquest participant"
 msgid "People to notify"
 msgstr "Gent a notificar"
 
-msgid "Send invites"
-msgstr "Enviar invitacions"
+msgid "Send the invitations"
+msgstr "Enviar les invitacions"
 
 #, python-format
 msgid "The email %(email)s is not valid"
@@ -422,10 +422,6 @@ msgstr "editar"
 msgid "Delete project"
 msgstr "Suprimir el projecte"
 
-#, fuzzy
-msgid " show"
-msgstr "mostrar"
-
 msgid "show"
 msgstr "mostrar"
 
@@ -471,8 +467,8 @@ msgstr "Cancel·lar"
 msgid "Privacy Settings"
 msgstr "Configuració de la privacitat"
 
-msgid "Edit the project"
-msgstr "Editar el projecte"
+msgid "Save changes"
+msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
@@ -512,9 +508,6 @@ msgstr "Editar aquest participant"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "eloi.serra@exemple.cat, maria.canut@lloc.com"
-
-msgid "Send the invitations"
-msgstr "Enviar les invitacions"
 
 msgid "Download"
 msgstr "Descarregar"
@@ -1036,4 +1029,13 @@ msgstr "Període"
 #~ "del projecte</a> per a eliminar-"
 #~ "les.</i></p>\n"
 #~ "            "
+
+#~ msgid "Send invites"
+#~ msgstr "Enviar invitacions"
+
+#~ msgid " show"
+#~ msgstr "mostrar"
+
+#~ msgid "Edit the project"
+#~ msgstr "Editar el projecte"
 

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 18:12+0200\n"
+"POT-Creation-Date: 2023-07-14 10:01+0200\n"
 "PO-Revision-Date: 2021-10-17 04:56+0000\n"
 "Last-Translator: a-g-rao <athrigrao@gmail.com>\n"
 "Language: kn\n"
@@ -173,8 +173,8 @@ msgstr "ಈ ಸದಸ್ಯರು ಈಗಾಗಲೆ ಈ ಯೋಜನೆಯ ಸ�
 msgid "People to notify"
 msgstr ""
 
-msgid "Send invites"
-msgstr "ಆಮಂತ್ರಣ ಕಳುಹಿಸು"
+msgid "Send the invitations"
+msgstr ""
 
 #, python-format
 msgid "The email %(email)s is not valid"
@@ -402,10 +402,6 @@ msgstr "ಪರಿಷ್ಕರಿಸಿ"
 msgid "Delete project"
 msgstr ""
 
-#, fuzzy
-msgid " show"
-msgstr "ತೋರಿಸಿ"
-
 msgid "show"
 msgstr "ತೋರಿಸಿ"
 
@@ -449,7 +445,7 @@ msgstr ""
 msgid "Privacy Settings"
 msgstr ""
 
-msgid "Edit the project"
+msgid "Save changes"
 msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
@@ -486,9 +482,6 @@ msgid "Edit this participant"
 msgstr ""
 
 msgid "john.doe@example.com, mary.moe@site.com"
-msgstr ""
-
-msgid "Send the invitations"
 msgstr ""
 
 msgid "Download"
@@ -1023,5 +1016,14 @@ msgstr ""
 #~ "target=\"#confirm-erase\">clear project history</a>"
 #~ " to remove them.</i></p>\n"
 #~ "            "
+#~ msgstr ""
+
+#~ msgid "Send invites"
+#~ msgstr "ಆಮಂತ್ರಣ ಕಳುಹಿಸು"
+
+#~ msgid " show"
+#~ msgstr "ತೋರಿಸಿ"
+
+#~ msgid "Edit the project"
 #~ msgstr ""
 

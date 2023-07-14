@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 18:12+0200\n"
+"POT-Creation-Date: 2023-07-14 10:01+0200\n"
 "PO-Revision-Date: 2022-09-27 14:19+0000\n"
 "Last-Translator: Andrzej Ochodek <andrzej.ochodek@gmail.com>\n"
 "Language: pl\n"
@@ -177,7 +177,7 @@ msgstr "Ten projekt ma już tego członka"
 msgid "People to notify"
 msgstr "Osoby do powiadomienia"
 
-msgid "Send invites"
+msgid "Send the invitations"
 msgstr "Wyślij zaproszenia"
 
 #, python-format
@@ -422,10 +422,6 @@ msgstr "edytuj"
 msgid "Delete project"
 msgstr "Usuń projekt"
 
-#, fuzzy
-msgid " show"
-msgstr "pokaż"
-
 msgid "show"
 msgstr "pokaż"
 
@@ -469,8 +465,8 @@ msgstr "Anuluj"
 msgid "Privacy Settings"
 msgstr "Ustawienia prywatności"
 
-msgid "Edit the project"
-msgstr "Edytuj projekt"
+msgid "Save changes"
+msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
 msgstr "Spowoduje to usunięcie wszystkich rachunków i uczestników tego projektu!"
@@ -508,9 +504,6 @@ msgstr "Edytuj tego uczestnika"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "jan.kowalski@przykład.com, anna.nowak@strona.com"
-
-msgid "Send the invitations"
-msgstr "Wyślij zaproszenia"
 
 msgid "Download"
 msgstr "Pobierz"
@@ -1114,4 +1107,13 @@ msgstr "Okres"
 #~ "target=\"#confirm-erase\">wyczyścić historię "
 #~ "projektu</a>, aby je usunąć.</i></p>\n"
 #~ "            "
+
+#~ msgid "Send invites"
+#~ msgstr "Wyślij zaproszenia"
+
+#~ msgid " show"
+#~ msgstr "pokaż"
+
+#~ msgid "Edit the project"
+#~ msgstr "Edytuj projekt"
 

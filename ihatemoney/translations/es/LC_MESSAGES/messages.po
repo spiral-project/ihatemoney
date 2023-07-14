@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 18:12+0200\n"
+"POT-Creation-Date: 2023-07-14 10:01+0200\n"
 "PO-Revision-Date: 2022-11-14 05:48+0000\n"
 "Last-Translator: Sabtag3 <dioni1984@yahoo.com>\n"
 "Language: es\n"
@@ -176,7 +176,7 @@ msgstr "Este proyecto ya tiene a este participante"
 msgid "People to notify"
 msgstr "Personas a las que notificar"
 
-msgid "Send invites"
+msgid "Send the invitations"
 msgstr "Enviar invitaciones"
 
 #, python-format
@@ -427,10 +427,6 @@ msgstr "editar"
 msgid "Delete project"
 msgstr "Editar el proyecto"
 
-#, fuzzy
-msgid " show"
-msgstr "mostrar"
-
 msgid "show"
 msgstr "mostrar"
 
@@ -475,8 +471,8 @@ msgstr "Cancelar"
 msgid "Privacy Settings"
 msgstr "Ajustes de privacidad"
 
-msgid "Edit the project"
-msgstr "Editar el proyecto"
+msgid "Save changes"
+msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
@@ -515,9 +511,6 @@ msgstr "Añadir participante"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr ""
-
-msgid "Send the invitations"
-msgstr "Enviar invitaciones"
 
 msgid "Download"
 msgstr "Descargar"
@@ -1104,4 +1097,13 @@ msgstr "Período"
 #~ " to remove them.</i></p>\n"
 #~ "            "
 #~ msgstr ""
+
+#~ msgid "Send invites"
+#~ msgstr "Enviar invitaciones"
+
+#~ msgid " show"
+#~ msgstr "mostrar"
+
+#~ msgid "Edit the project"
+#~ msgstr "Editar el proyecto"
 

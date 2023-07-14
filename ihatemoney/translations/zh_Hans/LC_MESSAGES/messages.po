@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 18:12+0200\n"
+"POT-Creation-Date: 2023-07-14 10:01+0200\n"
 "PO-Revision-Date: 2022-07-21 05:15+0000\n"
 "Last-Translator: z.liu <zwliu07@live.com>\n"
 "Language: zh_Hans\n"
@@ -171,7 +171,7 @@ msgstr "此项目已经包含此成员了"
 msgid "People to notify"
 msgstr "需要通知的人"
 
-msgid "Send invites"
+msgid "Send the invitations"
 msgstr "发送邀请"
 
 #, python-format
@@ -403,10 +403,6 @@ msgstr "编辑"
 msgid "Delete project"
 msgstr "删除项目"
 
-#, fuzzy
-msgid " show"
-msgstr "显示"
-
 msgid "show"
 msgstr "显示"
 
@@ -450,8 +446,8 @@ msgstr "取消"
 msgid "Privacy Settings"
 msgstr "隐私设置"
 
-msgid "Edit the project"
-msgstr "编辑项目"
+msgid "Save changes"
+msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
 msgstr "这将删除此项目的所有账单和参与者！"
@@ -490,9 +486,6 @@ msgstr "添加参与人"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
-
-msgid "Send the invitations"
-msgstr "发送邀请"
 
 msgid "Download"
 msgstr "下载"
@@ -1086,4 +1079,13 @@ msgstr "期间"
 #~ "target=\"#confirm-erase\">清除项目记录</a> t来移除他们.</i></p>\n"
 #~ ""
 #~ "            "
+
+#~ msgid "Send invites"
+#~ msgstr "发送邀请"
+
+#~ msgid " show"
+#~ msgstr "显示"
+
+#~ msgid "Edit the project"
+#~ msgstr "编辑项目"
 
