@@ -119,6 +119,16 @@ class BudgetTestCase(IhatemoneyTestCase):
         resp = self.client.get("/raclette/join/token.invalid", follow_redirects=True)
         self.assertIn("Provided token is invalid", resp.data.decode("utf-8"))
 
+    def test_create_should_remember_project(self):
+        """Test that creating a project adds it to the "logged in project" list,
+        as it does for authentication
+        """
+        self.login("raclette")
+        self.post_project("raclette")
+        self.post_project("tartiflette")
+        data = self.client.get("/raclette/").data.decode("utf-8")
+        self.assertEqual(data.count('href="/tartiflette/"'), 1)
+
     def test_multiple_join(self):
         """Test that joining multiple times a project
         doesn't add it multiple times in the session"""
