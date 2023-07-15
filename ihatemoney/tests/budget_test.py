@@ -1665,6 +1665,27 @@ class BudgetTestCase(IhatemoneyTestCase):
         # No bills, the previous one was not added
         self.assertIn("No bills", resp.data.decode("utf-8"))
 
+    def test_session_projects_migration_to_list(self):
+        """In https://github.com/spiral-project/ihatemoney/pull/1082, session["projects"]
+        was migrated from a list to a dict. We need to handle this.
+        """
+        self.post_project("raclette")
+        self.client.get("/exit")
+
+        with self.client as c:
+            resp = c.post(
+                "/authenticate", data={"id": "raclette", "password": "raclette"}
+            )
+            self.assertTrue(session["raclette"])
+            # New behavior
+            self.assertEquals(session["projects"].__class__, dict)
+            # Now, go back to the past
+            with c.session_transaction() as sess:
+                sess["projects"] = [("raclette", "raclette")]
+            # It should convert entry to dict
+            c.get("/")
+            self.assertEquals(session["projects"].__class__, dict)
+
 
 if __name__ == "__main__":
     unittest.main()
