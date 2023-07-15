@@ -322,8 +322,7 @@ def create_project():
             db.session.commit()
 
             # create the session object (authenticate)
-            session[project.id] = True
-            session.update()
+            set_authorized_project(project)
 
             # send reminder email
             g.project = project
