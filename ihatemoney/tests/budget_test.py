@@ -1678,13 +1678,14 @@ class BudgetTestCase(IhatemoneyTestCase):
             )
             self.assertTrue(session["raclette"])
             # New behavior
-            self.assertEquals(session["projects"].__class__, dict)
+            self.assertIsInstance(session["projects"], dict)
             # Now, go back to the past
             with c.session_transaction() as sess:
                 sess["projects"] = [("raclette", "raclette")]
             # It should convert entry to dict
             c.get("/")
-            self.assertEquals(session["projects"].__class__, dict)
+            self.assertIsInstance(session["projects"], dict)
+            self.assertIn("raclette", session["projects"])
 
 
 if __name__ == "__main__":
