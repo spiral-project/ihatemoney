@@ -1673,7 +1673,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.client.get("/exit")
 
         with self.client as c:
-            resp = c.post(
+            c.post(
                 "/authenticate", data={"id": "raclette", "password": "raclette"}
             )
             self.assertTrue(session["raclette"])
