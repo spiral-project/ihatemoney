@@ -113,6 +113,13 @@ def add_project_id(endpoint, values):
 
 
 @main.url_value_preprocessor
+def migrate_session(endpoint, values):
+    if "projects" in session and isinstance(session["projects"], list):
+        # Migrate https://github.com/spiral-project/ihatemoney/pull/1082
+        session["projects"] = {id: name for (id, name) in session["projects"]}
+
+
+@main.url_value_preprocessor
 def set_show_admin_dashboard_link(endpoint, values):
     """Sets the "show_admin_dashboard_link" variable application wide
     in order to use it in the layout template.
