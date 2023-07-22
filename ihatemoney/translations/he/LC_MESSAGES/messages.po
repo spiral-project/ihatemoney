@@ -1,19 +1,19 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-14 10:01+0200\n"
-"PO-Revision-Date: 2022-11-07 10:07+0000\n"
-"Last-Translator: Raanan Katz <raakatz97@gmail.com>\n"
+"PO-Revision-Date: 2023-07-22 14:03+0000\n"
+"Last-Translator: Nati Lintzer <nlintzer@gmail.com>\n"
+"Language-Team: Hebrew <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/he/>\n"
 "Language: he\n"
-"Language-Team: Hebrew <https://hosted.weblate.org/projects/i-hate-money/i"
-"-hate-money/he/>\n"
-"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 "
-"&& n % 10 == 0) ? 2 : 3))\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
+"n % 10 == 0) ? 2 : 3));\n"
+"X-Generator: Weblate 5.0-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #, python-format
@@ -172,25 +172,25 @@ msgid "People to notify"
 msgstr "אנשים להתריע להם"
 
 msgid "Send the invitations"
-msgstr ""
+msgstr "שלח את ההזמנות"
 
 #, python-format
 msgid "The email %(email)s is not valid"
 msgstr "כתובת הדוא\"ל %(email)s אינה תקינה"
 
 msgid "Logout"
-msgstr ""
+msgstr "להתנתק"
 
 msgid "Please check the email configuration of the server."
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Please check the email configuration of the server or contact the "
 "administrator: %(admin_email)s"
 msgstr ""
-"מצטערים, אך אירעה שגיאה בעת ששלחנו לכם את המייל עם הוראות איפוס הסיסמה. "
-"בבקשה תבדקו את הגדרות המייל בשרת או פנו למנהל השרת."
+"מצטערים, אך אירעה שגיאה בעת ששלחנו לכם את המייל עם הוראות איפוס הסיסמה. אנא "
+"בדקו את הגדרות המייל בשרת או פנו למנהל השרת:%(admin_email)s"
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
@@ -219,9 +219,8 @@ msgstr "{prefix}: {error}"
 msgid "{prefix}:<br />{errors}"
 msgstr "{prefix}:<br />{errors}"
 
-#, fuzzy
 msgid "Too many failed login attempts."
-msgstr "יותר מדי ניסיון התחברות כושלים, אנא נסו שם מאוחר יותר."
+msgstr "יותר מדי ניסיון התחברות כושלים."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
@@ -268,7 +267,7 @@ msgstr ""
 
 #, python-format
 msgid "Missing attribute: %(attribute)s"
-msgstr ""
+msgstr "תכונה חסרה:%(attribute)s"
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
@@ -285,7 +284,7 @@ msgid "Error deleting project"
 msgstr "שגיאה במחיקת הפרויקט"
 
 msgid "Unable to logout"
-msgstr ""
+msgstr "לא ניתן להתנתק"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
@@ -295,7 +294,7 @@ msgid "Your invitations have been sent"
 msgstr "ההזמנות שלך נשלחו"
 
 msgid "Sorry, there was an error while trying to send the invitation emails."
-msgstr ""
+msgstr "מצטערים, אך אירעה שגיאה בעת שליחת ההזמנות."
 
 #, python-format
 msgid "%(member)s has been added"
@@ -326,20 +325,21 @@ msgid "Participant '%(name)s' has been modified"
 msgstr ""
 
 msgid "The bill has been added"
-msgstr ""
+msgstr "החשבון נוסף"
 
 msgid "Error deleting bill"
-msgstr ""
+msgstr "שגיאה בעת מחיקת החשבון"
 
+#, fuzzy
 msgid "The bill has been deleted"
-msgstr ""
+msgstr "ההוצאה נמחקה"
 
 msgid "The bill has been modified"
 msgstr ""
 
 #, python-format
 msgid "%(lang)s is not a supported language"
-msgstr ""
+msgstr "%(lang)s אינה שפה נתמכת"
 
 msgid "Error deleting project history"
 msgstr "שגיאה במחיקת הסטוריית הפרויקט"
@@ -354,7 +354,7 @@ msgid "Deleted recorded IP addresses in project history."
 msgstr ""
 
 msgid "Sorry, we were unable to find the page you've asked for."
-msgstr ""
+msgstr "מצטערים, לא הצלחנו לגשת לדף שחיפשת."
 
 msgid "The best thing to do is probably to get back to the main page."
 msgstr "כנראה שהדבר הטוב ביותר לעשות הוא לחזור לעמוד הראשי."
@@ -378,7 +378,7 @@ msgid "?"
 msgstr "?"
 
 msgid "Create a new project"
-msgstr "צור פרויקט"
+msgstr "צור פרויקט חדש"
 
 msgid "Project"
 msgstr "פרויקט"
@@ -399,7 +399,7 @@ msgid "Actions"
 msgstr "פעולות"
 
 msgid "edit"
-msgstr ""
+msgstr "ערוך"
 
 msgid "Delete project"
 msgstr "מחק פרויקט"
@@ -419,9 +419,8 @@ msgstr ""
 msgid "Edit project"
 msgstr ""
 
-#, fuzzy
 msgid "Import project"
-msgstr "הפרויקטים שלך"
+msgstr "ייבא פרוייקטים"
 
 msgid "Download project's data"
 msgstr ""
@@ -453,9 +452,8 @@ msgstr ""
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
 
-#, fuzzy
 msgid "Import previously exported project"
-msgstr "ייבא קובץ JSON מיוצא"
+msgstr "ייבא פרוייקט קודם מיוצא"
 
 msgid "Choose file"
 msgstr "בחר קובץ"
@@ -747,7 +745,7 @@ msgid "Projects"
 msgstr "פרויקטים"
 
 msgid "Start a new project"
-msgstr ""
+msgstr "התחל פרוייקט חדש"
 
 msgid "History"
 msgstr "הסטוריה"
@@ -756,10 +754,10 @@ msgid "Settings"
 msgstr "הגדרות"
 
 msgid "Other projects :"
-msgstr ""
+msgstr "פרויקטים אחרים:"
 
 msgid "switch to"
-msgstr ""
+msgstr "שנה ל"
 
 msgid "Dashboard"
 msgstr ""
@@ -772,7 +770,7 @@ msgid "Code"
 msgstr "קוד"
 
 msgid "Mobile Application"
-msgstr ""
+msgstr "יישום לנייד"
 
 msgid "Documentation"
 msgstr "דוקומנטציה"
@@ -787,29 +785,29 @@ msgid "\"I hate money\" is free software"
 msgstr "\"אני שונא כסף\" היא תוכנה חינמית"
 
 msgid "you can contribute and improve it!"
-msgstr ""
+msgstr "אתה יכול לתרום ולשפר אותו!"
 
 #, python-format
 msgid "%(amount)s each"
 msgstr ""
 
 msgid "you sure?"
-msgstr ""
+msgstr "האם אתה בטוח?"
 
 msgid "Invite people"
-msgstr ""
+msgstr "הזמן אנשים"
 
 msgid "Newer bills"
 msgstr ""
 
 msgid "Older bills"
-msgstr ""
+msgstr "הוצאות ישנות"
 
 msgid "You should start by adding participants"
-msgstr ""
+msgstr "כדאי להתחיל בהוספת משתמשים"
 
 msgid "Add a new bill"
-msgstr ""
+msgstr "הוסף הוצאה חדשה"
 
 msgid "For what?"
 msgstr "עבור מה?"
@@ -823,22 +821,22 @@ msgid "Everyone but %(excluded)s"
 msgstr ""
 
 msgid "delete"
-msgstr ""
+msgstr "מחק"
 
 msgid "No bills"
-msgstr ""
+msgstr "אין הוצאות"
 
 msgid "Nothing to list yet."
 msgstr ""
 
 msgid "You probably want to"
-msgstr ""
+msgstr "אתה כנראה רוצה"
 
 msgid "add a bill"
 msgstr ""
 
 msgid "add participants"
-msgstr ""
+msgstr "הוסף משתמשים"
 
 msgid "Password reminder"
 msgstr "תזכורת סיסמה"
@@ -846,7 +844,7 @@ msgstr "תזכורת סיסמה"
 msgid ""
 "A link to reset your password has been sent to you, please check your "
 "emails."
-msgstr ""
+msgstr "נשלח לחשבונך לינק לאיפוס הסיסמה, אנא בדוק את תיבת הדוא\"ל שלך."
 
 msgid "Return to home page"
 msgstr "חזור לעמוד הבית"
@@ -855,36 +853,36 @@ msgid "Your projects"
 msgstr "הפרויקטים שלך"
 
 msgid "Reset your password"
-msgstr ""
+msgstr "אפס את סיסמתך"
 
 msgid "Invite people to join this project"
-msgstr ""
+msgstr "הזמן אנשים להצטרף לפרויקט"
 
 msgid "Share Identifier & code"
-msgstr ""
+msgstr "שתף מזהה וקוד"
 
 msgid ""
 "You can share the project identifier and the private code by any "
 "communication means."
-msgstr ""
+msgstr "אתה יכול לשתף את מזהה הפרויקט והקוד הפרטי באמצעות כל אמצעי תקשורת."
 
 msgid "Identifier:"
 msgstr "מזהה:"
 
 msgid "Share the Link"
-msgstr ""
+msgstr "שתף את הלינק"
 
 msgid "You can directly share the following link via your prefered medium"
-msgstr ""
+msgstr "אתה יכול לשתף ישירות את הלינק באמצעי המועדף עליך"
 
 msgid "Scan QR code"
-msgstr ""
+msgstr "סרוק את הברקוד"
 
 msgid "Use a mobile device with a compatible app."
-msgstr ""
+msgstr "השתמש במכשיר נייד עם יישום תואם."
 
 msgid "Send via Emails"
-msgstr ""
+msgstr "שלח באמצעות דוא\"ל"
 
 msgid ""
 "Specify a (comma separated) list of email adresses you want to notify "
@@ -903,7 +901,7 @@ msgid "Who?"
 msgstr "מי?"
 
 msgid "Balance"
-msgstr ""
+msgstr "מאזן"
 
 msgid "deactivate"
 msgstr ""
@@ -918,7 +916,7 @@ msgid "Spent"
 msgstr ""
 
 msgid "Expenses by Month"
-msgstr ""
+msgstr "הוצאות לפי חודש"
 
 msgid "Period"
 msgstr "תקופה"
@@ -982,4 +980,3 @@ msgstr "תקופה"
 
 #~ msgid "Edit the project"
 #~ msgstr ""
-
