@@ -4,8 +4,14 @@ This document describes changes between each past release.
 
 ## 6.0.1 (unreleased)
 
+### Added
+- Add support for `APPLICATION_ROOT` in Docker container (#1189)
+- Improve docker-compose example: admin password and volume for database (#1169)
+
 ### Fixed
-- Fix docker-compose example (#1164)
+- Fix docker-compose example quoting (#1164)
+- Fix crash when using existing sessions (migrate them to dict) (#1194)
+- Add newly created projects to the list of projects (#1193)
 
 
 ## 6.0.0 (2023-07-13)
