@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-14 10:01+0200\n"
-"PO-Revision-Date: 2023-07-09 19:50+0000\n"
-"Last-Translator: Sebastian Lay <mail@sebastian-lay.de>\n"
+"PO-Revision-Date: 2023-07-16 14:04+0000\n"
+"Last-Translator: Luke <luke@luporr.de>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/de/>\n"
 "Language: de\n"
-"Language-Team: German <https://hosted.weblate.org/projects/i-hate-money/i"
-"-hate-money/de/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.0-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #, python-format
@@ -442,9 +442,8 @@ msgstr "Mach mit"
 msgid "Edit project"
 msgstr "Projekt bearbeiten"
 
-#, fuzzy
 msgid "Import project"
-msgstr "Projekt bearbeiten"
+msgstr "Projekt importieren"
 
 msgid "Download project's data"
 msgstr "Projektdaten herunterladen"
@@ -471,7 +470,7 @@ msgid "Privacy Settings"
 msgstr "Datenschutzeinstellungen"
 
 msgid "Save changes"
-msgstr ""
+msgstr "Änderungen speichern"
 
 msgid "This will remove all bills and participants in this project!"
 msgstr "Dies wird alle Ausgaben und Mitglieder dieses Projektes löschen!"
@@ -859,7 +858,7 @@ msgstr "Hinzugefügt am %(date)s"
 
 #, python-format
 msgid "Everyone but %(excluded)s"
-msgstr "Jeder außer %(excluded)s"
+msgstr "Alle außer %(excluded)s"
 
 msgid "delete"
 msgstr "Löschen"
@@ -1144,4 +1143,3 @@ msgstr "Zeitraum"
 
 #~ msgid "Edit the project"
 #~ msgstr "Projekt bearbeiten"
-
