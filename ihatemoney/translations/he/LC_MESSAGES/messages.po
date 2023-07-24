@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-14 10:01+0200\n"
-"PO-Revision-Date: 2023-07-22 14:03+0000\n"
+"PO-Revision-Date: 2023-07-24 07:07+0000\n"
 "Last-Translator: Nati Lintzer <nlintzer@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/he/>\n"
@@ -459,37 +459,37 @@ msgid "Choose file"
 msgstr "בחר קובץ"
 
 msgid "Edit this bill"
-msgstr ""
+msgstr "ערוך את החשבון"
 
 msgid "Add a bill"
-msgstr ""
+msgstr "הוסף חשבון"
 
 msgid "Simple operations are allowed, e.g. (18+36.2)/3"
 msgstr ""
 
 msgid "Everyone"
-msgstr ""
+msgstr "כולם"
 
 msgid "No one"
-msgstr ""
+msgstr "אף אחד"
 
 msgid "More options"
-msgstr ""
+msgstr "יותר אפשרויות"
 
 msgid "Add participant"
-msgstr ""
+msgstr "הוסף משתתפים"
 
 msgid "Edit this participant"
-msgstr ""
+msgstr "ערוך את המשתתף"
 
 msgid "john.doe@example.com, mary.moe@site.com"
-msgstr ""
+msgstr "john.doe@example.com, mary.moe@site.com"
 
 msgid "Download"
-msgstr ""
+msgstr "הורד"
 
 msgid "Disabled Project History"
-msgstr ""
+msgstr "היסטורית פרויקט מושבתת"
 
 msgid "Disabled Project History & IP Address Recording"
 msgstr ""
