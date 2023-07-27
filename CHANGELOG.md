@@ -4,8 +4,11 @@ This document describes changes between each past release.
 
 ## 6.0.2 (unreleased)
 
+### Breaking changes
+- Drop Python 3.7 support
 
-- Nothing changed yet.
+The minimum supported version is now Python 3.8, and the project is
+tested with up to Python 3.11
 
 
 ## 6.0.1 (2023-07-22)
