@@ -42,7 +42,7 @@ class APITestCase(IhatemoneyTestCase):
     def get_auth(self, username, password=None):
         password = password or username
         base64string = (
-            base64.encodebytes(f"{username}:{password}".encode("utf-8"))
+            base64.encodebytes(f"{username}:{password}".encode())
             .decode("utf-8")
             .replace("\n", "")
         )
@@ -518,11 +518,11 @@ class APITestCase(IhatemoneyTestCase):
 
             # should return the id
             self.assertStatus(201, req)
-            self.assertEqual(req.data.decode("utf-8"), "{}\n".format(id))
+            self.assertEqual(req.data.decode("utf-8"), f"{id}\n")
 
             # get this bill's details
             req = self.client.get(
-                "/api/projects/raclette/bills/{}".format(id),
+                f"/api/projects/raclette/bills/{id}",
                 headers=self.get_auth("raclette"),
             )
 

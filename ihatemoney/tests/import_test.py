@@ -6,7 +6,7 @@ from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
 from ihatemoney.utils import list_of_dicts2csv, list_of_dicts2json
 
 
-class CommonTestCase(object):
+class CommonTestCase:
     class Import(IhatemoneyTestCase):
         def setUp(self):
             super().setUp()

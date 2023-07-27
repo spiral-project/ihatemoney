@@ -107,7 +107,7 @@ class APIMemberForm(MemberForm):
 
     def save(self, project, person):
         person.activated = self.activated.data
-        return super(APIMemberForm, self).save(project, person)
+        return super().save(project, person)
 
 
 class MembersHandler(Resource):

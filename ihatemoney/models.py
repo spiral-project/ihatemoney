@@ -229,7 +229,7 @@ class Project(db.Model):
         # but this is called very rarely so we can tolerate if it's a bit
         # slow. And doing this in Python is much more readable, see #784.
         nb_currencies = len(
-            set(bill.original_currency for bill in self.get_bills_unordered())
+            {bill.original_currency for bill in self.get_bills_unordered()}
         )
         return nb_currencies > 1
 

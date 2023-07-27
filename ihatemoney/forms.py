@@ -92,7 +92,7 @@ class CommaDecimalField(DecimalField):
     def process_formdata(self, value):
         if value:
             value[0] = str(value[0]).replace(",", ".")
-        return super(CommaDecimalField, self).process_formdata(value)
+        return super().process_formdata(value)
 
 
 class CalculatorStringField(StringField):
@@ -116,7 +116,7 @@ class CalculatorStringField(StringField):
 
             valuelist[0] = str(eval_arithmetic_expression(value))
 
-        return super(CalculatorStringField, self).process_formdata(valuelist)
+        return super().process_formdata(valuelist)
 
 
 class EditProjectForm(FlaskForm):
@@ -400,7 +400,7 @@ class MemberForm(FlaskForm):
     submit = SubmitField(_("Add"))
 
     def __init__(self, project, edit=False, *args, **kwargs):
-        super(MemberForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.project = project
         self.edit = edit
 

@@ -8,7 +8,6 @@ import operator
 import os
 import re
 import smtplib
-import socket
 
 from babel import Locale
 from babel.numbers import get_currency_name, get_currency_symbol
@@ -50,7 +49,7 @@ def send_email(mail_message):
     # to check for both.
     try:
         current_app.mail.send(mail_message)
-    except (smtplib.SMTPException, socket.error):
+    except (smtplib.SMTPException, OSError):
         return False
     # Email was sent successfully
     return True
@@ -100,7 +99,7 @@ class Redirect303(HTTPException, RoutingException):
         return redirect(self.new_url, 303)
 
 
-class PrefixedWSGI(object):
+class PrefixedWSGI:
 
     """
     Wrap the application in this middleware and configure the
@@ -148,7 +147,7 @@ def minimal_round(*args, **kw):
 
 def static_include(filename):
     fullpath = os.path.join(current_app.static_folder, filename)
-    with open(fullpath, "r") as f:
+    with open(fullpath) as f:
         return f.read()
 
 
@@ -284,7 +283,7 @@ def eval_arithmetic_expression(expr):
     try:
         result = _eval(ast.parse(expr, mode="eval").body)
     except (SyntaxError, TypeError, ZeroDivisionError, KeyError):
-        raise ValueError("Error evaluating expression: {}".format(expr))
+        raise ValueError(f"Error evaluating expression: {expr}")
 
     return result
 

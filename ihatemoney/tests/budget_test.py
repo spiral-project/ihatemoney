@@ -708,7 +708,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         )
 
         balance = self.get_project("raclette").balance
-        self.assertEqual(set(balance.values()), set([19.0, -19.0]))
+        self.assertEqual(set(balance.values()), {19.0, -19.0})
 
         # Bill with negative amount
         self.client.post(
@@ -802,7 +802,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         )
 
         balance = self.get_project("raclette").balance
-        self.assertEqual(set(balance.values()), set([6, -6]))
+        self.assertEqual(set(balance.values()), {6, -6})
 
     def test_trimmed_members(self):
         self.post_project("raclette")
@@ -1044,11 +1044,9 @@ class BudgetTestCase(IhatemoneyTestCase):
         # same as in the main table.
         order = ["fred", "pépé", "tata", "zorglub"]
         regex1 = r".*".join(
-            r"<td class=\"balance-name\">{}</td>".format(name) for name in order
+            rf"<td class=\"balance-name\">{name}</td>" for name in order
         )
-        regex2 = r".*".join(
-            r"<td class=\"d-md-none\">{}</td>".format(name) for name in order
-        )
+        regex2 = r".*".join(rf"<td class=\"d-md-none\">{name}</td>" for name in order)
         # Build the regexp ourselves to be able to pass the DOTALL flag
         # (so that ".*" matches newlines)
         self.assertRegex(response.data.decode("utf-8"), re.compile(regex1, re.DOTALL))

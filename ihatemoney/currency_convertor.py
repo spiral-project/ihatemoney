@@ -10,11 +10,11 @@ class Singleton(type):
 
     def __call__(cls, *args, **kwargs):
         if cls not in cls._instances:
-            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+            cls._instances[cls] = super().__call__(*args, **kwargs)
         return cls._instances[cls]
 
 
-class CurrencyConverter(object, metaclass=Singleton):
+class CurrencyConverter(metaclass=Singleton):
     # Get exchange rates
     no_currency = "XXX"
     api_url = "https://api.exchangerate.host/latest?base=USD"
