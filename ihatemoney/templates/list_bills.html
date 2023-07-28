@@ -164,13 +164,14 @@
                 <h3>{{ _('No bills')}}</h3>
                 <p>
                     {{ _("Nothing to list yet.")}}<br />
-                    {{ _("You probably want to") }}
-                    {%- if g.project.members %} <a href="{{ url_for('.add_bill') }}" data-toggle="modal" data-target="#bill-form">
-                            {{- _("add a bill") -}}
-                        </a> ?
-                    {% else %} <a href="{{ url_for('.add_member') }}">
-                            {{- _('add participants') -}}
-                        </a> ?
+                    {%- if g.project.members %}
+                        <a href="{{ url_for('.add_bill') }}" data-toggle="modal" data-target="#bill-form">
+                            {{- _("Add your first bill") -}}
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('.add_member') }}">
+                            {{- _("Add the first participant") -}}
+                        </a>
                     {%- endif -%}
                 </p>
             </div>
