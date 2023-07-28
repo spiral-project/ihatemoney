@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-14 10:01+0200\n"
+"POT-Creation-Date: 2023-07-28 15:26+0200\n"
 "PO-Revision-Date: 2023-05-07 23:52+0000\n"
 "Last-Translator: Egor Dubenetskiy <egor@banka.space>\n"
 "Language: ru\n"
@@ -792,6 +792,9 @@ msgstr "История"
 msgid "Settings"
 msgstr "Настройки"
 
+msgid "RSS Feed"
+msgstr ""
+
 msgid "Other projects :"
 msgstr "Остальные проекты :"
 
@@ -868,14 +871,13 @@ msgstr "Нет счетов"
 msgid "Nothing to list yet."
 msgstr "Нечего перечислять еще."
 
-msgid "You probably want to"
-msgstr "Возможно вы хотите"
-
-msgid "add a bill"
+#, fuzzy
+msgid "Add your first bill"
 msgstr "добавить счёт"
 
-msgid "add participants"
-msgstr "добавить пользователя"
+#, fuzzy
+msgid "Add the first participant"
+msgstr "Редактировать участника"
 
 msgid "Password reminder"
 msgstr "Напоминание пароля"
@@ -1121,4 +1123,10 @@ msgstr "Период"
 
 #~ msgid "Edit the project"
 #~ msgstr "Изменить проект"
+
+#~ msgid "You probably want to"
+#~ msgstr "Возможно вы хотите"
+
+#~ msgid "add participants"
+#~ msgstr "добавить пользователя"
 

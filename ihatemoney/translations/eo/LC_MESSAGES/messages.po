@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-14 10:01+0200\n"
+"POT-Creation-Date: 2023-07-28 15:26+0200\n"
 "PO-Revision-Date: 2021-10-01 20:35+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language: eo\n"
@@ -786,6 +786,9 @@ msgstr "Historio"
 msgid "Settings"
 msgstr "Agordoj"
 
+msgid "RSS Feed"
+msgstr ""
+
 msgid "Other projects :"
 msgstr "Aliaj projektoj:"
 
@@ -863,14 +866,13 @@ msgstr "Neniu fakturo"
 msgid "Nothing to list yet."
 msgstr "Nenio listigebla ankoraŭ."
 
-msgid "You probably want to"
-msgstr "Vi probable volas"
-
-msgid "add a bill"
+#, fuzzy
+msgid "Add your first bill"
 msgstr "aldoni fakturon"
 
-msgid "add participants"
-msgstr "aldoni partoprenantojn"
+#, fuzzy
+msgid "Add the first participant"
+msgstr "Aldono partoprenanton"
 
 msgid "Password reminder"
 msgstr "Rememorigilo pri pasvorto"
@@ -1095,4 +1097,10 @@ msgstr "Periodo"
 
 #~ msgid "Edit the project"
 #~ msgstr "Redakti la projekton"
+
+#~ msgid "You probably want to"
+#~ msgstr "Vi probable volas"
+
+#~ msgid "add participants"
+#~ msgstr "aldoni partoprenantojn"
 

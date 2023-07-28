@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-14 10:01+0200\n"
+"POT-Creation-Date: 2023-07-28 15:26+0200\n"
 "PO-Revision-Date: 2022-07-12 15:18+0000\n"
 "Last-Translator: Matteo Piotto <piotto@gmail.com>\n"
 "Language: it\n"
@@ -809,6 +809,9 @@ msgstr "Cronologia"
 msgid "Settings"
 msgstr "Impostazioni"
 
+msgid "RSS Feed"
+msgstr ""
+
 msgid "Other projects :"
 msgstr "Altri progetti:"
 
@@ -886,14 +889,13 @@ msgstr "Nessun addebito"
 msgid "Nothing to list yet."
 msgstr "Ancora niente da mostrare."
 
-msgid "You probably want to"
-msgstr "Probabilmente vuoi"
-
-msgid "add a bill"
+#, fuzzy
+msgid "Add your first bill"
 msgstr "aggiungi una spesa"
 
-msgid "add participants"
-msgstr "aggiunti partecipanti"
+#, fuzzy
+msgid "Add the first participant"
+msgstr "Aggiungi partecipante"
 
 msgid "Password reminder"
 msgstr "Promemoria password"
@@ -1145,4 +1147,10 @@ msgstr "Periodo"
 
 #~ msgid "Edit the project"
 #~ msgstr "Modifica il progetto"
+
+#~ msgid "You probably want to"
+#~ msgstr "Probabilmente vuoi"
+
+#~ msgid "add participants"
+#~ msgstr "aggiunti partecipanti"
 

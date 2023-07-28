@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-14 10:01+0200\n"
+"POT-Creation-Date: 2023-07-28 15:26+0200\n"
 "PO-Revision-Date: 2022-07-21 05:15+0000\n"
 "Last-Translator: z.liu <zwliu07@live.com>\n"
 "Language: zh_Hans\n"
@@ -759,6 +759,9 @@ msgstr "历史"
 msgid "Settings"
 msgstr "设置"
 
+msgid "RSS Feed"
+msgstr ""
+
 msgid "Other projects :"
 msgstr "其他项目："
 
@@ -836,13 +839,12 @@ msgstr "没有账单"
 msgid "Nothing to list yet."
 msgstr "没有列表。"
 
-msgid "You probably want to"
-msgstr "你想要"
-
-msgid "add a bill"
+#, fuzzy
+msgid "Add your first bill"
 msgstr "添加账单"
 
-msgid "add participants"
+#, fuzzy
+msgid "Add the first participant"
 msgstr "添加参与人"
 
 msgid "Password reminder"
@@ -1088,4 +1090,10 @@ msgstr "期间"
 
 #~ msgid "Edit the project"
 #~ msgstr "编辑项目"
+
+#~ msgid "You probably want to"
+#~ msgstr "你想要"
+
+#~ msgid "add participants"
+#~ msgstr "添加参与人"
 

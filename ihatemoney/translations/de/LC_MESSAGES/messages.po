@@ -1,18 +1,18 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-14 10:01+0200\n"
+"POT-Creation-Date: 2023-07-28 15:26+0200\n"
 "PO-Revision-Date: 2023-07-16 14:04+0000\n"
 "Last-Translator: Luke <luke@luporr.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/de/>\n"
 "Language: de\n"
+"Language-Team: German <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/de/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.0-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #, python-format
@@ -793,6 +793,9 @@ msgstr "Verlauf"
 msgid "Settings"
 msgstr "Einstellungen"
 
+msgid "RSS Feed"
+msgstr ""
+
 msgid "Other projects :"
 msgstr "Andere Projekte:"
 
@@ -869,14 +872,13 @@ msgstr "Keine Ausgaben"
 msgid "Nothing to list yet."
 msgstr "Noch nichts aufzulisten."
 
-msgid "You probably want to"
-msgstr "Du willst wahrscheinlich"
-
-msgid "add a bill"
+#, fuzzy
+msgid "Add your first bill"
 msgstr "eine Ausgabe hinzufügen"
 
-msgid "add participants"
-msgstr "Teilnehmer hinzufügen"
+#, fuzzy
+msgid "Add the first participant"
+msgstr "Diesen Benutzer bearbeiten"
 
 msgid "Password reminder"
 msgstr "Passwort-Erinnerung"
@@ -1143,3 +1145,10 @@ msgstr "Zeitraum"
 
 #~ msgid "Edit the project"
 #~ msgstr "Projekt bearbeiten"
+
+#~ msgid "You probably want to"
+#~ msgstr "Du willst wahrscheinlich"
+
+#~ msgid "add participants"
+#~ msgstr "Teilnehmer hinzufügen"
+

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-07-14 10:01+0200\n"
+"POT-Creation-Date: 2023-07-28 15:26+0200\n"
 "PO-Revision-Date: 2021-02-17 02:50+0000\n"
 "Last-Translator: Sander Kooijmans <weblate@gogognome.nl>\n"
 "Language: nl\n"
@@ -791,6 +791,9 @@ msgstr "Geschiedenis"
 msgid "Settings"
 msgstr "Instellingen"
 
+msgid "RSS Feed"
+msgstr ""
+
 msgid "Other projects :"
 msgstr "Overige projecten:"
 
@@ -868,14 +871,13 @@ msgstr "Geen rekeningen"
 msgid "Nothing to list yet."
 msgstr "Nog niks."
 
-msgid "You probably want to"
-msgstr "Waarschijnlijk wil je"
-
-msgid "add a bill"
+#, fuzzy
+msgid "Add your first bill"
 msgstr "een rekening toevoegen"
 
-msgid "add participants"
-msgstr "deelnemers toevoegen"
+#, fuzzy
+msgid "Add the first participant"
+msgstr "Deelnemer toevoegen"
 
 msgid "Password reminder"
 msgstr "Wachtwoordhint"
@@ -1119,4 +1121,10 @@ msgstr "Periode"
 
 #~ msgid "Edit the project"
 #~ msgstr "Project bewerken"
+
+#~ msgid "You probably want to"
+#~ msgstr "Waarschijnlijk wil je"
+
+#~ msgid "add participants"
+#~ msgstr "deelnemers toevoegen"
 
