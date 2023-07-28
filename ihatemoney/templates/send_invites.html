@@ -7,20 +7,10 @@
     <tbody>
         <tr>
             <td>
-                <h3>{{ _('Share Identifier & code') }}</h3>
+                <h3>{{ _('Share an invitation link') }}</h3>
             </td>
             <td>
-                {{ _("You can share the project identifier and the private code by any communication means.") }}
-                <br />
-                <strong>{{ _('Identifier:') }}</strong> <a href="{{ url_for("main.list_bills", project_id=g.project.id) }}">{{ g.project.id }}</a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <h3>{{ _('Share the Link') }}</h3>
-            </td>
-            <td>
-                {{ _("You can directly share the following link via your prefered medium") }}</br>
+                {{ _("The easiest way to invite people is to give them the following invitation link.<br />They will be able to access the project, manage participants, add/edit/delete bills. However, they will not have access to important settings such as changing the private code or deleting the whole project.") }}</br>
                 <a href="{{ url_for(".join_project", _external=True, project_id=g.project.id, token=g.project.generate_token()) }}">
                     {{ url_for(".join_project", _external=True, project_id=g.project.id, token=g.project.generate_token()) }}
                 </a>
@@ -41,11 +31,24 @@
             </td>
             <td>
                 <p>{{ _("Specify a (comma separated) list of email adresses you want to notify about the
-                creation of this budget management project and we will send them an email for you.") }}</p>
+                creation of this budget management project and we will send them an email with the invitation link.") }}</p>
                 {% include "display_errors.html" %}
                 <form class="invites form-horizontal" method="post" accept-charset="utf-8">
                     {{ forms.invites(form) }}
                 </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3>{{ _('Share Identifier & code') }}</h3>
+            </td>
+            <td>
+                <p>{{ _("You can share the project identifier and the private code by any communication means.<br />Anyone with the private code will have access to the full project, including changing settings such as the private code or project email address, or even deleting the whole project.") }}</p>
+                <p>
+                    <strong>{{ _('Identifier:') }}</strong> <a href="{{ url_for("main.list_bills", project_id=g.project.id) }}">{{ g.project.id }}</a>
+                    <br />
+                    <strong>{{ _('Private code:') }}</strong> {{ _('the private code was defined when you created the project') }}
+                </p>
             </td>
         </tr>
     </tbody>
