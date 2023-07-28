@@ -100,7 +100,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         # Test that we got a valid token
         resp = self.client.get(url, follow_redirects=True)
         self.assertIn(
-            'You probably want to <a href="/raclette/members/add"',
+            '<a href="/raclette/members/add">Add the first participant',
             resp.data.decode("utf-8"),
         )
         # Test empty and invalid tokens
@@ -376,7 +376,7 @@ class BudgetTestCase(IhatemoneyTestCase):
 
         # Empty bill list and no participant, should now propose to add participants first
         self.assertIn(
-            'You probably want to <a href="/raclette/members/add"',
+            '<a href="/raclette/members/add">Add the first participant',
             result.data.decode("utf-8"),
         )
 
@@ -385,9 +385,8 @@ class BudgetTestCase(IhatemoneyTestCase):
         result = self.client.get("/raclette/")
 
         # Empty bill with member, list should now propose to add bills
-        self.assertIn(
-            'You probably want to <a href="/raclette/add"', result.data.decode("utf-8")
-        )
+        self.assertIn('<a href="/raclette/add"', result.data.decode("utf-8"))
+        self.assertIn("Add your first bill", result.data.decode("utf-8"))
 
     def test_membership(self):
         self.post_project("raclette")

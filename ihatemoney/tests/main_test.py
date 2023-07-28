@@ -239,7 +239,7 @@ class EmailFailureTestCase(IhatemoneyTestCase):
         )
         # Check that we were redirected to the home page anyway
         self.assertIn(
-            'You probably want to <a href="/raclette/members/add"',
+            '<a href="/raclette/members/add">Add the first participant',
             resp.data.decode("utf-8"),
         )
 
@@ -254,7 +254,7 @@ class EmailFailureTestCase(IhatemoneyTestCase):
         )
         # Check that we were redirected to the home page anyway
         self.assertIn(
-            'You probably want to <a href="/raclette/members/add"',
+            '<a href="/raclette/members/add">Add the first participant',
             resp.data.decode("utf-8"),
         )
 
