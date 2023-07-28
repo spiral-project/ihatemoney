@@ -429,7 +429,8 @@ def edit_project():
         db.session.add(project)
         db.session.commit()
 
-        return redirect(url_for("main.list_bills"))
+        flash(_("Project settings have been changed successfully."))
+        return redirect(url_for("main.edit_project"))
     else:
         edit_form.name.data = g.project.name
 
