@@ -94,7 +94,7 @@ class APITestCase(IhatemoneyTestCase):
             },
         )
 
-        self.assertTrue(400, resp.status_code)
+        self.assertEqual(400, resp.status_code)
         self.assertEqual(
             '{"contact_email": ["Invalid email address."]}\n', resp.data.decode("utf-8")
         )
@@ -102,7 +102,7 @@ class APITestCase(IhatemoneyTestCase):
         # create it
         with self.app.mail.record_messages() as outbox:
             resp = self.api_create("raclette")
-            self.assertTrue(201, resp.status_code)
+            self.assertEqual(201, resp.status_code)
 
             # Check that email messages have been sent.
             self.assertEqual(len(outbox), 1)
@@ -111,7 +111,7 @@ class APITestCase(IhatemoneyTestCase):
         # create it twice should return a 400
         resp = self.api_create("raclette")
 
-        self.assertTrue(400, resp.status_code)
+        self.assertEqual(400, resp.status_code)
         self.assertIn("id", json.loads(resp.data.decode("utf-8")))
 
         # get information about it
@@ -119,7 +119,7 @@ class APITestCase(IhatemoneyTestCase):
             "/api/projects/raclette", headers=self.get_auth("raclette")
         )
 
-        self.assertTrue(200, resp.status_code)
+        self.assertEqual(200, resp.status_code)
         expected = {
             "members": [],
             "name": "raclette",
@@ -197,7 +197,7 @@ class APITestCase(IhatemoneyTestCase):
 
         # Create project
         resp = self.api_create("raclette")
-        self.assertTrue(201, resp.status_code)
+        self.assertEqual(201, resp.status_code)
 
         # Get token
         resp = self.client.get(
@@ -577,19 +577,19 @@ class APITestCase(IhatemoneyTestCase):
     def test_currencies(self):
         # check /currencies for list of supported currencies
         resp = self.client.get("/api/currencies")
-        self.assertTrue(201, resp.status_code)
+        self.assertEqual(200, resp.status_code)
         self.assertIn("XXX", json.loads(resp.data.decode("utf-8")))
 
         # create project with a default currency
         resp = self.api_create("raclette", default_currency="EUR")
-        self.assertTrue(201, resp.status_code)
+        self.assertEqual(201, resp.status_code)
 
         # get information about it
         resp = self.client.get(
             "/api/projects/raclette", headers=self.get_auth("raclette")
         )
 
-        self.assertTrue(200, resp.status_code)
+        self.assertEqual(200, resp.status_code)
         expected = {
             "members": [],
             "name": "raclette",
