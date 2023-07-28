@@ -181,6 +181,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             data={
                 "name": "raclette",
                 "contact_email": "zorglub@notmyidea.org",
+                "current_password": "raclette",
                 "password": "didoudida",
                 "default_currency": "XXX",
             },
@@ -922,10 +923,30 @@ class BudgetTestCase(IhatemoneyTestCase):
             "default_currency": "USD",
         }
 
-        resp = self.client.post("/raclette/edit", data=new_data, follow_redirects=True)
-        self.assertEqual(resp.status_code, 200)
+        # It should fail if we don't provide the current password
+        resp = self.client.post("/raclette/edit", data=new_data, follow_redirects=False)
+        self.assertIn("This field is required", resp.data.decode("utf-8"))
         project = self.get_project("raclette")
+        self.assertNotEqual(project.name, new_data["name"])
+        self.assertNotEqual(project.contact_email, new_data["contact_email"])
+        self.assertNotEqual(project.default_currency, new_data["default_currency"])
+        self.assertFalse(check_password_hash(project.password, new_data["password"]))
 
+        # It should fail if we provide the wrong current password
+        new_data["current_password"] = "patates au fromage"
+        resp = self.client.post("/raclette/edit", data=new_data, follow_redirects=False)
+        self.assertIn("Invalid private code", resp.data.decode("utf-8"))
+        project = self.get_project("raclette")
+        self.assertNotEqual(project.name, new_data["name"])
+        self.assertNotEqual(project.contact_email, new_data["contact_email"])
+        self.assertNotEqual(project.default_currency, new_data["default_currency"])
+        self.assertFalse(check_password_hash(project.password, new_data["password"]))
+
+        # It should work if we give the current private code
+        new_data["current_password"] = "raclette"
+        resp = self.client.post("/raclette/edit", data=new_data)
+        self.assertEqual(resp.status_code, 302)
+        project = self.get_project("raclette")
         self.assertEqual(project.name, new_data["name"])
         self.assertEqual(project.contact_email, new_data["contact_email"])
         self.assertEqual(project.default_currency, new_data["default_currency"])
@@ -934,7 +955,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         # Editing a project with a wrong email address should fail
         new_data["contact_email"] = "wrong_email"
 
-        resp = self.client.post("/raclette/edit", data=new_data, follow_redirects=True)
+        resp = self.client.post("/raclette/edit", data=new_data)
         self.assertIn("Invalid email address", resp.data.decode("utf-8"))
 
     def test_dashboard(self):
@@ -2039,6 +2060,7 @@ class BudgetTestCase(IhatemoneyTestCase):
             data={
                 "name": "raclette",
                 "contact_email": "zorglub@notmyidea.org",
+                "current_password": "raclette",
                 "password": "didoudida",
                 "default_currency": "XXX",
             },
