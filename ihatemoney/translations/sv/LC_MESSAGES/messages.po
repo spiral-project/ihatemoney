@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-14 10:01+0200\n"
+"POT-Creation-Date: 2023-07-28 15:26+0200\n"
 "PO-Revision-Date: 2023-02-07 21:51+0000\n"
 "Last-Translator: Kristoffer Grundström "
 "<swedishsailfishosuser@tutanota.com>\n"
@@ -780,6 +780,9 @@ msgstr "Historik"
 msgid "Settings"
 msgstr "Inställningar"
 
+msgid "RSS Feed"
+msgstr ""
+
 msgid "Other projects :"
 msgstr "Andra projekt :"
 
@@ -856,14 +859,13 @@ msgstr "Inga räkningar"
 msgid "Nothing to list yet."
 msgstr "Ingenting att lista än."
 
-msgid "You probably want to"
-msgstr "Du kanske vill"
-
-msgid "add a bill"
+#, fuzzy
+msgid "Add your first bill"
 msgstr "lägg till en räkning"
 
-msgid "add participants"
-msgstr "lägg till deltagare"
+#, fuzzy
+msgid "Add the first participant"
+msgstr "Redigera den här deltagaren"
 
 msgid "Password reminder"
 msgstr "Lösenordspåminnare"
@@ -1081,4 +1083,10 @@ msgstr "Period"
 
 #~ msgid "Edit the project"
 #~ msgstr "Redigera projektet"
+
+#~ msgid "You probably want to"
+#~ msgstr "Du kanske vill"
+
+#~ msgid "add participants"
+#~ msgstr "lägg till deltagare"
 

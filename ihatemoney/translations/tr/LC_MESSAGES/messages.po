@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-14 10:01+0200\n"
+"POT-Creation-Date: 2023-07-28 15:26+0200\n"
 "PO-Revision-Date: 2022-11-07 10:07+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language: tr\n"
@@ -788,6 +788,9 @@ msgstr "Geçmiş"
 msgid "Settings"
 msgstr "Ayarlar"
 
+msgid "RSS Feed"
+msgstr ""
+
 msgid "Other projects :"
 msgstr "Diğer projeler:"
 
@@ -864,14 +867,13 @@ msgstr "Fatura yok"
 msgid "Nothing to list yet."
 msgstr "Henüz listelenecek bir şey yok."
 
-msgid "You probably want to"
-msgstr "Muhtemelen istediğiniz"
-
-msgid "add a bill"
+#, fuzzy
+msgid "Add your first bill"
 msgstr "bir fatura ekle"
 
-msgid "add participants"
-msgstr "katılımcılar ekle"
+#, fuzzy
+msgid "Add the first participant"
+msgstr "Bu katılımcıyı düzenle"
 
 msgid "Password reminder"
 msgstr "Parola hatırlatıcı"
@@ -1132,4 +1134,10 @@ msgstr "Dönem"
 
 #~ msgid "Edit the project"
 #~ msgstr "Projeyi düzenle"
+
+#~ msgid "You probably want to"
+#~ msgstr "Muhtemelen istediğiniz"
+
+#~ msgid "add participants"
+#~ msgstr "katılımcılar ekle"
 

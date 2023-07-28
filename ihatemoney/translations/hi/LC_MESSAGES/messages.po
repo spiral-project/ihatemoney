@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-14 10:01+0200\n"
+"POT-Creation-Date: 2023-07-28 15:26+0200\n"
 "PO-Revision-Date: 2020-06-14 14:41+0000\n"
 "Last-Translator: raghupalash <singhpalash0@gmail.com>\n"
 "Language: hi\n"
@@ -794,6 +794,9 @@ msgstr "इतिहास"
 msgid "Settings"
 msgstr "सेटिंग्स"
 
+msgid "RSS Feed"
+msgstr ""
+
 msgid "Other projects :"
 msgstr "अन्य परियोजनाएँ :"
 
@@ -871,14 +874,13 @@ msgstr "कोई बिल नहीं"
 msgid "Nothing to list yet."
 msgstr "सूचि बनाने के लिए कुछ नहीं।"
 
-msgid "You probably want to"
-msgstr "आप शायद यह करना चाहते हैं"
-
-msgid "add a bill"
+#, fuzzy
+msgid "Add your first bill"
 msgstr "बिल जोड़ें"
 
-msgid "add participants"
-msgstr "प्रतिभागियों को जोड़ें"
+#, fuzzy
+msgid "Add the first participant"
+msgstr "प्रतिभागी जोड़ें"
 
 msgid "Password reminder"
 msgstr "पासवर्ड अनुस्मारक"
@@ -1109,4 +1111,10 @@ msgstr "अवधि"
 
 #~ msgid "Edit the project"
 #~ msgstr "प्रोजेक्ट संपादित करें"
+
+#~ msgid "You probably want to"
+#~ msgstr "आप शायद यह करना चाहते हैं"
+
+#~ msgid "add participants"
+#~ msgstr "प्रतिभागियों को जोड़ें"
 

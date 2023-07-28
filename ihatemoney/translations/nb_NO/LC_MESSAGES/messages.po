@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-14 10:01+0200\n"
+"POT-Creation-Date: 2023-07-28 15:26+0200\n"
 "PO-Revision-Date: 2022-02-13 16:54+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language: nb_NO\n"
@@ -819,6 +819,9 @@ msgstr "Historikk"
 msgid "Settings"
 msgstr "Innstillinger"
 
+msgid "RSS Feed"
+msgstr ""
+
 #, fuzzy
 msgid "Other projects :"
 msgstr "Andre prosjekter:"
@@ -899,14 +902,13 @@ msgstr "Ingen regninger"
 msgid "Nothing to list yet."
 msgstr "Ingenting å liste opp enda."
 
-msgid "You probably want to"
-msgstr "Du ønsker antagelig å"
-
-msgid "add a bill"
+#, fuzzy
+msgid "Add your first bill"
 msgstr "legge til en regning"
 
-msgid "add participants"
-msgstr "legge til deltagere"
+#, fuzzy
+msgid "Add the first participant"
+msgstr "Legg til deltager"
 
 msgid "Password reminder"
 msgstr "Passordpåminner"
@@ -1296,4 +1298,10 @@ msgstr "Periode"
 
 #~ msgid "Edit the project"
 #~ msgstr "Rediger prosjektet"
+
+#~ msgid "You probably want to"
+#~ msgstr "Du ønsker antagelig å"
+
+#~ msgid "add participants"
+#~ msgstr "legge til deltagere"
 

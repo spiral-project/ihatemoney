@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-14 10:01+0200\n"
+"POT-Creation-Date: 2023-07-28 15:26+0200\n"
 "PO-Revision-Date: 2021-10-17 04:56+0000\n"
 "Last-Translator: a-g-rao <athrigrao@gmail.com>\n"
 "Language: kn\n"
@@ -752,6 +752,9 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
+msgid "RSS Feed"
+msgstr ""
+
 msgid "Other projects :"
 msgstr ""
 
@@ -828,13 +831,10 @@ msgstr ""
 msgid "Nothing to list yet."
 msgstr ""
 
-msgid "You probably want to"
+msgid "Add your first bill"
 msgstr ""
 
-msgid "add a bill"
-msgstr ""
-
-msgid "add participants"
+msgid "Add the first participant"
 msgstr ""
 
 msgid "Password reminder"
@@ -1025,5 +1025,14 @@ msgstr ""
 #~ msgstr "ತೋರಿಸಿ"
 
 #~ msgid "Edit the project"
+#~ msgstr ""
+
+#~ msgid "You probably want to"
+#~ msgstr ""
+
+#~ msgid "add a bill"
+#~ msgstr ""
+
+#~ msgid "add participants"
 #~ msgstr ""
 

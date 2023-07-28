@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-14 10:01+0200\n"
+"POT-Creation-Date: 2023-07-28 15:26+0200\n"
 "PO-Revision-Date: 2020-11-11 16:28+0000\n"
 "Last-Translator: Jwen921 <yangjingwen0921@gmail.com>\n"
 "Language: ja\n"
@@ -767,6 +767,9 @@ msgstr "歴史"
 msgid "Settings"
 msgstr "設定"
 
+msgid "RSS Feed"
+msgstr ""
+
 msgid "Other projects :"
 msgstr "他のプロジェクト："
 
@@ -844,13 +847,12 @@ msgstr "明細なし"
 msgid "Nothing to list yet."
 msgstr "表示できるものはありません。"
 
-msgid "You probably want to"
-msgstr "…したいかもしれない"
-
-msgid "add a bill"
+#, fuzzy
+msgid "Add your first bill"
 msgstr "明細を追加する"
 
-msgid "add participants"
+#, fuzzy
+msgid "Add the first participant"
 msgstr "参加者を追加する"
 
 msgid "Password reminder"
@@ -1066,4 +1068,10 @@ msgstr "期間"
 
 #~ msgid "Edit the project"
 #~ msgstr "プロジェクトを編集する"
+
+#~ msgid "You probably want to"
+#~ msgstr "…したいかもしれない"
+
+#~ msgid "add participants"
+#~ msgstr "参加者を追加する"
 

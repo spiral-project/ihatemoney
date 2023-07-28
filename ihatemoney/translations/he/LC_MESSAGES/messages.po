@@ -1,19 +1,19 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-14 10:01+0200\n"
+"POT-Creation-Date: 2023-07-28 15:26+0200\n"
 "PO-Revision-Date: 2023-07-24 07:07+0000\n"
 "Last-Translator: Nati Lintzer <nlintzer@gmail.com>\n"
-"Language-Team: Hebrew <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/he/>\n"
 "Language: he\n"
+"Language-Team: Hebrew <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/he/>\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 "
+"&& n % 10 == 0) ? 2 : 3))\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
-"n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 5.0-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #, python-format
@@ -189,8 +189,8 @@ msgid ""
 "Please check the email configuration of the server or contact the "
 "administrator: %(admin_email)s"
 msgstr ""
-"מצטערים, אך אירעה שגיאה בעת ששלחנו לכם את המייל עם הוראות איפוס הסיסמה. אנא "
-"בדקו את הגדרות המייל בשרת או פנו למנהל השרת:%(admin_email)s"
+"מצטערים, אך אירעה שגיאה בעת ששלחנו לכם את המייל עם הוראות איפוס הסיסמה. "
+"אנא בדקו את הגדרות המייל בשרת או פנו למנהל השרת:%(admin_email)s"
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
@@ -753,6 +753,9 @@ msgstr "הסטוריה"
 msgid "Settings"
 msgstr "הגדרות"
 
+msgid "RSS Feed"
+msgstr ""
+
 msgid "Other projects :"
 msgstr "פרויקטים אחרים:"
 
@@ -829,14 +832,12 @@ msgstr "אין הוצאות"
 msgid "Nothing to list yet."
 msgstr ""
 
-msgid "You probably want to"
-msgstr "אתה כנראה רוצה"
-
-msgid "add a bill"
+msgid "Add your first bill"
 msgstr ""
 
-msgid "add participants"
-msgstr "הוסף משתמשים"
+#, fuzzy
+msgid "Add the first participant"
+msgstr "ערוך את המשתתף"
 
 msgid "Password reminder"
 msgstr "תזכורת סיסמה"
@@ -980,3 +981,13 @@ msgstr "תקופה"
 
 #~ msgid "Edit the project"
 #~ msgstr ""
+
+#~ msgid "You probably want to"
+#~ msgstr "אתה כנראה רוצה"
+
+#~ msgid "add a bill"
+#~ msgstr ""
+
+#~ msgid "add participants"
+#~ msgstr "הוסף משתמשים"
+
