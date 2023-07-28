@@ -131,7 +131,7 @@ class APITestCase(IhatemoneyTestCase):
         decoded_resp = json.loads(resp.data.decode("utf-8"))
         self.assertDictEqual(decoded_resp, expected)
 
-        # edit should work
+        # edit should fail if we don't provide the current private code
         resp = self.client.put(
             "/api/projects/raclette",
             data={
@@ -143,7 +143,36 @@ class APITestCase(IhatemoneyTestCase):
             },
             headers=self.get_auth("raclette"),
         )
+        self.assertEqual(400, resp.status_code)
 
+        # edit should fail if we provide the wrong private code
+        resp = self.client.put(
+            "/api/projects/raclette",
+            data={
+                "contact_email": "yeah@notmyidea.org",
+                "default_currency": "XXX",
+                "current_password": "fromage aux patates",
+                "password": "raclette",
+                "name": "The raclette party",
+                "project_history": "y",
+            },
+            headers=self.get_auth("raclette"),
+        )
+        self.assertEqual(400, resp.status_code)
+
+        # edit with the correct private code should work
+        resp = self.client.put(
+            "/api/projects/raclette",
+            data={
+                "contact_email": "yeah@notmyidea.org",
+                "default_currency": "XXX",
+                "current_password": "raclette",
+                "password": "raclette",
+                "name": "The raclette party",
+                "project_history": "y",
+            },
+            headers=self.get_auth("raclette"),
+        )
         self.assertEqual(200, resp.status_code)
 
         resp = self.client.get(
@@ -168,6 +197,7 @@ class APITestCase(IhatemoneyTestCase):
             data={
                 "contact_email": "yeah@notmyidea.org",
                 "default_currency": "XXX",
+                "current_password": "raclette",
                 "password": "tartiflette",
                 "name": "The raclette party",
             },
@@ -213,8 +243,22 @@ class APITestCase(IhatemoneyTestCase):
             "/api/projects/raclette/token",
             headers={"Authorization": f"Basic {decoded_resp['token']}"},
         )
-
         self.assertEqual(200, resp.status_code)
+
+        # We shouldn't be able to edit project without private code
+        resp = self.client.put(
+            "/api/projects/raclette",
+            data={
+                "contact_email": "yeah@notmyidea.org",
+                "default_currency": "XXX",
+                "password": "tartiflette",
+                "name": "The raclette party",
+            },
+            headers={"Authorization": f"Basic {decoded_resp['token']}"},
+        )
+        self.assertEqual(400, resp.status_code)
+        expected_resp = {"current_password": ["This field is required."]}
+        self.assertEqual(expected_resp, json.loads(resp.data.decode("utf-8")))
 
     def test_token_login(self):
         resp = self.api_create("raclette")
@@ -719,6 +763,7 @@ class APITestCase(IhatemoneyTestCase):
             data={
                 "contact_email": "yeah@notmyidea.org",
                 "default_currency": "XXX",
+                "current_password": "raclette",
                 "password": "raclette",
                 "name": "The raclette party",
             },

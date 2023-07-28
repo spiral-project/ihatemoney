@@ -19,11 +19,12 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 1)
         self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
 
-    def change_privacy_to(self, logging_preference):
+    def change_privacy_to(self, current_password, logging_preference):
         # Change only logging_preferences
         new_data = {
             "name": "demo",
             "contact_email": "demo@notmyidea.org",
+            "current_password": current_password,
             "password": "demo",
             "default_currency": "XXX",
         }
@@ -76,6 +77,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         new_data = {
             "name": "demo2",
             "contact_email": "demo2@notmyidea.org",
+            "current_password": "demo",
             "password": "123456",
             "project_history": "y",
             "default_currency": "USD",  # Currency changed from default
@@ -114,7 +116,7 @@ class HistoryTestCase(IhatemoneyTestCase):
             resp.data.decode("utf-8"),
         )
 
-        self.change_privacy_to(LoggingMode.DISABLED)
+        self.change_privacy_to("demo", LoggingMode.DISABLED)
 
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
@@ -122,7 +124,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 2)
         self.assertNotIn("127.0.0.1", resp.data.decode("utf-8"))
 
-        self.change_privacy_to(LoggingMode.RECORD_IP)
+        self.change_privacy_to("demo", LoggingMode.RECORD_IP)
 
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
@@ -132,7 +134,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 2)
         self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 1)
 
-        self.change_privacy_to(LoggingMode.ENABLED)
+        self.change_privacy_to("demo", LoggingMode.ENABLED)
 
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
@@ -141,7 +143,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 2)
 
     def test_project_privacy_edit2(self):
-        self.change_privacy_to(LoggingMode.RECORD_IP)
+        self.change_privacy_to("demo", LoggingMode.RECORD_IP)
 
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
@@ -149,7 +151,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 1)
         self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 1)
 
-        self.change_privacy_to(LoggingMode.DISABLED)
+        self.change_privacy_to("demo", LoggingMode.DISABLED)
 
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
@@ -159,7 +161,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         self.assertEqual(resp.data.decode("utf-8").count("<td> -- </td>"), 1)
         self.assertEqual(resp.data.decode("utf-8").count("127.0.0.1"), 2)
 
-        self.change_privacy_to(LoggingMode.ENABLED)
+        self.change_privacy_to("demo", LoggingMode.ENABLED)
 
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)
@@ -171,6 +173,7 @@ class HistoryTestCase(IhatemoneyTestCase):
         new_data = {
             "name": "demo2",
             "contact_email": "demo2@notmyidea.org",
+            "current_password": "demo",
             "password": "123456",
             "default_currency": "USD",
         }
@@ -233,7 +236,7 @@ class HistoryTestCase(IhatemoneyTestCase):
 
     def test_disable_clear_no_new_records(self):
         # Disable logging
-        self.change_privacy_to(LoggingMode.DISABLED)
+        self.change_privacy_to("demo", LoggingMode.DISABLED)
 
         # Ensure we can't clear history with a GET or with a password-less POST
         resp = self.client.get("/demo/erase_history")
@@ -276,13 +279,13 @@ class HistoryTestCase(IhatemoneyTestCase):
 
     def test_clear_ip_records(self):
         # Enable IP Recording
-        self.change_privacy_to(LoggingMode.RECORD_IP)
+        self.change_privacy_to("demo", LoggingMode.RECORD_IP)
 
         # Do lots of database operations to generate IP address entries
         self.do_misc_database_operations(LoggingMode.RECORD_IP)
 
         # Disable IP Recording
-        self.change_privacy_to(LoggingMode.ENABLED)
+        self.change_privacy_to("123456", LoggingMode.ENABLED)
 
         resp = self.client.get("/demo/history")
         self.assertEqual(resp.status_code, 200)

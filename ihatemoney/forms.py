@@ -121,6 +121,11 @@ class CalculatorStringField(StringField):
 
 class EditProjectForm(FlaskForm):
     name = StringField(_("Project name"), validators=[DataRequired()])
+    current_password = PasswordField(
+        _("Current private code"),
+        description=_("Enter existing private code to edit project"),
+        validators=[DataRequired()],
+    )
     # If empty -> don't change the password
     password = PasswordField(
         _("New private code"),
@@ -153,6 +158,13 @@ class EditProjectForm(FlaskForm):
             (currency_name, render_localized_currency(currency_name, detailed=True))
             for currency_name in self.currency_helper.get_currencies()
         ]
+
+    def validate_current_password(self, field):
+        project = Project.query.get(self.id.data)
+        if project is None:
+            raise ValidationError(_("Unknown error"))
+        if not check_password_hash(project.password, self.current_password.data):
+            raise ValidationError(_("Invalid private code."))
 
     @property
     def logging_preference(self):
@@ -212,7 +224,9 @@ class ImportProjectForm(FlaskForm):
 
 class ProjectForm(EditProjectForm):
     id = StringField(_("Project identifier"), validators=[DataRequired()])
-    # This field overrides the one from EditProjectForm
+    # Remove this field that is inherited from EditProjectForm
+    current_password = None
+    # This field overrides the one from EditProjectForm (to make it mandatory)
     password = PasswordField(_("Private code"), validators=[DataRequired()])
     submit = SubmitField(_("Create the project"))
 
