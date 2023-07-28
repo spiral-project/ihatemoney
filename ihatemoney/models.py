@@ -479,8 +479,8 @@ class Project(db.Model):
         :param token_type: Either "auth" for authentication (invalidated when project code changed),
                         or "reset" for password reset (invalidated after expiration),
                         or "feed" for project feeds (invalidated when project code changed)
-        :param project_id: Project ID. Used for token_type "auth" to use the password as serializer
-                        secret key.
+        :param project_id: Project ID. Used for token_type "auth" and "feed" to use the password
+                        as serializer secret key.
         :param max_age: Token expiration time (in seconds). Only used with token_type "reset"
         """
         loads_kwargs = {}
