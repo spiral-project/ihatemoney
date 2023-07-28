@@ -167,7 +167,7 @@ class BudgetTestCase(IhatemoneyTestCase):
         self.login("raclette")
         self.post_project("raclette")
         response = self.client.get("/raclette/invite").data.decode("utf-8")
-        link = extract_link(response, "share the following link")
+        link = extract_link(response, "give them the following invitation link")
 
         self.client.post("/exit")
         response = self.client.get(link)
