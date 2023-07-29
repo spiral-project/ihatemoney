@@ -26,20 +26,25 @@ A project has four main parameters when it comes to security:
 Somebody with the **private code** can:
 
 -   access the project through the web interface or the API
+-   add, modify or remove participants
 -   add, modify or remove bills
+-   view statistics of the project
 -   view project history
 -   change basic settings of the project
 -   change the email address associated to the project
 -   change the private code of the project
+-   delete the project
 
-Somebody with the **auth token** can manipulate the project through the API to do
-essentially the same thing:
+Somebody with the **auth token** can manipulate the project through the API:
 
 -   access the project
+-   add, modify or remove participants
 -   add, modify or remove bills
--   change basic settings of the project
--   change the email address associated to the project
--   change the private code of the project
+-   view statistics of the project
+-   delete the project
+
+The auth token is not enough to change basic settings of the project,
+or to change the email address or the private code.
 
 The auth token can also be used to build "invitation links". These links
 allow to login on the web interface without knowing the private code,
@@ -61,9 +66,12 @@ The second method is interesting because it does not reveal the private
 code. In particular, somebody that is logged-in through the invitation
 link will not be able to change the private code, because the web
 interface requires a confirmation of the existing private code to change
-it. However, a motivated person could extract the auth token from the
+it. Similarly, changing other important settings or deleting the project
+from the web interface requires knowledge of the private code.
+
+However, a motivated person could extract the auth token from the
 invitation link, use it to access the project through the API, and
-change the private code through the API.
+delete the project through the API.  This is a [known issue](https://github.com/spiral-project/ihatemoney/issues/1206).
 
 ## Removing access to a project
 
@@ -103,6 +111,6 @@ Note, however, that the history feature is primarily meant to protect
 against mistakes: a malicious member can easily remove all entries from
 the history!
 
-The best defense against this kind of issues is\... backups! All data
+The best defense against this kind of issues is... backups! All data
 for a project can be exported through the settings page or through the
-API.
+API. The server administrator can also backup the database.
