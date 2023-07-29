@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-28 15:26+0200\n"
+"POT-Creation-Date: 2023-07-29 14:06+0200\n"
 "PO-Revision-Date: 2023-02-07 21:51+0000\n"
 "Last-Translator: Kristoffer Grundström "
 "<swedishsailfishosuser@tutanota.com>\n"
@@ -30,6 +30,13 @@ msgstr ""
 msgid "Project name"
 msgstr "Namn på projektet"
 
+#, fuzzy
+msgid "Current private code"
+msgstr "Ny privat kod"
+
+msgid "Enter existing private code to edit project"
+msgstr ""
+
 msgid "New private code"
 msgstr "Ny privat kod"
 
@@ -50,6 +57,12 @@ msgstr "Standardvaluta"
 
 msgid "Setting a default currency enables currency conversion between bills"
 msgstr ""
+
+msgid "Unknown error"
+msgstr "Okänt fel"
+
+msgid "Invalid private code."
+msgstr "Ogiltig privat kod."
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
@@ -89,12 +102,6 @@ msgstr "Snälla, bekräfta captcha för att fortsätta."
 
 msgid "Enter private code to confirm deletion"
 msgstr "Ange privat kod för att bekräfta borttagning"
-
-msgid "Unknown error"
-msgstr "Okänt fel"
-
-msgid "Invalid private code."
-msgstr "Ogiltig privat kod."
 
 msgid "Get in"
 msgstr ""
@@ -270,6 +277,9 @@ msgstr "Okänt projekt"
 
 msgid "Password successfully reset."
 msgstr "Återställningen av lösenordet lyckades."
+
+msgid "Project settings have been changed successfully."
+msgstr ""
 
 msgid "Unable to parse CSV"
 msgstr ""
@@ -889,24 +899,15 @@ msgstr "Återställ ditt lösenord"
 msgid "Invite people to join this project"
 msgstr "Bjud in personer att ansluta till det här projektet"
 
-msgid "Share Identifier & code"
-msgstr "Dela ut identifierare & kod"
+msgid "Share an invitation link"
+msgstr ""
 
 msgid ""
-"You can share the project identifier and the private code by any "
-"communication means."
+"The easiest way to invite people is to give them the following invitation"
+" link.<br />They will be able to access the project, manage participants,"
+" add/edit/delete bills. However, they will not have access to important "
+"settings such as changing the private code or deleting the whole project."
 msgstr ""
-"Du kan dela projektets identifierare och den privata koden så som det "
-"passar dig."
-
-msgid "Identifier:"
-msgstr "Identifierare:"
-
-msgid "Share the Link"
-msgstr "Dela ut länken"
-
-msgid "You can directly share the following link via your prefered medium"
-msgstr "Du kan direkt dela ut följande länk via föredraget media"
 
 msgid "Scan QR code"
 msgstr ""
@@ -917,16 +918,37 @@ msgstr ""
 msgid "Send via Emails"
 msgstr "Skicka via e-post"
 
+#, fuzzy
 msgid ""
 "Specify a (comma separated) list of email adresses you want to notify "
 "about the\n"
 "                creation of this budget management project and we will "
-"send them an email for you."
+"send them an email with the invitation link."
 msgstr ""
 "Ange en (delat med ett kommatecken)  lista över e-postadresser som du "
 "vill underrätta om\n"
 "                skapandet av det här budgethanteringsprojektet gör att de"
 " kommer att få ett e-postmeddelande om det."
+
+msgid "Share Identifier & code"
+msgstr "Dela ut identifierare & kod"
+
+msgid ""
+"You can share the project identifier and the private code by any "
+"communication means.<br />Anyone with the private code will have access "
+"to the full project, including changing settings such as the private code"
+" or project email address, or even deleting the whole project."
+msgstr ""
+
+msgid "Identifier:"
+msgstr "Identifierare:"
+
+#, fuzzy
+msgid "Private code:"
+msgstr "Privat kod"
+
+msgid "the private code was defined when you created the project"
+msgstr ""
 
 msgid "Who pays?"
 msgstr "Vem betalar?"
@@ -1089,4 +1111,19 @@ msgstr "Period"
 
 #~ msgid "add participants"
 #~ msgstr "lägg till deltagare"
+
+#~ msgid ""
+#~ "You can share the project identifier "
+#~ "and the private code by any "
+#~ "communication means."
+#~ msgstr ""
+#~ "Du kan dela projektets identifierare och"
+#~ " den privata koden så som det "
+#~ "passar dig."
+
+#~ msgid "Share the Link"
+#~ msgstr "Dela ut länken"
+
+#~ msgid "You can directly share the following link via your prefered medium"
+#~ msgstr "Du kan direkt dela ut följande länk via föredraget media"
 

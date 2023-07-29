@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-28 15:26+0200\n"
+"POT-Creation-Date: 2023-07-29 14:06+0200\n"
 "PO-Revision-Date: 2021-08-01 08:34+0000\n"
 "Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
 "Language: el\n"
@@ -28,6 +28,13 @@ msgid "Project name"
 msgstr "Τίτλος εργασίας"
 
 #, fuzzy
+msgid "Current private code"
+msgstr "Ιδιωτικός κωδικός"
+
+msgid "Enter existing private code to edit project"
+msgstr ""
+
+#, fuzzy
 msgid "New private code"
 msgstr "Ιδιωτικός κωδικός"
 
@@ -48,6 +55,14 @@ msgstr "Προεπιλεγμένο Νόμισμα"
 
 msgid "Setting a default currency enables currency conversion between bills"
 msgstr ""
+
+#, fuzzy
+msgid "Unknown error"
+msgstr "Άγνωστο πρότζεκτ"
+
+#, fuzzy
+msgid "Invalid private code."
+msgstr "Ιδιωτικός κωδικός"
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
@@ -88,14 +103,6 @@ msgstr ""
 
 msgid "Enter private code to confirm deletion"
 msgstr "Εισαγάγετε ιδιωτικό κωδικό για επιβεβαίωση της διαγραφής"
-
-#, fuzzy
-msgid "Unknown error"
-msgstr "Άγνωστο πρότζεκτ"
-
-#, fuzzy
-msgid "Invalid private code."
-msgstr "Ιδιωτικός κωδικός"
 
 msgid "Get in"
 msgstr "Συνδεθείτε"
@@ -268,6 +275,9 @@ msgstr "Άγνωστο πρότζεκτ"
 
 msgid "Password successfully reset."
 msgstr "Επαναφορά του κωδικού επιτυχώς."
+
+msgid "Project settings have been changed successfully."
+msgstr ""
 
 msgid "Unable to parse CSV"
 msgstr ""
@@ -883,21 +893,14 @@ msgstr ""
 msgid "Invite people to join this project"
 msgstr ""
 
-msgid "Share Identifier & code"
+msgid "Share an invitation link"
 msgstr ""
 
 msgid ""
-"You can share the project identifier and the private code by any "
-"communication means."
-msgstr ""
-
-msgid "Identifier:"
-msgstr ""
-
-msgid "Share the Link"
-msgstr ""
-
-msgid "You can directly share the following link via your prefered medium"
+"The easiest way to invite people is to give them the following invitation"
+" link.<br />They will be able to access the project, manage participants,"
+" add/edit/delete bills. However, they will not have access to important "
+"settings such as changing the private code or deleting the whole project."
 msgstr ""
 
 msgid "Scan QR code"
@@ -913,7 +916,27 @@ msgid ""
 "Specify a (comma separated) list of email adresses you want to notify "
 "about the\n"
 "                creation of this budget management project and we will "
-"send them an email for you."
+"send them an email with the invitation link."
+msgstr ""
+
+msgid "Share Identifier & code"
+msgstr ""
+
+msgid ""
+"You can share the project identifier and the private code by any "
+"communication means.<br />Anyone with the private code will have access "
+"to the full project, including changing settings such as the private code"
+" or project email address, or even deleting the whole project."
+msgstr ""
+
+msgid "Identifier:"
+msgstr ""
+
+#, fuzzy
+msgid "Private code:"
+msgstr "Ιδιωτικός κωδικός"
+
+msgid "the private code was defined when you created the project"
 msgstr ""
 
 msgid "Who pays?"
@@ -1105,5 +1128,26 @@ msgstr "Περίοδος"
 #~ msgstr ""
 
 #~ msgid "add participants"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can share the project identifier "
+#~ "and the private code by any "
+#~ "communication means."
+#~ msgstr ""
+
+#~ msgid "Share the Link"
+#~ msgstr ""
+
+#~ msgid "You can directly share the following link via your prefered medium"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Specify a (comma separated) list of "
+#~ "email adresses you want to notify "
+#~ "about the\n"
+#~ "                creation of this budget "
+#~ "management project and we will send "
+#~ "them an email for you."
 #~ msgstr ""
 

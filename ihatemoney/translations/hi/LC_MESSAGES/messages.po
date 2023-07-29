@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-28 15:26+0200\n"
+"POT-Creation-Date: 2023-07-29 14:06+0200\n"
 "PO-Revision-Date: 2020-06-14 14:41+0000\n"
 "Last-Translator: raghupalash <singhpalash0@gmail.com>\n"
 "Language: hi\n"
@@ -30,6 +30,13 @@ msgid "Project name"
 msgstr "परियोजना का नाम"
 
 #, fuzzy
+msgid "Current private code"
+msgstr "निजी कोड"
+
+msgid "Enter existing private code to edit project"
+msgstr ""
+
+#, fuzzy
 msgid "New private code"
 msgstr "निजी कोड"
 
@@ -50,6 +57,14 @@ msgstr "डिफ़ॉल्ट मुद्रा"
 
 msgid "Setting a default currency enables currency conversion between bills"
 msgstr ""
+
+#, fuzzy
+msgid "Unknown error"
+msgstr "अज्ञात परियोजना"
+
+#, fuzzy
+msgid "Invalid private code."
+msgstr "निजी कोड"
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
@@ -88,14 +103,6 @@ msgstr ""
 
 msgid "Enter private code to confirm deletion"
 msgstr ""
-
-#, fuzzy
-msgid "Unknown error"
-msgstr "अज्ञात परियोजना"
-
-#, fuzzy
-msgid "Invalid private code."
-msgstr "निजी कोड"
 
 msgid "Get in"
 msgstr "अंदर जाइये"
@@ -270,6 +277,9 @@ msgstr "अज्ञात परियोजना"
 
 msgid "Password successfully reset."
 msgstr "पासवर्ड सफलतापूर्वक रीसेट हो गया है।"
+
+msgid "Project settings have been changed successfully."
+msgstr ""
 
 msgid "Unable to parse CSV"
 msgstr ""
@@ -904,24 +914,15 @@ msgstr "अपना पासवर्ड रीसेट करें"
 msgid "Invite people to join this project"
 msgstr "इस परियोजना से जुड़ने के लिए लोगों को आमंत्रित करें"
 
-msgid "Share Identifier & code"
-msgstr "पहचानकर्ता और कोड साझा करें"
+msgid "Share an invitation link"
+msgstr ""
 
 msgid ""
-"You can share the project identifier and the private code by any "
-"communication means."
+"The easiest way to invite people is to give them the following invitation"
+" link.<br />They will be able to access the project, manage participants,"
+" add/edit/delete bills. However, they will not have access to important "
+"settings such as changing the private code or deleting the whole project."
 msgstr ""
-"आप किसी भी संचार माध्यम से परियोजना पहचानकर्ता और निजी कोड साझा कर सकते "
-"हैं।"
-
-msgid "Identifier:"
-msgstr "पहचानकर्ता:"
-
-msgid "Share the Link"
-msgstr "लिंक साझा करें"
-
-msgid "You can directly share the following link via your prefered medium"
-msgstr "आप नीचे दिए गए लिंक को सीधे अपने पसंदीदा माध्यम से साझा कर सकते हैं"
 
 msgid "Scan QR code"
 msgstr ""
@@ -932,16 +933,37 @@ msgstr ""
 msgid "Send via Emails"
 msgstr "ईमेल के माध्यम से भेजें"
 
+#, fuzzy
 msgid ""
 "Specify a (comma separated) list of email adresses you want to notify "
 "about the\n"
 "                creation of this budget management project and we will "
-"send them an email for you."
+"send them an email with the invitation link."
 msgstr ""
 "उन ईमेल पतों की एक (अल्पविराम से अलग की गयी) सूची निर्दिष्ट करें जिन्हे "
 "आप इस \n"
 "\t\t   बजट प्रबंधन परियोजना के निर्माण के बारे में सूचित करना चाहते हैं "
 "और हम उन्हें आपके लिए एक ईमेल भेजेंगे।"
+
+msgid "Share Identifier & code"
+msgstr "पहचानकर्ता और कोड साझा करें"
+
+msgid ""
+"You can share the project identifier and the private code by any "
+"communication means.<br />Anyone with the private code will have access "
+"to the full project, including changing settings such as the private code"
+" or project email address, or even deleting the whole project."
+msgstr ""
+
+msgid "Identifier:"
+msgstr "पहचानकर्ता:"
+
+#, fuzzy
+msgid "Private code:"
+msgstr "निजी कोड"
+
+msgid "the private code was defined when you created the project"
+msgstr ""
 
 msgid "Who pays?"
 msgstr "किसे भुगतान करना है?"
@@ -1117,4 +1139,19 @@ msgstr "अवधि"
 
 #~ msgid "add participants"
 #~ msgstr "प्रतिभागियों को जोड़ें"
+
+#~ msgid ""
+#~ "You can share the project identifier "
+#~ "and the private code by any "
+#~ "communication means."
+#~ msgstr ""
+#~ "आप किसी भी संचार माध्यम से "
+#~ "परियोजना पहचानकर्ता और निजी कोड साझा "
+#~ "कर सकते हैं।"
+
+#~ msgid "Share the Link"
+#~ msgstr "लिंक साझा करें"
+
+#~ msgid "You can directly share the following link via your prefered medium"
+#~ msgstr "आप नीचे दिए गए लिंक को सीधे अपने पसंदीदा माध्यम से साझा कर सकते हैं"
 

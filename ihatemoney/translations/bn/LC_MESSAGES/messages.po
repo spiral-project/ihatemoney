@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-28 15:26+0200\n"
+"POT-Creation-Date: 2023-07-29 14:06+0200\n"
 "PO-Revision-Date: 2022-04-14 21:10+0000\n"
 "Last-Translator: Hasidul Islam <ihasidul@gmail.com>\n"
 "Language: bn\n"
@@ -27,6 +27,13 @@ msgstr ""
 msgid "Project name"
 msgstr "প্রজেক্টের নাম"
 
+#, fuzzy
+msgid "Current private code"
+msgstr "নতুন ব্যক্তিগত কোড"
+
+msgid "Enter existing private code to edit project"
+msgstr ""
+
 msgid "New private code"
 msgstr "নতুন ব্যক্তিগত কোড"
 
@@ -47,6 +54,12 @@ msgstr "ডিফল্ট মুদ্রা"
 
 msgid "Setting a default currency enables currency conversion between bills"
 msgstr ""
+
+msgid "Unknown error"
+msgstr "অজানা ত্রুটি"
+
+msgid "Invalid private code."
+msgstr "অবৈধ ব্যক্তিগত কোড."
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
@@ -86,12 +99,6 @@ msgstr "অনুগ্রহ করে, এগিয়ে যেতে ক্�
 
 msgid "Enter private code to confirm deletion"
 msgstr "মুছে ফেলা নিশ্চিত করতে ব্যক্তিগত কোড লিখুন"
-
-msgid "Unknown error"
-msgstr "অজানা ত্রুটি"
-
-msgid "Invalid private code."
-msgstr "অবৈধ ব্যক্তিগত কোড."
 
 msgid "Get in"
 msgstr "প্রবেশ করুন"
@@ -254,6 +261,9 @@ msgid "Unknown project"
 msgstr ""
 
 msgid "Password successfully reset."
+msgstr ""
+
+msgid "Project settings have been changed successfully."
 msgstr ""
 
 msgid "Unable to parse CSV"
@@ -852,21 +862,14 @@ msgstr ""
 msgid "Invite people to join this project"
 msgstr ""
 
-msgid "Share Identifier & code"
+msgid "Share an invitation link"
 msgstr ""
 
 msgid ""
-"You can share the project identifier and the private code by any "
-"communication means."
-msgstr ""
-
-msgid "Identifier:"
-msgstr ""
-
-msgid "Share the Link"
-msgstr ""
-
-msgid "You can directly share the following link via your prefered medium"
+"The easiest way to invite people is to give them the following invitation"
+" link.<br />They will be able to access the project, manage participants,"
+" add/edit/delete bills. However, they will not have access to important "
+"settings such as changing the private code or deleting the whole project."
 msgstr ""
 
 msgid "Scan QR code"
@@ -882,7 +885,27 @@ msgid ""
 "Specify a (comma separated) list of email adresses you want to notify "
 "about the\n"
 "                creation of this budget management project and we will "
-"send them an email for you."
+"send them an email with the invitation link."
+msgstr ""
+
+msgid "Share Identifier & code"
+msgstr ""
+
+msgid ""
+"You can share the project identifier and the private code by any "
+"communication means.<br />Anyone with the private code will have access "
+"to the full project, including changing settings such as the private code"
+" or project email address, or even deleting the whole project."
+msgstr ""
+
+msgid "Identifier:"
+msgstr ""
+
+#, fuzzy
+msgid "Private code:"
+msgstr "ব্যক্তিগত কোড"
+
+msgid "the private code was defined when you created the project"
 msgstr ""
 
 msgid "Who pays?"
@@ -996,5 +1019,26 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "add participants"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can share the project identifier "
+#~ "and the private code by any "
+#~ "communication means."
+#~ msgstr ""
+
+#~ msgid "Share the Link"
+#~ msgstr ""
+
+#~ msgid "You can directly share the following link via your prefered medium"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Specify a (comma separated) list of "
+#~ "email adresses you want to notify "
+#~ "about the\n"
+#~ "                creation of this budget "
+#~ "management project and we will send "
+#~ "them an email for you."
 #~ msgstr ""
 

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-28 15:26+0200\n"
+"POT-Creation-Date: 2023-07-29 14:06+0200\n"
 "PO-Revision-Date: 2022-09-27 14:19+0000\n"
 "Last-Translator: Andrzej Ochodek <andrzej.ochodek@gmail.com>\n"
 "Language: pl\n"
@@ -30,6 +30,13 @@ msgstr ""
 msgid "Project name"
 msgstr "Nazwa projektu"
 
+#, fuzzy
+msgid "Current private code"
+msgstr "Nowy kod prywatny"
+
+msgid "Enter existing private code to edit project"
+msgstr ""
+
 msgid "New private code"
 msgstr "Nowy kod prywatny"
 
@@ -52,6 +59,12 @@ msgid "Setting a default currency enables currency conversion between bills"
 msgstr ""
 "Wybranie domyślnej waluty pozwala na konwersję walutową pomiędzy "
 "rachunkami"
+
+msgid "Unknown error"
+msgstr "Nieznany błąd"
+
+msgid "Invalid private code."
+msgstr "Nieprawidłowy kod prywatny."
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
@@ -91,12 +104,6 @@ msgstr "Rozwiąż captcha, by kontynuować."
 
 msgid "Enter private code to confirm deletion"
 msgstr "Wprowadź kod prywatny w celu potwierdzenia usunięcia"
-
-msgid "Unknown error"
-msgstr "Nieznany błąd"
-
-msgid "Invalid private code."
-msgstr "Nieprawidłowy kod prywatny."
 
 msgid "Get in"
 msgstr "Wejdź"
@@ -270,6 +277,9 @@ msgstr "Nieznany projekt"
 
 msgid "Password successfully reset."
 msgstr "Hasło zostało pomyślnie zresetowane."
+
+msgid "Project settings have been changed successfully."
+msgstr ""
 
 msgid "Unable to parse CSV"
 msgstr ""
@@ -894,26 +904,15 @@ msgstr "Zresetuj swoje hasło"
 msgid "Invite people to join this project"
 msgstr "Zaproś ludzi do dołączenia do tego projektu"
 
-msgid "Share Identifier & code"
-msgstr "Udostępnij identyfikator i kod"
+msgid "Share an invitation link"
+msgstr ""
 
 msgid ""
-"You can share the project identifier and the private code by any "
-"communication means."
+"The easiest way to invite people is to give them the following invitation"
+" link.<br />They will be able to access the project, manage participants,"
+" add/edit/delete bills. However, they will not have access to important "
+"settings such as changing the private code or deleting the whole project."
 msgstr ""
-"Identyfikator projektu i kod prywatny można udostępniać dowolnymi "
-"środkami komunikacji."
-
-msgid "Identifier:"
-msgstr "Identyfikator:"
-
-msgid "Share the Link"
-msgstr "Udostępnij link"
-
-msgid "You can directly share the following link via your prefered medium"
-msgstr ""
-"Możesz bezpośrednio udostępnić poniższy link za pośrednictwem "
-"preferowanego medium"
 
 msgid "Scan QR code"
 msgstr ""
@@ -924,16 +923,37 @@ msgstr ""
 msgid "Send via Emails"
 msgstr "Wyślij przez maile"
 
+#, fuzzy
 msgid ""
 "Specify a (comma separated) list of email adresses you want to notify "
 "about the\n"
 "                creation of this budget management project and we will "
-"send them an email for you."
+"send them an email with the invitation link."
 msgstr ""
 "Podaj (adresy rozdzielone przecinkami) adresy email, które chcesz "
 "powiadomić o \n"
 "                utworzeniu tego projektu zarządzania budżetem, a my "
 "wyślemy Ci wiadomość email."
+
+msgid "Share Identifier & code"
+msgstr "Udostępnij identyfikator i kod"
+
+msgid ""
+"You can share the project identifier and the private code by any "
+"communication means.<br />Anyone with the private code will have access "
+"to the full project, including changing settings such as the private code"
+" or project email address, or even deleting the whole project."
+msgstr ""
+
+msgid "Identifier:"
+msgstr "Identyfikator:"
+
+#, fuzzy
+msgid "Private code:"
+msgstr "Kod prywatny"
+
+msgid "the private code was defined when you created the project"
+msgstr ""
 
 msgid "Who pays?"
 msgstr "Kto płaci?"
@@ -1124,4 +1144,21 @@ msgstr "Okres"
 
 #~ msgid "add participants"
 #~ msgstr "dodać członków"
+
+#~ msgid ""
+#~ "You can share the project identifier "
+#~ "and the private code by any "
+#~ "communication means."
+#~ msgstr ""
+#~ "Identyfikator projektu i kod prywatny "
+#~ "można udostępniać dowolnymi środkami "
+#~ "komunikacji."
+
+#~ msgid "Share the Link"
+#~ msgstr "Udostępnij link"
+
+#~ msgid "You can directly share the following link via your prefered medium"
+#~ msgstr ""
+#~ "Możesz bezpośrednio udostępnić poniższy link"
+#~ " za pośrednictwem preferowanego medium"
 

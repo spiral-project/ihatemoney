@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-28 15:26+0200\n"
+"POT-Creation-Date: 2023-07-29 14:06+0200\n"
 "PO-Revision-Date: 2022-07-21 05:15+0000\n"
 "Last-Translator: z.liu <zwliu07@live.com>\n"
 "Language: zh_Hans\n"
@@ -28,6 +28,13 @@ msgstr "金额或符号无效。仅限数字与+-*/符号。"
 msgid "Project name"
 msgstr "账目名称"
 
+#, fuzzy
+msgid "Current private code"
+msgstr "新的私人代码"
+
+msgid "Enter existing private code to edit project"
+msgstr ""
+
 msgid "New private code"
 msgstr "新的私人代码"
 
@@ -48,6 +55,12 @@ msgstr "默认货币"
 
 msgid "Setting a default currency enables currency conversion between bills"
 msgstr "设置默认货币可实现账单之间的货币转换"
+
+msgid "Unknown error"
+msgstr "未知错误"
+
+msgid "Invalid private code."
+msgstr "无效的私人代码。"
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
@@ -83,12 +96,6 @@ msgstr "请输入验证码以继续。"
 
 msgid "Enter private code to confirm deletion"
 msgstr "请输入专用代码以确认删除"
-
-msgid "Unknown error"
-msgstr "未知错误"
-
-msgid "Invalid private code."
-msgstr "无效的私人代码。"
 
 msgid "Get in"
 msgstr "进入"
@@ -256,6 +263,9 @@ msgstr "未知项目"
 
 msgid "Password successfully reset."
 msgstr "密码重置成功。"
+
+msgid "Project settings have been changed successfully."
+msgstr ""
 
 msgid "Unable to parse CSV"
 msgstr ""
@@ -867,22 +877,15 @@ msgstr "重设密码"
 msgid "Invite people to join this project"
 msgstr "邀请其他人加入项目"
 
-msgid "Share Identifier & code"
-msgstr "分享标识符与码"
+msgid "Share an invitation link"
+msgstr ""
 
 msgid ""
-"You can share the project identifier and the private code by any "
-"communication means."
-msgstr "你可以通过任何通信手段分享项目标识符与专用码。"
-
-msgid "Identifier:"
-msgstr "标识符："
-
-msgid "Share the Link"
-msgstr "分享链接"
-
-msgid "You can directly share the following link via your prefered medium"
-msgstr "你可以直接通过你喜欢的媒体分享链接"
+"The easiest way to invite people is to give them the following invitation"
+" link.<br />They will be able to access the project, manage participants,"
+" add/edit/delete bills. However, they will not have access to important "
+"settings such as changing the private code or deleting the whole project."
+msgstr ""
 
 msgid "Scan QR code"
 msgstr ""
@@ -893,14 +896,35 @@ msgstr ""
 msgid "Send via Emails"
 msgstr "邮件发送"
 
+#, fuzzy
 msgid ""
 "Specify a (comma separated) list of email adresses you want to notify "
 "about the\n"
 "                creation of this budget management project and we will "
-"send them an email for you."
+"send them an email with the invitation link."
 msgstr ""
 "请指定一个邮箱接收通知。\n"
 "我们会创建预算管理项目，并把它通过邮件发送给你。"
+
+msgid "Share Identifier & code"
+msgstr "分享标识符与码"
+
+msgid ""
+"You can share the project identifier and the private code by any "
+"communication means.<br />Anyone with the private code will have access "
+"to the full project, including changing settings such as the private code"
+" or project email address, or even deleting the whole project."
+msgstr ""
+
+msgid "Identifier:"
+msgstr "标识符："
+
+#, fuzzy
+msgid "Private code:"
+msgstr "共享密钥"
+
+msgid "the private code was defined when you created the project"
+msgstr ""
 
 msgid "Who pays?"
 msgstr "谁付款？"
@@ -1096,4 +1120,16 @@ msgstr "期间"
 
 #~ msgid "add participants"
 #~ msgstr "添加参与人"
+
+#~ msgid ""
+#~ "You can share the project identifier "
+#~ "and the private code by any "
+#~ "communication means."
+#~ msgstr "你可以通过任何通信手段分享项目标识符与专用码。"
+
+#~ msgid "Share the Link"
+#~ msgstr "分享链接"
+
+#~ msgid "You can directly share the following link via your prefered medium"
+#~ msgstr "你可以直接通过你喜欢的媒体分享链接"
 
