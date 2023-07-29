@@ -2,7 +2,7 @@
 
 This document describes changes between each past release.
 
-## 6.1.0 (unreleased)
+6.1.0 (2023-07-29)
 
 ### Added
 - Add RSS feed for each project (#1158)
