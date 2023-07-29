@@ -2,10 +2,14 @@
 
 This document describes changes between each past release.
 
-## 6.0.2 (unreleased)
+## 6.1.0 (unreleased)
 
+### Added
+- Add RSS feed for each project (#1158)
+- Security: require private code to edit a project settings (#1204)
 
-- Nothing changed yet.
+### Fixed
+- Fix 404 page crash (#1201)
 
 
 ## 6.0.1 (2023-07-22)
