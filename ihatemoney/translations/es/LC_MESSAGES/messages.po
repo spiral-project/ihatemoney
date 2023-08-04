@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-29 14:24+0200\n"
 "PO-Revision-Date: 2023-08-01 20:07+0000\n"
-"Last-Translator: Puyma <puyma@amyup.xyz>\n"
+"Last-Translator: noelopdur <noelialopezduran@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/es/>\n"
 "Language: es\n"
@@ -29,18 +29,17 @@ msgstr ""
 msgid "Project name"
 msgstr "Nombre del proyecto"
 
-#, fuzzy
 msgid "Current private code"
-msgstr "Nuevo código privado"
+msgstr "Código privado actual"
 
 msgid "Enter existing private code to edit project"
-msgstr ""
+msgstr "Introduce el código privado actual para editar el proyecto"
 
 msgid "New private code"
 msgstr "Nuevo código privado"
 
 msgid "Enter a new code if you want to change it"
-msgstr "Ingrese un nuevo código si desea cambiarlo"
+msgstr "Ingresa un nuevo código si deseas cambiarlo"
 
 msgid "Email"
 msgstr "Correo electrónico"
@@ -56,8 +55,7 @@ msgstr "Divisa por defecto"
 
 msgid "Setting a default currency enables currency conversion between bills"
 msgstr ""
-"Establecer una moneda predeterminada permite la conversión de moneda "
-"entre facturas"
+"Indicar una nueva moneda habilita la conversión de monedas entre facturas"
 
 msgid "Unknown error"
 msgstr "Error desconocido"
@@ -69,11 +67,11 @@ msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
-"Este proyecto no se puede configurar como \"sin moneda\" porque contiene "
-"facturas en varias monedas."
+"Este proyecto no se puede cambiar a 'sin moneda' porque contiene facturas "
+"con múltiples monedas."
 
 msgid "Compatible with Cospend"
-msgstr ""
+msgstr "Compatible con Cospend"
 
 msgid "Project identifier"
 msgstr "Identificador del proyecto"
@@ -96,13 +94,13 @@ msgid "Which is a real currency: Euro or Petro dollar?"
 msgstr "¿Cuál es una moneda real: el euro o el petrodólar?"
 
 msgid "euro"
-msgstr "Euro"
+msgstr "euro"
 
 msgid "Please, validate the captcha to proceed."
 msgstr "Por favor, valide el captcha para proceder."
 
 msgid "Enter private code to confirm deletion"
-msgstr "Ingrese el código privado para confirmar la eliminación"
+msgstr "Introduce el código privado para confirmar la eliminación"
 
 msgid "Get in"
 msgstr "Entrar"
@@ -135,10 +133,10 @@ msgid "What?"
 msgstr "¿Qué?"
 
 msgid "Who paid?"
-msgstr ""
+msgstr "¿Quién pagó?"
 
 msgid "How much?"
-msgstr ""
+msgstr "¿Cuanto?"
 
 msgid "Currency"
 msgstr "Divisa"
@@ -156,7 +154,7 @@ msgid "Submit"
 msgstr "Enviar"
 
 msgid "Submit and add a new one"
-msgstr "Enviar y agregar uno nuevo"
+msgstr "Enviar y añadir una nueva"
 
 #, python-format
 msgid "Project default: %(currency)s"
@@ -175,7 +173,7 @@ msgid "Add"
 msgstr "Añadir"
 
 msgid "The participant name is invalid"
-msgstr "El nombre del participante es invalido"
+msgstr "El nombre del participante no es válido"
 
 msgid "This project already have this participant"
 msgstr "Este proyecto ya tiene a este participante"
@@ -334,7 +332,7 @@ msgstr ""
 
 #, python-format
 msgid "%(name)s is part of this project again"
-msgstr ""
+msgstr "%(name)s forma parte de este proyecto de nuevo"
 
 msgid "Error removing participant"
 msgstr ""
@@ -590,7 +588,7 @@ msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
 
 msgid "You can enable history on the settings page."
-msgstr ""
+msgstr "Puedes activar el historial en la página de configuración."
 
 msgid ""
 "The table below reflects actions recorded prior to disabling project "
