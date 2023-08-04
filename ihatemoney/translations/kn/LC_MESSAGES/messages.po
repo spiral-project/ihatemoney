@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-29 14:24+0200\n"
-"PO-Revision-Date: 2021-10-17 04:56+0000\n"
+"PO-Revision-Date: 2023-08-03 12:06+0000\n"
 "Last-Translator: a-g-rao <athrigrao@gmail.com>\n"
+"Language-Team: Kannada <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/kn/>\n"
 "Language: kn\n"
-"Language-Team: Kannada <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/kn/>\n"
-"Plural-Forms: nplurals=2; plural=n > 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.0-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #, python-format
@@ -31,18 +31,17 @@ msgstr ""
 msgid "Project name"
 msgstr "ಯೋಜನೆಯ ಹೆಸರು"
 
-#, fuzzy
 msgid "Current private code"
-msgstr "ಹೊಸ ಸಂಕೇತಪದ"
+msgstr "ಪ್ರಸ್ತುತ ಸಂಕೇತಪದ"
 
 msgid "Enter existing private code to edit project"
-msgstr ""
+msgstr "ಯೋಜನೆಯನ್ನು ಪರಿಷ್ಕರಿಸಲು ಚಾಲ್ತಿಯಲ್ಲಿರುವ ಸಂಕೇತಪದವನ್ನು ನಮೂದಿಸಿ"
 
 msgid "New private code"
 msgstr "ಹೊಸ ಸಂಕೇತಪದ"
 
 msgid "Enter a new code if you want to change it"
-msgstr "ಸಂಕೇತಪದ ಬದಲಾಯಿಸಬೇಕೆಂದರೆ ನಮೂದಿಸಿ."
+msgstr "ಸಂಕೇತಪದ ಬದಲಾಯಿಸಬೇಕೆಂದರೆ ನಮೂದಿಸಿ"
 
 msgid "Email"
 msgstr "ಮಿನ್ನಂಚೆ"
@@ -54,10 +53,12 @@ msgid "Use IP tracking for project history"
 msgstr ""
 
 msgid "Default Currency"
-msgstr ""
+msgstr "ಪುರ್ವನಿಯೋಜಿತ ಕರನ್ಸಿ"
 
 msgid "Setting a default currency enables currency conversion between bills"
 msgstr ""
+"ಪುರ್ವನಿಯೋಜಿತ ಕರನ್ಸಿಯನ್ನು ನಮೋದಿಸುವುದರಿಂದ ರಶೀದಿಗಳ ನಡುವೆ ಕರನ್ಸಿ ಪರಿವರ್ತನೆಯನ್ನು "
+"ಸಕ್ರಿಯಗೊಳಿಸುತ್ತದೆ"
 
 msgid "Unknown error"
 msgstr "ಅಜ್ಞಾತ ದೋಷ"
@@ -69,12 +70,14 @@ msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
+"ಅನೇಕ ಕರೆನ್ಸಿಯ ರಶೀದಿ ಇರುವುದರಿಂದ ಈ ಯೋಜನೆಯನ್ನು \"ಯಾವುದೆ ಕರೆನ್ಸಿ ಇಲ್ಲ\" ಯಂದು "
+"ನಮೋದಿಸಲು ಆಗುವುದಿಲ್ಲ."
 
 msgid "Compatible with Cospend"
 msgstr ""
 
 msgid "Project identifier"
-msgstr ""
+msgstr "ಯೋಜನೆ ಸಂಕೇತ"
 
 msgid "Private code"
 msgstr "ಸಂಕೇತಪದ"
@@ -87,15 +90,17 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
+"ಈ ಸಂಕೇತದ (\"%(project)s\") ಇನೊಂದು ಯೋಜನೆ ಆಗಲೆ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ. ದಯವಿಟ್ಟು ಹೊಸ "
+"ಸಂಕೇತವನ್ನು ಆರಿಸಿ"
 
 msgid "Which is a real currency: Euro or Petro dollar?"
-msgstr ""
+msgstr "ನಿಜವಾದ ಕರೆನ್ಸಿ ಯಾವುದು: ಯುರೋ ಅಥವಾ ಪೆಟ್ರೋ ಡಾಲರ್?"
 
 msgid "euro"
 msgstr "ಯೂರೋ"
 
 msgid "Please, validate the captcha to proceed."
-msgstr ""
+msgstr "ಮುಂದುವರೆಯಲು ದಯವಿಟ್ಟು, ಕ್ಯಾಪ್ಚಾವನ್ನು ಮೌಲ್ಯೀಕರಿಸಿ."
 
 msgid "Enter private code to confirm deletion"
 msgstr "ತೆಗೆದುಹಾಕಲು ನಿಮ್ಮ ಸಂಕೇತಪದವನ್ನು ನಮೂದಿಸಿ"
@@ -125,25 +130,26 @@ msgid "Reset password"
 msgstr "ಪ್ರವೇಶಪದ ಮರುಹೊಂದಿಸಿ"
 
 msgid "When?"
-msgstr ""
+msgstr "ಯಾವಾಗ?"
 
 msgid "What?"
 msgstr "ಏನು?"
 
 msgid "Who paid?"
-msgstr ""
+msgstr "ಯಾರು ಪಾವತಿಸಿದ್ದಾರೆ?"
 
 msgid "How much?"
-msgstr ""
+msgstr "ಎಷ್ಟು?"
 
 msgid "Currency"
 msgstr "ನಾಣ್ಯಪದ್ಧತಿ"
 
+#, fuzzy
 msgid "External link"
-msgstr ""
+msgstr "ಬಾಹ್ಯ ಲಿಂಕ್"
 
 msgid "A link to an external document, related to this bill"
-msgstr ""
+msgstr "ಈ ರಶೀದಿಗೆ ಸಂಬಂಧಿಸಿದ ಬಾಹ್ಯ ಕಡತದ ಲಿಂಕ್"
 
 msgid "For whom?"
 msgstr "ಯಾರಿಂದ?"
@@ -156,13 +162,13 @@ msgstr "ಕೋರಿಕೆ ಸಲ್ಲಿಸಿ ಹೊಸದನ್ನುಸೇ�
 
 #, python-format
 msgid "Project default: %(currency)s"
-msgstr ""
+msgstr "ಯೋಜನೆಯ ಪೂರ್ವನಿಯೋಜಿತ ಕರೆನ್ಸಿ: %(currency)s"
 
 msgid "Name"
 msgstr "ಹೆಸರು"
 
 msgid "Weights should be positive"
-msgstr ""
+msgstr "ತೂಕವು ಧನಾತ್ಮಕವಾಗಿರಬೇಕು"
 
 msgid "Weight"
 msgstr "ತೂಕ"
@@ -171,17 +177,16 @@ msgid "Add"
 msgstr "ಕೂಡು"
 
 msgid "The participant name is invalid"
-msgstr ""
+msgstr "ಸದಸ್ಯರ ಹೆಸರು ಅಮಾನ್ಯವಾಗಿದೆ"
 
-#, fuzzy
 msgid "This project already have this participant"
 msgstr "ಈ ಸದಸ್ಯರು ಈಗಾಗಲೆ ಈ ಯೋಜನೆಯ ಸದಸ್ಯರಾಗಿದ್ದಾರೆ"
 
 msgid "People to notify"
-msgstr ""
+msgstr "ಸೂಚಿಸಬೇಕಾದ ಜನರು"
 
 msgid "Send the invitations"
-msgstr ""
+msgstr "ಆಮಂತ್ರಣಗಳನ್ನು ಕಳುಹಿಸಿ"
 
 #, python-format
 msgid "The email %(email)s is not valid"
@@ -216,7 +221,7 @@ msgid "{start_object}, {next_object}"
 msgstr "{start_object}, {next_object}"
 
 msgid "No Currency"
-msgstr ""
+msgstr "ಯಾವುದೆ ಕರೆನ್ಸಿ ಇಲ್ಲ"
 
 #. Form error with only one error
 msgid "{prefix}: {error}"
@@ -905,9 +910,8 @@ msgstr ""
 msgid "Identifier:"
 msgstr ""
 
-#, fuzzy
 msgid "Private code:"
-msgstr "ಸಂಕೇತಪದ"
+msgstr "ಸಂಕೇತಪದ:"
 
 msgid "the private code was defined when you created the project"
 msgstr ""
@@ -1088,4 +1092,3 @@ msgstr ""
 #~ "them an email with the invitation "
 #~ "link."
 #~ msgstr ""
-
