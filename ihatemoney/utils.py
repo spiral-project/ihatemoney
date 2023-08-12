@@ -20,6 +20,7 @@ import jinja2
 from markupsafe import Markup, escape
 from werkzeug.exceptions import HTTPException
 from werkzeug.routing import RoutingException
+from werkzeug.security import generate_password_hash as werkzeug_generate_password_hash
 
 limiter = limiter = Limiter(
     current_app,
@@ -448,3 +449,15 @@ def format_form_errors(form, prefix):
         errors = f"<ul><li>{error_list}</li></ul>"
         # I18N: Form error with a list of errors
         return Markup(_("{prefix}:<br />{errors}").format(prefix=prefix, errors=errors))
+
+
+def generate_password_hash(*args, **kwargs):
+    if current_app.config.get("PASSWORD_HASH_METHOD"):
+        kwargs.setdefault("method", current_app.config["PASSWORD_HASH_METHOD"])
+
+    if current_app.config.get("PASSWORD_HASH_SALT_LENGTH"):
+        kwargs.setdefault(
+            "salt_length", current_app.config["PASSWORD_HASH_SALT_LENGTH"]
+        )
+
+    return werkzeug_generate_password_hash(*args, **kwargs)

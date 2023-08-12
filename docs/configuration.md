@@ -188,3 +188,12 @@ project](https://pythonhosted.org/flask-mail/#configuring-flask-mail)
 -   **MAIL_USERNAME** : default **None**
 -   **MAIL_PASSWORD** : default **None**
 -   **DEFAULT_MAIL_SENDER** : default **None**
+
+## Configuring password hashes
+
+The werkzeug [generate_password_hash](https://werkzeug.palletsprojects.com/utils/#werkzeug.security.generate_password_hash)
+is used to create password hashes. By default the default werkzeug values
+are used, however you can customize those values with:
+
+-  **PASSWORD_HASH_METHOD** : default **None**
+-  **PASSWORD_HASH_SALT_LENGTH** : default **None**

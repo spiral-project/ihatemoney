@@ -9,7 +9,7 @@ from flask_babel import lazy_gettext as _
 from flask_wtf.file import FileAllowed, FileField, FileRequired
 from flask_wtf.form import FlaskForm
 from markupsafe import Markup
-from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.security import check_password_hash
 from wtforms.fields import (
     BooleanField,
     DateField,
@@ -43,6 +43,7 @@ from ihatemoney.models import Bill, LoggingMode, Person, Project
 from ihatemoney.utils import (
     em_surround,
     eval_arithmetic_expression,
+    generate_password_hash,
     render_localized_currency,
     slugify,
 )
