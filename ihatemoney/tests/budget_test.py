@@ -7,12 +7,13 @@ from urllib.parse import urlparse, urlunparse
 from flask import session, url_for
 from libfaketime import fake_time
 import pytest
-from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.security import check_password_hash
 
 from ihatemoney import models
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.tests.common.help_functions import extract_link
 from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
+from ihatemoney.utils import generate_password_hash
 from ihatemoney.versioning import LoggingMode
 from ihatemoney.web import build_etag
 

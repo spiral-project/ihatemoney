@@ -36,7 +36,7 @@ import qrcode
 import qrcode.image.svg
 from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
-from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.security import check_password_hash
 
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.emails import send_creation_email
@@ -63,6 +63,7 @@ from ihatemoney.utils import (
     csv2list_of_dicts,
     flash_email_error,
     format_form_errors,
+    generate_password_hash,
     limiter,
     list_of_dicts2csv,
     list_of_dicts2json,

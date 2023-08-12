@@ -2,11 +2,11 @@ import os
 from unittest.mock import MagicMock
 
 from flask_testing import TestCase
-from werkzeug.security import generate_password_hash
 
 from ihatemoney import models
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.run import create_app, db
+from ihatemoney.utils import generate_password_hash
 
 
 class BaseTestCase(TestCase):
@@ -15,6 +15,8 @@ class BaseTestCase(TestCase):
         "TESTING_SQLALCHEMY_DATABASE_URI", "sqlite://"
     )
     ENABLE_CAPTCHA = False
+    PASSWORD_HASH_METHOD = "pbkdf2:sha1:1"
+    PASSWORD_HASH_SALT_LENGTH = 1
 
     def create_app(self):
         # Pass the test object as a configuration.

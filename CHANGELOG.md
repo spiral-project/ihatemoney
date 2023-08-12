@@ -4,7 +4,7 @@ This document describes changes between each past release.
 
 ## 6.1.1 (unreleased)
 
-- Nothing changed yet.
+- Speed up unit tests (#1214)
 
 
 ## 6.1.0 (2023-07-29)

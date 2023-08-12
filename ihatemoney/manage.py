@@ -7,11 +7,10 @@ import sys
 
 import click
 from flask.cli import FlaskGroup
-from werkzeug.security import generate_password_hash
 
 from ihatemoney.models import Project, db
 from ihatemoney.run import create_app
-from ihatemoney.utils import create_jinja_env
+from ihatemoney.utils import create_jinja_env, generate_password_hash
 
 
 @click.group(cls=FlaskGroup, create_app=create_app)
