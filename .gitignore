@@ -16,4 +16,5 @@ ihatemoney/budget.db
 .DS_Store
 .idea
 .python-version
-
+.coverage*
+prof
