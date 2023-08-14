@@ -794,20 +794,26 @@ def edit_bill(bill_id):
     bill = Bill.query.get(g.project, bill_id)
     if not bill:
         raise NotFound()
+    payer_id = bill.payer_id
+    payer = Person.query.get(payer_id)
+    if payer.activated:
 
-    form = get_billform_for(g.project, set_default=False)
+        form = get_billform_for(g.project, set_default=False)
 
-    if request.method == "POST" and form.validate():
-        form.save(bill, g.project)
-        db.session.commit()
+        if request.method == "POST" and form.validate():
+            form.save(bill, g.project)
+            db.session.commit()
 
-        flash(_("The bill has been modified"))
+            flash(_("The bill has been modified"))
+            return redirect(url_for(".list_bills"))
+
+        if not form.errors:
+            form.fill(bill, g.project)
+
+        return render_template("add_bill.html", form=form, edit=True)
+    else:
+        flash(_("The payer is deactivated. You cannot edit the bill."))
         return redirect(url_for(".list_bills"))
-
-    if not form.errors:
-        form.fill(bill, g.project)
-
-    return render_template("add_bill.html", form=form, edit=True)
 
 
 @main.route("/lang/<lang>")
