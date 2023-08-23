@@ -1,19 +1,19 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-29 14:24+0200\n"
-"PO-Revision-Date: 2022-09-27 14:19+0000\n"
-"Last-Translator: Andrzej Ochodek <andrzej.ochodek@gmail.com>\n"
+"PO-Revision-Date: 2023-08-23 17:53+0000\n"
+"Last-Translator: Eryk Michalak <gnu.ewm@protonmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/pl/>\n"
 "Language: pl\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/i-hate-money/i"
-"-hate-money/pl/>\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && "
-"(n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.0-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #, python-format
@@ -30,12 +30,11 @@ msgstr ""
 msgid "Project name"
 msgstr "Nazwa projektu"
 
-#, fuzzy
 msgid "Current private code"
-msgstr "Nowy kod prywatny"
+msgstr "Bieżący kod prywatny"
 
 msgid "Enter existing private code to edit project"
-msgstr ""
+msgstr "Wprowadź kod prywatny aby edytować projekt"
 
 msgid "New private code"
 msgstr "Nowy kod prywatny"
@@ -74,7 +73,7 @@ msgstr ""
 " on rachunki w różnych walutach."
 
 msgid "Compatible with Cospend"
-msgstr ""
+msgstr "Zgodne z Cospend"
 
 msgid "Project identifier"
 msgstr "Identyfikator projektu"
@@ -233,9 +232,8 @@ msgstr "{prefix}: {error}"
 msgid "{prefix}:<br />{errors}"
 msgstr "{prefix}:<br />{errors}"
 
-#, fuzzy
 msgid "Too many failed login attempts."
-msgstr "Zbyt wiele nieudanych prób logowania, spróbuj ponownie później."
+msgstr "Zbyt wiele nieudanych prób logowania."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
@@ -279,14 +277,14 @@ msgid "Password successfully reset."
 msgstr "Hasło zostało pomyślnie zresetowane."
 
 msgid "Project settings have been changed successfully."
-msgstr ""
+msgstr "Ustawienia projektu zostały pomyślnie zmienione."
 
 msgid "Unable to parse CSV"
-msgstr ""
+msgstr "Nie udało się odczytać pliku CSV"
 
 #, python-format
 msgid "Missing attribute: %(attribute)s"
-msgstr ""
+msgstr "Brakujący atrybut: %(attribute)s"
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
@@ -305,7 +303,7 @@ msgid "Error deleting project"
 msgstr "Błąd podczas usuwania projektu"
 
 msgid "Unable to logout"
-msgstr ""
+msgstr "Nie można się wylogować"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
@@ -365,7 +363,7 @@ msgstr "Rachunek został zmieniony"
 
 #, python-format
 msgid "%(lang)s is not a supported language"
-msgstr ""
+msgstr "%(lang)s nie jest obsługowanym językiem"
 
 msgid "Error deleting project history"
 msgstr "Błąd podczas usuwania historii projektu"
@@ -447,9 +445,8 @@ msgstr "Pobierz na"
 msgid "Edit project"
 msgstr "Edytuj projekt"
 
-#, fuzzy
 msgid "Import project"
-msgstr "Edytuj projekt"
+msgstr "Importuj projekt"
 
 msgid "Download project's data"
 msgstr "Pobierz dane projektu"
@@ -476,14 +473,13 @@ msgid "Privacy Settings"
 msgstr "Ustawienia prywatności"
 
 msgid "Save changes"
-msgstr ""
+msgstr "Zapisz zmiany"
 
 msgid "This will remove all bills and participants in this project!"
 msgstr "Spowoduje to usunięcie wszystkich rachunków i uczestników tego projektu!"
 
-#, fuzzy
 msgid "Import previously exported project"
-msgstr "Zaimportuj wcześniej wyeksportowany plik JSON"
+msgstr "Zaimportuj wcześniej wyeksportowany projekt"
 
 msgid "Choose file"
 msgstr "Wybierz plik"
@@ -495,7 +491,7 @@ msgid "Add a bill"
 msgstr "Dodaj rachunek"
 
 msgid "Simple operations are allowed, e.g. (18+36.2)/3"
-msgstr ""
+msgstr "Dozwolone są proste operacje, np. (18+36.2)/3"
 
 msgid "Everyone"
 msgstr "Wszyscy"
@@ -796,7 +792,7 @@ msgid "Settings"
 msgstr "Ustawienia"
 
 msgid "RSS Feed"
-msgstr ""
+msgstr "Kanał RSS"
 
 msgid "Other projects :"
 msgstr "Inne projekty:"
@@ -809,7 +805,7 @@ msgstr "Kokpit"
 
 #, python-format
 msgid "Please retry after %(date)s."
-msgstr ""
+msgstr "Prosimy spróbować ponownie po %(date)s."
 
 msgid "Code"
 msgstr "Kod"
@@ -874,13 +870,11 @@ msgstr "Brak rachunków"
 msgid "Nothing to list yet."
 msgstr "Nie ma jeszcze żadnej listy."
 
-#, fuzzy
 msgid "Add your first bill"
-msgstr "dodać rachunek"
+msgstr "Dodaj swój pierwszy rachunek"
 
-#, fuzzy
 msgid "Add the first participant"
-msgstr "Edytuj tego uczestnika"
+msgstr "Dodaj pierwszego uczestnika"
 
 msgid "Password reminder"
 msgstr "Przypomnienie hasła"
@@ -905,7 +899,7 @@ msgid "Invite people to join this project"
 msgstr "Zaproś ludzi do dołączenia do tego projektu"
 
 msgid "Share an invitation link"
-msgstr ""
+msgstr "Udostępnij link z zaproszeniem"
 
 msgid ""
 "The easiest way to invite people is to give them the following invitation"
@@ -915,7 +909,7 @@ msgid ""
 msgstr ""
 
 msgid "Scan QR code"
-msgstr ""
+msgstr "Skanuj kod QR"
 
 msgid "Use a mobile device with a compatible app."
 msgstr ""
@@ -947,9 +941,8 @@ msgstr ""
 msgid "Identifier:"
 msgstr "Identyfikator:"
 
-#, fuzzy
 msgid "Private code:"
-msgstr "Kod prywatny"
+msgstr "Kod prywatny:"
 
 msgid "the private code was defined when you created the project"
 msgstr ""
@@ -1160,4 +1153,3 @@ msgstr "Okres"
 #~ msgstr ""
 #~ "Możesz bezpośrednio udostępnić poniższy link"
 #~ " za pośrednictwem preferowanego medium"
-
