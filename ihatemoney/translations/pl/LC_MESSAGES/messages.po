@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-29 14:24+0200\n"
-"PO-Revision-Date: 2023-08-23 17:53+0000\n"
+"PO-Revision-Date: 2023-08-24 18:48+0000\n"
 "Last-Translator: Eryk Michalak <gnu.ewm@protonmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/pl/>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.0\n"
 "Generated-By: Babel 2.9.0\n"
 
 #, python-format
@@ -194,16 +194,15 @@ msgid "Logout"
 msgstr "Wyloguj"
 
 msgid "Please check the email configuration of the server."
-msgstr ""
+msgstr "Prosimy sprawdzić konfigurację e-mail serwera."
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Please check the email configuration of the server or contact the "
 "administrator: %(admin_email)s"
 msgstr ""
-"Przepraszamy, wystąpił błąd podczas próby wysłania wiadomości e-mail z "
-"zaproszeniem. Sprawdź konfigurację e-mail serwera lub skontaktuj się z "
-"administratorem."
+"Prosimy sprawdzić konfigurację e-mail serwera lub skontaktować się z "
+"administratorem: %(admin_email)s"
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
@@ -255,14 +254,12 @@ msgstr ""
 "Próbowaliśmy wysłać Ci wiadomość e-mail z przypomnieniem, ale wystąpił "
 "błąd. Nadal możesz normalnie korzystać z projektu."
 
-#, fuzzy
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
 "instructions."
 msgstr ""
 "Przepraszamy, wystąpił błąd podczas wysyłania wiadomości e-mail z "
-"instrukcjami resetowania hasła. Sprawdź konfigurację e-mail serwera lub "
-"skontaktuj się z administratorem."
+"instrukcjami resetowania hasła."
 
 msgid "No token provided"
 msgstr "Nie podano tokena"
@@ -312,12 +309,10 @@ msgstr "Zostałeś zaproszony do podzielenia się swoimi wydatkami w %(project)s
 msgid "Your invitations have been sent"
 msgstr "Twoje zaproszenia zostały wysłane"
 
-#, fuzzy
 msgid "Sorry, there was an error while trying to send the invitation emails."
 msgstr ""
 "Przepraszamy, wystąpił błąd podczas próby wysłania wiadomości e-mail z "
-"zaproszeniem. Sprawdź konfigurację e-mail serwera lub skontaktuj się z "
-"administratorem."
+"zaproszeniem."
 
 #, python-format
 msgid "%(member)s has been added"
@@ -583,19 +578,20 @@ msgstr "Bill %(name)s: usunięto %(owers_list_str)s z listy właścicieli"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
+"Ten projekt ma wyłączoną historię. Nowe działania nie pojawią się poniżej."
 
-#, fuzzy
 msgid "You can enable history on the settings page."
-msgstr "Rejestrowanie adresu IP można włączyć na stronie ustawień"
+msgstr "Możliwe jest włączenie historii na stronie ustawień."
 
 msgid ""
 "The table below reflects actions recorded prior to disabling project "
 "history."
 msgstr ""
+"Poniższa tabela przedstawia działania zarejestrowane przed wyłączeniem "
+"historii projektu."
 
-#, fuzzy
 msgid "You can clear the project history to remove them."
-msgstr "Ktoś prawdopodobnie wyczyścił historię projektu."
+msgstr "Możesz wyczyścić historię projektu aby ją usunąć."
 
 msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
@@ -907,26 +903,29 @@ msgid ""
 " add/edit/delete bills. However, they will not have access to important "
 "settings such as changing the private code or deleting the whole project."
 msgstr ""
+"Najłatwiejszym sposobem zapraszania nowych osób jest podanie im poniższego "
+"linku ze zaproszeniem.<br />Osoby te będą mogły uzyskać dostęp do projektu, "
+"zarządzać uczestnikami, dodawać/edytować/usuwać rachunki. Nie będą jednak "
+"mieli dostępu do ważnych ustawień, takich jak zmiana kodu prywatnego lub "
+"usunięcie całego projektu."
 
 msgid "Scan QR code"
 msgstr "Skanuj kod QR"
 
 msgid "Use a mobile device with a compatible app."
-msgstr ""
+msgstr "Użyj urządzenia mobilnego ze zgodną aplikacją."
 
 msgid "Send via Emails"
 msgstr "Wyślij przez maile"
 
-#, fuzzy
 msgid ""
 "Specify a list of email adresses (separated by comma) of people you want "
 "to notify about the creation of this project. We will send them an email "
 "with the invitation link."
 msgstr ""
-"Podaj (adresy rozdzielone przecinkami) adresy email, które chcesz "
-"powiadomić o \n"
-"                utworzeniu tego projektu zarządzania budżetem, a my "
-"wyślemy Ci wiadomość email."
+"Podaj listę adresów e-mail (oddzielonych przecinkami) osób, które chcesz "
+"powiadomić o utworzeniu tego projektu. Wyślemy im wiadomość e-mail z linkiem "
+"zaproszającym."
 
 msgid "Share Identifier & code"
 msgstr "Udostępnij identyfikator i kod"
@@ -937,6 +936,10 @@ msgid ""
 "to the full project, including changing settings such as the private code"
 " or project email address, or even deleting the whole project."
 msgstr ""
+"Identyfikator projektu i kod prywatny można udostępniać za pomocą dowolnych "
+"środków komunikacji.<br />Każda osoba posiadająca kod prywatny będzie miała "
+"dostęp do całego projektu, w tym do zmiany ustawień, takich jak kod prywatny "
+"lub adres e-mail projektu, a nawet do usunięcia całego projektu."
 
 msgid "Identifier:"
 msgstr "Identyfikator:"
@@ -945,7 +948,7 @@ msgid "Private code:"
 msgstr "Kod prywatny:"
 
 msgid "the private code was defined when you created the project"
-msgstr ""
+msgstr "kod prywatny został zdefiniowany podczas tworzenia projektu"
 
 msgid "Who pays?"
 msgstr "Kto płaci?"
