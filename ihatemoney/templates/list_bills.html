@@ -10,6 +10,7 @@
 {% block title %} - {{ g.project.name }}{% endblock %}
 {% block js %}
     {% if add_bill %} $('#new-bill > a').click(); {% endif %}
+    {% if edit_bill is not none %} $('#edit-bill > a').click(); {% endif %}
 
     // ask for confirmation before removing an user
     $('.action.delete').each(function(){
@@ -86,6 +87,25 @@
             </div>
         </div>
     </div>
+    {% if edit_bill is not none %}
+      <div id="bill-edit-form" class="modal fade show" role="dialog">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h3 class="modal-title">{{ _('Edit this bill') }}</h3>
+                      <a href="#" class="close" data-dismiss="modal">&times;</a>
+                  </div>
+                  <form action="{{ url_for(".edit_bill", bill_id=edit_bill) }}" method="post" class="modal-body container">
+                  {{ forms.add_bill(bill_edit_form, edit=True, title=False) }}
+                  </form>
+              </div>
+          </div>
+      </div>
+      <span id="edit-bill" class="hidden">
+          <a href="#" data-toggle="modal" data-keyboard="false" data-target="#bill-edit-form"></a>
+      </span>
+    {% endif %}
+
 <div class="d-flex flex-wrap w-100 pt-2 mt-2" id="bill-toolbar">
 {% if bills.pages > 1 %}
 <ul class="pagination mr-2 mb-0 pb-2 flex-wrap" id="pagination-top">
@@ -143,7 +163,7 @@
                     </span>
                 </td>
                 <td class="bill-actions d-flex align-items-center">
-                    <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">{{ _('edit') }}</a>
+                    <a class="edit" href="{{ url_for(".list_bills", edit_bill=bill.id) }}" title="{{ _("edit") }}">{{ _('edit') }}</a>
                     <form class="delete-bill" action="{{ url_for(".delete_bill", bill_id=bill.id) }}" method="POST">
                         {{ csrf_form.csrf_token }}
                         <button class="action delete" type="submit" title="{{ _("delete") }}"></button>
