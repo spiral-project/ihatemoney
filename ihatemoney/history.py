@@ -83,9 +83,25 @@ def get_history(project, human_readable_names=True):
                 "time": version.transaction.issued_at,
                 "operation_type": version.operation_type,
                 "object_type": object_type,
+                "bill_details": None,
                 "object_desc": object_str,
                 "ip": version.transaction.remote_addr,
             }
+
+            if object_type == "Bill":
+                if version.operation_type == Operation.INSERT or not version.previous:
+                    detailed_version = version
+                else:
+                    detailed_version = version.previous
+                details = {
+                    "date": detailed_version.date,
+                    "payer": describe_version(detailed_version.payer),
+                    "amount": detailed_version.amount,
+                    "owers": [describe_version(o) for o in detailed_version.owers],
+                    "external_link": detailed_version.external_link,
+                    "original_currency": detailed_version.original_currency,
+                }
+                common_properties["bill_details"] = details
 
             if version.operation_type == Operation.UPDATE:
                 # Only iterate the changeset if the previous version

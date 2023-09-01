@@ -91,6 +91,21 @@
     {% endif %}
 {% endmacro %}
 
+{% macro bill_details(details, before=False) %}
+    {% set owers_list_str=details.owers|localize_list|safe %}
+    <details class="small">
+        <summary>{% if before %} {{ _("Details of the bill (before the change)") }} {% else %} {{ _("Details of the bill") }} {% endif %}</summary>
+        {{ _("Date:") }} {{ details.date|em_surround }}.
+        {{ _("Payer:") }} {{ details.payer|em_surround }}.
+        {{ _("Amount:") }} {{ details.amount|currency(details.original_currency)|em_surround }}.
+        {{ _("Owers:") }} {{ owers_list_str }}.
+        {% if details.external_link %}
+            {{ _("External link:") }}
+            <a class="truncated" href="{{ details.external_link }}">{{ details.external_link }}</a>
+        {% endif %}
+    </details>
+{% endmacro %}
+
 {% block sidebar %}
     <div id="table_overflow">
         {{ balance_table(show_weight=False, show_header=True) }}
@@ -177,6 +192,7 @@
                         {% trans %}Project {{ name }} added{% endtrans %}
                     {% elif event.object_type == "Bill" %}
                         {% trans %}Bill {{ name }} added{% endtrans %}
+                        {{ bill_details(event.bill_details) }}
 
                     {% elif event.object_type == "Person" %}
                         {% trans %}Participant {{ name }} added{% endtrans %}
@@ -220,6 +236,7 @@
                         {% else %}
                             {% trans %}Bill {{ name }} modified{% endtrans %}
                         {% endif %}
+                        {{ bill_details(event.bill_details, before=True) }}
 
                     {% elif event.object_type == "Person" %}
                         {% if event.prop_changed == "activated" %}
@@ -243,6 +260,7 @@
                 {% elif event.operation_type == OperationType.DELETE %}
                     {% if event.object_type == "Bill" %}
                         {% trans %}Bill {{ name }} removed{% endtrans %}
+                        {{ bill_details(event.bill_details) }}
                     {% elif event.object_type == "Person" %}
                         {% trans %}Participant {{ name }} removed{% endtrans %}
                     {% endif %}
