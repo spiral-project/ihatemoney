@@ -424,6 +424,15 @@ footer .footer-left {
   display: table-cell;
 }
 
+/* used to tuncate long urls */
+.truncated {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+    display: inline-block;
+    vertical-align: top;
+}
 
 .balance .balance-value {
   text-align: right;
