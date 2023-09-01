@@ -177,9 +177,11 @@
                         {% trans %}Project {{ name }} added{% endtrans %}
                     {% elif event.object_type == "Bill" %}
                         {% trans %}Bill {{ name }} added{% endtrans %}
+
                     {% elif event.object_type == "Person" %}
                         {% trans %}Participant {{ name }} added{% endtrans %}
                     {% endif %}
+
                 {% elif event.operation_type == OperationType.UPDATE  %}
                     {% if event.object_type == "Project" %}
                         {% if event.prop_changed == "password" %}
@@ -200,7 +202,7 @@
                             {% set new_description=event.val_after|em_surround %}
                             {% trans %}Bill {{ name }} renamed to {{ new_description }}{% endtrans %}
                         {% elif event.prop_changed == "external_link" %}
-                            {{ bill_property_change(event, _("External link"), None, "<a href='{link}' >{link}</a>".format(link=event.val_after | escape) | safe | em_surround) }}
+                            {{ bill_property_change(event, _("External link"), None, "<a class='truncated' href='{link}' >{link}</a>".format(link=event.val_after | escape) | safe | em_surround) }}
                         {% elif event.prop_changed == "owers_added" %}
                             {{ owers_changed(event, True)}}
                         {% elif event.prop_changed == "owers_removed" %}
@@ -218,6 +220,7 @@
                         {% else %}
                             {% trans %}Bill {{ name }} modified{% endtrans %}
                         {% endif %}
+
                     {% elif event.object_type == "Person" %}
                         {% if event.prop_changed == "activated" %}
                             {% if event.val_after == False %}
@@ -236,12 +239,14 @@
                             {% trans %}Participant {{ name }} modified{% endtrans %}
                         {% endif %}
                     {% endif %}
+
                 {% elif event.operation_type == OperationType.DELETE %}
                     {% if event.object_type == "Bill" %}
                         {% trans %}Bill {{ name }} removed{% endtrans %}
                     {% elif event.object_type == "Person" %}
                         {% trans %}Participant {{ name }} removed{% endtrans %}
                     {% endif %}
+
                 {% else %}
                     {# Should be unreachable #}
                     {% if event.object_type == "Project" %}
