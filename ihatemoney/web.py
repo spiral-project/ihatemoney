@@ -646,8 +646,11 @@ def list_bills():
     # Used for CSRF validation
     csrf_form = EmptyForm()
     # set the last selected payer as default choice if exists
-    if "last_selected_payer" in session:
-        bill_form.payer.data = session["last_selected_payer"]
+    if (
+        "last_selected_payer_per_project" in session
+        and g.project.id in session["last_selected_payer_per_project"]
+    ):
+        bill_form.payer.data = session["last_selected_payer_per_project"][g.project.id]
 
     # Each item will be a (weight_sum, Bill) tuple.
     # TODO: improve this awkward result using column_property:
@@ -752,7 +755,9 @@ def add_bill():
     if request.method == "POST":
         if form.validate():
             # save last selected payer in session
-            session["last_selected_payer"] = form.payer.data
+            if "last_selected_payer_per_project" not in session:
+                session["last_selected_payer_per_project"] = {}
+            session["last_selected_payer_per_project"][g.project.id] = form.payer.data
             session.update()
 
             db.session.add(form.export(g.project))
