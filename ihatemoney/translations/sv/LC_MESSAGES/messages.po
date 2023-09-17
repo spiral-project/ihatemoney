@@ -1,19 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-29 14:24+0200\n"
-"PO-Revision-Date: 2023-02-07 21:51+0000\n"
-"Last-Translator: Kristoffer Grundström "
-"<swedishsailfishosuser@tutanota.com>\n"
+"PO-Revision-Date: 2023-09-15 00:53+0000\n"
+"Last-Translator: Kristoffer Grundström <swedishsailfishosuser@tutanota.com>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/sv/>\n"
 "Language: sv\n"
-"Language-Team: Swedish <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/sv/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.0.1-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #, python-format
@@ -30,12 +29,11 @@ msgstr ""
 msgid "Project name"
 msgstr "Namn på projektet"
 
-#, fuzzy
 msgid "Current private code"
-msgstr "Ny privat kod"
+msgstr "Nuvarande privat kod"
 
 msgid "Enter existing private code to edit project"
-msgstr ""
+msgstr "Fyll i befintlig privat kod för att redigera projekt"
 
 msgid "New private code"
 msgstr "Ny privat kod"
@@ -47,7 +45,7 @@ msgid "Email"
 msgstr "E-post"
 
 msgid "Enable project history"
-msgstr "Aktiva projekthistorik"
+msgstr "Aktivera historik för projektet"
 
 msgid "Use IP tracking for project history"
 msgstr "Använd IP-spårning för projekthistorik"
@@ -57,6 +55,8 @@ msgstr "Standardvaluta"
 
 msgid "Setting a default currency enables currency conversion between bills"
 msgstr ""
+"Genom att ställa in en standardvaluta så aktiveras valutaväxling mellan "
+"räkningarna"
 
 msgid "Unknown error"
 msgstr "Okänt fel"
@@ -72,7 +72,7 @@ msgstr ""
 "det innehåller sedlar i flera olika valutor."
 
 msgid "Compatible with Cospend"
-msgstr ""
+msgstr "Kompatibel med Cospend"
 
 msgid "Project identifier"
 msgstr "Projektidentifierare"
@@ -98,16 +98,16 @@ msgid "euro"
 msgstr "euro"
 
 msgid "Please, validate the captcha to proceed."
-msgstr "Snälla, bekräfta captcha för att fortsätta."
+msgstr "Snälla, bekräfta captchan för att fortsätta."
 
 msgid "Enter private code to confirm deletion"
 msgstr "Ange privat kod för att bekräfta borttagning"
 
 msgid "Get in"
-msgstr ""
+msgstr "Gå in"
 
 msgid "Admin password"
-msgstr "Lösenord för admin"
+msgstr "Lösenord för administratör"
 
 msgid "Send me the code by email"
 msgstr "Skicka koden till mig via e-post"
@@ -177,32 +177,31 @@ msgid "The participant name is invalid"
 msgstr "Deltagarens namn är ogiltigt"
 
 msgid "This project already have this participant"
-msgstr "Det här projektet har redan den här deltagaren"
+msgstr "Den här deltagaren är redan i projektet."
 
 msgid "People to notify"
-msgstr ""
+msgstr "Personer att underrätta"
 
 msgid "Send the invitations"
 msgstr "Skicka inbjudningarna"
 
 #, python-format
 msgid "The email %(email)s is not valid"
-msgstr "E-postadressen %(email)s är inte korrekt"
+msgstr "E-postadressen %(email)s är inte giltig"
 
 msgid "Logout"
 msgstr "Logga ut"
 
 msgid "Please check the email configuration of the server."
-msgstr ""
+msgstr "Vänligen kontrollera serverns e-postkonfiguration."
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Please check the email configuration of the server or contact the "
 "administrator: %(admin_email)s"
 msgstr ""
-"Ursäkta! Det uppstod ett fel när e-post med instruktioner för att "
-"återställa ditt lösenord skulle skickas. Vänligen kontrollera serverns "
-"e-post konfiguration eller ta kontakt med administratör."
+"Vänligen kontrollera serverns e-postkonfiguration eller kontakta "
+"administratören: %(admin_email)s"
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
@@ -231,9 +230,8 @@ msgstr "{prefix}: {error}"
 msgid "{prefix}:<br />{errors}"
 msgstr "{prefix}:<br />{errors}"
 
-#, fuzzy
 msgid "Too many failed login attempts."
-msgstr "För många misslyckade inloggningsförsök, försök igen senare."
+msgstr "För många misslyckade inloggningsförsök."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
@@ -242,7 +240,7 @@ msgstr ""
 "kvar."
 
 msgid "Provided token is invalid"
-msgstr ""
+msgstr "Symbolen som har angivits är ogiltig"
 
 msgid "This private code is not the right one"
 msgstr "Den här privata koden är inte den rätta"
@@ -257,14 +255,12 @@ msgstr ""
 "Vi försökte skicka en påminnelse till din e-postadress, men det uppstod "
 "ett fel. Du kan fortfarande använda det här projektet normalt."
 
-#, fuzzy
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
 "instructions."
 msgstr ""
-"Ursäkta! Det uppstod ett fel när e-post med instruktioner för att "
-"återställa ditt lösenord skulle skickas. Vänligen kontrollera serverns "
-"e-post konfiguration eller ta kontakt med administratör."
+"Det skedde tyvärr ett fel när instruktionerna för återställning av "
+"lösenordet skickades via e-post."
 
 msgid "No token provided"
 msgstr "Ingen symbol tillhandahölls"
@@ -279,14 +275,14 @@ msgid "Password successfully reset."
 msgstr "Återställningen av lösenordet lyckades."
 
 msgid "Project settings have been changed successfully."
-msgstr ""
+msgstr "Ändringen av projektets inställningar lyckades."
 
 msgid "Unable to parse CSV"
-msgstr ""
+msgstr "Kunde inte tolka CSV"
 
 #, python-format
 msgid "Missing attribute: %(attribute)s"
-msgstr ""
+msgstr "Attribut saknas: %(attribute)s"
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
@@ -305,7 +301,7 @@ msgid "Error deleting project"
 msgstr "Fel uppstod när projektet skulle tas bort"
 
 msgid "Unable to logout"
-msgstr ""
+msgstr "Kunde inte logga ut"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
@@ -316,6 +312,8 @@ msgstr "Dina inbjudningar har skickats"
 
 msgid "Sorry, there was an error while trying to send the invitation emails."
 msgstr ""
+"Tyvärr, det uppstod ett fel när inbjudningsmeddelandena via e-post skulle "
+"skickas."
 
 #, python-format
 msgid "%(member)s has been added"
@@ -361,7 +359,7 @@ msgstr "Räkningen har blivit modifierad"
 
 #, python-format
 msgid "%(lang)s is not a supported language"
-msgstr ""
+msgstr "%(lang)s är inte ett språk som stöds"
 
 msgid "Error deleting project history"
 msgstr "Fel uppstod när projektets historik skulle tas bort"
@@ -436,29 +434,30 @@ msgid "Download Mobile Application"
 msgstr "Hämta mobilapplikation"
 
 msgid "Get it on"
-msgstr ""
+msgstr "Till projektet"
 
 msgid "Edit project"
 msgstr "Redigera projekt"
 
-#, fuzzy
 msgid "Import project"
-msgstr "Redigera projekt"
+msgstr "Importera projekt"
 
 msgid "Download project's data"
 msgstr "Ladda ner projektets data"
 
 msgid "Bill items"
-msgstr ""
+msgstr "Fakturaobjekt"
 
 msgid "Download the list of bills with owner, amount, reason,... "
 msgstr "Hämta faktura-lista med ägare, summa, anledning,... "
 
 msgid "Settle plans"
-msgstr ""
+msgstr "Avbetalningsplaner"
 
 msgid "Download the list of transactions needed to settle the current bills."
 msgstr ""
+"Hämta listan för överföringar som behövs för att avbetala de nuvarande "
+"räkningarna."
 
 msgid "Can't remember the password?"
 msgstr "Kan du inte komma ihåg lösenordet?"
@@ -470,16 +469,15 @@ msgid "Privacy Settings"
 msgstr "Inställningar för privatliv"
 
 msgid "Save changes"
-msgstr ""
+msgstr "Spara ändringar"
 
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
 "Det här kommer att ta bort alla fakturor och deltagare i det här "
 "projektet!"
 
-#, fuzzy
 msgid "Import previously exported project"
-msgstr "Importera tidigare exporterad JSON-fil"
+msgstr "Importera ett tidigare exporterat projekt"
 
 msgid "Choose file"
 msgstr "Välj fil"
@@ -491,7 +489,7 @@ msgid "Add a bill"
 msgstr "Lägg till en räkning"
 
 msgid "Simple operations are allowed, e.g. (18+36.2)/3"
-msgstr ""
+msgstr "Enkla operationer är tillåtna, t.ex (18+36.2)/3"
 
 msgid "Everyone"
 msgstr "Alla"
@@ -554,6 +552,10 @@ msgid ""
 "                The rest of the project history will be unaffected. This "
 "action cannot be undone."
 msgstr ""
+"Är du säker på att du vill ta bort alla insamlade IP-adresser från det här "
+"projektet?\n"
+"                Resten av projektets historik kommer inte att drabbas. Den "
+"här åtgärden kan inte ångras."
 
 msgid "Confirm deletion"
 msgstr "Bekräfta borttagning"
@@ -581,18 +583,21 @@ msgstr "Faktura %(name)s: tog bort %(owers_list_str)s från ägarlistan"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
+"Det här projektet har historiken avstängd. Nya åtgärder kommer inte att dyka "
+"upp nedanför."
 
-#, fuzzy
 msgid "You can enable history on the settings page."
-msgstr "Insamling av IP-adresser kan inaktiveras på Inställningar-sidan"
+msgstr "Du kan aktivera historiken på inställningssidan."
 
 msgid ""
 "The table below reflects actions recorded prior to disabling project "
 "history."
 msgstr ""
+"Nedanstående tabell reflekterar över åtgärder som har spelats in före "
+"projektets historik stängdes av."
 
 msgid "You can clear the project history to remove them."
-msgstr ""
+msgstr "Du kan rensa projektets historik för att ta bort dem."
 
 msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
@@ -623,7 +628,7 @@ msgid "Event"
 msgstr "Händelse"
 
 msgid "IP address recording can be enabled on the settings page"
-msgstr ""
+msgstr "Insamling av IP-adresser kan aktiveras på inställningssidan"
 
 msgid "IP address recording can be disabled on the settings page"
 msgstr "Insamling av IP-adresser kan inaktiveras på Inställningar-sidan"
@@ -724,7 +729,7 @@ msgid "Nothing to list"
 msgstr "Inget att lista"
 
 msgid "Someone probably cleared the project history."
-msgstr ""
+msgstr "Någon har mest troligtvis rensat projektets historik."
 
 msgid "Manage your shared <br />expenses, easily"
 msgstr "Hantera dina utdelade <br />kostnader, lätt"
@@ -770,7 +775,7 @@ msgid "Bills"
 msgstr "Räkningar"
 
 msgid "Settle"
-msgstr ""
+msgstr "Avbetala"
 
 msgid "Statistics"
 msgstr "Statistik"
@@ -779,7 +784,7 @@ msgid "Languages"
 msgstr "Språk"
 
 msgid "Projects"
-msgstr "Projekt"
+msgstr "Projekten"
 
 msgid "Start a new project"
 msgstr "Starta ett nytt projekt"
@@ -791,7 +796,7 @@ msgid "Settings"
 msgstr "Inställningar"
 
 msgid "RSS Feed"
-msgstr ""
+msgstr "RSS-flöde"
 
 msgid "Other projects :"
 msgstr "Andra projekt :"
@@ -804,7 +809,7 @@ msgstr "Instrumentpanel"
 
 #, python-format
 msgid "Please retry after %(date)s."
-msgstr ""
+msgstr "Vänligen försök efter %(date)s."
 
 msgid "Code"
 msgstr "Kod"
@@ -869,13 +874,11 @@ msgstr "Inga räkningar"
 msgid "Nothing to list yet."
 msgstr "Ingenting att lista än."
 
-#, fuzzy
 msgid "Add your first bill"
-msgstr "lägg till en räkning"
+msgstr "Lägg till din första räkning"
 
-#, fuzzy
 msgid "Add the first participant"
-msgstr "Redigera den här deltagaren"
+msgstr "Lägg till den första deltagaren"
 
 msgid "Password reminder"
 msgstr "Lösenordspåminnare"
@@ -900,7 +903,7 @@ msgid "Invite people to join this project"
 msgstr "Bjud in personer att ansluta till det här projektet"
 
 msgid "Share an invitation link"
-msgstr ""
+msgstr "Dela en inbjudningslänk"
 
 msgid ""
 "The easiest way to invite people is to give them the following invitation"
@@ -908,26 +911,29 @@ msgid ""
 " add/edit/delete bills. However, they will not have access to important "
 "settings such as changing the private code or deleting the whole project."
 msgstr ""
+"Det lättaste sättet att bjuda in människor är att ge dem den följande "
+"inbjudningslänken.<br />De kommer att kunna komma åt projektet, hantera "
+"deltagare, lägga till/redigera/ta bort räkningar. Hur som helst, de kommer "
+"inte att ha tillgång till viktiga inställningar så som att ändra den privata "
+"koden eller att ta bort hela projektet."
 
 msgid "Scan QR code"
-msgstr ""
+msgstr "Skanna QR-kod"
 
 msgid "Use a mobile device with a compatible app."
-msgstr ""
+msgstr "Använd en mobil-enhet med en kompatibel app."
 
 msgid "Send via Emails"
 msgstr "Skicka via e-post"
 
-#, fuzzy
 msgid ""
 "Specify a list of email adresses (separated by comma) of people you want "
 "to notify about the creation of this project. We will send them an email "
 "with the invitation link."
 msgstr ""
-"Ange en (delat med ett kommatecken)  lista över e-postadresser som du "
-"vill underrätta om\n"
-"                skapandet av det här budgethanteringsprojektet gör att de"
-" kommer att få ett e-postmeddelande om det."
+"Specificera en lista över e-postadresser (åtskilda med komma-tecken) för "
+"människor som du vill meddela om att det här projektet har skapats. Vi "
+"kommer att skicka dem ett e-postmeddelande med inbjudningslänken."
 
 msgid "Share Identifier & code"
 msgstr "Dela ut identifierare & kod"
@@ -938,16 +944,20 @@ msgid ""
 "to the full project, including changing settings such as the private code"
 " or project email address, or even deleting the whole project."
 msgstr ""
+"Du kan dela projektets identifierare och den privata koden via alla "
+"kommunikationssätt.<br />Vem som helst med den privata koden kommer att ha "
+"tillgång till hela projektet, inklusive ändra inställningar så som den "
+"privata koden eller projektets e-postadress eller till och med ta bort hela "
+"projektet."
 
 msgid "Identifier:"
 msgstr "Identifierare:"
 
-#, fuzzy
 msgid "Private code:"
-msgstr "Privat kod"
+msgstr "Privat kod:"
 
 msgid "the private code was defined when you created the project"
-msgstr ""
+msgstr "den privata koden angavs när du skapade projektet"
 
 msgid "Who pays?"
 msgstr "Vem betalar?"
@@ -977,7 +987,7 @@ msgid "Expenses by Month"
 msgstr "Kostnader per månad"
 
 msgid "Period"
-msgstr "Period"
+msgstr "Punkt"
 
 #~ msgid "Participant"
 #~ msgstr "Deltagare"
@@ -1125,4 +1135,3 @@ msgstr "Period"
 
 #~ msgid "You can directly share the following link via your prefered medium"
 #~ msgstr "Du kan direkt dela ut följande länk via föredraget media"
-
