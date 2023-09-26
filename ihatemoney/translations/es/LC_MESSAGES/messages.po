@@ -610,7 +610,7 @@ msgid "No IP Addresses to erase"
 msgstr "No hay direcciones IP para borrar"
 
 msgid "Delete Stored IP Addresses"
-msgstr "Borrar las direcciones IP almacenadas"
+msgstr "Eliminar direcciones IP almacenadas"
 
 msgid "No history to erase"
 msgstr "No hay historial que borrar"
