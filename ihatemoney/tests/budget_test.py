@@ -2050,3 +2050,53 @@ class TestBudget(IhatemoneyTestCase):
 
         resp = self.client.get(f"/raclette/feed/{token}.xml")
         assert resp.status_code == 404
+
+    def test_remember_payer_per_project(self):
+        """
+        Tests that the last payer is remembered for each project
+        """
+        self.post_project("raclette")
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
+        self.client.post("/raclette/members/add", data={"name": "fred"})
+        members_ids = [m.id for m in self.get_project("raclette").members]
+        # create a bill
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage à raclette",
+                "payer": members_ids[1],
+                "payed_for": members_ids,
+                "amount": "25",
+            },
+        )
+
+        self.post_project("tartiflette")
+        self.client.post("/tartiflette/members/add", data={"name": "pluton"})
+        self.client.post("/tartiflette/members/add", data={"name": "mars"})
+        self.client.post("/tartiflette/members/add", data={"name": "venus"})
+        members_ids_tartif = [m.id for m in self.get_project("tartiflette").members]
+        # create a bill
+        self.client.post(
+            "/tartiflette/add",
+            data={
+                "date": "2011-08-12",
+                "what": "fromage à tartiflette spatial",
+                "payer": members_ids_tartif[2],
+                "payed_for": members_ids_tartif,
+                "amount": "24",
+            },
+        )
+
+        with self.client as c:
+            c.post("/authenticate", data={"id": "raclette", "password": "raclette"})
+            assert isinstance(session["last_selected_payer_per_project"], dict)
+            assert "raclette" in session["last_selected_payer_per_project"]
+            assert "tartiflette" in session["last_selected_payer_per_project"]
+            assert (
+                session["last_selected_payer_per_project"]["raclette"] == members_ids[1]
+            )
+            assert (
+                session["last_selected_payer_per_project"]["tartiflette"]
+                == members_ids_tartif[2]
+            )
