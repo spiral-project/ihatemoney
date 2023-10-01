@@ -646,11 +646,15 @@ def list_bills():
     # Used for CSRF validation
     csrf_form = EmptyForm()
     # set the last selected payer as default choice if exists
-    if (
-        "last_selected_payer_per_project" in session
-        and g.project.id in session["last_selected_payer_per_project"]
-    ):
-        bill_form.payer.data = session["last_selected_payer_per_project"][g.project.id]
+    if "last_selected_payer_per_project" in session:
+        if g.project.id in session["last_selected_payer_per_project"]:
+            bill_form.payer.data = session["last_selected_payer_per_project"][
+                g.project.id
+            ]
+    # for backward compatibility, should be removed at some point
+    else:
+        if "last_selected_payer" in session:
+            bill_form.payer.data = session["last_selected_payer"]
 
     # Each item will be a (weight_sum, Bill) tuple.
     # TODO: improve this awkward result using column_property:
