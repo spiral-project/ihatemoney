@@ -2100,3 +2100,30 @@ class TestBudget(IhatemoneyTestCase):
                 session["last_selected_payer_per_project"]["tartiflette"]
                 == members_ids_tartif[2]
             )
+
+    def test_remember_payed_for(self):
+        """
+        Tests that the last ower is remembered
+        """
+        self.post_project("raclette")
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
+        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "pipistrelle"})
+        members_ids = [m.id for m in self.get_project("raclette").members]
+        # create a bill
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage à raclette",
+                "payer": members_ids[1],
+                "payed_for": members_ids[1:],
+                "amount": "25",
+            },
+        )
+
+        with self.client as c:
+            c.post("/authenticate", data={"id": "raclette", "password": "raclette"})
+            assert isinstance(session["last_selected_payed_for"], dict)
+            assert "raclette" in session["last_selected_payed_for"]
+            assert session["last_selected_payed_for"]["raclette"] == members_ids[1:]
