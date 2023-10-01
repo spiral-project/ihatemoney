@@ -4,7 +4,10 @@ This document describes changes between each past release.
 
 ## 6.1.1 (unreleased)
 
+- Simplifies adding a bill with keyboard only (#1221)
+- Limit version of flask-wtf to avoid an upstream bug (#1233)
 - Speed up unit tests (#1214)
+- Update translations for Spanish, Russian, Kannada, Swedish, Polish, German, and Italian
 
 
 ## 6.1.0 (2023-07-29)
