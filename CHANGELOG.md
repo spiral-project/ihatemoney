@@ -2,6 +2,12 @@
 
 This document describes changes between each past release.
 
+## 6.1.2 (unreleased)
+
+
+- Nothing changed yet.
+
+
 ## 6.1.1 (2023-10-04)
 
 ### Currency conversion API workarounds
