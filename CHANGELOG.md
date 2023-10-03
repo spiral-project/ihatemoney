@@ -4,10 +4,33 @@ This document describes changes between each past release.
 
 ## 6.1.1 (unreleased)
 
+### Currency conversion API workarounds
+
+We are using an external API for currency conversion.  This API recently
+started requiring an API key, and this broke I Hate Money in many ways.
+
+This release adds a set of workarounds for this issue.  This should restore
+basic functionality such as adding bills.  However, we had to disable
+some operations to prevent crashing:
+
+- Setting or changing the default currency on an existing project is no longer possible.
+  However, setting a project to "No currency" is still possible.
+- Adding or editing a bill with a currency that differs from the default currency
+  of the project is no longer possible
+
+[Longer-term solutions are being discussed](https://github.com/spiral-project/ihatemoney/issues/1232).
+If you are using currencies in your projects, your input is welcome.
+
+### Added
+
 - Simplifies adding a bill with keyboard only (#1221)
 - Add details of bills in history (#1223)
+- Remember last "For whom?" field when adding a new bill (#1222)
 - Speed up unit tests (#1214)
 - Update translations for Spanish, Russian, Kannada, Swedish, Polish, German, and Italian
+
+### Fixed
+- Fix remembering the last selected payer when switching project (#1224)
 
 
 ## 6.1.0 (2023-07-29)
