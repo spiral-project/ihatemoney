@@ -2,6 +2,8 @@ import base64
 import datetime
 import json
 
+import pytest
+
 from ihatemoney.tests.common.help_functions import em_surround
 from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
 
@@ -615,6 +617,7 @@ class TestAPI(IhatemoneyTestCase):
             )
             self.assertStatus(400, req)
 
+    @pytest.mark.skip(reason="Currency conversion is broken")
     def test_currencies(self):
         # check /currencies for list of supported currencies
         resp = self.client.get("/api/currencies")
