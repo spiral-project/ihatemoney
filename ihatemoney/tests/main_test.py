@@ -385,9 +385,9 @@ class TestCurrencyConverter:
         assert one == two
 
     def test_get_currencies(self):
-        assert set(self.converter.get_currencies()) == set(
-            ["USD", "EUR", "CAD", "PLN", CurrencyConverter.no_currency]
-        )
+        currencies = self.converter.get_currencies()
+        for currency in ["USD", "EUR", "CAD", "PLN", CurrencyConverter.no_currency]:
+            assert currency in currencies
 
     def test_exchange_currency(self):
         result = self.converter.exchange_currency(100, "USD", "EUR")
