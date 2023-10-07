@@ -32,14 +32,14 @@ def runserver(ctx):
     ctx.forward(run)
 
 
-@click.command(name="generate_password_hash")
+@cli.command(name="generate_password_hash")
 def password_hash():
     """Get password from user and hash it without printing it in clear text."""
     password = getpass.getpass(prompt="Password: ")
     print(generate_password_hash(password))
 
 
-@click.command()
+@cli.command()
 @click.argument(
     "config_file",
     type=click.Choice(

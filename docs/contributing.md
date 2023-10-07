@@ -281,7 +281,7 @@ Index](https://pypi.org) (PyPI) and publish a tag in the git repository.
 ::: {note}
 
 The above command will prompt for version number, handle
-`CHANGELOG.md` and `setup.cfg` updates, package creation,
+`CHANGELOG.md` and `pyproject.toml` updates, package creation,
 pypi upload. It will prompt you before each step to get your consent.
 :::
 
