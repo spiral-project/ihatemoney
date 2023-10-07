@@ -6,7 +6,7 @@ import random
 import sys
 
 import click
-from flask.cli import FlaskGroup
+from flask.cli import FlaskGroup, with_appcontext
 
 from ihatemoney.models import Project, db
 from ihatemoney.run import create_app
@@ -33,6 +33,7 @@ def runserver(ctx):
 
 
 @click.command(name="generate_password_hash")
+@with_appcontext
 def password_hash():
     """Get password from user and hash it without printing it in clear text."""
     password = getpass.getpass(prompt="Password: ")
