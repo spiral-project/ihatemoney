@@ -11,7 +11,7 @@ MAGICK_MOGRIFY := mogrify
 .PHONY: all
 all: install ## Alias for install
 .PHONY: install
-install: virtualenv setup.cfg $(INSTALL_STAMP) ## Install dependencies
+install: virtualenv pyproject.toml $(INSTALL_STAMP) ## Install dependencies
 $(INSTALL_STAMP):
 	$(VENV)/bin/pip install -U pip
 	$(VENV)/bin/pip install -e .
@@ -23,7 +23,7 @@ $(PYTHON):
 	$(VIRTUALENV) $(VENV)
 
 .PHONY: install-dev
-install-dev: virtualenv setup.cfg $(INSTALL_STAMP) $(DEV_STAMP) ## Install development dependencies
+install-dev: virtualenv pyproject.toml $(INSTALL_STAMP) $(DEV_STAMP) ## Install development dependencies
 $(DEV_STAMP): $(PYTHON)
 	$(VENV)/bin/pip install -Ue .[dev]
 	touch $(DEV_STAMP)

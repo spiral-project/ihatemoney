@@ -74,9 +74,9 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
         cache: 'pip'
-        cache-dependency-path: '**/setup.cfg'
+        cache-dependency-path: '**/pyproject.toml'
     - name: Change dependencies to minimal supported versions
-      run: sed -i -e 's/>=/==/g; s/~=.*==\(.*\)/==\1/g; s/~=/==/g;' setup.cfg
+      run: sed -i -e 's/>=/==/g; s/~=.*==\(.*\)/==\1/g; s/~=/==/g;' pyproject.toml
       if: matrix.dependencies == 'minimal'
     - name: Install dependencies
       run: |
