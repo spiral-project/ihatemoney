@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools", "setuptools-scm"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "ihatemoney"
@@ -85,5 +85,19 @@ doc = [
 [project.scripts]
 ihatemoney = "ihatemoney.manage:cli"
 
-[tool.setuptools]
-packages = ["ihatemoney"]
+[tool.hatch.build.hooks.custom]
+dependencies = [
+    # Babel is needed to compile translations catalogs at package build time
+    "Babel>=2.10.1"
+]
+
+[tool.hatch.build]
+artifacts = ["ihatemoney/translations/**/*.mo"]
+include = [
+    "ihatemoney/",
+    "LICENSE",
+    "CONTRIBUTORS",
+    "CHANGELOG.md",
+    "README.md",
+    "SECURITY.md",
+]

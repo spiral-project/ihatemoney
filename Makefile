@@ -36,7 +36,7 @@ remove-install-stamp:
 update: remove-install-stamp install ## Update the dependencies
 
 .PHONY: serve
-serve: install ## Run the ihatemoney server
+serve: install build-translations ## Run the ihatemoney server
 	@echo 'Running ihatemoney on http://localhost:5000'
 	FLASK_DEBUG=1 FLASK_APP=ihatemoney.wsgi $(VENV)/bin/flask run --host=0.0.0.0
 
@@ -74,8 +74,8 @@ compress-assets: compress-showcase ## Compress static assets
 build-translations: ## Build the translations
 	$(VENV)/bin/pybabel compile -d ihatemoney/translations
 
-.PHONY: update-translations
-update-translations: ## Extract new translations from source code
+.PHONY: extract-translations
+extract-translations: ## Extract new translations from source code
 	$(VENV)/bin/pybabel extract --add-comments "I18N:" --strip-comments --omit-header --no-location --mapping-file ihatemoney/babel.cfg -o ihatemoney/messages.pot ihatemoney
 	$(VENV)/bin/pybabel update -i ihatemoney/messages.pot -d ihatemoney/translations/
 

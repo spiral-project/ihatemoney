@@ -3,8 +3,14 @@ from unittest.mock import MagicMock
 from flask import Flask
 import pytest
 
+from ihatemoney.babel_utils import compile_catalogs
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.run import create_app, db
+
+
+@pytest.fixture(autouse=True, scope="session")
+def babel_catalogs():
+    compile_catalogs()
 
 
 @pytest.fixture
