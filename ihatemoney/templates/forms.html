@@ -179,7 +179,11 @@
                 <a class="badge badge-secondary" href="#" id="selectnone" onclick="selectCheckboxes(false)">{{_("No one")}}</a>
             </p>
             <div  class="d-flex flex-column flex-wrap overflow-auto" style="max-height: 20em;">
-                {% for key, value, checked in form.payed_for.iter_choices() | sort(attribute='1') %}
+                {% for choices in form.payed_for.iter_choices() | sort(attribute='1') %}
+                {# Compatibility with wtforms<3.1 #}
+                {% set key = choices[0] %}
+                {% set value = choices[1] %}
+                {% set checked = choices[2] %}
                 <p class="form-check text-break" style="max-width: 50%;">
                    <label for="payed_for-{{key}}" class="form-check-label">
                       <input name="payed_for" type="checkbox" {% if checked %}checked{% endif %} class="form-check-input" value="{{key}}" id="payed_for-{{key}}"/>
