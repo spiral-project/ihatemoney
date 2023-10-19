@@ -430,6 +430,10 @@ def render_localized_template(template_name_prefix, **context):
     # render_template() supports a list of templates to try in order
     return render_template(templates, **context)
 
+def translate_template_text(text, **context):
+    """Passes `text` to a basic Jinja translation template. A generalizable solution for translating outgoing emails."""
+
+    return render_template("translation_template.j2", untranslated_text=text, **context)
 
 def format_form_errors(form, prefix):
     """Format all form errors into a single string, with a string prefix in

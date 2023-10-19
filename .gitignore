@@ -18,3 +18,5 @@ ihatemoney/budget.db
 .python-version
 .coverage*
 prof
+*.ipynb
+*/.ipynb_checkpoints/

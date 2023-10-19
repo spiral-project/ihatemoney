@@ -68,6 +68,7 @@ from ihatemoney.utils import (
     list_of_dicts2csv,
     list_of_dicts2json,
     render_localized_template,
+    translate_template_text,
     send_email,
 )
 
@@ -601,7 +602,8 @@ def invite():
     if request.method == "POST":
         if form.validate():
             # send the email
-            message_body = render_localized_template("invitation_mail")
+            untranslated_body = render_template("invitation_mail.j2")
+            message_body = translate_template_text(untranslated_body)
             message_title = _(
                 "You have been invited to share your expenses for %(project)s",
                 project=g.project.name,
