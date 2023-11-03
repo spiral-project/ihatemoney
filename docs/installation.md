@@ -103,7 +103,7 @@ repository](https://github.com/spiral-project/ihatemoney/tree/master/ihatemoney/
 :::
 
 (virtualenv-preparation)=
-### Prepare virtual environment (recommended)
+### Prepare virtual environment on Linux / MacOS (recommended)
 
 Choose an installation path, here the current user's home directory
 (~).
@@ -121,6 +121,29 @@ Activate the virtual environment:
 You will have to re-issue that `source` command if you open a new
 terminal.
 :::
+
+### Prepare virtual environment on Windows (recommended)
+
+Install virtualenv if not already installed:
+
+    pip install virtualenv
+
+Choose an installation path, here the current user's home directory
+(~).
+
+Create a virtual environment:
+
+    virtualenv ~\ihatemoney
+
+Activate the virtual environment:
+
+    .\ihatemoney\Scripts\activate
+
+::: {note}
+Your terminal should now say (env) at the beginning of the line.
+To leave the virtual environment, type 'deactivate'
+:::
+
 
 (pip)=
 ### Install
