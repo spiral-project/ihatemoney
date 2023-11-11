@@ -1784,7 +1784,7 @@ class TestBudget(IhatemoneyTestCase):
             <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
         </item>
         </channel>
-</rss>"""  # noqa: E501
+</rss>"""  # noqa: E221, E222, E231, E501
         assert resp.data.decode() == expected_rss_content
 
     def test_rss_feed_history_disabled(self):
@@ -1868,7 +1868,7 @@ class TestBudget(IhatemoneyTestCase):
             <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
         </item>
         </channel>
-</rss>"""  # noqa: E501
+</rss>"""  # noqa: E221, E222, E231, E501
         assert resp.data.decode() == expected_rss_content
 
     def test_rss_if_modified_since_header(self):

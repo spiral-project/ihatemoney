@@ -36,7 +36,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.7, 3.8, 3.9, "3.10", "3.11"]
+        python-version: [3.7, 3.8, 3.9, "3.10", "3.11", "3.12"]
         dependencies: [normal]
         database: [sqlite]
         # Test other databases only with one version of Python (Debian buster has 3.7)
@@ -64,6 +64,9 @@ jobs:
             dependencies: minimal
             database: sqlite
           - python-version: "3.11"
+            dependencies: minimal
+            database: sqlite
+          - python-version: "3.12"
             dependencies: minimal
             database: sqlite
 
@@ -100,4 +103,4 @@ jobs:
         TESTING_SQLALCHEMY_DATABASE_URI: 'mysql+pymysql://root:ihatemoney@localhost:3306/ihatemoney_ci'
     - name: Run Lint & Docs
       run: tox -e lint_docs
-      if: matrix.python-version == '3.11'
+      if: matrix.python-version == '3.12'
