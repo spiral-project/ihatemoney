@@ -133,7 +133,7 @@ You can get all the members with a `GET` on
     [{"weight": 1, "activated": true, "id": 31, "name": "Arnaud"},
      {"weight": 1, "activated": true, "id": 32, "name": "Alexis"},
      {"weight": 1, "activated": true, "id": 33, "name": "Olivier"},
-     {"weight": 1, "activated": true, "id": 34, "name": "Fred"}]
+     {"weight": 1, "activated": true, "id": 34, "name": "Jeanne"}]
 
 Add a member with a `POST` request on `/api/projects/<id>/members`:
 
@@ -244,7 +244,7 @@ You can get some project stats with a `GET` on
             "balance": 10.5
         },
         {
-            "member": {"activated": true, "id": 2, "name": "fred", "weight": 1.0},
+            "member": {"activated": true, "id": 2, "name": "jeanne", "weight": 1.0},
             "paid": 5,
             "spent": 15.5,
             "balance": -10.5

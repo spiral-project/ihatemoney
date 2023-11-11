@@ -16,13 +16,13 @@ def import_data(request: pytest.FixtureRequest):
             "amount": 13.33,
             "payer_name": "tata",
             "payer_weight": 1.0,
-            "owers": ["fred"],
+            "owers": ["jeanne"],
         },
         {
             "date": "2016-12-31",
             "what": "red wine",
             "amount": 200.0,
-            "payer_name": "fred",
+            "payer_name": "jeanne",
             "payer_weight": 1.0,
             "owers": ["zorglub", "tata"],
         },
@@ -32,7 +32,7 @@ def import_data(request: pytest.FixtureRequest):
             "amount": 10.0,
             "payer_name": "zorglub",
             "payer_weight": 2.0,
-            "owers": ["zorglub", "fred", "tata", "pepe"],
+            "owers": ["zorglub", "jeanne", "tata", "pepe"],
         },
     ]
     request.cls.data = data
@@ -51,13 +51,13 @@ class CommonTestCase(object):
                     "amount": 13.33,
                     "payer_name": "tata",
                     "payer_weight": 1.0,
-                    "owers": ["fred"],
+                    "owers": ["jeanne"],
                 },
                 {
                     "date": "2016-12-31",
                     "what": "red wine",
                     "amount": 200.0,
-                    "payer_name": "fred",
+                    "payer_name": "jeanne",
                     "payer_weight": 1.0,
                     "owers": ["zorglub", "tata"],
                 },
@@ -67,7 +67,7 @@ class CommonTestCase(object):
                     "amount": 10.0,
                     "payer_name": "zorglub",
                     "payer_weight": 2.0,
-                    "owers": ["zorglub", "fred", "tata", "pepe"],
+                    "owers": ["zorglub", "jeanne", "tata", "pepe"],
                 },
             ]
 
@@ -264,7 +264,7 @@ class CommonTestCase(object):
             self.client.post(
                 "/raclette/members/add", data={"name": "zorglub", "weight": 2}
             )
-            self.client.post("/raclette/members/add", data={"name": "fred"})
+            self.client.post("/raclette/members/add", data={"name": "jeanne"})
             self.client.post("/raclette/members/add", data={"name": "tata"})
             self.client.post(
                 "/raclette/add",
@@ -328,7 +328,7 @@ class CommonTestCase(object):
                     "what": "refund",
                     "payer_name": "tata",
                     "payer_weight": 1.0,
-                    "owers": ["fred"],
+                    "owers": ["jeanne"],
                 }
             ]
             for data in [data_wrong_keys, data_amount_missing]:
@@ -344,7 +344,7 @@ class TestExport(IhatemoneyTestCase):
 
         # add participants
         self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
-        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "jeanne"})
         self.client.post("/raclette/members/add", data={"name": "tata"})
         self.client.post("/raclette/members/add", data={"name": "pépé"})
 
@@ -392,14 +392,14 @@ class TestExport(IhatemoneyTestCase):
                 "currency": "XXX",
                 "payer_name": "tata",
                 "payer_weight": 1.0,
-                "owers": ["fred"],
+                "owers": ["jeanne"],
             },
             {
                 "date": "2016-12-31",
                 "what": "red wine",
                 "amount": 200.0,
                 "currency": "XXX",
-                "payer_name": "fred",
+                "payer_name": "jeanne",
                 "payer_weight": 1.0,
                 "owers": ["zorglub", "tata"],
             },
@@ -410,7 +410,7 @@ class TestExport(IhatemoneyTestCase):
                 "currency": "XXX",
                 "payer_name": "zorglub",
                 "payer_weight": 2.0,
-                "owers": ["zorglub", "fred", "tata", "p\xe9p\xe9"],
+                "owers": ["zorglub", "jeanne", "tata", "p\xe9p\xe9"],
             },
         ]
         assert json.loads(resp.data.decode("utf-8")) == expected
@@ -419,9 +419,9 @@ class TestExport(IhatemoneyTestCase):
         resp = self.client.get("/raclette/export/bills.csv")
         expected = [
             "date,what,amount,currency,payer_name,payer_weight,owers",
-            "2017-01-01,refund,XXX,13.33,tata,1.0,fred",
-            '2016-12-31,red wine,XXX,200.0,fred,1.0,"zorglub, tata"',
-            '2016-12-31,fromage à raclette,10.0,XXX,zorglub,2.0,"zorglub, fred, tata, pépé"',
+            "2017-01-01,refund,XXX,13.33,tata,1.0,jeanne",
+            '2016-12-31,red wine,XXX,200.0,jeanne,1.0,"zorglub, tata"',
+            '2016-12-31,fromage à raclette,10.0,XXX,zorglub,2.0,"zorglub, jeanne, tata, pépé"',
         ]
         received_lines = resp.data.decode("utf-8").split("\n")
 
@@ -434,14 +434,14 @@ class TestExport(IhatemoneyTestCase):
             {
                 "amount": 2.00,
                 "currency": "XXX",
-                "receiver": "fred",
+                "receiver": "jeanne",
                 "ower": "p\xe9p\xe9",
             },
-            {"amount": 55.34, "currency": "XXX", "receiver": "fred", "ower": "tata"},
+            {"amount": 55.34, "currency": "XXX", "receiver": "jeanne", "ower": "tata"},
             {
                 "amount": 127.33,
                 "currency": "XXX",
-                "receiver": "fred",
+                "receiver": "jeanne",
                 "ower": "zorglub",
             },
         ]
@@ -453,9 +453,9 @@ class TestExport(IhatemoneyTestCase):
 
         expected = [
             "amount,currency,receiver,ower",
-            "2.0,XXX,fred,pépé",
-            "55.34,XXX,fred,tata",
-            "127.33,XXX,fred,zorglub",
+            "2.0,XXX,jeanne,pépé",
+            "55.34,XXX,jeanne,tata",
+            "127.33,XXX,jeanne,zorglub",
         ]
         received_lines = resp.data.decode("utf-8").split("\n")
 
@@ -472,7 +472,7 @@ class TestExport(IhatemoneyTestCase):
 
         # add participants
         self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
-        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "jeanne"})
         self.client.post("/raclette/members/add", data={"name": "tata"})
         self.client.post("/raclette/members/add", data={"name": "pépé"})
 
@@ -523,14 +523,14 @@ class TestExport(IhatemoneyTestCase):
                 "currency": "EUR",
                 "payer_name": "tata",
                 "payer_weight": 1.0,
-                "owers": ["fred"],
+                "owers": ["jeanne"],
             },
             {
                 "date": "2016-12-31",
                 "what": "poutine from Qu\xe9bec",
                 "amount": 100.0,
                 "currency": "CAD",
-                "payer_name": "fred",
+                "payer_name": "jeanne",
                 "payer_weight": 1.0,
                 "owers": ["zorglub", "tata"],
             },
@@ -541,7 +541,7 @@ class TestExport(IhatemoneyTestCase):
                 "currency": "EUR",
                 "payer_name": "zorglub",
                 "payer_weight": 2.0,
-                "owers": ["zorglub", "fred", "tata", "p\xe9p\xe9"],
+                "owers": ["zorglub", "jeanne", "tata", "p\xe9p\xe9"],
             },
         ]
         assert json.loads(resp.data.decode("utf-8")) == expected
@@ -550,9 +550,9 @@ class TestExport(IhatemoneyTestCase):
         resp = self.client.get("/raclette/export/bills.csv")
         expected = [
             "date,what,amount,currency,payer_name,payer_weight,owers",
-            "2017-01-01,refund,13.33,EUR,tata,1.0,fred",
-            '2016-12-31,poutine from Québec,100.0,CAD,fred,1.0,"zorglub, tata"',
-            '2016-12-31,fromage à raclette,10.0,EUR,zorglub,2.0,"zorglub, fred, tata, pépé"',
+            "2017-01-01,refund,13.33,EUR,tata,1.0,jeanne",
+            '2016-12-31,poutine from Québec,100.0,CAD,jeanne,1.0,"zorglub, tata"',
+            '2016-12-31,fromage à raclette,10.0,EUR,zorglub,2.0,"zorglub, jeanne, tata, pépé"',
         ]
         received_lines = resp.data.decode("utf-8").split("\n")
 
@@ -565,11 +565,16 @@ class TestExport(IhatemoneyTestCase):
             {
                 "amount": 2.00,
                 "currency": "EUR",
-                "receiver": "fred",
+                "receiver": "jeanne",
                 "ower": "p\xe9p\xe9",
             },
-            {"amount": 10.89, "currency": "EUR", "receiver": "fred", "ower": "tata"},
-            {"amount": 38.45, "currency": "EUR", "receiver": "fred", "ower": "zorglub"},
+            {"amount": 10.89, "currency": "EUR", "receiver": "jeanne", "ower": "tata"},
+            {
+                "amount": 38.45,
+                "currency": "EUR",
+                "receiver": "jeanne",
+                "ower": "zorglub",
+            },
         ]
 
         assert json.loads(resp.data.decode("utf-8")) == expected
@@ -579,9 +584,9 @@ class TestExport(IhatemoneyTestCase):
 
         expected = [
             "amount,currency,receiver,ower",
-            "2.0,EUR,fred,pépé",
-            "10.89,EUR,fred,tata",
-            "38.45,EUR,fred,zorglub",
+            "2.0,EUR,jeanne,pépé",
+            "10.89,EUR,jeanne,tata",
+            "38.45,EUR,jeanne,zorglub",
         ]
         received_lines = resp.data.decode("utf-8").split("\n")
 
@@ -598,11 +603,16 @@ class TestExport(IhatemoneyTestCase):
             {
                 "amount": 3.00,
                 "currency": "CAD",
-                "receiver": "fred",
+                "receiver": "jeanne",
                 "ower": "p\xe9p\xe9",
             },
-            {"amount": 16.34, "currency": "CAD", "receiver": "fred", "ower": "tata"},
-            {"amount": 57.67, "currency": "CAD", "receiver": "fred", "ower": "zorglub"},
+            {"amount": 16.34, "currency": "CAD", "receiver": "jeanne", "ower": "tata"},
+            {
+                "amount": 57.67,
+                "currency": "CAD",
+                "receiver": "jeanne",
+                "ower": "zorglub",
+            },
         ]
 
         assert json.loads(resp.data.decode("utf-8")) == expected
@@ -612,9 +622,9 @@ class TestExport(IhatemoneyTestCase):
 
         expected = [
             "amount,currency,receiver,ower",
-            "3.0,CAD,fred,pépé",
-            "16.34,CAD,fred,tata",
-            "57.67,CAD,fred,zorglub",
+            "3.0,CAD,jeanne,pépé",
+            "16.34,CAD,jeanne,tata",
+            "57.67,CAD,jeanne,zorglub",
         ]
         received_lines = resp.data.decode("utf-8").split("\n")
 

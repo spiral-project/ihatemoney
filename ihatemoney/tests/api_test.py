@@ -314,7 +314,7 @@ class TestAPI(IhatemoneyTestCase):
         # edit the participant
         req = self.client.put(
             "/api/projects/raclette/members/1",
-            data={"name": "Fred", "weight": 2},
+            data={"name": "Jeanne", "weight": 2},
             headers=self.get_auth("raclette"),
         )
 
@@ -326,14 +326,14 @@ class TestAPI(IhatemoneyTestCase):
         )
 
         self.assertStatus(200, req)
-        assert "Fred" == json.loads(req.data.decode("utf-8"))["name"]
+        assert "Jeanne" == json.loads(req.data.decode("utf-8"))["name"]
         assert 2 == json.loads(req.data.decode("utf-8"))["weight"]
 
         # edit this member with same information
-        # (test PUT idemopotence)
+        # (test PUT idempotence)
         req = self.client.put(
             "/api/projects/raclette/members/1",
-            data={"name": "Fred"},
+            data={"name": "Jeanne"},
             headers=self.get_auth("raclette"),
         )
 
@@ -342,7 +342,7 @@ class TestAPI(IhatemoneyTestCase):
         # de-activate the participant
         req = self.client.put(
             "/api/projects/raclette/members/1",
-            data={"name": "Fred", "activated": False},
+            data={"name": "Jeanne", "activated": False},
             headers=self.get_auth("raclette"),
         )
         self.assertStatus(200, req)
@@ -356,7 +356,7 @@ class TestAPI(IhatemoneyTestCase):
         # re-activate the participant
         req = self.client.put(
             "/api/projects/raclette/members/1",
-            data={"name": "Fred", "activated": True},
+            data={"name": "Jeanne", "activated": True},
             headers=self.get_auth("raclette"),
         )
 
@@ -388,7 +388,7 @@ class TestAPI(IhatemoneyTestCase):
 
         # add participants
         self.api_add_member("raclette", "zorglub")
-        self.api_add_member("raclette", "fred")
+        self.api_add_member("raclette", "jeanne")
         self.api_add_member("raclette", "quentin")
 
         # get the list of bills (should be empty)
@@ -429,7 +429,7 @@ class TestAPI(IhatemoneyTestCase):
             "payer_id": 1,
             "owers": [
                 {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
-                {"activated": True, "id": 2, "name": "fred", "weight": 1},
+                {"activated": True, "id": 2, "name": "jeanne", "weight": 1},
             ],
             "amount": 25.0,
             "date": "2011-08-10",
@@ -498,7 +498,7 @@ class TestAPI(IhatemoneyTestCase):
             "payer_id": 2,
             "owers": [
                 {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
-                {"activated": True, "id": 2, "name": "fred", "weight": 1},
+                {"activated": True, "id": 2, "name": "jeanne", "weight": 1},
             ],
             "amount": 25.0,
             "date": "2011-09-10",
@@ -534,7 +534,7 @@ class TestAPI(IhatemoneyTestCase):
 
         # add participants
         self.api_add_member("raclette", "zorglub")
-        self.api_add_member("raclette", "fred")
+        self.api_add_member("raclette", "jeanne")
 
         # valid amounts
         input_expected = [
@@ -576,7 +576,7 @@ class TestAPI(IhatemoneyTestCase):
                 "payer_id": 1,
                 "owers": [
                     {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
-                    {"activated": True, "id": 2, "name": "fred", "weight": 1},
+                    {"activated": True, "id": 2, "name": "jeanne", "weight": 1},
                 ],
                 "amount": expected_amount,
                 "date": "2011-08-10",
@@ -647,7 +647,7 @@ class TestAPI(IhatemoneyTestCase):
 
         # Add participants
         self.api_add_member("raclette", "zorglub")
-        self.api_add_member("raclette", "fred")
+        self.api_add_member("raclette", "jeanne")
         self.api_add_member("raclette", "quentin")
 
         # Add a bill without explicit currency
@@ -680,7 +680,7 @@ class TestAPI(IhatemoneyTestCase):
             "payer_id": 1,
             "owers": [
                 {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
-                {"activated": True, "id": 2, "name": "fred", "weight": 1},
+                {"activated": True, "id": 2, "name": "jeanne", "weight": 1},
             ],
             "amount": 25.0,
             "date": "2011-08-10",
@@ -725,7 +725,7 @@ class TestAPI(IhatemoneyTestCase):
             "payer_id": 1,
             "owers": [
                 {"activated": True, "id": 1, "name": "zorglub", "weight": 1.0},
-                {"activated": True, "id": 2, "name": "fred", "weight": 1.0},
+                {"activated": True, "id": 2, "name": "jeanne", "weight": 1.0},
             ],
             "amount": 30.0,
             "date": "2011-08-10",
@@ -781,7 +781,7 @@ class TestAPI(IhatemoneyTestCase):
 
         # add participants
         self.api_add_member("raclette", "zorglub")
-        self.api_add_member("raclette", "fred")
+        self.api_add_member("raclette", "jeanne")
 
         # add a bill
         req = self.client.post(
@@ -818,7 +818,7 @@ class TestAPI(IhatemoneyTestCase):
                 "member": {
                     "activated": True,
                     "id": 2,
-                    "name": "fred",
+                    "name": "jeanne",
                     "weight": 1.0,
                 },
                 "paid": 0,
@@ -844,7 +844,7 @@ class TestAPI(IhatemoneyTestCase):
 
         # add participants
         self.api_add_member("raclette", "zorglub")
-        self.api_add_member("raclette", "freddy familly", 4)
+        self.api_add_member("raclette", "jeannedy familly", 4)
         self.api_add_member("raclette", "quentin")
 
         # add a bill
@@ -875,7 +875,7 @@ class TestAPI(IhatemoneyTestCase):
             "payer_id": 1,
             "owers": [
                 {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
-                {"activated": True, "id": 2, "name": "freddy familly", "weight": 4},
+                {"activated": True, "id": 2, "name": "jeannedy familly", "weight": 4},
             ],
             "amount": 25.0,
             "date": "2011-08-10",
@@ -909,7 +909,7 @@ class TestAPI(IhatemoneyTestCase):
                 {
                     "activated": True,
                     "id": 2,
-                    "name": "freddy familly",
+                    "name": "jeannedy familly",
                     "weight": 4.0,
                     "balance": -20.0,
                 },

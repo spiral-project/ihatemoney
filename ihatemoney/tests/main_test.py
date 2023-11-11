@@ -113,7 +113,7 @@ class TestModels(IhatemoneyTestCase):
 
         # add members
         self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
-        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "jeanne"})
         self.client.post("/raclette/members/add", data={"name": "tata"})
         # Add a member with a balance=0 :
         self.client.post("/raclette/members/add", data={"name": "pépé"})
@@ -168,7 +168,7 @@ class TestModels(IhatemoneyTestCase):
 
         # add members
         self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
-        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "jeanne"})
         self.client.post("/raclette/members/add", data={"name": "tata"})
         # Add a member with a balance=0 :
         self.client.post("/raclette/members/add", data={"name": "pépé"})
