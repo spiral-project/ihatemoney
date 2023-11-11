@@ -1,11 +1,11 @@
-from collections import defaultdict
 import datetime
 import re
+from collections import defaultdict
 from urllib.parse import unquote, urlparse, urlunparse
 
+import pytest
 from flask import session, url_for
 from libfaketime import fake_time
-import pytest
 from werkzeug.security import check_password_hash
 
 from ihatemoney import models
