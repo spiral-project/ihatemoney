@@ -43,7 +43,7 @@ class TestAPI(IhatemoneyTestCase):
     def get_auth(self, username, password=None):
         password = password or username
         base64string = (
-            base64.encodebytes(f"{username}:{password}".encode("utf-8"))
+            base64.encodebytes(f"{username}:{password}".encode("utf-8"))  # noqa: E231
             .decode("utf-8")
             .replace("\n", "")
         )

@@ -5,7 +5,7 @@ This document describes changes between each past release.
 ## 6.1.2 (unreleased)
 
 
-- Nothing changed yet.
+- Add support for python 3.12 (#757)
 
 
 ## 6.1.1 (2023-10-04)
