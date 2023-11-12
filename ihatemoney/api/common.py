@@ -103,10 +103,12 @@ class APIMemberForm(MemberForm):
     But we want Member.enabled to be togglable via the API.
     """
 
-    activated = BooleanField(false_values=("false", "", "False"))
+    activated = BooleanField(false_values=("false", "False"))
 
     def save(self, project, person):
-        person.activated = self.activated.data
+        # Check for raw data, otherwise no value will make it default to False
+        if self.activated.raw_data:
+            person.activated = self.activated.data
         return super(APIMemberForm, self).save(project, person)
 
 
@@ -136,9 +138,10 @@ class MemberHandler(Resource):
         return member
 
     def put(self, project, member_id):
-        form = APIMemberForm(project, meta={"csrf": False}, edit=True)
+        member = Person.query.get(member_id, project)
+        form = APIMemberForm(project, obj=member, meta={"csrf": False}, edit=True)
+
         if form.validate():
-            member = Person.query.get(member_id, project)
             form.save(project, member)
             db.session.commit()
             return member
