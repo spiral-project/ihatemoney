@@ -400,25 +400,25 @@ class TestBudget(IhatemoneyTestCase):
         # should not accept him
         assert len(self.get_project("raclette").members) == 1
 
-        # add fred
-        self.client.post("/raclette/members/add", data={"name": "fred"})
+        # add jeanne
+        self.client.post("/raclette/members/add", data={"name": "jeanne"})
         assert len(self.get_project("raclette").members) == 2
 
-        # check fred is present in the bills page
+        # check jeanne is present in the bills page
         result = self.client.get("/raclette/")
-        assert "fred" in result.data.decode("utf-8")
+        assert "jeanne" in result.data.decode("utf-8")
 
-        # remove fred
+        # remove jeanne
         self.client.post(
             "/raclette/members/%s/delete" % self.get_project("raclette").members[-1].id
         )
 
-        # as fred is not bound to any bill, he is removed
+        # as jeanne is not bound to any bill, he is removed
         assert len(self.get_project("raclette").members) == 1
 
-        # add fred again
-        self.client.post("/raclette/members/add", data={"name": "fred"})
-        fred_id = self.get_project("raclette").members[-1].id
+        # add jeanne again
+        self.client.post("/raclette/members/add", data={"name": "jeanne"})
+        jeanne_id = self.get_project("raclette").members[-1].id
 
         # bound him to a bill
         result = self.client.post(
@@ -426,38 +426,38 @@ class TestBudget(IhatemoneyTestCase):
             data={
                 "date": "2011-08-10",
                 "what": "fromage à raclette",
-                "payer": fred_id,
-                "payed_for": [fred_id],
+                "payer": jeanne_id,
+                "payed_for": [jeanne_id],
                 "amount": "25",
             },
         )
 
-        # remove fred
-        self.client.post(f"/raclette/members/{fred_id}/delete")
+        # remove jeanne
+        self.client.post(f"/raclette/members/{jeanne_id}/delete")
 
         # he is still in the database, but is deactivated
         assert len(self.get_project("raclette").members) == 2
         assert len(self.get_project("raclette").active_members) == 1
 
-        # as fred is now deactivated, check that he is not listed when adding
+        # as jeanne is now deactivated, check that he is not listed when adding
         # a bill or displaying the balance
         result = self.client.get("/raclette/")
-        assert (f"/raclette/members/{fred_id}/delete") not in result.data.decode(
+        assert (f"/raclette/members/{jeanne_id}/delete") not in result.data.decode(
             "utf-8"
         )
 
         result = self.client.get("/raclette/add")
-        assert "fred" not in result.data.decode("utf-8")
+        assert "jeanne" not in result.data.decode("utf-8")
 
         # adding him again should reactivate him
-        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "jeanne"})
         assert len(self.get_project("raclette").active_members) == 2
 
         # adding an user with the same name as another user from a different
         # project should not cause any troubles
         self.post_project("randomid")
         self.login("randomid")
-        self.client.post("/randomid/members/add", data={"name": "fred"})
+        self.client.post("/randomid/members/add", data={"name": "jeanne"})
         assert len(self.get_project("randomid").active_members) == 1
 
     def test_person_model(self):
@@ -634,7 +634,7 @@ class TestBudget(IhatemoneyTestCase):
 
         # add two participants
         self.client.post("/raclette/members/add", data={"name": "zorglub"})
-        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "jeanne"})
 
         members_ids = [m.id for m in self.get_project("raclette").members]
 
@@ -776,7 +776,7 @@ class TestBudget(IhatemoneyTestCase):
         # add two participants
         self.client.post("/raclette/members/add", data={"name": "zorglub"})
         self.client.post(
-            "/raclette/members/add", data={"name": "freddy familly", "weight": 4}
+            "/raclette/members/add", data={"name": "jeannedy familly", "weight": 4}
         )
 
         members_ids = [m.id for m in self.get_project("raclette").members]
@@ -828,7 +828,7 @@ class TestBudget(IhatemoneyTestCase):
         assert "extra-info" in resp.data.decode("utf-8")
 
         self.client.post(
-            "/raclette/members/add", data={"name": "freddy familly", "weight": 4}
+            "/raclette/members/add", data={"name": "jeannedy familly", "weight": 4}
         )
 
         resp = self.client.get("/raclette/")
@@ -853,7 +853,7 @@ class TestBudget(IhatemoneyTestCase):
 
         # add participants
         self.client.post("/raclette/members/add", data={"name": "zorglub"})
-        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "jeanne"})
         self.client.post("/raclette/members/add", data={"name": "tata"})
 
         # create bills
@@ -993,7 +993,7 @@ class TestBudget(IhatemoneyTestCase):
 
         # add participants
         self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
-        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "jeanne"})
         self.client.post("/raclette/members/add", data={"name": "tata"})
         # Add a participant with a balance at 0 :
         self.client.post("/raclette/members/add", data={"name": "pépé"})
@@ -1052,7 +1052,8 @@ class TestBudget(IhatemoneyTestCase):
             response.data.decode("utf-8"),
         )
         assert re.search(
-            regex.format("fred", r"\$20\.00", r"\$5\.83"), response.data.decode("utf-8")
+            regex.format("jeanne", r"\$20\.00", r"\$5\.83"),
+            response.data.decode("utf-8"),
         )
         assert re.search(
             regex.format("tata", r"\$0\.00", r"\$2\.50"), response.data.decode("utf-8")
@@ -1063,7 +1064,7 @@ class TestBudget(IhatemoneyTestCase):
 
         # Check that the order of participants in the sidebar table is the
         # same as in the main table.
-        order = ["fred", "pépé", "tata", "zorglub"]
+        order = ["jeanne", "pépé", "tata", "zorglub"]
         regex1 = r".*".join(
             r"<td class=\"balance-name\">{}</td>".format(name) for name in order
         )
@@ -1178,7 +1179,7 @@ class TestBudget(IhatemoneyTestCase):
 
         # add participants
         self.client.post("/raclette/members/add", data={"name": "zorglub"})
-        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "jeanne"})
         self.client.post("/raclette/members/add", data={"name": "tata"})
         # Add a participant with a balance at 0 :
         self.client.post("/raclette/members/add", data={"name": "pépé"})
@@ -1233,7 +1234,7 @@ class TestBudget(IhatemoneyTestCase):
 
         # add participants
         self.client.post("/raclette/members/add", data={"name": "zorglub"})
-        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "jeanne"})
         self.client.post("/raclette/members/add", data={"name": "tata"})
 
         # create bills
@@ -1286,7 +1287,7 @@ class TestBudget(IhatemoneyTestCase):
 
         # Add participants
         self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
-        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "jeanne"})
         self.client.post("/raclette/members/add", data={"name": "tata"})
         self.client.post("/raclette/members/add", data={"name": "pépé"})
 
@@ -1410,7 +1411,7 @@ class TestBudget(IhatemoneyTestCase):
 
         # add participants
         self.client.post("/raclette/members/add", data={"name": "zorglub"})
-        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "jeanne"})
         self.client.post("/raclette/members/add", data={"name": "tata"})
 
         # create bills
@@ -1537,7 +1538,7 @@ class TestBudget(IhatemoneyTestCase):
 
         # add participants
         self.client.post("/raclette/members/add", data={"name": "zorglub"})
-        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "jeanne"})
 
         # Bill with a different currency than project's default
         self.client.post(
@@ -1572,7 +1573,7 @@ class TestBudget(IhatemoneyTestCase):
 
         # add participants
         self.client.post("/raclette/members/add", data={"name": "zorglub"})
-        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "jeanne"})
 
         # Bills with a different currency than project's default
         self.client.post(
@@ -1647,13 +1648,15 @@ class TestBudget(IhatemoneyTestCase):
             "/raclette/members/add", data={"name": "zorglub", "weight": 1.0}
         )
         self.client.post("/raclette/members/add", data={"name": "tata", "weight": 1.10})
-        self.client.post("/raclette/members/add", data={"name": "fred", "weight": 1.15})
+        self.client.post(
+            "/raclette/members/add", data={"name": "jeanne", "weight": 1.15}
+        )
 
         # check if weights of the users are 1, 1.1, 1.15 respectively
         resp = self.client.get("/raclette/")
         assert 'zorglub<span class="light">(x1)</span>' in resp.data.decode("utf-8")
         assert 'tata<span class="light">(x1.1)</span>' in resp.data.decode("utf-8")
-        assert 'fred<span class="light">(x1.15)</span>' in resp.data.decode("utf-8")
+        assert 'jeanne<span class="light">(x1.15)</span>' in resp.data.decode("utf-8")
 
     def test_amount_too_high(self):
         self.post_project("raclette")
@@ -2060,7 +2063,7 @@ class TestBudget(IhatemoneyTestCase):
         """
         self.post_project("raclette")
         self.client.post("/raclette/members/add", data={"name": "zorglub"})
-        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "jeanne"})
         members_ids = [m.id for m in self.get_project("raclette").members]
         # create a bill
         self.client.post(
@@ -2110,7 +2113,7 @@ class TestBudget(IhatemoneyTestCase):
         """
         self.post_project("raclette")
         self.client.post("/raclette/members/add", data={"name": "zorglub"})
-        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "jeanne"})
         self.client.post("/raclette/members/add", data={"name": "pipistrelle"})
         members_ids = [m.id for m in self.get_project("raclette").members]
         # create a bill
