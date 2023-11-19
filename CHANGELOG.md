@@ -4,8 +4,8 @@ This document describes changes between each past release.
 
 ## 6.1.2 (unreleased)
 
-
-- Nothing changed yet.
+- Fix password generation command line crash (#1242)
+- Update to flask and werkzeug 2.3 (#1244)
 
 
 ## 6.1.1 (2023-10-04)
