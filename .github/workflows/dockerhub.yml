@@ -3,9 +3,9 @@ name: CI to Docker Hub
 on:
   push:
     tags: ['*']
-    branches: [ master ]
+    branches: [ 'master', 'stable-*' ]
   pull_request:
-    branches: [ master ]
+    branches: [ 'master', 'stable-*' ]
 
 
 jobs:

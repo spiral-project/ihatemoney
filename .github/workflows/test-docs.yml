@@ -2,9 +2,9 @@ name: Test & Docs
 
 on:
   push:
-    branches: [ master ]
+    branches: [ 'master', 'stable-*' ]
   pull_request:
-    branches: [ master ]
+    branches: [ 'master', 'stable-*' ]
 
 jobs:
   build:
