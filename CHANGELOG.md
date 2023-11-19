@@ -2,6 +2,12 @@
 
 This document describes changes between each past release.
 
+## 6.2.0 (unreleased)
+
+
+- Nothing changed yet.
+
+
 ## 6.1.2 (2023-11-19)
 
 - Fix password generation command line crash (#1242)

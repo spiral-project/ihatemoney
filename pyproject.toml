@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ihatemoney"
-version = "6.1.2.dev0"
+version = "6.2.0.dev0"
 description = "A simple shared budget manager web application."
 readme = "README.md"
 license = {file = "LICENSE"}
