@@ -128,10 +128,10 @@ ADMIN_PASSWORD needs to be set.
 ## APPLICATION_ROOT
 
 If empty, ihatemoney will be served at domain root (e.g:
-*http://domain.tld*), if set to `"somestring"`, it will be served from a
+*http://domain.tld*), if set to `"/somestring"`, it will be served from a
 "folder" (e.g: *http://domain.tld/somestring*).
 
--   **Default value:** `""` (empty string)
+-   **Default value:** `"/"`
 
 ## BABEL_DEFAULT_TIMEZONE
 
