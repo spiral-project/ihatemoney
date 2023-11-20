@@ -34,6 +34,7 @@
 <script type="text/javascript">
 var pswpElement = document.getElementById('pswp');
 var items = JSON.parse('[{"h": 2450, "src": "{{ url_for("static", filename="showcase/1.webp") }}", "w": 2450}, {"h": 2509, "src": "{{ url_for("static", filename="showcase/2.webp") }}", "w": 2221}, {"h": 2536, "src": "{{ url_for("static", filename="showcase/3.webp") }}", "w": 2101}, {"h": 2722, "src": "{{ url_for("static", filename="showcase/4.webp") }}", "w": 2348}, {"h": 2745, "src": "{{ url_for("static", filename="showcase/5.webp") }}", "w": 1804}, {"h": 3307, "src": "{{ url_for("static", filename="showcase/6.webp") }}", "w": 2897}, {"h": 2321, "src": "{{ url_for("static", filename="showcase/7.webp") }}", "w": 2239}, {"h": 2470, "src": "{{ url_for("static", filename="showcase/8.webp") }}", "w": 2419}, {"h": 3307, "src": "{{ url_for("static", filename="showcase/9.webp") }}", "w": 2602}]');
+var items_en = JSON.parse('[{"h": 2450, "src": "{{ url_for("static", filename="showcase_en/1.webp") }}", "w": 2450}, {"h": 2509, "src": "{{ url_for("static", filename="showcase_en/2.webp") }}", "w": 2221}, {"h": 2536, "src": "{{ url_for("static", filename="showcase_en/3.webp") }}", "w": 2101}, {"h": 2722, "src": "{{ url_for("static", filename="showcase_en/4.webp") }}", "w": 2348}, {"h": 2745, "src": "{{ url_for("static", filename="showcase_en/5.webp") }}", "w": 1804}, {"h": 3307, "src": "{{ url_for("static", filename="showcase_en/6.webp") }}", "w": 2897}, {"h": 2321, "src": "{{ url_for("static", filename="showcase_en/7.webp") }}", "w": 2239}, {"h": 2470, "src": "{{ url_for("static", filename="showcase_en/8.webp") }}", "w": 2419}, {"h": 3307, "src": "{{ url_for("static", filename="showcase_en/9.webp") }}", "w": 2602}]');
 var options = {
   index: 0,
   loop: false,
@@ -56,12 +57,37 @@ function showGallery(){
      script2.src = "{{ url_for('static', filename='photoswipe/photoswipe-ui-default.min.js')}}";
      script2.onload = function(){
        pswpElement.className="pswp";
-       var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+       var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items_en, options);
        gallery.init();
      };
      document.body.appendChild(script2);
    };
    document.body.appendChild(script);
+}
+
+function showGallery_en(){
+
+/* the CSS and JS for photoswipe is loaded dynamically
+ * so that they are not loaded if the gallery is not open */
+
+$('head').append('<link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="photoswipe/default-skin/default-skin.css") }}">');
+$('head').append('<link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="photoswipe/photoswipe.css") }}">');
+
+var script = document.createElement("script");
+script.type = "text/javascript";
+script.src = "{{ url_for('static', filename='photoswipe/photoswipe.min.js')}}";
+script.onload = function(){
+  var script2 = document.createElement("script");
+  script2.type = "text/javascript";
+  script2.src = "{{ url_for('static', filename='photoswipe/photoswipe-ui-default.min.js')}}";
+  script2.onload = function(){
+    pswpElement.className="pswp";
+    var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+    gallery.init();
+  };
+  document.body.appendChild(script2);
+};
+document.body.appendChild(script);
 }
 
 </script>
