@@ -127,7 +127,7 @@ ADMIN_PASSWORD needs to be set.
 
 ## APPLICATION_ROOT
 
-If empty, ihatemoney will be served at domain root (e.g:
+By default, ihatemoney will be served at domain root (e.g:
 *http://domain.tld*), if set to `"/somestring"`, it will be served from a
 "folder" (e.g: *http://domain.tld/somestring*).
 
