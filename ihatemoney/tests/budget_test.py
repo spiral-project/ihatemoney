@@ -1,7 +1,7 @@
 from collections import defaultdict
 import datetime
 import re
-from urllib.parse import unquote, urlparse, urlunparse
+from urllib.parse import urlparse, urlunparse
 
 from flask import session, url_for
 from libfaketime import fake_time
@@ -587,7 +587,7 @@ class TestBudget(IhatemoneyTestCase):
 
         # test the redirection to the authentication page when trying to access admin endpoints
         resp = self.client.get("/create")
-        assert "/admin?goto=/create" in unquote(resp.location)
+        assert '<a href="/admin?goto=%2Fcreate">' in resp.data.decode("utf-8")
 
         # test right password
         resp = self.client.post(
