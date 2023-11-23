@@ -2,6 +2,12 @@
 
 This document describes changes between each past release.
 
+## 6.1.4 (unreleased)
+
+
+- Nothing changed yet.
+
+
 ## 6.1.3 (2023-11-23)
 
 - Revert update to flask and werkzeug 2.3 because of a regression (see #1272)
