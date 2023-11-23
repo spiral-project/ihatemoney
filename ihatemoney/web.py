@@ -8,12 +8,14 @@ Basically, this blueprint takes care of the authentication and provides
 some shortcuts to make your life better when coding (see `pull_project`
 and `add_project_id` for a quick overview)
 """
-from functools import wraps
 import hashlib
 import json
 import os
+from functools import wraps
 from urllib.parse import urlparse, urlunparse
 
+import qrcode
+import qrcode.image.svg
 from flask import (
     Blueprint,
     Response,
@@ -32,8 +34,6 @@ from flask import (
 )
 from flask_babel import gettext as _
 from flask_mail import Message
-import qrcode
-import qrcode.image.svg
 from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash
@@ -295,12 +295,14 @@ def home():
     is_public_project_creation_allowed = current_app.config[
         "ALLOW_PUBLIC_PROJECT_CREATION"
     ]
+    display_showcase = g.lang in current_app.config["SHOWCASE_LANGUAGES"]
 
     return render_template(
         "home.html",
         project_form=project_form,
         is_demo_project_activated=is_demo_project_activated,
         is_public_project_creation_allowed=is_public_project_creation_allowed,
+        display_showcase=display_showcase,
         auth_form=auth_form,
         session=session,
     )
@@ -676,6 +678,7 @@ def list_bills():
         csrf_form=csrf_form,
         add_bill=request.values.get("add_bill", False),
         current_view="list_bills",
+        display_showcase=g.lang in current_app.config["SHOWCASE_LANGUAGES"],
     )
 
 
