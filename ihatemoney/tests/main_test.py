@@ -9,7 +9,12 @@ from werkzeug.security import check_password_hash
 
 from ihatemoney import models
 from ihatemoney.currency_convertor import CurrencyConverter
-from ihatemoney.manage import delete_project, generate_config, password_hash
+from ihatemoney.manage import (
+    delete_project,
+    generate_config,
+    get_project_count,
+    password_hash,
+)
 from ihatemoney.run import load_configuration
 from ihatemoney.tests.common.ihatemoney_testcase import BaseTestCase, IhatemoneyTestCase
 
@@ -222,6 +227,58 @@ class TestModels(IhatemoneyTestCase):
             if bill.what == "delicatessen":
                 pay_each_expected = 10 / 3
                 assert bill.pay_each() == pay_each_expected
+
+    def test_demo_project_count(self):
+        """Test command the get-project-count"""
+        self.post_project("raclette")
+
+        # add members
+        self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
+        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "tata"})
+        self.client.post("/raclette/members/add", data={"name": "pépé"})
+
+        # create bills
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1, 2, 3],
+                "amount": "10.0",
+            },
+        )
+
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-08-10",
+                "what": "red wine",
+                "payer": 2,
+                "payed_for": [1],
+                "amount": "20",
+            },
+        )
+
+        self.assertEqual(self.get_project("raclette").has_bills(), True)
+
+        runner = self.app.test_cli_runner()
+        result0 = runner.invoke(get_project_count)
+        self.assertEqual(result0.output.strip(), "Number of projects: 1")
+        result1 = runner.invoke(get_project_count, "False 1")
+        self.assertEqual(result1.output.strip(), "Number of projects: 1")
+        result2 = runner.invoke(get_project_count, "False 2")
+        self.assertEqual(result2.output.strip(), "Number of projects: 0")
+        result3 = runner.invoke(get_project_count, "False 0 0")
+        self.assertEqual(result3.output.strip(), "Number of projects: 0")
+        result4 = runner.invoke(get_project_count, "False 0 20000")
+        self.assertEqual(result4.output.strip(), "Number of projects: 1")
+        result4 = runner.invoke(get_project_count, "True")
+        self.assertEqual(
+            result4.output.strip(),
+            "Number of projects: 1\nContact email: raclette@notmyidea.org",
+        )
 
 
 class TestEmailFailure(IhatemoneyTestCase):
