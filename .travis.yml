@@ -1,7 +1,12 @@
 language: python
+
 python:
   - "3.8"
+
+cache: pip
+
 install:
-  - pip install -r requirements.txt
+  - pip install ihatemoney
+
 script:
-  - python your_test_script.py
+  - make test
