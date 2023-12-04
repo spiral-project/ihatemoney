@@ -1,0 +1,1137 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"PO-Revision-Date: 2023-09-15 00:53+0000\n"
+"Last-Translator: Kristoffer Grundström <swedishsailfishosuser@tutanota.com>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/sv/>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.0.1-dev\n"
+"Generated-By: Babel 2.9.0\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr "Du har just skapat '%(project)s' för att dela ut dina kostnader"
+
+msgid ""
+"Not a valid amount or expression. Only numbers and + - * / operators are "
+"accepted."
+msgstr ""
+"Inte en giltig summa eller uttryck. Endast nummer och +-* /-operatörer "
+"accepteras."
+
+msgid "Project name"
+msgstr "Namn på projektet"
+
+msgid "Current private code"
+msgstr "Nuvarande privat kod"
+
+msgid "Enter existing private code to edit project"
+msgstr "Fyll i befintlig privat kod för att redigera projekt"
+
+msgid "New private code"
+msgstr "Ny privat kod"
+
+msgid "Enter a new code if you want to change it"
+msgstr "Ange en ny kod om du vill ändra den"
+
+msgid "Email"
+msgstr "E-post"
+
+msgid "Enable project history"
+msgstr "Aktivera historik för projektet"
+
+msgid "Use IP tracking for project history"
+msgstr "Använd IP-spårning för projekthistorik"
+
+msgid "Default Currency"
+msgstr "Standardvaluta"
+
+msgid "Setting a default currency enables currency conversion between bills"
+msgstr ""
+"Genom att ställa in en standardvaluta så aktiveras valutaväxling mellan "
+"räkningarna"
+
+msgid "Unknown error"
+msgstr "Okänt fel"
+
+msgid "Invalid private code."
+msgstr "Ogiltig privat kod."
+
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+"Det här projektet kan inte ställas in till 'ingen valuta' eftersom att "
+"det innehåller sedlar i flera olika valutor."
+
+msgid "Compatible with Cospend"
+msgstr "Kompatibel med Cospend"
+
+msgid "Project identifier"
+msgstr "Projektidentifierare"
+
+msgid "Private code"
+msgstr "Privat kod"
+
+msgid "Create the project"
+msgstr "Skapa projektet"
+
+#, python-format
+msgid ""
+"A project with this identifier (\"%(project)s\") already exists. Please "
+"choose a new identifier"
+msgstr ""
+"Ett projekt med den här identifieraren (\"%(project)s\") finns redan. "
+"Vänligen välj en annan identifierare"
+
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr "Vad är en riktig valuta: Euro eller Petro-dollar?"
+
+msgid "euro"
+msgstr "euro"
+
+msgid "Please, validate the captcha to proceed."
+msgstr "Snälla, bekräfta captchan för att fortsätta."
+
+msgid "Enter private code to confirm deletion"
+msgstr "Ange privat kod för att bekräfta borttagning"
+
+msgid "Get in"
+msgstr "Gå in"
+
+msgid "Admin password"
+msgstr "Lösenord för administratör"
+
+msgid "Send me the code by email"
+msgstr "Skicka koden till mig via e-post"
+
+msgid "This project does not exists"
+msgstr "Det här projektet finns inte"
+
+msgid "Password mismatch"
+msgstr "Lösenordet matchar inte"
+
+msgid "Password"
+msgstr "Lösenord"
+
+msgid "Password confirmation"
+msgstr "Lösenordsbekräftelse"
+
+msgid "Reset password"
+msgstr "Återställ lösenord"
+
+msgid "When?"
+msgstr "När?"
+
+msgid "What?"
+msgstr "Vad?"
+
+msgid "Who paid?"
+msgstr "Vem betalade?"
+
+msgid "How much?"
+msgstr "Hur mycket?"
+
+msgid "Currency"
+msgstr "Valuta"
+
+msgid "External link"
+msgstr "Extern länk"
+
+msgid "A link to an external document, related to this bill"
+msgstr "En länk till ett externt dokument, relaterad till den här räkningen"
+
+msgid "For whom?"
+msgstr "För vem?"
+
+msgid "Submit"
+msgstr "Skicka in"
+
+msgid "Submit and add a new one"
+msgstr "Skicka in och lägg till en ny"
+
+#, python-format
+msgid "Project default: %(currency)s"
+msgstr "Standard för projektet: %(currency)s"
+
+msgid "Name"
+msgstr "Namn"
+
+msgid "Weights should be positive"
+msgstr "Vikter borde vara positiva"
+
+msgid "Weight"
+msgstr "Vikt"
+
+msgid "Add"
+msgstr "Lägg till"
+
+msgid "The participant name is invalid"
+msgstr "Deltagarens namn är ogiltigt"
+
+msgid "This project already have this participant"
+msgstr "Den här deltagaren är redan i projektet."
+
+msgid "People to notify"
+msgstr "Personer att underrätta"
+
+msgid "Send the invitations"
+msgstr "Skicka inbjudningarna"
+
+#, python-format
+msgid "The email %(email)s is not valid"
+msgstr "E-postadressen %(email)s är inte giltig"
+
+msgid "Logout"
+msgstr "Logga ut"
+
+msgid "Please check the email configuration of the server."
+msgstr "Vänligen kontrollera serverns e-postkonfiguration."
+
+#, python-format
+msgid ""
+"Please check the email configuration of the server or contact the "
+"administrator: %(admin_email)s"
+msgstr ""
+"Vänligen kontrollera serverns e-postkonfiguration eller kontakta "
+"administratören: %(admin_email)s"
+
+#. List with two items only
+msgid "{dual_object_0} and {dual_object_1}"
+msgstr "{dual_object_0} och {dual_object_1}"
+
+#. Last two items of a list with more than 3 items
+msgid "{previous_object}, and {end_object}"
+msgstr "{previous_object}, och {end_object}"
+
+#. Two items in a middle of a list with more than 5 objects
+msgid "{previous_object}, {next_object}"
+msgstr "{previous_object}, {next_object}"
+
+#. First two items of a list with more than 3 items
+msgid "{start_object}, {next_object}"
+msgstr "{start_object}, {next_object}"
+
+msgid "No Currency"
+msgstr "Ingen valuta"
+
+#. Form error with only one error
+msgid "{prefix}: {error}"
+msgstr "{prefix}: {error}"
+
+#. Form error with a list of errors
+msgid "{prefix}:<br />{errors}"
+msgstr "{prefix}:<br />{errors}"
+
+msgid "Too many failed login attempts."
+msgstr "För många misslyckade inloggningsförsök."
+
+#, python-format
+msgid "This admin password is not the right one. Only %(num)d attempts left."
+msgstr ""
+"Det här lösenordet för admin är inte det rätta. Endast %(num)d försök "
+"kvar."
+
+msgid "Provided token is invalid"
+msgstr "Symbolen som har angivits är ogiltig"
+
+msgid "This private code is not the right one"
+msgstr "Den här privata koden är inte den rätta"
+
+msgid "A reminder email has just been sent to you"
+msgstr "Ett e-postmeddelande med påminnelse har just skickats till dig"
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
+"Vi försökte skicka en påminnelse till din e-postadress, men det uppstod "
+"ett fel. Du kan fortfarande använda det här projektet normalt."
+
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions."
+msgstr ""
+"Det skedde tyvärr ett fel när instruktionerna för återställning av "
+"lösenordet skickades via e-post."
+
+msgid "No token provided"
+msgstr "Ingen symbol tillhandahölls"
+
+msgid "Invalid token"
+msgstr "Ogiltig symbol"
+
+msgid "Unknown project"
+msgstr "Okänt projekt"
+
+msgid "Password successfully reset."
+msgstr "Återställningen av lösenordet lyckades."
+
+msgid "Project settings have been changed successfully."
+msgstr "Ändringen av projektets inställningar lyckades."
+
+msgid "Unable to parse CSV"
+msgstr "Kunde inte tolka CSV"
+
+#, python-format
+msgid "Missing attribute: %(attribute)s"
+msgstr "Attribut saknas: %(attribute)s"
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
+msgstr ""
+"Kan inte lägga till sedlar i flera olika valutor till ett projekt utan "
+"standard-valuta"
+
+msgid "Project successfully uploaded"
+msgstr "Uppladdningen av projektet lyckades"
+
+msgid "Project successfully deleted"
+msgstr "Borttagningen av projektet lyckades"
+
+msgid "Error deleting project"
+msgstr "Fel uppstod när projektet skulle tas bort"
+
+msgid "Unable to logout"
+msgstr "Kunde inte logga ut"
+
+#, python-format
+msgid "You have been invited to share your expenses for %(project)s"
+msgstr "Du har bjudits in att dela ut dina kostnader för %(project)s"
+
+msgid "Your invitations have been sent"
+msgstr "Dina inbjudningar har skickats"
+
+msgid "Sorry, there was an error while trying to send the invitation emails."
+msgstr ""
+"Tyvärr, det uppstod ett fel när inbjudningsmeddelandena via e-post skulle "
+"skickas."
+
+#, python-format
+msgid "%(member)s has been added"
+msgstr "%(member)s har lagts till"
+
+msgid "Error activating participant"
+msgstr "Aktivera deltagare misslyckades"
+
+#, python-format
+msgid "%(name)s is part of this project again"
+msgstr "%(name)s är en del av det här projektet igen"
+
+msgid "Error removing participant"
+msgstr "Fel uppstod när deltagaren skulle tas bort"
+
+#, python-format
+msgid ""
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
+msgstr ""
+"Deltagaren '%(name)s' har inaktiverats. Den kommer fortfarande att synas "
+"i listan till dess att kontot blir tomt."
+
+#, python-format
+msgid "Participant '%(name)s' has been removed"
+msgstr "Deltagaren '%(name)s' togs bort"
+
+#, python-format
+msgid "Participant '%(name)s' has been modified"
+msgstr "Deltagaren '%(name)s' har ändrats"
+
+msgid "The bill has been added"
+msgstr "Räkningen har lagts till"
+
+msgid "Error deleting bill"
+msgstr "Fel uppstod när sedeln skulle tas bort"
+
+msgid "The bill has been deleted"
+msgstr "Räkningen har tagits bort"
+
+msgid "The bill has been modified"
+msgstr "Räkningen har blivit modifierad"
+
+#, python-format
+msgid "%(lang)s is not a supported language"
+msgstr "%(lang)s är inte ett språk som stöds"
+
+msgid "Error deleting project history"
+msgstr "Fel uppstod när projektets historik skulle tas bort"
+
+msgid "Deleted project history."
+msgstr "Projektets historik togs bort."
+
+msgid "Error deleting recorded IP addresses"
+msgstr "Fel uppstod när insamlade IP-adresser skulle tas bort"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr "Tog bort insamlade IP-adresser i projektets historik."
+
+msgid "Sorry, we were unable to find the page you've asked for."
+msgstr "Ledsen, men vi kunde inte hitta sidan som du frågade efter."
+
+msgid "The best thing to do is probably to get back to the main page."
+msgstr "Det bästa du kan göra är förmodligen att gå tillbaka till huvudsidan."
+
+msgid "Back to the list"
+msgstr "Tillbaka till listan"
+
+msgid "Administration tasks are currently disabled."
+msgstr "Administrativa uppgifter är för närvarande inaktiverade."
+
+msgid "Authentication"
+msgstr "Autentisering"
+
+msgid "The project you are trying to access do not exist, do you want to"
+msgstr "Projektet som du försöker komma åt finns inte, vill du"
+
+msgid "create it"
+msgstr "skapa det"
+
+msgid "?"
+msgstr "?"
+
+msgid "Create a new project"
+msgstr "Skapa ett nytt projekt"
+
+msgid "Project"
+msgstr "Projekt"
+
+msgid "Number of participants"
+msgstr "Antalet deltagare"
+
+msgid "Number of bills"
+msgstr "Antalet räkningar"
+
+msgid "Newest bill"
+msgstr "Nyaste räkningen"
+
+msgid "Oldest bill"
+msgstr "Äldsta räkningen"
+
+msgid "Actions"
+msgstr "Åtgärder"
+
+msgid "edit"
+msgstr "redigera"
+
+msgid "Delete project"
+msgstr "Ta bort projektet"
+
+msgid "show"
+msgstr "visa"
+
+msgid "The Dashboard is currently deactivated."
+msgstr "Instrumentpanelen är för närvarande inaktiverad."
+
+msgid "Download Mobile Application"
+msgstr "Hämta mobilapplikation"
+
+msgid "Get it on"
+msgstr "Till projektet"
+
+msgid "Edit project"
+msgstr "Redigera projekt"
+
+msgid "Import project"
+msgstr "Importera projekt"
+
+msgid "Download project's data"
+msgstr "Ladda ner projektets data"
+
+msgid "Bill items"
+msgstr "Fakturaobjekt"
+
+msgid "Download the list of bills with owner, amount, reason,... "
+msgstr "Hämta faktura-lista med ägare, summa, anledning,... "
+
+msgid "Settle plans"
+msgstr "Avbetalningsplaner"
+
+msgid "Download the list of transactions needed to settle the current bills."
+msgstr ""
+"Hämta listan för överföringar som behövs för att avbetala de nuvarande "
+"räkningarna."
+
+msgid "Can't remember the password?"
+msgstr "Kan du inte komma ihåg lösenordet?"
+
+msgid "Cancel"
+msgstr "Avbryt"
+
+msgid "Privacy Settings"
+msgstr "Inställningar för privatliv"
+
+msgid "Save changes"
+msgstr "Spara ändringar"
+
+msgid "This will remove all bills and participants in this project!"
+msgstr ""
+"Det här kommer att ta bort alla fakturor och deltagare i det här "
+"projektet!"
+
+msgid "Import previously exported project"
+msgstr "Importera ett tidigare exporterat projekt"
+
+msgid "Choose file"
+msgstr "Välj fil"
+
+msgid "Edit this bill"
+msgstr "Redigera den här räkningen"
+
+msgid "Add a bill"
+msgstr "Lägg till en räkning"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr "Enkla operationer är tillåtna, t.ex (18+36.2)/3"
+
+msgid "Everyone"
+msgstr "Alla"
+
+msgid "No one"
+msgstr "Ingen"
+
+msgid "More options"
+msgstr "Fler alternativ"
+
+msgid "Add participant"
+msgstr "Lägg till deltagare"
+
+msgid "Edit this participant"
+msgstr "Redigera den här deltagaren"
+
+msgid "john.doe@example.com, mary.moe@site.com"
+msgstr "john.doe@exempel.com, mary.moe@sida.com"
+
+msgid "Download"
+msgstr "Ladda ner"
+
+msgid "Disabled Project History"
+msgstr "Inaktiverade projekthistorik"
+
+msgid "Disabled Project History & IP Address Recording"
+msgstr "Inaktiverade projekthistorik och inspelning av IP-adress"
+
+msgid "Enabled Project History"
+msgstr "Aktiverade projekthistorik"
+
+msgid "Disabled IP Address Recording"
+msgstr "Inaktiverade inspelning av IP-adress"
+
+msgid "Enabled Project History & IP Address Recording"
+msgstr "Aktiverade projekthistorik & inspelning av IP-adress"
+
+msgid "Enabled IP Address Recording"
+msgstr "Aktiverade inspelning av IP-adress"
+
+msgid "History Settings Changed"
+msgstr "Inställningarna för historiken har ändrats"
+
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
+msgstr ""
+"Faktura %(name)s: %(property_name)s ändrades från %(before)s till "
+"%(after)s"
+
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
+msgstr "Faktura %(name)s: %(property_name)s ändrades till %(after)s"
+
+msgid "Confirm Remove IP Adresses"
+msgstr "Bekräfta borttagning av IP-adresser"
+
+msgid ""
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+"Är du säker på att du vill ta bort alla insamlade IP-adresser från det här "
+"projektet?\n"
+"                Resten av projektets historik kommer inte att drabbas. Den "
+"här åtgärden kan inte ångras."
+
+msgid "Confirm deletion"
+msgstr "Bekräfta borttagning"
+
+msgid "Close"
+msgstr "Stäng"
+
+msgid "Delete Confirmation"
+msgstr "Ta bort bekräftelse"
+
+msgid ""
+"Are you sure you want to erase all history for this project? This action "
+"cannot be undone."
+msgstr ""
+"Är du säker på att du vill ta bort alla historik för det här projektet? "
+"Den här åtgärden kan inte göras ogjord."
+
+#, python-format
+msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
+msgstr "Faktura %(name)s: lade till %(owers_list_str)s i ägarlistan"
+
+#, python-format
+msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
+msgstr "Faktura %(name)s: tog bort %(owers_list_str)s från ägarlistan"
+
+msgid "This project has history disabled. New actions won't appear below."
+msgstr ""
+"Det här projektet har historiken avstängd. Nya åtgärder kommer inte att dyka "
+"upp nedanför."
+
+msgid "You can enable history on the settings page."
+msgstr "Du kan aktivera historiken på inställningssidan."
+
+msgid ""
+"The table below reflects actions recorded prior to disabling project "
+"history."
+msgstr ""
+"Nedanstående tabell reflekterar över åtgärder som har spelats in före "
+"projektets historik stängdes av."
+
+msgid "You can clear the project history to remove them."
+msgstr "Du kan rensa projektets historik för att ta bort dem."
+
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr ""
+"Några poster här nedan innehåller IP-adresser, fastän det här projektet "
+"har IP-inspelning inaktiverat. "
+
+msgid "Delete stored IP addresses"
+msgstr "Ta bort lagrade IP-adresser"
+
+msgid "No IP Addresses to erase"
+msgstr "Inga IP-adresser att ta bort"
+
+msgid "Delete Stored IP Addresses"
+msgstr "Ta bort de lagrade IP-adresserna"
+
+msgid "No history to erase"
+msgstr "Ingen historik att ta bort"
+
+msgid "Clear Project History"
+msgstr "Rensa projektets historik"
+
+msgid "Time"
+msgstr "Tid"
+
+msgid "Event"
+msgstr "Händelse"
+
+msgid "IP address recording can be enabled on the settings page"
+msgstr "Insamling av IP-adresser kan aktiveras på inställningssidan"
+
+msgid "IP address recording can be disabled on the settings page"
+msgstr "Insamling av IP-adresser kan inaktiveras på Inställningar-sidan"
+
+msgid "From IP"
+msgstr "Från IP"
+
+#, python-format
+msgid "Project %(name)s added"
+msgstr "Projektet %(name)s lades till"
+
+#, python-format
+msgid "Bill %(name)s added"
+msgstr "Faktura %(name)s lades till"
+
+#, python-format
+msgid "Participant %(name)s added"
+msgstr "Deltagaren %(name)s lades till"
+
+msgid "Project private code changed"
+msgstr "Projektets privata kod ändrades"
+
+#, python-format
+msgid "Project renamed to %(new_project_name)s"
+msgstr "Projektet döptes om till %(new_project_name)s"
+
+#, python-format
+msgid "Project contact email changed to %(new_email)s"
+msgstr "Kontaktens e-postadress för det här projektet ändrades till %(new_email)s"
+
+msgid "Project settings modified"
+msgstr "Projektets inställningar ändrades"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr "Projektet %(name)s inaktiverades"
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr "Deltagaren %(name)s återaktiverades"
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr "Deltagaren %(name)s döptes om till %(new_name)s"
+
+#, python-format
+msgid "Bill %(name)s renamed to %(new_description)s"
+msgstr "Faktura %(name)s döptes om till %(new_description)s"
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr ""
+"Deltagaren %(name)s: vikten ändrades från %(old_weight)s till "
+"%(new_weight)s"
+
+msgid "Payer"
+msgstr "Betalare"
+
+msgid "Amount"
+msgstr "Summa"
+
+msgid "Date"
+msgstr "Datum"
+
+#, python-format
+msgid "Amount in %(currency)s"
+msgstr "Summa i %(currency)s"
+
+#, python-format
+msgid "Bill %(name)s modified"
+msgstr "Fakturan %(name)s ändrades"
+
+#, python-format
+msgid "Participant %(name)s modified"
+msgstr "Deltagaren %(name)s ändrades"
+
+#, python-format
+msgid "Bill %(name)s removed"
+msgstr "Faktura '%(name)s' togs bort"
+
+#, python-format
+msgid "Participant %(name)s removed"
+msgstr "Användaren %(name)s togs bort"
+
+#, python-format
+msgid "Project %(name)s changed in an unknown way"
+msgstr "Projektet %(name)s ändrades på ett okänt sätt"
+
+#, python-format
+msgid "Bill %(name)s changed in an unknown way"
+msgstr "Faktura %(name)s ändrades på ett okänt sätt"
+
+#, python-format
+msgid "Participant %(name)s changed in an unknown way"
+msgstr "Deltagaren %(name)s ändrades på ett okänt sätt"
+
+msgid "Nothing to list"
+msgstr "Inget att lista"
+
+msgid "Someone probably cleared the project history."
+msgstr "Någon har mest troligtvis rensat projektets historik."
+
+msgid "Manage your shared <br />expenses, easily"
+msgstr "Hantera dina utdelade <br />kostnader, lätt"
+
+msgid "Try out the demo"
+msgstr "Prova demot"
+
+msgid "You're sharing a house?"
+msgstr "Delar du ett hus?"
+
+msgid "Going on holidays with friends?"
+msgstr "Ska du på semester med dina vänner?"
+
+msgid "Simply sharing money with others?"
+msgstr "Delar du helt enkelt pengar med andra?"
+
+msgid "We can help!"
+msgstr "Vi kan hjälpa!"
+
+msgid "Log in to an existing project"
+msgstr "Logga in i ett befintligt projekt"
+
+msgid "Log in"
+msgstr "Logga in"
+
+msgid "can't remember your password?"
+msgstr "kan du inte komma ihåg ditt lösenord?"
+
+msgid "Create"
+msgstr "Skapa"
+
+msgid ""
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
+msgstr ""
+"Återanvänd INTE ett personligt lösenord. Välj en privat kod och skicka "
+"den till dina vänner"
+
+msgid "Account manager"
+msgstr "Kontoansvarig"
+
+msgid "Bills"
+msgstr "Räkningar"
+
+msgid "Settle"
+msgstr "Avbetala"
+
+msgid "Statistics"
+msgstr "Statistik"
+
+msgid "Languages"
+msgstr "Språk"
+
+msgid "Projects"
+msgstr "Projekten"
+
+msgid "Start a new project"
+msgstr "Starta ett nytt projekt"
+
+msgid "History"
+msgstr "Historik"
+
+msgid "Settings"
+msgstr "Inställningar"
+
+msgid "RSS Feed"
+msgstr "RSS-flöde"
+
+msgid "Other projects :"
+msgstr "Andra projekt :"
+
+msgid "switch to"
+msgstr "byt till"
+
+msgid "Dashboard"
+msgstr "Instrumentpanel"
+
+#, python-format
+msgid "Please retry after %(date)s."
+msgstr "Vänligen försök efter %(date)s."
+
+msgid "Code"
+msgstr "Kod"
+
+msgid "Mobile Application"
+msgstr "Mobilapplikation"
+
+msgid "Documentation"
+msgstr "Dokumentation"
+
+msgid "Administation Dashboard"
+msgstr "Översiktspanel för administration"
+
+msgid "Legal information"
+msgstr "Juridisk information"
+
+msgid "\"I hate money\" is free software"
+msgstr "\"Jag hatar pengar\" är en fri mjukvara"
+
+msgid "you can contribute and improve it!"
+msgstr "du kan bidra och förbättra det!"
+
+#, python-format
+msgid "%(amount)s each"
+msgstr "%(amount)s var"
+
+msgid "you sure?"
+msgstr "säker?"
+
+msgid "Invite people"
+msgstr "Bjud in personer"
+
+msgid "Newer bills"
+msgstr "Nyare räkningar"
+
+msgid "Older bills"
+msgstr "Äldre räkningar"
+
+msgid "You should start by adding participants"
+msgstr "Du borde börja med att lägga till deltagare"
+
+msgid "Add a new bill"
+msgstr "Lägg till en ny räkning"
+
+msgid "For what?"
+msgstr "För vad?"
+
+#, python-format
+msgid "Added on %(date)s"
+msgstr "Lades till %(date)s"
+
+#, python-format
+msgid "Everyone but %(excluded)s"
+msgstr "Alla förutom %(excluded)s"
+
+msgid "delete"
+msgstr "ta bort"
+
+msgid "No bills"
+msgstr "Inga räkningar"
+
+msgid "Nothing to list yet."
+msgstr "Ingenting att lista än."
+
+msgid "Add your first bill"
+msgstr "Lägg till din första räkning"
+
+msgid "Add the first participant"
+msgstr "Lägg till den första deltagaren"
+
+msgid "Password reminder"
+msgstr "Lösenordspåminnare"
+
+msgid ""
+"A link to reset your password has been sent to you, please check your "
+"emails."
+msgstr ""
+"En länk för att återställa ditt lösenord har skickats till dig, vänligen "
+"kolla din e-post."
+
+msgid "Return to home page"
+msgstr "Återgå till första-sidan"
+
+msgid "Your projects"
+msgstr "Dina projekt"
+
+msgid "Reset your password"
+msgstr "Återställ ditt lösenord"
+
+msgid "Invite people to join this project"
+msgstr "Bjud in personer att ansluta till det här projektet"
+
+msgid "Share an invitation link"
+msgstr "Dela en inbjudningslänk"
+
+msgid ""
+"The easiest way to invite people is to give them the following invitation"
+" link.<br />They will be able to access the project, manage participants,"
+" add/edit/delete bills. However, they will not have access to important "
+"settings such as changing the private code or deleting the whole project."
+msgstr ""
+"Det lättaste sättet att bjuda in människor är att ge dem den följande "
+"inbjudningslänken.<br />De kommer att kunna komma åt projektet, hantera "
+"deltagare, lägga till/redigera/ta bort räkningar. Hur som helst, de kommer "
+"inte att ha tillgång till viktiga inställningar så som att ändra den privata "
+"koden eller att ta bort hela projektet."
+
+msgid "Scan QR code"
+msgstr "Skanna QR-kod"
+
+msgid "Use a mobile device with a compatible app."
+msgstr "Använd en mobil-enhet med en kompatibel app."
+
+msgid "Send via Emails"
+msgstr "Skicka via e-post"
+
+msgid ""
+"Specify a list of email adresses (separated by comma) of people you want "
+"to notify about the creation of this project. We will send them an email "
+"with the invitation link."
+msgstr ""
+"Specificera en lista över e-postadresser (åtskilda med komma-tecken) för "
+"människor som du vill meddela om att det här projektet har skapats. Vi "
+"kommer att skicka dem ett e-postmeddelande med inbjudningslänken."
+
+msgid "Share Identifier & code"
+msgstr "Dela ut identifierare & kod"
+
+msgid ""
+"You can share the project identifier and the private code by any "
+"communication means.<br />Anyone with the private code will have access "
+"to the full project, including changing settings such as the private code"
+" or project email address, or even deleting the whole project."
+msgstr ""
+"Du kan dela projektets identifierare och den privata koden via alla "
+"kommunikationssätt.<br />Vem som helst med den privata koden kommer att ha "
+"tillgång till hela projektet, inklusive ändra inställningar så som den "
+"privata koden eller projektets e-postadress eller till och med ta bort hela "
+"projektet."
+
+msgid "Identifier:"
+msgstr "Identifierare:"
+
+msgid "Private code:"
+msgstr "Privat kod:"
+
+msgid "the private code was defined when you created the project"
+msgstr "den privata koden angavs när du skapade projektet"
+
+msgid "Who pays?"
+msgstr "Vem betalar?"
+
+msgid "To whom?"
+msgstr "Till vem?"
+
+msgid "Who?"
+msgstr "Vem?"
+
+msgid "Balance"
+msgstr "Saldo"
+
+msgid "deactivate"
+msgstr "inaktivera"
+
+msgid "reactivate"
+msgstr "återaktivera"
+
+msgid "Paid"
+msgstr "Betald"
+
+msgid "Spent"
+msgstr "Spenderat"
+
+msgid "Expenses by Month"
+msgstr "Kostnader per månad"
+
+msgid "Period"
+msgstr "Punkt"
+
+#~ msgid "Participant"
+#~ msgstr "Deltagare"
+
+#~ msgid "Bill"
+#~ msgstr "Räkning"
+
+#~ msgid "Select all"
+#~ msgstr "Välj alla"
+
+#~ msgid "Select none"
+#~ msgstr "Välj ingen"
+
+#~ msgid "changed"
+#~ msgstr ""
+
+#~ msgid "from"
+#~ msgstr "från"
+
+#~ msgid "to"
+#~ msgstr "till"
+
+#~ msgid "Added"
+#~ msgstr "Lades till"
+
+#~ msgid "Removed"
+#~ msgstr "Togs bort"
+
+#~ msgid "and"
+#~ msgstr "och"
+
+#~ msgid "owers list"
+#~ msgstr ""
+
+#~ msgid "added"
+#~ msgstr "lades till"
+
+#~ msgid "Project renamed to"
+#~ msgstr "Projektet döptes om till"
+
+#~ msgid "deactivated"
+#~ msgstr "inaktiverades"
+
+#~ msgid "reactivated"
+#~ msgstr "återaktiverades"
+
+#~ msgid "renamed to"
+#~ msgstr "döptes om till"
+
+#~ msgid "External link changed to"
+#~ msgstr "Extern länk ändrades till"
+
+#~ msgid "modified"
+#~ msgstr "ändrades"
+
+#~ msgid "removed"
+#~ msgstr "togs bort"
+
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr ""
+
+#~ msgid "User name incorrect"
+#~ msgstr "Användarnamnet felaktigt"
+
+#~ msgid "People to notify"
+#~ msgstr "Personer att meddela"
+
+#~ msgid "Import"
+#~ msgstr "Importera"
+
+#~ msgid "Amount paid"
+#~ msgstr "Betald summa"
+
+#~ msgid "Bills can't be null"
+#~ msgstr "Räkningar kan inte vara null"
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "Projektets id är %(project)s"
+
+#~ msgid "Invalid JSON"
+#~ msgstr "Ogiltig JSON"
+
+#~ msgid ""
+#~ "Sorry, there was an error while "
+#~ "trying to send the invitation emails."
+#~ " Please check the email configuration "
+#~ "of the server or contact the "
+#~ "administrator."
+#~ msgstr ""
+
+#~ msgid "Are you sure?"
+#~ msgstr "säker?"
+
+#~ msgid "Import JSON"
+#~ msgstr "Importera JSON"
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>This project has history "
+#~ "disabled. New actions won't appear "
+#~ "below. You can enable history on "
+#~ "the</i>\n"
+#~ "            <a href=\"%(url)s\">settings page</a>\n"
+#~ "            "
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>The table below reflects "
+#~ "actions recorded prior to disabling "
+#~ "project history. You can\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">clear project history</a>"
+#~ " to remove them.</i></p>\n"
+#~ "            "
+#~ msgstr ""
+
+#~ msgid "Send invites"
+#~ msgstr "Skicka inbjudningar"
+
+#~ msgid " show"
+#~ msgstr "visa"
+
+#~ msgid "Edit the project"
+#~ msgstr "Redigera projektet"
+
+#~ msgid "You probably want to"
+#~ msgstr "Du kanske vill"
+
+#~ msgid "add participants"
+#~ msgstr "lägg till deltagare"
+
+#~ msgid ""
+#~ "You can share the project identifier "
+#~ "and the private code by any "
+#~ "communication means."
+#~ msgstr ""
+#~ "Du kan dela projektets identifierare och"
+#~ " den privata koden så som det "
+#~ "passar dig."
+
+#~ msgid "Share the Link"
+#~ msgstr "Dela ut länken"
+
+#~ msgid "You can directly share the following link via your prefered medium"
+#~ msgstr "Du kan direkt dela ut följande länk via föredraget media"

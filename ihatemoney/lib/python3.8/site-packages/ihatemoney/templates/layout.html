@@ -1,0 +1,193 @@
+{% import "forms.html" as forms %}
+
+{% macro flash_messages(classes='') %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<div class="position-absolute d-flex flex-wrap mt-2 mr-1 {{ classes }}">
+  {% for category, message in messages %}
+    <div class="flash mr-2 text-center alert alert-{{ "success" if category == "message" else category }} alert-dismissible fade show">
+      {{ message }}
+      <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+{% endmacro %}
+
+<!DOCTYPE html>
+<html class="h-100">
+<head>
+    <title>{{ _("Account manager") }}{% block title %}{% endblock %}</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel=stylesheet type=text/css href="{{ url_for("static", filename='css/main.css') }}">
+    {% block css %}{% endblock %}
+    <script src="{{ url_for("static", filename="js/jquery-3.6.0.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/ihatemoney.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/tether.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/popper.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/tagsinput.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/bootstrap.min.js") }}"></script>
+    {%- if request.path == "/dashboard" %}
+    <link rel=stylesheet type=text/css href="{{ url_for("static", filename='css/datatables.min.css') }}">
+    <script src="{{ url_for("static", filename="js/datatables.min.js") }}"></script>
+    {%- endif %}
+
+    {% block head %}{% endblock %}
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function(){
+            $('.dropdown-toggle').dropdown();
+            $('[data-toggle="tooltip"]').tooltip();
+            {% block js %}{% endblock %}
+        });
+    </script>
+</head>
+<body class="d-flex flex-column h-100">
+  {% if g.lang == 'fr' %}{% include "showcase.html" %}{% endif %}
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <h1><a class="navbar-brand" href="{{ url_for("main.home") }}"><span>#!</span> money?</a></h1>
+
+    <div class="collapse navbar-collapse" id="navbarToggler">
+      <ul class="navbar-nav nav-fill w-100">
+        {% if g.project %}
+          {% block navbar %}
+          <li class="nav-item{% if current_view == 'list_bills' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.list_bills") }}">{{ _("Bills") }}</a></li>
+          <li class="nav-item{% if current_view == 'settle_bill' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.settle_bill") }}">{{ _("Settle") }}</a></li>
+          <li class="nav-item{% if current_view == 'statistics' %} active{% endif %}"><a class="nav-link" href="{{ url_for("main.statistics") }}">{{ _("Statistics") }}</a></li>
+          {% endblock %}
+        {% endif %}
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="langMenuButton">
+            <i class="icon globe-europe">{{ static_include("images/globe.svg") | safe }}</i>
+            {% if g.lang %}
+              {{ locale_from_iso(g.lang).display_name | capitalize }}
+            {% else %}
+              {{ _('Languages') }}
+            {% endif %}
+            <b class="caret"></b>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="langMenuButton">
+              <h6 class="dropdown-header">{{ _('Languages') }}</h6>
+              {% for lang in config['SUPPORTED_LANGUAGES'] %}
+                  <a class="dropdown-item{% if g.lang == lang %} active{% endif %}" href="{{ url_for("main.change_lang", lang=lang)}}">{{ locale_from_iso(lang).display_name | capitalize }}</a>
+              {% endfor %}
+          </div>
+        </li>
+        {% if g.project or (session['projects'] | length) > 0 or session['is_admin'] %}
+        <li class="nav-item dropdown projects-item">
+          <a href="#" class="nav-link dropdown-toggle" id="navbarProjectsLinks" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <strong class="text-white">
+              {% if g.project %}
+                {{ g.project.name }}
+              {% else %}
+                {{_('Projects')}}
+              {% endif %}
+            </strong>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarProjectsLinks">
+            <li>
+              <a class="dropdown-item" href="{{ url_for("main.create_project") }}">
+                <i class="icon before-text">{{ static_include("images/plus.svg") | safe }}</i>
+                {{ _("Start a new project") }}
+              </a>
+            </li>
+            {% if g.project %}
+            <li><a class="dropdown-item" href="{{ url_for("main.history") }}">{{ _("History") }}</a></li>
+            <li><a class="dropdown-item" href="{{ url_for("main.edit_project") }}">{{ _("Settings") }}</a></li>
+            <li><a class="dropdown-item" href="{{ url_for("main.feed", token=g.project.generate_token("feed")) }}">{{ _("RSS Feed") }}</a></li>
+            {% endif %}
+
+            {% if session['projects'] and not ((session['projects'] | length) == 1 and g.project and g.project.id in session['projects']) %}
+            <li class="dropdown-divider"></li>
+            <li class="dropdown-header">{{ _('Other projects :') }}</li>
+              {% for id, name in session['projects'].items() %}
+                {% if not g.project or id != g.project.id %}
+                <li><a class="dropdown-item" href="{{ url_for("main.list_bills", project_id=id) }}">{{ _("switch to") }} {{ name }}</a></li>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+            <li class="dropdown-divider"></li>
+            {% if session['is_admin'] %}
+            <li><a class="dropdown-item" href="{{ url_for("main.dashboard") }}">{{ _("Dashboard") }}</a></li>
+            {% endif %}
+            {% if g.logout_form %}
+            <li>
+              <form action="{{ url_for("main.exit") }}" method="post">
+                {{ g.logout_form.hidden_tag() }}
+                {{ g.logout_form.submit(class="dropdown-item") }}
+              </form>
+            </li>
+            {% endif %}
+          </ul>
+        </li>
+      {% endif %}
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid flex-shrink-0 {% if request.url_rule.endpoint == 'main.home' %} home-container {% endif %}">
+  {% block body %}
+      <main class="content offset-1 col-10">
+      {% if breached_limit %}
+        <p class="alert alert-danger">
+          {{ limit_message }}<br />
+          {{ _("Please retry after %(date)s.", date=breached_limit.reset_at  | from_timestamp | datetimeformat("short") )}}
+        </p>
+      {% else %}
+      {% block content %}{% endblock %}
+      {% endif %}
+      </main>
+  {% endblock %}
+  </div>
+
+  {% if not messages_shown %}
+  {{ flash_messages(classes="w-100 justify-content-center") }}
+  {% endif %}
+
+  {% block footer %}
+  <footer class="footer mt-auto py-3">
+      <div class="footer-limiter">
+
+          <div class="footer-right">
+            <a target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="{{ _('Code') }}" href="https://github.com/spiral-project/ihatemoney">
+              <i class="icon git">{{ static_include("images/git.svg") | safe }}</i>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="{{ _('Mobile Application') }}" href="{{url_for('main.mobile')}}">
+              <i class="icon mobile">{{ static_include("images/mobile-alt.svg") | safe }}</i>
+            </a>
+            <a target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="{{ _('Documentation') }}" href="https://ihatemoney.readthedocs.io/en/latest/">
+              <i class="icon book">{{ static_include("images/book.svg") | safe }}</i>
+            </a>
+            {% if g.show_admin_dashboard_link %}
+            <a target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="{{ _('Administation Dashboard') }}" href="{{ url_for('main.dashboard') }}">
+              <i class="icon admin">{{ static_include("images/cog.svg") | safe }}</i>
+            </a>
+            {% endif %}
+            {% if config.LEGAL_LINK %}
+            <a target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="{{ _('Legal information') }}" href="{{ config.LEGAL_LINK }}">
+              <i class="icon legal">{{ static_include("images/legal.svg") | safe }}</i>
+            </a>
+            {% endif %}
+          </div>
+
+          <div class="footer-left">
+            <p>
+              <a href="https://github.com/spiral-project/ihatemoney">{{ _("\"I hate money\" is free software") }}</a><span class="d-none d-sm-inline"></span>,
+              {{ _("you can contribute and improve it!") }}</span>
+            </p>
+          </div>
+        </div>
+  </footer>
+  {% endblock %}
+
+</body>
+</html>

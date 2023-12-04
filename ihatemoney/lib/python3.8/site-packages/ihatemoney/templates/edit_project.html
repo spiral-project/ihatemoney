@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block js %}
+    {% include "helpers.js" %}
+    confirm_action("#delete-project")
+
+    $('.custom-file-input').on('change', function(event) {
+        var filename = [].slice.call(this.files).map(function (file) { return file.name}).join(',')
+        var $labelElement = $(this).parents('.custom-file').find('.custom-file-label')
+        $labelElement.text(filename)
+    })
+{% endblock %}
+
+{% block content %}
+<div class="container edit-project">
+
+    <h2>{{ _("Edit project") }}</h2>
+    <form id="edit-project" class="form-horizontal" method="post">
+        {{ forms.edit_project(edit_form) }}
+    </form>
+
+    <h2>{{ _("Delete project") }}</h2>
+    <form id="delete-project" class="form-horizontal" action="{{ url_for(".delete_project") }}" method="post" >
+        {{ forms.delete_project(delete_form) }}
+    </form>
+
+
+    <h2>{{ _("Import project") }}</h2>
+    <form id="import-project" class="form-horizontal" action="{{ url_for(".import_project") }}" method="post" enctype="multipart/form-data">
+        {{ forms.import_project(import_form) }}
+    </form>
+
+    <h2>{{ _("Download project's data") }}</h2>
+    <div class="list-group download-project">
+        <div class="list-group-item list-group-item-action">
+            <h5 class="d-flex w-100 justify-content-between">
+                <span class="mb-1">{{ _('Bill items') }}</span>
+                <span>
+                    <a href="{{ url_for('.export_project', file='bills', format='json') }}" download class="badge badge-secondary">
+                        <i class="icon before-text">{{ static_include("images/file-alt.svg") | safe }}</i>
+                        JSON
+                    </a>
+                    <a href="{{ url_for('.export_project', file='bills', format='csv') }}" download class="badge badge-secondary">
+                        <i class="icon before-text">{{ static_include("images/file-csv-solid.svg") | safe }}</i>
+                        CSV
+                    </a>
+                </span>
+            </h5>
+        <p class="mb-1 text-muted">{{ _('Download the list of bills with owner, amount, reason,... ') }}</p>
+        </div>
+        <div class="list-group-item list-group-item-action">
+            <h5 class="d-flex w-100 justify-content-between">
+                <span class="mb-1">{{ _('Settle plans') }}</span>
+                <span>
+                    <a href="{{ url_for('.export_project', file='transactions', format='json') }}" download class="badge badge-secondary">
+                        <i class="icon before-text">{{ static_include("images/file-alt.svg") | safe }}</i>
+                        JSON
+                    </a>
+                    <a href="{{ url_for('.export_project', file='transactions', format='csv') }}" download class="badge badge-secondary">
+                        <i class="icon before-text">{{ static_include("images/file-csv-solid.svg") | safe }}</i>
+                        CSV
+                    </a>
+                </span>
+            </h5>
+            <p class="mb-1 text-muted">{{ _('Download the list of transactions needed to settle the current bills.') }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

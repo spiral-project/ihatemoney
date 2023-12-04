@@ -1,0 +1,60 @@
+# You can find more information about what these settings mean in the
+# documentation, available online at
+# http://ihatemoney.readthedocs.io/en/latest/installation.html#configuration
+
+# Turn this on if you want to have more output on what's happening under the
+# hood. DO NOT TURN IT ON IN PRODUCTION.
+DEBUG = False
+
+# The database URI, reprensenting the type of database and how to connect to it.
+# Enter an absolute path here.
+SQLALCHEMY_DATABASE_URI = 'sqlite:////var/lib/ihatemoney/ihatemoney.sqlite'
+SQLACHEMY_ECHO = DEBUG
+
+# Will likely become the default value in flask-sqlalchemy >=3 ; could be removed
+# then:
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+# This secret key is random and auto-generated, it protects cookies and user sessions
+SECRET_KEY = "{{ secret_key }}"
+
+# A python tuple describing the name and email adress of the sender of the mails.
+MAIL_DEFAULT_SENDER = "Budget manager <admin@example.com>" # CUSTOMIZE
+
+# A boolean that determines whether the admin email (MAIL_DEFAULT_SENDER) is
+# shown in error messages.
+SHOW_ADMIN_EMAIL = True
+
+# If set to True, a demonstration project will be activated.
+ACTIVATE_DEMO_PROJECT = True
+
+# If not empty, the specified password must be entered to create new projects.
+# DO NOT enter the password in cleartext. Generate a password hash with
+# "ihatemoney generate_password_hash" instead.
+ADMIN_PASSWORD = ""
+
+# If set to True (default value) anyone can create a new project.
+ALLOW_PUBLIC_PROJECT_CREATION = True
+
+# If set to True, an administration dashboard is available.
+ACTIVATE_ADMIN_DASHBOARD = False
+
+# You can change the timezone used to display time.  By default it will be
+#derived from the server OS.
+#BABEL_DEFAULT_TIMEZONE = "Europe/Paris"
+
+# Enable secure cookies. Requires HTTPS. Disable if you run your ihatemoney
+# service over plain HTTP.
+SESSION_COOKIE_SECURE = True
+
+# Set this to a URL path under which the application will be served.  Defaults to "/"
+APPLICATION_ROOT = "/"
+
+# You can activate an optional CAPTCHA if you want to. It can be helpful
+# to filter spammer bots.
+ENABLE_CAPTCHA = False
+
+# You may want to point to a special legal page, for instance to give information
+# about GDPR, or how you handle the data of your users.
+# Set this variable to the URL you want.
+LEGAL_LINK = ""

@@ -1,0 +1,13 @@
+Hi,
+
+Someone using the email address {{ g.project.contact_email }} invited you to share your expenses for "{{ g.project.name }}".
+
+It's as simple as saying what did you pay for, for whom, and how much did it cost you, we are caring about the rest.
+
+You can log in using this link: {{ url_for(".join_project", _external=True, project_id=g.project.id, token=g.project.generate_token()) }}.
+
+Once logged-in, you can use the following link which is easier to remember: {{ url_for(".list_bills", _external=True) }}
+If your cookie gets deleted or if you log out, you will need to log back in using the first link.
+
+Enjoy,
+See you :-)

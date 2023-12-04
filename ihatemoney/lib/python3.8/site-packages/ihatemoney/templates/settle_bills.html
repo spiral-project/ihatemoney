@@ -1,0 +1,24 @@
+{% extends "sidebar_table_layout.html" %}
+
+{% block sidebar %}
+    <div id="table_overflow">
+        {{ balance_table(show_weight=False) }}
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <table id="bill_table" class="split_bills table table-striped">
+        <thead><tr><th>{{ _("Who pays?") }}</th><th>{{ _("To whom?") }}</th><th>{{ _("How much?") }}</th></tr></thead>
+    <tbody>
+    {% for bill in bills %}
+    <tr receiver={{bill.receiver.id}}>
+            <td>{{ bill.ower }}</td>
+            <td>{{ bill.receiver }}</td>
+            <td>{{ bill.amount|currency }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+{% endblock %}

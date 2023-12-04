@@ -32,6 +32,7 @@ from flask import (
 )
 from flask_babel import gettext as _
 from flask_mail import Message
+import datetime
 import qrcode
 import qrcode.image.svg
 from sqlalchemy_continuum import Operation
@@ -54,10 +55,11 @@ from ihatemoney.forms import (
     ProjectForm,
     ProjectFormWithCaptcha,
     ResetPasswordForm,
+    PayerDateForm,
     get_billform_for,
 )
 from ihatemoney.history import get_history, get_history_queries, purge_history
-from ihatemoney.models import Bill, LoggingMode, Person, Project, db
+from ihatemoney.models import billowers, Bill, LoggingMode, Person, Project, db
 from ihatemoney.utils import (
     Redirect303,
     csv2list_of_dicts,
@@ -642,7 +644,7 @@ def invite():
 
 @main.route("/<project_id>/")
 def list_bills():
-    bill_form = get_billform_for(g.project)
+    bill_form,active_members = get_billform_for(g.project)
     # Used for CSRF validation
     csrf_form = EmptyForm()
     # set the last selected payer and last selected owers as default choice if they exist
@@ -659,8 +661,13 @@ def list_bills():
         "last_selected_payed_for" in session
         and g.project.id in session["last_selected_payed_for"]
     ):
-        bill_form.payed_for.data = session["last_selected_payed_for"][g.project.id]
-
+        for id in session["last_selected_payed_for"][g.project.id]:
+            new_form = PayerDateForm(
+                payer = id,
+                start_date = datetime.date.today(),
+                end_date = datetime.date.today()
+            )
+            bill_form.payed_for.append_entry(new_form)
     # Each item will be a (weight_sum, Bill) tuple.
     # TODO: improve this awkward result using column_property:
     # https://docs.sqlalchemy.org/en/14/orm/mapped_sql_expr.html.
@@ -672,6 +679,7 @@ def list_bills():
         "list_bills.html",
         bills=weighted_bills,
         member_form=MemberForm(g.project),
+        active_members=active_members,
         bill_form=bill_form,
         csrf_form=csrf_form,
         add_bill=request.values.get("add_bill", False),
@@ -760,30 +768,52 @@ def edit_member(member_id):
 
 @main.route("/<project_id>/add", methods=["GET", "POST"])
 def add_bill():
-    form = get_billform_for(g.project)
+    form, active_members = get_billform_for(g.project)
     if request.method == "POST":
         if form.validate():
+            payed_for_data = []
+            for i in form.payed_for:
+                label = i.label.text
+                index = int(label.split('-')[-1])
+                payed_for_data.append(active_members[index][0])
+                print(i['payer_start_date'],i['payer_end_date'])
             # save last selected payer and last selected owers in session
             if "last_selected_payer_per_project" not in session:
                 session["last_selected_payer_per_project"] = {}
             session["last_selected_payer_per_project"][g.project.id] = form.payer.data
             if "last_selected_payed_for" not in session:
                 session["last_selected_payed_for"] = {}
-            session["last_selected_payed_for"][g.project.id] = form.payed_for.data
+            session["last_selected_payed_for"][g.project.id] = payed_for_data
             session.update()
-
-            db.session.add(form.export(g.project))
+            new_bill= form.export(g.project,payed_for_data)
+            db.session.add(new_bill)
+            db.session.flush()
+            for index in range(len(payed_for_data)):
+                print("saving: ",form.payed_for[index]['payer_start_date'].data,form.payed_for[index]['payer_end_date'].data)
+                association = billowers.insert().values(
+                    bill_id=new_bill.id,
+                    person_id= payed_for_data[index],
+                    start_date=form.payed_for[index]['payer_start_date'].data,
+                    end_date=form.payed_for[index]['payer_end_date'].data,
+                )
+                db.session.execute(association)
             db.session.commit()
 
             flash(_("The bill has been added"))
 
             args = {}
             if form.submit2.data:
+                print('form2')
                 args["add_bill"] = True
 
             return redirect(url_for(".list_bills", **args))
+        else:
+            for fieldName, errorMessages in form.errors.items():
+                for err in errorMessages:
+                    print(fieldName, 'error:', err)
+            print('invalid')
 
-    return render_template("add_bill.html", form=form)
+    return render_template("add_bill.html", form=form,active_members=active_members)
 
 
 @main.route("/<project_id>/delete/<int:bill_id>", methods=["POST"])
@@ -807,12 +837,12 @@ def delete_bill(bill_id):
 
 @main.route("/<project_id>/edit/<int:bill_id>", methods=["GET", "POST"])
 def edit_bill(bill_id):
-    # FIXME: Test this bill belongs to this project !
+    # FIXME: Test this bilal belongs to this project !
     bill = Bill.query.get(g.project, bill_id)
     if not bill:
         raise NotFound()
 
-    form = get_billform_for(g.project, set_default=False)
+    form, _ = get_billform_for(g.project, set_default=False)
 
     if request.method == "POST" and form.validate():
         form.save(bill, g.project)

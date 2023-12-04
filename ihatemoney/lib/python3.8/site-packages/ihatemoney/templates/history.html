@@ -1,0 +1,298 @@
+{% extends "sidebar_table_layout.html" %}
+
+{% macro change_to_logging_preference(event) %}
+{% if event.val_after == LoggingMode.DISABLED %}
+    {% if event.val_before == LoggingMode.ENABLED %}
+        {{ _("Disabled Project History") }}
+    {% else %}
+        {{ _("Disabled Project History & IP Address Recording") }}
+    {% endif %}
+{% elif event.val_after == LoggingMode.ENABLED %}
+    {% if event.val_before == LoggingMode.DISABLED %}
+        {{ _("Enabled Project History") }}
+    {% elif event.val_before == LoggingMode.RECORD_IP %}
+        {{ _("Disabled IP Address Recording") }}
+    {% else %}
+        {{ _("Enabled Project History") }}
+    {% endif %}
+{% elif event.val_after == LoggingMode.RECORD_IP %}
+    {% if event.val_before == LoggingMode.DISABLED %}
+        {{ _("Enabled Project History & IP Address Recording") }}
+    {% elif event.val_before == LoggingMode.ENABLED %}
+        {{ _("Enabled IP Address Recording") }}
+    {% else %}
+        {{ _("Enabled Project History & IP Address Recording") }}
+    {% endif %}
+{% else %}
+    {# Should be unreachable #}
+    {{ _("History Settings Changed") }}
+{% endif %}
+{% endmacro %}
+
+{% macro bill_property_change(event, localized_property_name, before=event.val_before|em_surround, after=event.val_after|em_surround) %}
+    {% set name=event.object_desc|em_surround %}
+    {% set property_name=localized_property_name %}
+    {% if before %}
+        {% trans %}Bill {{ name }}: {{ property_name }} changed from {{ before }} to {{ after }}{% endtrans %}
+    {% else %}
+        {% trans %}Bill {{ name }}: {{ property_name }} changed to {{ after }}{% endtrans %}
+    {% endif %}
+{% endmacro %}
+
+{% macro clear_history_modals() %}
+<!-- Modal -->
+<div id="confirm-ip-delete" class="modal fade show" role="dialog">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content" action="{{ url_for(".strip_ip_addresses") }}" method="post">
+            <div class="modal-header">
+                <h3 class="modal-title">{{ _('Confirm Remove IP Adresses') }}</h3>
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+            </div>
+            <div class="modal-body">
+                <p>{{ _("Are you sure you want to delete all recorded IP addresses from this project?
+                The rest of the project history will be unaffected. This action cannot be undone.") }}</p>
+                {{ forms.delete_ip_addresses(delete_form) }}
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-danger">{{ _("Confirm deletion") }}</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _("Close") }}</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Modal -->
+    <div id="confirm-erase" class="modal fade show" role="dialog">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content" action="{{ url_for(".erase_history") }}" method="post">
+            <div class="modal-header">
+                <h3 class="modal-title">{{ _('Delete Confirmation') }}</h3>
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+            </div>
+            <div class="modal-body">
+                <p>{{ _("Are you sure you want to erase all history for this project? This action cannot be undone.") }}</p>
+                {{ forms.delete_project_history(delete_form) }}
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger">{{ _("Confirm deletion") }}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _("Close") }}</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro owers_changed(event, add) %}
+    {% set name=event.object_desc|em_surround %}
+    {% set owers_list_str=event.val_after|localize_list|safe %}
+    {% if add %}
+        {% trans %}Bill {{ name }}: added {{ owers_list_str }} to owers list{% endtrans %}
+    {% else %}
+        {% trans %}Bill {{ name }}: removed {{ owers_list_str }} from owers list{% endtrans %}
+    {% endif %}
+{% endmacro %}
+
+{% macro bill_details(details, before=False) %}
+    {% set owers_list_str=details.owers|localize_list|safe %}
+    <details class="small">
+        <summary>{% if before %} {{ _("Details of the bill (before the change)") }} {% else %} {{ _("Details of the bill") }} {% endif %}</summary>
+        {{ _("Date:") }} {{ details.date|em_surround }}.
+        {{ _("Payer:") }} {{ details.payer|em_surround }}.
+        {{ _("Amount:") }} {{ details.amount|currency(details.original_currency)|em_surround }}.
+        {{ _("Owers:") }} {{ owers_list_str }}.
+        {% if details.external_link %}
+            {{ _("External link:") }}
+            <a class="truncated" href="{{ details.external_link }}">{{ details.external_link }}</a>
+        {% endif %}
+    </details>
+{% endmacro %}
+
+{% block sidebar %}
+    <div id="table_overflow">
+        {{ balance_table(show_weight=False, show_header=True) }}
+    </div>
+{% endblock %}
+
+
+
+{% block content %}
+    {% if current_log_pref == LoggingMode.DISABLED  or (current_log_pref != LoggingMode.RECORD_IP and any_ip_addresses) %}
+    <div id="history_warnings" class="card card-body bg-light">
+    {% if current_log_pref == LoggingMode.DISABLED  %}
+        <p>
+            <i>{{ _("This project has history disabled. New actions won't appear below.") }}
+               <a href="{{ url_for(".edit_project") }}">{{ _("You can enable history on the settings page.") }}</a>
+            </i>
+        </p>
+        {% if history %}
+        <p>
+            <i>{{ _("The table below reflects actions recorded prior to disabling project history.") }}
+              <a href="#" data-toggle="modal" data-keyboard="false" data-target="#confirm-erase">{{ _("You can clear the project history to remove them.") }}</a>
+            </i>
+        </p>
+        {% endif %}
+    {% endif %}
+    {% if current_log_pref != LoggingMode.RECORD_IP and any_ip_addresses %}
+        <p>
+            <i>{{ _("Some entries below contain IP addresses, even though this project has IP recording disabled. ") }}
+            <a href="#" data-toggle="modal" data-keyboard="false" data-target="#confirm-ip-delete">{{ _("Delete stored IP addresses") }}</a></i>
+        </p>
+    {% endif %}
+    </div>
+    {% endif %}
+    {{ clear_history_modals() }}
+    <div class="d-flex mt-3 justify-content-end">
+        <span class="mr-2" {% if not any_ip_addresses %}data-placement="top" data-toggle="tooltip" title="{{_('No IP Addresses to erase')}}" {% endif %}>
+            <a href="#" class="btn btn-outline-danger {% if not any_ip_addresses %} disabled {% endif %}" data-toggle="modal" data-keyboard="false" data-target="#confirm-ip-delete">
+                <i class="icon icon-red plus">{{ static_include("images/x.svg") | safe }}</i>
+                {{ _("Delete Stored IP Addresses") }}
+            </a>
+        </span>
+        <span {% if not history %} data-toggle="tooltip" title="{{_('No history to erase')}}" {% endif %}>
+            <a href="#" class="btn btn-outline-danger {% if not history %} disabled {% endif %}" data-toggle="modal" data-keyboard="false" data-target="#confirm-erase">
+                <i class="icon icon-red plus">{{ static_include("images/x.svg") | safe }}</i>
+                {{ _("Clear Project History") }}
+            </a>
+        </span>
+    </div>
+
+    {% if history %}
+    <table id="history_table" class="split_bills table table-striped">
+        <thead><tr>
+            <th style="width: 15%">{{ _("Time") }}</th>
+            <th style="width: 65%">{{ _("Event") }}</th>
+            <th style="width: 20%">
+                <span data-toggle="tooltip" title="{% if current_log_pref != LoggingMode.RECORD_IP %}
+                                                   {{_('IP address recording can be enabled on the settings page') }}
+                                                   {% else %}
+                                                   {{_('IP address recording can be disabled on the settings page') }}
+                                                   {% endif %}">
+                {{ _("From IP") }}</span></th>
+        </tr></thead>
+    <tbody>
+    {% for event in history %}
+    <tr>
+            <td>{{ event.time|datetimeformat("medium") }}</td>
+            <td >
+                <div class="history_icon">
+                    <i {% if event.operation_type == OperationType.INSERT  %}
+                    class="add"
+                    {% elif event.operation_type == OperationType.UPDATE  %}
+                    class="edit"
+                    {% elif event.operation_type == OperationType.DELETE  %}
+                    class="delete"
+                    {% endif %}
+                    ></i>
+                </div>
+                <div class="history_text">
+                {# Common value setting #}
+                {% set name=event.object_desc|em_surround %}
+
+                {% if event.operation_type == OperationType.INSERT %}
+                    {% if event.object_type == "Project" %}
+                        {% trans %}Project {{ name }} added{% endtrans %}
+                    {% elif event.object_type == "Bill" %}
+                        {% trans %}Bill {{ name }} added{% endtrans %}
+                        {{ bill_details(event.bill_details) }}
+
+                    {% elif event.object_type == "Person" %}
+                        {% trans %}Participant {{ name }} added{% endtrans %}
+                    {% endif %}
+
+                {% elif event.operation_type == OperationType.UPDATE  %}
+                    {% if event.object_type == "Project" %}
+                        {% if event.prop_changed == "password" %}
+                            {{ _("Project private code changed") }}
+                        {% elif event.prop_changed == "logging_preference" %}
+                            {{ change_to_logging_preference(event) }}
+                        {% elif event.prop_changed == "name" %}
+                            {% set new_project_name=event.val_after|em_surround %}
+                            {% trans %}Project renamed to {{ new_project_name }}{% endtrans %}
+                        {% elif event.prop_changed == "contact_email" %}
+                            {% set new_email=event.val_after|em_surround %}
+                            {% trans %}Project contact email changed to {{ new_email }}{% endtrans %}
+                        {% else %}
+                            {{ _("Project settings modified") }}
+                        {% endif %}
+                    {% elif event.object_type == "Bill" %}
+                        {% if event.prop_changed == "what" %}
+                            {% set new_description=event.val_after|em_surround %}
+                            {% trans %}Bill {{ name }} renamed to {{ new_description }}{% endtrans %}
+                        {% elif event.prop_changed == "external_link" %}
+                            {{ bill_property_change(event, _("External link"), None, "<a class='truncated' href='{link}' >{link}</a>".format(link=event.val_after | escape) | safe | em_surround) }}
+                        {% elif event.prop_changed == "owers_added" %}
+                            {{ owers_changed(event, True)}}
+                        {% elif event.prop_changed == "owers_removed" %}
+                            {{ owers_changed(event, False)}}
+                        {% elif event.prop_changed == "payer" %}
+                            {{ bill_property_change(event, _("Payer"))}}
+                        {% elif event.prop_changed == "amount" %}
+                            {{ bill_property_change(event, _("Amount")) }}
+                        {% elif event.prop_changed == "date" %}
+                            {{ bill_property_change(event, _("Date")) }}
+                        {% elif event.prop_changed == "original_currency" %}
+                            {{ bill_property_change(event, _("Currency")) }}
+                        {% elif event.prop_changed == "converted_amount" %}
+                            {{ bill_property_change(event, _("Amount in %(currency)s", currency=g.project.default_currency)) }}
+                        {% else %}
+                            {% trans %}Bill {{ name }} modified{% endtrans %}
+                        {% endif %}
+                        {{ bill_details(event.bill_details, before=True) }}
+
+                    {% elif event.object_type == "Person" %}
+                        {% if event.prop_changed == "activated" %}
+                            {% if event.val_after == False %}
+                                {% trans %}Participant {{ name }} deactivated{% endtrans %}
+                            {% else %}
+                                {% trans %}Participant {{ name }} reactivated{% endtrans %}
+                            {% endif %}
+                        {% elif event.prop_changed == "name" %}
+                            {% set new_name=event.val_after|em_surround %}
+                            {% trans %}Participant {{ name }} renamed to {{ new_name }}{% endtrans %}
+                        {% elif event.prop_changed == "weight" %}
+                            {% set old_weight=event.val_before|em_surround %}
+                            {% set new_weight=event.val_after|em_surround %}
+                            {% trans %}Participant {{ name }}: weight changed from {{ old_weight }} to {{ new_weight }}{% endtrans %}
+                        {% else %}
+                            {% trans %}Participant {{ name }} modified{% endtrans %}
+                        {% endif %}
+                    {% endif %}
+
+                {% elif event.operation_type == OperationType.DELETE %}
+                    {% if event.object_type == "Bill" %}
+                        {% trans %}Bill {{ name }} removed{% endtrans %}
+                        {{ bill_details(event.bill_details) }}
+                    {% elif event.object_type == "Person" %}
+                        {% trans %}Participant {{ name }} removed{% endtrans %}
+                    {% endif %}
+
+                {% else %}
+                    {# Should be unreachable #}
+                    {% if event.object_type == "Project" %}
+                        {% trans %}Project {{ name }} changed in an unknown way{% endtrans %}
+                    {% elif event.object_type == "Bill" %}
+                        {% trans %}Bill {{ name }} changed in an unknown way{% endtrans %}
+                    {% elif event.object_type == "Person" %}
+                        {% trans %}Participant {{ name }} changed in an unknown way{% endtrans %}
+                    {% endif %}
+                {% endif %}
+                </div>
+            </td>
+            <td>{% if event.ip %}{{ event.ip }}{% else %} -- {% endif %}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    {% else %}
+        <div class="py-3 d-flex justify-content-center empty-bill">
+        <div class="card d-inline-flex p-2">
+            <div class="card-body text-center text-muted">
+                <i class="icon icon-white billimg">{{ static_include("images/bill.svg") | safe }}</i>
+                <h3>{{ _('Nothing to list')}}</h3>
+                <p>
+                    {{ _("Someone probably cleared the project history.") }}
+                </p>
+            </div>
+        </div></div>
+    {% endif %}
+
+{% endblock %}

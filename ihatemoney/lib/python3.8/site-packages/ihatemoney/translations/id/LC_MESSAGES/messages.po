@@ -1,0 +1,1168 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"PO-Revision-Date: 2022-04-11 17:12+0000\n"
+"Last-Translator: Santiago José Gutiérrez Llanos "
+"<gutierrezapata17@gmail.com>\n"
+"Language: id\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/id/>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr "Anda baru saja membuat %(project)s untuk membagikan harga Anda"
+
+msgid ""
+"Not a valid amount or expression. Only numbers and + - * / operators are "
+"accepted."
+msgstr ""
+"Bukan jumlah atau operator yang valid. Hanya angka dan operator + -* / "
+"yang diterima."
+
+msgid "Project name"
+msgstr "Nama proyek"
+
+#, fuzzy
+msgid "Current private code"
+msgstr "Kode pribadi baru"
+
+msgid "Enter existing private code to edit project"
+msgstr ""
+
+msgid "New private code"
+msgstr "Kode pribadi baru"
+
+msgid "Enter a new code if you want to change it"
+msgstr "Masukkan sebuah kode baru jika Anda ingin menggantinya"
+
+msgid "Email"
+msgstr "Surel"
+
+msgid "Enable project history"
+msgstr "Aktifkan riwayat proyek"
+
+msgid "Use IP tracking for project history"
+msgstr "Gunakan pelacakan IP untuk riwayat proyek"
+
+msgid "Default Currency"
+msgstr "Mata Uang Standar"
+
+msgid "Setting a default currency enables currency conversion between bills"
+msgstr "Menetapkan mata uang default memungkinkan konversi mata uang antar tagihan"
+
+msgid "Unknown error"
+msgstr "Kesalahan tidak diketahui"
+
+msgid "Invalid private code."
+msgstr "Kode pribadi tidak valid."
+
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+"Proyek ini tidak dapat disetel ke 'tanpa mata uang' karena berisi tagihan"
+" dalam berbagai mata uang."
+
+msgid "Compatible with Cospend"
+msgstr ""
+
+msgid "Project identifier"
+msgstr "Pengidentifikasi proyek"
+
+msgid "Private code"
+msgstr "Kode pribadi"
+
+msgid "Create the project"
+msgstr "Buat proyek"
+
+#, python-format
+msgid ""
+"A project with this identifier (\"%(project)s\") already exists. Please "
+"choose a new identifier"
+msgstr ""
+"Sebuah proyek dengan ID ini (\"%(project)s\") sudah ada. Silakan pilih ID"
+" baru"
+
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr "Manakah mata uang riil: Euro atau dolar Petro?"
+
+msgid "euro"
+msgstr "Euro"
+
+msgid "Please, validate the captcha to proceed."
+msgstr "Mohon, silahkan validasi captcha untuk melanjutkan."
+
+msgid "Enter private code to confirm deletion"
+msgstr "Masukkan kode pribadi untuk mengkonfirmasi penghapusan"
+
+msgid "Get in"
+msgstr "Masuk"
+
+msgid "Admin password"
+msgstr "Kata sandi admin"
+
+msgid "Send me the code by email"
+msgstr "Kirim saya kode melalui email"
+
+msgid "This project does not exists"
+msgstr "Proyek ini tidak ada"
+
+msgid "Password mismatch"
+msgstr "Kata sandi tidak cocok"
+
+msgid "Password"
+msgstr "Kata sandi"
+
+msgid "Password confirmation"
+msgstr "Konfirmasi kata sandi"
+
+msgid "Reset password"
+msgstr "Atur ulang kata sandi"
+
+msgid "When?"
+msgstr "Kapan?"
+
+msgid "What?"
+msgstr "Apa?"
+
+msgid "Who paid?"
+msgstr "Siapa yang bayar?"
+
+msgid "How much?"
+msgstr "Berapa banyak?"
+
+msgid "Currency"
+msgstr "Mata Uang"
+
+msgid "External link"
+msgstr "Tautan luar"
+
+msgid "A link to an external document, related to this bill"
+msgstr "Sebuah tautan mengarah ke dokumen luar, terhubung dengan pembayaran ini"
+
+msgid "For whom?"
+msgstr "Untuk siapa?"
+
+msgid "Submit"
+msgstr "Ajukan"
+
+msgid "Submit and add a new one"
+msgstr "Ajukan dan tambah yang baru"
+
+#, python-format
+msgid "Project default: %(currency)s"
+msgstr "Default proyek: %(currency)s"
+
+msgid "Name"
+msgstr "Nama"
+
+msgid "Weights should be positive"
+msgstr "Bobot harus positif"
+
+msgid "Weight"
+msgstr "Bobot"
+
+msgid "Add"
+msgstr "Tambah"
+
+msgid "The participant name is invalid"
+msgstr "Nama pengguna tidak valid"
+
+msgid "This project already have this participant"
+msgstr "Proyek ini sudah mempunyai /ada anggota ini"
+
+msgid "People to notify"
+msgstr "Orang yang akan dinotifikasi"
+
+msgid "Send the invitations"
+msgstr "Kirim undangan"
+
+#, python-format
+msgid "The email %(email)s is not valid"
+msgstr "Surel %(email)s tidak valid"
+
+msgid "Logout"
+msgstr "Keluar"
+
+msgid "Please check the email configuration of the server."
+msgstr ""
+
+#, fuzzy, python-format
+msgid ""
+"Please check the email configuration of the server or contact the "
+"administrator: %(admin_email)s"
+msgstr ""
+"Maaf, ada galat saat mencoba mengirim email undangan. Silakan periksa "
+"konfigurasi email peladen atau hubungi administrator."
+
+#. List with two items only
+msgid "{dual_object_0} and {dual_object_1}"
+msgstr "{dual_object_0} dan {dual_object_1}"
+
+#. Last two items of a list with more than 3 items
+msgid "{previous_object}, and {end_object}"
+msgstr "{previous_object}, dan {end_object}"
+
+#. Two items in a middle of a list with more than 5 objects
+msgid "{previous_object}, {next_object}"
+msgstr "{previous_object}, {next_object}"
+
+#. First two items of a list with more than 3 items
+msgid "{start_object}, {next_object}"
+msgstr "{start_object}, {next_object}"
+
+msgid "No Currency"
+msgstr "Tidak ada mata uang"
+
+#. Form error with only one error
+msgid "{prefix}: {error}"
+msgstr "{prefix}: {error}"
+
+#. Form error with a list of errors
+msgid "{prefix}:<br />{errors}"
+msgstr "{prefix}:1<br />{errors}"
+
+#, fuzzy
+msgid "Too many failed login attempts."
+msgstr "Terlalu banyak percobaan masuk, silakan coba lagi nanti."
+
+#, python-format
+msgid "This admin password is not the right one. Only %(num)d attempts left."
+msgstr "Kata sandi admin ini tidak cocok. Hanya tinggal %(num)d percobaan lagi."
+
+msgid "Provided token is invalid"
+msgstr "Token yang disediakan tidak valid"
+
+msgid "This private code is not the right one"
+msgstr "Kode pribadi ini tidak benar"
+
+msgid "A reminder email has just been sent to you"
+msgstr "Email pengingat baru saja dikirimkan kepada Anda"
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
+"Kami telah mengirimi Anda email pengingat, tetapi ada kesalahan. Anda "
+"masih dapat menggunakan proyek secara normal."
+
+#, fuzzy
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions."
+msgstr ""
+"Maaf, ada galat saat mengirim email berisi instruksi pengaturan ulang "
+"kata sandi. Silakan periksa konfigurasi email peladen atau hubungi "
+"administrator."
+
+msgid "No token provided"
+msgstr "Belum ada token diberikan"
+
+msgid "Invalid token"
+msgstr "Token tidak benar"
+
+msgid "Unknown project"
+msgstr "Proyek tidak diketahui"
+
+msgid "Password successfully reset."
+msgstr "Kata sandi berhasil diatur ulang."
+
+msgid "Project settings have been changed successfully."
+msgstr ""
+
+msgid "Unable to parse CSV"
+msgstr ""
+
+#, python-format
+msgid "Missing attribute: %(attribute)s"
+msgstr ""
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
+msgstr ""
+
+msgid "Project successfully uploaded"
+msgstr "Proyek berhasil diunggah"
+
+msgid "Project successfully deleted"
+msgstr "Proyek berhasil dihapus"
+
+msgid "Error deleting project"
+msgstr ""
+
+msgid "Unable to logout"
+msgstr ""
+
+#, python-format
+msgid "You have been invited to share your expenses for %(project)s"
+msgstr "Anda telah diundang untuk membagikan harga Anda untuk %(project)s"
+
+msgid "Your invitations have been sent"
+msgstr "Undangan Anda telah dikirim"
+
+#, fuzzy
+msgid "Sorry, there was an error while trying to send the invitation emails."
+msgstr ""
+"Maaf, ada galat saat mencoba mengirim email undangan. Silakan periksa "
+"konfigurasi email peladen atau hubungi administrator."
+
+#, python-format
+msgid "%(member)s has been added"
+msgstr "%(member)s telah ditambahkan"
+
+msgid "Error activating participant"
+msgstr ""
+
+#, python-format
+msgid "%(name)s is part of this project again"
+msgstr "%(name)s adalah bagian dari proyek ini lagi"
+
+msgid "Error removing participant"
+msgstr ""
+
+#, python-format
+msgid ""
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
+msgstr ""
+"Pengguna %(name)s' telah dinonaktifkan. Pengguna akan tetap muncul dalam "
+"daftar pengguna sampai saldonya menjadi kosong."
+
+#, python-format
+msgid "Participant '%(name)s' has been removed"
+msgstr "Pengguna %(name)s' telah dihapus"
+
+#, python-format
+msgid "Participant '%(name)s' has been modified"
+msgstr "Pengguna %(name)s' telah dihapus"
+
+msgid "The bill has been added"
+msgstr "Tagihan telah ditambahkan"
+
+msgid "Error deleting bill"
+msgstr "Kesalahan saat menghapus tagihan"
+
+msgid "The bill has been deleted"
+msgstr "Tagihan telah dihapus"
+
+msgid "The bill has been modified"
+msgstr "Tagihan telah diperbarui"
+
+#, python-format
+msgid "%(lang)s is not a supported language"
+msgstr ""
+
+msgid "Error deleting project history"
+msgstr "Kesalahan saat menghapus riwayat proyek"
+
+msgid "Deleted project history."
+msgstr "Rriwayat proyek terhapus."
+
+msgid "Error deleting recorded IP addresses"
+msgstr "Kesalahan menghapus alamat IP yang disimpan"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr "Terhapus alamat IP yang disimpan dalam riwayat proyek."
+
+msgid "Sorry, we were unable to find the page you've asked for."
+msgstr "Maaf, kami tidak bisa menemukan halaman yang Anda minta."
+
+msgid "The best thing to do is probably to get back to the main page."
+msgstr "Hal terbaik yang bisa dilakukan adalah kembali ke halaman utama."
+
+msgid "Back to the list"
+msgstr "Kembali ke daftar"
+
+msgid "Administration tasks are currently disabled."
+msgstr "Tugas adiministrasi saat sekarang dinonaktifkan."
+
+msgid "Authentication"
+msgstr "Otentikasi"
+
+msgid "The project you are trying to access do not exist, do you want to"
+msgstr "Anda mencoba mengakses proyek yang tidak ada, apakah Anda ingin"
+
+msgid "create it"
+msgstr "buat"
+
+msgid "?"
+msgstr "?"
+
+msgid "Create a new project"
+msgstr "Buat proyek baru"
+
+msgid "Project"
+msgstr "Proyek"
+
+msgid "Number of participants"
+msgstr "Jumlah anggota"
+
+msgid "Number of bills"
+msgstr "Jumlah tagihan"
+
+msgid "Newest bill"
+msgstr "Tagihan terbaru"
+
+msgid "Oldest bill"
+msgstr "Tagihan terlawas"
+
+msgid "Actions"
+msgstr "Aksi"
+
+msgid "edit"
+msgstr "ubah"
+
+msgid "Delete project"
+msgstr "Hapus proyek"
+
+msgid "show"
+msgstr "tampilkan"
+
+msgid "The Dashboard is currently deactivated."
+msgstr "Dasbor sekarang ini sedang dinonaktifkan."
+
+msgid "Download Mobile Application"
+msgstr "Unduh Aplikasi Seluler"
+
+msgid "Get it on"
+msgstr "Dapatkan di"
+
+msgid "Edit project"
+msgstr "Ubah proyek"
+
+#, fuzzy
+msgid "Import project"
+msgstr "Ubah proyek"
+
+msgid "Download project's data"
+msgstr "Unduh data proyek"
+
+msgid "Bill items"
+msgstr "Item tagihan"
+
+msgid "Download the list of bills with owner, amount, reason,... "
+msgstr "Unduh daftar tagihan beserta pemilikinya, jumlah, alasan,... "
+
+msgid "Settle plans"
+msgstr "Atur perencanaan"
+
+msgid "Download the list of transactions needed to settle the current bills."
+msgstr "Unduh daftar transaksi yang dibutuhkan untuk mengatur tagihan saat ini."
+
+msgid "Can't remember the password?"
+msgstr "Tidak bisa mengingat kata sandi?"
+
+msgid "Cancel"
+msgstr "Batalkan"
+
+msgid "Privacy Settings"
+msgstr "Pengaturan Privasi"
+
+msgid "Save changes"
+msgstr ""
+
+msgid "This will remove all bills and participants in this project!"
+msgstr ""
+
+#, fuzzy
+msgid "Import previously exported project"
+msgstr "Impor file JSON yang sudah diekspor sebelumnya"
+
+msgid "Choose file"
+msgstr "Pilih berkas"
+
+msgid "Edit this bill"
+msgstr "Ubah tagihan ini"
+
+msgid "Add a bill"
+msgstr "Tambah tagihan"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr ""
+
+msgid "Everyone"
+msgstr "Semua orang"
+
+msgid "No one"
+msgstr "Tidak ada"
+
+msgid "More options"
+msgstr "Lebih banyak opsi"
+
+msgid "Add participant"
+msgstr "Tambah partisipan"
+
+msgid "Edit this participant"
+msgstr "Sunting anggota ini"
+
+msgid "john.doe@example.com, mary.moe@site.com"
+msgstr "john.doe@example.com, mary.moe@site.com"
+
+msgid "Download"
+msgstr "Unduh"
+
+msgid "Disabled Project History"
+msgstr "Nonaktifkan riwayat proyek"
+
+msgid "Disabled Project History & IP Address Recording"
+msgstr "Nonaktifkan riwayat proyek & rekaman alamat IP"
+
+msgid "Enabled Project History"
+msgstr "Riwayat Proyek yang Diaktifkan"
+
+msgid "Disabled IP Address Recording"
+msgstr "Perekaman Alamat IP Dinonaktifkan"
+
+msgid "Enabled Project History & IP Address Recording"
+msgstr "Aktifkan Riwayat Proyek & Rekaman Alamat IP"
+
+msgid "Enabled IP Address Recording"
+msgstr "Aktifkan Rekaman Alamat IP"
+
+msgid "History Settings Changed"
+msgstr "Setelan Riwayat Diubah"
+
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
+msgstr ""
+
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
+msgstr ""
+
+msgid "Confirm Remove IP Adresses"
+msgstr "Konfirmasi Hapus Alamat IP"
+
+msgid ""
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+"Anda yakin ingin menghapus semua alamat IP yang direkam dari proyek ini?\n"
+"                Sisa riwayat proyek tidak akan terpengaruh. Tindakan ini "
+"tidak bisa dibatalkan."
+
+#, fuzzy
+msgid "Confirm deletion"
+msgstr "Konfirmasi Hapus"
+
+msgid "Close"
+msgstr "Tutup"
+
+msgid "Delete Confirmation"
+msgstr "Hapus Konfirmasi"
+
+msgid ""
+"Are you sure you want to erase all history for this project? This action "
+"cannot be undone."
+msgstr ""
+"Anda yakin ingin menghapus semua riwayat untuk proyek ini? Tindakan ini "
+"tidak bisa dibatalkan."
+
+#, python-format
+msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
+msgstr ""
+
+#, python-format
+msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
+msgstr ""
+
+msgid "This project has history disabled. New actions won't appear below."
+msgstr ""
+
+#, fuzzy
+msgid "You can enable history on the settings page."
+msgstr "Perekaman alamat IP dapat diaktifkan di halaman pengaturan"
+
+msgid ""
+"The table below reflects actions recorded prior to disabling project "
+"history."
+msgstr ""
+
+#, fuzzy
+msgid "You can clear the project history to remove them."
+msgstr "Seseorang mungkin membersihkan riwayat proyek."
+
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr ""
+"Beberapa entri dibawah mengandung alamat IP, walaupun proyek ini "
+"menonaktifkan rekaman alamat IP. "
+
+msgid "Delete stored IP addresses"
+msgstr "Hapus alamat IP yang disimpan"
+
+msgid "No IP Addresses to erase"
+msgstr "Tidak ada Alamat IP untuk dihapus"
+
+msgid "Delete Stored IP Addresses"
+msgstr "Hapus alamat IP yang disimpan"
+
+msgid "No history to erase"
+msgstr "Tidak ada riwayat untuk dihapus"
+
+msgid "Clear Project History"
+msgstr "Bersihkan Riwayat Proyek"
+
+msgid "Time"
+msgstr "Waktu"
+
+msgid "Event"
+msgstr "Peristiwa"
+
+msgid "IP address recording can be enabled on the settings page"
+msgstr "Perekaman alamat IP dapat diaktifkan di halaman pengaturan"
+
+msgid "IP address recording can be disabled on the settings page"
+msgstr "Perekaman alamat IP dapat dinonaktifkan di halaman pengaturan"
+
+msgid "From IP"
+msgstr "Dari IP"
+
+#, python-format
+msgid "Project %(name)s added"
+msgstr "Proyek %(name)s telah ditambahkan"
+
+#, python-format
+msgid "Bill %(name)s added"
+msgstr "Tagihan %(name)s telah ditambahkan"
+
+#, python-format
+msgid "Participant %(name)s added"
+msgstr "Pengguna %(name)s ditambahkan"
+
+msgid "Project private code changed"
+msgstr "Kode pribadi proyek berubah"
+
+#, python-format
+msgid "Project renamed to %(new_project_name)s"
+msgstr "Proyek diganti ke %(new_project_name)s"
+
+#, python-format
+msgid "Project contact email changed to %(new_email)s"
+msgstr "Email kontak proyek diubah menjadi %(new_email)s"
+
+msgid "Project settings modified"
+msgstr "Pengaturan proyek diubah"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr "Pengguna %(name)s dinonaktifkan"
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr "Pengguna %(name)s diaktifkan kembali"
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr "Pengguna %(name)s diganti ke %(new_name)s"
+
+#, python-format
+msgid "Bill %(name)s renamed to %(new_description)s"
+msgstr "Tagihan %(name)s diganti ke %(new_description)s"
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr "Pengguna %(name)s: berat berubah dari %(old_weight)s ke %(new_weight)s"
+
+msgid "Payer"
+msgstr "Pembayar"
+
+msgid "Amount"
+msgstr "Jumlah"
+
+msgid "Date"
+msgstr "Tanggal"
+
+#, python-format
+msgid "Amount in %(currency)s"
+msgstr "Jumlah dalam %(currency)s"
+
+#, python-format
+msgid "Bill %(name)s modified"
+msgstr "Tagihan %(name)s telah dimodifikasi"
+
+#, python-format
+msgid "Participant %(name)s modified"
+msgstr "Pengguna %(name)s telah dimodifikasi"
+
+#, python-format
+msgid "Bill %(name)s removed"
+msgstr "Tagihan %(name)s telah dihapus"
+
+#, python-format
+msgid "Participant %(name)s removed"
+msgstr "Pengguina %(name)s telah dihapus"
+
+#, python-format
+msgid "Project %(name)s changed in an unknown way"
+msgstr "%(name)s proyek berubah dengan cara yang tidak diketahui"
+
+#, python-format
+msgid "Bill %(name)s changed in an unknown way"
+msgstr "%(name)s tagihan berubah dengan cara yang tidak diketahui"
+
+#, python-format
+msgid "Participant %(name)s changed in an unknown way"
+msgstr "%(name)s anggota berubah dengan cara yang tidak diketahui"
+
+msgid "Nothing to list"
+msgstr "Tidak ada yang dicantumkan"
+
+msgid "Someone probably cleared the project history."
+msgstr "Seseorang mungkin membersihkan riwayat proyek."
+
+msgid "Manage your shared <br />expenses, easily"
+msgstr "Atur pembagian harga <br />Anda, dengan mudah"
+
+msgid "Try out the demo"
+msgstr "Coba demo"
+
+msgid "You're sharing a house?"
+msgstr "Kamu membagikan sebuah rumah?"
+
+msgid "Going on holidays with friends?"
+msgstr "Pergi liburan bersama teman?"
+
+msgid "Simply sharing money with others?"
+msgstr "Berbagi uang dengan orang lain?"
+
+msgid "We can help!"
+msgstr "Kami bisa membantu!"
+
+msgid "Log in to an existing project"
+msgstr "Masuk ke proyek yang telah ada"
+
+msgid "Log in"
+msgstr "Masuk"
+
+msgid "can't remember your password?"
+msgstr "tidak bisa mengingat kata sandi Anda?"
+
+msgid "Create"
+msgstr "Buat"
+
+msgid ""
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
+msgstr ""
+"Jangan gunakan kembali kata sandi pribadi. Pilih kode pribadi dan "
+"kirimkan ke teman Anda"
+
+msgid "Account manager"
+msgstr "Pengatur akun"
+
+msgid "Bills"
+msgstr "Tagihan"
+
+msgid "Settle"
+msgstr "Atur"
+
+msgid "Statistics"
+msgstr "Statistik"
+
+msgid "Languages"
+msgstr "Bahasa"
+
+msgid "Projects"
+msgstr "Proyek"
+
+msgid "Start a new project"
+msgstr "Mulai proyek baru"
+
+msgid "History"
+msgstr "Riwayat"
+
+msgid "Settings"
+msgstr "Pengaturan"
+
+msgid "RSS Feed"
+msgstr ""
+
+msgid "Other projects :"
+msgstr "Proyek lainnya:"
+
+msgid "switch to"
+msgstr "ganti ke"
+
+msgid "Dashboard"
+msgstr "Dasbor"
+
+#, python-format
+msgid "Please retry after %(date)s."
+msgstr ""
+
+msgid "Code"
+msgstr "Kode"
+
+msgid "Mobile Application"
+msgstr "Aplikasi Gawai"
+
+msgid "Documentation"
+msgstr "Dokumentasi"
+
+msgid "Administation Dashboard"
+msgstr "Dasbor Administrasi"
+
+msgid "Legal information"
+msgstr "Informasi legalitas"
+
+msgid "\"I hate money\" is free software"
+msgstr "\"I hate money\" adalah perangkat lunak gratis"
+
+msgid "you can contribute and improve it!"
+msgstr "kamu bisa berkontribusi dan meningkatkannya!"
+
+#, python-format
+msgid "%(amount)s each"
+msgstr "%(amount)s masing-masing"
+
+msgid "you sure?"
+msgstr "Anda yakin?"
+
+msgid "Invite people"
+msgstr "Undang orang"
+
+msgid "Newer bills"
+msgstr "Tagihan terbaru"
+
+msgid "Older bills"
+msgstr "Tagihan terdahulu"
+
+msgid "You should start by adding participants"
+msgstr "Anda harus mulai dengan menambahkan partisipan"
+
+msgid "Add a new bill"
+msgstr "Tambah tagihan baru"
+
+msgid "For what?"
+msgstr "Untuk apa?"
+
+#, python-format
+msgid "Added on %(date)s"
+msgstr "Ditambahkan pada %(date)s"
+
+#, python-format
+msgid "Everyone but %(excluded)s"
+msgstr "Semua orang kecuali %(excluded)s"
+
+msgid "delete"
+msgstr "hapus"
+
+msgid "No bills"
+msgstr "Tidak ada tagihan"
+
+msgid "Nothing to list yet."
+msgstr "Belum ada untuk didaftarkan."
+
+#, fuzzy
+msgid "Add your first bill"
+msgstr "tambah tagihan"
+
+#, fuzzy
+msgid "Add the first participant"
+msgstr "Sunting anggota ini"
+
+msgid "Password reminder"
+msgstr "Pengingat kata sandi"
+
+msgid ""
+"A link to reset your password has been sent to you, please check your "
+"emails."
+msgstr ""
+"Tautan atur ulang kata sandi telah dikirim kepada Anda, silakan cek email"
+" Anda."
+
+msgid "Return to home page"
+msgstr "Kembali ke halaman depan"
+
+msgid "Your projects"
+msgstr "Proyek Anda"
+
+msgid "Reset your password"
+msgstr "Atur ulang kata sandi Anda"
+
+msgid "Invite people to join this project"
+msgstr "Undang orang untuk bergabung dalam proyek ini"
+
+msgid "Share an invitation link"
+msgstr ""
+
+msgid ""
+"The easiest way to invite people is to give them the following invitation"
+" link.<br />They will be able to access the project, manage participants,"
+" add/edit/delete bills. However, they will not have access to important "
+"settings such as changing the private code or deleting the whole project."
+msgstr ""
+
+msgid "Scan QR code"
+msgstr ""
+
+msgid "Use a mobile device with a compatible app."
+msgstr ""
+
+msgid "Send via Emails"
+msgstr "Kirim melalui surel"
+
+#, fuzzy
+msgid ""
+"Specify a list of email adresses (separated by comma) of people you want "
+"to notify about the creation of this project. We will send them an email "
+"with the invitation link."
+msgstr ""
+"Spesifikkan daftar alamat surel (dipisah dengan koma) yang akan Anda "
+"kirim pemberitahuan tentang\n"
+"                pembuatan dari manajemen anggaran proyek ini dan kami "
+"akan memngirim mereka sebuah surel."
+
+msgid "Share Identifier & code"
+msgstr "Bagikan ID & kode"
+
+msgid ""
+"You can share the project identifier and the private code by any "
+"communication means.<br />Anyone with the private code will have access "
+"to the full project, including changing settings such as the private code"
+" or project email address, or even deleting the whole project."
+msgstr ""
+
+msgid "Identifier:"
+msgstr "ID:"
+
+#, fuzzy
+msgid "Private code:"
+msgstr "Kode pribadi"
+
+msgid "the private code was defined when you created the project"
+msgstr ""
+
+msgid "Who pays?"
+msgstr "Siapa membayar?"
+
+msgid "To whom?"
+msgstr "Kepada siapa?"
+
+msgid "Who?"
+msgstr "Siapa?"
+
+msgid "Balance"
+msgstr "Saldo"
+
+msgid "deactivate"
+msgstr "nonaktifkan"
+
+msgid "reactivate"
+msgstr "aktivasi ulang"
+
+msgid "Paid"
+msgstr "Dibayar"
+
+msgid "Spent"
+msgstr "Dihabiskan"
+
+msgid "Expenses by Month"
+msgstr "Pengeluaran menurut Bulan"
+
+msgid "Period"
+msgstr "Periode"
+
+#~ msgid "%(member)s had been added"
+#~ msgstr "%(member)s telah ditambahkan"
+
+#~ msgid "Someone probably"
+#~ msgstr ""
+
+#~ msgid "cleared the project history."
+#~ msgstr ""
+
+#~ msgid "%(msg_compl)sThe project identifier is %(project)s"
+#~ msgstr "%(msg_compl)sId proyek adalah %(project)s"
+
+#~ msgid "each"
+#~ msgstr "setiap"
+
+#~ msgid "Error while sending reminder email"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This access code will be sent to"
+#~ " your friends. It is stored as-"
+#~ "is by the server, so don\\'t reuse"
+#~ " a personal password!"
+#~ msgstr ""
+#~ "Kode akses ini akan dikirimkan ke "
+#~ "teman Anda. Kode ini disimpan dalam "
+#~ "bentuk teks biasa dalam server, jadi "
+#~ "jangan gunakan password Anda!"
+
+#~ msgid "Participant"
+#~ msgstr "Partisipan"
+
+#~ msgid "Bill"
+#~ msgstr "Tagihan"
+
+#~ msgid "Select all"
+#~ msgstr "Pilih semua"
+
+#~ msgid "Select none"
+#~ msgstr "Pilih tidak ada"
+
+#~ msgid "changed"
+#~ msgstr "diubah"
+
+#~ msgid "from"
+#~ msgstr "dari"
+
+#~ msgid "to"
+#~ msgstr "ke"
+
+#~ msgid "Added"
+#~ msgstr "Ditambahkan"
+
+#~ msgid "Removed"
+#~ msgstr "Dihapus"
+
+#~ msgid "and"
+#~ msgstr "dan"
+
+#~ msgid "owers list"
+#~ msgstr "daftar owers"
+
+#~ msgid "added"
+#~ msgstr "ditambahkan"
+
+#~ msgid "Project renamed to"
+#~ msgstr "Proyek berganti nama menjadi"
+
+#~ msgid "deactivated"
+#~ msgstr "dinonaktifkan"
+
+#~ msgid "reactivated"
+#~ msgstr "aktivasi ulang"
+
+#~ msgid "renamed to"
+#~ msgstr "berganti nama menjadi"
+
+#~ msgid "External link changed to"
+#~ msgstr "Tautan eksternal diubah menjadi"
+
+#~ msgid "modified"
+#~ msgstr "diubah"
+
+#~ msgid "removed"
+#~ msgstr "dihapus"
+
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr "Anda memasukkan token yang salah atau tidak memiliki ID proyek."
+
+#~ msgid "User name incorrect"
+#~ msgstr "Nama pengguna tidak benar"
+
+#~ msgid "People to notify"
+#~ msgstr "Orang yang akan diberi pemberitahuan"
+
+#~ msgid "Import"
+#~ msgstr "Impor"
+
+#~ msgid "Amount paid"
+#~ msgstr "Jumlah bayar"
+
+#~ msgid "Bills can't be null"
+#~ msgstr "Tagihan tidak boleh kosong"
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "Pengidentifikasi proyek adalah %(project)s"
+
+#~ msgid "Invalid JSON"
+#~ msgstr "JSON tidak valid"
+
+#~ msgid "Are you sure?"
+#~ msgstr "Apakah Anda yakin?"
+
+#~ msgid "Import JSON"
+#~ msgstr "Impor JSON"
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>This project has history "
+#~ "disabled. New actions won't appear "
+#~ "below. You can enable history on "
+#~ "the</i>\n"
+#~ "            <a href=\"%(url)s\">settings page</a>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            <i> Proyek ini memiliki "
+#~ "riwayat yang dinonaktifkan. Tindakan baru "
+#~ "tidak akan muncul di bawah ini. "
+#~ "Anda dapat mengaktifkan riwayat pada</i>\n"
+#~ ""
+#~ "            <a href=\"%(url)s\">halaman pengaturan</a>\n"
+#~ "            "
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>The table below reflects "
+#~ "actions recorded prior to disabling "
+#~ "project history. You can\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">clear project history</a>"
+#~ " to remove them.</i></p>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            <i> Tabel di bawah "
+#~ "mencerminkan tindakan yang direkam sebelum "
+#~ "menonaktifkan riwayat proyek. Anda bisa\n"
+#~ ""
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\"> membersihkan riwayat "
+#~ "proyek </a> untuk menghapusnya. </i> </"
+#~ " p >\n"
+#~ "            "
+
+#~ msgid "Send invites"
+#~ msgstr "Kirim undangan"
+
+#~ msgid " show"
+#~ msgstr "tampilkan"
+
+#~ msgid "Edit the project"
+#~ msgstr "Ubah proyek"
+
+#~ msgid "You probably want to"
+#~ msgstr "Anda mungkin menginginkan"
+
+#~ msgid "add participants"
+#~ msgstr "tambah partisipan"
+
+#~ msgid ""
+#~ "You can share the project identifier "
+#~ "and the private code by any "
+#~ "communication means."
+#~ msgstr ""
+#~ "Anda bisa membagikan ID proyek dan "
+#~ "kode pribadi dengan cara komunikasi "
+#~ "apapun."
+
+#~ msgid "Share the Link"
+#~ msgstr "Bagikan tautan"
+
+#~ msgid "You can directly share the following link via your prefered medium"
+#~ msgstr ""
+#~ "Anda bisa membagikan tautan secara "
+#~ "langsung melalui media yang Anda "
+#~ "inginkan"
+

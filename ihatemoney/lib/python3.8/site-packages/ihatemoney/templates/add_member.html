@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block js %}
+    auto_hide_default_text('#name');
+{% endblock %}
+{% block content %}
+    <form class="form-horizontal" action="{{ url_for(".add_member") }}" method="post">
+        {{ forms.add_member(form) }}
+    </form>
+{% endblock %}

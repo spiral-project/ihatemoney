@@ -86,7 +86,7 @@
                     <a href="#" class="close" data-dismiss="modal">&times;</a>
                 </div>
                 <form action="{{ url_for(".add_bill") }}" method="post" class="modal-body container">
-                {{ forms.add_bill(bill_form, title=False) }}
+                {{ forms.add_bill(bill_form,active_members=active_members, title=False) }}
                 </form>
             </div>
         </div>

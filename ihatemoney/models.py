@@ -1,7 +1,7 @@
 from collections import defaultdict
 import datetime
+from datetime import date
 import itertools
-
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
 from debts import settle
@@ -14,7 +14,7 @@ from itsdangerous import (
     URLSafeTimedSerializer,
 )
 import sqlalchemy
-from sqlalchemy import orm
+from sqlalchemy import orm, select, and_
 from sqlalchemy.sql import func
 from sqlalchemy_continuum import make_versioned, version_class
 from sqlalchemy_continuum.plugins import FlaskPlugin
@@ -117,15 +117,49 @@ class Project(db.Model):
 
         for bill in self.get_bills_unordered().all():
             should_receive[bill.payer.id] += bill.converted_amount
-            total_weight = sum(ower.weight for ower in bill.owers)
+            weight_map = {}
+            total_weight = 0
             for ower in bill.owers:
-                should_pay[ower.id] += (
-                    ower.weight * bill.converted_amount / total_weight
+                bill_ower_data = (
+                    db.session.query(billowers)
+                    .filter(billowers.columns.get("person_id") == ower.id)
+                    .filter(billowers.columns.get("bill_id") == bill.id)
+                    .all()
                 )
+                print(bill_ower_data)
+
+                date1 = bill_ower_data[0][2]
+                date2 = bill_ower_data[0][3]
+                print(ower.id,date1,date2)
+                if date1 is not None and date2 is not None:
+                    date_difference = date1 - date2
+                    weight_map[ower.id] = weight_map.get(ower.id,0) + date_difference.days + 1
+                    total_weight += date_difference.days + 1
+
+            for owerid, owervalue in weight_map.items():
+                should_pay[owerid] += (
+                    owervalue * bill.converted_amount/total_weight
+                )
+                print(bill.id)
+                print("IMPORTANT: ", bill.id, owerid, (owervalue/total_weight), "and total: ", bill.converted_amount, "and thus ",(owervalue/total_weight) *  bill.converted_amount)
 
         for person in self.members:
             balance = should_receive[person.id] - should_pay[person.id]
             balances[person.id] = balance
+
+        # for bill in self.get_bills_unordered().all():
+        #     should_receive[bill.payer.id] += bill.converted_amount
+        #     total_weight = sum(ower.weight for ower in bill.owers)
+        #     for ower in bill.owers:
+        #         print(ower.weight * bill.converted_amount / total_weight)
+        #         should_pay[ower.id] += (
+        #             ower.weight * bill.converted_amount / total_weight
+        #         )
+
+        # for person in self.members:
+        #     balance = should_receive[person.id] - should_pay[person.id]
+        #     balances[person.id] = balance
+        #     print(person.id, should_receive[person.id],should_pay[person.id],balance)
 
         return balances, should_pay, should_receive
 
@@ -556,7 +590,6 @@ class Project(db.Model):
         db.session.commit()
         return project
 
-
 class Person(db.Model):
     class PersonQuery(BaseQuery):
         def get_by_name(self, name, project):
@@ -636,6 +669,8 @@ billowers = db.Table(
     "billowers",
     db.Column("bill_id", db.Integer, db.ForeignKey("bill.id"), primary_key=True),
     db.Column("person_id", db.Integer, db.ForeignKey("person.id"), primary_key=True),
+    db.Column("start_date", db.Date, default=datetime.datetime.now),
+    db.Column("end_date", db.Date, default=datetime.datetime.now),
     sqlite_autoincrement=True,
 )
 
@@ -675,6 +710,7 @@ class Bill(db.Model):
 
     amount = db.Column(db.Float)
     date = db.Column(db.Date, default=datetime.datetime.now)
+    end_date = db.Column(db.Date, default=datetime.datetime.now)
     creation_date = db.Column(db.Date, default=datetime.datetime.now)
     what = db.Column(db.UnicodeText)
     external_link = db.Column(db.UnicodeText)
@@ -690,6 +726,7 @@ class Bill(db.Model):
         self,
         amount: float,
         date: datetime.datetime = None,
+        end_date: datetime.datetime = None,
         external_link: str = "",
         original_currency: str = "",
         owers: list = [],
@@ -700,6 +737,7 @@ class Bill(db.Model):
         super().__init__()
         self.amount = amount
         self.date = date
+        self.end_date = end_date
         self.external_link = external_link
         self.original_currency = original_currency
         self.owers = owers
@@ -717,6 +755,7 @@ class Bill(db.Model):
             "owers": self.owers,
             "amount": self.amount,
             "date": self.date,
+            "end_date": self.end_date,
             "creation_date": self.creation_date,
             "what": self.what,
             "external_link": self.external_link,
@@ -729,6 +768,7 @@ class Bill(db.Model):
         to compute this for many bills, do it differently (see
         balance_full function)
         """
+        print("hello in pay_each_default")
         if self.owers:
             weights = (
                 db.session.query(func.sum(Person.weight))
@@ -761,7 +801,7 @@ class Archive(db.Model):
     name = db.Column(db.UnicodeText)
 
     @property
-    def start_date(self):
+    def date(self):
         pass
 
     @property

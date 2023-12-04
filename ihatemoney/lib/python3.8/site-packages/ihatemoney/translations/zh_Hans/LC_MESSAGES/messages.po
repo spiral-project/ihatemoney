@@ -1,0 +1,1134 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"PO-Revision-Date: 2022-07-21 05:15+0000\n"
+"Last-Translator: z.liu <zwliu07@live.com>\n"
+"Language: zh_Hans\n"
+"Language-Team: Chinese (Simplified) "
+"<https://hosted.weblate.org/projects/i-hate-money/i-hate-money/zh_Hans/>"
+"\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr "你新建了一个‘%(project)s'来分担你的花费"
+
+msgid ""
+"Not a valid amount or expression. Only numbers and + - * / operators are "
+"accepted."
+msgstr "金额或符号无效。仅限数字与+-*/符号。"
+
+msgid "Project name"
+msgstr "账目名称"
+
+#, fuzzy
+msgid "Current private code"
+msgstr "新的私人代码"
+
+msgid "Enter existing private code to edit project"
+msgstr ""
+
+msgid "New private code"
+msgstr "新的私人代码"
+
+msgid "Enter a new code if you want to change it"
+msgstr "如要更改，请输入新代码"
+
+msgid "Email"
+msgstr "邮箱"
+
+msgid "Enable project history"
+msgstr "启用项目历史"
+
+msgid "Use IP tracking for project history"
+msgstr "用IP追踪项目历史"
+
+msgid "Default Currency"
+msgstr "默认货币"
+
+msgid "Setting a default currency enables currency conversion between bills"
+msgstr "设置默认货币可实现账单之间的货币转换"
+
+msgid "Unknown error"
+msgstr "未知错误"
+
+msgid "Invalid private code."
+msgstr "无效的私人代码。"
+
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr "此项目不能设置为“无货币”，因为它包含多种货币的账单。"
+
+msgid "Compatible with Cospend"
+msgstr ""
+
+msgid "Project identifier"
+msgstr "账目名称"
+
+msgid "Private code"
+msgstr "共享密钥"
+
+msgid "Create the project"
+msgstr "创建账目明细"
+
+#, python-format
+msgid ""
+"A project with this identifier (\"%(project)s\") already exists. Please "
+"choose a new identifier"
+msgstr "账目(“%(project)s”)已存在，请选择一个新名称"
+
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr "以下哪种是真实的货币：欧元还是“石油美元”？"
+
+msgid "euro"
+msgstr "欧元"
+
+msgid "Please, validate the captcha to proceed."
+msgstr "请输入验证码以继续。"
+
+msgid "Enter private code to confirm deletion"
+msgstr "请输入专用代码以确认删除"
+
+msgid "Get in"
+msgstr "进入"
+
+msgid "Admin password"
+msgstr "管理密码"
+
+msgid "Send me the code by email"
+msgstr "通过邮件发送"
+
+msgid "This project does not exists"
+msgstr "账目不存在"
+
+msgid "Password mismatch"
+msgstr "密码错误"
+
+msgid "Password"
+msgstr "密码"
+
+msgid "Password confirmation"
+msgstr "密码确认"
+
+msgid "Reset password"
+msgstr "密码重置"
+
+msgid "When?"
+msgstr "什么时候？"
+
+msgid "What?"
+msgstr "什么？"
+
+msgid "Who paid?"
+msgstr "谁付的钱？"
+
+msgid "How much?"
+msgstr "多少？"
+
+msgid "Currency"
+msgstr "货币"
+
+msgid "External link"
+msgstr "外部链接"
+
+msgid "A link to an external document, related to this bill"
+msgstr "与此账单有关的外部链接"
+
+msgid "For whom?"
+msgstr "成员？"
+
+msgid "Submit"
+msgstr "确定"
+
+msgid "Submit and add a new one"
+msgstr "确定并添加另一个"
+
+#, python-format
+msgid "Project default: %(currency)s"
+msgstr "默认项目: %(currency)s"
+
+msgid "Name"
+msgstr "姓名"
+
+msgid "Weights should be positive"
+msgstr "权重必须大于零"
+
+msgid "Weight"
+msgstr "权重"
+
+msgid "Add"
+msgstr "添加"
+
+#, fuzzy
+msgid "The participant name is invalid"
+msgstr "成员 %(name)s 被重新激活"
+
+#, fuzzy
+msgid "This project already have this participant"
+msgstr "此项目已经包含此成员了"
+
+msgid "People to notify"
+msgstr "需要通知的人"
+
+msgid "Send the invitations"
+msgstr "发送邀请"
+
+#, python-format
+msgid "The email %(email)s is not valid"
+msgstr "此邮箱%(email)s不存在"
+
+msgid "Logout"
+msgstr "退出"
+
+msgid "Please check the email configuration of the server."
+msgstr ""
+
+#, fuzzy, python-format
+msgid ""
+"Please check the email configuration of the server or contact the "
+"administrator: %(admin_email)s"
+msgstr "对不起，在发送邀请邮件时发生了错误。请检查邮箱的服务器配置或者联系管理员。"
+
+#. List with two items only
+msgid "{dual_object_0} and {dual_object_1}"
+msgstr "{dual_object_0} 和 {dual_object_1}"
+
+#. Last two items of a list with more than 3 items
+msgid "{previous_object}, and {end_object}"
+msgstr "{previous_object} 和 {end_object}"
+
+#. Two items in a middle of a list with more than 5 objects
+msgid "{previous_object}, {next_object}"
+msgstr "{previous_object}，{next_object}"
+
+#. First two items of a list with more than 3 items
+msgid "{start_object}, {next_object}"
+msgstr "{start_object}, {next_object}"
+
+msgid "No Currency"
+msgstr "无货币"
+
+#. Form error with only one error
+msgid "{prefix}: {error}"
+msgstr "{prefix}: {error}"
+
+#. Form error with a list of errors
+msgid "{prefix}:<br />{errors}"
+msgstr "{prefix}:<br />{errors}"
+
+#, fuzzy
+msgid "Too many failed login attempts."
+msgstr "登录失败次数过多，请稍后重试。"
+
+#, python-format
+msgid "This admin password is not the right one. Only %(num)d attempts left."
+msgstr "管理密码有误，只剩 %(num)d次尝试机会。"
+
+msgid "Provided token is invalid"
+msgstr "所提供的口令无效"
+
+msgid "This private code is not the right one"
+msgstr "专用码不正确"
+
+msgid "A reminder email has just been sent to you"
+msgstr "发送了提醒邮件给你"
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr "我们试着发送提醒邮件给你，但是出了问题。你仍可以正常使用。"
+
+#, fuzzy
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions."
+msgstr "对不起，在发送重设密码的邮件时除了错误。请检查邮件服务器的配置或者联系管理员。"
+
+msgid "No token provided"
+msgstr "没有符号"
+
+msgid "Invalid token"
+msgstr "无效符号"
+
+msgid "Unknown project"
+msgstr "未知项目"
+
+msgid "Password successfully reset."
+msgstr "密码重置成功。"
+
+msgid "Project settings have been changed successfully."
+msgstr ""
+
+msgid "Unable to parse CSV"
+msgstr ""
+
+#, python-format
+msgid "Missing attribute: %(attribute)s"
+msgstr ""
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
+msgstr "无法在没有设置默认货币的项目中添加多种货币的账单"
+
+msgid "Project successfully uploaded"
+msgstr "项目成功上传"
+
+msgid "Project successfully deleted"
+msgstr "项目成功删除"
+
+msgid "Error deleting project"
+msgstr "删除项目时出错"
+
+msgid "Unable to logout"
+msgstr ""
+
+#, python-format
+msgid "You have been invited to share your expenses for %(project)s"
+msgstr "你被邀请进入 %(project)s来分担你的花费"
+
+msgid "Your invitations have been sent"
+msgstr "你的申请已发出"
+
+#, fuzzy
+msgid "Sorry, there was an error while trying to send the invitation emails."
+msgstr "对不起，在发送邀请邮件时发生了错误。请检查邮箱的服务器配置或者联系管理员。"
+
+#, python-format
+msgid "%(member)s has been added"
+msgstr "已添加%(member)s"
+
+#, fuzzy
+msgid "Error activating participant"
+msgstr "激活成员时出错"
+
+#, python-format
+msgid "%(name)s is part of this project again"
+msgstr "%(name)s 已经在项目里了"
+
+#, fuzzy
+msgid "Error removing participant"
+msgstr "删除成员时出错"
+
+#, fuzzy, python-format
+msgid ""
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
+msgstr "用户 '%(name)s'已被暂停，在余额为0之前会继续显示在用户列表里。"
+
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been removed"
+msgstr "用户 '%(name)s'已被移除"
+
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been modified"
+msgstr "成员 %(name)s 已修改"
+
+msgid "The bill has been added"
+msgstr "帐单已添加"
+
+msgid "Error deleting bill"
+msgstr "删除账单时出错"
+
+msgid "The bill has been deleted"
+msgstr "账单已删除"
+
+msgid "The bill has been modified"
+msgstr "帐单已修改"
+
+#, python-format
+msgid "%(lang)s is not a supported language"
+msgstr ""
+
+msgid "Error deleting project history"
+msgstr "删除项目历史记录时出错"
+
+msgid "Deleted project history."
+msgstr "已删除的项目历史记录。"
+
+msgid "Error deleting recorded IP addresses"
+msgstr "删除记录的IP地址时出错"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr "删除项目历史记录中的 IP 地址。"
+
+msgid "Sorry, we were unable to find the page you've asked for."
+msgstr "抱歉，我们无法找到您要求的页面。"
+
+msgid "The best thing to do is probably to get back to the main page."
+msgstr "最好的办法是返回主页。"
+
+msgid "Back to the list"
+msgstr "返回列表"
+
+msgid "Administration tasks are currently disabled."
+msgstr "管理任务目前禁用。"
+
+#, fuzzy
+msgid "Authentication"
+msgstr "文件"
+
+msgid "The project you are trying to access do not exist, do you want to"
+msgstr "该项目不存在，你是否要"
+
+msgid "create it"
+msgstr "创建"
+
+msgid "?"
+msgstr "？"
+
+msgid "Create a new project"
+msgstr "新建项目"
+
+msgid "Project"
+msgstr "项目"
+
+#, fuzzy
+msgid "Number of participants"
+msgstr "添加参与人"
+
+msgid "Number of bills"
+msgstr "帐单数目"
+
+msgid "Newest bill"
+msgstr "最新账单"
+
+msgid "Oldest bill"
+msgstr "最旧帐单"
+
+msgid "Actions"
+msgstr "操作"
+
+msgid "edit"
+msgstr "编辑"
+
+msgid "Delete project"
+msgstr "删除项目"
+
+msgid "show"
+msgstr "显示"
+
+msgid "The Dashboard is currently deactivated."
+msgstr "操作面板失效。"
+
+msgid "Download Mobile Application"
+msgstr "下载移动应用程序"
+
+msgid "Get it on"
+msgstr "获取"
+
+msgid "Edit project"
+msgstr "编辑项目"
+
+#, fuzzy
+msgid "Import project"
+msgstr "编辑项目"
+
+msgid "Download project's data"
+msgstr "下载项目数据"
+
+msgid "Bill items"
+msgstr "单据项目"
+
+msgid "Download the list of bills with owner, amount, reason,... "
+msgstr "下载帐单清单包含所有者，数目，理由… "
+
+msgid "Settle plans"
+msgstr "解决方案"
+
+msgid "Download the list of transactions needed to settle the current bills."
+msgstr "下载结账的交易记录。"
+
+msgid "Can't remember the password?"
+msgstr "忘记密码？"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Privacy Settings"
+msgstr "隐私设置"
+
+msgid "Save changes"
+msgstr ""
+
+msgid "This will remove all bills and participants in this project!"
+msgstr "这将删除此项目的所有账单和参与者！"
+
+#, fuzzy
+msgid "Import previously exported project"
+msgstr "导入之前的JSON 文件"
+
+msgid "Choose file"
+msgstr "选择文件"
+
+msgid "Edit this bill"
+msgstr "编辑帐单"
+
+msgid "Add a bill"
+msgstr "添加账单"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr ""
+
+msgid "Everyone"
+msgstr "每个人"
+
+msgid "No one"
+msgstr "无人"
+
+msgid "More options"
+msgstr "更多选项"
+
+msgid "Add participant"
+msgstr "添加参与人"
+
+#, fuzzy
+msgid "Edit this participant"
+msgstr "添加参与人"
+
+msgid "john.doe@example.com, mary.moe@site.com"
+msgstr "john.doe@example.com, mary.moe@site.com"
+
+msgid "Download"
+msgstr "下载"
+
+msgid "Disabled Project History"
+msgstr "禁用项目历史"
+
+msgid "Disabled Project History & IP Address Recording"
+msgstr "禁用项目历史与IP地址记录"
+
+msgid "Enabled Project History"
+msgstr "启用项目历史纪录"
+
+msgid "Disabled IP Address Recording"
+msgstr "禁用IP地址记录"
+
+msgid "Enabled Project History & IP Address Recording"
+msgstr "启用项目历史与IP地址记录"
+
+msgid "Enabled IP Address Recording"
+msgstr "启用IP地址记录"
+
+msgid "History Settings Changed"
+msgstr "历史设置改变"
+
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
+msgstr "账单 %(name)s： %(property_name)s 从 %(before)s 改为 %(after)s"
+
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
+msgstr "账单 %(name)s： %(property_name)s 改为 %(after)s"
+
+msgid "Confirm Remove IP Adresses"
+msgstr "确认移除IP地址"
+
+msgid ""
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+"你确定要删除此项目里所有的IP地址吗？\n"
+"项目其他内容不受影响，此操作不可撤回。"
+
+msgid "Confirm deletion"
+msgstr "确认删除"
+
+msgid "Close"
+msgstr "关闭"
+
+msgid "Delete Confirmation"
+msgstr "删除确认"
+
+msgid ""
+"Are you sure you want to erase all history for this project? This action "
+"cannot be undone."
+msgstr "确定删除此项目所有记录？此操作不可撤回。"
+
+#, python-format
+msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
+msgstr "帐单 %(name)s：将 %(owers_list_str)s 添加到所有者列表"
+
+#, python-format
+msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
+msgstr "账单 %(name)s：从所有者列表中删除了 %(owers_list_str)s"
+
+msgid "This project has history disabled. New actions won't appear below."
+msgstr ""
+
+#, fuzzy
+msgid "You can enable history on the settings page."
+msgstr "IP地址记录可在设置里启用"
+
+msgid ""
+"The table below reflects actions recorded prior to disabling project "
+"history."
+msgstr ""
+
+#, fuzzy
+msgid "You can clear the project history to remove them."
+msgstr "某人清理了项目历史记录。"
+
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr "以下条目包含IP地址，但此项目禁用IP记录 "
+
+msgid "Delete stored IP addresses"
+msgstr "删除已储存的IP地址"
+
+msgid "No IP Addresses to erase"
+msgstr "无IP地址"
+
+msgid "Delete Stored IP Addresses"
+msgstr "删除已储存AP地址"
+
+msgid "No history to erase"
+msgstr "无历史纪录"
+
+msgid "Clear Project History"
+msgstr "清除项目历史"
+
+msgid "Time"
+msgstr "时间"
+
+msgid "Event"
+msgstr "事件"
+
+msgid "IP address recording can be enabled on the settings page"
+msgstr "IP地址记录可在设置里启用"
+
+msgid "IP address recording can be disabled on the settings page"
+msgstr "IP地址记录可在设置里禁用"
+
+msgid "From IP"
+msgstr "从IP"
+
+#, python-format
+msgid "Project %(name)s added"
+msgstr "项目 %(name)s 已添加"
+
+#, python-format
+msgid "Bill %(name)s added"
+msgstr "帐单 %(name)s 已添加"
+
+#, python-format
+msgid "Participant %(name)s added"
+msgstr "成员 %(name)s 已添加"
+
+msgid "Project private code changed"
+msgstr "项目专用码已更改"
+
+#, python-format
+msgid "Project renamed to %(new_project_name)s"
+msgstr "项目的标识符是 %(new_project_name)s"
+
+#, python-format
+msgid "Project contact email changed to %(new_email)s"
+msgstr "项目联系邮箱更改为 %(new_email)s"
+
+msgid "Project settings modified"
+msgstr "项目设置已修改"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr "成员 %(name)s 已停用"
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr "成员 %(name)s 被重新激活"
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr "成员 %(name)s 重命名为 %(new_name)s"
+
+#, python-format
+msgid "Bill %(name)s renamed to %(new_description)s"
+msgstr "账单 %(name)s 更名为 %(new_description)s"
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr "成员 %(name)s：权重从%(old_weight)s变为%(new_weight)s"
+
+msgid "Payer"
+msgstr "支付人"
+
+msgid "Amount"
+msgstr "数量"
+
+msgid "Date"
+msgstr "日期"
+
+#, python-format
+msgid "Amount in %(currency)s"
+msgstr "%(currency)s的数量是"
+
+#, python-format
+msgid "Bill %(name)s modified"
+msgstr "帐单 %(name)s 已修改"
+
+#, python-format
+msgid "Participant %(name)s modified"
+msgstr "成员 %(name)s 已修改"
+
+#, python-format
+msgid "Bill %(name)s removed"
+msgstr "账单 %(name)s 已被移除"
+
+#, python-format
+msgid "Participant %(name)s removed"
+msgstr "用户 %(name)s 已被移除"
+
+#, python-format
+msgid "Project %(name)s changed in an unknown way"
+msgstr "项目 %(name)s 以未知方式更改"
+
+#, python-format
+msgid "Bill %(name)s changed in an unknown way"
+msgstr "账单 %(name)s 以一种未知的方式更改"
+
+#, python-format
+msgid "Participant %(name)s changed in an unknown way"
+msgstr "成员 %(name)s 以未知方式更改"
+
+msgid "Nothing to list"
+msgstr "无列表"
+
+msgid "Someone probably cleared the project history."
+msgstr "某人清理了项目历史记录。"
+
+msgid "Manage your shared <br />expenses, easily"
+msgstr "轻松管理你分享的<br />花费"
+
+msgid "Try out the demo"
+msgstr "试试小样"
+
+msgid "You're sharing a house?"
+msgstr "你与人合租吗？"
+
+msgid "Going on holidays with friends?"
+msgstr "与朋友一起度假吗？"
+
+msgid "Simply sharing money with others?"
+msgstr "简单的与他人共享钱吗？"
+
+msgid "We can help!"
+msgstr "我们可以帮助！"
+
+msgid "Log in to an existing project"
+msgstr "登录已知项目"
+
+msgid "Log in"
+msgstr "登录"
+
+msgid "can't remember your password?"
+msgstr "记不住密码？"
+
+msgid "Create"
+msgstr "创建"
+
+msgid ""
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
+msgstr "不要重复使用私人密码。选择一个私人码并发送给你的朋友"
+
+msgid "Account manager"
+msgstr "账户经理"
+
+msgid "Bills"
+msgstr "帐单"
+
+msgid "Settle"
+msgstr "解决"
+
+msgid "Statistics"
+msgstr "统计"
+
+msgid "Languages"
+msgstr "语言"
+
+msgid "Projects"
+msgstr "项目"
+
+msgid "Start a new project"
+msgstr "开始一个新项目"
+
+msgid "History"
+msgstr "历史"
+
+msgid "Settings"
+msgstr "设置"
+
+msgid "RSS Feed"
+msgstr ""
+
+msgid "Other projects :"
+msgstr "其他项目："
+
+msgid "switch to"
+msgstr "切换到"
+
+msgid "Dashboard"
+msgstr "操作面板"
+
+#, python-format
+msgid "Please retry after %(date)s."
+msgstr ""
+
+msgid "Code"
+msgstr "代码"
+
+msgid "Mobile Application"
+msgstr "手机软件"
+
+msgid "Documentation"
+msgstr "文件"
+
+msgid "Administation Dashboard"
+msgstr "管理面板"
+
+#, fuzzy
+msgid "Legal information"
+msgstr "删除确认"
+
+msgid "\"I hate money\" is free software"
+msgstr "“I hate money\"是一个免费软件"
+
+msgid "you can contribute and improve it!"
+msgstr "你可以贡献自己的力量让它变得更好！"
+
+#, python-format
+msgid "%(amount)s each"
+msgstr "美人%(amount)s"
+
+msgid "you sure?"
+msgstr "确定？"
+
+msgid "Invite people"
+msgstr "邀请别人"
+
+msgid "Newer bills"
+msgstr "最新账单"
+
+msgid "Older bills"
+msgstr "最旧帐单"
+
+msgid "You should start by adding participants"
+msgstr "从添加参与人开始"
+
+msgid "Add a new bill"
+msgstr "添加新帐单"
+
+msgid "For what?"
+msgstr "什么东西？"
+
+#, python-format
+msgid "Added on %(date)s"
+msgstr "添加到%(date)s"
+
+#, python-format
+msgid "Everyone but %(excluded)s"
+msgstr "除了%(excluded)s的每个人"
+
+msgid "delete"
+msgstr "删除"
+
+msgid "No bills"
+msgstr "没有账单"
+
+msgid "Nothing to list yet."
+msgstr "没有列表。"
+
+#, fuzzy
+msgid "Add your first bill"
+msgstr "添加账单"
+
+#, fuzzy
+msgid "Add the first participant"
+msgstr "添加参与人"
+
+msgid "Password reminder"
+msgstr "密码提醒"
+
+msgid ""
+"A link to reset your password has been sent to you, please check your "
+"emails."
+msgstr "重置密码的链接已发送给你，请检查邮箱。"
+
+msgid "Return to home page"
+msgstr "返回主页"
+
+msgid "Your projects"
+msgstr "你的项目"
+
+msgid "Reset your password"
+msgstr "重设密码"
+
+msgid "Invite people to join this project"
+msgstr "邀请其他人加入项目"
+
+msgid "Share an invitation link"
+msgstr ""
+
+msgid ""
+"The easiest way to invite people is to give them the following invitation"
+" link.<br />They will be able to access the project, manage participants,"
+" add/edit/delete bills. However, they will not have access to important "
+"settings such as changing the private code or deleting the whole project."
+msgstr ""
+
+msgid "Scan QR code"
+msgstr ""
+
+msgid "Use a mobile device with a compatible app."
+msgstr ""
+
+msgid "Send via Emails"
+msgstr "邮件发送"
+
+#, fuzzy
+msgid ""
+"Specify a list of email adresses (separated by comma) of people you want "
+"to notify about the creation of this project. We will send them an email "
+"with the invitation link."
+msgstr ""
+"请指定一个邮箱接收通知。\n"
+"我们会创建预算管理项目，并把它通过邮件发送给你。"
+
+msgid "Share Identifier & code"
+msgstr "分享标识符与码"
+
+msgid ""
+"You can share the project identifier and the private code by any "
+"communication means.<br />Anyone with the private code will have access "
+"to the full project, including changing settings such as the private code"
+" or project email address, or even deleting the whole project."
+msgstr ""
+
+msgid "Identifier:"
+msgstr "标识符："
+
+#, fuzzy
+msgid "Private code:"
+msgstr "共享密钥"
+
+msgid "the private code was defined when you created the project"
+msgstr ""
+
+msgid "Who pays?"
+msgstr "谁付款？"
+
+msgid "To whom?"
+msgstr "给谁？"
+
+msgid "Who?"
+msgstr "谁？"
+
+msgid "Balance"
+msgstr "余额"
+
+msgid "deactivate"
+msgstr "暂停"
+
+msgid "reactivate"
+msgstr "激活"
+
+msgid "Paid"
+msgstr "付款"
+
+msgid "Spent"
+msgstr "花费"
+
+msgid "Expenses by Month"
+msgstr "每月花销"
+
+msgid "Period"
+msgstr "期间"
+
+#~ msgid "%(msg_compl)sThe project identifier is %(project)s"
+#~ msgstr "%(msg_compl)s项目标识符是 %(project)s"
+
+#~ msgid "each"
+#~ msgstr "每一个·"
+
+#~ msgid "Error while sending reminder email"
+#~ msgstr "发送提醒邮件时出错"
+
+#~ msgid ""
+#~ "This access code will be sent to"
+#~ " your friends. It is stored as-"
+#~ "is by the server, so don\\'t reuse"
+#~ " a personal password!"
+#~ msgstr "进入码已发送给朋友，会被保存在服务器，不要重复使用私人密码!"
+
+#~ msgid "Participant"
+#~ msgstr "参与人"
+
+#~ msgid "Bill"
+#~ msgstr "帐单"
+
+#~ msgid "Select all"
+#~ msgstr "全选"
+
+#~ msgid "Select none"
+#~ msgstr "全不选"
+
+#~ msgid "changed"
+#~ msgstr "已改变"
+
+#~ msgid "from"
+#~ msgstr "从"
+
+#~ msgid "to"
+#~ msgstr "到"
+
+#~ msgid "Added"
+#~ msgstr "添加"
+
+#~ msgid "Removed"
+#~ msgstr "移除"
+
+#~ msgid "and"
+#~ msgstr "和"
+
+#~ msgid "owers list"
+#~ msgstr "所有人清单"
+
+#~ msgid "added"
+#~ msgstr "添加"
+
+#~ msgid "Project renamed to"
+#~ msgstr "项目更名为"
+
+#~ msgid "deactivated"
+#~ msgstr "暂停"
+
+#~ msgid "reactivated"
+#~ msgstr "激活"
+
+#~ msgid "renamed to"
+#~ msgstr "更改为"
+
+#~ msgid "External link changed to"
+#~ msgstr "外部链接更改为"
+
+#~ msgid "modified"
+#~ msgstr "更改"
+
+#~ msgid "removed"
+#~ msgstr "移除"
+
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr "你输入了错误的令牌或没有项目标识符。"
+
+#~ msgid "User name incorrect"
+#~ msgstr "用户名称不正确"
+
+#~ msgid "People to notify"
+#~ msgstr "通知的人"
+
+#~ msgid "User '%(name)s' has been edited"
+#~ msgstr "用户'%(name)s'已编辑"
+
+#~ msgid "Number of members"
+#~ msgstr "会员人数"
+
+#~ msgid "Edit this member"
+#~ msgstr "编辑成员"
+
+#~ msgid "Participants to notify"
+#~ msgstr "添加参与人"
+
+#~ msgid "Import"
+#~ msgstr "导入"
+
+#~ msgid "Amount paid"
+#~ msgstr "支付金额"
+
+#~ msgid "Bills can't be null"
+#~ msgstr "数字不能为零"
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "项目的标识符是%(project)s"
+
+#~ msgid "Invalid JSON"
+#~ msgstr "JSON无效"
+
+#~ msgid "Are you sure?"
+#~ msgstr "是否确定？"
+
+#~ msgid "Import JSON"
+#~ msgstr "导入json文件"
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>This project has history "
+#~ "disabled. New actions won't appear "
+#~ "below. You can enable history on "
+#~ "the</i>\n"
+#~ "            <a href=\"%(url)s\">settings page</a>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            <i>此项目历史已禁用，新操作无法显示，你可以启用历史</i>\n"
+#~ "            <a href=\"%(url)s\">设置页面</a>\n"
+#~ "            "
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>The table below reflects "
+#~ "actions recorded prior to disabling "
+#~ "project history. You can\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">clear project history</a>"
+#~ " to remove them.</i></p>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            <i>The table below下表显示的是之前的禁用项目历史纪录 "
+#~ "reflects actions recorded prior to "
+#~ "disabling project history. 你可以通过\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">清除项目记录</a> t来移除他们.</i></p>\n"
+#~ ""
+#~ "            "
+
+#~ msgid "Send invites"
+#~ msgstr "发送邀请"
+
+#~ msgid " show"
+#~ msgstr "显示"
+
+#~ msgid "Edit the project"
+#~ msgstr "编辑项目"
+
+#~ msgid "You probably want to"
+#~ msgstr "你想要"
+
+#~ msgid "add participants"
+#~ msgstr "添加参与人"
+
+#~ msgid ""
+#~ "You can share the project identifier "
+#~ "and the private code by any "
+#~ "communication means."
+#~ msgstr "你可以通过任何通信手段分享项目标识符与专用码。"
+
+#~ msgid "Share the Link"
+#~ msgstr "分享链接"
+
+#~ msgid "You can directly share the following link via your prefered medium"
+#~ msgstr "你可以直接通过你喜欢的媒体分享链接"
+

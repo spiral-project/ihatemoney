@@ -1,0 +1,12 @@
+Salut,
+
+Quelqu'un dont l'adresse email est {{ g.project.contact_email }} vous a invité à partager vos dépenses pour « {{ g.project.name }} ».
+
+Il suffit de renseigner qui a payé pour quoi, pour qui, combien ça a coûté, et on s’occupe du reste.
+
+Vous pouvez vous connecter grâce à ce lien : {{ url_for(".join_project", _external=True, project_id=g.project.id, token=g.project.generate_token()) }}.
+
+Une fois connecté, vous pourrez utiliser le lien suivant qui est plus facile à mémoriser : {{ url_for(".list_bills", _external=True) }}
+Si vous êtes déconnecté volontairement ou non, vous devrez utiliser à nouveau le premier lien.
+
+Have fun !

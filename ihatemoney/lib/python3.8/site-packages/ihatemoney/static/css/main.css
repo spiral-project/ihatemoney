@@ -1,0 +1,647 @@
+@import "bootstrap.min.css";
+@import "tagsinput.css";
+@import "../fonts/fontfaces.css";
+
+/* General */
+
+body {
+  /* For fixed navbar */
+  padding-top: 3.5rem;
+}
+
+/* Navbar */
+
+.navbar-brand span {
+  color: #abe128;
+}
+
+.navbar h1 {
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .secondary-nav {
+  text-align: right;
+  flex-direction: row-reverse;
+}
+
+.secondary-nav .nav-link {
+  padding: 0.5rem 1rem;
+}
+
+.navbar-brand {
+  font-family: "Lobster", arial, serif;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 992px) {
+  .projects-item {
+    margin-left: auto !important;
+  }
+}
+
+/* Header */
+
+#header {
+  padding-bottom: 2em;
+}
+
+#header h2 {
+  font-family: "Comfortaa", arial, serif;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: #000;
+  font-size: 2.4em;
+}
+
+#header .tryout,
+#header .showcase {
+  color: #fff;
+  background-color: #414141;
+  border-color: #414141;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+#header .tryout:hover,
+#header .showcase:hover {
+  background-color: #606060;
+  border-color: #606060;
+  cursor: pointer;
+}
+
+#header .showcaseimg {
+  width: 55px;
+}
+
+#header .side-to-side {
+  /* avoid the man with his hand pointing at nothing */
+  white-space: nowrap;
+}
+
+#header .shareimg {
+  width: 80px;
+  margin-left: 5px;
+  margin-bottom: 8px;
+}
+
+#header .additional-content {
+  margin-top: 5em;
+  font-family: "Comfortaa", arial, serif;
+  color: #000;
+}
+
+/* Sidebar */
+
+.balance tr td {
+  font-weight: bold;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
+
+.sidebar {
+  background-color: #abe128;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  height: 100%;
+  color: black;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar_content {
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+
+.identifier {
+  margin-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    padding-bottom: 4.5rem;
+  }
+
+  .identifier {
+    margin-bottom: 0;
+  }
+}
+
+#table_overflow {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Content */
+
+.content {
+  margin-top: 1rem;
+}
+
+/* Home */
+.home-container {
+  background: linear-gradient(150deg, #abe128 0%, #43ca61 100%);
+}
+
+.home {
+  padding-top: 1em;
+  padding-bottom: 3em;
+}
+
+#authentication-form legend {
+  text-align: right;
+}
+
+.home .card {
+  min-width: 25em;
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0px 0px 10px rgba(83, 88, 93, 0.4);
+  margin-right: 25px;
+  margin-bottom: 20px;
+  margin-left: 25px;
+}
+
+@media (max-width: 450px) {
+  .home .card {
+    min-width: unset;
+  }
+}
+
+/* Other */
+
+#bills {
+  color: black;
+}
+
+.empty-bill {
+  margin-top: 5rem !important;
+}
+
+.empty-bill .card {
+  border: 0;
+}
+
+.empty-bill .billimg svg {
+  fill: lightgray;
+  height: 6em;
+  width: 4em;
+}
+
+.invites textarea {
+  width: 800px;
+  height: 100px;
+}
+
+footer {
+  width: 100%;
+  font: normal 16px sans-serif;
+  padding: 45px 50px;
+}
+
+@media (min-width: 1024px) {
+  footer {
+    padding-left: calc(25% + 50px);
+  }
+}
+
+footer .footer-limiter {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+footer .footer-left p {
+  color: #8f9296;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Footer links */
+footer p.footer-links {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+footer p.footer-links a {
+  display: inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color: inherit;
+}
+
+footer .footer-right {
+  float: right;
+  margin-top: 6px;
+  max-width: 225px;
+}
+
+footer .footer-right a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-color: #33383b;
+  border-radius: 2px;
+
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+
+  margin-left: 3px;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+@-moz-document url-prefix() {
+
+  /** Firefox style fix **/
+  footer .footer-right a {
+    padding-top: 2px;
+  }
+}
+
+footer .footer-right a:hover {
+  opacity: 1;
+}
+
+footer .footer-left {
+  padding-top: 6px;
+  line-height: 35px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 600px) {
+
+  footer .footer-left,
+  footer .footer-right {
+    text-align: center;
+  }
+
+  footer .footer-right {
+    float: none;
+    margin: 0 auto 20px;
+  }
+
+  footer .footer-left p.footer-links {
+    line-height: 1.8;
+  }
+}
+
+/* Avoid text color flickering when it loose focus as the modal appears */
+.btn-primary[data-toggle="modal"] {
+  color: #fff;
+}
+
+.bill-actions {
+  padding-top: 10px;
+  text-align: center;
+  column-gap: 8px;
+  min-height: 56px;
+
+  /* To be able to set absolute element positionning for confirm deletion */
+  position: relative;
+}
+
+.bill-actions>form>.delete,
+.bill-actions>.edit,
+.bill-actions>.show {
+  font-size: 0px;
+  display: block;
+  width: 16px;
+  height: 16px;
+  border: none;
+}
+
+.bill-actions .confirm {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+}
+
+.bill-actions>form>.delete {
+  background: url("../images/delete.png") no-repeat right;
+}
+
+.bill-actions>.edit {
+  background: url("../images/edit.png") no-repeat right;
+}
+
+.bill-actions>.show {
+  background: url("../images/show.png") no-repeat right;
+}
+
+#bill_table,
+#monthly_stats,
+#history_table {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  flex-basis: auto;
+}
+
+#bill-toolbar {
+  position: sticky;
+  top: 4em;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+@media (min-width: 768px) {
+
+  .split_bills,
+  #table_overflow.statistics {
+    /* The table is shifted to left, so add the spacer width on the right to match */
+    width: calc(100% + 15px);
+  }
+}
+
+.project-actions>form>.delete,
+.project-actions>.edit,
+.project-actions>.show {
+  font-size: 0px;
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: 2px;
+  margin-left: 5px;
+  float: left;
+}
+
+.project-actions>form>.delete {
+  background: url("../images/delete.png") no-repeat right;
+  border: 0px !important;
+}
+
+.project-actions>.edit {
+  background: url("../images/edit.png") no-repeat right;
+}
+
+.project-actions>.show {
+  background: url("../images/show.png") no-repeat right;
+}
+
+.history_icon>.delete,
+.history_icon>.add,
+.history_icon>.edit {
+  font-size: 0px;
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: 2px;
+  margin-right: 10px;
+  margin-top: 3px;
+  float: left;
+}
+
+.history_icon>.delete {
+  background: url("../images/delete.png") no-repeat right;
+}
+
+.history_icon>.edit {
+  background: url("../images/edit.png") no-repeat right;
+}
+
+.history_icon>.add {
+  background: url("../images/add.png") no-repeat right;
+}
+
+.history_text {
+  display: table-cell;
+}
+
+/* used to tuncate long urls */
+.truncated {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.balance .balance-value {
+  text-align: right;
+}
+
+#sidebar .balance tr:hover td {
+  background-color: #9bd118;
+}
+
+tr.ower_line {
+  background-color: #cbef68;
+}
+
+tr.payer_line .balance-name {
+  color: green;
+  text-indent: 5px;
+}
+
+.action {
+  margin: 0;
+  padding: 0;
+}
+
+.action button,
+.action button:hover {
+  border-width: 0;
+  width: auto;
+  margin: 0;
+  padding: 0 0 0 20px;
+}
+
+.action button:hover {
+  text-decoration: underline;
+}
+
+.delete button,
+.delete button:hover {
+  background: url("../images/deleter.png") left no-repeat;
+  color: red;
+}
+
+.edit button,
+.edit button:hover {
+  background: url("../images/edit.png") left no-repeat;
+}
+
+.reactivate button,
+.reactivate button:hover {
+  background: url("../images/reactivate.png") left no-repeat;
+  color: white;
+}
+
+.balance.table {
+  table-layout: fixed;
+  margin-top: 30px;
+}
+
+#bill-form>fieldset {
+  margin-top: 10px;
+}
+
+.flash {
+  z-index: 1031;
+}
+
+.light {
+  opacity: 0.3;
+}
+
+.balance.table .action,
+.extra-info {
+  visibility: hidden;
+}
+
+.balance.table tr:hover .action,
+tr:hover .extra-info {
+  visibility: visible;
+}
+
+/* Fluid Offsets for Boostrap */
+
+.row-fluid>[class*="span"]:not([class*="offset"]):first-child {
+  margin-left: 0;
+}
+
+.row-fluid>.offset12 {
+  margin-left: 100%;
+}
+
+.row-fluid>.offset11 {
+  margin-left: 93.5%;
+}
+
+.row-fluid>.offset10 {
+  margin-left: 85%;
+}
+
+.row-fluid>.offset9 {
+  margin-left: 76.5%;
+}
+
+.row-fluid>.offset8 {
+  margin-left: 68%;
+}
+
+.row-fluid>.offset7 {
+  margin-left: 59.5%;
+}
+
+.row-fluid>.offset6 {
+  margin-left: 51%;
+}
+
+.row-fluid>.offset5 {
+  margin-left: 42.5%;
+}
+
+.row-fluid>.offset4 {
+  margin-left: 34%;
+}
+
+.row-fluid>.offset3 {
+  margin-left: 25.5%;
+}
+
+.row-fluid>.offset2 {
+  margin-left: 17%;
+}
+
+.row-fluid>.offset1 {
+  margin-left: 8.5%;
+}
+
+.globe-europe svg {
+  fill: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-nav .dropdown-toggle:hover .globe-europe svg {
+  fill: rgba(255, 255, 255, 0.75);
+}
+
+.navbar-dark .navbar-nav .show>.nav-link svg {
+  fill: white;
+}
+
+.navbar-dark .dropdown-menu {
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.icon svg {
+  display: inline-block;
+  border-bottom: 0.2em solid transparent;
+  height: 1.2em;
+  width: 1.2em;
+  /* protection for IE11 */
+}
+
+.icon.high svg {
+  height: 2em;
+  margin-top: -0.2em;
+  margin-bottom: -0.2em;
+}
+
+.download-project .icon svg {
+  fill: white;
+}
+
+.icon.before-text svg {
+  margin-right: 3px;
+}
+
+footer .icon svg {
+  fill: white;
+}
+
+.icon.icon-white {
+  fill: white;
+}
+
+.icon.icon-red {
+  fill: #dc3545;
+}
+
+.btn:hover .icon.icon-red {
+  fill: white !important;
+}
+
+/* align the first column */
+#monthly_stats tr *:first-child {
+  text-align: right;
+  width: 200px;
+}
+
+.hiddenpswp {
+  display: none;
+}
+
+#history_warnings {
+  margin-top: 30px;
+}
+
+/* edit settings */
+
+.edit-project form {
+  margin-top: 1em;
+  margin-bottom: 3em;
+}
+
+.edit-project .custom-file {
+  margin-bottom: 2em;
+}

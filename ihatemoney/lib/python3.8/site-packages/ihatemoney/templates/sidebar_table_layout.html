@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% macro balance_table(show_weight = True, show_header = False, member_edit = False) %}
+  <table class="balance table">
+    {%- set balance = g.project.balance %}
+    {%- if show_header %}
+      <thead>
+        <tr class="d-none d-md-table-row">
+          <th>{{ _("Who?") }}</th>
+          <th class="balance-value">{{ _("Balance") }}</th>
+        </tr>
+      </thead>
+    {%- endif %}
+    {%- for member in g.project.members | sort(attribute='name') if member.activated or balance[member.id]|round(2) != 0 %}
+      <tr id="bal-member-{{ member.id }}" action="{% if member.activated %}delete{% else %}reactivate{% endif %}">
+        <td class="balance-name">{{ member.name }}
+          {%- if show_weight -%}
+            <span class="light{% if not g.project.uses_weights %} extra-info{% endif %}">(x{{ member.weight|minimal_round(2) }})</span>
+          {%- endif -%}
+        </td>
+        {%- if member_edit %}
+          {%- if member.activated %}
+            <td>
+              <form class="action delete" action="{{ url_for(".remove_member", member_id=member.id) }}" method="POST">
+                {{ csrf_form.csrf_token }}
+                <button type="submit">{{ _("deactivate") }}</button>
+              </form>
+              <form class="action edit" action="{{ url_for(".edit_member", member_id=member.id) }}" method="GET">
+                <button type="submit">{{ _("edit") }}</button>
+              </form>
+            </td>
+          {%- else %}
+            <td>
+              <form class="action reactivate" action="{{ url_for(".reactivate", member_id=member.id) }}" method="POST">
+                {{ csrf_form.csrf_token }}
+                <button type="submit">{{ _("reactivate") }}</button>
+              </form>
+            </td>
+          {%- endif %}
+        {%- endif %}
+        <td class="balance-value {% if balance[member.id]|round(2) > 0 %}positive{% elif balance[member.id]|round(2) < 0 %}negative{% endif %}">
+          {% if balance[member.id] | round(2) > 0 %}+{% endif %}{{ balance[member.id]|currency }}
+        </td>
+      </tr>
+    {%- endfor %}
+  </table>
+{% endmacro %}
+
+{% block body %}
+<div class="row">
+<aside id="sidebar" class="sidebar col-xs-12 col-md-3 " style="height: 100%">
+  {% block sidebar %}{% endblock %}
+</aside>
+
+<main class="offset-md-3 col-xs-12 col-md-9 d-flex flex-column">
+  {{ flash_messages() }}
+  {% block content %}{% endblock %}
+</main>
+
+</div>
+{% endblock %}
+
+{# It must be set outside of the block definition #}
+{% set messages_shown = True %}

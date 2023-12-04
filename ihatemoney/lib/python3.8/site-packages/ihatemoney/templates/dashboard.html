@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if is_admin_dashboard_activated %}
+<table id="bill_table" class="table table-striped">
+    <thead>
+        <tr>
+            <th>{{ _("Project") }}</th>
+            <th>{{ _("Number of participants") }}</th>
+            <th>{{ _("Number of bills") }}</th>
+            <th>{{_("Newest bill")}}</th>
+            <th>{{_("Oldest bill")}}</th>
+            <th>{{_("Actions")}}</th>
+        </tr>
+    </thead>
+    <tbody>{% for project in projects|sort(attribute='name') %}
+        <tr>
+            <td><a href="{{ url_for('.list_bills', project_id=project.id) }}"
+                    title="{{ project.name }}">{{project.name}}</a></td>
+            <td>{{ project.members | count }}</td>
+            <td>{{ project.get_bills_unordered().count() }}</td>
+            {% if project.has_bills() %}
+            <td>{{ project.get_bills().all()[0].date }}</td>
+            <td>{{ project.get_bills().all()[-1].date }}</td>
+            {% else %}
+            <td></td>
+            <td></td>
+            {% endif %}
+            <td class="project-actions">
+                <a class="edit" href="{{ url_for('.edit_project', project_id=project.id) }}" title=" {{ _('edit')}}">{{
+                    _('edit') }}</a>
+
+                <form id="delete-project" class="form-horizontal" action="{{ url_for('.dashboard_delete_project',
+                    project_id=project.id) }}" method="post">
+
+                    <button class="delete">{{ _("Delete project") }}</button>
+                </form>
+                <a class="show" href="{{ url_for('.list_bills', project_id=project.id) }}" title="{{ _("show") }}">{{
+                    _('show') }}</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<script language="JavaScript">
+    $(document).ready(function () {
+        $('#bill_table').DataTable({
+            paging: true
+        });
+    })
+</script>
+{% else %}
+<div class="alert alert-danger">{{ _("The Dashboard is currently deactivated.") }}</div>
+{% endif %}
+{% endblock %}

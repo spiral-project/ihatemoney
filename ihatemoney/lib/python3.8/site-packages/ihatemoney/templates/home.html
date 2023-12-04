@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<header id="header" class="row">
+  <div class="col-xs-12 col-sm-5 offset-md-2">
+    <h2>{{ _("Manage your shared <br />expenses, easily") }}</h2>
+    {% if is_demo_project_activated %}
+        <a href="{{ url_for('.demo') }}" class="tryout btn">
+            {{ _("Try out the demo") }}
+        </a>
+    {% endif %}
+    {% if g.lang == 'fr' %}
+        ou
+        <span class="side-to-side">
+          <a class="showcase btn" onclick="javascript:showGallery(); return false;">Voir la BD explicative</a>
+          <img class="showcaseimg" src="{{ url_for("static", filename='images/indicate.svg') }}" />
+        </span>
+    {% endif %}
+  </div>
+  <div class="col-xs-12 col-sm-4">
+    <table class="additional-content"><tr>
+      <td>
+        {{ _("You're sharing a house?") }}<br />
+        {{ _("Going on holidays with friends?") }}<br />
+        {{ _("Simply sharing money with others?") }} <br />
+        <strong>{{ _("We can help!") }}</strong>
+      </td>
+      <td>
+        <img class="shareimg" src="{{ url_for("static", filename='images/share.svg') }}" />
+      </td>
+    </tr></table>
+  </div>
+</header>
+<main class="row home">
+  <div class="card-deck ml-auto mr-auto">
+    <div class="card">
+      <div class="card-header">
+        {{ _("Log in to an existing project") }}
+      </div>
+      <div class="card-body">
+        <form
+          id="authentication-form"
+          class="form-horizontal"
+          action="{{ url_for('.authenticate') }}"
+          method="post">
+          <fieldset class="form-group">
+            <legend></legend>
+            {{ forms.authenticate(auth_form, home=True) }}
+          </fieldset>
+          <div class="controls">
+            <button class="btn btn-primary btn-block" type="submit">
+              {{ _("Log in") }}
+            </button>
+            <a
+              class="password-reminder btn btn-link"
+              href="{{ url_for('.remind_password') }}"
+              >{{ _("can't remember your password?") }}</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        {{ _("Create a new project") }}
+      </div>
+      <div class="card-body">
+        {% if is_public_project_creation_allowed %}
+            <form
+            id="creation-form"
+            class="form-horizontal"
+            action="{{ url_for('.create_project') }}"
+            method="post"
+            >
+            <fieldset class="form-group">
+                {{ forms.create_project(project_form, home=True) }}
+            </fieldset>
+            <div class="controls">
+                <button class="btn btn-primary btn-block" type="submit">
+                {{ _("Create") }}
+                </button>
+            </div>
+            </form>
+        {% else %}
+            <a href="{{ url_for('.create_project') }}">
+                {{ _("Create a new project") }}
+            </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
+{% block js %}
+$('#creation-form #password').tooltip({
+    title: "{{ _("Don\\'t reuse a personal password. Choose a private code and send it to your friends") }}",
+    trigger: 'focus',
+    placement: 'right'
+});
+{% endblock %}

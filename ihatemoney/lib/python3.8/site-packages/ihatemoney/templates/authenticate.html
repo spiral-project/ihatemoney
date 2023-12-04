@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>{{ _("Authentication") }}</h2>
+
+{% if create_project %}
+<p class="info">{{ _("The project you are trying to access do not exist, do you want to") }}
+<a href="{{ url_for(".create_project", project_id=create_project) }}">
+    {{ _("create it") }}</a>{{ _("?") }}
+</p>
+{% endif %}
+<form class="form-horizontal" method="POST" accept-charset="utf-8">
+    {{ forms.authenticate(form) }}
+</form>
+{% endblock %}
