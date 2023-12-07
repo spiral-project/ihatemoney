@@ -88,7 +88,7 @@ ihatemoney = "ihatemoney.manage:cli"
 [tool.hatch.build.hooks.custom]
 dependencies = [
     # Babel is needed to compile translations catalogs at package build time
-    "Babel>=2.10.1"
+    "Babel>=2.13.1"
 ]
 
 [tool.hatch.build]
