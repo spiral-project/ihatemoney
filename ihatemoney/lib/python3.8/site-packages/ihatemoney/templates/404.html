@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <header id="header" class="row">
+      <div class="col-xs-12 col-sm-5 offset-md-2">
+            <h2>{{ _("Sorry, we were unable to find the page you've asked for.") }}</h2>
+        </div>
+    </header>
+    <main class="row home">
+        <div class="col-xs-12 col-sm-5 col-md-4 offset-md-2">
+          <a href='{{ url_for("main.home") }}'>{{ _("The best thing to do is probably to get back to the main page.")}}</a>
+        </div>
+    </main>
+{% endblock %}

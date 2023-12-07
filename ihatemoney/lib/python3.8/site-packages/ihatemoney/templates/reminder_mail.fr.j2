@@ -1,0 +1,9 @@
+Salut,
+
+Vous venez de créer le projet "{{ project.name }}" pour partager vos dépenses.
+
+Vous pouvez y accéder ici : {{ url_for("main.list_bills", _external=True) }} (l'identifiant est {{ project.id }}).
+Si vous voulez partager ce projet avec vos amis, vous pouvez soit leur transmettre l'identifiant et le code d'accès, soit leur envoyer une invitation personnelle grâce au lien suivant :
+{{ url_for("main.invite", _external=True) }}
+
+Faites-en bon usage !

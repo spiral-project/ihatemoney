@@ -1,0 +1,1162 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"PO-Revision-Date: 2020-07-01 18:41+0000\n"
+"Last-Translator: rohitn01 <rohitmen01@gmail.com>\n"
+"Language: ta\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/ta/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr ""
+"நீங்கள் இப்போது உருவாக்கியுள்ளீர்கள் '%(project)s' உங்கள் செலவுகளை "
+"பகிர்ந்து கொள்ள"
+
+msgid ""
+"Not a valid amount or expression. Only numbers and + - * / operators are "
+"accepted."
+msgstr ""
+"சரியான அளவு அல்லது வெளிப்பாடு அல்ல. எண்கள் மற்றும் + - * / ஆபரேட்டர்கள் "
+"ஏற்றுக்கொள்ளப்படுகிறார்கள்."
+
+msgid "Project name"
+msgstr "திட்டத்தின் பெயர்"
+
+#, fuzzy
+msgid "Current private code"
+msgstr "தனியார் குறியீடு"
+
+msgid "Enter existing private code to edit project"
+msgstr ""
+
+#, fuzzy
+msgid "New private code"
+msgstr "தனியார் குறியீடு"
+
+msgid "Enter a new code if you want to change it"
+msgstr ""
+
+msgid "Email"
+msgstr "மின்னஞ்சல்"
+
+msgid "Enable project history"
+msgstr "திட்ட வரலாற்றை இயக்கு"
+
+msgid "Use IP tracking for project history"
+msgstr "திட்ட வரலாற்றுக்கு ஐபி கண்காணிப்பைப் பயன்படுத்தவும்"
+
+msgid "Default Currency"
+msgstr "இயல்புநிலை நாணயம்"
+
+msgid "Setting a default currency enables currency conversion between bills"
+msgstr ""
+
+#, fuzzy
+msgid "Unknown error"
+msgstr "தெரியாத திட்டம்"
+
+#, fuzzy
+msgid "Invalid private code."
+msgstr "தனியார் குறியீடு"
+
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+
+msgid "Compatible with Cospend"
+msgstr ""
+
+msgid "Project identifier"
+msgstr "திட்ட அடையாளங்காட்டி"
+
+msgid "Private code"
+msgstr "தனியார் குறியீடு"
+
+msgid "Create the project"
+msgstr "திட்டத்தை உருவாக்கவும்"
+
+#, python-format
+msgid ""
+"A project with this identifier (\"%(project)s\") already exists. Please "
+"choose a new identifier"
+msgstr ""
+"இந்த அடையாளங்காட்டியுடன் ஒரு திட்டம் (\"%(project)s\") ஏற்கனவே "
+"இருக்கிறது. புதிய அடையாளங்காட்டியைத் தேர்ந்தெடுக்கவும்"
+
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr ""
+
+msgid "euro"
+msgstr ""
+
+msgid "Please, validate the captcha to proceed."
+msgstr ""
+
+msgid "Enter private code to confirm deletion"
+msgstr ""
+
+msgid "Get in"
+msgstr "உள்ளே வா"
+
+msgid "Admin password"
+msgstr "நிர்வாகி கடவுச்சொல்"
+
+msgid "Send me the code by email"
+msgstr "மின்னஞ்சல் மூலம் குறியீட்டை எனக்கு அனுப்புங்கள்"
+
+msgid "This project does not exists"
+msgstr "இந்த திட்டம் இல்லை"
+
+msgid "Password mismatch"
+msgstr "கடவுச்சொல் பொருந்தவில்லை"
+
+msgid "Password"
+msgstr "கடவுச்சொல்"
+
+msgid "Password confirmation"
+msgstr "கடவுச்சொல் உறுதிப்படுத்தல்"
+
+msgid "Reset password"
+msgstr "கடவுச்சொல்லை மீட்டமைக்க"
+
+msgid "When?"
+msgstr ""
+
+msgid "What?"
+msgstr "என்ன?"
+
+msgid "Who paid?"
+msgstr ""
+
+msgid "How much?"
+msgstr ""
+
+msgid "Currency"
+msgstr "நாணய"
+
+msgid "External link"
+msgstr "வெளிப்புற இணைப்பு"
+
+msgid "A link to an external document, related to this bill"
+msgstr "இந்த மசோதா தொடர்பான வெளிப்புற ஆவணத்திற்கான இணைப்பு"
+
+msgid "For whom?"
+msgstr "யாருக்காக?"
+
+msgid "Submit"
+msgstr "சமர்ப்பிக்கவும்"
+
+msgid "Submit and add a new one"
+msgstr "சமர்ப்பித்து புதிய ஒன்றைச் சேர்க்கவும்"
+
+#, python-format
+msgid "Project default: %(currency)s"
+msgstr "திட்ட இயல்புநிலை: %(currency)s"
+
+msgid "Name"
+msgstr "பெயர்"
+
+msgid "Weights should be positive"
+msgstr "எடைகள் நேர்மறையாக இருக்க வேண்டும்"
+
+msgid "Weight"
+msgstr "எடை"
+
+msgid "Add"
+msgstr "கூட்டு"
+
+msgid "The participant name is invalid"
+msgstr ""
+
+#, fuzzy
+msgid "This project already have this participant"
+msgstr "இந்த திட்டத்தில் ஏற்கனவே இந்த உறுப்பினர் இருக்கிறார்"
+
+msgid "People to notify"
+msgstr ""
+
+msgid "Send the invitations"
+msgstr ""
+
+#, python-format
+msgid "The email %(email)s is not valid"
+msgstr "மின்னஞ்சல் %(email)s செல்லுபடியாகாது"
+
+msgid "Logout"
+msgstr ""
+
+msgid "Please check the email configuration of the server."
+msgstr ""
+
+#, fuzzy, python-format
+msgid ""
+"Please check the email configuration of the server or contact the "
+"administrator: %(admin_email)s"
+msgstr ""
+"மன்னிக்கவும், அழைப்பிதழ் மின்னஞ்சல்களை அனுப்ப முயற்சிக்கும்போது பிழை "
+"ஏற்பட்டது. சேவையகத்தின் மின்னஞ்சல் உள்ளமைவை சரிபார்க்கவும் அல்லது "
+"நிர்வாகியைத் தொடர்பு கொள்ளவும்."
+
+#. List with two items only
+msgid "{dual_object_0} and {dual_object_1}"
+msgstr ""
+
+#. Last two items of a list with more than 3 items
+msgid "{previous_object}, and {end_object}"
+msgstr ""
+
+#. Two items in a middle of a list with more than 5 objects
+msgid "{previous_object}, {next_object}"
+msgstr ""
+
+#. First two items of a list with more than 3 items
+msgid "{start_object}, {next_object}"
+msgstr ""
+
+msgid "No Currency"
+msgstr "நாணயம் இல்லை"
+
+#. Form error with only one error
+msgid "{prefix}: {error}"
+msgstr ""
+
+#. Form error with a list of errors
+msgid "{prefix}:<br />{errors}"
+msgstr ""
+
+#, fuzzy
+msgid "Too many failed login attempts."
+msgstr "உள்நுழைவு முயற்சிகள் பல தோல்வியுற்றன, பின்னர் மீண்டும் முயற்சிக்கவும்."
+
+#, python-format
+msgid "This admin password is not the right one. Only %(num)d attempts left."
+msgstr ""
+"இந்த நிர்வாகி கடவுச்சொல் சரியானது அல்ல. மட்டும் %(num)d முயற்சிகள் "
+"எஞ்சியுள்ளன."
+
+msgid "Provided token is invalid"
+msgstr ""
+
+msgid "This private code is not the right one"
+msgstr "இந்த தனிப்பட்ட குறியீடு சரியானது அல்ல"
+
+msgid "A reminder email has just been sent to you"
+msgstr "ஒரு நினைவூட்டல் மின்னஞ்சல் உங்களுக்கு அனுப்பப்பட்டுள்ளது"
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
+"உங்களுக்கு நினைவூட்டல் மின்னஞ்சலை அனுப்ப முயற்சித்தோம், ஆனால் பிழை "
+"ஏற்பட்டது. நீங்கள் இன்னும் திட்டத்தை சாதாரணமாக பயன்படுத்தலாம்."
+
+#, fuzzy
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions."
+msgstr ""
+"மன்னிக்கவும், கடவுச்சொல் மீட்டமைப்பு வழிமுறைகளுடன் உங்களுக்கு மின்னஞ்சல் "
+"அனுப்பும்போது பிழை ஏற்பட்டது. சேவையகத்தின் மின்னஞ்சல் உள்ளமைவை "
+"சரிபார்க்கவும் அல்லது நிர்வாகியைத் தொடர்பு கொள்ளவும்."
+
+msgid "No token provided"
+msgstr "டோக்கன் வழங்கப்படவில்லை"
+
+msgid "Invalid token"
+msgstr "செல்லுபடியாகாத டோக்கன்"
+
+msgid "Unknown project"
+msgstr "தெரியாத திட்டம்"
+
+msgid "Password successfully reset."
+msgstr "கடவுச்சொல் வெற்றிகரமாக மீட்டமைக்கப்படுகிறது."
+
+msgid "Project settings have been changed successfully."
+msgstr ""
+
+msgid "Unable to parse CSV"
+msgstr ""
+
+#, python-format
+msgid "Missing attribute: %(attribute)s"
+msgstr ""
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
+msgstr ""
+
+msgid "Project successfully uploaded"
+msgstr "திட்டம் வெற்றிகரமாக பதிவேற்றப்பட்டது"
+
+msgid "Project successfully deleted"
+msgstr "திட்டம் வெற்றிகரமாக நீக்கப்பட்டது"
+
+msgid "Error deleting project"
+msgstr ""
+
+msgid "Unable to logout"
+msgstr ""
+
+#, python-format
+msgid "You have been invited to share your expenses for %(project)s"
+msgstr "உங்கள் செலவுகளை பகிர்ந்து கொள்ள அழைக்கப்பட்டுள்ளீர்கள் %(project)s"
+
+msgid "Your invitations have been sent"
+msgstr "உங்கள் அழைப்புகள் அனுப்பப்பட்டுள்ளன"
+
+#, fuzzy
+msgid "Sorry, there was an error while trying to send the invitation emails."
+msgstr ""
+"மன்னிக்கவும், அழைப்பிதழ் மின்னஞ்சல்களை அனுப்ப முயற்சிக்கும்போது பிழை "
+"ஏற்பட்டது. சேவையகத்தின் மின்னஞ்சல் உள்ளமைவை சரிபார்க்கவும் அல்லது "
+"நிர்வாகியைத் தொடர்பு கொள்ளவும்."
+
+#, python-format
+msgid "%(member)s has been added"
+msgstr "%(member)s இணைக்கப்பட்டு விட்டது"
+
+msgid "Error activating participant"
+msgstr ""
+
+#, python-format
+msgid "%(name)s is part of this project again"
+msgstr ""
+
+msgid "Error removing participant"
+msgstr ""
+
+#, python-format
+msgid ""
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
+msgstr ""
+
+#, python-format
+msgid "Participant '%(name)s' has been removed"
+msgstr ""
+
+#, python-format
+msgid "Participant '%(name)s' has been modified"
+msgstr ""
+
+msgid "The bill has been added"
+msgstr ""
+
+msgid "Error deleting bill"
+msgstr ""
+
+msgid "The bill has been deleted"
+msgstr ""
+
+msgid "The bill has been modified"
+msgstr ""
+
+#, python-format
+msgid "%(lang)s is not a supported language"
+msgstr ""
+
+#, fuzzy
+msgid "Error deleting project history"
+msgstr "திட்ட வரலாற்றை இயக்கு"
+
+#, fuzzy
+msgid "Deleted project history."
+msgstr "திட்ட வரலாற்றை இயக்கு"
+
+msgid "Error deleting recorded IP addresses"
+msgstr ""
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr ""
+
+msgid "Sorry, we were unable to find the page you've asked for."
+msgstr ""
+
+msgid "The best thing to do is probably to get back to the main page."
+msgstr ""
+
+msgid "Back to the list"
+msgstr ""
+
+msgid "Administration tasks are currently disabled."
+msgstr ""
+
+msgid "Authentication"
+msgstr ""
+
+msgid "The project you are trying to access do not exist, do you want to"
+msgstr ""
+
+msgid "create it"
+msgstr ""
+
+msgid "?"
+msgstr ""
+
+msgid "Create a new project"
+msgstr ""
+
+msgid "Project"
+msgstr "திட்டம்"
+
+msgid "Number of participants"
+msgstr ""
+
+msgid "Number of bills"
+msgstr ""
+
+msgid "Newest bill"
+msgstr ""
+
+msgid "Oldest bill"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "edit"
+msgstr ""
+
+#, fuzzy
+msgid "Delete project"
+msgstr "திட்டத்தை உருவாக்கவும்"
+
+msgid "show"
+msgstr ""
+
+msgid "The Dashboard is currently deactivated."
+msgstr ""
+
+msgid "Download Mobile Application"
+msgstr ""
+
+#, fuzzy
+msgid "Get it on"
+msgstr "உள்ளே வா"
+
+msgid "Edit project"
+msgstr ""
+
+#, fuzzy
+msgid "Import project"
+msgstr "திட்டத்தை உருவாக்கவும்"
+
+msgid "Download project's data"
+msgstr ""
+
+msgid "Bill items"
+msgstr ""
+
+msgid "Download the list of bills with owner, amount, reason,... "
+msgstr ""
+
+msgid "Settle plans"
+msgstr ""
+
+msgid "Download the list of transactions needed to settle the current bills."
+msgstr ""
+
+msgid "Can't remember the password?"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Privacy Settings"
+msgstr ""
+
+msgid "Save changes"
+msgstr ""
+
+msgid "This will remove all bills and participants in this project!"
+msgstr ""
+
+#, fuzzy
+msgid "Import previously exported project"
+msgstr "முன்னர் ஏற்றுமதி செய்யப்பட்ட JSON கோப்பை இறக்குமதி செய்க"
+
+msgid "Choose file"
+msgstr ""
+
+msgid "Edit this bill"
+msgstr ""
+
+msgid "Add a bill"
+msgstr ""
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr ""
+
+msgid "Everyone"
+msgstr ""
+
+msgid "No one"
+msgstr ""
+
+msgid "More options"
+msgstr ""
+
+msgid "Add participant"
+msgstr ""
+
+msgid "Edit this participant"
+msgstr ""
+
+msgid "john.doe@example.com, mary.moe@site.com"
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+msgid "Disabled Project History"
+msgstr ""
+
+msgid "Disabled Project History & IP Address Recording"
+msgstr ""
+
+msgid "Enabled Project History"
+msgstr ""
+
+msgid "Disabled IP Address Recording"
+msgstr ""
+
+msgid "Enabled Project History & IP Address Recording"
+msgstr ""
+
+msgid "Enabled IP Address Recording"
+msgstr ""
+
+msgid "History Settings Changed"
+msgstr ""
+
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
+msgstr ""
+
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
+msgstr ""
+
+msgid "Confirm Remove IP Adresses"
+msgstr ""
+
+msgid ""
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+
+msgid "Confirm deletion"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Delete Confirmation"
+msgstr ""
+
+msgid ""
+"Are you sure you want to erase all history for this project? This action "
+"cannot be undone."
+msgstr ""
+
+#, python-format
+msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
+msgstr ""
+
+#, python-format
+msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
+msgstr ""
+
+msgid "This project has history disabled. New actions won't appear below."
+msgstr ""
+
+msgid "You can enable history on the settings page."
+msgstr ""
+
+msgid ""
+"The table below reflects actions recorded prior to disabling project "
+"history."
+msgstr ""
+
+msgid "You can clear the project history to remove them."
+msgstr ""
+
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr ""
+
+msgid "Delete stored IP addresses"
+msgstr ""
+
+msgid "No IP Addresses to erase"
+msgstr ""
+
+msgid "Delete Stored IP Addresses"
+msgstr ""
+
+msgid "No history to erase"
+msgstr ""
+
+msgid "Clear Project History"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "Event"
+msgstr ""
+
+msgid "IP address recording can be enabled on the settings page"
+msgstr ""
+
+msgid "IP address recording can be disabled on the settings page"
+msgstr ""
+
+msgid "From IP"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Project %(name)s added"
+msgstr "திட்டத்தின் பெயர்"
+
+#, python-format
+msgid "Bill %(name)s added"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s added"
+msgstr ""
+
+msgid "Project private code changed"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Project renamed to %(new_project_name)s"
+msgstr "திட்ட அடையாளங்காட்டி %(new_project_name)s"
+
+#, python-format
+msgid "Project contact email changed to %(new_email)s"
+msgstr ""
+
+msgid "Project settings modified"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr ""
+
+#, python-format
+msgid "Bill %(name)s renamed to %(new_description)s"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr ""
+
+msgid "Payer"
+msgstr "செலுத்துவோர்"
+
+msgid "Amount"
+msgstr ""
+
+msgid "Date"
+msgstr "தேதி"
+
+#, python-format
+msgid "Amount in %(currency)s"
+msgstr ""
+
+#, python-format
+msgid "Bill %(name)s modified"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s modified"
+msgstr ""
+
+#, python-format
+msgid "Bill %(name)s removed"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s removed"
+msgstr ""
+
+#, python-format
+msgid "Project %(name)s changed in an unknown way"
+msgstr ""
+
+#, python-format
+msgid "Bill %(name)s changed in an unknown way"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s changed in an unknown way"
+msgstr ""
+
+msgid "Nothing to list"
+msgstr ""
+
+msgid "Someone probably cleared the project history."
+msgstr ""
+
+msgid "Manage your shared <br />expenses, easily"
+msgstr ""
+
+msgid "Try out the demo"
+msgstr ""
+
+msgid "You're sharing a house?"
+msgstr ""
+
+msgid "Going on holidays with friends?"
+msgstr ""
+
+msgid "Simply sharing money with others?"
+msgstr ""
+
+msgid "We can help!"
+msgstr ""
+
+msgid "Log in to an existing project"
+msgstr ""
+
+msgid "Log in"
+msgstr ""
+
+msgid "can't remember your password?"
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid ""
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
+msgstr ""
+
+msgid "Account manager"
+msgstr ""
+
+msgid "Bills"
+msgstr ""
+
+msgid "Settle"
+msgstr ""
+
+msgid "Statistics"
+msgstr ""
+
+msgid "Languages"
+msgstr ""
+
+msgid "Projects"
+msgstr ""
+
+msgid "Start a new project"
+msgstr ""
+
+msgid "History"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "RSS Feed"
+msgstr ""
+
+msgid "Other projects :"
+msgstr ""
+
+msgid "switch to"
+msgstr ""
+
+msgid "Dashboard"
+msgstr ""
+
+#, python-format
+msgid "Please retry after %(date)s."
+msgstr ""
+
+msgid "Code"
+msgstr ""
+
+msgid "Mobile Application"
+msgstr ""
+
+msgid "Documentation"
+msgstr ""
+
+msgid "Administation Dashboard"
+msgstr ""
+
+msgid "Legal information"
+msgstr ""
+
+msgid "\"I hate money\" is free software"
+msgstr ""
+
+msgid "you can contribute and improve it!"
+msgstr ""
+
+#, python-format
+msgid "%(amount)s each"
+msgstr ""
+
+msgid "you sure?"
+msgstr ""
+
+msgid "Invite people"
+msgstr ""
+
+msgid "Newer bills"
+msgstr ""
+
+msgid "Older bills"
+msgstr ""
+
+msgid "You should start by adding participants"
+msgstr ""
+
+msgid "Add a new bill"
+msgstr ""
+
+msgid "For what?"
+msgstr ""
+
+#, python-format
+msgid "Added on %(date)s"
+msgstr ""
+
+#, python-format
+msgid "Everyone but %(excluded)s"
+msgstr ""
+
+msgid "delete"
+msgstr ""
+
+msgid "No bills"
+msgstr ""
+
+msgid "Nothing to list yet."
+msgstr ""
+
+msgid "Add your first bill"
+msgstr ""
+
+msgid "Add the first participant"
+msgstr ""
+
+msgid "Password reminder"
+msgstr ""
+
+msgid ""
+"A link to reset your password has been sent to you, please check your "
+"emails."
+msgstr ""
+
+msgid "Return to home page"
+msgstr ""
+
+msgid "Your projects"
+msgstr ""
+
+msgid "Reset your password"
+msgstr ""
+
+msgid "Invite people to join this project"
+msgstr ""
+
+msgid "Share an invitation link"
+msgstr ""
+
+msgid ""
+"The easiest way to invite people is to give them the following invitation"
+" link.<br />They will be able to access the project, manage participants,"
+" add/edit/delete bills. However, they will not have access to important "
+"settings such as changing the private code or deleting the whole project."
+msgstr ""
+
+msgid "Scan QR code"
+msgstr ""
+
+msgid "Use a mobile device with a compatible app."
+msgstr ""
+
+msgid "Send via Emails"
+msgstr ""
+
+msgid ""
+"Specify a list of email adresses (separated by comma) of people you want "
+"to notify about the creation of this project. We will send them an email "
+"with the invitation link."
+msgstr ""
+
+msgid "Share Identifier & code"
+msgstr ""
+
+msgid ""
+"You can share the project identifier and the private code by any "
+"communication means.<br />Anyone with the private code will have access "
+"to the full project, including changing settings such as the private code"
+" or project email address, or even deleting the whole project."
+msgstr ""
+
+msgid "Identifier:"
+msgstr ""
+
+#, fuzzy
+msgid "Private code:"
+msgstr "தனியார் குறியீடு"
+
+msgid "the private code was defined when you created the project"
+msgstr ""
+
+msgid "Who pays?"
+msgstr ""
+
+msgid "To whom?"
+msgstr ""
+
+msgid "Who?"
+msgstr ""
+
+msgid "Balance"
+msgstr ""
+
+msgid "deactivate"
+msgstr ""
+
+msgid "reactivate"
+msgstr ""
+
+msgid "Paid"
+msgstr ""
+
+msgid "Spent"
+msgstr ""
+
+msgid "Expenses by Month"
+msgstr ""
+
+msgid "Period"
+msgstr ""
+
+#~ msgid "Participant"
+#~ msgstr "பங்கேற்பாளராக"
+
+#~ msgid "Bill"
+#~ msgstr "ர சி து"
+
+#~ msgid "Select all"
+#~ msgstr ""
+
+#~ msgid "Select none"
+#~ msgstr ""
+
+#~ msgid "changed"
+#~ msgstr ""
+
+#~ msgid "from"
+#~ msgstr ""
+
+#~ msgid "to"
+#~ msgstr ""
+
+#~ msgid "Confirm Delete"
+#~ msgstr ""
+
+#~ msgid "Added"
+#~ msgstr ""
+
+#~ msgid "Removed"
+#~ msgstr ""
+
+#~ msgid "and"
+#~ msgstr ""
+
+#~ msgid "owers list"
+#~ msgstr ""
+
+#~ msgid "added"
+#~ msgstr ""
+
+#~ msgid "Project renamed to"
+#~ msgstr ""
+
+#~ msgid "Project contact email changed to"
+#~ msgstr ""
+
+#~ msgid "deactivated"
+#~ msgstr ""
+
+#~ msgid "reactivated"
+#~ msgstr ""
+
+#~ msgid "renamed to"
+#~ msgstr ""
+
+#~ msgid "External link changed to"
+#~ msgstr ""
+
+#~ msgid "modified"
+#~ msgstr ""
+
+#~ msgid "removed"
+#~ msgstr ""
+
+#~ msgid "changed in a unknown way"
+#~ msgstr ""
+
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr ""
+#~ "நீங்கள் ஒரு மோசமான டோக்கனை வழங்கியுள்ளீர்கள்"
+#~ " அல்லது திட்ட அடையாளங்காட்டி இல்லை."
+
+#~ msgid "User name incorrect"
+#~ msgstr "பயனர் பெயர் தவறானது"
+
+#~ msgid "People to notify"
+#~ msgstr "அறிவிக்க வேண்டியவர்கள்"
+
+#~ msgid "Error activating member"
+#~ msgstr ""
+
+#~ msgid "Error removing member"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "User '%(name)s' has been deactivated. It"
+#~ " will still appear in the users "
+#~ "list until its balance becomes zero."
+#~ msgstr ""
+
+#~ msgid "User '%(name)s' has been removed"
+#~ msgstr ""
+
+#~ msgid "User '%(name)s' has been edited"
+#~ msgstr ""
+
+#~ msgid "Number of members"
+#~ msgstr ""
+
+#~ msgid "Edit this member"
+#~ msgstr ""
+
+#~ msgid "Participants to notify"
+#~ msgstr ""
+
+#~ msgid "Import"
+#~ msgstr "இறக்குமதி"
+
+#~ msgid "Amount paid"
+#~ msgstr "பணம் செலுத்தப்பட்டது"
+
+#~ msgid "Bills can't be null"
+#~ msgstr "பில்கள் பூஜ்யமாக இருக்க முடியாது"
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "திட்ட அடையாளங்காட்டி %(project)s"
+
+#~ msgid "Invalid JSON"
+#~ msgstr "தவறான JSON"
+
+#~ msgid "Are you sure?"
+#~ msgstr ""
+
+#~ msgid "Import JSON"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>This project has history "
+#~ "disabled. New actions won't appear "
+#~ "below. You can enable history on "
+#~ "the</i>\n"
+#~ "            <a href=\"%(url)s\">settings page</a>\n"
+#~ "            "
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>The table below reflects "
+#~ "actions recorded prior to disabling "
+#~ "project history. You can\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">clear project history</a>"
+#~ " to remove them.</i></p>\n"
+#~ "            "
+#~ msgstr ""
+
+#~ msgid "Send invites"
+#~ msgstr "அழைப்புகளை அனுப்பு"
+
+#~ msgid " show"
+#~ msgstr ""
+
+#~ msgid "Edit the project"
+#~ msgstr ""
+
+#~ msgid "You probably want to"
+#~ msgstr ""
+
+#~ msgid "add a bill"
+#~ msgstr ""
+
+#~ msgid "add participants"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can share the project identifier "
+#~ "and the private code by any "
+#~ "communication means."
+#~ msgstr ""
+
+#~ msgid "Share the Link"
+#~ msgstr ""
+
+#~ msgid "You can directly share the following link via your prefered medium"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Specify a (comma separated) list of "
+#~ "email adresses you want to notify "
+#~ "about the\n"
+#~ "                creation of this budget "
+#~ "management project and we will send "
+#~ "them an email for you."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Specify a (comma separated) list of "
+#~ "email adresses you want to notify "
+#~ "about the\n"
+#~ "                creation of this budget "
+#~ "management project and we will send "
+#~ "them an email with the invitation "
+#~ "link."
+#~ msgstr ""
+

@@ -1,0 +1,13 @@
+.get-it-from {
+    width: 100px;
+    min-height: 110px; 
+    border: 5px solid floralwhite;
+    background-color: white; margin: 10px;
+}
+.get-it-from:hover {
+    opacity: 80%;
+}
+main {
+    background: linear-gradient(150deg, #abe128 0%, #43ca61 100%);
+    font-family: 'Comfortaa', arial, serif;
+}

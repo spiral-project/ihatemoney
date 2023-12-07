@@ -158,13 +158,14 @@
 
 {% endmacro %}
 
-{% macro add_bill(form, edit=False, title=True) %}
+{% macro add_bill(form, active_members, edit=False, title=True) %}
 
     <fieldset>
         {% if title %}<legend>{% if edit %}{{ _("Edit this bill") }} {% else %}{{ _("Add a bill") }} {% endif %}</legend>{% endif %}
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
-    {{ input(form.date, inline=True) }}
+    {{ input(form.start_date, inline=True) }}
+    {{ input(form.end_date, inline=True) }}
     {{ input(form.what, inline=True) }}
     {{ input(form.payer, inline=True, class="form-control custom-select") }}
     <div data-toggle="tooltip" data-placement="top" title='{{ _("Simple operations are allowed, e.g. (18+36.2)/3") }}'>
@@ -178,18 +179,12 @@
                 <a class="badge badge-secondary" href="#" classid="selectall" onclick="selectCheckboxes(true)">{{ _("Everyone") }}</a>
                 <a class="badge badge-secondary" href="#" id="selectnone" onclick="selectCheckboxes(false)">{{_("No one")}}</a>
             </p>
-            <div  class="d-flex flex-column flex-wrap overflow-auto" style="max-height: 20em;">
-                {% for choices in form.payed_for.iter_choices() | sort(attribute='1') %}
-                {# Compatibility with wtforms<3.1 #}
-                {% set key = choices[0] %}
-                {% set value = choices[1] %}
-                {% set checked = choices[2] %}
-                <p class="form-check text-break" style="max-width: 50%;">
-                   <label for="payed_for-{{key}}" class="form-check-label">
-                      <input name="payed_for" type="checkbox" {% if checked %}checked{% endif %} class="form-check-input" value="{{key}}" id="payed_for-{{key}}"/>
-                      <span>{{value}}</span>
-                    </label>
-                 </p>
+            <div>
+                {% for i in range(active_members | length) %}
+                    {{ active_members[i][1] }} 
+                    {{ form.payed_for[i].payer_check }}
+                    {{ input(form.payed_for[i].payer_start_date.data, inline=True) }}
+                    {{ input(form.payed_for[i].payer_end_date.data, inline=True) }}
                 {% endfor %}
             </div>
         </div>

@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Authentication</h2>
+
+{% if is_admin_auth_enabled %}
+<form class="form-horizontal" method="POST" accept-charset="utf-8">
+    {{ forms.admin(form) }}
+</form>
+{% else %}
+<div class="alert alert-danger">{{ _("Administration tasks are currently disabled.") }}</div>
+{% endif %}
+{% endblock %}

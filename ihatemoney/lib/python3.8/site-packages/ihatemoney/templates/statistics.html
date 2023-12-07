@@ -1,0 +1,38 @@
+{% extends "sidebar_table_layout.html" %}
+
+{% block sidebar %}
+    <div id="table_overflow" class="statistics mr-md-n3">
+        {{ balance_table(show_weight=False, show_header=True) }}
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <div class="d-flex flex-column">
+        <table id="bill_table" class="split_bills table table-striped ml-md-n3">
+            <thead><tr><th class="d-md-none">{{ _("Who?") }}</th><th>{{ _("Paid") }}</th><th>{{ _("Spent") }}</th></tr></thead>
+        <tbody>
+        {% for stat in members_stats|sort(attribute='member.name') %}
+        <tr>
+            <td class="d-md-none">{{ stat.member.name }}</td>
+            <td>{{ stat.paid|currency }}</td>
+            <td>{{ stat.spent|currency }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+        <h2>{{ _("Expenses by Month") }}</h2>
+        <table id="monthly_stats" class="table table-striped">
+            <thead><tr><th>{{ _("Period") }}</th><th>{{ _("Spent") }}</th></tr></thead>
+        <tbody>
+        {% for month in months %}
+                <tr>
+                    <td>{{ month|dateformat("MMMM yyyy") }}</td>
+                    <td>{{ monthly_stats[month.year][month.month]|currency }}</td>
+                </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    </div>
+
+{% endblock %}

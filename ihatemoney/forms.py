@@ -7,7 +7,8 @@ import email_validator
 from flask import request
 from flask_babel import lazy_gettext as _
 from flask_wtf.file import FileAllowed, FileField, FileRequired
-from flask_wtf.form import FlaskForm
+from flask_wtf.form import FlaskForm, Form
+from wtforms import FieldList, FormField, BooleanField, Label
 from markupsafe import Markup
 from werkzeug.security import check_password_hash
 from wtforms.fields import (
@@ -64,6 +65,7 @@ def get_billform_for(project, set_default=True, **kwargs):
 
     """
     form = BillForm(**kwargs)
+    print(**kwargs)
     if form.original_currency.data is None:
         form.original_currency.data = project.default_currency
 
@@ -80,13 +82,18 @@ def get_billform_for(project, set_default=True, **kwargs):
     ]
 
     active_members = [(m.id, m.name) for m in project.active_members]
-
-    form.payed_for.choices = form.payer.choices = active_members
-    form.payed_for.default = [m.id for m in project.active_members]
+    # form.payed_for.choices = form.payer.choices = active_members
+    form.payer.choices = active_members
+    # form.payed_for.default = [m.id for m in project.active_members]
 
     if set_default and request.method == "GET":
-        form.set_default()
-    return form
+        # form.set_default()
+        print("i am in get")
+        for member in active_members:
+            temp = PayerDateForm()
+            form.payed_for.append_entry(temp)
+
+    return form, active_members
 
 
 class CommaDecimalField(DecimalField):
@@ -347,9 +354,15 @@ class ResetPasswordForm(FlaskForm):
     )
     submit = SubmitField(_("Reset password"))
 
+class PayerDateForm(Form):
+    payer_check = BooleanField() 
+    payer_start_date = DateField(_("Start Date"), validators=[DataRequired()], default=datetime.now)
+    payer_end_date = DateField(_("End Date"), validators=[DataRequired()], default=datetime.now)
 
 class BillForm(FlaskForm):
-    date = DateField(_("When?"), validators=[DataRequired()], default=datetime.now)
+    # date = DateField(_("When?"), validators=[DataRequired()], default=datetime.now)
+    start_date = DateField(_("Start Date?"), validators=[DataRequired()], default=datetime.now)
+    end_date = DateField(_("End date?"), validators=[DataRequired()], default=datetime.now)
     what = StringField(_("What?"), validators=[DataRequired()])
     payer = SelectField(_("Who paid?"), validators=[DataRequired()], coerce=int)
     amount = CalculatorStringField(_("How much?"), validators=[DataRequired()])
@@ -361,31 +374,36 @@ class BillForm(FlaskForm):
         validators=[Optional(), URL()],
         description=_("A link to an external document, related to this bill"),
     )
-    payed_for = SelectMultipleField(
-        _("For whom?"), validators=[DataRequired()], coerce=int
-    )
+    # payed_for = SelectMultipleField(
+    #     _("For whom?"), validators=[DataRequired()], coerce=int
+    # )
+    payed_for = FieldList(FormField(PayerDateForm))
     submit = SubmitField(_("Submit"))
     submit2 = SubmitField(_("Submit and add a new one"))
 
-    def export(self, project):
+    def export(self, project,payed_for_data):
+        print('export')
         return Bill(
             amount=float(self.amount.data),
-            date=self.date.data,
+            date=self.start_date.data,
+            end_date=self.end_date.data,
             external_link=self.external_link.data,
             original_currency=str(self.original_currency.data),
-            owers=Person.query.get_by_ids(self.payed_for.data, project),
+            owers=Person.query.get_by_ids(payed_for_data, project),
             payer_id=self.payer.data,
             project_default_currency=project.default_currency,
             what=self.what.data,
         )
 
-    def save(self, bill, project):
+    def save(self, bill, payed_for_data, project):
+        print('save')
         bill.payer_id = self.payer.data
         bill.amount = self.amount.data
         bill.what = self.what.data
         bill.external_link = self.external_link.data
-        bill.date = self.date.data
-        bill.owers = Person.query.get_by_ids(self.payed_for.data, project)
+        bill.date = self.start_date.data
+        bill.end_date = self.end_date.data
+        bill.owers = Person.query.get_by_ids(payed_for_data, project)
         bill.original_currency = self.original_currency.data
         bill.converted_amount = self.currency_helper.exchange_currency(
             bill.amount, bill.original_currency, project.default_currency
@@ -393,13 +411,16 @@ class BillForm(FlaskForm):
         return bill
 
     def fill(self, bill, project):
+        print('fill')
         self.payer.data = bill.payer_id
         self.amount.data = bill.amount
         self.what.data = bill.what
         self.external_link.data = bill.external_link
         self.original_currency.data = bill.original_currency
-        self.date.data = bill.date
-        self.payed_for.data = [int(ower.id) for ower in bill.owers]
+        self.start_date.data = bill.date
+        self.end_date.data = bill.end_date
+        # for pay in self.payed_for.data:
+        # self.payed_for.data = [int(ower.id) for ower in bill.owers]
 
         self.original_currency.label = Label("original_currency", _("Currency"))
         self.original_currency.description = _(
@@ -410,7 +431,20 @@ class BillForm(FlaskForm):
         )
 
     def set_default(self):
-        self.payed_for.data = self.payed_for.default
+        # self.payed_for.data = self.payed_for.default
+        # for payed in self.payed_for:
+        #     payed.payer.default = True
+        pass
+        
+
+    def validate_start_date(self,field):
+        # Check end date is start date or is after start date
+        print("validate date check")
+        if field.data > self.end_date.data:
+            msg = _(
+                "Invalid start date or end date"
+            )
+            raise ValidationError(msg)
 
     def validate_amount(self, field):
         if decimal.Decimal(field.data) > decimal.MAX_EMAX:

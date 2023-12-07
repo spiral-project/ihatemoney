@@ -1,0 +1,273 @@
+{% macro input(field, multiple=False, class='form-control', inline=False, placeholder='') -%}
+    <div class="form-group{% if inline %} row{% endif %}">
+    {% if field.type != "SubmitField" %}
+        {% if inline %}
+          {{ field.label(class="col-3 mt-2") }}
+        {% else %}
+          {{ field.label() }}
+        {% endif %}
+    {% endif %}
+        <div class="controls{% if inline %} col-9{% endif %}">
+        {% if multiple == True %}
+            {{ field(multiple=True, class=class, placeholder=placeholder) }}
+        {% else %}
+            {{ field(class=class, placeholder=placeholder) | safe }}
+        {% endif %}
+        {% if field.description %}
+            <small id="{{field.name}}_description" class="form-text text-muted">{{ field.description }}</small>
+        {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro checkbox(field) %}
+    <div class="controls{% if inline %} col-9{% endif %}">
+        {{ field(id=field.name) }}
+        <label for="{{ field.name }}">{{ field.label() }}</label>
+    {% if field.description %}
+        <small id="{{field.name}}_description" class="form-text text-muted">{{ field.description }}</small>
+    {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro submit(field, cancel=False, home=False) -%}
+    <div class="actions">
+        <button type="submit" class="btn btn-primary">{{ field.name }}</button>
+        {% if home %}
+        <a href="{{ url_for(".remind_password") }}" class="btn btn-link">{{ _("Can't remember the password?") }}</a>
+        {% endif %}
+        {% if cancel %}
+        <button type="reset" class="btn btn-light">{{ _("Cancel") }}</button>
+        {% endif %}
+      </div>
+{% endmacro %}
+
+{% macro authenticate(form, home=False) %}
+
+    {% include "display_errors.html" %}
+
+    {{ form.hidden_tag() }}
+    {{ input(form.id) }}
+    {{ input(form.password) }}
+    {% if not home %}
+    {{ submit(form.submit, home=True) }}
+    {% endif %}
+
+{% endmacro %}
+
+{% macro admin(form) %}
+
+    {% include "display_errors.html" %}
+
+    {{ form.hidden_tag() }}
+    {{ input(form.admin_password) }}
+    {{ submit(form.submit) }}
+
+{% endmacro %}
+
+{% macro create_project(form, home=False) %}
+
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }}
+    {% if not home %}
+    {{ input(form.id) }}
+    {% endif %}
+    {{ input(form.name) }}
+    {{ input(form.password) }}
+    {{ input(form.contact_email) }}
+    {% if config['ENABLE_CAPTCHA'] %}
+    {{ input(form.captcha) }}
+    {% endif %}
+    {% if not home %}
+    {{ submit(form.submit, home=True) }}
+    {% endif %}
+
+{% endmacro %}
+
+{% macro edit_project(form) %}
+
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }}
+    {{ input(form.name) }}
+    {{ input(form.password) }}
+    {{ input(form.contact_email) }}
+    <div class="form-group">
+        <label for="privacy_checkboxes">{{ _("Privacy Settings") }}</label>
+        <div id="privacy_checkboxes" class="card card-body bg-light">
+        {{ checkbox(form.project_history) }}
+        {{ checkbox(form.ip_recording) }}
+        </div>
+    </div>
+
+    {{ input(form.default_currency) }}
+    {{ input(form.current_password) }}
+    <div class="actions">
+        <button class="btn btn-primary">{{ _("Save changes") }}</button>
+    </div>
+
+{% endmacro %}
+
+{% macro delete_project(form) %}
+
+    {% include "display_errors.html" %}
+    <p><strong>{{ _("This will remove all bills and participants in this project!") }}</strong></p>
+    {{ form.hidden_tag() }}
+    {{ input(form.password) }}
+    <div class="actions">
+        <button class="btn btn-danger">{{ _("Delete project") }}</button>
+    </div>
+
+{% endmacro %}
+
+{% macro import_project(form) %}
+
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }}
+
+    <p><strong>{{ _("Import previously exported project") }}</strong></p>
+
+    <div class="custom-file">
+        <div class="form-group">
+            {{ form.file(class="custom-file-input", accept=".json,.csv") }}
+            <small class="form-text text-muted">
+                {{ form.file.description }}
+            </small>
+        </div>
+        <label class="custom-file-label" for="customFile">{{ _('Choose file') }}</label>
+    </div>
+
+    <div class="actions">
+        <button class="btn btn-primary">{{ _("Import project") }}</button>
+    </div>
+
+{% endmacro %}
+
+{% macro delete_project_history(form) %}
+
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }}
+    {{ input(form.password, inline=True) }}
+
+{% endmacro %}
+
+{% macro delete_ip_addresses(form) %}
+
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }}
+    {{ input(form.password) }}
+
+{% endmacro %}
+
+{% macro add_bill(form, edit=False, title=True) %}
+
+    <fieldset>
+        {% if title %}<legend>{% if edit %}{{ _("Edit this bill") }} {% else %}{{ _("Add a bill") }} {% endif %}</legend>{% endif %}
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }}
+    {{ input(form.date, inline=True) }}
+    {{ input(form.what, inline=True) }}
+    {{ input(form.payer, inline=True, class="form-control custom-select") }}
+    <div data-toggle="tooltip" data-placement="top" title='{{ _("Simple operations are allowed, e.g. (18+36.2)/3") }}'>
+        {{ input(form.amount, inline=True) }}
+    </div>
+
+    <div class="form-group row">
+        <label class="col-3" for="payed_for">{{ _("For whom?") }}</label>
+        <div id="payed_for" class="controls col-9">
+            <p>
+                <a class="badge badge-secondary" href="#" classid="selectall" onclick="selectCheckboxes(true)">{{ _("Everyone") }}</a>
+                <a class="badge badge-secondary" href="#" id="selectnone" onclick="selectCheckboxes(false)">{{_("No one")}}</a>
+            </p>
+            <div  class="d-flex flex-column flex-wrap overflow-auto" style="max-height: 20em;">
+                {% for key, value, checked in form.payed_for.iter_choices() | sort(attribute='1') %}
+                <p class="form-check text-break" style="max-width: 50%;">
+                   <label for="payed_for-{{key}}" class="form-check-label">
+                      <input name="payed_for" type="checkbox" {% if checked %}checked{% endif %} class="form-check-input" value="{{key}}" id="payed_for-{{key}}"/>
+                      <span>{{value}}</span>
+                    </label>
+                 </p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <details class="mb-3">
+        <summary class="mb-2">{{ _("More options") }}</summary>
+        {% if g.project.default_currency != "XXX" %}
+            {{ input(form.original_currency, inline=True, class="form-control custom-select") }}
+        {% endif %}
+        {{ input(form.external_link, inline=True) }}
+    </details>
+    </fieldset>
+    <div class="actions">
+        {{ form.submit(class="btn btn-primary") }}
+        {% if edit %} 
+            <a href="{{ url_for(".list_bills") }}" class="btn btn-outline-secondary"> {{_("Cancel") }} </a>
+        {% else %} 
+            {{ form.submit2(class="btn btn-light") }}
+        {% endif %}
+    </div>
+
+{% endmacro %}
+
+{% macro add_member(form) %}
+{{ form.hidden_tag() }}
+    {% include "display_errors.html" %}
+    <div class="input-group">
+        <label class="sr-only" for="name">_("Add participant")</label>
+        {{ form.name(placeholder=_("Add participant"), class="form-control") }}
+        <div class="input-group-append">
+            <button class="btn btn-secondary input-group-addon" type="submit">{{ _("Add") }}</button>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro edit_member(form, title=True) %}
+    <fieldset>
+        {% if title %}<legend>{{ _("Edit this participant") }}</legend>{% endif %}
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }}
+    {{ input(form.name) }}
+    {{ input(form.weight) }}
+    </fieldset>
+    <div class="actions">
+        {{ form.submit(class="btn btn-primary") }}
+    </div>
+{% endmacro %}
+
+
+{% macro invites(form) %}
+    {{ form.hidden_tag() }}
+    {{ input(form.emails, placeholder=_('john.doe@example.com, mary.moe@site.com')) }}
+    <div class="actions">
+        <button class="btn btn-primary">{{ _("Send the invitations") }}</button>
+    </div>
+{% endmacro %}
+
+{% macro export_project(form) %}
+    <fieldset>
+    {{ form.hidden_tag() }}
+    {{ input(form.export_type) }}
+    {{ input(form.export_format) }}
+    </fieldset>
+    <div class="actions">
+        <button class="btn btn-primary">{{ _("Download") }}</button>
+    </div>
+{% endmacro %}
+
+{% macro remind_password(form) %}
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }}
+    {{ input(form.id) }}
+    {{ submit(form.submit) }}
+
+{% endmacro %}
+
+{% macro reset_password(form) %}
+    {% include "display_errors.html" %}
+    {{ form.hidden_tag() }}
+    {{ input(form.password) }}
+    {{ input(form.password_confirmation) }}
+    {{ submit(form.submit) }}
+
+{% endmacro %}

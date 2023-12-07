@@ -1,0 +1,8 @@
+{% if 'projects' in session %}
+<h3>{{ _("Your projects") }}</h3>
+    <ul>
+    {% for id, name in session['projects'] %}
+    <li><a href="{{ url_for("list_bills", project_id=id) }}">{{ name }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}

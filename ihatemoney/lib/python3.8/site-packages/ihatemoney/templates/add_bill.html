@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block js %}
+    $('#cancel-form').click(function(){location.href={{ url_for(".list_bills") }};});
+{% endblock %}
+
+
+{% block top_menu %}
+<a href="{{ url_for(".list_bills") }}">{{ _("Back to the list") }}</a>
+{% endblock %}
+
+{% block content %}
+
+<form class="form-horizontal" method="post">
+    {{ forms.add_bill(form, edit) }}
+</form>
+{% endblock %}

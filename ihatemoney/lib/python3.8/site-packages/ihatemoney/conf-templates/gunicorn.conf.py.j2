@@ -1,0 +1,8 @@
+backlog = 2048
+daemon = False
+debug = True
+workers = 3
+# log to stdout,
+logfile = "-"   # Is the default setting for gunicorn>=20
+loglevel = "info"
+bind = "unix:/tmp/ihatemoney.gunicorn.sock"

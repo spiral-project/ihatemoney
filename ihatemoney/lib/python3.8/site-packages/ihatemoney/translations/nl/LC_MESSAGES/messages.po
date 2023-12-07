@@ -1,0 +1,1166 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"PO-Revision-Date: 2021-02-17 02:50+0000\n"
+"Last-Translator: Sander Kooijmans <weblate@gogognome.nl>\n"
+"Language: nl\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/nl/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr ""
+"Je hebt zojuist het project '%(project)s' aangemaakt om je uitgaven te "
+"verdelen"
+
+msgid ""
+"Not a valid amount or expression. Only numbers and + - * / operators are "
+"accepted."
+msgstr ""
+"Geen geldig bedrag of expressie. Gebruik alleen getallen en + - * / "
+"operatoren."
+
+msgid "Project name"
+msgstr "Projectnaam"
+
+#, fuzzy
+msgid "Current private code"
+msgstr "Privécode"
+
+msgid "Enter existing private code to edit project"
+msgstr ""
+
+#, fuzzy
+msgid "New private code"
+msgstr "Privécode"
+
+msgid "Enter a new code if you want to change it"
+msgstr ""
+
+msgid "Email"
+msgstr "E-mailadres"
+
+msgid "Enable project history"
+msgstr "Projectgeschiedenis inschakelen"
+
+msgid "Use IP tracking for project history"
+msgstr "IP-tracking voor projectgeschiedenis gebruiken"
+
+msgid "Default Currency"
+msgstr "Standaard munteenheid"
+
+msgid "Setting a default currency enables currency conversion between bills"
+msgstr ""
+
+#, fuzzy
+msgid "Unknown error"
+msgstr "Onbekend project"
+
+#, fuzzy
+msgid "Invalid private code."
+msgstr "Privécode"
+
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+
+msgid "Compatible with Cospend"
+msgstr ""
+
+msgid "Project identifier"
+msgstr "Project-id"
+
+msgid "Private code"
+msgstr "Privécode"
+
+msgid "Create the project"
+msgstr "Project aanmaken"
+
+#, python-format
+msgid ""
+"A project with this identifier (\"%(project)s\") already exists. Please "
+"choose a new identifier"
+msgstr "Er is al een project genaamd (\"%(project)s\"). Kies een andere naam"
+
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr ""
+
+#, fuzzy
+msgid "euro"
+msgstr "Periode"
+
+msgid "Please, validate the captcha to proceed."
+msgstr ""
+
+msgid "Enter private code to confirm deletion"
+msgstr ""
+
+msgid "Get in"
+msgstr "Inloggen"
+
+msgid "Admin password"
+msgstr "Admin-wachtwoord"
+
+msgid "Send me the code by email"
+msgstr "Code versturen per e-mail"
+
+msgid "This project does not exists"
+msgstr "Dit project bestaat niet"
+
+msgid "Password mismatch"
+msgstr "Wachtwoorden komen niet overeen"
+
+msgid "Password"
+msgstr "Wachtwoord"
+
+msgid "Password confirmation"
+msgstr "Wachtwoord bevestigen"
+
+msgid "Reset password"
+msgstr "Wachtwoord herstellen"
+
+msgid "When?"
+msgstr "Wanneer?"
+
+msgid "What?"
+msgstr "Wat?"
+
+msgid "Who paid?"
+msgstr "Wie heeft er betaald?"
+
+msgid "How much?"
+msgstr "Hoeveel?"
+
+msgid "Currency"
+msgstr "Munteenheid"
+
+msgid "External link"
+msgstr "Externe link"
+
+msgid "A link to an external document, related to this bill"
+msgstr "Een link naar een extern document, gerelateerd aan deze rekening"
+
+msgid "For whom?"
+msgstr "Aan wie?"
+
+msgid "Submit"
+msgstr "Versturen"
+
+msgid "Submit and add a new one"
+msgstr "Versturen en nieuwe toevoegen"
+
+#, python-format
+msgid "Project default: %(currency)s"
+msgstr "Projectstandaard: %(currency)s"
+
+msgid "Name"
+msgstr "Naam"
+
+msgid "Weights should be positive"
+msgstr "Gewichten moeten positief zijn"
+
+msgid "Weight"
+msgstr "Gewicht"
+
+msgid "Add"
+msgstr "Toevoegen"
+
+#, fuzzy
+msgid "The participant name is invalid"
+msgstr "De gebruiker '%(name)s' is verwijderd"
+
+#, fuzzy
+msgid "This project already have this participant"
+msgstr "Deze deelnemer is al lid van het project"
+
+msgid "People to notify"
+msgstr ""
+
+msgid "Send the invitations"
+msgstr "Uitnodigingen versturen"
+
+#, python-format
+msgid "The email %(email)s is not valid"
+msgstr "Het e-mailadres '%(email)s' is onjuist"
+
+msgid "Logout"
+msgstr "Uitloggen"
+
+msgid "Please check the email configuration of the server."
+msgstr ""
+
+#, fuzzy, python-format
+msgid ""
+"Please check the email configuration of the server or contact the "
+"administrator: %(admin_email)s"
+msgstr ""
+"Sorry, er is iets fout gegaan bij het verzenden van de uitnodigingsmails."
+" Controleer de e-mailinstellingen van de server of neem contact op met de"
+" beheerder."
+
+#. List with two items only
+msgid "{dual_object_0} and {dual_object_1}"
+msgstr ""
+
+#. Last two items of a list with more than 3 items
+msgid "{previous_object}, and {end_object}"
+msgstr ""
+
+#. Two items in a middle of a list with more than 5 objects
+msgid "{previous_object}, {next_object}"
+msgstr ""
+
+#. First two items of a list with more than 3 items
+msgid "{start_object}, {next_object}"
+msgstr ""
+
+msgid "No Currency"
+msgstr "Geen munteenheid"
+
+#. Form error with only one error
+msgid "{prefix}: {error}"
+msgstr ""
+
+#. Form error with a list of errors
+msgid "{prefix}:<br />{errors}"
+msgstr ""
+
+#, fuzzy
+msgid "Too many failed login attempts."
+msgstr "Te vaak onjuist ingelogd. Probeer het later opnieuw."
+
+#, python-format
+msgid "This admin password is not the right one. Only %(num)d attempts left."
+msgstr "Het admin-wachtwoord is onjuist. Je kunt het nog %(num)d keer proberen."
+
+msgid "Provided token is invalid"
+msgstr ""
+
+msgid "This private code is not the right one"
+msgstr "Deze privécode is onjuist"
+
+msgid "A reminder email has just been sent to you"
+msgstr "Een herinneringsmail is zojuist naar u verzonden"
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
+"We hebben geprobeerd een herinneringsmail te versturen, maar er is iets "
+"fout gegaan. Je kunt het project nog steeds normaal gebruiken."
+
+#, fuzzy
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions."
+msgstr ""
+"Sorry, er is iets fout gegaan bij het verzenden van een e-mail met "
+"instructies om je wachtwoord te herstellen. Controleer de "
+"e-mailinstellingen van de server of neem contact op met de beheerder."
+
+msgid "No token provided"
+msgstr "Geen toegangssleutel opgegeven"
+
+msgid "Invalid token"
+msgstr "Ongeldige toegangssleutel"
+
+msgid "Unknown project"
+msgstr "Onbekend project"
+
+msgid "Password successfully reset."
+msgstr "Wachtwoord is hersteld."
+
+msgid "Project settings have been changed successfully."
+msgstr ""
+
+msgid "Unable to parse CSV"
+msgstr ""
+
+#, python-format
+msgid "Missing attribute: %(attribute)s"
+msgstr ""
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
+msgstr ""
+
+msgid "Project successfully uploaded"
+msgstr "Project succesvol geüpload"
+
+msgid "Project successfully deleted"
+msgstr "Project is verwijderd"
+
+msgid "Error deleting project"
+msgstr ""
+
+msgid "Unable to logout"
+msgstr ""
+
+#, python-format
+msgid "You have been invited to share your expenses for %(project)s"
+msgstr "Je bent uitgenodigd om je uitgaven te delen met %(project)s"
+
+msgid "Your invitations have been sent"
+msgstr "Je uitnodigingen zijn verstuurd"
+
+#, fuzzy
+msgid "Sorry, there was an error while trying to send the invitation emails."
+msgstr ""
+"Sorry, er is iets fout gegaan bij het verzenden van de uitnodigingsmails."
+" Controleer de e-mailinstellingen van de server of neem contact op met de"
+" beheerder."
+
+#, python-format
+msgid "%(member)s has been added"
+msgstr "%(member)s zijn toegevoegd"
+
+msgid "Error activating participant"
+msgstr ""
+
+#, python-format
+msgid "%(name)s is part of this project again"
+msgstr "%(name)s is wederom lid geworden van dit project"
+
+msgid "Error removing participant"
+msgstr ""
+
+#, fuzzy, python-format
+msgid ""
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
+msgstr ""
+"De gebruiker '%(name)s' is gedeactiveerd. Hij/zij wordt nog steeds in de "
+"gebruikerslijst getoond totdat zijn/haar saldo op nul staat."
+
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been removed"
+msgstr "De gebruiker '%(name)s' is verwijderd"
+
+#, fuzzy, python-format
+msgid "Participant '%(name)s' has been modified"
+msgstr "De gebruiker '%(name)s' is verwijderd"
+
+msgid "The bill has been added"
+msgstr "De rekening is toegevoegd"
+
+msgid "Error deleting bill"
+msgstr ""
+
+msgid "The bill has been deleted"
+msgstr "De rekening is verwijderd"
+
+msgid "The bill has been modified"
+msgstr "De rekening is aangepast"
+
+#, python-format
+msgid "%(lang)s is not a supported language"
+msgstr ""
+
+#, fuzzy
+msgid "Error deleting project history"
+msgstr "Projectgeschiedenis inschakelen"
+
+#, fuzzy
+msgid "Deleted project history."
+msgstr "Projectgeschiedenis inschakelen"
+
+#, fuzzy
+msgid "Error deleting recorded IP addresses"
+msgstr "Verwijder opgeslagen IP-adressen"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr ""
+
+msgid "Sorry, we were unable to find the page you've asked for."
+msgstr "Sorry, de pagina die je zoekt kan niet worden gevonden."
+
+msgid "The best thing to do is probably to get back to the main page."
+msgstr "Je kunt nu beter terugkeren naar de hoofdpagina."
+
+msgid "Back to the list"
+msgstr "Terug naar de lijst"
+
+msgid "Administration tasks are currently disabled."
+msgstr "Beheerderstaken zijn momenteel uitgeschakeld."
+
+#, fuzzy
+msgid "Authentication"
+msgstr "Documentatie"
+
+msgid "The project you are trying to access do not exist, do you want to"
+msgstr "Het project dat je probeert te benaderen bestaat niet. Wil je"
+
+msgid "create it"
+msgstr "het aanmaken"
+
+msgid "?"
+msgstr "?"
+
+msgid "Create a new project"
+msgstr "Nieuw project aanmaken"
+
+msgid "Project"
+msgstr "Project"
+
+#, fuzzy
+msgid "Number of participants"
+msgstr "deelnemers toevoegen"
+
+msgid "Number of bills"
+msgstr "Aantal rekeningen"
+
+msgid "Newest bill"
+msgstr "Nieuwste rekening"
+
+msgid "Oldest bill"
+msgstr "Oudste rekening"
+
+msgid "Actions"
+msgstr "Acties"
+
+msgid "edit"
+msgstr "bewerken"
+
+#, fuzzy
+msgid "Delete project"
+msgstr "Project aanpassen"
+
+msgid "show"
+msgstr "tonen"
+
+msgid "The Dashboard is currently deactivated."
+msgstr "De overzichtspagina is momenteel uitgeschakeld."
+
+#, fuzzy
+msgid "Download Mobile Application"
+msgstr "Mobiele app"
+
+#, fuzzy
+msgid "Get it on"
+msgstr "Inloggen"
+
+msgid "Edit project"
+msgstr "Project aanpassen"
+
+#, fuzzy
+msgid "Import project"
+msgstr "Project aanpassen"
+
+msgid "Download project's data"
+msgstr "Projectgegevens downloaden"
+
+msgid "Bill items"
+msgstr "Rekeningitems"
+
+msgid "Download the list of bills with owner, amount, reason,... "
+msgstr "Download de lijst met rekeningen met daarop de houder, het bedrag, etc. "
+
+msgid "Settle plans"
+msgstr "Schikkingsvoorstellen"
+
+msgid "Download the list of transactions needed to settle the current bills."
+msgstr ""
+"Download de lijst met transacties die nodig zijn om de huidige rekeningen"
+" te schikken."
+
+msgid "Can't remember the password?"
+msgstr "Wachtwoord vergeten?"
+
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgid "Privacy Settings"
+msgstr "Privacy-instellingen"
+
+msgid "Save changes"
+msgstr ""
+
+msgid "This will remove all bills and participants in this project!"
+msgstr ""
+
+#, fuzzy
+msgid "Import previously exported project"
+msgstr "Eerder geëxporteerd JSON-bestand importeren"
+
+msgid "Choose file"
+msgstr "Bestand kiezen"
+
+msgid "Edit this bill"
+msgstr "Deze rekening bewerken"
+
+msgid "Add a bill"
+msgstr "Rekening toevoegen"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr ""
+
+msgid "Everyone"
+msgstr "Iedereen"
+
+msgid "No one"
+msgstr ""
+
+msgid "More options"
+msgstr ""
+
+msgid "Add participant"
+msgstr "Deelnemer toevoegen"
+
+#, fuzzy
+msgid "Edit this participant"
+msgstr "Deelnemer toevoegen"
+
+msgid "john.doe@example.com, mary.moe@site.com"
+msgstr "jan.jansen@voorbeeld.nl, maria.magdalena@website.nl"
+
+msgid "Download"
+msgstr "Downloaden"
+
+msgid "Disabled Project History"
+msgstr "Uitgeschakelde Projectgeschiedenis"
+
+msgid "Disabled Project History & IP Address Recording"
+msgstr "Uitgeschakelde Projecthistorie & IP-Adres Vastlegging"
+
+msgid "Enabled Project History"
+msgstr "Ingeschakelde Projectgeschiedenis"
+
+msgid "Disabled IP Address Recording"
+msgstr ""
+
+msgid "Enabled Project History & IP Address Recording"
+msgstr ""
+
+msgid "Enabled IP Address Recording"
+msgstr ""
+
+msgid "History Settings Changed"
+msgstr "Geschiedenisinstellingen Gewijzigd"
+
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
+msgstr ""
+
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
+msgstr ""
+
+msgid "Confirm Remove IP Adresses"
+msgstr ""
+
+msgid ""
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+"Weet je zeker dat je alle vastgelegde IP-adressen wilt verwijderen van "
+"dit project?\n"
+"De rest van de projectgeschiedenis blijft onveranderd. Deze actie kan "
+"niet ongedaan worden gemaakt."
+
+#, fuzzy
+msgid "Confirm deletion"
+msgstr "Bevestig Verwijdering"
+
+msgid "Close"
+msgstr "Sluiten"
+
+msgid "Delete Confirmation"
+msgstr "Bevestiging Verwijdering"
+
+msgid ""
+"Are you sure you want to erase all history for this project? This action "
+"cannot be undone."
+msgstr ""
+"Weet je zeker dat je de gehele geschiedenis wilt verwijderen voor dit "
+"project? Deze actie kan niet ongedaan worden gemaakt."
+
+#, python-format
+msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
+msgstr ""
+
+#, python-format
+msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
+msgstr ""
+
+msgid "This project has history disabled. New actions won't appear below."
+msgstr ""
+
+msgid "You can enable history on the settings page."
+msgstr ""
+
+msgid ""
+"The table below reflects actions recorded prior to disabling project "
+"history."
+msgstr ""
+
+#, fuzzy
+msgid "You can clear the project history to remove them."
+msgstr "Iemand heeft waarschijnlijk de projectgeschiedenis verwijderd."
+
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr ""
+
+msgid "Delete stored IP addresses"
+msgstr ""
+
+msgid "No IP Addresses to erase"
+msgstr "Geen IP-adressen te verwijderen"
+
+msgid "Delete Stored IP Addresses"
+msgstr "Verwijder opgeslagen IP-adressen"
+
+msgid "No history to erase"
+msgstr "Geen geschiedenis om te wissen"
+
+msgid "Clear Project History"
+msgstr "Verwijder Projectgeschiedenis"
+
+msgid "Time"
+msgstr "Tijd"
+
+msgid "Event"
+msgstr ""
+
+msgid "IP address recording can be enabled on the settings page"
+msgstr ""
+
+msgid "IP address recording can be disabled on the settings page"
+msgstr ""
+
+msgid "From IP"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Project %(name)s added"
+msgstr "Projectnaam"
+
+#, fuzzy, python-format
+msgid "Bill %(name)s added"
+msgstr "De rekening is toegevoegd"
+
+#, python-format
+msgid "Participant %(name)s added"
+msgstr ""
+
+msgid "Project private code changed"
+msgstr "Privécode van project gewijzigd"
+
+#, fuzzy, python-format
+msgid "Project renamed to %(new_project_name)s"
+msgstr "Het project-id is %(new_project_name)s"
+
+#, python-format
+msgid "Project contact email changed to %(new_email)s"
+msgstr ""
+
+msgid "Project settings modified"
+msgstr "Projectinstellingen gewijzigd"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr ""
+
+#, python-format
+msgid "Bill %(name)s renamed to %(new_description)s"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr ""
+
+msgid "Payer"
+msgstr "Betaler"
+
+msgid "Amount"
+msgstr "Hoeveelheid"
+
+msgid "Date"
+msgstr "Datum"
+
+#, python-format
+msgid "Amount in %(currency)s"
+msgstr "Hoeveelheid in %(currency)s"
+
+#, fuzzy, python-format
+msgid "Bill %(name)s modified"
+msgstr "De rekening is aangepast"
+
+#, python-format
+msgid "Participant %(name)s modified"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Bill %(name)s removed"
+msgstr "De gebruiker '%(name)s' is verwijderd"
+
+#, fuzzy, python-format
+msgid "Participant %(name)s removed"
+msgstr "De gebruiker '%(name)s' is verwijderd"
+
+#, python-format
+msgid "Project %(name)s changed in an unknown way"
+msgstr ""
+
+#, python-format
+msgid "Bill %(name)s changed in an unknown way"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s changed in an unknown way"
+msgstr ""
+
+msgid "Nothing to list"
+msgstr ""
+
+msgid "Someone probably cleared the project history."
+msgstr "Iemand heeft waarschijnlijk de projectgeschiedenis verwijderd."
+
+msgid "Manage your shared <br />expenses, easily"
+msgstr "Beheer eenvoudig je <br />gedeelde uitgaven"
+
+msgid "Try out the demo"
+msgstr "Probeer het uit"
+
+msgid "You're sharing a house?"
+msgstr "Deel je een huis?"
+
+msgid "Going on holidays with friends?"
+msgstr "Ga je op vakantie met vrienden?"
+
+msgid "Simply sharing money with others?"
+msgstr "Wil je gewoon geld verdelen met anderen?"
+
+msgid "We can help!"
+msgstr "Wij kunnen helpen!"
+
+msgid "Log in to an existing project"
+msgstr "Log in op een bestaand project"
+
+msgid "Log in"
+msgstr "Inloggen"
+
+msgid "can't remember your password?"
+msgstr "wachtwoord vergeten?"
+
+msgid "Create"
+msgstr "Maken"
+
+msgid ""
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
+msgstr ""
+"Hergebruik geen persoonlijk wachtwoord. Kies een privécode en stuur het "
+"naar je vrienden"
+
+msgid "Account manager"
+msgstr "Accountbeheer"
+
+msgid "Bills"
+msgstr "Rekeningen"
+
+msgid "Settle"
+msgstr "Schikken"
+
+msgid "Statistics"
+msgstr "Statistieken"
+
+msgid "Languages"
+msgstr "Talen"
+
+msgid "Projects"
+msgstr "Projecten"
+
+msgid "Start a new project"
+msgstr "Nieuw project starten"
+
+msgid "History"
+msgstr "Geschiedenis"
+
+msgid "Settings"
+msgstr "Instellingen"
+
+msgid "RSS Feed"
+msgstr ""
+
+msgid "Other projects :"
+msgstr "Overige projecten:"
+
+msgid "switch to"
+msgstr "overschakelen naar"
+
+msgid "Dashboard"
+msgstr "Overzicht"
+
+#, python-format
+msgid "Please retry after %(date)s."
+msgstr ""
+
+msgid "Code"
+msgstr "Code"
+
+msgid "Mobile Application"
+msgstr "Mobiele app"
+
+msgid "Documentation"
+msgstr "Documentatie"
+
+msgid "Administation Dashboard"
+msgstr "Administratie-overzicht"
+
+#, fuzzy
+msgid "Legal information"
+msgstr "Bevestiging Verwijdering"
+
+msgid "\"I hate money\" is free software"
+msgstr "\"I hate money\" is vrije software"
+
+msgid "you can contribute and improve it!"
+msgstr "je kunt bijdragen en de code verbeteren!"
+
+#, python-format
+msgid "%(amount)s each"
+msgstr ""
+
+msgid "you sure?"
+msgstr "weet je het zeker?"
+
+msgid "Invite people"
+msgstr "Anderen uitnodigen"
+
+msgid "Newer bills"
+msgstr ""
+
+msgid "Older bills"
+msgstr ""
+
+msgid "You should start by adding participants"
+msgstr "Begin met het toevoegen van deelnemers"
+
+msgid "Add a new bill"
+msgstr "Nieuwe rekening toevoegen"
+
+msgid "For what?"
+msgstr "Voor wat?"
+
+#, python-format
+msgid "Added on %(date)s"
+msgstr "Toegevoegd op %(date)s"
+
+#, python-format
+msgid "Everyone but %(excluded)s"
+msgstr "Iedereen, behalve %(excluded)s"
+
+msgid "delete"
+msgstr "verwijderen"
+
+msgid "No bills"
+msgstr "Geen rekeningen"
+
+msgid "Nothing to list yet."
+msgstr "Nog niks."
+
+#, fuzzy
+msgid "Add your first bill"
+msgstr "een rekening toevoegen"
+
+#, fuzzy
+msgid "Add the first participant"
+msgstr "Deelnemer toevoegen"
+
+msgid "Password reminder"
+msgstr "Wachtwoordhint"
+
+msgid ""
+"A link to reset your password has been sent to you, please check your "
+"emails."
+msgstr ""
+"Er is een link verstuurd om je wachtwoord opnieuw in te stellen; "
+"controleer je Postvak IN."
+
+msgid "Return to home page"
+msgstr "Terug naar startpagina"
+
+msgid "Your projects"
+msgstr "Jouw projecten"
+
+msgid "Reset your password"
+msgstr "Wachtwoord herstellen"
+
+msgid "Invite people to join this project"
+msgstr "Nodig mensen uit voor dit project"
+
+msgid "Share an invitation link"
+msgstr ""
+
+msgid ""
+"The easiest way to invite people is to give them the following invitation"
+" link.<br />They will be able to access the project, manage participants,"
+" add/edit/delete bills. However, they will not have access to important "
+"settings such as changing the private code or deleting the whole project."
+msgstr ""
+
+msgid "Scan QR code"
+msgstr ""
+
+msgid "Use a mobile device with a compatible app."
+msgstr ""
+
+msgid "Send via Emails"
+msgstr "Versturen via e-mail"
+
+#, fuzzy
+msgid ""
+"Specify a list of email adresses (separated by comma) of people you want "
+"to notify about the creation of this project. We will send them an email "
+"with the invitation link."
+msgstr ""
+"Stel een (kommagescheiden) lijst op met e-mailadressen van personen die "
+"je op de\n"
+"                hoogte wilt stellen van dit project - wij sturen hen een "
+"e-mail."
+
+msgid "Share Identifier & code"
+msgstr "Identificatie en code delen"
+
+msgid ""
+"You can share the project identifier and the private code by any "
+"communication means.<br />Anyone with the private code will have access "
+"to the full project, including changing settings such as the private code"
+" or project email address, or even deleting the whole project."
+msgstr ""
+
+msgid "Identifier:"
+msgstr "Identificatie:"
+
+#, fuzzy
+msgid "Private code:"
+msgstr "Privécode"
+
+msgid "the private code was defined when you created the project"
+msgstr ""
+
+msgid "Who pays?"
+msgstr "Wie betaalt?"
+
+msgid "To whom?"
+msgstr "Aan wie?"
+
+msgid "Who?"
+msgstr "Wie?"
+
+msgid "Balance"
+msgstr "Saldo"
+
+msgid "deactivate"
+msgstr "deactiveren"
+
+msgid "reactivate"
+msgstr "heractiveren"
+
+msgid "Paid"
+msgstr "Betaald"
+
+msgid "Spent"
+msgstr "Uitgegeven"
+
+msgid "Expenses by Month"
+msgstr ""
+
+msgid "Period"
+msgstr "Periode"
+
+#~ msgid "%(msg_compl)sThe project identifier is %(project)s"
+#~ msgstr "%(msg_compl)sDe project-id is %(project)s"
+
+#~ msgid "each"
+#~ msgstr "per persoon"
+
+#~ msgid "Error while sending reminder email"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This access code will be sent to"
+#~ " your friends. It is stored as-"
+#~ "is by the server, so don\\'t reuse"
+#~ " a personal password!"
+#~ msgstr ""
+#~ "Deze toegangscode wordt verstuurd aan je"
+#~ " vrienden. Deze wordt in platte tekst"
+#~ " opgeslagen op de server, dus gebruik"
+#~ " geen persoonlijk wachtwoord!"
+
+#~ msgid "Participant"
+#~ msgstr "Deelnemer"
+
+#~ msgid "Bill"
+#~ msgstr "Rekening"
+
+#~ msgid "Select all"
+#~ msgstr "Alles selecteren"
+
+#~ msgid "Select none"
+#~ msgstr "Niets selecteren"
+
+#~ msgid "changed"
+#~ msgstr "gewijzigd"
+
+#~ msgid "from"
+#~ msgstr "van"
+
+#~ msgid "to"
+#~ msgstr "naar"
+
+#~ msgid "Added"
+#~ msgstr "Toegevoegd"
+
+#~ msgid "Removed"
+#~ msgstr "Verwijderd"
+
+#~ msgid "and"
+#~ msgstr "en"
+
+#~ msgid "owers list"
+#~ msgstr ""
+
+#~ msgid "added"
+#~ msgstr "toegevoegd"
+
+#~ msgid "Project renamed to"
+#~ msgstr "Project hernoemd tot"
+
+#~ msgid "Project contact email changed to"
+#~ msgstr ""
+
+#~ msgid "deactivated"
+#~ msgstr "gedeactiveerd"
+
+#~ msgid "reactivated"
+#~ msgstr "gereactiveerd"
+
+#~ msgid "renamed to"
+#~ msgstr "hernoemd naar"
+
+#~ msgid "External link changed to"
+#~ msgstr ""
+
+#~ msgid "modified"
+#~ msgstr "gewijzigd"
+
+#~ msgid "removed"
+#~ msgstr "verwijderd"
+
+#~ msgid "changed in a unknown way"
+#~ msgstr ""
+
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr "Je hebt een onjuiste toegangssleutel of geen project-id opgegeven."
+
+#~ msgid "User name incorrect"
+#~ msgstr "Verkeerde gebruikersnaam"
+
+#~ msgid "People to notify"
+#~ msgstr "Te melden personen"
+
+#~ msgid "Import"
+#~ msgstr "Importeren"
+
+#~ msgid "Amount paid"
+#~ msgstr "Betaald bedrag"
+
+#~ msgid "Bills can't be null"
+#~ msgstr "Rekeningen mogen niet null zijn"
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "Het project-id is %(project)s"
+
+#~ msgid "Invalid JSON"
+#~ msgstr "Ongeldige JSON"
+
+#~ msgid "Are you sure?"
+#~ msgstr "weet je het zeker?"
+
+#~ msgid "Import JSON"
+#~ msgstr "JSON importeren"
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>This project has history "
+#~ "disabled. New actions won't appear "
+#~ "below. You can enable history on "
+#~ "the</i>\n"
+#~ "            <a href=\"%(url)s\">settings page</a>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            <i>Dit project heeft de "
+#~ "geschiedenis uitgeschakeld. Nieuwe acties "
+#~ "zullen niet hieronder verschijnen. Je "
+#~ "kunt de geschiedenis aanzetten op de "
+#~ "</i>\n"
+#~ "            <a href=\"%(url)s\">instellingen-pagina</a>\n"
+#~ "            "
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>The table below reflects "
+#~ "actions recorded prior to disabling "
+#~ "project history. You can\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">clear project history</a>"
+#~ " to remove them.</i></p>\n"
+#~ "            "
+#~ msgstr ""
+
+#~ msgid "Send invites"
+#~ msgstr "Uitnodigingen versturen"
+
+#~ msgid " show"
+#~ msgstr "tonen"
+
+#~ msgid "Edit the project"
+#~ msgstr "Project bewerken"
+
+#~ msgid "You probably want to"
+#~ msgstr "Waarschijnlijk wil je"
+
+#~ msgid "add participants"
+#~ msgstr "deelnemers toevoegen"
+
+#~ msgid ""
+#~ "You can share the project identifier "
+#~ "and the private code by any "
+#~ "communication means."
+#~ msgstr ""
+#~ "Je kunt de projectidentificatie en "
+#~ "privécode delen via welk communicatieplatform"
+#~ " dan ook."
+
+#~ msgid "Share the Link"
+#~ msgstr "Link delen"
+
+#~ msgid "You can directly share the following link via your prefered medium"
+#~ msgstr "Je kunt de volgende link direct delen"
+

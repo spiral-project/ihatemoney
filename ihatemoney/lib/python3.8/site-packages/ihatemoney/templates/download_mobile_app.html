@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block css %}
+<link rel=stylesheet type=text/css href="{{ url_for("static", filename='css/download_mobile_app.css') }}">
+{% endblock %}
+
+{% block body %}
+<main class="row py-5 justify-content-center text-center">
+    <div class=" col-10 text-center bg-dark text-light">
+        <h1 class="my-2">{{_("Download Mobile Application")}}</h1>
+    </div>
+    <h3 class="col-12 my-2 text-dark">{{_("Get it on")}}</h3>
+    <div class="col-12">
+        <a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=net.eneiluj.moneybuster&hl=en_US" class="text-decoration-none">
+            <img src="{{ url_for("static", filename='images/google-play.png') }}" class="get-it-from"/>
+        </a>
+
+        <a target="_blank" rel="noopener" href="https://f-droid.org/en/packages/net.eneiluj.moneybuster/" class="text-decoration-none">
+            <img src="{{ url_for("static", filename='images/f-droid.svg') }}" class="get-it-from" />
+        </a>
+        <a target="__blank" rel="noopener" href="https://apps.apple.com/us/app/payforme/id1500428306" class="text-decoration-none">
+            <img src="{{ url_for("static", filename='images/app-store.svg') }}" class="get-it-from" />
+        </a>
+    </div>
+</main>
+{% endblock %}

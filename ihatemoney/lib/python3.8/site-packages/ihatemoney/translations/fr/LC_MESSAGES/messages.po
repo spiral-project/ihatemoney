@@ -1,0 +1,1390 @@
+# French translations for PROJECT.
+# Copyright (C) 2011 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# Alexis Métaireau <alexis@notmyidea.org>, 2011.
+# Adrien CLERC, 2018.
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"PO-Revision-Date: 2023-07-29 13:07+0000\n"
+"Last-Translator: Baptiste <weblate@bitsofnetworks.org>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/fr/>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.0-dev\n"
+"Generated-By: Babel 2.9.0\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr "Vous venez de créer « %(project)s » pour partager vos dépenses"
+
+msgid ""
+"Not a valid amount or expression. Only numbers and + - * / operators are "
+"accepted."
+msgstr ""
+"Ceci n'est pas un montant ou une expression valide. Seuls les nombres et "
+"les opérateurs + - * / sont acceptés."
+
+msgid "Project name"
+msgstr "Nom de projet"
+
+msgid "Current private code"
+msgstr "Code d’accès actuel"
+
+msgid "Enter existing private code to edit project"
+msgstr "Entrez le code d'accès existant pour éditer le projet"
+
+msgid "New private code"
+msgstr "Nouveau code d’accès"
+
+msgid "Enter a new code if you want to change it"
+msgstr "Entrez un nouveau code si vous souhaitez le changer"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Enable project history"
+msgstr "Activer l'historique de projet"
+
+msgid "Use IP tracking for project history"
+msgstr "Collecter les adresses IP dans l'historique de projet"
+
+msgid "Default Currency"
+msgstr "Devise par défaut"
+
+msgid "Setting a default currency enables currency conversion between bills"
+msgstr ""
+"Choisir une devise par défaut permet d'activer la conversion de devises "
+"entre les factures"
+
+msgid "Unknown error"
+msgstr "Erreur inconnue"
+
+msgid "Invalid private code."
+msgstr "Code d’accès invalide."
+
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+"Ce projet ne peut pas être sans devise car il contient des factures "
+"utilisant des devises différentes."
+
+msgid "Compatible with Cospend"
+msgstr "Compatible avec Cospend"
+
+msgid "Project identifier"
+msgstr "Identifiant du projet"
+
+msgid "Private code"
+msgstr "Code d’accès"
+
+msgid "Create the project"
+msgstr "Créer le projet"
+
+#, python-format
+msgid ""
+"A project with this identifier (\"%(project)s\") already exists. Please "
+"choose a new identifier"
+msgstr ""
+"Il existe déjà un projet avec l'identifiant (\"%(project)s\"). Merci d'en"
+" choisir un autre"
+
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr "Quelle est la vraie monnaie : Euro ou Petrodollar ?"
+
+msgid "euro"
+msgstr "euro"
+
+msgid "Please, validate the captcha to proceed."
+msgstr "Merci de valider le captcha avant de continuer."
+
+msgid "Enter private code to confirm deletion"
+msgstr "Entrez le code d'accès pour confirmer la suppression"
+
+msgid "Get in"
+msgstr "Entrer"
+
+msgid "Admin password"
+msgstr "Mot de passe administrateur⋅ice"
+
+msgid "Send me the code by email"
+msgstr "Envoyez moi le code par email"
+
+msgid "This project does not exists"
+msgstr "Ce projet n’existe pas"
+
+msgid "Password mismatch"
+msgstr "Les mots de passe sont différents"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Password confirmation"
+msgstr "Confirmation du mot de passe"
+
+msgid "Reset password"
+msgstr "Réinitialiser le mot de passe"
+
+msgid "When?"
+msgstr "Quand ?"
+
+msgid "What?"
+msgstr "Quoi ?"
+
+msgid "Who paid?"
+msgstr "Qui a payé ?"
+
+msgid "How much?"
+msgstr "Combien ?"
+
+msgid "Currency"
+msgstr "Devise"
+
+msgid "External link"
+msgstr "Lien externe"
+
+msgid "A link to an external document, related to this bill"
+msgstr "Un lien vers un document, lié à cette facture"
+
+msgid "For whom?"
+msgstr "Pour qui ?"
+
+msgid "Submit"
+msgstr "Valider"
+
+msgid "Submit and add a new one"
+msgstr "Valider et ajouter une autre facture"
+
+#, python-format
+msgid "Project default: %(currency)s"
+msgstr "Devise du projet : %(currency)s"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Weights should be positive"
+msgstr "Les parts doivent être positives"
+
+msgid "Weight"
+msgstr "Parts"
+
+msgid "Add"
+msgstr "Ajouter"
+
+msgid "The participant name is invalid"
+msgstr "Le nom du participant est incorrect"
+
+msgid "This project already have this participant"
+msgstr "Ce⋅tte membre existe déjà pour ce projet"
+
+msgid "People to notify"
+msgstr "Personnes à inviter"
+
+msgid "Send the invitations"
+msgstr "Envoyer les invitations"
+
+#, python-format
+msgid "The email %(email)s is not valid"
+msgstr "L’email %(email)s est invalide"
+
+msgid "Logout"
+msgstr "Se déconnecter"
+
+msgid "Please check the email configuration of the server."
+msgstr "Veuillez vérifier la configuration email du serveur."
+
+#, python-format
+msgid ""
+"Please check the email configuration of the server or contact the "
+"administrator: %(admin_email)s"
+msgstr ""
+"Veuillez vérifier la configuration email du serveur ou contacter "
+"l’administrateur⋅ice : %(admin_email)s"
+
+#. List with two items only
+msgid "{dual_object_0} and {dual_object_1}"
+msgstr "{dual_object_0} et {dual_object_1}"
+
+#. Last two items of a list with more than 3 items
+msgid "{previous_object}, and {end_object}"
+msgstr "{previous_object} et {end_object}"
+
+#. Two items in a middle of a list with more than 5 objects
+msgid "{previous_object}, {next_object}"
+msgstr "{previous_object}, {next_object}"
+
+#. First two items of a list with more than 3 items
+msgid "{start_object}, {next_object}"
+msgstr "{start_object}, {next_object}"
+
+msgid "No Currency"
+msgstr "Aucune devise"
+
+#. Form error with only one error
+msgid "{prefix}: {error}"
+msgstr "{prefix} : {error}"
+
+#. Form error with a list of errors
+msgid "{prefix}:<br />{errors}"
+msgstr "{prefix} :<br />{errors}"
+
+msgid "Too many failed login attempts."
+msgstr "Trop d'échecs d’authentification successifs."
+
+#, python-format
+msgid "This admin password is not the right one. Only %(num)d attempts left."
+msgstr ""
+"Le mot de passe administrateur⋅ice que vous avez entré n’est pas correct."
+" Plus que %(num)d tentatives."
+
+msgid "Provided token is invalid"
+msgstr "Ce jeton est invalide"
+
+msgid "This private code is not the right one"
+msgstr "Le code d'accès n’est pas correct"
+
+msgid "A reminder email has just been sent to you"
+msgstr "Un courriel de rappel vient de vous être envoyé"
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
+"Nous avons essayé de vous envoyer un courriel de rappel, mais une erreur "
+"s’est produite. Il est toujours possible d’utiliser le projet "
+"normalement."
+
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions."
+msgstr ""
+"Désolé, une erreur s’est produite lors de l’envoi du courriel contenant "
+"les instructions de réinitialisation de mot de passe."
+
+msgid "No token provided"
+msgstr "Aucun jeton n’a été fourni"
+
+msgid "Invalid token"
+msgstr "Jeton invalide"
+
+msgid "Unknown project"
+msgstr "Projet inconnu"
+
+msgid "Password successfully reset."
+msgstr "Le mot de passe a été changé avec succès."
+
+msgid "Project settings have been changed successfully."
+msgstr "Les paramètres du projet ont bien été enregistrés."
+
+msgid "Unable to parse CSV"
+msgstr "Erreur lors de la lecture du fichier CSV"
+
+#, python-format
+msgid "Missing attribute: %(attribute)s"
+msgstr "Attribut manquant : %(attribute)s"
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
+msgstr "Impossible d'ajouter plusieurs devises à un projet sans devise par défaut"
+
+msgid "Project successfully uploaded"
+msgstr "Le projet a été correctement importé"
+
+msgid "Project successfully deleted"
+msgstr "Projet supprimé"
+
+msgid "Error deleting project"
+msgstr "Erreur lors de la suppression du projet"
+
+msgid "Unable to logout"
+msgstr "Impossible de se déconnecter"
+
+#, python-format
+msgid "You have been invited to share your expenses for %(project)s"
+msgstr "Vous avez été invité⋅e à partager vos dépenses pour %(project)s"
+
+msgid "Your invitations have been sent"
+msgstr "Vos invitations ont bien été envoyées"
+
+msgid "Sorry, there was an error while trying to send the invitation emails."
+msgstr ""
+"Désolé, une erreur s’est produite lors de l’envoi du courriel "
+"d’invitation."
+
+#, python-format
+msgid "%(member)s has been added"
+msgstr "%(member)s a été ajouté⋅e"
+
+msgid "Error activating participant"
+msgstr "Erreur lors de l'activation de ce⋅tte participant⋅e"
+
+#, python-format
+msgid "%(name)s is part of this project again"
+msgstr "%(name)s a rejoint le projet"
+
+msgid "Error removing participant"
+msgstr "Erreur lors de la suppression d'un⋅e participant⋅e"
+
+#, python-format
+msgid ""
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
+msgstr ""
+"« %(name)s » a été désactivé⋅e. Il⋅elle continuera d’apparaître jusqu'à "
+"ce que son solde soit nul."
+
+#, python-format
+msgid "Participant '%(name)s' has been removed"
+msgstr "« %(name)s » a été supprimé⋅e"
+
+#, python-format
+msgid "Participant '%(name)s' has been modified"
+msgstr "Participant⋅e %(name)s modifié⋅e"
+
+msgid "The bill has been added"
+msgstr "La facture a bien été ajoutée"
+
+msgid "Error deleting bill"
+msgstr "Erreur lors de la suppression de la facture"
+
+msgid "The bill has been deleted"
+msgstr "La facture a été supprimée"
+
+msgid "The bill has been modified"
+msgstr "La facture a été modifiée"
+
+#, python-format
+msgid "%(lang)s is not a supported language"
+msgstr "La langue %(lang)s n'est pas prise en charge"
+
+msgid "Error deleting project history"
+msgstr "Erreur lors de la suppression de l'historique du projet"
+
+msgid "Deleted project history."
+msgstr "Historique de projet supprimé."
+
+msgid "Error deleting recorded IP addresses"
+msgstr "Erreur lors de la suppression des adresses IP enregistrées"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr "Adresses IP supprimées de l'historique du projet."
+
+msgid "Sorry, we were unable to find the page you've asked for."
+msgstr "Désolé, nous ne trouvons pas la page demandée."
+
+msgid "The best thing to do is probably to get back to the main page."
+msgstr "Votre meilleure piste est probablement la page d'accueil."
+
+msgid "Back to the list"
+msgstr "Retourner à la liste"
+
+msgid "Administration tasks are currently disabled."
+msgstr "Les tâches d’administration sont actuellement désactivées."
+
+msgid "Authentication"
+msgstr "Authentification"
+
+msgid "The project you are trying to access do not exist, do you want to"
+msgstr "Le projet auquel vous essayez d’accéder n’existe pas, souhaitez vous"
+
+msgid "create it"
+msgstr "le créer"
+
+msgid "?"
+msgstr " ?"
+
+msgid "Create a new project"
+msgstr "Créer un nouveau projet"
+
+msgid "Project"
+msgstr "Projet"
+
+msgid "Number of participants"
+msgstr "Nombre de participant⋅es"
+
+msgid "Number of bills"
+msgstr "Nombre de factures"
+
+msgid "Newest bill"
+msgstr "Facture la plus récente"
+
+msgid "Oldest bill"
+msgstr "Facture la plus ancienne"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "edit"
+msgstr "éditer"
+
+msgid "Delete project"
+msgstr "Supprimer le projet"
+
+msgid "show"
+msgstr "voir"
+
+msgid "The Dashboard is currently deactivated."
+msgstr "Le tableau de bord est actuellement désactivé."
+
+msgid "Download Mobile Application"
+msgstr "Télécharger l’application mobile"
+
+msgid "Get it on"
+msgstr "Télécharger depuis"
+
+msgid "Edit project"
+msgstr "Éditer le projet"
+
+msgid "Import project"
+msgstr "Importer le projet"
+
+msgid "Download project's data"
+msgstr "Télécharger les données du projet"
+
+msgid "Bill items"
+msgstr "Factures"
+
+msgid "Download the list of bills with owner, amount, reason,... "
+msgstr "Télécharger la liste des factures et détails "
+
+msgid "Settle plans"
+msgstr "Remboursements"
+
+msgid "Download the list of transactions needed to settle the current bills."
+msgstr "Télécharger la liste des transactions nécessaires pour les remboursements."
+
+msgid "Can't remember the password?"
+msgstr "Vous avez oublié le code d’accès ?"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Privacy Settings"
+msgstr "Vie privée"
+
+msgid "Save changes"
+msgstr "Sauvegarder les modifications"
+
+msgid "This will remove all bills and participants in this project!"
+msgstr "Cela supprimera toutes les factures et participant⋅es du projet !"
+
+msgid "Import previously exported project"
+msgstr "Importer un projet précédemment exporté"
+
+msgid "Choose file"
+msgstr "Choisir un fichier"
+
+msgid "Edit this bill"
+msgstr "Éditer cette facture"
+
+msgid "Add a bill"
+msgstr "Ajouter une facture"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr "Les opérations simples sont possibles, par exemple (18+36.2)/3"
+
+msgid "Everyone"
+msgstr "Tout le monde"
+
+msgid "No one"
+msgstr "Personne"
+
+msgid "More options"
+msgstr "Plus d'options"
+
+msgid "Add participant"
+msgstr "Ajouter un⋅e participant⋅e"
+
+msgid "Edit this participant"
+msgstr "Modifier un⋅e participant⋅e"
+
+msgid "john.doe@example.com, mary.moe@site.com"
+msgstr "marie@site.com, jean.dupont@exemple.com"
+
+msgid "Download"
+msgstr "Télécharger"
+
+msgid "Disabled Project History"
+msgstr "Désactiver l'historique du projet"
+
+msgid "Disabled Project History & IP Address Recording"
+msgstr "Désactiver l'historique du projet et l'enregistrement des adresses IP"
+
+msgid "Enabled Project History"
+msgstr "Activer l'historique du projet"
+
+msgid "Disabled IP Address Recording"
+msgstr "Désactiver l'enregistrement des adresses IP"
+
+msgid "Enabled Project History & IP Address Recording"
+msgstr "Activer l'historique du projet et l’enregistrement des adresses IP"
+
+msgid "Enabled IP Address Recording"
+msgstr "Activer l'enregistrement des adresses IP"
+
+msgid "History Settings Changed"
+msgstr "Paramètres d'historique modifiés"
+
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
+msgstr "Facture %(name)s : %(property_name)s changé de %(before)s en %(after)s"
+
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
+msgstr "Facture %(name)s : %(property_name)s modifié en %(after)s"
+
+msgid "Confirm Remove IP Adresses"
+msgstr "Confirmer la suppression des adresses IP"
+
+msgid ""
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+"Êtes-vous sûr⋅e de vouloir supprimer toutes les adresses IP enregistrées "
+"pour ce projet ?\n"
+"Le reste de l'historique ne sera pas affecté. Cette action n'est pas "
+"réversible."
+
+msgid "Confirm deletion"
+msgstr "Confirmer la suppression"
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Delete Confirmation"
+msgstr "Confirmation de suppression"
+
+msgid ""
+"Are you sure you want to erase all history for this project? This action "
+"cannot be undone."
+msgstr ""
+"Êtes-vous sur de vouloir supprimer tout l'historique du projet ? Cette "
+"action n'est pas réversible."
+
+#, python-format
+msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
+msgstr "Facture %(name)s : %(owers_list_str)s ajouté à la liste des débiteur⋅ices"
+
+#, python-format
+msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
+msgstr ""
+"Facture %(name)s : %(owers_list_str)s supprimé de la liste des "
+"débiteur⋅ices"
+
+msgid "This project has history disabled. New actions won't appear below."
+msgstr ""
+"L'historique de ce projet est désactivé. Les nouvelles actions "
+"n'apparaîtront pas ci-dessous."
+
+msgid "You can enable history on the settings page."
+msgstr "Vous pouvez activer l'historique dans les paramètres."
+
+msgid ""
+"The table below reflects actions recorded prior to disabling project "
+"history."
+msgstr ""
+"Le tableau ci-dessous affiche uniquement les actions enregistrées avant "
+"que l'historique n'ait été désactivé pour ce projet."
+
+msgid "You can clear the project history to remove them."
+msgstr "Vous pouvez supprimer l'historique du projet pour les enlever."
+
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr ""
+"Certaines entrées de l'historique contiennent une adresse IP, bien que ce"
+" projet ait désactivé l'enregistrement des adresses IP. "
+
+msgid "Delete stored IP addresses"
+msgstr "Supprimer toutes les adresses IP enregistrées"
+
+msgid "No IP Addresses to erase"
+msgstr "Aucune adresse IP à supprimer"
+
+msgid "Delete Stored IP Addresses"
+msgstr "Supprimer les adresses IP enregistrées"
+
+msgid "No history to erase"
+msgstr "Aucun historique à supprimer"
+
+msgid "Clear Project History"
+msgstr "Supprimer les entrées de l'historique du projet"
+
+msgid "Time"
+msgstr "Heure"
+
+msgid "Event"
+msgstr "Évènement"
+
+msgid "IP address recording can be enabled on the settings page"
+msgstr ""
+"Vous pouvez activer l'enregistrement des adresses IP dans les paramètres "
+"de la page"
+
+msgid "IP address recording can be disabled on the settings page"
+msgstr ""
+"L'enregistrement des adresses IP peut-être désactivé dans les paramètres "
+"de la page"
+
+msgid "From IP"
+msgstr "Depuis l'IP"
+
+#, python-format
+msgid "Project %(name)s added"
+msgstr "Projet %(name)s ajouté"
+
+#, python-format
+msgid "Bill %(name)s added"
+msgstr "Facture %(name)s ajoutée"
+
+#, python-format
+msgid "Participant %(name)s added"
+msgstr "Participant⋅e %(name)s ajouté⋅e"
+
+msgid "Project private code changed"
+msgstr "Le mot de passe du projet a été modifié"
+
+#, python-format
+msgid "Project renamed to %(new_project_name)s"
+msgstr "Projet renommé en %(new_project_name)s"
+
+#, python-format
+msgid "Project contact email changed to %(new_email)s"
+msgstr "L'adresse email de contact du projet est maintenant « %(new_email)s »"
+
+msgid "Project settings modified"
+msgstr "Les paramètres du projet ont été modifiés"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr "Participant⋅e %(name)s désactivé⋅e"
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr "Participant⋅e %(name)s réactivé⋅e"
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr "Participant⋅e %(name)s renommé⋅e en %(new_name)s"
+
+#, python-format
+msgid "Bill %(name)s renamed to %(new_description)s"
+msgstr "Facture %(name)s renommée en %(new_description)s"
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr ""
+"Participant⋅e %(name)s : nombre de parts changé de %(old_weight)s en "
+"%(new_weight)s"
+
+msgid "Payer"
+msgstr "Payeur"
+
+msgid "Amount"
+msgstr "Montant"
+
+msgid "Date"
+msgstr "Date"
+
+#, python-format
+msgid "Amount in %(currency)s"
+msgstr "Montant en %(currency)s"
+
+#, python-format
+msgid "Bill %(name)s modified"
+msgstr "Facture %(name)s modifiée"
+
+#, python-format
+msgid "Participant %(name)s modified"
+msgstr "Participant⋅e %(name)s modifié⋅e"
+
+#, python-format
+msgid "Bill %(name)s removed"
+msgstr "Facture %(name)s supprimée"
+
+#, python-format
+msgid "Participant %(name)s removed"
+msgstr "Participant⋅e %(name)s supprimé⋅e"
+
+#, python-format
+msgid "Project %(name)s changed in an unknown way"
+msgstr "Projet %(name)s modifié d'une manière inconnue"
+
+#, python-format
+msgid "Bill %(name)s changed in an unknown way"
+msgstr "Facture %(name)s modifiée d'une manière inconnue"
+
+#, python-format
+msgid "Participant %(name)s changed in an unknown way"
+msgstr "Participant⋅e %(name)s modifié⋅e d'une manière inconnue"
+
+msgid "Nothing to list"
+msgstr "Rien à afficher"
+
+msgid "Someone probably cleared the project history."
+msgstr "Quelqu'un a probablement vidé l'historique du projet."
+
+msgid "Manage your shared <br />expenses, easily"
+msgstr "Gérez facilement <br />vos dépenses partagées"
+
+msgid "Try out the demo"
+msgstr "Essayez la démo"
+
+msgid "You're sharing a house?"
+msgstr "Vous êtes en colocation ?"
+
+msgid "Going on holidays with friends?"
+msgstr "Partez en vacances avec des amis ?"
+
+msgid "Simply sharing money with others?"
+msgstr "Ça vous arrive de partager de l’argent avec d’autres ?"
+
+msgid "We can help!"
+msgstr "On peut vous aider !"
+
+msgid "Log in to an existing project"
+msgstr "Connectez-vous à un projet existant"
+
+msgid "Log in"
+msgstr "Se connecter"
+
+msgid "can't remember your password?"
+msgstr "Code d’accès oublié ?"
+
+msgid "Create"
+msgstr "Créer"
+
+msgid ""
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
+msgstr ""
+"Ne réutilisez pas un de vos mots de passe. Choisissez un code d'accès et "
+"envoyez le à vos ami⋅es"
+
+msgid "Account manager"
+msgstr "Gestion de comptes"
+
+msgid "Bills"
+msgstr "Factures"
+
+msgid "Settle"
+msgstr "Remboursements"
+
+msgid "Statistics"
+msgstr "Statistiques"
+
+msgid "Languages"
+msgstr "Langues"
+
+msgid "Projects"
+msgstr "Projets"
+
+msgid "Start a new project"
+msgstr "Nouveau projet"
+
+msgid "History"
+msgstr "Historique"
+
+msgid "Settings"
+msgstr "Options"
+
+msgid "RSS Feed"
+msgstr "Flux RSS"
+
+msgid "Other projects :"
+msgstr "Autres projets :"
+
+msgid "switch to"
+msgstr "aller à"
+
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#, python-format
+msgid "Please retry after %(date)s."
+msgstr "Veuillez réessayer après %(date)s."
+
+msgid "Code"
+msgstr "Code"
+
+msgid "Mobile Application"
+msgstr "Application mobile"
+
+msgid "Documentation"
+msgstr "Documentation"
+
+msgid "Administation Dashboard"
+msgstr "Panneau d'administration"
+
+msgid "Legal information"
+msgstr "Mentions légales"
+
+msgid "\"I hate money\" is free software"
+msgstr "« I hate money » est un logiciel libre"
+
+msgid "you can contribute and improve it!"
+msgstr "vous pouvez y contribuer et l’améliorer !"
+
+#, python-format
+msgid "%(amount)s each"
+msgstr "%(amount)s chacun⋅e"
+
+msgid "you sure?"
+msgstr "vous confirmez ?"
+
+msgid "Invite people"
+msgstr "Inviter des gens"
+
+msgid "Newer bills"
+msgstr "Factures suivantes"
+
+msgid "Older bills"
+msgstr "Factures précédentes"
+
+msgid "You should start by adding participants"
+msgstr "Vous devriez commencer par ajouter des participant⋅es"
+
+msgid "Add a new bill"
+msgstr "Nouvelle facture"
+
+msgid "For what?"
+msgstr "Pour quoi ?"
+
+#, python-format
+msgid "Added on %(date)s"
+msgstr "Ajouté le %(date)s"
+
+#, python-format
+msgid "Everyone but %(excluded)s"
+msgstr "Tout le monde sauf %(excluded)s"
+
+msgid "delete"
+msgstr "supprimer"
+
+msgid "No bills"
+msgstr "Pas encore de factures"
+
+msgid "Nothing to list yet."
+msgstr "Rien à lister pour le moment."
+
+msgid "Add your first bill"
+msgstr "Ajouter votre première facture"
+
+msgid "Add the first participant"
+msgstr "Ajouter le premier participant ou la première participante"
+
+msgid "Password reminder"
+msgstr "Rappel du code d’accès"
+
+msgid ""
+"A link to reset your password has been sent to you, please check your "
+"emails."
+msgstr ""
+"Un lien pour réinitialiser votre mot de passe vient de vous être envoyé. "
+"Vérifiez vos emails."
+
+msgid "Return to home page"
+msgstr "Retourner à la page d'accueil"
+
+msgid "Your projects"
+msgstr "Vos projets"
+
+msgid "Reset your password"
+msgstr "Changez votre code d'accès"
+
+msgid "Invite people to join this project"
+msgstr "Invitez des personnes à rejoindre ce projet"
+
+msgid "Share an invitation link"
+msgstr "Partager un lien d'invitation"
+
+msgid ""
+"The easiest way to invite people is to give them the following invitation"
+" link.<br />They will be able to access the project, manage participants,"
+" add/edit/delete bills. However, they will not have access to important "
+"settings such as changing the private code or deleting the whole project."
+msgstr ""
+"Pour inviter des personnes dans ce projet, vous pouvez leur donner le "
+"lien d'invitation ci-dessous.<br />Elles pourront ainsi accéder au "
+"projet, gérer les participants, ajouter/modifier/supprimer des factures. "
+"En revanche, elles ne pourront pas modifier des paramètres importants "
+"tels que le code d'accès ou supprimer le projet."
+
+msgid "Scan QR code"
+msgstr "Scannez le QR code"
+
+msgid "Use a mobile device with a compatible app."
+msgstr "Utilisez un appareil mobile avec une application compatible."
+
+msgid "Send via Emails"
+msgstr "Envoyer par email(s)"
+
+msgid ""
+"Specify a list of email adresses (separated by comma) of people you want "
+"to notify about the creation of this project. We will send them an email "
+"with the invitation link."
+msgstr ""
+"Entrez les emails des personnes avec qui vous souhaitez partager ce projet ("
+"en séparant les adresses emails avec des virgules). Nous leur enverrons un "
+"mail avec le lien d'invitation."
+
+msgid "Share Identifier & code"
+msgstr "Partager l'identifiant et le code"
+
+msgid ""
+"You can share the project identifier and the private code by any "
+"communication means.<br />Anyone with the private code will have access "
+"to the full project, including changing settings such as the private code"
+" or project email address, or even deleting the whole project."
+msgstr ""
+"Vous pouvez partager l'identifiant de ce projet et le code d'accès par "
+"tout moyen de votre choix.<br />Une personne possédant le code d'accès "
+"aura un accès complet au projet, y compris pour changer le code d'accès "
+"ou l'adresse email associée au projet, voire même supprimer complètement "
+"le projet."
+
+msgid "Identifier:"
+msgstr "Identifiant :"
+
+msgid "Private code:"
+msgstr "Code d’accès :"
+
+msgid "the private code was defined when you created the project"
+msgstr "le code d'accès a été défini lorsque vous avez créé le projet"
+
+msgid "Who pays?"
+msgstr "Qui doit payer ?"
+
+msgid "To whom?"
+msgstr "Pour qui ?"
+
+msgid "Who?"
+msgstr "Qui ?"
+
+msgid "Balance"
+msgstr "Solde"
+
+msgid "deactivate"
+msgstr "désactiver"
+
+msgid "reactivate"
+msgstr "réactiver"
+
+msgid "Paid"
+msgstr "A payé"
+
+msgid "Spent"
+msgstr "A dépensé"
+
+msgid "Expenses by Month"
+msgstr "Dépenses par mois"
+
+msgid "Period"
+msgstr "Période"
+
+#~ msgid ""
+#~ "The project identifier is used to "
+#~ "log in and for the URL of "
+#~ "the project. We tried to generate "
+#~ "an identifier for you but a "
+#~ "project with this identifier already "
+#~ "exists. Please create a new identifier"
+#~ " that you will be able to "
+#~ "remember."
+#~ msgstr ""
+#~ "L’identifiant du projet est utilisé pour"
+#~ " se connecter.Nous avons essayé de "
+#~ "générer un identifiant mais celui ci "
+#~ "existe déjà. Merci de créer un "
+#~ "nouvel identifiant que vous serez "
+#~ "capable de retenir"
+
+#~ msgid "Start date"
+#~ msgstr "Date de départ"
+
+#~ msgid "End date"
+#~ msgstr "Date de fin"
+
+#~ msgid "\"No token provided\""
+#~ msgstr "Aucun token n’a été fourni."
+
+#~ msgid "User '%(name)s' has been deactivated"
+#~ msgstr "Le membre '%(name)s' a été désactivé"
+
+#~ msgid "Invite"
+#~ msgstr "Invitez"
+
+#~ msgid ""
+#~ "Not a valid amount or expression.Only"
+#~ " numbers and + - * / operators"
+#~ " are accepted."
+#~ msgstr ""
+#~ "Pas un montant ou une expression "
+#~ "valide. Seuls les nombres et les "
+#~ "opérateurs+ - * / sont acceptés"
+
+#~ msgid ""
+#~ "The project identifier is used to "
+#~ "log in and for the URL of "
+#~ "the project. We tried to generate "
+#~ "an identifier for you but a "
+#~ "project with this identifier already "
+#~ "exists. Please create a new identifier"
+#~ " that you will be able to "
+#~ "remember"
+#~ msgstr ""
+#~ "L’identifiant du projet est utilisé pour"
+#~ " se connecter et pour l’URL du "
+#~ "projet. Nous avons essayé de générer "
+#~ "un identifiant mais celui ci existe "
+#~ "déjà. Merci de créer un nouvel "
+#~ "identifiant que vous serez capable de"
+#~ " retenir"
+
+#~ msgid ""
+#~ "Not a valid amount or expression.Only"
+#~ " numbers and + - * / "
+#~ "operatorsare accepted."
+#~ msgstr ""
+
+#~ msgid "What do you want to download ?"
+#~ msgstr "Que voulez-vous télécharger ?"
+
+#~ msgid "bills"
+#~ msgstr "factures"
+
+#~ msgid "transactions"
+#~ msgstr "remboursements"
+
+#~ msgid "Export file format"
+#~ msgstr "Format du fichier d’export"
+
+#~ msgid "Edit this project"
+#~ msgstr "Éditer ce projet"
+
+#~ msgid "Download this project's data"
+#~ msgstr "Télécharger les données de ce projet"
+
+#~ msgid "Type user name here"
+#~ msgstr "Nouveau participant"
+
+#~ msgid "No, thanks"
+#~ msgstr "Non merci"
+
+#~ msgid "Manage your shared <br>expenses, easily"
+#~ msgstr "Gérez vos dépenses <br>partagées, facilement"
+
+#~ msgid "Log to an existing project"
+#~ msgstr "Se connecter à un projet existant"
+
+#~ msgid "log in"
+#~ msgstr "se connecter"
+
+#~ msgid "or create a new one"
+#~ msgstr "ou créez en un nouveau"
+
+#~ msgid "let's get started"
+#~ msgstr "c’est parti !"
+
+#~ msgid "options"
+#~ msgstr "options"
+
+#~ msgid "Project settings"
+#~ msgstr "Options du projet"
+
+#~ msgid "This is free software"
+#~ msgstr "Ceci est un logiciel libre"
+
+#~ msgid "Invite people to join this project!"
+#~ msgstr "Invitez d’autres personnes à rejoindre ce projet !"
+
+#~ msgid "Added on"
+#~ msgstr "Ajouté le"
+
+#~ msgid "Nothing to list yet. You probably want to"
+#~ msgstr "Rien à lister pour l’instant. Vous voulez surement"
+
+#~ msgid ""
+#~ "Specify a (comma separated) list of "
+#~ "email adresses you want to notify "
+#~ "about the\n"
+#~ "creation of this budget management "
+#~ "project and we will send them an"
+#~ " email for you."
+#~ msgstr ""
+#~ "Entrez les adresses des personnes que vous souhaitez inviter,\n"
+#~ "séparées par des virgules, on s’occupe de leur envoyer un email."
+
+#~ msgid ""
+#~ "If you prefer, you can share the project identifier and the shared\n"
+#~ "password by other communication means. "
+#~ "Or even directly share the following "
+#~ "link:"
+#~ msgstr ""
+#~ "Si vous préférez vous pouvez partager l’identifiant du projet\n"
+#~ "et son mot de passe par un "
+#~ "autre moyen de communication. Ou "
+#~ "directement partager le lien suivant :"
+
+#~ msgid "A link to reset your password has been sent to your email."
+#~ msgstr "Un lien pour changer votre mot de passe vous a été envoyé par mail."
+
+#~ msgid "%(member)s had been added"
+#~ msgstr "%(member)s a bien été ajouté"
+
+#~ msgid "Disabled Project History"
+#~ msgstr "Historisation du projet désactivée"
+
+#~ msgid "Disabled Project History & IP Address Recording"
+#~ msgstr "Historisation du projet et enregistrement des adresses IP désactivés"
+
+#~ msgid "Enabled Project History"
+#~ msgstr "Historisation du projet activée"
+
+#~ msgid "Disabled IP Address Recording"
+#~ msgstr "Enregistrement des adresses IP désactivé"
+
+#~ msgid "Enabled Project History & IP Address Recording"
+#~ msgstr "Historisation du projet et enregistrement des adresses IP activés"
+
+#~ msgid "Enabled IP Address Recording"
+#~ msgstr "Enregistrement des adresses IP activé"
+
+#~ msgid "History Settings Changed"
+#~ msgstr "Changement des paramètres d’historisation"
+
+#~ msgid "changed"
+#~ msgstr "modifié"
+
+#~ msgid "from"
+#~ msgstr "du"
+
+#~ msgid "to"
+#~ msgstr "au"
+
+#~ msgid "Confirm Remove IP Adresses"
+#~ msgstr "Confirmer la suppression des adresses IP"
+
+#~ msgid ""
+#~ "Are you sure you want to delete"
+#~ " all recorded IP addresses from this"
+#~ " project?\n"
+#~ "                The rest of the project"
+#~ " history will be unaffected. This "
+#~ "action cannot be undone."
+#~ msgstr ""
+#~ "Êtes vous sûr de supprimer toutes "
+#~ "les adresses IP enregistrées dans ce "
+#~ "projet ?\n"
+#~ "Le reste de l’historique du projet "
+#~ "restera inchangé. Cette action est "
+#~ "irréversible."
+
+#~ msgid "Close"
+#~ msgstr "Fermer"
+
+#~ msgid "Confirm Delete"
+#~ msgstr "Confirmer la suppression"
+
+#~ msgid "Delete Confirmation"
+#~ msgstr "Confirmation de suppression"
+
+#~ msgid ""
+#~ "Are you sure you want to erase "
+#~ "all history for this project? This "
+#~ "action cannot be undone."
+#~ msgstr ""
+#~ "Êtes vous sûr de supprimer la "
+#~ "totalité de l’historique de ce projet"
+#~ " ? Cette action est irréversible."
+
+#~ msgid "%(msg_compl)sThe project identifier is %(project)s"
+#~ msgstr "%(msg_compl)sL’identifiant de ce projet est %(project)s"
+
+#~ msgid "each"
+#~ msgstr "chacun"
+
+#~ msgid "Error while sending reminder email"
+#~ msgstr "Erreur lors de l’envoi du courriel de rappel"
+
+#~ msgid ""
+#~ "This access code will be sent to"
+#~ " your friends. It is stored as-"
+#~ "is by the server, so don\\'t reuse"
+#~ " a personal password!"
+#~ msgstr ""
+#~ "Ce code d’accès va être envoyé à"
+#~ " vos amis et stocké en clair "
+#~ "sur le serveur. N’utilisez pas un "
+#~ "mot de passe personnel !"
+
+#~ msgid "Participant"
+#~ msgstr "Participant"
+
+#~ msgid "Bill"
+#~ msgstr "Facture"
+
+#~ msgid "Select all"
+#~ msgstr "Tout cocher"
+
+#~ msgid "Select none"
+#~ msgstr "Tout décocher"
+
+#~ msgid "Added"
+#~ msgstr "Ajouté"
+
+#~ msgid "Removed"
+#~ msgstr "Supprimé"
+
+#~ msgid "and"
+#~ msgstr "et"
+
+#~ msgid "owers list"
+#~ msgstr "Liste des débiteurs"
+
+#~ msgid "added"
+#~ msgstr "ajouté"
+
+#~ msgid "Project renamed to"
+#~ msgstr "Le projet a été renommé"
+
+#~ msgid "deactivated"
+#~ msgstr "désactivé"
+
+#~ msgid "reactivated"
+#~ msgstr "réactivé"
+
+#~ msgid "renamed to"
+#~ msgstr "renommé en"
+
+#~ msgid "External link changed to"
+#~ msgstr "Le lien d'accès a été modifié en"
+
+#~ msgid "modified"
+#~ msgstr "modifié"
+
+#~ msgid "removed"
+#~ msgstr "supprimé"
+
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr "L’identifiant du projet ou le token fourni n’est pas correct."
+
+#~ msgid "User name incorrect"
+#~ msgstr "Nom d’utilisateur incorrect"
+
+#~ msgid "People to notify"
+#~ msgstr "Personnes à prévenir"
+
+#~ msgid "User '%(name)s' has been edited"
+#~ msgstr "Le membre « %(name)s » a été édité"
+
+#~ msgid "Number of members"
+#~ msgstr "Nombre de membres"
+
+#~ msgid "Edit this member"
+#~ msgstr "Éditer ce⋅tte participant⋅e"
+
+#~ msgid "Participants to notify"
+#~ msgstr "ajouter des participant⋅e⋅s"
+
+#~ msgid "Import"
+#~ msgstr "Importer"
+
+#~ msgid "Amount paid"
+#~ msgstr "Montant"
+
+#~ msgid "Bills can't be null"
+#~ msgstr "Le montant d’une facture ne peut pas être vide"
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "L’identifiant de ce projet est %(project)s"
+
+#~ msgid "Invalid JSON"
+#~ msgstr "Le fichier JSON est invalide"
+
+#~ msgid "Are you sure?"
+#~ msgstr "Êtes-vous sûr⋅e ?"
+
+#~ msgid "Import JSON"
+#~ msgstr "Importer le fichier JSON"
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>This project has history "
+#~ "disabled. New actions won't appear "
+#~ "below. You can enable history on "
+#~ "the</i>\n"
+#~ "            <a href=\"%(url)s\">settings page</a>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            <i>L'historique de ce projet "
+#~ "a été désactivé. Les nouvelles actions"
+#~ " n'apparaîtront pas ci-dessous. Vous "
+#~ "pouvez réactiver l'historique du projet "
+#~ "dans les </i>\n"
+#~ "            <a href=\"%(url)s\">paramètres du projet</a>\n"
+#~ "            "
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>The table below reflects "
+#~ "actions recorded prior to disabling "
+#~ "project history. You can\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">clear project history</a>"
+#~ " to remove them.</i></p>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            <i>Le tableau ci-dessous "
+#~ "liste les actions enregistrées avant la"
+#~ " désactivation de l'historique du projet."
+#~ " Vous pouvez\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">supprimer l'historique du"
+#~ " projet</a> pour les supprimer.</i></p>\n"
+#~ "            "
+
+#~ msgid "Send invites"
+#~ msgstr "Envoyer les invitations"
+
+#~ msgid " show"
+#~ msgstr "voir"
+
+#~ msgid "Edit the project"
+#~ msgstr "Éditer le projet"
+
+#~ msgid "You probably want to"
+#~ msgstr "Vous souhaitez sûrement"
+
+#~ msgid "add participants"
+#~ msgstr "ajouter des participant⋅es"
+
+#~ msgid ""
+#~ "You can share the project identifier "
+#~ "and the private code by any "
+#~ "communication means."
+#~ msgstr ""
+#~ "Vous pouvez partager l'identifiant de ce"
+#~ " projet et le code d'accès par "
+#~ "d'autres moyens."
+
+#~ msgid "Share the Link"
+#~ msgstr "Partagez le lien"
+
+#~ msgid "You can directly share the following link via your prefered medium"
+#~ msgstr "Vous pouvez directement partager le lien suivant"

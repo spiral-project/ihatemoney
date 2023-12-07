@@ -1,0 +1,6 @@
+[program:ihatemoney]
+command={{ bin_path }}/gunicorn -c /etc/ihatemoney/gunicorn.conf.py ihatemoney.wsgi:application
+user=ihatemoney
+autostart=true
+autorestart=true
+redirect_stderr=true

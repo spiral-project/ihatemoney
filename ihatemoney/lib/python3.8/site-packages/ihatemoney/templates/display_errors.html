@@ -1,0 +1,5 @@
+{% for field_name, field_errors in form.errors.items() if field_errors %}
+    {% for error in field_errors %}
+        <p class="alert alert-danger"><strong>{{ form[field_name].label.text }}:</strong> {{ error|escape }}</p>
+    {% endfor %}
+{% endfor %}

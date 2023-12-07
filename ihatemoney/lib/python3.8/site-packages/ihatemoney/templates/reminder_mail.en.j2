@@ -1,0 +1,9 @@
+Hi,
+
+You have just (or someone else using your email address) created the project "{{ project.name }}" to share your expenses.
+
+You can access it here: {{ url_for("main.list_bills", _external=True) }} (the identifier is {{ project.id }}).
+If you want to share this project with your friends, you can share the identifier and the shared password with them or send them invitations with the following link:
+{{ url_for("main.invite", _external=True) }}
+
+Enjoy,
