@@ -1,19 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-29 14:24+0200\n"
-"PO-Revision-Date: 2022-04-11 17:12+0000\n"
-"Last-Translator: Santiago José Gutiérrez Llanos "
-"<gutierrezapata17@gmail.com>\n"
+"PO-Revision-Date: 2023-11-27 05:02+0000\n"
+"Last-Translator: Wilfredo Gomez <thepageguy@mailfence.com>\n"
+"Language-Team: Spanish (Latin America) <https://hosted.weblate.org/projects/"
+"i-hate-money/i-hate-money/es_419/>\n"
 "Language: es_419\n"
-"Language-Team: Spanish (Latin America) "
-"<https://hosted.weblate.org/projects/i-hate-money/i-hate-money/es_419/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.2.1-rc\n"
 "Generated-By: Babel 2.9.0\n"
 
 #, python-format
@@ -30,18 +29,17 @@ msgstr ""
 msgid "Project name"
 msgstr "Nombre del Proyecto"
 
-#, fuzzy
 msgid "Current private code"
-msgstr "Nuevo código privado"
+msgstr "código privado actual"
 
 msgid "Enter existing private code to edit project"
-msgstr ""
+msgstr "Ingrese el código privado existente para editar el proyecto"
 
 msgid "New private code"
-msgstr "Nuevo código privado"
+msgstr "Nuevo Código privado"
 
 msgid "Enter a new code if you want to change it"
-msgstr "Entra un nuevo código si tu quieres cambiarlo"
+msgstr "Introduce un nuevo código si quieres cambiarlo"
 
 msgid "Email"
 msgstr "Correo Electrónico"
@@ -50,31 +48,31 @@ msgid "Enable project history"
 msgstr "Habilitar historial del proyecto"
 
 msgid "Use IP tracking for project history"
-msgstr "Registrar la IPs para el historial del proyecto"
+msgstr "Utilice el seguimiento de IP para el historial del proyecto"
 
 msgid "Default Currency"
 msgstr "Moneda por defecto"
 
 msgid "Setting a default currency enables currency conversion between bills"
 msgstr ""
-"Establecer una moneda predeterminada permite la conversión de divisas "
-"entre facturas"
+"Establecer una moneda predeterminada permite la conversión de moneda entre "
+"billetes"
 
 msgid "Unknown error"
 msgstr "Error desconocido"
 
 msgid "Invalid private code."
-msgstr "Código privado inválido."
+msgstr "Código privado no válido."
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
-"Este proyecto no se puede establecer en 'ninguna moneda' porque contiene "
-"facturas en varias monedas."
+"Este proyecto no se puede configurar como \"sin moneda\" porque contiene "
+"billetes en varias monedas."
 
 msgid "Compatible with Cospend"
-msgstr ""
+msgstr "Compatible con Cospend"
 
 msgid "Project identifier"
 msgstr "Identificador de proyecto"
@@ -94,16 +92,16 @@ msgstr ""
 "favor, elija un nuevo identificador"
 
 msgid "Which is a real currency: Euro or Petro dollar?"
-msgstr "¿Cuál es una moneda real: euro o petro dólar?"
+msgstr "¿Cuál es la moneda real: el euro o el petrodólar?"
 
 msgid "euro"
-msgstr "Euro"
+msgstr "euro"
 
 msgid "Please, validate the captcha to proceed."
-msgstr "Por favor, completa el captcha para seguir."
+msgstr "Por favor, valide la captcha para proceder."
 
 msgid "Enter private code to confirm deletion"
-msgstr "Introduzca el código privado para confirmar la eliminación"
+msgstr "Ingrese el código privado para confirmar la eliminación"
 
 msgid "Get in"
 msgstr "Entrar"
@@ -124,7 +122,7 @@ msgid "Password"
 msgstr "Contraseña"
 
 msgid "Password confirmation"
-msgstr "Confirmar contraseña"
+msgstr "confirmación de contraseña"
 
 msgid "Reset password"
 msgstr "Restablecer contraseña"
@@ -161,7 +159,7 @@ msgstr "Enviar y agregar uno nuevo"
 
 #, python-format
 msgid "Project default: %(currency)s"
-msgstr "moneda predeterminada del projecto: %(currency)s"
+msgstr "Projecto por defecto: %(currency)s"
 
 msgid "Name"
 msgstr "Nombre"
@@ -196,15 +194,15 @@ msgstr "Cerrar sesión"
 
 msgid "Please check the email configuration of the server."
 msgstr ""
+"Por favor verifique la configuración de correo electrónico del servidor."
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Please check the email configuration of the server or contact the "
 "administrator: %(admin_email)s"
 msgstr ""
-"Lo sentimos, hubo un error cuando intentamos enviarle correos de "
-"invitación. Por favor, revise la configuración de correo en el servidor o"
-" contactese con el administrador."
+"Verifique la configuración de correo electrónico del servidor o comuníquese "
+"con el administrador: %(admin_email)s"
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
@@ -223,53 +221,47 @@ msgid "{start_object}, {next_object}"
 msgstr "{start_object}, {next_object}"
 
 msgid "No Currency"
-msgstr "no moneda"
+msgstr "No Moneda"
 
 #. Form error with only one error
 msgid "{prefix}: {error}"
-msgstr "{prefijo}: {error}"
+msgstr "{prefix}: {error}"
 
 #. Form error with a list of errors
 msgid "{prefix}:<br />{errors}"
-msgstr "{prefijo}:<br />{errores}"
+msgstr "{prefix}:<br />{errors}"
 
-#, fuzzy
 msgid "Too many failed login attempts."
-msgstr ""
-"Demasiados intentos fallidos de inicio de sesión, vuelva a intentarlo más"
-" tarde."
+msgstr "Demasiados intentos fallidos de inicio de sesión."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr ""
 "Esta contraseña de administrador no es la correcta. Solo quedan %(num)d "
-"intentos."
+"intentos restantes."
 
 msgid "Provided token is invalid"
-msgstr "La muestra proporcionada no es válida"
+msgstr "El token proporcionado no es válido"
 
 msgid "This private code is not the right one"
 msgstr "Este código privado no es el correcto"
 
 msgid "A reminder email has just been sent to you"
-msgstr "Acabamos de enviarte un email de recordatorio"
+msgstr "Se le acaba de enviar un correo electrónico de recordatorio"
 
 msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
-"Te hemos intentado enviar un correo electrónico recordatorio pero ha "
-"habido un error. Todavía puedes usar el proyecto habitualmente."
+"Intentamos enviarte un correo electrónico de recordatorio, pero hubo un "
+"error. Aún puedes usar el proyecto normalmente."
 
-#, fuzzy
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
 "instructions."
 msgstr ""
-"Lo sentimos, hubo un error al enviarle un correo electrónico con las "
-"instrucciones de restablecimiento de contraseña. Compruebe la "
-"configuración de correo electrónico del servidor o póngase en contacto "
-"con el administrador."
+"Lo sentimos, hubo un error al enviarle un correo electrónico con "
+"instrucciones para restablecer la contraseña."
 
 msgid "No token provided"
 msgstr "No se proporciono ningún token"
@@ -284,33 +276,33 @@ msgid "Password successfully reset."
 msgstr "Contraseña restablecida con éxito."
 
 msgid "Project settings have been changed successfully."
-msgstr ""
+msgstr "La configuración del proyecto se ha cambiado correctamente."
 
 msgid "Unable to parse CSV"
-msgstr ""
+msgstr "No se puede analizar CSV"
 
 #, python-format
 msgid "Missing attribute: %(attribute)s"
-msgstr ""
+msgstr "Atributo faltante: %(attribute)s"
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
 msgstr ""
-"No se pueden agregar facturas en varias monedas a un proyecto sin la "
-"moneda predeterminada"
+"No se pueden agregar billetes en varias monedas a un proyecto sin moneda "
+"predeterminada"
 
 msgid "Project successfully uploaded"
-msgstr "El proyecto se subió exitosamente"
+msgstr "Proyecto cargado exitosamente"
 
 msgid "Project successfully deleted"
 msgstr "Proyecto eliminado correctamente"
 
 msgid "Error deleting project"
-msgstr "Error al borrar poryecto"
+msgstr "Error al borrar proyecto"
 
 msgid "Unable to logout"
-msgstr ""
+msgstr "No se puede cerrar sesión"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
@@ -319,26 +311,24 @@ msgstr "Usted ha sido invitado a compartir sus gastos para %(project)s"
 msgid "Your invitations have been sent"
 msgstr "Sus invitaciones han sido enviadas"
 
-#, fuzzy
 msgid "Sorry, there was an error while trying to send the invitation emails."
 msgstr ""
-"Lo sentimos, hubo un error cuando intentamos enviarle correos de "
-"invitación. Por favor, revise la configuración de correo en el servidor o"
-" contactese con el administrador."
+"Lo sentimos, hubo un error al intentar enviar los correos electrónicos de "
+"invitación."
 
 #, python-format
 msgid "%(member)s has been added"
-msgstr "Se añadieron %(member)s"
+msgstr "%(member)s ha sido añadido"
 
 msgid "Error activating participant"
-msgstr "Error activando participante"
+msgstr "Error al activar el participante"
 
 #, python-format
 msgid "%(name)s is part of this project again"
-msgstr "%(name)s es parte de este nuevo proyecto"
+msgstr "%(name)s es parte de este proyecto otra vez"
 
 msgid "Error removing participant"
-msgstr "Error eliminando participante"
+msgstr "Error al eliminar el participante"
 
 #, python-format
 msgid ""
@@ -360,7 +350,7 @@ msgid "The bill has been added"
 msgstr "La factura ha sido agregada"
 
 msgid "Error deleting bill"
-msgstr "Error eliminando factura"
+msgstr "Error al eliminar la factura"
 
 msgid "The bill has been deleted"
 msgstr "La factura ha sido eliminada"
@@ -370,7 +360,7 @@ msgstr "La factura ha sido modificada"
 
 #, python-format
 msgid "%(lang)s is not a supported language"
-msgstr ""
+msgstr "%(lang)s no es un idioma admitido"
 
 msgid "Error deleting project history"
 msgstr "Error al eliminar el historial del proyecto"
@@ -450,9 +440,8 @@ msgstr "Conseguir en"
 msgid "Edit project"
 msgstr "Editar proyecto"
 
-#, fuzzy
 msgid "Import project"
-msgstr "Editar proyecto"
+msgstr "Importar proyecto"
 
 msgid "Download project's data"
 msgstr "Descargar datos del proyecto"
@@ -481,14 +470,13 @@ msgid "Privacy Settings"
 msgstr "Ajustes de privacidad"
 
 msgid "Save changes"
-msgstr ""
+msgstr "Guardar cambios"
 
 msgid "This will remove all bills and participants in this project!"
 msgstr "Esto va a remover todas las facturas y participantes en este proyecto!"
 
-#, fuzzy
 msgid "Import previously exported project"
-msgstr "Importar archivo JSON previamente exportado"
+msgstr "Importar proyecto previamente exportado"
 
 msgid "Choose file"
 msgstr "Escoger un archivo"
@@ -500,7 +488,7 @@ msgid "Add a bill"
 msgstr "Agregar una factura"
 
 msgid "Simple operations are allowed, e.g. (18+36.2)/3"
-msgstr ""
+msgstr "Se permiten operaciones simples, e.j. (18+36.2)/3"
 
 msgid "Everyone"
 msgstr "Todos"
@@ -524,13 +512,13 @@ msgid "Download"
 msgstr "Descargar"
 
 msgid "Disabled Project History"
-msgstr "Historial de proyecto activo"
+msgstr "Historial de proyectos deshabilitado"
 
 msgid "Disabled Project History & IP Address Recording"
 msgstr "Historial de proyecto y registros de dirección IP inactivos"
 
 msgid "Enabled Project History"
-msgstr "Historial de proyecto activo"
+msgstr "Historial de proyectos habilitado"
 
 msgid "Disabled IP Address Recording"
 msgstr "Registro de direcciones IP activo"
@@ -592,19 +580,21 @@ msgstr "Factura %(name)s: removida %(owers_list_str)s de la lista de dueños"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
+"Este proyecto tiene el historial deshabilitado. Las nuevas acciones no "
+"aparecerán a continuación."
 
-#, fuzzy
 msgid "You can enable history on the settings page."
-msgstr "El registro de direcciones IP se puede activar en la página de ajustes"
+msgstr "Puede habilitar el historial en la página de configuración."
 
 msgid ""
 "The table below reflects actions recorded prior to disabling project "
 "history."
 msgstr ""
+"La siguiente tabla refleja las acciones registradas antes de deshabilitar el "
+"historial del proyecto."
 
-#, fuzzy
 msgid "You can clear the project history to remove them."
-msgstr "Es probable que alguien borrara el historial del proyecto."
+msgstr "Puede borrar el historial del proyecto para eliminarlos."
 
 msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
@@ -801,7 +791,7 @@ msgid "Settings"
 msgstr "Configuración"
 
 msgid "RSS Feed"
-msgstr ""
+msgstr "rss Feed"
 
 msgid "Other projects :"
 msgstr "Otros proyectos :"
@@ -814,7 +804,7 @@ msgstr "Tablero"
 
 #, python-format
 msgid "Please retry after %(date)s."
-msgstr ""
+msgstr "Vuelva a intentarlo después de %(date)s."
 
 msgid "Code"
 msgstr "Código"
@@ -879,13 +869,11 @@ msgstr "Sin facturas"
 msgid "Nothing to list yet."
 msgstr "Aún no hay nada que listar."
 
-#, fuzzy
 msgid "Add your first bill"
-msgstr "agregar una factura"
+msgstr "Añade tu primera factura"
 
-#, fuzzy
 msgid "Add the first participant"
-msgstr "Editar este participante"
+msgstr "Agregar el primer participante"
 
 msgid "Password reminder"
 msgstr "Recordar contraseña"
@@ -910,7 +898,7 @@ msgid "Invite people to join this project"
 msgstr "Invita a personas a unirse a este proyecto"
 
 msgid "Share an invitation link"
-msgstr ""
+msgstr "Compartir un enlace de invitación"
 
 msgid ""
 "The easiest way to invite people is to give them the following invitation"
@@ -918,26 +906,29 @@ msgid ""
 " add/edit/delete bills. However, they will not have access to important "
 "settings such as changing the private code or deleting the whole project."
 msgstr ""
+"La forma más sencilla de invitar personas es dándoles el siguiente enlace de "
+"invitación.<br />Podrán acceder al proyecto, administrar participantes, "
+"agregar/editar/eliminar facturas. Sin embargo, no tendrán acceso a "
+"configuraciones importantes como cambiar el código privado o eliminar todo "
+"el proyecto."
 
 msgid "Scan QR code"
-msgstr ""
+msgstr "Escanear código QR"
 
 msgid "Use a mobile device with a compatible app."
-msgstr ""
+msgstr "Utilice un dispositivo móvil con una aplicación compatible."
 
 msgid "Send via Emails"
 msgstr "Enviar por correo electrónico"
 
-#, fuzzy
 msgid ""
 "Specify a list of email adresses (separated by comma) of people you want "
 "to notify about the creation of this project. We will send them an email "
 "with the invitation link."
 msgstr ""
-"Especifique una lista (separada por comas) de las direcciones de correo "
-"electrónico a las que desea notificar acerca de la\n"
-"creación de este proyecto de gestión presupuestaria y les enviaremos un "
-"correo electrónico para usted."
+"Especifique una lista de direcciones de correo electrónico (separadas por "
+"comas) de las personas a las que desea notificar sobre la creación de este "
+"proyecto. Les enviaremos un correo electrónico con el enlace de invitación."
 
 msgid "Share Identifier & code"
 msgstr "Compartir identificador y código"
@@ -948,16 +939,20 @@ msgid ""
 "to the full project, including changing settings such as the private code"
 " or project email address, or even deleting the whole project."
 msgstr ""
+"Puede compartir el identificador del proyecto y el código privado por "
+"cualquier medio de comunicación.<br />Cualquier persona con el código "
+"privado tendrá acceso al proyecto completo, incluido el cambio de "
+"configuraciones como el código privado o la dirección de correo electrónico "
+"del proyecto, o incluso la eliminación completa. proyecto."
 
 msgid "Identifier:"
 msgstr "Identificador:"
 
-#, fuzzy
 msgid "Private code:"
-msgstr "Código privado"
+msgstr "Código privado:"
 
 msgid "the private code was defined when you created the project"
-msgstr ""
+msgstr "el código privado se definió cuando creaste el proyecto"
 
 msgid "Who pays?"
 msgstr "¿Quién paga?"
@@ -1170,4 +1165,3 @@ msgstr "Período"
 #~ "Puedes compartir directamente el siguiente "
 #~ "enlace a través de tu medio "
 #~ "preferido"
-
