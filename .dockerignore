@@ -14,9 +14,7 @@ CONTRIBUTORS
 docker-compose.*
 Dockerfile
 docs
-LICENSE
 Makefile
 MANIFEST.in
-README.md
 SECURITY.md
 tox.ini

@@ -274,10 +274,9 @@ In order to issue a new release, follow the following steps:
 
         make compress-assets
 
--   Build the translations:
+-   Extract the translations:
 
-        make update-translations
-        make build-translations
+        make extract-translations
 
 -   If you're not completely sure of yourself at this point, you can
     optionally: create a new branch, push it, open a pull request, check

@@ -1,5 +1,6 @@
 *.pyc
 *.egg-info
+*.mo
 dist
 .venv
 docs/_build/
