@@ -2,6 +2,12 @@
 
 This document describes changes between each past release.
 
+## 6.1.5 (unreleased)
+
+
+- Nothing changed yet.
+
+
 ## 6.1.4 (2023-12-14)
 
 - Fix missing markdown include in manifest (#1274)
