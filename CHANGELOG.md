@@ -4,8 +4,7 @@ This document describes changes between each past release.
 
 ## 6.1.5 (unreleased)
 
-
-- Nothing changed yet.
+- Fix README and changelog not being displayed on PyPI
 
 
 ## 6.1.4 (2023-12-14)
