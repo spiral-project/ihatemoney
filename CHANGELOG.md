@@ -2,7 +2,7 @@
 
 This document describes changes between each past release.
 
-## 6.1.4 (unreleased)
+## 6.1.4 (2023-12-14)
 
 - Fix missing markdown include in manifest (#1274)
 - Update translations for Chinese, Turkish, Czech, Spanish (Latin America), Swedish
