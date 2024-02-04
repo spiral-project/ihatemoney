@@ -196,7 +196,7 @@ def list_of_dicts2csv(dict_to_convert):
     writer = csv.writer(csv_file)
     writer.writerows(csv_data)
     csv_file.seek(0)
-    csv_file = BytesIO(csv_file.getvalue().encode("utf-8"))
+    csv_file = BytesIO(csv_file.getvalue().encode("utf-8-sig"))
     return csv_file
 
 
