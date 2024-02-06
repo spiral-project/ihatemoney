@@ -34,11 +34,12 @@ class TestAPI(IhatemoneyTestCase):
         )
 
     def api_add_member(self, project, name, weight=1):
-        self.client.post(
+        resp = self.client.post(
             f"/api/projects/{project}/members",
             data={"name": name, "weight": weight},
             headers=self.get_auth(project),
         )
+        return resp.json
 
     def get_auth(self, username, password=None):
         password = password or username
@@ -381,6 +382,41 @@ class TestAPI(IhatemoneyTestCase):
 
         self.assertStatus(200, req)
         assert "[]\n" == req.data.decode("utf-8")
+
+    def test_member_edition_keep_data(self):
+        # create a project
+        self.api_create("raclette")
+        zorg_id = self.api_add_member("raclette", "zorglub", weight=2)
+        self.api_add_member("raclette", "jeanne")
+
+        resp = self.client.get(
+            f"/api/projects/raclette/members/{zorg_id}",
+            headers=self.get_auth("raclette"),
+        )
+        assert resp.json == {
+            "activated": True,
+            "id": 1,
+            "name": "zorglub",
+            "weight": 2.0,
+        }
+
+        self.client.put(
+            f"/api/projects/raclette/members/{zorg_id}",
+            data={"name": "zorglub"},
+            headers=self.get_auth("raclette"),
+        )
+
+        resp = self.client.get(
+            f"/api/projects/raclette/members/{zorg_id}",
+            headers=self.get_auth("raclette"),
+        )
+        # The user should still be activated and weight 2
+        assert resp.json == {
+            "activated": True,
+            "id": 1,
+            "name": "zorglub",
+            "weight": 2.0,
+        }
 
     def test_bills(self):
         # create a project
