@@ -63,9 +63,9 @@ class Project(db.Model):
 
     id = db.Column(db.String(64), primary_key=True)
 
-    name = db.Column(db.UnicodeText)
-    password = db.Column(db.String(128))
-    contact_email = db.Column(db.String(128))
+    name = db.Column(db.UnicodeText, nullable=True)
+    password = db.Column(db.String(128), nullable=True)
+    contact_email = db.Column(db.String(128), nullable=True)
     logging_preference = db.Column(
         db.Enum(LoggingMode),
         default=LoggingMode.default(),
@@ -75,7 +75,7 @@ class Project(db.Model):
     members = db.relationship("Person", backref="project")
 
     query_class = ProjectQuery
-    default_currency = db.Column(db.String(3))
+    default_currency = db.Column(db.String(3), nullable=True)
 
     @property
     def _to_serialize(self):
@@ -599,12 +599,12 @@ class Person(db.Model):
     __table_args__ = {"sqlite_autoincrement": True}
 
     id = db.Column(db.Integer, primary_key=True)
-    project_id = db.Column(db.String(64), db.ForeignKey("project.id"))
+    project_id = db.Column(db.String(64), db.ForeignKey("project.id"), nullable=True)
     bills = db.relationship("Bill", backref="payer")
 
-    name = db.Column(db.UnicodeText)
-    weight = db.Column(db.Float, default=1)
-    activated = db.Column(db.Boolean, default=True)
+    name = db.Column(db.UnicodeText, nullable=True)
+    weight = db.Column(db.Float, default=1, nullable=True)
+    activated = db.Column(db.Boolean, default=True, nullable=True)
 
     @property
     def _to_serialize(self):
@@ -670,19 +670,19 @@ class Bill(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
 
-    payer_id = db.Column(db.Integer, db.ForeignKey("person.id"))
+    payer_id = db.Column(db.Integer, db.ForeignKey("person.id"), nullable=True)
     owers = db.relationship(Person, secondary=billowers)
 
-    amount = db.Column(db.Float)
-    date = db.Column(db.Date, default=datetime.datetime.now)
-    creation_date = db.Column(db.Date, default=datetime.datetime.now)
-    what = db.Column(db.UnicodeText)
-    external_link = db.Column(db.UnicodeText)
+    amount = db.Column(db.Float, nullable=True)
+    date = db.Column(db.Date, default=datetime.datetime.now, nullable=True)
+    creation_date = db.Column(db.Date, default=datetime.datetime.now, nullable=True)
+    what = db.Column(db.UnicodeText, nullable=True)
+    external_link = db.Column(db.UnicodeText, nullable=True)
 
-    original_currency = db.Column(db.String(3))
-    converted_amount = db.Column(db.Float)
+    original_currency = db.Column(db.String(3), nullable=True)
+    converted_amount = db.Column(db.Float, nullable=True)
 
-    archive = db.Column(db.Integer, db.ForeignKey("archive.id"))
+    archive = db.Column(db.Integer, db.ForeignKey("archive.id"), nullable=True)
 
     currency_helper = CurrencyConverter()
 
@@ -757,8 +757,8 @@ class Bill(db.Model):
 
 class Archive(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    project_id = db.Column(db.String(64), db.ForeignKey("project.id"))
-    name = db.Column(db.UnicodeText)
+    project_id = db.Column(db.String(64), db.ForeignKey("project.id"), nullable=True)
+    name = db.Column(db.UnicodeText, nullable=True)
 
     @property
     def start_date(self):
