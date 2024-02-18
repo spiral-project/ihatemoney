@@ -437,7 +437,8 @@ class TestAPI(IhatemoneyTestCase):
             "converted_amount": 25.0,
             "original_currency": "XXX",
             "external_link": "https://raclette.fr",
-        }
+            "is_reimbursement": "false",
+	}
 
         got = json.loads(req.data.decode("utf-8"))
         assert (
@@ -506,6 +507,7 @@ class TestAPI(IhatemoneyTestCase):
             "converted_amount": 25.0,
             "original_currency": "XXX",
             "id": 1,
+	    "is_reimbursement": false,
         }
 
         got = json.loads(req.data.decode("utf-8"))

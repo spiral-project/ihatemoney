@@ -160,7 +160,9 @@ class Project(db.Model):
         """
         monthly = defaultdict(lambda: defaultdict(float))
         for bill in self.get_bills_unordered().all():
-            monthly[bill.date.year][bill.date.month] += bill.converted_amount
+            if (bill.is_reimbursement == False):
+            # if (not bill.what.startswith("R-")):
+                monthly[bill.date.year][bill.date.month] += bill.converted_amount
         return monthly
 
     @property
@@ -681,6 +683,7 @@ class Bill(db.Model):
 
     original_currency = db.Column(db.String(3))
     converted_amount = db.Column(db.Float)
+    is_reimbursement = db.Column(db.Boolean)
 
     archive = db.Column(db.Integer, db.ForeignKey("archive.id"))
 
@@ -696,6 +699,7 @@ class Bill(db.Model):
         payer_id: int = None,
         project_default_currency: str = "",
         what: str = "",
+        is_reimbursement:bool = False
     ):
         super().__init__()
         self.amount = amount
@@ -705,6 +709,7 @@ class Bill(db.Model):
         self.owers = owers
         self.payer_id = payer_id
         self.what = what
+        self.is_reimbursement = is_reimbursement
         self.converted_amount = self.currency_helper.exchange_currency(
             self.amount, self.original_currency, project_default_currency
         )
@@ -722,6 +727,7 @@ class Bill(db.Model):
             "external_link": self.external_link,
             "original_currency": self.original_currency,
             "converted_amount": self.converted_amount,
+            "is_reimbursement": self.is_reimbursement,
         }
 
     def pay_each_default(self, amount):
