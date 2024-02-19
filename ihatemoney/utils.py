@@ -204,7 +204,7 @@ def csv2list_of_dicts(csv_to_convert):
     """Take a csv in-memory file and turns it into
     a list of dictionnaries
     """
-    csv_file = TextIOWrapper(csv_to_convert, encoding="utf-8")
+    csv_file = TextIOWrapper(csv_to_convert, encoding="utf-8-sig")
     reader = csv.DictReader(csv_file)
     result = []
     for r in reader:
