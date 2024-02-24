@@ -20,6 +20,7 @@ import jinja2
 from markupsafe import Markup, escape
 from werkzeug.exceptions import HTTPException
 from werkzeug.routing import RoutingException
+from werkzeug.security import generate_password_hash as werkzeug_generate_password_hash
 
 limiter = limiter = Limiter(
     current_app,
@@ -64,15 +65,19 @@ def flash_email_error(error_message, category="danger"):
     (admin_name, admin_email) = email.utils.parseaddr(
         current_app.config.get("MAIL_DEFAULT_SENDER")
     )
-    error_extension = "."
+    error_extension = _("Please check the email configuration of the server.")
     if admin_email != "admin@example.com" and current_app.config.get(
         "SHOW_ADMIN_EMAIL"
     ):
-        error_extension = f" or contact the administrator at {admin_email}."
+        error_extension = _(
+            "Please check the email configuration of the server "
+            "or contact the administrator: %(admin_email)s",
+            admin_email=admin_email,
+        )
 
     flash(
-        _(
-            f"{error_message} Please check the email configuration of the server{error_extension}"
+        "{error_message} {error_extension}".format(
+            error_message=error_message, error_extension=error_extension
         ),
         category=category,
     )
@@ -454,3 +459,15 @@ def format_form_errors(form, prefix):
         errors = f"<ul><li>{error_list}</li></ul>"
         # I18N: Form error with a list of errors
         return Markup(_("{prefix}:<br />{errors}").format(prefix=prefix, errors=errors))
+
+
+def generate_password_hash(*args, **kwargs):
+    if current_app.config.get("PASSWORD_HASH_METHOD"):
+        kwargs.setdefault("method", current_app.config["PASSWORD_HASH_METHOD"])
+
+    if current_app.config.get("PASSWORD_HASH_SALT_LENGTH"):
+        kwargs.setdefault(
+            "salt_length", current_app.config["PASSWORD_HASH_SALT_LENGTH"]
+        )
+
+    return werkzeug_generate_password_hash(*args, **kwargs)

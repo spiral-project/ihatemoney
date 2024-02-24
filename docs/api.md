@@ -34,9 +34,9 @@ the token (of course, you need to authenticate):
     $ curl --basic -u demo:demo https://ihatemoney.org/api/projects/demo/token
     {"token": "WyJ0ZXN0Il0.Rt04fNMmxp9YslCRq8hB6jE9s1Q"}
 
-Make sure to store this token securely: it allows full access to the
+Make sure to store this token securely: it allows almost full access to the
 project. For instance, use it to obtain information about the project
-(replace PROJECT_TOKEN with the actual token):
+(replace `PROJECT_TOKEN` with the actual token):
 
     $ curl --oauth2-bearer "PROJECT_TOKEN" https://ihatemoney.org/api/projects/demo
 
@@ -51,7 +51,8 @@ simply create an URL of the form:
 
     https://ihatemoney.org/demo/join/PROJECT_TOKEN
 
-Such a link grants full access to the project associated with the token.
+Such a link grants read-write access to the project associated with the token,
+but it does not allow to change project settings.
 
 ### Projects
 
@@ -67,8 +68,8 @@ A project needs the following arguments:
 -   `name`: the project name (string)
 -   `id`: the project identifier (string without special chars or
     spaces)
--   `password`: the project password / secret code (string)
--   `contact_email`: the contact email (string)
+-   `password`: the project password / private code (string)
+-   `contact_email`: the contact email, used to recover the private code (string)
 
 Optional arguments:
 
@@ -83,7 +84,9 @@ Here is the command:
     -d 'name=yay&id=yay&password=yay&contact_email=yay@notmyidea.org'
     "yay"
 
-As you can see, the API returns the identifier of the project.
+As you can see, the API returns the identifier of the project. It might be different
+from what you requested, because the ID is normalized (remove special characters,
+change to lowercase, etc).
 
 #### Getting information about the project
 
@@ -108,7 +111,12 @@ Updating a project is done with the `PUT` verb:
 
     $ curl --basic -u yay:yay -X PUT\
     https://ihatemoney.org/api/projects/yay -d\
-    'name=yay&id=yay&password=yay&contact_email=youpi@notmyidea.org'
+    'name=yay&id=yay&current_password=yay&password=newyay&contact_email=youpi@notmyidea.org'
+
+You need to give the current private code as the `current_password` field. This is a security
+measure to ensure that knowledge of an auth token is not enough to update settings.
+
+Note that in any case you can never change the ID of a project.
 
 #### Deleting a project
 
@@ -125,7 +133,7 @@ You can get all the members with a `GET` on
     [{"weight": 1, "activated": true, "id": 31, "name": "Arnaud"},
      {"weight": 1, "activated": true, "id": 32, "name": "Alexis"},
      {"weight": 1, "activated": true, "id": 33, "name": "Olivier"},
-     {"weight": 1, "activated": true, "id": 34, "name": "Fred"}]
+     {"weight": 1, "activated": true, "id": 34, "name": "Jeanne"}]
 
 Add a member with a `POST` request on `/api/projects/<id>/members`:
 
@@ -236,7 +244,7 @@ You can get some project stats with a `GET` on
             "balance": 10.5
         },
         {
-            "member": {"activated": true, "id": 2, "name": "fred", "weight": 1.0},
+            "member": {"activated": true, "id": 2, "name": "jeanne", "weight": 1.0},
             "paid": 5,
             "spent": 15.5,
             "balance": -10.5

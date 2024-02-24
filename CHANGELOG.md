@@ -2,19 +2,103 @@
 
 This document describes changes between each past release.
 
-## 6.0.0 (unreleased)
+## 6.2.0 (unreleased)
 
-### Breaking
+
+- Add support for python 3.12 (#757)
+
+
+## 6.1.3 (2023-11-23)
+
+- Revert update to flask and werkzeug 2.3 because of a regression (see #1272)
+
+
+## 6.1.2 (2023-11-19)
+
+- Fix password generation command line crash (#1242)
+- Update to flask and werkzeug 2.3 (#1244)
+
+
+## 6.1.1 (2023-10-04)
+
+### Currency conversion API workarounds
+
+We are using an external API for currency conversion.  This API recently
+started requiring an API key, and this broke I Hate Money in many ways.
+
+This release adds a set of workarounds for this issue.  This should restore
+basic functionality such as adding bills.  However, we had to disable
+some operations to prevent crashing:
+
+- Setting or changing the default currency on an existing project is no longer possible.
+  However, setting a project to "No currency" is still possible.
+- Adding or editing a bill with a currency that differs from the default currency
+  of the project is no longer possible
+
+[Longer-term solutions are being discussed](https://github.com/spiral-project/ihatemoney/issues/1232).
+If you are using currencies in your projects, your input is welcome.
+
+### Added
+
+- Simplifies adding a bill with keyboard only (#1221)
+- Add details of bills in history (#1223)
+- Remember last "For whom?" field when adding a new bill (#1222)
+- Speed up unit tests (#1214)
+- Update translations for Spanish, Russian, Kannada, Swedish, Polish, German, and Italian
+
+### Fixed
+- Fix remembering the last selected payer when switching project (#1224)
+
+
+## 6.1.0 (2023-07-29)
+
+### Added
+- Add RSS feed for each project (#1158)
+- Security: require private code to edit a project settings (#1204)
+
+### Fixed
+- Fix 404 page crash (#1201)
+
+
+## 6.0.1 (2023-07-22)
+
+### Added
+- Add support for `APPLICATION_ROOT` in Docker container (#1189)
+- Improve docker-compose example: admin password and volume for database (#1169)
+
+### Fixed
+- Fix docker-compose example quoting (#1164)
+- Fix crash when using existing sessions (migrate them to dict) (#1194)
+- Add newly created projects to the list of projects (#1193)
+
+
+## 6.0.0 (2023-07-13)
+
+### Breaking changes
 - Drop Python 3.6 support
 - Add Python 3.11 support
 
 The minimum supported version is now Python 3.7, and the project is
 tested with up to Python 3.11
 
+### Added
+- Enable new languages: Catalan, Czech, Spanish, Persian, Hebrew, Hungarian, Kannada, Serbian, Telugu, Thai
+- Build ARM64 and ARMv7 Docker image (#1141)
+- Allow bills with an amount of zero (#1133)
+- Add confirmation for expense deletion (#1096)
+- Display a QR code when inviting people (#1000)
+- Add a cancel button when editing a bill for better UX (#1013)
+
+### Fixed
+- Fix project deletion in the dashboard (#1094)
+- Fix duplicate project name in dropdown list (#1082)
+- Fix captcha validation, it should be case insensitive on both side (#1061)
+- Fix CSRF on logout (#1040)
+- Fix XSS when inviting people by email (#1044)
+
 ### Changed
-- Add a cancel button when editing a bill for better UX
-- Translations: Bengali, Indonesian, Polish
-- Pin Werkzeug to avoid dropping Python 3.6 compatibility
+- Use a better quality favicon (#1102)
+- Use Flask-Limiter to implement rate limiting (#1054)
 
 ## 5.2.0 (2022-04-07)
 

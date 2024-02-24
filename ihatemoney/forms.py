@@ -9,7 +9,7 @@ from flask_babel import lazy_gettext as _
 from flask_wtf.file import FileAllowed, FileField, FileRequired
 from flask_wtf.form import FlaskForm
 from markupsafe import Markup
-from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.security import check_password_hash
 from wtforms.fields import (
     BooleanField,
     DateField,
@@ -43,6 +43,7 @@ from ihatemoney.models import Bill, LoggingMode, Person, Project
 from ihatemoney.utils import (
     em_surround,
     eval_arithmetic_expression,
+    generate_password_hash,
     render_localized_currency,
     slugify,
 )
@@ -65,6 +66,9 @@ def get_billform_for(project, set_default=True, **kwargs):
     form = BillForm(**kwargs)
     if form.original_currency.data is None:
         form.original_currency.data = project.default_currency
+
+    # Used in validate_original_currency
+    form.project_currency = project.default_currency
 
     show_no_currency = form.original_currency.data == CurrencyConverter.no_currency
 
@@ -122,6 +126,11 @@ class CalculatorStringField(StringField):
 
 class EditProjectForm(FlaskForm):
     name = StringField(_("Project name"), validators=[DataRequired()])
+    current_password = PasswordField(
+        _("Current private code"),
+        description=_("Enter existing private code to edit project"),
+        validators=[DataRequired()],
+    )
     # If empty -> don't change the password
     password = PasswordField(
         _("New private code"),
@@ -155,6 +164,13 @@ class EditProjectForm(FlaskForm):
             for currency_name in self.currency_helper.get_currencies()
         ]
 
+    def validate_current_password(self, field):
+        project = Project.query.get(self.id.data)
+        if project is None:
+            raise ValidationError(_("Unknown error"))
+        if not check_password_hash(project.password, self.current_password.data):
+            raise ValidationError(_("Invalid private code."))
+
     @property
     def logging_preference(self):
         """Get the LoggingMode object corresponding to current form data."""
@@ -173,12 +189,20 @@ class EditProjectForm(FlaskForm):
             and field.data == CurrencyConverter.no_currency
             and project.has_multiple_currencies()
         ):
-            raise ValidationError(
-                _(
-                    "This project cannot be set to 'no currency'"
-                    " because it contains bills in multiple currencies."
-                )
+            msg = _(
+                "This project cannot be set to 'no currency'"
+                " because it contains bills in multiple currencies."
             )
+            raise ValidationError(msg)
+        if (
+            project is not None
+            and field.data != CurrencyConverter.no_currency
+            and project.has_bills()
+        ):
+            msg = _(
+                "Cannot change project currency because currency conversion is broken"
+            )
+            raise ValidationError(msg)
 
     def update(self, project):
         """Update the project with the information from the form"""
@@ -213,7 +237,9 @@ class ImportProjectForm(FlaskForm):
 
 class ProjectForm(EditProjectForm):
     id = StringField(_("Project identifier"), validators=[DataRequired()])
-    # This field overrides the one from EditProjectForm
+    # Remove this field that is inherited from EditProjectForm
+    current_password = None
+    # This field overrides the one from EditProjectForm (to make it mandatory)
     password = PasswordField(_("Private code"), validators=[DataRequired()])
     submit = SubmitField(_("Create the project"))
 
@@ -392,11 +418,20 @@ class BillForm(FlaskForm):
         self.payed_for.data = self.payed_for.default
 
     def validate_amount(self, field):
-        if field.data == "0":
-            raise ValidationError(_("Bills can't be null"))
-        elif decimal.Decimal(field.data) > decimal.MAX_EMAX:
+        if decimal.Decimal(field.data) > decimal.MAX_EMAX:
             # See https://github.com/python-babel/babel/issues/821
             raise ValidationError(f"Result is too high: {field.data}")
+
+    def validate_original_currency(self, field):
+        # Workaround for currency API breakage
+        # See #1232
+        if field.data not in [CurrencyConverter.no_currency, self.project_currency]:
+            msg = _(
+                "Failed to convert from %(bill_currency)s currency to %(project_currency)s",
+                bill_currency=field.data,
+                project_currency=self.project_currency,
+            )
+            raise ValidationError(msg)
 
     def validate_bill_type(self, field):
         if (field.data, field.data) not in Project.bill_types:
@@ -443,7 +478,7 @@ class MemberForm(FlaskForm):
 
 class InviteForm(FlaskForm):
     emails = StringField(_("People to notify"), render_kw={"class": "tag"})
-    submit = SubmitField(_("Send invites"))
+    submit = SubmitField(_("Send the invitations"))
 
     def validate_emails(self, field):
         for email in [email.strip() for email in self.emails.data.split(",")]:

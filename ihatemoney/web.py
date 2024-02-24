@@ -10,12 +10,14 @@ and `add_project_id` for a quick overview)
 """
 import datetime
 from functools import wraps
+import hashlib
 import json
 import os
 from urllib.parse import urlparse, urlunparse
 
 from flask import (
     Blueprint,
+    Response,
     abort,
     current_app,
     flash,
@@ -35,7 +37,7 @@ import qrcode
 import qrcode.image.svg
 from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
-from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.security import check_password_hash
 
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.emails import send_creation_email
@@ -62,6 +64,7 @@ from ihatemoney.utils import (
     csv2list_of_dicts,
     flash_email_error,
     format_form_errors,
+    generate_password_hash,
     limiter,
     list_of_dicts2csv,
     list_of_dicts2json,
@@ -114,6 +117,13 @@ def add_project_id(endpoint, values):
 
 
 @main.url_value_preprocessor
+def migrate_session(endpoint, values):
+    if "projects" in session and isinstance(session["projects"], list):
+        # Migrate https://github.com/spiral-project/ihatemoney/pull/1082
+        session["projects"] = {id: name for (id, name) in session["projects"]}
+
+
+@main.url_value_preprocessor
 def set_show_admin_dashboard_link(endpoint, values):
     """Sets the "show_admin_dashboard_link" variable application wide
     in order to use it in the layout template.
@@ -148,7 +158,8 @@ def pull_project(endpoint, values):
 
         is_admin = session.get("is_admin")
         is_invitation = endpoint == "main.join_project"
-        if session.get(project.id) or is_admin or is_invitation:
+        is_feed = endpoint == "main.feed"
+        if session.get(project.id) or is_admin or is_invitation or is_feed:
             # add project into kwargs and call the original function
             g.project = project
         else:
@@ -323,8 +334,7 @@ def create_project():
             db.session.commit()
 
             # create the session object (authenticate)
-            session[project.id] = True
-            session.update()
+            set_authorized_project(project)
 
             # send reminder email
             g.project = project
@@ -337,8 +347,10 @@ def create_project():
                 # Display the error as a simple "info" alert, because it's
                 # not critical and doesn't prevent using the project.
                 flash_email_error(
-                    "We tried to send you an reminder email, but there was an error. "
-                    "You can still use the project normally.",
+                    _(
+                        "We tried to send you an reminder email, but there was an error. "
+                        "You can still use the project normally."
+                    ),
                     category="info",
                 )
             return redirect(url_for(".list_bills", project_id=project.id))
@@ -364,8 +376,10 @@ def remind_password():
                 return redirect(url_for(".password_reminder_sent"))
             else:
                 flash_email_error(
-                    "Sorry, there was an error while sending you an email with "
-                    "password reset instructions."
+                    _(
+                        "Sorry, there was an error while sending you an email with "
+                        "password reset instructions."
+                    )
                 )
                 # Fall-through: we stay on the same page and display the form again
     return render_template("password_reminder.html", form=form)
@@ -417,7 +431,8 @@ def edit_project():
         db.session.add(project)
         db.session.commit()
 
-        return redirect(url_for("main.list_bills"))
+        flash(_("Project settings have been changed successfully."))
+        return redirect(url_for("main.edit_project"))
     else:
         edit_form.name.data = g.project.name
 
@@ -471,7 +486,9 @@ def import_project():
                     b["currency"] = g.project.default_currency
                 for a in attr:
                     if a not in b:
-                        raise ValueError(_("Missing attribute {}").format(a))
+                        raise ValueError(
+                            _("Missing attribute: %(attribute)s", attribute=a)
+                        )
                 currencies.add(b["currency"])
 
             # Additional checks if project has no default currency
@@ -496,7 +513,7 @@ def import_project():
             flash(b.args[0], category="danger")
     else:
         for component, errors in form.errors.items():
-            flash(_(component + ": ") + ", ".join(errors), category="danger")
+            flash(component + ": " + ", ".join(errors), category="danger")
     return redirect(request.headers.get("Referer") or url_for(".edit_project"))
 
 
@@ -588,7 +605,7 @@ def invite():
             # send the email
             message_body = render_localized_template("invitation_mail")
             message_title = _(
-                "You have been invited to share your " "expenses for %(project)s",
+                "You have been invited to share your expenses for %(project)s",
                 project=g.project.name,
             )
             msg = Message(
@@ -602,7 +619,9 @@ def invite():
                 return redirect(url_for(".list_bills"))
             else:
                 flash_email_error(
-                    "Sorry, there was an error while trying to send the invitation emails."
+                    _(
+                        "Sorry, there was an error while trying to send the invitation emails."
+                    )
                 )
                 # Fall-through: we stay on the same page and display the form again
 
@@ -628,9 +647,21 @@ def list_bills():
     bill_form = get_billform_for(g.project)
     # Used for CSRF validation
     csrf_form = EmptyForm()
-    # set the last selected payer as default choice if exists
-    if "last_selected_payer" in session:
-        bill_form.payer.data = session["last_selected_payer"]
+    # set the last selected payer and last selected owers as default choice if they exist
+    if "last_selected_payer_per_project" in session:
+        if g.project.id in session["last_selected_payer_per_project"]:
+            bill_form.payer.data = session["last_selected_payer_per_project"][
+                g.project.id
+            ]
+    # for backward compatibility, should be removed at some point
+    else:
+        if "last_selected_payer" in session:
+            bill_form.payer.data = session["last_selected_payer"]
+    if (
+        "last_selected_payed_for" in session
+        and g.project.id in session["last_selected_payed_for"]
+    ):
+        bill_form.payed_for.data = session["last_selected_payed_for"][g.project.id]
 
     # Each item will be a (weight_sum, Bill) tuple.
     # TODO: improve this awkward result using column_property:
@@ -734,8 +765,13 @@ def add_bill():
     form = get_billform_for(g.project)
     if request.method == "POST":
         if form.validate():
-            # save last selected payer in session
-            session["last_selected_payer"] = form.payer.data
+            # save last selected payer and last selected owers in session
+            if "last_selected_payer_per_project" not in session:
+                session["last_selected_payer_per_project"] = {}
+            session["last_selected_payer_per_project"][g.project.id] = form.payer.data
+            if "last_selected_payed_for" not in session:
+                session["last_selected_payed_for"] = {}
+            session["last_selected_payed_for"][g.project.id] = form.payed_for.data
             session.update()
 
             db.session.add(form.export(g.project))
@@ -799,7 +835,10 @@ def change_lang(lang):
         session["lang"] = lang
         session.update()
     else:
-        flash(_(f"{lang} is not a supported language"), category="warning")
+        flash(
+            _("%(lang)s is not a supported language", lang=lang),
+            category="warning",
+        )
 
     return redirect(request.headers.get("Referer") or url_for(".home"))
 
@@ -911,6 +950,53 @@ def statistics():
     )
 
 
+def build_etag(project_id, last_modified):
+    return hashlib.md5(
+        (current_app.config["SECRET_KEY"] + project_id + last_modified).encode()
+    ).hexdigest()
+
+
+@main.route("/<project_id>/feed/<string:token>.xml")
+def feed(token):
+    verified_project_id = Project.verify_token(
+        token, token_type="feed", project_id=g.project.id
+    )
+    if verified_project_id != g.project.id:
+        abort(404)
+
+    weighted_bills = g.project.get_bill_weights_ordered().paginate(
+        per_page=100, error_out=True
+    )
+
+    # This computes the last modification datetime for the project or
+    # any of the 100 latest bills. This is done by reading the issued_at
+    # attribute generated by sqlalchemy-continuum.
+    bills_last_modified = [
+        bill.versions[0].transaction.issued_at for _, bill in weighted_bills.items
+    ]
+    project_last_modified = g.project.versions[0].transaction.issued_at
+    last_modified = max(bills_last_modified + [project_last_modified])
+    etag = build_etag(g.project.id, last_modified.isoformat())
+
+    if request.if_none_match and etag in request.if_none_match:
+        return "", 304
+
+    if (
+        request.if_modified_since
+        and request.if_modified_since.replace(tzinfo=None) >= last_modified
+    ):
+        return "", 304
+
+    return Response(
+        render_template("project_feed.xml", bills=weighted_bills),
+        mimetype="application/rss+xml",
+        headers={
+            "ETag": etag,
+            "Last-Modified": last_modified.strftime("%a, %d %b %Y %H:%M:%S UTC"),
+        },
+    )
+
+
 @main.route("/dashboard")
 @requires_admin()
 def dashboard():
@@ -918,8 +1004,17 @@ def dashboard():
     return render_template(
         "dashboard.html",
         projects=Project.query.all(),
+        delete_project_form=DestructiveActionProjectForm,
         is_admin_dashboard_activated=is_admin_dashboard_activated,
     )
+
+
+@main.route("/dashboard/<project_id>/delete", methods=["POST"])
+@requires_admin()
+def dashboard_delete_project():
+    g.project.remove_project()
+    flash(_("Project successfully deleted"))
+    return redirect(request.headers.get("Referer") or url_for(".home"))
 
 
 @main.route("/favicon.ico")

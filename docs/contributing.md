@@ -190,6 +190,19 @@ revision file which can be created with the following command:
 
 You then need to write the migration steps yourself.
 
+## Repository rules
+
+- Please, try to keep it to **one pull request per feature:** if you want to do more
+  than one thing, send multiple pull requests. It will be easier for us to review and
+  merge.
+- **Document your code:** if you add a new feature, please document it in the
+- All the people working on this project do it on their spare time. So please, be
+  patient if we don't answer right away.
+- We try to have two maintainers review the pull requests before merging it. So please,
+  be patient if we don't merge it right away. After one week, only one maintainer approval
+  is required.
+
+
 ## How to build the documentation ?
 
 The documentation is using
@@ -261,10 +274,9 @@ In order to issue a new release, follow the following steps:
 
         make compress-assets
 
--   Build the translations:
+-   Extract the translations:
 
-        make update-translations
-        make build-translations
+        make extract-translations
 
 -   If you're not completely sure of yourself at this point, you can
     optionally: create a new branch, push it, open a pull request, check
@@ -281,7 +293,7 @@ Index](https://pypi.org) (PyPI) and publish a tag in the git repository.
 ::: {note}
 
 The above command will prompt for version number, handle
-`CHANGELOG.md` and `setup.cfg` updates, package creation,
+`CHANGELOG.md` and `pyproject.toml` updates, package creation,
 pypi upload. It will prompt you before each step to get your consent.
 :::
 

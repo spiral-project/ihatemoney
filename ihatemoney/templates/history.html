@@ -91,6 +91,21 @@
     {% endif %}
 {% endmacro %}
 
+{% macro bill_details(details, before=False) %}
+    {% set owers_list_str=details.owers|localize_list|safe %}
+    <details class="small">
+        <summary>{% if before %} {{ _("Details of the bill (before the change)") }} {% else %} {{ _("Details of the bill") }} {% endif %}</summary>
+        {{ _("Date:") }} {{ details.date|em_surround }}.
+        {{ _("Payer:") }} {{ details.payer|em_surround }}.
+        {{ _("Amount:") }} {{ details.amount|currency(details.original_currency)|em_surround }}.
+        {{ _("Owers:") }} {{ owers_list_str }}.
+        {% if details.external_link %}
+            {{ _("External link:") }}
+            <a class="truncated" href="{{ details.external_link }}">{{ details.external_link }}</a>
+        {% endif %}
+    </details>
+{% endmacro %}
+
 {% block sidebar %}
     <div id="table_overflow">
         {{ balance_table(show_weight=False, show_header=True) }}
@@ -103,18 +118,17 @@
     {% if current_log_pref == LoggingMode.DISABLED  or (current_log_pref != LoggingMode.RECORD_IP and any_ip_addresses) %}
     <div id="history_warnings" class="card card-body bg-light">
     {% if current_log_pref == LoggingMode.DISABLED  %}
-        <p>{% set url = url_for(".edit_project") %}
-            {% trans %}
-            <i>This project has history disabled. New actions won't appear below. You can enable history on the</i>
-            <a href="{{ url }}">settings page</a>
-            {% endtrans %}
+        <p>
+            <i>{{ _("This project has history disabled. New actions won't appear below.") }}
+               <a href="{{ url_for(".edit_project") }}">{{ _("You can enable history on the settings page.") }}</a>
+            </i>
         </p>
         {% if history %}
         <p>
-            {% trans %}
-            <i>The table below reflects actions recorded prior to disabling project history. You can
-            <a href="#" data-toggle="modal" data-keyboard="false" data-target="#confirm-erase">clear project history</a> to remove them.</i></p>
-            {% endtrans %}
+            <i>{{ _("The table below reflects actions recorded prior to disabling project history.") }}
+              <a href="#" data-toggle="modal" data-keyboard="false" data-target="#confirm-erase">{{ _("You can clear the project history to remove them.") }}</a>
+            </i>
+        </p>
         {% endif %}
     {% endif %}
     {% if current_log_pref != LoggingMode.RECORD_IP and any_ip_addresses %}
@@ -178,13 +192,16 @@
                         {% trans %}Project {{ name }} added{% endtrans %}
                     {% elif event.object_type == "Bill" %}
                         {% trans %}Bill {{ name }} added{% endtrans %}
+                        {{ bill_details(event.bill_details) }}
+
                     {% elif event.object_type == "Person" %}
                         {% trans %}Participant {{ name }} added{% endtrans %}
                     {% endif %}
+
                 {% elif event.operation_type == OperationType.UPDATE  %}
                     {% if event.object_type == "Project" %}
                         {% if event.prop_changed == "password" %}
-                           {{ _("Project private code changed") }}
+                            {{ _("Project private code changed") }}
                         {% elif event.prop_changed == "logging_preference" %}
                             {{ change_to_logging_preference(event) }}
                         {% elif event.prop_changed == "name" %}
@@ -196,51 +213,58 @@
                         {% else %}
                             {{ _("Project settings modified") }}
                         {% endif %}
-                    {% elif event.prop_changed == "activated" %}
-                        {% if event.val_after == False %}
-                            {% trans %}Participant {{ name }} deactivated{% endtrans %}
-                        {% else %}
-                            {% trans %}Participant {{ name }} reactivated{% endtrans %}
-                        {% endif %}
-                    {% elif event.prop_changed == "name" %}
-                            {% set new_name=event.val_after|em_surround %}
-                            {% trans %}Participant {{ name }} renamed to {{ new_name }}{% endtrans %}
-                    {% elif event.prop_changed == "what" %}
+                    {% elif event.object_type == "Bill" %}
+                        {% if event.prop_changed == "what" %}
                             {% set new_description=event.val_after|em_surround %}
                             {% trans %}Bill {{ name }} renamed to {{ new_description }}{% endtrans %}
-                    {% elif event.prop_changed == "weight" %}
-                        {% set old_weight=event.val_before|em_surround %}
-                        {% set new_weight=event.val_after|em_surround %}
-                        {% trans %}Participant {{ name }}: weight changed from {{ old_weight }} to {{ new_weight }}{% endtrans %}
-                    {% elif event.prop_changed == "external_link" %}
-                        {{ bill_property_change(event, _("External link"), None, "<a href='{link}' >{link}</a>".format(link=event.val_after | escape) | safe | em_surround) }}
-                    {% elif event.prop_changed == "owers_added" %}
-                        {{ owers_changed(event, True)}}
-                    {% elif event.prop_changed == "owers_removed" %}
-                        {{ owers_changed(event, False)}}
-                    {% elif event.prop_changed == "payer" %}
-                        {{ bill_property_change(event, _("Payer"))}}
-                    {% elif event.prop_changed == "amount" %}
-                        {{ bill_property_change(event, _("Amount")) }}
-                    {% elif event.prop_changed == "date" %}
-                        {{ bill_property_change(event, _("Date")) }}
-                    {% elif event.prop_changed == "original_currency" %}
-                        {{ bill_property_change(event, _("Currency")) }}
-                    {% elif event.prop_changed == "converted_amount" %}
-                        {{ bill_property_change(event, _("Amount in %(currency)s", currency=g.project.default_currency)) }}
-                    {% else %}
-                        {% if event.object_type == "Bill" %}
+                        {% elif event.prop_changed == "external_link" %}
+                            {{ bill_property_change(event, _("External link"), None, "<a class='truncated' href='{link}' >{link}</a>".format(link=event.val_after | escape) | safe | em_surround) }}
+                        {% elif event.prop_changed == "owers_added" %}
+                            {{ owers_changed(event, True)}}
+                        {% elif event.prop_changed == "owers_removed" %}
+                            {{ owers_changed(event, False)}}
+                        {% elif event.prop_changed == "payer" %}
+                            {{ bill_property_change(event, _("Payer"))}}
+                        {% elif event.prop_changed == "amount" %}
+                            {{ bill_property_change(event, _("Amount")) }}
+                        {% elif event.prop_changed == "date" %}
+                            {{ bill_property_change(event, _("Date")) }}
+                        {% elif event.prop_changed == "original_currency" %}
+                            {{ bill_property_change(event, _("Currency")) }}
+                        {% elif event.prop_changed == "converted_amount" %}
+                            {{ bill_property_change(event, _("Amount in %(currency)s", currency=g.project.default_currency)) }}
+                        {% else %}
                             {% trans %}Bill {{ name }} modified{% endtrans %}
-                        {% elif event.object_type == "Person" %}
+                        {% endif %}
+                        {{ bill_details(event.bill_details, before=True) }}
+
+                    {% elif event.object_type == "Person" %}
+                        {% if event.prop_changed == "activated" %}
+                            {% if event.val_after == False %}
+                                {% trans %}Participant {{ name }} deactivated{% endtrans %}
+                            {% else %}
+                                {% trans %}Participant {{ name }} reactivated{% endtrans %}
+                            {% endif %}
+                        {% elif event.prop_changed == "name" %}
+                            {% set new_name=event.val_after|em_surround %}
+                            {% trans %}Participant {{ name }} renamed to {{ new_name }}{% endtrans %}
+                        {% elif event.prop_changed == "weight" %}
+                            {% set old_weight=event.val_before|em_surround %}
+                            {% set new_weight=event.val_after|em_surround %}
+                            {% trans %}Participant {{ name }}: weight changed from {{ old_weight }} to {{ new_weight }}{% endtrans %}
+                        {% else %}
                             {% trans %}Participant {{ name }} modified{% endtrans %}
                         {% endif %}
                     {% endif %}
+
                 {% elif event.operation_type == OperationType.DELETE %}
                     {% if event.object_type == "Bill" %}
                         {% trans %}Bill {{ name }} removed{% endtrans %}
+                        {{ bill_details(event.bill_details) }}
                     {% elif event.object_type == "Person" %}
                         {% trans %}Participant {{ name }} removed{% endtrans %}
                     {% endif %}
+
                 {% else %}
                     {# Should be unreachable #}
                     {% if event.object_type == "Project" %}

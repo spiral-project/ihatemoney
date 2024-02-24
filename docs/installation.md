@@ -83,7 +83,7 @@ Some Paas (Platform-as-a-Service), provide a documentation or even a quick insta
 
 «Ihatemoney» depends on:
 
--   **Python**: any version from 3.7 to 3.11 will work.
+-   **Python**: any version from 3.7 to 3.12 will work.
 -   **A database backend**: choose among SQLite, PostgreSQL, MariaDB (>=
     10.3.2).
 -   **Virtual environment** (recommended): [python3-venv]{.title-ref}
@@ -133,6 +133,9 @@ Install the latest release with pip:
 
 Once installed, you can start a test server:
 
+    ihatemoney generate-config ihatemoney.cfg > ihatemoney.cfg
+    export IHATEMONEY_SETTINGS_FILE_PATH=$PWD/ihatemoney.cfg 
+    ihatemoney db upgrade head
     ihatemoney runserver
 
 And point your browser at <http://localhost:5000>.

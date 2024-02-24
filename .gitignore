@@ -1,5 +1,6 @@
 *.pyc
 *.egg-info
+*.mo
 dist
 .venv
 docs/_build/
@@ -16,4 +17,5 @@ ihatemoney/budget.db
 .DS_Store
 .idea
 .python-version
-
+.coverage*
+prof

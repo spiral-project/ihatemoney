@@ -1,9 +1,19 @@
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr ""
+
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
 
 msgid "Project name"
+msgstr ""
+
+msgid "Current private code"
+msgstr ""
+
+msgid "Enter existing private code to edit project"
 msgstr ""
 
 msgid "New private code"
@@ -27,15 +37,18 @@ msgstr ""
 msgid "Setting a default currency enables currency conversion between bills"
 msgstr ""
 
+msgid "Unknown error"
+msgstr ""
+
+msgid "Invalid private code."
+msgstr ""
+
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
 
-msgid "Import previously exported JSON file"
-msgstr ""
-
-msgid "Import"
+msgid "Compatible with Cospend"
 msgstr ""
 
 msgid "Project identifier"
@@ -65,12 +78,6 @@ msgstr ""
 msgid "Enter private code to confirm deletion"
 msgstr ""
 
-msgid "Unknown error"
-msgstr ""
-
-msgid "Invalid private code."
-msgstr ""
-
 msgid "Get in"
 msgstr ""
 
@@ -95,16 +102,16 @@ msgstr ""
 msgid "Reset password"
 msgstr ""
 
-msgid "Date"
+msgid "When?"
 msgstr ""
 
 msgid "What?"
 msgstr ""
 
-msgid "Payer"
+msgid "Who paid?"
 msgstr ""
 
-msgid "Amount paid"
+msgid "How much?"
 msgstr ""
 
 msgid "Currency"
@@ -129,9 +136,6 @@ msgstr ""
 msgid "Project default: %(currency)s"
 msgstr ""
 
-msgid "Bills can't be null"
-msgstr ""
-
 msgid "Name"
 msgstr ""
 
@@ -153,11 +157,23 @@ msgstr ""
 msgid "People to notify"
 msgstr ""
 
-msgid "Send invites"
+msgid "Send the invitations"
 msgstr ""
 
 #, python-format
 msgid "The email %(email)s is not valid"
+msgstr ""
+
+msgid "Logout"
+msgstr ""
+
+msgid "Please check the email configuration of the server."
+msgstr ""
+
+#, python-format
+msgid ""
+"Please check the email configuration of the server or contact the "
+"administrator: %(admin_email)s"
 msgstr ""
 
 #. List with two items only
@@ -187,7 +203,7 @@ msgstr ""
 msgid "{prefix}:<br />{errors}"
 msgstr ""
 
-msgid "Too many failed login attempts, please retry later."
+msgid "Too many failed login attempts."
 msgstr ""
 
 #, python-format
@@ -200,10 +216,6 @@ msgstr ""
 msgid "This private code is not the right one"
 msgstr ""
 
-#, python-format
-msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
-
 msgid "A reminder email has just been sent to you"
 msgstr ""
 
@@ -212,14 +224,9 @@ msgid ""
 "still use the project normally."
 msgstr ""
 
-#, python-format
-msgid "The project identifier is %(project)s"
-msgstr ""
-
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
-"instructions. Please check the email configuration of the server or "
-"contact the administrator."
+"instructions."
 msgstr ""
 
 msgid "No token provided"
@@ -234,10 +241,14 @@ msgstr ""
 msgid "Password successfully reset."
 msgstr ""
 
-msgid "Project successfully uploaded"
+msgid "Project settings have been changed successfully."
 msgstr ""
 
-msgid "Invalid JSON"
+msgid "Unable to parse CSV"
+msgstr ""
+
+#, python-format
+msgid "Missing attribute: %(attribute)s"
 msgstr ""
 
 msgid ""
@@ -245,10 +256,16 @@ msgid ""
 "currency"
 msgstr ""
 
+msgid "Project successfully uploaded"
+msgstr ""
+
 msgid "Project successfully deleted"
 msgstr ""
 
 msgid "Error deleting project"
+msgstr ""
+
+msgid "Unable to logout"
 msgstr ""
 
 #, python-format
@@ -258,10 +275,7 @@ msgstr ""
 msgid "Your invitations have been sent"
 msgstr ""
 
-msgid ""
-"Sorry, there was an error while trying to send the invitation emails. "
-"Please check the email configuration of the server or contact the "
-"administrator."
+msgid "Sorry, there was an error while trying to send the invitation emails."
 msgstr ""
 
 #, python-format
@@ -302,6 +316,10 @@ msgid "The bill has been deleted"
 msgstr ""
 
 msgid "The bill has been modified"
+msgstr ""
+
+#, python-format
+msgid "%(lang)s is not a supported language"
 msgstr ""
 
 msgid "Error deleting project history"
@@ -364,7 +382,7 @@ msgstr ""
 msgid "edit"
 msgstr ""
 
-msgid "delete"
+msgid "Delete project"
 msgstr ""
 
 msgid "show"
@@ -379,19 +397,10 @@ msgstr ""
 msgid "Get it on"
 msgstr ""
 
-msgid "Are you sure?"
-msgstr ""
-
 msgid "Edit project"
 msgstr ""
 
-msgid "Delete project"
-msgstr ""
-
-msgid "Import JSON"
-msgstr ""
-
-msgid "Choose file"
+msgid "Import project"
 msgstr ""
 
 msgid "Download project's data"
@@ -418,16 +427,25 @@ msgstr ""
 msgid "Privacy Settings"
 msgstr ""
 
-msgid "Edit the project"
+msgid "Save changes"
 msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
+msgstr ""
+
+msgid "Import previously exported project"
+msgstr ""
+
+msgid "Choose file"
 msgstr ""
 
 msgid "Edit this bill"
 msgstr ""
 
 msgid "Add a bill"
+msgstr ""
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
 msgstr ""
 
 msgid "Everyone"
@@ -446,9 +464,6 @@ msgid "Edit this participant"
 msgstr ""
 
 msgid "john.doe@example.com, mary.moe@site.com"
-msgstr ""
-
-msgid "Send the invitations"
 msgstr ""
 
 msgid "Download"
@@ -515,23 +530,18 @@ msgstr ""
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr ""
 
-#, python-format
-msgid ""
-"\n"
-"            <i>This project has history disabled. New actions won't "
-"appear below. You can enable history on the</i>\n"
-"            <a href=\"%(url)s\">settings page</a>\n"
-"            "
+msgid "This project has history disabled. New actions won't appear below."
+msgstr ""
+
+msgid "You can enable history on the settings page."
 msgstr ""
 
 msgid ""
-"\n"
-"            <i>The table below reflects actions recorded prior to "
-"disabling project history. You can\n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
-"data-target=\"#confirm-erase\">clear project history</a> to remove "
-"them.</i></p>\n"
-"            "
+"The table below reflects actions recorded prior to disabling project "
+"history."
+msgstr ""
+
+msgid "You can clear the project history to remove them."
 msgstr ""
 
 msgid ""
@@ -542,16 +552,16 @@ msgstr ""
 msgid "Delete stored IP addresses"
 msgstr ""
 
-msgid "No history to erase"
-msgstr ""
-
-msgid "Clear Project History"
-msgstr ""
-
 msgid "No IP Addresses to erase"
 msgstr ""
 
 msgid "Delete Stored IP Addresses"
+msgstr ""
+
+msgid "No history to erase"
+msgstr ""
+
+msgid "Clear Project History"
 msgstr ""
 
 msgid "Time"
@@ -615,7 +625,13 @@ msgstr ""
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
+msgid "Payer"
+msgstr ""
+
 msgid "Amount"
+msgstr ""
+
+msgid "Date"
 msgstr ""
 
 #, python-format
@@ -718,6 +734,9 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
+msgid "RSS Feed"
+msgstr ""
+
 msgid "Other projects :"
 msgstr ""
 
@@ -727,7 +746,8 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-msgid "Logout"
+#, python-format
+msgid "Please retry after %(date)s."
 msgstr ""
 
 msgid "Code"
@@ -761,28 +781,19 @@ msgstr ""
 msgid "Invite people"
 msgstr ""
 
-msgid "You should start by adding participants"
-msgstr ""
-
-msgid "Add a new bill"
-msgstr ""
-
 msgid "Newer bills"
 msgstr ""
 
 msgid "Older bills"
 msgstr ""
 
-msgid "When?"
+msgid "You should start by adding participants"
 msgstr ""
 
-msgid "Who paid?"
+msgid "Add a new bill"
 msgstr ""
 
 msgid "For what?"
-msgstr ""
-
-msgid "How much?"
 msgstr ""
 
 #, python-format
@@ -793,19 +804,19 @@ msgstr ""
 msgid "Everyone but %(excluded)s"
 msgstr ""
 
+msgid "delete"
+msgstr ""
+
 msgid "No bills"
 msgstr ""
 
 msgid "Nothing to list yet."
 msgstr ""
 
-msgid "You probably want to"
+msgid "Add your first bill"
 msgstr ""
 
-msgid "add a bill"
-msgstr ""
-
-msgid "add participants"
+msgid "Add the first participant"
 msgstr ""
 
 msgid "Password reminder"
@@ -828,31 +839,48 @@ msgstr ""
 msgid "Invite people to join this project"
 msgstr ""
 
-msgid "Share Identifier & code"
+msgid "Share an invitation link"
 msgstr ""
 
 msgid ""
-"You can share the project identifier and the private code by any "
-"communication means."
+"The easiest way to invite people is to give them the following invitation"
+" link.<br />They will be able to access the project, manage participants,"
+" add/edit/delete bills. However, they will not have access to important "
+"settings such as changing the private code or deleting the whole project."
 msgstr ""
 
-msgid "Identifier:"
+msgid "Scan QR code"
 msgstr ""
 
-msgid "Share the Link"
-msgstr ""
-
-msgid "You can directly share the following link via your prefered medium"
+msgid "Use a mobile device with a compatible app."
 msgstr ""
 
 msgid "Send via Emails"
 msgstr ""
 
 msgid ""
-"Specify a (comma separated) list of email adresses you want to notify "
-"about the\n"
-"                creation of this budget management project and we will "
-"send them an email for you."
+"Specify a list of email adresses (separated by comma) of people you want "
+"to notify about the creation of this project. We will send them an email "
+"with the invitation link."
+msgstr ""
+
+msgid "Share Identifier & code"
+msgstr ""
+
+msgid ""
+"You can share the project identifier and the private code by any "
+"communication means.<br />Anyone with the private code will have access "
+"to the full project, including changing settings such as the private code"
+" or project email address, or even deleting the whole project."
+msgstr ""
+
+msgid "Identifier:"
+msgstr ""
+
+msgid "Private code:"
+msgstr ""
+
+msgid "the private code was defined when you created the project"
 msgstr ""
 
 msgid "Who pays?"

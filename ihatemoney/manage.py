@@ -7,11 +7,10 @@ import sys
 
 import click
 from flask.cli import FlaskGroup
-from werkzeug.security import generate_password_hash
 
 from ihatemoney.models import Project, db
 from ihatemoney.run import create_app
-from ihatemoney.utils import create_jinja_env
+from ihatemoney.utils import create_jinja_env, generate_password_hash
 
 
 @click.group(cls=FlaskGroup, create_app=create_app)
@@ -33,14 +32,14 @@ def runserver(ctx):
     ctx.forward(run)
 
 
-@click.command(name="generate_password_hash")
+@cli.command(name="generate_password_hash")
 def password_hash():
     """Get password from user and hash it without printing it in clear text."""
     password = getpass.getpass(prompt="Password: ")
     print(generate_password_hash(password))
 
 
-@click.command()
+@cli.command()
 @click.argument(
     "config_file",
     type=click.Choice(

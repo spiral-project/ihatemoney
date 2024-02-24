@@ -3,9 +3,9 @@ name: CI to Docker Hub
 on:
   push:
     tags: ['*']
-    branches: [ master ]
+    branches: [ 'master', 'stable-*' ]
   pull_request:
-    branches: [ master ]
+    branches: [ 'master', 'stable-*' ]
 
 
 jobs:
@@ -61,6 +61,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

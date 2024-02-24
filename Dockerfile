@@ -26,6 +26,7 @@ ENV DEBUG="False" \
     SHOW_ADMIN_EMAIL="True" \
     SQLALCHEMY_DATABASE_URI="sqlite:////database/ihatemoney.db" \
     SQLALCHEMY_TRACK_MODIFICATIONS="False" \
+    APPLICATION_ROOT="/" \
     ENABLE_CAPTCHA="False" \
     LEGAL_LINK=""
 

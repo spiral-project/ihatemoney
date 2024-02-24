@@ -18,10 +18,10 @@ from sqlalchemy import orm
 from sqlalchemy.sql import func
 from sqlalchemy_continuum import make_versioned, version_class
 from sqlalchemy_continuum.plugins import FlaskPlugin
-from werkzeug.security import generate_password_hash
 
 from ihatemoney.currency_convertor import CurrencyConverter
-from ihatemoney.utils import get_members, same_bill
+from ihatemoney.monkeypath_continuum import PatchedTransactionFactory
+from ihatemoney.utils import generate_password_hash, get_members, same_bill
 from ihatemoney.versioning import (
     ConditionalVersioningManager,
     LoggingMode,
@@ -35,6 +35,8 @@ make_versioned(
         # Conditionally Disable the versioning based on each
         # project's privacy preferences
         tracking_predicate=version_privacy_predicate,
+        # MonkeyPatching
+        transaction_cls=PatchedTransactionFactory(),
     ),
     plugins=[
         FlaskPlugin(
@@ -474,7 +476,8 @@ class Project(db.Model):
         """Generate a timed and serialized JsonWebToken
 
         :param token_type: Either "auth" for authentication (invalidated when project code changed),
-                        or "reset" for password reset (invalidated after expiration)
+                        or "reset" for password reset (invalidated after expiration),
+                        or "feed" for project feeds (invalidated when project code changed)
         """
 
         if token_type == "reset":
@@ -497,9 +500,10 @@ class Project(db.Model):
 
         :param token: Serialized TimedJsonWebToken
         :param token_type: Either "auth" for authentication (invalidated when project code changed),
-                        or "reset" for password reset (invalidated after expiration)
-        :param project_id: Project ID. Used for token_type "auth" to use the password as serializer
-                        secret key.
+                        or "reset" for password reset (invalidated after expiration),
+                        or "feed" for project feeds (invalidated when project code changed)
+        :param project_id: Project ID. Used for token_type "auth" and "feed" to use the password
+                        as serializer secret key.
         :param max_age: Token expiration time (in seconds). Only used with token_type "reset"
         """
         loads_kwargs = {}

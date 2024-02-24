@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 18:01+0100\n"
-"PO-Revision-Date: 2021-11-07 16:52+0000\n"
-"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
+"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"PO-Revision-Date: 2023-12-10 10:05+0000\n"
+"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-money/"
 "i-hate-money/tr/>\n"
 "Language: tr\n"
@@ -12,18 +12,28 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 5.3-dev\n"
 "Generated-By: Babel 2.9.0\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr "Giderlerinizi paylaşmak için '%(project)s' oluşturdunuz"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
-"Geçerli bir miktar veya ifade değil. Sadece rakamlar ve + - * / "
-"operatörler kabul edilir."
+"Geçerli bir miktar veya ifade değil. Yalnızca rakamlar ve + - * / "
+"operatörleri kabul edilir."
 
 msgid "Project name"
 msgstr "Proje adı"
+
+msgid "Current private code"
+msgstr "Geçerli özel kod"
+
+msgid "Enter existing private code to edit project"
+msgstr "Projeyi düzenlemek için mevcut özel kodu girin"
 
 msgid "New private code"
 msgstr "Yeni özel kod"
@@ -48,6 +58,12 @@ msgstr ""
 "Öntanımlı para biriminin ayarlanması, faturalar arasında para birimi "
 "dönüştürmeyi etkinleştirir"
 
+msgid "Unknown error"
+msgstr "Bilinmeyen hata"
+
+msgid "Invalid private code."
+msgstr "Geçersiz özel kod."
+
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
@@ -55,11 +71,8 @@ msgstr ""
 "Bu proje, birden fazla para biriminde faturalar içerdiğinden 'para birimi"
 " yok' olarak ayarlanamaz."
 
-msgid "Import previously exported JSON file"
-msgstr "Önceden dışa aktarılan JSON dosyasını içe aktar"
-
-msgid "Import"
-msgstr "İçe aktar"
+msgid "Compatible with Cospend"
+msgstr "Cospend ile uyumlu"
 
 msgid "Project identifier"
 msgstr "Proje tanımlayıcısı"
@@ -90,12 +103,6 @@ msgstr "Lütfen, devam etmek için captcha'yı doğrulayın."
 msgid "Enter private code to confirm deletion"
 msgstr "Silme işlemini onaylamak için özel kodu girin"
 
-msgid "Unknown error"
-msgstr "Bilinmeyen hata"
-
-msgid "Invalid private code."
-msgstr "Geçersiz özel kod."
-
 msgid "Get in"
 msgstr "Alın"
 
@@ -120,17 +127,17 @@ msgstr "Parola onayı"
 msgid "Reset password"
 msgstr "Parolayı sıfırla"
 
-msgid "Date"
-msgstr "Tarih"
+msgid "When?"
+msgstr "Ne zaman?"
 
 msgid "What?"
 msgstr "Ne?"
 
-msgid "Payer"
-msgstr "Mükellefi"
+msgid "Who paid?"
+msgstr "Kim ödedi?"
 
-msgid "Amount paid"
-msgstr "Ödenen tutar"
+msgid "How much?"
+msgstr "Ne kadar?"
 
 msgid "Currency"
 msgstr "Para birimi"
@@ -154,11 +161,8 @@ msgstr "Gönder ve yeni bir tane ekle"
 msgid "Project default: %(currency)s"
 msgstr "Proje öntanımlı değeri: %(currency)s"
 
-msgid "Bills can't be null"
-msgstr "Faturalar boş olamaz"
-
 msgid "Name"
-msgstr "İsim"
+msgstr "Ad"
 
 msgid "Weights should be positive"
 msgstr "Ağırlıklar pozitif olmalıdır"
@@ -178,12 +182,26 @@ msgstr "Bu projede bu katılımcı zaten var"
 msgid "People to notify"
 msgstr "Bildirilecek kişiler"
 
-msgid "Send invites"
-msgstr "Davet gönder"
+msgid "Send the invitations"
+msgstr "Davetleri gönder"
 
 #, python-format
 msgid "The email %(email)s is not valid"
 msgstr "%(email)s e-posta adresi geçerli değil"
+
+msgid "Logout"
+msgstr "Oturumu kapat"
+
+msgid "Please check the email configuration of the server."
+msgstr "Lütfen sunucunun e-posta yapılandırmasını gözden geçirin."
+
+#, python-format
+msgid ""
+"Please check the email configuration of the server or contact the "
+"administrator: %(admin_email)s"
+msgstr ""
+"Lütfen sunucunun e-posta yapılandırmasını gözden geçirin veya yöneticiye "
+"başvurun: %(admin_email)s"
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
@@ -212,24 +230,18 @@ msgstr "{prefix}: {error}"
 msgid "{prefix}:<br />{errors}"
 msgstr "{prefix}:<br />{errors}"
 
-msgid "Too many failed login attempts, please retry later."
-msgstr ""
-"Çok fazla başarısız oturum açma denemesi, lütfen daha sonra tekrar "
-"deneyin."
+msgid "Too many failed login attempts."
+msgstr "Çok fazla başarısız oturum açma denemesi."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
-msgstr "Bu yönetici parolası doğru değil. Sadece %(num)d tane deneme kaldı."
+msgstr "Bu yönetici parolası doğru değil. Yalnızca %(num)d tane deneme kaldı."
 
 msgid "Provided token is invalid"
 msgstr "Sağlanan belirteç geçersiz"
 
 msgid "This private code is not the right one"
 msgstr "Bu özel kod doğru değil"
-
-#, python-format
-msgid "You have just created '%(project)s' to share your expenses"
-msgstr "Giderlerinizi paylaşmak için '%(project)s' oluşturdunuz"
 
 msgid "A reminder email has just been sent to you"
 msgstr "Size bir hatırlatma e-postası gönderildi"
@@ -241,18 +253,12 @@ msgstr ""
 "Size bir hatırlatma e-postası göndermeye çalıştık, ancak bir hata oluştu."
 " Projeyi yine de normal şekilde kullanabilirsiniz."
 
-#, python-format
-msgid "The project identifier is %(project)s"
-msgstr "Proje tanımlayıcısı %(project)s"
-
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
-"instructions. Please check the email configuration of the server or "
-"contact the administrator."
+"instructions."
 msgstr ""
-"Maalesef, parola sıfırlama talimatlarını içeren e-posta gönderilirken bir"
-" hata oluştu. Lütfen sunucunun e-posta yapılandırmasına göz atın veya "
-"yöneticiye başvurun."
+"Maalesef, parola sıfırlama talimatlarını içeren e-posta gönderilirken bir "
+"hata oluştu."
 
 msgid "No token provided"
 msgstr "Belirteç sağlanmadı"
@@ -266,11 +272,15 @@ msgstr "Bilinmeyen proje"
 msgid "Password successfully reset."
 msgstr "Parola başarıyla sıfırlandı."
 
-msgid "Project successfully uploaded"
-msgstr "Proje başarıyla karşıya yüklendi"
+msgid "Project settings have been changed successfully."
+msgstr "Proje ayarları başarıyla değiştirildi."
 
-msgid "Invalid JSON"
-msgstr "Geçersiz JSON"
+msgid "Unable to parse CSV"
+msgstr "CSV ayrıştırılamadı"
+
+#, python-format
+msgid "Missing attribute: %(attribute)s"
+msgstr "Eksik özellik: %(attribute)s"
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
@@ -279,11 +289,17 @@ msgstr ""
 "Öntanımlı para birimi olmayan bir projeye birden fazla para biriminde "
 "fatura eklenemez"
 
+msgid "Project successfully uploaded"
+msgstr "Proje başarıyla karşıya yüklendi"
+
 msgid "Project successfully deleted"
 msgstr "Proje başarıyla silindi"
 
 msgid "Error deleting project"
 msgstr "Proje silinirken hata oluştu"
+
+msgid "Unable to logout"
+msgstr "Oturum kapatılamadı"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
@@ -292,14 +308,8 @@ msgstr "%(project)s için giderlerinizi paylaşmaya davet edildiniz"
 msgid "Your invitations have been sent"
 msgstr "Davetleriniz gönderildi"
 
-msgid ""
-"Sorry, there was an error while trying to send the invitation emails. "
-"Please check the email configuration of the server or contact the "
-"administrator."
-msgstr ""
-"Maalesef davet e-postalarını göndermeye çalışırken bir hata oluştu. "
-"Lütfen sunucunun e-posta yapılandırmasına göz atın veya yöneticiye "
-"başvurun."
+msgid "Sorry, there was an error while trying to send the invitation emails."
+msgstr "Maalesef davet e-postalarını göndermeye çalışırken bir hata oluştu."
 
 #, python-format
 msgid "%(member)s has been added"
@@ -320,8 +330,8 @@ msgid ""
 "Participant '%(name)s' has been deactivated. It will still appear in the "
 "list until its balance reach zero."
 msgstr ""
-"'%(name)s' katılımcısı devre dışı bırakıldı. Bakiyesi sıfır oluncaya kadar "
-"listede görünmeye devam edecektir."
+"'%(name)s' katılımcısı devre dışı bırakıldı. Bakiyesi sıfır oluncaya "
+"kadar listede görünmeye devam edecektir."
 
 #, python-format
 msgid "Participant '%(name)s' has been removed"
@@ -342,6 +352,10 @@ msgstr "Fatura silindi"
 
 msgid "The bill has been modified"
 msgstr "Fatura değiştirildi"
+
+#, python-format
+msgid "%(lang)s is not a supported language"
+msgstr "%(lang)s dili desteklenmiyor"
 
 msgid "Error deleting project history"
 msgstr "Proje geçmişi silinirken hata oluştu"
@@ -403,8 +417,8 @@ msgstr "Eylemler"
 msgid "edit"
 msgstr "düzenle"
 
-msgid "delete"
-msgstr "sil"
+msgid "Delete project"
+msgstr "Projeyi sil"
 
 msgid "show"
 msgstr "göster"
@@ -418,20 +432,11 @@ msgstr "Telefon Uygulamasını İndir"
 msgid "Get it on"
 msgstr "Alın"
 
-msgid "Are you sure?"
-msgstr "Emin misiniz?"
-
 msgid "Edit project"
 msgstr "Projeyi düzenle"
 
-msgid "Delete project"
-msgstr "Projeyi sil"
-
-msgid "Import JSON"
-msgstr "JSON'u içe aktar"
-
-msgid "Choose file"
-msgstr "Dosya seç"
+msgid "Import project"
+msgstr "Projeyi içe aktar"
 
 msgid "Download project's data"
 msgstr "Proje verilerini indir"
@@ -457,17 +462,26 @@ msgstr "İptal"
 msgid "Privacy Settings"
 msgstr "Gizlilik Ayarları"
 
-msgid "Edit the project"
-msgstr "Projeyi düzenle"
+msgid "Save changes"
+msgstr "Değişiklikleri kaydet"
 
 msgid "This will remove all bills and participants in this project!"
 msgstr "Bu, bu projedeki tüm faturaları ve katılımcıları kaldıracaktır!"
+
+msgid "Import previously exported project"
+msgstr "Önceden dışa aktarılan projeyi içe aktar"
+
+msgid "Choose file"
+msgstr "Dosya seç"
 
 msgid "Edit this bill"
 msgstr "Bu faturayı düzenle"
 
 msgid "Add a bill"
 msgstr "Bir fatura ekle"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr "Basit işlemlere izin verilir, örneğin (18+36.2)/3"
 
 msgid "Everyone"
 msgstr "Herkes"
@@ -486,9 +500,6 @@ msgstr "Bu katılımcıyı düzenle"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
-
-msgid "Send the invitations"
-msgstr "Davetleri gönder"
 
 msgid "Download"
 msgstr "İndir"
@@ -562,37 +573,22 @@ msgstr "Fatura %(name)s: %(owers_list_str)s borçlular listesine eklendi"
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr "Fatura %(name)s: %(owers_list_str)s borçlular listesinden kaldırıldı"
 
-#, python-format
-msgid ""
-"\n"
-"            <i>This project has history disabled. New actions won't "
-"appear below. You can enable history on the</i>\n"
-"            <a href=\"%(url)s\">settings page</a>\n"
-"            "
+msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
-"\n"
-"            <i>Bu projenin geçmişi devre dışı bırakıldı. Yeni eylemler "
-"aşağıda görünmeyecek. Geçmişi\n"
-"            <a href=\"%(url)s\"> ayarlar sayfasında</a>  "
-"etkinleştirebilirsiniz</i>\n"
-"            "
+"Bu projenin geçmişi devre dışı bırakıldı. Yeni eylemler aşağıda görünmeyecek."
+
+msgid "You can enable history on the settings page."
+msgstr "Geçmişi ayarlar sayfasından etkinleştirebilirsiniz."
 
 msgid ""
-"\n"
-"            <i>The table below reflects actions recorded prior to "
-"disabling project history. You can\n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
-"data-target=\"#confirm-erase\">clear project history</a> to remove "
-"them.</i></p>\n"
-"            "
+"The table below reflects actions recorded prior to disabling project "
+"history."
 msgstr ""
-"\n"
-"            <i>Aşağıdaki tablo, proje geçmişini devre dışı bırakmadan "
-"önce kaydedilen eylemleri göstermektedir. Bunları kaldırmak için\n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
-"data-target=\"#confirm-erase\">proje geçmişini "
-"temizleyebilirsiniz</a>.</i></p>\n"
-"            "
+"Aşağıdaki tablo, proje geçmişi devre dışı bırakılmadan önce kaydedilen "
+"eylemleri gösterir."
+
+msgid "You can clear the project history to remove them."
+msgstr "Bunları kaldırmak için proje geçmişini temizleyebilirsiniz."
 
 msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
@@ -604,17 +600,17 @@ msgstr ""
 msgid "Delete stored IP addresses"
 msgstr "Kaydedilen IP adreslerini sil"
 
-msgid "No history to erase"
-msgstr "Silinecek geçmiş yok"
-
-msgid "Clear Project History"
-msgstr "Proje Geçmişini Temizle"
-
 msgid "No IP Addresses to erase"
 msgstr "Silinecek IP adresi yok"
 
 msgid "Delete Stored IP Addresses"
 msgstr "Kaydedilen IP Adreslerini Sil"
+
+msgid "No history to erase"
+msgstr "Silinecek geçmiş yok"
+
+msgid "Clear Project History"
+msgstr "Proje Geçmişini Temizle"
 
 msgid "Time"
 msgstr "Zaman"
@@ -679,8 +675,14 @@ msgstr ""
 "Katılımcı %(name)s: %(old_weight)s olan ağırlık %(new_weight)s olarak "
 "değiştirildi"
 
+msgid "Payer"
+msgstr "Mükellefi"
+
 msgid "Amount"
 msgstr "Miktar"
+
+msgid "Date"
+msgstr "Tarih"
 
 #, python-format
 msgid "Amount in %(currency)s"
@@ -784,6 +786,9 @@ msgstr "Geçmiş"
 msgid "Settings"
 msgstr "Ayarlar"
 
+msgid "RSS Feed"
+msgstr "RSS Akışı"
+
 msgid "Other projects :"
 msgstr "Diğer projeler:"
 
@@ -793,8 +798,9 @@ msgstr "geçiş yap"
 msgid "Dashboard"
 msgstr "Gösterge Paneli"
 
-msgid "Logout"
-msgstr "Oturumu kapat"
+#, python-format
+msgid "Please retry after %(date)s."
+msgstr "Lütfen %(date)s sonra yeniden deneyin."
 
 msgid "Code"
 msgstr "Kod"
@@ -827,29 +833,20 @@ msgstr "emin misiniz?"
 msgid "Invite people"
 msgstr "İnsanları davet et"
 
-msgid "You should start by adding participants"
-msgstr "Katılımcıları ekleyerek başlamalısınız"
-
-msgid "Add a new bill"
-msgstr "Yeni bir fatura ekle"
-
 msgid "Newer bills"
 msgstr "Daha yeni faturalar"
 
 msgid "Older bills"
 msgstr "Daha eski faturalar"
 
-msgid "When?"
-msgstr "Ne zaman?"
+msgid "You should start by adding participants"
+msgstr "Katılımcıları ekleyerek başlamalısınız"
 
-msgid "Who paid?"
-msgstr "Kim ödedi?"
+msgid "Add a new bill"
+msgstr "Yeni bir fatura ekle"
 
 msgid "For what?"
 msgstr "Ne için?"
-
-msgid "How much?"
-msgstr "Ne kadar?"
 
 #, python-format
 msgid "Added on %(date)s"
@@ -859,20 +856,20 @@ msgstr "%(date)s tarihinde eklendi"
 msgid "Everyone but %(excluded)s"
 msgstr "%(excluded)s hariç herkes"
 
+msgid "delete"
+msgstr "sil"
+
 msgid "No bills"
 msgstr "Fatura yok"
 
 msgid "Nothing to list yet."
 msgstr "Henüz listelenecek bir şey yok."
 
-msgid "You probably want to"
-msgstr "Muhtemelen istediğiniz"
+msgid "Add your first bill"
+msgstr "İlk faturanızı ekleyin"
 
-msgid "add a bill"
-msgstr "bir fatura ekle"
-
-msgid "add participants"
-msgstr "katılımcılar ekle"
+msgid "Add the first participant"
+msgstr "İlk katılımcıyı ekleyin"
 
 msgid "Password reminder"
 msgstr "Parola hatırlatıcı"
@@ -896,40 +893,60 @@ msgstr "Parolanızı sıfırlayın"
 msgid "Invite people to join this project"
 msgstr "İnsanları bu projeye katılmaya davet et"
 
-msgid "Share Identifier & code"
-msgstr "Tanımlayıcıyı ve Kodu Paylaş"
+msgid "Share an invitation link"
+msgstr "Bir davet bağlantısı paylaşın"
 
 msgid ""
-"You can share the project identifier and the private code by any "
-"communication means."
+"The easiest way to invite people is to give them the following invitation"
+" link.<br />They will be able to access the project, manage participants,"
+" add/edit/delete bills. However, they will not have access to important "
+"settings such as changing the private code or deleting the whole project."
 msgstr ""
-"Proje tanımlayıcısını ve özel kodu herhangi bir iletişim aracıyla "
-"paylaşabilirsiniz."
+"Kişileri davet etmenin en kolay yolu onlara aşağıdaki davet bağlantısını "
+"vermektir:<br />Projeye erişebilecek, katılımcıları yönetebilecek, fatura "
+"ekleyebilecek/düzenleyebilecek/silebileceklerdir. Ancak, özel kodu "
+"değiştirme veya tüm projeyi silme gibi önemli ayarlara erişemeyeceklerdir."
 
-msgid "Identifier:"
-msgstr "Tanımlayıcı:"
+msgid "Scan QR code"
+msgstr "QR kodunu tarayın"
 
-msgid "Share the Link"
-msgstr "Bağlantıyı Paylaş"
-
-msgid "You can directly share the following link via your prefered medium"
-msgstr ""
-"Aşağıdaki bağlantıyı tercih ettiğiniz ortam aracılığıyla doğrudan "
-"paylaşabilirsiniz"
+msgid "Use a mobile device with a compatible app."
+msgstr "Uyumlu bir uygulamaya sahip bir mobil aygıt kullanın."
 
 msgid "Send via Emails"
 msgstr "E-posta ile Gönder"
 
 msgid ""
-"Specify a (comma separated) list of email adresses you want to notify "
-"about the\n"
-"                creation of this budget management project and we will "
-"send them an email for you."
+"Specify a list of email adresses (separated by comma) of people you want "
+"to notify about the creation of this project. We will send them an email "
+"with the invitation link."
 msgstr ""
-"Bu bütçe yönetimi projesinin oluşturulması hakkında bildirimde bulunmak "
-"istediğiniz e-posta \n"
-"                adreslerinin (virgülle ayrılmış) bir listesini belirtin, "
-"biz de sizin için onlara bir e-posta gönderelim."
+"Bu projenin oluşturulması hakkında bilgilendirmek istediğiniz kişilerin e-"
+"posta adreslerinin bir listesini (virgülle ayrılmış) belirtin. Onlara davet "
+"bağlantısını içeren bir e-posta göndereceğiz."
+
+msgid "Share Identifier & code"
+msgstr "Tanımlayıcıyı ve Kodu Paylaş"
+
+msgid ""
+"You can share the project identifier and the private code by any "
+"communication means.<br />Anyone with the private code will have access "
+"to the full project, including changing settings such as the private code"
+" or project email address, or even deleting the whole project."
+msgstr ""
+"Proje tanımlayıcısını ve özel kodu herhangi bir iletişim aracıyla "
+"paylaşabilirsiniz.<br />Özel koda sahip olan herkes, özel kod veya proje e-"
+"posta adresi gibi ayarları değiştirmek ve hatta tüm projeyi silmek de dahil "
+"olmak üzere projenin tamamına erişebilir."
+
+msgid "Identifier:"
+msgstr "Tanımlayıcı:"
+
+msgid "Private code:"
+msgstr "Özel kod:"
+
+msgid "the private code was defined when you created the project"
+msgstr "özel kod, projeyi oluşturduğunuzda tanımlanır"
 
 msgid "Who pays?"
 msgstr "Kim ödüyor?"
@@ -1058,3 +1075,95 @@ msgstr "Dönem"
 
 #~ msgid "Participants to notify"
 #~ msgstr "katılımcılar ekle"
+
+#~ msgid "Import"
+#~ msgstr "İçe aktar"
+
+#~ msgid "Amount paid"
+#~ msgstr "Ödenen tutar"
+
+#~ msgid "Bills can't be null"
+#~ msgstr "Faturalar boş olamaz"
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "Proje tanımlayıcısı %(project)s"
+
+#~ msgid "Invalid JSON"
+#~ msgstr "Geçersiz JSON"
+
+#~ msgid "Are you sure?"
+#~ msgstr "Emin misiniz?"
+
+#~ msgid "Import JSON"
+#~ msgstr "JSON'u içe aktar"
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>This project has history "
+#~ "disabled. New actions won't appear "
+#~ "below. You can enable history on "
+#~ "the</i>\n"
+#~ "            <a href=\"%(url)s\">settings page</a>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            <i>Bu projenin geçmişi devre "
+#~ "dışı bırakıldı. Yeni eylemler aşağıda "
+#~ "görünmeyecek. Geçmişi\n"
+#~ "            <a href=\"%(url)s\"> ayarlar "
+#~ "sayfasında</a>  etkinleştirebilirsiniz</i>\n"
+#~ "            "
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>The table below reflects "
+#~ "actions recorded prior to disabling "
+#~ "project history. You can\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">clear project history</a>"
+#~ " to remove them.</i></p>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            <i>Aşağıdaki tablo, proje "
+#~ "geçmişini devre dışı bırakmadan önce "
+#~ "kaydedilen eylemleri göstermektedir. Bunları "
+#~ "kaldırmak için\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">proje geçmişini "
+#~ "temizleyebilirsiniz</a>.</i></p>\n"
+#~ "            "
+
+#~ msgid "Send invites"
+#~ msgstr "Davet gönder"
+
+#~ msgid " show"
+#~ msgstr "göster"
+
+#~ msgid "Edit the project"
+#~ msgstr "Projeyi düzenle"
+
+#~ msgid "You probably want to"
+#~ msgstr "Muhtemelen istediğiniz"
+
+#~ msgid "add participants"
+#~ msgstr "katılımcılar ekle"
+
+#~ msgid ""
+#~ "You can share the project identifier "
+#~ "and the private code by any "
+#~ "communication means."
+#~ msgstr ""
+#~ "Proje tanımlayıcısını ve özel kodu "
+#~ "herhangi bir iletişim aracıyla "
+#~ "paylaşabilirsiniz."
+
+#~ msgid "Share the Link"
+#~ msgstr "Bağlantıyı Paylaş"
+
+#~ msgid "You can directly share the following link via your prefered medium"
+#~ msgstr ""
+#~ "Aşağıdaki bağlantıyı tercih ettiğiniz ortam"
+#~ " aracılığıyla doğrudan paylaşabilirsiniz"

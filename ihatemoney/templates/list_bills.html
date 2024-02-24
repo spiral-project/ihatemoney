@@ -11,6 +11,11 @@
 {% block js %}
     {% if add_bill %} $('#new-bill > a').click(); {% endif %}
 
+    // focus on first field when adding a bill
+    $("#bill-form").on('shown.bs.modal', function(){
+            $(this).find('#what').focus();
+    });
+
     // ask for confirmation before removing an user
     $('.action.delete').each(function(){
         var link = $(this).find('button');
@@ -39,28 +44,14 @@
 
     $('#bill_table tbody tr').hover(highlight_owers, unhighlight_owers);
 
-
-
-    let link = $('#delete-bill').find('button');
-    let deleteOriginalHTML = link.html();
-    link.click(function() {
-        if (link.hasClass("confirm")){
-            return true;
-        }
-        link.html("{{_("Are you sure?")}}");
-        link.removeClass("action delete");
-        link.addClass("confirm btn-danger");
-        return false;
-    });
-
-    $('#delete-bill').focusout(function() {
-        link.removeClass("confirm btn-danger");
-        link.html(deleteOriginalHTML);
-        link.addClass("action delete");
-    });
+    {% include "helpers.js" %}
+    confirm_action(".delete-bill", { exclude_classes: "action delete", add_classes: "btn btn-sm" });
 
 {% endblock %}
 
+{% block head %}
+    <link href="{{ url_for(".feed", token=g.project.generate_token("feed")) }}" type="application/rss+xml" rel="alternate" title="{{ g.project.name }}" />
+{% endblock %}
 
 {% block sidebar %}
     <div class="sidebar_content">
@@ -115,7 +106,7 @@
 </ul>
 {% endif %}
 <span id="new-bill" class="ml-auto pb-2" {% if not g.project.members %} data-toggle="tooltip" title="{{_('You should start by adding participants')}}" {% endif %}>
-    <a href="{{ url_for('.add_bill') }}" class="btn btn-primary {% if not g.project.members %} disabled {% endif %}" data-toggle="modal" data-keyboard="false" data-target="#bill-form">
+    <a href="{{ url_for('.add_bill') }}" class="btn btn-primary {% if not g.project.members %} disabled {% endif %}" data-toggle="modal" data-keyboard="true" data-target="#bill-form" autofocus>
         <i class="icon icon-white before-text">{{ static_include("images/plus.svg") | safe }}</i>
         {{ _("Add a new bill") }}
     </a>
@@ -158,9 +149,9 @@
                         {{ weighted_bill_amount(bill, weights) }}
                     </span>
                 </td>
-                <td class="bill-actions">
+                <td class="bill-actions d-flex align-items-center">
                     <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">{{ _('edit') }}</a>
-                    <form id="delete-bill"action="{{ url_for(".delete_bill", bill_id=bill.id) }}" method="POST">
+                    <form class="delete-bill" action="{{ url_for(".delete_bill", bill_id=bill.id) }}" method="POST">
                         {{ csrf_form.csrf_token }}
                         <button class="action delete" type="submit" title="{{ _("delete") }}"></button>
                     </form>
@@ -180,13 +171,14 @@
                 <h3>{{ _('No bills')}}</h3>
                 <p>
                     {{ _("Nothing to list yet.")}}<br />
-                    {{ _("You probably want to") }}
-                    {%- if g.project.members %} <a href="{{ url_for('.add_bill') }}" data-toggle="modal" data-target="#bill-form">
-                            {{- _("add a bill") -}}
-                        </a> ?
-                    {% else %} <a href="{{ url_for('.add_member') }}">
-                            {{- _('add participants') -}}
-                        </a> ?
+                    {%- if g.project.members %}
+                        <a href="{{ url_for('.add_bill') }}" data-toggle="modal" data-target="#bill-form">
+                            {{- _("Add your first bill") -}}
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('.add_member') }}">
+                            {{- _("Add the first participant") -}}
+                        </a>
                     {%- endif -%}
                 </p>
             </div>

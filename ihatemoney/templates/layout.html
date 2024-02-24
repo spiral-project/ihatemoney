@@ -103,6 +103,7 @@
             {% if g.project %}
             <li><a class="dropdown-item" href="{{ url_for("main.history") }}">{{ _("History") }}</a></li>
             <li><a class="dropdown-item" href="{{ url_for("main.edit_project") }}">{{ _("Settings") }}</a></li>
+            <li><a class="dropdown-item" href="{{ url_for("main.feed", token=g.project.generate_token("feed")) }}">{{ _("RSS Feed") }}</a></li>
             {% endif %}
 
             {% if session['projects'] and not ((session['projects'] | length) == 1 and g.project and g.project.id in session['projects']) %}
@@ -118,12 +119,14 @@
             {% if session['is_admin'] %}
             <li><a class="dropdown-item" href="{{ url_for("main.dashboard") }}">{{ _("Dashboard") }}</a></li>
             {% endif %}
+            {% if g.logout_form %}
             <li>
               <form action="{{ url_for("main.exit") }}" method="post">
                 {{ g.logout_form.hidden_tag() }}
                 {{ g.logout_form.submit(class="dropdown-item") }}
               </form>
             </li>
+            {% endif %}
           </ul>
         </li>
       {% endif %}

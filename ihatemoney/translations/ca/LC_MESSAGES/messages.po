@@ -1,28 +1,40 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-29 18:51+0200\n"
+"POT-Creation-Date: 2023-07-29 14:24+0200\n"
 "PO-Revision-Date: 2022-09-12 15:25+0000\n"
 "Last-Translator: Maite Guix <maite.guix@gmail.com>\n"
-"Language-Team: Catalan <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/ca/>\n"
 "Language: ca\n"
+"Language-Team: Catalan <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/ca/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"Generated-By: Babel 2.9.0\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr "Acabes de crear '%(project)s' per a compartir les teves despeses"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
-"No és un import o expressió vàlida. Només s'accepten números i els operadors "
-"+ - * /."
+"No és un import o expressió vàlida. Només s'accepten números i els "
+"operadors + - * /."
 
 msgid "Project name"
 msgstr "Nom del projecte"
+
+#, fuzzy
+msgid "Current private code"
+msgstr "Codi privat nou"
+
+msgid "Enter existing private code to edit project"
+msgstr ""
 
 msgid "New private code"
 msgstr "Codi privat nou"
@@ -47,18 +59,21 @@ msgstr ""
 "L'establiment d'una moneda predeterminada permet la conversió de moneda "
 "entre factures"
 
+msgid "Unknown error"
+msgstr "Error desconegut"
+
+msgid "Invalid private code."
+msgstr "Codi privat no vàlid."
+
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
-"Aquest projecte no es pot definir com a «cap moneda» perquè conté factures "
-"en diverses monedes."
+"Aquest projecte no es pot definir com a «cap moneda» perquè conté "
+"factures en diverses monedes."
 
-msgid "Import previously exported JSON file"
-msgstr "Importar el fitxer JSON anteriorment exportat"
-
-msgid "Import"
-msgstr "Importar"
+msgid "Compatible with Cospend"
+msgstr ""
 
 msgid "Project identifier"
 msgstr "Identificador del projecte"
@@ -74,8 +89,8 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
-"Ja existeix un projecte amb aquest identificador (\"%(project)s\"). Si us "
-"plau, tria un identificador nou"
+"Ja existeix un projecte amb aquest identificador (\"%(project)s\"). Si us"
+" plau, tria un identificador nou"
 
 msgid "Which is a real currency: Euro or Petro dollar?"
 msgstr "En quina moneda: euro o petrodòlar?"
@@ -88,12 +103,6 @@ msgstr "Si us plau, valida el captcha per a continuar."
 
 msgid "Enter private code to confirm deletion"
 msgstr "Introdueix el codi privat per a confirmar la supressió"
-
-msgid "Unknown error"
-msgstr "Error desconegut"
-
-msgid "Invalid private code."
-msgstr "Codi privat no vàlid."
 
 msgid "Get in"
 msgstr "Entrar-hi"
@@ -119,17 +128,17 @@ msgstr "Confirmació de contrasenya"
 msgid "Reset password"
 msgstr "Restablir la contrasenya"
 
-msgid "Date"
-msgstr "Data"
+msgid "When?"
+msgstr "Quan?"
 
 msgid "What?"
 msgstr "Què?"
 
-msgid "Payer"
-msgstr "Pagador"
+msgid "Who paid?"
+msgstr "Qui va pagar?"
 
-msgid "Amount paid"
-msgstr "Import pagat"
+msgid "How much?"
+msgstr "Quant?"
 
 msgid "Currency"
 msgstr "Moneda"
@@ -153,9 +162,6 @@ msgstr "Enviar i afegir-ne un de nou"
 msgid "Project default: %(currency)s"
 msgstr "Moneda predeterminada del projecte: %(currency)s"
 
-msgid "Bills can't be null"
-msgstr "Les factures no poden ser nul·les"
-
 msgid "Name"
 msgstr "Nom"
 
@@ -177,12 +183,27 @@ msgstr "Aquest projecte ja compta amb aquest participant"
 msgid "People to notify"
 msgstr "Gent a notificar"
 
-msgid "Send invites"
-msgstr "Enviar invitacions"
+msgid "Send the invitations"
+msgstr "Enviar les invitacions"
 
 #, python-format
 msgid "The email %(email)s is not valid"
 msgstr "El correu electrònic %(email)s no és vàlid"
+
+msgid "Logout"
+msgstr "Tancar sessió"
+
+msgid "Please check the email configuration of the server."
+msgstr ""
+
+#, fuzzy, python-format
+msgid ""
+"Please check the email configuration of the server or contact the "
+"administrator: %(admin_email)s"
+msgstr ""
+"Ho sentim, s'ha produït un error en intentar enviar els correus "
+"electrònics d'invitació. Comprova la configuració de correu electrònic "
+"del servidor o posa't en contacte amb l'administrador."
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
@@ -211,24 +232,21 @@ msgstr "{prefix}: {error}"
 msgid "{prefix}:<br />{errors}"
 msgstr "{prefix}:<br />{errors}"
 
-msgid "Too many failed login attempts, please retry later."
+#, fuzzy
+msgid "Too many failed login attempts."
 msgstr "Massa intents d'inici de sessió fallits, torna-ho a provar més tard."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr ""
-"Aquesta contrasenya d'administrador no és la correcta. Només queden %(num)d "
-"intents."
+"Aquesta contrasenya d'administrador no és la correcta. Només queden "
+"%(num)d intents."
 
 msgid "Provided token is invalid"
 msgstr "El testimoni proporcionat no és vàlid"
 
 msgid "This private code is not the right one"
 msgstr "Aquest codi privat no és el correcte"
-
-#, python-format
-msgid "You have just created '%(project)s' to share your expenses"
-msgstr "Acabes de crear '%(project)s' per a compartir les teves despeses"
 
 msgid "A reminder email has just been sent to you"
 msgstr "T'acaben d'enviar un correu electrònic de recordatori"
@@ -240,18 +258,15 @@ msgstr ""
 "Hem intentat enviar-vos un correu electrònic de recordatori, però s'ha "
 "produït un error. Encara podeu utilitzar el projecte amb normalitat."
 
-#, python-format
-msgid "The project identifier is %(project)s"
-msgstr "L'identificador del projecte és %(project)s"
-
+#, fuzzy
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
-"instructions. Please check the email configuration of the server or "
-"contact the administrator."
+"instructions."
 msgstr ""
 "Ho sentim, s'ha produït un error en enviar-te un correu electrònic amb "
-"instruccions de restabliment de la contrasenya. Comprova la configuració de "
-"correu electrònic del servidor o posa't en contacte amb l'administrador."
+"instruccions de restabliment de la contrasenya. Comprova la configuració "
+"de correu electrònic del servidor o posa't en contacte amb "
+"l'administrador."
 
 msgid "No token provided"
 msgstr "No s'ha proporcionat cap testimoni"
@@ -265,24 +280,34 @@ msgstr "Projecte desconegut"
 msgid "Password successfully reset."
 msgstr "La contrasenya s'ha restablert correctament."
 
-msgid "Project successfully uploaded"
-msgstr "El projecte s'ha penjat correctament"
+msgid "Project settings have been changed successfully."
+msgstr ""
 
-msgid "Invalid JSON"
-msgstr "JSON no vàlid"
+msgid "Unable to parse CSV"
+msgstr ""
+
+#, python-format
+msgid "Missing attribute: %(attribute)s"
+msgstr ""
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
 msgstr ""
-"No es poden afegir factures en diverses monedes a un projecte sense moneda "
-"predeterminada"
+"No es poden afegir factures en diverses monedes a un projecte sense "
+"moneda predeterminada"
+
+msgid "Project successfully uploaded"
+msgstr "El projecte s'ha penjat correctament"
 
 msgid "Project successfully deleted"
 msgstr "El projecte s'ha suprimit correctament"
 
 msgid "Error deleting project"
 msgstr "S'ha produït un error en suprimir el projecte"
+
+msgid "Unable to logout"
+msgstr ""
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
@@ -291,14 +316,12 @@ msgstr "T'han convidat a compartir les teves despeses per a %(project)s"
 msgid "Your invitations have been sent"
 msgstr "S'han enviat les teves invitacions"
 
-msgid ""
-"Sorry, there was an error while trying to send the invitation emails. "
-"Please check the email configuration of the server or contact the "
-"administrator."
+#, fuzzy
+msgid "Sorry, there was an error while trying to send the invitation emails."
 msgstr ""
-"Ho sentim, s'ha produït un error en intentar enviar els correus electrònics "
-"d'invitació. Comprova la configuració de correu electrònic del servidor o "
-"posa't en contacte amb l'administrador."
+"Ho sentim, s'ha produït un error en intentar enviar els correus "
+"electrònics d'invitació. Comprova la configuració de correu electrònic "
+"del servidor o posa't en contacte amb l'administrador."
 
 #, python-format
 msgid "%(member)s has been added"
@@ -319,8 +342,8 @@ msgid ""
 "Participant '%(name)s' has been deactivated. It will still appear in the "
 "list until its balance reach zero."
 msgstr ""
-"El participant «%(name)s» ha estat desactivat. Continuarà apareixent a la "
-"llista fins que el seu saldo arribi a zero."
+"El participant «%(name)s» ha estat desactivat. Continuarà apareixent a la"
+" llista fins que el seu saldo arribi a zero."
 
 #, python-format
 msgid "Participant '%(name)s' has been removed"
@@ -341,6 +364,10 @@ msgstr "La factura s'ha suprimit"
 
 msgid "The bill has been modified"
 msgstr "La factura ha estat modificada"
+
+#, python-format
+msgid "%(lang)s is not a supported language"
+msgstr ""
 
 msgid "Error deleting project history"
 msgstr "S'ha produït un error en suprimir l'historial del projecte"
@@ -402,8 +429,8 @@ msgstr "Accions"
 msgid "edit"
 msgstr "editar"
 
-msgid "delete"
-msgstr "suprimir"
+msgid "Delete project"
+msgstr "Suprimir el projecte"
 
 msgid "show"
 msgstr "mostrar"
@@ -417,20 +444,12 @@ msgstr "Descarregar l'aplicació mòbil"
 msgid "Get it on"
 msgstr "Aconsegueix-ho"
 
-msgid "Are you sure?"
-msgstr "N'estàs segur?"
-
 msgid "Edit project"
 msgstr "Editar el projecte"
 
-msgid "Delete project"
-msgstr "Suprimir el projecte"
-
-msgid "Import JSON"
-msgstr "Importar JSON"
-
-msgid "Choose file"
-msgstr "Triar fitxer"
+#, fuzzy
+msgid "Import project"
+msgstr "Editar el projecte"
 
 msgid "Download project's data"
 msgstr "Descarregar les dades del projecte"
@@ -446,8 +465,8 @@ msgstr "Plans de liquidació"
 
 msgid "Download the list of transactions needed to settle the current bills."
 msgstr ""
-"Descarregar la llista transaccions necessàries per a liquidar les factures "
-"actuals."
+"Descarregar la llista transaccions necessàries per a liquidar les "
+"factures actuals."
 
 msgid "Can't remember the password?"
 msgstr "No recordes la contrasenya?"
@@ -458,18 +477,29 @@ msgstr "Cancel·lar"
 msgid "Privacy Settings"
 msgstr "Configuració de la privacitat"
 
-msgid "Edit the project"
-msgstr "Editar el projecte"
+msgid "Save changes"
+msgstr ""
 
 msgid "This will remove all bills and participants in this project!"
 msgstr ""
-"Això eliminarà totes les factures i tots els participants en aquest projecte!"
+"Això eliminarà totes les factures i tots els participants en aquest "
+"projecte!"
+
+#, fuzzy
+msgid "Import previously exported project"
+msgstr "Importar el fitxer JSON anteriorment exportat"
+
+msgid "Choose file"
+msgstr "Triar fitxer"
 
 msgid "Edit this bill"
 msgstr "Editar aquesta factura"
 
 msgid "Add a bill"
 msgstr "Afegir una factura"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr ""
 
 msgid "Everyone"
 msgstr "Tothom"
@@ -488,9 +518,6 @@ msgstr "Editar aquest participant"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "eloi.serra@exemple.cat, maria.canut@lloc.com"
-
-msgid "Send the invitations"
-msgstr "Enviar les invitacions"
 
 msgid "Download"
 msgstr "Descarregar"
@@ -518,8 +545,7 @@ msgstr "S'ha canviat la configuració de l'historial"
 
 #, python-format
 msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
-msgstr ""
-"Factura %(name)s: %(property_name)s ha canviat de %(before)s a %(after)s"
+msgstr "Factura %(name)s: %(property_name)s ha canviat de %(before)s a %(after)s"
 
 #, python-format
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
@@ -534,10 +560,10 @@ msgid ""
 "                The rest of the project history will be unaffected. This "
 "action cannot be undone."
 msgstr ""
-"Estàs segur que vols suprimir totes les adreces IP enregistrades d'aquest "
-"projecte?\n"
-"                La resta de l'historial del projecte no es veurà afectat. "
-"Aquesta acció no es pot desfer."
+"Estàs segur que vols suprimir totes les adreces IP enregistrades d'aquest"
+" projecte?\n"
+"                La resta de l'historial del projecte no es veurà afectat."
+" Aquesta acció no es pot desfer."
 
 msgid "Confirm deletion"
 msgstr "Confirmar la supressió"
@@ -561,39 +587,23 @@ msgstr "Factura %(name)s: afegida a la llista de propietaris %(owers_list_str)s"
 
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
-msgstr ""
-"Factura %(name)s: eliminada de la llista de propietaris %(owers_list_str)s"
+msgstr "Factura %(name)s: eliminada de la llista de propietaris %(owers_list_str)s"
 
-#, python-format
-msgid ""
-"\n"
-"            <i>This project has history disabled. New actions won't "
-"appear below. You can enable history on the</i>\n"
-"            <a href=\"%(url)s\">settings page</a>\n"
-"            "
+msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
-"\n"
-"            <i>Aquest projecte té l'historial deshabilitat. Les accions "
-"noves no apareixeran a continuació. Pots habilitar l'historial a la </i>\n"
-"            <a href=\"%(url)s\">pàgina de configuració</a>\n"
-"            "
+
+#, fuzzy
+msgid "You can enable history on the settings page."
+msgstr "L'enregistrament d'adreces IP es pot habilitar a la pàgina de configuració"
 
 msgid ""
-"\n"
-"            <i>The table below reflects actions recorded prior to "
-"disabling project history. You can\n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" "
-"data-target=\"#confirm-erase\">clear project history</a> to remove "
-"them.</i></p>\n"
-"            "
+"The table below reflects actions recorded prior to disabling project "
+"history."
 msgstr ""
-"\n"
-"            <i>La taula següent reflecteix les accions enregistrades abans "
-"de deshabilitar l'historial de projectes. Pots \n"
-"            <a href=\"#\" data-toggle=\"modal\" data-keyboard=\"false\" data-"
-"target=\"#confirm-erase\"> netejar l'historial del projecte</a> per a "
-"eliminar-les.</i></p>\n"
-"            "
+
+#, fuzzy
+msgid "You can clear the project history to remove them."
+msgstr "Probablement algú ha netejat l'historial del projecte."
 
 msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
@@ -605,17 +615,17 @@ msgstr ""
 msgid "Delete stored IP addresses"
 msgstr "Suprimir les adreces IP emmagatzemades"
 
-msgid "No history to erase"
-msgstr "No hi ha historial a esborrar"
-
-msgid "Clear Project History"
-msgstr "Netejar l'historial del projecte"
-
 msgid "No IP Addresses to erase"
 msgstr "No hi ha adreces IP a esborrar"
 
 msgid "Delete Stored IP Addresses"
 msgstr "Suprimir les adreces IP emmagatzemades"
+
+msgid "No history to erase"
+msgstr "No hi ha historial a esborrar"
+
+msgid "Clear Project History"
+msgstr "Netejar l'historial del projecte"
 
 msgid "Time"
 msgstr "Hora"
@@ -624,12 +634,12 @@ msgid "Event"
 msgstr "Esdeveniment"
 
 msgid "IP address recording can be enabled on the settings page"
-msgstr ""
-"L'enregistrament d'adreces IP es pot habilitar a la pàgina de configuració"
+msgstr "L'enregistrament d'adreces IP es pot habilitar a la pàgina de configuració"
 
 msgid "IP address recording can be disabled on the settings page"
 msgstr ""
-"L'enregistrament d'adreces IP es pot deshabilitar a la pàgina de configuració"
+"L'enregistrament d'adreces IP es pot deshabilitar a la pàgina de "
+"configuració"
 
 msgid "From IP"
 msgstr "Des d'IP"
@@ -655,8 +665,7 @@ msgstr "S'ha canviat el nom del projecte a %(new_project_name)s"
 
 #, python-format
 msgid "Project contact email changed to %(new_email)s"
-msgstr ""
-"El correu electrònic de contacte del projecte ha canviat a %(new_email)s"
+msgstr "El correu electrònic de contacte del projecte ha canviat a %(new_email)s"
 
 msgid "Project settings modified"
 msgstr "S'ha modificat la configuració del projecte"
@@ -679,11 +688,16 @@ msgstr "Factura %(name)s ha canviat el nom a %(new_description)s"
 
 #, python-format
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
-msgstr ""
-"Participant %(name)s: el pes ha canviat de %(old_weight)s a %(new_weight)s"
+msgstr "Participant %(name)s: el pes ha canviat de %(old_weight)s a %(new_weight)s"
+
+msgid "Payer"
+msgstr "Pagador"
 
 msgid "Amount"
 msgstr "Import"
+
+msgid "Date"
+msgstr "Data"
 
 #, python-format
 msgid "Amount in %(currency)s"
@@ -757,8 +771,8 @@ msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
 msgstr ""
-"No reutilitzis una contrasenya personal. Tria un codi privat i envia'l als "
-"teus amics"
+"No reutilitzis una contrasenya personal. Tria un codi privat i envia'l "
+"als teus amics"
 
 msgid "Account manager"
 msgstr "Gestor de comptes"
@@ -787,6 +801,9 @@ msgstr "Historial"
 msgid "Settings"
 msgstr "Configuració"
 
+msgid "RSS Feed"
+msgstr ""
+
 msgid "Other projects :"
 msgstr "Altres projectes:"
 
@@ -796,8 +813,9 @@ msgstr "commutar a"
 msgid "Dashboard"
 msgstr "Panell"
 
-msgid "Logout"
-msgstr "Tancar sessió"
+#, python-format
+msgid "Please retry after %(date)s."
+msgstr ""
 
 msgid "Code"
 msgstr "Codi"
@@ -830,29 +848,20 @@ msgstr "n'estàs segur?"
 msgid "Invite people"
 msgstr "Convidar gent"
 
-msgid "You should start by adding participants"
-msgstr "Hauries de començar afegint participants"
-
-msgid "Add a new bill"
-msgstr "Afegir una factura nova"
-
 msgid "Newer bills"
 msgstr "Factures més noves"
 
 msgid "Older bills"
 msgstr "Factures més antigues"
 
-msgid "When?"
-msgstr "Quan?"
+msgid "You should start by adding participants"
+msgstr "Hauries de començar afegint participants"
 
-msgid "Who paid?"
-msgstr "Qui va pagar?"
+msgid "Add a new bill"
+msgstr "Afegir una factura nova"
 
 msgid "For what?"
 msgstr "Què va pagar?"
-
-msgid "How much?"
-msgstr "Quant?"
 
 #, python-format
 msgid "Added on %(date)s"
@@ -862,20 +871,22 @@ msgstr "Afegida el %(date)s"
 msgid "Everyone but %(excluded)s"
 msgstr "Tothom menys %(excluded)s"
 
+msgid "delete"
+msgstr "suprimir"
+
 msgid "No bills"
 msgstr "Sense factures"
 
 msgid "Nothing to list yet."
 msgstr "Res a enumerar encara."
 
-msgid "You probably want to"
-msgstr "Probablement vulguis"
-
-msgid "add a bill"
+#, fuzzy
+msgid "Add your first bill"
 msgstr "afegir una factura"
 
-msgid "add participants"
-msgstr "afegir participants"
+#, fuzzy
+msgid "Add the first participant"
+msgstr "Editar aquest participant"
 
 msgid "Password reminder"
 msgstr "Recordatori de contrasenya"
@@ -884,8 +895,8 @@ msgid ""
 "A link to reset your password has been sent to you, please check your "
 "emails."
 msgstr ""
-"Se t'ha enviat un enllaç per a restablir la vostra contrasenya, comprova els "
-"teus correus electrònics."
+"Se t'ha enviat un enllaç per a restablir la vostra contrasenya, comprova "
+"els teus correus electrònics."
 
 msgid "Return to home page"
 msgstr "Tornar a la pàgina d'inici"
@@ -899,39 +910,55 @@ msgstr "Restablir la contrasenya"
 msgid "Invite people to join this project"
 msgstr "Convidar a persones a unir-se a aquest projecte"
 
+msgid "Share an invitation link"
+msgstr ""
+
+msgid ""
+"The easiest way to invite people is to give them the following invitation"
+" link.<br />They will be able to access the project, manage participants,"
+" add/edit/delete bills. However, they will not have access to important "
+"settings such as changing the private code or deleting the whole project."
+msgstr ""
+
+msgid "Scan QR code"
+msgstr ""
+
+msgid "Use a mobile device with a compatible app."
+msgstr ""
+
+msgid "Send via Emails"
+msgstr "Enviar per correu electrònic"
+
+#, fuzzy
+msgid ""
+"Specify a list of email adresses (separated by comma) of people you want "
+"to notify about the creation of this project. We will send them an email "
+"with the invitation link."
+msgstr ""
+"Especifica una llista (separada per comes) dels correus electrònic als "
+"que vols notificar la\n"
+"                creació d'aquest projecte de gestió pressupostària i els "
+"hi enviarem un correu electrònic."
+
 msgid "Share Identifier & code"
 msgstr "Compartir l'identificador i el codi"
 
 msgid ""
 "You can share the project identifier and the private code by any "
-"communication means."
+"communication means.<br />Anyone with the private code will have access "
+"to the full project, including changing settings such as the private code"
+" or project email address, or even deleting the whole project."
 msgstr ""
-"Pots compartir l'identificador del projecte i el codi privat per qualsevol "
-"mitjà de comunicació."
 
 msgid "Identifier:"
 msgstr "Identificador:"
 
-msgid "Share the Link"
-msgstr "Compartir l'enllaç"
+#, fuzzy
+msgid "Private code:"
+msgstr "Codi privat"
 
-msgid "You can directly share the following link via your prefered medium"
+msgid "the private code was defined when you created the project"
 msgstr ""
-"Pots compartir directament l'enllaç següent a través del teu mitjà preferit"
-
-msgid "Send via Emails"
-msgstr "Enviar per correu electrònic"
-
-msgid ""
-"Specify a (comma separated) list of email adresses you want to notify "
-"about the\n"
-"                creation of this budget management project and we will "
-"send them an email for you."
-msgstr ""
-"Especifica una llista (separada per comes) dels correus electrònic als que "
-"vols notificar la\n"
-"                creació d'aquest projecte de gestió pressupostària i els hi "
-"enviarem un correu electrònic."
 
 msgid "Who pays?"
 msgstr "Qui ha de pagar?"
@@ -962,3 +989,97 @@ msgstr "Despeses per mes"
 
 msgid "Period"
 msgstr "Període"
+
+#~ msgid "Import"
+#~ msgstr "Importar"
+
+#~ msgid "Amount paid"
+#~ msgstr "Import pagat"
+
+#~ msgid "Bills can't be null"
+#~ msgstr "Les factures no poden ser nul·les"
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "L'identificador del projecte és %(project)s"
+
+#~ msgid "Invalid JSON"
+#~ msgstr "JSON no vàlid"
+
+#~ msgid "Are you sure?"
+#~ msgstr "N'estàs segur?"
+
+#~ msgid "Import JSON"
+#~ msgstr "Importar JSON"
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>This project has history "
+#~ "disabled. New actions won't appear "
+#~ "below. You can enable history on "
+#~ "the</i>\n"
+#~ "            <a href=\"%(url)s\">settings page</a>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            <i>Aquest projecte té l'historial"
+#~ " deshabilitat. Les accions noves no "
+#~ "apareixeran a continuació. Pots habilitar "
+#~ "l'historial a la </i>\n"
+#~ "            <a href=\"%(url)s\">pàgina de configuració</a>\n"
+#~ "            "
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>The table below reflects "
+#~ "actions recorded prior to disabling "
+#~ "project history. You can\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">clear project history</a>"
+#~ " to remove them.</i></p>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            <i>La taula següent reflecteix "
+#~ "les accions enregistrades abans de "
+#~ "deshabilitar l'historial de projectes. Pots"
+#~ " \n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\"> netejar l'historial "
+#~ "del projecte</a> per a eliminar-"
+#~ "les.</i></p>\n"
+#~ "            "
+
+#~ msgid "Send invites"
+#~ msgstr "Enviar invitacions"
+
+#~ msgid " show"
+#~ msgstr "mostrar"
+
+#~ msgid "Edit the project"
+#~ msgstr "Editar el projecte"
+
+#~ msgid "You probably want to"
+#~ msgstr "Probablement vulguis"
+
+#~ msgid "add participants"
+#~ msgstr "afegir participants"
+
+#~ msgid ""
+#~ "You can share the project identifier "
+#~ "and the private code by any "
+#~ "communication means."
+#~ msgstr ""
+#~ "Pots compartir l'identificador del projecte"
+#~ " i el codi privat per qualsevol "
+#~ "mitjà de comunicació."
+
+#~ msgid "Share the Link"
+#~ msgstr "Compartir l'enllaç"
+
+#~ msgid "You can directly share the following link via your prefered medium"
+#~ msgstr ""
+#~ "Pots compartir directament l'enllaç següent"
+#~ " a través del teu mitjà preferit"
+

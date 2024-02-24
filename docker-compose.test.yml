@@ -6,6 +6,6 @@ services:
     build: .
   sut:
     image: alpine
-    command: sh -c 'wget -qO- ihatemoney:8000/healthcheck | grep "OK"'
+    command: sh -c 'sleep 5; wget -qO- ihatemoney:8000/healthcheck | grep "OK"'
     depends_on:
       - ihatemoney

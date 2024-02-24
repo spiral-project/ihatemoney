@@ -1,45 +1,20 @@
 import os
-from unittest.mock import MagicMock
 
-from flask_testing import TestCase
-from werkzeug.security import generate_password_hash
+import pytest
 
 from ihatemoney import models
-from ihatemoney.currency_convertor import CurrencyConverter
-from ihatemoney.run import create_app, db
+from ihatemoney.utils import generate_password_hash
 
 
-class BaseTestCase(TestCase):
-
+@pytest.mark.usefixtures("client", "converter")
+class BaseTestCase:
     SECRET_KEY = "TEST SESSION"
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         "TESTING_SQLALCHEMY_DATABASE_URI", "sqlite://"
     )
     ENABLE_CAPTCHA = False
-
-    def create_app(self):
-        # Pass the test object as a configuration.
-        return create_app(self)
-
-    def setUp(self):
-        db.create_all()
-        # Add dummy data to CurrencyConverter for all tests (since it's a singleton)
-        mock_data = {
-            "USD": 1,
-            "EUR": 0.8,
-            "CAD": 1.2,
-            "PLN": 4,
-            CurrencyConverter.no_currency: 1,
-        }
-        converter = CurrencyConverter()
-        converter.get_rates = MagicMock(return_value=mock_data)
-        # Also add it to an attribute to make tests clearer
-        self.converter = converter
-
-    def tearDown(self):
-        # clean after testing
-        db.session.remove()
-        db.drop_all()
+    PASSWORD_HASH_METHOD = "pbkdf2:sha1:1"
+    PASSWORD_HASH_SALT_LENGTH = 1
 
     def login(self, project, password=None, test_client=None):
         password = password or project
@@ -57,6 +32,7 @@ class BaseTestCase(TestCase):
         default_currency="XXX",
         name=None,
         password=None,
+        project_history=True,
     ):
         """Create a fake project"""
         name = name or id
@@ -70,6 +46,7 @@ class BaseTestCase(TestCase):
                 "password": password,
                 "contact_email": f"{id}@notmyidea.org",
                 "default_currency": default_currency,
+                "project_history": project_history,
             },
             follow_redirects=follow_redirects,
         )
@@ -80,7 +57,7 @@ class BaseTestCase(TestCase):
             data=data,
             # follow_redirects=True,
         )
-        self.assertEqual("/{id}/edit" in str(resp.response), not success)
+        assert ("/{id}/edit" in str(resp.response)) == (not success)
 
     def create_project(self, id, default_currency="XXX", name=None, password=None):
         name = name or str(id)
@@ -106,8 +83,15 @@ class IhatemoneyTestCase(BaseTestCase):
     def assertStatus(self, expected, resp, url=None):
         if url is None:
             url = resp.request.path
-        return self.assertEqual(
-            expected,
-            resp.status_code,
-            f"{url} expected {expected}, got {resp.status_code}",
+        assert (
+            expected == resp.status_code
+        ), f"{url} expected {expected}, got {resp.status_code}"
+
+    def enable_admin(self, password="adminpass"):
+        self.app.config["ACTIVATE_ADMIN_DASHBOARD"] = True
+        self.app.config["ADMIN_PASSWORD"] = generate_password_hash(password)
+        return self.client.post(
+            "/admin?goto=%2Fdashboard",
+            data={"admin_password": password},
+            follow_redirects=True,
         )
