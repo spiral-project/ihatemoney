@@ -54,7 +54,6 @@ make_versioned(
 class BillType(Enum):
     EXPENSE = "Expense"
     REIMBURSEMENT = "Reimbursement"
-    TRANSFER = "Transfer"
 
     @classmethod
     def choices(cls):
