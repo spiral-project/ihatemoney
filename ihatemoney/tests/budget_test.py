@@ -815,12 +815,12 @@ class TestBudget(IhatemoneyTestCase):
         )
         #check balance 
         balance = self.get_project("rent").balance
-        self.assertEqual(set(balance.values()), set([500, -500]))
+        assert set(balance.values()), set([500 == -500])
         #check paid
         bob_paid = self.get_project("rent").full_balance[2][members_ids[0]]
         alice_paid = self.get_project("rent").full_balance[2][members_ids[1]]
-        self.assertEqual(bob_paid, 1000)
-        self.assertEqual(alice_paid, 0)
+        assert bob_paid == 1000
+        assert alice_paid == 0
 
         # test reimbursement bill
         self.client.post(
@@ -836,12 +836,12 @@ class TestBudget(IhatemoneyTestCase):
         )
 
         balance = self.get_project("rent").balance
-        self.assertEqual(set(balance.values()), set([0, 0]))
+        assert set(balance.values()), set([0 == 0])
         #check paid
         bob_paid = self.get_project("rent").full_balance[2][members_ids[0]]
         alice_paid = self.get_project("rent").full_balance[2][members_ids[1]]
-        self.assertEqual(bob_paid, 500)
-        self.assertEqual(alice_paid, 500)
+        assert bob_paid == 500
+        assert alice_paid == 500
     def test_transfer_bill(self):
         self.post_project("random")
 
@@ -874,7 +874,7 @@ class TestBudget(IhatemoneyTestCase):
             },
         )
         balance = self.get_project("random").balance
-        self.assertEqual(set(balance.values()), set([500, -500]))
+        assert set(balance.values()), set([500 == -500])
 
     def test_reimbursement_bill(self):
         self.post_project("rent")
@@ -898,12 +898,12 @@ class TestBudget(IhatemoneyTestCase):
         )
         #check balance 
         balance = self.get_project("rent").balance
-        self.assertEqual(set(balance.values()), set([500, -500]))
+        assert set(balance.values()), set([500 == -500])
         #check paid
         bob_paid = self.get_project("rent").full_balance[2][members_ids[0]]
         alice_paid = self.get_project("rent").full_balance[2][members_ids[1]]
-        self.assertEqual(bob_paid, 1000)
-        self.assertEqual(alice_paid, 0)
+        assert bob_paid == 1000
+        assert alice_paid == 0
 
         # test reimbursement bill
         self.client.post(
@@ -919,12 +919,12 @@ class TestBudget(IhatemoneyTestCase):
         )
 
         balance = self.get_project("rent").balance
-        self.assertEqual(set(balance.values()), set([0, 0]))
+        assert set(balance.values()), set([0 == 0])
         #check paid
         bob_paid = self.get_project("rent").full_balance[2][members_ids[0]]
         alice_paid = self.get_project("rent").full_balance[2][members_ids[1]]
-        self.assertEqual(bob_paid, 500)
-        self.assertEqual(alice_paid, 500)
+        assert bob_paid == 500
+        assert alice_paid == 500
     def test_transfer_bill(self):
         self.post_project("random")
 
@@ -957,7 +957,7 @@ class TestBudget(IhatemoneyTestCase):
             },
         )
         balance = self.get_project("random").balance
-        self.assertEqual(set(balance.values()), set([500, -500]))
+        assert set(balance.values()), set([500 == -500])
 
     def test_weighted_balance(self):
         self.post_project("raclette")
@@ -1493,7 +1493,7 @@ class TestBudget(IhatemoneyTestCase):
         
             #test if theres a new one with bill_type reimbursement
             bill = project.get_newest_bill()
-            self.assertEqual(bill.bill_type, "Reimbursement")
+            assert bill.bill_type == "Reimbursement"
         return
 
     def test_settle_zero(self):
