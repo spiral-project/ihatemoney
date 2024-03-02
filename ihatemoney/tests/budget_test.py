@@ -1493,7 +1493,7 @@ class TestBudget(IhatemoneyTestCase):
         
             #test if theres a new one with bill_type reimbursement
             bill = project.get_newest_bill()
-            assert bill.bill_type == "Reimbursement"
+            assert bill.bill_type == models.BillType.REIMBURSEMENT
         return
 
     def test_settle_zero(self):

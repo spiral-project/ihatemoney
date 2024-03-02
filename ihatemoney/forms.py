@@ -39,7 +39,7 @@ from wtforms.validators import (
 )
 
 from ihatemoney.currency_convertor import CurrencyConverter
-from ihatemoney.models import Bill, LoggingMode, Person, Project
+from ihatemoney.models import Bill, BillType, LoggingMode, Person, Project
 from ihatemoney.utils import (
     em_surround,
     eval_arithmetic_expression,
@@ -81,7 +81,6 @@ def get_billform_for(project, set_default=True, **kwargs):
 
     active_members = [(m.id, m.name) for m in project.active_members]
 
-    form.bill_type.choices = project.bill_types
     form.payed_for.choices = form.payer.choices = active_members
     form.payed_for.default = [m.id for m in project.active_members]
 
@@ -365,7 +364,7 @@ class BillForm(FlaskForm):
     payed_for = SelectMultipleField(
         _("For whom?"), validators=[DataRequired()], coerce=int
     )
-    bill_type = SelectField(_("Bill Type"), validators=[DataRequired()], coerce=str)
+    bill_type = SelectField(_("Bill Type"), validators=[DataRequired()], choices=BillType.choices())
     submit = SubmitField(_("Submit"))
     submit2 = SubmitField(_("Submit and add a new one"))
 
@@ -386,7 +385,7 @@ class BillForm(FlaskForm):
         bill.payer_id = self.payer.data
         bill.amount = self.amount.data
         bill.what = self.what.data
-        bill.bill_type = self.bill_type.data
+        bill.bill_type = BillType(self.bill_type.data)
         bill.external_link = self.external_link.data
         bill.date = self.date.data
         bill.owers = Person.query.get_by_ids(self.payed_for.data, project)
@@ -432,10 +431,6 @@ class BillForm(FlaskForm):
                 project_currency=self.project_currency,
             )
             raise ValidationError(msg)
-
-    def validate_bill_type(self, field):
-        if (field.data, field.data) not in Project.bill_types:
-            raise ValidationError(_("Invalid Bill Type"))
 
 
 class MemberForm(FlaskForm):
