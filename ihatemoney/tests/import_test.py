@@ -16,11 +16,13 @@ def import_data(request: pytest.FixtureRequest):
             "amount": 13.33,
             "payer_name": "tata",
             "payer_weight": 1.0,
+            "bill_type": "Expense",
             "owers": ["jeanne"],
         },
         {
             "date": "2016-12-31",
             "what": "red wine",
+            "bill_type": "Expense",
             "amount": 200.0,
             "payer_name": "jeanne",
             "payer_weight": 1.0,
@@ -28,6 +30,7 @@ def import_data(request: pytest.FixtureRequest):
         },
         {
             "date": "2016-12-31",
+            "bill_type": "Expense",
             "what": "fromage a raclette",
             "amount": 10.0,
             "payer_name": "zorglub",

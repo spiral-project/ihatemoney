@@ -2005,6 +2005,7 @@ class TestBudget(IhatemoneyTestCase):
                     "payed_for": [1, 2, 3],
                     "amount": "12",
                     "original_currency": "EUR",
+                    "bill_type": "Expense"
                 },
             )
             self.client.post(
@@ -2016,6 +2017,7 @@ class TestBudget(IhatemoneyTestCase):
                     "payed_for": [1, 2],
                     "amount": "15",
                     "original_currency": "EUR",
+                    "bill_type": "Expense"
                 },
             )
             self.client.post(
@@ -2027,6 +2029,7 @@ class TestBudget(IhatemoneyTestCase):
                     "payed_for": [1, 2],
                     "amount": "10",
                     "original_currency": "EUR",
+                    "bill_type": "Expense"
                 },
             )
 
@@ -2089,6 +2092,7 @@ class TestBudget(IhatemoneyTestCase):
                     "payed_for": [1, 2, 3],
                     "amount": "12",
                     "original_currency": "EUR",
+                    "bill_type": "Expense"
                 },
             )
             self.client.post(
@@ -2100,6 +2104,7 @@ class TestBudget(IhatemoneyTestCase):
                     "payed_for": [1, 2],
                     "amount": "15",
                     "original_currency": "EUR",
+                    "bill_type": "Expense"
                 },
             )
             self.client.post(
@@ -2111,6 +2116,7 @@ class TestBudget(IhatemoneyTestCase):
                     "payed_for": [1, 2],
                     "amount": "10",
                     "original_currency": "EUR",
+                    "bill_type": "Expense"
                 },
             )
 
@@ -2189,6 +2195,7 @@ class TestBudget(IhatemoneyTestCase):
                     "payed_for": [1],
                     "amount": "12",
                     "original_currency": "XXX",
+                    "bill_type": "Expense"
                 },
                 follow_redirects=True,
             )
@@ -2249,6 +2256,7 @@ class TestBudget(IhatemoneyTestCase):
                     "payer": 1,
                     "payed_for": [1],
                     "amount": "12",
+                    "bill_type": "Expense",
                     "original_currency": "XXX",
                 },
                 follow_redirects=True,
@@ -2356,6 +2364,7 @@ class TestBudget(IhatemoneyTestCase):
                 "payer": members_ids[1],
                 "payed_for": members_ids,
                 "amount": "25",
+                "bill_type": "Expense"
             },
         )
 
@@ -2373,6 +2382,7 @@ class TestBudget(IhatemoneyTestCase):
                 "payer": members_ids_tartif[2],
                 "payed_for": members_ids_tartif,
                 "amount": "24",
+                "bill_type": "Expense"
             },
         )
 
@@ -2407,6 +2417,7 @@ class TestBudget(IhatemoneyTestCase):
                 "payer": members_ids[1],
                 "payed_for": members_ids[1:],
                 "amount": "25",
+                "bill_type": "Expense"
             },
         )
 
