@@ -133,7 +133,7 @@
                         {{ bill.date }}
                     </span>
                 </td>
-                <td>{{ bill.bill_type }}</td>
+                <td>{{ bill.bill_type.value }}</td>
                 <td>{{ bill.payer }}</td>
                 <td>{{ bill.what }}</td>
                 <td>{% if bill.owers|length == g.project.members|length -%}

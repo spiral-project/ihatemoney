@@ -1,4 +1,5 @@
 from collections import defaultdict
+from enum import Enum
 import datetime
 import itertools
 
@@ -50,10 +51,14 @@ make_versioned(
     ],
 )
 
-class BillType(FormEnum):
+class BillType(Enum):
     EXPENSE = "Expense"
     REIMBURSEMENT = "Reimbursement"
     TRANSFER = "Transfer"
+
+    @classmethod
+    def choices(cls):
+        return [(choice, choice.value) for choice in cls]
 
 
 db = SQLAlchemy()
