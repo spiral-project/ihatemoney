@@ -120,13 +120,6 @@ class Project(db.Model):
         balance       spent        paid
         """
         balances, should_pay, should_receive = (defaultdict(int) for time in (1, 2, 3))
-        # for bill in self.get_bills_unordered().all():
-        #     should_receive[bill.payer.id] += bill.converted_amount
-        #     total_weight = sum(ower.weight for ower in bill.owers)
-        #     for ower in bill.owers:
-        #         should_pay[ower.id] += (
-        #             ower.weight * bill.converted_amount / total_weight
-        #         )
         for bill in self.get_bills_unordered().all():
             total_weight = sum(ower.weight for ower in bill.owers)
 
