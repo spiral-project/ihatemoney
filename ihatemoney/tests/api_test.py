@@ -1013,3 +1013,38 @@ class TestAPI(IhatemoneyTestCase):
             headers=self.get_auth("raclette"),
         )
         self.assertStatus(400, req)
+
+    def test_validate_bill_type(self):
+        self.api_create("raclette")
+        self.api_add_member("raclette", "zorglub")
+        
+
+        req = self.client.post(
+            "/api/projects/raclette/bills",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage",
+                "payer": "1",
+                "payed_for": ["1"],
+                "bill_type": "wrong_bill_type",
+                "amount": "50",
+            },
+            headers=self.get_auth("raclette")
+        )
+
+        self.assertStatus(400, req)
+
+        req = self.client.post(
+            "/api/projects/raclette/bills",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage",
+                "payer": "1",
+                "payed_for": ["1"],
+                "bill_type": "Expense",
+                "amount": "50",
+            },
+            headers=self.get_auth("raclette")
+        )
+
+        self.assertStatus(201, req)
