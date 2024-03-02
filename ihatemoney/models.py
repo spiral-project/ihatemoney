@@ -111,7 +111,7 @@ class Project(db.Model):
 
         - dict mapping each member to its balance
 
-        - dict mapping each member to how much he/she she should pay others
+        - dict mapping each member to how much he/she should pay others
           (i.e. how much he/she benefited from bills)
 
         - dict mapping each member to how much he/she should be paid by
