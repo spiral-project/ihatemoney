@@ -363,7 +363,7 @@ class BillForm(FlaskForm):
         description=_("A link to an external document, related to this bill"),
     )
     payed_for = SelectMultipleField(
-        _("For Who?"), validators=[DataRequired()], coerce=int
+        _("For whom?"), validators=[DataRequired()], coerce=int
     )
     bill_type = SelectField(_("Bill Type"), validators=[DataRequired()], coerce=str)
     submit = SubmitField(_("Submit"))
