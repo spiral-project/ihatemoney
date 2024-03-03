@@ -16,9 +16,10 @@ from ihatemoney.models import BillType
 
 
 def upgrade():
-    op.add_column("bill", sa.Column("bill_type", sa.Enum(BillType)))
+    op.add_column("bill", sa.Column("bill_type", sa.Enum(BillType), server_default=BillType.EXPENSE.value))
     op.add_column("bill_version", sa.Column("bill_type", sa.UnicodeText()))
 
 
 def downgrade():
-    pass
+    op.drop_column("bill", "bill_type")
+    op.drop_column("bill_version", "bill_type")
