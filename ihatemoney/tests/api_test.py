@@ -1048,3 +1048,32 @@ class TestAPI(IhatemoneyTestCase):
         )
 
         self.assertStatus(201, req)
+
+    def test_default_bill_type(self):
+        self.api_create("raclette")
+        self.api_add_member("raclette", "zorglub")
+
+        # Post a bill without adding a bill type
+        req = self.client.post(
+            "/api/projects/raclette/bills",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage",
+                "payer": "1",
+                "payed_for": ["1"],
+                "amount": "50",
+            },
+            headers=self.get_auth("raclette")
+        )
+
+        self.assertStatus(201, req)
+
+        req = self.client.get(
+            "/api/projects/raclette/bills/1", headers=self.get_auth("raclette")
+        )
+        self.assertStatus(200, req)
+
+        # Bill type should now be "Expense"
+        got = json.loads(req.data.decode("utf-8"))
+        assert got["bill_type"] == "Expense"
+        
