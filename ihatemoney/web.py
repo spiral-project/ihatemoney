@@ -873,8 +873,6 @@ def settle(amount, ower_id, payer_id):
     db.session.add(new_reinbursement)
     db.session.commit()
 
-    #     db.session.add(form.export(g.project))
-    #     db.session.commit()
     return redirect(url_for(".settle_bill"))
 
 
