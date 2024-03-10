@@ -860,7 +860,7 @@ def settle(amount, ower_id, payer_id):
         owers=[Person.query.get(payer_id)],
         payer_id=ower_id,
         project_default_currency=g.project.default_currency,
-        bill_type="Reimbursement",
+        bill_type=BillType.REIMBURSEMENT,
         what="Settlement",
     )
     session.update()
