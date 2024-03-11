@@ -58,7 +58,7 @@ from ihatemoney.forms import (
     get_billform_for,
 )
 from ihatemoney.history import get_history, get_history_queries, purge_history
-from ihatemoney.models import Bill, LoggingMode, Person, Project, db
+from ihatemoney.models import Bill, BillType, LoggingMode, Person, Project, db
 from ihatemoney.utils import (
     Redirect303,
     csv2list_of_dicts,
@@ -861,7 +861,7 @@ def settle(amount, ower_id, payer_id):
         payer_id=ower_id,
         project_default_currency=g.project.default_currency,
         bill_type=BillType.REIMBURSEMENT,
-        what="Settlement",
+        what=_("Settlement"),
     )
     session.update()
 
