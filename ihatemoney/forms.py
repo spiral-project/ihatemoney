@@ -195,7 +195,7 @@ class EditProjectForm(FlaskForm):
             raise ValidationError(msg)
         if (
             project is not None
-            and field.data != CurrencyConverter.no_currency
+            and field.data != project.default_currency
             and project.has_bills()
         ):
             msg = _(
