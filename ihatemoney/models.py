@@ -1,4 +1,5 @@
 from collections import defaultdict
+from enum import Enum
 import datetime
 import itertools
 
@@ -21,7 +22,7 @@ from sqlalchemy_continuum.plugins import FlaskPlugin
 
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.monkeypath_continuum import PatchedTransactionFactory
-from ihatemoney.utils import generate_password_hash, get_members, same_bill
+from ihatemoney.utils import generate_password_hash, get_members, same_bill, FormEnum
 from ihatemoney.versioning import (
     ConditionalVersioningManager,
     LoggingMode,
@@ -49,6 +50,15 @@ make_versioned(
         )
     ],
 )
+
+class BillType(Enum):
+    EXPENSE = "Expense"
+    REIMBURSEMENT = "Reimbursement"
+
+    @classmethod
+    def choices(cls):
+        return [(choice, choice.value) for choice in cls]
+
 
 db = SQLAlchemy()
 
@@ -112,22 +122,31 @@ class Project(db.Model):
         - dict mapping each member to how much he/she should be paid by
           others (i.e. how much he/she has paid for bills)
 
+        balance       spent        paid
         """
         balances, should_pay, should_receive = (defaultdict(int) for time in (1, 2, 3))
-
         for bill in self.get_bills_unordered().all():
-            should_receive[bill.payer.id] += bill.converted_amount
             total_weight = sum(ower.weight for ower in bill.owers)
-            for ower in bill.owers:
-                should_pay[ower.id] += (
-                    ower.weight * bill.converted_amount / total_weight
-                )
+
+            if bill.bill_type == BillType.EXPENSE:
+                should_receive[bill.payer.id] += bill.converted_amount
+                for ower in bill.owers:
+                    should_pay[ower.id] += (ower.weight * bill.converted_amount / total_weight)
+
+            if bill.bill_type == BillType.REIMBURSEMENT:
+                should_receive[bill.payer.id] += bill.converted_amount
+                for ower in bill.owers:
+                    should_receive[ower.id] -= bill.converted_amount
 
         for person in self.members:
             balance = should_receive[person.id] - should_pay[person.id]
             balances[person.id] = balance
 
-        return balances, should_pay, should_receive
+        return (
+            balances,
+            should_pay,
+            should_receive,
+        )
 
     @property
     def balance(self):
@@ -160,7 +179,8 @@ class Project(db.Model):
         """
         monthly = defaultdict(lambda: defaultdict(float))
         for bill in self.get_bills_unordered().all():
-            monthly[bill.date.year][bill.date.month] += bill.converted_amount
+            if bill.bill_type == BillType.EXPENSE:
+                monthly[bill.date.year][bill.date.month] += bill.converted_amount
         return monthly
 
     @property
@@ -336,6 +356,7 @@ class Project(db.Model):
             pretty_bills.append(
                 {
                     "what": bill.what,
+                    "bill_type": bill.bill_type.value,
                     "amount": round(bill.amount, 2),
                     "currency": bill.original_currency,
                     "date": str(bill.date),
@@ -407,6 +428,7 @@ class Project(db.Model):
                     new_bill = Bill(
                         amount=b["amount"],
                         date=parse(b["date"]),
+                        bill_type=b["bill_type"],
                         external_link="",
                         original_currency=b["currency"],
                         owers=Person.query.get_by_names(b["owers"], self),
@@ -537,14 +559,15 @@ class Project(db.Model):
         db.session.commit()
 
         operations = (
-            ("Georg", 200, ("Amina", "Georg", "Alice"), "Food shopping"),
-            ("Alice", 20, ("Amina", "Alice"), "Beer !"),
-            ("Amina", 50, ("Amina", "Alice", "Georg"), "AMAP"),
+            ("Georg", 200, ("Amina", "Georg", "Alice"), "Food shopping", "Expense"),
+            ("Alice", 20, ("Amina", "Alice"), "Beer !", "Expense"),
+            ("Amina", 50, ("Amina", "Alice", "Georg"), "AMAP", "Expense"),
         )
-        for payer, amount, owers, what in operations:
+        for (payer, amount, owers, what, bill_type) in operations:
             db.session.add(
                 Bill(
                     amount=amount,
+                    bill_type=bill_type,
                     original_currency=project.default_currency,
                     owers=[members[name] for name in owers],
                     payer_id=members[payer].id,
@@ -677,6 +700,7 @@ class Bill(db.Model):
     date = db.Column(db.Date, default=datetime.datetime.now)
     creation_date = db.Column(db.Date, default=datetime.datetime.now)
     what = db.Column(db.UnicodeText)
+    bill_type = db.Column(db.Enum(BillType))
     external_link = db.Column(db.UnicodeText)
 
     original_currency = db.Column(db.String(3))
@@ -696,6 +720,7 @@ class Bill(db.Model):
         payer_id: int = None,
         project_default_currency: str = "",
         what: str = "",
+        bill_type: str = "Expense",
     ):
         super().__init__()
         self.amount = amount
@@ -705,6 +730,7 @@ class Bill(db.Model):
         self.owers = owers
         self.payer_id = payer_id
         self.what = what
+        self.bill_type = BillType(bill_type)
         self.converted_amount = self.currency_helper.exchange_currency(
             self.amount, self.original_currency, project_default_currency
         )
@@ -719,6 +745,7 @@ class Bill(db.Model):
             "date": self.date,
             "creation_date": self.creation_date,
             "what": self.what,
+            "bill_type": self.bill_type.value,
             "external_link": self.external_link,
             "original_currency": self.original_currency,
             "converted_amount": self.converted_amount,

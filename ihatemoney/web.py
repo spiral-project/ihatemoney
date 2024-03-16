@@ -8,6 +8,7 @@ Basically, this blueprint takes care of the authentication and provides
 some shortcuts to make your life better when coding (see `pull_project`
 and `add_project_id` for a quick overview)
 """
+import datetime
 from functools import wraps
 import hashlib
 import json
@@ -57,7 +58,7 @@ from ihatemoney.forms import (
     get_billform_for,
 )
 from ihatemoney.history import get_history, get_history_queries, purge_history
-from ihatemoney.models import Bill, LoggingMode, Person, Project, db
+from ihatemoney.models import Bill, BillType, LoggingMode, Person, Project, db
 from ihatemoney.utils import (
     Redirect303,
     csv2list_of_dicts,
@@ -471,6 +472,7 @@ def import_project():
             # Check data
             attr = [
                 "amount",
+                "bill_type",
                 "currency",
                 "date",
                 "owers",
@@ -846,6 +848,27 @@ def settle_bill():
     """Compute the sum each one have to pay to each other and display it"""
     bills = g.project.get_transactions_to_settle_bill()
     return render_template("settle_bills.html", bills=bills, current_view="settle_bill")
+
+
+@main.route("/<project_id>/settle/<amount>/<int:ower_id>/<int:payer_id>")
+def settle(amount, ower_id, payer_id):
+    # FIXME: Test this bill belongs to this project !
+
+    new_reinbursement = Bill(
+        amount=float(amount),
+        date=datetime.datetime.today(),
+        owers=[Person.query.get(payer_id)],
+        payer_id=ower_id,
+        project_default_currency=g.project.default_currency,
+        bill_type=BillType.REIMBURSEMENT,
+        what=_("Settlement"),
+    )
+    session.update()
+
+    db.session.add(new_reinbursement)
+    db.session.commit()
+
+    return redirect(url_for(".settle_bill"))
 
 
 @main.route("/<project_id>/history")

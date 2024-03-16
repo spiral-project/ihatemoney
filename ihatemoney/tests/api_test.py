@@ -407,6 +407,7 @@ class TestAPI(IhatemoneyTestCase):
                 "what": "fromage",
                 "payer": "1",
                 "payed_for": ["1", "2"],
+                "bill_type": "Expense",
                 "amount": "25",
                 "external_link": "https://raclette.fr",
             },
@@ -431,6 +432,7 @@ class TestAPI(IhatemoneyTestCase):
                 {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
                 {"activated": True, "id": 2, "name": "jeanne", "weight": 1},
             ],
+            "bill_type": "Expense",
             "amount": 25.0,
             "date": "2011-08-10",
             "id": 1,
@@ -462,6 +464,7 @@ class TestAPI(IhatemoneyTestCase):
                 "what": "fromage",
                 "payer": "1",
                 "payed_for": ["1", "2"],
+                "bill_type": "Expense",
                 "amount": "25",
                 "external_link": "https://raclette.fr",
             },
@@ -479,6 +482,7 @@ class TestAPI(IhatemoneyTestCase):
                 "what": "beer",
                 "payer": "2",
                 "payed_for": ["1", "2"],
+                "bill_type": "Expense",
                 "amount": "25",
                 "external_link": "https://raclette.fr",
             },
@@ -500,6 +504,7 @@ class TestAPI(IhatemoneyTestCase):
                 {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
                 {"activated": True, "id": 2, "name": "jeanne", "weight": 1},
             ],
+            "bill_type": "Expense",
             "amount": 25.0,
             "date": "2011-09-10",
             "external_link": "https://raclette.fr",
@@ -554,6 +559,7 @@ class TestAPI(IhatemoneyTestCase):
                     "what": "fromage",
                     "payer": "1",
                     "payed_for": ["1", "2"],
+                    "bill_type": "Expense",
                     "amount": input_amount,
                 },
                 headers=self.get_auth("raclette"),
@@ -578,6 +584,7 @@ class TestAPI(IhatemoneyTestCase):
                     {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
                     {"activated": True, "id": 2, "name": "jeanne", "weight": 1},
                 ],
+                "bill_type": "Expense",
                 "amount": expected_amount,
                 "date": "2011-08-10",
                 "id": id,
@@ -611,6 +618,7 @@ class TestAPI(IhatemoneyTestCase):
                     "what": "fromage",
                     "payer": "1",
                     "payed_for": ["1", "2"],
+                    "bill_type": "Expense",
                     "amount": amount,
                 },
                 headers=self.get_auth("raclette"),
@@ -658,6 +666,7 @@ class TestAPI(IhatemoneyTestCase):
                 "what": "fromage",
                 "payer": "1",
                 "payed_for": ["1", "2"],
+                "bill_type": "Expense",
                 "amount": "25",
                 "external_link": "https://raclette.fr",
             },
@@ -682,6 +691,7 @@ class TestAPI(IhatemoneyTestCase):
                 {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
                 {"activated": True, "id": 2, "name": "jeanne", "weight": 1},
             ],
+            "bill_type": "Expense",
             "amount": 25.0,
             "date": "2011-08-10",
             "id": 1,
@@ -706,6 +716,7 @@ class TestAPI(IhatemoneyTestCase):
                 "what": "fromage",
                 "payer": "1",
                 "payed_for": ["1", "2"],
+                "bill_type": "Expense",
                 "amount": "30",
                 "external_link": "https://raclette.fr",
                 "original_currency": "CAD",
@@ -727,6 +738,7 @@ class TestAPI(IhatemoneyTestCase):
                 {"activated": True, "id": 1, "name": "zorglub", "weight": 1.0},
                 {"activated": True, "id": 2, "name": "jeanne", "weight": 1.0},
             ],
+            "bill_type": "Expense",
             "amount": 30.0,
             "date": "2011-08-10",
             "id": 1,
@@ -747,6 +759,7 @@ class TestAPI(IhatemoneyTestCase):
                 "what": "Pierogi",
                 "payer": "1",
                 "payed_for": ["2", "3"],
+                "bill_type": "Expense",
                 "amount": "80",
                 "original_currency": "PLN",
             },
@@ -791,6 +804,7 @@ class TestAPI(IhatemoneyTestCase):
                 "what": "fromage",
                 "payer": "1",
                 "payed_for": ["1", "2"],
+                "bill_type": "Expense",
                 "amount": "25",
             },
             headers=self.get_auth("raclette"),
@@ -855,6 +869,7 @@ class TestAPI(IhatemoneyTestCase):
                 "what": "fromage",
                 "payer": "1",
                 "payed_for": ["1", "2"],
+                "bill_type": "Expense",
                 "amount": "25",
             },
             headers=self.get_auth("raclette"),
@@ -877,6 +892,7 @@ class TestAPI(IhatemoneyTestCase):
                 {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
                 {"activated": True, "id": 2, "name": "jeannedy familly", "weight": 4},
             ],
+            "bill_type": "Expense",
             "amount": 25.0,
             "date": "2011-08-10",
             "id": 1,
@@ -962,6 +978,7 @@ class TestAPI(IhatemoneyTestCase):
                 "what": "fromage",
                 "payer": "1",
                 "payed_for": ["1"],
+                "bill_type": "Expense",
                 "amount": "0",
             },
             headers=self.get_auth("raclette"),
@@ -990,8 +1007,73 @@ class TestAPI(IhatemoneyTestCase):
                 "what": "fromage",
                 "payer": "1",
                 "payed_for": ["1"],
+                "bill_type": "Expense",
                 "amount": "9347242149381274732472348728748723473278472843.12",
             },
             headers=self.get_auth("raclette"),
         )
         self.assertStatus(400, req)
+
+    def test_validate_bill_type(self):
+        self.api_create("raclette")
+        self.api_add_member("raclette", "zorglub")
+        
+
+        req = self.client.post(
+            "/api/projects/raclette/bills",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage",
+                "payer": "1",
+                "payed_for": ["1"],
+                "bill_type": "wrong_bill_type",
+                "amount": "50",
+            },
+            headers=self.get_auth("raclette")
+        )
+
+        self.assertStatus(400, req)
+
+        req = self.client.post(
+            "/api/projects/raclette/bills",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage",
+                "payer": "1",
+                "payed_for": ["1"],
+                "bill_type": "Expense",
+                "amount": "50",
+            },
+            headers=self.get_auth("raclette")
+        )
+
+        self.assertStatus(201, req)
+
+    def test_default_bill_type(self):
+        self.api_create("raclette")
+        self.api_add_member("raclette", "zorglub")
+
+        # Post a bill without adding a bill type
+        req = self.client.post(
+            "/api/projects/raclette/bills",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage",
+                "payer": "1",
+                "payed_for": ["1"],
+                "amount": "50",
+            },
+            headers=self.get_auth("raclette")
+        )
+
+        self.assertStatus(201, req)
+
+        req = self.client.get(
+            "/api/projects/raclette/bills/1", headers=self.get_auth("raclette")
+        )
+        self.assertStatus(200, req)
+
+        # Bill type should now be "Expense"
+        got = json.loads(req.data.decode("utf-8"))
+        assert got["bill_type"] == "Expense"
+        
