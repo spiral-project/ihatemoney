@@ -5,6 +5,8 @@ This document describes changes between each past release.
 ## 6.1.5 (unreleased)
 
 - Fix README and changelog not being displayed on PyPI
+- Fix ability to change project settings when project has existing currency (#1292)
+- Update translations for Dutch and German
 
 
 ## 6.1.4 (2023-12-14)
