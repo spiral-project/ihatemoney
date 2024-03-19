@@ -4,8 +4,20 @@ This document describes changes between each past release.
 
 ## 6.2.0 (unreleased)
 
-
 - Add support for python 3.12 (#757)
+
+
+## 6.1.5 (2024-03-19)
+
+- Fix README and changelog not being displayed on PyPI
+- Fix ability to change project settings when project has existing currency (#1292)
+- Update translations for Dutch and German
+
+
+## 6.1.4 (2023-12-14)
+
+- Fix missing markdown include in manifest (#1274)
+- Update translations for Chinese, Turkish, Czech, Spanish (Latin America), Swedish
 
 
 ## 6.1.3 (2023-11-23)
