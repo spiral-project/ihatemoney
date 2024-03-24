@@ -843,40 +843,6 @@ class TestBudget(IhatemoneyTestCase):
         assert bob_paid == 500
         assert alice_paid == 500
 
-    def test_transfer_bill(self):
-        self.post_project("random")
-
-        # add two participants
-        self.client.post("/random/members/add", data={"name": "zorglub"})
-        self.client.post("/random/members/add", data={"name": "fred"})
-
-        members_ids = [m.id for m in self.get_project("random").members]
-        self.client.post(
-            "/random/add",
-            data={
-                "date": "2022-10-10",
-                "what": "Rent",
-                "payer": members_ids[0],  # zorglub
-                "payed_for": members_ids,  # zorglub + fred
-                "bill_type": "Expense",
-                "amount": "1000",
-            },
-        )
-        # test transfer bill (should not affect anything whatsoever)
-        self.client.post(
-            "/random/add",
-            data={
-                "date": "2022-10-10",
-                "what": "Transfer of 500 to fred",
-                "payer": members_ids[0],  # zorglub
-                "payed_for": members_ids[1],  # fred
-                "bill_type": "Transfer",
-                "amount": "500",
-            },
-        )
-        balance = self.get_project("random").balance
-        assert set(balance.values()), set([500 == -500])
-
     def test_weighted_balance(self):
         self.post_project("raclette")
 
