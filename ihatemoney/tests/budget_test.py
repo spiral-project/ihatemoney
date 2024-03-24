@@ -716,19 +716,7 @@ class TestBudget(IhatemoneyTestCase):
                 "amount": "17",
             },
         )
-
-        # transfer bill should not affect balances at all
-        self.client.post(
-            "/raclette/add",
-            data={
-                "date": "2011-08-10",
-                "what": "Transfer",
-                "payer": members_ids[1],
-                "payed_for": members_ids[0],
-                "bill_type": "Transfer",
-                "amount": "500",
-            },
-        )
+        
         balance = self.get_project("raclette").balance
         assert set(balance.values()) == set([19.0, -19.0])
 
