@@ -560,7 +560,7 @@ class TestExport(IhatemoneyTestCase):
             },
             {
                 "date": "2016-12-31",
-                "what": "\xe0 raclette",
+                "what": "fromage \xe0 raclette",
                 "bill_type": "Expense",
                 "amount": 10.0,
                 "currency": "EUR",
