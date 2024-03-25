@@ -11,10 +11,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    # Use postgresql and MariaDB versions of Debian buster
+    # Use postgresql and MariaDB versions of Debian bookworm
     services:
       postgres:
-        image: postgres:11
+        image: postgres:15
         ports:
           - 5432:5432
         env:
@@ -24,7 +24,7 @@ jobs:
         options:
           --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
       mariadb:
-        image: mariadb:10.3
+        image: mariadb:10.11
         env:
           MARIADB_ROOT_PASSWORD: ihatemoney
           MARIADB_DATABASE: ihatemoney_ci
@@ -39,24 +39,24 @@ jobs:
         python-version: [3.7, 3.8, 3.9, "3.10", "3.11", "3.12"]
         dependencies: [normal]
         database: [sqlite]
-        # Test other databases only with one version of Python (Debian buster has 3.7)
+        # Test other databases with only a few versions of Python (Debian bullseye has 3.9, bookworm has 3.11)
         include:
-          - python-version: 3.7
+          - python-version: 3.9
             dependencies: normal
             database: postgresql
-          - python-version: 3.7
+          - python-version: 3.9
+            dependencies: normal
+            database: mariadb
+          - python-version: 3.11
+            dependencies: normal
+            database: postgresql
+          - python-version: 3.11
             dependencies: normal
             database: mariadb
           # Try a few variants with the minimal versions supported
           - python-version: 3.7
             dependencies: minimal
             database: sqlite
-          - python-version: 3.7
-            dependencies: minimal
-            database: postgresql
-          - python-version: 3.7
-            dependencies: minimal
-            database: mariadb
           - python-version: 3.9
             dependencies: minimal
             database: sqlite
@@ -66,6 +66,12 @@ jobs:
           - python-version: "3.11"
             dependencies: minimal
             database: sqlite
+          - python-version: "3.11"
+            dependencies: minimal
+            database: postgresql
+          - python-version: "3.11"
+            dependencies: minimal
+            database: mariadb
           - python-version: "3.12"
             dependencies: minimal
             database: sqlite
