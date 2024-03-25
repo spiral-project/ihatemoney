@@ -1,6 +1,6 @@
 from collections import defaultdict
-from enum import Enum
 import datetime
+from enum import Enum
 import itertools
 
 from dateutil.parser import parse
@@ -22,7 +22,7 @@ from sqlalchemy_continuum.plugins import FlaskPlugin
 
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.monkeypath_continuum import PatchedTransactionFactory
-from ihatemoney.utils import generate_password_hash, get_members, same_bill, FormEnum
+from ihatemoney.utils import generate_password_hash, get_members, same_bill
 from ihatemoney.versioning import (
     ConditionalVersioningManager,
     LoggingMode,
@@ -50,6 +50,7 @@ make_versioned(
         )
     ],
 )
+
 
 class BillType(Enum):
     EXPENSE = "Expense"
@@ -131,7 +132,9 @@ class Project(db.Model):
             if bill.bill_type == BillType.EXPENSE:
                 should_receive[bill.payer.id] += bill.converted_amount
                 for ower in bill.owers:
-                    should_pay[ower.id] += (ower.weight * bill.converted_amount / total_weight)
+                    should_pay[ower.id] += (
+                        ower.weight * bill.converted_amount / total_weight
+                    )
 
             if bill.bill_type == BillType.REIMBURSEMENT:
                 should_receive[bill.payer.id] += bill.converted_amount
@@ -563,7 +566,7 @@ class Project(db.Model):
             ("Alice", 20, ("Amina", "Alice"), "Beer !", "Expense"),
             ("Amina", 50, ("Amina", "Alice", "Georg"), "AMAP", "Expense"),
         )
-        for (payer, amount, owers, what, bill_type) in operations:
+        for payer, amount, owers, what, bill_type in operations:
             db.session.add(
                 Bill(
                     amount=amount,
