@@ -1,4 +1,4 @@
-name: Unit tests
+name: Lint & unit tests
 
 on:
   push:
@@ -7,10 +7,27 @@ on:
     branches: [ 'master', 'stable-*' ]
 
 jobs:
-  test:
-
+  lint:
     runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+        cache: 'pip'
+        cache-dependency-path: '**/pyproject.toml'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install tox
+    - name: Run Lint
+      run: tox -e lint
 
+  test:
+    # Dependency on linting to avoid running our expensive matrix test for nothing
+    needs: lint
+    runs-on: ubuntu-latest
     # Use postgresql and MariaDB versions of Debian bookworm
     services:
       postgres:
