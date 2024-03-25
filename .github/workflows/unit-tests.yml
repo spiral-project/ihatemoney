@@ -39,6 +39,11 @@ jobs:
         python-version: [3.7, 3.8, 3.9, "3.10", "3.11", "3.12"]
         dependencies: [normal]
         database: [sqlite]
+        # Installation breaks with python 3.12, see https://github.com/spiral-project/ihatemoney/issues/1297
+        exclude:
+          - python-version: "3.12"
+            dependencies: normal
+            database: sqlite
         # Test other databases with only a few versions of Python (Debian bullseye has 3.9, bookworm has 3.11)
         include:
           - python-version: 3.9
