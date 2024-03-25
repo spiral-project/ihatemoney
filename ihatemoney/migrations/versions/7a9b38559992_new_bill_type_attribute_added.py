@@ -19,7 +19,10 @@ def upgrade():
     billtype_enum = sa.Enum(BillType)
     billtype_enum.create(op.get_bind(), checkfirst=True)
 
-    op.add_column("bill", sa.Column("bill_type", billtype_enum, server_default=BillType.EXPENSE.name))
+    op.add_column(
+        "bill",
+        sa.Column("bill_type", billtype_enum, server_default=BillType.EXPENSE.name),
+    )
     op.add_column("bill_version", sa.Column("bill_type", sa.UnicodeText()))
 
 

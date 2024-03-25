@@ -716,8 +716,8 @@ class TestBudget(IhatemoneyTestCase):
                 "amount": "17",
             },
         )
-        
-        #transfer bill should not affect balances at all
+
+        # transfer bill should not affect balances at all
         self.client.post(
             "/raclette/add",
             data={
@@ -801,22 +801,22 @@ class TestBudget(IhatemoneyTestCase):
         self.client.post("/rent/members/add", data={"name": "alice"})
 
         members_ids = [m.id for m in self.get_project("rent").members]
-        # create a bill to test reimbursement 
+        # create a bill to test reimbursement
         self.client.post(
             "/rent/add",
             data={
                 "date": "2022-12-12",
                 "what": "december rent",
-                "payer": members_ids[0], #bob
-                "payed_for": members_ids, #bob and alice
+                "payer": members_ids[0],  # bob
+                "payed_for": members_ids,  # bob and alice
                 "bill_type": "Expense",
                 "amount": "1000",
             },
         )
-        #check balance 
+        # check balance
         balance = self.get_project("rent").balance
         assert set(balance.values()), set([500 == -500])
-        #check paid
+        # check paid
         bob_paid = self.get_project("rent").full_balance[2][members_ids[0]]
         alice_paid = self.get_project("rent").full_balance[2][members_ids[1]]
         assert bob_paid == 1000
@@ -828,8 +828,8 @@ class TestBudget(IhatemoneyTestCase):
             data={
                 "date": "2022-12-13",
                 "what": "reimbursement for rent",
-                "payer": members_ids[1], #alice
-                "payed_for": members_ids[0], #bob  
+                "payer": members_ids[1],  # alice
+                "payed_for": members_ids[0],  # bob
                 "bill_type": "Reimbursement",
                 "amount": "500",
             },
@@ -837,11 +837,12 @@ class TestBudget(IhatemoneyTestCase):
 
         balance = self.get_project("rent").balance
         assert set(balance.values()), set([0 == 0])
-        #check paid
+        # check paid
         bob_paid = self.get_project("rent").full_balance[2][members_ids[0]]
         alice_paid = self.get_project("rent").full_balance[2][members_ids[1]]
         assert bob_paid == 500
         assert alice_paid == 500
+
     def test_transfer_bill(self):
         self.post_project("random")
 
@@ -855,8 +856,8 @@ class TestBudget(IhatemoneyTestCase):
             data={
                 "date": "2022-10-10",
                 "what": "Rent",
-                "payer": members_ids[0], #zorglub
-                "payed_for": members_ids, #zorglub + fred  
+                "payer": members_ids[0],  # zorglub
+                "payed_for": members_ids,  # zorglub + fred
                 "bill_type": "Expense",
                 "amount": "1000",
             },
@@ -867,8 +868,8 @@ class TestBudget(IhatemoneyTestCase):
             data={
                 "date": "2022-10-10",
                 "what": "Transfer of 500 to fred",
-                "payer": members_ids[0], #zorglub
-                "payed_for": members_ids[1], #fred  
+                "payer": members_ids[0],  # zorglub
+                "payed_for": members_ids[1],  # fred
                 "bill_type": "Transfer",
                 "amount": "500",
             },
@@ -884,22 +885,22 @@ class TestBudget(IhatemoneyTestCase):
         self.client.post("/rent/members/add", data={"name": "alice"})
 
         members_ids = [m.id for m in self.get_project("rent").members]
-        # create a bill to test reimbursement 
+        # create a bill to test reimbursement
         self.client.post(
             "/rent/add",
             data={
                 "date": "2022-12-12",
                 "what": "december rent",
-                "payer": members_ids[0], #bob
-                "payed_for": members_ids, #bob and alice
+                "payer": members_ids[0],  # bob
+                "payed_for": members_ids,  # bob and alice
                 "bill_type": "Expense",
                 "amount": "1000",
             },
         )
-        #check balance 
+        # check balance
         balance = self.get_project("rent").balance
         assert set(balance.values()), set([500 == -500])
-        #check paid
+        # check paid
         bob_paid = self.get_project("rent").full_balance[2][members_ids[0]]
         alice_paid = self.get_project("rent").full_balance[2][members_ids[1]]
         assert bob_paid == 1000
@@ -911,8 +912,8 @@ class TestBudget(IhatemoneyTestCase):
             data={
                 "date": "2022-12-13",
                 "what": "reimbursement for rent",
-                "payer": members_ids[1], #alice
-                "payed_for": members_ids[0], #bob  
+                "payer": members_ids[1],  # alice
+                "payed_for": members_ids[0],  # bob
                 "bill_type": "Reimbursement",
                 "amount": "500",
             },
@@ -920,11 +921,12 @@ class TestBudget(IhatemoneyTestCase):
 
         balance = self.get_project("rent").balance
         assert set(balance.values()), set([0 == 0])
-        #check paid
+        # check paid
         bob_paid = self.get_project("rent").full_balance[2][members_ids[0]]
         alice_paid = self.get_project("rent").full_balance[2][members_ids[1]]
         assert bob_paid == 500
         assert alice_paid == 500
+
     def test_transfer_bill(self):
         self.post_project("random")
 
@@ -938,8 +940,8 @@ class TestBudget(IhatemoneyTestCase):
             data={
                 "date": "2022-10-10",
                 "what": "Rent",
-                "payer": members_ids[0], #zorglub
-                "payed_for": members_ids, #zorglub + fred  
+                "payer": members_ids[0],  # zorglub
+                "payed_for": members_ids,  # zorglub + fred
                 "bill_type": "Expense",
                 "amount": "1000",
             },
@@ -950,8 +952,8 @@ class TestBudget(IhatemoneyTestCase):
             data={
                 "date": "2022-10-10",
                 "what": "Transfer of 500 to fred",
-                "payer": members_ids[0], #zorglub
-                "payed_for": members_ids[1], #fred  
+                "payer": members_ids[0],  # zorglub
+                "payed_for": members_ids[1],  # fred
                 "bill_type": "Transfer",
                 "amount": "500",
             },
@@ -1433,7 +1435,7 @@ class TestBudget(IhatemoneyTestCase):
         for m, a in members.items():
             assert abs(a - balance[m.id]) < 0.01
         return
-    
+
     def test_settle_button(self):
         self.post_project("raclette")
 
@@ -1482,16 +1484,24 @@ class TestBudget(IhatemoneyTestCase):
         )
         project = self.get_project("raclette")
         transactions = project.get_transactions_to_settle_bill()
-        
+
         count = 0
         for t in transactions:
-            count+=1
-            self.client.get("/raclette/settle"+"/"+str(t["amount"])+"/"+str(t["ower"].id)+"/"+str(t["receiver"].id))
+            count += 1
+            self.client.get(
+                "/raclette/settle"
+                + "/"
+                + str(t["amount"])
+                + "/"
+                + str(t["ower"].id)
+                + "/"
+                + str(t["receiver"].id)
+            )
             temp_transactions = project.get_transactions_to_settle_bill()
-            #test if the one has disappeared
-            assert len(temp_transactions) == len(transactions)-count
-        
-            #test if theres a new one with bill_type reimbursement
+            # test if the one has disappeared
+            assert len(temp_transactions) == len(transactions) - count
+
+            # test if theres a new one with bill_type reimbursement
             bill = project.get_newest_bill()
             assert bill.bill_type == models.BillType.REIMBURSEMENT
         return
@@ -2005,7 +2015,7 @@ class TestBudget(IhatemoneyTestCase):
                     "payed_for": [1, 2, 3],
                     "amount": "12",
                     "original_currency": "EUR",
-                    "bill_type": "Expense"
+                    "bill_type": "Expense",
                 },
             )
             self.client.post(
@@ -2017,7 +2027,7 @@ class TestBudget(IhatemoneyTestCase):
                     "payed_for": [1, 2],
                     "amount": "15",
                     "original_currency": "EUR",
-                    "bill_type": "Expense"
+                    "bill_type": "Expense",
                 },
             )
             self.client.post(
@@ -2029,7 +2039,7 @@ class TestBudget(IhatemoneyTestCase):
                     "payed_for": [1, 2],
                     "amount": "10",
                     "original_currency": "EUR",
-                    "bill_type": "Expense"
+                    "bill_type": "Expense",
                 },
             )
 
@@ -2092,7 +2102,7 @@ class TestBudget(IhatemoneyTestCase):
                     "payed_for": [1, 2, 3],
                     "amount": "12",
                     "original_currency": "EUR",
-                    "bill_type": "Expense"
+                    "bill_type": "Expense",
                 },
             )
             self.client.post(
@@ -2104,7 +2114,7 @@ class TestBudget(IhatemoneyTestCase):
                     "payed_for": [1, 2],
                     "amount": "15",
                     "original_currency": "EUR",
-                    "bill_type": "Expense"
+                    "bill_type": "Expense",
                 },
             )
             self.client.post(
@@ -2116,7 +2126,7 @@ class TestBudget(IhatemoneyTestCase):
                     "payed_for": [1, 2],
                     "amount": "10",
                     "original_currency": "EUR",
-                    "bill_type": "Expense"
+                    "bill_type": "Expense",
                 },
             )
 
@@ -2195,7 +2205,7 @@ class TestBudget(IhatemoneyTestCase):
                     "payed_for": [1],
                     "amount": "12",
                     "original_currency": "XXX",
-                    "bill_type": "Expense"
+                    "bill_type": "Expense",
                 },
                 follow_redirects=True,
             )
@@ -2364,7 +2374,7 @@ class TestBudget(IhatemoneyTestCase):
                 "payer": members_ids[1],
                 "payed_for": members_ids,
                 "amount": "25",
-                "bill_type": "Expense"
+                "bill_type": "Expense",
             },
         )
 
@@ -2382,7 +2392,7 @@ class TestBudget(IhatemoneyTestCase):
                 "payer": members_ids_tartif[2],
                 "payed_for": members_ids_tartif,
                 "amount": "24",
-                "bill_type": "Expense"
+                "bill_type": "Expense",
             },
         )
 
@@ -2417,7 +2427,7 @@ class TestBudget(IhatemoneyTestCase):
                 "payer": members_ids[1],
                 "payed_for": members_ids[1:],
                 "amount": "25",
-                "bill_type": "Expense"
+                "bill_type": "Expense",
             },
         )
 

@@ -1017,7 +1017,6 @@ class TestAPI(IhatemoneyTestCase):
     def test_validate_bill_type(self):
         self.api_create("raclette")
         self.api_add_member("raclette", "zorglub")
-        
 
         req = self.client.post(
             "/api/projects/raclette/bills",
@@ -1029,7 +1028,7 @@ class TestAPI(IhatemoneyTestCase):
                 "bill_type": "wrong_bill_type",
                 "amount": "50",
             },
-            headers=self.get_auth("raclette")
+            headers=self.get_auth("raclette"),
         )
 
         self.assertStatus(400, req)
@@ -1044,7 +1043,7 @@ class TestAPI(IhatemoneyTestCase):
                 "bill_type": "Expense",
                 "amount": "50",
             },
-            headers=self.get_auth("raclette")
+            headers=self.get_auth("raclette"),
         )
 
         self.assertStatus(201, req)
@@ -1063,7 +1062,7 @@ class TestAPI(IhatemoneyTestCase):
                 "payed_for": ["1"],
                 "amount": "50",
             },
-            headers=self.get_auth("raclette")
+            headers=self.get_auth("raclette"),
         )
 
         self.assertStatus(201, req)
@@ -1076,4 +1075,3 @@ class TestAPI(IhatemoneyTestCase):
         # Bill type should now be "Expense"
         got = json.loads(req.data.decode("utf-8"))
         assert got["bill_type"] == "Expense"
-        
