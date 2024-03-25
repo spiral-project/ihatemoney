@@ -1,4 +1,4 @@
-name: Test & Docs
+name: Unit tests
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ 'master', 'stable-*' ]
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
 
@@ -101,6 +101,3 @@ jobs:
       if: matrix.database == 'mariadb'
       env:
         TESTING_SQLALCHEMY_DATABASE_URI: 'mysql+pymysql://root:ihatemoney@localhost:3306/ihatemoney_ci'
-    - name: Run Lint & Docs
-      run: tox -e lint_docs
-      if: matrix.python-version == '3.12'

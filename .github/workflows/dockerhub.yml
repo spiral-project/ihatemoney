@@ -1,4 +1,4 @@
-name: CI to Docker Hub
+name: Docker build
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
       - name: Test image # Checks we are able to run the container.
         run: docker compose -f docker-compose.test.yml run sut
 
-  build:
+  build_upload:
     runs-on: ubuntu-latest
     needs: test
     if: github.event_name != 'pull_request'

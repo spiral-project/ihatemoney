@@ -1,0 +1,42 @@
+name: Lint & Docs
+
+on:
+  push:
+    branches: [ 'master', 'stable-*' ]
+  pull_request:
+    branches: [ 'master', 'stable-*' ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+        cache: 'pip'
+        cache-dependency-path: '**/pyproject.toml'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install tox
+    - name: Run Lint
+      run: tox -e lint
+
+  test_doc:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+        cache: 'pip'
+        cache-dependency-path: '**/pyproject.toml'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install tox
+    - name: Check we can generate documentation
+      run: tox -e docs
