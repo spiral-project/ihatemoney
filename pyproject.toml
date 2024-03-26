@@ -88,7 +88,13 @@ ihatemoney = "ihatemoney.manage:cli"
 [tool.hatch.build.hooks.custom]
 dependencies = [
     # Babel is needed to compile translations catalogs at package build time
-    "Babel>=2.13.1"
+    "Babel>=2.13.1",
+
+    # Babel 2.14 does not directly depend on setuptools
+    # https://github.com/python-babel/babel/blob/40e60a1f6cf178d9f57fcc14f157ea1b2ab77361/CHANGES.rst?plain=1#L22-L24
+    # and neither python 3.12 due to PEP 632
+    # https://peps.python.org/pep-0632/
+    "setuptools; python_version>='3.12'",
 ]
 
 [tool.hatch.build]
