@@ -442,7 +442,7 @@ class TestExport(IhatemoneyTestCase):
             '2016-12-31,red wine,Expense,XXX,200.0,jeanne,1.0,"zorglub, tata"',
             '2016-12-31,à raclette,Expense,10.0,XXX,zorglub,2.0,"zorglub, jeanne, tata, pépé"',
         ]
-        received_lines = resp.data.decode("utf-8").split("\n")
+        received_lines = resp.data.decode("utf-8-sig").split("\n")
 
         for i, line in enumerate(expected):
             assert set(line.split(",")) == set(received_lines[i].strip("\r").split(","))
@@ -476,7 +476,7 @@ class TestExport(IhatemoneyTestCase):
             "55.34,XXX,jeanne,tata",
             "127.33,XXX,jeanne,zorglub",
         ]
-        received_lines = resp.data.decode("utf-8").split("\n")
+        received_lines = resp.data.decode("utf-8-sig").split("\n")
 
         for i, line in enumerate(expected):
             assert set(line.split(",")) == set(received_lines[i].strip("\r").split(","))
@@ -682,7 +682,7 @@ class TestExport(IhatemoneyTestCase):
             "date,what,bill_type,amount,currency,payer_name,payer_weight,owers",
             "2016-12-31,'=COS(36),Expense,10.0,EUR,zorglub,1.0,zorglub",
         ]
-        received_lines = resp.data.decode("utf-8").split("\n")
+        received_lines = resp.data.decode("utf-8-sig").split("\n")
 
         for i, line in enumerate(expected):
             assert set(line.split(",")) == set(received_lines[i].strip("\r").split(","))
