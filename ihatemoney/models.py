@@ -58,7 +58,7 @@ class BillType(Enum):
 
     @classmethod
     def choices(cls):
-        return [(choice, choice.value) for choice in cls]
+        return [(choice.value, choice.value) for choice in cls]
 
 
 db = SQLAlchemy()
