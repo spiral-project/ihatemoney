@@ -1465,6 +1465,78 @@ class TestBudget(IhatemoneyTestCase):
         # Create and log in as another project
         self.post_project("tartiflette")
 
+        # Add a participant in this second project
+        self.client.post("/tartiflette/members/add", data={"name": "pirate"})
+        pirate = models.Person.query.filter(models.Person.id == 5).one()
+        assert pirate.name == "pirate"
+
+        # Try to add a new bill in another project
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2017-01-01",
+                "what": "fromage frelaté",
+                "payer": 2,
+                "payed_for": [2, 3, 4],
+                "bill_type": "Expense",
+                "amount": "100.0",
+            },
+        )
+        # Ensure it has not been created
+        raclette = self.get_project("raclette")
+        assert raclette.get_bills().count() == 1
+
+        # Try to add a new bill in our project that references members of another project.
+        # First with invalid payed_for IDs.
+        self.client.post(
+            "/tartiflette/add",
+            data={
+                "date": "2017-01-01",
+                "what": "soupe",
+                "payer": 5,
+                "payed_for": [3],
+                "bill_type": "Expense",
+                "amount": "5000.0",
+            },
+        )
+        # Ensure it has not been created
+        piratebill = models.Bill.query.filter(models.Bill.what == "soupe").one_or_none()
+        assert piratebill is None, "piratebill 1 should not exist"
+
+        # Then with invalid payer ID
+        self.client.post(
+            "/tartiflette/add",
+            data={
+                "date": "2017-02-01",
+                "what": "pain",
+                "payer": 3,
+                "payed_for": [5],
+                "bill_type": "Expense",
+                "amount": "5000.0",
+            },
+        )
+        # Ensure it has not been created
+        piratebill = models.Bill.query.filter(models.Bill.what == "pain").one_or_none()
+        assert piratebill is None, "piratebill 2 should not exist"
+
+        # Make sure we can actually create valid bills
+        self.client.post(
+            "/tartiflette/add",
+            data={
+                "date": "2017-03-01",
+                "what": "baguette",
+                "payer": 5,
+                "payed_for": [5],
+                "bill_type": "Expense",
+                "amount": "5.0",
+            },
+        )
+        # Ensure it has been created
+        okbill = models.Bill.query.filter(models.Bill.what == "baguette").one_or_none()
+        assert okbill is not None, "Bill baguette should exist"
+        assert okbill.what == "baguette"
+
+        # Now try to access and modify existing bills
         modified_bill = {
             "date": "2018-12-31",
             "what": "roblochon",
