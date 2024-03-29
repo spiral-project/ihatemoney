@@ -12,7 +12,7 @@
         <thead><tr><th>{{ _("Who pays?") }}</th><th>{{ _("To whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Settled?") }}</th></tr></thead>
     <tbody>
     {% for transaction in transactions %}
-    <tr receiver={{transaction.receiver.id}}>
+    <tr>
             <td>{{ transaction.ower }}</td>
             <td>{{ transaction.receiver }}</td>
             <td>{{ transaction.amount|currency }}</td>
