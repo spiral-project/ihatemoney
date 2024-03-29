@@ -866,6 +866,7 @@ def settle(amount, ower_id, payer_id):
     db.session.add(new_reinbursement)
     db.session.commit()
 
+    flash(_("Settlement bill has been successfully added"), category="success")
     return redirect(url_for(".settle_bill"))
 
 
