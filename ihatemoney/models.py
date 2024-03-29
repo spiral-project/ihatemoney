@@ -209,7 +209,6 @@ class Project(db.Model):
                 )
             return pretty_transactions
 
-        # cache value for better performance
         members = {person.id: person for person in self.members}
         settle_plan = settle(self.balance.items()) or []
 
@@ -224,22 +223,6 @@ class Project(db.Model):
         ]
 
         return prettify(transactions, pretty_output)
-
-    def exactmatch(self, credit, debts):
-        """Recursively try and find subsets of 'debts' whose sum is equal to credit"""
-        if not debts:
-            return None
-        if debts[0]["balance"] > credit:
-            return self.exactmatch(credit, debts[1:])
-        elif debts[0]["balance"] == credit:
-            return [debts[0]]
-        else:
-            match = self.exactmatch(credit - debts[0]["balance"], debts[1:])
-            if match:
-                match.append(debts[0])
-            else:
-                match = self.exactmatch(credit, debts[1:])
-            return match
 
     def has_bills(self):
         """return if the project do have bills or not"""
