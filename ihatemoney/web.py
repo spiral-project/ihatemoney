@@ -852,24 +852,24 @@ def change_lang(lang):
 @main.route("/<project_id>/settle_bills")
 def settle_bill():
     """Compute the sum each one have to pay to each other and display it"""
-    bills = g.project.get_transactions_to_settle_bill()
-    return render_template("settle_bills.html", bills=bills, current_view="settle_bill")
+    transactions = g.project.get_transactions_to_settle_bill()
+    return render_template("settle_bills.html", transactions=transactions, current_view="settle_bill")
 
 
-@main.route("/<project_id>/settle/<amount>/<int:ower_id>/<int:payer_id>")
-def settle(amount, ower_id, payer_id):
-    new_reinbursement = Bill(
+@main.route("/<project_id>/settle/<amount>/<int:sender_id>/<int:receiver_id>")
+def add_settlement_bill(amount, sender_id, receiver_id):
+    settlement = Bill(
         amount=float(amount),
         date=datetime.datetime.today(),
-        owers=[Person.query.get(payer_id)],
-        payer_id=ower_id,
+        owers=[Person.query.get(receiver_id)],
+        payer_id=sender_id,
         project_default_currency=g.project.default_currency,
         bill_type=BillType.REIMBURSEMENT,
         what=_("Settlement"),
     )
     session.update()
 
-    db.session.add(new_reinbursement)
+    db.session.add(settlement)
     db.session.commit()
 
     flash(_("Settlement bill has been successfully added"), category="success")

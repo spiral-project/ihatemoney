@@ -1,33 +1,39 @@
-{% extends "sidebar_table_layout.html" %}
-
-{% block sidebar %}
-    <div id="table_overflow">
-        {{ balance_table(show_weight=False) }}
-    </div>
-{% endblock %}
-
-
-{% block content %}
-    <table id="bill_table" class="split_bills table table-striped">
-        <thead><tr><th>{{ _("Who pays?") }}</th><th>{{ _("To whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Settled?") }}</th></tr></thead>
-    <tbody>
-    {% for bill in bills %}
-    <tr receiver={{bill.receiver.id}}>
-            <td>{{ bill.ower }}</td>
-            <td>{{ bill.receiver }}</td>
-            <td>{{ bill.amount|currency }}</td>
-            <td>
-                <span id="settle-bill" class="ml-auto pb-2">
-                    <a href="{{ url_for('.settle', amount = bill.amount, ower_id = bill.ower.id, payer_id = bill.receiver.id) }}" class="btn btn-primary">
-                      <div data-toggle="tooltip" title='{{ _("Click here to record that the money transfer has been done") }}'>
-                        {{ ("Settle") }}
-                      </div>
-                    </a>
-                </span>
-            </td>
+{% extends "sidebar_table_layout.html" %} {% block sidebar %}
+<div id="table_overflow">{{ balance_table(show_weight=False) }}</div>
+{% endblock %} {% block content %}
+<table id="bill_table" class="split_bills table table-striped">
+  <thead>
+    <tr>
+      <th>{{ _("Who pays?") }}</th>
+      <th>{{ _("To whom?") }}</th>
+      <th>{{ _("How much?") }}</th>
+      <th>{{ _("Settled?") }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for transaction in transactions %}
+    <tr receiver="{{transaction.receiver.id}}">
+      <td>{{ transaction.ower }}</td>
+      <td>{{ transaction.receiver }}</td>
+      <td>{{ transaction.amount|currency }}</td>
+      <td>
+        <span id="settle-bill" class="ml-auto pb-2">
+          <a
+            href="{{ url_for('.add_settlement_bill', amount = transaction.amount, sender_id = transaction.ower.id, receiver_id = transaction.receiver.id) }}"
+            class="btn btn-primary"
+          >
+            <div
+              data-toggle="tooltip"
+              title='{{ _("Click here to record that the money transfer has been done") }}'
+            >
+              {{ ("Settle") }}
+            </div>
+          </a>
+        </span>
+      </td>
     </tr>
     {% endfor %}
-    </tbody>
-    </table>
+  </tbody>
+</table>
 
 {% endblock %}
