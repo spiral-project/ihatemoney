@@ -56,6 +56,7 @@ from ihatemoney.forms import (
     ProjectForm,
     ProjectFormWithCaptcha,
     ResetPasswordForm,
+    SettlementForm,
     get_billform_for,
 )
 from ihatemoney.history import get_history, get_history_queries, purge_history
@@ -853,16 +854,32 @@ def change_lang(lang):
 def settle_bill():
     """Compute the sum each one have to pay to each other and display it"""
     transactions = g.project.get_transactions_to_settle_bill()
-    return render_template("settle_bills.html", transactions=transactions, current_view="settle_bill")
+    settlement_form = SettlementForm()
+    return render_template(
+        "settle_bills.html",
+        transactions=transactions,
+        settlement_form=settlement_form,
+        current_view="settle_bill",
+    )
 
 
-@main.route("/<project_id>/settle/<amount>/<int:sender_id>/<int:receiver_id>")
-def add_settlement_bill(amount, sender_id, receiver_id):
+@main.route("/<project_id>/settle", methods=["POST"])
+def add_settlement_bill():
+    """Create a bill to register a settlement"""
+    form = SettlementForm(id=g.project.id)
+    if not form.validate():
+        flash(
+            format_form_errors(form, _("Error creating settlement bill")),
+            category="danger",
+        )
+        return redirect(url_for(".settle_bill"))
+
+
     settlement = Bill(
-        amount=float(amount),
+        amount=form.amount.data,
         date=datetime.datetime.today(),
-        owers=[Person.query.get(receiver_id)],
-        payer_id=sender_id,
+        owers=[Person.query.get(form.receiver_id.data)],
+        payer_id=form.sender_id.data,
         project_default_currency=g.project.default_currency,
         bill_type=BillType.REIMBURSEMENT,
         what=_("Settlement"),

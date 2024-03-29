@@ -18,14 +18,24 @@
       <td>{{ transaction.amount|currency }}</td>
       <td>
         <span id="settle-bill" class="ml-auto pb-2">
+          <form class="" action="{{ url_for(".add_settlement_bill") }}" method="POST">
+              {{ settlement_form.csrf_token }}
+              {{ settlement_form.amount(value=transaction.amount) }}
+              {{ settlement_form.sender_id(value=transaction.ower.id) }}
+              {{ settlement_form.receiver_id(value=transaction.receiver.id) }}
+              <button class="btn btn-primary" type="submit" title="{{ _("Settle") }}">
+                <div
+                  data-toggle="tooltip"
+                  title='{{ _("Click here to record that the money transfer has been done") }}'
+                >
+                {{ _("Settle") }}
+                </div>
+              </button>
+          </form>
           <a
             href="{{ url_for('.add_settlement_bill', amount = transaction.amount, sender_id = transaction.ower.id, receiver_id = transaction.receiver.id) }}"
             class="btn btn-primary"
           >
-            <div
-              data-toggle="tooltip"
-              title='{{ _("Click here to record that the money transfer has been done") }}'
-            >
               {{ ("Settle") }}
             </div>
           </a>
