@@ -452,7 +452,9 @@ def format_form_errors(form, prefix):
         )
     else:
         error_list = "</li><li>".join(
-            str(error) for (field, errors) in form.errors.items() for error in errors
+            f"<strong>{field}</strong> {error}"
+            for (field, errors) in form.errors.items()
+            for error in errors
         )
         errors = f"<ul><li>{error_list}</li></ul>"
         # I18N: Form error with a list of errors
