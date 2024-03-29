@@ -1358,23 +1358,25 @@ class TestBudget(IhatemoneyTestCase):
         count = 0
         for t in transactions:
             count += 1
-            self.client.get(
-                "/raclette/settle"
-                + "/"
-                + str(t["amount"])
-                + "/"
-                + str(t["ower"].id)
-                + "/"
-                + str(t["receiver"].id)
+            self.client.post(
+                "/raclette/settle",
+                data={
+                    "amount": t["amount"],
+                    "sender_id": t["ower"].id,
+                    "receiver_id": t["receiver"].id,
+                },
             )
             temp_transactions = project.get_transactions_to_settle_bill()
             # test if the one has disappeared
             assert len(temp_transactions) == len(transactions) - count
 
-            # test if theres a new one with bill_type reimbursement
+            # test if there is a new one with bill_type reimbursement
             bill = project.get_newest_bill()
             assert bill.bill_type == models.BillType.REIMBURSEMENT
-        return
+
+        # There should be no more settlement to do at the end
+        transactions = project.get_transactions_to_settle_bill()
+        assert len(transactions) == 0
 
     def test_settle_zero(self):
         self.post_project("raclette")
