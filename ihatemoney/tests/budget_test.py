@@ -716,7 +716,7 @@ class TestBudget(IhatemoneyTestCase):
                 "amount": "17",
             },
         )
-        
+
         balance = self.get_project("raclette").balance
         assert set(balance.values()) == set([19.0, -19.0])
 
