@@ -874,6 +874,7 @@ def add_settlement_bill():
         )
         return redirect(url_for(".settle_bill"))
 
+    # TODO: check that sender and receiver ID are valid and part of this project
 
     settlement = Bill(
         amount=form.amount.data,
