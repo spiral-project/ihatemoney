@@ -1630,6 +1630,24 @@ class TestBudget(IhatemoneyTestCase):
         member = models.Person.query.filter(models.Person.id == 1).one_or_none()
         assert member is None
 
+        # test new settle endpoint to add bills with wrong payer / payed_for
+        self.client.post("/exit")
+        self.client.post(
+            "/authenticate", data={"id": "tartiflette", "password": "tartiflette"}
+        )
+        self.client.post(
+            "/tartiflette/settle",
+            data={
+                "sender_id": 4,
+                "receiver_id": 5,
+                "amount": "42.0",
+            },
+        )
+        piratebill = models.Bill.query.filter(
+            models.Bill.bill_type == models.BillType.REIMBURSEMENT
+        ).one_or_none()
+        assert piratebill is None, "piratebill 3 should not exist"
+
     @pytest.mark.skip(reason="Currency conversion is broken")
     def test_currency_switch(self):
         # A project should be editable
