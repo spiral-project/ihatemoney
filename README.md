@@ -33,9 +33,11 @@ level of maturity now. The overall energy of contributors is not as high as it
 used to be.
 
 In addition, there are now several self-hosted alternatives (for instance
-[cospend](https://github.com/julien-nc/cospend-nc/tree/main), [spliit](https://
-github.com/spliit-app/spliit)). As maintainers, we believe that the project is
-still relevant but should gear towards some kind of "maintenance mode":
+[cospend](https://github.com/julien-nc/cospend-nc/tree/main),
+[spliit](https://github.com/spliit-app/spliit)).
+
+As maintainers, we believe that the project is still relevant but should gear
+towards some kind of "maintenance mode":
 
 * **Simplicity** is now the main goal of the project. It has always been a compass
 for the project, and the resulting software is appreciated by both users and
@@ -45,7 +47,7 @@ size...) and user-visible aspects (straightforward interface, no need to create
 accounts for people you invite, same web interface on mobile...)
 
 * **Stability** is prioritized over adding major new features. We found ourselves
-complexifying the codebase (and the interface) by while accepting some
+complexifying the codebase (and the interface) while accepting some
 contributions. Our goal now is to have a minimal set of features that do most of
 the job. We believe this will help lower the maintainance burden.
 
