@@ -670,50 +670,27 @@ def list_bills():
         weighted_bills = g.project.get_bill_weights_ordered().paginate(
             per_page=100, error_out=True
         )
-        return render_template(
-            "list_bills.html",
-            bills=weighted_bills,
-            member_form=MemberForm(g.project),
-            bill_form=bill_form,
-            csrf_form=csrf_form,
-            add_bill=request.values.get("add_bill", False),
-            current_view="list_bills",
+    elif request.method == "POST":
+        # Retrieve start_date and end_date from form data
+        start_date = request.form.get('start_date')
+        end_date = request.form.get('end_date')
+
+
+        weighted_bills = g.project.get_filtered_date_bill_weights_ordered(start_date, end_date).paginate(
+            per_page=100, error_out=True
         )
 
-    if request.method == "POST":
-        start_date = request.form.get('start_date', None)
-        end_date = request.form.get('end_date', None)
-        paid_by = request.form.get('paid_by', None)
-        for_what = request.form.get('for_what', None)
-        for_whom = request.form.get('for_whom', None)
-        how_much = request.form.get('how_much', None)
-
-        weighted_bills = g.project.get_filtered_bill_weights_ordered(
-            start_date=start_date,
-            end_date=end_date,
-            paid_by=paid_by,
-            for_what=for_what,
-            for_whom=for_whom,
-            how_much=how_much
-        ).paginate(per_page=100, error_out=True)
-
-        return render_template(
-            "list_bills.html",
-            bills=weighted_bills,
-            member_form=MemberForm(g.project),
-            bill_form=bill_form,
-            csrf_form=csrf_form,
-            add_bill=request.values.get("add_bill", False),
-            current_view="list_bills",
-            start_date=start_date,
-            end_date=end_date,
-            paid_by=paid_by,
-            for_what=for_what,
-            for_whom=for_whom,
-            how_much=how_much
-        )
-
-
+    return render_template(
+        "list_bills.html",
+        bills=weighted_bills,
+        member_form=MemberForm(g.project),
+        bill_form=bill_form,
+        csrf_form=csrf_form,
+        add_bill=request.values.get("add_bill", False),
+        current_view="list_bills",
+        start_date=start_date if request.method == "POST" else None,
+        end_date=end_date if request.method == "POST" else None,
+    )
 
 @main.route("/<project_id>/members/add", methods=["GET", "POST"])
 def add_member():
