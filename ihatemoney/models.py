@@ -274,28 +274,28 @@ class Project(db.Model):
     @staticmethod
     def filter_by_paid_by(query, paid_by=None):
         if paid_by:
-            return query.filter(Bill.payer.has(paid_by))
+            return query.filter(Bill.payer.has(id=paid_by))
         else:
             return query
 
     @staticmethod
     def filter_by_for_what(query, for_what=None):
         if for_what:
-            return query.filter(Bill.what.has(for_what))
+            return query.filter(Bill.what.has(id=for_what))
         else:
             return query
 
     @staticmethod
     def filter_by_for_whom(query, for_whom=None):
         if for_whom:
-            return query.filter(Bill.payed_for.has(for_whom))
+            return query.filter(Bill.payed_for.has(id=for_whom))
         else:
             return query
 
     @staticmethod
     def filter_by_how_much(query, how_much=None):
         if how_much is not None:
-            return query.filter(Bill.amount.has(how_much))
+            return query.filter(Bill.amount.has(id=how_much))
         else:
             return query
 
