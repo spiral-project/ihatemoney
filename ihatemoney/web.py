@@ -130,8 +130,8 @@ def set_show_admin_dashboard_link(endpoint, values):
     """
 
     g.show_admin_dashboard_link = (
-        current_app.config["ACTIVATE_ADMIN_DASHBOARD"]
-        and current_app.config["ADMIN_PASSWORD"]
+            current_app.config["ACTIVATE_ADMIN_DASHBOARD"]
+            and current_app.config["ADMIN_PASSWORD"]
     )
     g.logout_form = LogoutForm()
 
@@ -199,7 +199,7 @@ def admin():
     if request.method == "POST" and form.validate():
         # Valid password
         if check_password_hash(
-            current_app.config["ADMIN_PASSWORD"], form.admin_password.data
+                current_app.config["ADMIN_PASSWORD"], form.admin_password.data
         ):
             session["is_admin"] = True
             session.update()
@@ -658,28 +658,31 @@ def list_bills():
         if "last_selected_payer" in session:
             bill_form.payer.data = session["last_selected_payer"]
     if (
-        "last_selected_payed_for" in session
-        and g.project.id in session["last_selected_payed_for"]
+            "last_selected_payed_for" in session
+            and g.project.id in session["last_selected_payed_for"]
     ):
         bill_form.payed_for.data = session["last_selected_payed_for"][g.project.id]
 
     # Each item will be a (weight_sum, Bill) tuple.
     # TODO: improve this awkward result using column_property:
     # https://docs.sqlalchemy.org/en/14/orm/mapped_sql_expr.html.
+
     if request.method == "GET":
+        # Retrieve ordered bill weights for the project
         weighted_bills = g.project.get_bill_weights_ordered().paginate(
             per_page=100, error_out=True
         )
     elif request.method == "POST":
         # Retrieve start_date and end_date from form data
-        start_date = request.form.get('start_date')
-        end_date = request.form.get('end_date')
+        start = request.form.get('start')
+        end = request.form.get('end')
 
-
-        weighted_bills = g.project.get_filtered_date_bill_weights_ordered(start_date, end_date).paginate(
+        # Retrieve filtered bill weights by date
+        weighted_bills = g.project.get_filtered_date_bill_weights_ordered(start, end).paginate(
             per_page=100, error_out=True
         )
 
+    # Render the template with the appropriate data
     return render_template(
         "list_bills.html",
         bills=weighted_bills,
@@ -688,8 +691,8 @@ def list_bills():
         csrf_form=csrf_form,
         add_bill=request.values.get("add_bill", False),
         current_view="list_bills",
-        start_date=start_date if request.method == "POST" else None,
-        end_date=end_date if request.method == "POST" else None,
+        start=start if request.method == "POST" else None,
+        end=end if request.method == "POST" else None,
     )
 
 @main.route("/<project_id>/members/add", methods=["GET", "POST"])
@@ -985,8 +988,8 @@ def feed(token):
         return "", 304
 
     if (
-        request.if_modified_since
-        and request.if_modified_since.replace(tzinfo=None) >= last_modified
+            request.if_modified_since
+            and request.if_modified_since.replace(tzinfo=None) >= last_modified
     ):
         return "", 304
 

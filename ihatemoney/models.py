@@ -265,11 +265,12 @@ class Project(db.Model):
         )
 
     @staticmethod
-    def filter_by_date(query, start_date, end_date):
-        if start_date and end_date:
-            return query.filter(Bill.date >= start_date, Bill.date <= end_date)
+    def filter_by_date(query, start, end):
+        if start and end:
+            return query.filter(Bill.date.between(start, end))
         else:
             return query
+
 
     def get_bill_weights(self):
         """
@@ -292,9 +293,9 @@ class Project(db.Model):
         """Ordered version of get_bill_weights"""
         return self.order_bills(self.get_bill_weights())
 
-    def get_filtered_date_bill_weights_ordered(self, start_date, end_date):
+    def get_filtered_date_bill_weights_ordered(self, start, end):
         bill_weights_ordered = self.get_bill_weights_ordered()
-        filtered_bill_weights = self.filter_by_date(bill_weights_ordered, start_date, end_date)
+        filtered_bill_weights = self.filter_by_date(bill_weights_ordered, start,end )
         return filtered_bill_weights
 
     def get_member_bills(self, member_id):

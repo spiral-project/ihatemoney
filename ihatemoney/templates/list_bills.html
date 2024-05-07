@@ -107,12 +107,10 @@
 {% endif %}
 <form action="{{ url_for(".list_bills") }}" method="post">
     {{ csrf_form.csrf_token }}
-    <label for="start_date">Start Date:</label>
-    <input type="date" id="start_date" name="start_date" value="{{ start_date if start_date else '' }}">
-
-    <label for="end_date">End Date:</label>
-    <input type="date" id="end_date" name="end_date" value="{{ end_date if end_date else '' }}">
-
+    <label for="start">Start Date:</label>
+    <input type="date" id="start" name="start" value="{{ start if start else '' }}">
+    <label for="end">End Date:</label>
+    <input type="date" id="end" name="end" value="{{ end if end else '' }}">
     <input type="submit" value="Enter">
 </form>
 
