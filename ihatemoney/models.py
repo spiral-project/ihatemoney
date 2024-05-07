@@ -133,7 +133,7 @@ class Project(db.Model):
                 should_receive[bill.payer.id] += bill.converted_amount
                 for ower in bill.owers:
                     should_pay[ower.id] += (
-                        ower.weight * bill.converted_amount / total_weight
+                            ower.weight * bill.converted_amount / total_weight
                     )
 
             if bill.bill_type == BillType.REIMBURSEMENT:
@@ -264,6 +264,51 @@ class Project(db.Model):
             .order_by(Bill.id.desc())
         )
 
+    @staticmethod
+    def filter_by_date(query, start_date=None, end_date=None):
+        if start_date and end_date:
+            return query.filter(Bill.date.between(start_date, end_date))
+        else:
+            return query
+
+    @staticmethod
+    def filter_by_paid_by(query, paid_by=None):
+        if paid_by:
+            return query.filter(Bill.payer.has(paid_by))
+        else:
+            return query
+
+    @staticmethod
+    def filter_by_for_what(query, for_what=None):
+        if for_what:
+            return query.filter(Bill.what.has(for_what))
+        else:
+            return query
+
+    @staticmethod
+    def filter_by_for_whom(query, for_whom=None):
+        if for_whom:
+            return query.filter(Bill.payed_for.has(for_whom))
+        else:
+            return query
+
+    @staticmethod
+    def filter_by_how_much(query, how_much=None):
+        if how_much is not None:
+            return query.filter(Bill.amount.has(how_much))
+        else:
+            return query
+
+    @staticmethod
+    def apply_filters(self, query, **kwargs):
+        filtered_query = query
+        filtered_query = self.filter_by_date(filtered_query, kwargs.get('start_date'), kwargs.get('end_date'))
+        filtered_query = self.filter_by_paid_by(filtered_query, kwargs.get('paid_by'))
+        filtered_query = self.filter_by_for_what(filtered_query, kwargs.get('for_what'))
+        filtered_query = self.filter_by_for_whom(filtered_query, kwargs.get('for_whom'))
+        filtered_query = self.filter_by_how_much(filtered_query, kwargs.get('how_much'))
+        return filtered_query
+
     def get_bill_weights(self):
         """
         Return all bills for this project, along with the sum of weight for each bill.
@@ -284,6 +329,28 @@ class Project(db.Model):
     def get_bill_weights_ordered(self):
         """Ordered version of get_bill_weights"""
         return self.order_bills(self.get_bill_weights())
+
+    def get_filtered_bill_weights_ordered(self, start_date=None, end_date=None, paid_by=None, for_what=None,
+                                          for_whom=None,
+                                          how_much=None):
+        query = self.get_bill_weights_ordered()
+
+        if start_date and end_date:
+            query = self.filter_by_date(query, start_date, end_date)
+
+        if paid_by:
+            query = self.filter_by_paid_by(query, paid_by)
+
+        if for_what:
+            query = self.filter_by_for_what(query, for_what)
+
+        if for_whom:
+            query = self.filter_by_for_whom(query, for_whom)
+
+        if how_much is not None:
+            query = self.filter_by_how_much(query, how_much)
+
+        return query
 
     def get_member_bills(self, member_id):
         """Return the list of bills related to a specific member"""
@@ -697,16 +764,16 @@ class Bill(db.Model):
     currency_helper = CurrencyConverter()
 
     def __init__(
-        self,
-        amount: float,
-        date: datetime.datetime = None,
-        external_link: str = "",
-        original_currency: str = "",
-        owers: list = [],
-        payer_id: int = None,
-        project_default_currency: str = "",
-        what: str = "",
-        bill_type: str = "Expense",
+            self,
+            amount: float,
+            date: datetime.datetime = None,
+            external_link: str = "",
+            original_currency: str = "",
+            owers: list = [],
+            payer_id: int = None,
+            project_default_currency: str = "",
+            what: str = "",
+            bill_type: str = "Expense",
     ):
         super().__init__()
         self.amount = amount

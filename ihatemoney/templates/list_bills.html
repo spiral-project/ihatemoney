@@ -105,6 +105,43 @@
   <li class="page-item {% if bills.page == bills.pages %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.next_num) }}">{{ _("Older bills") }} &raquo;</a></li>
 </ul>
 {% endif %}
+<form action="{{ url_for(".list_bills") }}" method="post">
+    {{ csrf_form.csrf_token }}
+
+    <div>
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" value="{{ start_date if start_date else '' }}">
+    </div>
+
+    <div>
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" value="{{ end_date if end_date else '' }}">
+    </div>
+
+    <div>
+        <label for="paid_by">Paid By:</label>
+        <input type="text" id="paid_by" name="paid_by" value="{{ paid_by if paid_by else '' }}">
+    </div>
+
+    <div>
+        <label for="for_what">For What:</label>
+        <input type="text" id="for_what" name="for_what" value="{{ for_what if for_what else '' }}">
+    </div>
+
+    <div>
+        <label for="for_whom">For Whom:</label>
+        <input type="text" id="for_whom" name="for_whom" value="{{ for_whom if for_whom else '' }}">
+    </div>
+
+    <div>
+        <label for="how_much">How Much:</label>
+        <input type="number" id="how_much" name="how_much" value="{{ how_much if how_much else '' }}">
+    </div>
+
+    <input type="submit" value="Enter">
+</form>
+
+
 <span id="new-bill" class="ml-auto pb-2" {% if not g.project.members %} data-toggle="tooltip" title="{{_('You should start by adding participants')}}" {% endif %}>
     <a href="{{ url_for('.add_bill') }}" class="btn btn-primary {% if not g.project.members %} disabled {% endif %}" data-toggle="modal" data-keyboard="true" data-target="#bill-form" autofocus>
         <i class="icon icon-white before-text">{{ static_include("images/plus.svg") | safe }}</i>
