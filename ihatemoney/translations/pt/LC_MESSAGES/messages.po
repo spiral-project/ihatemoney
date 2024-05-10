@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-29 14:24+0200\n"
-"PO-Revision-Date: 2023-05-05 00:47+0000\n"
-"Last-Translator: MurkBRA <anjo1077@gmail.com>\n"
+"PO-Revision-Date: 2024-05-10 07:26+0000\n"
+"Last-Translator: Gesiane Pajarinen <gesianef@hotmail.com>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/pt/>\n"
 "Language: pt\n"
-"Language-Team: Portuguese <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/pt/>\n"
-"Plural-Forms: nplurals=2; plural=n > 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.5.4-rc\n"
 "Generated-By: Babel 2.9.0\n"
 
 #, python-format
@@ -34,7 +34,7 @@ msgid "Current private code"
 msgstr "Código privado novo"
 
 msgid "Enter existing private code to edit project"
-msgstr ""
+msgstr "Insira o código privado existente para editar o projeto"
 
 msgid "New private code"
 msgstr "Código privado novo"
@@ -71,7 +71,7 @@ msgstr ""
 " em várias moedas."
 
 msgid "Compatible with Cospend"
-msgstr ""
+msgstr "Compatível com Cospend"
 
 msgid "Project identifier"
 msgstr "Identificador do projeto"
@@ -192,7 +192,7 @@ msgid "Logout"
 msgstr "Sair"
 
 msgid "Please check the email configuration of the server."
-msgstr ""
+msgstr "Verifique a configuração de e-mail do servidor."
 
 #, fuzzy, python-format
 msgid ""
@@ -279,14 +279,14 @@ msgid "Password successfully reset."
 msgstr "Palavra-passe redefinida corretamente."
 
 msgid "Project settings have been changed successfully."
-msgstr ""
+msgstr "As configurações do projeto foram alteradas com sucesso."
 
 msgid "Unable to parse CSV"
-msgstr ""
+msgstr "Não foi possível processar o CSV"
 
 #, python-format
 msgid "Missing attribute: %(attribute)s"
-msgstr ""
+msgstr "Faltando o atributo: %(attribute)s"
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
@@ -305,7 +305,7 @@ msgid "Error deleting project"
 msgstr "Erro ao apagar o projeto"
 
 msgid "Unable to logout"
-msgstr ""
+msgstr "Não é possível sair"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
@@ -365,7 +365,7 @@ msgstr "A fatura foi modificada"
 
 #, python-format
 msgid "%(lang)s is not a supported language"
-msgstr ""
+msgstr "Não temos configuração para o idioma %(lang)s"
 
 msgid "Error deleting project history"
 msgstr "Erro ao apagar o histórico do projeto"
@@ -476,7 +476,7 @@ msgid "Privacy Settings"
 msgstr "Configurações de Privacidade"
 
 msgid "Save changes"
-msgstr ""
+msgstr "Salvar as alterações"
 
 msgid "This will remove all bills and participants in this project!"
 msgstr "Isso removerá todas as faturas e os participantes deste projeto!"
@@ -495,7 +495,7 @@ msgid "Add a bill"
 msgstr "Adicionar uma fatura"
 
 msgid "Simple operations are allowed, e.g. (18+36.2)/3"
-msgstr ""
+msgstr "Operações simples são permitidas, por ex. (18+36,2)/3"
 
 msgid "Everyone"
 msgstr "Todos"
@@ -587,6 +587,7 @@ msgstr "Fatura %(name)s: removido %(owers_list_str)s da lista de proprietários"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
+"Este projeto tem o histórico desativado. Novas ações não aparecerão abaixo."
 
 #, fuzzy
 msgid "You can enable history on the settings page."
@@ -596,6 +597,8 @@ msgid ""
 "The table below reflects actions recorded prior to disabling project "
 "history."
 msgstr ""
+"A tabela abaixo contém as ações registradas antes da desativação do "
+"histórico do projeto."
 
 #, fuzzy
 msgid "You can clear the project history to remove them."
@@ -796,7 +799,7 @@ msgid "Settings"
 msgstr "Configurações"
 
 msgid "RSS Feed"
-msgstr ""
+msgstr "RSS Feed"
 
 msgid "Other projects :"
 msgstr "Outros projetos:"
@@ -809,7 +812,7 @@ msgstr "Painel de controle"
 
 #, python-format
 msgid "Please retry after %(date)s."
-msgstr ""
+msgstr "Por favor, tente novamente após %(date)s."
 
 msgid "Code"
 msgstr "Código"
@@ -905,7 +908,7 @@ msgid "Invite people to join this project"
 msgstr "Convide pessoas para participar deste projeto"
 
 msgid "Share an invitation link"
-msgstr ""
+msgstr "Compartilhe um link do convite"
 
 msgid ""
 "The easiest way to invite people is to give them the following invitation"
@@ -913,12 +916,17 @@ msgid ""
 " add/edit/delete bills. However, they will not have access to important "
 "settings such as changing the private code or deleting the whole project."
 msgstr ""
+"A maneira mais fácil de convidar as pessoas é compartilhando o seguinte link "
+"do convite.<br />Eles poderão acessar o projeto, gerenciar participantes, "
+"adicionar/editar/excluir contas. No entanto, eles não terão acesso a "
+"configurações importantes, como alterar o código privado ou excluir todo o "
+"projeto."
 
 msgid "Scan QR code"
-msgstr ""
+msgstr "Escanear o código QR"
 
 msgid "Use a mobile device with a compatible app."
-msgstr ""
+msgstr "Use um telefone celular ou tablet com um aplicativo compatível."
 
 msgid "Send via Emails"
 msgstr "Enviar via E-mails"
@@ -943,6 +951,11 @@ msgid ""
 "to the full project, including changing settings such as the private code"
 " or project email address, or even deleting the whole project."
 msgstr ""
+"Você pode compartilhar o identificador do projeto e o código privado por "
+"qualquer meio de comunicação.<br />Qualquer pessoa com o código privado terá "
+"acesso a todo o projeto, incluindo a alteração de configurações como o "
+"código privado ou o endereço do e-mail, ou até mesmo a exclusão de todo o "
+"projeto."
 
 msgid "Identifier:"
 msgstr "Identificador:"
@@ -952,7 +965,7 @@ msgid "Private code:"
 msgstr "Código privado"
 
 msgid "the private code was defined when you created the project"
-msgstr ""
+msgstr "o código privado foi definido quando você criou o projeto"
 
 msgid "Who pays?"
 msgstr "Quem paga?"
@@ -1140,4 +1153,3 @@ msgstr "Período"
 #~ msgstr ""
 #~ "Pode compartilhar diretamente o seguinte "
 #~ "ligação através do seu meio preferido"
-
