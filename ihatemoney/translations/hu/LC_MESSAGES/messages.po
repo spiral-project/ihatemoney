@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-29 14:24+0200\n"
-"PO-Revision-Date: 2023-04-19 11:51+0000\n"
-"Last-Translator: Gergely Kocsis <koger23@gmail.com>\n"
+"PO-Revision-Date: 2024-07-07 14:18+0000\n"
+"Last-Translator: NtWriteCode <github@gyorffi.hu>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/hu/>\n"
 "Language: hu\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/hu/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.7-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #, python-format
@@ -29,9 +29,8 @@ msgstr ""
 msgid "Project name"
 msgstr "A projekt neve"
 
-#, fuzzy
 msgid "Current private code"
-msgstr "Új titkos kód"
+msgstr "Jelenlegi privát kód"
 
 msgid "Enter existing private code to edit project"
 msgstr ""
@@ -73,7 +72,7 @@ msgstr ""
 "pénznemet is tartalmaz."
 
 msgid "Compatible with Cospend"
-msgstr ""
+msgstr "Cospend-el kompatibilis"
 
 msgid "Project identifier"
 msgstr "Projekt azonosító"
@@ -139,7 +138,7 @@ msgid "Who paid?"
 msgstr ""
 
 msgid "How much?"
-msgstr ""
+msgstr "Mennyit?"
 
 msgid "Currency"
 msgstr "Pénznem"
@@ -185,23 +184,25 @@ msgid "People to notify"
 msgstr "Értesítendő személyek"
 
 msgid "Send the invitations"
-msgstr ""
+msgstr "Meghívók küldése"
 
 #, python-format
 msgid "The email %(email)s is not valid"
 msgstr "Érvénytelen e-mail cím: %(email)s"
 
 msgid "Logout"
-msgstr ""
+msgstr "Kijelentkezés"
 
 msgid "Please check the email configuration of the server."
-msgstr ""
+msgstr "Kérjük, ellenőrizze a szerver e-mail konfigurációját."
 
 #, python-format
 msgid ""
 "Please check the email configuration of the server or contact the "
 "administrator: %(admin_email)s"
 msgstr ""
+"Kérjük, ellenőrizze a szerver e-mail konfigurációját, vagy lépjen "
+"kapcsolatba a rendszergazdával: %(admin_email)s"
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
@@ -230,9 +231,9 @@ msgstr "{prefix}: {error}"
 msgid "{prefix}:<br />{errors}"
 msgstr "{prefix}:<br />{errors}"
 
-#, fuzzy
 msgid "Too many failed login attempts."
-msgstr "Túl sok sikertelen bejelentkezési kísérlet, kérlek, próbáld újra később."
+msgstr ""
+"Túl sok sikertelen bejelentkezési kísérlet, kérlek, próbáld újra később."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
@@ -258,6 +259,8 @@ msgid ""
 "Sorry, there was an error while sending you an email with password reset "
 "instructions."
 msgstr ""
+"Sajnáljuk, hiba történt a jelszó-visszaállítási utasításokat tartalmazó e-"
+"mail elküldésekor."
 
 msgid "No token provided"
 msgstr "Nincs token megadva"
@@ -272,19 +275,21 @@ msgid "Password successfully reset."
 msgstr "Jelszó sikeresen visszaállítva."
 
 msgid "Project settings have been changed successfully."
-msgstr ""
+msgstr "A projekt beállításai sikeresen megváltoztak."
 
 msgid "Unable to parse CSV"
-msgstr ""
+msgstr "Nem sikerült értelmezni a CSV fájlt"
 
 #, python-format
 msgid "Missing attribute: %(attribute)s"
-msgstr ""
+msgstr "Hiányzó tulajdonság: %(attribute)s"
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
 msgstr ""
+"Nem tud hozzáadni több pénznemet egy projekthez alapértelmezett pénznem "
+"nélkül"
 
 msgid "Project successfully uploaded"
 msgstr "Projekt sikeresen feltöltve"
@@ -296,7 +301,7 @@ msgid "Error deleting project"
 msgstr "Hiba történt a projekt törlésekor"
 
 msgid "Unable to logout"
-msgstr ""
+msgstr "Kijelentkezés sikertelen"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
@@ -306,7 +311,7 @@ msgid "Your invitations have been sent"
 msgstr "A meghívóid sikeresen kiküldve"
 
 msgid "Sorry, there was an error while trying to send the invitation emails."
-msgstr ""
+msgstr "Elnézést, hiba történt a meghívó e-mailek elküldése közben."
 
 #, python-format
 msgid "%(member)s has been added"
@@ -317,221 +322,227 @@ msgstr "Hiba történt a résztvevő aktiválása közben"
 
 #, python-format
 msgid "%(name)s is part of this project again"
-msgstr ""
+msgstr "%(name)s már a projekt tagja"
 
 msgid "Error removing participant"
-msgstr ""
+msgstr "Hiba lépett fel a résztvevő eltávolításakor"
 
 #, python-format
 msgid ""
 "Participant '%(name)s' has been deactivated. It will still appear in the "
 "list until its balance reach zero."
 msgstr ""
+"%(name)s deaktiválva van. A listán látható lesz, amíg az egyenlege nulla nem "
+"lesz."
 
 #, python-format
 msgid "Participant '%(name)s' has been removed"
-msgstr ""
+msgstr "%(name)s eltávolítva"
 
 #, python-format
 msgid "Participant '%(name)s' has been modified"
-msgstr ""
+msgstr "%(name)s módosítva"
 
 msgid "The bill has been added"
-msgstr ""
+msgstr "Számla hozzáadva"
 
 msgid "Error deleting bill"
-msgstr ""
+msgstr "Hiba lépett fel a számla törlése közben"
 
 msgid "The bill has been deleted"
-msgstr ""
+msgstr "Számla törölve"
 
 msgid "The bill has been modified"
-msgstr ""
+msgstr "Számla módosítva"
 
 #, python-format
 msgid "%(lang)s is not a supported language"
-msgstr ""
+msgstr "%(lang)s nem egy támogatott nyelv"
 
 msgid "Error deleting project history"
-msgstr ""
+msgstr "Hiba lépett fel az előzmények törlése közben"
 
 msgid "Deleted project history."
-msgstr ""
+msgstr "Előzmények törölve."
 
 msgid "Error deleting recorded IP addresses"
-msgstr ""
+msgstr "Hiba lépett fel az IP cím törlésekor"
 
 msgid "Deleted recorded IP addresses in project history."
-msgstr ""
+msgstr "IP címek törölve az előzményekből."
 
 msgid "Sorry, we were unable to find the page you've asked for."
-msgstr ""
+msgstr "Sajnáljuk, de a keresett oldalt nem találjuk."
 
 msgid "The best thing to do is probably to get back to the main page."
-msgstr ""
+msgstr "A legjobb döntés talán, ha visszalépsz a főoldalra."
 
 msgid "Back to the list"
-msgstr ""
+msgstr "Vissza a listához"
 
 msgid "Administration tasks are currently disabled."
-msgstr ""
+msgstr "Az adminisztrációs feladatok jelenleg le vannak tiltva."
 
 msgid "Authentication"
 msgstr ""
 
 msgid "The project you are trying to access do not exist, do you want to"
-msgstr ""
+msgstr "A projekt, amelyhez hozzáférni próbál, nem létezik. Szeretnéd"
 
 msgid "create it"
-msgstr ""
+msgstr "létrehozni"
 
 msgid "?"
-msgstr ""
+msgstr "?"
 
 msgid "Create a new project"
-msgstr ""
+msgstr "Új projekt létrehozása"
 
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 msgid "Number of participants"
-msgstr ""
+msgstr "Résztvevők száma"
 
 msgid "Number of bills"
-msgstr ""
+msgstr "Számlák száma"
 
 msgid "Newest bill"
-msgstr ""
+msgstr "Legújabb számla"
 
 msgid "Oldest bill"
-msgstr ""
+msgstr "Legrégebbi számla"
 
 msgid "Actions"
-msgstr ""
+msgstr "Tevékenységek"
 
 msgid "edit"
-msgstr ""
+msgstr "szerkesztés"
 
 msgid "Delete project"
-msgstr ""
+msgstr "Projekt törlése"
 
 msgid "show"
-msgstr ""
+msgstr "megjelenít"
 
 msgid "The Dashboard is currently deactivated."
-msgstr ""
+msgstr "Az irányítópult jelenleg ki van kapcsolva."
 
 msgid "Download Mobile Application"
-msgstr ""
+msgstr "Mobil alkalmazás letöltése"
 
 msgid "Get it on"
-msgstr ""
+msgstr "Szerezd meg"
 
 msgid "Edit project"
-msgstr ""
+msgstr "Projekt szerkesztése"
 
-#, fuzzy
 msgid "Import project"
-msgstr "Projekt létrehozása"
+msgstr "Projekt importálása"
 
 msgid "Download project's data"
-msgstr ""
+msgstr "Projekt adatainak letöltése"
 
 msgid "Bill items"
-msgstr ""
+msgstr "Számla elemei"
 
 msgid "Download the list of bills with owner, amount, reason,... "
 msgstr ""
+"Töltse le a számlák listáját ami tartalmazza a tulajdonost, összeget, "
+"okokat, ... "
 
 msgid "Settle plans"
 msgstr ""
 
 msgid "Download the list of transactions needed to settle the current bills."
 msgstr ""
+"Töltse le az aktuális számlák kiegyenlítéséhez szükséges tranzakciók "
+"listáját."
 
 msgid "Can't remember the password?"
-msgstr ""
+msgstr "Nem emlékszik a jelszóra?"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Mégsem"
 
 msgid "Privacy Settings"
-msgstr ""
+msgstr "Adatvédelmi beállítások"
 
 msgid "Save changes"
-msgstr ""
+msgstr "Változások mentése"
 
 msgid "This will remove all bills and participants in this project!"
-msgstr ""
+msgstr "Ez eltávolítja az összes számlát és résztvevőt ebből a projektből!"
 
-#, fuzzy
 msgid "Import previously exported project"
 msgstr "Korábban exportált JSON fájl importálása"
 
 msgid "Choose file"
-msgstr ""
+msgstr "Fájl kiválasztása"
 
 msgid "Edit this bill"
-msgstr ""
+msgstr "Számla szerkesztése"
 
 msgid "Add a bill"
-msgstr ""
+msgstr "Számla hozzáadása"
 
 msgid "Simple operations are allowed, e.g. (18+36.2)/3"
-msgstr ""
+msgstr "Egyszerű matematikai műveletek megengedettek, pl. (18+36.2)/3"
 
 msgid "Everyone"
-msgstr ""
+msgstr "Mindenki"
 
 msgid "No one"
-msgstr ""
+msgstr "Senki"
 
 msgid "More options"
-msgstr ""
+msgstr "További lehetőségek"
 
 msgid "Add participant"
-msgstr ""
+msgstr "Résztvevő hozzáadása"
 
 msgid "Edit this participant"
-msgstr ""
+msgstr "Résztvevő szerkesztése"
 
 msgid "john.doe@example.com, mary.moe@site.com"
-msgstr ""
+msgstr "kiss.pista@pelda.hu, gyongy.virag@weboldalam.hu"
 
 msgid "Download"
-msgstr ""
+msgstr "Letöltés"
 
 msgid "Disabled Project History"
-msgstr ""
+msgstr "Projekt előzmények kikapcsolva"
 
 msgid "Disabled Project History & IP Address Recording"
-msgstr ""
+msgstr "Projekt előzmények és IP cím rögzítés kikapcsolva"
 
 msgid "Enabled Project History"
-msgstr ""
+msgstr "Projekt előzmények bekapcsolva"
 
 msgid "Disabled IP Address Recording"
-msgstr ""
+msgstr "IP cím rögzítés kikapcsolva"
 
 msgid "Enabled Project History & IP Address Recording"
-msgstr ""
+msgstr "Projekt előzmények és IP cím rögzítés bekapcsolva"
 
 msgid "Enabled IP Address Recording"
-msgstr ""
+msgstr "IP cím rögzítés bekapcsolva"
 
 msgid "History Settings Changed"
-msgstr ""
+msgstr "Előzménybeállítások megváltoztatva"
 
 #, python-format
 msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
 msgstr ""
+"Számla %(name)s: %(property_name)s megváltozott erről: %(before)s erre: "
+"%(after)s"
 
 #, python-format
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
-msgstr ""
+msgstr "Számla %(name)s: %(property_name)s megváltoztatva erre: %(after)s"
 
 msgid "Confirm Remove IP Adresses"
-msgstr ""
+msgstr "Erősítse meg az IP-címek eltávolítását"
 
 msgid ""
 "Are you sure you want to delete all recorded IP addresses from this "
@@ -539,340 +550,358 @@ msgid ""
 "                The rest of the project history will be unaffected. This "
 "action cannot be undone."
 msgstr ""
+"Biztos, hogy törölni szeretné az összes rögzített IP-címet ebből a "
+"projektből?\n"
+"                A projekt többi előzménye nem változik. Ez a művelet nem "
+"vonható vissza."
 
 msgid "Confirm deletion"
-msgstr ""
+msgstr "Törlés megerősítése"
 
 msgid "Close"
-msgstr ""
+msgstr "Bezár"
 
 msgid "Delete Confirmation"
-msgstr ""
+msgstr "Megerősítés törlése"
 
 msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
 msgstr ""
+"Biztos, hogy törölni akarja a projekt minden előzményét? Ezt a műveletet nem "
+"lehet visszacsinálni."
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
-msgstr ""
+msgstr "Számla %(name)s: hozzáadva %(owers_list_str)s a tartozók listájára"
 
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
-msgstr ""
+msgstr "Számla %(name)s: törölve %(owers_list_str)s a tartozók listájáról"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
+"Ennek a projektnek az előzményei le vannak tiltva. Az új műveletek nem "
+"jelennek meg."
 
 msgid "You can enable history on the settings page."
-msgstr ""
+msgstr "Az előzményeket a beállítások oldalon engedélyezheti."
 
 msgid ""
 "The table below reflects actions recorded prior to disabling project "
 "history."
 msgstr ""
+"Az alábbi táblázat a projekt előzményeinek letiltása előtt rögzített "
+"műveleteket tükrözi."
 
 msgid "You can clear the project history to remove them."
-msgstr ""
+msgstr "Törölheti a projekt előzményeit, hogy törölje azokat."
 
 msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
 "recording disabled. "
 msgstr ""
+"Néhány alábbi bejegyzés IP-címeket tartalmaz, annak ellenére, hogy a projekt "
+"IP-felvétele le van tiltva. "
 
 msgid "Delete stored IP addresses"
-msgstr ""
+msgstr "Tárolt IP-címek törlése"
 
 msgid "No IP Addresses to erase"
-msgstr ""
+msgstr "Nincs törlendő IP-cím"
 
 msgid "Delete Stored IP Addresses"
-msgstr ""
+msgstr "Tárolt IP-Címek Törlése"
 
 msgid "No history to erase"
-msgstr ""
+msgstr "Nincs kitörölhető előzmény"
 
 msgid "Clear Project History"
-msgstr ""
+msgstr "Projekt előzmények törlése"
 
 msgid "Time"
-msgstr ""
+msgstr "Idő"
 
 msgid "Event"
-msgstr ""
+msgstr "Esemény"
 
 msgid "IP address recording can be enabled on the settings page"
-msgstr ""
+msgstr "Az IP-címek rögzítése a beállítások oldalon engedélyezhető"
 
 msgid "IP address recording can be disabled on the settings page"
-msgstr ""
+msgstr "Az IP-címek rögzítése letiltható a beállítások oldalon"
 
 msgid "From IP"
-msgstr ""
+msgstr "IP-ről"
 
 #, python-format
 msgid "Project %(name)s added"
-msgstr ""
+msgstr "Projekt %(name)s hozzáadva"
 
 #, python-format
 msgid "Bill %(name)s added"
-msgstr ""
+msgstr "Számla %(name)s hozzáadva"
 
 #, python-format
 msgid "Participant %(name)s added"
-msgstr ""
+msgstr "Résztvevő %(name)s hozzáadva"
 
 msgid "Project private code changed"
-msgstr ""
+msgstr "A projekt privát kódja megváltozott"
 
 #, python-format
 msgid "Project renamed to %(new_project_name)s"
-msgstr ""
+msgstr "Projekt átnevezve: %(new_project_name)s"
 
 #, python-format
 msgid "Project contact email changed to %(new_email)s"
-msgstr ""
+msgstr "A projekt kapcsolattartójának e-mail címe %(new_email)s-re változott"
 
 msgid "Project settings modified"
-msgstr ""
+msgstr "Projekt beállítások módosítva"
 
 #, python-format
 msgid "Participant %(name)s deactivated"
-msgstr ""
+msgstr "Résztvevő %(name)s deaktiválva"
 
 #, python-format
 msgid "Participant %(name)s reactivated"
-msgstr ""
+msgstr "Résztvevő %(name)s újraaktiválva"
 
 #, python-format
 msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr ""
+msgstr "Résztvevő %(name)s átnevezve: %(new_name)s"
 
 #, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
-msgstr ""
+msgstr "Számla %(name)s átnevezve: %(new_description)s"
 
 #, python-format
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
+"Résztvevő %(name)s: súlyozása módosítva erről: %(old_weight)s erre: "
+"%(new_weight)s"
 
 msgid "Payer"
 msgstr "Fizető"
 
 msgid "Amount"
-msgstr ""
+msgstr "Összeg"
 
 msgid "Date"
 msgstr "Dátum"
 
 #, python-format
 msgid "Amount in %(currency)s"
-msgstr ""
+msgstr "Összeg %(currency)s-ban/ben"
 
 #, python-format
 msgid "Bill %(name)s modified"
-msgstr ""
+msgstr "Számla %(name)s módosítva"
 
 #, python-format
 msgid "Participant %(name)s modified"
-msgstr ""
+msgstr "Résztvevő %(name)s módosítva"
 
 #, python-format
 msgid "Bill %(name)s removed"
-msgstr ""
+msgstr "Számla %(name)s törölve"
 
 #, python-format
 msgid "Participant %(name)s removed"
-msgstr ""
+msgstr "Résztvevő %(name)s törölve"
 
 #, python-format
 msgid "Project %(name)s changed in an unknown way"
-msgstr ""
+msgstr "Projekt %(name)s ismeretlen módon megváltozott"
 
 #, python-format
 msgid "Bill %(name)s changed in an unknown way"
-msgstr ""
+msgstr "A számla %(name)s ismeretlen módon megváltozott"
 
 #, python-format
 msgid "Participant %(name)s changed in an unknown way"
-msgstr ""
+msgstr "A résztvevő %(name)s ismeretlen módon megváltozott"
 
 msgid "Nothing to list"
-msgstr ""
+msgstr "Nincs listázandó elem"
 
 msgid "Someone probably cleared the project history."
-msgstr ""
+msgstr "Valaki valószínűleg törölte a projekt előzményeit."
 
 msgid "Manage your shared <br />expenses, easily"
-msgstr ""
+msgstr "Kezelje a megosztott <br />költségeit, egyszerűen"
 
 msgid "Try out the demo"
-msgstr ""
+msgstr "Próbálja ki a demót"
 
 msgid "You're sharing a house?"
-msgstr ""
+msgstr "Egy házban laktok?"
 
 msgid "Going on holidays with friends?"
-msgstr ""
+msgstr "Nyaralni mész a barátaiddal?"
 
 msgid "Simply sharing money with others?"
-msgstr ""
+msgstr "Egyszerűen szeretnéd megosztani a pénzt másokkal?"
 
 msgid "We can help!"
-msgstr ""
+msgstr "Mi segíthetünk!"
 
 msgid "Log in to an existing project"
-msgstr ""
+msgstr "Bejelentkezés egy meglévő projektbe"
 
 msgid "Log in"
-msgstr ""
+msgstr "Bejelentkezés"
 
 msgid "can't remember your password?"
-msgstr ""
+msgstr "elfelejtette a jelszavát?"
 
 msgid "Create"
-msgstr ""
+msgstr "Létrehozás"
 
 msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
 msgstr ""
+"Ne használjon a személyes jelszavait. Válasszon egy privát kódot, és küldje "
+"el a barátainak"
 
 msgid "Account manager"
-msgstr ""
+msgstr "Számlakezelő"
 
 msgid "Bills"
-msgstr ""
+msgstr "Számlák"
 
 msgid "Settle"
 msgstr ""
 
 msgid "Statistics"
-msgstr ""
+msgstr "Statisztikák"
 
 msgid "Languages"
-msgstr ""
+msgstr "Nyelvek"
 
 msgid "Projects"
-msgstr ""
+msgstr "Projektek"
 
 msgid "Start a new project"
-msgstr ""
+msgstr "Új projekt indítása"
 
 msgid "History"
-msgstr ""
+msgstr "Előzmények"
 
 msgid "Settings"
-msgstr ""
+msgstr "Beállítások"
 
 msgid "RSS Feed"
-msgstr ""
+msgstr "RSS hírcsatorna"
 
 msgid "Other projects :"
-msgstr ""
+msgstr "Egyéb projektek:"
 
 msgid "switch to"
-msgstr ""
+msgstr "váltás ide"
 
 msgid "Dashboard"
-msgstr ""
+msgstr "Vezérlőpult"
 
 #, python-format
 msgid "Please retry after %(date)s."
-msgstr ""
+msgstr "Kérem próbálja újra %(date)s után."
 
 msgid "Code"
-msgstr ""
+msgstr "Kód"
 
 msgid "Mobile Application"
-msgstr ""
+msgstr "Mobil alkalmazás"
 
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentáció"
 
 msgid "Administation Dashboard"
-msgstr ""
+msgstr "Adminisztrátori vezérlőpult"
 
 msgid "Legal information"
-msgstr ""
+msgstr "Jogi információk"
 
 msgid "\"I hate money\" is free software"
-msgstr ""
+msgstr "Az \"I hate money\" egy ingyenes szoftver"
 
 msgid "you can contribute and improve it!"
-msgstr ""
+msgstr "hozzájárulhat és javíthatja!"
 
 #, python-format
 msgid "%(amount)s each"
-msgstr ""
+msgstr "%(amount)s fejenként"
 
 msgid "you sure?"
-msgstr ""
+msgstr "biztos vagy benne?"
 
 msgid "Invite people"
-msgstr ""
+msgstr "Emberek meghívása"
 
 msgid "Newer bills"
-msgstr ""
+msgstr "Újabb számlák"
 
 msgid "Older bills"
-msgstr ""
+msgstr "Régebbi számlák"
 
 msgid "You should start by adding participants"
 msgstr ""
 
 msgid "Add a new bill"
-msgstr ""
+msgstr "Újabb számla hozzáadása"
 
 msgid "For what?"
-msgstr ""
+msgstr "Mire?"
 
 #, python-format
 msgid "Added on %(date)s"
-msgstr ""
+msgstr "Hozzáadva %(date)s"
 
 #, python-format
 msgid "Everyone but %(excluded)s"
-msgstr ""
+msgstr "Mindenki, kivéve %(excluded)s"
 
 msgid "delete"
-msgstr ""
+msgstr "törlés"
 
 msgid "No bills"
-msgstr ""
+msgstr "Nincsenek számlák"
 
 msgid "Nothing to list yet."
-msgstr ""
+msgstr "Még nincs mit listázni."
 
 msgid "Add your first bill"
-msgstr ""
+msgstr "Add hozzá az első számládat"
 
 msgid "Add the first participant"
-msgstr ""
+msgstr "Add hozzá az első résztvevőt"
 
 msgid "Password reminder"
-msgstr ""
+msgstr "Jelszó emlékeztető"
 
 msgid ""
 "A link to reset your password has been sent to you, please check your "
 "emails."
 msgstr ""
+"A jelszó visszaállításához szükséges linket elküldtük Önnek, kérjük, "
+"ellenőrizze e-mailjeit."
 
 msgid "Return to home page"
-msgstr ""
+msgstr "Vissza a főoldalra"
 
 msgid "Your projects"
-msgstr ""
+msgstr "Projektjeid"
 
 msgid "Reset your password"
-msgstr ""
+msgstr "Jelszavad visszaállítása"
 
 msgid "Invite people to join this project"
-msgstr ""
+msgstr "Hívj meg embereket, hogy csatlakozzanak a projekthez"
 
 msgid "Share an invitation link"
-msgstr ""
+msgstr "Meghívó link megosztása"
 
 msgid ""
 "The easiest way to invite people is to give them the following invitation"
@@ -880,24 +909,32 @@ msgid ""
 " add/edit/delete bills. However, they will not have access to important "
 "settings such as changing the private code or deleting the whole project."
 msgstr ""
+"A legegyszerűbben úgy hívhatsz meg embereket, ha megadod nekik az alábbi "
+"meghívó linket.<br />Ezek a személyek hozzáférhetnek a projekthez, "
+"kezelhetik a résztvevőket, hozzáadhatnak/szerkeszthetnek/törölhetnek "
+"számlákat. Azonban nem férnek hozzá a fontos beállításokhoz, mint például a "
+"privát kód megváltoztatása vagy az egész projekt törlése."
 
 msgid "Scan QR code"
-msgstr ""
+msgstr "QR-kód beolvasása"
 
 msgid "Use a mobile device with a compatible app."
-msgstr ""
+msgstr "Használj mobilt egy kompatibilis alkalmazással."
 
 msgid "Send via Emails"
-msgstr ""
+msgstr "Küldés E-mailben"
 
 msgid ""
 "Specify a list of email adresses (separated by comma) of people you want "
 "to notify about the creation of this project. We will send them an email "
 "with the invitation link."
 msgstr ""
+"Adja meg azon személyek e-mail címeinek listáját (vesszővel elválasztva), "
+"akiket értesíteni szeretne a projekt létrehozásáról. Nekik egy e-mailt "
+"fogunk küldeni a meghívó linkkel."
 
 msgid "Share Identifier & code"
-msgstr ""
+msgstr "Azonosító és kód megosztása"
 
 msgid ""
 "You can share the project identifier and the private code by any "
@@ -905,46 +942,49 @@ msgid ""
 "to the full project, including changing settings such as the private code"
 " or project email address, or even deleting the whole project."
 msgstr ""
+"A projekt azonosítóját és a privát kódot bármilyen kommunikációs eszközzel "
+"megoszthatja.<br />Aki a privát kóddal rendelkezik, hozzáférhet a teljes "
+"projekthez, beleértve a beállítások, például a privát kód vagy a projekt e-"
+"mail címének megváltoztatását, vagy akár a teljes projekt törlését is."
 
 msgid "Identifier:"
-msgstr ""
+msgstr "Azonosító:"
 
-#, fuzzy
 msgid "Private code:"
-msgstr "Titkos kód"
+msgstr "Titkos kód:"
 
 msgid "the private code was defined when you created the project"
-msgstr ""
+msgstr "a privát kód a projekt létrehozásakor készült"
 
 msgid "Who pays?"
-msgstr ""
+msgstr "Ki fizet?"
 
 msgid "To whom?"
-msgstr ""
+msgstr "Kinek?"
 
 msgid "Who?"
-msgstr ""
+msgstr "Ki?"
 
 msgid "Balance"
-msgstr ""
+msgstr "Egyenleg"
 
 msgid "deactivate"
-msgstr ""
+msgstr "deaktivál"
 
 msgid "reactivate"
-msgstr ""
+msgstr "újraaktivál"
 
 msgid "Paid"
-msgstr ""
+msgstr "Fizetett"
 
 msgid "Spent"
-msgstr ""
+msgstr "Költött"
 
 msgid "Expenses by Month"
-msgstr ""
+msgstr "Költségek havonta"
 
 msgid "Period"
-msgstr ""
+msgstr "Periódus"
 
 #~ msgid "Import"
 #~ msgstr ""
@@ -1053,4 +1093,3 @@ msgstr ""
 #~ "them an email with the invitation "
 #~ "link."
 #~ msgstr ""
-
