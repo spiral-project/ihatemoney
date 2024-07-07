@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-29 14:24+0200\n"
-"PO-Revision-Date: 2023-03-19 21:40+0000\n"
-"Last-Translator: Sai Mohammad-Hossein Emami <emami@outlook.com>\n"
+"PO-Revision-Date: 2024-05-23 03:01+0000\n"
+"Last-Translator: Yamin Siahmargooei <yamin8000@yahoo.com>\n"
+"Language-Team: Persian <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/fa/>\n"
 "Language: fa\n"
-"Language-Team: Persian <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/fa/>\n"
-"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.6-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #, python-format
@@ -125,16 +125,16 @@ msgid "Reset password"
 msgstr "بازنشانی گذرواژه"
 
 msgid "When?"
-msgstr ""
+msgstr "چه زمانی؟"
 
 msgid "What?"
 msgstr "چی؟"
 
 msgid "Who paid?"
-msgstr ""
+msgstr "چه کسی پرداخت کرد؟"
 
 msgid "How much?"
-msgstr ""
+msgstr "چقدر؟"
 
 msgid "Currency"
 msgstr "واحد پولی"
@@ -180,14 +180,14 @@ msgid "People to notify"
 msgstr "افرادی که براشون نوتیفیکیشن ارسال میشه"
 
 msgid "Send the invitations"
-msgstr ""
+msgstr "ارسال دعوت نامه ها"
 
 #, python-format
 msgid "The email %(email)s is not valid"
 msgstr "ایمیل %(email)s نامعتبره"
 
 msgid "Logout"
-msgstr ""
+msgstr "خروج"
 
 msgid "Please check the email configuration of the server."
 msgstr ""
@@ -1092,4 +1092,3 @@ msgstr ""
 #~ "them an email with the invitation "
 #~ "link."
 #~ msgstr ""
-
