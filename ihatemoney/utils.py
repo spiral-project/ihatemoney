@@ -196,7 +196,7 @@ def list_of_dicts2csv(dict_to_convert):
     writer = csv.writer(csv_file)
     writer.writerows(csv_data)
     csv_file.seek(0)
-    csv_file = BytesIO(csv_file.getvalue().encode("utf-8"))
+    csv_file = BytesIO(csv_file.getvalue().encode("utf-8-sig"))
     return csv_file
 
 
@@ -204,7 +204,7 @@ def csv2list_of_dicts(csv_to_convert):
     """Take a csv in-memory file and turns it into
     a list of dictionnaries
     """
-    csv_file = TextIOWrapper(csv_to_convert, encoding="utf-8")
+    csv_file = TextIOWrapper(csv_to_convert, encoding="utf-8-sig")
     reader = csv.DictReader(csv_file)
     result = []
     for r in reader:
