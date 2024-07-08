@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-29 14:24+0200\n"
-"PO-Revision-Date: 2022-10-04 14:19+0000\n"
-"Last-Translator: Sharan J <sharanjs1999@gmail.com>\n"
+"PO-Revision-Date: 2024-05-13 07:00+0000\n"
+"Last-Translator: Harshini K <harshinikondepudi@gmail.com>\n"
+"Language-Team: Telugu <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/te/>\n"
 "Language: te\n"
-"Language-Team: Telugu <https://hosted.weblate.org/projects/i-hate-money/i"
-"-hate-money/te/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.5.5-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #, python-format
@@ -35,7 +35,7 @@ msgid "Current private code"
 msgstr "కొత్త ప్రైవేట్ కోడ్"
 
 msgid "Enter existing private code to edit project"
-msgstr ""
+msgstr "ప్రాజెక్ట్‌ను సవరించడానికి ఇప్పటికీ ఉన్న ప్రైవేట్ కోడ్ ని ఎంటర్ చేయండి"
 
 msgid "New private code"
 msgstr "కొత్త ప్రైవేట్ కోడ్"
@@ -75,7 +75,7 @@ msgstr ""
 " చెయ్యడం కుదరదు."
 
 msgid "Compatible with Cospend"
-msgstr ""
+msgstr "కాస్పెండ్ తో అనుకూలమైనది"
 
 #, fuzzy
 msgid "Project identifier"
@@ -136,16 +136,16 @@ msgid "Reset password"
 msgstr "పాస్ వర్డ్ రీసెట్ చేయి"
 
 msgid "When?"
-msgstr ""
+msgstr "ఎప్పుడు?"
 
 msgid "What?"
 msgstr "ఏమిటి?"
 
 msgid "Who paid?"
-msgstr ""
+msgstr "ఎవరు చెల్లించారు?"
 
 msgid "How much?"
-msgstr ""
+msgstr "ఎంత?"
 
 msgid "Currency"
 msgstr "కరెన్సీ"
@@ -1063,4 +1063,3 @@ msgstr ""
 #~ "them an email with the invitation "
 #~ "link."
 #~ msgstr ""
-
