@@ -1,6 +1,6 @@
-from datetime import datetime
 import decimal
-from re import match
+from datetime import datetime
+from re import findall, match
 from types import SimpleNamespace
 
 import email_validator
@@ -39,7 +39,7 @@ from wtforms.validators import (
 )
 
 from ihatemoney.currency_convertor import CurrencyConverter
-from ihatemoney.models import Bill, BillType, LoggingMode, Person, Project
+from ihatemoney.models import Bill, BillType, LoggingMode, Person, Project, Tag
 from ihatemoney.utils import (
     em_surround,
     eval_arithmetic_expression,
@@ -389,6 +389,12 @@ class BillForm(FlaskForm):
     def save(self, bill, project):
         bill.payer_id = self.payer.data
         bill.amount = self.amount.data
+        # Get the list of tags from the 'what' field
+        hashtags = findall(r"#(\w+)", self.what.data)
+        if hashtags:
+            bill.tags = [Tag(name=tag) for tag in hashtags]
+            for tag in hashtags:
+                self.what.data = self.what.data.replace(f"#{tag}", "")
         bill.what = self.what.data
         bill.bill_type = BillType(self.bill_type.data)
         bill.external_link = self.external_link.data

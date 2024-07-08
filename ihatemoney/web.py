@@ -2,19 +2,21 @@
 The blueprint for the web interface.
 
 Contains all the interaction logic with the end user (except forms which
-are directly handled in the forms module.
+are directly handled in the forms module).
 
 Basically, this blueprint takes care of the authentication and provides
 some shortcuts to make your life better when coding (see `pull_project`
 and `add_project_id` for a quick overview)
 """
 import datetime
-from functools import wraps
 import hashlib
 import json
 import os
+from functools import wraps
 from urllib.parse import urlparse, urlunparse
 
+import qrcode
+import qrcode.image.svg
 from flask import (
     Blueprint,
     Response,
@@ -33,8 +35,6 @@ from flask import (
 )
 from flask_babel import gettext as _
 from flask_mail import Message
-import qrcode
-import qrcode.image.svg
 from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash
