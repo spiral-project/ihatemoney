@@ -1,6 +1,6 @@
 # Verbose and documented settings are in conf-templates/ihatemoney.cfg.j2
 DEBUG = SQLACHEMY_ECHO = False
-SQLALCHEMY_DATABASE_URI = "sqlite:////tmp/ihatemoney.db"
+SQLALCHEMY_DATABASE_URI = "sqlite:///C:/Users/sylvie c/Documents/GitHub/ihatemoney/ihatemoney.db"
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 SECRET_KEY = "tralala"
 MAIL_DEFAULT_SENDER = "Budget manager <admin@example.com>"
