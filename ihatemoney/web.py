@@ -663,6 +663,14 @@ def list_bills():
     ):
         bill_form.payed_for.data = session["last_selected_payed_for"][g.project.id]
 
+    edit_bill = request.values.get("edit_bill", type=int)
+    bill_edit_form = get_billform_for(g.project)
+    if edit_bill is not None:
+        bill = Bill.query.get(g.project, edit_bill)
+        if not bill:
+            raise NotFound()
+        bill_edit_form.fill(bill, g.project)
+
     # Each item will be a (weight_sum, Bill) tuple.
     # TODO: improve this awkward result using column_property:
     # https://docs.sqlalchemy.org/en/14/orm/mapped_sql_expr.html.
@@ -675,6 +683,8 @@ def list_bills():
         bills=weighted_bills,
         member_form=MemberForm(g.project),
         bill_form=bill_form,
+        edit_bill=edit_bill,
+        bill_edit_form=bill_edit_form,
         csrf_form=csrf_form,
         add_bill=request.values.get("add_bill", False),
         current_view="list_bills",
