@@ -237,6 +237,7 @@
     </fieldset>
     <div class="actions">
         {{ form.submit(class="btn btn-primary") }}
+        <a href="{{ url_for(".list_bills") }}" class="btn btn-outline-secondary"> {{_("Cancel") }} </a>
     </div>
 {% endmacro %}
 
