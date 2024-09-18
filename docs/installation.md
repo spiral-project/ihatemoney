@@ -26,7 +26,7 @@ hub](https://hub.docker.com/r/ihatemoney/ihatemoney/).
 This is probably the simplest way to get something running. Once you
 have Docker installed on your system, just issue :
 
-    docker run -d -p 8000:8000 ihatemoney/ihatemoney
+    docker run -d -p 8000:8000 ihatemoney/ihatemoney:latest
 
 Ihatemoney is now available on <http://localhost:8000>.
 
@@ -62,11 +62,17 @@ Add these additional environment variables to the docker run invocation:
     -e ACTIVATE_ADMIN_DASHBOARD=True \
     -e ADMIN_PASSWORD=<hashed_password_string> \
 
+:::{note}
+If you are using a `docker-compose.yml` file and need to include a password hash, use `$$` instead of `$` to escape the dollar sign. This ensures that the hash is treated as a literal string rather than a variable in Bash.
+:::
+
 Additional gunicorn parameters can be passed using the docker `CMD`
 parameter. For example, use the following command to add more gunicorn
 workers:
 
     docker run -d -p 8000:8000 ihatemoney/ihatemoney -w 3
+
+If needed, there is a `docker-compose.yml` file available as an example on the [project github repository](https://github.com/spiral-project/ihatemoney/blob/master/docker-compose.yml)
 
 (cloud)=
 ## On a Cloud Provider
