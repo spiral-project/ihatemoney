@@ -54,6 +54,10 @@ To enable the Admin dashboard, first generate a hashed password with:
 
     docker run -it --rm --entrypoint ihatemoney ihatemoney/ihatemoney generate_password_hash
 
+:::{note}
+The generated password hash is salted. Which means that the same password will generate a different hash each time. This is normal and expected behavior.
+:::
+
 At the prompt, enter a password to use for the admin dashboard. The
 command will print the hashed password string.
 
@@ -72,7 +76,7 @@ workers:
 
     docker run -d -p 8000:8000 ihatemoney/ihatemoney -w 3
 
-If needed, there is a `docker-compose.yml` file available as an example on the [project github repository](https://github.com/spiral-project/ihatemoney/blob/master/docker-compose.yml)
+If needed, there is a `docker-compose.yml` file available as an example on the [project repository](https://github.com/spiral-project/ihatemoney/blob/master/docker-compose.yml)
 
 (cloud)=
 ## On a Cloud Provider
