@@ -11,15 +11,20 @@
     <table id="bill_table" class="split_bills table table-striped">
         <thead><tr><th>{{ _("Who pays?") }}</th><th>{{ _("To whom?") }}</th><th>{{ _("How much?") }}</th><th>{{ _("Settled?") }}</th></tr></thead>
     <tbody>
-    {% for bill in bills %}
-    <tr receiver={{bill.receiver.id}}>
-            <td>{{ bill.ower }}</td>
-            <td>{{ bill.receiver }}</td>
-            <td>{{ bill.amount|currency }}</td>
+    {% for transaction in transactions %}
+    <tr>
+            <td>{{ transaction.ower }}</td>
+            <td>{{ transaction.receiver }}</td>
+            <td>{{ transaction.amount|currency }}</td>
             <td>
                 <span id="settle-bill" class="ml-auto pb-2">
-                    <a href="{{ url_for('.settle', amount = bill.amount, ower_id = bill.ower.id, payer_id = bill.receiver.id) }}" class="btn btn-primary">
-                        {{ ("Settle") }}
+                    <form class="" action="{{ url_for(".add_settlement_bill") }}" method="POST">
+                        {{ settlement_form.csrf_token }}
+                        {{ settlement_form.amount(value=transaction.amount) }}
+                        {{ settlement_form.sender_id(value=transaction.ower.id) }}
+                        {{ settlement_form.receiver_id(value=transaction.receiver.id) }}
+                        <button class="btn btn-primary" type="submit" title="{{ _("Settle") }}">{{ _("Settle") }}</button>
+                    </form>
                     </a>
                 </span>
             </td>
