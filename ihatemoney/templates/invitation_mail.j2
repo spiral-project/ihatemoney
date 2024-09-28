@@ -1,0 +1,19 @@
+{% trans
+    contact_email=g.project.contact_email,
+    project_name=g.project_name,
+    join_link=url_for(".join_project", _external=True, project_id=g.project.id, token=g.project.generate_token()),
+    short_link=url_for(".list_bills", _external=True)
+%}
+Hi,
+
+Someone using the email address {{ contact_email }} invited you to share your expenses for "{{ project_name }}".
+
+It's as simple as saying what did you pay for, for whom, and how much did it cost? We are taking care of the rest.
+
+You can log in using this link: {{ join_link }}.
+
+Once logged-in, you can use the following link: {{ short_link }}
+If your cookie gets deleted or if you log out, you will need to log back in using the first link.
+
+See you!
+{% endtrans %}
