@@ -90,10 +90,12 @@ jobs:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
     - name: Install uv
       run: pip install uv
+    - name: install python from uv
+      run: |
+        uv python install ${{ matrix.python-version }}
+        uv venv --python ${{ matrix.python-version }} .venv
     - name: Change dependencies to minimal supported versions
       run: sed -i -e 's/>=/==/g; s/~=.*==\(.*\)/==\1/g; s/~=/==/g;' pyproject.toml
       if: matrix.dependencies == 'minimal'
