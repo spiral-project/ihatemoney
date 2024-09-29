@@ -1,4 +1,4 @@
-name: Lint & unit tests
+name: CI
 
 on:
   push:
@@ -11,18 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - name: Install uv and set the python version
+      uses: astral-sh/setup-uv@v4
       with:
         python-version: "3.11"
-        cache: 'pip'
-        cache-dependency-path: '**/pyproject.toml'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        python -m pip install tox
     - name: Run Lint
-      run: tox -e lint
+      run: make lint
 
   test:
     # Dependency on linting to avoid running our expensive matrix test for nothing
@@ -56,7 +50,8 @@ jobs:
         python-version: [3.7, 3.8, 3.9, "3.10", "3.11", "3.12"]
         dependencies: [normal]
         database: [sqlite]
-        # Test other databases with only a few versions of Python (Debian bullseye has 3.9, bookworm has 3.11)
+        # Test other databases with only a few versions of Python
+        # (Debian bullseye has 3.9, bookworm has 3.11)
         include:
           - python-version: 3.9
             dependencies: normal
@@ -95,32 +90,36 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
+    - name: Install uv and set the python version
+      uses: astral-sh/setup-uv@v4
       with:
         python-version: ${{ matrix.python-version }}
-        cache: 'pip'
-        cache-dependency-path: '**/pyproject.toml'
     - name: Change dependencies to minimal supported versions
-      run: sed -i -e 's/>=/==/g; s/~=.*==\(.*\)/==\1/g; s/~=/==/g;' pyproject.toml
+      # This sed comment installs the minimal supported version
+      # for all versions except for "requires-python"
+      # This is to detect that the minimum versions are really
+      # supported, in the CI
+      run: sed -i -e '/requires-python/!s/>=/==/g; /requires-python/!s/~=.*==\(.*\)/==\1/g; /requires-python/!s/~=/==/g;' pyproject.toml
       if: matrix.dependencies == 'minimal'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        python -m pip install tox
-    # Run tox using the version of Python in `PATH`
-    - name: Run Tox with sqlite
-      run: tox -e py
-      if: matrix.database == 'sqlite'
+    - name: Run tests
+      run: make test
       env:
-        TESTING_SQLALCHEMY_DATABASE_URI: 'sqlite:///budget.db'
-    - name: Run Tox with postgresql
-      run: tox -e py
-      if: matrix.database == 'postgresql'
-      env:
-        TESTING_SQLALCHEMY_DATABASE_URI: 'postgresql+psycopg2://postgres:ihatemoney@localhost:5432/ihatemoney_ci'
-    - name: Run Tox with mariadb
-      run: tox -e py
-      if: matrix.database == 'mariadb'
-      env:
-        TESTING_SQLALCHEMY_DATABASE_URI: 'mysql+pymysql://root:ihatemoney@localhost:3306/ihatemoney_ci'
+        # Setup the DATABASE_URI depending on the matrix we are using.
+        TESTING_SQLALCHEMY_DATABASE_URI: ${{
+          matrix.database == 'sqlite'
+            && 'sqlite:///budget.db'
+          || matrix.database == 'postgresql'
+            && 'postgresql+psycopg2://postgres:ihatemoney@localhost:5432/ihatemoney_ci'
+          || 'mysql+pymysql://root:ihatemoney@localhost:3306/ihatemoney_ci'
+          }}
+
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install uv and set the python version
+      uses: astral-sh/setup-uv@v4
+      with:
+        python-version: "3.11"
+    - name: Build docs
+      run: make build-docs
