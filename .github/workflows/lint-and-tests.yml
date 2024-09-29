@@ -17,9 +17,6 @@ jobs:
         python-version: "3.11"
     - name: Install uv
       run: pip install uv
-    - name: Install dependencies
-      run: |
-        make install-dev
     - name: Run Lint
       run: |
         make lint
