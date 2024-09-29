@@ -9,7 +9,6 @@ from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
 
 
 class TestAPI(IhatemoneyTestCase):
-
     """Tests the API"""
 
     def api_create(

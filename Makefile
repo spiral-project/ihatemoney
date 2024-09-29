@@ -1,60 +1,40 @@
-VIRTUALENV = python3 -m venv
-SPHINX_BUILDDIR = docs/_build
+VIRTUALENV = uv venv
 VENV := $(shell realpath $${VIRTUAL_ENV-.venv})
-PYTHON = $(VENV)/bin/python3
+BIN := uv tool run
+PIP := uv pip
+PYTHON = $(BIN)/python3
 DEV_STAMP = $(VENV)/.dev_env_installed.stamp
 INSTALL_STAMP = $(VENV)/.install.stamp
 TEMPDIR := $(shell mktemp -d)
 ZOPFLIPNG := zopflipng
 MAGICK_MOGRIFY := mogrify
 
-.PHONY: all
-all: install ## Alias for install
-.PHONY: install
-install: virtualenv pyproject.toml $(INSTALL_STAMP) ## Install dependencies
-$(INSTALL_STAMP):
-	$(VENV)/bin/pip install -U pip
-	$(VENV)/bin/pip install -e .
-	touch $(INSTALL_STAMP)
-
 .PHONY: virtualenv
 virtualenv: $(PYTHON)
 $(PYTHON):
 	$(VIRTUALENV) $(VENV)
 
-.PHONY: install-dev
-install-dev: virtualenv pyproject.toml $(INSTALL_STAMP) $(DEV_STAMP) ## Install development dependencies
-$(DEV_STAMP): $(PYTHON)
-	$(VENV)/bin/pip install -Ue .[dev]
-	touch $(DEV_STAMP)
-
-.PHONY: remove-install-stamp
-remove-install-stamp:
-	rm $(INSTALL_STAMP)
-
-.PHONY: update
-update: remove-install-stamp install ## Update the dependencies
-
 .PHONY: serve
-serve: install build-translations ## Run the ihatemoney server
+serve: build-translations ## Run the ihatemoney server
 	@echo 'Running ihatemoney on http://localhost:5000'
-	FLASK_DEBUG=1 FLASK_APP=ihatemoney.wsgi $(VENV)/bin/flask run --host=0.0.0.0
+	FLASK_DEBUG=1 FLASK_APP=ihatemoney.wsgi uv run flask run --host=0.0.0.0
 
 .PHONY: test
-test: install-dev ## Run the tests
-	$(VENV)/bin/tox
+test:
+	uv run --extra dev --extra database pytest .
 
-.PHONY: black
-black: install-dev ## Run the tests
-	$(VENV)/bin/black --target-version=py37 .
+.PHONY: lint
+lint:
+	uv tool run ruff check .
+	uv tool run vermin --no-tips --violations -t=3.8- .
 
-.PHONY: isort
-isort: install-dev ## Run the tests
-	$(VENV)/bin/isort .
+.PHONY: format
+format: 
+	uv tool run ruff format .
 
 .PHONY: release
-release: install-dev ## Release a new version (see https://ihatemoney.readthedocs.io/en/latest/contributing.html#how-to-release)
-	$(VENV)/bin/fullrelease
+release: # Release a new version (see https://ihatemoney.readthedocs.io/en/latest/contributing.html#how-to-release)
+		uv run --extra dev fullreleas
 
 .PHONY: compress-showcase
 compress-showcase:
@@ -72,26 +52,29 @@ compress-assets: compress-showcase ## Compress static assets
 
 .PHONY: build-translations
 build-translations: ## Build the translations
-	$(VENV)/bin/pybabel compile -d ihatemoney/translations
+	uv run --extra dev pybabel compile -d ihatemoney/translations
 
 .PHONY: extract-translations
 extract-translations: ## Extract new translations from source code
-	$(VENV)/bin/pybabel extract --add-comments "I18N:" --strip-comments --omit-header --no-location --mapping-file ihatemoney/babel.cfg -o ihatemoney/messages.pot ihatemoney
-	$(VENV)/bin/pybabel update -i ihatemoney/messages.pot -d ihatemoney/translations/
+	uv run --extra dev pybabel extract --add-comments "I18N:" --strip-comments --omit-header --no-location --mapping-file ihatemoney/babel.cfg -o ihatemoney/messages.pot ihatemoney
+	uv run --extra dev pybabel update -i ihatemoney/messages.pot -d ihatemoney/translations/
 
 .PHONY: create-database-revision
 create-database-revision: ## Create a new database revision
 	@read -p "Please enter a message describing this revision: " rev_message; \
-	$(PYTHON) -m ihatemoney.manage db migrate -d ihatemoney/migrations -m "$${rev_message}"
+	uv run python -m ihatemoney.manage db migrate -d ihatemoney/migrations -m "$${rev_message}"
 
 .PHONY: create-empty-database-revision
 create-empty-database-revision: ## Create an empty database revision
 	@read -p "Please enter a message describing this revision: " rev_message; \
-	$(PYTHON) -m ihatemoney.manage db revision -d ihatemoney/migrations -m "$${rev_message}"
+	uv run python -m ihatemoney.manage db revision -d ihatemoney/migrations -m "$${rev_message}"
 
 .PHONY: clean
 clean: ## Destroy the virtual environment
 	rm -rf .venv
+
+build-docs:
+	uv run --extra doc sphinx-build -a -n -b html -d docs/_build/doctrees docs docs/_build/html
 
 .PHONY: help
 help: ## Show the help indications
