@@ -693,6 +693,7 @@ dependencies = [
     { name = "flask-wtf" },
     { name = "itsdangerous" },
     { name = "jinja2" },
+    { name = "pytest-libfaketime" },
     { name = "python-dateutil" },
     { name = "qrcode" },
     { name = "requests" },
@@ -750,6 +751,7 @@ requires-dist = [
     { name = "pymysql", marker = "extra == 'database'", specifier = ">=0.9,<1.1" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=6.2.5" },
     { name = "pytest-flask", marker = "extra == 'dev'", specifier = ">=1.2.0" },
+    { name = "pytest-libfaketime", extras = ["dev"], specifier = ">=0.1.3" },
     { name = "python-dateutil" },
     { name = "qrcode", specifier = ">=7.1,<8" },
     { name = "requests", specifier = ">=2.25,<3" },
@@ -1284,6 +1286,19 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/fb/23/32b36d2f769805c0f3069ca8d9eeee77b27fcf86d41d40c6061ddce51c7d/pytest-flask-1.3.0.tar.gz", hash = "sha256:58be1c97b21ba3c4d47e0a7691eb41007748506c36bf51004f78df10691fa95e", size = 35816 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/de/03/7a917fda3d0e96b4e80ab1f83a6628ec4ee4a882523b49417d3891bacc9e/pytest_flask-1.3.0-py3-none-any.whl", hash = "sha256:c0e36e6b0fddc3b91c4362661db83fa694d1feb91fa505475be6732b5bc8c253", size = 13105 },
+]
+
+[[package]]
+name = "pytest-libfaketime"
+version = "0.1.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "libfaketime" },
+    { name = "pytest" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/7b/eb/3f59bef7dd2a30e4bd16361c70294da9a1b670d0d0881bde60dc6bb1ee0e/pytest_libfaketime-0.1.3.tar.gz", hash = "sha256:113fa5cc364103eb290fb0c189bc2de6f3423c888263788c64dcfd01974a01c6", size = 2318 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b5/c6/8ff351ab29bea0ee577e0d08c3ededf96b50dc2164cb71471b58764ac8e3/pytest_libfaketime-0.1.3-py3-none-any.whl", hash = "sha256:f2b79206f51ad69a7e905b154189dece6396e4a138cebc8897d96e2b999581f6", size = 2820 },
 ]
 
 [[package]]
