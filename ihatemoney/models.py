@@ -125,7 +125,8 @@ class Project(db.Model):
 
         balance       spent        paid
         """
-        balances, should_pay, should_receive = (defaultdict(int) for time in (1, 2, 3))
+        balances, should_pay, should_receive = (
+            defaultdict(int) for time in (1, 2, 3))
         for bill in self.get_bills_unordered().all():
             total_weight = sum(ower.weight for ower in bill.owers)
 
@@ -181,10 +182,27 @@ class Project(db.Model):
         :rtype dict:
         """
         monthly = defaultdict(lambda: defaultdict(float))
+
         for bill in self.get_bills_unordered().all():
             if bill.bill_type == BillType.EXPENSE:
                 monthly[bill.date.year][bill.date.month] += bill.converted_amount
         return monthly
+
+    @property
+    def tags_monthly_stats(self):
+        """
+
+        :return: a dict of years mapping to a dict of months mapping to the amount
+        :rtype dict:
+        """
+        tags_monthly = defaultdict(
+            lambda: defaultdict(lambda: defaultdict(float)))
+
+        for bill in self.get_bills_unordered().all():
+            if bill.bill_type == BillType.EXPENSE:
+                for tag in bill.tags:
+                    tags_monthly[bill.date.year][bill.date.month][tag.name] += bill.converted_amount
+        return tags_monthly
 
     @property
     def uses_weights(self):
@@ -322,7 +340,8 @@ class Project(db.Model):
             year=newest_date.year, month=newest_date.month, day=1
         )
         # Infinite iterator towards the past
-        all_months = (newest_month - relativedelta(months=i) for i in itertools.count())
+        all_months = (newest_month - relativedelta(months=i)
+                      for i in itertools.count())
         # Stop when reaching one month before the first date
         months = itertools.takewhile(
             lambda x: x > oldest_date - relativedelta(months=1), all_months
@@ -497,7 +516,8 @@ class Project(db.Model):
             )
             loads_kwargs["max_age"] = max_age
         else:
-            project = Project.query.get(project_id) if project_id is not None else None
+            project = Project.query.get(
+                project_id) if project_id is not None else None
             password = project.password if project is not None else ""
             serializer = URLSafeSerializer(
                 current_app.config["SECRET_KEY"] + password, salt=token_type
@@ -643,13 +663,28 @@ class Person(db.Model):
 # We need to manually define a join table for m2m relations
 billowers = db.Table(
     "billowers",
-    db.Column("bill_id", db.Integer, db.ForeignKey("bill.id"), primary_key=True),
-    db.Column("person_id", db.Integer, db.ForeignKey("person.id"), primary_key=True),
+    db.Column("bill_id", db.Integer, db.ForeignKey(
+        "bill.id"), primary_key=True),
+    db.Column("person_id", db.Integer, db.ForeignKey(
+        "person.id"), primary_key=True),
     sqlite_autoincrement=True,
 )
 
 
 class Tag(db.Model):
+    class TagQuery(BaseQuery):
+        def get_or_create(self, name, project):
+            exists = (
+                Tag.query.filter(Tag.name == name)
+                .filter(Tag.project_id == project.id)
+                .one_or_none()
+            )
+            if exists:
+                return exists
+            return Tag(name=name, project_id=project.id)
+
+    query_class = TagQuery
+
     __versionned__ = {}
 
     __table_args__ = {"sqlite_autoincrement": True}
@@ -662,11 +697,15 @@ class Tag(db.Model):
     def __str__(self):
         return self.name
 
+    def __repr__(self):
+        return self.name
+
 
 # We need to manually define a join table for m2m relations
 billtags = db.Table(
     "billtags",
-    db.Column("bill_id", db.Integer, db.ForeignKey("bill.id"), primary_key=True),
+    db.Column("bill_id", db.Integer, db.ForeignKey(
+        "bill.id"), primary_key=True),
     db.Column("tag_id", db.Integer, db.ForeignKey("tag.id"), primary_key=True),
     sqlite_autoincrement=True,
 )
@@ -776,14 +815,23 @@ class Bill(db.Model):
         else:
             return 0
 
-    def __str__(self):
-        return self.what
-
     def pay_each(self):
         """Warning: this is slow, if you need to compute this for many bills, do
         it differently (see balance_full function)
         """
         return self.pay_each_default(self.converted_amount)
+
+    def set_tags(self, tags, project):
+        object_tags = []
+        for tag_name in tags:
+            tag = Tag.query.get_or_create(name=tag_name, project=project)
+            db.session.add(tag)
+            object_tags.append(tag)
+        self.tags = object_tags
+        db.session.commit()
+
+    def __str__(self):
+        return self.what
 
     def __repr__(self):
         return (

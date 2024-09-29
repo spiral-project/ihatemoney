@@ -116,12 +116,18 @@
     {% if bills.total > 0 %}
         <table id="bill_table" class="col table table-striped table-hover table-responsive-sm">
             <thead>
-                <tr><th>{{ _("When?") }}
-                </th><th>{{ _("Who paid?") }}
-                </th><th>{{ _("For what?") }}
-                </th><th>{{ _("For whom?") }}
-                </th><th>{{ _("How much?") }}
-                </th><th>{{ _("Actions") }}</th></tr>
+                <tr><th>{{ _("When?") }}</th>
+                    <th>{{ _("Who paid?") }}</th>
+                    <th>{{ _("For what?") }}</th>
+                    <th>{{ _("For whom?") }}</th>
+                    <th>{{ _("How much?") }}</th>
+                    <th data-toggle="tooltip"
+                        data-placement="top"
+                        title="{{ _('You can add tags to your bills by appending a #hashtag') }}">
+                        {{ _("Tags") }}
+                    </th>
+                    <th>{{ _("Actions") }}</th>
+                </tr>
             </thead>
         <tbody>
         {% for (weights, bill) in bills.items %}
@@ -146,6 +152,11 @@
                         title="{{ weighted_bill_amount(bill, weights, g.project.default_currency, bill.converted_amount) if bill.original_currency != g.project.default_currency else '' }}">
                         {{ weighted_bill_amount(bill, weights) }}
                     </span>
+                </td>
+                <td>
+                {% for tag in bill.tags %}
+                #{{ tag.name }}
+                {% endfor %}
                 </td>
                 <td class="bill-actions d-flex align-items-center">
                     <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">{{ _('edit') }}</a>
