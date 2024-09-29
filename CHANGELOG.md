@@ -5,7 +5,10 @@ This document describes changes between each past release.
 ## 6.2.0 (unreleased)
 
 - Add support for python 3.12 (#757)
-
+- Remove support for python 3.7
+- Replace the black linter by ruff
+- Replace virtualenv and pip by uv
+- Remove tox
 
 ## 6.1.5 (2024-03-19)
 
