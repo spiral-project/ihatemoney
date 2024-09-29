@@ -1030,9 +1030,7 @@ class TestBudget(IhatemoneyTestCase):
         assert """<thead>
         <tr>
             <th>Project</th>
-            <th>Number of participants</th>""" in resp.data.decode(
-            "utf-8"
-        )
+            <th>Number of participants</th>""" in resp.data.decode("utf-8")
 
     def test_dashboard_project_deletion(self):
         self.post_project("raclette")

@@ -183,7 +183,7 @@ We are using [black](https://black.readthedocs.io/en/stable/) and
 Python files in this project. Be sure to run it locally on your files.
 To do so, just run:
 
-    make black isort
+    make lint
 
 You can also integrate them with your dev environment (as a
 *format-on-save* hook, for instance).
