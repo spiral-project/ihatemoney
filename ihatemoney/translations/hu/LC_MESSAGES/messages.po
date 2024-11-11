@@ -817,7 +817,7 @@ msgstr "Mobil alkalmazás"
 msgid "Documentation"
 msgstr "Dokumentáció"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr "Adminisztrátori vezérlőpult"
 
 msgid "Legal information"

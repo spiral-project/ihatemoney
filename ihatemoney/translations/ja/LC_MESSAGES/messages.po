@@ -797,7 +797,7 @@ msgstr "携帯アプリ"
 msgid "Documentation"
 msgstr "書類"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr "管理ダッシュボード"
 
 #, fuzzy

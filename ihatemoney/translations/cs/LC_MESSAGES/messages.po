@@ -800,7 +800,7 @@ msgstr "Mobilní aplikace"
 msgid "Documentation"
 msgstr "Dokumentace"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr "Správcovský panel"
 
 msgid "Legal information"

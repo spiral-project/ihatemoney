@@ -779,7 +779,7 @@ msgstr "手机软件"
 msgid "Documentation"
 msgstr "文件"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr "管理面板"
 
 msgid "Legal information"
