@@ -238,7 +238,10 @@ class TestBudget(IhatemoneyTestCase):
             url, data={"password": "pass", "password_confirmation": "pass"}
         )
         resp = self.login("raclette", password="pass")
-        assert "<title>Account manager - raclette</title>" in resp.data.decode("utf-8")
+        assert (
+            "<title>I Hate Money — Account manager - raclette</title>"
+            in resp.data.decode("utf-8")
+        )
         # Test empty and null tokens
         resp = self.client.get("/reset-password")
         assert "No token provided" in resp.data.decode("utf-8")
