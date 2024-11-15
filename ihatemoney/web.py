@@ -137,6 +137,11 @@ def set_show_admin_dashboard_link(endpoint, values):
     g.logout_form = LogoutForm()
 
 
+@main.context_processor
+def add_template_variables():
+    return {"SITE_NAME": current_app.config.get("SITE_NAME")}
+
+
 @main.url_value_preprocessor
 def pull_project(endpoint, values):
     """When a request contains a project_id value, transform it directly
