@@ -783,7 +783,7 @@ msgstr "Mobilna Aplikacija"
 msgid "Documentation"
 msgstr "Dokumentacija"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr ""
 
 msgid "Legal information"

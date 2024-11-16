@@ -826,7 +826,7 @@ msgstr "Aplicació mòbil"
 msgid "Documentation"
 msgstr "Documentació"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr "Panell d'administració"
 
 msgid "Legal information"

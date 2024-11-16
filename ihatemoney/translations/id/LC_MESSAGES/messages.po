@@ -812,7 +812,7 @@ msgstr "Aplikasi Gawai"
 msgid "Documentation"
 msgstr "Dokumentasi"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr "Dasbor Administrasi"
 
 msgid "Legal information"

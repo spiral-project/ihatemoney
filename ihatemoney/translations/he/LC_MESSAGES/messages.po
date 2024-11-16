@@ -788,7 +788,7 @@ msgstr "יישום לנייד"
 msgid "Documentation"
 msgstr "דוקומנטציה"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr ""
 
 msgid "Legal information"

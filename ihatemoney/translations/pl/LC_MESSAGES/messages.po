@@ -812,7 +812,7 @@ msgstr "Aplikacja mobilna"
 msgid "Documentation"
 msgstr "Dokumentacja"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr "Kokpit administracyjny"
 
 msgid "Legal information"

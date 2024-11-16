@@ -811,7 +811,7 @@ msgstr "Telefon Uygulaması"
 msgid "Documentation"
 msgstr "Belgelendirme"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr "Yönetici Gösterge Paneli"
 
 msgid "Legal information"

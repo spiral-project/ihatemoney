@@ -811,7 +811,7 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr ""
 
 #, fuzzy

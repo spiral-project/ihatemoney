@@ -855,7 +855,7 @@ msgstr "Mobilprogram"
 msgid "Documentation"
 msgstr "Dokumentasjon"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr "Administrasjonsoversiktspanel"
 
 #, fuzzy

@@ -809,7 +809,7 @@ msgstr "Aplicativo"
 msgid "Documentation"
 msgstr "Documentação"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr "Painel de Administração"
 
 msgid "Legal information"
