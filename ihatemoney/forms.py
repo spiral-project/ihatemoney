@@ -136,8 +136,15 @@ class EditProjectForm(FlaskForm):
         description=_("Enter a new code if you want to change it"),
     )
     contact_email = StringField(_("Email"), validators=[DataRequired(), Email()])
+
+    # Create a checkbox in project settings to enable project history (keeps track of project transactions,
+    # like adding/settling bills). "Y/N" determines if transaction history is being recorded for the project.
     project_history = BooleanField(_("Enable project history"))
+
+    # Create a checkbox in project settings to allow for recording source IP address from a given transaction listed
+    # in project history. "Y/N" determines if an IP address will be attached to a created entry in project history.
     ip_recording = BooleanField(_("Use IP tracking for project history"))
+
     currency_helper = CurrencyConverter()
     default_currency = SelectField(
         _("Default Currency"),

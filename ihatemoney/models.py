@@ -264,6 +264,14 @@ class Project(db.Model):
             .order_by(Bill.id.desc())
         )
 
+    @staticmethod
+    def filter_by_date(query, start, end):
+        if start and end:
+            return query.filter(Bill.date.between(start, end))
+        else:
+            return query
+
+
     def get_bill_weights(self):
         """
         Return all bills for this project, along with the sum of weight for each bill.
@@ -284,6 +292,11 @@ class Project(db.Model):
     def get_bill_weights_ordered(self):
         """Ordered version of get_bill_weights"""
         return self.order_bills(self.get_bill_weights())
+
+    def get_filtered_date_bill_weights_ordered(self, start, end):
+        bill_weights_ordered = self.get_bill_weights_ordered()
+        filtered_bill_weights = self.filter_by_date(bill_weights_ordered, start,end )
+        return filtered_bill_weights
 
     def get_member_bills(self, member_id):
         """Return the list of bills related to a specific member"""
