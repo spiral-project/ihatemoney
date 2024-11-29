@@ -1,0 +1,1155 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-29 14:24+0200\n"
+"Last-Translator: Farid Gurbanov <feridqurbanov333@gmail.com>\n"
+"i-hate-money/az/>\n"
+"Language: az\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.3-dev\n"
+"Generated-By: Babel 2.9.0\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr "Xərclərinizi bölüşmək üçün '%(project)s' yaratdınız"
+
+msgid ""
+"Not a valid amount or expression. Only numbers and + - * / operators are "
+"accepted."
+msgstr ""
+"Etibarlı məbləğ və ya ifadə deyil. Yalnız rəqəmlər və + - * / operatorları qəbul edilir."
+
+msgid "Project name"
+msgstr "Layihə adı"
+
+msgid "Current private code"
+msgstr "Cari gizli kod"
+
+msgid "Enter existing private code to edit project"
+msgstr "Layihəni redaktə etmək üçün mövcud gizli kodu daxil edin"
+
+msgid "New private code"
+msgstr "Yeni gizli kod"
+
+msgid "Enter a new code if you want to change it"
+msgstr "Kodu dəyişmək istəyirsinizsə, yenisini daxil edin"
+
+msgid "Email"
+msgstr "E-poçt"
+
+msgid "Enable project history"
+msgstr "Layihə tarixçəsini aktiv edin"
+
+msgid "Use IP tracking for project history"
+msgstr "Layihə tarixçəsi üçün IP izləmədən istifadə edin"
+
+msgid "Default Currency"
+msgstr "Susmaya görə valyuta"
+
+msgid "Setting a default currency enables currency conversion between bills"
+msgstr ""
+"Susmaya görə valyutanın təyin edilməsi, fakturalar arasında valyuta çevrilməsini aktivləşdirir"
+
+msgid "Unknown error"
+msgstr "Naməlum səhv"
+
+msgid "Invalid private code."
+msgstr "Yanlış gizli kod."
+
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+"Bu layihə bir neçə valyutada fakturalar olduğu üçün 'valyuta yoxdur' olaraq təyin edilə bilməz."
+
+msgid "Compatible with Cospend"
+msgstr "Cospend ilə uyğundur"
+
+msgid "Project identifier"
+msgstr "Layihə identifikatoru"
+
+msgid "Private code"
+msgstr "Gizli kod"
+
+msgid "Create the project"
+msgstr "Layihə yaradın"
+
+#, python-format
+msgid ""
+"A project with this identifier (\"%(project)s\") already exists. Please "
+"choose a new identifier"
+msgstr ""
+"Bu identifikatora malik bir layihə (\"%(project)s\") artıq mövcuddur. Zəhmət olmasa yeni bir identifikator seçin"
+
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr "Hansını gerçək valyutadır: Avro yoxsa Petro dollar?"
+
+msgid "euro"
+msgstr "avro"
+
+msgid "Please, validate the captcha to proceed."
+msgstr "Zəhmət olmasa, davam etmək üçün captchadan keçin."
+
+msgid "Enter private code to confirm deletion"
+msgstr "Silmə əməliyyatını təsdiqləmək üçün gizli kodu daxil edin"
+
+msgid "Get in"
+msgstr "Daxil olun"
+
+msgid "Admin password"
+msgstr "Admin parolu"
+
+msgid "Send me the code by email"
+msgstr "Kodu mənə e-poçtla göndərin"
+
+msgid "This project does not exists"
+msgstr "Bu layihə mövcud deyil"
+
+msgid "Password mismatch"
+msgstr "Parollar uyğun gəlmir"
+
+msgid "Password"
+msgstr "Parol"
+
+msgid "Password confirmation"
+msgstr "Parol təsdiqi"
+
+msgid "Reset password"
+msgstr "Parolu sıfırlayın"
+
+msgid "When?"
+msgstr "Nə vaxt?"
+
+msgid "What?"
+msgstr "Nə?"
+
+msgid "Who paid?"
+msgstr "Kim ödəyib?"
+
+msgid "How much?"
+msgstr "Nə qədər?"
+
+msgid "Currency"
+msgstr "Valyuta"
+
+msgid "External link"
+msgstr "Xarici bağlantı"
+
+msgid "A link to an external document, related to this bill"
+msgstr "Bu faktura ilə bağlı xarici sənədə keçid"
+
+msgid "For whom?"
+msgstr "Kim üçün?"
+
+msgid "Submit"
+msgstr "Təsdiqlə"
+
+msgid "Submit and add a new one"
+msgstr "Təsdiqlə və yenisini əlavə et"
+
+#, python-format
+msgid "Project default: %(currency)s"
+msgstr "Layihənin susmaya görə dəyəri: %(currency)s"
+
+msgid "Name"
+msgstr "Ad"
+
+msgid "Weights should be positive"
+msgstr "Çəki müsbət olmalıdır"
+
+msgid "Weight"
+msgstr "Çəki"
+
+msgid "Add"
+msgstr "Əlavə et"
+
+msgid "The participant name is invalid"
+msgstr "İştirakçı adı etibarsızdır"
+
+msgid "This project already have this participant"
+msgstr "Bu layihədə bu iştirakçı artıq mövcuddur"
+
+msgid "People to notify"
+msgstr "Xəbər veriləcək şəxslər"
+
+msgid "Send the invitations"
+msgstr "Dəvətləri göndərin"
+
+#, python-format
+msgid "The email %(email)s is not valid"
+msgstr "%(email)s e-poçt ünvanı etibarlı deyil"
+
+msgid "Logout"
+msgstr "Çıxış et"
+
+msgid "Please check the email configuration of the server."
+msgstr "Zəhmət olmasa, serverin e-poçt konfiqurasiyasını yoxlayın."
+
+#, python-format
+msgid ""
+"Please check the email configuration of the server or contact the "
+"administrator: %(admin_email)s"
+msgstr ""
+"Zəhmət olmasa, serverin e-poçt konfiqurasiyasını yoxlayın və ya administratorla əlaqə saxlayın: %(admin_email)s"
+
+#. List with two items only
+msgid "{dual_object_0} and {dual_object_1}"
+msgstr "{dual_object_0} və {dual_object_1}"
+
+#. Last two items of a list with more than 3 items
+msgid "{previous_object}, and {end_object}"
+msgstr "{previous_object} və {end_object}"
+
+#. Two items in a middle of a list with more than 5 objects
+msgid "{previous_object}, {next_object}"
+msgstr "{previous_object}, {next_object}"
+
+#. First two items of a list with more than 3 items
+msgid "{start_object}, {next_object}"
+msgstr "{start_object}, {next_object}"
+
+msgid "No Currency"
+msgstr "Valyuta yoxdur"
+
+#. Form error with only one error
+msgid "{prefix}: {error}"
+msgstr "{prefix}: {error}"
+
+#. Form error with a list of errors
+msgid "{prefix}:<br />{errors}"
+msgstr "{prefix}:<br />{errors}"
+
+msgid "Too many failed login attempts."
+msgstr "Çox sayda uğursuz giriş cəhdi."
+
+#, python-format
+msgid "This admin password is not the right one. Only %(num)d attempts left."
+msgstr "Bu admin parolu düzgün deyil. Yalnız %(num)d cəhd qaldı."
+
+msgid "Provided token is invalid"
+msgstr "Təqdim edilən token etibarsızdır"
+
+msgid "This private code is not the right one"
+msgstr "Bu gizli kod düzgün deyil"
+
+msgid "A reminder email has just been sent to you"
+msgstr "Sizə yeni bir xatırlatma e-poçtu göndərildi"
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
+"Sizə xatırlatma e-poçtu göndərməyə çalışdıq, lakin bir səhv baş verdi. Layihədən normal istifadə etməyə davam edə bilərsiniz."
+
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions."
+msgstr ""
+"Bağışlayın, parolun sıfırlanması ilə bağlı təlimatları ehtiva edən e-poçtu göndərərkən səhv baş verdi."
+
+msgid "No token provided"
+msgstr "Token təqdim edilməyib"
+
+msgid "Invalid token"
+msgstr "Etibarsız token"
+
+msgid "Unknown project"
+msgstr "Naməlum layihə"
+
+msgid "Password successfully reset."
+msgstr "Parol uğurla sıfırlandı."
+
+msgid "Project settings have been changed successfully."
+msgstr "Layihə parametrləri uğurla dəyişdirildi."
+
+msgid "Unable to parse CSV"
+msgstr "CSV analiz edilə bilmədi"
+
+#, python-format
+msgid "Missing attribute: %(attribute)s"
+msgstr "Əskik xüsusiyyət: %(attribute)s"
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
+msgstr ""
+"Susmaya görə valyutası olmayan layihəyə müxtəlif valyutalarda fakturalar əlavə edilə bilməz"
+
+msgid "Project successfully uploaded"
+msgstr "Layihə uğurla yükləndi"
+
+msgid "Project successfully deleted"
+msgstr "Layihə uğurla silindi"
+
+msgid "Error deleting project"
+msgstr "Layihə silinərkən səhv baş verdi"
+
+msgid "Unable to logout"
+msgstr "Çıxış edilə bilmədi"
+
+#, python-format
+msgid "You have been invited to share your expenses for %(project)s"
+msgstr "%(project)s üçün xərclərinizi bölüşməyə dəvət olunmusunuz"
+
+msgid "Your invitations have been sent"
+msgstr "Dəvətləriniz göndərildi"
+
+msgid "Sorry, there was an error while trying to send the invitation emails."
+msgstr "Bağışlayın, dəvət e-poçtlarını göndərməyə çalışarkən səhv baş verdi."
+
+#, python-format
+msgid "%(member)s has been added"
+msgstr "%(member)s əlavə edildi"
+
+msgid "Error activating participant"
+msgstr "İştirakçı aktivləşdirilərkən səhv baş verdi"
+
+#, python-format
+msgid "%(name)s is part of this project again"
+msgstr "%(name)s yenidən bu layihənin bir hissəsidir"
+
+msgid "Error removing participant"
+msgstr "İştirakçı silinərkən səhv baş verdi"
+
+#, python-format
+msgid ""
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
+msgstr ""
+"'%(name)s' iştirakçısı deaktiv edildi. Onun balansı sıfıra enənə qədər siyahıda görünməyə davam edəcək."
+
+#, python-format
+msgid "Participant '%(name)s' has been removed"
+msgstr "'%(name)s' iştirakçısı silindi"
+
+#, python-format
+msgid "Participant '%(name)s' has been modified"
+msgstr "'%(name)s' iştirakçısı dəyişdirildi"
+
+msgid "The bill has been added"
+msgstr "Faktura əlavə edildi"
+
+msgid "Error deleting bill"
+msgstr "Faktura silinərkən səhv baş verdi"
+
+msgid "The bill has been deleted"
+msgstr "Faktura silindi"
+
+msgid "The bill has been modified"
+msgstr "Faktura dəyişdirildi"
+
+#, python-format
+msgid "%(lang)s is not a supported language"
+msgstr "%(lang)s dili dəstəklənmir"
+
+msgid "Error deleting project history"
+msgstr "Layihə tarixi silinərkən səhv baş verdi"
+
+msgid "Deleted project history."
+msgstr "Layihə tarixi silindi."
+
+msgid "Error deleting recorded IP addresses"
+msgstr "Qeyd olunan IP ünvanlar silinərkən səhv baş verdi"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr "Layihə tarixində qeyd olunan IP ünvanlar silindi."
+
+msgid "Sorry, we were unable to find the page you've asked for."
+msgstr "Bağışlayın, soruşduğunuz səhifəni tapa bilmədik."
+
+msgid "The best thing to do is probably to get back to the main page."
+msgstr "Ən yaxşı seçim yəqin ki, əsas səhifəyə qayıtmaqdır."
+
+msgid "Back to the list"
+msgstr "Siyahıya qayıt"
+
+msgid "Administration tasks are currently disabled."
+msgstr "İdarəetmə vəzifələri hazırda deaktivdir."
+
+msgid "Authentication"
+msgstr "Doğrulama"
+
+msgid "The project you are trying to access do not exist, do you want to"
+msgstr "Erişməyə çalışdığınız layihə mövcud deyil, istəyirsinizmi"
+
+msgid "create it"
+msgstr "onu yaratmaq"
+
+msgid "?"
+msgstr "?"
+
+msgid "Create a new project"
+msgstr "Yeni layihə yarat"
+
+msgid "Project"
+msgstr "Layihə"
+
+msgid "Number of participants"
+msgstr "İştirakçı sayı"
+
+msgid "Number of bills"
+msgstr "Faktura sayı"
+
+msgid "Newest bill"
+msgstr "Ən yeni faktura"
+
+msgid "Oldest bill"
+msgstr "Ən köhnə faktura"
+
+msgid "Actions"
+msgstr "Hərəkətlər"
+
+msgid "edit"
+msgstr "düzəlt"
+
+msgid "Delete project"
+msgstr "Layihəni sil"
+
+msgid "show"
+msgstr "göstər"
+
+msgid "The Dashboard is currently deactivated."
+msgstr "İdarəetmə paneli hazırda deaktivdir."
+
+msgid "Download Mobile Application"
+msgstr "Mobil Tətbiqi Yükləyin"
+
+msgid "Get it on"
+msgstr "Yükləyin"
+
+msgid "Edit project"
+msgstr "Layihəni düzəlt"
+
+msgid "Import project"
+msgstr "Layihəni idxal et"
+
+msgid "Download project's data"
+msgstr "Layihənin məlumatlarını yüklə"
+
+msgid "Bill items"
+msgstr "Faktura maddələri"
+
+msgid "Download the list of bills with owner, amount, reason,... "
+msgstr "Sahibi, məbləği, səbəbi,... ilə fakturaların siyahısını yüklə"
+
+msgid "Settle plans"
+msgstr "Planları ödə"
+
+msgid "Download the list of transactions needed to settle the current bills."
+msgstr "Cari fakturaların ödənməsi üçün lazım olan əməliyyatların siyahısını yüklə."
+
+msgid "Can't remember the password?"
+msgstr "Şifrəni xatırlaya bilmirsiniz?"
+
+msgid "Cancel"
+msgstr "Ləğv et"
+
+msgid "Privacy Settings"
+msgstr "Məxfilik Parametrləri"
+
+msgid "Save changes"
+msgstr "Dəyişiklikləri yadda saxla"
+
+msgid "This will remove all bills and participants in this project!"
+msgstr "Bu, bu layihədəki bütün fakturaları və iştirakçıları siləcək!"
+
+msgid "Import previously exported project"
+msgstr "Əvvəl ixrac edilmiş layihəni idxal et"
+
+msgid "Choose file"
+msgstr "Faylı seçin"
+
+msgid "Edit this bill"
+msgstr "Bu fakturanı düzəlt"
+
+msgid "Add a bill"
+msgstr "Faktura əlavə et"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr "Sadə əməliyyatlara icazə verilir, məsələn (18+36.2)/3"
+
+msgid "Everyone"
+msgstr "Hər kəs"
+
+msgid "No one"
+msgstr "Heç kim"
+
+msgid "More options"
+msgstr "Daha çox seçim"
+
+msgid "Add participant"
+msgstr "İştirakçı əlavə et"
+
+msgid "Edit this participant"
+msgstr "Bu iştirakçını düzəlt"
+
+msgid "john.doe@example.com, mary.moe@site.com"
+msgstr "john.doe@example.com, mary.moe@site.com"
+
+msgid "Download"
+msgstr "Yüklə"
+
+msgid "Disabled Project History"
+msgstr "Layihə Tarixi Deaktivdir"
+
+msgid "Disabled Project History & IP Address Recording"
+msgstr "Layihə Tarixi və IP Ünvan Qeydiyyatı Deaktivdir"
+
+msgid "Enabled Project History"
+msgstr "Layihə Tarixi Aktivdir"
+
+msgid "Disabled IP Address Recording"
+msgstr "IP Ünvan Qeydiyyatı Deaktivdir"
+
+msgid "Enabled Project History & IP Address Recording"
+msgstr "Layihə Tarixi və IP Ünvan Qeydiyyatı Aktivdir"
+
+msgid "Enabled IP Address Recording"
+msgstr "IP Ünvan Qeydiyyatı Aktivdir"
+
+msgid "History Settings Changed"
+msgstr "Tarix Parametrləri Dəyişdirildi"
+
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
+msgstr ""
+"Hesab %(name)s: %(property_name)s %(before)s-dən %(after)s-ə dəyişdirildi"
+
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
+msgstr "Hesab %(name)s: %(property_name)s, %(after)s olaraq dəyişdirildi"
+
+msgid "Confirm Remove IP Adresses"
+msgstr "IP ünvanlarının silinməsini təsdiqləyin"
+
+msgid ""
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+"Bu layihədə qeyd olunan bütün IP ünvanlarını silmək istədiyinizdən "
+"əminsiniz?\n"
+"                Layihənin qalan tarixi dəyişməyəcək. Bu əməliyyatı "
+"geri qaytarmaq mümkün deyil."
+
+msgid "Confirm deletion"
+msgstr "Silinməni təsdiqləyin"
+
+msgid "Close"
+msgstr "Bağla"
+
+msgid "Delete Confirmation"
+msgstr "Silinməni Təsdiqləyin"
+
+msgid ""
+"Are you sure you want to erase all history for this project? This action "
+"cannot be undone."
+msgstr ""
+"Bu layihənin bütün tarixçəsini silmək istədiyinizdən əminsiniz? Bu əməliyyat "
+"geri qaytarıla bilməz."
+
+#, python-format
+msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
+msgstr "Hesab %(name)s: %(owers_list_str)s borclular siyahısına əlavə edildi"
+
+#, python-format
+msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
+msgstr "Hesab %(name)s: %(owers_list_str)s borclular siyahısından çıxarıldı"
+
+msgid "This project has history disabled. New actions won't appear below."
+msgstr ""
+"Bu layihənin tarixçəsi söndürülüb. Yeni əməliyyatlar aşağıda görünməyəcək."
+
+msgid "You can enable history on the settings page."
+msgstr "Tarixçəni ayarlar səhifəsindən aktivləşdirə bilərsiniz."
+
+msgid ""
+"The table below reflects actions recorded prior to disabling project "
+"history."
+msgstr ""
+"Aşağıdakı cədvəl, layihə tarixçəsi söndürülməzdən əvvəl qeyd olunan "
+"əməliyyatları göstərir."
+
+msgid "You can clear the project history to remove them."
+msgstr "Onları silmək üçün layihə tarixçəsini təmizləyə bilərsiniz."
+
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr ""
+"Bu layihədə IP ünvanlarının qeyd edilməsi söndürülsə də, aşağıdakı bəzi "
+"girişlər IP ünvanlarını ehtiva edir. "
+
+msgid "Delete stored IP addresses"
+msgstr "Saxlanılan IP ünvanlarını sil"
+
+msgid "No IP Addresses to erase"
+msgstr "Silinməsi üçün IP ünvanı yoxdur"
+
+msgid "Delete Stored IP Addresses"
+msgstr "Saxlanılan IP Ünvanlarını Sil"
+
+msgid "No history to erase"
+msgstr "Silinməsi üçün tarixçə yoxdur"
+
+msgid "Clear Project History"
+msgstr "Layihə Tarixçəsini Təmizlə"
+
+msgid "Time"
+msgstr "Vaxt"
+
+msgid "Event"
+msgstr "Hadisə"
+
+msgid "IP address recording can be enabled on the settings page"
+msgstr "IP ünvanlarının qeyd edilməsi ayarlar səhifəsindən aktivləşdirilə bilər"
+
+msgid "IP address recording can be disabled on the settings page"
+msgstr "IP ünvanlarının qeyd edilməsi ayarlar səhifəsindən söndürülə bilər"
+
+msgid "From IP"
+msgstr "IP-dən"
+
+#, python-format
+msgid "Project %(name)s added"
+msgstr "%(name)s layihəsi əlavə edildi"
+
+#, python-format
+msgid "Bill %(name)s added"
+msgstr "%(name)s hesabı əlavə edildi"
+
+#, python-format
+msgid "Participant %(name)s added"
+msgstr "İştirakçı %(name)s əlavə edildi"
+
+msgid "Project private code changed"
+msgstr "Layihənin xüsusi kodu dəyişdirildi"
+
+#, python-format
+msgid "Project renamed to %(new_project_name)s"
+msgstr "Layihə %(new_project_name)s olaraq adlandırıldı"
+
+#, python-format
+msgid "Project contact email changed to %(new_email)s"
+msgstr "Layihə əlaqə e-poçtu %(new_email)s olaraq dəyişdirildi"
+
+msgid "Project settings modified"
+msgstr "Layihə parametrləri dəyişdirildi"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr "İştirakçı %(name)s qeyri-aktiv edildi"
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr "İştirakçı %(name)s yenidən aktiv edildi"
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr "İştirakçı %(name)s, %(new_name)s olaraq adlandırıldı"
+
+#, python-format
+msgid "Bill %(name)s renamed to %(new_description)s"
+msgstr "Hesab %(name)s, %(new_description)s olaraq adlandırıldı"
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr ""
+"İştirakçı %(name)s: %(old_weight)s-dən %(new_weight)s-ə dəyişdirildi"
+
+msgid "Payer"
+msgstr "Ödəyici"
+
+msgid "Amount"
+msgstr "Məbləğ"
+
+msgid "Date"
+msgstr "Tarix"
+
+#, python-format
+msgid "Amount in %(currency)s"
+msgstr "%(currency)s ilə məbləğ"
+
+#, python-format
+msgid "Bill %(name)s modified"
+msgstr "%(name)s hesabı dəyişdirildi"
+
+#, python-format
+msgid "Participant %(name)s modified"
+msgstr "%(name)s iştirakçısı dəyişdirildi"
+
+#, python-format
+msgid "Bill %(name)s removed"
+msgstr "%(name)s hesabı silindi"
+
+#, python-format
+msgid "Participant %(name)s removed"
+msgstr "%(name)s iştirakçısı silindi"
+
+#, python-format
+msgid "Project %(name)s changed in an unknown way"
+msgstr "%(name)s layihəsi naməlum bir şəkildə dəyişdirildi"
+
+#, python-format
+msgid "Bill %(name)s changed in an unknown way"
+msgstr "%(name)s hesabı naməlum bir şəkildə dəyişdirildi"
+
+#, python-format
+msgid "Participant %(name)s changed in an unknown way"
+msgstr "%(name)s iştirakçısı naməlum bir şəkildə dəyişdirildi"
+
+msgid "Nothing to list"
+msgstr "Siyahıda heç nə yoxdur"
+
+msgid "Someone probably cleared the project history."
+msgstr "Yəqin ki, kimsə layihə tarixçəsini təmizləmişdir."
+
+msgid "Manage your shared <br />expenses, easily"
+msgstr "Paylaşılan xərclərinizi <br />asanlıqla idarə edin"
+
+msgid "Try out the demo"
+msgstr "Demo versiyanı sınayın"
+
+msgid "You're sharing a house?"
+msgstr "Bir evi paylaşmısınız?"
+
+msgid "Going on holidays with friends?"
+msgstr "Dostlarınızla tətilə gedirsiniz?"
+
+msgid "Simply sharing money with others?"
+msgstr "Sadəcə başqaları ilə pulmu paylaşırsınız?"
+
+msgid "We can help!"
+msgstr "Biz kömək edə bilərik!"
+
+msgid "Log in to an existing project"
+msgstr "Mövcud bir layihəyə daxil olun"
+
+msgid "Log in"
+msgstr "Daxil ol"
+
+msgid "can't remember your password?"
+msgstr "parolunuzu xatırlamırsınız?"
+
+msgid "Create"
+msgstr "Yaradın"
+
+msgid ""
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
+msgstr ""
+"Şəxsi parolu yenidən istifadə etməyin. Xüsusi bir kod seçin və onu dostlarınıza göndərin."
+
+msgid "Account manager"
+msgstr "Hesab meneceri"
+
+msgid "Bills"
+msgstr "Hesablar"
+
+msgid "Settle"
+msgstr "Hesablaş"
+
+msgid "Statistics"
+msgstr "Statistikalar"
+
+msgid "Languages"
+msgstr "Dillər"
+
+msgid "Projects"
+msgstr "Layihələr"
+
+msgid "Start a new project"
+msgstr "Yeni bir layihəyə başlayın"
+
+msgid "History"
+msgstr "Tarixçə"
+
+msgid "Settings"
+msgstr "Ayarlar"
+
+msgid "RSS Feed"
+msgstr "RSS Axını"
+
+msgid "Other projects :"
+msgstr "Digər layihələr:"
+
+msgid "switch to"
+msgstr "keçid et"
+
+msgid "Dashboard"
+msgstr "İdarə Paneli"
+
+#, python-format
+msgid "Please retry after %(date)s."
+msgstr "Zəhmət olmasa, %(date)s tarixindən sonra yenidən yoxlayın."
+
+msgid "Code"
+msgstr "Kod"
+
+msgid "Mobile Application"
+msgstr "Mobil Tətbiq"
+
+msgid "Documentation"
+msgstr "Sənədlər"
+
+msgid "Administration Dashboard"
+msgstr "İdarəetmə Paneli"
+
+msgid "Legal information"
+msgstr "Hüquqi məlumat"
+
+msgid "\"I hate money\" is free software"
+msgstr "\"I hate money\" pulsuz proqramdır"
+
+msgid "you can contribute and improve it!"
+msgstr "əlavə edə və təkmilləşdirə bilərsiniz!"
+
+#, python-format
+msgid "%(amount)s each"
+msgstr "Hər biri %(amount)s"
+
+msgid "you sure?"
+msgstr "əminsiniz?"
+
+msgid "Invite people"
+msgstr "İnsanları dəvət edin"
+
+msgid "Newer bills"
+msgstr "Daha yeni hesablar"
+
+msgid "Older bills"
+msgstr "Daha köhnə hesablar"
+
+msgid "You should start by adding participants"
+msgstr "İştirakçıları əlavə etməklə başlamalısınız"
+
+msgid "Add a new bill"
+msgstr "Yeni bir hesab əlavə et"
+
+msgid "For what?"
+msgstr "Nəyə görə?"
+
+#, python-format
+msgid "Added on %(date)s"
+msgstr "%(date)s tarixində əlavə edildi"
+
+#, python-format
+msgid "Everyone but %(excluded)s"
+msgstr "%(excluded)s istisna olmaqla hər kəs"
+
+msgid "delete"
+msgstr "sil"
+
+msgid "No bills"
+msgstr "Hesab yoxdur"
+
+msgid "Nothing to list yet."
+msgstr "Hələ siyahıya alınacaq heç nə yoxdur."
+
+msgid "Add your first bill"
+msgstr "İlk hesabınızı əlavə edin"
+
+msgid "Add the first participant"
+msgstr "İlk iştirakçını əlavə edin"
+
+msgid "Password reminder"
+msgstr "Şifrə xatırladıcısı"
+
+msgid ""
+"A link to reset your password has been sent to you, please check your "
+"emails."
+msgstr ""
+"Parolunuzu sıfırlamaq üçün keçid sizə göndərildi, zəhmət olmasa "
+"e-poçtlarınızı yoxlayın."
+
+msgid "Return to home page"
+msgstr "Əsas səhifəyə qayıdın"
+
+msgid "Your projects"
+msgstr "Layihələriniz"
+
+msgid "Reset your password"
+msgstr "Parolunuzu yenidən qurun"
+
+msgid "Invite people to join this project"
+msgstr "İnsanları bu layihəyə qoşulmağa dəvət edin"
+
+msgid "Share an invitation link"
+msgstr "Dəvət bağlantısını paylaşın"
+
+msgid ""
+"The easiest way to invite people is to give them the following invitation"
+" link.<br />They will be able to access the project, manage participants,"
+" add/edit/delete bills. However, they will not have access to important "
+"settings such as changing the private code or deleting the whole project."
+msgstr ""
+"İnsanları dəvət etməyin ən asan yolu onlara aşağıdakı dəvət bağlantısını "
+"verməkdir.<br />Onlar layihəyə daxil ola, iştirakçıları idarə edə, hesabları "
+"əlavə edə/redaktə edə/silə bilərlər. Ancaq xüsusi kodu dəyişmək və ya bütün "
+"layihəni silmək kimi vacib parametrlərə daxil ola bilməyəcəklər."
+
+msgid "Scan QR code"
+msgstr "QR kodunu skan edin"
+
+msgid "Use a mobile device with a compatible app."
+msgstr "Uyğun bir tətbiqi olan mobil cihazdan istifadə edin."
+
+msgid "Send via Emails"
+msgstr "E-poçt vasitəsilə göndərin"
+
+msgid ""
+"Specify a list of email adresses (separated by comma) of people you want "
+"to notify about the creation of this project. We will send them an email "
+"with the invitation link."
+msgstr ""
+"Bu layihənin yaradılması haqqında məlumat vermək istədiyiniz insanların e-"
+"poçt ünvanlarının siyahısını (vergüllə ayrılmış) qeyd edin. Biz onlara dəvət "
+"keçidi ilə e-poçt göndərəcəyik."
+
+msgid "Share Identifier & code"
+msgstr "Tanımlayıcı və Kodu Paylaşın"
+
+msgid ""
+"You can share the project identifier and the private code by any "
+"communication means.<br />Anyone with the private code will have access "
+"to the full project, including changing settings such as the private code"
+" or project email address, or even deleting the whole project."
+msgstr ""
+"Layihənin tanımlayıcısını və xüsusi kodunu hər hansı bir ünsiyyət vasitəsi "
+"ilə paylaşa bilərsiniz.<br />Xüsusi kodu olan hər kəs xüsusi kod və ya layihə "
+"e-poçt ünvanı kimi ayarları dəyişmək, hətta bütün layihəni silmək də daxil olmaqla "
+"bütün layihəyə daxil ola bilər."
+
+msgid "Identifier:"
+msgstr "Tanımlayıcı:"
+
+msgid "Private code:"
+msgstr "Xüsusi kod:"
+
+msgid "the private code was defined when you created the project"
+msgstr "xüsusi kod layihəni yaratdığınız zaman təyin edildi"
+
+msgid "Who pays?"
+msgstr "Kim ödəyir?"
+
+msgid "To whom?"
+msgstr "Kimə?"
+
+msgid "Who?"
+msgstr "Kim?"
+
+msgid "Balance"
+msgstr "Balans"
+
+msgid "deactivate"
+msgstr "deaktiv et"
+
+msgid "reactivate"
+msgstr "yenidən aktivləşdir"
+
+msgid "Paid"
+msgstr "Ödənildi"
+
+msgid "Spent"
+msgstr "Xərcləndi"
+
+msgid "Expenses by Month"
+msgstr "Ay üzrə xərclər"
+
+msgid "Period"
+msgstr "Dövür"
+
+#~ msgid "%(msg_compl)sThe project identifier is %(project)s"
+#~ msgstr ""
+
+#~ msgid "each"
+#~ msgstr "hər biri"
+
+#~ msgid "Error while sending reminder email"
+#~ msgstr "Xatırlatma e-poçtu göndərilərkən səhv baş verdi"
+
+#~ msgid ""
+#~ "This access code will be sent to"
+#~ " your friends. It is stored as-"
+#~ "is by the server, so don\\'t reuse"
+#~ " a personal password!"
+#~ msgstr ""
+#~ "Bu giriş kodu dostlarınıza göndəriləcək."
+#~ " Server tərəfindən olduğu kimi saxlanılır, buna görə də"
+#~ " şəxsi bir şifrəni təkrarlamayın!"
+
+#~ msgid "Participant"
+#~ msgstr "İştirakçı"
+
+#~ msgid "Bill"
+#~ msgstr "Hesab"
+
+#~ msgid "Select all"
+#~ msgstr "Hamısını seç"
+
+#~ msgid "Select none"
+#~ msgstr "Heç birini seçmə"
+
+#~ msgid "changed"
+#~ msgstr "dəyişdi"
+
+#~ msgid "from"
+#~ msgstr "haradan"
+
+#~ msgid "to"
+#~ msgstr "haraya"
+
+#~ msgid "Added"
+#~ msgstr "Əlavə edildi"
+
+#~ msgid "Removed"
+#~ msgstr "Silindi"
+
+#~ msgid "and"
+#~ msgstr "və"
+
+#~ msgid "owers list"
+#~ msgstr "borclular siyahısı"
+
+#~ msgid "added"
+#~ msgstr "əlavə edildi"
+
+#~ msgid "Project renamed to"
+#~ msgstr "Layihə adlandırıldı"
+
+#~ msgid "deactivated"
+#~ msgstr "deaktivləşdirildi"
+
+#~ msgid "reactivated"
+#~ msgstr "yenidən aktivləşdirildi"
+
+#~ msgid "renamed to"
+#~ msgstr "adlandırıldı"
+
+#~ msgid "External link changed to"
+#~ msgstr "Xarici bağlantı dəyişdirildi"
+
+#~ msgid "modified"
+#~ msgstr "dəyişdirildi"
+
+#~ msgid "removed"
+#~ msgstr "silindi"
+
+#~ msgid "You either provided a bad token or no project identifier."
+#~ msgstr "Yaxşı bir işarə təqdim etmədiniz və ya layihə tanımlayıcısını göstərmədiniz."
+
+#~ msgid "User name incorrect"
+#~ msgstr "İstifadəçi adı yanlışdır"
+
+#~ msgid "People to notify"
+#~ msgstr "Bildiriləcək insanlar"
+
+#~ msgid "User '%(name)s' has been edited"
+#~ msgstr "‘%(name)s’ istifadəçisi redaktə edildi"
+
+#~ msgid "Number of members"
+#~ msgstr "Üzvlərin sayı"
+
+#~ msgid "Edit this member"
+#~ msgstr "Bu üzvü redaktə et"
+
+#~ msgid "Participants to notify"
+#~ msgstr "Bildiriləcək iştirakçılar"
+
+#~ msgid "Import"
+#~ msgstr "İdxal et"
+
+#~ msgid "Amount paid"
+#~ msgstr "Ödənilən məbləğ"
+
+#~ msgid "Bills can't be null"
+#~ msgstr "Hesablar boş ola bilməz"
+
+#~ msgid "The project identifier is %(project)s"
+#~ msgstr "Layihə tanımlayıcısı %(project)s"
+
+#~ msgid "Invalid JSON"
+#~ msgstr "Yanlış JSON"
+
+#~ msgid "Are you sure?"
+#~ msgstr "Əminsiniz?"
+
+#~ msgid "Import JSON"
+#~ msgstr "JSON-u idxal et"
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>This project has history "
+#~ "disabled. New actions won't appear "
+#~ "below. You can enable history on "
+#~ "the</i>\n"
+#~ "            <a href=\"%(url)s\">settings page</a>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            <i>Bu layihənin tarixçəsi "
+#~ "dayandırılıb. Yeni hərəkətlər aşağıda "
+#~ "görünməyəcək. Tarixçəni "
+#~ "əvvəlcədən <a href=\"%(url)s\">parametrlər "
+#~ "səhifəsindən</a> aktivləşdirə bilərsiniz.</i>\n"
+#~ "            "
+
+#~ msgid ""
+#~ "\n"
+#~ "            <i>The table below reflects "
+#~ "actions recorded prior to disabling "
+#~ "project history. You can\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">clear project history</a>"
+#~ " to remove them.</i></p>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            <i>Aşağıdakı cədvəl "
+#~ "layihənin tarixçəsi deaktiv edilməzdən əvvəl "
+#~ "yazılmış hərəkətləri əks etdirir. Bunları "
+#~ "silmək üçün\n"
+#~ "            <a href=\"#\" data-"
+#~ "toggle=\"modal\" data-keyboard=\"false\" data-"
+#~ "target=\"#confirm-erase\">layihə tarixçəsini "
+#~ "təmizləyə bilərsiniz</a>.</i></p>\n"
+#~ "            "
+
+#~ msgid "Send invites"
+#~ msgstr "Dəvətləri göndərin"
+
+#~ msgid " show"
+#~ msgstr "göstər"
+
+#~ msgid "Edit the project"
+#~ msgstr "Layihəni redaktə et"
+
+#~ msgid "You probably want to"
+#~ msgstr "Ehtimal ki, istəyirsiniz"
+
+#~ msgid "add participants"
+#~ msgstr "iştirakçıları əlavə et"
+
+#~ msgid ""
+#~ "You can share the project identifier "
+#~ "and the private code by any "
+#~ "communication means."
+#~ msgstr ""
+#~ "Layihə tanımlayıcısını və xüsusi kodu "
+#~ "hər hansı bir ünsiyyət vasitəsilə "
+#~ "paylaşa bilərsiniz."
+
+#~ msgid "Share the Link"
+#~ msgstr "Bağlantını paylaş"
+
+#~ msgid "You can directly share the following link via your prefered medium"
+#~ msgstr ""
+#~ "Aşağıdakı bağlantıyı seçdiyiniz "
+#~ "əlaqə vasitəsilə birbaşa paylaşa bilərsiniz"
+
