@@ -14,6 +14,7 @@ APPLICATION_ROOT = "/"
 ENABLE_CAPTCHA = False
 LEGAL_LINK = ""
 SUPPORTED_LANGUAGES = [
+    "az",
     "ca",
     "cs",
     "de",
