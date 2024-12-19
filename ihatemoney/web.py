@@ -8,6 +8,7 @@ Basically, this blueprint takes care of the authentication and provides
 some shortcuts to make your life better when coding (see `pull_project`
 and `add_project_id` for a quick overview)
 """
+
 import datetime
 from functools import wraps
 import hashlib

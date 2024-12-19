@@ -90,7 +90,6 @@ def get_billform_for(project, set_default=True, **kwargs):
 
 
 class CommaDecimalField(DecimalField):
-
     """A class to deal with comma in Decimal Field"""
 
     def process_formdata(self, value):
