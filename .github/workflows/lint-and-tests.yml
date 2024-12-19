@@ -8,7 +8,7 @@ on:
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
@@ -27,7 +27,7 @@ jobs:
   test:
     # Dependency on linting to avoid running our expensive matrix test for nothing
     needs: lint
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     # Use postgresql and MariaDB versions of Debian bookworm
     services:
       postgres:
