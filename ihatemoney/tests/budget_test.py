@@ -872,6 +872,122 @@ class TestBudget(IhatemoneyTestCase):
         balance = self.get_project("raclette").balance
         assert set(balance.values()) == set([6, -6])
 
+    def test_edit_bill_with_deactivated_member(self):
+        """
+        Bills involving deactivated members should not allowed to be edited or deleted.
+        """
+        self.post_project("raclette")
+
+        # add two participants
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
+        self.client.post("/raclette/members/add", data={"name": "fred"})
+
+        members_ids = [m.id for m in self.get_project("raclette").members]
+
+        # create one bill
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage à raclette",
+                "payer": members_ids[0],
+                "payed_for": members_ids,
+                "amount": "25",
+            },
+        )
+        bill = models.Bill.query.one()
+        self.assertEqual(bill.amount, 25)
+
+        # deactivate one user
+        self.client.post(
+            "/raclette/members/%s/delete" % self.get_project("raclette").members[-1].id
+        )
+        self.assertEqual(len(self.get_project("raclette").members), 2)
+        self.assertEqual(len(self.get_project("raclette").active_members), 1)
+
+        # editing would fail because the bill involves deactivated user
+        self.client.post(
+            f"/raclette/edit/{bill.id}",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage à raclette",
+                "payer": members_ids[0],
+                "payed_for": members_ids,
+                "amount": "10",
+            },
+        )
+        bill = models.Bill.query.one()
+        self.assertNotEqual(bill.amount, 10, "bill edition")
+
+        # reactivate the user
+        self.client.post(
+            "/raclette/members/%s/reactivate"
+            % self.get_project("raclette").members[-1].id
+        )
+        self.assertEqual(len(self.get_project("raclette").active_members), 2)
+
+        # try to edit the bill again. It should succeed
+        self.client.post(
+            f"/raclette/edit/{bill.id}",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage à raclette",
+                "payer": members_ids[0],
+                "payed_for": members_ids,
+                "amount": "10",
+            },
+        )
+        bill = models.Bill.query.one()
+        self.assertEqual(bill.amount, 10, "bill edition")
+
+    def test_delete_bill_with_deactivated_member(self):
+        """
+        Bills involving deactivated members should not allowed to be edited or deleted.
+        """
+        self.post_project("raclette")
+
+        # add two participants
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
+        self.client.post("/raclette/members/add", data={"name": "fred"})
+
+        members_ids = [m.id for m in self.get_project("raclette").members]
+
+        # create one bill
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage à raclette",
+                "payer": members_ids[0],
+                "payed_for": members_ids,
+                "amount": "25",
+            },
+        )
+        bill = models.Bill.query.one()
+        self.assertEqual(bill.amount, 25)
+
+        # deactivate one user
+        self.client.post(
+            "/raclette/members/%s/delete" % self.get_project("raclette").members[-1].id
+        )
+        self.assertEqual(len(self.get_project("raclette").active_members), 1)
+
+        # deleting should fail because the bill involves deactivated user
+        response = self.client.get(f"/raclette/delete/{bill.id}")
+        self.assertEqual(response.status_code, 405)
+        self.assertEqual(1, len(models.Bill.query.all()), "bill deletion")
+
+        # reactivate the user
+        self.client.post(
+            "/raclette/members/%s/reactivate"
+            % self.get_project("raclette").members[-1].id
+        )
+        self.assertEqual(len(self.get_project("raclette").active_members), 2)
+
+        # try to delete the bill again. It should succeed
+        self.client.post(f"/raclette/delete/{bill.id}")
+        self.assertEqual(0, len(models.Bill.query.all()), "bill deletion")
+
     def test_trimmed_members(self):
         self.post_project("raclette")
 
