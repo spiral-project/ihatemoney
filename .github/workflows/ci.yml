@@ -47,7 +47,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.7, 3.8, 3.9, "3.10", "3.11", "3.12"]
+        python-version: [3.8, 3.9, "3.10", "3.11", "3.12"]
         dependencies: [normal]
         database: [sqlite]
         # Test other databases with only a few versions of Python
@@ -66,9 +66,6 @@ jobs:
             dependencies: normal
             database: mariadb
           # Try a few variants with the minimal versions supported
-          - python-version: 3.7
-            dependencies: minimal
-            database: sqlite
           - python-version: 3.9
             dependencies: minimal
             database: sqlite
@@ -102,7 +99,7 @@ jobs:
       run: sed -i -e '/requires-python/!s/>=/==/g; /requires-python/!s/~=.*==\(.*\)/==\1/g; /requires-python/!s/~=/==/g;' pyproject.toml
       if: matrix.dependencies == 'minimal'
     - name: Run tests
-      run: make test
+      run: uv run --extra dev --extra database pytest .
       env:
         # Setup the DATABASE_URI depending on the matrix we are using.
         TESTING_SQLALCHEMY_DATABASE_URI: ${{

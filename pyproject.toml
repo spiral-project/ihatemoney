@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "ihatemoney"
 version = "6.2.0.dev0"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 description = "A simple shared budget manager web application."
 readme = "README.md"
 license = {file = "LICENSE"}
