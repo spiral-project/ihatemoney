@@ -42,7 +42,6 @@ dependencies = [
     "Flask-WTF>=0.14.3,<2",
     "itsdangerous>=2,<3",
     "Jinja2>=3,<4",
-    "pytest-libfaketime[dev]>=0.1.3",
     "python-dateutil",
     "qrcode>=7.1,<8",
     "requests>=2.25,<3",
@@ -65,7 +64,6 @@ dev = [
     "pytest>=6.2.5",
     "pytest-flask>=1.2.0",
     "zest.releaser>=6.20.1",
-    "libfaketime>=2.1.0",
 ]
 doc = [
     "Sphinx>=7.0.1,<8",
