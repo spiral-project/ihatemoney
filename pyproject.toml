@@ -48,7 +48,7 @@ dependencies = [
     "SQLAlchemy>=1.3.0,<1.5",
     "SQLAlchemy-Continuum>=1.3.12,<2", # New 1.4 changes API, see #728
     "Werkzeug>=2,<3",
-    "WTForms>=2.3.3,<3.2",]
+    "WTForms>=2.3.3,<3.3",]
 
 [project.optional-dependencies]
 database = [
