@@ -54,7 +54,7 @@ dependencies = [
 database = [
     # Python 3.11 support starts in 2.9.2
     "psycopg2-binary>=2.9.2,<2.9.9",
-    "PyMySQL>=0.9,<1.1",
+    "PyMySQL>=0.9,<1.2",
 ]
 dev = [
     "ruff==0.6.8",
