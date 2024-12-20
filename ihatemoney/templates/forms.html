@@ -236,7 +236,8 @@
     {{ input(form.weight) }}
     </fieldset>
     <div class="actions">
-        {{ form.submit(class="btn btn-primary") }}
+        <button class="btn btn-secondary input-group-addon" type="submit">{{ _("Save") }}</button>
+        <a href="{{ url_for(".list_bills") }}" class="btn btn-outline-secondary"> {{_("Cancel") }} </a>
     </div>
 {% endmacro %}
 
