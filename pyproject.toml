@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "ihatemoney"
 version = "6.2.0.dev0"
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 description = "A simple shared budget manager web application."
 readme = "README.md"
 license = {file = "LICENSE"}
@@ -16,7 +16,6 @@ keywords = ["web", "budget"]
 classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
