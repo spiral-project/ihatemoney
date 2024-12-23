@@ -173,6 +173,14 @@ URL you want.
 -   **Default value:** `""` (empty string)
 -   **Production value:** The URL of your chosing.
 
+## SITE_NAME
+
+It is possible to change the name of the site to something at your liking.
+
+-   **Default value:** `"I Hate Money"` (empty string)
+-   **Production value:** The name of your choosing
+
+
 ## Configuring email sending
 
 By default, Ihatemoney sends emails using a local SMTP server, but it's
