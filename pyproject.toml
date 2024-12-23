@@ -43,7 +43,7 @@ dependencies = [
     "itsdangerous>=2,<3",
     "Jinja2>=3,<4",
     "python-dateutil",
-    "qrcode>=7.1,<8",
+    "qrcode>=7.1,<9",
     "requests>=2.25,<3",
     "SQLAlchemy>=1.3.0,<1.5",
     "SQLAlchemy-Continuum>=1.3.12,<2", # New 1.4 changes API, see #728
