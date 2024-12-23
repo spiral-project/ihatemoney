@@ -53,7 +53,7 @@ dependencies = [
 [project.optional-dependencies]
 database = [
     # Python 3.11 support starts in 2.9.2
-    "psycopg2-binary>=2.9.2,<2.9.9",
+    "psycopg2-binary>=2.9.2,<2.9.11",
     "PyMySQL>=0.9,<1.2",
 ]
 dev = [
