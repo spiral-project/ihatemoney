@@ -302,12 +302,14 @@ def home():
     is_public_project_creation_allowed = current_app.config[
         "ALLOW_PUBLIC_PROJECT_CREATION"
     ]
+    display_showcase = g.lang in current_app.config["SHOWCASE_LANGUAGES"]
 
     return render_template(
         "home.html",
         project_form=project_form,
         is_demo_project_activated=is_demo_project_activated,
         is_public_project_creation_allowed=is_public_project_creation_allowed,
+        display_showcase=display_showcase,
         auth_form=auth_form,
         session=session,
     )
@@ -684,6 +686,7 @@ def list_bills():
         csrf_form=csrf_form,
         add_bill=request.values.get("add_bill", False),
         current_view="list_bills",
+        display_showcase=g.lang in current_app.config["SHOWCASE_LANGUAGES"],
     )
 
 
