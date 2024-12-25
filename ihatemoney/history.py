@@ -38,7 +38,7 @@ def history_sort_key(history_item_dict):
 
 def describe_version(version_obj):
     """Use the base model str() function to describe a version object"""
-    if version_obj is None:
+    if not version_obj:
         return ""
     else:
         return parent_class(type(version_obj)).__str__(version_obj)
