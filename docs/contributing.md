@@ -78,6 +78,15 @@ Thanks again!
 (setup-dev-environment)=
 ## Set up a dev environment
 
+### Requirements
+
+In addition to general {ref}`requirements<system-requirements>`, you will need
+**uv**. It recommended to install uv [system
+wide](https://docs.astral.sh/uv/getting-started/installation/#standalone-installer)
+as it is a kind of replacement for pip.
+
+### Getting the sources
+
 You must develop on top of the Git master branch:
 
     git clone https://github.com/spiral-project/ihatemoney.git
