@@ -3,13 +3,17 @@ import smtplib
 import socket
 from unittest.mock import MagicMock, patch
 
-import pytest
 from sqlalchemy import orm
 from werkzeug.security import check_password_hash
 
 from ihatemoney import models
 from ihatemoney.currency_convertor import CurrencyConverter
-from ihatemoney.manage import delete_project, generate_config, password_hash
+from ihatemoney.manage import (
+    delete_project,
+    generate_config,
+    get_project_count,
+    password_hash,
+)
 from ihatemoney.run import load_configuration
 from ihatemoney.tests.common.ihatemoney_testcase import BaseTestCase, IhatemoneyTestCase
 
@@ -229,6 +233,65 @@ class TestModels(IhatemoneyTestCase):
                 pay_each_expected = 10 / 3
                 assert bill.pay_each() == pay_each_expected
 
+    def test_demo_project_count(self):
+        """Test command the get-project-count"""
+        self.post_project("raclette")
+
+        # add members
+        self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
+        self.client.post("/raclette/members/add", data={"name": "fred"})
+        self.client.post("/raclette/members/add", data={"name": "tata"})
+        self.client.post("/raclette/members/add", data={"name": "pépé"})
+
+        # create bills
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1, 2, 3],
+                "amount": "10.0",
+            },
+        )
+
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-08-10",
+                "what": "red wine",
+                "payer": 2,
+                "payed_for": [1],
+                "amount": "20",
+            },
+        )
+
+        assert self.get_project("raclette").has_bills()
+
+        # Now check the different parameters
+        runner = self.app.test_cli_runner()
+        result0 = runner.invoke(get_project_count)
+        assert result0.output.strip() == "Number of projects: 1"
+
+        # With more than 1 bill, without printing emails
+        result1 = runner.invoke(get_project_count, "False 1")
+        assert result1.output.strip() == "Number of projects: 1"
+
+        # With more than 2 bill, without printing emails
+        result2 = runner.invoke(get_project_count, "False 2")
+        assert result2.output.strip() == "Number of projects: 0"
+
+        # With more than 0 days old
+        result3 = runner.invoke(get_project_count, "False 0 0")
+        assert result3.output.strip() == "Number of projects: 0"
+
+        result4 = runner.invoke(get_project_count, "False 0 20000")
+        assert result4.output.strip() == "Number of projects: 1"
+
+        # Print emails
+        result5 = runner.invoke(get_project_count, "True")
+        assert "raclette@notmyidea.org" in result5.output
+
 
 class TestEmailFailure(IhatemoneyTestCase):
     def test_creation_email_failure_smtp(self):
@@ -401,9 +464,7 @@ class TestCurrencyConverter:
 
     def test_failing_remote(self):
         rates = {}
-        with patch("requests.Response.json", new=lambda _: {}), pytest.warns(
-            UserWarning
-        ):
+        with patch("requests.Response.json", new=lambda _: {}):
             # we need a non-patched converter, but it seems that MagickMock
             # is mocking EVERY instance of the class method. Too bad.
             rates = CurrencyConverter.get_rates(self.converter)

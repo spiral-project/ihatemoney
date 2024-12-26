@@ -816,7 +816,7 @@ msgstr "Мобильное приложение"
 msgid "Documentation"
 msgstr "Документация"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr "Панель инструментов администратора"
 
 msgid "Legal information"

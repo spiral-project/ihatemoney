@@ -1,6 +1,6 @@
 from collections import defaultdict
-from enum import Enum
 import datetime
+from enum import Enum
 import itertools
 
 from dateutil.parser import parse
@@ -22,7 +22,7 @@ from sqlalchemy_continuum.plugins import FlaskPlugin
 
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.monkeypath_continuum import PatchedTransactionFactory
-from ihatemoney.utils import generate_password_hash, get_members, same_bill, FormEnum
+from ihatemoney.utils import generate_password_hash, get_members, same_bill
 from ihatemoney.versioning import (
     ConditionalVersioningManager,
     LoggingMode,
@@ -51,13 +51,14 @@ make_versioned(
     ],
 )
 
+
 class BillType(Enum):
     EXPENSE = "Expense"
     REIMBURSEMENT = "Reimbursement"
 
     @classmethod
     def choices(cls):
-        return [(choice, choice.value) for choice in cls]
+        return [(choice.value, choice.value) for choice in cls]
 
 
 db = SQLAlchemy()
@@ -131,7 +132,9 @@ class Project(db.Model):
             if bill.bill_type == BillType.EXPENSE:
                 should_receive[bill.payer.id] += bill.converted_amount
                 for ower in bill.owers:
-                    should_pay[ower.id] += (ower.weight * bill.converted_amount / total_weight)
+                    should_pay[ower.id] += (
+                        ower.weight * bill.converted_amount / total_weight
+                    )
 
             if bill.bill_type == BillType.REIMBURSEMENT:
                 should_receive[bill.payer.id] += bill.converted_amount
@@ -206,7 +209,6 @@ class Project(db.Model):
                 )
             return pretty_transactions
 
-        # cache value for better performance
         members = {person.id: person for person in self.members}
         settle_plan = settle(self.balance.items()) or []
 
@@ -221,22 +223,6 @@ class Project(db.Model):
         ]
 
         return prettify(transactions, pretty_output)
-
-    def exactmatch(self, credit, debts):
-        """Recursively try and find subsets of 'debts' whose sum is equal to credit"""
-        if not debts:
-            return None
-        if debts[0]["balance"] > credit:
-            return self.exactmatch(credit, debts[1:])
-        elif debts[0]["balance"] == credit:
-            return [debts[0]]
-        else:
-            match = self.exactmatch(credit - debts[0]["balance"], debts[1:])
-            if match:
-                match.append(debts[0])
-            else:
-                match = self.exactmatch(credit, debts[1:])
-            return match
 
     def has_bills(self):
         """return if the project do have bills or not"""
@@ -563,7 +549,7 @@ class Project(db.Model):
             ("Alice", 20, ("Amina", "Alice"), "Beer !", "Expense"),
             ("Amina", 50, ("Amina", "Alice", "Georg"), "AMAP", "Expense"),
         )
-        for (payer, amount, owers, what, bill_type) in operations:
+        for payer, amount, owers, what, bill_type in operations:
             db.session.add(
                 Bill(
                     amount=amount,

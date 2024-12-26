@@ -90,7 +90,6 @@ def get_billform_for(project, set_default=True, **kwargs):
 
 
 class CommaDecimalField(DecimalField):
-
     """A class to deal with comma in Decimal Field"""
 
     def process_formdata(self, value):
@@ -364,7 +363,12 @@ class BillForm(FlaskForm):
     payed_for = SelectMultipleField(
         _("For whom?"), validators=[DataRequired()], coerce=int
     )
-    bill_type = SelectField(_("Bill Type"), choices=BillType.choices(), coerce=BillType, default=BillType.EXPENSE)
+    bill_type = SelectField(
+        _("Bill Type"),
+        choices=BillType.choices(),
+        coerce=BillType,
+        default=BillType.EXPENSE,
+    )
     submit = SubmitField(_("Submit"))
     submit2 = SubmitField(_("Submit and add a new one"))
 

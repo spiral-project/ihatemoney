@@ -1,0 +1,122 @@
+name: CI
+
+on:
+  push:
+    branches: [ 'master', 'stable-*' ]
+  pull_request:
+    branches: [ 'master', 'stable-*' ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install uv and set the python version
+      uses: astral-sh/setup-uv@v4
+      with:
+        python-version: "3.11"
+    - name: Run Lint
+      run: make lint
+
+  test:
+    # Dependency on linting to avoid running our expensive matrix test for nothing
+    needs: lint
+    runs-on: ubuntu-22.04
+    # Use postgresql and MariaDB versions of Debian bookworm
+    services:
+      postgres:
+        image: postgres:15
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: ihatemoney
+          POSTGRES_DB: ihatemoney_ci
+        options:
+          --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+      mariadb:
+        image: mariadb:10.11
+        env:
+          MARIADB_ROOT_PASSWORD: ihatemoney
+          MARIADB_DATABASE: ihatemoney_ci
+        options: >-
+          --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        ports:
+          - 3306:3306
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [3.8, 3.9, "3.10", "3.11", "3.12"]
+        dependencies: [normal]
+        database: [sqlite]
+        # Test other databases with only a few versions of Python
+        # (Debian bullseye has 3.9, bookworm has 3.11)
+        include:
+          - python-version: 3.9
+            dependencies: normal
+            database: postgresql
+          - python-version: 3.9
+            dependencies: normal
+            database: mariadb
+          - python-version: 3.11
+            dependencies: normal
+            database: postgresql
+          - python-version: 3.11
+            dependencies: normal
+            database: mariadb
+          # Try a few variants with the minimal versions supported
+          - python-version: 3.9
+            dependencies: minimal
+            database: sqlite
+          - python-version: "3.10"
+            dependencies: minimal
+            database: sqlite
+          - python-version: "3.11"
+            dependencies: minimal
+            database: sqlite
+          - python-version: "3.11"
+            dependencies: minimal
+            database: postgresql
+          - python-version: "3.11"
+            dependencies: minimal
+            database: mariadb
+          - python-version: "3.12"
+            dependencies: minimal
+            database: sqlite
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install uv and set the python version
+      uses: astral-sh/setup-uv@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Change dependencies to minimal supported versions
+      # This sed comment installs the minimal supported version
+      # for all versions except for "requires-python"
+      # This is to detect that the minimum versions are really
+      # supported, in the CI
+      run: sed -i -e '/requires-python/!s/>=/==/g; /requires-python/!s/~=.*==\(.*\)/==\1/g; /requires-python/!s/~=/==/g;' pyproject.toml
+      if: matrix.dependencies == 'minimal'
+    - name: Run tests
+      run: uv run --extra dev --extra database pytest .
+      env:
+        # Setup the DATABASE_URI depending on the matrix we are using.
+        TESTING_SQLALCHEMY_DATABASE_URI: ${{
+          matrix.database == 'sqlite'
+            && 'sqlite:///budget.db'
+          || matrix.database == 'postgresql'
+            && 'postgresql+psycopg2://postgres:ihatemoney@localhost:5432/ihatemoney_ci'
+          || 'mysql+pymysql://root:ihatemoney@localhost:3306/ihatemoney_ci'
+          }}
+
+  docs:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install uv and set the python version
+      uses: astral-sh/setup-uv@v4
+      with:
+        python-version: "3.11"
+    - name: Build docs
+      run: make build-docs

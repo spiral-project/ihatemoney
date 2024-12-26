@@ -817,7 +817,7 @@ msgstr "Applicazione mobile"
 msgid "Documentation"
 msgstr "Documentazione"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr "Cruscotto Amministrazione"
 
 msgid "Legal information"

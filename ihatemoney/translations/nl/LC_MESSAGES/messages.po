@@ -814,7 +814,7 @@ msgstr "Mobiele app"
 msgid "Documentation"
 msgstr "Documentatie"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr "Administratie-overzicht"
 
 #, fuzzy

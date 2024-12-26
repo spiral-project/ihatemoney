@@ -821,7 +821,7 @@ msgstr "Poŝaparata programo"
 msgid "Documentation"
 msgstr "Dokumentaro"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr "Administra panelo"
 
 #, fuzzy

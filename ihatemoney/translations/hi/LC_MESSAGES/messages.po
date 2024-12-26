@@ -829,7 +829,7 @@ msgstr "मोबाइल एप्लीकेशन"
 msgid "Documentation"
 msgstr "प्रलेखन"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr "व्यवस्थापन डैशबोर्ड"
 
 #, fuzzy
