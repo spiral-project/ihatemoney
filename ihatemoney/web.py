@@ -40,7 +40,6 @@ from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash
 
-from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.emails import send_creation_email
 from ihatemoney.forms import (
     AdminAuthenticationForm,
@@ -448,7 +447,6 @@ def edit_project():
                 edit_form.ip_recording.data = True
 
         edit_form.contact_email.data = g.project.contact_email
-        edit_form.default_currency.data = g.project.default_currency
 
     return render_template(
         "edit_project.html",
@@ -479,7 +477,6 @@ def import_project():
             attr = [
                 "amount",
                 "bill_type",
-                "currency",
                 "date",
                 "owers",
                 "payer_name",
@@ -488,28 +485,22 @@ def import_project():
             ]
             currencies = set()
             for b in bills:
-                if b.get("currency", "") in ["", "XXX"]:
-                    b["currency"] = g.project.default_currency
+                if "currency" in b.keys():
+                    currencies.add(b["currency"])
+                    del b["currency"]
                 for a in attr:
                     if a not in b:
                         raise ValueError(
                             _("Missing attribute: %(attribute)s", attribute=a)
                         )
-                currencies.add(b["currency"])
 
-            # Additional checks if project has no default currency
-            if g.project.default_currency == CurrencyConverter.no_currency:
-                # If bills have currencies, they must be consistent
-                if len(currencies - {CurrencyConverter.no_currency}) >= 2:
-                    raise ValueError(
-                        _(
-                            "Cannot add bills in multiple currencies to a project without default "
-                            "currency"
-                        )
+            if len(currencies) > 1:
+                raise ValueError(
+                    _(
+                        "Cannot add bills in multiple currencies to a project without default "
+                        "currency"
                     )
-                # Strip currency from bills (since it's the same for every bill)
-                for b in bills:
-                    b["currency"] = CurrencyConverter.no_currency
+                )
 
             g.project.import_bills(bills)
 
@@ -863,7 +854,6 @@ def settle(amount, ower_id, payer_id):
         date=datetime.datetime.today(),
         owers=[Person.query.get(payer_id)],
         payer_id=ower_id,
-        project_default_currency=g.project.default_currency,
         bill_type=BillType.REIMBURSEMENT,
         what=_("Settlement"),
     )

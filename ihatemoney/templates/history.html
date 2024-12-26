@@ -97,7 +97,7 @@
         <summary>{% if before %} {{ _("Details of the bill (before the change)") }} {% else %} {{ _("Details of the bill") }} {% endif %}</summary>
         {{ _("Date:") }} {{ details.date|em_surround }}.
         {{ _("Payer:") }} {{ details.payer|em_surround }}.
-        {{ _("Amount:") }} {{ details.amount|currency(details.original_currency)|em_surround }}.
+        {{ _("Amount:") }} {{ details.amount|em_surround }}.
         {{ _("Owers:") }} {{ owers_list_str }}.
         {% if details.external_link %}
             {{ _("External link:") }}
@@ -229,10 +229,6 @@
                             {{ bill_property_change(event, _("Amount")) }}
                         {% elif event.prop_changed == "date" %}
                             {{ bill_property_change(event, _("Date")) }}
-                        {% elif event.prop_changed == "original_currency" %}
-                            {{ bill_property_change(event, _("Currency")) }}
-                        {% elif event.prop_changed == "converted_amount" %}
-                            {{ bill_property_change(event, _("Amount in %(currency)s", currency=g.project.default_currency)) }}
                         {% else %}
                             {% trans %}Bill {{ name }} modified{% endtrans %}
                         {% endif %}

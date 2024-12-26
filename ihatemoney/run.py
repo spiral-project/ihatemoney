@@ -5,18 +5,16 @@ import warnings
 
 from babel.dates import LOCALTZ
 from flask import Flask, g, render_template, request, session
-from flask_babel import Babel, format_currency
+from flask_babel import Babel
 from flask_mail import Mail
 from flask_migrate import Migrate, stamp, upgrade
 from flask_talisman import Talisman
-from jinja2 import pass_context
 from markupsafe import Markup
 import pytz
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 from ihatemoney import default_settings
 from ihatemoney.api.v1 import api as apiv1
-from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.models import db
 from ihatemoney.utils import (
     IhmJSONEncoder,
@@ -176,9 +174,6 @@ def create_app(
     # Configure the a, root="main"pplication
     setup_database(app)
 
-    # Setup Currency Cache
-    CurrencyConverter()
-
     mail = Mail()
     mail.init_app(app)
     app.mail = mail
@@ -219,25 +214,6 @@ def create_app(
         babel.localeselector(get_locale)
     else:
         Babel(app, default_timezone=default_timezone, locale_selector=get_locale)
-
-    # Undocumented currencyformat filter from flask_babel is forwarding to Babel format_currency
-    # We overwrite it to remove the currency sign ¤ when there is no currency
-    @pass_context
-    def currency(context, number, currency=None, *args, **kwargs):
-        if currency is None:
-            currency = context.get("g").project.default_currency
-        """
-        Same as flask_babel.Babel.currencyformat, but without the "no currency ¤" sign
-        when there is no currency.
-        """
-        return format_currency(
-            number,
-            currency if currency != CurrencyConverter.no_currency else "",
-            *args,
-            **kwargs,
-        ).strip()
-
-    app.jinja_env.filters["currency"] = currency
 
     return app
 

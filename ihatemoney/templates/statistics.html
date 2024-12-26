@@ -15,8 +15,8 @@
         {% for stat in members_stats|sort(attribute='member.name') %}
         <tr>
             <td class="d-md-none">{{ stat.member.name }}</td>
-            <td>{{ stat.paid|currency }}</td>
-            <td>{{ stat.spent|currency }}</td>
+            <td>{{ stat.paid | round(2) }}</td>
+            <td>{{ stat.spent | round(2) }}</td>
         </tr>
         {% endfor %}
         </tbody>
@@ -28,7 +28,7 @@
         {% for month in months %}
                 <tr>
                     <td>{{ month|dateformat("MMMM yyyy") }}</td>
-                    <td>{{ monthly_stats[month.year][month.month]|currency }}</td>
+                    <td>{{ monthly_stats[month.year][month.month] | round(2) }}</td>
                 </tr>
         {% endfor %}
         </tbody>

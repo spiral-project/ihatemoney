@@ -20,7 +20,6 @@ from sqlalchemy.sql import func
 from sqlalchemy_continuum import make_versioned, version_class
 from sqlalchemy_continuum.plugins import FlaskPlugin
 
-from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.monkeypath_continuum import PatchedTransactionFactory
 from ihatemoney.utils import generate_password_hash, get_members, same_bill
 from ihatemoney.versioning import (
@@ -86,7 +85,6 @@ class Project(db.Model):
     members = db.relationship("Person", backref="project")
 
     query_class = ProjectQuery
-    default_currency = db.Column(db.String(3))
 
     @property
     def _to_serialize(self):
@@ -96,7 +94,6 @@ class Project(db.Model):
             "contact_email": self.contact_email,
             "logging_preference": self.logging_preference.value,
             "members": [],
-            "default_currency": self.default_currency,
         }
 
         balance = self.balance
@@ -130,16 +127,14 @@ class Project(db.Model):
             total_weight = sum(ower.weight for ower in bill.owers)
 
             if bill.bill_type == BillType.EXPENSE:
-                should_receive[bill.payer.id] += bill.converted_amount
+                should_receive[bill.payer.id] += bill.amount
                 for ower in bill.owers:
-                    should_pay[ower.id] += (
-                        ower.weight * bill.converted_amount / total_weight
-                    )
+                    should_pay[ower.id] += ower.weight * bill.amount / total_weight
 
             if bill.bill_type == BillType.REIMBURSEMENT:
-                should_receive[bill.payer.id] += bill.converted_amount
+                should_receive[bill.payer.id] += bill.amount
                 for ower in bill.owers:
-                    should_receive[ower.id] -= bill.converted_amount
+                    should_receive[ower.id] -= bill.amount
 
         for person in self.members:
             balance = should_receive[person.id] - should_pay[person.id]
@@ -183,7 +178,7 @@ class Project(db.Model):
         monthly = defaultdict(lambda: defaultdict(float))
         for bill in self.get_bills_unordered().all():
             if bill.bill_type == BillType.EXPENSE:
-                monthly[bill.date.year][bill.date.month] += bill.converted_amount
+                monthly[bill.date.year][bill.date.month] += bill.amount
         return monthly
 
     @property
@@ -204,7 +199,6 @@ class Project(db.Model):
                         "ower": transaction["ower"].name,
                         "receiver": transaction["receiver"].name,
                         "amount": round(transaction["amount"], 2),
-                        "currency": transaction["currency"],
                     }
                 )
             return pretty_transactions
@@ -217,7 +211,6 @@ class Project(db.Model):
                 "ower": members[ower_id],
                 "receiver": members[receiver_id],
                 "amount": amount,
-                "currency": self.default_currency,
             }
             for ower_id, amount, receiver_id in settle_plan
         ]
@@ -227,16 +220,6 @@ class Project(db.Model):
     def has_bills(self):
         """return if the project do have bills or not"""
         return self.get_bills_unordered().count() > 0
-
-    def has_multiple_currencies(self):
-        """Returns True if multiple currencies are used"""
-        # It would be more efficient to do the counting in the database,
-        # but this is called very rarely so we can tolerate if it's a bit
-        # slow. And doing this in Python is much more readable, see #784.
-        nb_currencies = len(
-            set(bill.original_currency for bill in self.get_bills_unordered())
-        )
-        return nb_currencies > 1
 
     def get_bills_unordered(self):
         """Base query for bill list"""
@@ -344,7 +327,6 @@ class Project(db.Model):
                     "what": bill.what,
                     "bill_type": bill.bill_type.value,
                     "amount": round(bill.amount, 2),
-                    "currency": bill.original_currency,
                     "date": str(bill.date),
                     "payer_name": Person.query.get(bill.payer_id).name,
                     "payer_weight": Person.query.get(bill.payer_id).weight,
@@ -352,41 +334,6 @@ class Project(db.Model):
                 }
             )
         return pretty_bills
-
-    def switch_currency(self, new_currency):
-        if new_currency == self.default_currency:
-            return
-        # Update converted currency
-        if new_currency == CurrencyConverter.no_currency:
-            if self.has_multiple_currencies():
-                raise ValueError(f"Can't unset currency of project {self.id}")
-
-            for bill in self.get_bills_unordered():
-                # We are removing the currency, and we already checked that all bills
-                # had the same currency: it means that we can simply strip the currency
-                # without converting the amounts. We basically ignore the current default_currency
-
-                # Reset converted amount in case it was different from the original amount
-                bill.converted_amount = bill.amount
-                # Strip currency
-                bill.original_currency = CurrencyConverter.no_currency
-                db.session.add(bill)
-        else:
-            for bill in self.get_bills_unordered():
-                if bill.original_currency == CurrencyConverter.no_currency:
-                    # Bills that were created without currency will be set to the new currency
-                    bill.original_currency = new_currency
-                    bill.converted_amount = bill.amount
-                else:
-                    # Convert amount for others, without touching original_currency
-                    bill.converted_amount = CurrencyConverter().exchange_currency(
-                        bill.amount, bill.original_currency, new_currency
-                    )
-                db.session.add(bill)
-
-        self.default_currency = new_currency
-        db.session.add(self)
-        db.session.commit()
 
     def import_bills(self, bills: list):
         """Import bills from a list of dictionaries"""
@@ -416,10 +363,8 @@ class Project(db.Model):
                         date=parse(b["date"]),
                         bill_type=b["bill_type"],
                         external_link="",
-                        original_currency=b["currency"],
                         owers=Person.query.get_by_names(b["owers"], self),
                         payer_id=id_dict[b["payer_name"]],
-                        project_default_currency=self.default_currency,
                         what=b["what"],
                     )
                 except Exception as e:
@@ -527,7 +472,6 @@ class Project(db.Model):
             name="demonstration",
             password=generate_password_hash("demo"),
             contact_email="demo@notmyidea.org",
-            default_currency="XXX",
         )
         db.session.add(project)
         db.session.commit()
@@ -554,10 +498,8 @@ class Project(db.Model):
                 Bill(
                     amount=amount,
                     bill_type=bill_type,
-                    original_currency=project.default_currency,
                     owers=[members[name] for name in owers],
                     payer_id=members[payer].id,
-                    project_default_currency=project.default_currency,
                     what=what,
                 )
             )
@@ -689,22 +631,15 @@ class Bill(db.Model):
     bill_type = db.Column(db.Enum(BillType))
     external_link = db.Column(db.UnicodeText)
 
-    original_currency = db.Column(db.String(3))
-    converted_amount = db.Column(db.Float)
-
     archive = db.Column(db.Integer, db.ForeignKey("archive.id"))
-
-    currency_helper = CurrencyConverter()
 
     def __init__(
         self,
         amount: float,
         date: datetime.datetime = None,
         external_link: str = "",
-        original_currency: str = "",
         owers: list = [],
         payer_id: int = None,
-        project_default_currency: str = "",
         what: str = "",
         bill_type: str = "Expense",
     ):
@@ -712,14 +647,10 @@ class Bill(db.Model):
         self.amount = amount
         self.date = date
         self.external_link = external_link
-        self.original_currency = original_currency
         self.owers = owers
         self.payer_id = payer_id
         self.what = what
         self.bill_type = BillType(bill_type)
-        self.converted_amount = self.currency_helper.exchange_currency(
-            self.amount, self.original_currency, project_default_currency
-        )
 
     @property
     def _to_serialize(self):
@@ -733,8 +664,6 @@ class Bill(db.Model):
             "what": self.what,
             "bill_type": self.bill_type.value,
             "external_link": self.external_link,
-            "original_currency": self.original_currency,
-            "converted_amount": self.converted_amount,
         }
 
     def pay_each_default(self, amount):
@@ -759,7 +688,7 @@ class Bill(db.Model):
         """Warning: this is slow, if you need to compute this for many bills, do
         it differently (see balance_full function)
         """
-        return self.pay_each_default(self.converted_amount)
+        return self.pay_each_default(self.amount)
 
     def __repr__(self):
         return (

@@ -11,7 +11,6 @@ import smtplib
 import socket
 
 from babel import Locale
-from babel.numbers import get_currency_name, get_currency_symbol
 from flask import current_app, flash, redirect, render_template
 from flask_babel import get_locale, lazy_gettext as _
 from flask_limiter import Limiter
@@ -309,7 +308,6 @@ def same_bill(bill1, bill2):
         "payer_name",
         "payer_weight",
         "amount",
-        "currency",
         "date",
         "owers",
     ]
@@ -408,21 +406,6 @@ def localize_list(items, surround_with_em=True):
             start_object="{start_object}", next_object=output_str
         )
         return output_str.format(start_object=wrapped_items.pop())
-
-
-def render_localized_currency(code, detailed=True):
-    # We cannot use CurrencyConvertor.no_currency here because of circular dependencies
-    if code == "XXX":
-        return _("No Currency")
-    locale = get_locale() or "en_US"
-    symbol = get_currency_symbol(code, locale=locale)
-    details = ""
-    if detailed:
-        details = f" − {get_currency_name(code, locale=locale)}"
-    if symbol == code:
-        return f"{code}{details}"
-    else:
-        return f"{code} − {symbol}{details}"
 
 
 def render_localized_template(template_name_prefix, **context):

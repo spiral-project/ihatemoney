@@ -15,7 +15,7 @@
     <tr receiver={{bill.receiver.id}}>
             <td>{{ bill.ower }}</td>
             <td>{{ bill.receiver }}</td>
-            <td>{{ bill.amount|currency }}</td>
+            <td>{{ bill.amount }}</td>
             <td>
                 <span id="settle-bill" class="ml-auto pb-2">
                     <a href="{{ url_for('.settle', amount = bill.amount, ower_id = bill.ower.id, payer_id = bill.receiver.id) }}" class="btn btn-primary">

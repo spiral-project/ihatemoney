@@ -1,9 +1,9 @@
 {% extends "sidebar_table_layout.html" %}
 
-{%- macro weighted_bill_amount(bill, weights, currency=bill.original_currency, amount=bill.amount) %}
-    {{ amount|currency(currency) }}
+{%- macro weighted_bill_amount(bill, weights, amount=bill.amount) %}
+    {{ amount }}
     {%- if weights != 1.0 %}
-        ({{ _("%(amount)s each", amount=(amount / weights)|currency(currency)) }})
+        ({{ _("%(amount)s each", amount=(amount / weights)) }})
     {%- endif -%}
 {% endmacro -%}
 
@@ -142,10 +142,7 @@
                 {{ bill.owers|join(', ', 'name') }}
                 {%- endif %}</td>
                 <td>
-                    <span data-toggle="tooltip" data-placement="top"
-                        title="{{ weighted_bill_amount(bill, weights, g.project.default_currency, bill.converted_amount) if bill.original_currency != g.project.default_currency else '' }}">
-                        {{ weighted_bill_amount(bill, weights) }}
-                    </span>
+                    {{ weighted_bill_amount(bill, weights) }}
                 </td>
                 <td class="bill-actions d-flex align-items-center">
                     <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">{{ _('edit') }}</a>

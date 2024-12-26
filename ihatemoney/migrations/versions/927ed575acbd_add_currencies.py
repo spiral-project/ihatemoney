@@ -12,7 +12,6 @@ down_revision = "cb038f79982e"
 
 from alembic import op
 import sqlalchemy as sa
-from ihatemoney.currency_convertor import CurrencyConverter
 
 
 def upgrade():
@@ -23,7 +22,7 @@ def upgrade():
         sa.Column(
             "original_currency",
             sa.String(length=3),
-            server_default=CurrencyConverter.no_currency,
+            server_default="",
             nullable=True,
         ),
     )
@@ -42,7 +41,7 @@ def upgrade():
         sa.Column(
             "default_currency",
             sa.String(length=3),
-            server_default=CurrencyConverter.no_currency,
+            server_default="",
             nullable=True,
         ),
     )

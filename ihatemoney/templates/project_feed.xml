@@ -10,11 +10,11 @@
         <link>{{ url_for(".list_bills", _external=True) }}</link>
         {% for (weights, bill) in bills.items -%}
         <item>
-            <title>{{ bill.what }} - {{ bill.amount|currency(bill.original_currency) }}</title>
+            <title>{{ bill.what }} - {{ bill.amount | round(2) }}</title>
             <guid isPermaLink="false">{{ bill.id }}</guid>
             <dc:creator>{{ bill.payer }}</dc:creator>
             {% if bill.external_link %}<link>{{ bill.external_link }}</link>{% endif -%}
-            <description>{{ bill.date|dateformat("long") }} - {{ bill.owers|join(', ', 'name') }} : {{ (bill.amount/weights)|currency(bill.original_currency) }}</description>
+            <description>{{ bill.date|dateformat("long") }} - {{ bill.owers|join(', ', 'name') }} : {{ bill.amount/weights | round(2)}}</description>
             <pubDate>{{ bill.creation_date.strftime("%a, %d %b %Y %T") }} +0000</pubDate>
         </item>
         {% endfor -%}

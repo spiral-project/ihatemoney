@@ -71,13 +71,6 @@ A project needs the following arguments:
 -   `password`: the project password / private code (string)
 -   `contact_email`: the contact email, used to recover the private code (string)
 
-Optional arguments:
-
--   `default_currency`: the default currency to use for a multi-currency
-    project, in ISO 4217 format. Bills are converted to this currency
-    for operations like balance or statistics. Default value: `XXX` (no
-    currency).
-
 Here is the command:
 
     $ curl -X POST https://ihatemoney.org/api/projects \
@@ -97,7 +90,6 @@ Getting information about the project:
         "id": "demo",
         "name": "demonstration",
         "contact_email": "demo@notmyidea.org",
-        "default_currency": "XXX",
         "members": [{"id": 11515, "name": "f", "weight": 1.0, "activated": true, "balance": 0},
                     {"id": 11531, "name": "g", "weight": 1.0, "activated": true, "balance": 0},
                     {"id": 11532, "name": "peter", "weight": 1.0, "activated": true, "balance": 5.0},
@@ -181,13 +173,7 @@ Or get a specific bill by ID:
       "creation_date": "2021-01-13",
       "what": "Raclette du nouvel an",
       "external_link": "",
-      "original_currency": "XXX",
-      "converted_amount": 100
     }
-
-`amount` is expressed in the `original_currency` of the bill, while
-`converted_amount` is expressed in the project `default_currency`. Here,
-they are the same.
 
 Add a bill with a `POST` query on `/api/projects/<id>/bills`. You need
 the following required parameters:
@@ -203,9 +189,6 @@ And optional parameters:
 
 -   `date`: the date of the bill (`yyyy-mm-dd` format). Defaults to
     current date if not provided.
--   `original_currency`: the currency in which `amount` has been paid
-    (ISO 4217 code). Only makes sense for a project with currencies.
-    Defaults to the project `default_currency`.
 -   `external_link`: an optional URL associated with the bill.
 
 Returns the id of the created bill :
@@ -250,23 +233,3 @@ You can get some project stats with a `GET` on
             "balance": -10.5
         }
     ]
-
-### Currencies
-
-You can get a list of supported currencies with a `GET` on
-`/api/currencies`:
-
-    $ curl --basic https://ihatemoney.org/api/currencies
-    [
-        "XXX",
-        "AED",
-        "AFN",
-        .
-        .
-        .
-        "ZAR",
-        "ZMW",
-        "ZWL"
-    ]
-
-
