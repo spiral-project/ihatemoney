@@ -3,9 +3,9 @@ name: Docker build
 on:
   push:
     tags: ['*']
-    branches: [ 'master', 'stable-*' ]
+    branches: [ 'main', 'stable-*' ]
   pull_request:
-    branches: [ 'master', 'stable-*' ]
+    branches: [ 'main', 'stable-*' ]
 
 
 jobs:
