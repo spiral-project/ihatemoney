@@ -7,7 +7,6 @@ from sqlalchemy import orm
 from werkzeug.security import check_password_hash
 
 from ihatemoney import models
-from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.manage import (
     delete_project,
     generate_config,
@@ -376,7 +375,6 @@ class TestCaptcha(IhatemoneyTestCase):
                     "id": "raclette",
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
-                    "default_currency": "USD",
                     "captcha": "éùüß",
                 },
             )
@@ -391,7 +389,6 @@ class TestCaptcha(IhatemoneyTestCase):
                     "id": "raclette",
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
-                    "default_currency": "USD",
                 },
             )
             assert len(models.Project.query.all()) == 0
@@ -403,7 +400,6 @@ class TestCaptcha(IhatemoneyTestCase):
                     "id": "raclette",
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
-                    "default_currency": "USD",
                     "captcha": "nope",
                 },
             )
@@ -416,7 +412,6 @@ class TestCaptcha(IhatemoneyTestCase):
                     "id": "raclette",
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
-                    "default_currency": "USD",
                     "captcha": "euro",
                 },
             )
@@ -435,37 +430,3 @@ class TestCaptcha(IhatemoneyTestCase):
         )
         assert resp.status_code == 201
         assert len(models.Project.query.all()) == 1
-
-
-class TestCurrencyConverter:
-    converter = CurrencyConverter()
-    mock_data = {
-        "USD": 1,
-        "EUR": 0.8,
-        "CAD": 1.2,
-        "PLN": 4,
-        CurrencyConverter.no_currency: 1,
-    }
-    converter.get_rates = MagicMock(return_value=mock_data)
-
-    def test_only_one_instance(self):
-        one = id(CurrencyConverter())
-        two = id(CurrencyConverter())
-        assert one == two
-
-    def test_get_currencies(self):
-        currencies = self.converter.get_currencies()
-        for currency in ["USD", "EUR", "CAD", "PLN", CurrencyConverter.no_currency]:
-            assert currency in currencies
-
-    def test_exchange_currency(self):
-        result = self.converter.exchange_currency(100, "USD", "EUR")
-        assert result == 80.0
-
-    def test_failing_remote(self):
-        rates = {}
-        with patch("requests.Response.json", new=lambda _: {}):
-            # we need a non-patched converter, but it seems that MagickMock
-            # is mocking EVERY instance of the class method. Too bad.
-            rates = CurrencyConverter.get_rates(self.converter)
-        assert rates == {CurrencyConverter.no_currency: 1}

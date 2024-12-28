@@ -2,8 +2,6 @@ import base64
 import datetime
 import json
 
-import pytest
-
 from ihatemoney.tests.common.help_functions import em_surround
 from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
 
@@ -11,9 +9,7 @@ from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
 class TestAPI(IhatemoneyTestCase):
     """Tests the API"""
 
-    def api_create(
-        self, name, id=None, password=None, contact=None, default_currency=None
-    ):
+    def api_create(self, name, id=None, password=None, contact=None):
         id = id or name
         password = password or name
         contact = contact or f"{name}@notmyidea.org"
@@ -24,8 +20,6 @@ class TestAPI(IhatemoneyTestCase):
             "password": password,
             "contact_email": contact,
         }
-        if default_currency:
-            data["default_currency"] = default_currency
 
         return self.client.post(
             "/api/projects",
@@ -90,7 +84,6 @@ class TestAPI(IhatemoneyTestCase):
                 "id": "raclette",
                 "password": "raclette",
                 "contact_email": "not-an-email",
-                "default_currency": "XXX",
             },
         )
 
@@ -124,7 +117,6 @@ class TestAPI(IhatemoneyTestCase):
             "members": [],
             "name": "raclette",
             "contact_email": "raclette@notmyidea.org",
-            "default_currency": "XXX",
             "id": "raclette",
             "logging_preference": 1,
         }
@@ -136,7 +128,6 @@ class TestAPI(IhatemoneyTestCase):
             "/api/projects/raclette",
             data={
                 "contact_email": "yeah@notmyidea.org",
-                "default_currency": "XXX",
                 "password": "raclette",
                 "name": "The raclette party",
                 "project_history": "y",
@@ -150,7 +141,6 @@ class TestAPI(IhatemoneyTestCase):
             "/api/projects/raclette",
             data={
                 "contact_email": "yeah@notmyidea.org",
-                "default_currency": "XXX",
                 "current_password": "fromage aux patates",
                 "password": "raclette",
                 "name": "The raclette party",
@@ -165,7 +155,6 @@ class TestAPI(IhatemoneyTestCase):
             "/api/projects/raclette",
             data={
                 "contact_email": "yeah@notmyidea.org",
-                "default_currency": "XXX",
                 "current_password": "raclette",
                 "password": "raclette",
                 "name": "The raclette party",
@@ -183,7 +172,6 @@ class TestAPI(IhatemoneyTestCase):
         expected = {
             "name": "The raclette party",
             "contact_email": "yeah@notmyidea.org",
-            "default_currency": "XXX",
             "members": [],
             "id": "raclette",
             "logging_preference": 1,
@@ -196,7 +184,6 @@ class TestAPI(IhatemoneyTestCase):
             "/api/projects/raclette",
             data={
                 "contact_email": "yeah@notmyidea.org",
-                "default_currency": "XXX",
                 "current_password": "raclette",
                 "password": "tartiflette",
                 "name": "The raclette party",
@@ -250,7 +237,6 @@ class TestAPI(IhatemoneyTestCase):
             "/api/projects/raclette",
             data={
                 "contact_email": "yeah@notmyidea.org",
-                "default_currency": "XXX",
                 "password": "tartiflette",
                 "name": "The raclette party",
             },
@@ -435,8 +421,6 @@ class TestAPI(IhatemoneyTestCase):
             "amount": 25.0,
             "date": "2011-08-10",
             "id": 1,
-            "converted_amount": 25.0,
-            "original_currency": "XXX",
             "external_link": "https://raclette.fr",
         }
 
@@ -507,8 +491,6 @@ class TestAPI(IhatemoneyTestCase):
             "amount": 25.0,
             "date": "2011-09-10",
             "external_link": "https://raclette.fr",
-            "converted_amount": 25.0,
-            "original_currency": "XXX",
             "id": 1,
         }
 
@@ -588,8 +570,6 @@ class TestAPI(IhatemoneyTestCase):
                 "date": "2011-08-10",
                 "id": id,
                 "external_link": "",
-                "original_currency": "XXX",
-                "converted_amount": expected_amount,
             }
 
             got = json.loads(req.data.decode("utf-8"))
@@ -623,169 +603,6 @@ class TestAPI(IhatemoneyTestCase):
                 headers=self.get_auth("raclette"),
             )
             self.assertStatus(400, req)
-
-    @pytest.mark.skip(reason="Currency conversion is broken")
-    def test_currencies(self):
-        # check /currencies for list of supported currencies
-        resp = self.client.get("/api/currencies")
-        assert 200 == resp.status_code
-        assert "XXX" in json.loads(resp.data.decode("utf-8"))
-
-        # create project with a default currency
-        resp = self.api_create("raclette", default_currency="EUR")
-        assert 201 == resp.status_code
-
-        # get information about it
-        resp = self.client.get(
-            "/api/projects/raclette", headers=self.get_auth("raclette")
-        )
-
-        assert 200 == resp.status_code
-        expected = {
-            "members": [],
-            "name": "raclette",
-            "contact_email": "raclette@notmyidea.org",
-            "default_currency": "EUR",
-            "id": "raclette",
-            "logging_preference": 1,
-        }
-        decoded_resp = json.loads(resp.data.decode("utf-8"))
-        assert decoded_resp == expected
-
-        # Add participants
-        self.api_add_member("raclette", "zorglub")
-        self.api_add_member("raclette", "jeanne")
-        self.api_add_member("raclette", "quentin")
-
-        # Add a bill without explicit currency
-        req = self.client.post(
-            "/api/projects/raclette/bills",
-            data={
-                "date": "2011-08-10",
-                "what": "fromage",
-                "payer": "1",
-                "payed_for": ["1", "2"],
-                "bill_type": "Expense",
-                "amount": "25",
-                "external_link": "https://raclette.fr",
-            },
-            headers=self.get_auth("raclette"),
-        )
-
-        # should return the id
-        self.assertStatus(201, req)
-        assert req.data.decode("utf-8") == "1\n"
-
-        # get this bill details
-        req = self.client.get(
-            "/api/projects/raclette/bills/1", headers=self.get_auth("raclette")
-        )
-
-        # compare with the added info
-        self.assertStatus(200, req)
-        expected = {
-            "what": "fromage",
-            "payer_id": 1,
-            "owers": [
-                {"activated": True, "id": 1, "name": "zorglub", "weight": 1},
-                {"activated": True, "id": 2, "name": "jeanne", "weight": 1},
-            ],
-            "bill_type": "Expense",
-            "amount": 25.0,
-            "date": "2011-08-10",
-            "id": 1,
-            "converted_amount": 25.0,
-            "original_currency": "EUR",
-            "external_link": "https://raclette.fr",
-        }
-
-        got = json.loads(req.data.decode("utf-8"))
-        assert (
-            datetime.date.today()
-            == datetime.datetime.strptime(got["creation_date"], "%Y-%m-%d").date()
-        )
-        del got["creation_date"]
-        assert expected == got
-
-        # Change bill amount and currency
-        req = self.client.put(
-            "/api/projects/raclette/bills/1",
-            data={
-                "date": "2011-08-10",
-                "what": "fromage",
-                "payer": "1",
-                "payed_for": ["1", "2"],
-                "bill_type": "Expense",
-                "amount": "30",
-                "external_link": "https://raclette.fr",
-                "original_currency": "CAD",
-            },
-            headers=self.get_auth("raclette"),
-        )
-        self.assertStatus(200, req)
-
-        # Check result
-        req = self.client.get(
-            "/api/projects/raclette/bills/1", headers=self.get_auth("raclette")
-        )
-        self.assertStatus(200, req)
-        expected_amount = self.converter.exchange_currency(30.0, "CAD", "EUR")
-        expected = {
-            "what": "fromage",
-            "payer_id": 1,
-            "owers": [
-                {"activated": True, "id": 1, "name": "zorglub", "weight": 1.0},
-                {"activated": True, "id": 2, "name": "jeanne", "weight": 1.0},
-            ],
-            "bill_type": "Expense",
-            "amount": 30.0,
-            "date": "2011-08-10",
-            "id": 1,
-            "converted_amount": expected_amount,
-            "original_currency": "CAD",
-            "external_link": "https://raclette.fr",
-        }
-
-        got = json.loads(req.data.decode("utf-8"))
-        del got["creation_date"]
-        assert expected == got
-
-        # Add a bill with yet another currency
-        req = self.client.post(
-            "/api/projects/raclette/bills",
-            data={
-                "date": "2011-09-10",
-                "what": "Pierogi",
-                "payer": "1",
-                "payed_for": ["2", "3"],
-                "bill_type": "Expense",
-                "amount": "80",
-                "original_currency": "PLN",
-            },
-            headers=self.get_auth("raclette"),
-        )
-
-        # should return the id
-        self.assertStatus(201, req)
-        assert req.data.decode("utf-8") == "2\n"
-
-        # Try to remove default project currency, it should fail
-        req = self.client.put(
-            "/api/projects/raclette",
-            data={
-                "contact_email": "yeah@notmyidea.org",
-                "default_currency": "XXX",
-                "current_password": "raclette",
-                "password": "raclette",
-                "name": "The raclette party",
-            },
-            headers=self.get_auth("raclette"),
-        )
-        self.assertStatus(400, req)
-        assert "This project cannot be set" in req.data.decode("utf-8")
-        assert "because it contains bills in multiple currencies" in req.data.decode(
-            "utf-8"
-        )
 
     def test_statistics(self):
         # create a project
@@ -896,8 +713,6 @@ class TestAPI(IhatemoneyTestCase):
             "date": "2011-08-10",
             "id": 1,
             "external_link": "",
-            "converted_amount": 25.0,
-            "original_currency": "XXX",
         }
         got = json.loads(req.data.decode("utf-8"))
         assert (
@@ -940,7 +755,6 @@ class TestAPI(IhatemoneyTestCase):
             "id": "raclette",
             "name": "raclette",
             "logging_preference": 1,
-            "default_currency": "XXX",
         }
 
         self.assertStatus(200, req)

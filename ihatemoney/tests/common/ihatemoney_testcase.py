@@ -6,7 +6,7 @@ from ihatemoney import models
 from ihatemoney.utils import generate_password_hash
 
 
-@pytest.mark.usefixtures("client", "converter")
+@pytest.mark.usefixtures("client")
 class BaseTestCase:
     SECRET_KEY = "TEST SESSION"
     SQLALCHEMY_DATABASE_URI = os.environ.get(
@@ -29,7 +29,6 @@ class BaseTestCase:
         self,
         id,
         follow_redirects=True,
-        default_currency="XXX",
         name=None,
         password=None,
         project_history=True,
@@ -45,7 +44,6 @@ class BaseTestCase:
                 "id": id,
                 "password": password,
                 "contact_email": f"{id}@notmyidea.org",
-                "default_currency": default_currency,
                 "project_history": project_history,
             },
             follow_redirects=follow_redirects,
@@ -59,7 +57,7 @@ class BaseTestCase:
         )
         assert ("/{id}/edit" in str(resp.response)) == (not success)
 
-    def create_project(self, id, default_currency="XXX", name=None, password=None):
+    def create_project(self, id, name=None, password=None):
         name = name or str(id)
         password = password or id
         project = models.Project(
@@ -67,7 +65,6 @@ class BaseTestCase:
             name=name,
             password=generate_password_hash(password),
             contact_email=f"{id}@notmyidea.org",
-            default_currency=default_currency,
         )
         models.db.session.add(project)
         models.db.session.commit()

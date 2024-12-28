@@ -5,7 +5,6 @@ from flask_restful import Resource, abort
 from werkzeug.security import check_password_hash
 from wtforms.fields import BooleanField
 
-from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.emails import send_creation_email
 from ihatemoney.forms import EditProjectForm, MemberForm, ProjectForm, get_billform_for
 from ihatemoney.models import Bill, Person, Project, db
@@ -48,13 +47,6 @@ def need_auth(f):
         abort(401)
 
     return wrapper
-
-
-class CurrenciesHandler(Resource):
-    currency_helper = CurrencyConverter()
-
-    def get(self):
-        return self.currency_helper.get_currencies()
 
 
 class ProjectsHandler(Resource):

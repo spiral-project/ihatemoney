@@ -99,7 +99,6 @@
         </div>
     </div>
 
-    {{ input(form.default_currency) }}
     {{ input(form.current_password) }}
     <div class="actions">
         <button class="btn btn-primary">{{ _("Save changes") }}</button>
@@ -198,9 +197,6 @@
 
     <details class="mb-3">
         <summary class="mb-2">{{ _("More options") }}</summary>
-        {% if g.project.default_currency != "XXX" %}
-            {{ input(form.original_currency, inline=True, class="form-control custom-select") }}
-        {% endif %}
         {{ input(form.external_link, inline=True) }}
     </details>
     </fieldset>

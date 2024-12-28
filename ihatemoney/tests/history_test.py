@@ -17,7 +17,6 @@ def demo(client):
             "id": "demo",
             "password": "demo",
             "contact_email": "demo@notmyidea.org",
-            "default_currency": "XXX",
             "project_history": True,
         },
     )
@@ -43,7 +42,6 @@ class TestHistory(IhatemoneyTestCase):
             "contact_email": "demo@notmyidea.org",
             "current_password": current_password,
             "password": "demo",
-            "default_currency": "XXX",
         }
 
         if logging_preference != LoggingMode.DISABLED:
@@ -93,7 +91,6 @@ class TestHistory(IhatemoneyTestCase):
             "current_password": "demo",
             "password": "123456",
             "project_history": "y",
-            "default_currency": "USD",  # Currency changed from default
         }
 
         resp = self.client.post("/demo/edit", data=new_data, follow_redirects=True)
@@ -114,7 +111,7 @@ class TestHistory(IhatemoneyTestCase):
         assert resp.data.decode("utf-8").index("Project renamed ") < resp.data.decode(
             "utf-8"
         ).index("Project private code changed")
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 5
+        assert resp.data.decode("utf-8").count("<td> -- </td>") == 4
         assert "127.0.0.1" not in resp.data.decode("utf-8")
 
     def test_project_privacy_edit(self):
@@ -184,7 +181,6 @@ class TestHistory(IhatemoneyTestCase):
             "contact_email": "demo2@notmyidea.org",
             "current_password": "demo",
             "password": "123456",
-            "default_currency": "USD",
         }
 
         # Keep privacy settings where they were
@@ -307,7 +303,7 @@ class TestHistory(IhatemoneyTestCase):
         )
         assert "Nothing to list" not in resp.data.decode("utf-8")
         assert "Some entries below contain IP addresses," in resp.data.decode("utf-8")
-        assert resp.data.decode("utf-8").count("127.0.0.1") == 12
+        assert resp.data.decode("utf-8").count("127.0.0.1") == 10
         assert resp.data.decode("utf-8").count("<td> -- </td>") == 1
 
         # Generate more operations to confirm additional IP info isn't recorded
@@ -315,8 +311,8 @@ class TestHistory(IhatemoneyTestCase):
 
         resp = self.client.get("/demo/history")
         assert resp.status_code == 200
-        assert resp.data.decode("utf-8").count("127.0.0.1") == 12
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 7
+        assert resp.data.decode("utf-8").count("127.0.0.1") == 10
+        assert resp.data.decode("utf-8").count("<td> -- </td>") == 6
 
         # Ensure we can't clear IP data with a GET or with a password-less POST
         resp = self.client.get("/demo/strip_ip_addresses")
@@ -326,8 +322,8 @@ class TestHistory(IhatemoneyTestCase):
 
         resp = self.client.get("/demo/history")
         assert resp.status_code == 200
-        assert resp.data.decode("utf-8").count("127.0.0.1") == 12
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 7
+        assert resp.data.decode("utf-8").count("127.0.0.1") == 10
+        assert resp.data.decode("utf-8").count("<td> -- </td>") == 6
 
         # Clear IP Data
         resp = self.client.post(
@@ -350,7 +346,7 @@ class TestHistory(IhatemoneyTestCase):
             "utf-8"
         )
         assert resp.data.decode("utf-8").count("127.0.0.1") == 0
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 19
+        assert resp.data.decode("utf-8").count("<td> -- </td>") == 16
 
     def test_logs_for_common_actions(self):
         # adds a member to this project
@@ -638,7 +634,6 @@ class TestHistory(IhatemoneyTestCase):
                 "payed_for": [1],
                 "bill_type": "Expense",
                 "amount": "10",
-                "original_currency": "EUR",
             },
         )
 

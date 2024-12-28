@@ -5,7 +5,6 @@ from flask_restful import Api
 from ihatemoney.api.common import (
     BillHandler,
     BillsHandler,
-    CurrenciesHandler,
     MemberHandler,
     MembersHandler,
     ProjectHandler,
@@ -18,7 +17,6 @@ api = Blueprint("api", __name__, url_prefix="/api")
 CORS(api)
 restful_api = Api(api)
 
-restful_api.add_resource(CurrenciesHandler, "/currencies")
 restful_api.add_resource(ProjectsHandler, "/projects")
 restful_api.add_resource(ProjectHandler, "/projects/<string:project_id>")
 restful_api.add_resource(TokenHandler, "/projects/<string:project_id>/token")

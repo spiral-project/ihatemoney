@@ -102,7 +102,6 @@ def get_history(project, human_readable_names=True):
                     "amount": detailed_version.amount,
                     "owers": [describe_version(o) for o in detailed_version.owers],
                     "external_link": detailed_version.external_link,
-                    "original_currency": detailed_version.original_currency,
                 }
                 common_properties["bill_details"] = details
 

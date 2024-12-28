@@ -4,11 +4,9 @@ import re
 from urllib.parse import unquote, urlparse, urlunparse
 
 from flask import session, url_for
-import pytest
 from werkzeug.security import check_password_hash
 
 from ihatemoney import models
-from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.tests.common.help_functions import extract_link
 from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
 from ihatemoney.utils import generate_password_hash
@@ -182,7 +180,6 @@ class TestBudget(IhatemoneyTestCase):
                 "contact_email": "zorglub@notmyidea.org",
                 "current_password": "raclette",
                 "password": "didoudida",
-                "default_currency": "XXX",
             },
             follow_redirects=True,
         )
@@ -259,7 +256,6 @@ class TestBudget(IhatemoneyTestCase):
                         "id": "raclette",
                         "password": "party",
                         "contact_email": "raclette@notmyidea.org",
-                        "default_currency": "USD",
                     },
                     follow_redirects=True,
                 )
@@ -287,7 +283,6 @@ class TestBudget(IhatemoneyTestCase):
                     "id": "raclette",  # already used !
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
-                    "default_currency": "USD",
                 },
             )
 
@@ -305,7 +300,6 @@ class TestBudget(IhatemoneyTestCase):
                     "id": "raclette",
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
-                    "default_currency": "USD",
                 },
             )
 
@@ -326,7 +320,6 @@ class TestBudget(IhatemoneyTestCase):
                     "id": "raclette",
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
-                    "default_currency": "USD",
                 },
             )
 
@@ -345,7 +338,6 @@ class TestBudget(IhatemoneyTestCase):
                     "id": "raclette",
                     "password": "party",
                     "contact_email": "raclette@notmyidea.org",
-                    "default_currency": "USD",
                 },
             )
 
@@ -963,6 +955,7 @@ class TestBudget(IhatemoneyTestCase):
         result[self.get_project("raclette").members[0].id] = 8.12
         result[self.get_project("raclette").members[1].id] = 0.0
         result[self.get_project("raclette").members[2].id] = -8.12
+
         # Since we're using floating point to store currency, we can have some
         # rounding issues that prevent test from working.
         # However, we should obtain the same values as the theoretical ones if we
@@ -979,7 +972,6 @@ class TestBudget(IhatemoneyTestCase):
             "contact_email": "zorglub@notmyidea.org",
             "password": "didoudida",
             "logging_preference": LoggingMode.ENABLED.value,
-            "default_currency": "USD",
         }
 
         # It should fail if we don't provide the current password
@@ -988,7 +980,6 @@ class TestBudget(IhatemoneyTestCase):
         project = self.get_project("raclette")
         assert project.name != new_data["name"]
         assert project.contact_email != new_data["contact_email"]
-        assert project.default_currency != new_data["default_currency"]
         assert not check_password_hash(project.password, new_data["password"])
 
         # It should fail if we provide the wrong current password
@@ -998,7 +989,6 @@ class TestBudget(IhatemoneyTestCase):
         project = self.get_project("raclette")
         assert project.name != new_data["name"]
         assert project.contact_email != new_data["contact_email"]
-        assert project.default_currency != new_data["default_currency"]
         assert not check_password_hash(project.password, new_data["password"])
 
         # It should work if we give the current private code
@@ -1008,7 +998,6 @@ class TestBudget(IhatemoneyTestCase):
         project = self.get_project("raclette")
         assert project.name == new_data["name"]
         assert project.contact_email == new_data["contact_email"]
-        assert project.default_currency == new_data["default_currency"]
         assert check_password_hash(project.password, new_data["password"])
 
         # Editing a project with a wrong email address should fail
@@ -1055,7 +1044,7 @@ class TestBudget(IhatemoneyTestCase):
 
     def test_statistics(self):
         # Output is checked with the USD sign
-        self.post_project("raclette", default_currency="USD")
+        self.post_project("raclette")
 
         # add participants
         self.client.post("/raclette/members/add", data={"name": "zorglub", "weight": 2})
@@ -1117,18 +1106,18 @@ class TestBudget(IhatemoneyTestCase):
         response = self.client.get("/raclette/statistics")
         regex = r"<td class=\"d-md-none\">{}</td>\s*<td>{}</td>\s*<td>{}</td>"
         assert re.search(
-            regex.format("zorglub", r"\$20\.00", r"\$31\.67"),
+            regex.format("zorglub", r"20\.0", r"31\.67"),
             response.data.decode("utf-8"),
         )
         assert re.search(
-            regex.format("jeanne", r"\$20\.00", r"\$5\.83"),
+            regex.format("jeanne", r"20\.0", r"5\.83"),
             response.data.decode("utf-8"),
         )
         assert re.search(
-            regex.format("tata", r"\$0\.00", r"\$2\.50"), response.data.decode("utf-8")
+            regex.format("tata", r"0", r"2\.5"), response.data.decode("utf-8")
         )
         assert re.search(
-            regex.format("pépé", r"\$0\.00", r"\$0\.00"), response.data.decode("utf-8")
+            regex.format("pépé", r"0", r"0"), response.data.decode("utf-8")
         )
 
         # Check that the order of participants in the sidebar table is the
@@ -1556,225 +1545,6 @@ class TestBudget(IhatemoneyTestCase):
         member = models.Person.query.filter(models.Person.id == 1).one_or_none()
         assert member is None
 
-    @pytest.mark.skip(reason="Currency conversion is broken")
-    def test_currency_switch(self):
-        # A project should be editable
-        self.post_project("raclette")
-
-        # add participants
-        self.client.post("/raclette/members/add", data={"name": "zorglub"})
-        self.client.post("/raclette/members/add", data={"name": "jeanne"})
-        self.client.post("/raclette/members/add", data={"name": "tata"})
-
-        # create bills
-        self.client.post(
-            "/raclette/add",
-            data={
-                "date": "2016-12-31",
-                "what": "fromage à raclette",
-                "payer": 1,
-                "payed_for": [1, 2, 3],
-                "bill_type": "Expense",
-                "amount": "10.0",
-            },
-        )
-
-        self.client.post(
-            "/raclette/add",
-            data={
-                "date": "2016-12-31",
-                "what": "red wine",
-                "payer": 2,
-                "payed_for": [1, 3],
-                "bill_type": "Expense",
-                "amount": "20",
-            },
-        )
-
-        self.client.post(
-            "/raclette/add",
-            data={
-                "date": "2017-01-01",
-                "what": "refund",
-                "payer": 3,
-                "payed_for": [2],
-                "bill_type": "Expense",
-                "amount": "13.33",
-            },
-        )
-
-        project = self.get_project("raclette")
-
-        # First all converted_amount should be the same as amount, with no currency
-        for bill in project.get_bills():
-            assert bill.original_currency == CurrencyConverter.no_currency
-            assert bill.amount == bill.converted_amount
-
-        # Then, switch to EUR, all bills must have been changed to this currency
-        project.switch_currency("EUR")
-        for bill in project.get_bills():
-            assert bill.original_currency == "EUR"
-            assert bill.amount == bill.converted_amount
-
-        # Add a bill in EUR, the current default currency
-        self.client.post(
-            "/raclette/add",
-            data={
-                "date": "2017-01-01",
-                "what": "refund from EUR",
-                "payer": 3,
-                "payed_for": [2],
-                "bill_type": "Expense",
-                "amount": "20",
-                "original_currency": "EUR",
-            },
-        )
-        last_bill = project.get_bills().first()
-        assert last_bill.converted_amount == last_bill.amount
-
-        # Erase all currencies
-        project.switch_currency(CurrencyConverter.no_currency)
-        for bill in project.get_bills():
-            assert bill.original_currency == CurrencyConverter.no_currency
-            assert bill.amount == bill.converted_amount
-
-        # Let's go back to EUR to test conversion
-        project.switch_currency("EUR")
-        # This is a bill in CAD
-        self.client.post(
-            "/raclette/add",
-            data={
-                "date": "2017-01-01",
-                "what": "Poutine",
-                "payer": 3,
-                "payed_for": [2],
-                "bill_type": "Expense",
-                "amount": "18",
-                "original_currency": "CAD",
-            },
-        )
-        last_bill = project.get_bills().first()
-        expected_amount = self.converter.exchange_currency(
-            last_bill.amount, "CAD", "EUR"
-        )
-        assert last_bill.converted_amount == expected_amount
-
-        # Switch to USD. Now, NO bill should be in USD, since they already had a currency
-        project.switch_currency("USD")
-        for bill in project.get_bills():
-            assert bill.original_currency != "USD"
-            expected_amount = self.converter.exchange_currency(
-                bill.amount, bill.original_currency, "USD"
-            )
-            assert bill.converted_amount == expected_amount
-
-        # Switching back to no currency must fail
-        with pytest.raises(ValueError):
-            project.switch_currency(CurrencyConverter.no_currency)
-
-        # It also must fails with a nice error using the form
-        resp = self.client.post(
-            "/raclette/edit",
-            data={
-                "name": "demonstration",
-                "password": "demo",
-                "contact_email": "demo@notmyidea.org",
-                "project_history": "y",
-                "default_currency": CurrencyConverter.no_currency,
-            },
-        )
-        # A user displayed error should be generated, and its currency should be the same.
-        self.assertStatus(200, resp)
-        assert '<p class="alert alert-danger">' in resp.data.decode("utf-8")
-        assert self.get_project("raclette").default_currency == "USD"
-
-    @pytest.mark.skip(reason="Currency conversion is broken")
-    def test_currency_switch_to_bill_currency(self):
-        # Default currency is 'XXX', but we should start from a project with a currency
-        self.post_project("raclette", default_currency="USD")
-
-        # add participants
-        self.client.post("/raclette/members/add", data={"name": "zorglub"})
-        self.client.post("/raclette/members/add", data={"name": "jeanne"})
-
-        # Bill with a different currency than project's default
-        self.client.post(
-            "/raclette/add",
-            data={
-                "date": "2016-12-31",
-                "what": "fromage à raclette",
-                "payer": 1,
-                "payed_for": [1, 2],
-                "bill_type": "Expense",
-                "amount": "10.0",
-                "original_currency": "EUR",
-            },
-        )
-
-        project = self.get_project("raclette")
-
-        bill = project.get_bills().first()
-        assert (
-            self.converter.exchange_currency(bill.amount, "EUR", "USD")
-            == bill.converted_amount
-        )
-
-        # And switch project to the currency from the bill we created
-        project.switch_currency("EUR")
-        bill = project.get_bills().first()
-        assert bill.converted_amount == bill.amount
-
-    @pytest.mark.skip(reason="Currency conversion is broken")
-    def test_currency_switch_to_no_currency(self):
-        # Default currency is 'XXX', but we should start from a project with a currency
-        self.post_project("raclette", default_currency="USD")
-
-        # add participants
-        self.client.post("/raclette/members/add", data={"name": "zorglub"})
-        self.client.post("/raclette/members/add", data={"name": "jeanne"})
-
-        # Bills with a different currency than project's default
-        self.client.post(
-            "/raclette/add",
-            data={
-                "date": "2016-12-31",
-                "what": "fromage à raclette",
-                "payer": 1,
-                "payed_for": [1, 2],
-                "bill_type": "Expense",
-                "amount": "10.0",
-                "original_currency": "EUR",
-            },
-        )
-
-        self.client.post(
-            "/raclette/add",
-            data={
-                "date": "2017-01-01",
-                "what": "aspirine",
-                "payer": 2,
-                "payed_for": [1, 2],
-                "bill_type": "Expense",
-                "amount": "5.0",
-                "original_currency": "EUR",
-            },
-        )
-
-        project = self.get_project("raclette")
-
-        for bill in project.get_bills_unordered():
-            assert (
-                self.converter.exchange_currency(bill.amount, "EUR", "USD")
-                == bill.converted_amount
-            )
-
-        # And switch project to no currency: amount should be equal to what was submitted
-        project.switch_currency(CurrencyConverter.no_currency)
-        no_currency_bills = [
-            (bill.amount, bill.converted_amount) for bill in project.get_bills()
-        ]
-        assert no_currency_bills == [(5.0, 5.0), (10.0, 10.0)]
-
     def test_amount_is_null(self):
         self.post_project("raclette")
 
@@ -1791,7 +1561,6 @@ class TestBudget(IhatemoneyTestCase):
                 "payed_for": [1],
                 "bill_type": "Expense",
                 "amount": "0",
-                "original_currency": "XXX",
             },
         )
 
@@ -1836,7 +1605,6 @@ class TestBudget(IhatemoneyTestCase):
                 "payed_for": [1],
                 "bill_type": "Expense",
                 "amount": "9347242149381274732472348728748723473278472843.12",
-                "original_currency": "EUR",
             },
         )
         assert '<p class="alert alert-danger">' in resp.data.decode("utf-8")
@@ -1870,7 +1638,7 @@ class TestBudget(IhatemoneyTestCase):
         """
         Tests that the RSS feed output content is expected.
         """
-        self.post_project("raclette", default_currency="EUR")
+        self.post_project("raclette")
         self.client.post("/raclette/members/add", data={"name": "george"})
         self.client.post("/raclette/members/add", data={"name": "peter"})
         self.client.post("/raclette/members/add", data={"name": "steven"})
@@ -1883,7 +1651,6 @@ class TestBudget(IhatemoneyTestCase):
                 "payer": 1,
                 "payed_for": [1, 2, 3],
                 "amount": "12",
-                "original_currency": "EUR",
                 "bill_type": "Expense",
             },
         )
@@ -1895,7 +1662,6 @@ class TestBudget(IhatemoneyTestCase):
                 "payer": 2,
                 "payed_for": [1, 2],
                 "amount": "15",
-                "original_currency": "EUR",
                 "bill_type": "Expense",
             },
         )
@@ -1907,7 +1673,6 @@ class TestBudget(IhatemoneyTestCase):
                 "payer": 2,
                 "payed_for": [1, 2],
                 "amount": "10",
-                "original_currency": "EUR",
                 "bill_type": "Expense",
             },
         )
@@ -1925,23 +1690,23 @@ class TestBudget(IhatemoneyTestCase):
         <atom:link href="http://localhost/raclette/feed/{token}.xml" rel="self" type="application/rss+xml" />
         <link>http://localhost/raclette/</link>
         <item>
-            <title>fromage à raclette - €12.00</title>
+            <title>fromage à raclette - 12.0</title>
             <guid isPermaLink="false">1</guid>
             <dc:creator>george</dc:creator>
-            <description>December 31, 2016 - george, peter, steven : €4.00</description>
+            <description>December 31, 2016 - george, peter, steven : 4.0</description>
         """
             in content
         )
 
-        assert """<title>charcuterie - €15.00</title>""" in content
-        assert """<title>vin blanc - €10.00</title>""" in content
+        assert "<title>charcuterie - 15.0</title>" in content
+        assert "<title>vin blanc - 10.0</title>" in content
 
     def test_rss_feed_history_disabled(self):
         """
         Tests that RSS feeds is correctly rendered even if the project
         history is disabled.
         """
-        self.post_project("raclette", default_currency="EUR", project_history=False)
+        self.post_project("raclette", project_history=False)
         self.client.post("/raclette/members/add", data={"name": "george"})
         self.client.post("/raclette/members/add", data={"name": "peter"})
         self.client.post("/raclette/members/add", data={"name": "steven"})
@@ -1954,7 +1719,6 @@ class TestBudget(IhatemoneyTestCase):
                 "payer": 1,
                 "payed_for": [1, 2, 3],
                 "amount": "12",
-                "original_currency": "EUR",
                 "bill_type": "Expense",
             },
         )
@@ -1966,7 +1730,6 @@ class TestBudget(IhatemoneyTestCase):
                 "payer": 2,
                 "payed_for": [1, 2],
                 "amount": "15",
-                "original_currency": "EUR",
                 "bill_type": "Expense",
             },
         )
@@ -1978,7 +1741,6 @@ class TestBudget(IhatemoneyTestCase):
                 "payer": 2,
                 "payed_for": [1, 2],
                 "amount": "10",
-                "original_currency": "EUR",
                 "bill_type": "Expense",
             },
         )
@@ -1988,8 +1750,8 @@ class TestBudget(IhatemoneyTestCase):
         resp = self.client.get(f"/raclette/feed/{token}.xml")
 
         content = resp.data.decode()
-        assert """<title>charcuterie - €15.00</title>""" in content
-        assert """<title>vin blanc - €10.00</title>""" in content
+        assert """<title>charcuterie - 15.0</title>""" in content
+        assert """<title>vin blanc - 10.0</title>""" in content
 
     def test_rss_if_modified_since_header(self):
         # Project creation
@@ -2036,7 +1798,6 @@ class TestBudget(IhatemoneyTestCase):
                 "payer": 1,
                 "payed_for": [1],
                 "amount": "12",
-                "original_currency": "XXX",
                 "bill_type": "Expense",
             },
             follow_redirects=True,
@@ -2094,7 +1855,6 @@ class TestBudget(IhatemoneyTestCase):
                 "payed_for": [1],
                 "amount": "12",
                 "bill_type": "Expense",
-                "original_currency": "XXX",
             },
             follow_redirects=True,
         )
@@ -2175,7 +1935,6 @@ class TestBudget(IhatemoneyTestCase):
                 "contact_email": "zorglub@notmyidea.org",
                 "current_password": "raclette",
                 "password": "didoudida",
-                "default_currency": "XXX",
             },
             follow_redirects=True,
         )

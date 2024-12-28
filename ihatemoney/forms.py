@@ -14,7 +14,6 @@ from wtforms.fields import (
     BooleanField,
     DateField,
     DecimalField,
-    Label,
     PasswordField,
     SelectField,
     SelectMultipleField,
@@ -38,13 +37,11 @@ from wtforms.validators import (
     ValidationError,
 )
 
-from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.models import Bill, BillType, LoggingMode, Person, Project
 from ihatemoney.utils import (
     em_surround,
     eval_arithmetic_expression,
     generate_password_hash,
-    render_localized_currency,
     slugify,
 )
 
@@ -64,20 +61,6 @@ def get_billform_for(project, set_default=True, **kwargs):
 
     """
     form = BillForm(**kwargs)
-    if form.original_currency.data is None:
-        form.original_currency.data = project.default_currency
-
-    # Used in validate_original_currency
-    form.project_currency = project.default_currency
-
-    show_no_currency = form.original_currency.data == CurrencyConverter.no_currency
-
-    form.original_currency.choices = [
-        (currency_name, render_localized_currency(currency_name, detailed=False))
-        for currency_name in form.currency_helper.get_currencies(
-            with_no_currency=show_no_currency
-        )
-    ]
 
     active_members = [(m.id, m.name) for m in project.active_members]
 
@@ -137,30 +120,6 @@ class EditProjectForm(FlaskForm):
     contact_email = StringField(_("Email"), validators=[DataRequired(), Email()])
     project_history = BooleanField(_("Enable project history"))
     ip_recording = BooleanField(_("Use IP tracking for project history"))
-    currency_helper = CurrencyConverter()
-    default_currency = SelectField(
-        _("Default Currency"),
-        validators=[DataRequired()],
-        default=CurrencyConverter.no_currency,
-        description=_(
-            "Setting a default currency enables currency conversion between bills"
-        ),
-    )
-
-    def __init__(self, *args, **kwargs):
-        if not hasattr(self, "id"):
-            # We must access the project to validate the default currency, using its id.
-            # In ProjectForm, 'id' is provided, but not in this base class, so it *must*
-            # be provided by callers.
-            # Since id can be defined as a WTForms.StringField, we mimics it,
-            # using an object that can have a 'data' attribute.
-            # It defaults to empty string to ensure that query run smoothly.
-            self.id = SimpleNamespace(data=kwargs.pop("id", ""))
-        super().__init__(*args, **kwargs)
-        self.default_currency.choices = [
-            (currency_name, render_localized_currency(currency_name, detailed=True))
-            for currency_name in self.currency_helper.get_currencies()
-        ]
 
     def validate_current_password(self, field):
         project = Project.query.get(self.id.data)
@@ -180,28 +139,6 @@ class EditProjectForm(FlaskForm):
             else:
                 return LoggingMode.ENABLED
 
-    def validate_default_currency(self, field):
-        project = Project.query.get(self.id.data)
-        if (
-            project is not None
-            and field.data == CurrencyConverter.no_currency
-            and project.has_multiple_currencies()
-        ):
-            msg = _(
-                "This project cannot be set to 'no currency'"
-                " because it contains bills in multiple currencies."
-            )
-            raise ValidationError(msg)
-        if (
-            project is not None
-            and field.data != project.default_currency
-            and project.has_bills()
-        ):
-            msg = _(
-                "Cannot change project currency because currency conversion is broken"
-            )
-            raise ValidationError(msg)
-
     def update(self, project):
         """Update the project with the information from the form"""
         project.name = self.name.data
@@ -217,9 +154,19 @@ class EditProjectForm(FlaskForm):
 
         project.contact_email = self.contact_email.data
         project.logging_preference = self.logging_preference
-        project.switch_currency(self.default_currency.data)
 
         return project
+
+    def __init__(self, *args, **kwargs):
+        if not hasattr(self, "id"):
+            # We must access the project to validate the default currency, using its id.
+            # In ProjectForm, 'id' is provided, but not in this base class, so it *must*
+            # be provided by callers.
+            # Since id can be defined as a WTForms.StringField, we mimic it,
+            # using an object that can have a 'data' attribute.
+            # It defaults to empty string to ensure that query run smoothly.
+            self.id = SimpleNamespace(data=kwargs.pop("id", ""))
+        super().__init__(*args, **kwargs)
 
 
 class ImportProjectForm(FlaskForm):
@@ -258,7 +205,6 @@ class ProjectForm(EditProjectForm):
             password=generate_password_hash(self.password.data),
             contact_email=self.contact_email.data,
             logging_preference=self.logging_preference,
-            default_currency=self.default_currency.data,
         )
         return project
 
@@ -352,8 +298,6 @@ class BillForm(FlaskForm):
     what = StringField(_("What?"), validators=[DataRequired()])
     payer = SelectField(_("Who paid?"), validators=[DataRequired()], coerce=int)
     amount = CalculatorStringField(_("How much?"), validators=[DataRequired()])
-    currency_helper = CurrencyConverter()
-    original_currency = SelectField(_("Currency"), validators=[DataRequired()])
     external_link = URLField(
         _("External link"),
         default="",
@@ -377,10 +321,8 @@ class BillForm(FlaskForm):
             amount=float(self.amount.data),
             date=self.date.data,
             external_link=self.external_link.data,
-            original_currency=str(self.original_currency.data),
             owers=Person.query.get_by_ids(self.payed_for.data, project),
             payer_id=self.payer.data,
-            project_default_currency=project.default_currency,
             what=self.what.data,
             bill_type=self.bill_type.data,
         )
@@ -393,10 +335,6 @@ class BillForm(FlaskForm):
         bill.external_link = self.external_link.data
         bill.date = self.date.data
         bill.owers = Person.query.get_by_ids(self.payed_for.data, project)
-        bill.original_currency = self.original_currency.data
-        bill.converted_amount = self.currency_helper.exchange_currency(
-            bill.amount, bill.original_currency, project.default_currency
-        )
         return bill
 
     def fill(self, bill, project):
@@ -405,17 +343,8 @@ class BillForm(FlaskForm):
         self.what.data = bill.what
         self.bill_type.data = bill.bill_type
         self.external_link.data = bill.external_link
-        self.original_currency.data = bill.original_currency
         self.date.data = bill.date
         self.payed_for.data = [int(ower.id) for ower in bill.owers]
-
-        self.original_currency.label = Label("original_currency", _("Currency"))
-        self.original_currency.description = _(
-            "Project default: %(currency)s",
-            currency=render_localized_currency(
-                project.default_currency, detailed=False
-            ),
-        )
 
     def set_default(self):
         self.payed_for.data = self.payed_for.default
@@ -424,17 +353,6 @@ class BillForm(FlaskForm):
         if decimal.Decimal(field.data) > decimal.MAX_EMAX:
             # See https://github.com/python-babel/babel/issues/821
             raise ValidationError(f"Result is too high: {field.data}")
-
-    def validate_original_currency(self, field):
-        # Workaround for currency API breakage
-        # See #1232
-        if field.data not in [CurrencyConverter.no_currency, self.project_currency]:
-            msg = _(
-                "Failed to convert from %(bill_currency)s currency to %(project_currency)s",
-                bill_currency=field.data,
-                project_currency=self.project_currency,
-            )
-            raise ValidationError(msg)
 
 
 class MemberForm(FlaskForm):

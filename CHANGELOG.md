@@ -2,8 +2,9 @@
 
 This document describes changes between each past release.
 
-## 6.2.0 (unreleased)
+## 7.0.0 (unreleased)
 
+- Remove the support for multiple currencies, [as discussed](https://github.com/spiral-project/ihatemoney/issues/1232#issuecomment-2081517453) in our bugtracker.
 - Add support for python 3.12 (#757)
 - Migrate from setup.cfg to pyproject.toml (#1243)
 - Update to wtforms 3.1 (#1248)
