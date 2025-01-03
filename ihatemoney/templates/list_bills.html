@@ -105,6 +105,16 @@
   <li class="page-item {% if bills.page == bills.pages %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.next_num) }}">{{ _("Older bills") }} &raquo;</a></li>
 </ul>
 {% endif %}
+<form action="{{ url_for(".list_bills") }}" method="post">
+    {{ csrf_form.csrf_token }}
+    <label for="start_date">Start Date:</label>
+    <input type="date" id="start_date" name="start_date" value="{{ start_date if start_date else '' }}">
+
+    <label for="end_date">End Date:</label>
+    <input type="date" id="end_date" name="end_date" value="{{ end_date if end_date else '' }}">
+
+    <input type="submit" value="Filter">
+</form>
 <span id="new-bill" class="ml-auto pb-2" {% if not g.project.members %} data-toggle="tooltip" title="{{_('You should start by adding participants')}}" {% endif %}>
     <a href="{{ url_for('.add_bill') }}" class="btn btn-primary {% if not g.project.members %} disabled {% endif %}" data-toggle="modal" data-keyboard="true" data-target="#bill-form" autofocus>
         <i class="icon icon-white before-text">{{ static_include("images/plus.svg") | safe }}</i>
