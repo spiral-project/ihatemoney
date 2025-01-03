@@ -165,7 +165,6 @@
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
     {{ input(form.date, inline=True) }}
-    {{ input(form.bill_type, inline=True) }}
     {{ input(form.what, inline=True) }}
     {{ input(form.payer, inline=True, class="form-control custom-select") }}
     <div data-toggle="tooltip" data-placement="top" title='{{ _("Simple operations are allowed, e.g. (18+36.2)/3") }}'>
@@ -201,6 +200,7 @@
         {% if g.project.default_currency != "XXX" %}
             {{ input(form.original_currency, inline=True, class="form-control custom-select") }}
         {% endif %}
+        {{ input(form.bill_type, inline=True) }}
         {{ input(form.external_link, inline=True) }}
     </details>
     </fieldset>
