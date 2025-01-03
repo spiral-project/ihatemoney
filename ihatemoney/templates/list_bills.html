@@ -148,10 +148,22 @@
                     </span>
                 </td>
                 <td class="bill-actions d-flex align-items-center">
-                    <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" title="{{ _("edit") }}">{{ _('edit') }}</a>
+                    <a class="edit" href="{{ url_for(".edit_bill", bill_id=bill.id) }}" data-toggle="tooltip"
+                        {% if bill.involves_deactivated_members %}
+                            title="Cannot be edited as deactivated members involved"
+                        {% else %}
+                            title="Click to edit this bill"
+                        {% endif %}
+                    >{{ _('edit') }}</a>
                     <form class="delete-bill" action="{{ url_for(".delete_bill", bill_id=bill.id) }}" method="POST">
                         {{ csrf_form.csrf_token }}
-                        <button class="action delete" type="submit" title="{{ _("delete") }}"></button>
+                        <button class="action delete" type="submit" data-toggle="tooltip"
+                            {% if bill.involves_deactivated_members %}
+                                title="Cannot be deleted as deactivated members involved"
+                            {% else %}
+                                title="Click to delete this bill"
+                            {% endif %}
+                        ></button>
                     </form>
                     {% if bill.external_link %}
                     <a class="show" href="{{ bill.external_link }}" ref="noopener" target="_blank" title="{{ _("show") }}">{{ _('show') }} </a>
