@@ -790,15 +790,18 @@ class TestBudget(IhatemoneyTestCase):
         self.client.post("/rent/members/add", data={"name": "bob"})
         self.client.post("/rent/members/add", data={"name": "alice"})
 
-        members_ids = [m.id for m in self.get_project("rent").members]
-        # create a bill to test reimbursement
+        everybody = [m.id for m in self.get_project("rent").members]
+        bob = everybody[0]
+        alice = everybody[1]
+
+        # create a bill
         self.client.post(
             "/rent/add",
             data={
                 "date": "2022-12-12",
                 "what": "december rent",
-                "payer": members_ids[0],  # bob
-                "payed_for": members_ids,  # bob and alice
+                "payer": bob,
+                "payed_for": everybody,
                 "bill_type": "Expense",
                 "amount": "1000",
             },
@@ -806,32 +809,40 @@ class TestBudget(IhatemoneyTestCase):
         # check balance
         balance = self.get_project("rent").balance
         assert set(balance.values()), set([500 == -500])
-        # check paid
-        bob_paid = self.get_project("rent").full_balance[2][members_ids[0]]
-        alice_paid = self.get_project("rent").full_balance[2][members_ids[1]]
+
+        project = self.get_project("rent")
+        bob_paid = project.full_balance[2][bob]
+        alice_paid = project.full_balance[2][alice]
         assert bob_paid == 1000
         assert alice_paid == 0
 
-        # test reimbursement bill
+        # reimbursement bill
         self.client.post(
             "/rent/add",
             data={
                 "date": "2022-12-13",
                 "what": "reimbursement for rent",
-                "payer": members_ids[1],  # alice
-                "payed_for": members_ids[0],  # bob
+                "payer": alice,
+                "payed_for": bob,
                 "bill_type": "Reimbursement",
                 "amount": "500",
             },
         )
 
-        balance = self.get_project("rent").balance
+        balance = project.balance
         assert set(balance.values()), set([0 == 0])
-        # check paid
-        bob_paid = self.get_project("rent").full_balance[2][members_ids[0]]
-        alice_paid = self.get_project("rent").full_balance[2][members_ids[1]]
-        assert bob_paid == 500
-        assert alice_paid == 500
+
+        # After the reimbursement, the full balance should be populated with
+        # transfer items
+        bob_paid = project.full_balance[2][bob]
+        alice_paid = project.full_balance[2][alice]
+        assert bob_paid == 1000
+        assert alice_paid == 0
+
+        bob_received = project.full_balance[4][bob]
+        alice_transferred = project.full_balance[3][alice]
+        assert bob_received == 500
+        assert alice_transferred == 500
 
     def test_weighted_balance(self):
         self.post_project("raclette")
@@ -1069,14 +1080,25 @@ class TestBudget(IhatemoneyTestCase):
         assert len(project.active_months_range()) == 0
         assert len(project.monthly_stats) == 0
 
-        # Check that the "monthly expenses" table is empty
+        # Check that the "monthly expenses" table exists
+        # and is empty.
         response = self.client.get("/raclette/statistics")
-        regex = (
-            r"<table id=\"monthly_stats\".*>\s*<thead>\s*<tr>\s*<th>Period</th>\s*"
-            r"<th>Spent</th>\s*</tr>\s*</thead>\s*<tbody>\s*</tbody>\s*</table>"
-        )
-        assert re.search(regex, response.data.decode("utf-8"))
 
+        regex = (
+            r'<table id="monthly_stats" class="table table-striped">\n'
+            r"    <thead>\n"
+            r"      <tr>\n"
+            r"        <th>Period</th>\n"
+            r"        <th>Expenses</th>\n"
+            r"      </tr>\n"
+            r"    </thead>\n"
+            r"    <tbody>\n"
+            r"      \n"
+            r"    </tbody>\n"
+            r"  </table>"
+        )
+
+        assert re.search(regex, response.data.decode("utf-8"))
         # create bills
         self.client.post(
             "/raclette/add",
@@ -1115,22 +1137,29 @@ class TestBudget(IhatemoneyTestCase):
         )
 
         response = self.client.get("/raclette/statistics")
-        regex = r"<td class=\"d-md-none\">{}</td>\s*<td>{}</td>\s*<td>{}</td>"
-        assert re.search(
-            regex.format("zorglub", r"\$20\.00", r"\$31\.67"),
-            response.data.decode("utf-8"),
-        )
-        assert re.search(
-            regex.format("jeanne", r"\$20\.00", r"\$5\.83"),
-            response.data.decode("utf-8"),
-        )
-        assert re.search(
-            regex.format("tata", r"\$0\.00", r"\$2\.50"), response.data.decode("utf-8")
-        )
-        assert re.search(
-            regex.format("pépé", r"\$0\.00", r"\$0\.00"), response.data.decode("utf-8")
-        )
+        html = response.data.decode("utf-8")
 
+        def stat_entry(name, paid, spent, transferred=None, received=None):
+            return (
+                f'<td class="d-md-none">{name}</td>\n'
+                f"        <td>{paid}</td>\n"
+                f"        <td>{spent}</td>\n"
+                # f"        <td>${spent}</td>\n"
+                # f"        <td>${transferred}</td>"
+            )
+
+        #         set_trace()
+
+        #         regex = (
+        #             r'\s*<td class="d-md-none">{}</td>\n'
+        #             r"\s*<td>{}</td>\n"
+        #             r"\s*<td>{}</td>\n"
+        #         )
+
+        assert stat_entry("zorglub", "$20.00", "-$31.67") in html
+        assert stat_entry("jeanne", "$20.00", "-$5.83") in html
+        assert stat_entry("tata", "$0.00", "-$2.50") in html
+        assert stat_entry("pépé", "$0.00", "-$0.00") in html
         # Check that the order of participants in the sidebar table is the
         # same as in the main table.
         order = ["jeanne", "pépé", "tata", "zorglub"]
