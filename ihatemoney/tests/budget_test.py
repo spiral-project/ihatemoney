@@ -1358,23 +1358,25 @@ class TestBudget(IhatemoneyTestCase):
         count = 0
         for t in transactions:
             count += 1
-            self.client.get(
-                "/raclette/settle"
-                + "/"
-                + str(t["amount"])
-                + "/"
-                + str(t["ower"].id)
-                + "/"
-                + str(t["receiver"].id)
+            self.client.post(
+                "/raclette/settle",
+                data={
+                    "amount": t["amount"],
+                    "sender_id": t["ower"].id,
+                    "receiver_id": t["receiver"].id,
+                },
             )
             temp_transactions = project.get_transactions_to_settle_bill()
             # test if the one has disappeared
             assert len(temp_transactions) == len(transactions) - count
 
-            # test if theres a new one with bill_type reimbursement
+            # test if there is a new one with bill_type reimbursement
             bill = project.get_newest_bill()
             assert bill.bill_type == models.BillType.REIMBURSEMENT
-        return
+
+        # There should be no more settlement to do at the end
+        transactions = project.get_transactions_to_settle_bill()
+        assert len(transactions) == 0
 
     def test_settle_zero(self):
         self.post_project("raclette")
@@ -1463,6 +1465,78 @@ class TestBudget(IhatemoneyTestCase):
         # Create and log in as another project
         self.post_project("tartiflette")
 
+        # Add a participant in this second project
+        self.client.post("/tartiflette/members/add", data={"name": "pirate"})
+        pirate = models.Person.query.filter(models.Person.id == 5).one()
+        assert pirate.name == "pirate"
+
+        # Try to add a new bill to another project
+        resp = self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2017-01-01",
+                "what": "fromage frelaté",
+                "payer": 2,
+                "payed_for": [2, 3, 4],
+                "bill_type": "Expense",
+                "amount": "100.0",
+            },
+        )
+        # Ensure it has not been created
+        raclette = self.get_project("raclette")
+        assert raclette.get_bills().count() == 1
+
+        # Try to add a new bill in our project that references members of another project.
+        # First with invalid payed_for IDs.
+        resp = self.client.post(
+            "/tartiflette/add",
+            data={
+                "date": "2017-01-01",
+                "what": "soupe",
+                "payer": 5,
+                "payed_for": [3],
+                "bill_type": "Expense",
+                "amount": "5000.0",
+            },
+        )
+        # Ensure it has not been created
+        piratebill = models.Bill.query.filter(models.Bill.what == "soupe").one_or_none()
+        assert piratebill is None, "piratebill 1 should not exist"
+
+        # Then with invalid payer ID
+        self.client.post(
+            "/tartiflette/add",
+            data={
+                "date": "2017-02-01",
+                "what": "pain",
+                "payer": 3,
+                "payed_for": [5],
+                "bill_type": "Expense",
+                "amount": "5000.0",
+            },
+        )
+        # Ensure it has not been created
+        piratebill = models.Bill.query.filter(models.Bill.what == "pain").one_or_none()
+        assert piratebill is None, "piratebill 2 should not exist"
+
+        # Make sure we can actually create valid bills
+        self.client.post(
+            "/tartiflette/add",
+            data={
+                "date": "2017-03-01",
+                "what": "baguette",
+                "payer": 5,
+                "payed_for": [5],
+                "bill_type": "Expense",
+                "amount": "5.0",
+            },
+        )
+        # Ensure it has been created
+        okbill = models.Bill.query.filter(models.Bill.what == "baguette").one_or_none()
+        assert okbill is not None, "Bill baguette should exist"
+        assert okbill.what == "baguette"
+
+        # Now try to access and modify existing bills
         modified_bill = {
             "date": "2018-12-31",
             "what": "roblochon",
@@ -1555,6 +1629,24 @@ class TestBudget(IhatemoneyTestCase):
         self.client.post("/raclette/members/1/delete")
         member = models.Person.query.filter(models.Person.id == 1).one_or_none()
         assert member is None
+
+        # test new settle endpoint to add bills with wrong ids
+        self.client.post("/exit")
+        self.client.post(
+            "/authenticate", data={"id": "tartiflette", "password": "tartiflette"}
+        )
+        self.client.post(
+            "/tartiflette/settle",
+            data={
+                "sender_id": 4,
+                "receiver_id": 5,
+                "amount": "42.0",
+            },
+        )
+        piratebill = models.Bill.query.filter(
+            models.Bill.bill_type == models.BillType.REIMBURSEMENT
+        ).one_or_none()
+        assert piratebill is None, "piratebill 3 should not exist"
 
     @pytest.mark.skip(reason="Currency conversion is broken")
     def test_currency_switch(self):

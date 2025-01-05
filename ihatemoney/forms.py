@@ -14,6 +14,8 @@ from wtforms.fields import (
     BooleanField,
     DateField,
     DecimalField,
+    HiddenField,
+    IntegerField,
     Label,
     PasswordField,
     SelectField,
@@ -435,6 +437,22 @@ class BillForm(FlaskForm):
                 project_currency=self.project_currency,
             )
             raise ValidationError(msg)
+
+
+class HiddenCommaDecimalField(HiddenField, CommaDecimalField):
+    pass
+
+
+class HiddenIntegerField(HiddenField, IntegerField):
+    pass
+
+
+class SettlementForm(FlaskForm):
+    """Used internally for validation, not directly visible to users"""
+
+    amount = HiddenCommaDecimalField("Amount", validators=[DataRequired()])
+    sender_id = HiddenIntegerField("Sender", validators=[DataRequired()])
+    receiver_id = HiddenIntegerField("Receiver", validators=[DataRequired()])
 
 
 class MemberForm(FlaskForm):

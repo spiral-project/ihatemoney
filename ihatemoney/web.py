@@ -56,6 +56,7 @@ from ihatemoney.forms import (
     ProjectForm,
     ProjectFormWithCaptcha,
     ResetPasswordForm,
+    SettlementForm,
     get_billform_for,
 )
 from ihatemoney.history import get_history, get_history_queries, purge_history
@@ -852,24 +853,46 @@ def change_lang(lang):
 @main.route("/<project_id>/settle_bills")
 def settle_bill():
     """Compute the sum each one have to pay to each other and display it"""
-    bills = g.project.get_transactions_to_settle_bill()
-    return render_template("settle_bills.html", bills=bills, current_view="settle_bill")
+    transactions = g.project.get_transactions_to_settle_bill()
+    settlement_form = SettlementForm()
+    return render_template(
+        "settle_bills.html",
+        transactions=transactions,
+        settlement_form=settlement_form,
+        current_view="settle_bill",
+    )
 
 
-@main.route("/<project_id>/settle/<amount>/<int:ower_id>/<int:payer_id>")
-def settle(amount, ower_id, payer_id):
-    new_reinbursement = Bill(
-        amount=float(amount),
+@main.route("/<project_id>/settle", methods=["POST"])
+def add_settlement_bill():
+    """Create a bill to register a settlement"""
+    form = SettlementForm(id=g.project.id)
+    if not form.validate():
+        flash(
+            format_form_errors(form, _("Error creating settlement bill")),
+            category="danger",
+        )
+        return redirect(url_for(".settle_bill"))
+
+    # Ensure that the sender and receiver ID are valid and part of this project
+    receiver_id = form.receiver_id.data
+    sender_id = form.sender_id.data
+
+    if not g.project.has_member(sender_id):
+        return redirect(url_for(".settle_bill"))
+
+    settlement = Bill(
+        amount=form.amount.data,
         date=datetime.datetime.today(),
-        owers=[Person.query.get(payer_id)],
-        payer_id=ower_id,
+        owers=[Person.query.get(receiver_id, g.project)],
+        payer_id=sender_id,
         project_default_currency=g.project.default_currency,
         bill_type=BillType.REIMBURSEMENT,
         what=_("Settlement"),
     )
     session.update()
 
-    db.session.add(new_reinbursement)
+    db.session.add(settlement)
     db.session.commit()
 
     flash(_("Settlement bill has been successfully added"), category="success")

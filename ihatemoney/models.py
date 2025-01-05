@@ -447,6 +447,10 @@ class Project(db.Model):
             db.session.commit()
         return person
 
+    def has_member(self, member_id):
+        person = Person.query.get(member_id, self)
+        return person is not None
+
     def remove_project(self):
         # We can't import at top level without circular dependencies
         from ihatemoney.history import purge_history
