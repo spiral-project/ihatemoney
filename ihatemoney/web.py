@@ -2,7 +2,7 @@
 The blueprint for the web interface.
 
 Contains all the interaction logic with the end user (except forms which
-are directly handled in the forms module.
+are directly handled in the forms module).
 
 Basically, this blueprint takes care of the authentication and provides
 some shortcuts to make your life better when coding (see `pull_project`
@@ -10,12 +10,14 @@ and `add_project_id` for a quick overview)
 """
 
 import datetime
-from functools import wraps
 import hashlib
 import json
 import os
+from functools import wraps
 from urllib.parse import urlparse, urlunparse
 
+import qrcode
+import qrcode.image.svg
 from flask import (
     Blueprint,
     Response,
@@ -34,8 +36,6 @@ from flask import (
 )
 from flask_babel import gettext as _
 from flask_mail import Message
-import qrcode
-import qrcode.image.svg
 from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash
@@ -60,7 +60,7 @@ from ihatemoney.forms import (
     get_billform_for,
 )
 from ihatemoney.history import get_history, get_history_queries, purge_history
-from ihatemoney.models import Bill, BillType, LoggingMode, Person, Project, db
+from ihatemoney.models import Bill, BillType, LoggingMode, Person, Project, Tag, db
 from ihatemoney.utils import (
     Redirect303,
     csv2list_of_dicts,
@@ -161,7 +161,8 @@ def pull_project(endpoint, values):
         project_id = entered_project_id.lower()
         project = Project.query.get(project_id)
         if not project:
-            raise Redirect303(url_for(".create_project", project_id=project_id))
+            raise Redirect303(
+                url_for(".create_project", project_id=project_id))
 
         is_admin = session.get("is_admin")
         is_invitation = endpoint == "main.join_project"
@@ -375,7 +376,8 @@ def remind_password():
             # send a link to reset the password
             remind_message = Message(
                 "password recovery",
-                body=render_localized_template("password_reminder", project=project),
+                body=render_localized_template(
+                    "password_reminder", project=project),
                 recipients=[project.contact_email],
             )
             success = send_email(remind_message)
@@ -618,7 +620,8 @@ def invite():
             msg = Message(
                 message_title,
                 body=message_body,
-                recipients=[email.strip() for email in form.emails.data.split(",")],
+                recipients=[email.strip()
+                            for email in form.emails.data.split(",")],
             )
             success = send_email(msg)
             if success:
@@ -639,7 +642,8 @@ def invite():
         token=g.project.generate_token(),
         _external=True,
     )
-    invite_link = urlunparse(urlparse(invite_link)._replace(scheme="ihatemoney"))
+    invite_link = urlunparse(
+        urlparse(invite_link)._replace(scheme="ihatemoney"))
     qr = qrcode.QRCode(image_factory=qrcode.image.svg.SvgPathImage)
     qr.add_data(invite_link)
     qr.make(fit=True)
@@ -943,7 +947,8 @@ def strip_ip_addresses():
     form = DestructiveActionProjectForm(id=g.project.id)
     if not form.validate():
         flash(
-            format_form_errors(form, _("Error deleting recorded IP addresses")),
+            format_form_errors(
+                form, _("Error deleting recorded IP addresses")),
             category="danger",
         )
         return redirect(url_for(".history"))
@@ -962,18 +967,22 @@ def statistics():
     """Compute what each participant has paid and spent and display it"""
     # Determine range of months between which there are bills
     months = g.project.active_months_range()
+    tags = Tag.query.filter(Tag.project_id == g.project.id)
     return render_template(
         "statistics.html",
         members_stats=g.project.members_stats,
         monthly_stats=g.project.monthly_stats,
+        tags_monthly_stats=g.project.tags_monthly_stats,
         months=months,
+        tags=tags,
         current_view="statistics",
     )
 
 
 def build_etag(project_id, last_modified):
     return hashlib.md5(
-        (current_app.config["SECRET_KEY"] + project_id + last_modified).encode()
+        (current_app.config["SECRET_KEY"] +
+         project_id + last_modified).encode()
     ).hexdigest()
 
 

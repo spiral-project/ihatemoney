@@ -1,6 +1,6 @@
-from datetime import datetime
 import decimal
-from re import match
+from datetime import datetime
+from re import findall, match
 from types import SimpleNamespace
 
 import email_validator
@@ -41,7 +41,7 @@ from wtforms.validators import (
 )
 
 from ihatemoney.currency_convertor import CurrencyConverter
-from ihatemoney.models import Bill, BillType, LoggingMode, Person, Project
+from ihatemoney.models import Bill, BillType, LoggingMode, Person, Project, Tag
 from ihatemoney.utils import (
     em_surround,
     eval_arithmetic_expression,
@@ -136,7 +136,8 @@ class EditProjectForm(FlaskForm):
         _("New private code"),
         description=_("Enter a new code if you want to change it"),
     )
-    contact_email = StringField(_("Email"), validators=[DataRequired(), Email()])
+    contact_email = StringField(_("Email"), validators=[
+                                DataRequired(), Email()])
     project_history = BooleanField(_("Enable project history"))
     ip_recording = BooleanField(_("Use IP tracking for project history"))
     currency_helper = CurrencyConverter()
@@ -229,7 +230,8 @@ class ImportProjectForm(FlaskForm):
         "File",
         validators=[
             FileRequired(),
-            FileAllowed(["json", "JSON", "csv", "CSV"], "Incorrect file format"),
+            FileAllowed(["json", "JSON", "csv", "CSV"],
+                        "Incorrect file format"),
         ],
         description=_("Compatible with Cospend"),
     )
@@ -350,9 +352,11 @@ class ResetPasswordForm(FlaskForm):
 
 
 class BillForm(FlaskForm):
-    date = DateField(_("When?"), validators=[DataRequired()], default=datetime.now)
+    date = DateField(_("When?"), validators=[
+                     DataRequired()], default=datetime.now)
     what = StringField(_("What?"), validators=[DataRequired()])
-    payer = SelectField(_("Who paid?"), validators=[DataRequired()], coerce=int)
+    payer = SelectField(_("Who paid?"), validators=[
+                        DataRequired()], coerce=int)
     amount = CalculatorStringField(_("How much?"), validators=[DataRequired()])
     currency_helper = CurrencyConverter()
     original_currency = SelectField(_("Currency"), validators=[DataRequired()])
@@ -374,8 +378,30 @@ class BillForm(FlaskForm):
     submit = SubmitField(_("Submit"))
     submit2 = SubmitField(_("Submit and add a new one"))
 
+    def parse_hashtags(self, project, what):
+        """Handles the hashtags which can be optionally specified in the 'what'
+        field, using the `grocery #hash #otherhash` syntax.
+
+        Returns: the new "what" field (with hashtags stripped-out) and the list
+        of tags.
+        """
+
+        hashtags = findall(r"#(\w+)", what)
+
+        if not hashtags:
+            return what, []
+
+        for tag in hashtags:
+            what = what.replace(f"#{tag}", "")
+
+        return what, hashtags
+
     def export(self, project):
-        return Bill(
+        """This is triggered on bill creation.
+        """
+        what, hashtags = self.parse_hashtags(project, self.what.data)
+
+        bill = Bill(
             amount=float(self.amount.data),
             date=self.date.data,
             external_link=self.external_link.data,
@@ -383,14 +409,17 @@ class BillForm(FlaskForm):
             owers=Person.query.get_by_ids(self.payed_for.data, project),
             payer_id=self.payer.data,
             project_default_currency=project.default_currency,
-            what=self.what.data,
+            what=what,
             bill_type=self.bill_type.data,
         )
+        bill.set_tags(hashtags, project)
+        return bill
 
     def save(self, bill, project):
+        what, hashtags = self.parse_hashtags(project, self.what.data)
         bill.payer_id = self.payer.data
         bill.amount = self.amount.data
-        bill.what = self.what.data
+        bill.what = what
         bill.bill_type = BillType(self.bill_type.data)
         bill.external_link = self.external_link.data
         bill.date = self.date.data
@@ -399,19 +428,22 @@ class BillForm(FlaskForm):
         bill.converted_amount = self.currency_helper.exchange_currency(
             bill.amount, bill.original_currency, project.default_currency
         )
+        bill.set_tags(hashtags, project)
         return bill
 
     def fill(self, bill, project):
         self.payer.data = bill.payer_id
         self.amount.data = bill.amount
-        self.what.data = bill.what
+        hashtags = ' '.join([f'#{tag.name}' for tag in bill.tags])
+        self.what.data = bill.what.strip() + f' {hashtags}'
         self.bill_type.data = bill.bill_type
         self.external_link.data = bill.external_link
         self.original_currency.data = bill.original_currency
         self.date.data = bill.date
         self.payed_for.data = [int(ower.id) for ower in bill.owers]
 
-        self.original_currency.label = Label("original_currency", _("Currency"))
+        self.original_currency.label = Label(
+            "original_currency", _("Currency"))
         self.original_currency.description = _(
             "Project default: %(currency)s",
             currency=render_localized_currency(
@@ -456,10 +488,13 @@ class SettlementForm(FlaskForm):
 
 
 class MemberForm(FlaskForm):
-    name = StringField(_("Name"), validators=[DataRequired()], filters=[strip_filter])
+    name = StringField(_("Name"), validators=[
+                       DataRequired()], filters=[strip_filter])
 
-    weight_validators = [NumberRange(min=0.1, message=_("Weights should be positive"))]
-    weight = CommaDecimalField(_("Weight"), default=1, validators=weight_validators)
+    weight_validators = [NumberRange(
+        min=0.1, message=_("Weights should be positive"))]
+    weight = CommaDecimalField(
+        _("Weight"), default=1, validators=weight_validators)
     submit = SubmitField(_("Add"))
 
     def __init__(self, project, edit=False, *args, **kwargs):
@@ -478,7 +513,8 @@ class MemberForm(FlaskForm):
                 Person.activated,
             ).all()
         ):  # NOQA
-            raise ValidationError(_("This project already have this participant"))
+            raise ValidationError(
+                _("This project already have this participant"))
 
     def save(self, project, person):
         # if the user is already bound to the project, just reactivate him

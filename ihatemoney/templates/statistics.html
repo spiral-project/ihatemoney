@@ -23,12 +23,28 @@
         </table>
         <h2>{{ _("Expenses by Month") }}</h2>
         <table id="monthly_stats" class="table table-striped">
-            <thead><tr><th>{{ _("Period") }}</th><th>{{ _("Spent") }}</th></tr></thead>
+            <thead>
+                <tr>
+                    <th>{{ _("Period") }}</th>
+                    <th>{{ _("Spent") }}</th>
+                    {% for tag in tags %}
+                    <th>#{{ tag.name }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
         <tbody>
         {% for month in months %}
                 <tr>
                     <td>{{ month|dateformat("MMMM yyyy") }}</td>
                     <td>{{ monthly_stats[month.year][month.month]|currency }}</td>
+                    {% for tag in tags %}
+                        {% if tag.name in tags_monthly_stats[month.year][month.month] %}
+                        <td>{{ tags_monthly_stats[month.year][month.month][tag.name]|currency }}</td>
+                        {% else %}
+                        <td> - </td>
+                        {% endif %}
+                    {% endfor %}
+
                 </tr>
         {% endfor %}
         </tbody>
