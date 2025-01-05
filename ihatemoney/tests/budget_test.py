@@ -452,8 +452,8 @@ class TestBudget(IhatemoneyTestCase):
         result = self.client.get("/raclette/add")
         assert "jeanne" not in result.data.decode("utf-8")
 
-        # adding him again should reactivate him
-        self.client.post("/raclette/members/add", data={"name": "jeanne"})
+        # it should be possible to reactivate him
+        self.client.post(f"/raclette/members/{jeanne_id}/reactivate")
         assert len(self.get_project("raclette").active_members) == 2
 
         # adding an user with the same name as another user from a different
@@ -1847,32 +1847,28 @@ class TestBudget(IhatemoneyTestCase):
         assert "No bills" in resp.data.decode("utf-8")
 
     def test_add_duplicate_user(self):
-
-        '''
-        Adding a user with same name as a deactivated user with 0 balance 
-        and no associated bills should success
-        '''
+        """
+        Adding a user with the same name as a deactivated user with 0 balance
+        and no associated bills should succeed
+        """
         self.post_project("raclette")
         self.login("raclette")
 
-        # adds a member to this project
+        # adds a member to this project and delete it right after.
         self.client.post("/raclette/members/add", data={"name": "zorglub"})
-
-        # delete user using POST method
         self.client.post("/raclette/members/1/delete")
-        self.assertEqual(len(self.get_project("raclette").active_members), 0)
-        self.assertEqual(len(self.get_project("raclette").members), 0)
+        assert len(self.get_project("raclette").active_members) == 0
+        assert len(self.get_project("raclette").members) == 0
+
         # try to add this deleted user should be successful
-        response = self.client.get("/raclette/members/add", data={"name": "zorglub"})
-        self.assertEqual(len(self.get_project("raclette").members), 1)
-        self.assertEqual(response.status_code, 200)
-    
-    
+        response = self.client.post("/raclette/members/add", data={"name": "zorglub"})
+        assert len(self.get_project("raclette").members) == 1
+
     def test_add_duplicate_user_with_balance(self):
-        '''
-        Adding a user with same name as a deactivated user with non-zero balance 
+        """
+        Adding a user with same name as a deactivated user with non-zero balance
         and associated bills should fail
-        '''
+        """
         self.post_project("raclette")
 
         # add two participants
@@ -1898,14 +1894,13 @@ class TestBudget(IhatemoneyTestCase):
             "/raclette/members/%s/delete" % self.get_project("raclette").members[-1].id
         )
 
-        self.assertEqual(len(self.get_project("raclette").members), 2)
+        assert len(self.get_project("raclette").members) == 2
         self.client.post("/raclette/members/add", data={"name": "Bob"})
 
         # adding a user with the same name should fail
-        self.assertEqual(len(self.get_project("raclette").members), 2)
+        assert len(self.get_project("raclette").members) == 2
         # The only active_member is Alice, this means adding a new Bob failed
-        self.assertEqual(len(self.get_project("raclette").active_members), 1)
-
+        assert len(self.get_project("raclette").active_members) == 1
 
     def test_session_projects_migration_to_list(self):
         """In https://github.com/spiral-project/ihatemoney/pull/1082, session["projects"]
