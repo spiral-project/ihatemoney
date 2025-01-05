@@ -1470,8 +1470,8 @@ class TestBudget(IhatemoneyTestCase):
         pirate = models.Person.query.filter(models.Person.id == 5).one()
         assert pirate.name == "pirate"
 
-        # Try to add a new bill in another project
-        self.client.post(
+        # Try to add a new bill to another project
+        resp = self.client.post(
             "/raclette/add",
             data={
                 "date": "2017-01-01",
@@ -1488,7 +1488,7 @@ class TestBudget(IhatemoneyTestCase):
 
         # Try to add a new bill in our project that references members of another project.
         # First with invalid payed_for IDs.
-        self.client.post(
+        resp = self.client.post(
             "/tartiflette/add",
             data={
                 "date": "2017-01-01",
@@ -1630,7 +1630,7 @@ class TestBudget(IhatemoneyTestCase):
         member = models.Person.query.filter(models.Person.id == 1).one_or_none()
         assert member is None
 
-        # test new settle endpoint to add bills with wrong payer / payed_for
+        # test new settle endpoint to add bills with wrong ids
         self.client.post("/exit")
         self.client.post(
             "/authenticate", data={"id": "tartiflette", "password": "tartiflette"}

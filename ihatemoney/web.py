@@ -874,13 +874,18 @@ def add_settlement_bill():
         )
         return redirect(url_for(".settle_bill"))
 
-    # TODO: check that sender and receiver ID are valid and part of this project
+    # Ensure that the sender and receiver ID are valid and part of this project
+    receiver_id = form.receiver_id.data
+    sender_id = form.sender_id.data
+
+    if not g.project.has_member(sender_id):
+        return redirect(url_for(".settle_bill"))
 
     settlement = Bill(
         amount=form.amount.data,
         date=datetime.datetime.today(),
-        owers=[Person.query.get(form.receiver_id.data)],
-        payer_id=form.sender_id.data,
+        owers=[Person.query.get(receiver_id, g.project)],
+        payer_id=sender_id,
         project_default_currency=g.project.default_currency,
         bill_type=BillType.REIMBURSEMENT,
         what=_("Settlement"),
