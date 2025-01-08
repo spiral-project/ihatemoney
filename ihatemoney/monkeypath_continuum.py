@@ -82,12 +82,14 @@ class PatchedTransactionFactory(TransactionFactory):
                 )
                 return "<Transaction %s>" % ", ".join(
                     (
-                        "%s=%r" % (field, value)
-                        if not isinstance(value, six.integer_types)
-                        # We want the following line to ensure that longs get
-                        # shown without the ugly L suffix on python 2.x
-                        # versions
-                        else "%s=%d" % (field, value)
+                        (
+                            "%s=%r" % (field, value)
+                            if not isinstance(value, six.integer_types)
+                            # We want the following line to ensure that longs get
+                            # shown without the ugly L suffix on python 2.x
+                            # versions
+                            else "%s=%d" % (field, value)
+                        )
                         for field, value in field_values.items()
                     )
                 )
