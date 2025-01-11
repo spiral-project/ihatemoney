@@ -263,6 +263,20 @@ class Project(db.Model):
             .order_by(Bill.creation_date.desc())
             .order_by(Bill.id.desc())
         )
+        
+    @staticmethod
+    def filter(query, start_date, end_date, payer, owers, bill_name):
+        if start_date:
+            query = query.filter(Bill.date >= start_date)
+        if end_date:
+            query = query.filter(Bill.date <= end_date)
+        if payer:
+            query = query.filter(Bill.payer_id == payer)
+        if owers:
+            query = query.filter(Bill.owers.any(Person.id.in_(owers)))
+        if bill_name:
+            query = query.filter(Bill.what.ilike(f"%{bill_name}%"))
+        return query
 
     def get_bill_weights(self):
         """
@@ -284,6 +298,10 @@ class Project(db.Model):
     def get_bill_weights_ordered(self):
         """Ordered version of get_bill_weights"""
         return self.order_bills(self.get_bill_weights())
+    
+    def get_filtered_bill_weights_ordered(self, start_date, end_date, payer, owers, bill_name):
+        return self.filter(self.get_bill_weights_ordered(), start_date=start_date, end_date=end_date, payer=payer, owers=owers, bill_name=bill_name)
+
 
     def get_member_bills(self, member_id):
         """Return the list of bills related to a specific member"""
