@@ -113,42 +113,57 @@ class Project(db.Model):
 
     @property
     def full_balance(self):
-        """Returns a triple of dicts:
+        """Returns a tuple of dicts:
 
-        - dict mapping each member to its balance
+        - dict mapping each member to its overall balance
 
-        - dict mapping each member to how much he/she should pay others
-          (i.e. how much he/she benefited from bills)
+        - dict mapping each member to its expenses (i.e. how much he/she
+          benefited from all bills, whoever actually paid)
 
-        - dict mapping each member to how much he/she should be paid by
-          others (i.e. how much he/she has paid for bills)
+        - dict mapping each member to how much he/she has paid for bills
 
-        balance       spent        paid
+        - dict mapping each member to how much he/she has transferred
+          money to other members
+
+        - dict mapping each member to how much he/she has received money
+          from other members
+
+        balance, spent, paid, transferred, received
+
         """
-        balances, should_pay, should_receive = (defaultdict(int) for time in (1, 2, 3))
+        balances, spent, paid, transferred, received = (
+            defaultdict(float) for _ in range(5)
+        )
         for bill in self.get_bills_unordered().all():
             total_weight = sum(ower.weight for ower in bill.owers)
 
             if bill.bill_type == BillType.EXPENSE:
-                should_receive[bill.payer.id] += bill.converted_amount
+                paid[bill.payer.id] += bill.converted_amount
                 for ower in bill.owers:
-                    should_pay[ower.id] += (
+                    spent[ower.id] += ower.weight * bill.converted_amount / total_weight
+
+            if bill.bill_type == BillType.REIMBURSEMENT:
+                transferred[bill.payer.id] += bill.converted_amount
+                for ower in bill.owers:
+                    received[ower.id] += (
                         ower.weight * bill.converted_amount / total_weight
                     )
 
-            if bill.bill_type == BillType.REIMBURSEMENT:
-                should_receive[bill.payer.id] += bill.converted_amount
-                for ower in bill.owers:
-                    should_receive[ower.id] -= bill.converted_amount
-
         for person in self.members:
-            balance = should_receive[person.id] - should_pay[person.id]
+            balance = (
+                paid[person.id]
+                - spent[person.id]
+                + transferred[person.id]
+                - received[person.id]
+            )
             balances[person.id] = balance
 
         return (
             balances,
-            should_pay,
-            should_receive,
+            spent,
+            paid,
+            transferred,
+            received,
         )
 
     @property
@@ -157,17 +172,19 @@ class Project(db.Model):
 
     @property
     def members_stats(self):
-        """Compute what each participant has paid
+        """Compute what each participant has spent, paid, transferred and received
 
         :return: one stat dict per participant
         :rtype list:
         """
-        balance, spent, paid = self.full_balance
+        balance, spent, paid, transferred, received = self.full_balance
         return [
             {
                 "member": member,
+                "spent": -1.0 * spent[member.id],
                 "paid": paid[member.id],
-                "spent": spent[member.id],
+                "transferred": transferred[member.id],
+                "received": -1.0 * received[member.id],
                 "balance": balance[member.id],
             }
             for member in self.active_members
