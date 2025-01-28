@@ -32,13 +32,6 @@
                 </div>
               </button>
           </form>
-          <a
-            href="{{ url_for('.add_settlement_bill', amount = transaction.amount, sender_id = transaction.ower.id, receiver_id = transaction.receiver.id) }}"
-            class="btn btn-primary"
-          >
-              {{ ("Settle") }}
-            </div>
-          </a>
         </span>
       </td>
     </tr>
