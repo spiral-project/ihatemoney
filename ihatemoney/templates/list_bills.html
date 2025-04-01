@@ -94,23 +94,65 @@
 <div class="d-flex flex-wrap w-100 pt-2 mt-2" id="bill-toolbar">
 {% if bills.pages > 1 %}
 <ul class="pagination mr-2 mb-0 pb-2 flex-wrap" id="pagination-top">
-  <li class="page-item {% if bills.page == 1 %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.prev_num) }}">&laquo; {{ _("Newer bills") }}</a></li>
+  <li class="page-item {% if bills.page == 1 %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.prev_num) }}{% if search_query %}&search={{ search_query }}{% endif %}{% if filter_date %}&date={{ filter_date }}{% endif %}{% if filter_amount %}&amount={{ filter_amount }}{% endif %}{% if filter_payer %}&payer={{ filter_payer }}{% endif %}{% if filter_for %}&for={{ filter_for }}{% endif %}{% if filter_what %}&what={{ filter_what }}{% endif %}">&laquo; {{ _("Newer bills") }}</a></li>
   {%- for page in bills.iter_pages() %}
   {% if page %}
-  <li class="page-item {% if page == bills.page %}active{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=page) }}">{{ page }}</a></li>
+  <li class="page-item {% if page == bills.page %}active{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=page) }}{% if search_query %}&search={{ search_query }}{% endif %}{% if filter_date %}&date={{ filter_date }}{% endif %}{% if filter_amount %}&amount={{ filter_amount }}{% endif %}{% if filter_payer %}&payer={{ filter_payer }}{% endif %}{% if filter_for %}&for={{ filter_for }}{% endif %}{% if filter_what %}&what={{ filter_what }}{% endif %}">{{ page }}</a></li>
   {% else %}
   <li class="page-item disabled"><span class="ellipsis page-link">…</span></li>
   {% endif %}
   {%- endfor %}
-  <li class="page-item {% if bills.page == bills.pages %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.next_num) }}">{{ _("Older bills") }} &raquo;</a></li>
+  <li class="page-item {% if bills.page == bills.pages %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.next_num) }}{% if search_query %}&search={{ search_query }}{% endif %}{% if filter_date %}&date={{ filter_date }}{% endif %}{% if filter_amount %}&amount={{ filter_amount }}{% endif %}{% if filter_payer %}&payer={{ filter_payer }}{% endif %}{% if filter_for %}&for={{ filter_for }}{% endif %}{% if filter_what %}&what={{ filter_what }}{% endif %}">{{ _("Older bills") }} &raquo;</a></li>
 </ul>
 {% endif %}
+
+<div class="d-flex flex-wrap align-items-center mr-2 mb-2">
+  <button class="btn btn-sm btn-outline-secondary" type="button" data-toggle="collapse" data-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
+    {{ _("Filter") }}
+    {% if search_active %}<span class="badge badge-info ml-1">{{ _("Active") }}</span>{% endif %}
+  </button>
+</div>
+
 <span id="new-bill" class="ml-auto pb-2" {% if not g.project.members %} data-toggle="tooltip" title="{{_('You should start by adding participants')}}" {% endif %}>
     <a href="{{ url_for('.add_bill') }}" class="btn btn-primary {% if not g.project.members %} disabled {% endif %}" data-toggle="modal" data-keyboard="true" data-target="#bill-form" autofocus>
         <i class="icon icon-white before-text">{{ static_include("images/plus.svg") | safe }}</i>
         {{ _("Add a new bill") }}
     </a>
 </span>
+</div>
+
+<div class="collapse {% if search_active %}show{% endif %} mb-3" id="filterCollapse">
+  <div class="card card-body">
+    <form method="GET" action="{{ url_for('main.list_bills') }}" class="form-inline">
+      <div class="form-row w-100">
+        <div class="col-md-4 mb-2">
+          <label for="search" class="sr-only">{{ _("Search") }}</label>
+          <input type="text" class="form-control form-control-sm w-100" id="search" name="search" placeholder="{{ _('Search in For what?') }}" value="{{ search_query }}">
+        </div>
+        <div class="col-md-2 mb-2">
+          <label for="date" class="sr-only">{{ _("Date") }}</label>
+          <input type="date" class="form-control form-control-sm w-100" id="date" name="date" value="{{ filter_date }}">
+        </div>
+        <div class="col-md-2 mb-2">
+          <label for="amount" class="sr-only">{{ _("Amount") }}</label>
+          <input type="text" class="form-control form-control-sm w-100" id="amount" name="amount" placeholder="{{ _('Amount') }}" value="{{ filter_amount }}">
+        </div>
+        <div class="col-md-2 mb-2">
+          <label for="payer" class="sr-only">{{ _("Payer") }}</label>
+          <select class="form-control form-control-sm w-100" id="payer" name="payer">
+            <option value="">{{ _('Any payer') }}</option>
+            {% for member in g.project.active_members %}
+            <option value="{{ member.id }}" {% if filter_payer|string == member.id|string %}selected{% endif %}>{{ member.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-8 mb-2 text-right">
+          <button type="submit" class="btn btn-sm btn-primary">{{ _("Apply filters") }}</button>
+          <a href="{{ url_for('main.list_bills') }}" class="btn btn-sm btn-outline-secondary ml-2">{{ _("Clear filters") }}</a>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 
     {% if bills.total > 0 %}
@@ -125,6 +167,7 @@
             </thead>
         <tbody>
         {% for (weights, bill) in bills.items %}
+        {% if bill %}
         <tr owers="{{bill.owers|join(',','id')}}" payer="{{bill.payer.id}}">
                 <td>
                     <span data-toggle="tooltip" data-placement="top"
@@ -158,6 +201,7 @@
                     {% endif %}
                 </td>
         </tr>
+        {% endif %}
         {% endfor %}
         </tbody>
         </table>

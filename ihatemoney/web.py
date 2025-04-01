@@ -60,7 +60,8 @@ from ihatemoney.forms import (
     get_billform_for,
 )
 from ihatemoney.history import get_history, get_history_queries, purge_history
-from ihatemoney.models import Bill, BillType, LoggingMode, Person, Project, db
+from ihatemoney.models import Bill, BillType, LoggingMode, Person, Project, billowers, db
+from sqlalchemy import func
 from ihatemoney.utils import (
     Redirect303,
     csv2list_of_dicts,
@@ -670,12 +671,55 @@ def list_bills():
     ):
         bill_form.payed_for.data = session["last_selected_payed_for"][g.project.id]
 
-    # Each item will be a (weight_sum, Bill) tuple.
-    # TODO: improve this awkward result using column_property:
-    # https://docs.sqlalchemy.org/en/14/orm/mapped_sql_expr.html.
-    weighted_bills = g.project.get_bill_weights_ordered().paginate(
-        per_page=100, error_out=True
-    )
+    # get filter values
+    search_query = request.args.get('search', '')
+    filter_date = request.args.get('date', '')
+    filter_amount = request.args.get('amount', '')
+    filter_payer = request.args.get('payer', '')
+
+    filters_active = any([search_query, filter_date, filter_amount, filter_payer])
+    
+    # if no filters active, use standard query
+    if not filters_active:
+        weighted_bills = g.project.get_bill_weights_ordered().paginate(
+            per_page=100, error_out=True
+        )
+    else:
+        # start with all bills
+        query = Bill.query.filter(Bill.payer_id == Person.id).filter(Person.project_id == g.project.id)
+        
+        # apply filters if there are any
+        if search_query:
+            query = query.filter(Bill.what.ilike(f'%{search_query}%'))
+        
+        if filter_date:
+            try:
+                date_obj = datetime.datetime.strptime(filter_date, '%Y-%m-%d').date()
+                query = query.filter(Bill.date == date_obj)
+            except ValueError:
+                logging.error(f"invalid date format provided: {filter_date}. expected format: YYYY-MM-DD")
+                
+        
+        if filter_amount:
+            try:
+                amount = float(filter_amount)
+                query = query.filter(Bill.amount == amount)
+            except ValueError:
+                logging.error(f"invalid amount format provided: {filter_amount}. amount must be a number")
+
+        if filter_payer:
+            query = query.filter(Bill.payer_id == filter_payer)
+        
+        filtered_bill_ids = [bill.id for bill in query.all()]
+        
+        # Now get the weighted bills with these IDs
+        if filtered_bill_ids:
+            bills_query = g.project.get_bill_weights().filter(Bill.id.in_(filtered_bill_ids))
+            bills_query = g.project.order_bills(bills_query)
+            weighted_bills = bills_query.paginate(per_page=100, error_out=True)
+        else:
+            # no bills match the filters
+            weighted_bills = db.session.query(func.sum(Person.weight), Bill).filter(Bill.id == None).paginate(per_page=100, error_out=True)
 
     return render_template(
         "list_bills.html",
@@ -685,6 +729,11 @@ def list_bills():
         csrf_form=csrf_form,
         add_bill=request.values.get("add_bill", False),
         current_view="list_bills",
+        search_query=search_query,
+        filter_date=filter_date,
+        filter_amount=filter_amount,
+        filter_payer=filter_payer,
+        search_active=filters_active,
     )
 
 
