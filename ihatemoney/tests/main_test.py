@@ -293,6 +293,71 @@ class TestModels(IhatemoneyTestCase):
         assert "raclette@notmyidea.org" in result5.output
 
 
+class TestBillFiltering(IhatemoneyTestCase):
+    def setUp(self):
+        """Set up a test project with members and bills."""
+        super().setUp()
+        self.post_project("raclette")
+
+        # Add members
+        self.client.post("/raclette/members/add", data={"name": "Alice"})
+        self.client.post("/raclette/members/add", data={"name": "Bob"})
+
+        # Create bills
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2024-03-01",
+                "what": "Cheese",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "bill_type": "Expense",
+                "amount": "15.0",
+            },
+        )
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2024-03-05",
+                "what": "Wine",
+                "payer": 2,
+                "payed_for": [1, 2],
+                "bill_type": "Expense",
+                "amount": "25.0",
+            },
+        )
+
+    def test_filter_by_payer(self):
+        """Test filtering by payer ID"""
+        response = self.client.get("/raclette/?payer=1", follow_redirects=True)
+        assert b"Cheese" in response.data  # Bill paid by Alice
+        assert b"Wine" not in response.data  # Bill paid by Bob
+
+    def test_filter_by_amount_range(self):
+        """Test filtering by amount range"""
+        response = self.client.get("/raclette/?amount_min=20", follow_redirects=True)
+        assert b"Wine" in response.data  # Wine is 25
+        assert b"Cheese" not in response.data  # Cheese is 15
+
+    def test_filter_by_date_range(self):
+        """Test filtering by date range"""
+        response = self.client.get("/raclette/?date_from=2024-03-02", follow_redirects=True)
+        assert b"Wine" in response.data  # Wine is on March 5
+        assert b"Cheese" not in response.data  # Cheese is on March 1
+
+    def test_filter_by_search_term(self):
+        """Test filtering by search query"""
+        response = self.client.get("/raclette/?search=Cheese", follow_redirects=True)
+        assert b"Cheese" in response.data
+        assert b"Wine" not in response.data
+
+    def test_filter_combination(self):
+        """Test filtering by multiple criteria"""
+        response = self.client.get("/raclette/?payer=1&amount_max=20", follow_redirects=True)
+        assert b"Cheese" in response.data  # Cheese fits both conditions
+        assert b"Wine" not in response.data  # Wrong payer & too expensive
+
+
 class TestEmailFailure(IhatemoneyTestCase):
     def test_creation_email_failure_smtp(self):
         self.login("raclette")
