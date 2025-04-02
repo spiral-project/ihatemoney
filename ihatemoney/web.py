@@ -671,51 +671,45 @@ def list_bills():
     ):
         bill_form.payed_for.data = session["last_selected_payed_for"][g.project.id]
 
-    # get filter values
-    search_query = request.args.get('search', '')
-    filter_date_from = request.args.get('date_from', '')
-    filter_date_to = request.args.get('date_to', '')
-    filter_amount_min = request.args.get('amount_min', '')
-    filter_amount_max = request.args.get('amount_max', '')
-    filter_payer = request.args.get('payer', '')
+    # Extract filter values from request
+    filters = {
+        "search": request.args.get("search", "").strip(),
+        "date_from": request.args.get("date_from", "").strip(),
+        "date_to": request.args.get("date_to", "").strip(),
+        "amount_min": request.args.get("amount_min", "").strip(),
+        "amount_max": request.args.get("amount_max", "").strip(),
+        "payer": request.args.get("payer", "").strip(),
+    }
 
-    filters_active = any([search_query, filter_date_to, filter_date_from, filter_amount_min, filter_amount_max, filter_payer])
+    filters_active = any(filters.values())
 
-    # if no filters active, use standard query
+    # Fetch bills
     if not filters_active:
-        # Each item will be a (weight_sum, Bill) tuple.
-        # TODO: improve this awkward result using column_property:
-        # https://docs.sqlalchemy.org/en/14/orm/mapped_sql_expr.html.
-        weighted_bills = g.project.get_bill_weights_ordered().paginate(
-            per_page=100, error_out=True
-        )
+        weighted_bills = g.project.get_bill_weights_ordered().paginate(per_page=100, error_out=True)
     else:
-        # start with all bills
-        query = Bill.query.filter(Bill.payer_id == Person.id).filter(Person.project_id == g.project.id)
+        query = Bill.query.join(Person).filter(Person.project_id == g.project.id)
 
-        # apply filters if there are any
-        if search_query:
-            query = query.filter(Bill.what.ilike(f'%{search_query}%'))
+        if filters["search"]:
+            query = query.filter(Bill.what.ilike(f'%{filters["search"]}%'))
 
-        if filter_date_from:
-            date_obj = datetime.datetime.strptime(filter_date_from, '%Y-%m-%d').date()
-            query = query.filter(Bill.date >= date_obj)
+        if filters["date_from"]:
+            query = query.filter(Bill.date >= datetime.datetime.strptime(filters["date_from"], '%Y-%m-%d').date())
 
-        if filter_date_to:
-            date_obj = datetime.datetime.strptime(filter_date_to, '%Y-%m-%d').date()
-            query = query.filter(Bill.date <= date_obj)
+        if filters["date_to"]:
+            query = query.filter(Bill.date <= datetime.datetime.strptime(filters["date_to"], '%Y-%m-%d').date())
 
-        if filter_amount_min:
-            query = query.filter(Bill.amount >= float(filter_amount_min))
+        if filters["amount_min"]:
+            query = query.filter(Bill.amount >= float(filters["amount_min"]))
 
-        if filter_amount_max:
-            query = query.filter(Bill.amount <= float(filter_amount_max))
+        if filters["amount_max"]:
+            query = query.filter(Bill.amount <= float(filters["amount_max"]))
 
-        if filter_payer:
-            query = query.filter(Bill.payer_id == filter_payer)
+        if filters["payer"]:
+            query = query.filter(Bill.payer_id == filters["payer"])
 
-        filtered_bill_ids = [bill.id for bill in query.all()]
-        bills_query = g.project.get_bill_weights().filter(Bill.id.in_(filtered_bill_ids))
+        filtered_bill_ids = query.with_entities(Bill.id).all()
+
+        bills_query = g.project.get_bill_weights().filter(Bill.id.in_([bill.id for bill in filtered_bill_ids]))
         bills_query = g.project.order_bills(bills_query)
         weighted_bills = bills_query.paginate(per_page=100, error_out=True)
 
@@ -727,13 +721,8 @@ def list_bills():
         csrf_form=csrf_form,
         add_bill=request.values.get("add_bill", False),
         current_view="list_bills",
-        search_query=search_query,
-        filter_date_to=filter_date_to,
-        filter_date_from=filter_date_from,
-        filter_amount_min=filter_amount_min,
-        filter_amount_max=filter_amount_max,
-        filter_payer=filter_payer,
         search_active=filters_active,
+        **filters  # Unpack filter values for template use
     )
 
 
