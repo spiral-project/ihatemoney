@@ -36,6 +36,7 @@ from flask_babel import gettext as _
 from flask_mail import Message
 import qrcode
 import qrcode.image.svg
+from sqlalchemy import func
 from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash
@@ -670,12 +671,53 @@ def list_bills():
     ):
         bill_form.payed_for.data = session["last_selected_payed_for"][g.project.id]
 
-    # Each item will be a (weight_sum, Bill) tuple.
-    # TODO: improve this awkward result using column_property:
-    # https://docs.sqlalchemy.org/en/14/orm/mapped_sql_expr.html.
-    weighted_bills = g.project.get_bill_weights_ordered().paginate(
-        per_page=100, error_out=True
-    )
+    # get filter values
+    search_query = request.args.get('search', '')
+    filter_date_from = request.args.get('date_from', '')
+    filter_date_to = request.args.get('date_to', '')
+    filter_amount_min = request.args.get('amount_min', '')
+    filter_amount_max = request.args.get('amount_max', '')
+    filter_payer = request.args.get('payer', '')
+
+    filters_active = any([search_query, filter_date_to, filter_date_from, filter_amount_min, filter_amount_max, filter_payer])
+
+    # if no filters active, use standard query
+    if not filters_active:
+        # Each item will be a (weight_sum, Bill) tuple.
+        # TODO: improve this awkward result using column_property:
+        # https://docs.sqlalchemy.org/en/14/orm/mapped_sql_expr.html.
+        weighted_bills = g.project.get_bill_weights_ordered().paginate(
+            per_page=100, error_out=True
+        )
+    else:
+        # start with all bills
+        query = Bill.query.filter(Bill.payer_id == Person.id).filter(Person.project_id == g.project.id)
+
+        # apply filters if there are any
+        if search_query:
+            query = query.filter(Bill.what.ilike(f'%{search_query}%'))
+
+        if filter_date_from:
+            date_obj = datetime.datetime.strptime(filter_date_from, '%Y-%m-%d').date()
+            query = query.filter(Bill.date >= date_obj)
+
+        if filter_date_to:
+            date_obj = datetime.datetime.strptime(filter_date_to, '%Y-%m-%d').date()
+            query = query.filter(Bill.date <= date_obj)
+
+        if filter_amount_min:
+            query = query.filter(Bill.amount >= float(filter_amount_min))
+
+        if filter_amount_max:
+            query = query.filter(Bill.amount <= float(filter_amount_max))
+
+        if filter_payer:
+            query = query.filter(Bill.payer_id == filter_payer)
+
+        filtered_bill_ids = [bill.id for bill in query.all()]
+        bills_query = g.project.get_bill_weights().filter(Bill.id.in_(filtered_bill_ids))
+        bills_query = g.project.order_bills(bills_query)
+        weighted_bills = bills_query.paginate(per_page=100, error_out=True)
 
     return render_template(
         "list_bills.html",
@@ -685,6 +727,13 @@ def list_bills():
         csrf_form=csrf_form,
         add_bill=request.values.get("add_bill", False),
         current_view="list_bills",
+        search_query=search_query,
+        filter_date_to=filter_date_to,
+        filter_date_from=filter_date_from,
+        filter_amount_min=filter_amount_min,
+        filter_amount_max=filter_amount_max,
+        filter_payer=filter_payer,
+        search_active=filters_active,
     )
 
 
