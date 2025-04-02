@@ -94,15 +94,15 @@
 <div class="d-flex flex-wrap w-100 pt-2 mt-2" id="bill-toolbar">
 {% if bills.pages > 1 %}
 <ul class="pagination mr-2 mb-0 pb-2 flex-wrap" id="pagination-top">
-  <li class="page-item {% if bills.page == 1 %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.prev_num) }}{% if search_query %}&search={{ search_query }}{% endif %}{% if filter_date %}&date={{ filter_date }}{% endif %}{% if filter_amount %}&amount={{ filter_amount }}{% endif %}{% if filter_payer %}&payer={{ filter_payer }}{% endif %}{% if filter_for %}&for={{ filter_for }}{% endif %}{% if filter_what %}&what={{ filter_what }}{% endif %}">&laquo; {{ _("Newer bills") }}</a></li>
+  <li class="page-item {% if bills.page == 1 %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.prev_num) }}{% if search_query %}&search={{ search_query }}{% endif %}{% if filter_date %}&date={{ filter_date }}{% endif %}{% if filter_amount %}&amount={{ filter_amount }}{% endif %}{% if filter_payer %}&payer={{ filter_payer }}{% endif %}">&laquo; {{ _("Newer bills") }}</a></li>
   {%- for page in bills.iter_pages() %}
   {% if page %}
-  <li class="page-item {% if page == bills.page %}active{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=page) }}{% if search_query %}&search={{ search_query }}{% endif %}{% if filter_date %}&date={{ filter_date }}{% endif %}{% if filter_amount %}&amount={{ filter_amount }}{% endif %}{% if filter_payer %}&payer={{ filter_payer }}{% endif %}{% if filter_for %}&for={{ filter_for }}{% endif %}{% if filter_what %}&what={{ filter_what }}{% endif %}">{{ page }}</a></li>
+  <li class="page-item {% if page == bills.page %}active{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=page) }}{% if search_query %}&search={{ search_query }}{% endif %}{% if filter_date %}&date={{ filter_date }}{% endif %}{% if filter_amount %}&amount={{ filter_amount }}{% endif %}{% if filter_payer %}&payer={{ filter_payer }}{% endif %}">{{ page }}</a></li>
   {% else %}
   <li class="page-item disabled"><span class="ellipsis page-link">…</span></li>
   {% endif %}
   {%- endfor %}
-  <li class="page-item {% if bills.page == bills.pages %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.next_num) }}{% if search_query %}&search={{ search_query }}{% endif %}{% if filter_date %}&date={{ filter_date }}{% endif %}{% if filter_amount %}&amount={{ filter_amount }}{% endif %}{% if filter_payer %}&payer={{ filter_payer }}{% endif %}{% if filter_for %}&for={{ filter_for }}{% endif %}{% if filter_what %}&what={{ filter_what }}{% endif %}">{{ _("Older bills") }} &raquo;</a></li>
+  <li class="page-item {% if bills.page == bills.pages %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.next_num) }}{% if search_query %}&search={{ search_query }}{% endif %}{% if filter_date %}&date={{ filter_date }}{% endif %}{% if filter_amount %}&amount={{ filter_amount }}{% endif %}{% if filter_payer %}&payer={{ filter_payer }}{% endif %}">{{ _("Older bills") }} &raquo;</a></li>
 </ul>
 {% endif %}
 
