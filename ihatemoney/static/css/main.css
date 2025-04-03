@@ -645,3 +645,8 @@ footer .icon svg {
 .edit-project .custom-file {
   margin-bottom: 2em;
 }
+
+.connected-projects {
+  a {
+  }
+}

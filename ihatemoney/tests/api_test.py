@@ -6,6 +6,7 @@ import pytest
 
 from ihatemoney.tests.common.help_functions import em_surround
 from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
+from flask import session
 
 
 class TestAPI(IhatemoneyTestCase):
@@ -1079,3 +1080,29 @@ class TestAPI(IhatemoneyTestCase):
         # Bill type should now be "Expense"
         got = json.loads(req.data.decode("utf-8"))
         assert got["bill_type"] == "Expense"
+
+    def test_get_auth(self):
+        """
+        Redirects to logged in projects
+        """
+        self.create_project("test-project")
+        self.login("test-project")
+
+    def test_post_auth_wrong_password(self):
+        """
+        Rejects wrong passwords for projects
+        in the session
+        """
+        self.create_project("project1", password="a")
+        self.login("project1", "a")
+
+        print(session["projects"])
+        
+
+    def test_post_auth_correct_password(self):
+        """
+        Accepts correct passwords for projects
+        in the session
+        """
+        pass
+
