@@ -685,6 +685,9 @@ def list_bills():
 
     # standard query if no filters are active
     if not filters_active:
+        # Each item will be a (weight_sum, Bill) tuple.
+        # TODO: improve this awkward result using column_property:
+        # https://docs.sqlalchemy.org/en/14/orm/mapped_sql_expr.html.
         weighted_bills = g.project.get_bill_weights_ordered().paginate(per_page=100, error_out=True)
     else:
         query = Bill.query.join(Person).filter(Person.project_id == g.project.id)
