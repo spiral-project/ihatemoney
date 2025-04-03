@@ -36,7 +36,6 @@ from flask_babel import gettext as _
 from flask_mail import Message
 import qrcode
 import qrcode.image.svg
-from sqlalchemy import func
 from sqlalchemy_continuum import Operation
 from werkzeug.exceptions import NotFound
 from werkzeug.security import check_password_hash
