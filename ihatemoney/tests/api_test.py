@@ -6,7 +6,7 @@ import pytest
 
 from ihatemoney.tests.common.help_functions import em_surround
 from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
-from flask import session
+from flask import url_for
 
 
 class TestAPI(IhatemoneyTestCase):
@@ -1081,6 +1081,29 @@ class TestAPI(IhatemoneyTestCase):
         got = json.loads(req.data.decode("utf-8"))
         assert got["bill_type"] == "Expense"
 
+    def test_project_list_redirection(self):
+        self.post_project("project1", default_currency="USD")
+        self.post_project("project2", default_currency="EUR")
+
+        # Step 2: Log into these projects (simulate a user accessing them)
+        self.login("project1")
+        self.login("project2")
+
+        # Step 3: Access the homepage where the project list should be displayed
+        response = self.client.get("/")
+        self.assertStatus(200, response)
+        page_content = response.data.decode("utf-8")
+
+        # Check that both project names appear in the list
+        assert "project1" in page_content
+        assert "project2" in page_content
+
+        # Step 4: Simulate clicking on "project1" by visiting its link
+        response = self.client.get("/project1/")
+        self.assertStatus(200, response)  # Should load the project page
+        
+        assert "project1" in response.data.decode("utf-8")  # Project content should be visible
+
     def test_get_auth(self):
         """
         Redirects to logged in projects
@@ -1088,21 +1111,27 @@ class TestAPI(IhatemoneyTestCase):
         self.create_project("test-project")
         self.login("test-project")
 
+        req = self.client.get(url_for('main.list_bills', project_id='test-project'))
+        self.assertStatus(200, req)
+
     def test_post_auth_wrong_password(self):
         """
         Rejects wrong passwords for projects
         in the session
         """
         self.create_project("project1", password="a")
-        self.login("project1", "a")
+        req = self.login("project1", "b")
 
-        print(session["projects"])
-        
+
+        assert req.request.path == '/authenticate'
 
     def test_post_auth_correct_password(self):
         """
         Accepts correct passwords for projects
         in the session
         """
-        pass
+        self.create_project("project1", password="a")
+        req = self.login("project1", "a")
+        
+        assert req.request.path == '/project1/'
 

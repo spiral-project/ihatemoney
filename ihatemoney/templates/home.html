@@ -36,10 +36,10 @@
   {% if 'projects' in session %}
     <div class="card">
       <div class="card-header">
-        {{ _("Open a project in your current session") }}
+        {{ _("Open a connected project") }}
       </div>
       <div class="card-body">
-        <ul class="connected-projects">
+        <ul>
           {% for id, name in session['projects'].items() %}
             <li><a href="{{ url_for("main.list_bills", project_id=id )}}">{{name}}</a>
           {% endfor %}
