@@ -671,7 +671,7 @@ def list_bills():
     ):
         bill_form.payed_for.data = session["last_selected_payed_for"][g.project.id]
 
-    # Extract filter values from request
+    # filters from form
     filters = {
         "search": request.args.get("search", "").strip(),
         "date_from": request.args.get("date_from", "").strip(),
@@ -683,7 +683,7 @@ def list_bills():
 
     filters_active = any(filters.values())
 
-    # Fetch bills
+    # standard query if no filters are active
     if not filters_active:
         weighted_bills = g.project.get_bill_weights_ordered().paginate(per_page=100, error_out=True)
     else:
