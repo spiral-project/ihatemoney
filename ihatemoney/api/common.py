@@ -23,14 +23,16 @@ limiter = Limiter(key_func=get_remote_address)
 limiter = Limiter(
     key_func=get_remote_address,
     default_limits=[
-    "100 per day",
-    "5 per minute"
+        "100 per day",
+        "5 per minute"
     ],
-    storge_uri="redis://localhost:6379"
-    storage_options={"socket_connection_timeout": 30},
+    storage_uri="redis://localhost:6379",
+    storage_options={
+        "socket_connect_timeout": 30,
+        "retry_on_timeout": True # Retry logic
+    },
     strategy="fixed-window-elastic-expiry"
 )
-
 
 def need_auth(f):
     @limiter.limit("5 per minute", key_func=lambda: request.authorization.username if request.authorization else get_remote_address())
@@ -61,7 +63,7 @@ def need_auth(f):
                         return f(*args, project=project, **kwargs)
 
             # Basic auth with constant-time comparisons
-            auth = request.authorization
+             auth = request.authorization
             if auth and project_id:
                 if not compare_digest(auth.username.lower(), project_id):
                     current_app.logger.warning(f"Invalid username attempt for project {project_id}")
@@ -87,7 +89,7 @@ def need_auth(f):
                 }
             )
             abort(401, message="Authentication failed")
-            
+
     return wrapper
 
 
@@ -232,6 +234,8 @@ class TokenHandler(Resource):
     def get(self, project):
         if not project:
             return "Not Found", 404
-
-        token = project.generate_token()
-        return {"token": token}, 200
+        
+        token = project.generate_token(
+            expiration=current_app.config.get('TOKEN_EXPIRY', 86400),
+        )
+        return {"token": token, "expires_in": 86400}, 200
