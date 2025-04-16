@@ -1,8 +1,11 @@
 from functools import wraps
 
 from flask import current_app, request
+from flask_limiter.util import get_remote_address
+from flask_limiter import Limiter
 from flask_restful import Resource, abort
 from werkzeug.security import check_password_hash
+from hmac import compare_digest
 from wtforms.fields import BooleanField
 
 from ihatemoney.currency_convertor import CurrencyConverter
@@ -11,50 +14,81 @@ from ihatemoney.forms import EditProjectForm, MemberForm, ProjectForm, get_billf
 from ihatemoney.models import Bill, Person, Project, db
 
 
+limiter = Limiter(key_func=get_remote_address)
+
+
+
+# Request limiter configuration
+# Limiter to prevent abuse of the API
+limiter = Limiter(
+    key_func=get_remote_address,
+    default_limits=[
+    "100 per day",
+    "5 per minute"
+    ],
+    storge_uri="redis://localhost:6379"
+    storage_options={"socket_connection_timeout": 30},
+    strategy="fixed-window-elastic-expiry"
+)
+
+
 def need_auth(f):
-    """Check the request for basic authentication for a given project.
-
-    Return the project if the authorization is good, abort the request with a 401 otherwise
-    """
-
+    @limiter.limit("5 per minute", key_func=lambda: request.authorization.username if request.authorization else get_remote_address())
     @wraps(f)
     def wrapper(*args, **kwargs):
-        auth = request.authorization
-        project_id = kwargs.get("project_id").lower()
-
-        # Use Basic Auth
-        if auth and project_id and auth.username.lower() == project_id:
-            project = Project.query.get(auth.username.lower())
-            if project and check_password_hash(project.password, auth.password):
-                # The whole project object will be passed instead of project_id
-                kwargs.pop("project_id")
-                return f(*args, project=project, **kwargs)
-        else:
-            # Use Bearer token Auth
+        try:
+            project_id = kwargs.get("project_id", "").lower()
+            if not project_id:
+                abort(400, message="Invalid request")
+            
+            # Bearer token auth
             auth_header = request.headers.get("Authorization", "")
-            auth_token = ""
-            try:
-                auth_token = auth_header.split(" ")[1]
-            except IndexError:
-                abort(401)
-            project_id = Project.verify_token(
-                auth_token, token_type="auth", project_id=project_id
-            )
-            if auth_token and project_id:
-                project = Project.query.get(project_id)
-                if project:
+            if auth_header.startswith("Bearer "):
+                token = auth_header.split(" ", 1)[1].strip()  # More secure split
+                if not token or len(token) > 512:  # Prevent token-based DoS
+                    abort(401, message="Invalid token")
+                
+                verified_project_id = Project.verify_token(
+                    token, 
+                    token_type="auth", 
+                    project_id=project_id,
+                    max_age=current_app.config.get('TOKEN_EXPIRY', 86400)
+                )
+                if verified_project_id:
+                    project = Project.query.get(verified_project_id)
+                    if project:
+                        kwargs.pop("project_id")
+                        return f(*args, project=project, **kwargs)
+
+            # Basic auth with constant-time comparisons
+            auth = request.authorization
+            if auth and project_id:
+                if not compare_digest(auth.username.lower(), project_id):
+                    current_app.logger.warning(f"Invalid username attempt for project {project_id}")
+                    abort(401, message="Authentication failed")
+                    
+                project = Project.query.get(auth.username.lower())
+                dummy_hash = "pbkdf2:sha256:260000$dummyhashdummyhash"
+                password_hash = project.password if project else dummy_hash
+                
+                if project and check_password_hash(password_hash, auth.password):
                     kwargs.pop("project_id")
                     return f(*args, project=project, **kwargs)
-        abort(401)
 
+            abort(401, message="Authentication required")
+            
+        except Exception as e:
+            current_app.logger.error(
+                f"Authentication error: {type(e).__name__}",
+                extra={
+                    "ip": get_remote_address(),
+                    "project_id": project_id,
+                    "error": str(e)
+                }
+            )
+            abort(401, message="Authentication failed")
+            
     return wrapper
-
-
-class CurrenciesHandler(Resource):
-    currency_helper = CurrencyConverter()
-
-    def get(self):
-        return self.currency_helper.get_currencies()
 
 
 class ProjectsHandler(Resource):
