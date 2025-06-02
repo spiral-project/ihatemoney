@@ -649,7 +649,7 @@ def invite():
     return render_template("send_invites.html", form=form, qrcode=qrcode_svg)
 
 
-@main.route("/<project_id>/")
+@main.route("/<project_id>/", methods=["GET", "POST"])
 def list_bills():
     bill_form = get_billform_for(g.project)
     # Used for CSRF validation
@@ -673,19 +673,37 @@ def list_bills():
     # Each item will be a (weight_sum, Bill) tuple.
     # TODO: improve this awkward result using column_property:
     # https://docs.sqlalchemy.org/en/14/orm/mapped_sql_expr.html.
-    weighted_bills = g.project.get_bill_weights_ordered().paginate(
-        per_page=100, error_out=True
-    )
+    if request.method == "GET":
+        weighted_bills = g.project.get_bill_weights_ordered().paginate(
+            per_page=100, error_out=True
+        )
+        return render_template(
+            "list_bills.html",
+            bills=weighted_bills,
+            member_form=MemberForm(g.project),
+            bill_form=bill_form,
+            csrf_form=csrf_form,
+            add_bill=request.values.get("add_bill", False),
+            current_view="list_bills",
+        )
+    if request.method == "POST":
+        start_date = request.form['start_date']
+        end_date = request.form['end_date']
+        weighted_bills = g.project.get_filtered_bill_weights_ordered(start_date, end_date).paginate(
+            per_page=100, error_out=True
+        )
+        return render_template(
+            "list_bills.html",
+            bills=weighted_bills,
+            member_form=MemberForm(g.project),
+            bill_form=bill_form,
+            csrf_form=csrf_form,
+            add_bill=request.values.get("add_bill", False),
+            current_view="list_bills",
+            start_date=start_date,
+            end_date=end_date,
+        )
 
-    return render_template(
-        "list_bills.html",
-        bills=weighted_bills,
-        member_form=MemberForm(g.project),
-        bill_form=bill_form,
-        csrf_form=csrf_form,
-        add_bill=request.values.get("add_bill", False),
-        current_view="list_bills",
-    )
 
 
 @main.route("/<project_id>/members/add", methods=["GET", "POST"])
