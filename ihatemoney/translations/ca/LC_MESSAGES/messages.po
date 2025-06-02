@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-29 14:24+0200\n"
-"PO-Revision-Date: 2022-09-12 15:25+0000\n"
-"Last-Translator: Maite Guix <maite.guix@gmail.com>\n"
+"PO-Revision-Date: 2024-07-03 19:09+0000\n"
+"Last-Translator: Quentin PAGÈS <quentinantonin@free.fr>\n"
+"Language-Team: Catalan <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/ca/>\n"
 "Language: ca\n"
-"Language-Team: Catalan <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/ca/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.7-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #, python-format
@@ -222,7 +222,7 @@ msgid "{start_object}, {next_object}"
 msgstr "{start_object}, {next_object}"
 
 msgid "No Currency"
-msgstr "Sense moneda"
+msgstr "Cap moneda"
 
 #. Form error with only one error
 msgid "{prefix}: {error}"
@@ -826,7 +826,7 @@ msgstr "Aplicació mòbil"
 msgid "Documentation"
 msgstr "Documentació"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr "Panell d'administració"
 
 msgid "Legal information"
@@ -1082,4 +1082,3 @@ msgstr "Període"
 #~ msgstr ""
 #~ "Pots compartir directament l'enllaç següent"
 #~ " a través del teu mitjà preferit"
-

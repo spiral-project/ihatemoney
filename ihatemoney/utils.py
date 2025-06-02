@@ -84,7 +84,6 @@ def flash_email_error(error_message, category="danger"):
 
 
 class Redirect303(HTTPException, RoutingException):
-
     """Raise if the map requests a redirect. This is for example the case if
     `strict_slashes` are activated and an url that requires a trailing slash.
 
@@ -102,7 +101,6 @@ class Redirect303(HTTPException, RoutingException):
 
 
 class PrefixedWSGI(object):
-
     """
     Wrap the application in this middleware and configure the
     front-end server to add these headers, to let you quietly bind
@@ -454,7 +452,9 @@ def format_form_errors(form, prefix):
         )
     else:
         error_list = "</li><li>".join(
-            str(error) for (field, errors) in form.errors.items() for error in errors
+            f"<strong>{field}</strong> {error}"
+            for (field, errors) in form.errors.items()
+            for error in errors
         )
         errors = f"<ul><li>{error_list}</li></ul>"
         # I18N: Form error with a list of errors

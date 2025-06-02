@@ -9,7 +9,6 @@ from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
 
 
 class TestAPI(IhatemoneyTestCase):
-
     """Tests the API"""
 
     def api_create(
@@ -815,7 +814,8 @@ class TestAPI(IhatemoneyTestCase):
             "/api/projects/raclette/statistics", headers=self.get_auth("raclette")
         )
         self.assertStatus(200, req)
-        assert [
+        received_stats = json.loads(req.data.decode("utf-8"))
+        assert received_stats == [
             {
                 "balance": 12.5,
                 "member": {
@@ -825,7 +825,9 @@ class TestAPI(IhatemoneyTestCase):
                     "weight": 1.0,
                 },
                 "paid": 25.0,
-                "spent": 12.5,
+                "received": 0.0,
+                "spent": -12.5,
+                "transferred": 0.0,
             },
             {
                 "balance": -12.5,
@@ -835,10 +837,12 @@ class TestAPI(IhatemoneyTestCase):
                     "name": "jeanne",
                     "weight": 1.0,
                 },
-                "paid": 0,
-                "spent": 12.5,
+                "paid": 0.0,
+                "received": 0.0,
+                "spent": -12.5,
+                "transferred": 0.0,
             },
-        ] == json.loads(req.data.decode("utf-8"))
+        ]
 
     def test_username_xss(self):
         # create a project

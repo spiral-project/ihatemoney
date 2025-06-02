@@ -5,7 +5,14 @@ This document describes changes between each past release.
 ## 6.2.0 (unreleased)
 
 - Add support for python 3.12 (#757)
-
+- Migrate from setup.cfg to pyproject.toml (#1243)
+- Update to wtforms 3.1 (#1248)
+- Document [repository rules](https://ihatemoney.readthedocs.io/en/latest/contributing.html#repository-rules) (#1253)
+- Add "reimbursement" bills and allow to create them directly from the "Settle" page (#1290)
+- Remove support for python 3.7
+- Replace the black linter by ruff
+- Replace virtualenv and pip by uv
+- Remove tox
 
 ## 6.1.5 (2024-03-19)
 

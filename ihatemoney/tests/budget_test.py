@@ -1,10 +1,9 @@
 from collections import defaultdict
-import datetime
+from datetime import datetime, timedelta, date
 import re
 from urllib.parse import unquote, urlparse, urlunparse
 
 from flask import session, url_for
-from libfaketime import fake_time
 import pytest
 from werkzeug.security import check_password_hash
 
@@ -239,7 +238,10 @@ class TestBudget(IhatemoneyTestCase):
             url, data={"password": "pass", "password_confirmation": "pass"}
         )
         resp = self.login("raclette", password="pass")
-        assert "<title>Account manager - raclette</title>" in resp.data.decode("utf-8")
+        assert (
+            "<title>I Hate Money — Account manager - raclette</title>"
+            in resp.data.decode("utf-8")
+        )
         # Test empty and null tokens
         resp = self.client.get("/reset-password")
         assert "No token provided" in resp.data.decode("utf-8")
@@ -788,15 +790,18 @@ class TestBudget(IhatemoneyTestCase):
         self.client.post("/rent/members/add", data={"name": "bob"})
         self.client.post("/rent/members/add", data={"name": "alice"})
 
-        members_ids = [m.id for m in self.get_project("rent").members]
-        # create a bill to test reimbursement
+        everybody = [m.id for m in self.get_project("rent").members]
+        bob = everybody[0]
+        alice = everybody[1]
+
+        # create a bill
         self.client.post(
             "/rent/add",
             data={
                 "date": "2022-12-12",
                 "what": "december rent",
-                "payer": members_ids[0],  # bob
-                "payed_for": members_ids,  # bob and alice
+                "payer": bob,
+                "payed_for": everybody,
                 "bill_type": "Expense",
                 "amount": "1000",
             },
@@ -804,32 +809,40 @@ class TestBudget(IhatemoneyTestCase):
         # check balance
         balance = self.get_project("rent").balance
         assert set(balance.values()), set([500 == -500])
-        # check paid
-        bob_paid = self.get_project("rent").full_balance[2][members_ids[0]]
-        alice_paid = self.get_project("rent").full_balance[2][members_ids[1]]
+
+        project = self.get_project("rent")
+        bob_paid = project.full_balance[2][bob]
+        alice_paid = project.full_balance[2][alice]
         assert bob_paid == 1000
         assert alice_paid == 0
 
-        # test reimbursement bill
+        # reimbursement bill
         self.client.post(
             "/rent/add",
             data={
                 "date": "2022-12-13",
                 "what": "reimbursement for rent",
-                "payer": members_ids[1],  # alice
-                "payed_for": members_ids[0],  # bob
+                "payer": alice,
+                "payed_for": bob,
                 "bill_type": "Reimbursement",
                 "amount": "500",
             },
         )
 
-        balance = self.get_project("rent").balance
+        balance = project.balance
         assert set(balance.values()), set([0 == 0])
-        # check paid
-        bob_paid = self.get_project("rent").full_balance[2][members_ids[0]]
-        alice_paid = self.get_project("rent").full_balance[2][members_ids[1]]
-        assert bob_paid == 500
-        assert alice_paid == 500
+
+        # After the reimbursement, the full balance should be populated with
+        # transfer items
+        bob_paid = project.full_balance[2][bob]
+        alice_paid = project.full_balance[2][alice]
+        assert bob_paid == 1000
+        assert alice_paid == 0
+
+        bob_received = project.full_balance[4][bob]
+        alice_transferred = project.full_balance[3][alice]
+        assert bob_received == 500
+        assert alice_transferred == 500
 
     def test_weighted_balance(self):
         self.post_project("raclette")
@@ -1030,9 +1043,7 @@ class TestBudget(IhatemoneyTestCase):
         assert """<thead>
         <tr>
             <th>Project</th>
-            <th>Number of participants</th>""" in resp.data.decode(
-            "utf-8"
-        )
+            <th>Number of participants</th>""" in resp.data.decode("utf-8")
 
     def test_dashboard_project_deletion(self):
         self.post_project("raclette")
@@ -1069,14 +1080,25 @@ class TestBudget(IhatemoneyTestCase):
         assert len(project.active_months_range()) == 0
         assert len(project.monthly_stats) == 0
 
-        # Check that the "monthly expenses" table is empty
+        # Check that the "monthly expenses" table exists
+        # and is empty.
         response = self.client.get("/raclette/statistics")
-        regex = (
-            r"<table id=\"monthly_stats\".*>\s*<thead>\s*<tr>\s*<th>Period</th>\s*"
-            r"<th>Spent</th>\s*</tr>\s*</thead>\s*<tbody>\s*</tbody>\s*</table>"
-        )
-        assert re.search(regex, response.data.decode("utf-8"))
 
+        regex = (
+            r'<table id="monthly_stats" class="table table-striped">\n'
+            r"    <thead>\n"
+            r"      <tr>\n"
+            r"        <th>Period</th>\n"
+            r"        <th>Expenses</th>\n"
+            r"      </tr>\n"
+            r"    </thead>\n"
+            r"    <tbody>\n"
+            r"      \n"
+            r"    </tbody>\n"
+            r"  </table>"
+        )
+
+        assert re.search(regex, response.data.decode("utf-8"))
         # create bills
         self.client.post(
             "/raclette/add",
@@ -1115,22 +1137,29 @@ class TestBudget(IhatemoneyTestCase):
         )
 
         response = self.client.get("/raclette/statistics")
-        regex = r"<td class=\"d-md-none\">{}</td>\s*<td>{}</td>\s*<td>{}</td>"
-        assert re.search(
-            regex.format("zorglub", r"\$20\.00", r"\$31\.67"),
-            response.data.decode("utf-8"),
-        )
-        assert re.search(
-            regex.format("jeanne", r"\$20\.00", r"\$5\.83"),
-            response.data.decode("utf-8"),
-        )
-        assert re.search(
-            regex.format("tata", r"\$0\.00", r"\$2\.50"), response.data.decode("utf-8")
-        )
-        assert re.search(
-            regex.format("pépé", r"\$0\.00", r"\$0\.00"), response.data.decode("utf-8")
-        )
+        html = response.data.decode("utf-8")
 
+        def stat_entry(name, paid, spent, transferred=None, received=None):
+            return (
+                f'<td class="d-md-none">{name}</td>\n'
+                f"        <td>{paid}</td>\n"
+                f"        <td>{spent}</td>\n"
+                # f"        <td>${spent}</td>\n"
+                # f"        <td>${transferred}</td>"
+            )
+
+        #         set_trace()
+
+        #         regex = (
+        #             r'\s*<td class="d-md-none">{}</td>\n'
+        #             r"\s*<td>{}</td>\n"
+        #             r"\s*<td>{}</td>\n"
+        #         )
+
+        assert stat_entry("zorglub", "$20.00", "-$31.67") in html
+        assert stat_entry("jeanne", "$20.00", "-$5.83") in html
+        assert stat_entry("tata", "$0.00", "-$2.50") in html
+        assert stat_entry("pépé", "$0.00", "-$0.00") in html
         # Check that the order of participants in the sidebar table is the
         # same as in the main table.
         order = ["jeanne", "pépé", "tata", "zorglub"]
@@ -1146,7 +1175,7 @@ class TestBudget(IhatemoneyTestCase):
         assert re.search(re.compile(regex2, re.DOTALL), response.data.decode("utf-8"))
 
         # Check monthly expenses again: it should have a single month and the correct amount
-        august = datetime.date(year=2011, month=8, day=1)
+        august = date(year=2011, month=8, day=1)
         assert project.active_months_range() == [august]
         assert dict(project.monthly_stats[2011]) == {8: 40.0}
 
@@ -1163,11 +1192,11 @@ class TestBudget(IhatemoneyTestCase):
             },
         )
         months = [
-            datetime.date(year=2011, month=12, day=1),
-            datetime.date(year=2011, month=11, day=1),
-            datetime.date(year=2011, month=10, day=1),
-            datetime.date(year=2011, month=9, day=1),
-            datetime.date(year=2011, month=8, day=1),
+            date(year=2011, month=12, day=1),
+            date(year=2011, month=11, day=1),
+            date(year=2011, month=10, day=1),
+            date(year=2011, month=9, day=1),
+            date(year=2011, month=8, day=1),
         ]
         amounts_2011 = {
             12: 30.0,
@@ -1220,7 +1249,7 @@ class TestBudget(IhatemoneyTestCase):
                 "amount": "20",
             },
         )
-        months.append(datetime.date(year=2011, month=7, day=1))
+        months.append(date(year=2011, month=7, day=1))
         amounts_2011[7] = 20.0
         assert project.active_months_range() == months
         assert dict(project.monthly_stats[2011]) == amounts_2011
@@ -1237,7 +1266,7 @@ class TestBudget(IhatemoneyTestCase):
                 "amount": "30",
             },
         )
-        months.insert(0, datetime.date(year=2012, month=1, day=1))
+        months.insert(0, date(year=2012, month=1, day=1))
         amounts_2012 = {1: 30.0}
         assert project.active_months_range() == months
         assert dict(project.monthly_stats[2011]) == amounts_2011
@@ -1358,23 +1387,25 @@ class TestBudget(IhatemoneyTestCase):
         count = 0
         for t in transactions:
             count += 1
-            self.client.get(
-                "/raclette/settle"
-                + "/"
-                + str(t["amount"])
-                + "/"
-                + str(t["ower"].id)
-                + "/"
-                + str(t["receiver"].id)
+            self.client.post(
+                "/raclette/settle",
+                data={
+                    "amount": t["amount"],
+                    "sender_id": t["ower"].id,
+                    "receiver_id": t["receiver"].id,
+                },
             )
             temp_transactions = project.get_transactions_to_settle_bill()
             # test if the one has disappeared
             assert len(temp_transactions) == len(transactions) - count
 
-            # test if theres a new one with bill_type reimbursement
+            # test if there is a new one with bill_type reimbursement
             bill = project.get_newest_bill()
             assert bill.bill_type == models.BillType.REIMBURSEMENT
-        return
+
+        # There should be no more settlement to do at the end
+        transactions = project.get_transactions_to_settle_bill()
+        assert len(transactions) == 0
 
     def test_settle_zero(self):
         self.post_project("raclette")
@@ -1463,6 +1494,78 @@ class TestBudget(IhatemoneyTestCase):
         # Create and log in as another project
         self.post_project("tartiflette")
 
+        # Add a participant in this second project
+        self.client.post("/tartiflette/members/add", data={"name": "pirate"})
+        pirate = models.Person.query.filter(models.Person.id == 5).one()
+        assert pirate.name == "pirate"
+
+        # Try to add a new bill to another project
+        resp = self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2017-01-01",
+                "what": "fromage frelaté",
+                "payer": 2,
+                "payed_for": [2, 3, 4],
+                "bill_type": "Expense",
+                "amount": "100.0",
+            },
+        )
+        # Ensure it has not been created
+        raclette = self.get_project("raclette")
+        assert raclette.get_bills().count() == 1
+
+        # Try to add a new bill in our project that references members of another project.
+        # First with invalid payed_for IDs.
+        resp = self.client.post(
+            "/tartiflette/add",
+            data={
+                "date": "2017-01-01",
+                "what": "soupe",
+                "payer": 5,
+                "payed_for": [3],
+                "bill_type": "Expense",
+                "amount": "5000.0",
+            },
+        )
+        # Ensure it has not been created
+        piratebill = models.Bill.query.filter(models.Bill.what == "soupe").one_or_none()
+        assert piratebill is None, "piratebill 1 should not exist"
+
+        # Then with invalid payer ID
+        self.client.post(
+            "/tartiflette/add",
+            data={
+                "date": "2017-02-01",
+                "what": "pain",
+                "payer": 3,
+                "payed_for": [5],
+                "bill_type": "Expense",
+                "amount": "5000.0",
+            },
+        )
+        # Ensure it has not been created
+        piratebill = models.Bill.query.filter(models.Bill.what == "pain").one_or_none()
+        assert piratebill is None, "piratebill 2 should not exist"
+
+        # Make sure we can actually create valid bills
+        self.client.post(
+            "/tartiflette/add",
+            data={
+                "date": "2017-03-01",
+                "what": "baguette",
+                "payer": 5,
+                "payed_for": [5],
+                "bill_type": "Expense",
+                "amount": "5.0",
+            },
+        )
+        # Ensure it has been created
+        okbill = models.Bill.query.filter(models.Bill.what == "baguette").one_or_none()
+        assert okbill is not None, "Bill baguette should exist"
+        assert okbill.what == "baguette"
+
+        # Now try to access and modify existing bills
         modified_bill = {
             "date": "2018-12-31",
             "what": "roblochon",
@@ -1555,6 +1658,24 @@ class TestBudget(IhatemoneyTestCase):
         self.client.post("/raclette/members/1/delete")
         member = models.Person.query.filter(models.Person.id == 1).one_or_none()
         assert member is None
+
+        # test new settle endpoint to add bills with wrong ids
+        self.client.post("/exit")
+        self.client.post(
+            "/authenticate", data={"id": "tartiflette", "password": "tartiflette"}
+        )
+        self.client.post(
+            "/tartiflette/settle",
+            data={
+                "sender_id": 4,
+                "receiver_id": 5,
+                "amount": "42.0",
+            },
+        )
+        piratebill = models.Bill.query.filter(
+            models.Bill.bill_type == models.BillType.REIMBURSEMENT
+        ).one_or_none()
+        assert piratebill is None, "piratebill 3 should not exist"
 
     @pytest.mark.skip(reason="Currency conversion is broken")
     def test_currency_switch(self):
@@ -1870,59 +1991,56 @@ class TestBudget(IhatemoneyTestCase):
         """
         Tests that the RSS feed output content is expected.
         """
-        with fake_time("2023-07-25 12:00:00"):
-            self.post_project("raclette", default_currency="EUR")
-            self.client.post("/raclette/members/add", data={"name": "george"})
-            self.client.post("/raclette/members/add", data={"name": "peter"})
-            self.client.post("/raclette/members/add", data={"name": "steven"})
+        self.post_project("raclette", default_currency="EUR")
+        self.client.post("/raclette/members/add", data={"name": "george"})
+        self.client.post("/raclette/members/add", data={"name": "peter"})
+        self.client.post("/raclette/members/add", data={"name": "steven"})
 
-            self.client.post(
-                "/raclette/add",
-                data={
-                    "date": "2016-12-31",
-                    "what": "fromage à raclette",
-                    "payer": 1,
-                    "payed_for": [1, 2, 3],
-                    "amount": "12",
-                    "original_currency": "EUR",
-                    "bill_type": "Expense",
-                },
-            )
-            self.client.post(
-                "/raclette/add",
-                data={
-                    "date": "2016-12-30",
-                    "what": "charcuterie",
-                    "payer": 2,
-                    "payed_for": [1, 2],
-                    "amount": "15",
-                    "original_currency": "EUR",
-                    "bill_type": "Expense",
-                },
-            )
-            self.client.post(
-                "/raclette/add",
-                data={
-                    "date": "2016-12-29",
-                    "what": "vin blanc",
-                    "payer": 2,
-                    "payed_for": [1, 2],
-                    "amount": "10",
-                    "original_currency": "EUR",
-                    "bill_type": "Expense",
-                },
-            )
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-31",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1, 2, 3],
+                "amount": "12",
+                "original_currency": "EUR",
+                "bill_type": "Expense",
+            },
+        )
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-30",
+                "what": "charcuterie",
+                "payer": 2,
+                "payed_for": [1, 2],
+                "amount": "15",
+                "original_currency": "EUR",
+                "bill_type": "Expense",
+            },
+        )
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-29",
+                "what": "vin blanc",
+                "payer": 2,
+                "payed_for": [1, 2],
+                "amount": "10",
+                "original_currency": "EUR",
+                "bill_type": "Expense",
+            },
+        )
 
         project = self.get_project("raclette")
         token = project.generate_token("feed")
         resp = self.client.get(f"/raclette/feed/{token}.xml")
 
-        expected_rss_content = f"""<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:atom="http://www.w3.org/2005/Atom"
-    >
-    <channel>
+        content = resp.data.decode()
+
+        assert (
+            f"""<channel>
         <title>I Hate Money — raclette</title>
         <description>Latest bills from raclette</description>
         <atom:link href="http://localhost/raclette/feed/{token}.xml" rel="self" type="application/rss+xml" />
@@ -1932,190 +2050,151 @@ class TestBudget(IhatemoneyTestCase):
             <guid isPermaLink="false">1</guid>
             <dc:creator>george</dc:creator>
             <description>December 31, 2016 - george, peter, steven : €4.00</description>
-            <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
-        </item>
-        <item>
-            <title>charcuterie - €15.00</title>
-            <guid isPermaLink="false">2</guid>
-            <dc:creator>peter</dc:creator>
-            <description>December 30, 2016 - george, peter : €7.50</description>
-            <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
-        </item>
-        <item>
-            <title>vin blanc - €10.00</title>
-            <guid isPermaLink="false">3</guid>
-            <dc:creator>peter</dc:creator>
-            <description>December 29, 2016 - george, peter : €5.00</description>
-            <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
-        </item>
-        </channel>
-</rss>"""  # noqa: E221, E222, E231, E501
-        assert resp.data.decode() == expected_rss_content
+        """
+            in content
+        )
+
+        assert """<title>charcuterie - €15.00</title>""" in content
+        assert """<title>vin blanc - €10.00</title>""" in content
 
     def test_rss_feed_history_disabled(self):
         """
         Tests that RSS feeds is correctly rendered even if the project
         history is disabled.
         """
-        with fake_time("2023-07-25 12:00:00"):
-            self.post_project("raclette", default_currency="EUR", project_history=False)
-            self.client.post("/raclette/members/add", data={"name": "george"})
-            self.client.post("/raclette/members/add", data={"name": "peter"})
-            self.client.post("/raclette/members/add", data={"name": "steven"})
+        self.post_project("raclette", default_currency="EUR", project_history=False)
+        self.client.post("/raclette/members/add", data={"name": "george"})
+        self.client.post("/raclette/members/add", data={"name": "peter"})
+        self.client.post("/raclette/members/add", data={"name": "steven"})
 
-            self.client.post(
-                "/raclette/add",
-                data={
-                    "date": "2016-12-31",
-                    "what": "fromage à raclette",
-                    "payer": 1,
-                    "payed_for": [1, 2, 3],
-                    "amount": "12",
-                    "original_currency": "EUR",
-                    "bill_type": "Expense",
-                },
-            )
-            self.client.post(
-                "/raclette/add",
-                data={
-                    "date": "2016-12-30",
-                    "what": "charcuterie",
-                    "payer": 2,
-                    "payed_for": [1, 2],
-                    "amount": "15",
-                    "original_currency": "EUR",
-                    "bill_type": "Expense",
-                },
-            )
-            self.client.post(
-                "/raclette/add",
-                data={
-                    "date": "2016-12-29",
-                    "what": "vin blanc",
-                    "payer": 2,
-                    "payed_for": [1, 2],
-                    "amount": "10",
-                    "original_currency": "EUR",
-                    "bill_type": "Expense",
-                },
-            )
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-31",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1, 2, 3],
+                "amount": "12",
+                "original_currency": "EUR",
+                "bill_type": "Expense",
+            },
+        )
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-30",
+                "what": "charcuterie",
+                "payer": 2,
+                "payed_for": [1, 2],
+                "amount": "15",
+                "original_currency": "EUR",
+                "bill_type": "Expense",
+            },
+        )
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-29",
+                "what": "vin blanc",
+                "payer": 2,
+                "payed_for": [1, 2],
+                "amount": "10",
+                "original_currency": "EUR",
+                "bill_type": "Expense",
+            },
+        )
 
         project = self.get_project("raclette")
         token = project.generate_token("feed")
         resp = self.client.get(f"/raclette/feed/{token}.xml")
 
-        expected_rss_content = f"""<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:atom="http://www.w3.org/2005/Atom"
-    >
-    <channel>
-        <title>I Hate Money — raclette</title>
-        <description>Latest bills from raclette</description>
-        <atom:link href="http://localhost/raclette/feed/{token}.xml" rel="self" type="application/rss+xml" />
-        <link>http://localhost/raclette/</link>
-        <item>
-            <title>fromage à raclette - €12.00</title>
-            <guid isPermaLink="false">1</guid>
-            <dc:creator>george</dc:creator>
-            <description>December 31, 2016 - george, peter, steven : €4.00</description>
-            <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
-        </item>
-        <item>
-            <title>charcuterie - €15.00</title>
-            <guid isPermaLink="false">2</guid>
-            <dc:creator>peter</dc:creator>
-            <description>December 30, 2016 - george, peter : €7.50</description>
-            <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
-        </item>
-        <item>
-            <title>vin blanc - €10.00</title>
-            <guid isPermaLink="false">3</guid>
-            <dc:creator>peter</dc:creator>
-            <description>December 29, 2016 - george, peter : €5.00</description>
-            <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
-        </item>
-        </channel>
-</rss>"""  # noqa: E221, E222, E231, E501
-        assert resp.data.decode() == expected_rss_content
+        content = resp.data.decode()
+        assert """<title>charcuterie - €15.00</title>""" in content
+        assert """<title>vin blanc - €10.00</title>""" in content
 
     def test_rss_if_modified_since_header(self):
         # Project creation
-        with fake_time("2023-07-26 13:00:00"):
-            self.post_project("raclette")
-            self.client.post("/raclette/members/add", data={"name": "george"})
-            project = self.get_project("raclette")
-            token = project.generate_token("feed")
+        self.post_project("raclette")
+        self.client.post("/raclette/members/add", data={"name": "george"})
+        project = self.get_project("raclette")
+        token = project.generate_token("feed")
 
-            resp = self.client.get(f"/raclette/feed/{token}.xml")
-            assert resp.status_code == 200
-            assert resp.headers.get("Last-Modified") == "Wed, 26 Jul 2023 13:00:00 UTC"
+        resp = self.client.get(f"/raclette/feed/{token}.xml")
+        assert resp.status_code == 200
+        assert "Last-Modified" in resp.headers.keys()
+        last_modified = resp.headers.get("Last-Modified")
+
+        # Get a date 1 hour before the last modified date
+        before = datetime.strptime(
+            last_modified, "%a, %d %b %Y %H:%M:%S %Z"
+        ) - timedelta(hours=1)
+        before_str = before.strftime("%a, %d %b %Y %H:%M:%S %Z")
 
         resp = self.client.get(
             f"/raclette/feed/{token}.xml",
-            headers={"If-Modified-Since": "Tue, 26 Jul 2023 12:00:00 UTC"},
+            headers={"If-Modified-Since": before_str},
         )
         assert resp.status_code == 200
 
+        after = datetime.strptime(
+            last_modified, "%a, %d %b %Y %H:%M:%S %Z"
+        ) + timedelta(hours=1)
+        after_str = after.strftime("%a, %d %b %Y %H:%M:%S %Z")
+
         resp = self.client.get(
             f"/raclette/feed/{token}.xml",
-            headers={"If-Modified-Since": "Tue, 26 Jul 2023 14:00:00 UTC"},
+            headers={"If-Modified-Since": after_str},
         )
         assert resp.status_code == 304
 
         # Add bill
-        with fake_time("2023-07-27 13:00:00"):
-            self.login("raclette")
-            resp = self.client.post(
-                "/raclette/add",
-                data={
-                    "date": "2016-12-31",
-                    "what": "fromage à raclette",
-                    "payer": 1,
-                    "payed_for": [1],
-                    "amount": "12",
-                    "original_currency": "XXX",
-                    "bill_type": "Expense",
-                },
-                follow_redirects=True,
-            )
-            assert resp.status_code == 200
-            assert "The bill has been added" in resp.data.decode()
+        self.login("raclette")
+        resp = self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-31",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1],
+                "amount": "12",
+                "original_currency": "XXX",
+                "bill_type": "Expense",
+            },
+            follow_redirects=True,
+        )
+        assert resp.status_code == 200
+        assert "The bill has been added" in resp.data.decode()
 
         resp = self.client.get(
             f"/raclette/feed/{token}.xml",
-            headers={"If-Modified-Since": "Tue, 27 Jul 2023 12:00:00 UTC"},
+            headers={"If-Modified-Since": before_str},
         )
-        assert resp.headers.get("Last-Modified") == "Thu, 27 Jul 2023 13:00:00 UTC"
         assert resp.status_code == 200
 
         resp = self.client.get(
             f"/raclette/feed/{token}.xml",
-            headers={"If-Modified-Since": "Tue, 27 Jul 2023 14:00:00 UTC"},
+            headers={"If-Modified-Since": after_str},
         )
         assert resp.status_code == 304
 
     def test_rss_etag_headers(self):
         # Project creation
-        with fake_time("2023-07-26 13:00:00"):
-            self.post_project("raclette")
-            self.client.post("/raclette/members/add", data={"name": "george"})
-            project = self.get_project("raclette")
-            token = project.generate_token("feed")
+        self.post_project("raclette")
+        self.client.post("/raclette/members/add", data={"name": "george"})
+        project = self.get_project("raclette")
+        token = project.generate_token("feed")
 
-            resp = self.client.get(f"/raclette/feed/{token}.xml")
-            assert resp.headers.get("ETag") == build_etag(
-                project.id, "2023-07-26T13:00:00"
-            )
-            assert resp.status_code == 200
+        resp = self.client.get(f"/raclette/feed/{token}.xml")
+        etag = resp.headers.get("ETag")
+        assert resp.status_code == 200
 
         resp = self.client.get(
             f"/raclette/feed/{token}.xml",
             headers={
-                "If-None-Match": build_etag(project.id, "2023-07-26T12:00:00"),
+                "If-None-Match": etag,
             },
         )
-        assert resp.status_code == 200
+        assert resp.status_code == 304
 
         resp = self.client.get(
             f"/raclette/feed/{token}.xml",
@@ -2123,40 +2202,38 @@ class TestBudget(IhatemoneyTestCase):
                 "If-None-Match": build_etag(project.id, "2023-07-26T13:00:00"),
             },
         )
-        assert resp.status_code == 304
-
-        # Add bill
-        with fake_time("2023-07-27 13:00:00"):
-            self.login("raclette")
-            resp = self.client.post(
-                "/raclette/add",
-                data={
-                    "date": "2016-12-31",
-                    "what": "fromage à raclette",
-                    "payer": 1,
-                    "payed_for": [1],
-                    "amount": "12",
-                    "bill_type": "Expense",
-                    "original_currency": "XXX",
-                },
-                follow_redirects=True,
-            )
-            assert resp.status_code == 200
-            assert "The bill has been added" in resp.data.decode()
-
-        resp = self.client.get(
-            f"/raclette/feed/{token}.xml",
-            headers={
-                "If-None-Match": build_etag(project.id, "2023-07-27T12:00:00"),
-            },
-        )
-        assert resp.headers.get("ETag") == build_etag(project.id, "2023-07-27T13:00:00")
         assert resp.status_code == 200
 
+        # Add bill
+        self.login("raclette")
+        resp = self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2016-12-31",
+                "what": "fromage à raclette",
+                "payer": 1,
+                "payed_for": [1],
+                "amount": "12",
+                "bill_type": "Expense",
+                "original_currency": "XXX",
+            },
+            follow_redirects=True,
+        )
+        assert resp.status_code == 200
+        assert "The bill has been added" in resp.data.decode()
+        etag = resp.headers.get("ETag")
+
+        resp = self.client.get(
+            f"/raclette/feed/{token}.xml",
+            headers={"If-None-Match": etag},
+        )
+        assert resp.status_code == 200
+        new_etag = resp.headers.get("ETag")
+
         resp = self.client.get(
             f"/raclette/feed/{token}.xml",
             headers={
-                "If-None-Match": build_etag(project.id, "2023-07-27T13:00:00"),
+                "If-None-Match": new_etag,
             },
         )
         assert resp.status_code == 304

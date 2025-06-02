@@ -5,6 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "ihatemoney"
 version = "6.2.0.dev0"
+requires-python = ">=3.9"
 description = "A simple shared budget manager web application."
 readme = "README.md"
 license = {file = "LICENSE"}
@@ -15,8 +16,6 @@ keywords = ["web", "budget"]
 classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -27,53 +26,47 @@ classifiers = [
 
 dependencies = [
     "blinker>=1.4,<2",
-    "cachetools>=4.1,<5",
+    "cachetools>=4.1,<6",
     "debts>=0.5,<1",
     "email_validator>=1.0,<3",
+    "Flask>=2,<4",
     "Flask-Babel>=1.0,<4",
-    "Flask-Cors>=3.0.8,<4",
+    "Flask-Cors>=3.0.8,<6",
     "Flask-Limiter>=2.6,<3",
     "Flask-Mail>=0.9.1,<1",
-    "Flask-Migrate>=2.5.3,<5",  # Not following semantic versioning (e.g. https://github.com/miguelgrinberg/flask-migrate/commit/1af28ba273de6c88544623b8dc02dd539340294b)
+    "Flask-Migrate>=2.5.3,<5", # Not following semantic versioning (e.g. https://github.com/miguelgrinberg/flask-migrate/commit/1af28ba273de6c88544623b8dc02dd539340294b)
     "Flask-RESTful>=0.3.9,<1",
     "Flask-SQLAlchemy>=2.4,<3",
     "Flask-Talisman>=0.8,<2",
     "Flask-WTF>=0.14.3,<2",
-    "WTForms>=2.3.3,<3.2",
-    "Flask>=2,<3",
-    "Werkzeug>=2,<3",
     "itsdangerous>=2,<3",
     "Jinja2>=3,<4",
-    "qrcode>=7.1,<8",
-    "requests>=2.25,<3",
-    "SQLAlchemy-Continuum>=1.3.12,<2",
-    "SQLAlchemy>=1.3.0,<1.5",  # New 1.4 changes API, see #728
     "python-dateutil",
-]
+    "qrcode>=7.1,<9",
+    "requests>=2.25,<3",
+    "SQLAlchemy>=1.3.0,<1.5",
+    "SQLAlchemy-Continuum>=1.3.12,<2", # New 1.4 changes API, see #728
+    "Werkzeug>=2,<3",
+    "WTForms>=2.3.3,<3.3",]
 
 [project.optional-dependencies]
 database = [
     # Python 3.11 support starts in 2.9.2
-    "psycopg2-binary>=2.9.2,<3",
-    "PyMySQL>=0.9,<1.1",
+    "psycopg2-binary>=2.9.2,<2.9.11",
+    "PyMySQL>=0.9,<1.2",
 ]
-
 dev = [
-    "black==23.3.0",
-    "flake8==5.0.4",
+    "ruff==0.8.4",
     "isort==5.11.5",
-    "vermin==1.5.2",
+    "vermin==1.6.0",
     "pytest>=6.2.5",
     "pytest-flask>=1.2.0",
-    "pytest-libfaketime>=0.1.2",
-    "tox>=3.14.6",
     "zest.releaser>=6.20.1",
 ]
-
 doc = [
-    "Sphinx>=7.0.1,<8",
+    "Sphinx>=7.0.1,<9",
     "docutils==0.20.1",
-    "myst-parser>=2,<3",
+    "myst-parser>=2,<5",
 ]
 
 [project.urls]
@@ -107,3 +100,7 @@ include = [
     "README.md",
     "SECURITY.md",
 ]
+
+
+[tool.ruff]
+exclude = ["ihatemoney/migrations"]

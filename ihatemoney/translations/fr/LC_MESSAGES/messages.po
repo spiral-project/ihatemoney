@@ -824,7 +824,7 @@ msgstr "Application mobile"
 msgid "Documentation"
 msgstr "Documentation"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr "Panneau d'administration"
 
 msgid "Legal information"

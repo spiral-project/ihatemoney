@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-29 14:24+0200\n"
-"PO-Revision-Date: 2020-11-11 16:28+0000\n"
-"Last-Translator: Jwen921 <yangjingwen0921@gmail.com>\n"
+"PO-Revision-Date: 2024-06-24 15:09+0000\n"
+"Last-Translator: Khang Tran <tranchikhang@outlook.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/i-hate-money/"
+"i-hate-money/ja/>\n"
 "Language: ja\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/ja/>\n"
-"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.6-rc\n"
 "Generated-By: Babel 2.9.0\n"
 
 #, python-format
@@ -27,19 +27,17 @@ msgstr "無効な入力です。数字と「+ - * / 」の演算子しか入力�
 msgid "Project name"
 msgstr "プロジェクトの名前"
 
-#, fuzzy
 msgid "Current private code"
-msgstr "暗証コード"
+msgstr "現在の暗証コード"
 
 msgid "Enter existing private code to edit project"
-msgstr ""
+msgstr "プロジェクトを編集するために、暗証コードを入力してください"
 
-#, fuzzy
 msgid "New private code"
-msgstr "暗証コード"
+msgstr "新暗証コード"
 
 msgid "Enter a new code if you want to change it"
-msgstr ""
+msgstr "変更するために、新しい暗証コードを入力してください"
 
 msgid "Email"
 msgstr "メールアドレス"
@@ -54,15 +52,13 @@ msgid "Default Currency"
 msgstr "初期設定にする通貨"
 
 msgid "Setting a default currency enables currency conversion between bills"
-msgstr ""
+msgstr "明細通貨変換のため、デフォルトの通貨を設定してください"
 
-#, fuzzy
 msgid "Unknown error"
-msgstr "未知のプロジェクト"
+msgstr "不明エラー"
 
-#, fuzzy
 msgid "Invalid private code."
-msgstr "暗証コード"
+msgstr "無効な暗証コード。"
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
@@ -179,7 +175,7 @@ msgid "This project already have this participant"
 msgstr "プロジェクトはすでにこのメンバーを含めています"
 
 msgid "People to notify"
-msgstr ""
+msgstr "通知したい人"
 
 msgid "Send the invitations"
 msgstr "招待状を送る"
@@ -194,11 +190,12 @@ msgstr "ログアウト"
 msgid "Please check the email configuration of the server."
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Please check the email configuration of the server or contact the "
 "administrator: %(admin_email)s"
-msgstr "申し訳ございませんが、招待メールを送ったとき、エラーが発生しました。メールアドレスを再度チェックするかまたは管理者に連絡ください。"
+msgstr "申し訳ございませんが、エラーが発生しました。メールアドレスを再度チェックする"
+"か、または管理者（ %(admin_email)s）に連絡ください"
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
@@ -271,7 +268,7 @@ msgid "Project settings have been changed successfully."
 msgstr ""
 
 msgid "Unable to parse CSV"
-msgstr ""
+msgstr "CSVを読み込むことができません"
 
 #, python-format
 msgid "Missing attribute: %(attribute)s"
@@ -292,7 +289,7 @@ msgid "Error deleting project"
 msgstr ""
 
 msgid "Unable to logout"
-msgstr ""
+msgstr "ログアウトできません"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
@@ -353,9 +350,8 @@ msgstr ""
 msgid "Error deleting project history"
 msgstr "プロジェクトの歴史を有効にする"
 
-#, fuzzy
 msgid "Deleted project history."
-msgstr "プロジェクトの歴史を有効にする"
+msgstr "プロジェクトの歴史を削除しました。"
 
 #, fuzzy
 msgid "Error deleting recorded IP addresses"
@@ -574,9 +570,8 @@ msgstr ""
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
 
-#, fuzzy
 msgid "You can enable history on the settings page."
-msgstr "設定ページでIPアドレス記録を編集可能にすることができる"
+msgstr "設定ページでIPアドレス記録を編集可能にすることができる。"
 
 msgid ""
 "The table below reflects actions recorded prior to disabling project "
@@ -622,13 +617,13 @@ msgstr "設定ページでIPアドレス記録を編集不可にすることが�
 msgid "From IP"
 msgstr "IPから"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project %(name)s added"
-msgstr "プロジェクトの名前"
+msgstr "プロジェクト%(name)sが作成されました"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s added"
-msgstr "明細が追加されました"
+msgstr "%(name)s明細が追加されました"
 
 #, python-format
 msgid "Participant %(name)s added"
@@ -641,9 +636,9 @@ msgstr "プロジェクトの私用コードが変更された"
 msgid "Project renamed to %(new_project_name)s"
 msgstr "プロジェクト名は%(new_project_name)s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project contact email changed to %(new_email)s"
-msgstr "プロジェクトの連絡メールが…に変更された"
+msgstr "プロジェクトの連絡メールが%(new_email)sに変更されました"
 
 msgid "Project settings modified"
 msgstr "プロジェクトの設定が修正された"
@@ -681,9 +676,9 @@ msgstr "日付"
 msgid "Amount in %(currency)s"
 msgstr "%(currency)sでの金額"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s modified"
-msgstr "明細が変更されました"
+msgstr "%(name)s明細が変更されました"
 
 #, python-format
 msgid "Participant %(name)s modified"
@@ -697,17 +692,17 @@ msgstr "ユーザー%(name)sが既に取り除かれました"
 msgid "Participant %(name)s removed"
 msgstr "ユーザー%(name)sが既に取り除かれました"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Project %(name)s changed in an unknown way"
-msgstr "未知の方法で変更された"
+msgstr "プロジェクト%(name)sが不明な方法で変更されました"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Bill %(name)s changed in an unknown way"
-msgstr "未知の方法で変更された"
+msgstr "明細%(name)sが不明な方法で変更されました"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Participant %(name)s changed in an unknown way"
-msgstr "未知の方法で変更された"
+msgstr "参加者%(name)sが不明な方法で変更されました"
 
 msgid "Nothing to list"
 msgstr "表示できるものがない"
@@ -802,7 +797,7 @@ msgstr "携帯アプリ"
 msgid "Documentation"
 msgstr "書類"
 
-msgid "Administation Dashboard"
+msgid "Administration Dashboard"
 msgstr "管理ダッシュボード"
 
 #, fuzzy
@@ -904,14 +899,12 @@ msgstr ""
 msgid "Send via Emails"
 msgstr "メールで送る"
 
-#, fuzzy
 msgid ""
 "Specify a list of email adresses (separated by comma) of people you want "
 "to notify about the creation of this project. We will send them an email "
 "with the invitation link."
-msgstr ""
-"…を知らせたいメールアドレスのリストを特定する（カンマ区切り）\n"
-"彼らにこの予算管理プロジェクトの作成をメールでお知らせします。"
+msgstr "知らせたいメールアドレスのリスト（カンマ区切り）を指定してください。メールで"
+"招待リンクを送信します。"
 
 msgid "Share Identifier & code"
 msgstr "名前とコードを共有する"
@@ -926,9 +919,8 @@ msgstr ""
 msgid "Identifier:"
 msgstr "名前："
 
-#, fuzzy
 msgid "Private code:"
-msgstr "暗証コード"
+msgstr "暗証コード："
 
 msgid "the private code was defined when you created the project"
 msgstr ""
@@ -1109,4 +1101,3 @@ msgstr "期間"
 
 #~ msgid "You can directly share the following link via your prefered medium"
 #~ msgstr "好きの手段で以下のリンクを直接に共有できる"
-

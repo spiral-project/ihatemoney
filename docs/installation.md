@@ -26,7 +26,7 @@ hub](https://hub.docker.com/r/ihatemoney/ihatemoney/).
 This is probably the simplest way to get something running. Once you
 have Docker installed on your system, just issue :
 
-    docker run -d -p 8000:8000 ihatemoney/ihatemoney
+    docker run -d -p 8000:8000 ihatemoney/ihatemoney:latest
 
 Ihatemoney is now available on <http://localhost:8000>.
 
@@ -54,6 +54,10 @@ To enable the Admin dashboard, first generate a hashed password with:
 
     docker run -it --rm --entrypoint ihatemoney ihatemoney/ihatemoney generate_password_hash
 
+:::{note}
+The generated password hash is salted. Which means that the same password will generate a different hash each time. This is normal and expected behavior.
+:::
+
 At the prompt, enter a password to use for the admin dashboard. The
 command will print the hashed password string.
 
@@ -62,11 +66,17 @@ Add these additional environment variables to the docker run invocation:
     -e ACTIVATE_ADMIN_DASHBOARD=True \
     -e ADMIN_PASSWORD=<hashed_password_string> \
 
+:::{note}
+If you are using a `docker-compose.yml` file and need to include a password hash, use `$$` instead of `$` to escape the dollar sign. This ensures that the hash is treated as a literal string rather than a variable in Bash.
+:::
+
 Additional gunicorn parameters can be passed using the docker `CMD`
 parameter. For example, use the following command to add more gunicorn
 workers:
 
     docker run -d -p 8000:8000 ihatemoney/ihatemoney -w 3
+
+If needed, there is a `docker-compose.yml` file available as an example on the [project repository](https://github.com/spiral-project/ihatemoney/blob/master/docker-compose.yml)
 
 (cloud)=
 ## On a Cloud Provider
@@ -83,7 +93,7 @@ Some Paas (Platform-as-a-Service), provide a documentation or even a quick insta
 
 «Ihatemoney» depends on:
 
--   **Python**: any version from 3.7 to 3.12 will work.
+-   **Python**: any version from 3.8 to 3.12 will work.
 -   **A database backend**: choose among SQLite, PostgreSQL, MariaDB (>=
     10.3.2).
 -   **Virtual environment** (recommended): [python3-venv]{.title-ref}

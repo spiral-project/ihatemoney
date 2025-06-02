@@ -3,6 +3,7 @@ DEBUG = SQLACHEMY_ECHO = False
 SQLALCHEMY_DATABASE_URI = "sqlite:////tmp/ihatemoney.db"
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 SECRET_KEY = "tralala"
+SITE_NAME = "I Hate Money"
 MAIL_DEFAULT_SENDER = "Budget manager <admin@example.com>"
 SHOW_ADMIN_EMAIL = True
 ACTIVATE_DEMO_PROJECT = True
@@ -14,6 +15,7 @@ APPLICATION_ROOT = "/"
 ENABLE_CAPTCHA = False
 LEGAL_LINK = ""
 SUPPORTED_LANGUAGES = [
+    "az",
     "ca",
     "cs",
     "de",
