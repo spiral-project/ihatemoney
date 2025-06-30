@@ -41,8 +41,6 @@ RUN echo "**** install build dependencies ****" &&\
     apk add --no-cache \
     shadow \
     postgresql-libs && \
-    echo "**** create runtime folder ****" && \
-    mkdir -p /etc/ihatemoney &&\
     echo "**** install pip packages ****" && \
     pip install --no-cache-dir \
     gunicorn && \
