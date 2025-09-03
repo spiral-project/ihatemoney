@@ -775,6 +775,9 @@ msgstr ""
 msgid "%(amount)s each"
 msgstr ""
 
+msgid "Custom split"
+msgstr ""
+
 msgid "you sure?"
 msgstr ""
 
