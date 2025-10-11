@@ -691,7 +691,7 @@ requires-dist = [
     { name = "sphinx", marker = "extra == 'doc'", specifier = ">=7.0.1,<9" },
     { name = "sqlalchemy", specifier = ">=1.3.0,<1.5" },
     { name = "sqlalchemy-continuum", specifier = ">=1.3.12,<2" },
-    { name = "vermin", marker = "extra == 'dev'", specifier = "==1.6.0" },
+    { name = "vermin", marker = "extra == 'dev'", specifier = "==1.7.0" },
     { name = "werkzeug", specifier = ">=2,<3" },
     { name = "wtforms", specifier = ">=2.3.3,<3.3" },
     { name = "zest-releaser", marker = "extra == 'dev'", specifier = ">=6.20.1" },
@@ -1566,11 +1566,11 @@ wheels = [
 
 [[package]]
 name = "vermin"
-version = "1.6.0"
+version = "1.7.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/3d/26/7b871396c33006c445c25ef7da605ecbd6cef830d577b496d2b73a554f9d/vermin-1.6.0.tar.gz", hash = "sha256:6266ca02f55d1c2aa189a610017c132eb2d1934f09e72a955b1eb3820ee6d4ef", size = 93181 }
+sdist = { url = "https://files.pythonhosted.org/packages/93/10/55e6b248ef9d757d521210d04418ac73417d850cbaa6b0366a7f6291d4dc/vermin-1.7.0.tar.gz", hash = "sha256:e9e3c2c901dc2ceec746d9b9e807d6639ec4233a749ad62f51bc0334fbb38707", size = 98095 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/2e/98/1a2ca43e6d646421eea16ec19977e2e6d1ea9079bd9d873bfae513d43f1c/vermin-1.6.0-py2.py3-none-any.whl", hash = "sha256:f1fa9ee40f59983dc40e0477eb2b1fa8061a3df4c3b2bcf349add462a5610efb", size = 90845 },
+    { url = "https://files.pythonhosted.org/packages/d4/d1/1242cbadbf9ee0a41fe5abd71d2ef0a82f85a48e2fe32585f63599c951fe/vermin-1.7.0-py2.py3-none-any.whl", hash = "sha256:5accad5f3599e428663af9f872debe27383edb85f737406f2d20855356e6ac2f", size = 96073 },
 ]
 
 [[package]]
