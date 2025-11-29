@@ -5,6 +5,7 @@ from unittest.mock import MagicMock, patch
 
 from sqlalchemy import orm
 from werkzeug.security import check_password_hash
+import pytest
 
 from ihatemoney import models
 from ihatemoney.currency_convertor import CurrencyConverter
@@ -14,6 +15,7 @@ from ihatemoney.manage import (
     get_project_count,
     password_hash,
 )
+from ihatemoney.utils import eval_arithmetic_expression
 from ihatemoney.run import load_configuration
 from ihatemoney.tests.common.ihatemoney_testcase import BaseTestCase, IhatemoneyTestCase
 
@@ -469,3 +471,13 @@ class TestCurrencyConverter:
             # is mocking EVERY instance of the class method. Too bad.
             rates = CurrencyConverter.get_rates(self.converter)
         assert rates == {CurrencyConverter.no_currency: 1}
+
+
+class TestUtils:
+    def test_eval_arithmetic_expression(self):
+        assert eval_arithmetic_expression("32.3") == 32.3
+        assert eval_arithmetic_expression("-(3+2/4*5-2)") == -3.5
+        with pytest.raises(ValueError):
+            eval_arithmetic_expression("32.3/")
+        with pytest.raises(ValueError):
+            eval_arithmetic_expression("coucouc")
