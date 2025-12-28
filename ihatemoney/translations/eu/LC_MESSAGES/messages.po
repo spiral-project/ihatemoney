@@ -3,273 +3,287 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-12-28 23:29+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-12-29 23:00+0000\n"
+"Last-Translator: Jokin <jokin_pedre@hotmail.com>\n"
+"Language-Team: Basque <https://hosted.weblate.org/projects/i-hate-money/i-"
+"hate-money/eu/>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Translate Toolkit 3.17.5\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
+msgstr "'%(project)s' sortu berri duzu, gastuak partekatzeko"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
-msgstr ""
+msgstr "Balio desegokia. Bakarrik onartzen dira zenbakiak eta +-*/ eragileak."
 
 msgid "Project name"
-msgstr ""
+msgstr "Proiektuaren izena"
 
 msgid "Current private code"
-msgstr ""
+msgstr "Oraingo kode pribatua"
 
 msgid "Enter existing private code to edit project"
-msgstr ""
+msgstr "Proiektua editatzeko, sartu kode pribatua"
 
 msgid "New private code"
-msgstr ""
+msgstr "Kode pribatu berria"
 
 msgid "Enter a new code if you want to change it"
-msgstr ""
+msgstr "Kodea aldatu nahi baduzu, kode berri bat sartu"
 
 msgid "Email"
-msgstr ""
+msgstr "Posta elektronikoa"
 
 msgid "Enable project history"
-msgstr ""
+msgstr "Aktibatu proiektuaren historia"
 
 msgid "Use IP tracking for project history"
-msgstr ""
+msgstr "Erabili IP jarraipena proiektuaren historiarentzat"
 
 msgid "Default Currency"
-msgstr ""
+msgstr "Lehenetsitako moneta"
 
 msgid "Setting a default currency enables currency conversion between bills"
-msgstr ""
+msgstr "Moneta bat lehenesteak aktibatzen du kontuen arteko moneta aldaketa"
 
 msgid "Unknown error"
-msgstr ""
+msgstr "Errore ezezaguna"
 
 msgid "Invalid private code."
-msgstr ""
+msgstr "kode pribatu baliogabea."
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
+"Proiektu hau ezin da \"monetarik gabe\" ezarri, hainbat monetatan dauden "
+"kontuak dituelako."
 
 msgid "Compatible with Cospend"
-msgstr ""
+msgstr "Cospend-ekin bateragarria"
 
 msgid "Project identifier"
-msgstr ""
+msgstr "Proiektuaren identifikatzailea"
 
 msgid "Private code"
-msgstr ""
+msgstr "Kode pribatua"
 
 msgid "Create the project"
-msgstr ""
+msgstr "Proiektua sortu"
 
 #, python-format
 msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
+"Dagoeneko existitzen da \"%(project)s\" proiektua. Mesdez, identifikatzaile "
+"berri bat aukeratu"
 
 msgid "Which is a real currency: Euro or Petro dollar?"
-msgstr ""
+msgstr "Zein da benetako moneta bat: Euroa edo Petro dolarra?"
 
 msgid "euro"
-msgstr ""
+msgstr "euro"
 
 msgid "Please, validate the captcha to proceed."
-msgstr ""
+msgstr "Mesedez, captcha balioztatu jarraitzeko."
 
 msgid "Enter private code to confirm deletion"
-msgstr ""
+msgstr "Sartu kode pribatua ezabatzea konfirmatzeko"
 
 msgid "Get in"
-msgstr ""
+msgstr "Sartu"
 
 msgid "Admin password"
-msgstr ""
+msgstr "Administrariaren pasahitza"
 
 msgid "Send me the code by email"
-msgstr ""
+msgstr "Bidali kodea posta elektronikoz"
 
 msgid "This project does not exists"
-msgstr ""
+msgstr "Proiektu hau ez da existitzen"
 
 msgid "Password mismatch"
-msgstr ""
+msgstr "Pasahitzak ez datoz bat"
 
 msgid "Password"
-msgstr ""
+msgstr "Pasahitza"
 
 msgid "Password confirmation"
-msgstr ""
+msgstr "Pasahitza berretsi"
 
 msgid "Reset password"
-msgstr ""
+msgstr "Pasahitza berrezarri"
 
 msgid "When?"
-msgstr ""
+msgstr "Noiz?"
 
 msgid "What?"
-msgstr ""
+msgstr "Zer?"
 
 msgid "Who paid?"
-msgstr ""
+msgstr "Nork ordaindu du?"
 
 msgid "How much?"
-msgstr ""
+msgstr "Zenbat?"
 
 msgid "Currency"
-msgstr ""
+msgstr "Moneta"
 
 msgid "External link"
-msgstr ""
+msgstr "Kanpoko esteka"
 
 msgid "A link to an external document, related to this bill"
-msgstr ""
+msgstr "Kanpoko dokumentu baterako esteka, kontu honekin erlazionatutakoa"
 
 msgid "For whom?"
-msgstr ""
+msgstr "Norentzat?"
 
 msgid "Submit"
-msgstr ""
+msgstr "Bidali"
 
 msgid "Submit and add a new one"
-msgstr ""
+msgstr "Bidali eta berri bat gehitu"
 
 #, python-format
 msgid "Project default: %(currency)s"
-msgstr ""
+msgstr "Proiekturako lehenetsita: %(currency)s"
 
 msgid "Name"
-msgstr ""
+msgstr "Izena"
 
 msgid "Weights should be positive"
-msgstr ""
+msgstr "Pisuek positiboa izan behar dute"
 
 msgid "Weight"
-msgstr ""
+msgstr "Pisua"
 
 msgid "Add"
-msgstr ""
+msgstr "Gehitu"
 
 msgid "The participant name is invalid"
-msgstr ""
+msgstr "Parte hartzailearen izena ez da balekoa"
 
 msgid "This project already have this participant"
-msgstr ""
+msgstr "Proiektu honek dagoeneko du parte hartzaile hau"
 
 msgid "People to notify"
-msgstr ""
+msgstr "Jakinarazi beharreko jendea"
 
 msgid "Send the invitations"
-msgstr ""
+msgstr "Bidali gonbidapenak"
 
 #, python-format
 msgid "The email %(email)s is not valid"
-msgstr ""
+msgstr "%(email)s ez da baleko e-posta helbidea"
 
 msgid "Logout"
-msgstr ""
+msgstr "Saioa itxi"
 
 msgid "Please check the email configuration of the server."
-msgstr ""
+msgstr "Mesedez, egiaztatu zerbitzariaren e-posta ezarpenak."
 
 #, python-format
 msgid ""
 "Please check the email configuration of the server or contact the "
 "administrator: %(admin_email)s"
 msgstr ""
+"Mesedez, egiaztatu zerbitzariaren e-posta ezarpenak edo jarri harremanetan "
+"administratzailearekin: %(admin_email)s"
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
-msgstr ""
+msgstr "{dual_object_0} eta {dual_object_1}"
 
 #. Last two items of a list with more than 3 items
 msgid "{previous_object}, and {end_object}"
-msgstr ""
+msgstr "{previous_object} eta {end_object}"
 
 #. Two items in a middle of a list with more than 5 objects
 msgid "{previous_object}, {next_object}"
-msgstr ""
+msgstr "{previous_object}, {next_object}"
 
 #. First two items of a list with more than 3 items
 msgid "{start_object}, {next_object}"
-msgstr ""
+msgstr "{start_object}, {next_object}"
 
 msgid "No Currency"
-msgstr ""
+msgstr "Monetarik ez"
 
 #. Form error with only one error
 msgid "{prefix}: {error}"
-msgstr ""
+msgstr "{prefix}: {error}"
 
 #. Form error with a list of errors
 msgid "{prefix}:<br />{errors}"
-msgstr ""
+msgstr "{prefix}:<br />{errors}"
 
 msgid "Too many failed login attempts."
-msgstr ""
+msgstr "Huts egite gehiegi saioa hastean."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr ""
+"Administratzailearen pasahitza okerra da. Geratzen den saiakera kopurua: %"
+"(num)d."
 
 msgid "Provided token is invalid"
-msgstr ""
+msgstr "Emandako tokena okerra da"
 
 msgid "This private code is not the right one"
-msgstr ""
+msgstr "Kode pribatu hau ez da zuzena"
 
 msgid "A reminder email has just been sent to you"
-msgstr ""
+msgstr "Mezu elektroniko oroigarri bat bidali zaizu"
 
 msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
+"Mezu elektroniko oroigarria bidaltzen saiatu gara, baina akats bat egon da. "
+"Proiektua normal erabiltzen jarrai dezakezu."
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
 "instructions."
 msgstr ""
+"Barkatu, akats bat egon da pasahitza berrezartzeko instrukzioak bidaltzean."
 
 msgid "No token provided"
-msgstr ""
+msgstr "Ez da tokenik eman"
 
 msgid "Invalid token"
-msgstr ""
+msgstr "Baliogabeko tokena"
 
 msgid "Unknown project"
-msgstr ""
+msgstr "Proiektu ezezaguna"
 
 msgid "Password successfully reset."
-msgstr ""
+msgstr "Pasahitza ongi berrezarri da."
 
 msgid "Project settings have been changed successfully."
-msgstr ""
+msgstr "Proiektuaren ezarpenak ongi aldatu dira."
 
 msgid "Unable to parse CSV"
-msgstr ""
+msgstr "Ezin da CSV analizatu"
 
 #, python-format
 msgid "Missing attribute: %(attribute)s"
-msgstr ""
+msgstr "Atributua falta da: %(attribute)s"
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
 msgstr ""
+"Ezin zaizkio hainbat monetatako kontuak gehitu lehenetsitako moneta duen "
+"proiektu bati"
 
 msgid "Project successfully uploaded"
 msgstr ""
