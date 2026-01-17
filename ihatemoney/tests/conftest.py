@@ -34,8 +34,9 @@ def app(request: pytest.FixtureRequest, jinja_cache_directory):
     yield app
 
     # clean after testing
-    db.session.remove()
-    db.drop_all()
+    with app.app_context():
+        db.session.remove()
+        db.drop_all()
 
 
 @pytest.fixture

@@ -54,13 +54,12 @@ def setup_database(app):
     Migrate(app, db)
     migrations_path = os.path.join(app.root_path, "migrations")
 
-    if _pre_alembic_db():
-        with app.app_context():
+    with app.app_context():
+        if _pre_alembic_db():
             # fake the first migration
             stamp(migrations_path, revision="b9a10d5d63ce")
 
-    # auto-execute migrations on runtime
-    with app.app_context():
+        # auto-execute migrations on runtime
         upgrade(migrations_path)
 
 
