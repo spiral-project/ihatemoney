@@ -22,10 +22,10 @@ jobs:
     # Dependency on linting to avoid running our expensive matrix test for nothing
     needs: lint
     runs-on: ubuntu-22.04
-    # Use postgresql and MariaDB versions of Debian bookworm
+    # Use postgresql and MariaDB versions of Debian trixie
     services:
       postgres:
-        image: postgres:15
+        image: postgres:17
         ports:
           - 5432:5432
         env:
@@ -35,55 +35,52 @@ jobs:
         options:
           --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
       mariadb:
-        image: mariadb:10.11
+        image: mariadb:11.8
         env:
           MARIADB_ROOT_PASSWORD: ihatemoney
           MARIADB_DATABASE: ihatemoney_ci
         options: >-
-          --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+          --health-cmd="healthcheck.sh --connect --innodb_initialized" --health-interval=10s --health-timeout=5s --health-retries=3
         ports:
           - 3306:3306
 
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.9, "3.10", "3.11", "3.12"]
+        python-version: ["3.11", "3.12", "3.13"]
         dependencies: [normal]
         database: [sqlite]
         # Test other databases with only a few versions of Python
-        # (Debian bullseye has 3.9, bookworm has 3.11)
+        # (Debian bookworm has 3.11, trixie has 3.13)
         include:
-          - python-version: 3.9
+          - python-version: 3.11
             dependencies: normal
             database: postgresql
-          - python-version: 3.9
+          - python-version: 3.11
             dependencies: normal
             database: mariadb
-          - python-version: 3.11
+          - python-version: 3.13
             dependencies: normal
             database: postgresql
-          - python-version: 3.11
+          - python-version: 3.13
             dependencies: normal
             database: mariadb
           # Try a few variants with the minimal versions supported
-          - python-version: 3.9
-            dependencies: minimal
-            database: sqlite
-          - python-version: "3.10"
-            dependencies: minimal
-            database: sqlite
           - python-version: "3.11"
             dependencies: minimal
             database: sqlite
-          - python-version: "3.11"
-            dependencies: minimal
-            database: postgresql
-          - python-version: "3.11"
-            dependencies: minimal
-            database: mariadb
           - python-version: "3.12"
             dependencies: minimal
             database: sqlite
+          - python-version: "3.13"
+            dependencies: minimal
+            database: sqlite
+          - python-version: "3.13"
+            dependencies: minimal
+            database: postgresql
+          - python-version: "3.13"
+            dependencies: minimal
+            database: mariadb
 
     steps:
     - uses: actions/checkout@v3
@@ -117,6 +114,6 @@ jobs:
     - name: Install uv and set the python version
       uses: astral-sh/setup-uv@v4
       with:
-        python-version: "3.11"
+        python-version: "3.13"
     - name: Build docs
       run: make build-docs
