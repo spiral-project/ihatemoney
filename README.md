@@ -22,9 +22,14 @@ highly encouraged to do so.
 
 ## Requirements
 
--   **Python**: version 3.8 to 3.12.
+
+-   **Python**: version 3.11 to 3.13.
 -   **Backends**: SQLite, PostgreSQL, MariaDB (version 10.3.2 or above),
     Memory.
+
+Usually, we aim to support the software environment of the current Linux Debian
+stable and the previous one (old-stable). Docker installation is offered for
+broader support.
 
 ## Current direction (as of 2024)
 
