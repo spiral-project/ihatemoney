@@ -7,7 +7,8 @@ from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
 from debts import settle
 from flask import current_app, g
-from flask_sqlalchemy import BaseQuery, SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy.query import Query
 from itsdangerous import (
     BadSignature,
     SignatureExpired,
@@ -65,7 +66,7 @@ db = SQLAlchemy()
 
 
 class Project(db.Model):
-    class ProjectQuery(BaseQuery):
+    class ProjectQuery(Query):
         def get_by_name(self, name):
             return Project.query.filter(Project.name == name).one()
 
@@ -263,7 +264,8 @@ class Project(db.Model):
         # new SQL query, ruining overall performance.
         return (
             Bill.query.options(orm.subqueryload(Bill.owers))
-            .join(Person, Project)
+            .join(Person)
+            .join(Project)
             .filter(Bill.payer_id == Person.id)
             .filter(Person.project_id == Project.id)
             .filter(Project.id == self.id)
@@ -292,7 +294,9 @@ class Project(db.Model):
             db.session.query(func.sum(Person.weight), Bill)
             .options(orm.subqueryload(Bill.owers))
             .select_from(Person)
-            .join(billowers, Bill, Project)
+            .join(billowers)
+            .join(Bill)
+            .join(Project)
             .filter(Person.project_id == Project.id)
             .filter(Project.id == self.id)
             .group_by(Bill.id)
@@ -413,7 +417,8 @@ class Project(db.Model):
             m for m in get_members(bills) if str(m[0]) not in project_members
         ]
         for m in new_members:
-            Person(name=m[0], project=self, weight=m[1])
+            member = Person(name=m[0], project=self, weight=m[1])
+            db.session.add(member)
         db.session.commit()
 
         # Import bills not already in the project
@@ -588,7 +593,7 @@ class Project(db.Model):
 
 
 class Person(db.Model):
-    class PersonQuery(BaseQuery):
+    class PersonQuery(Query):
         def get_by_name(self, name, project):
             return (
                 Person.query.filter(Person.name == name)
@@ -671,11 +676,12 @@ billowers = db.Table(
 
 
 class Bill(db.Model):
-    class BillQuery(BaseQuery):
+    class BillQuery(Query):
         def get(self, project, id):
             try:
                 return (
-                    self.join(Person, Project)
+                    self.join(Person)
+                    .join(Project)
                     .filter(Bill.payer_id == Person.id)
                     .filter(Person.project_id == Project.id)
                     .filter(Project.id == project.id)
@@ -766,7 +772,8 @@ class Bill(db.Model):
         if self.owers:
             weights = (
                 db.session.query(func.sum(Person.weight))
-                .join(billowers, Bill)
+                .join(billowers)
+                .join(Bill)
                 .filter(Bill.id == self.id)
             ).scalar()
             return amount / weights

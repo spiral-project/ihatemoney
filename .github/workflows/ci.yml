@@ -104,7 +104,7 @@ jobs:
         # Setup the DATABASE_URI depending on the matrix we are using.
         TESTING_SQLALCHEMY_DATABASE_URI: ${{
           matrix.database == 'sqlite'
-            && 'sqlite:///budget.db'
+            && 'sqlite:////tmp/budget.db'
           || matrix.database == 'postgresql'
             && 'postgresql+psycopg2://postgres:ihatemoney@localhost:5432/ihatemoney_ci'
           || 'mysql+pymysql://root:ihatemoney@localhost:3306/ihatemoney_ci'
