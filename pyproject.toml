@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "ihatemoney"
 version = "6.2.0.dev0"
-requires-python = ">=3.9"
+requires-python = ">=3.11"
 description = "A simple shared budget manager web application."
 readme = "README.md"
 license = {file = "LICENSE"}
@@ -16,8 +16,6 @@ keywords = ["web", "budget"]
 classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -26,48 +24,47 @@ classifiers = [
 ]
 
 dependencies = [
-    "blinker>=1.4,<2",
-    "cachetools>=4.1,<6",
-    "debts>=0.5,<1",
-    "email_validator>=1.0,<3",
-    "Flask>=2,<4",
-    "Flask-Babel>=1.0,<4",
-    "Flask-Cors>=3.0.8,<6",
-    "Flask-Limiter>=2.6,<3",
-    "Flask-Mail>=0.9.1,<1",
-    "Flask-Migrate>=2.5.3,<5", # Not following semantic versioning (e.g. https://github.com/miguelgrinberg/flask-migrate/commit/1af28ba273de6c88544623b8dc02dd539340294b)
-    "Flask-RESTful>=0.3.9,<1",
+    "cachetools~=6.2.4",
+    "debts~=0.5",  # Last update : 2019
+    "email_validator~=2.3.0",
+    "Flask~=3.1.2",
+    "Flask-Babel~=4.0.0",     # last update oct. 23
+    "Flask-Cors~=6.0.2",
+    "Flask-Limiter~=4.1.1",
+    "Flask-Mail~=0.10.0",
+    "Flask-Migrate~=4.1.0", # Not following semantic versioning (e.g. https://github.com/miguelgrinberg/flask-migrate/commit/1af28ba273de6c88544623b8dc02dd539340294b)
+    "Flask-RESTful~=0.3.10",  # last update may 23
     "Flask-SQLAlchemy~=3.1.1",
-    "Flask-Talisman>=0.8,<2",
-    "Flask-WTF>=0.14.3,<2",
-    "itsdangerous>=2,<3",
-    "Jinja2>=3,<4",
+    "Flask-Talisman~=1.1.0",  # last update aug. 23
+    "Flask-WTF~=1.2.2",
+    "itsdangerous~=2.2.0",
+    "Jinja2~=3.1.6",
     "python-dateutil",
-    "qrcode>=7.1,<9",
-    "requests>=2.25,<3",
+    "qrcode~=8.2",
+    "requests~=2.32.5",  # Used only by currency convertor
     "SQLAlchemy~=2.0.45",
     "SQLAlchemy-Continuum~=1.5.2",
-    "Werkzeug>=2,<3",
-    "WTForms>=2.3.3,<3.3",]
+    "Werkzeug~=3.1.5",
+    "WTForms~=3.2.1",]
 
 [project.optional-dependencies]
 database = [
     # Python 3.11 support starts in 2.9.2
-    "psycopg2-binary>=2.9.10,<2.9.12",
-    "PyMySQL>=0.9,<1.2",
+    "psycopg2-binary~=2.9.11",
+    "PyMySQL~=1.1.2",
 ]
 dev = [
-    "ruff==0.8.4",
-    "isort==5.11.5",
-    "vermin==1.6.0",
-    "pytest>=6.2.5",
-    "pytest-flask>=1.2.0",
-    "zest.releaser>=6.20.1",
+    "ruff~=0.14.13",
+    "isort~=7.0.0",
+    "vermin~=1.8.0",
+    "pytest~=9.0.2",
+    "pytest-flask~=1.3.0",   # last update oct. 23
+    "zest.releaser~=9.8.0",
 ]
 doc = [
-    "Sphinx>=7.0.1,<9",
-    "docutils==0.20.1",
-    "myst-parser>=2,<5",
+    "Sphinx~=9.0.4",  # Last version to support Py 3.11
+    "docutils~=0.22.4",
+    "myst-parser~=5.0.0",
 ]
 
 [project.urls]

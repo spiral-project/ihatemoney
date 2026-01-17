@@ -10,7 +10,7 @@ from sqlalchemy_continuum.transaction import (
     create_triggers,
 )
 
-if continuum_version != "1.3.14":
+if continuum_version != "1.5.2":
     import warnings
 
     warnings.warn(
