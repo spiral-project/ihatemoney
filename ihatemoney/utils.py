@@ -22,8 +22,8 @@ from werkzeug.exceptions import HTTPException
 from werkzeug.routing import RoutingException
 from werkzeug.security import generate_password_hash as werkzeug_generate_password_hash
 
-limiter = limiter = Limiter(
-    current_app,
+limiter = Limiter(
+    app=current_app,
     key_func=get_remote_address,
     storage_uri="memory://",
 )
