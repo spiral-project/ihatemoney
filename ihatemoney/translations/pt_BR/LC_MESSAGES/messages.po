@@ -1,19 +1,19 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"POT-Creation-Date: 2026-01-18 21:37+0100\n"
 "PO-Revision-Date: 2024-05-10 07:26+0000\n"
 "Last-Translator: Gesiane Pajarinen <gesianef@hotmail.com>\n"
-"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
-"i-hate-money/i-hate-money/pt_BR/>\n"
 "Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/i"
+"-hate-money/i-hate-money/pt_BR/>\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.5.4-rc\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -68,6 +68,10 @@ msgid ""
 msgstr ""
 "Esse projeto não pode ser configurado como 'sem moeda' porque ele tem "
 "faturas em moedas diferentes."
+
+#, fuzzy
+msgid "Cannot change project currency because currency conversion is broken"
+msgstr "Definir uma moeda padrão permite a conversão de moeda entre contas"
 
 msgid "Compatible with Cospend"
 msgstr "Compatível com Cospend"
@@ -149,6 +153,10 @@ msgstr "Link para um documento externo, relacionado à essa conta"
 msgid "For whom?"
 msgstr "Por quem?"
 
+#, fuzzy
+msgid "Bill Type"
+msgstr "Itens da conta"
+
 msgid "Submit"
 msgstr "Enviar"
 
@@ -158,6 +166,10 @@ msgstr "Enviar e adicionar um novo"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "Projeto padrão: %(currency)s"
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
+msgstr ""
 
 msgid "Name"
 msgstr "Nome"
@@ -250,8 +262,8 @@ msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
-"Tentamos te enviar um email de lembrete, mas aconteceu um erro. Você pode "
-"continuar usando o projeto normalmente."
+"Tentamos te enviar um email de lembrete, mas aconteceu um erro. Você pode"
+" continuar usando o projeto normalmente."
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
@@ -330,8 +342,8 @@ msgid ""
 "Participant '%(name)s' has been deactivated. It will still appear in the "
 "list until its balance reach zero."
 msgstr ""
-"O participante '%(name)s' foi desativado. Ele continuará aparecendo na lista "
-"de usuários até que seu saldo seja zero."
+"O participante '%(name)s' foi desativado. Ele continuará aparecendo na "
+"lista de usuários até que seu saldo seja zero."
 
 #, python-format
 msgid "Participant '%(name)s' has been removed"
@@ -357,6 +369,18 @@ msgstr "A conta foi alterada"
 msgid "%(lang)s is not a supported language"
 msgstr "Não temos configuração para o idioma %(lang)s"
 
+#, fuzzy
+msgid "Error creating settlement bill"
+msgstr "Erro ao excluir a conta"
+
+#, fuzzy
+msgid "Settlement"
+msgstr "Pagamentos"
+
+#, fuzzy
+msgid "Settlement bill has been successfully added"
+msgstr "A conta foi adicionada"
+
 msgid "Error deleting project history"
 msgstr "Erro ao deletar o histórico do projeto"
 
@@ -373,8 +397,7 @@ msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Desculpe, não foi possível encontrar a página que você solicitou."
 
 msgid "The best thing to do is probably to get back to the main page."
-msgstr ""
-"Provavelmente, a melhor coisa a fazer seja voltar para a página inicial."
+msgstr "Provavelmente, a melhor coisa a fazer seja voltar para a página inicial."
 
 msgid "Back to the list"
 msgstr "Voltar para a lista"
@@ -499,6 +522,9 @@ msgstr "Adicionar participante"
 msgid "Edit this participant"
 msgstr "Editar participante"
 
+msgid "Save"
+msgstr ""
+
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
 
@@ -543,10 +569,10 @@ msgid ""
 "                The rest of the project history will be unaffected. This "
 "action cannot be undone."
 msgstr ""
-"Tem certeza que deseja deletar todos os endereços IP gravados neste projeto?"
-"\n"
-"                O resto do histórico do projeto não será afetado. Esta ação "
-"não pode ser desfeita."
+"Tem certeza que deseja deletar todos os endereços IP gravados neste "
+"projeto?\n"
+"                O resto do histórico do projeto não será afetado. Esta "
+"ação não pode ser desfeita."
 
 msgid "Confirm deletion"
 msgstr "Confirmar a exclusão"
@@ -572,9 +598,36 @@ msgstr "Conta %(name)s: adicionados %(owers_list_str)s à lista de proprietário
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr "Conta %(name)s: removidos %(owers_list_str)s da lista de proprietários"
 
+msgid "Details of the bill (before the change)"
+msgstr ""
+
+#, fuzzy
+msgid "Details of the bill"
+msgstr "Editar esta conta"
+
+#, fuzzy
+msgid "Date:"
+msgstr "Data"
+
+#, fuzzy
+msgid "Payer:"
+msgstr "Pagador"
+
+#, fuzzy
+msgid "Amount:"
+msgstr "Quantia"
+
+msgid "Owers:"
+msgstr ""
+
+#, fuzzy
+msgid "External link:"
+msgstr "Link externo"
+
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
-"Este projeto tem o histórico desativado. Novas ações não aparecerão abaixo."
+"Este projeto tem o histórico desativado. Novas ações não aparecerão "
+"abaixo."
 
 msgid "You can enable history on the settings page."
 msgstr "Você pode ativar o histórico na página de configurações."
@@ -653,25 +706,8 @@ msgid "Project settings modified"
 msgstr "Configurações do projeto alteradas"
 
 #, python-format
-msgid "Participant %(name)s deactivated"
-msgstr "Participante %(name)s desativado"
-
-#, python-format
-msgid "Participant %(name)s reactivated"
-msgstr "Participante %(name)s reativado"
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr "Participante %(name)s renomeado para %(new_name)s"
-
-#, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
 msgstr "Conta %(name)s renomeada para %(new_description)s"
-
-#, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
-msgstr ""
-"Participante %(name)s: o peso mudou de %(old_weight)s para %(new_weight)s"
 
 msgid "Payer"
 msgstr "Pagador"
@@ -689,6 +725,22 @@ msgstr "Quantia em %(currency)s"
 #, python-format
 msgid "Bill %(name)s modified"
 msgstr "Conta %(name)s alterada"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr "Participante %(name)s desativado"
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr "Participante %(name)s reativado"
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr "Participante %(name)s renomeado para %(new_name)s"
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr "Participante %(name)s: o peso mudou de %(old_weight)s para %(new_weight)s"
 
 #, python-format
 msgid "Participant %(name)s modified"
@@ -900,11 +952,11 @@ msgid ""
 " add/edit/delete bills. However, they will not have access to important "
 "settings such as changing the private code or deleting the whole project."
 msgstr ""
-"A maneira mais fácil de convidar as pessoas é enviando o seguinte link para "
-"convite.<br />Eles poderão acessar o projeto, gerenciar participantes, "
-"adicionar/editar/excluir contas. No entanto, eles não terão acesso às "
-"configurações importantes, como alterar o código privado ou excluir todo o "
-"projeto."
+"A maneira mais fácil de convidar as pessoas é enviando o seguinte link "
+"para convite.<br />Eles poderão acessar o projeto, gerenciar "
+"participantes, adicionar/editar/excluir contas. No entanto, eles não "
+"terão acesso às configurações importantes, como alterar o código privado "
+"ou excluir todo o projeto."
 
 msgid "Scan QR code"
 msgstr "Escaneie o QR code"
@@ -921,8 +973,8 @@ msgid ""
 "with the invitation link."
 msgstr ""
 "Especifique uma lista de e-mails (separados por vírgula) das pessoas que "
-"você deseja notificar sobre a criação deste projeto. Enviaremos um e-mail "
-"para eles com o link do convite."
+"você deseja notificar sobre a criação deste projeto. Enviaremos um e-mail"
+" para eles com o link do convite."
 
 msgid "Share Identifier & code"
 msgstr "Compartilhar Identificador & código"
@@ -934,9 +986,9 @@ msgid ""
 " or project email address, or even deleting the whole project."
 msgstr ""
 "Você pode compartilhar o identificador do projeto e o código privado por "
-"qualquer meio de comunicação.<br />Qualquer pessoa com o código privado terá "
-"acesso a todo o projeto e poderá alterar as configurações como o código "
-"privado ou o e-mail, ou até mesmo a exclusão de todo o projeto."
+"qualquer meio de comunicação.<br />Qualquer pessoa com o código privado "
+"terá acesso a todo o projeto e poderá alterar as configurações como o "
+"código privado ou o e-mail, ou até mesmo a exclusão de todo o projeto."
 
 msgid "Identifier:"
 msgstr "Identificador:"
@@ -953,6 +1005,13 @@ msgstr "Quem paga?"
 msgid "To whom?"
 msgstr "Para quem?"
 
+#, fuzzy
+msgid "Settled?"
+msgstr "Pagamentos"
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr "Quem?"
 
@@ -968,10 +1027,19 @@ msgstr "reativar"
 msgid "Paid"
 msgstr "Pago"
 
-msgid "Spent"
-msgstr "Gasto"
+#, fuzzy
+msgid "Expenses"
+msgstr "Gastos por Mês"
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+#, fuzzy
+msgid "Received"
+msgstr "reativar"
+
+#, fuzzy
+msgid "Expenses by month"
 msgstr "Gastos por Mês"
 
 msgid "Period"
@@ -1135,3 +1203,7 @@ msgstr "Período"
 #~ "Você pode compartilhar diretamente o "
 #~ "seguinte link através do seu meio "
 #~ "preferido"
+
+#~ msgid "Spent"
+#~ msgstr "Gasto"
+

@@ -30,6 +30,20 @@ will be used automatically.
 When upgrading from a major version to another, you **must** follow
 special instructions:
 
+### 6.x → 7.x
+
+#### Switch to a supported version of Python
+
+::: {note}
+If you are using docker installation, you don't care about Python versions.
+:::
+
+If you were running IHateMoney using Python < 3.11, you must switch to 
+Python ≥ 3.11 to be able to upgrade IhateMoney to 6.X.
+
+Then, see bellow. The steps to upgrade the virtualenv are the same than 
+ **4.x → 5.x** upgrade (although Python versions differ).
+
 ### 4.x → 5.x
 
 #### Switch to a supported version of Python

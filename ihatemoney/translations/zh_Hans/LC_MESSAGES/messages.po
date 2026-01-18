@@ -1,19 +1,20 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"POT-Creation-Date: 2026-01-18 21:37+0100\n"
 "PO-Revision-Date: 2023-12-12 13:05+0000\n"
 "Last-Translator: Jinx <me@qqays.xyz>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
-"i-hate-money/i-hate-money/zh_Hans/>\n"
 "Language: zh_Hans\n"
+"Language-Team: Chinese (Simplified) "
+"<https://hosted.weblate.org/projects/i-hate-money/i-hate-money/zh_Hans/>"
+"\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.3-dev\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -64,6 +65,10 @@ msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr "此账目不能设置为“无货币”，因为它包含多种货币的账单。"
+
+#, fuzzy
+msgid "Cannot change project currency because currency conversion is broken"
+msgstr "设置默认货币可实现账单之间的货币转换"
 
 msgid "Compatible with Cospend"
 msgstr "与Cospend兼容"
@@ -143,6 +148,10 @@ msgstr "与此账单有关的外部链接"
 msgid "For whom?"
 msgstr "成员？"
 
+#, fuzzy
+msgid "Bill Type"
+msgstr "单据项目"
+
 msgid "Submit"
 msgstr "确定"
 
@@ -152,6 +161,10 @@ msgstr "确定并添加另一个"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "默认账目： %(currency)s"
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
+msgstr ""
 
 msgid "Name"
 msgstr "姓名"
@@ -244,8 +257,7 @@ msgstr "我们试着发送提醒邮件给你，但是出了问题。你仍可以
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
 "instructions."
-msgstr "对不起，在发送重设密码的邮件时除了错误。请检查服务器的邮件配置或者联系管理员"
-"。"
+msgstr "对不起，在发送重设密码的邮件时除了错误。请检查服务器的邮件配置或者联系管理员。"
 
 msgid "No token provided"
 msgstr "没有符号"
@@ -339,6 +351,18 @@ msgstr "帐单已修改"
 #, python-format
 msgid "%(lang)s is not a supported language"
 msgstr "暂不支持%(lang)s语言"
+
+#, fuzzy
+msgid "Error creating settlement bill"
+msgstr "删除账单时出错"
+
+#, fuzzy
+msgid "Settlement"
+msgstr "解决"
+
+#, fuzzy
+msgid "Settlement bill has been successfully added"
+msgstr "帐单已添加"
 
 msgid "Error deleting project history"
 msgstr "删除账目历史记录时出错"
@@ -481,6 +505,9 @@ msgstr "添加参与人"
 msgid "Edit this participant"
 msgstr "编辑这个成员"
 
+msgid "Save"
+msgstr ""
+
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
 
@@ -549,6 +576,32 @@ msgstr "帐单 %(name)s：将 %(owers_list_str)s 添加到所有者列表"
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr "账单 %(name)s：从所有者列表中删除了 %(owers_list_str)s"
+
+msgid "Details of the bill (before the change)"
+msgstr ""
+
+#, fuzzy
+msgid "Details of the bill"
+msgstr "编辑帐单"
+
+#, fuzzy
+msgid "Date:"
+msgstr "日期"
+
+#, fuzzy
+msgid "Payer:"
+msgstr "支付人"
+
+#, fuzzy
+msgid "Amount:"
+msgstr "数量"
+
+msgid "Owers:"
+msgstr ""
+
+#, fuzzy
+msgid "External link:"
+msgstr "外部链接"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr "这个账目的历史已被禁用，新操作将不会出现在下面。"
@@ -626,24 +679,8 @@ msgid "Project settings modified"
 msgstr "账目设置已修改"
 
 #, python-format
-msgid "Participant %(name)s deactivated"
-msgstr "成员 %(name)s 已停用"
-
-#, python-format
-msgid "Participant %(name)s reactivated"
-msgstr "成员 %(name)s 被重新激活"
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr "成员 %(name)s 重命名为 %(new_name)s"
-
-#, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
 msgstr "账单 %(name)s 更名为 %(new_description)s"
-
-#, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
-msgstr "成员 %(name)s：权重从%(old_weight)s变为%(new_weight)s"
 
 msgid "Payer"
 msgstr "支付人"
@@ -661,6 +698,22 @@ msgstr "%(currency)s的数量是"
 #, python-format
 msgid "Bill %(name)s modified"
 msgstr "帐单 %(name)s 已修改"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr "成员 %(name)s 已停用"
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr "成员 %(name)s 被重新激活"
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr "成员 %(name)s 重命名为 %(new_name)s"
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr "成员 %(name)s：权重从%(old_weight)s变为%(new_weight)s"
 
 #, python-format
 msgid "Participant %(name)s modified"
@@ -868,9 +921,8 @@ msgid ""
 " add/edit/delete bills. However, they will not have access to important "
 "settings such as changing the private code or deleting the whole project."
 msgstr ""
-"邀请人们的最简单方法是给他们以下邀请链接。<br />他们将能够访问账目，管理成员"
-"，添加/编辑/删除账单。然而，他们将无法访问重要设置，例如更改专用代码或删除整"
-"个账目。"
+"邀请人们的最简单方法是给他们以下邀请链接。<br "
+"/>他们将能够访问账目，管理成员，添加/编辑/删除账单。然而，他们将无法访问重要设置，例如更改专用代码或删除整个账目。"
 
 msgid "Scan QR code"
 msgstr "扫描二维码"
@@ -885,8 +937,7 @@ msgid ""
 "Specify a list of email adresses (separated by comma) of people you want "
 "to notify about the creation of this project. We will send them an email "
 "with the invitation link."
-msgstr "指定一个电子邮件地址列表（用逗号分隔），列出您想通知的与这个账目创建相关的人"
-"员。我们将向他们发送一封包含邀请链接的电子邮件。"
+msgstr "指定一个电子邮件地址列表（用逗号分隔），列出您想通知的与这个账目创建相关的人员。我们将向他们发送一封包含邀请链接的电子邮件。"
 
 msgid "Share Identifier & code"
 msgstr "分享标识符与码"
@@ -897,9 +948,8 @@ msgid ""
 "to the full project, including changing settings such as the private code"
 " or project email address, or even deleting the whole project."
 msgstr ""
-"你可以通过任何通讯方式分享账目标识符和专用代码。<br />持有专用代码的任何人都"
-"将获得完整的账目访问权限，包括更改设置，如专用代码或账目电子邮件地址，甚至删"
-"除整个账目。"
+"你可以通过任何通讯方式分享账目标识符和专用代码。<br "
+"/>持有专用代码的任何人都将获得完整的账目访问权限，包括更改设置，如专用代码或账目电子邮件地址，甚至删除整个账目。"
 
 msgid "Identifier:"
 msgstr "标识符："
@@ -916,6 +966,13 @@ msgstr "谁付款？"
 msgid "To whom?"
 msgstr "给谁？"
 
+#, fuzzy
+msgid "Settled?"
+msgstr "解决"
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr "谁？"
 
@@ -931,10 +988,19 @@ msgstr "激活"
 msgid "Paid"
 msgstr "付款"
 
-msgid "Spent"
-msgstr "花费"
+#, fuzzy
+msgid "Expenses"
+msgstr "每月花销"
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+#, fuzzy
+msgid "Received"
+msgstr "激活"
+
+#, fuzzy
+msgid "Expenses by month"
 msgstr "每月花销"
 
 msgid "Period"
@@ -1116,3 +1182,7 @@ msgstr "期间"
 
 #~ msgid "You can directly share the following link via your prefered medium"
 #~ msgstr "你可以直接通过你喜欢的媒体分享链接"
+
+#~ msgid "Spent"
+#~ msgstr "花费"
+
