@@ -1,19 +1,19 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"POT-Creation-Date: 2026-01-18 21:37+0100\n"
 "PO-Revision-Date: 2024-05-13 07:00+0000\n"
 "Last-Translator: Harshini K <harshinikondepudi@gmail.com>\n"
-"Language-Team: Telugu <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/te/>\n"
 "Language: te\n"
+"Language-Team: Telugu <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/te/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5.5-dev\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -73,6 +73,12 @@ msgid ""
 msgstr ""
 "ఈ ప్రాజెక్ట్ బహుళ కరెన్సీలలో బిల్లులను కలిగి ఉన్నందున 'నో కరెన్సీ'కి సెట్"
 " చెయ్యడం కుదరదు."
+
+#, fuzzy
+msgid "Cannot change project currency because currency conversion is broken"
+msgstr ""
+"డిఫాల్ట్ కరెన్సీని సెట్ చేయడం వలన బిల్లుల మధ్య కరెన్సీ మార్పిడిని "
+"కుదురుతుంది"
 
 msgid "Compatible with Cospend"
 msgstr "కాస్పెండ్ తో అనుకూలమైనది"
@@ -159,6 +165,9 @@ msgstr "ఈ బిల్లుకు సంబంధించిన డాక్
 msgid "For whom?"
 msgstr "ఎవరి కోసం?"
 
+msgid "Bill Type"
+msgstr ""
+
 msgid "Submit"
 msgstr "సమర్పించు"
 
@@ -169,6 +178,10 @@ msgstr "సమర్పించి, కొత్తదాన్ని జోడ
 #, fuzzy, python-format
 msgid "Project default: %(currency)s"
 msgstr "ప్రాజెక్ట్ డిఫాల్ట్: %(currency)s"
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
+msgstr ""
 
 msgid "Name"
 msgstr "పేరు"
@@ -378,6 +391,15 @@ msgstr ""
 msgid "%(lang)s is not a supported language"
 msgstr ""
 
+msgid "Error creating settlement bill"
+msgstr ""
+
+msgid "Settlement"
+msgstr ""
+
+msgid "Settlement bill has been successfully added"
+msgstr ""
+
 msgid "Error deleting project history"
 msgstr ""
 
@@ -521,6 +543,9 @@ msgstr ""
 msgid "Edit this participant"
 msgstr ""
 
+msgid "Save"
+msgstr ""
+
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr ""
 
@@ -587,6 +612,30 @@ msgstr ""
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr ""
+
+msgid "Details of the bill (before the change)"
+msgstr ""
+
+msgid "Details of the bill"
+msgstr ""
+
+#, fuzzy
+msgid "Date:"
+msgstr "తేదీ"
+
+#, fuzzy
+msgid "Payer:"
+msgstr "చెల్లింపుదారు"
+
+msgid "Amount:"
+msgstr ""
+
+msgid "Owers:"
+msgstr ""
+
+#, fuzzy
+msgid "External link:"
+msgstr "బాహ్య లింకు"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
@@ -664,23 +713,7 @@ msgid "Project settings modified"
 msgstr ""
 
 #, python-format
-msgid "Participant %(name)s deactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s reactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr ""
-
-#, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
 msgid "Payer"
@@ -698,6 +731,22 @@ msgstr ""
 
 #, python-format
 msgid "Bill %(name)s modified"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
 #, python-format
@@ -948,6 +997,12 @@ msgstr ""
 msgid "To whom?"
 msgstr ""
 
+msgid "Settled?"
+msgstr ""
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr ""
 
@@ -963,10 +1018,16 @@ msgstr ""
 msgid "Paid"
 msgstr ""
 
-msgid "Spent"
+msgid "Expenses"
 msgstr ""
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+msgid "Received"
+msgstr ""
+
+msgid "Expenses by month"
 msgstr ""
 
 msgid "Period"
@@ -1063,3 +1124,10 @@ msgstr ""
 #~ "them an email with the invitation "
 #~ "link."
 #~ msgstr ""
+
+#~ msgid "Spent"
+#~ msgstr ""
+
+#~ msgid "Expenses by Month"
+#~ msgstr ""
+

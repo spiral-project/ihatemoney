@@ -1,19 +1,19 @@
+
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"POT-Creation-Date: 2026-01-18 21:37+0100\n"
 "PO-Revision-Date: 2024-03-17 12:01+0000\n"
 "Last-Translator: Xander Jennie <xanderjennie21@gmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/nl/>\n"
 "Language: nl\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/nl/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -57,8 +57,8 @@ msgstr "Standaard munteenheid"
 
 msgid "Setting a default currency enables currency conversion between bills"
 msgstr ""
-"Door een standaardvaluta in te stellen, is valutaconversie tussen facturen "
-"mogelijk"
+"Door een standaardvaluta in te stellen, is valutaconversie tussen "
+"facturen mogelijk"
 
 msgid "Unknown error"
 msgstr "Onbekende fout"
@@ -70,8 +70,14 @@ msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
-"Dit project kan niet op 'geen valuta' worden gezet, omdat het facturen in "
-"meerdere valuta's bevat."
+"Dit project kan niet op 'geen valuta' worden gezet, omdat het facturen in"
+" meerdere valuta's bevat."
+
+#, fuzzy
+msgid "Cannot change project currency because currency conversion is broken"
+msgstr ""
+"Door een standaardvaluta in te stellen, is valutaconversie tussen "
+"facturen mogelijk"
 
 msgid "Compatible with Cospend"
 msgstr "Compatibel met mede besteden"
@@ -151,6 +157,10 @@ msgstr "Een link naar een extern document, gerelateerd aan deze rekening"
 msgid "For whom?"
 msgstr "Aan wie?"
 
+#, fuzzy
+msgid "Bill Type"
+msgstr "Rekeningitems"
+
 msgid "Submit"
 msgstr "Versturen"
 
@@ -160,6 +170,10 @@ msgstr "Versturen en nieuwe toevoegen"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "Projectstandaard: %(currency)s"
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
+msgstr ""
 
 msgid "Name"
 msgstr "Naam"
@@ -360,6 +374,18 @@ msgid "%(lang)s is not a supported language"
 msgstr ""
 
 #, fuzzy
+msgid "Error creating settlement bill"
+msgstr "Fout bij verwijderen factuur"
+
+#, fuzzy
+msgid "Settlement"
+msgstr "Schikken"
+
+#, fuzzy
+msgid "Settlement bill has been successfully added"
+msgstr "De rekening is toegevoegd"
+
+#, fuzzy
 msgid "Error deleting project history"
 msgstr "Projectgeschiedenis inschakelen"
 
@@ -508,6 +534,9 @@ msgstr "Deelnemer toevoegen"
 msgid "Edit this participant"
 msgstr "Deelnemer toevoegen"
 
+msgid "Save"
+msgstr ""
+
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "jan.jansen@voorbeeld.nl, maria.magdalena@website.nl"
 
@@ -581,6 +610,32 @@ msgstr ""
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr ""
+
+msgid "Details of the bill (before the change)"
+msgstr ""
+
+#, fuzzy
+msgid "Details of the bill"
+msgstr "Deze rekening bewerken"
+
+#, fuzzy
+msgid "Date:"
+msgstr "Datum"
+
+#, fuzzy
+msgid "Payer:"
+msgstr "Betaler"
+
+#, fuzzy
+msgid "Amount:"
+msgstr "Hoeveelheid"
+
+msgid "Owers:"
+msgstr ""
+
+#, fuzzy
+msgid "External link:"
+msgstr "Externe link"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
@@ -659,23 +714,7 @@ msgid "Project settings modified"
 msgstr "Projectinstellingen gewijzigd"
 
 #, python-format
-msgid "Participant %(name)s deactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s reactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr ""
-
-#, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
 msgid "Payer"
@@ -694,6 +733,22 @@ msgstr "Hoeveelheid in %(currency)s"
 #, fuzzy, python-format
 msgid "Bill %(name)s modified"
 msgstr "De rekening is aangepast"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr ""
 
 #, python-format
 msgid "Participant %(name)s modified"
@@ -955,6 +1010,13 @@ msgstr "Wie betaalt?"
 msgid "To whom?"
 msgstr "Aan wie?"
 
+#, fuzzy
+msgid "Settled?"
+msgstr "Schikken"
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr "Wie?"
 
@@ -970,10 +1032,17 @@ msgstr "heractiveren"
 msgid "Paid"
 msgstr "Betaald"
 
-msgid "Spent"
-msgstr "Uitgegeven"
+msgid "Expenses"
+msgstr ""
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+#, fuzzy
+msgid "Received"
+msgstr "heractiveren"
+
+msgid "Expenses by month"
 msgstr ""
 
 msgid "Period"
@@ -1151,3 +1220,10 @@ msgstr "Periode"
 
 #~ msgid "You can directly share the following link via your prefered medium"
 #~ msgstr "Je kunt de volgende link direct delen"
+
+#~ msgid "Spent"
+#~ msgstr "Uitgegeven"
+
+#~ msgid "Expenses by Month"
+#~ msgstr ""
+

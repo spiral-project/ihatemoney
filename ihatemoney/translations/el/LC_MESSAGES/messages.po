@@ -3,17 +3,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"POT-Creation-Date: 2026-01-18 21:37+0100\n"
 "PO-Revision-Date: 2021-08-01 08:34+0000\n"
 "Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
 "Language: el\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/i-hate-money/i"
 "-hate-money/el/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -70,6 +70,9 @@ msgid ""
 msgstr ""
 "Αυτό το έργο δεν μπορεί να οριστεί σε \"χωρίς νόμισμα\" επειδή περιέχει "
 "λογαριασμούς σε πολλαπλά νομίσματα."
+
+msgid "Cannot change project currency because currency conversion is broken"
+msgstr ""
 
 msgid "Compatible with Cospend"
 msgstr ""
@@ -154,6 +157,10 @@ msgstr ""
 msgid "For whom?"
 msgstr "Για ποιον;"
 
+#, fuzzy
+msgid "Bill Type"
+msgstr "Στοιχεία λογαριασμού"
+
 msgid "Submit"
 msgstr "Yποβολή"
 
@@ -163,6 +170,10 @@ msgstr "Υποβολή και προσθήκη νέου"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "Προεπιλογή έργου: %(currency)s"
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
+msgstr ""
 
 msgid "Name"
 msgstr "Όνομα"
@@ -357,6 +368,17 @@ msgstr "Ο λογαριασμός έχει τροποποιηθεί"
 msgid "%(lang)s is not a supported language"
 msgstr ""
 
+msgid "Error creating settlement bill"
+msgstr ""
+
+#, fuzzy
+msgid "Settlement"
+msgstr "Διευθέτηση σχεδίων"
+
+#, fuzzy
+msgid "Settlement bill has been successfully added"
+msgstr "Ο λογαριασμός προστέθηκε"
+
 #, fuzzy
 msgid "Error deleting project history"
 msgstr "Ενεργοποίηση ιστορικού έργων"
@@ -513,6 +535,9 @@ msgstr "Προσθήκη συμμετέχοντος"
 msgid "Edit this participant"
 msgstr "Προσθήκη συμμετέχοντος"
 
+msgid "Save"
+msgstr ""
+
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr ""
 
@@ -580,6 +605,32 @@ msgstr ""
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr ""
+
+msgid "Details of the bill (before the change)"
+msgstr ""
+
+#, fuzzy
+msgid "Details of the bill"
+msgstr "Επεξεργαστείτε αυτόν τον λογαριασμό"
+
+#, fuzzy
+msgid "Date:"
+msgstr "Ημερομηνία"
+
+#, fuzzy
+msgid "Payer:"
+msgstr "Φορέας πληρωμής"
+
+#, fuzzy
+msgid "Amount:"
+msgstr "Ποσό"
+
+msgid "Owers:"
+msgstr ""
+
+#, fuzzy
+msgid "External link:"
+msgstr "Εξωτερική σύνδεση"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
@@ -658,23 +709,7 @@ msgid "Project settings modified"
 msgstr "Τροποποιημένες ρυθμίσεις έργου"
 
 #, python-format
-msgid "Participant %(name)s deactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s reactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr ""
-
-#, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
 msgid "Payer"
@@ -693,6 +728,22 @@ msgstr "Ποσό σε %(currency)s"
 #, fuzzy, python-format
 msgid "Bill %(name)s modified"
 msgstr "Ο λογαριασμός έχει τροποποιηθεί"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr ""
 
 #, python-format
 msgid "Participant %(name)s modified"
@@ -944,6 +995,13 @@ msgstr ""
 msgid "To whom?"
 msgstr ""
 
+#, fuzzy
+msgid "Settled?"
+msgstr "Διευθέτηση σχεδίων"
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr ""
 
@@ -959,10 +1017,19 @@ msgstr "επανενεργοποιήστε το"
 msgid "Paid"
 msgstr "Εξοφλήθη"
 
-msgid "Spent"
-msgstr "Ξοδεύτηκε"
+#, fuzzy
+msgid "Expenses"
+msgstr "Δαπάνες ανά μήνα"
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+#, fuzzy
+msgid "Received"
+msgstr "επανενεργοποιήστε το"
+
+#, fuzzy
+msgid "Expenses by month"
 msgstr "Δαπάνες ανά μήνα"
 
 msgid "Period"
@@ -1159,4 +1226,7 @@ msgstr "Περίοδος"
 #~ "them an email with the invitation "
 #~ "link."
 #~ msgstr ""
+
+#~ msgid "Spent"
+#~ msgstr "Ξοδεύτηκε"
 

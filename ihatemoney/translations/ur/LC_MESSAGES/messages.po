@@ -3,17 +3,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"POT-Creation-Date: 2026-01-18 21:37+0100\n"
 "PO-Revision-Date: 2022-07-03 10:18+0000\n"
 "Last-Translator: Shafiq Azeez <fubukishirouk@gmail.com>\n"
 "Language: ur\n"
 "Language-Team: Urdu <https://hosted.weblate.org/projects/i-hate-money/i"
 "-hate-money/ur/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -63,6 +63,9 @@ msgstr ""
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
+msgstr ""
+
+msgid "Cannot change project currency because currency conversion is broken"
 msgstr ""
 
 msgid "Compatible with Cospend"
@@ -143,6 +146,9 @@ msgstr "اس رسید کے لیے بیرونی رستاویز کا لنک"
 msgid "For whom?"
 msgstr "کس کے لیے؟"
 
+msgid "Bill Type"
+msgstr ""
+
 msgid "Submit"
 msgstr "جمع کروائیں"
 
@@ -151,6 +157,10 @@ msgstr "جمع کرکے ایک اور نیا اندراج کروائیں"
 
 #, python-format
 msgid "Project default: %(currency)s"
+msgstr ""
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
 msgstr ""
 
 msgid "Name"
@@ -339,6 +349,15 @@ msgstr ""
 msgid "%(lang)s is not a supported language"
 msgstr ""
 
+msgid "Error creating settlement bill"
+msgstr ""
+
+msgid "Settlement"
+msgstr ""
+
+msgid "Settlement bill has been successfully added"
+msgstr ""
+
 msgid "Error deleting project history"
 msgstr ""
 
@@ -480,6 +499,9 @@ msgstr ""
 msgid "Edit this participant"
 msgstr ""
 
+msgid "Save"
+msgstr ""
+
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr ""
 
@@ -546,6 +568,29 @@ msgstr ""
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr ""
+
+msgid "Details of the bill (before the change)"
+msgstr ""
+
+msgid "Details of the bill"
+msgstr ""
+
+msgid "Date:"
+msgstr ""
+
+#, fuzzy
+msgid "Payer:"
+msgstr "قیمت ادا کرنے والا"
+
+msgid "Amount:"
+msgstr ""
+
+msgid "Owers:"
+msgstr ""
+
+#, fuzzy
+msgid "External link:"
+msgstr "بیرونی لنک"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
@@ -623,23 +668,7 @@ msgid "Project settings modified"
 msgstr ""
 
 #, python-format
-msgid "Participant %(name)s deactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s reactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr ""
-
-#, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
 msgid "Payer"
@@ -657,6 +686,22 @@ msgstr ""
 
 #, python-format
 msgid "Bill %(name)s modified"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
 #, python-format
@@ -906,6 +951,12 @@ msgstr ""
 msgid "To whom?"
 msgstr ""
 
+msgid "Settled?"
+msgstr ""
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr ""
 
@@ -921,10 +972,16 @@ msgstr ""
 msgid "Paid"
 msgstr ""
 
-msgid "Spent"
+msgid "Expenses"
 msgstr ""
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+msgid "Received"
+msgstr ""
+
+msgid "Expenses by month"
 msgstr ""
 
 msgid "Period"
@@ -1042,5 +1099,11 @@ msgstr ""
 #~ "management project and we will send "
 #~ "them an email with the invitation "
 #~ "link."
+#~ msgstr ""
+
+#~ msgid "Spent"
+#~ msgstr ""
+
+#~ msgid "Expenses by Month"
 #~ msgstr ""
 

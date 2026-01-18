@@ -1,18 +1,19 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-15 16:06+0200\n"
+"POT-Creation-Date: 2026-01-18 21:37+0100\n"
 "PO-Revision-Date: 2024-07-03 19:09+0000\n"
 "Last-Translator: Quentin PAGÈS <quentinantonin@free.fr>\n"
-"Language-Team: Occitan <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/oc/>\n"
 "Language: oc\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: Occitan <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/oc/>\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -64,6 +65,9 @@ msgstr "Còdi d’accès invalid."
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
+msgstr ""
+
+msgid "Cannot change project currency because currency conversion is broken"
 msgstr ""
 
 msgid "Compatible with Cospend"
@@ -144,6 +148,9 @@ msgstr ""
 msgid "For whom?"
 msgstr "Per qual ?"
 
+msgid "Bill Type"
+msgstr ""
+
 msgid "Submit"
 msgstr "Enviar"
 
@@ -152,6 +159,10 @@ msgstr ""
 
 #, python-format
 msgid "Project default: %(currency)s"
+msgstr ""
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
 msgstr ""
 
 msgid "Name"
@@ -340,6 +351,15 @@ msgstr ""
 msgid "%(lang)s is not a supported language"
 msgstr ""
 
+msgid "Error creating settlement bill"
+msgstr ""
+
+msgid "Settlement"
+msgstr ""
+
+msgid "Settlement bill has been successfully added"
+msgstr ""
+
 msgid "Error deleting project history"
 msgstr ""
 
@@ -481,6 +501,9 @@ msgstr ""
 msgid "Edit this participant"
 msgstr ""
 
+msgid "Save"
+msgstr ""
+
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr ""
 
@@ -547,6 +570,31 @@ msgstr ""
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr ""
+
+msgid "Details of the bill (before the change)"
+msgstr ""
+
+msgid "Details of the bill"
+msgstr ""
+
+#, fuzzy
+msgid "Date:"
+msgstr "Data"
+
+#, fuzzy
+msgid "Payer:"
+msgstr "Pagaire"
+
+#, fuzzy
+msgid "Amount:"
+msgstr "Soma"
+
+msgid "Owers:"
+msgstr ""
+
+#, fuzzy
+msgid "External link:"
+msgstr "Ligam extèrne"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
@@ -624,23 +672,7 @@ msgid "Project settings modified"
 msgstr ""
 
 #, python-format
-msgid "Participant %(name)s deactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s reactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr ""
-
-#, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
 msgid "Payer"
@@ -658,6 +690,22 @@ msgstr ""
 
 #, python-format
 msgid "Bill %(name)s modified"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
 #, python-format
@@ -907,6 +955,12 @@ msgstr "Qual paga ?"
 msgid "To whom?"
 msgstr "A qual ?"
 
+msgid "Settled?"
+msgstr ""
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr "Qual ?"
 
@@ -922,11 +976,23 @@ msgstr ""
 msgid "Paid"
 msgstr "Pagat"
 
-msgid "Spent"
-msgstr "Despensat"
+#, fuzzy
+msgid "Expenses"
+msgstr "Despensas per mes"
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+msgid "Received"
+msgstr ""
+
+#, fuzzy
+msgid "Expenses by month"
 msgstr "Despensas per mes"
 
 msgid "Period"
 msgstr "Periòde"
+
+#~ msgid "Spent"
+#~ msgstr "Despensat"
+

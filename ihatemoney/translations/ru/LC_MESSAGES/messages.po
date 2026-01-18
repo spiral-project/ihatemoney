@@ -1,20 +1,20 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"POT-Creation-Date: 2026-01-18 21:37+0100\n"
 "PO-Revision-Date: 2023-09-17 16:59+0000\n"
 "Last-Translator: Mihail Iosilevitch <yosik@tutanota.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/ru/>\n"
 "Language: ru\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/ru/>\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0.2\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -71,6 +71,12 @@ msgid ""
 msgstr ""
 "Для этого проекта нельзя установить значение \"без валюты\", так как он "
 "содержит счета в нескольких валютах."
+
+#, fuzzy
+msgid "Cannot change project currency because currency conversion is broken"
+msgstr ""
+"Установка валюты по умолчанию позволяет конвертировать валюту между "
+"счетами"
 
 msgid "Compatible with Cospend"
 msgstr "Совместим с Cospend"
@@ -152,6 +158,10 @@ msgstr "Ссылка на внешний документ, относящийс�
 msgid "For whom?"
 msgstr "За кого?"
 
+#, fuzzy
+msgid "Bill Type"
+msgstr "Пункты счета"
+
 msgid "Submit"
 msgstr "Отправить"
 
@@ -161,6 +171,10 @@ msgstr "Отправить и добавить новый"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "По умолчанию для проекта: %(currency)s"
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
+msgstr ""
 
 msgid "Name"
 msgstr "Имя"
@@ -201,8 +215,8 @@ msgid ""
 "Please check the email configuration of the server or contact the "
 "administrator: %(admin_email)s"
 msgstr ""
-"Пожалуйста, проверьте настройки электронной почты сервера или свяжитесь с "
-"администратором: %(admin_email)s"
+"Пожалуйста, проверьте настройки электронной почты сервера или свяжитесь с"
+" администратором: %(admin_email)s"
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
@@ -251,8 +265,8 @@ msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
-"Мы пытались отправить вам электронное письмо с напоминанием, но произошла "
-"ошибка. Вы все еще можете использовать проект как обычно."
+"Мы пытались отправить вам электронное письмо с напоминанием, но произошла"
+" ошибка. Вы все еще можете использовать проект как обычно."
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
@@ -311,7 +325,8 @@ msgstr "Ваш код приглашения был отправлен"
 
 msgid "Sorry, there was an error while trying to send the invitation emails."
 msgstr ""
-"Простите, была ошибка при попытке отправить приглашения по электронной почте."
+"Простите, была ошибка при попытке отправить приглашения по электронной "
+"почте."
 
 #, python-format
 msgid "%(member)s has been added"
@@ -358,6 +373,18 @@ msgstr "Счёт был изменён"
 #, python-format
 msgid "%(lang)s is not a supported language"
 msgstr "%(lang)s не является поддерживаемым языком"
+
+#, fuzzy
+msgid "Error creating settlement bill"
+msgstr "Ошибка при удалении счета"
+
+#, fuzzy
+msgid "Settlement"
+msgstr "Взаиморасчёт"
+
+#, fuzzy
+msgid "Settlement bill has been successfully added"
+msgstr "Счёт был добавлен"
 
 msgid "Error deleting project history"
 msgstr "Ошибка при удалении истории проекта"
@@ -502,6 +529,9 @@ msgstr "Добавить участника"
 msgid "Edit this participant"
 msgstr "Редактировать участника"
 
+msgid "Save"
+msgstr ""
+
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
 
@@ -581,6 +611,32 @@ msgstr ""
 "Счёт %(name)s: Участник(и) %(owers_list_str)s удален(ы) из списка "
 "должников"
 
+msgid "Details of the bill (before the change)"
+msgstr ""
+
+#, fuzzy
+msgid "Details of the bill"
+msgstr "Изменить счёт"
+
+#, fuzzy
+msgid "Date:"
+msgstr "Дата"
+
+#, fuzzy
+msgid "Payer:"
+msgstr "Плательщик"
+
+#, fuzzy
+msgid "Amount:"
+msgstr "Количество"
+
+msgid "Owers:"
+msgstr ""
+
+#, fuzzy
+msgid "External link:"
+msgstr "Внешняя ссылка"
+
 msgid "This project has history disabled. New actions won't appear below."
 msgstr "Этот проект имеет историю инвалида. Новые действия не появятся ниже."
 
@@ -591,8 +647,8 @@ msgid ""
 "The table below reflects actions recorded prior to disabling project "
 "history."
 msgstr ""
-"В приведенной ниже таблице отражены действия, зарегистрированные до отказа "
-"от истории проекта."
+"В приведенной ниже таблице отражены действия, зарегистрированные до "
+"отказа от истории проекта."
 
 msgid "You can clear the project history to remove them."
 msgstr "Вы можете очистить историю проекта, чтобы удалить их."
@@ -661,24 +717,8 @@ msgid "Project settings modified"
 msgstr "Настройки проекта изменены"
 
 #, python-format
-msgid "Participant %(name)s deactivated"
-msgstr "Пользователь %(name)s отключён"
-
-#, python-format
-msgid "Participant %(name)s reactivated"
-msgstr "Пользователь %(name)s подключён"
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr "Пользователь %(name)s переименован в %(new_name)s"
-
-#, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
 msgstr "Счёт %(name)s переименован в %(new_description)s"
-
-#, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
-msgstr "Участник %(name)s: масса изменена с %(old_weight)s на %(new_weight)s"
 
 msgid "Payer"
 msgstr "Плательщик"
@@ -696,6 +736,22 @@ msgstr "Количество в %(currency)s"
 #, python-format
 msgid "Bill %(name)s modified"
 msgstr "Счёт %(name)s изменён"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr "Пользователь %(name)s отключён"
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr "Пользователь %(name)s подключён"
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr "Пользователь %(name)s переименован в %(new_name)s"
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr "Участник %(name)s: масса изменена с %(old_weight)s на %(new_weight)s"
 
 #, python-format
 msgid "Participant %(name)s modified"
@@ -925,9 +981,9 @@ msgid ""
 "to notify about the creation of this project. We will send them an email "
 "with the invitation link."
 msgstr ""
-"Укажите список адресов электронной почты (разделенных коммой) людей, которых "
-"вы хотите уведомить о создании этого проекта. Мы отправим им электронное "
-"письмо со ссылкой на приглашение."
+"Укажите список адресов электронной почты (разделенных коммой) людей, "
+"которых вы хотите уведомить о создании этого проекта. Мы отправим им "
+"электронное письмо со ссылкой на приглашение."
 
 msgid "Share Identifier & code"
 msgstr "Поделиться идентификатором и кодом"
@@ -939,9 +995,9 @@ msgid ""
 " or project email address, or even deleting the whole project."
 msgstr ""
 "Вы можете поделиться идентификатором проекта и частным кодом любыми "
-"средствами связи.<br /> Любой с частным кодом будет иметь доступ к полному "
-"проекту, включая изменение параметров, таких как частный код или адрес "
-"электронной почты проекта, или даже удаление всего проекта."
+"средствами связи.<br /> Любой с частным кодом будет иметь доступ к "
+"полному проекту, включая изменение параметров, таких как частный код или "
+"адрес электронной почты проекта, или даже удаление всего проекта."
 
 msgid "Identifier:"
 msgstr "Идентификатор:"
@@ -958,6 +1014,13 @@ msgstr "Кто платит?"
 msgid "To whom?"
 msgstr "Кому?"
 
+#, fuzzy
+msgid "Settled?"
+msgstr "Взаиморасчёт"
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr "Кто?"
 
@@ -973,10 +1036,19 @@ msgstr "включить"
 msgid "Paid"
 msgstr "Оплачено"
 
-msgid "Spent"
-msgstr "Потрачено"
+#, fuzzy
+msgid "Expenses"
+msgstr "Расходы по месяцам"
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+#, fuzzy
+msgid "Received"
+msgstr "включить"
+
+#, fuzzy
+msgid "Expenses by month"
 msgstr "Расходы по месяцам"
 
 msgid "Period"
@@ -1159,3 +1231,7 @@ msgstr "Период"
 #~ msgstr ""
 #~ "Вы можете напрямую поделиться следующей "
 #~ "ссылкой через любой способ связи"
+
+#~ msgid "Spent"
+#~ msgstr "Потрачено"
+
