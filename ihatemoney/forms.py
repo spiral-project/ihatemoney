@@ -4,7 +4,7 @@ from re import match
 from types import SimpleNamespace
 
 import email_validator
-from flask import request
+from flask import request, session
 from flask_babel import lazy_gettext as _
 from flask_wtf.file import FileAllowed, FileField, FileRequired
 from flask_wtf.form import FlaskForm
@@ -85,7 +85,22 @@ def get_billform_for(project, set_default=True, **kwargs):
 
     form.payed_for.choices = active_members
     form.payer.choices = [("", "")] + active_members
-    form.payed_for.default = [m.id for m in project.active_members]
+
+    # set the last selected payer as default choice if they exist
+    if (
+        "last_selected_payer_per_project" in session
+        and project.id in session["last_selected_payer_per_project"]
+    ):
+        form.payer.default = session["last_selected_payer_per_project"][project.id]
+
+    # set the last selected owers as default choice if they exist
+    if (
+        "last_selected_payed_for_per_project" in session
+        and project.id in session["last_selected_payed_for_per_project"]
+    ):
+        form.payed_for.default = session["last_selected_payed_for_per_project"][project.id]
+    else:
+        form.payed_for.default = [m.id for m in project.active_members]
 
     if set_default and request.method == "GET":
         form.set_default()
@@ -425,6 +440,7 @@ class BillForm(FlaskForm):
         )
 
     def set_default(self):
+        self.payer.data = self.payer.default
         self.payed_for.data = self.payed_for.default
 
     def validate_amount(self, field):

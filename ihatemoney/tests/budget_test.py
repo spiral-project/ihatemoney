@@ -2417,7 +2417,7 @@ class TestBudget(IhatemoneyTestCase):
                 == members_ids_tartif[2]
             )
 
-    def test_remember_payed_for(self):
+    def test_remember_payed_for_per_project(self):
         """
         Tests that the last ower is remembered
         """
@@ -2441,6 +2441,6 @@ class TestBudget(IhatemoneyTestCase):
 
         with self.client as c:
             c.post("/authenticate", data={"id": "raclette", "password": "raclette"})
-            assert isinstance(session["last_selected_payed_for"], dict)
-            assert "raclette" in session["last_selected_payed_for"]
-            assert session["last_selected_payed_for"]["raclette"] == members_ids[1:]
+            assert isinstance(session["last_selected_payed_for_per_project"], dict)
+            assert "raclette" in session["last_selected_payed_for_per_project"]
+            assert session["last_selected_payed_for_per_project"]["raclette"] == members_ids[1:]
