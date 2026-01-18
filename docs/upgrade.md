@@ -1,6 +1,6 @@
 # Upgrading
 
-We keep [a ChangeLog](https://github.com/spiral-project/ihatemoney/blob/master/CHANGELOG.md),
+We keep [a ChangeLog](https://github.com/spiral-project/ihatemoney/blob/main/CHANGELOG.md),
 please read it before upgrading.
 
 Ihatemoney follows [semantic versioning](http://semver.org/). So minor/patch
@@ -19,7 +19,7 @@ upgrades can be applied blindly.
 
 You may also want to set new configuration variables (if any). They are
 mentioned in the
-[ChangeLog](https://github.com/spiral-project/ihatemoney/blob/master/CHANGELOG.md),
+[ChangeLog](https://github.com/spiral-project/ihatemoney/blob/main/CHANGELOG.md),
 but this is **not required for minor/patch upgrades**, a safe default
 will be used automatically.
 

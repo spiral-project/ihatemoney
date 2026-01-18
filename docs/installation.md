@@ -76,7 +76,7 @@ workers:
 
     docker run -d -p 8000:8000 ihatemoney/ihatemoney -w 3
 
-If needed, there is a `docker-compose.yml` file available as an example on the [project repository](https://github.com/spiral-project/ihatemoney/blob/master/docker-compose.yml)
+If needed, there is a `docker-compose.yml` file available as an example on the [project repository](https://github.com/spiral-project/ihatemoney/blob/main/docker-compose.yml)
 
 (cloud)=
 ## On a Cloud Provider
@@ -109,7 +109,7 @@ fine for most small to medium setups.
 
 ::: {note}
 If curious, source config templates can be found in the [project git
-repository](https://github.com/spiral-project/ihatemoney/tree/master/ihatemoney/conf-templates).
+repository](https://github.com/spiral-project/ihatemoney/tree/main/ihatemoney/conf-templates).
 :::
 
 (virtualenv-preparation)=

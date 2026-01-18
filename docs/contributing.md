@@ -87,7 +87,7 @@ as it is a kind of replacement for pip.
 
 ### Getting the sources
 
-You must develop on top of the Git master branch:
+You must develop on top of the Git main branch:
 
     git clone https://github.com/spiral-project/ihatemoney.git
 
@@ -249,7 +249,7 @@ You then need to write the migration steps yourself.
 The documentation is using
 [sphinx](http://www.sphinx-doc.org/en/stable/) and its source is located
 inside the [docs
-folder](https://github.com/spiral-project/ihatemoney/tree/master/docs).
+folder](https://github.com/spiral-project/ihatemoney/tree/main/docs).
 
 Install doc dependencies (within the virtual environment, if any):
 
@@ -304,7 +304,7 @@ In order to issue a new release, follow the following steps:
 
 -   Merge remaining pull requests;
 
--   Switch to the master branch;
+-   Switch to the main branch;
 
 -   Update `CHANGELOG.md` with the last changes;
 
@@ -321,9 +321,9 @@ In order to issue a new release, follow the following steps:
 
 -   If you're not completely sure of yourself at this point, you can
     optionally: create a new branch, push it, open a pull request, check
-    the CI result, and then merge the branch to master.
+    the CI result, and then merge the branch to main.
 
-Once this is done, make sure your local git repository is on the master
+Once this is done, make sure your local git repository is on the main
 branch, and let's release!:
 
     make release
