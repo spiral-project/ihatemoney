@@ -3,17 +3,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"POT-Creation-Date: 2026-01-18 21:37+0100\n"
 "PO-Revision-Date: 2022-02-13 16:54+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language: nb_NO\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/i"
 "-hate-money/i-hate-money/nb_NO/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -70,6 +70,10 @@ msgid ""
 msgstr ""
 "Dette prosjektet kan ikke settes til «Ingen valuta» fordi det inneholder "
 "regninger i flere valutaer."
+
+#, fuzzy
+msgid "Cannot change project currency because currency conversion is broken"
+msgstr "En forvalg valutainnstilling skrur på konvertering mellom regninger"
 
 msgid "Compatible with Cospend"
 msgstr ""
@@ -153,6 +157,10 @@ msgstr "En lenke til et eksternt dokument, i relasjon til denne regningen"
 msgid "For whom?"
 msgstr "For hvem?"
 
+#, fuzzy
+msgid "Bill Type"
+msgstr "Regningsoppføringer"
+
 msgid "Submit"
 msgstr "Send inn"
 
@@ -162,6 +170,10 @@ msgstr "Send inn og legg til ny"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "Prosjektforvalg: %(currency)s"
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
+msgstr ""
 
 msgid "Name"
 msgstr "Navn"
@@ -378,6 +390,18 @@ msgid "%(lang)s is not a supported language"
 msgstr ""
 
 #, fuzzy
+msgid "Error creating settlement bill"
+msgstr "Klarte ikke å slette regning"
+
+#, fuzzy
+msgid "Settlement"
+msgstr "Gjør opp"
+
+#, fuzzy
+msgid "Settlement bill has been successfully added"
+msgstr "Regningen har blitt lagt til"
+
+#, fuzzy
 msgid "Error deleting project history"
 msgstr "Skru på prosjekthistorikk"
 
@@ -532,6 +556,9 @@ msgstr "Legg til deltager"
 msgid "Edit this participant"
 msgstr "Legg til deltager"
 
+msgid "Save"
+msgstr ""
+
 #, fuzzy
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "ola@eksempel.no, kari@eksempel.no"
@@ -611,6 +638,32 @@ msgstr "Regning %(name)s: La til %(owers_list_str)s på eierlisten"
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr "Regning %(name)s: fjernet %(owers_list_str)s fra eierlisten"
+
+msgid "Details of the bill (before the change)"
+msgstr ""
+
+#, fuzzy
+msgid "Details of the bill"
+msgstr "Rediger denne regningen"
+
+#, fuzzy
+msgid "Date:"
+msgstr "Dato"
+
+#, fuzzy
+msgid "Payer:"
+msgstr "Betaler"
+
+#, fuzzy
+msgid "Amount:"
+msgstr "Beløp"
+
+msgid "Owers:"
+msgstr ""
+
+#, fuzzy
+msgid "External link:"
+msgstr "Ekstern lenke"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
@@ -696,25 +749,9 @@ msgstr "Prosjektets e-postkontaktadresse endret til %(new_email)s"
 msgid "Project settings modified"
 msgstr "Prosjektinnstillinger endret"
 
-#, fuzzy, python-format
-msgid "Participant %(name)s deactivated"
-msgstr "Deltageren %(name)s ble deaktivert"
-
-#, fuzzy, python-format
-msgid "Participant %(name)s reactivated"
-msgstr "Deltageren %(name)s ble reaktivert"
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr "Deltageren %(name)s fikk sitt navn endret til %(new_name)s"
-
 #, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
 msgstr "Regningen %(name)s fikk sitt navn endret til %(new_description)s"
-
-#, fuzzy, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
-msgstr "Deltager %(name)s: vekting endret fra %(old_weight)s til %(new_weight)s"
 
 msgid "Payer"
 msgstr "Betaler"
@@ -732,6 +769,22 @@ msgstr "Beløp i %(currency)s"
 #, python-format
 msgid "Bill %(name)s modified"
 msgstr "Regningen %(name)s har blitt endret"
+
+#, fuzzy, python-format
+msgid "Participant %(name)s deactivated"
+msgstr "Deltageren %(name)s ble deaktivert"
+
+#, fuzzy, python-format
+msgid "Participant %(name)s reactivated"
+msgstr "Deltageren %(name)s ble reaktivert"
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr "Deltageren %(name)s fikk sitt navn endret til %(new_name)s"
+
+#, fuzzy, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr "Deltager %(name)s: vekting endret fra %(old_weight)s til %(new_weight)s"
 
 #, python-format
 msgid "Participant %(name)s modified"
@@ -999,6 +1052,13 @@ msgstr "Hvem betaler?"
 msgid "To whom?"
 msgstr "Til hvem?"
 
+#, fuzzy
+msgid "Settled?"
+msgstr "Gjør opp"
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr "Hvem?"
 
@@ -1015,10 +1075,19 @@ msgstr "skru på igjen"
 msgid "Paid"
 msgstr "Betalt"
 
-msgid "Spent"
-msgstr "Forbrukt"
+#, fuzzy
+msgid "Expenses"
+msgstr "Utgifter per måned"
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+#, fuzzy
+msgid "Received"
+msgstr "skru på igjen"
+
+#, fuzzy
+msgid "Expenses by month"
 msgstr "Utgifter per måned"
 
 msgid "Period"
@@ -1338,4 +1407,7 @@ msgstr "Periode"
 
 #~ msgid "You can directly share the following link via your prefered medium"
 #~ msgstr "Du kan dele denne lenken slik du ønsker"
+
+#~ msgid "Spent"
+#~ msgstr "Forbrukt"
 

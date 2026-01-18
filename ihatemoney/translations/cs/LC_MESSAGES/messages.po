@@ -1,19 +1,19 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"POT-Creation-Date: 2026-01-18 21:37+0100\n"
 "PO-Revision-Date: 2023-12-01 14:58+0000\n"
 "Last-Translator: Clonewayx <fillip1@seznam.cz>\n"
-"Language-Team: Czech <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/cs/>\n"
 "Language: cs\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/cs/>\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 5.3-dev\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -22,8 +22,7 @@ msgstr "Právě jste vytvořili '%(project)s' ke sdílení výdajů"
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
-msgstr ""
-"Neplatná částka nebo výraz. Pouze čísla a operátory + - * / jsou povolené."
+msgstr "Neplatná částka nebo výraz. Pouze čísla a operátory + - * / jsou povolené."
 
 msgid "Project name"
 msgstr "Název projektu"
@@ -67,6 +66,10 @@ msgid ""
 msgstr ""
 "Tento projekt nemůže být nastaven na 'bez měny' protože obsahuje účty v "
 "různých měnáh."
+
+#, fuzzy
+msgid "Cannot change project currency because currency conversion is broken"
+msgstr "Nastavení výchozí měny umožňuje konverzi měn mezi účty"
 
 msgid "Compatible with Cospend"
 msgstr "Kompatibilní s Cospend"
@@ -148,6 +151,10 @@ msgstr "Externí odkaz k této účtence"
 msgid "For whom?"
 msgstr "Od koho?"
 
+#, fuzzy
+msgid "Bill Type"
+msgstr "Položky účtu"
+
 msgid "Submit"
 msgstr "Odeslat"
 
@@ -157,6 +164,10 @@ msgstr "Odeslat a přidat nový"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "Výchozí měna projektu: %(currency)s"
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
+msgstr ""
 
 msgid "Name"
 msgstr "Jméno"
@@ -352,6 +363,18 @@ msgstr "Účet byl upraven"
 msgid "%(lang)s is not a supported language"
 msgstr "%(lang)s není podporovaný jazyk"
 
+#, fuzzy
+msgid "Error creating settlement bill"
+msgstr "Chyba při odstranění účtu"
+
+#, fuzzy
+msgid "Settlement"
+msgstr "Vyrovnat účty"
+
+#, fuzzy
+msgid "Settlement bill has been successfully added"
+msgstr "Účet byl přidán"
+
 msgid "Error deleting project history"
 msgstr "Chyba při odstraňování historie projektu"
 
@@ -493,6 +516,9 @@ msgstr "Přidat člena"
 msgid "Edit this participant"
 msgstr "Upravit tohoto člena"
 
+msgid "Save"
+msgstr ""
+
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
 
@@ -564,6 +590,32 @@ msgstr "Účet %(name)s: přidán %(owers_list_str)s do seznamu dlužníka"
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr "Účet %(name)s: odstraněn %(owers_list_str)s ze seznamu dlužníka"
+
+msgid "Details of the bill (before the change)"
+msgstr ""
+
+#, fuzzy
+msgid "Details of the bill"
+msgstr "Upravit tento účet"
+
+#, fuzzy
+msgid "Date:"
+msgstr "Datum"
+
+#, fuzzy
+msgid "Payer:"
+msgstr "Platící"
+
+#, fuzzy
+msgid "Amount:"
+msgstr "Množství"
+
+msgid "Owers:"
+msgstr ""
+
+#, fuzzy
+msgid "External link:"
+msgstr "Externí odkaz"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr "Tento projekt má deaktivovanou historii. Nové akce se nezobrazí níže."
@@ -645,24 +697,8 @@ msgid "Project settings modified"
 msgstr "Nastavení projektu upravena"
 
 #, python-format
-msgid "Participant %(name)s deactivated"
-msgstr "Člen %(name)s deaktivován"
-
-#, python-format
-msgid "Participant %(name)s reactivated"
-msgstr "Člen %(name)s reaktivován"
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr "Člen %(name)s přejmenován na %(new_name)s"
-
-#, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
 msgstr "Účet %(name)s přejmenován na %(new_description)s"
-
-#, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
-msgstr "Člen %(name)s: hmotnost změněna z %(old_weight)s na %(new_weight)s"
 
 msgid "Payer"
 msgstr "Platící"
@@ -680,6 +716,22 @@ msgstr "Množství v %(currency)s"
 #, python-format
 msgid "Bill %(name)s modified"
 msgstr "Účet %(name)s upravený"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr "Člen %(name)s deaktivován"
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr "Člen %(name)s reaktivován"
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr "Člen %(name)s přejmenován na %(new_name)s"
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr "Člen %(name)s: hmotnost změněna z %(old_weight)s na %(new_weight)s"
 
 #, python-format
 msgid "Participant %(name)s modified"
@@ -745,8 +797,8 @@ msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
 msgstr ""
-"Nepoužívejte znovu osobní heslo. Vyberte si soukromý kód a pošlete ho svým "
-"přátelům"
+"Nepoužívejte znovu osobní heslo. Vyberte si soukromý kód a pošlete ho "
+"svým přátelům"
 
 msgid "Account manager"
 msgstr "Správce účtů"
@@ -889,11 +941,11 @@ msgid ""
 " add/edit/delete bills. However, they will not have access to important "
 "settings such as changing the private code or deleting the whole project."
 msgstr ""
-"Nejjednodušší způsob, jak pozvat lidi do projektu, je sdílet jim následující "
-"odkaz na pozvánku. <br />Budou mít přístup k projektu, budou moci spravovat "
-"účastníky, přidávat/upravovat/odstraňovat účty. Nicméně, nebudou mít přístup "
-"k důležitým nastavením, jako je změna soukromého kódu nebo odstranění celého "
-"projektu."
+"Nejjednodušší způsob, jak pozvat lidi do projektu, je sdílet jim "
+"následující odkaz na pozvánku. <br />Budou mít přístup k projektu, budou "
+"moci spravovat účastníky, přidávat/upravovat/odstraňovat účty. Nicméně, "
+"nebudou mít přístup k důležitým nastavením, jako je změna soukromého kódu"
+" nebo odstranění celého projektu."
 
 msgid "Scan QR code"
 msgstr "Skenovat QR kód"
@@ -909,8 +961,9 @@ msgid ""
 "to notify about the creation of this project. We will send them an email "
 "with the invitation link."
 msgstr ""
-"Specifikujte seznam e-mailových adres (oddělených čárkou) osob, které chcete "
-"informovat o vytvoření tohoto projektu. Pošleme jim e-mail s pozvánkou."
+"Specifikujte seznam e-mailových adres (oddělených čárkou) osob, které "
+"chcete informovat o vytvoření tohoto projektu. Pošleme jim e-mail s "
+"pozvánkou."
 
 msgid "Share Identifier & code"
 msgstr "Sdílet identifikátor a kód"
@@ -922,9 +975,10 @@ msgid ""
 " or project email address, or even deleting the whole project."
 msgstr ""
 "Můžete sdílet identifikátor projektu a soukromý kód prostřednictvím "
-"libovolného komunikačního prostředku.<br />Každý, kdo má soukromý kód, bude "
-"mít přístup k celému projektu, včetně možnosti měnit jeho nastavení jako je "
-"soukromý kód, e-mailová adresa nebo dokonce odstranění celého projektu."
+"libovolného komunikačního prostředku.<br />Každý, kdo má soukromý kód, "
+"bude mít přístup k celému projektu, včetně možnosti měnit jeho nastavení "
+"jako je soukromý kód, e-mailová adresa nebo dokonce odstranění celého "
+"projektu."
 
 msgid "Identifier:"
 msgstr "Identifikátor:"
@@ -941,6 +995,13 @@ msgstr "Kdo zaplatil?"
 msgid "To whom?"
 msgstr "Komu?"
 
+#, fuzzy
+msgid "Settled?"
+msgstr "Vyrovnat účty"
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr "Kdo?"
 
@@ -956,10 +1017,19 @@ msgstr "reaktivovat"
 msgid "Paid"
 msgstr "Zaplaceno"
 
-msgid "Spent"
-msgstr "Utraceno"
+#, fuzzy
+msgid "Expenses"
+msgstr "Náklady podle měsíce"
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+#, fuzzy
+msgid "Received"
+msgstr "reaktivovat"
+
+#, fuzzy
+msgid "Expenses by month"
 msgstr "Náklady podle měsíce"
 
 msgid "Period"
@@ -1182,3 +1252,7 @@ msgstr "Období"
 #~ "them an email with the invitation "
 #~ "link."
 #~ msgstr ""
+
+#~ msgid "Spent"
+#~ msgstr "Utraceno"
+

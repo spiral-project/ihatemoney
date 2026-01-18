@@ -1,19 +1,19 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"POT-Creation-Date: 2026-01-18 21:37+0100\n"
 "PO-Revision-Date: 2023-12-10 10:05+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/tr/>\n"
 "Language: tr\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/tr/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.3-dev\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -70,6 +70,12 @@ msgid ""
 msgstr ""
 "Bu proje, birden fazla para biriminde faturalar içerdiğinden 'para birimi"
 " yok' olarak ayarlanamaz."
+
+#, fuzzy
+msgid "Cannot change project currency because currency conversion is broken"
+msgstr ""
+"Öntanımlı para biriminin ayarlanması, faturalar arasında para birimi "
+"dönüştürmeyi etkinleştirir"
 
 msgid "Compatible with Cospend"
 msgstr "Cospend ile uyumlu"
@@ -151,6 +157,10 @@ msgstr "Bu fatura ile ilgili harici bir belgenin bağlantısı"
 msgid "For whom?"
 msgstr "Kim için?"
 
+#, fuzzy
+msgid "Bill Type"
+msgstr "Fatura ögeleri"
+
 msgid "Submit"
 msgstr "Gönder"
 
@@ -160,6 +170,10 @@ msgstr "Gönder ve yeni bir tane ekle"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "Proje öntanımlı değeri: %(currency)s"
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
+msgstr ""
 
 msgid "Name"
 msgstr "Ad"
@@ -257,8 +271,8 @@ msgid ""
 "Sorry, there was an error while sending you an email with password reset "
 "instructions."
 msgstr ""
-"Maalesef, parola sıfırlama talimatlarını içeren e-posta gönderilirken bir "
-"hata oluştu."
+"Maalesef, parola sıfırlama talimatlarını içeren e-posta gönderilirken bir"
+" hata oluştu."
 
 msgid "No token provided"
 msgstr "Belirteç sağlanmadı"
@@ -356,6 +370,18 @@ msgstr "Fatura değiştirildi"
 #, python-format
 msgid "%(lang)s is not a supported language"
 msgstr "%(lang)s dili desteklenmiyor"
+
+#, fuzzy
+msgid "Error creating settlement bill"
+msgstr "Fatura silinirken hata oluştu"
+
+#, fuzzy
+msgid "Settlement"
+msgstr "Öde"
+
+#, fuzzy
+msgid "Settlement bill has been successfully added"
+msgstr "Fatura eklendi"
 
 msgid "Error deleting project history"
 msgstr "Proje geçmişi silinirken hata oluştu"
@@ -498,6 +524,9 @@ msgstr "Katılımcı ekle"
 msgid "Edit this participant"
 msgstr "Bu katılımcıyı düzenle"
 
+msgid "Save"
+msgstr ""
+
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
 
@@ -573,9 +602,36 @@ msgstr "Fatura %(name)s: %(owers_list_str)s borçlular listesine eklendi"
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr "Fatura %(name)s: %(owers_list_str)s borçlular listesinden kaldırıldı"
 
+msgid "Details of the bill (before the change)"
+msgstr ""
+
+#, fuzzy
+msgid "Details of the bill"
+msgstr "Bu faturayı düzenle"
+
+#, fuzzy
+msgid "Date:"
+msgstr "Tarih"
+
+#, fuzzy
+msgid "Payer:"
+msgstr "Mükellefi"
+
+#, fuzzy
+msgid "Amount:"
+msgstr "Miktar"
+
+msgid "Owers:"
+msgstr ""
+
+#, fuzzy
+msgid "External link:"
+msgstr "Harici bağlantı"
+
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
-"Bu projenin geçmişi devre dışı bırakıldı. Yeni eylemler aşağıda görünmeyecek."
+"Bu projenin geçmişi devre dışı bırakıldı. Yeni eylemler aşağıda "
+"görünmeyecek."
 
 msgid "You can enable history on the settings page."
 msgstr "Geçmişi ayarlar sayfasından etkinleştirebilirsiniz."
@@ -654,26 +710,8 @@ msgid "Project settings modified"
 msgstr "Proje ayarları değiştirildi"
 
 #, python-format
-msgid "Participant %(name)s deactivated"
-msgstr "Katılımcı %(name)s devre dışı bırakıldı"
-
-#, python-format
-msgid "Participant %(name)s reactivated"
-msgstr "Katılımcı %(name)s yeniden etkinleştirildi"
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr "Katılımcı %(name)s, %(new_name)s olarak yeniden adlandırıldı"
-
-#, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
 msgstr "Fatura %(name)s, %(new_description)s olarak yeniden adlandırıldı"
-
-#, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
-msgstr ""
-"Katılımcı %(name)s: %(old_weight)s olan ağırlık %(new_weight)s olarak "
-"değiştirildi"
 
 msgid "Payer"
 msgstr "Mükellefi"
@@ -691,6 +729,24 @@ msgstr "%(currency)s olarak miktar"
 #, python-format
 msgid "Bill %(name)s modified"
 msgstr "%(name)s faturası değiştirildi"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr "Katılımcı %(name)s devre dışı bırakıldı"
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr "Katılımcı %(name)s yeniden etkinleştirildi"
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr "Katılımcı %(name)s, %(new_name)s olarak yeniden adlandırıldı"
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr ""
+"Katılımcı %(name)s: %(old_weight)s olan ağırlık %(new_weight)s olarak "
+"değiştirildi"
 
 #, python-format
 msgid "Participant %(name)s modified"
@@ -903,9 +959,10 @@ msgid ""
 "settings such as changing the private code or deleting the whole project."
 msgstr ""
 "Kişileri davet etmenin en kolay yolu onlara aşağıdaki davet bağlantısını "
-"vermektir:<br />Projeye erişebilecek, katılımcıları yönetebilecek, fatura "
-"ekleyebilecek/düzenleyebilecek/silebileceklerdir. Ancak, özel kodu "
-"değiştirme veya tüm projeyi silme gibi önemli ayarlara erişemeyeceklerdir."
+"vermektir:<br />Projeye erişebilecek, katılımcıları yönetebilecek, fatura"
+" ekleyebilecek/düzenleyebilecek/silebileceklerdir. Ancak, özel kodu "
+"değiştirme veya tüm projeyi silme gibi önemli ayarlara "
+"erişemeyeceklerdir."
 
 msgid "Scan QR code"
 msgstr "QR kodunu tarayın"
@@ -921,9 +978,9 @@ msgid ""
 "to notify about the creation of this project. We will send them an email "
 "with the invitation link."
 msgstr ""
-"Bu projenin oluşturulması hakkında bilgilendirmek istediğiniz kişilerin e-"
-"posta adreslerinin bir listesini (virgülle ayrılmış) belirtin. Onlara davet "
-"bağlantısını içeren bir e-posta göndereceğiz."
+"Bu projenin oluşturulması hakkında bilgilendirmek istediğiniz kişilerin "
+"e-posta adreslerinin bir listesini (virgülle ayrılmış) belirtin. Onlara "
+"davet bağlantısını içeren bir e-posta göndereceğiz."
 
 msgid "Share Identifier & code"
 msgstr "Tanımlayıcıyı ve Kodu Paylaş"
@@ -935,9 +992,9 @@ msgid ""
 " or project email address, or even deleting the whole project."
 msgstr ""
 "Proje tanımlayıcısını ve özel kodu herhangi bir iletişim aracıyla "
-"paylaşabilirsiniz.<br />Özel koda sahip olan herkes, özel kod veya proje e-"
-"posta adresi gibi ayarları değiştirmek ve hatta tüm projeyi silmek de dahil "
-"olmak üzere projenin tamamına erişebilir."
+"paylaşabilirsiniz.<br />Özel koda sahip olan herkes, özel kod veya proje "
+"e-posta adresi gibi ayarları değiştirmek ve hatta tüm projeyi silmek de "
+"dahil olmak üzere projenin tamamına erişebilir."
 
 msgid "Identifier:"
 msgstr "Tanımlayıcı:"
@@ -954,6 +1011,13 @@ msgstr "Kim ödüyor?"
 msgid "To whom?"
 msgstr "Kime?"
 
+#, fuzzy
+msgid "Settled?"
+msgstr "Öde"
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr "Kim?"
 
@@ -969,10 +1033,19 @@ msgstr "yeniden etkinleştir"
 msgid "Paid"
 msgstr "Ödendi"
 
-msgid "Spent"
-msgstr "Harcandı"
+#, fuzzy
+msgid "Expenses"
+msgstr "Aya Göre Giderler"
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+#, fuzzy
+msgid "Received"
+msgstr "yeniden etkinleştir"
+
+#, fuzzy
+msgid "Expenses by month"
 msgstr "Aya Göre Giderler"
 
 msgid "Period"
@@ -1167,3 +1240,7 @@ msgstr "Dönem"
 #~ msgstr ""
 #~ "Aşağıdaki bağlantıyı tercih ettiğiniz ortam"
 #~ " aracılığıyla doğrudan paylaşabilirsiniz"
+
+#~ msgid "Spent"
+#~ msgstr "Harcandı"
+

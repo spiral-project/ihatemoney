@@ -3,17 +3,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"POT-Creation-Date: 2026-01-18 21:37+0100\n"
 "PO-Revision-Date: 2021-10-01 20:35+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language: eo\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/i-hate-"
 "money/i-hate-money/eo/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -69,6 +69,9 @@ msgid ""
 msgstr ""
 "Ĉi tiu projekto ne povas esti agordita al «neniu valuto», ĉar ĝi enhavas "
 "fakturojn en pluraj valutoj."
+
+msgid "Cannot change project currency because currency conversion is broken"
+msgstr ""
 
 msgid "Compatible with Cospend"
 msgstr ""
@@ -151,6 +154,10 @@ msgstr "Ligo al ekstera dokumento rilata al ĉi tiu fakturo"
 msgid "For whom?"
 msgstr "Por kiu?"
 
+#, fuzzy
+msgid "Bill Type"
+msgstr "Elementoj de fakturo"
+
 msgid "Submit"
 msgstr "Submeti"
 
@@ -160,6 +167,10 @@ msgstr "Submeti kaj aldoni novan"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "Implicita valuto de la projekto: %(currency)s"
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
+msgstr ""
 
 msgid "Name"
 msgstr "Nomo"
@@ -363,6 +374,17 @@ msgstr "La fakturo estis modifita"
 msgid "%(lang)s is not a supported language"
 msgstr ""
 
+msgid "Error creating settlement bill"
+msgstr ""
+
+#, fuzzy
+msgid "Settlement"
+msgstr "Bilanco"
+
+#, fuzzy
+msgid "Settlement bill has been successfully added"
+msgstr "La fakturo estis aldonita"
+
 #, fuzzy
 msgid "Error deleting project history"
 msgstr "Ŝalti projektan historion"
@@ -512,6 +534,9 @@ msgstr "Aldono partoprenanton"
 msgid "Edit this participant"
 msgstr "Aldono partoprenanton"
 
+msgid "Save"
+msgstr ""
+
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "johano.zamenhof@example.com, maria.baghy@example.net"
 
@@ -585,6 +610,32 @@ msgstr ""
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr ""
+
+msgid "Details of the bill (before the change)"
+msgstr ""
+
+#, fuzzy
+msgid "Details of the bill"
+msgstr "Redakti ĉi tiun fakturon"
+
+#, fuzzy
+msgid "Date:"
+msgstr "Dato"
+
+#, fuzzy
+msgid "Payer:"
+msgstr "Paganto"
+
+#, fuzzy
+msgid "Amount:"
+msgstr "Kvanto"
+
+msgid "Owers:"
+msgstr ""
+
+#, fuzzy
+msgid "External link:"
+msgstr "Ekstera ligo"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
@@ -666,23 +717,7 @@ msgid "Project settings modified"
 msgstr "Agordoj de projekto estis ŝanĝitaj"
 
 #, python-format
-msgid "Participant %(name)s deactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s reactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr ""
-
-#, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
 msgid "Payer"
@@ -701,6 +736,22 @@ msgstr "Kvanto en %(currency)s"
 #, fuzzy, python-format
 msgid "Bill %(name)s modified"
 msgstr "La fakturo estis modifita"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr ""
 
 #, python-format
 msgid "Participant %(name)s modified"
@@ -962,6 +1013,13 @@ msgstr "Kiu pagas?"
 msgid "To whom?"
 msgstr "Al kiu?"
 
+#, fuzzy
+msgid "Settled?"
+msgstr "Bilanco"
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr "Kiu?"
 
@@ -977,10 +1035,19 @@ msgstr "reaktivigi"
 msgid "Paid"
 msgstr "Pagita"
 
-msgid "Spent"
-msgstr "Elspezita"
+#, fuzzy
+msgid "Expenses"
+msgstr "Elspezoj laŭ monatoj"
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+#, fuzzy
+msgid "Received"
+msgstr "reaktivigi"
+
+#, fuzzy
+msgid "Expenses by month"
 msgstr "Elspezoj laŭ monatoj"
 
 msgid "Period"
@@ -1138,4 +1205,7 @@ msgstr "Periodo"
 
 #~ msgid "You can directly share the following link via your prefered medium"
 #~ msgstr "Vi povas rekte sendi la jenan hiperligon per via preferata komunikilo"
+
+#~ msgid "Spent"
+#~ msgstr "Elspezita"
 

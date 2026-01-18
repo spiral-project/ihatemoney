@@ -1,17 +1,18 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-29 14:24+0200\n"
+"POT-Creation-Date: 2026-01-18 21:37+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Farid Gurbanov <feridqurbanov333@gmail.com>\n"
-"i-hate-money/az/>\n"
 "Language: az\n"
+"Language-Team: az <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.3-dev\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -21,7 +22,8 @@ msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
 "accepted."
 msgstr ""
-"Etibarlı məbləğ və ya ifadə deyil. Yalnız rəqəmlər və + - * / operatorları qəbul edilir."
+"Etibarlı məbləğ və ya ifadə deyil. Yalnız rəqəmlər və + - * / "
+"operatorları qəbul edilir."
 
 msgid "Project name"
 msgstr "Layihə adı"
@@ -52,7 +54,8 @@ msgstr "Susmaya görə valyuta"
 
 msgid "Setting a default currency enables currency conversion between bills"
 msgstr ""
-"Susmaya görə valyutanın təyin edilməsi, fakturalar arasında valyuta çevrilməsini aktivləşdirir"
+"Susmaya görə valyutanın təyin edilməsi, fakturalar arasında valyuta "
+"çevrilməsini aktivləşdirir"
 
 msgid "Unknown error"
 msgstr "Naməlum səhv"
@@ -64,7 +67,14 @@ msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
-"Bu layihə bir neçə valyutada fakturalar olduğu üçün 'valyuta yoxdur' olaraq təyin edilə bilməz."
+"Bu layihə bir neçə valyutada fakturalar olduğu üçün 'valyuta yoxdur' "
+"olaraq təyin edilə bilməz."
+
+#, fuzzy
+msgid "Cannot change project currency because currency conversion is broken"
+msgstr ""
+"Susmaya görə valyutanın təyin edilməsi, fakturalar arasında valyuta "
+"çevrilməsini aktivləşdirir"
 
 msgid "Compatible with Cospend"
 msgstr "Cospend ilə uyğundur"
@@ -83,7 +93,8 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
-"Bu identifikatora malik bir layihə (\"%(project)s\") artıq mövcuddur. Zəhmət olmasa yeni bir identifikator seçin"
+"Bu identifikatora malik bir layihə (\"%(project)s\") artıq mövcuddur. "
+"Zəhmət olmasa yeni bir identifikator seçin"
 
 msgid "Which is a real currency: Euro or Petro dollar?"
 msgstr "Hansını gerçək valyutadır: Avro yoxsa Petro dollar?"
@@ -145,6 +156,10 @@ msgstr "Bu faktura ilə bağlı xarici sənədə keçid"
 msgid "For whom?"
 msgstr "Kim üçün?"
 
+#, fuzzy
+msgid "Bill Type"
+msgstr "Faktura maddələri"
+
 msgid "Submit"
 msgstr "Təsdiqlə"
 
@@ -154,6 +169,10 @@ msgstr "Təsdiqlə və yenisini əlavə et"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "Layihənin susmaya görə dəyəri: %(currency)s"
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
+msgstr ""
 
 msgid "Name"
 msgstr "Ad"
@@ -194,7 +213,8 @@ msgid ""
 "Please check the email configuration of the server or contact the "
 "administrator: %(admin_email)s"
 msgstr ""
-"Zəhmət olmasa, serverin e-poçt konfiqurasiyasını yoxlayın və ya administratorla əlaqə saxlayın: %(admin_email)s"
+"Zəhmət olmasa, serverin e-poçt konfiqurasiyasını yoxlayın və ya "
+"administratorla əlaqə saxlayın: %(admin_email)s"
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
@@ -243,13 +263,15 @@ msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
-"Sizə xatırlatma e-poçtu göndərməyə çalışdıq, lakin bir səhv baş verdi. Layihədən normal istifadə etməyə davam edə bilərsiniz."
+"Sizə xatırlatma e-poçtu göndərməyə çalışdıq, lakin bir səhv baş verdi. "
+"Layihədən normal istifadə etməyə davam edə bilərsiniz."
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
 "instructions."
 msgstr ""
-"Bağışlayın, parolun sıfırlanması ilə bağlı təlimatları ehtiva edən e-poçtu göndərərkən səhv baş verdi."
+"Bağışlayın, parolun sıfırlanması ilə bağlı təlimatları ehtiva edən "
+"e-poçtu göndərərkən səhv baş verdi."
 
 msgid "No token provided"
 msgstr "Token təqdim edilməyib"
@@ -277,7 +299,8 @@ msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
 msgstr ""
-"Susmaya görə valyutası olmayan layihəyə müxtəlif valyutalarda fakturalar əlavə edilə bilməz"
+"Susmaya görə valyutası olmayan layihəyə müxtəlif valyutalarda fakturalar "
+"əlavə edilə bilməz"
 
 msgid "Project successfully uploaded"
 msgstr "Layihə uğurla yükləndi"
@@ -320,7 +343,8 @@ msgid ""
 "Participant '%(name)s' has been deactivated. It will still appear in the "
 "list until its balance reach zero."
 msgstr ""
-"'%(name)s' iştirakçısı deaktiv edildi. Onun balansı sıfıra enənə qədər siyahıda görünməyə davam edəcək."
+"'%(name)s' iştirakçısı deaktiv edildi. Onun balansı sıfıra enənə qədər "
+"siyahıda görünməyə davam edəcək."
 
 #, python-format
 msgid "Participant '%(name)s' has been removed"
@@ -345,6 +369,18 @@ msgstr "Faktura dəyişdirildi"
 #, python-format
 msgid "%(lang)s is not a supported language"
 msgstr "%(lang)s dili dəstəklənmir"
+
+#, fuzzy
+msgid "Error creating settlement bill"
+msgstr "Faktura silinərkən səhv baş verdi"
+
+#, fuzzy
+msgid "Settlement"
+msgstr "Hesablaş"
+
+#, fuzzy
+msgid "Settlement bill has been successfully added"
+msgstr "Faktura əlavə edildi"
 
 msgid "Error deleting project history"
 msgstr "Layihə tarixi silinərkən səhv baş verdi"
@@ -440,7 +476,9 @@ msgid "Settle plans"
 msgstr "Planları ödə"
 
 msgid "Download the list of transactions needed to settle the current bills."
-msgstr "Cari fakturaların ödənməsi üçün lazım olan əməliyyatların siyahısını yüklə."
+msgstr ""
+"Cari fakturaların ödənməsi üçün lazım olan əməliyyatların siyahısını "
+"yüklə."
 
 msgid "Can't remember the password?"
 msgstr "Şifrəni xatırlaya bilmirsiniz?"
@@ -487,6 +525,9 @@ msgstr "İştirakçı əlavə et"
 msgid "Edit this participant"
 msgstr "Bu iştirakçını düzəlt"
 
+msgid "Save"
+msgstr ""
+
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
 
@@ -516,8 +557,7 @@ msgstr "Tarix Parametrləri Dəyişdirildi"
 
 #, python-format
 msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
-msgstr ""
-"Hesab %(name)s: %(property_name)s %(before)s-dən %(after)s-ə dəyişdirildi"
+msgstr "Hesab %(name)s: %(property_name)s %(before)s-dən %(after)s-ə dəyişdirildi"
 
 #, python-format
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
@@ -534,8 +574,8 @@ msgid ""
 msgstr ""
 "Bu layihədə qeyd olunan bütün IP ünvanlarını silmək istədiyinizdən "
 "əminsiniz?\n"
-"                Layihənin qalan tarixi dəyişməyəcək. Bu əməliyyatı "
-"geri qaytarmaq mümkün deyil."
+"                Layihənin qalan tarixi dəyişməyəcək. Bu əməliyyatı geri "
+"qaytarmaq mümkün deyil."
 
 msgid "Confirm deletion"
 msgstr "Silinməni təsdiqləyin"
@@ -550,8 +590,8 @@ msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
 msgstr ""
-"Bu layihənin bütün tarixçəsini silmək istədiyinizdən əminsiniz? Bu əməliyyat "
-"geri qaytarıla bilməz."
+"Bu layihənin bütün tarixçəsini silmək istədiyinizdən əminsiniz? Bu "
+"əməliyyat geri qaytarıla bilməz."
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -561,9 +601,34 @@ msgstr "Hesab %(name)s: %(owers_list_str)s borclular siyahısına əlavə edildi
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr "Hesab %(name)s: %(owers_list_str)s borclular siyahısından çıxarıldı"
 
-msgid "This project has history disabled. New actions won't appear below."
+msgid "Details of the bill (before the change)"
 msgstr ""
-"Bu layihənin tarixçəsi söndürülüb. Yeni əməliyyatlar aşağıda görünməyəcək."
+
+#, fuzzy
+msgid "Details of the bill"
+msgstr "Bu fakturanı düzəlt"
+
+#, fuzzy
+msgid "Date:"
+msgstr "Tarix"
+
+#, fuzzy
+msgid "Payer:"
+msgstr "Ödəyici"
+
+#, fuzzy
+msgid "Amount:"
+msgstr "Məbləğ"
+
+msgid "Owers:"
+msgstr ""
+
+#, fuzzy
+msgid "External link:"
+msgstr "Xarici bağlantı"
+
+msgid "This project has history disabled. New actions won't appear below."
+msgstr "Bu layihənin tarixçəsi söndürülüb. Yeni əməliyyatlar aşağıda görünməyəcək."
 
 msgid "You can enable history on the settings page."
 msgstr "Tarixçəni ayarlar səhifəsindən aktivləşdirə bilərsiniz."
@@ -642,25 +707,8 @@ msgid "Project settings modified"
 msgstr "Layihə parametrləri dəyişdirildi"
 
 #, python-format
-msgid "Participant %(name)s deactivated"
-msgstr "İştirakçı %(name)s qeyri-aktiv edildi"
-
-#, python-format
-msgid "Participant %(name)s reactivated"
-msgstr "İştirakçı %(name)s yenidən aktiv edildi"
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr "İştirakçı %(name)s, %(new_name)s olaraq adlandırıldı"
-
-#, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
 msgstr "Hesab %(name)s, %(new_description)s olaraq adlandırıldı"
-
-#, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
-msgstr ""
-"İştirakçı %(name)s: %(old_weight)s-dən %(new_weight)s-ə dəyişdirildi"
 
 msgid "Payer"
 msgstr "Ödəyici"
@@ -678,6 +726,22 @@ msgstr "%(currency)s ilə məbləğ"
 #, python-format
 msgid "Bill %(name)s modified"
 msgstr "%(name)s hesabı dəyişdirildi"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr "İştirakçı %(name)s qeyri-aktiv edildi"
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr "İştirakçı %(name)s yenidən aktiv edildi"
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr "İştirakçı %(name)s, %(new_name)s olaraq adlandırıldı"
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr "İştirakçı %(name)s: %(old_weight)s-dən %(new_weight)s-ə dəyişdirildi"
 
 #, python-format
 msgid "Participant %(name)s modified"
@@ -743,7 +807,8 @@ msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
 msgstr ""
-"Şəxsi parolu yenidən istifadə etməyin. Xüsusi bir kod seçin və onu dostlarınıza göndərin."
+"Şəxsi parolu yenidən istifadə etməyin. Xüsusi bir kod seçin və onu "
+"dostlarınıza göndərin."
 
 msgid "Account manager"
 msgstr "Hesab meneceri"
@@ -889,9 +954,10 @@ msgid ""
 "settings such as changing the private code or deleting the whole project."
 msgstr ""
 "İnsanları dəvət etməyin ən asan yolu onlara aşağıdakı dəvət bağlantısını "
-"verməkdir.<br />Onlar layihəyə daxil ola, iştirakçıları idarə edə, hesabları "
-"əlavə edə/redaktə edə/silə bilərlər. Ancaq xüsusi kodu dəyişmək və ya bütün "
-"layihəni silmək kimi vacib parametrlərə daxil ola bilməyəcəklər."
+"verməkdir.<br />Onlar layihəyə daxil ola, iştirakçıları idarə edə, "
+"hesabları əlavə edə/redaktə edə/silə bilərlər. Ancaq xüsusi kodu dəyişmək"
+" və ya bütün layihəni silmək kimi vacib parametrlərə daxil ola "
+"bilməyəcəklər."
 
 msgid "Scan QR code"
 msgstr "QR kodunu skan edin"
@@ -907,9 +973,9 @@ msgid ""
 "to notify about the creation of this project. We will send them an email "
 "with the invitation link."
 msgstr ""
-"Bu layihənin yaradılması haqqında məlumat vermək istədiyiniz insanların e-"
-"poçt ünvanlarının siyahısını (vergüllə ayrılmış) qeyd edin. Biz onlara dəvət "
-"keçidi ilə e-poçt göndərəcəyik."
+"Bu layihənin yaradılması haqqında məlumat vermək istədiyiniz insanların "
+"e-poçt ünvanlarının siyahısını (vergüllə ayrılmış) qeyd edin. Biz onlara "
+"dəvət keçidi ilə e-poçt göndərəcəyik."
 
 msgid "Share Identifier & code"
 msgstr "Tanımlayıcı və Kodu Paylaşın"
@@ -920,10 +986,10 @@ msgid ""
 "to the full project, including changing settings such as the private code"
 " or project email address, or even deleting the whole project."
 msgstr ""
-"Layihənin tanımlayıcısını və xüsusi kodunu hər hansı bir ünsiyyət vasitəsi "
-"ilə paylaşa bilərsiniz.<br />Xüsusi kodu olan hər kəs xüsusi kod və ya layihə "
-"e-poçt ünvanı kimi ayarları dəyişmək, hətta bütün layihəni silmək də daxil olmaqla "
-"bütün layihəyə daxil ola bilər."
+"Layihənin tanımlayıcısını və xüsusi kodunu hər hansı bir ünsiyyət "
+"vasitəsi ilə paylaşa bilərsiniz.<br />Xüsusi kodu olan hər kəs xüsusi kod"
+" və ya layihə e-poçt ünvanı kimi ayarları dəyişmək, hətta bütün layihəni "
+"silmək də daxil olmaqla bütün layihəyə daxil ola bilər."
 
 msgid "Identifier:"
 msgstr "Tanımlayıcı:"
@@ -940,6 +1006,13 @@ msgstr "Kim ödəyir?"
 msgid "To whom?"
 msgstr "Kimə?"
 
+#, fuzzy
+msgid "Settled?"
+msgstr "Hesablaş"
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr "Kim?"
 
@@ -955,10 +1028,19 @@ msgstr "yenidən aktivləşdir"
 msgid "Paid"
 msgstr "Ödənildi"
 
-msgid "Spent"
-msgstr "Xərcləndi"
+#, fuzzy
+msgid "Expenses"
+msgstr "Ay üzrə xərclər"
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+#, fuzzy
+msgid "Received"
+msgstr "yenidən aktivləşdir"
+
+#, fuzzy
+msgid "Expenses by month"
 msgstr "Ay üzrə xərclər"
 
 msgid "Period"
@@ -979,9 +1061,10 @@ msgstr "Dövür"
 #~ "is by the server, so don\\'t reuse"
 #~ " a personal password!"
 #~ msgstr ""
-#~ "Bu giriş kodu dostlarınıza göndəriləcək."
-#~ " Server tərəfindən olduğu kimi saxlanılır, buna görə də"
-#~ " şəxsi bir şifrəni təkrarlamayın!"
+#~ "Bu giriş kodu dostlarınıza göndəriləcək. "
+#~ "Server tərəfindən olduğu kimi saxlanılır, "
+#~ "buna görə də şəxsi bir şifrəni "
+#~ "təkrarlamayın!"
 
 #~ msgid "Participant"
 #~ msgstr "İştirakçı"
@@ -1041,7 +1124,9 @@ msgstr "Dövür"
 #~ msgstr "silindi"
 
 #~ msgid "You either provided a bad token or no project identifier."
-#~ msgstr "Yaxşı bir işarə təqdim etmədiniz və ya layihə tanımlayıcısını göstərmədiniz."
+#~ msgstr ""
+#~ "Yaxşı bir işarə təqdim etmədiniz və "
+#~ "ya layihə tanımlayıcısını göstərmədiniz."
 
 #~ msgid "User name incorrect"
 #~ msgstr "İstifadəçi adı yanlışdır"
@@ -1094,9 +1179,9 @@ msgstr "Dövür"
 #~ "\n"
 #~ "            <i>Bu layihənin tarixçəsi "
 #~ "dayandırılıb. Yeni hərəkətlər aşağıda "
-#~ "görünməyəcək. Tarixçəni "
-#~ "əvvəlcədən <a href=\"%(url)s\">parametrlər "
-#~ "səhifəsindən</a> aktivləşdirə bilərsiniz.</i>\n"
+#~ "görünməyəcək. Tarixçəni əvvəlcədən <a "
+#~ "href=\"%(url)s\">parametrlər səhifəsindən</a> aktivləşdirə"
+#~ " bilərsiniz.</i>\n"
 #~ "            "
 
 #~ msgid ""
@@ -1111,10 +1196,10 @@ msgstr "Dövür"
 #~ "            "
 #~ msgstr ""
 #~ "\n"
-#~ "            <i>Aşağıdakı cədvəl "
-#~ "layihənin tarixçəsi deaktiv edilməzdən əvvəl "
-#~ "yazılmış hərəkətləri əks etdirir. Bunları "
-#~ "silmək üçün\n"
+#~ "            <i>Aşağıdakı cədvəl layihənin "
+#~ "tarixçəsi deaktiv edilməzdən əvvəl yazılmış"
+#~ " hərəkətləri əks etdirir. Bunları silmək"
+#~ " üçün\n"
 #~ "            <a href=\"#\" data-"
 #~ "toggle=\"modal\" data-keyboard=\"false\" data-"
 #~ "target=\"#confirm-erase\">layihə tarixçəsini "
@@ -1150,6 +1235,9 @@ msgstr "Dövür"
 
 #~ msgid "You can directly share the following link via your prefered medium"
 #~ msgstr ""
-#~ "Aşağıdakı bağlantıyı seçdiyiniz "
-#~ "əlaqə vasitəsilə birbaşa paylaşa bilərsiniz"
+#~ "Aşağıdakı bağlantıyı seçdiyiniz əlaqə "
+#~ "vasitəsilə birbaşa paylaşa bilərsiniz"
+
+#~ msgid "Spent"
+#~ msgstr "Xərcləndi"
 
