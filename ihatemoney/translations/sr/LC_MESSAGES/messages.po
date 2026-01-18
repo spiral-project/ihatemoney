@@ -3,18 +3,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"POT-Creation-Date: 2026-01-18 21:37+0100\n"
 "PO-Revision-Date: 2021-04-09 13:26+0000\n"
 "Last-Translator: Rastko Sarcevic <ralesarcevic@gmail.com>\n"
 "Language: sr\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/i-hate-"
 "money/i-hate-money/sr/>\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -64,6 +64,9 @@ msgstr ""
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
+msgstr ""
+
+msgid "Cannot change project currency because currency conversion is broken"
 msgstr ""
 
 msgid "Compatible with Cospend"
@@ -145,6 +148,10 @@ msgstr ""
 msgid "For whom?"
 msgstr "Za koga?"
 
+#, fuzzy
+msgid "Bill Type"
+msgstr "Stavke računa"
+
 msgid "Submit"
 msgstr "Unesi"
 
@@ -153,6 +160,10 @@ msgstr ""
 
 #, python-format
 msgid "Project default: %(currency)s"
+msgstr ""
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
 msgstr ""
 
 msgid "Name"
@@ -342,6 +353,16 @@ msgstr "Račun je izmenjen"
 msgid "%(lang)s is not a supported language"
 msgstr ""
 
+msgid "Error creating settlement bill"
+msgstr ""
+
+msgid "Settlement"
+msgstr ""
+
+#, fuzzy
+msgid "Settlement bill has been successfully added"
+msgstr "Račun je dodat"
+
 msgid "Error deleting project history"
 msgstr ""
 
@@ -487,6 +508,9 @@ msgstr ""
 msgid "Edit this participant"
 msgstr ""
 
+msgid "Save"
+msgstr ""
+
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr ""
 
@@ -552,6 +576,30 @@ msgstr ""
 
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
+msgstr ""
+
+msgid "Details of the bill (before the change)"
+msgstr ""
+
+#, fuzzy
+msgid "Details of the bill"
+msgstr "Izmeni ovaj račun"
+
+#, fuzzy
+msgid "Date:"
+msgstr "Datum"
+
+msgid "Payer:"
+msgstr ""
+
+#, fuzzy
+msgid "Amount:"
+msgstr "Iznos"
+
+msgid "Owers:"
+msgstr ""
+
+msgid "External link:"
 msgstr ""
 
 msgid "This project has history disabled. New actions won't appear below."
@@ -630,23 +678,7 @@ msgid "Project settings modified"
 msgstr ""
 
 #, python-format
-msgid "Participant %(name)s deactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s reactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr ""
-
-#, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
 msgid "Payer"
@@ -665,6 +697,22 @@ msgstr "Iznos u %(currency)s"
 #, fuzzy, python-format
 msgid "Bill %(name)s modified"
 msgstr "Račun je izmenjen"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr ""
 
 #, python-format
 msgid "Participant %(name)s modified"
@@ -913,6 +961,12 @@ msgstr "Ko plaća?"
 msgid "To whom?"
 msgstr "Kome?"
 
+msgid "Settled?"
+msgstr ""
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr "Ko?"
 
@@ -928,10 +982,18 @@ msgstr ""
 msgid "Paid"
 msgstr "Plaćeno"
 
-msgid "Spent"
-msgstr "Potrošeno"
+#, fuzzy
+msgid "Expenses"
+msgstr "Mesečni troškovi"
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+msgid "Received"
+msgstr ""
+
+#, fuzzy
+msgid "Expenses by month"
 msgstr "Mesečni troškovi"
 
 msgid "Period"
@@ -1152,4 +1214,7 @@ msgstr "Period"
 #~ "them an email with the invitation "
 #~ "link."
 #~ msgstr ""
+
+#~ msgid "Spent"
+#~ msgstr "Potrošeno"
 

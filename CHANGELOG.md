@@ -2,14 +2,29 @@
 
 This document describes changes between each past release.
 
-## 6.2.0 (unreleased)
+## 7.0.0 (unreleased)
 
-- Add support for python 3.12 (#757)
-- Migrate from setup.cfg to pyproject.toml (#1243)
-- Update to wtforms 3.1 (#1248)
-- Document [repository rules](https://ihatemoney.readthedocs.io/en/latest/contributing.html#repository-rules) (#1253)
+### Breaking changes
+
+- Remove support for python 3.7, 3.9 and 3.10
+
+### Added
+
 - Add "reimbursement" bills and allow to create them directly from the "Settle" page (#1290)
-- Remove support for python 3.7
+- Add support for python 3.13 (#1392)
+- Add support for python 3.12 (#757)
+- Add translations for Azerbaijani, Breton, Danish, Basque, and Occitan
+
+## Changed
+
+  Portuguese, Brazilian Portuguese, and Telugu
+- Update all Python dependencies (#1392 #1248)
+
+### Development stuff
+
+- Update db versions used in CI to match Debian Trixie (#1392)
+- Migrate from setup.cfg to pyproject.toml (#1243)
+- Document [repository rules](https://ihatemoney.readthedocs.io/en/latest/contributing.html#repository-rules) (#1253)
 - Replace the black linter by ruff
 - Replace virtualenv and pip by uv
 - Remove tox

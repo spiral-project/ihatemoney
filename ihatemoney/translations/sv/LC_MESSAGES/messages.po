@@ -1,19 +1,19 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"POT-Creation-Date: 2026-01-18 21:37+0100\n"
 "PO-Revision-Date: 2023-11-20 05:10+0000\n"
 "Last-Translator: Jesper <93771679+Bjorkan@users.noreply.github.com>\n"
-"Language-Team: Swedish <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/sv/>\n"
 "Language: sv\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/sv/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.2\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -68,6 +68,12 @@ msgid ""
 msgstr ""
 "Det här projektet kan inte ställas in till 'ingen valuta' eftersom att "
 "det innehåller sedlar i flera olika valutor."
+
+#, fuzzy
+msgid "Cannot change project currency because currency conversion is broken"
+msgstr ""
+"Genom att ställa in en standardvaluta så aktiveras valutaväxling mellan "
+"räkningarna"
 
 msgid "Compatible with Cospend"
 msgstr "Kompatibel med Cospend"
@@ -149,6 +155,10 @@ msgstr "En länk till ett externt dokument, relaterad till den här räkningen"
 msgid "For whom?"
 msgstr "För vem?"
 
+#, fuzzy
+msgid "Bill Type"
+msgstr "Fakturaobjekt"
+
 msgid "Submit"
 msgstr "Skicka in"
 
@@ -158,6 +168,10 @@ msgstr "Skicka in och lägg till en ny"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "Standard för projektet: %(currency)s"
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
+msgstr ""
 
 msgid "Name"
 msgstr "Namn"
@@ -310,8 +324,8 @@ msgstr "Dina inbjudningar har skickats"
 
 msgid "Sorry, there was an error while trying to send the invitation emails."
 msgstr ""
-"Tyvärr, det uppstod ett fel när inbjudningsmeddelandena via e-post skulle "
-"skickas."
+"Tyvärr, det uppstod ett fel när inbjudningsmeddelandena via e-post skulle"
+" skickas."
 
 #, python-format
 msgid "%(member)s has been added"
@@ -358,6 +372,18 @@ msgstr "Räkningen har blivit modifierad"
 #, python-format
 msgid "%(lang)s is not a supported language"
 msgstr "%(lang)s är inte ett språk som stöds"
+
+#, fuzzy
+msgid "Error creating settlement bill"
+msgstr "Fel uppstod när sedeln skulle tas bort"
+
+#, fuzzy
+msgid "Settlement"
+msgstr "Avbetala"
+
+#, fuzzy
+msgid "Settlement bill has been successfully added"
+msgstr "Räkningen har lagts till"
 
 msgid "Error deleting project history"
 msgstr "Fel uppstod när projektets historik skulle tas bort"
@@ -504,6 +530,9 @@ msgstr "Lägg till deltagare"
 msgid "Edit this participant"
 msgstr "Redigera den här deltagaren"
 
+msgid "Save"
+msgstr ""
+
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@exempel.com, mary.moe@sida.com"
 
@@ -550,10 +579,10 @@ msgid ""
 "                The rest of the project history will be unaffected. This "
 "action cannot be undone."
 msgstr ""
-"Är du säker på att du vill ta bort alla insamlade IP-adresser från det här "
-"projektet?\n"
-"                Resten av projektets historik kommer inte att drabbas. Den "
-"här åtgärden kan inte ångras."
+"Är du säker på att du vill ta bort alla insamlade IP-adresser från det "
+"här projektet?\n"
+"                Resten av projektets historik kommer inte att drabbas. "
+"Den här åtgärden kan inte ångras."
 
 msgid "Confirm deletion"
 msgstr "Bekräfta borttagning"
@@ -579,10 +608,36 @@ msgstr "Faktura %(name)s: lade till %(owers_list_str)s i ägarlistan"
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr "Faktura %(name)s: tog bort %(owers_list_str)s från ägarlistan"
 
+msgid "Details of the bill (before the change)"
+msgstr ""
+
+#, fuzzy
+msgid "Details of the bill"
+msgstr "Redigera den här räkningen"
+
+#, fuzzy
+msgid "Date:"
+msgstr "Datum"
+
+#, fuzzy
+msgid "Payer:"
+msgstr "Betalare"
+
+#, fuzzy
+msgid "Amount:"
+msgstr "Summa"
+
+msgid "Owers:"
+msgstr ""
+
+#, fuzzy
+msgid "External link:"
+msgstr "Extern länk"
+
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
-"Det här projektet har historiken avstängd. Nya åtgärder kommer inte att dyka "
-"upp nedanför."
+"Det här projektet har historiken avstängd. Nya åtgärder kommer inte att "
+"dyka upp nedanför."
 
 msgid "You can enable history on the settings page."
 msgstr "Du kan aktivera historiken på inställningssidan."
@@ -661,26 +716,8 @@ msgid "Project settings modified"
 msgstr "Projektets inställningar ändrades"
 
 #, python-format
-msgid "Participant %(name)s deactivated"
-msgstr "Projektet %(name)s inaktiverades"
-
-#, python-format
-msgid "Participant %(name)s reactivated"
-msgstr "Deltagaren %(name)s återaktiverades"
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr "Deltagaren %(name)s döptes om till %(new_name)s"
-
-#, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
 msgstr "Faktura %(name)s döptes om till %(new_description)s"
-
-#, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
-msgstr ""
-"Deltagaren %(name)s: vikten ändrades från %(old_weight)s till "
-"%(new_weight)s"
 
 msgid "Payer"
 msgstr "Betalare"
@@ -698,6 +735,24 @@ msgstr "Summa i %(currency)s"
 #, python-format
 msgid "Bill %(name)s modified"
 msgstr "Fakturan %(name)s ändrades"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr "Projektet %(name)s inaktiverades"
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr "Deltagaren %(name)s återaktiverades"
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr "Deltagaren %(name)s döptes om till %(new_name)s"
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr ""
+"Deltagaren %(name)s: vikten ändrades från %(old_weight)s till "
+"%(new_weight)s"
 
 #, python-format
 msgid "Participant %(name)s modified"
@@ -911,9 +966,9 @@ msgid ""
 msgstr ""
 "Det lättaste sättet att bjuda in människor är att ge dem den följande "
 "inbjudningslänken.<br />De kommer att kunna komma åt projektet, hantera "
-"deltagare, lägga till/redigera/ta bort räkningar. Hur som helst, de kommer "
-"inte att ha tillgång till viktiga inställningar så som att ändra den privata "
-"koden eller att ta bort hela projektet."
+"deltagare, lägga till/redigera/ta bort räkningar. Hur som helst, de "
+"kommer inte att ha tillgång till viktiga inställningar så som att ändra "
+"den privata koden eller att ta bort hela projektet."
 
 msgid "Scan QR code"
 msgstr "Skanna QR-kod"
@@ -943,10 +998,10 @@ msgid ""
 " or project email address, or even deleting the whole project."
 msgstr ""
 "Du kan dela projektets identifierare och den privata koden via alla "
-"kommunikationssätt.<br />Vem som helst med den privata koden kommer att ha "
-"tillgång till hela projektet, inklusive ändra inställningar så som den "
-"privata koden eller projektets e-postadress eller till och med ta bort hela "
-"projektet."
+"kommunikationssätt.<br />Vem som helst med den privata koden kommer att "
+"ha tillgång till hela projektet, inklusive ändra inställningar så som den"
+" privata koden eller projektets e-postadress eller till och med ta bort "
+"hela projektet."
 
 msgid "Identifier:"
 msgstr "Identifierare:"
@@ -963,6 +1018,13 @@ msgstr "Vem betalar?"
 msgid "To whom?"
 msgstr "Till vem?"
 
+#, fuzzy
+msgid "Settled?"
+msgstr "Avbetala"
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr "Vem?"
 
@@ -978,10 +1040,19 @@ msgstr "återaktivera"
 msgid "Paid"
 msgstr "Betald"
 
-msgid "Spent"
-msgstr "Spenderat"
+#, fuzzy
+msgid "Expenses"
+msgstr "Kostnader per månad"
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+#, fuzzy
+msgid "Received"
+msgstr "återaktivera"
+
+#, fuzzy
+msgid "Expenses by month"
 msgstr "Kostnader per månad"
 
 msgid "Period"
@@ -1133,3 +1204,7 @@ msgstr "Punkt"
 
 #~ msgid "You can directly share the following link via your prefered medium"
 #~ msgstr "Du kan direkt dela ut följande länk via föredraget media"
+
+#~ msgid "Spent"
+#~ msgstr "Spenderat"
+

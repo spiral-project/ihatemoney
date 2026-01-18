@@ -3,17 +3,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"POT-Creation-Date: 2026-01-18 21:37+0100\n"
 "PO-Revision-Date: 2020-06-14 14:41+0000\n"
 "Last-Translator: raghupalash <singhpalash0@gmail.com>\n"
 "Language: hi\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/i-hate-money/i"
 "-hate-money/hi/>\n"
-"Plural-Forms: nplurals=2; plural=n > 1\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -69,6 +69,9 @@ msgstr "निजी कोड"
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
+msgstr ""
+
+msgid "Cannot change project currency because currency conversion is broken"
 msgstr ""
 
 msgid "Compatible with Cospend"
@@ -152,6 +155,10 @@ msgstr "इस बिल से संबंधित एक बाहरी द
 msgid "For whom?"
 msgstr "किसके लिए?"
 
+#, fuzzy
+msgid "Bill Type"
+msgstr "बिल आइटम"
+
 msgid "Submit"
 msgstr "जमा करें"
 
@@ -161,6 +168,10 @@ msgstr "जमा करें और एक नया जोड़ें"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "प्रोजेक्ट डिफ़ॉल्ट:%(currency)s"
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
+msgstr ""
 
 msgid "Name"
 msgstr "नाम"
@@ -366,6 +377,17 @@ msgstr "बिल को संशोधित कर दिया गया ह
 msgid "%(lang)s is not a supported language"
 msgstr ""
 
+msgid "Error creating settlement bill"
+msgstr ""
+
+#, fuzzy
+msgid "Settlement"
+msgstr "चुकता करें"
+
+#, fuzzy
+msgid "Settlement bill has been successfully added"
+msgstr "बिल जोड़ दिया गया है"
+
 #, fuzzy
 msgid "Error deleting project history"
 msgstr "प्रोजेक्ट इतिहास सक्षम करें"
@@ -520,6 +542,9 @@ msgstr "प्रतिभागी जोड़ें"
 msgid "Edit this participant"
 msgstr "प्रतिभागी जोड़ें"
 
+msgid "Save"
+msgstr ""
+
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
 
@@ -593,6 +618,32 @@ msgstr ""
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr ""
+
+msgid "Details of the bill (before the change)"
+msgstr ""
+
+#, fuzzy
+msgid "Details of the bill"
+msgstr "इस बिल को संपादित करें"
+
+#, fuzzy
+msgid "Date:"
+msgstr "तारीख"
+
+#, fuzzy
+msgid "Payer:"
+msgstr "भुगतानकर्ता"
+
+#, fuzzy
+msgid "Amount:"
+msgstr "रकम"
+
+msgid "Owers:"
+msgstr ""
+
+#, fuzzy
+msgid "External link:"
+msgstr "बाहरी लिंक"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
@@ -674,23 +725,7 @@ msgid "Project settings modified"
 msgstr "परियोजना सेटिंग्स संशोधित"
 
 #, python-format
-msgid "Participant %(name)s deactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s reactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr ""
-
-#, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
 msgid "Payer"
@@ -709,6 +744,22 @@ msgstr "%(currency)s में राशि"
 #, fuzzy, python-format
 msgid "Bill %(name)s modified"
 msgstr "बिल को संशोधित कर दिया गया है"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr ""
 
 #, python-format
 msgid "Participant %(name)s modified"
@@ -970,6 +1021,13 @@ msgstr "किसे भुगतान करना है?"
 msgid "To whom?"
 msgstr "किसको?"
 
+#, fuzzy
+msgid "Settled?"
+msgstr "चुकता करें"
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr "कौन?"
 
@@ -985,10 +1043,19 @@ msgstr "पुनः सक्रिय करें"
 msgid "Paid"
 msgstr "भुगतान किया"
 
-msgid "Spent"
-msgstr "खर्च किया"
+#, fuzzy
+msgid "Expenses"
+msgstr "मासिक खर्च"
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+#, fuzzy
+msgid "Received"
+msgstr "पुनः सक्रिय करें"
+
+#, fuzzy
+msgid "Expenses by month"
 msgstr "मासिक खर्च"
 
 msgid "Period"
@@ -1153,4 +1220,7 @@ msgstr "अवधि"
 
 #~ msgid "You can directly share the following link via your prefered medium"
 #~ msgstr "आप नीचे दिए गए लिंक को सीधे अपने पसंदीदा माध्यम से साझा कर सकते हैं"
+
+#~ msgid "Spent"
+#~ msgstr "खर्च किया"
 

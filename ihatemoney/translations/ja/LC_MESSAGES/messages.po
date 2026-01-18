@@ -1,19 +1,19 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"POT-Creation-Date: 2026-01-18 21:37+0100\n"
 "PO-Revision-Date: 2024-06-24 15:09+0000\n"
 "Last-Translator: Khang Tran <tranchikhang@outlook.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/ja/>\n"
 "Language: ja\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/ja/>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.6-rc\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -64,6 +64,10 @@ msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
+
+#, fuzzy
+msgid "Cannot change project currency because currency conversion is broken"
+msgstr "明細通貨変換のため、デフォルトの通貨を設定してください"
 
 msgid "Compatible with Cospend"
 msgstr ""
@@ -144,6 +148,10 @@ msgstr "この明細に関する外部ファイルのリンク"
 msgid "For whom?"
 msgstr "誰のためですか？"
 
+#, fuzzy
+msgid "Bill Type"
+msgstr "明細項目"
+
 msgid "Submit"
 msgstr "確認"
 
@@ -153,6 +161,10 @@ msgstr "確認して、新しいのを作成します"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "初期プロジェクト: %(currency)s"
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
+msgstr ""
 
 msgid "Name"
 msgstr "名前"
@@ -194,8 +206,7 @@ msgstr ""
 msgid ""
 "Please check the email configuration of the server or contact the "
 "administrator: %(admin_email)s"
-msgstr "申し訳ございませんが、エラーが発生しました。メールアドレスを再度チェックする"
-"か、または管理者（ %(admin_email)s）に連絡ください"
+msgstr "申し訳ございませんが、エラーが発生しました。メールアドレスを再度チェックするか、または管理者（ %(admin_email)s）に連絡ください"
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
@@ -345,6 +356,17 @@ msgstr "明細が変更されました"
 #, python-format
 msgid "%(lang)s is not a supported language"
 msgstr ""
+
+msgid "Error creating settlement bill"
+msgstr ""
+
+#, fuzzy
+msgid "Settlement"
+msgstr "解決"
+
+#, fuzzy
+msgid "Settlement bill has been successfully added"
+msgstr "明細が追加されました"
 
 #, fuzzy
 msgid "Error deleting project history"
@@ -497,6 +519,9 @@ msgstr "参加者を追加する"
 msgid "Edit this participant"
 msgstr "参加者を追加する"
 
+msgid "Save"
+msgstr ""
+
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
 
@@ -566,6 +591,32 @@ msgstr ""
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr ""
+
+msgid "Details of the bill (before the change)"
+msgstr ""
+
+#, fuzzy
+msgid "Details of the bill"
+msgstr "明細を編集する"
+
+#, fuzzy
+msgid "Date:"
+msgstr "日付"
+
+#, fuzzy
+msgid "Payer:"
+msgstr "支払人"
+
+#, fuzzy
+msgid "Amount:"
+msgstr "金額"
+
+msgid "Owers:"
+msgstr ""
+
+#, fuzzy
+msgid "External link:"
+msgstr "外部リンク"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
@@ -644,23 +695,7 @@ msgid "Project settings modified"
 msgstr "プロジェクトの設定が修正された"
 
 #, python-format
-msgid "Participant %(name)s deactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s reactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr ""
-
-#, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
 msgid "Payer"
@@ -679,6 +714,22 @@ msgstr "%(currency)sでの金額"
 #, python-format
 msgid "Bill %(name)s modified"
 msgstr "%(name)s明細が変更されました"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr ""
 
 #, python-format
 msgid "Participant %(name)s modified"
@@ -903,8 +954,7 @@ msgid ""
 "Specify a list of email adresses (separated by comma) of people you want "
 "to notify about the creation of this project. We will send them an email "
 "with the invitation link."
-msgstr "知らせたいメールアドレスのリスト（カンマ区切り）を指定してください。メールで"
-"招待リンクを送信します。"
+msgstr "知らせたいメールアドレスのリスト（カンマ区切り）を指定してください。メールで招待リンクを送信します。"
 
 msgid "Share Identifier & code"
 msgstr "名前とコードを共有する"
@@ -931,6 +981,13 @@ msgstr "誰が支払った？"
 msgid "To whom?"
 msgstr "誰まで？"
 
+#, fuzzy
+msgid "Settled?"
+msgstr "解決"
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr "誰？"
 
@@ -946,10 +1003,19 @@ msgstr "再び調査可能にする"
 msgid "Paid"
 msgstr "支払われた"
 
-msgid "Spent"
-msgstr "使われた"
+#, fuzzy
+msgid "Expenses"
+msgstr "月別の費用"
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+#, fuzzy
+msgid "Received"
+msgstr "再び調査可能にする"
+
+#, fuzzy
+msgid "Expenses by month"
 msgstr "月別の費用"
 
 msgid "Period"
@@ -1101,3 +1167,7 @@ msgstr "期間"
 
 #~ msgid "You can directly share the following link via your prefered medium"
 #~ msgstr "好きの手段で以下のリンクを直接に共有できる"
+
+#~ msgid "Spent"
+#~ msgstr "使われた"
+

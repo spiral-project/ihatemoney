@@ -1,19 +1,23 @@
+# Bangla (Bangladesh) translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 14:24+0200\n"
-"PO-Revision-Date: 2026-01-22 10:23+0000\n"
-"Last-Translator: md-rahim <arahim3335@gmail.com>\n"
-"Language-Team: Bengali (Bangladesh) <https://hosted.weblate.org/projects/i-"
-"hate-money/i-hate-money/bn_BD/>\n"
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-01-30 18:19+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: bn_BD\n"
+"Language-Team: bn_BD <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.16-dev\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -66,7 +70,11 @@ msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
-"প্রকল্পটিকে 'কোনো মুদ্রা নেই' করা যাবে না, কারণ এতে একাধিক মুদ্রার বিল আছে।"
+"প্রকল্পটিকে 'কোনো মুদ্রা নেই' করা যাবে না, কারণ এতে একাধিক মুদ্রার বিল "
+"আছে।"
+
+msgid "Cannot change project currency because currency conversion is broken"
+msgstr ""
 
 msgid "Compatible with Cospend"
 msgstr "Cospend-এর সাথে ব্যবহারযোগ্য"
@@ -85,8 +93,8 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
-"এই শনাক্তকারী ('%(project)s') সহ একটি প্রকল্প ইতিমধ্যেই বিদ্যমান। অনুগ্রহ করে একটি নতুন "
-"শনাক্তকারী নির্বাচন করুন"
+"এই শনাক্তকারী ('%(project)s') সহ একটি প্রকল্প ইতিমধ্যেই বিদ্যমান। অনুগ্রহ"
+" করে একটি নতুন শনাক্তকারী নির্বাচন করুন"
 
 msgid "Which is a real currency: Euro or Petro dollar?"
 msgstr "বাস্তব মুদ্রা কোনটি: ইউরো নাকি পেট্রোডলার?"
@@ -148,6 +156,9 @@ msgstr ""
 msgid "For whom?"
 msgstr ""
 
+msgid "Bill Type"
+msgstr ""
+
 msgid "Submit"
 msgstr ""
 
@@ -156,6 +167,10 @@ msgstr ""
 
 #, python-format
 msgid "Project default: %(currency)s"
+msgstr ""
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
 msgstr ""
 
 msgid "Name"
@@ -344,6 +359,15 @@ msgstr ""
 msgid "%(lang)s is not a supported language"
 msgstr ""
 
+msgid "Error creating settlement bill"
+msgstr ""
+
+msgid "Settlement"
+msgstr ""
+
+msgid "Settlement bill has been successfully added"
+msgstr ""
+
 #, fuzzy
 msgid "Error deleting project history"
 msgstr "প্রকল্পের ইতিহাস সক্রিয় করো"
@@ -488,6 +512,9 @@ msgstr ""
 msgid "Edit this participant"
 msgstr ""
 
+msgid "Save"
+msgstr ""
+
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr ""
 
@@ -553,6 +580,27 @@ msgstr ""
 
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
+msgstr ""
+
+msgid "Details of the bill (before the change)"
+msgstr ""
+
+msgid "Details of the bill"
+msgstr ""
+
+msgid "Date:"
+msgstr ""
+
+msgid "Payer:"
+msgstr ""
+
+msgid "Amount:"
+msgstr ""
+
+msgid "Owers:"
+msgstr ""
+
+msgid "External link:"
 msgstr ""
 
 msgid "This project has history disabled. New actions won't appear below."
@@ -631,23 +679,7 @@ msgid "Project settings modified"
 msgstr ""
 
 #, python-format
-msgid "Participant %(name)s deactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s reactivated"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr ""
-
-#, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
-msgstr ""
-
-#, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
 msgid "Payer"
@@ -665,6 +697,22 @@ msgstr ""
 
 #, python-format
 msgid "Bill %(name)s modified"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr ""
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
 
 #, python-format
@@ -915,6 +963,12 @@ msgstr ""
 msgid "To whom?"
 msgstr ""
 
+msgid "Settled?"
+msgstr ""
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr ""
 
@@ -930,14 +984,38 @@ msgstr ""
 msgid "Paid"
 msgstr ""
 
-msgid "Spent"
+msgid "Expenses"
 msgstr ""
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+msgid "Received"
+msgstr ""
+
+msgid "Expenses by month"
 msgstr ""
 
 msgid "Period"
 msgstr ""
+
+#~ msgid ""
+#~ msgstr ""
+#~ "Project-Id-Version: PACKAGE VERSION\n"
+#~ "Report-Msgid-Bugs-To: \n"
+#~ "POT-Creation-Date: 2023-07-29 14:24+0200\n"
+#~ "PO-Revision-Date: 2026-01-30 18:15+0100\n"
+#~ "Last-Translator: md-rahim <arahim3335@gmail.com>\n"
+#~ "Language-Team: Bengali (Bangladesh) "
+#~ "<https://hosted.weblate.org/projects/i-hate-money/i-hate-"
+#~ "money/bn_BD/>\n"
+#~ "Language: bn_BD\n"
+#~ "MIME-Version: 1.0\n"
+#~ "Content-Type: text/plain; charset=utf-8\n"
+#~ "Content-Transfer-Encoding: 8bit\n"
+#~ "Plural-Forms: nplurals=2; plural=n != 1;\n"
+#~ "X-Generator: Weblate 5.16-dev\n"
+#~ "Generated-By: Babel 2.9.0\n"
 
 #~ msgid "Participant"
 #~ msgstr ""
@@ -1154,3 +1232,10 @@ msgstr ""
 #~ "them an email with the invitation "
 #~ "link."
 #~ msgstr ""
+
+#~ msgid "Spent"
+#~ msgstr ""
+
+#~ msgid "Expenses by Month"
+#~ msgstr ""
+

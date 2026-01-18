@@ -1,19 +1,19 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"POT-Creation-Date: 2026-01-18 21:37+0100\n"
 "PO-Revision-Date: 2023-09-26 13:01+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/i-hate-money/"
-"i-hate-money/es/>\n"
 "Language: es\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.1-dev\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -54,8 +54,7 @@ msgid "Default Currency"
 msgstr "Divisa por defecto"
 
 msgid "Setting a default currency enables currency conversion between bills"
-msgstr ""
-"Indicar una nueva moneda habilita la conversión de monedas entre facturas"
+msgstr "Indicar una nueva moneda habilita la conversión de monedas entre facturas"
 
 msgid "Unknown error"
 msgstr "Error desconocido"
@@ -67,8 +66,12 @@ msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
-"Este proyecto no se puede cambiar a 'sin moneda' porque contiene facturas "
-"con múltiples monedas."
+"Este proyecto no se puede cambiar a 'sin moneda' porque contiene facturas"
+" con múltiples monedas."
+
+#, fuzzy
+msgid "Cannot change project currency because currency conversion is broken"
+msgstr "Indicar una nueva moneda habilita la conversión de monedas entre facturas"
 
 msgid "Compatible with Cospend"
 msgstr "Compatible con Cospend"
@@ -150,6 +153,10 @@ msgstr "Un enlace para un documento externo relacionado con esta cuenta/factura"
 msgid "For whom?"
 msgstr "¿Para quién?"
 
+#, fuzzy
+msgid "Bill Type"
+msgstr "Elementos de la factura"
+
 msgid "Submit"
 msgstr "Enviar"
 
@@ -159,6 +166,10 @@ msgstr "Enviar y añadir una nueva"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "Valor predeterminado del proyecto: %(currency)s"
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
+msgstr ""
 
 msgid "Name"
 msgstr "Nombre"
@@ -251,15 +262,15 @@ msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
-"Intentamos enviarte un email recordatorio, pero se produjo un error. Puedes "
-"continuar usando el proyecto normalmente."
+"Intentamos enviarte un email recordatorio, pero se produjo un error. "
+"Puedes continuar usando el proyecto normalmente."
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
 "instructions."
 msgstr ""
-"Lo sentimos, se ha producido un error al enviarte un correo electrónico con "
-"las instrucciones para restablecer la contraseña."
+"Lo sentimos, se ha producido un error al enviarte un correo electrónico "
+"con las instrucciones para restablecer la contraseña."
 
 msgid "No token provided"
 msgstr "No se proporciona ningún token"
@@ -359,6 +370,18 @@ msgstr "La factura ha sido modificada"
 #, python-format
 msgid "%(lang)s is not a supported language"
 msgstr "%(lang)s no es un idioma admitido"
+
+#, fuzzy
+msgid "Error creating settlement bill"
+msgstr "Error al eliminar la factura"
+
+#, fuzzy
+msgid "Settlement"
+msgstr "Resolver"
+
+#, fuzzy
+msgid "Settlement bill has been successfully added"
+msgstr "Se ha añadido la factura"
 
 msgid "Error deleting project history"
 msgstr "Error al elimniar el historial del proyecto"
@@ -501,6 +524,9 @@ msgstr "Añadir participante"
 msgid "Edit this participant"
 msgstr "Editar participante"
 
+msgid "Save"
+msgstr ""
+
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
 
@@ -512,7 +538,8 @@ msgstr "Historial del proyecto desactivado"
 
 msgid "Disabled Project History & IP Address Recording"
 msgstr ""
-"Se ha desactivado el registro de direcciones IP y el historial del proyecto"
+"Se ha desactivado el registro de direcciones IP y el historial del "
+"proyecto"
 
 msgid "Enabled Project History"
 msgstr "Historial del proyecto activado"
@@ -521,8 +548,7 @@ msgid "Disabled IP Address Recording"
 msgstr "Se ha desactivado el registro de direcciones IP"
 
 msgid "Enabled Project History & IP Address Recording"
-msgstr ""
-"Se ha activado el historial del proyecto y el registro de direcciones IP"
+msgstr "Se ha activado el historial del proyecto y el registro de direcciones IP"
 
 msgid "Enabled IP Address Recording"
 msgstr "Se ha activado el registro de direcciones IP"
@@ -549,8 +575,8 @@ msgid ""
 "                The rest of the project history will be unaffected. This "
 "action cannot be undone."
 msgstr ""
-"¿Estás seguro de que quieres borrar todas las direcciones IP registradas de "
-"este proyecto?\n"
+"¿Estás seguro de que quieres borrar todas las direcciones IP registradas "
+"de este proyecto?\n"
 "                El resto del historial del proyecto no se verá afectado. "
 "Esta acción no se puede deshacer."
 
@@ -567,8 +593,8 @@ msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
 msgstr ""
-"¿Está seguro de que desea borrar todo el historial de este proyecto? Esta "
-"acción no se puede deshacer."
+"¿Está seguro de que desea borrar todo el historial de este proyecto? Esta"
+" acción no se puede deshacer."
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -577,6 +603,32 @@ msgstr "Factura %(name)s: se agregó %(owers_list_str)s a la lista de dueños"
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr "Bill %(name)s: eliminado %(owers_list_str)s de la lista de dueños"
+
+msgid "Details of the bill (before the change)"
+msgstr ""
+
+#, fuzzy
+msgid "Details of the bill"
+msgstr "Editar esta factura"
+
+#, fuzzy
+msgid "Date:"
+msgstr "Fecha"
+
+#, fuzzy
+msgid "Payer:"
+msgstr "Pagador"
+
+#, fuzzy
+msgid "Amount:"
+msgstr "Cantidad"
+
+msgid "Owers:"
+msgstr ""
+
+#, fuzzy
+msgid "External link:"
+msgstr "Enlace externo"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
@@ -590,8 +642,8 @@ msgid ""
 "The table below reflects actions recorded prior to disabling project "
 "history."
 msgstr ""
-"La siguiente tabla refleja las acciones registradas antes de desactivar el "
-"historial del proyecto."
+"La siguiente tabla refleja las acciones registradas antes de desactivar "
+"el historial del proyecto."
 
 msgid "You can clear the project history to remove them."
 msgstr "Puedes borrar el historial del proyecto para eliminarlos."
@@ -600,8 +652,8 @@ msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
 "recording disabled. "
 msgstr ""
-"Algunas de las entradas que aparecen a continuación contienen direcciones "
-"IP, a pesar de que este proyecto tiene desactivado el registro de IP. "
+"Algunas de las entradas que aparecen a continuación contienen direcciones"
+" IP, a pesar de que este proyecto tiene desactivado el registro de IP. "
 
 msgid "Delete stored IP addresses"
 msgstr "Eliminar direcciones IP almacenadas"
@@ -625,12 +677,12 @@ msgid "Event"
 msgstr "Evento"
 
 msgid "IP address recording can be enabled on the settings page"
-msgstr ""
-"El registro de dirección IP se puede activar en la página de configuración"
+msgstr "El registro de dirección IP se puede activar en la página de configuración"
 
 msgid "IP address recording can be disabled on the settings page"
 msgstr ""
-"El registro de dirección IP se puede desactivar en la página de configuración"
+"El registro de dirección IP se puede desactivar en la página de "
+"configuración"
 
 msgid "From IP"
 msgstr "Desde IP"
@@ -662,25 +714,8 @@ msgid "Project settings modified"
 msgstr "La configuración del proyecto ha sido modificada"
 
 #, python-format
-msgid "Participant %(name)s deactivated"
-msgstr "Participante %(name)s desactivado"
-
-#, python-format
-msgid "Participant %(name)s reactivated"
-msgstr "Participante %(name)s reactivado"
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr "Participante %(name)s renombrado a %(new_name)s"
-
-#, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
 msgstr "Factura %(name)s renombrada a %(new_description)s"
-
-#, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
-msgstr ""
-"Participante %(name)s: peso ha cambiado de %(old_weight)s a %(new_weight)s"
 
 msgid "Payer"
 msgstr "Pagador"
@@ -698,6 +733,22 @@ msgstr "Cantidad en %(currency)s"
 #, python-format
 msgid "Bill %(name)s modified"
 msgstr "Factura %(name)s modificada"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr "Participante %(name)s desactivado"
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr "Participante %(name)s reactivado"
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr "Participante %(name)s renombrado a %(new_name)s"
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr "Participante %(name)s: peso ha cambiado de %(old_weight)s a %(new_weight)s"
 
 #, python-format
 msgid "Participant %(name)s modified"
@@ -885,8 +936,8 @@ msgid ""
 "A link to reset your password has been sent to you, please check your "
 "emails."
 msgstr ""
-"Se le ha enviado un enlace para reestablecer su contraseña, por favor revise "
-"su correo electrónico."
+"Se le ha enviado un enlace para reestablecer su contraseña, por favor "
+"revise su correo electrónico."
 
 msgid "Return to home page"
 msgstr "Volver a la página de inicio"
@@ -909,10 +960,11 @@ msgid ""
 " add/edit/delete bills. However, they will not have access to important "
 "settings such as changing the private code or deleting the whole project."
 msgstr ""
-"La forma más sencilla de invitar gente es dándoles el siguiente enlace de "
-"invitación.<br />Podrán acceder al proyecto, gestionar los participantes, añ"
-"adir/editar/eliminar facturas. Sin embargo, no tendrán acceso a los ajustes "
-"importantes como cambiar el código privado o eliminar el proyecto entero."
+"La forma más sencilla de invitar gente es dándoles el siguiente enlace de"
+" invitación.<br />Podrán acceder al proyecto, gestionar los "
+"participantes, añadir/editar/eliminar facturas. Sin embargo, no tendrán "
+"acceso a los ajustes importantes como cambiar el código privado o "
+"eliminar el proyecto entero."
 
 msgid "Scan QR code"
 msgstr "Escanear código QR"
@@ -930,7 +982,8 @@ msgid ""
 msgstr ""
 "Especifica una lista de direcciones de correo electrónico (separados por "
 "comas) de gente a la que quieras notificar sobre la creación de este "
-"proyecto. Les enviaremos un correo electrónico con el enlace de invitación."
+"proyecto. Les enviaremos un correo electrónico con el enlace de "
+"invitación."
 
 msgid "Share Identifier & code"
 msgstr "Compartir identificador i código"
@@ -944,8 +997,8 @@ msgstr ""
 "Puedes compartir el identificador del proyecto y el código privado por "
 "cualquier medio de comunicación.<br />Cualquiera con el código privado "
 "tendrá acceso a todo el proyecto, incluyendo cambiar los ajustes como el "
-"código privado o el correo electrónico del proyecto, o incluso eliminar el "
-"proyecto entero."
+"código privado o el correo electrónico del proyecto, o incluso eliminar "
+"el proyecto entero."
 
 msgid "Identifier:"
 msgstr "Identificador:"
@@ -962,6 +1015,13 @@ msgstr "¿Quién paga?"
 msgid "To whom?"
 msgstr "¿A quién?"
 
+#, fuzzy
+msgid "Settled?"
+msgstr "Resolver"
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr "¿Quién?"
 
@@ -977,10 +1037,19 @@ msgstr "reactivar"
 msgid "Paid"
 msgstr "Pagado"
 
-msgid "Spent"
-msgstr "Gastado"
+#, fuzzy
+msgid "Expenses"
+msgstr "Gastos por mes"
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+#, fuzzy
+msgid "Received"
+msgstr "reactivar"
+
+#, fuzzy
+msgid "Expenses by month"
 msgstr "Gastos por mes"
 
 msgid "Period"
@@ -1179,3 +1248,7 @@ msgstr "Período"
 #~ "them an email with the invitation "
 #~ "link."
 #~ msgstr ""
+
+#~ msgid "Spent"
+#~ msgstr "Gastado"
+

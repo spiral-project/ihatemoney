@@ -3,18 +3,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 14:24+0200\n"
+"POT-Creation-Date: 2026-01-18 21:37+0100\n"
 "PO-Revision-Date: 2022-04-11 17:12+0000\n"
 "Last-Translator: Santiago José Gutiérrez Llanos "
 "<gutierrezapata17@gmail.com>\n"
 "Language: id\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/i-hate-"
 "money/i-hate-money/id/>\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
@@ -70,6 +70,10 @@ msgid ""
 msgstr ""
 "Proyek ini tidak dapat disetel ke 'tanpa mata uang' karena berisi tagihan"
 " dalam berbagai mata uang."
+
+#, fuzzy
+msgid "Cannot change project currency because currency conversion is broken"
+msgstr "Menetapkan mata uang default memungkinkan konversi mata uang antar tagihan"
 
 msgid "Compatible with Cospend"
 msgstr ""
@@ -151,6 +155,10 @@ msgstr "Sebuah tautan mengarah ke dokumen luar, terhubung dengan pembayaran ini"
 msgid "For whom?"
 msgstr "Untuk siapa?"
 
+#, fuzzy
+msgid "Bill Type"
+msgstr "Item tagihan"
+
 msgid "Submit"
 msgstr "Ajukan"
 
@@ -160,6 +168,10 @@ msgstr "Ajukan dan tambah yang baru"
 #, python-format
 msgid "Project default: %(currency)s"
 msgstr "Default proyek: %(currency)s"
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
+msgstr ""
 
 msgid "Name"
 msgstr "Nama"
@@ -361,6 +373,18 @@ msgstr "Tagihan telah diperbarui"
 msgid "%(lang)s is not a supported language"
 msgstr ""
 
+#, fuzzy
+msgid "Error creating settlement bill"
+msgstr "Kesalahan saat menghapus tagihan"
+
+#, fuzzy
+msgid "Settlement"
+msgstr "Atur"
+
+#, fuzzy
+msgid "Settlement bill has been successfully added"
+msgstr "Tagihan telah ditambahkan"
+
 msgid "Error deleting project history"
 msgstr "Kesalahan saat menghapus riwayat proyek"
 
@@ -504,6 +528,9 @@ msgstr "Tambah partisipan"
 msgid "Edit this participant"
 msgstr "Sunting anggota ini"
 
+msgid "Save"
+msgstr ""
+
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
 
@@ -576,6 +603,32 @@ msgstr ""
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr ""
+
+msgid "Details of the bill (before the change)"
+msgstr ""
+
+#, fuzzy
+msgid "Details of the bill"
+msgstr "Ubah tagihan ini"
+
+#, fuzzy
+msgid "Date:"
+msgstr "Tanggal"
+
+#, fuzzy
+msgid "Payer:"
+msgstr "Pembayar"
+
+#, fuzzy
+msgid "Amount:"
+msgstr "Jumlah"
+
+msgid "Owers:"
+msgstr ""
+
+#, fuzzy
+msgid "External link:"
+msgstr "Tautan luar"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
@@ -657,24 +710,8 @@ msgid "Project settings modified"
 msgstr "Pengaturan proyek diubah"
 
 #, python-format
-msgid "Participant %(name)s deactivated"
-msgstr "Pengguna %(name)s dinonaktifkan"
-
-#, python-format
-msgid "Participant %(name)s reactivated"
-msgstr "Pengguna %(name)s diaktifkan kembali"
-
-#, python-format
-msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr "Pengguna %(name)s diganti ke %(new_name)s"
-
-#, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
 msgstr "Tagihan %(name)s diganti ke %(new_description)s"
-
-#, python-format
-msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
-msgstr "Pengguna %(name)s: berat berubah dari %(old_weight)s ke %(new_weight)s"
 
 msgid "Payer"
 msgstr "Pembayar"
@@ -692,6 +729,22 @@ msgstr "Jumlah dalam %(currency)s"
 #, python-format
 msgid "Bill %(name)s modified"
 msgstr "Tagihan %(name)s telah dimodifikasi"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr "Pengguna %(name)s dinonaktifkan"
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr "Pengguna %(name)s diaktifkan kembali"
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr "Pengguna %(name)s diganti ke %(new_name)s"
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr "Pengguna %(name)s: berat berubah dari %(old_weight)s ke %(new_weight)s"
 
 #, python-format
 msgid "Participant %(name)s modified"
@@ -952,6 +1005,13 @@ msgstr "Siapa membayar?"
 msgid "To whom?"
 msgstr "Kepada siapa?"
 
+#, fuzzy
+msgid "Settled?"
+msgstr "Atur"
+
+msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
 msgid "Who?"
 msgstr "Siapa?"
 
@@ -967,10 +1027,19 @@ msgstr "aktivasi ulang"
 msgid "Paid"
 msgstr "Dibayar"
 
-msgid "Spent"
-msgstr "Dihabiskan"
+#, fuzzy
+msgid "Expenses"
+msgstr "Pengeluaran menurut Bulan"
 
-msgid "Expenses by Month"
+msgid "Direct transfer"
+msgstr ""
+
+#, fuzzy
+msgid "Received"
+msgstr "aktivasi ulang"
+
+#, fuzzy
+msgid "Expenses by month"
 msgstr "Pengeluaran menurut Bulan"
 
 msgid "Period"
@@ -1165,4 +1234,7 @@ msgstr "Periode"
 #~ "Anda bisa membagikan tautan secara "
 #~ "langsung melalui media yang Anda "
 #~ "inginkan"
+
+#~ msgid "Spent"
+#~ msgstr "Dihabiskan"
 
