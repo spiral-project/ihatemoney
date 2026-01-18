@@ -59,7 +59,7 @@ from ihatemoney.forms import (
     SettlementForm,
     get_billform_for,
 )
-from ihatemoney.history import get_history, get_history_queries, purge_history
+from ihatemoney.history import get_history, purge_history
 from ihatemoney.models import Bill, BillType, LoggingMode, Person, Project, db
 from ihatemoney.utils import (
     Redirect303,
@@ -460,8 +460,6 @@ def edit_project():
 
         if g.project.logging_preference != LoggingMode.DISABLED:
             edit_form.project_history.data = True
-            if g.project.logging_preference == LoggingMode.RECORD_IP:
-                edit_form.ip_recording.data = True
 
         edit_form.contact_email.data = g.project.contact_email
         edit_form.default_currency.data = g.project.default_currency
@@ -908,14 +906,11 @@ def history():
     """Query for the version entries associated with this project."""
     history = get_history(g.project, human_readable_names=True)
 
-    any_ip_addresses = any(event["ip"] for event in history)
-
     delete_form = DestructiveActionProjectForm()
     return render_template(
         "history.html",
         current_view="history",
         history=history,
-        any_ip_addresses=any_ip_addresses,
         LoggingMode=LoggingMode,
         OperationType=Operation,
         current_log_pref=g.project.logging_preference,
@@ -938,26 +933,6 @@ def erase_history():
 
     db.session.commit()
     flash(_("Deleted project history."))
-    return redirect(url_for(".history"))
-
-
-@main.route("/<project_id>/strip_ip_addresses", methods=["POST"])
-def strip_ip_addresses():
-    """Strip ip addresses from history entries associated with this project."""
-    form = DestructiveActionProjectForm(id=g.project.id)
-    if not form.validate():
-        flash(
-            format_form_errors(form, _("Error deleting recorded IP addresses")),
-            category="danger",
-        )
-        return redirect(url_for(".history"))
-
-    for query in get_history_queries(g.project):
-        for version_object in query.all():
-            version_object.transaction.remote_addr = None
-
-    db.session.commit()
-    flash(_("Deleted recorded IP addresses in project history."))
     return redirect(url_for(".history"))
 
 

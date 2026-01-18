@@ -95,7 +95,6 @@
         <label for="privacy_checkboxes">{{ _("Privacy Settings") }}</label>
         <div id="privacy_checkboxes" class="card card-body bg-light">
         {{ checkbox(form.project_history) }}
-        {{ checkbox(form.ip_recording) }}
         </div>
     </div>
 
@@ -147,14 +146,6 @@
     {% include "display_errors.html" %}
     {{ form.hidden_tag() }}
     {{ input(form.password, inline=True) }}
-
-{% endmacro %}
-
-{% macro delete_ip_addresses(form) %}
-
-    {% include "display_errors.html" %}
-    {{ form.hidden_tag() }}
-    {{ input(form.password) }}
 
 {% endmacro %}
 
