@@ -27,7 +27,6 @@ from ihatemoney.utils import generate_password_hash, get_members, same_bill, get
 from ihatemoney.versioning import (
     ConditionalVersioningManager,
     LoggingMode,
-    get_ip_if_allowed,
     version_privacy_predicate,
 )
 
@@ -42,9 +41,6 @@ make_versioned(
     ),
     plugins=[
         FlaskPlugin(
-            # Redirect to our own function, which respects user preferences
-            # on IP address collection
-            remote_addr_factory=get_ip_if_allowed,
             # Suppress the plugin's attempt to grab a user id,
             # which imports the flask_login module (causing an error)
             current_user_id_factory=lambda: None,
