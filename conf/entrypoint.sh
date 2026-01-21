@@ -3,7 +3,14 @@
 # Fail the whole script on the first failure.
 set -e
 
-cat <<EOF >/etc/ihatemoney/ihatemoney.cfg
+# Allow using custom config file path
+if [ -z "${IHATEMONEY_SETTINGS_FILE_PATH}" ];
+then
+  IHATEMONEY_SETTINGS_FILE_PATH=/etc/ihatemoney/ihatemoney.cfg;
+fi
+mkdir -p $(dirname $IHATEMONEY_SETTINGS_FILE_PATH)
+
+cat <<EOF >$IHATEMONEY_SETTINGS_FILE_PATH
 DEBUG = $DEBUG
 ACTIVATE_ADMIN_DASHBOARD = $ACTIVATE_ADMIN_DASHBOARD
 ACTIVATE_DEMO_PROJECT = $ACTIVATE_DEMO_PROJECT
