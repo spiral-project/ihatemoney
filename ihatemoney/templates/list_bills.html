@@ -2,9 +2,11 @@
 
 {%- macro weighted_bill_amount(bill, weights, currency=bill.original_currency, amount=bill.amount) %}
     {{ amount|currency(currency) }}
-    {%- if weights != 1.0 %}
+    {%- if weights != 1.0 and weights == bill.owers|length %}
         ({{ _("%(amount)s each", amount=(amount / weights)|currency(currency)) }})
-    {%- endif -%}
+    {%- else %}
+        ({{ _("Custom split") }})
+    {%- endif %}
 {% endmacro -%}
 
 {% block title %} - {{ g.project.name }}{% endblock %}
