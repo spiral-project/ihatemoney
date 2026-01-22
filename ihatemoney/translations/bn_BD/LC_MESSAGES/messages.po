@@ -1,23 +1,23 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-29 14:24+0200\n"
-"PO-Revision-Date: 2020-08-01 10:41+0000\n"
-"Last-Translator: Oymate <dhruboadittya96@gmail.com>\n"
+"PO-Revision-Date: 2026-01-22 10:23+0000\n"
+"Last-Translator: md-rahim <arahim3335@gmail.com>\n"
+"Language-Team: Bengali (Bangladesh) <https://hosted.weblate.org/projects/i-"
+"hate-money/i-hate-money/bn_BD/>\n"
 "Language: bn_BD\n"
-"Language-Team: Bengali (Bangladesh) "
-"<https://hosted.weblate.org/projects/i-hate-money/i-hate-money/bn_BD/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.16-dev\n"
 "Generated-By: Babel 2.9.0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
-msgstr ""
+msgstr "আপনি সদ্য '%(project)s' তৈরি করেছেন খরচ শেয়ার করতে"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -29,22 +29,20 @@ msgstr ""
 msgid "Project name"
 msgstr "প্রকল্পের নাম"
 
-#, fuzzy
 msgid "Current private code"
-msgstr "ব্যক্তিগত কোড"
+msgstr "বর্তমান ব্যক্তিগত কোড"
 
 msgid "Enter existing private code to edit project"
-msgstr ""
+msgstr "বিদ্যমান গোপন কোড প্রবেশ করান প্রকল্প সম্পাদনার জন্য"
 
-#, fuzzy
 msgid "New private code"
-msgstr "ব্যক্তিগত কোড"
+msgstr "নতুন ব্যক্তিগত কোড"
 
 msgid "Enter a new code if you want to change it"
 msgstr "আপনি যদি এটি পরিবর্তন করতে চান তবে একটি নতুন কোড লিখুন"
 
 msgid "Email"
-msgstr "ইমেইল"
+msgstr "ই-মেইল"
 
 msgid "Enable project history"
 msgstr "প্রকল্পের ইতিহাস সক্রিয় করো"
@@ -56,22 +54,22 @@ msgid "Default Currency"
 msgstr "ডিফল্ট মুদ্রা"
 
 msgid "Setting a default currency enables currency conversion between bills"
-msgstr ""
+msgstr "ডিফল্ট মুদ্রা সেট করলে বিলের মধ্যে মুদ্রা রূপান্তর সম্ভব হয়"
 
 msgid "Unknown error"
 msgstr "অজানা ত্রুট"
 
-#, fuzzy
 msgid "Invalid private code."
-msgstr "ব্যক্তিগত কোড"
+msgstr "গোপন কোডটি সঠিক নয়।"
 
 msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
+"প্রকল্পটিকে 'কোনো মুদ্রা নেই' করা যাবে না, কারণ এতে একাধিক মুদ্রার বিল আছে।"
 
 msgid "Compatible with Cospend"
-msgstr ""
+msgstr "Cospend-এর সাথে ব্যবহারযোগ্য"
 
 msgid "Project identifier"
 msgstr "প্রকল্প শনাক্তকারী"
@@ -87,15 +85,17 @@ msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
+"এই শনাক্তকারী ('%(project)s') সহ একটি প্রকল্প ইতিমধ্যেই বিদ্যমান। অনুগ্রহ করে একটি নতুন "
+"শনাক্তকারী নির্বাচন করুন"
 
 msgid "Which is a real currency: Euro or Petro dollar?"
-msgstr ""
+msgstr "বাস্তব মুদ্রা কোনটি: ইউরো নাকি পেট্রোডলার?"
 
 msgid "euro"
-msgstr ""
+msgstr "ইউরো"
 
 msgid "Please, validate the captcha to proceed."
-msgstr ""
+msgstr "অগ্রসর হতে ক্যাপচা যাচাই করুন।"
 
 msgid "Enter private code to confirm deletion"
 msgstr "মুছে ফেলার জন্য ব্যক্তিগত কোড লিখুন"
@@ -107,7 +107,7 @@ msgid "Admin password"
 msgstr "অ্যাডমিন পাসওয়ার্ড"
 
 msgid "Send me the code by email"
-msgstr ""
+msgstr "অনুগ্রহ করে আমাকে ইমেইলে কোড পাঠান"
 
 msgid "This project does not exists"
 msgstr ""
@@ -348,9 +348,8 @@ msgstr ""
 msgid "Error deleting project history"
 msgstr "প্রকল্পের ইতিহাস সক্রিয় করো"
 
-#, fuzzy
 msgid "Deleted project history."
-msgstr "প্রকল্পের ইতিহাস সক্রিয় করো"
+msgstr "প্রকল্পের ইতিহাস সক্রিয় করো।"
 
 msgid "Error deleting recorded IP addresses"
 msgstr ""
@@ -1155,4 +1154,3 @@ msgstr ""
 #~ "them an email with the invitation "
 #~ "link."
 #~ msgstr ""
-
