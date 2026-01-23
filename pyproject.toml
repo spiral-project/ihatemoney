@@ -43,7 +43,7 @@ dependencies = [
     "qrcode~=8.2",
     "requests~=2.32.5",  # Used only by currency convertor
     "SQLAlchemy~=2.0.45",
-    "SQLAlchemy-Continuum~=1.5.2",
+    "SQLAlchemy-Continuum>=1.5.2,<1.7.0",
     "Werkzeug~=3.1.5",
     "WTForms~=3.2.1",]
 
