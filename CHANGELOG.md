@@ -23,6 +23,7 @@ This document describes changes between each past release.
 
 ## Changed
 
+- Update translations for Catalan, Persian, Hungarian, Japanese,
   Portuguese, Brazilian Portuguese, and Telugu
 - Update all Python dependencies (#1392 #1248)
 
