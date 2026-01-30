@@ -2,7 +2,7 @@
 
 This document describes changes between each past release.
 
-## 7.0.0 (unreleased)
+## 7.0.0 (2026-01-30)
 
 ### Breaking changes
 

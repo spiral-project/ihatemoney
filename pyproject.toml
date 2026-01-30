@@ -1,10 +1,10 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling~=1.21.1"]
 build-backend = "hatchling.build"
 
 [project]
 name = "ihatemoney"
-version = "6.2.0.dev0"
+version = "7.0.0"
 requires-python = ">=3.11"
 description = "A simple shared budget manager web application."
 readme = "README.md"
