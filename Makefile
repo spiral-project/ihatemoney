@@ -34,7 +34,7 @@ format:
 
 .PHONY: release
 release: # Release a new version (see https://ihatemoney.readthedocs.io/en/latest/contributing.html#how-to-release)
-		uv run --extra dev fullreleas
+		uv run --extra dev fullrelease
 
 .PHONY: compress-showcase
 compress-showcase:
