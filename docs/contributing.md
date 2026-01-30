@@ -308,8 +308,6 @@ In order to issue a new release, follow the following steps:
 
 -   Update `CHANGELOG.md` with the last changes;
 
--   Update `CONTRIBUTORS` (instructions inside the file);
-
 -   If needed, recompress assets. It requires zopflipng and ImageMagick
     `mogrify`:
 
