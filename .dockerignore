@@ -10,7 +10,6 @@
 .vscode
 assets
 CHANGELOG.md
-CONTRIBUTORS
 docker-compose.*
 Dockerfile
 docs

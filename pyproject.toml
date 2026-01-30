@@ -93,7 +93,6 @@ artifacts = ["ihatemoney/translations/**/*.mo"]
 include = [
     "ihatemoney/",
     "LICENSE",
-    "CONTRIBUTORS",
     "CHANGELOG.md",
     "README.md",
     "SECURITY.md",
