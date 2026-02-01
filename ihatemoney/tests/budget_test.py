@@ -452,8 +452,8 @@ class TestBudget(IhatemoneyTestCase):
         result = self.client.get("/raclette/add")
         assert "jeanne" not in result.data.decode("utf-8")
 
-        # adding him again should reactivate him
-        self.client.post("/raclette/members/add", data={"name": "jeanne"})
+        # it should be possible to reactivate him
+        self.client.post(f"/raclette/members/{jeanne_id}/reactivate")
         assert len(self.get_project("raclette").active_members) == 2
 
         # adding an user with the same name as another user from a different
@@ -1966,6 +1966,62 @@ class TestBudget(IhatemoneyTestCase):
         resp = self.client.get("/raclette/")
         # No bills, the previous one was not added
         assert "No bills" in resp.data.decode("utf-8")
+
+    def test_add_duplicate_user(self):
+        """
+        Adding a user with the same name as a deactivated user with 0 balance
+        and no associated bills should succeed
+        """
+        self.post_project("raclette")
+        self.login("raclette")
+
+        # adds a member to this project and delete it right after.
+        self.client.post("/raclette/members/add", data={"name": "zorglub"})
+        self.client.post("/raclette/members/1/delete")
+        assert len(self.get_project("raclette").active_members) == 0
+        assert len(self.get_project("raclette").members) == 0
+
+        # try to add this deleted user should be successful
+        response = self.client.post("/raclette/members/add", data={"name": "zorglub"})
+        assert len(self.get_project("raclette").members) == 1
+
+    def test_add_duplicate_user_with_balance(self):
+        """
+        Adding a user with same name as a deactivated user with non-zero balance
+        and associated bills should fail
+        """
+        self.post_project("raclette")
+
+        # add two participants
+        self.client.post("/raclette/members/add", data={"name": "Alice"})
+        self.client.post("/raclette/members/add", data={"name": "Bob"})
+
+        members_ids = [m.id for m in self.get_project("raclette").members]
+
+        # create one bill
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-08-10",
+                "what": "fromage à raclette",
+                "payer": members_ids[0],
+                "payed_for": members_ids,
+                "amount": "100",
+            },
+        )
+
+        # deactivate Bob
+        self.client.post(
+            "/raclette/members/%s/delete" % self.get_project("raclette").members[-1].id
+        )
+
+        assert len(self.get_project("raclette").members) == 2
+        self.client.post("/raclette/members/add", data={"name": "Bob"})
+
+        # adding a user with the same name should fail
+        assert len(self.get_project("raclette").members) == 2
+        # The only active_member is Alice, this means adding a new Bob failed
+        assert len(self.get_project("raclette").active_members) == 1
 
     def test_session_projects_migration_to_list(self):
         """In https://github.com/spiral-project/ihatemoney/pull/1082, session["projects"]
