@@ -670,12 +670,55 @@ def list_bills():
     ):
         bill_form.payed_for.data = session["last_selected_payed_for"][g.project.id]
 
-    # Each item will be a (weight_sum, Bill) tuple.
-    # TODO: improve this awkward result using column_property:
-    # https://docs.sqlalchemy.org/en/14/orm/mapped_sql_expr.html.
-    weighted_bills = g.project.get_bill_weights_ordered().paginate(
-        per_page=100, error_out=True
-    )
+    # ---- NEW: read filters from query string ----
+    date_from_str = request.args.get("date_from")
+    date_to_str = request.args.get("date_to")
+    payer = request.args.get("payer")
+    what = request.args.get("what")
+    ower = request.args.get("ower")
+
+    # Base query: returns (weight_sum, Bill) tuples
+    bills_query = g.project.get_bill_weights_ordered()
+
+    # ---- NEW: apply filters ----
+    # Date range filter (uses Bill.date)
+    if date_from_str:
+        try:
+            date_from = datetime.date.fromisoformat(date_from_str)
+            bills_query = bills_query.filter(Bill.date >= date_from)
+        except ValueError:
+            pass  # ignore bad date
+
+    if date_to_str:
+        try:
+            date_to = datetime.date.fromisoformat(date_to_str)
+            bills_query = bills_query.filter(Bill.date <= date_to)
+        except ValueError:
+            pass
+
+    # Who paid? (payer is a member.id, string -> int)
+    if payer:
+        try:
+            payer_id = int(payer)
+            bills_query = bills_query.filter(Bill.payer_id == payer_id)
+        except ValueError:
+            pass
+
+    # For what? (text search in Bill.what, case-insensitive)
+    if what:
+        like_expr = f"%{what}%"
+        bills_query = bills_query.filter(Bill.what.ilike(like_expr))
+
+    # For whom? (member appears in owers relationship)
+    if ower:
+        try:
+            ower_id = int(ower)
+            bills_query = bills_query.join(Bill.owers).filter(Person.id == ower_id)
+        except ValueError:
+            pass
+
+    # Paginate after filters; still returns (weight_sum, Bill) items
+    weighted_bills = bills_query.paginate(per_page=100, error_out=True)
 
     return render_template(
         "list_bills.html",
