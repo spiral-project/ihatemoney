@@ -46,7 +46,7 @@
     </script>
 </head>
 <body class="d-flex flex-column h-100">
-  {% if g.lang == 'fr' %}{% include "showcase.html" %}{% endif %}
+  {% if display_showcase %}{% include "showcase.html" %}{% endif %}
   <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

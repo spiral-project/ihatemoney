@@ -64,10 +64,10 @@
         </div>
     </div>
     <div class="identifier">
-	{% if g.lang == 'fr' %}
+	{% if display_showcase %}
         <a class="btn btn-secondary btn-block" href=""  onclick="javascript:showGallery(); return false;">
             <i class="icon icon-white high before-text">{{ static_include("images/read.svg") | safe }}</i>
-	    Voir la BD explicative
+            {{ _("See the explanatory comics") }}
         </a>
 	{% endif %}
         <a class="btn btn-secondary btn-block" href="{{ url_for('.invite') }}">
