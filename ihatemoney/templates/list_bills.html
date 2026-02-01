@@ -105,6 +105,64 @@
   <li class="page-item {% if bills.page == bills.pages %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.next_num) }}">{{ _("Older bills") }} &raquo;</a></li>
 </ul>
 {% endif %}
+
+<div class="d-flex flex-wrap w-100 pt-2 mt-2" id="bill-toolbar">
+    <button class="btn btn-secondary btn-sm mb-2" type="button" data-toggle="collapse" data-target="#filter-options" aria-expanded="false" aria-controls="filter-options">
+        Filter Bills
+    </button>
+
+    <div class="collapse w-100" id="filter-options">
+        <form action="{{ url_for('.list_bills') }}" method="post" class="p-2 border rounded bg-light">
+            {{ csrf_form.csrf_token }}
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="start_date" class="small">Start Date:</label>
+                    <input type="date" id="start_date" name="start_date" class="form-control form-control-sm" value="{{ start_date if start_date else '' }}">
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="end_date" class="small">End Date:</label>
+                    <input type="date" id="end_date" name="end_date" class="form-control form-control-sm" value="{{ end_date if end_date else '' }}">
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="payer" class="small">Who Paid:</label>
+                    <select id="payer" name="payer" class="form-control form-control-sm">
+                        <option value="">-- Select --</option>
+                        {% for member in g.project.members %}
+                        <option value="{{ member.id }}" {% if selected_payer == member.id %}selected{% endif %}>
+                            {{ member.name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="owers" class="small">For Whom:</label>
+                    <select id="owers" name="owers" multiple class="form-control form-control-sm">
+                        {% for member in g.project.members %}
+                        <option value="{{ member.id }}" {% if selected_owers and member.id in selected_owers %}selected{% endif %}>
+                            {{ member.name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="bill_name" class="small">For What?</label>
+                    <input type="text" id="bill_name" name="bill_name" class="form-control form-control-sm" value="{{ bill_name if bill_name else '' }}" placeholder="Enter bill name">
+                </div>
+
+            </div>
+
+            <div class="text-right">
+                <button type="submit" class="btn btn-primary btn-sm">Apply Filters</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <span id="new-bill" class="ml-auto pb-2" {% if not g.project.members %} data-toggle="tooltip" title="{{_('You should start by adding participants')}}" {% endif %}>
     <a href="{{ url_for('.add_bill') }}" class="btn btn-primary {% if not g.project.members %} disabled {% endif %}" data-toggle="modal" data-keyboard="true" data-target="#bill-form" autofocus>
         <i class="icon icon-white before-text">{{ static_include("images/plus.svg") | safe }}</i>
