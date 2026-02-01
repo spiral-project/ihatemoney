@@ -295,6 +295,223 @@ class TestModels(IhatemoneyTestCase):
         assert "raclette@notmyidea.org" in result5.output
 
 
+class TestBillFiltering(IhatemoneyTestCase):
+    def test_filter_by_payer(self):
+        """Test filtering by payer ID"""
+        self.post_project("raclette")
+
+        # add members
+        self.client.post("/raclette/members/add", data={"name": "Alice"})
+        self.client.post("/raclette/members/add", data={"name": "Bob"})
+
+        # create bills
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2024-03-01",
+                "what": "Cheese",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "bill_type": "Expense",
+                "amount": "15.0",
+            },
+        )
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2024-03-05",
+                "what": "Wine",
+                "payer": 2,
+                "payed_for": [1, 2],
+                "bill_type": "Expense",
+                "amount": "25.0",
+            },
+        )
+
+        # alice paid for cheese
+        bills = models.Bill.query.filter(models.Bill.payer_id == 1).all()
+        assert len(bills) == 1
+        assert bills[0].what == "Cheese"
+
+        # bob paid for wine
+        bills = models.Bill.query.filter(models.Bill.payer_id == 2).all()
+        assert len(bills) == 1
+        assert bills[0].what == "Wine"
+
+    def test_filter_by_amount_range(self):
+        """Test filtering by amount range"""
+        self.post_project("raclette")
+
+        # add members
+        self.client.post("/raclette/members/add", data={"name": "Alice"})
+        self.client.post("/raclette/members/add", data={"name": "Bob"})
+
+        # create bills
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2024-03-01",
+                "what": "Cheese",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "bill_type": "Expense",
+                "amount": "15.0",
+            },
+        )
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2024-03-05",
+                "what": "Wine",
+                "payer": 2,
+                "payed_for": [1, 2],
+                "bill_type": "Expense",
+                "amount": "25.0",
+            },
+        )
+
+        # only wine is more than 20
+        bills = models.Bill.query.filter(models.Bill.amount >= 20).all()
+        assert len(bills) == 1
+        assert bills[0].what == "Wine"
+
+        # only cheese is less than 20
+        bills = models.Bill.query.filter(models.Bill.amount <= 20).all()
+        assert len(bills) == 1
+        assert bills[0].what == "Cheese"
+
+    def test_filter_by_date_range(self):
+        """Test filtering by date range"""
+        self.post_project("raclette")
+
+        # add members
+        self.client.post("/raclette/members/add", data={"name": "Alice"})
+        self.client.post("/raclette/members/add", data={"name": "Bob"})
+
+        # create bills
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2024-03-01",
+                "what": "Cheese",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "bill_type": "Expense",
+                "amount": "15.0",
+            },
+        )
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2024-03-05",
+                "what": "Wine",
+                "payer": 2,
+                "payed_for": [1, 2],
+                "bill_type": "Expense",
+                "amount": "25.0",
+            },
+        )
+
+        # wine is March 5th
+        bills = models.Bill.query.filter(models.Bill.date >= "2024-03-02").all()
+        assert len(bills) == 1
+        assert bills[0].what == "Wine"
+
+        # cheese is March 1st
+        bills = models.Bill.query.filter(models.Bill.date <= "2024-03-04").all()
+        assert len(bills) == 1
+        assert bills[0].what == "Cheese"
+
+    def test_filter_by_search_term(self):
+        """Test filtering by search query"""
+        self.post_project("raclette")
+
+        # add members
+        self.client.post("/raclette/members/add", data={"name": "Alice"})
+        self.client.post("/raclette/members/add", data={"name": "Bob"})
+
+        # create bills
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2024-03-01",
+                "what": "Cheese",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "bill_type": "Expense",
+                "amount": "15.0",
+            },
+        )
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2024-03-05",
+                "what": "Wine",
+                "payer": 2,
+                "payed_for": [1, 2],
+                "bill_type": "Expense",
+                "amount": "25.0",
+            },
+        )
+
+        bills = models.Bill.query.filter(models.Bill.what.ilike("%Cheese%")).all()
+        assert len(bills) == 1
+        assert bills[0].what == "Cheese"
+
+        bills = models.Bill.query.filter(models.Bill.what.ilike("%Che%")).all()
+        assert len(bills) == 1
+        assert bills[0].what == "Cheese"
+
+        bills = models.Bill.query.filter(models.Bill.what.ilike("%Pizza%")).all()
+        assert len(bills) == 0
+
+    def test_filter_combination(self):
+        """Test filtering by multiple criteria"""
+
+        self.post_project("raclette")
+
+        # add members
+        self.client.post("/raclette/members/add", data={"name": "Alice"})
+        self.client.post("/raclette/members/add", data={"name": "Bob"})
+
+        # create bills
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2024-03-01",
+                "what": "Cheese",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "bill_type": "Expense",
+                "amount": "15.0",
+            },
+        )
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2024-03-05",
+                "what": "Wine",
+                "payer": 2,
+                "payed_for": [1, 2],
+                "bill_type": "Expense",
+                "amount": "25.0",
+            },
+        )
+
+        # only alice's cheese should match
+        bills = models.Bill.query.filter(
+            models.Bill.payer_id == 1, models.Bill.amount <= 20
+        ).all()
+        assert len(bills) == 1
+        assert bills[0].what == "Cheese"
+
+        # no bills match
+        bills = models.Bill.query.filter(
+            models.Bill.payer_id == 2, models.Bill.amount <= 20
+        ).all()
+        assert len(bills) == 0
+
+
 class TestEmailFailure(IhatemoneyTestCase):
     def test_creation_email_failure_smtp(self):
         self.login("raclette")

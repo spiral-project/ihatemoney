@@ -670,12 +670,50 @@ def list_bills():
     ):
         bill_form.payed_for.data = session["last_selected_payed_for"][g.project.id]
 
-    # Each item will be a (weight_sum, Bill) tuple.
-    # TODO: improve this awkward result using column_property:
-    # https://docs.sqlalchemy.org/en/14/orm/mapped_sql_expr.html.
-    weighted_bills = g.project.get_bill_weights_ordered().paginate(
-        per_page=100, error_out=True
-    )
+    # filters from form
+    filters = {
+        "search": request.args.get("search", "").strip(),
+        "date_from": request.args.get("date_from", "").strip(),
+        "date_to": request.args.get("date_to", "").strip(),
+        "amount_min": request.args.get("amount_min", "").strip(),
+        "amount_max": request.args.get("amount_max", "").strip(),
+        "payer": request.args.get("payer", "").strip(),
+    }
+
+    filters_active = any(filters.values())
+
+    # standard query if no filters are active
+    if not filters_active:
+        # Each item will be a (weight_sum, Bill) tuple.
+        # TODO: improve this awkward result using column_property:
+        # https://docs.sqlalchemy.org/en/14/orm/mapped_sql_expr.html.
+        weighted_bills = g.project.get_bill_weights_ordered().paginate(per_page=100, error_out=True)
+    else:
+        query = Bill.query.join(Person).filter(Person.project_id == g.project.id)
+
+        if filters["search"]:
+            query = query.filter(Bill.what.ilike(f'%{filters["search"]}%'))
+
+        if filters["date_from"]:
+            query = query.filter(Bill.date >= datetime.datetime.strptime(filters["date_from"], '%Y-%m-%d').date())
+
+        if filters["date_to"]:
+            query = query.filter(Bill.date <= datetime.datetime.strptime(filters["date_to"], '%Y-%m-%d').date())
+
+        if filters["amount_min"]:
+            query = query.filter(Bill.amount >= float(filters["amount_min"]))
+
+        if filters["amount_max"]:
+            query = query.filter(Bill.amount <= float(filters["amount_max"]))
+
+        if filters["payer"]:
+            query = query.filter(Bill.payer_id == filters["payer"])
+
+        filtered_bill_ids = query.with_entities(Bill.id).all()
+
+        bills_query = g.project.get_bill_weights().filter(Bill.id.in_([bill.id for bill in filtered_bill_ids]))
+        bills_query = g.project.order_bills(bills_query)
+        weighted_bills = bills_query.paginate(per_page=100, error_out=True)
 
     return render_template(
         "list_bills.html",
@@ -685,6 +723,8 @@ def list_bills():
         csrf_form=csrf_form,
         add_bill=request.values.get("add_bill", False),
         current_view="list_bills",
+        search_active=filters_active,
+        **filters  # Unpack filter values for template use
     )
 
 
