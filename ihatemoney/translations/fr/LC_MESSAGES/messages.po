@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2026-01-18 21:37+0100\n"
-"PO-Revision-Date: 2023-07-29 13:07+0000\n"
-"Last-Translator: Baptiste <weblate@bitsofnetworks.org>\n"
+"PO-Revision-Date: 2026-02-01 10:01+0000\n"
+"Last-Translator: Jojo144 <jojo144@girole.fr>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/i-"
+"hate-money/fr/>\n"
 "Language: fr\n"
-"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/i"
-"-hate-money/fr/>\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.16-dev\n"
 "Generated-By: Babel 2.16.0\n"
 
 #, python-format
@@ -75,11 +76,10 @@ msgstr ""
 "Ce projet ne peut pas être sans devise car il contient des factures "
 "utilisant des devises différentes."
 
-#, fuzzy
 msgid "Cannot change project currency because currency conversion is broken"
 msgstr ""
-"Choisir une devise par défaut permet d'activer la conversion de devises "
-"entre les factures"
+"Impossible de changer la devise du projet car la conversion de devise "
+"utilisée ne fonctionne plus"
 
 msgid "Compatible with Cospend"
 msgstr "Compatible avec Cospend"
@@ -161,9 +161,8 @@ msgstr "Un lien vers un document, lié à cette facture"
 msgid "For whom?"
 msgstr "Pour qui ?"
 
-#, fuzzy
 msgid "Bill Type"
-msgstr "Factures"
+msgstr "Type de dépense"
 
 msgid "Submit"
 msgstr "Valider"
@@ -177,7 +176,7 @@ msgstr "Devise du projet : %(currency)s"
 
 #, python-format
 msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
-msgstr ""
+msgstr "Échec de la conversion de %(bill_currency)s en %(project_currency)s"
 
 msgid "Name"
 msgstr "Nom"
@@ -378,17 +377,15 @@ msgstr "La facture a été modifiée"
 msgid "%(lang)s is not a supported language"
 msgstr "La langue %(lang)s n'est pas prise en charge"
 
-#, fuzzy
 msgid "Error creating settlement bill"
-msgstr "Erreur lors de la suppression de la facture"
+msgstr "Erreur lors de la création du remboursement"
 
 #, fuzzy
 msgid "Settlement"
 msgstr "Remboursements"
 
-#, fuzzy
 msgid "Settlement bill has been successfully added"
-msgstr "La facture a bien été ajoutée"
+msgstr "Le remboursement a bien été ajouté"
 
 msgid "Error deleting project history"
 msgstr "Erreur lors de la suppression de l'historique du projet"
@@ -532,7 +529,7 @@ msgid "Edit this participant"
 msgstr "Modifier un⋅e participant⋅e"
 
 msgid "Save"
-msgstr ""
+msgstr "Enregistrer"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "marie@site.com, jean.dupont@exemple.com"
@@ -610,30 +607,25 @@ msgstr ""
 "débiteur⋅ices"
 
 msgid "Details of the bill (before the change)"
-msgstr ""
+msgstr "Détail de la facture (avant le changement)"
 
-#, fuzzy
 msgid "Details of the bill"
-msgstr "Éditer cette facture"
+msgstr "Détails de la facture"
 
-#, fuzzy
 msgid "Date:"
-msgstr "Date"
+msgstr "Date :"
 
-#, fuzzy
 msgid "Payer:"
-msgstr "Payeur"
+msgstr "Qui a payé :"
 
-#, fuzzy
 msgid "Amount:"
-msgstr "Montant"
+msgstr "Montant :"
 
 msgid "Owers:"
-msgstr ""
+msgstr "Pour qui :"
 
-#, fuzzy
 msgid "External link:"
-msgstr "Lien externe"
+msgstr "Lien externe :"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
@@ -1023,9 +1015,8 @@ msgstr "Qui doit payer ?"
 msgid "To whom?"
 msgstr "Pour qui ?"
 
-#, fuzzy
 msgid "Settled?"
-msgstr "Remboursements"
+msgstr "Remboursement ?"
 
 msgid "Click here to record that the money transfer has been done"
 msgstr ""
@@ -1045,16 +1036,14 @@ msgstr "réactiver"
 msgid "Paid"
 msgstr "A payé"
 
-#, fuzzy
 msgid "Expenses"
-msgstr "Dépenses par mois"
+msgstr "Dépenses"
 
 msgid "Direct transfer"
 msgstr ""
 
-#, fuzzy
 msgid "Received"
-msgstr "réactiver"
+msgstr "Reçu"
 
 #, fuzzy
 msgid "Expenses by month"
@@ -1461,4 +1450,3 @@ msgstr "Période"
 
 #~ msgid "Spent"
 #~ msgstr "A dépensé"
-
