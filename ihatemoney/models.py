@@ -76,7 +76,7 @@ class Project(db.Model):
     id = db.Column(db.String(64), primary_key=True)
 
     name = db.Column(db.UnicodeText)
-    password = db.Column(db.String(128))
+    password = db.Column(db.String(256))
     contact_email = db.Column(db.String(128))
     logging_preference = db.Column(
         db.Enum(LoggingMode),
