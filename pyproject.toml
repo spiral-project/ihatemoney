@@ -55,7 +55,7 @@ database = [
     "PyMySQL~=1.1.2",
 ]
 dev = [
-    "ruff~=0.14.13",
+    "ruff>=0.14.13,<0.16.0",
     "isort~=7.0.0",
     "vermin~=1.8.0",
     "pytest~=9.0.2",
