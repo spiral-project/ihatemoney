@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-18 21:37+0100\n"
+"POT-Creation-Date: 2026-03-02 23:07+0100\n"
 "PO-Revision-Date: 2023-12-12 13:05+0000\n"
 "Last-Translator: Jinx <me@qqays.xyz>\n"
 "Language: zh_Hans\n"
@@ -972,6 +972,10 @@ msgstr "解决"
 
 msgid "Click here to record that the money transfer has been done"
 msgstr ""
+
+#, fuzzy
+msgid "Register settlement"
+msgstr "解决"
 
 msgid "Who?"
 msgstr "谁？"

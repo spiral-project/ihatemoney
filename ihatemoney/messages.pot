@@ -938,6 +938,9 @@ msgstr ""
 msgid "Click here to record that the money transfer has been done"
 msgstr ""
 
+msgid "Register settlement"
+msgstr ""
+
 msgid "Who?"
 msgstr ""
 

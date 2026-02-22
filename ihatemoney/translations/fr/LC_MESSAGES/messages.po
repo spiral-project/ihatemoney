@@ -7,17 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-01-18 21:37+0100\n"
+"POT-Creation-Date: 2026-03-02 23:07+0100\n"
 "PO-Revision-Date: 2026-02-01 10:01+0000\n"
 "Last-Translator: Jojo144 <jojo144@girole.fr>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/i-"
-"hate-money/fr/>\n"
 "Language: fr\n"
+"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/fr/>\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.16-dev\n"
 "Generated-By: Babel 2.16.0\n"
 
 #, python-format
@@ -1021,6 +1020,10 @@ msgstr "Remboursement ?"
 msgid "Click here to record that the money transfer has been done"
 msgstr ""
 
+#, fuzzy
+msgid "Register settlement"
+msgstr "Remboursements"
+
 msgid "Who?"
 msgstr "Qui ?"
 
@@ -1450,3 +1453,4 @@ msgstr "Période"
 
 #~ msgid "Spent"
 #~ msgstr "A dépensé"
+
