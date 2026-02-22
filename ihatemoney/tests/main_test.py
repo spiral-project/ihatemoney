@@ -364,6 +364,27 @@ class TestEmailFailure(IhatemoneyTestCase):
             assert "Invite people to join this project" in resp.data.decode("utf-8")
 
 
+class TestDefaultHashMethod(IhatemoneyTestCase):
+    PASSWORD_HASH_METHOD = None
+    PASSWORD_HASH_SALT_LENGTH = None
+
+    def test_project_creation(self):
+        self.create_project("raclette")
+        resp = self.login("raclette")
+        assert (
+            "<title>I Hate Money — Account manager - raclette</title>"
+            in resp.data.decode("utf-8")
+        )
+
+    def test_project_creation_post(self):
+        self.post_project("raclette")
+        resp = self.login("raclette")
+        assert (
+            "<title>I Hate Money — Account manager - raclette</title>"
+            in resp.data.decode("utf-8")
+        )
+
+
 class TestCaptcha(IhatemoneyTestCase):
     ENABLE_CAPTCHA = True
 
