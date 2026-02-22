@@ -13,6 +13,7 @@ class BaseTestCase:
         "TESTING_SQLALCHEMY_DATABASE_URI", "sqlite://"
     )
     ENABLE_CAPTCHA = False
+    # Set very low iteration count to speed up tests.
     PASSWORD_HASH_METHOD = "pbkdf2:sha1:1"
     PASSWORD_HASH_SALT_LENGTH = 1
 
