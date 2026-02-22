@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-18 21:37+0100\n"
+"POT-Creation-Date: 2026-03-02 23:07+0100\n"
 "PO-Revision-Date: 2022-02-13 16:54+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language: nb_NO\n"
@@ -1058,6 +1058,10 @@ msgstr "Gjør opp"
 
 msgid "Click here to record that the money transfer has been done"
 msgstr ""
+
+#, fuzzy
+msgid "Register settlement"
+msgstr "Gjør opp"
 
 msgid "Who?"
 msgstr "Hvem?"

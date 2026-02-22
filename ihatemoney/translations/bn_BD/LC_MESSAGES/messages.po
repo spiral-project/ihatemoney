@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-01-30 18:19+0100\n"
+"POT-Creation-Date: 2026-03-02 23:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: bn_BD\n"
@@ -967,6 +967,9 @@ msgid "Settled?"
 msgstr ""
 
 msgid "Click here to record that the money transfer has been done"
+msgstr ""
+
+msgid "Register settlement"
 msgstr ""
 
 msgid "Who?"

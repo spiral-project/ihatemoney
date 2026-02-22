@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-18 21:37+0100\n"
+"POT-Creation-Date: 2026-03-02 23:07+0100\n"
 "PO-Revision-Date: 2021-10-01 20:35+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language: eo\n"
@@ -1019,6 +1019,10 @@ msgstr "Bilanco"
 
 msgid "Click here to record that the money transfer has been done"
 msgstr ""
+
+#, fuzzy
+msgid "Register settlement"
+msgstr "Bilanco"
 
 msgid "Who?"
 msgstr "Kiu?"

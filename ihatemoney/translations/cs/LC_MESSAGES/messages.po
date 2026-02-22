@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-18 21:37+0100\n"
+"POT-Creation-Date: 2026-03-02 23:07+0100\n"
 "PO-Revision-Date: 2023-12-01 14:58+0000\n"
 "Last-Translator: Clonewayx <fillip1@seznam.cz>\n"
 "Language: cs\n"
@@ -1001,6 +1001,10 @@ msgstr "Vyrovnat účty"
 
 msgid "Click here to record that the money transfer has been done"
 msgstr ""
+
+#, fuzzy
+msgid "Register settlement"
+msgstr "Vyrovnat účty"
 
 msgid "Who?"
 msgstr "Kdo?"

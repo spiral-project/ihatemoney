@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-18 21:37+0100\n"
+"POT-Creation-Date: 2026-03-02 23:07+0100\n"
 "PO-Revision-Date: 2023-09-17 16:59+0000\n"
 "Last-Translator: Mihail Iosilevitch <yosik@tutanota.com>\n"
 "Language: ru\n"
@@ -1020,6 +1020,10 @@ msgstr "Взаиморасчёт"
 
 msgid "Click here to record that the money transfer has been done"
 msgstr ""
+
+#, fuzzy
+msgid "Register settlement"
+msgstr "Взаиморасчёт"
 
 msgid "Who?"
 msgstr "Кто?"
