@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-18 21:37+0100\n"
-"PO-Revision-Date: 2025-12-29 23:00+0000\n"
+"PO-Revision-Date: 2026-02-27 13:09+0000\n"
 "Last-Translator: Jokin <jokin_pedre@hotmail.com>\n"
+"Language-Team: Basque <https://hosted.weblate.org/projects/i-hate-money/i-"
+"hate-money/eu/>\n"
 "Language: eu\n"
-"Language-Team: Basque <https://hosted.weblate.org/projects/i-hate-money/i"
-"-hate-money/eu/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.16.1-dev\n"
 "Generated-By: Babel 2.16.0\n"
 
 #, python-format
@@ -67,9 +67,8 @@ msgstr ""
 "Proiektu hau ezin da \"monetarik gabe\" ezarri, hainbat monetatan dauden "
 "kontuak dituelako."
 
-#, fuzzy
 msgid "Cannot change project currency because currency conversion is broken"
-msgstr "Moneta bat lehenesteak aktibatzen du kontuen arteko moneta aldaketa"
+msgstr "Ezin da proiektuaren moneta aldatu, dibisa bihurketa hautsita dagoelako"
 
 msgid "Compatible with Cospend"
 msgstr "Cospend-ekin bateragarria"
@@ -152,7 +151,7 @@ msgid "For whom?"
 msgstr "Norentzat?"
 
 msgid "Bill Type"
-msgstr ""
+msgstr "Kontu mota"
 
 msgid "Submit"
 msgstr "Bidali"
@@ -166,7 +165,7 @@ msgstr "Proiekturako lehenetsita: %(currency)s"
 
 #, python-format
 msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
-msgstr ""
+msgstr "Ezin izan da %(bill_currency)s aldatu %(project_currency)s-etara"
 
 msgid "Name"
 msgstr "Izena"
@@ -299,261 +298,264 @@ msgstr ""
 "proiektu bati"
 
 msgid "Project successfully uploaded"
-msgstr ""
+msgstr "Egoki kargatu da proiektua"
 
 msgid "Project successfully deleted"
-msgstr ""
+msgstr "Egoki ezabatu da proiektua"
 
 msgid "Error deleting project"
-msgstr ""
+msgstr "Ezin izan da proiektua ezabatu"
 
 msgid "Unable to logout"
-msgstr ""
+msgstr "Ezin izan da saioa itxi"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
-msgstr ""
+msgstr "Gonbidatu zaituzte gastuak partekatzera %(project)s proiektuan"
 
 msgid "Your invitations have been sent"
-msgstr ""
+msgstr "Gonbidapenak bidali dira"
 
 msgid "Sorry, there was an error while trying to send the invitation emails."
-msgstr ""
+msgstr "Tamalez, akats bat egon da gonpidapenak bidaltzean."
 
 #, python-format
 msgid "%(member)s has been added"
-msgstr ""
+msgstr "%(member)s gehitu da"
 
 msgid "Error activating participant"
-msgstr ""
+msgstr "Ezin izan da parte hartzailea aktibatu"
 
 #, python-format
 msgid "%(name)s is part of this project again"
-msgstr ""
+msgstr "%(name)s proiektuaren parte da berriz ere"
 
 msgid "Error removing participant"
-msgstr ""
+msgstr "Ezin izan da parte hartzailea ezabatu"
 
 #, python-format
 msgid ""
 "Participant '%(name)s' has been deactivated. It will still appear in the "
 "list until its balance reach zero."
 msgstr ""
+"%(name)s desaktibatu egin da. Zerrendan agertuko da balantzea zero izan arte."
 
 #, python-format
 msgid "Participant '%(name)s' has been removed"
-msgstr ""
+msgstr "%(name)s ezabatu da"
 
 #, python-format
 msgid "Participant '%(name)s' has been modified"
-msgstr ""
+msgstr "%(name)s aldatu da"
 
 msgid "The bill has been added"
-msgstr ""
+msgstr "Kontua gehitu da"
 
 msgid "Error deleting bill"
-msgstr ""
+msgstr "Ezin izan da kontua ezabatu"
 
 msgid "The bill has been deleted"
-msgstr ""
+msgstr "Kontua ezabatu da"
 
 msgid "The bill has been modified"
-msgstr ""
+msgstr "Kontua aldatu da"
 
 #, python-format
 msgid "%(lang)s is not a supported language"
-msgstr ""
+msgstr "%(lang)s ez da baliozko hizkuntza bat"
 
 msgid "Error creating settlement bill"
-msgstr ""
+msgstr "Ezin izan da likidazio kontua sortu"
 
 msgid "Settlement"
-msgstr ""
+msgstr "Likidazioa"
 
 msgid "Settlement bill has been successfully added"
-msgstr ""
+msgstr "Likidazio kontua ongi gehitu da"
 
 msgid "Error deleting project history"
-msgstr ""
+msgstr "Ezin izan da proiektuaren historia ezabatu"
 
 msgid "Deleted project history."
-msgstr ""
+msgstr "Proiektuaren historia ezabatu da."
 
 msgid "Error deleting recorded IP addresses"
-msgstr ""
+msgstr "Ezin izan dira ezabatu gordetako IP helbideak"
 
 msgid "Deleted recorded IP addresses in project history."
-msgstr ""
+msgstr "Gordetako IP helbideak proiektuaren historiatik ezabatu dira."
 
 msgid "Sorry, we were unable to find the page you've asked for."
-msgstr ""
+msgstr "Tamalez, ezin izan dugu bilatzen duzun orrialdea topatu."
 
 msgid "The best thing to do is probably to get back to the main page."
-msgstr ""
+msgstr "Hobe duzu hasierako orrialdera bueltatu."
 
 msgid "Back to the list"
-msgstr ""
+msgstr "Bueltatu zerrendara"
 
 msgid "Administration tasks are currently disabled."
-msgstr ""
+msgstr "Administrazio zereginak ez daude gaituta."
 
 msgid "Authentication"
-msgstr ""
+msgstr "Autentifikazioa"
 
 msgid "The project you are trying to access do not exist, do you want to"
-msgstr ""
+msgstr "Proiektua ez da existitzen"
 
 msgid "create it"
-msgstr ""
+msgstr "sortu nahi duzu"
 
 msgid "?"
-msgstr ""
+msgstr "?"
 
 msgid "Create a new project"
-msgstr ""
+msgstr "Proiektu berria sortu"
 
 msgid "Project"
-msgstr ""
+msgstr "Proiektua"
 
 msgid "Number of participants"
-msgstr ""
+msgstr "Parte hartzaile kopurua"
 
 msgid "Number of bills"
-msgstr ""
+msgstr "Kontu kopurua"
 
 msgid "Newest bill"
-msgstr ""
+msgstr "Kontu berriena"
 
 msgid "Oldest bill"
-msgstr ""
+msgstr "Kontu zaharrena"
 
 msgid "Actions"
-msgstr ""
+msgstr "Ekintzak"
 
 msgid "edit"
-msgstr ""
+msgstr "editatu"
 
 msgid "Delete project"
-msgstr ""
+msgstr "Proiektua ezabatu"
 
 msgid "show"
-msgstr ""
+msgstr "erakutsi"
 
 msgid "The Dashboard is currently deactivated."
-msgstr ""
+msgstr "Aginte-mahaia ez dago gaituta."
 
 msgid "Download Mobile Application"
-msgstr ""
+msgstr "Deskargatu mugikorreko aplikazioa"
 
 msgid "Get it on"
-msgstr ""
+msgstr "Eskuratu hemen:"
 
 msgid "Edit project"
-msgstr ""
+msgstr "Proiektua editatu"
 
 msgid "Import project"
-msgstr ""
+msgstr "Proiektua inportatu"
 
 msgid "Download project's data"
-msgstr ""
+msgstr "Deskargatu proiektuaren datuak"
 
 msgid "Bill items"
-msgstr ""
+msgstr "Kontuaren gaiak"
 
 msgid "Download the list of bills with owner, amount, reason,... "
-msgstr ""
+msgstr "Deskargatu kontuen zerrenda jabe, kopuru, deskribapen eta abarrekin. "
 
 msgid "Settle plans"
-msgstr ""
+msgstr "Likidazio planak"
 
 msgid "Download the list of transactions needed to settle the current bills."
-msgstr ""
+msgstr "Deskargatu beharrezko transakzio zerrenda kontuak likidatzeko."
 
 msgid "Can't remember the password?"
-msgstr ""
+msgstr "Pasahitza ahaztu duzu?"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Bertan behera utzi"
 
 msgid "Privacy Settings"
-msgstr ""
+msgstr "Pribatutasun ezarpenak"
 
 msgid "Save changes"
-msgstr ""
+msgstr "Gorde aldaketak"
 
 msgid "This will remove all bills and participants in this project!"
-msgstr ""
+msgstr "Proiektuaren parte hartzaile eta kontu guztiak ezabatuko dira!"
 
 msgid "Import previously exported project"
-msgstr ""
+msgstr "Inportatu aurretik esportatutako proiektua"
 
 msgid "Choose file"
-msgstr ""
+msgstr "Fitxategia aukeratu"
 
 msgid "Edit this bill"
-msgstr ""
+msgstr "Kontua editatu"
 
 msgid "Add a bill"
-msgstr ""
+msgstr "Kontua gehitu"
 
 msgid "Simple operations are allowed, e.g. (18+36.2)/3"
-msgstr ""
+msgstr "Eragiketa sinpleak onartzen dira. Adibidez, (18+36.2)/3"
 
 msgid "Everyone"
-msgstr ""
+msgstr "Mundu guztia"
 
 msgid "No one"
-msgstr ""
+msgstr "Inor ez"
 
 msgid "More options"
-msgstr ""
+msgstr "Aukera gehiago"
 
 msgid "Add participant"
-msgstr ""
+msgstr "Gehitu parte hartzailea"
 
 msgid "Edit this participant"
-msgstr ""
+msgstr "Editatu parte hartzailea"
 
 msgid "Save"
-msgstr ""
+msgstr "Gorde"
 
 msgid "john.doe@example.com, mary.moe@site.com"
-msgstr ""
+msgstr "maritxu.norazoaz@adibidea.eus, kaixo.maitea@ni.eus"
 
 msgid "Download"
-msgstr ""
+msgstr "Deskargatu"
 
 msgid "Disabled Project History"
-msgstr ""
+msgstr "Proiektuaren historia ez dago gaituta"
 
 msgid "Disabled Project History & IP Address Recording"
-msgstr ""
+msgstr "Proiektuaren historia eta IP helbideen grabazioa ez daude gaituta"
 
 msgid "Enabled Project History"
-msgstr ""
+msgstr "Poriektuaren historia gaituta dago"
 
 msgid "Disabled IP Address Recording"
-msgstr ""
+msgstr "IP helbideen grabazioa ez dago gaituta"
 
 msgid "Enabled Project History & IP Address Recording"
-msgstr ""
+msgstr "Proiektuaren historia eta IP helbideen grabazioa gaituta daude"
 
 msgid "Enabled IP Address Recording"
-msgstr ""
+msgstr "IP helbidearen grabazioa gaituta dago"
 
 msgid "History Settings Changed"
-msgstr ""
+msgstr "Historiaren ezarpenak aldatu egin dira"
 
 #, python-format
 msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
 msgstr ""
+"%(name)s kontua: %(property_name)s aldatu egin da %(before)s-(e)tik %(after)"
+"s-(e)ra"
 
 #, python-format
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
-msgstr ""
+msgstr "%(name)s kontua: %(property_name)s aldatu egin da %(after)s-(e)ra"
 
 msgid "Confirm Remove IP Adresses"
-msgstr ""
+msgstr "Baieztatu IP helbideen ezabatzea"
 
 msgid ""
 "Are you sure you want to delete all recorded IP addresses from this "
@@ -561,362 +563,377 @@ msgid ""
 "                The rest of the project history will be unaffected. This "
 "action cannot be undone."
 msgstr ""
+"Ziur zaude proiektu honetan gordetako IP helbide guztiak ezabatu nahi "
+"dituzula?\n"
+"                Gainerako historiak ez du aldaketarik jasango. Eragiketa hau "
+"ezin da desegin."
 
 msgid "Confirm deletion"
-msgstr ""
+msgstr "Baieztatu ezabatzea"
 
 msgid "Close"
-msgstr ""
+msgstr "Itxi"
 
 msgid "Delete Confirmation"
-msgstr ""
+msgstr "Ezabatzearen egiaztapena"
 
 msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
 msgstr ""
+"Ziur zaude proiektuaren historia guztia ezabatu nahi duzula? Ekintza hau "
+"ezin da desegin."
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
-msgstr ""
+msgstr "%(name)s kontua: %(owers_list_str)s geitu da zordunen zerrendara"
 
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
-msgstr ""
+msgstr "%(name)s kontua: %(owers_list_str)s ezabatu da zordunen kontutik"
 
 msgid "Details of the bill (before the change)"
-msgstr ""
+msgstr "Kontuaren xehetasunak (aldaketa baino lehen)"
 
 msgid "Details of the bill"
-msgstr ""
+msgstr "Kontuaren xehetasunak"
 
 msgid "Date:"
-msgstr ""
+msgstr "Data:"
 
 msgid "Payer:"
-msgstr ""
+msgstr "Ordaintzailea:"
 
 msgid "Amount:"
-msgstr ""
+msgstr "Kopurua:"
 
 msgid "Owers:"
-msgstr ""
+msgstr "Zordunak:"
 
-#, fuzzy
 msgid "External link:"
-msgstr "Kanpoko esteka"
+msgstr "Kanpoko esteka:"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
+"Proiektuaren historia ez dago gaituta. Ekintza berriak ez dira agertuko "
+"azpian."
 
 msgid "You can enable history on the settings page."
-msgstr ""
+msgstr "Historia gaitu dezakezu ezarpenetan."
 
 msgid ""
 "The table below reflects actions recorded prior to disabling project "
 "history."
 msgstr ""
+"Ondorengo taulak jasotzen dituen ekintzak proiektuaren historia desgaitu "
+"baino lehenagokoak dira."
 
 msgid "You can clear the project history to remove them."
-msgstr ""
+msgstr "Garbitzeko, proiektuaren historia ezaba dezakezu."
 
 msgid ""
 "Some entries below contain IP addresses, even though this project has IP "
 "recording disabled. "
 msgstr ""
+"Ondorengo sarreretako batzuek IP helbideak dituzte, nahiz eta proiektuak IP "
+"helbideen grabazioa gaituta ez izan. "
 
 msgid "Delete stored IP addresses"
-msgstr ""
+msgstr "Gordetako IP helbideak ezabatu"
 
 msgid "No IP Addresses to erase"
-msgstr ""
+msgstr "Ez dago IP helbiderik ezabatzeko"
 
 msgid "Delete Stored IP Addresses"
-msgstr ""
+msgstr "Ezabatu gordetako IP helbideak"
 
 msgid "No history to erase"
-msgstr ""
+msgstr "Ez dago historiarik ezabatzeko"
 
 msgid "Clear Project History"
-msgstr ""
+msgstr "Ezabatu proiektuaren historia"
 
 msgid "Time"
-msgstr ""
+msgstr "Ordua"
 
 msgid "Event"
-msgstr ""
+msgstr "Ekintza"
 
 msgid "IP address recording can be enabled on the settings page"
-msgstr ""
+msgstr "IP helbdieen grabazioa gaitu daiteke ezarpenetan"
 
 msgid "IP address recording can be disabled on the settings page"
-msgstr ""
+msgstr "IP helbideen grabazioa desgaitu daiteke ezarpenetan"
 
 msgid "From IP"
-msgstr ""
+msgstr "Jatorrizko IPa"
 
 #, python-format
 msgid "Project %(name)s added"
-msgstr ""
+msgstr "%(name)s proiektua gehitu da"
 
 #, python-format
 msgid "Bill %(name)s added"
-msgstr ""
+msgstr "%(name)s kontua gehitu da"
 
 #, python-format
 msgid "Participant %(name)s added"
-msgstr ""
+msgstr "%(name)s parte hartzailea gehitu da"
 
 msgid "Project private code changed"
-msgstr ""
+msgstr "Proiektuaren kode pribatua aldatu egin da"
 
 #, python-format
 msgid "Project renamed to %(new_project_name)s"
-msgstr ""
+msgstr "Proiektuaren izen berria ezarri da: %(new_project_name)s"
 
 #, python-format
 msgid "Project contact email changed to %(new_email)s"
-msgstr ""
+msgstr "Proiektuaren helbide elektronikoa aldatu da: %(new_email)s"
 
 msgid "Project settings modified"
-msgstr ""
+msgstr "Proiektuaren ezarpenak aldatu egin dira"
 
 #, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
-msgstr ""
+msgstr "%(name)s kontuaren izena aldatu egin da: %(new_description)s"
 
 msgid "Payer"
-msgstr ""
+msgstr "Ordaintzailea"
 
 msgid "Amount"
-msgstr ""
+msgstr "Kopurua"
 
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #, python-format
 msgid "Amount in %(currency)s"
-msgstr ""
+msgstr "Kopurua %(currency)s-(e)tan"
 
 #, python-format
 msgid "Bill %(name)s modified"
-msgstr ""
+msgstr "%(name)s kontua aldatu egin da"
 
 #, python-format
 msgid "Participant %(name)s deactivated"
-msgstr ""
+msgstr "%(name)s parte hartzailea desgaitu egin da"
 
 #, python-format
 msgid "Participant %(name)s reactivated"
-msgstr ""
+msgstr "%(name)s parte hartzailea birgaitu egin da"
 
 #, python-format
 msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr ""
+msgstr "%(name)s parte hartzailearen izena aldatu egin da: %(new_name)s"
 
 #, python-format
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
 msgstr ""
+"%(name)s parte hartzailea: pisua aldatu egin da %(old_weight)s-(e)tik %"
+"(new_weight)s-(e)ra"
 
 #, python-format
 msgid "Participant %(name)s modified"
-msgstr ""
+msgstr "%(name)s parte hartzailearen izena aldatu egin da"
 
 #, python-format
 msgid "Bill %(name)s removed"
-msgstr ""
+msgstr "%(name)s kontua ezabatu egin da"
 
 #, python-format
 msgid "Participant %(name)s removed"
-msgstr ""
+msgstr "%(name)s parte hartzailea ezabatu egin da"
 
 #, python-format
 msgid "Project %(name)s changed in an unknown way"
-msgstr ""
+msgstr "%(name)s proiektua aldatu egin da era ezezagunean"
 
 #, python-format
 msgid "Bill %(name)s changed in an unknown way"
-msgstr ""
+msgstr "%(name)s kontua aldatu egin da era ezezagunean"
 
 #, python-format
 msgid "Participant %(name)s changed in an unknown way"
-msgstr ""
+msgstr "%(name)s parte hartzailearen izena aldatu egin da era ezezagunean"
 
 msgid "Nothing to list"
-msgstr ""
+msgstr "Ez dago ezer zerrendatzeko"
 
 msgid "Someone probably cleared the project history."
-msgstr ""
+msgstr "Litekeena da norbaitek proiektuaren historia ezabatu izana."
 
 msgid "Manage your shared <br />expenses, easily"
-msgstr ""
+msgstr "Kudeatu erraz <br />partekatutako gastuak"
 
 msgid "Try out the demo"
-msgstr ""
+msgstr "Probatu demoa"
 
 msgid "You're sharing a house?"
-msgstr ""
+msgstr "Etxea partekatzen duzu?"
 
 msgid "Going on holidays with friends?"
-msgstr ""
+msgstr "Oporretan joango zara lagunekin?"
 
 msgid "Simply sharing money with others?"
-msgstr ""
+msgstr "Gastuak beste batzuekin partekatzen dituzu?"
 
 msgid "We can help!"
-msgstr ""
+msgstr "Lagundu dezakegu!"
 
 msgid "Log in to an existing project"
-msgstr ""
+msgstr "Saioa hasi dagoeneko existitzen den proiektu batean"
 
 msgid "Log in"
-msgstr ""
+msgstr "Saioa hasi"
 
 msgid "can't remember your password?"
-msgstr ""
+msgstr "pasahitza ahaztu duzu?"
 
 msgid "Create"
-msgstr ""
+msgstr "Sortu"
 
 msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
-msgstr ""
+msgstr "Ez berrerabili pasahitzik. Aukeratu kode pribatu bat eta lagunei bidali"
 
 msgid "Account manager"
-msgstr ""
+msgstr "Kontu kudeatzailea"
 
 msgid "Bills"
-msgstr ""
+msgstr "Kontuak"
 
 msgid "Settle"
-msgstr ""
+msgstr "Likidatu"
 
 msgid "Statistics"
-msgstr ""
+msgstr "Estatistikak"
 
 msgid "Languages"
-msgstr ""
+msgstr "Hizkuntzak"
 
 msgid "Projects"
-msgstr ""
+msgstr "Proiektuak"
 
 msgid "Start a new project"
-msgstr ""
+msgstr "Proiektu berria hasi"
 
 msgid "History"
-msgstr ""
+msgstr "Historia"
 
 msgid "Settings"
-msgstr ""
+msgstr "Ezarpenak"
 
 msgid "RSS Feed"
-msgstr ""
+msgstr "RSS kanala"
 
 msgid "Other projects :"
-msgstr ""
+msgstr "Beste proiektuak:"
 
 msgid "switch to"
-msgstr ""
+msgstr "aldatu hona:"
 
 msgid "Dashboard"
-msgstr ""
+msgstr "Aginte-mahaia"
 
 #, python-format
 msgid "Please retry after %(date)s."
-msgstr ""
+msgstr "Mesedez saiatu %(date)s eta gero."
 
 msgid "Code"
-msgstr ""
+msgstr "Kodea"
 
 msgid "Mobile Application"
-msgstr ""
+msgstr "Mugikorreko aplikazioa"
 
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentazioa"
 
 msgid "Administration Dashboard"
-msgstr ""
+msgstr "Kudeaketa aginte-panela"
 
 msgid "Legal information"
-msgstr ""
+msgstr "Informazio legala"
 
 msgid "\"I hate money\" is free software"
-msgstr ""
+msgstr "\"I hate money\" software librea da"
 
 msgid "you can contribute and improve it!"
-msgstr ""
+msgstr "Hobetzen lagundu dezakezu!"
 
 #, python-format
 msgid "%(amount)s each"
-msgstr ""
+msgstr "bakoitzak %(amount)s"
 
 msgid "you sure?"
-msgstr ""
+msgstr "Seguru zaude?"
 
 msgid "Invite people"
-msgstr ""
+msgstr "Jendea gonbidatu"
 
 msgid "Newer bills"
-msgstr ""
+msgstr "Kontu berriagoak"
 
 msgid "Older bills"
-msgstr ""
+msgstr "Kontu zaharragoak"
 
 msgid "You should start by adding participants"
-msgstr ""
+msgstr "Hasteko, parte hartzaileak gehitu beharko zenituzke"
 
 msgid "Add a new bill"
-msgstr ""
+msgstr "Kontu berria gehitu"
 
 msgid "For what?"
-msgstr ""
+msgstr "Zer?"
 
 #, python-format
 msgid "Added on %(date)s"
-msgstr ""
+msgstr "%(date)s-an gehituta"
 
 #, python-format
 msgid "Everyone but %(excluded)s"
-msgstr ""
+msgstr "%(excluded)s izan ezik"
 
 msgid "delete"
-msgstr ""
+msgstr "ezabatu"
 
 msgid "No bills"
-msgstr ""
+msgstr "Konturik ez"
 
 msgid "Nothing to list yet."
-msgstr ""
+msgstr "Ez dago ezer zerrendatzeko."
 
 msgid "Add your first bill"
-msgstr ""
+msgstr "Gehitu lehen kontua"
 
 msgid "Add the first participant"
-msgstr ""
+msgstr "Gehitu lehen parte hartzailea"
 
 msgid "Password reminder"
-msgstr ""
+msgstr "Pasahitz oroigarria"
 
 msgid ""
 "A link to reset your password has been sent to you, please check your "
 "emails."
 msgstr ""
+"Esteka bat bidali zaizu pasahitza berrezartzeko; mesedez, begiratu zure "
+"emailean."
 
 msgid "Return to home page"
-msgstr ""
+msgstr "Hasiera orrira itzali"
 
 msgid "Your projects"
-msgstr ""
+msgstr "Zure proiektuak"
 
 msgid "Reset your password"
-msgstr ""
+msgstr "Pasahitza berrezarri"
 
 msgid "Invite people to join this project"
-msgstr ""
+msgstr "Gonbidatu jendea proiektuan parte hartzera"
 
 msgid "Share an invitation link"
-msgstr ""
+msgstr "Partekatu gonbidapen esteka"
 
 msgid ""
 "The easiest way to invite people is to give them the following invitation"
@@ -924,24 +941,32 @@ msgid ""
 " add/edit/delete bills. However, they will not have access to important "
 "settings such as changing the private code or deleting the whole project."
 msgstr ""
+"Jendea gonbidatzeko modurik errazena gonbidapen esteka hau ematea da. <br />"
+"Proiektura sartu ahal izango dira, parte hartzaileak kudeatu, eta fakturak "
+"gehitu/editatu/ezabatu. Hala ere, ez dute ezarpen garrantzitsuetarako "
+"sarbiderik izango, hala nola kode pribatua aldatzea edo proiektu osoa "
+"ezabatzea."
 
 msgid "Scan QR code"
-msgstr ""
+msgstr "QR kodea eskaneatu"
 
 msgid "Use a mobile device with a compatible app."
-msgstr ""
+msgstr "Erabili mugikor bat bateragarria den aplikazio batekin."
 
 msgid "Send via Emails"
-msgstr ""
+msgstr "Emailez bidali"
 
 msgid ""
 "Specify a list of email adresses (separated by comma) of people you want "
 "to notify about the creation of this project. We will send them an email "
 "with the invitation link."
 msgstr ""
+"Zehaztu posta elektronikoko helbideen zerrenda bat (koma bidez bereizita) "
+"proiektu honen sorrerari buruz jakinarazteko. Mezu elektroniko bat bidaliko "
+"zaie gonbidapenaren estekarekin."
 
 msgid "Share Identifier & code"
-msgstr ""
+msgstr "Partekatu identifikagailua eta kodea"
 
 msgid ""
 "You can share the project identifier and the private code by any "
@@ -949,61 +974,64 @@ msgid ""
 "to the full project, including changing settings such as the private code"
 " or project email address, or even deleting the whole project."
 msgstr ""
+"Proiektuaren identifikatzailea eta kode pribatua partekatu ditzakezu edozein "
+"komunikabideren bidez.<br />Kode pribatua duen edonork proiektu osorako "
+"sarbidea izango du, ezarpenak aldatzeko aukera barne (hala nola kode "
+"pribatua edo proiektuaren helbide elektronikoa, edo proiektu osoa ezabatu)."
 
 msgid "Identifier:"
-msgstr ""
+msgstr "Identifikagailua:"
 
 msgid "Private code:"
-msgstr ""
+msgstr "Kode pribatua:"
 
 msgid "the private code was defined when you created the project"
-msgstr ""
+msgstr "Kode pribatua zehaztu zen proiektua sortzean"
 
 msgid "Who pays?"
-msgstr ""
+msgstr "Nork ordainduko du?"
 
 msgid "To whom?"
-msgstr ""
+msgstr "Nori?"
 
 msgid "Settled?"
-msgstr ""
+msgstr "Likidatuta?"
 
 msgid "Click here to record that the money transfer has been done"
-msgstr ""
+msgstr "Sakatu hemen transferentzia egin dela markatzeko"
 
 msgid "Who?"
-msgstr ""
+msgstr "Nork?"
 
 msgid "Balance"
-msgstr ""
+msgstr "Saldoa"
 
 msgid "deactivate"
-msgstr ""
+msgstr "desgaitu"
 
 msgid "reactivate"
-msgstr ""
+msgstr "birgaitu"
 
 msgid "Paid"
-msgstr ""
+msgstr "Ordainduta"
 
 msgid "Expenses"
-msgstr ""
+msgstr "Gastuak"
 
 msgid "Direct transfer"
-msgstr ""
+msgstr "Transferentzia zuzena"
 
 msgid "Received"
-msgstr ""
+msgstr "Jasota"
 
 msgid "Expenses by month"
-msgstr ""
+msgstr "Gastuak hilabeteko"
 
 msgid "Period"
-msgstr ""
+msgstr "Denbora tartea"
 
 #~ msgid "Spent"
 #~ msgstr ""
 
 #~ msgid "Expenses by Month"
 #~ msgstr ""
-
