@@ -508,6 +508,67 @@ class TestBudget(IhatemoneyTestCase):
         # try to delete an user already deleted
         self.client.post("/raclette/members/1/delete")
 
+    def test_deactivated_member_bill_display(self):
+        """Deactivated members should not appear as ghosts in the bill list.
+        """
+        self.post_project("raclette")
+        self.login("raclette")
+
+        # Create 5 members (enough to trigger "Everyone" display)
+        for name in ["user1", "user2", "user3", "user4", "user5"]:
+            self.client.post("/raclette/members/add", data={"name": name})
+
+        members = self.get_project("raclette").members
+        assert len(members) == 5
+        members_ids = [m.id for m in members]
+
+        # Add a bill with all 5 members as owers. It should show "Everyone"
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-08-10",
+                "what": "raclette",
+                "payer": members_ids[0],
+                "payed_for": members_ids,
+                "bill_type": "Expense",
+                "amount": "25",
+            },
+        )
+
+        result = self.client.get("/raclette/").data.decode("utf-8")
+        assert "Everyone" in result
+        assert "user1, user2, user3, user4, user5" not in result
+
+        # Deactivate user5
+        user5_id = members_ids[4]
+        self.client.post(f"/raclette/members/{user5_id}/delete")
+        assert len(self.get_project("raclette").active_members) == 4
+
+        # The existing bill (with all 5 owers) should still show "Everyone",
+        # not list user5 as a ghost
+        result = self.client.get("/raclette/").data.decode("utf-8")
+        assert "Everyone" in result
+        assert "Everyone but" not in result
+
+        # A new bill with only the 4 active members should also show "Everyone"
+        active_ids = [m.id for m in self.get_project("raclette").active_members]
+        self.client.post(
+            "/raclette/add",
+            data={
+                "date": "2011-08-11",
+                "what": "fondue",
+                "payer": active_ids[0],
+                "payed_for": active_ids,
+                "bill_type": "Expense",
+                "amount": "30",
+            },
+        )
+
+        result = self.client.get("/raclette/").data.decode("utf-8")
+        # 2 bills showing "Everyone" + 1 occurrence in the add-bill form checkbox
+        assert result.count("Everyone") == 3
+        assert "Everyone but" not in result
+
     def test_demo(self):
         # test that a demo project is created if none is defined
         assert [] == models.Project.query.all()
