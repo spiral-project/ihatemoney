@@ -134,10 +134,11 @@
                 </td>
                 <td>{{ bill.payer }}</td>
                 <td>{{ bill.what }}</td>
-                <td>{% if bill.owers == g.project.active_members -%}
+                <td>{% set owers_label = bill.get_owers_label(g.project.active_members) -%}
+                {% if owers_label[0] == "everyone" -%}
                 {{ _("Everyone") }}
-                {%- elif bill.owers|length > g.project.members|length / 2 + 1 -%}
-                {{ _("Everyone but %(excluded)s", excluded=g.project.active_members|reject('in', bill.owers)|join(', ', 'name')) }}
+                {%- elif owers_label[0] == "everyone_but" -%}
+                {{ _("Everyone but %(excluded)s", excluded=owers_label[1]|join(', ', 'name')) }}
                 {%- else -%}
                 {{ bill.owers|join(', ', 'name') }}
                 {%- endif %}</td>
