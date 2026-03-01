@@ -48,6 +48,9 @@ class TestAPI(IhatemoneyTestCase):
         )
         return {"Authorization": f"Basic {base64string}"}
 
+    def get_bearer_auth(self, token):
+        return {"Authorization": f"Bearer {token}"}
+
     def test_cors_requests(self):
         # Create a project and test that CORS headers are present if requested.
         resp = self.api_create("raclette")
@@ -270,6 +273,19 @@ class TestAPI(IhatemoneyTestCase):
         resp = self.client.get(f"/raclette/join/{decoded_resp['token']}")
         # Test that we are redirected.
         assert 302 == resp.status_code
+
+    def test_token_bearer(self):
+        resp = self.api_create("raclette")
+        # Get token
+        resp = self.client.get(
+            "/api/projects/raclette/token", headers=self.get_basic_auth("raclette")
+        )
+        token = json.loads(resp.data.decode("utf-8"))['token']
+
+        resp = self.client.get(
+            "/api/projects/raclette/bills", headers=self.get_bearer_auth(token)
+        )
+        assert resp.status_code == 200
 
     def test_member(self):
         # create a project
