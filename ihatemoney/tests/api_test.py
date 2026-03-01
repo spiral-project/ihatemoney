@@ -36,10 +36,10 @@ class TestAPI(IhatemoneyTestCase):
         self.client.post(
             f"/api/projects/{project}/members",
             data={"name": name, "weight": weight},
-            headers=self.get_auth(project),
+            headers=self.get_basic_auth(project),
         )
 
-    def get_auth(self, username, password=None):
+    def get_basic_auth(self, username, password=None):
         password = password or username
         base64string = (
             base64.encodebytes(f"{username}:{password}".encode("utf-8"))  # noqa: E231
@@ -55,7 +55,7 @@ class TestAPI(IhatemoneyTestCase):
 
         # Try to do an OPTIONS requests and see if the headers are correct.
         resp = self.client.options(
-            "/api/projects/raclette", headers=self.get_auth("raclette")
+            "/api/projects/raclette", headers=self.get_basic_auth("raclette")
         )
         assert resp.headers["Access-Control-Allow-Origin"] == "*"
 
@@ -116,7 +116,7 @@ class TestAPI(IhatemoneyTestCase):
 
         # get information about it
         resp = self.client.get(
-            "/api/projects/raclette", headers=self.get_auth("raclette")
+            "/api/projects/raclette", headers=self.get_basic_auth("raclette")
         )
 
         assert 200 == resp.status_code
@@ -141,7 +141,7 @@ class TestAPI(IhatemoneyTestCase):
                 "name": "The raclette party",
                 "project_history": "y",
             },
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
         assert 400 == resp.status_code
 
@@ -156,7 +156,7 @@ class TestAPI(IhatemoneyTestCase):
                 "name": "The raclette party",
                 "project_history": "y",
             },
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
         assert 400 == resp.status_code
 
@@ -171,12 +171,12 @@ class TestAPI(IhatemoneyTestCase):
                 "name": "The raclette party",
                 "project_history": "y",
             },
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
         assert 200 == resp.status_code
 
         resp = self.client.get(
-            "/api/projects/raclette", headers=self.get_auth("raclette")
+            "/api/projects/raclette", headers=self.get_basic_auth("raclette")
         )
 
         assert 200 == resp.status_code
@@ -201,24 +201,24 @@ class TestAPI(IhatemoneyTestCase):
                 "password": "tartiflette",
                 "name": "The raclette party",
             },
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
 
         assert 200 == resp.status_code
 
         resp = self.client.get(
-            "/api/projects/raclette", headers=self.get_auth("raclette", "tartiflette")
+            "/api/projects/raclette", headers=self.get_basic_auth("raclette", "tartiflette")
         )
         assert 200 == resp.status_code
 
         # delete should work
         resp = self.client.delete(
-            "/api/projects/raclette", headers=self.get_auth("raclette", "tartiflette")
+            "/api/projects/raclette", headers=self.get_basic_auth("raclette", "tartiflette")
         )
 
         # get should return a 401 on an unknown resource
         resp = self.client.get(
-            "/api/projects/raclette", headers=self.get_auth("raclette")
+            "/api/projects/raclette", headers=self.get_basic_auth("raclette")
         )
         assert 401 == resp.status_code
 
@@ -231,7 +231,7 @@ class TestAPI(IhatemoneyTestCase):
 
         # Get token
         resp = self.client.get(
-            "/api/projects/raclette/token", headers=self.get_auth("raclette")
+            "/api/projects/raclette/token", headers=self.get_basic_auth("raclette")
         )
 
         assert 200 == resp.status_code
@@ -264,7 +264,7 @@ class TestAPI(IhatemoneyTestCase):
         resp = self.api_create("raclette")
         # Get token
         resp = self.client.get(
-            "/api/projects/raclette/token", headers=self.get_auth("raclette")
+            "/api/projects/raclette/token", headers=self.get_basic_auth("raclette")
         )
         decoded_resp = json.loads(resp.data.decode("utf-8"))
         resp = self.client.get(f"/raclette/join/{decoded_resp['token']}")
@@ -277,7 +277,7 @@ class TestAPI(IhatemoneyTestCase):
 
         # get the list of participants (should be empty)
         req = self.client.get(
-            "/api/projects/raclette/members", headers=self.get_auth("raclette")
+            "/api/projects/raclette/members", headers=self.get_basic_auth("raclette")
         )
 
         self.assertStatus(200, req)
@@ -287,7 +287,7 @@ class TestAPI(IhatemoneyTestCase):
         req = self.client.post(
             "/api/projects/raclette/members",
             data={"name": "Zorglub"},
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
 
         # the id of the new member should be returned
@@ -296,7 +296,7 @@ class TestAPI(IhatemoneyTestCase):
 
         # the list of participants should contain one member
         req = self.client.get(
-            "/api/projects/raclette/members", headers=self.get_auth("raclette")
+            "/api/projects/raclette/members", headers=self.get_basic_auth("raclette")
         )
 
         self.assertStatus(200, req)
@@ -306,7 +306,7 @@ class TestAPI(IhatemoneyTestCase):
         req = self.client.post(
             "/api/projects/raclette/members",
             data={"name": "Zorglub"},
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
         self.assertStatus(400, req)
 
@@ -314,14 +314,14 @@ class TestAPI(IhatemoneyTestCase):
         req = self.client.put(
             "/api/projects/raclette/members/1",
             data={"name": "Jeanne", "weight": 2},
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
 
         self.assertStatus(200, req)
 
         # get should return the new name
         req = self.client.get(
-            "/api/projects/raclette/members/1", headers=self.get_auth("raclette")
+            "/api/projects/raclette/members/1", headers=self.get_basic_auth("raclette")
         )
 
         self.assertStatus(200, req)
@@ -333,7 +333,7 @@ class TestAPI(IhatemoneyTestCase):
         req = self.client.put(
             "/api/projects/raclette/members/1",
             data={"name": "Jeanne"},
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
 
         self.assertStatus(200, req)
@@ -342,12 +342,12 @@ class TestAPI(IhatemoneyTestCase):
         req = self.client.put(
             "/api/projects/raclette/members/1",
             data={"name": "Jeanne", "activated": False},
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
         self.assertStatus(200, req)
 
         req = self.client.get(
-            "/api/projects/raclette/members/1", headers=self.get_auth("raclette")
+            "/api/projects/raclette/members/1", headers=self.get_basic_auth("raclette")
         )
         self.assertStatus(200, req)
         assert not json.loads(req.data.decode("utf-8"))["activated"]
@@ -356,11 +356,11 @@ class TestAPI(IhatemoneyTestCase):
         req = self.client.put(
             "/api/projects/raclette/members/1",
             data={"name": "Jeanne", "activated": True},
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
 
         req = self.client.get(
-            "/api/projects/raclette/members/1", headers=self.get_auth("raclette")
+            "/api/projects/raclette/members/1", headers=self.get_basic_auth("raclette")
         )
         self.assertStatus(200, req)
         assert json.loads(req.data.decode("utf-8"))["activated"]
@@ -368,14 +368,14 @@ class TestAPI(IhatemoneyTestCase):
         # delete a member
 
         req = self.client.delete(
-            "/api/projects/raclette/members/1", headers=self.get_auth("raclette")
+            "/api/projects/raclette/members/1", headers=self.get_basic_auth("raclette")
         )
 
         self.assertStatus(200, req)
 
         # the list of participants should be empty
         req = self.client.get(
-            "/api/projects/raclette/members", headers=self.get_auth("raclette")
+            "/api/projects/raclette/members", headers=self.get_basic_auth("raclette")
         )
 
         self.assertStatus(200, req)
@@ -392,7 +392,7 @@ class TestAPI(IhatemoneyTestCase):
 
         # get the list of bills (should be empty)
         req = self.client.get(
-            "/api/projects/raclette/bills", headers=self.get_auth("raclette")
+            "/api/projects/raclette/bills", headers=self.get_basic_auth("raclette")
         )
         self.assertStatus(200, req)
 
@@ -410,7 +410,7 @@ class TestAPI(IhatemoneyTestCase):
                 "amount": "25",
                 "external_link": "https://raclette.fr",
             },
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
 
         # should return the id
@@ -419,7 +419,7 @@ class TestAPI(IhatemoneyTestCase):
 
         # get this bill details
         req = self.client.get(
-            "/api/projects/raclette/bills/1", headers=self.get_auth("raclette")
+            "/api/projects/raclette/bills/1", headers=self.get_basic_auth("raclette")
         )
 
         # compare with the added info
@@ -450,7 +450,7 @@ class TestAPI(IhatemoneyTestCase):
 
         # the list of bills should length 1
         req = self.client.get(
-            "/api/projects/raclette/bills", headers=self.get_auth("raclette")
+            "/api/projects/raclette/bills", headers=self.get_basic_auth("raclette")
         )
         self.assertStatus(200, req)
         assert 1 == len(json.loads(req.data.decode("utf-8")))
@@ -467,7 +467,7 @@ class TestAPI(IhatemoneyTestCase):
                 "amount": "25",
                 "external_link": "https://raclette.fr",
             },
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
 
         self.assertStatus(400, req)
@@ -485,12 +485,12 @@ class TestAPI(IhatemoneyTestCase):
                 "amount": "25",
                 "external_link": "https://raclette.fr",
             },
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
 
         # check its fields
         req = self.client.get(
-            "/api/projects/raclette/bills/1", headers=self.get_auth("raclette")
+            "/api/projects/raclette/bills/1", headers=self.get_basic_auth("raclette")
         )
         creation_date = datetime.datetime.strptime(
             json.loads(req.data.decode("utf-8"))["creation_date"], "%Y-%m-%d"
@@ -522,13 +522,13 @@ class TestAPI(IhatemoneyTestCase):
 
         # delete a bill
         req = self.client.delete(
-            "/api/projects/raclette/bills/1", headers=self.get_auth("raclette")
+            "/api/projects/raclette/bills/1", headers=self.get_basic_auth("raclette")
         )
         self.assertStatus(200, req)
 
         # getting it should return a 404
         req = self.client.get(
-            "/api/projects/raclette/bills/1", headers=self.get_auth("raclette")
+            "/api/projects/raclette/bills/1", headers=self.get_basic_auth("raclette")
         )
         self.assertStatus(404, req)
 
@@ -561,7 +561,7 @@ class TestAPI(IhatemoneyTestCase):
                     "bill_type": "Expense",
                     "amount": input_amount,
                 },
-                headers=self.get_auth("raclette"),
+                headers=self.get_basic_auth("raclette"),
             )
 
             # should return the id
@@ -571,7 +571,7 @@ class TestAPI(IhatemoneyTestCase):
             # get this bill's details
             req = self.client.get(
                 "/api/projects/raclette/bills/{}".format(id),
-                headers=self.get_auth("raclette"),
+                headers=self.get_basic_auth("raclette"),
             )
 
             # compare with the added info
@@ -620,7 +620,7 @@ class TestAPI(IhatemoneyTestCase):
                     "bill_type": "Expense",
                     "amount": amount,
                 },
-                headers=self.get_auth("raclette"),
+                headers=self.get_basic_auth("raclette"),
             )
             self.assertStatus(400, req)
 
@@ -637,7 +637,7 @@ class TestAPI(IhatemoneyTestCase):
 
         # get information about it
         resp = self.client.get(
-            "/api/projects/raclette", headers=self.get_auth("raclette")
+            "/api/projects/raclette", headers=self.get_basic_auth("raclette")
         )
 
         assert 200 == resp.status_code
@@ -669,7 +669,7 @@ class TestAPI(IhatemoneyTestCase):
                 "amount": "25",
                 "external_link": "https://raclette.fr",
             },
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
 
         # should return the id
@@ -678,7 +678,7 @@ class TestAPI(IhatemoneyTestCase):
 
         # get this bill details
         req = self.client.get(
-            "/api/projects/raclette/bills/1", headers=self.get_auth("raclette")
+            "/api/projects/raclette/bills/1", headers=self.get_basic_auth("raclette")
         )
 
         # compare with the added info
@@ -720,13 +720,13 @@ class TestAPI(IhatemoneyTestCase):
                 "external_link": "https://raclette.fr",
                 "original_currency": "CAD",
             },
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
         self.assertStatus(200, req)
 
         # Check result
         req = self.client.get(
-            "/api/projects/raclette/bills/1", headers=self.get_auth("raclette")
+            "/api/projects/raclette/bills/1", headers=self.get_basic_auth("raclette")
         )
         self.assertStatus(200, req)
         expected_amount = self.converter.exchange_currency(30.0, "CAD", "EUR")
@@ -762,7 +762,7 @@ class TestAPI(IhatemoneyTestCase):
                 "amount": "80",
                 "original_currency": "PLN",
             },
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
 
         # should return the id
@@ -779,7 +779,7 @@ class TestAPI(IhatemoneyTestCase):
                 "password": "raclette",
                 "name": "The raclette party",
             },
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
         self.assertStatus(400, req)
         assert "This project cannot be set" in req.data.decode("utf-8")
@@ -806,12 +806,12 @@ class TestAPI(IhatemoneyTestCase):
                 "bill_type": "Expense",
                 "amount": "25",
             },
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
 
         # get the list of bills (should be empty)
         req = self.client.get(
-            "/api/projects/raclette/statistics", headers=self.get_auth("raclette")
+            "/api/projects/raclette/statistics", headers=self.get_basic_auth("raclette")
         )
         self.assertStatus(200, req)
         received_stats = json.loads(req.data.decode("utf-8"))
@@ -876,12 +876,12 @@ class TestAPI(IhatemoneyTestCase):
                 "bill_type": "Expense",
                 "amount": "25",
             },
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
 
         # get this bill details
         req = self.client.get(
-            "/api/projects/raclette/bills/1", headers=self.get_auth("raclette")
+            "/api/projects/raclette/bills/1", headers=self.get_basic_auth("raclette")
         )
         creation_date = datetime.datetime.strptime(
             json.loads(req.data.decode("utf-8"))["creation_date"], "%Y-%m-%d"
@@ -914,7 +914,7 @@ class TestAPI(IhatemoneyTestCase):
 
         # getting it should return a 404
         req = self.client.get(
-            "/api/projects/raclette", headers=self.get_auth("raclette")
+            "/api/projects/raclette", headers=self.get_basic_auth("raclette")
         )
 
         expected = {
@@ -985,7 +985,7 @@ class TestAPI(IhatemoneyTestCase):
                 "bill_type": "Expense",
                 "amount": "0",
             },
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
         self.assertStatus(201, req)
 
@@ -993,7 +993,7 @@ class TestAPI(IhatemoneyTestCase):
         self.api_create("Raclette")
         # get information about it
         resp = self.client.get(
-            "/api/projects/Raclette", headers=self.get_auth("Raclette")
+            "/api/projects/Raclette", headers=self.get_basic_auth("Raclette")
         )
         self.assertStatus(200, resp)
 
@@ -1014,7 +1014,7 @@ class TestAPI(IhatemoneyTestCase):
                 "bill_type": "Expense",
                 "amount": "9347242149381274732472348728748723473278472843.12",
             },
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
         self.assertStatus(400, req)
 
@@ -1032,7 +1032,7 @@ class TestAPI(IhatemoneyTestCase):
                 "bill_type": "wrong_bill_type",
                 "amount": "50",
             },
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
 
         self.assertStatus(400, req)
@@ -1047,7 +1047,7 @@ class TestAPI(IhatemoneyTestCase):
                 "bill_type": "Expense",
                 "amount": "50",
             },
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
 
         self.assertStatus(201, req)
@@ -1066,13 +1066,13 @@ class TestAPI(IhatemoneyTestCase):
                 "payed_for": ["1"],
                 "amount": "50",
             },
-            headers=self.get_auth("raclette"),
+            headers=self.get_basic_auth("raclette"),
         )
 
         self.assertStatus(201, req)
 
         req = self.client.get(
-            "/api/projects/raclette/bills/1", headers=self.get_auth("raclette")
+            "/api/projects/raclette/bills/1", headers=self.get_basic_auth("raclette")
         )
         self.assertStatus(200, req)
 
