@@ -23,7 +23,7 @@ from sqlalchemy_continuum.plugins import FlaskPlugin
 
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.monkeypath_continuum import PatchedTransactionFactory
-from ihatemoney.utils import generate_password_hash, get_members, same_bill
+from ihatemoney.utils import generate_password_hash, get_members, same_bill, get_owers_label
 from ihatemoney.versioning import (
     ConditionalVersioningManager,
     LoggingMode,
@@ -790,25 +790,7 @@ class Bill(db.Model):
         return self.pay_each_default(self.converted_amount)
 
     def get_owers_label(self, active_members):
-        """Return a tuple describing how to display the owers of this bill.
-
-        Uses set-based comparison to handle ordering differences and
-        deactivated members gracefully.
-
-        Returns one of:
-        - ("everyone", None): all active members are owers (superset check)
-        - ("everyone_but", excluded): more than half of active members are owers
-        - ("list", owers): list of owers
-        """
-        active_set = set(active_members)
-        owers_set = set(self.owers)
-        if active_set.issubset(owers_set):
-            return ("everyone", None)
-        excluded = [m for m in active_members if m not in owers_set]
-        active_owers_count = len(active_set) - len(excluded)
-        if active_owers_count > len(active_members) / 2 + 1:
-            return ("everyone_but", excluded)
-        return ("list", self.owers)
+        return get_owers_label(active_members, self.owers)
 
     def __repr__(self):
         return (
