@@ -15,7 +15,10 @@ from ihatemoney.manage import (
     get_project_count,
     password_hash,
 )
-from ihatemoney.utils import eval_arithmetic_expression
+from ihatemoney.utils import (
+    eval_arithmetic_expression,
+    get_owers_label,
+)
 from ihatemoney.run import load_configuration
 from ihatemoney.tests.common.ihatemoney_testcase import BaseTestCase, IhatemoneyTestCase
 
@@ -481,3 +484,12 @@ class TestUtils:
             eval_arithmetic_expression("32.3/")
         with pytest.raises(ValueError):
             eval_arithmetic_expression("coucouc")
+
+    def test_get_owers_label(self):
+        assert get_owers_label(['A', 'B'], ['A', 'B']) == ('everyone', None)
+        assert get_owers_label(['A', 'B'], ['A', 'B', 'C']) == ('everyone', None)
+        assert get_owers_label(['A', 'B'], ['C']) == ('list', ['C'])
+        assert get_owers_label(['A', 'B', 'C'], ['A', 'B']) == ('list', ['A', 'B'])
+        # according to the function spec, it should rather be :
+        # assert get_owers_label(['A', 'B', 'C'], ['A', 'B']) == ('everyone_but', 'C')
+        assert get_owers_label(['A', 'B', 'C', 'D'], ['A', 'B']) == ('list', ['A', 'B'])
