@@ -2,11 +2,16 @@
 
 This document describes changes between each past release.
 
-## 7.0.1 (unreleased)
+## 7.0.1 (2026-03-04)
 
+### Fixed
+- Fix broken project creation when using PostgreSQL or MariaDB (#1406)
+- Fix broken API (#1272)
+- Distinguish translation strings for "Settle" button and "Settle",  
+  which have to be worded differently in some languages (#1417)  
 
-- Nothing changed yet.
-
+### Changed
+- Update translations for French
 
 ## 7.0.0 (2026-01-30)
 
