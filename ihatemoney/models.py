@@ -23,7 +23,7 @@ from sqlalchemy_continuum.plugins import FlaskPlugin
 
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.monkeypath_continuum import PatchedTransactionFactory
-from ihatemoney.utils import generate_password_hash, get_members, same_bill
+from ihatemoney.utils import generate_password_hash, get_members, same_bill, get_owers_label
 from ihatemoney.versioning import (
     ConditionalVersioningManager,
     LoggingMode,
@@ -788,6 +788,9 @@ class Bill(db.Model):
         it differently (see balance_full function)
         """
         return self.pay_each_default(self.converted_amount)
+
+    def get_owers_label(self, active_members):
+        return get_owers_label(active_members, self.owers)
 
     def __repr__(self):
         return (
