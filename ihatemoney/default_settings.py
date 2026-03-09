@@ -48,3 +48,4 @@ SUPPORTED_LANGUAGES = [
     "uk",
     "zh_Hans",
 ]
+SHOWCASE_LANGUAGES = ["en", "fr"]
