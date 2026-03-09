@@ -105,6 +105,13 @@
   <li class="page-item {% if bills.page == bills.pages %}disabled{% endif %}"><a class="page-link" href="{{ url_for('main.list_bills', page=bills.next_num) }}">{{ _("Older bills") }} &raquo;</a></li>
 </ul>
 {% endif %}
+
+<div class="d-flex flex-wrap align-items-center mr-2 mb-2">
+    <button class="btn btn-sm btn-outline-secondary" type="button" data-toggle="collapse" data-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
+    {{ _("Filter") }}
+    </button>
+</div>
+
 <span id="new-bill" class="ml-auto pb-2" {% if not g.project.members %} data-toggle="tooltip" title="{{_('You should start by adding participants')}}" {% endif %}>
     <a href="{{ url_for('.add_bill') }}" class="btn btn-primary {% if not g.project.members %} disabled {% endif %}" data-toggle="modal" data-keyboard="true" data-target="#bill-form" autofocus>
         <i class="icon icon-white before-text">{{ static_include("images/plus.svg") | safe }}</i>
@@ -112,6 +119,50 @@
     </a>
 </span>
 </div>
+
+    <div class="collapse {% if search_active %}show{% endif %} mb-3" id="filterCollapse">
+        <div class="card card-body">
+          <form method="GET" action="{{ url_for('main.list_bills') }}" class="form-inline">
+            <div class="form-row w-100">
+              <div class="col-md-2 mb-2">
+                <label for="search" class="sr-only">{{ _("Search") }}</label>
+                <input type="text" class="form-control form-control-sm w-100" id="search" name="search" placeholder="{{ _('Search in For what?') }}" value="{{ search }}">
+              </div>
+              <div class="col-md-2 mb-2">
+                <label for="payer" class="sr-only">{{ _("Payer") }}</label>
+                <select class="form-control form-control-sm w-100" id="payer" name="payer">
+                    <option value="">{{ _('Any payer') }}</option>
+                    {% for member in g.project.active_members %}
+                        <option value="{{ member.id }}" {% if payer|string == member.id|string %}selected{% endif %}>
+                            {{ member.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+              </div>
+              <div class="col-md-2 mb-2">
+                <label for="date_from" class="sr-only">{{ _("Start date") }}</label>
+                <input type="date" class="form-control form-control-sm w-100" id="date_from" name="date_from" value="{{ date_from }}">
+              </div>
+              <div class="col-md-2 mb-2">
+                <label for="date_to" class="sr-only">{{ _("End date") }}</label>
+                <input type="date" class="form-control form-control-sm w-100" id="date_to" name="date_to" value="{{ date_to }}">
+              </div>
+              <div class="col-md-1 mb-2">
+                <label for="amount_min" class="sr-only">{{ _("Amount min") }}</label>
+                <input type="text" class="form-control form-control-sm w-100" id="amount_min" name="amount_min" placeholder="{{ _('Min cost') }}" value="{{ amount_min }}">
+              </div>
+              <div class="col-md-1 mb-2">
+                <label for="amount_max" class="sr-only">{{ _("Amount max") }}</label>
+                <input type="text" class="form-control form-control-sm w-100" id="amount_max" name="amount_max" placeholder="{{ _('Max cost') }}" value="{{ amount_max }}">
+              </div>
+              <div class="col-md-8 mb-2 text-left">
+                <button type="submit" class="btn btn-sm btn-primary">{{ _("Apply filters") }}</button>
+                <a href="{{ url_for('main.list_bills') }}" class="btn btn-sm btn-outline-secondary ml-2">{{ _("Clear filters") }}</a>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
 
     {% if bills.total > 0 %}
         <table id="bill_table" class="col table table-striped table-hover table-responsive-sm">
