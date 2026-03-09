@@ -258,6 +258,7 @@ def join_project(token):
 def authenticate(project_id=None):
     """Authentication form"""
     form = AuthenticationForm()
+    is_post_auth = request.method == "POST" and form.validate()
 
     if not form.id.data and request.args.get("project_id"):
         form.id.data = request.args["project_id"]
@@ -270,14 +271,13 @@ def authenticate(project_id=None):
         return render_template(
             "authenticate.html", form=form, create_project=project_id
         )
-
-    # if credentials are already in session, redirect
-    if session.get(project_id):
+    
+    # if credentials are already in session and no password is provided, redirect
+    if session.get(project_id) and not is_post_auth:
         setattr(g, "project", project)
         return redirect(url_for(".list_bills"))
 
     # else do form authentication authentication
-    is_post_auth = request.method == "POST" and form.validate()
     if is_post_auth and check_password_hash(project.password, form.password.data):
         set_authorized_project(project)
         setattr(g, "project", project)
@@ -290,6 +290,7 @@ def authenticate(project_id=None):
 
 
 def get_project_form():
+    fancy = {'complexity':'Cyclo. compl.', 'churn': 'Churn', 'comments_ratio': 'Ratio', 'loc': 'LOC', 'dit': 'DIT', 'cbo': 'CBO', 'vulns': 'Vuln.', 'smells': 'Smells'}
     if current_app.config.get("ENABLE_CAPTCHA", False):
         return ProjectFormWithCaptcha()
     return ProjectForm()

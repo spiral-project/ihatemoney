@@ -33,6 +33,20 @@
 </header>
 <main class="row home">
   <div class="card-deck ml-auto mr-auto">
+  {% if 'projects' in session %}
+    <div class="card">
+      <div class="card-header">
+        {{ _("Open a connected project") }}
+      </div>
+      <div class="card-body">
+        <ul>
+          {% for id, name in session['projects'].items() %}
+            <li><a href="{{ url_for("main.list_bills", project_id=id )}}">{{name}}</a>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endif %}
     <div class="card">
       <div class="card-header">
         {{ _("Log in to an existing project") }}
