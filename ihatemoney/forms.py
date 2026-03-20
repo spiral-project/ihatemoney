@@ -428,15 +428,15 @@ class BillForm(FlaskForm):
             raise ValidationError(f"Result is too high: {field.data}")
 
     def validate_original_currency(self, field):
-        # Workaround for currency API breakage
-        # See #1232
         if field.data not in [CurrencyConverter.no_currency, self.project_currency]:
-            msg = _(
-                "Failed to convert from %(bill_currency)s currency to %(project_currency)s",
-                bill_currency=field.data,
-                project_currency=self.project_currency,
-            )
-            raise ValidationError(msg)
+            rates = self.currency_helper.get_rates()
+            if not rates or field.data not in rates:
+                msg = _(
+                    "Failed to convert from %(bill_currency)s currency to %(project_currency)s",
+                    bill_currency=field.data,
+                    project_currency=self.project_currency,
+                )
+                raise ValidationError(msg)
 
 
 class HiddenCommaDecimalField(HiddenField, CommaDecimalField):

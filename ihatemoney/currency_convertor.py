@@ -17,7 +17,7 @@ class Singleton(type):
 class CurrencyConverter(object, metaclass=Singleton):
     # Get exchange rates
     no_currency = "XXX"
-    api_url = "https://api.exchangerate.host/latest?base=USD"
+    api_url = "https://open.er-api.com/v6/latest/USD"
 
     def __init__(self):
         pass
