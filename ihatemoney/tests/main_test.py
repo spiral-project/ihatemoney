@@ -511,6 +511,4 @@ class TestUtils:
         assert get_owers_label(['A', 'B'], ['A', 'B', 'C']) == ('everyone', None)
         assert get_owers_label(['A', 'B'], ['C']) == ('list', ['C'])
         assert get_owers_label(['A', 'B', 'C'], ['A', 'B']) == ('list', ['A', 'B'])
-        # according to the function spec, it should rather be :
-        # assert get_owers_label(['A', 'B', 'C'], ['A', 'B']) == ('everyone_but', 'C')
         assert get_owers_label(['A', 'B', 'C', 'D'], ['A', 'B']) == ('list', ['A', 'B'])
