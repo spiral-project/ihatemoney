@@ -83,7 +83,8 @@ def get_billform_for(project, set_default=True, **kwargs):
 
     active_members = [(m.id, m.name) for m in project.active_members]
 
-    form.payed_for.choices = form.payer.choices = active_members
+    form.payed_for.choices = active_members
+    form.payer.choices = [("", "")] + active_members
     form.payed_for.default = [m.id for m in project.active_members]
 
     if set_default and request.method == "GET":
@@ -352,7 +353,11 @@ class ResetPasswordForm(FlaskForm):
 class BillForm(FlaskForm):
     date = DateField(_("When?"), validators=[DataRequired()], default=datetime.now)
     what = StringField(_("What?"), validators=[DataRequired()])
-    payer = SelectField(_("Who paid?"), validators=[DataRequired()], coerce=int)
+    payer = SelectField(
+        _("Who paid?"),
+        validators=[DataRequired()],
+        coerce=lambda v: int(v) if v != "" else "",
+    )
     amount = CalculatorStringField(_("How much?"), validators=[DataRequired()])
     currency_helper = CurrencyConverter()
     original_currency = SelectField(_("Currency"), validators=[DataRequired()])
