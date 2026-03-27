@@ -481,7 +481,7 @@ def get_owers_label(active_members, bill_owers):
 
     Returns one of:
     - ("everyone", None): all active members are owers (superset check)
-    - ("everyone_but", excluded): more than half of active members are owers
+    - ("everyone_but", excluded): half of active members (+1 person) are owers
     - ("list", owers): list of owers
     """
     active_set = set(active_members)
