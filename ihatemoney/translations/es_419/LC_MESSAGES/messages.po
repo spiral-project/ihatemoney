@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-02 23:07+0100\n"
-"PO-Revision-Date: 2023-11-27 05:02+0000\n"
-"Last-Translator: Wilfredo Gomez <thepageguy@mailfence.com>\n"
+"PO-Revision-Date: 2026-03-08 20:09+0000\n"
+"Last-Translator: Gianluca Masuello <gmasuello@gmail.com>\n"
+"Language-Team: Spanish (Latin America) <https://hosted.weblate.org/projects/"
+"i-hate-money/i-hate-money/es_419/>\n"
 "Language: es_419\n"
-"Language-Team: Spanish (Latin America) "
-"<https://hosted.weblate.org/projects/i-hate-money/i-hate-money/es_419/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.17-dev\n"
 "Generated-By: Babel 2.16.0\n"
 
 #, python-format
@@ -74,8 +74,8 @@ msgstr ""
 #, fuzzy
 msgid "Cannot change project currency because currency conversion is broken"
 msgstr ""
-"Establecer una moneda predeterminada permite la conversión de moneda "
-"entre billetes"
+"No se puede cambiar la moneda del proyecto porque el cambio de moneda esta "
+"roto"
 
 msgid "Compatible with Cospend"
 msgstr "Compatible con Cospend"
@@ -157,9 +157,8 @@ msgstr "Un enlace a un documento externo relacionado con esta factura"
 msgid "For whom?"
 msgstr "¿Para quién?"
 
-#, fuzzy
 msgid "Bill Type"
-msgstr "Elementos de factura"
+msgstr "Tipo de factura"
 
 msgid "Submit"
 msgstr "Enviar"
@@ -173,7 +172,7 @@ msgstr "Projecto por defecto: %(currency)s"
 
 #, python-format
 msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
-msgstr ""
+msgstr "Falló en convertir %(bill_currency)s divisa a %(project_currency)s"
 
 msgid "Name"
 msgstr "Nombre"
@@ -379,13 +378,11 @@ msgstr "%(lang)s no es un idioma admitido"
 msgid "Error creating settlement bill"
 msgstr "Error al eliminar la factura"
 
-#, fuzzy
 msgid "Settlement"
-msgstr "Resolver"
+msgstr "Asentamiento"
 
-#, fuzzy
 msgid "Settlement bill has been successfully added"
-msgstr "La factura ha sido agregada"
+msgstr "La factura del asentamiento ha sido agregada"
 
 msgid "Error deleting project history"
 msgstr "Error al eliminar el historial del proyecto"
@@ -531,7 +528,7 @@ msgid "Edit this participant"
 msgstr "Editar este participante"
 
 msgid "Save"
-msgstr ""
+msgstr "Guardar"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
@@ -1243,4 +1240,3 @@ msgstr "Período"
 
 #~ msgid "Spent"
 #~ msgstr "Gastado"
-
