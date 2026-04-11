@@ -1,0 +1,1018 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-10 08:23+0200\n"
+"PO-Revision-Date: 2026-04-11 07:09+0000\n"
+"Last-Translator: SeyhaLite <sok123230@gmail.com>\n"
+"Language-Team: Khmer (Central) <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/km/>\n"
+"Language: km\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.17-dev\n"
+
+#, python-format
+msgid "You have just created '%(project)s' to share your expenses"
+msgstr "អ្នកទើបតែបានបង្កើត '%(project)s' ដើម្បីចែករំលែកការចំណាយរបស់អ្នក"
+
+msgid ""
+"Not a valid amount or expression. Only numbers and + - * / operators are "
+"accepted."
+msgstr ""
+"មិនមែនជាចំនួន ឬកន្សោមត្រឹមត្រូវទេ។ គ្រាន់តែទទួលយកលេខ និងប្រមាណវិធី + - * / ប៉ុណ្ណោះ។"
+
+msgid "Project name"
+msgstr "ឈ្មោះគម្រោង"
+
+msgid "Current private code"
+msgstr "លេខកូដ ឯកជនបច្ចុប្បន្ន"
+
+msgid "Enter existing private code to edit project"
+msgstr "វាយបញ្ចូលលេខកូដឯកជនដែលមានស្រាប់ ដើម្បីកែសម្រួលគម្រោង"
+
+msgid "New private code"
+msgstr "លេខកូដ ឯកជនថ្មី"
+
+msgid "Enter a new code if you want to change it"
+msgstr "វាយបញ្ចូលលេខកូដថ្មី ប្រសិនបើអ្នកចង់ផ្លាស់ប្តូរវា"
+
+msgid "Email"
+msgstr "អ៊ីមែល"
+
+msgid "Enable project history"
+msgstr "បើកដំណើរការ ប្រវត្តិគម្រោង"
+
+msgid "Use IP tracking for project history"
+msgstr "ប្រើការតាមដាន IP សម្រាប់ប្រវត្តិគម្រោង"
+
+msgid "Default Currency"
+msgstr "រូបិយប័ណ្ណ លំនាំដើម"
+
+msgid "Setting a default currency enables currency conversion between bills"
+msgstr ""
+"ការកំណត់រូបិយប័ណ្ណ លំនាំដើមអនុញ្ញាត ឱ្យមានការបំប្លែងរូបិយប័ណ្ណរវាងវិក្កយបត្រ"
+
+msgid "Unknown error"
+msgstr "កំហុសមិនស្គាល់"
+
+msgid "Invalid private code."
+msgstr "លេខកូដឯកជន មិនត្រឹមត្រូវ។"
+
+msgid ""
+"This project cannot be set to 'no currency' because it contains bills in "
+"multiple currencies."
+msgstr ""
+"គម្រោងនេះមិនអាចកំណត់ទៅ 'គ្មានរូបិយប័ណ្ណ' បានទេ ព្រោះវាមានវិក្កយបត្រជាច្រើនរូបិយប័ណ្ណ។"
+
+msgid "Cannot change project currency because currency conversion is broken"
+msgstr ""
+"មិនអាចផ្លាស់ប្តូរ រូបិយប័ណ្ណគម្រោងបានទេ ព្រោះការបំប្លែងរូបិយប័ណ្ណមានបញ្ហា"
+
+msgid "Compatible with Cospend"
+msgstr "សមស្របជាមួយ Cospend"
+
+msgid "Project identifier"
+msgstr "អត្តលេខ គម្រោង"
+
+msgid "Private code"
+msgstr "លេខកូដឯកជន"
+
+msgid "Create the project"
+msgstr "បង្កើតគម្រោង"
+
+#, python-format
+msgid ""
+"A project with this identifier (\"%(project)s\") already exists. Please "
+"choose a new identifier"
+msgstr ""
+"គម្រោងដែលមានអត្តលេខនេះ (\"%(project)s\") មានស្រាប់ហើយ។ សូមជ្រើសរើសអត្តលេខថ្មី"
+
+msgid "Which is a real currency: Euro or Petro dollar?"
+msgstr "តើមួយណាជា រូបិយប័ណ្ណពិតប្រាកដ៖ Euro ឬ Petro dollar?"
+
+msgid "euro"
+msgstr "euro"
+
+msgid "Please, validate the captcha to proceed."
+msgstr "សូមផ្ទៀងផ្ទាត់ captcha ដើម្បីបន្ត។"
+
+msgid "Enter private code to confirm deletion"
+msgstr "វាយបញ្ចូលលេខកូដឯកជន ដើម្បីបញ្ជាក់ការលុប"
+
+msgid "Get in"
+msgstr "ចូល"
+
+msgid "Admin password"
+msgstr "ពាក្យសម្ងាត់ អ្នកគ្រប់គ្រង"
+
+msgid "Send me the code by email"
+msgstr "ផ្ញើលេខកូដមក ខ្ញុំតាមអ៊ីមែល"
+
+msgid "This project does not exists"
+msgstr "គម្រោងនេះ មិនមានទេ"
+
+msgid "Password mismatch"
+msgstr "ពាក្យសម្ងាត់ មិនត្រូវគ្នា"
+
+msgid "Password"
+msgstr "ពាក្យសម្ងាត់"
+
+msgid "Password confirmation"
+msgstr "បញ្ជាក់ពាក្យសម្ងាត់"
+
+msgid "Reset password"
+msgstr "កំណត់ពាក្យសម្ងាត់ឡើងវិញ"
+
+msgid "When?"
+msgstr "ពេលណា?"
+
+msgid "What?"
+msgstr "អ្វី?"
+
+msgid "Who paid?"
+msgstr "នរណាជា អ្នកបង់?"
+
+msgid "How much?"
+msgstr "តម្លៃប៉ុន្មាន?"
+
+msgid "Currency"
+msgstr "រូបិយប័ណ្ណ"
+
+msgid "External link"
+msgstr "តំណភ្ជាប់ ខាងក្រៅ"
+
+msgid "A link to an external document, related to this bill"
+msgstr "តំណភ្ជាប់ទៅកាន់ ឯកសារខាងក្រៅ ដែលទាក់ទងនឹងវិក្កយបត្រនេះ"
+
+msgid "For whom?"
+msgstr "សម្រាប់នរណា?"
+
+msgid "Bill Type"
+msgstr "ប្រភេទវិក្កយបត្រ"
+
+msgid "Submit"
+msgstr "ដាក់ស្នើ"
+
+msgid "Submit and add a new one"
+msgstr "ដាក់ស្នើ និងបន្ថែមថ្មី"
+
+#, python-format
+msgid "Project default: %(currency)s"
+msgstr "លំនាំដើមគម្រោង៖ %(currency)s"
+
+#, python-format
+msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
+msgstr ""
+"បរាជ័យក្នុងការបំប្លែងពីរូបិយប័ណ្ណ %(bill_currency)s ទៅ %(project_currency)s"
+
+msgid "Name"
+msgstr "ឈ្មោះ"
+
+msgid "Weights should be positive"
+msgstr "ទម្ងន់គួរតែជា ចំនួនវិជ្ជមាន"
+
+msgid "Weight"
+msgstr "ទម្ងន់"
+
+msgid "Add"
+msgstr "បន្ថែម"
+
+msgid "The participant name is invalid"
+msgstr "ឈ្មោះអ្នកចូលរួមមិនត្រឹមត្រូវ"
+
+msgid "This project already have this participant"
+msgstr "គម្រោងនេះ មានអ្នកចូលរួមនេះរួចហើយ"
+
+msgid "People to notify"
+msgstr "អ្នកដែលត្រូវ ជូនដំណឹង"
+
+msgid "Send the invitations"
+msgstr "ផ្ញើការអញ្ជើញ"
+
+#, python-format
+msgid "The email %(email)s is not valid"
+msgstr "អ៊ីមែល %(email)s មិនត្រឹមត្រូវ"
+
+msgid "Logout"
+msgstr "ចាកចេញ"
+
+msgid "Please check the email configuration of the server."
+msgstr "សូមពិនិត្យមើលការកំណត់ អ៊ីមែលរបស់ម៉ាស៊ីនបម្រើ។"
+
+#, python-format
+msgid ""
+"Please check the email configuration of the server or contact the "
+"administrator: %(admin_email)s"
+msgstr ""
+"សូមពិនិត្យមើលការកំណត់ អ៊ីមែលរបស់ម៉ាស៊ីនបម្រើ ឬទាក់ទងអ្នកគ្រប់គ្រង៖ %(admin_email)s"
+
+#. List with two items only
+msgid "{dual_object_0} and {dual_object_1}"
+msgstr "{dual_object_0} និង {dual_object_1}"
+
+#. Last two items of a list with more than 3 items
+msgid "{previous_object}, and {end_object}"
+msgstr "{previous_object}, និង {end_object}"
+
+#. Two items in a middle of a list with more than 5 objects
+msgid "{previous_object}, {next_object}"
+msgstr "{previous_object}, {next_object}"
+
+#. First two items of a list with more than 3 items
+msgid "{start_object}, {next_object}"
+msgstr "{start_object}, {next_object}"
+
+msgid "No Currency"
+msgstr "គ្មានរូបិយប័ណ្ណ"
+
+#. Form error with only one error
+msgid "{prefix}: {error}"
+msgstr "{prefix}: {error}"
+
+#. Form error with a list of errors
+msgid "{prefix}:<br />{errors}"
+msgstr "{prefix}:<br />{errors}"
+
+msgid "Too many failed login attempts."
+msgstr "ការព្យាយាមចូលប្រព័ន្ធបរាជ័យច្រើនពេក។"
+
+#, python-format
+msgid "This admin password is not the right one. Only %(num)d attempts left."
+msgstr ""
+"ពាក្យសម្ងាត់អ្នកគ្រប់គ្រងនេះមិនត្រឹមត្រូវទេ។ នៅសល់តែ %(num)d ដងប៉ុណ្ណោះ។"
+
+msgid "Provided token is invalid"
+msgstr "Token ដែលបានផ្តល់មិនត្រឹមត្រូវ"
+
+msgid "This private code is not the right one"
+msgstr "លេខកូដឯកជន នេះមិនត្រឹមត្រូវទេ"
+
+msgid "A reminder email has just been sent to you"
+msgstr "អ៊ីមែលរំលឹក ទើបតែត្រូវបានផ្ញើមកអ្នក"
+
+msgid ""
+"We tried to send you an reminder email, but there was an error. You can "
+"still use the project normally."
+msgstr ""
+"យើងបានព្យាយាមផ្ញើអ៊ីមែលរំលឹកមកអ្នក ប៉ុន្តែមានកំហុសមួយ។ អ្នកនៅតែអាចប្រើគម្រោងបានជាធម្មតា។"
+
+msgid ""
+"Sorry, there was an error while sending you an email with password reset "
+"instructions."
+msgstr ""
+"សូមអភ័យទោស មានកំហុសកើតឡើង នៅពេលផ្ញើអ៊ីមែលដែលមាន ការណែនាំកំណត់ពាក្យសម្ងាត់ឡើងវិញ។"
+
+msgid "No token provided"
+msgstr "មិនមាន token ត្រូវបានផ្តល់"
+
+msgid "Invalid token"
+msgstr "token មិនត្រឹមត្រូវ"
+
+msgid "Unknown project"
+msgstr "គម្រោង មិនស្គាល់"
+
+msgid "Password successfully reset."
+msgstr "ពាក្យសម្ងាត់ ត្រូវបានកំណត់ឡើងវិញ ដោយជោគជ័យ។"
+
+msgid "Project settings have been changed successfully."
+msgstr "ការកំណត់គម្រោង ត្រូវបានផ្លាស់ប្តូរដោយ ជោគជ័យ។"
+
+msgid "Unable to parse CSV"
+msgstr "មិនអាចវិភាគ CSV បាន"
+
+#, python-format
+msgid "Missing attribute: %(attribute)s"
+msgstr "ខ្វះលក្ខណៈសម្បត្តិ៖ %(attribute)s"
+
+msgid ""
+"Cannot add bills in multiple currencies to a project without default "
+"currency"
+msgstr ""
+"មិនអាចបន្ថែមវិក្កយបត្រ ជាច្រើនរូបិយប័ណ្ណទៅគម្រោងដែលគ្មានរូបិយប័ណ្ណលំនាំដើមបានទេ"
+
+msgid "Project successfully uploaded"
+msgstr "គម្រោង ត្រូវបានផ្ទុកឡើង ដោយជោគជ័យ"
+
+msgid "Project successfully deleted"
+msgstr "គម្រោង ត្រូវបានលុប ដោយជោគជ័យ"
+
+msgid "Error deleting project"
+msgstr "កំហុសក្នុងការលុបគម្រោង"
+
+msgid "Unable to logout"
+msgstr "មិនអាច ចាកចេញបាន"
+
+#, python-format
+msgid "You have been invited to share your expenses for %(project)s"
+msgstr "អ្នកត្រូវបានអញ្ជើញ ឱ្យចែករំលែក ការចំណាយរបស់អ្នកសម្រាប់ %(project)s"
+
+msgid "Your invitations have been sent"
+msgstr "ការអញ្ជើញរបស់អ្នក ត្រូវបានផ្ញើហើយ"
+
+msgid "Sorry, there was an error while trying to send the invitation emails."
+msgstr "សូមអភ័យទោស មានកំហុសកើតឡើង នៅពេលព្យាយាមផ្ញើអ៊ីមែលអញ្ជើញ។"
+
+#, python-format
+msgid "%(member)s has been added"
+msgstr "%(member)s ត្រូវបានបន្ថែម"
+
+msgid "Error activating participant"
+msgstr "កំហុសក្នុងការបើកដំណើរការអ្នកចូលរួម"
+
+#, python-format
+msgid "%(name)s is part of this project again"
+msgstr "%(name)s បានក្លាយជាផ្នែកនៃគម្រោងនេះម្តងទៀត"
+
+msgid "Error removing participant"
+msgstr "កំហុសក្នុងការយកអ្នកចូលរួមចេញ"
+
+#, python-format
+msgid ""
+"Participant '%(name)s' has been deactivated. It will still appear in the "
+"list until its balance reach zero."
+msgstr ""
+"អ្នកចូលរួម '%(name)s' ត្រូវបានបិទដំណើរការ។ វានឹងនៅតែបង្ហាញក្នុងបញ្ជីរហូត ដល់ទឹកប្រាក់ របស់វាឈានដ"
+"ល់សូន្យ។"
+
+#, python-format
+msgid "Participant '%(name)s' has been removed"
+msgstr "អ្នកចូលរួម '%(name)s' ត្រូវបានយកចេញ"
+
+#, python-format
+msgid "Participant '%(name)s' has been modified"
+msgstr "អ្នកចូលរួម '%(name)s' ត្រូវបានកែសម្រួល"
+
+msgid "The bill has been added"
+msgstr "វិក្កយបត្រ ត្រូវបានបន្ថែម"
+
+msgid "Error deleting bill"
+msgstr "កំហុសក្នុងការលុបវិក្កយបត្រ"
+
+msgid "The bill has been deleted"
+msgstr "វិក្កយបត្រ​ ត្រូវបានលុប"
+
+msgid "The bill has been modified"
+msgstr "វិក្កយបត្រ​ ត្រូវបានកែសម្រួល"
+
+#, python-format
+msgid "%(lang)s is not a supported language"
+msgstr "%(lang)s មិនមែនជាភាសាដែលគាំទ្រ"
+
+msgid "Error creating settlement bill"
+msgstr "កំហុសក្នុងការ បង្កើតវិក្កយបត្រទូទាត់"
+
+msgid "Settlement"
+msgstr "ការទូទាត់"
+
+msgid "Settlement bill has been successfully added"
+msgstr "វិក្កយបត្រ ទូទាត់ត្រូវបាន​ បន្ថែមដោយជោគជ័យ"
+
+msgid "Error deleting project history"
+msgstr "កំហុសក្នុង ការលុបប្រវត្តិគម្រោង"
+
+msgid "Deleted project history."
+msgstr "បានលុបប្រវត្តិគម្រោង។"
+
+msgid "Error deleting recorded IP addresses"
+msgstr "កំហុសក្នុងការលុបអាសយដ្ឋាន IP ដែលបានកត់ត្រា"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr "បានលុបអាសយដ្ឋាន IP ដែលបានកត់ត្រាក្នុងប្រវត្តិគម្រោង។"
+
+msgid "Sorry, we were unable to find the page you've asked for."
+msgstr "សូមអភ័យទោស យើងមិនអាចរកទំព័រដែលអ្នកបានស្នើសុំបានទេ។"
+
+msgid "The best thing to do is probably to get back to the main page."
+msgstr "អ្វីដែលល្អបំផុតគឺត្រឡប់ ទៅទំព័រដើមវិញ។"
+
+msgid "Back to the list"
+msgstr "ត្រឡប់ទៅបញ្ជី"
+
+msgid "Administration tasks are currently disabled."
+msgstr "ភារកិច្ចរដ្ឋបាល Administration បានបិទបច្ចុប្បន្ន។"
+
+msgid "Authentication"
+msgstr "ការផ្ទៀងផ្ទាត់"
+
+msgid "The project you are trying to access do not exist, do you want to"
+msgstr "គម្រោងដែលអ្នក កំពុងព្យាយាមចូលមិនមានទេ តើអ្នកចង់"
+
+msgid "create it"
+msgstr "បង្កើតវា"
+
+msgid "?"
+msgstr "?"
+
+msgid "Create a new project"
+msgstr "បង្កើតគម្រោងថ្មី"
+
+msgid "Project"
+msgstr "គម្រោង"
+
+msgid "Number of participants"
+msgstr "ចំនួនអ្នកចូលរួម"
+
+msgid "Number of bills"
+msgstr "ចំនួនវិក្កយបត្រ"
+
+msgid "Newest bill"
+msgstr "វិក្កយបត្រ ថ្មីបំផុត"
+
+msgid "Oldest bill"
+msgstr "វិក្កយបត្រ ចាស់បំផុត"
+
+msgid "Actions"
+msgstr "សកម្មភាព"
+
+msgid "edit"
+msgstr "កែសម្រួល"
+
+msgid "Delete project"
+msgstr "លុបគម្រោង"
+
+msgid "show"
+msgstr "បង្ហាញ"
+
+msgid "The Dashboard is currently deactivated."
+msgstr "ផ្ទាំងគ្រប់គ្រងត្រូវបាន បិទបច្ចុប្បន្ន។"
+
+msgid "Download Mobile Application"
+msgstr "ទាញយក កម្មវិធីទូរស័ព្ទ"
+
+msgid "Get it on"
+msgstr "ទទួលបាន វានៅលើ"
+
+msgid "Edit project"
+msgstr "កែសម្រួល គម្រោង"
+
+msgid "Import project"
+msgstr "នាំចូល គម្រោង"
+
+msgid "Download project's data"
+msgstr "ទាញយក ទិន្នន័យគម្រោង"
+
+msgid "Bill items"
+msgstr "ធាតុវិក្កយបត្រ"
+
+msgid "Download the list of bills with owner, amount, reason,... "
+msgstr "ទាញយកបញ្ជីវិក្កយបត្រ ដែលមានម្ចាស់ ចំនួនទឹកប្រាក់ មូលហេតុ,... "
+
+msgid "Settle plans"
+msgstr "ផែនការទូទាត់"
+
+msgid "Download the list of transactions needed to settle the current bills."
+msgstr "ទាញយកបញ្ជី ប្រតិបត្តិការដែលត្រូវការដើម្បីទូទាត់វិក្កយបត្របច្ចុប្បន្ន។"
+
+msgid "Can't remember the password?"
+msgstr "មិនអាចចាំពាក្យសម្ងាត់បានទេ?"
+
+msgid "Cancel"
+msgstr "បោះបង់"
+
+msgid "Privacy Settings"
+msgstr "ការកំណត់ឯកជនភាព"
+
+msgid "Save changes"
+msgstr "រក្សាទុកការផ្លាស់ប្តូរ"
+
+msgid "This will remove all bills and participants in this project!"
+msgstr "វានឹងយកចេញវិក្កយបត្រ និងអ្នកចូលរួមទាំងអស់ក្នុងគម្រោងនេះ!"
+
+msgid "Import previously exported project"
+msgstr "នាំចូលគម្រោងដែលបាននាំចេញពីមុន"
+
+msgid "Choose file"
+msgstr "ជ្រើសរើសឯកសារ"
+
+msgid "Edit this bill"
+msgstr "កែសម្រួល វិក្កយបត្រនេះ"
+
+msgid "Add a bill"
+msgstr "បន្ថែម វិក្កយបត្រ"
+
+msgid "Simple operations are allowed, e.g. (18+36.2)/3"
+msgstr "ប្រតិបត្តិការសាមញ្ញត្រូវបានអនុញ្ញាត ឧ. (18+36.2)/3"
+
+msgid "Everyone"
+msgstr "មនុស្សគ្រប់គ្នា"
+
+msgid "No one"
+msgstr "គ្មាននរណាម្នាក់"
+
+msgid "More options"
+msgstr "ជម្រើសបន្ថែម"
+
+msgid "Add participant"
+msgstr "បន្ថែមអ្នកចូលរួម"
+
+msgid "Edit this participant"
+msgstr "កែសម្រួលអ្នកចូលរួមនេះ"
+
+msgid "Save"
+msgstr "រក្សាទុក"
+
+msgid "john.doe@example.com, mary.moe@site.com"
+msgstr "john.doe@example.com, mary.moe@site.com"
+
+msgid "Download"
+msgstr "ទាញយក"
+
+msgid "Disabled Project History"
+msgstr "បានបិទប្រវត្តិគម្រោង"
+
+msgid "Disabled Project History & IP Address Recording"
+msgstr "បានបិទប្រវត្តិគម្រោង និងការកត់ត្រាអាសយដ្ឋាន IP"
+
+msgid "Enabled Project History"
+msgstr "បានបើកប្រវត្តិគម្រោង"
+
+msgid "Disabled IP Address Recording"
+msgstr "បានបិទការកត់ត្រាអាសយដ្ឋាន IP"
+
+msgid "Enabled Project History & IP Address Recording"
+msgstr "បានបើកប្រវត្តិគម្រោង និងការកត់ត្រាអាសយដ្ឋាន IP"
+
+msgid "Enabled IP Address Recording"
+msgstr "បានបើកការកត់ត្រាអាសយដ្ឋាន IP"
+
+msgid "History Settings Changed"
+msgstr "ការកំណត់ប្រវត្តិត្រូវបានផ្លាស់ប្តូរ"
+
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
+msgstr ""
+"វិក្កយបត្រ %(name)s: %(property_name)s ត្រូវបានផ្លាស់ប្តូរពី %(before)s ទៅ %(after)s"
+
+#, python-format
+msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
+msgstr "វិក្កយបត្រ %(name)s: %(property_name)s ត្រូវបានផ្លាស់ប្តូរទៅ %(after)s"
+
+msgid "Confirm Remove IP Adresses"
+msgstr "បញ្ជាក់ការយកអាសយដ្ឋាន IP ចេញ"
+
+msgid ""
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+"តើអ្នកប្រាកដថាចង់លុបអាសយដ្ឋាន IP ទាំងអស់ដែលបានកត់ត្រាពីគម្រោងនេះទេ?\n"
+"                ផ្នែកផ្សេងទៀតនៃប្រវត្តិគម្រោងនឹងមិនត្រូវប៉ះពាល់ទេ។ សកម្មភាពនេះមិនអាចត្រឡប់មកវិ"
+"ញបានទេ។"
+
+msgid "Confirm deletion"
+msgstr "បញ្ជាក់ការលុប"
+
+msgid "Close"
+msgstr "បិទ"
+
+msgid "Delete Confirmation"
+msgstr "បញ្ជាក់ការលុប"
+
+msgid ""
+"Are you sure you want to erase all history for this project? This action "
+"cannot be undone."
+msgstr ""
+"តើអ្នកប្រាកដថាចង់លុបប្រវត្តិទាំងអស់សម្រាប់គម្រោងនេះទេ? សកម្មភាពនេះមិនអាចត្រឡប់មកវិញបានទេ។"
+
+#, python-format
+msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
+msgstr "វិក្កយបត្រ %(name)s: បានបន្ថែម %(owers_list_str)s ទៅបញ្ជីអ្នកចំណាយ"
+
+#, python-format
+msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
+msgstr "វិក្កយបត្រ %(name)s: បានយក %(owers_list_str)s ចេញពីបញ្ជីអ្នកចំណាយ"
+
+msgid "Details of the bill (before the change)"
+msgstr "ព័ត៌មានលម្អិតនៃវិក្កយបត្រ (មុនពេលផ្លាស់ប្តូរ)"
+
+msgid "Details of the bill"
+msgstr "ព័ត៌មានលម្អិតនៃវិក្កយបត្រ"
+
+msgid "Date:"
+msgstr "កាលបរិច្ឆេទ៖"
+
+msgid "Payer:"
+msgstr "អ្នកបង់៖"
+
+msgid "Amount:"
+msgstr "ចំនួនទឹកប្រាក់៖"
+
+msgid "Owers:"
+msgstr "អ្នកចំណាយ៖"
+
+msgid "External link:"
+msgstr "តំណភ្ជាប់ខាងក្រៅ៖"
+
+msgid "This project has history disabled. New actions won't appear below."
+msgstr "គម្រោងនេះបានបិទប្រវត្តិ។ សកម្មភាពថ្មីៗនឹងមិនបង្ហាញខាងក្រោមទេ។"
+
+msgid "You can enable history on the settings page."
+msgstr "អ្នកអាចបើកប្រវត្តិនៅលើទំព័រការកំណត់។"
+
+msgid ""
+"The table below reflects actions recorded prior to disabling project "
+"history."
+msgstr "តារាងខាងក្រោមបង្ហាញពីសកម្មភាពដែលបានកត់ត្រាមុនពេលបិទប្រវត្តិគម្រោង។"
+
+msgid "You can clear the project history to remove them."
+msgstr "អ្នកអាចសម្អាតប្រវត្តិគម្រោងដើម្បីយកពួកវាចេញ។"
+
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr ""
+"ធាតុមួយចំនួនខាងក្រោមមានអាសយដ្ឋាន IP ទោះបីជាគម្រោងនេះបានបិទការកត់ត្រា IP ក៏ដោយ។ "
+
+msgid "Delete stored IP addresses"
+msgstr "លុបអាសយដ្ឋាន IP ដែលបានរក្សាទុក"
+
+msgid "No IP Addresses to erase"
+msgstr "គ្មានអាសយដ្ឋាន IP ដែលត្រូវលុប"
+
+msgid "Delete Stored IP Addresses"
+msgstr "លុបអាសយដ្ឋាន IP ដែលបានរក្សាទុក"
+
+msgid "No history to erase"
+msgstr "គ្មានប្រវត្តិដែលត្រូវលុប"
+
+msgid "Clear Project History"
+msgstr "សម្អាតប្រវត្តិគម្រោង"
+
+msgid "Time"
+msgstr "ពេលវេលា"
+
+msgid "Event"
+msgstr "ព្រឹត្តិការណ៍"
+
+msgid "IP address recording can be enabled on the settings page"
+msgstr "ការកត់ត្រាអាសយដ្ឋាន IP អាចត្រូវបានបើកនៅលើទំព័រការកំណត់"
+
+msgid "IP address recording can be disabled on the settings page"
+msgstr "ការកត់ត្រាអាសយដ្ឋាន IP អាចត្រូវបានបិទនៅលើទំព័រការកំណត់"
+
+msgid "From IP"
+msgstr "ពី IP"
+
+#, python-format
+msgid "Project %(name)s added"
+msgstr "គម្រោង %(name)s ត្រូវបានបន្ថែម"
+
+#, python-format
+msgid "Bill %(name)s added"
+msgstr "វិក្កយបត្រ %(name)s ត្រូវបានបន្ថែម"
+
+#, python-format
+msgid "Participant %(name)s added"
+msgstr "អ្នកចូលរួម %(name)s ត្រូវបានបន្ថែម"
+
+msgid "Project private code changed"
+msgstr "លេខកូដឯកជនគម្រោងត្រូវបានផ្លាស់ប្តូរ"
+
+#, python-format
+msgid "Project renamed to %(new_project_name)s"
+msgstr "គម្រោងត្រូវបានប្តូរឈ្មោះទៅ %(new_project_name)s"
+
+#, python-format
+msgid "Project contact email changed to %(new_email)s"
+msgstr "អ៊ីមែលទំនាក់ទំនងគម្រោងត្រូវបានផ្លាស់ប្តូរទៅ %(new_email)s"
+
+msgid "Project settings modified"
+msgstr "ការកំណត់គម្រោងត្រូវបានកែសម្រួល"
+
+#, python-format
+msgid "Bill %(name)s renamed to %(new_description)s"
+msgstr "វិក្កយបត្រ %(name)s ត្រូវបានប្តូរឈ្មោះទៅ %(new_description)s"
+
+msgid "Payer"
+msgstr "អ្នកបង់"
+
+msgid "Amount"
+msgstr "ចំនួនទឹកប្រាក់"
+
+msgid "Date"
+msgstr "កាលបរិច្ឆេទ"
+
+#, python-format
+msgid "Amount in %(currency)s"
+msgstr "ចំនួនទឹកប្រាក់ជា %(currency)s"
+
+#, python-format
+msgid "Bill %(name)s modified"
+msgstr "វិក្កយបត្រ %(name)s ត្រូវបានកែសម្រួល"
+
+#, python-format
+msgid "Participant %(name)s deactivated"
+msgstr "អ្នកចូលរួម %(name)s ត្រូវបានបិទដំណើរការ"
+
+#, python-format
+msgid "Participant %(name)s reactivated"
+msgstr "អ្នកចូលរួម %(name)s ត្រូវបានបើកដំណើរការឡើងវិញ"
+
+#, python-format
+msgid "Participant %(name)s renamed to %(new_name)s"
+msgstr "អ្នកចូលរួម %(name)s ត្រូវបានប្តូរឈ្មោះទៅ %(new_name)s"
+
+#, python-format
+msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
+msgstr ""
+"អ្នកចូលរួម %(name)s: ទម្ងន់ត្រូវបានផ្លាស់ប្តូរពី %(old_weight)s ទៅ %(new_weight)s"
+
+#, python-format
+msgid "Participant %(name)s modified"
+msgstr "អ្នកចូលរួម %(name)s ត្រូវបានកែសម្រួល"
+
+#, python-format
+msgid "Bill %(name)s removed"
+msgstr "វិក្កយបត្រ %(name)s ត្រូវបានយកចេញ"
+
+#, python-format
+msgid "Participant %(name)s removed"
+msgstr "អ្នកចូលរួម %(name)s ត្រូវបានយកចេញ"
+
+#, python-format
+msgid "Project %(name)s changed in an unknown way"
+msgstr "គម្រោង %(name)s ត្រូវបានផ្លាស់ប្តូរតាមរបៀបមិនស្គាល់"
+
+#, python-format
+msgid "Bill %(name)s changed in an unknown way"
+msgstr "វិក្កយបត្រ %(name)s ត្រូវបានផ្លាស់ប្តូរតាមរបៀបមិនស្គាល់"
+
+#, python-format
+msgid "Participant %(name)s changed in an unknown way"
+msgstr "អ្នកចូលរួម %(name)s ត្រូវបានផ្លាស់ប្តូរតាមរបៀបមិនស្គាល់"
+
+msgid "Nothing to list"
+msgstr "គ្មានអ្វីដែលត្រូវរាយ"
+
+msgid "Someone probably cleared the project history."
+msgstr "នរណាម្នាក់ប្រហែលជាបានសម្អាតប្រវត្តិគម្រោង។"
+
+msgid "Manage your shared <br />expenses, easily"
+msgstr "គ្រប់គ្រងការចំណាយរួម <br />របស់អ្នក ដោយងាយស្រួល"
+
+msgid "Try out the demo"
+msgstr "សាកល្បងការបង្ហាញ"
+
+msgid "You're sharing a house?"
+msgstr "តើអ្នកកំពុងចែករំលែកផ្ទះមួយ?"
+
+msgid "Going on holidays with friends?"
+msgstr "កំពុងទៅសម្រាកជាមួយមិត្តភក្តិ?"
+
+msgid "Simply sharing money with others?"
+msgstr "គ្រាន់តែចែករំលែកលុយជាមួយអ្នកដទៃ?"
+
+msgid "We can help!"
+msgstr "យើងអាចជួយបាន!"
+
+msgid "Log in to an existing project"
+msgstr "ចូលទៅគម្រោងដែលមានស្រាប់"
+
+msgid "Log in"
+msgstr "ចូល"
+
+msgid "can't remember your password?"
+msgstr "មិនអាចចាំពាក្យសម្ងាត់របស់អ្នកបានទេ?"
+
+msgid "Create"
+msgstr "បង្កើត"
+
+msgid ""
+"Don\\'t reuse a personal password. Choose a private code and send it to "
+"your friends"
+msgstr ""
+"កុំប្រើពាក្យសម្ងាត់ផ្ទាល់ខ្លួនឡើងវិញ។ ជ្រើសរើសលេខកូដឯកជន ហើយផ្ញើវាទៅមិត្តភក្តិរបស់អ្នក"
+
+msgid "Account manager"
+msgstr "អ្នកគ្រប់គ្រងគណនី"
+
+msgid "Bills"
+msgstr "វិក្កយបត្រ"
+
+msgid "Settle"
+msgstr "ទូទាត់"
+
+msgid "Statistics"
+msgstr "ស្ថិតិ"
+
+msgid "Languages"
+msgstr "ភាសា"
+
+msgid "Projects"
+msgstr "គម្រោង"
+
+msgid "Start a new project"
+msgstr "ចាប់ផ្តើមគម្រោងថ្មី"
+
+msgid "History"
+msgstr "ប្រវត្តិ"
+
+msgid "Settings"
+msgstr "ការកំណត់"
+
+msgid "RSS Feed"
+msgstr "មតិការ ព័ត៌មាន"
+
+msgid "Other projects :"
+msgstr "គម្រោងផ្សេងទៀត៖"
+
+msgid "switch to"
+msgstr "ប្តូរទៅ"
+
+msgid "Dashboard"
+msgstr "ផ្ទាំងគ្រប់គ្រង"
+
+#, python-format
+msgid "Please retry after %(date)s."
+msgstr "សូមព្យាយាមម្តងទៀតបន្ទាប់ពី %(date)s។"
+
+msgid "Code"
+msgstr "លេខកូដ"
+
+msgid "Mobile Application"
+msgstr "កម្មវិធីទូរស័ព្ទ"
+
+msgid "Documentation"
+msgstr "ឯកសារ"
+
+msgid "Administration Dashboard"
+msgstr "ផ្ទាំងគ្រប់គ្រងរដ្ឋបាល"
+
+msgid "Legal information"
+msgstr "ព័ត៌មានផ្លូវច្បាប់"
+
+msgid "\"I hate money\" is free software"
+msgstr "\"I hate money\" គឺជាកម្មវិធីឥតគិតថ្លៃ"
+
+msgid "you can contribute and improve it!"
+msgstr "អ្នកអាចចូលរួម និងកែលម្អវា!"
+
+#, python-format
+msgid "%(amount)s each"
+msgstr "%(amount)s ក្នុងម្នាក់"
+
+msgid "you sure?"
+msgstr "តើអ្នកប្រាកដមែនទេ?"
+
+msgid "Invite people"
+msgstr "អញ្ជើញមនុស្ស"
+
+msgid "Newer bills"
+msgstr "វិក្កយបត្រថ្មីៗ"
+
+msgid "Older bills"
+msgstr "វិក្កយបត្រចាស់ៗ"
+
+msgid "You should start by adding participants"
+msgstr "អ្នកគួរចាប់ផ្តើមដោយការបន្ថែមអ្នកចូលរួម"
+
+msgid "Add a new bill"
+msgstr "បន្ថែមវិក្កយបត្រថ្មី"
+
+msgid "For what?"
+msgstr "សម្រាប់អ្វី?"
+
+#, python-format
+msgid "Added on %(date)s"
+msgstr "បានបន្ថែមនៅ %(date)s"
+
+#, python-format
+msgid "Everyone but %(excluded)s"
+msgstr "មនុស្សគ្រប់គ្នាលើកលែងតែ %(excluded)s"
+
+msgid "delete"
+msgstr "លុប"
+
+msgid "No bills"
+msgstr "គ្មានវិក្កយបត្រ"
+
+msgid "Nothing to list yet."
+msgstr "គ្មានអ្វីដែលត្រូវរាយនៅឡើយទេ។"
+
+msgid "Add your first bill"
+msgstr "បន្ថែមវិក្កយបត្រដំបូងរបស់អ្នក"
+
+msgid "Add the first participant"
+msgstr "បន្ថែមអ្នកចូលរួមដំបូង"
+
+msgid "Password reminder"
+msgstr "ការរំលឹកពាក្យសម្ងាត់"
+
+msgid ""
+"A link to reset your password has been sent to you, please check your "
+"emails."
+msgstr ""
+"តំណភ្ជាប់ដើម្បីកំណត់ពាក្យសម្ងាត់របស់អ្នកឡើងវិញត្រូវបានផ្ញើមកអ្នក សូមពិនិត្យអ៊ីមែលរបស់អ្នក។"
+
+msgid "Return to home page"
+msgstr "ត្រឡប់ទៅទំព័រដើម"
+
+msgid "Your projects"
+msgstr "គម្រោងរបស់អ្នក"
+
+msgid "Reset your password"
+msgstr "កំណត់ពាក្យសម្ងាត់របស់អ្នកឡើងវិញ"
+
+msgid "Invite people to join this project"
+msgstr "អញ្ជើញមនុស្សឱ្យចូលរួមគម្រោងនេះ"
+
+msgid "Share an invitation link"
+msgstr "ចែករំលែកតំណភ្ជាប់អញ្ជើញ"
+
+msgid ""
+"The easiest way to invite people is to give them the following invitation"
+" link.<br />They will be able to access the project, manage participants,"
+" add/edit/delete bills. However, they will not have access to important "
+"settings such as changing the private code or deleting the whole project."
+msgstr ""
+"វិធីងាយស្រួលបំផុតក្នុង ការអញ្ជើញមនុស្សគឺ ផ្តល់តំណភ្ជាប់អញ្ជើញ ខាងក្រោមដល់ពួកគេ。<br />ពួកគេនឹងអាចចូល "
+"ប្រើគម្រោង គ្រប់គ្រងអ្នកចូលរួម បន្ថែម/កែ/លុបវិក្កយបត្រ។ ទោះជាយ៉ាងណាក៏ដោយ ពួកគេនឹងមិនអាចចូលប្រើការ"
+"កំណត់សំខាន់ៗដូចជាការផ្លាស់ប្តូរលេខកូដឯកជន ឬលុបគម្រោងទាំងមូលនោះទេ។"
+
+msgid "Scan QR code"
+msgstr "ស្កេនកូដ QR"
+
+msgid "Use a mobile device with a compatible app."
+msgstr "ប្រើឧបករណ៍ទូរស័ព្ទដែលមានកម្មវិធីសមស្រប។"
+
+msgid "Send via Emails"
+msgstr "ផ្ញើតាមអ៊ីមែល"
+
+msgid ""
+"Specify a list of email adresses (separated by comma) of people you want "
+"to notify about the creation of this project. We will send them an email "
+"with the invitation link."
+msgstr ""
+"បញ្ជាក់ បញ្ជីអាសយដ្ឋានអ៊ីមែល (ដោយបំបែកដោយសញ្ញាក្បៀស) នៃមនុស្សដែលអ្នកចង់ជូនដំណឹងអំពីការបង្កើតគម្រោង"
+"នេះ។ យើងនឹងផ្ញើអ៊ីមែលមួយដែលមានតំណភ្ជាប់អញ្ជើញដល់ពួកគេ។"
+
+msgid "Share Identifier & code"
+msgstr "ចែករំលែកអត្តលេខ និងលេខកូដ"
+
+msgid ""
+"You can share the project identifier and the private code by any "
+"communication means.<br />Anyone with the private code will have access "
+"to the full project, including changing settings such as the private code"
+" or project email address, or even deleting the whole project."
+msgstr ""
+"អ្នកអាចចែករំលែក អត្តលេខគម្រោង និងលេខកូដឯកជន តាមរយៈវិធីទំនាក់ទំនងណាមួយ។<br />អ្នកណាដែលមាន "
+"លេខកូដឯកជន នឹងអាចចូលប្រើគម្រោងពេញលេញ រួមទាំងការផ្លាស់ប្តូរការកំណត់ដូចជាលេខកូដឯកជន ឬអាសយដ្ឋានអ៊ី"
+"មែលគម្រោង ឬសូម្បីតែលុបគម្រោងទាំងមូល។"
+
+msgid "Identifier:"
+msgstr "អត្តលេខ៖"
+
+msgid "Private code:"
+msgstr "លេខកូដឯកជន៖"
+
+msgid "the private code was defined when you created the project"
+msgstr "លេខកូដឯកជនត្រូវបានកំណត់នៅពេលអ្នកបង្កើតគម្រោង"
+
+msgid "Who pays?"
+msgstr "នរណាបង់?"
+
+msgid "To whom?"
+msgstr "ទៅនរណា?"
+
+msgid "Settled?"
+msgstr "បានទូទាត់ហើយឬនៅ?"
+
+msgid "Click here to record that the money transfer has been done"
+msgstr "ចុចទីនេះដើម្បីកត់ត្រាថាការផ្ទេរប្រាក់ត្រូវបានធ្វើរួច"
+
+msgid "Register settlement"
+msgstr "ចុះឈ្មោះការទូទាត់"
+
+msgid "Who?"
+msgstr "នរណា?"
+
+msgid "Balance"
+msgstr "ទឹកប្រាក់"
+
+msgid "deactivate"
+msgstr "បិទដំណើរការ"
+
+msgid "reactivate"
+msgstr "បើកដំណើរការឡើងវិញ"
+
+msgid "Paid"
+msgstr "បានបង់"
+
+msgid "Expenses"
+msgstr "ការចំណាយ"
+
+msgid "Direct transfer"
+msgstr "ការផ្ទេរដោយផ្ទាល់"
+
+msgid "Received"
+msgstr "បានទទួល"
+
+msgid "Expenses by month"
+msgstr "ការចំណាយតាមខែ"
+
+msgid "Period"
+msgstr "រយៈពេល"
