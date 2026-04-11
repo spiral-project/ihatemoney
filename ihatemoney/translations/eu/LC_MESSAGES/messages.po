@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-02 23:07+0100\n"
-"PO-Revision-Date: 2026-02-27 13:09+0000\n"
+"PO-Revision-Date: 2026-03-05 20:10+0000\n"
 "Last-Translator: Jokin <jokin_pedre@hotmail.com>\n"
+"Language-Team: Basque <https://hosted.weblate.org/projects/i-hate-money/i-"
+"hate-money/eu/>\n"
 "Language: eu\n"
-"Language-Team: Basque <https://hosted.weblate.org/projects/i-hate-money/i"
-"-hate-money/eu/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.17-dev\n"
 "Generated-By: Babel 2.16.0\n"
 
 #, python-format
@@ -1002,9 +1002,8 @@ msgstr "Likidatuta?"
 msgid "Click here to record that the money transfer has been done"
 msgstr "Sakatu hemen transferentzia egin dela markatzeko"
 
-#, fuzzy
 msgid "Register settlement"
-msgstr "Likidazioa"
+msgstr "Likidazioa gorde"
 
 msgid "Who?"
 msgstr "Nork?"
@@ -1041,4 +1040,3 @@ msgstr "Denbora tartea"
 
 #~ msgid "Expenses by Month"
 #~ msgstr ""
-
