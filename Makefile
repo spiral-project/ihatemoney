@@ -21,7 +21,7 @@ serve: build-translations ## Run the ihatemoney server
 
 .PHONY: test
 test: ## Run the test suite
-	uv run --extra dev --extra database pytest .
+	uv run --extra dev --extra database pytest $(wordlist 2, 100, $(MAKECMDGOALS)) .
 
 .PHONY: lint
 lint: ## Run the linter (check only)
@@ -79,3 +79,7 @@ build-docs: ## Build the documentation
 .PHONY: help
 help: ## Show the help indications
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+# Used to ignore unknown targets
+%:
+	@true
