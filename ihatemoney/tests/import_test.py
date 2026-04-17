@@ -3,12 +3,51 @@ import json
 
 import pytest
 
+from ihatemoney.models import BillType
 from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
 from ihatemoney.utils import list_of_dicts2csv, list_of_dicts2json
 
 
+# Data exported with Ihatemoney 6.0
+# Currencies are added manually in the tests, with several cases.
+# DO NOT MODIFY, this is used to check backwards compatibility.
 @pytest.fixture
-def import_data(request: pytest.FixtureRequest):
+def import_data_6_0(request: pytest.FixtureRequest):
+    data = [
+        {
+            "date": "2017-01-01",
+            "what": "refund",
+            "amount": 13.33,
+            "payer_name": "tata",
+            "payer_weight": 1.0,
+            "owers": ["jeanne"],
+        },
+        {
+            "date": "2016-12-31",
+            "what": "red wine",
+            "amount": 200.0,
+            "payer_name": "jeanne",
+            "payer_weight": 1.0,
+            "owers": ["zorglub", "tata"],
+        },
+        {
+            "date": "2016-12-31",
+            "what": "fromage a raclette",
+            "amount": 10.0,
+            "payer_name": "zorglub",
+            "payer_weight": 2.0,
+            "owers": ["zorglub", "jeanne", "tata", "pepe"],
+        },
+    ]
+    request.cls.data = data
+    yield data
+
+
+# Data exported with Ihatemoney 7.0, which added bill_type.
+# Currencies are added manually in the tests, with several cases.
+# DO NOT MODIFY, this is used to check backwards compatibility.
+@pytest.fixture
+def import_data_7_0(request: pytest.FixtureRequest):
     data = [
         {
             "date": "2017-01-01",
@@ -43,7 +82,7 @@ def import_data(request: pytest.FixtureRequest):
 
 
 class CommonTestCase(object):
-    @pytest.mark.usefixtures("import_data")
+
     class Import(IhatemoneyTestCase):
 
         def populate_data_with_currencies(self, currencies):
@@ -83,7 +122,7 @@ class CommonTestCase(object):
                         assert b["currency"] == d["currency"]
                         assert b["payer_weight"] == d["payer_weight"]
                         assert b["date"] == d["date"]
-                        assert b["bill_type"] == d["bill_type"]
+                        assert b["bill_type"] == d.get("bill_type", BillType.default_value())
                         list_project = [ower for ower in b["owers"]]
                         list_project.sort()
                         list_json = [ower for ower in d["owers"]]
@@ -126,7 +165,7 @@ class CommonTestCase(object):
                         assert b["currency"] == "XXX"
                         assert b["payer_weight"] == d["payer_weight"]
                         assert b["date"] == d["date"]
-                        assert b["bill_type"] == d["bill_type"]
+                        assert b["bill_type"] == d.get("bill_type", BillType.default_value())
                         list_project = [ower for ower in b["owers"]]
                         list_project.sort()
                         list_json = [ower for ower in d["owers"]]
@@ -185,7 +224,7 @@ class CommonTestCase(object):
                         assert b["currency"] == "EUR"
                         assert b["payer_weight"] == d["payer_weight"]
                         assert b["date"] == d["date"]
-                        assert b["bill_type"] == d["bill_type"]
+                        assert b["bill_type"] == d.get("bill_type", BillType.default_value())
                         list_project = [ower for ower in b["owers"]]
                         list_project.sort()
                         list_json = [ower for ower in d["owers"]]
@@ -225,7 +264,7 @@ class CommonTestCase(object):
                         assert b["currency"] == "XXX"
                         assert b["payer_weight"] == d["payer_weight"]
                         assert b["date"] == d["date"]
-                        assert b["bill_type"] == d["bill_type"]
+                        assert b["bill_type"] == d.get("bill_type", BillType.default_value())
                         list_project = [ower for ower in b["owers"]]
                         list_project.sort()
                         list_json = [ower for ower in d["owers"]]
@@ -283,7 +322,7 @@ class CommonTestCase(object):
                         assert b["currency"] == d["currency"]
                         assert b["payer_weight"] == d["payer_weight"]
                         assert b["date"] == d["date"]
-                        assert b["bill_type"] == d["bill_type"]
+                        assert b["bill_type"] == d.get("bill_type", BillType.default_value())
                         list_project = [ower for ower in b["owers"]]
                         list_project.sort()
                         list_json = [ower for ower in d["owers"]]
@@ -657,12 +696,29 @@ class TestExport(IhatemoneyTestCase):
             assert set(line.split(",")) == set(received_lines[i].strip("\r").split(","))
 
 
-class TestImportJSON(CommonTestCase.Import):
+@pytest.mark.usefixtures("import_data_6_0")
+class TestImportJSON60(CommonTestCase.Import):
     def generate_form_data(self, data):
         return {"file": (list_of_dicts2json(data), "test.json")}
 
 
-class TestImportCSV(CommonTestCase.Import):
+@pytest.mark.usefixtures("import_data_7_0")
+class TestImportJSON70(CommonTestCase.Import):
+    def generate_form_data(self, data):
+        return {"file": (list_of_dicts2json(data), "test.json")}
+
+
+@pytest.mark.usefixtures("import_data_6_0")
+class TestImportCSV60(CommonTestCase.Import):
+    def generate_form_data(self, data):
+        formatted_data = copy.deepcopy(data)
+        for d in formatted_data:
+            d["owers"] = ", ".join([o for o in d.get("owers", [])])
+        return {"file": (list_of_dicts2csv(formatted_data), "test.csv")}
+
+
+@pytest.mark.usefixtures("import_data_7_0")
+class TestImportCSV70(CommonTestCase.Import):
     def generate_form_data(self, data):
         formatted_data = copy.deepcopy(data)
         for d in formatted_data:
