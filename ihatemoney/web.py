@@ -489,6 +489,8 @@ def import_project():
             ]
             currencies = set()
             for b in bills:
+                if "bill_type" not in b:
+                    b["bill_type"] = BillType.default_value()
                 if b.get("currency", "") in ["", "XXX"]:
                     b["currency"] = g.project.default_currency
                 for a in attr:

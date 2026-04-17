@@ -61,6 +61,10 @@ class BillType(Enum):
     def choices(cls):
         return [(choice.value, choice.value) for choice in cls]
 
+    @classmethod
+    def default_value(cls):
+        return "Expense"
+
 
 db = SQLAlchemy()
 

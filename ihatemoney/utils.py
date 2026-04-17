@@ -216,10 +216,10 @@ def csv2list_of_dicts(csv_to_convert):
             continue
         elif r["what"] == "categoryname":
             break
+        # Convert a few fields to the correct type
         r["amount"] = float(r["amount"])
         r["payer_weight"] = float(r["payer_weight"])
         r["owers"] = [o.strip() for o in r["owers"].split(",")]
-        r["bill_type"] = str(r["bill_type"])
         result.append(r)
     return result
 
