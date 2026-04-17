@@ -45,37 +45,6 @@ def import_data(request: pytest.FixtureRequest):
 class CommonTestCase(object):
     @pytest.mark.usefixtures("import_data")
     class Import(IhatemoneyTestCase):
-        def setUp(self):
-            super().setUp()
-            self.data = [
-                {
-                    "date": "2017-01-01",
-                    "what": "refund",
-                    "bill_type": "Expense",
-                    "amount": 13.33,
-                    "payer_name": "tata",
-                    "payer_weight": 1.0,
-                    "owers": ["jeanne"],
-                },
-                {
-                    "date": "2016-12-31",
-                    "what": "red wine",
-                    "bill_type": "Expense",
-                    "amount": 200.0,
-                    "payer_name": "jeanne",
-                    "payer_weight": 1.0,
-                    "owers": ["zorglub", "tata"],
-                },
-                {
-                    "date": "2016-12-31",
-                    "what": "a raclette",
-                    "bill_type": "Expense",
-                    "amount": 10.0,
-                    "payer_name": "zorglub",
-                    "payer_weight": 2.0,
-                    "owers": ["zorglub", "jeanne", "tata", "pepe"],
-                },
-            ]
 
         def populate_data_with_currencies(self, currencies):
             for d in range(len(self.data)):
