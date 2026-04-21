@@ -60,6 +60,7 @@ dev = [
     "vermin~=1.8.0",
     "pytest~=9.0.2",
     "pytest-flask~=1.3.0",   # last update oct. 23
+    "pytest-xdist~=3.8.0",
     "zest.releaser~=9.8.0",
 ]
 doc = [

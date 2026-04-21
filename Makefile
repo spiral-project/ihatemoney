@@ -21,7 +21,7 @@ serve: build-translations ## Run the ihatemoney server
 
 .PHONY: test
 test:
-	uv run --extra dev --extra database pytest .
+	uv run --extra dev --extra database pytest -n auto .
 
 .PHONY: lint
 lint:

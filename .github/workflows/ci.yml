@@ -96,7 +96,7 @@ jobs:
       run: sed -i -e '/requires-python/!s/>=/==/g; /requires-python/!s/~=.*==\(.*\)/==\1/g; /requires-python/!s/~=/==/g;' pyproject.toml
       if: matrix.dependencies == 'minimal'
     - name: Run tests
-      run: uv run --extra dev --extra database pytest .
+      run: uv run --extra dev --extra database pytest -n auto .
       env:
         # Setup the DATABASE_URI depending on the matrix we are using.
         TESTING_SQLALCHEMY_DATABASE_URI: ${{
