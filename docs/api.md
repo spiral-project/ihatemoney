@@ -207,6 +207,7 @@ And optional parameters:
     (ISO 4217 code). Only makes sense for a project with currencies.
     Defaults to the project `default_currency`.
 -   `external_link`: an optional URL associated with the bill.
+-   `bill_type`: can be `Expense` (default) or `Reimbursement`.
 
 Returns the id of the created bill :
 
