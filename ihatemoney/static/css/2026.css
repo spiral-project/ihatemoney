@@ -1,0 +1,1097 @@
+/*
+ * "2026" theme for I Hate Money.
+ *
+ * Loaded after main.css when THEME = "2026" is set in the configuration.
+ * It overrides just the visual surface of the classic theme — the markup is
+ * unchanged. Colors, radii, fonts and accents are tuned to match the
+ * 2026 design mockups shipped under new-design/bubble/.
+ */
+
+:root {
+  --ihm-bg: #fcefe1;
+  --ihm-bg-alt: #f4e3d4;
+  --ihm-card: #fffaf3;
+  --ihm-surface: #ffffff;
+  --ihm-ink: #1f1a17;
+  --ihm-ink-soft: #4a3f3a;
+  --ihm-muted: #8a7b72;
+  --ihm-line: #e7d8ca;
+  --ihm-accent: #f27848;
+  --ihm-accent-dark: #d85f31;
+  --ihm-accent-soft: #fbd2bc;
+  --ihm-positive: #2e9562;
+  --ihm-negative: #d14a3a;
+  --ihm-pink: #f6c8bd;
+  --ihm-green: #b8e3c3;
+  --ihm-lilac: #d8c8ea;
+  --ihm-yellow: #ffd98a;
+  --ihm-yellow-soft: #fff2cc;
+  --ihm-radius: 28px;
+  --ihm-radius-sm: 14px;
+  --ihm-shadow: 0 10px 30px rgba(50, 20, 10, 0.08);
+}
+
+/* -------------------------------------------------------------------- */
+/*  Canvas                                                              */
+/* -------------------------------------------------------------------- */
+
+body.theme-2026 {
+  background:
+    radial-gradient(circle at 92% 10%, var(--ihm-yellow) 0, transparent 200px),
+    var(--ihm-bg);
+  color: var(--ihm-ink);
+  font-family: "Comfortaa", "Nunito", system-ui, sans-serif;
+}
+
+body.theme-2026 h1,
+body.theme-2026 h2,
+body.theme-2026 h3,
+body.theme-2026 h4,
+body.theme-2026 h5 {
+  font-family: "Comfortaa", "Nunito", system-ui, sans-serif;
+  color: var(--ihm-ink);
+  font-weight: 700;
+}
+
+body.theme-2026 main h2 {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+body.theme-2026 a {
+  color: var(--ihm-accent-dark);
+}
+
+body.theme-2026 a:hover {
+  color: var(--ihm-ink);
+}
+
+/* -------------------------------------------------------------------- */
+/*  Navbar — floating rounded pill on the cream background              */
+/* -------------------------------------------------------------------- */
+
+/* Navbar stays visually transparent and lets a blur/gradient pseudo sit
+   behind its content. Putting the blur + mask on ::before (not the navbar
+   itself) keeps the navbar from creating a clipping stacking context, so
+   dropdown menus open normally on top of everything. */
+body.theme-2026 .navbar,
+body.theme-2026 .navbar.navbar-dark,
+body.theme-2026 .navbar.bg-dark {
+  background-color: transparent !important;
+  border-bottom: none;
+  padding: 0.75rem 1.25rem;
+}
+
+body.theme-2026 .navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: linear-gradient(to bottom,
+    rgba(252, 239, 225, 0.6) 0%,
+    rgba(252, 239, 225, 0.45) 60%,
+    rgba(252, 239, 225, 0) 100%);
+  backdrop-filter: blur(10px) saturate(1.1);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
+}
+
+body.theme-2026 .navbar-brand {
+  position: relative;
+  padding-left: 2.5rem;
+  font-family: "Lobster", cursive;
+  color: var(--ihm-ink) !important;
+  font-size: 1.75rem;
+}
+
+body.theme-2026 .navbar-brand::before {
+  content: "!";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2rem;
+  height: 2rem;
+  background: var(--ihm-accent);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(242, 120, 72, 0.35);
+}
+
+body.theme-2026 .navbar-brand span {
+  color: var(--ihm-accent) !important;
+  display: none; /* hide the classic "#!" prefix, we draw our own bubble */
+}
+
+body.theme-2026 .navbar-nav .nav-link {
+  color: var(--ihm-ink-soft) !important;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.35rem 1rem !important;
+  margin: 0 0.15rem;
+  transition: all 0.2s ease;
+}
+
+body.theme-2026 .navbar-nav .nav-item.active .nav-link,
+body.theme-2026 .navbar-nav .nav-link:hover {
+  background: var(--ihm-ink);
+  color: #fff !important;
+}
+
+body.theme-2026 .navbar-nav .dropdown-toggle {
+  background: var(--ihm-card);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem !important;
+  border: 1px solid var(--ihm-line);
+}
+
+body.theme-2026 .navbar-nav .dropdown-toggle:hover,
+body.theme-2026 .navbar-nav .show > .dropdown-toggle {
+  background: #fff;
+  color: var(--ihm-ink) !important;
+  box-shadow: 0 2px 8px rgba(30, 10, 0, 0.08);
+}
+
+/* The project-name dropdown is rendered as `<strong class="text-white">` —
+   Bootstrap's text-white utility was designed for the dark classic navbar
+   and becomes invisible on our cream one. Force dark ink on 2026. */
+body.theme-2026 .navbar .text-white,
+body.theme-2026 .navbar-nav .projects-item .dropdown-toggle,
+body.theme-2026 .navbar-nav .projects-item .dropdown-toggle strong {
+  color: var(--ihm-ink) !important;
+}
+
+/* Keep the globe icon visible in every state — the base theme fills it
+   white when the dropdown is open, which would vanish on our white pill. */
+body.theme-2026 .navbar-nav .globe-europe svg,
+body.theme-2026 .navbar-dark .navbar-nav .dropdown-toggle:hover .globe-europe svg,
+body.theme-2026 .navbar-dark .navbar-nav .show > .nav-link svg,
+body.theme-2026 .navbar-dark .navbar-nav .show > .nav-link .globe-europe svg {
+  fill: var(--ihm-ink-soft) !important;
+}
+
+body.theme-2026 .dropdown-menu {
+  border-radius: var(--ihm-radius-sm);
+  border: 1px solid var(--ihm-line);
+  box-shadow: var(--ihm-shadow);
+  padding: 0.5rem;
+}
+
+body.theme-2026 .dropdown-item {
+  border-radius: 10px;
+  padding: 0.4rem 0.75rem;
+}
+
+body.theme-2026 .dropdown-item:hover,
+body.theme-2026 .dropdown-item.active {
+  background: var(--ihm-accent-soft);
+  color: var(--ihm-ink);
+}
+
+/* -------------------------------------------------------------------- */
+/*  Buttons                                                             */
+/* -------------------------------------------------------------------- */
+
+body.theme-2026 .btn {
+  border-radius: 999px;
+  font-weight: 600;
+  padding: 0.55rem 1.3rem;
+  border: none;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease, filter 0.2s ease;
+}
+
+body.theme-2026 .btn:hover {
+  filter: brightness(0.95);
+}
+
+body.theme-2026 .btn-primary,
+body.theme-2026 .btn-primary[data-toggle="modal"] {
+  background: var(--ihm-accent) !important;
+  color: #fff !important;
+  box-shadow: 0 6px 16px rgba(242, 120, 72, 0.35);
+}
+
+body.theme-2026 .btn-primary:hover,
+body.theme-2026 .btn-primary:focus {
+  background: var(--ihm-accent-dark) !important;
+  color: #fff !important;
+  box-shadow: 0 8px 20px rgba(216, 95, 49, 0.4);
+}
+
+body.theme-2026 .btn-secondary {
+  background: var(--ihm-ink) !important;
+  color: #fff !important;
+}
+
+body.theme-2026 .btn-secondary:hover {
+  background: #000 !important;
+}
+
+body.theme-2026 .btn-light {
+  background: var(--ihm-card);
+  color: var(--ihm-ink);
+  border: 1px solid var(--ihm-line);
+}
+
+body.theme-2026 .btn-link {
+  color: var(--ihm-accent-dark);
+  text-decoration: none;
+}
+
+body.theme-2026 .btn-link:hover {
+  color: var(--ihm-ink);
+  text-decoration: underline;
+}
+
+/* -------------------------------------------------------------------- */
+/*  Forms                                                               */
+/* -------------------------------------------------------------------- */
+
+body.theme-2026 .form-control,
+body.theme-2026 input[type="text"],
+body.theme-2026 input[type="email"],
+body.theme-2026 input[type="password"],
+body.theme-2026 input[type="number"],
+body.theme-2026 input[type="date"],
+body.theme-2026 select,
+body.theme-2026 textarea {
+  border-radius: 999px;
+  border: 1px solid var(--ihm-line);
+  background: #fff;
+  padding: 0.55rem 1rem;
+  box-shadow: none;
+}
+
+body.theme-2026 textarea.form-control {
+  border-radius: var(--ihm-radius-sm);
+}
+
+body.theme-2026 .form-control:focus {
+  border-color: var(--ihm-accent);
+  box-shadow: 0 0 0 0.2rem rgba(242, 120, 72, 0.15);
+}
+
+/* In Bootstrap input-groups (e.g. the "Add participant" form), full pill
+   radii on both the input and the trailing button create an ugly overlap.
+   Flatten the inner edges and match heights so they form one clean pill. */
+body.theme-2026 .input-group {
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+
+body.theme-2026 .input-group > .form-control {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+}
+
+body.theme-2026 .input-group > .input-group-append > .btn,
+body.theme-2026 .input-group > .input-group-prepend > .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 0 1.1rem;
+  font-weight: 600;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+body.theme-2026 label,
+body.theme-2026 legend {
+  color: var(--ihm-muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+body.theme-2026 .form-text {
+  color: var(--ihm-muted) !important;
+}
+
+/* -------------------------------------------------------------------- */
+/*  Home / landing page                                                 */
+/* -------------------------------------------------------------------- */
+
+body.theme-2026 .home-container {
+  background: transparent;
+  padding-top: 2rem;
+}
+
+body.theme-2026 #header h2 {
+  font-family: "Comfortaa", serif;
+  font-size: 3rem;
+  line-height: 1.1;
+  color: var(--ihm-ink);
+}
+
+body.theme-2026 #header h2[data-tag]::before {
+  content: "✨ " attr(data-tag);
+  display: inline-block;
+  background: var(--ihm-accent-soft);
+  color: var(--ihm-accent-dark);
+  font-size: 0.8rem;
+  padding: 0.25rem 0.8rem;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+body.theme-2026 #header .tryout,
+body.theme-2026 #header .showcase {
+  background: var(--ihm-accent) !important;
+  border: none !important;
+  color: #fff !important;
+  border-radius: 999px;
+  padding: 0.6rem 1.4rem;
+  box-shadow: 0 8px 18px rgba(242, 120, 72, 0.3);
+}
+
+body.theme-2026 #header .showcase {
+  background: #fff !important;
+  color: var(--ihm-ink) !important;
+  border: 1px solid var(--ihm-line) !important;
+  box-shadow: var(--ihm-shadow);
+}
+
+body.theme-2026 .home .card {
+  background: var(--ihm-card);
+  border-radius: var(--ihm-radius);
+  box-shadow: var(--ihm-shadow);
+  border: none;
+  overflow: hidden;
+}
+
+body.theme-2026 .home .card-header {
+  background: transparent;
+  border-bottom: none;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--ihm-ink);
+  padding: 1.5rem 1.75rem 0;
+  position: relative;
+  padding-left: 3.5rem;
+}
+
+body.theme-2026 .home .card:nth-of-type(1) .card-header::before,
+body.theme-2026 .home .card:nth-of-type(2) .card-header::before {
+  content: "";
+  position: absolute;
+  left: 1.25rem;
+  top: 1.5rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+}
+
+body.theme-2026 .home .card:nth-of-type(1) .card-header::before {
+  background: var(--ihm-accent-soft);
+}
+
+body.theme-2026 .home .card:nth-of-type(2) .card-header::before {
+  background: var(--ihm-green);
+}
+
+body.theme-2026 .home .card-body {
+  padding: 1.25rem 1.75rem 1.75rem;
+}
+
+body.theme-2026 .home .card-body .btn-primary {
+  width: 100%;
+  padding: 0.7rem 1.2rem;
+  margin-top: 0.5rem;
+}
+
+body.theme-2026 .home .card .password-reminder {
+  display: block;
+  text-align: center;
+  color: var(--ihm-accent-dark);
+  margin-top: 0.5rem;
+}
+
+/* -------------------------------------------------------------------- */
+/*  Sidebar — participant panel                                         */
+/* -------------------------------------------------------------------- */
+
+body.theme-2026 .sidebar {
+  background: var(--ihm-card);
+  border-radius: var(--ihm-radius);
+  padding: 1.25rem 1rem;
+  box-shadow: var(--ihm-shadow);
+  color: var(--ihm-ink);
+  margin-left: 1rem;
+}
+
+@media (min-width: 768px) {
+  /* Override the classic theme's position:fixed (which covers the whole
+     viewport height, hides the footer and clips the Invite block).
+     Sticky lets the sidebar scroll naturally with the page and ends at its
+     own content height. */
+  body.theme-2026 .sidebar {
+    position: sticky;
+    top: 4.5rem;
+    height: auto;
+    max-height: calc(100vh - 5.5rem);
+    overflow-y: auto;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 1.25rem;
+  }
+
+  /* The classic layout relies on the sidebar being position:fixed (out of
+     flow) and uses offset-md-3 on `main` to reserve its space. Now that
+     the sidebar is sticky and back in the flex row, the offset would push
+     the total past 100% and wrap the main column under the sidebar. */
+  body.theme-2026 main.offset-md-3 {
+    margin-left: 0 !important;
+  }
+}
+
+body.theme-2026 .sidebar_content {
+  padding: 0;
+}
+
+body.theme-2026 .balance.table {
+  background: transparent;
+  margin-top: 0.5rem;
+  border-collapse: collapse;
+}
+
+body.theme-2026 .balance tr {
+  background: transparent;
+}
+
+body.theme-2026 .balance tr td {
+  background: transparent;
+  padding: 0.55rem 0.9rem;
+  border: none;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+body.theme-2026 #sidebar .balance tr:hover td {
+  background: #fadfcb;
+}
+
+body.theme-2026 .balance .balance-name {
+  position: relative;
+  padding-left: 2.85rem !important;
+}
+
+body.theme-2026 .balance .balance-name::before {
+  content: attr(data-initial);
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.6rem;
+  height: 1.6rem;
+  background: var(--ihm-accent-soft);
+  color: var(--ihm-accent-dark);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+body.theme-2026 .positive {
+  color: var(--ihm-positive) !important;
+}
+
+body.theme-2026 .negative {
+  color: var(--ihm-negative) !important;
+}
+
+body.theme-2026 .identifier {
+  background: transparent;
+  padding: 0.5rem 0 0;
+  margin-top: 0.75rem;
+  color: var(--ihm-ink);
+}
+
+body.theme-2026 .identifier .btn-secondary {
+  background: var(--ihm-accent) !important;
+  color: #fff !important;
+  width: 100%;
+  box-shadow: 0 6px 16px rgba(242, 120, 72, 0.28);
+}
+
+body.theme-2026 .identifier .btn-secondary:hover {
+  background: var(--ihm-accent-dark) !important;
+}
+
+/* -------------------------------------------------------------------- */
+/*  Main content area                                                   */
+/* -------------------------------------------------------------------- */
+
+body.theme-2026 main.content,
+body.theme-2026 main.d-flex.flex-column {
+  background: var(--ihm-surface);
+  border-radius: var(--ihm-radius);
+  box-shadow: var(--ihm-shadow);
+  padding: 1.5rem 1.75rem;
+  /* Only vertical margins — horizontal margins break Bootstrap's flex row
+     and push the column below the sidebar. */
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Breathing room around and between the sidebar and main content card.
+   The sidebar gets a 1rem left inset, then a 1.5rem gap separates it from
+   the main card. Each column's flex-basis is shrunk to keep the row at 100%. */
+@media (min-width: 768px) {
+  body.theme-2026 aside.sidebar.col-md-3 {
+    flex: 0 0 calc(25% - 1.75rem);
+    max-width: calc(25% - 1.75rem);
+  }
+  body.theme-2026 main.col-md-9 {
+    flex: 0 0 calc(75% - 1.75rem);
+    max-width: calc(75% - 1.75rem);
+    margin-left: 1.5rem !important;
+    margin-right: 1rem;
+  }
+}
+
+body.theme-2026 #bill-toolbar {
+  background: transparent;
+  position: static;
+  padding-bottom: 0.5rem !important;
+  margin-bottom: 0.5rem;
+}
+
+body.theme-2026 #bill-toolbar .btn-primary {
+  padding: 0.65rem 1.4rem;
+}
+
+/* -------------------------------------------------------------------- */
+/*  Bill & stats tables                                                 */
+/* -------------------------------------------------------------------- */
+
+body.theme-2026 #bill_table,
+body.theme-2026 #monthly_stats,
+body.theme-2026 #history_table {
+  background: transparent;
+  border-collapse: collapse;
+}
+
+body.theme-2026 #bill_table th,
+body.theme-2026 #monthly_stats th,
+body.theme-2026 #history_table th {
+  border: none;
+  color: var(--ihm-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+}
+
+body.theme-2026 #bill_table td,
+body.theme-2026 #monthly_stats td,
+body.theme-2026 #history_table td {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--ihm-line);
+  padding: 0.75rem;
+  vertical-align: middle;
+}
+
+body.theme-2026 .table-striped tbody tr:nth-of-type(2n+1),
+body.theme-2026 .table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(210, 150, 100, 0.05);
+}
+
+body.theme-2026 #monthly_stats.table-striped tbody tr,
+body.theme-2026 .split_bills.table-striped tbody tr {
+  background-color: transparent !important;
+}
+
+body.theme-2026 #bill_table tbody tr:hover td,
+body.theme-2026 .table-striped tbody tr:hover td {
+  background: #fadfcb;
+}
+
+body.theme-2026 tr.ower_line td {
+  background: #fadfcb !important;
+}
+
+/* Drop the classic 15px left-overhang on the stats "split_bills" table so
+   it aligns with #monthly_stats beneath it. */
+body.theme-2026 .split_bills {
+  width: 100% !important;
+  margin-left: 0 !important;
+}
+
+body.theme-2026 tr.payer_line .balance-name {
+  color: var(--ihm-positive);
+  text-indent: 0;
+}
+
+/* -------------------------------------------------------------------- */
+/*  Bill action icons — edit / delete / show                            */
+/*  Classic renders 16x16 PNG sprites here. Replace with CSS-only       */
+/*  glyph buttons so they look crisp on any DPI and match the theme.    */
+/* -------------------------------------------------------------------- */
+
+body.theme-2026 .bill-actions > form > .delete,
+body.theme-2026 .bill-actions > .edit,
+body.theme-2026 .bill-actions > .show {
+  background-image: none !important;
+  background-color: var(--ihm-bg-alt);
+  font-size: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ihm-ink);
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+body.theme-2026 .bill-actions > .edit::before,
+body.theme-2026 .bill-actions > form > .delete::before,
+body.theme-2026 .bill-actions > .show::before {
+  font-size: 0.9rem;
+  line-height: 1;
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 700;
+}
+
+body.theme-2026 .bill-actions > .edit::before { content: "\270E"; } /* pencil */
+body.theme-2026 .bill-actions > form > .delete::before {
+  content: "\00D7"; /* × */
+  color: var(--ihm-negative);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+body.theme-2026 .bill-actions > .show::before { content: "\2197"; } /* ↗ */
+
+body.theme-2026 .bill-actions > form > .delete:hover,
+body.theme-2026 .bill-actions > .edit:hover,
+body.theme-2026 .bill-actions > .show:hover {
+  background-color: var(--ihm-accent-soft);
+}
+
+/* The "you sure?" confirm state re-expands to a labeled button; drop our
+   circle sizing so the text can breathe. */
+body.theme-2026 .bill-actions .confirm {
+  background-color: var(--ihm-negative) !important;
+  color: #fff !important;
+  font-size: 0.75rem;
+  width: auto;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+}
+
+body.theme-2026 .bill-actions .confirm::before { content: none; }
+
+/* -------------------------------------------------------------------- */
+/*  Modal (Add / Edit bill)                                             */
+/* -------------------------------------------------------------------- */
+
+body.theme-2026 .modal-content {
+  border: none;
+  border-radius: var(--ihm-radius);
+  box-shadow: 0 20px 60px rgba(30, 10, 0, 0.2);
+  background: var(--ihm-card);
+  overflow: hidden;
+}
+
+body.theme-2026 .modal-header {
+  background: transparent;
+  border-bottom: none;
+  padding: 1.5rem 2rem 0.5rem;
+  position: relative;
+}
+
+body.theme-2026 .modal-header[data-tag]::before {
+  content: "✨ " attr(data-tag);
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+  background: var(--ihm-green);
+  color: #1c5d36;
+  border-radius: 999px;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+body.theme-2026 .modal-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+}
+
+body.theme-2026 .modal-header .close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.75rem;
+  background: var(--ihm-yellow);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  line-height: 1;
+  font-size: 1.25rem;
+  color: var(--ihm-ink);
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+body.theme-2026 .modal-body {
+  padding: 0.5rem 2rem 1.5rem !important;
+}
+
+/* Edit-bill full page — reuse the modal card look. */
+body.theme-2026 .bill-form-card {
+  background: var(--ihm-card);
+  border-radius: var(--ihm-radius);
+  box-shadow: var(--ihm-shadow);
+  padding: 1.5rem 2rem;
+  max-width: 720px;
+  margin: 1rem auto;
+}
+
+body.theme-2026 .bill-form-card legend {
+  font-size: 2rem;
+  font-weight: 700;
+  border: none;
+  margin-bottom: 1rem;
+}
+
+/* -------------------------------------------------------------------- */
+/*  Empty states & cards                                                */
+/* -------------------------------------------------------------------- */
+
+body.theme-2026 .empty-bill .card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 1rem !important;
+}
+
+body.theme-2026 .empty-bill .card-body {
+  color: var(--ihm-muted);
+}
+
+body.theme-2026 .empty-bill h3 {
+  margin-top: 0.75rem;
+}
+
+body.theme-2026 .empty-bill .billimg svg {
+  fill: var(--ihm-accent-soft);
+}
+
+body.theme-2026 .card {
+  border-radius: var(--ihm-radius-sm);
+  border: 1px solid var(--ihm-line);
+  background: #fff;
+}
+
+/* -------------------------------------------------------------------- */
+/*  Flash messages                                                      */
+/* -------------------------------------------------------------------- */
+
+body.theme-2026 main .position-absolute:has(> .flash) {
+  position: static !important;
+  margin: 0 0 1rem !important;
+  width: 100%;
+}
+
+body.theme-2026 > .position-absolute:has(> .flash) {
+  position: fixed !important;
+  top: 4.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0 !important;
+  width: auto !important;
+  max-width: min(40rem, 92vw);
+  justify-content: center;
+  z-index: 1040;
+}
+
+body.theme-2026 .flash {
+  border-radius: 14px;
+  border: none;
+  box-shadow: var(--ihm-shadow);
+  font-weight: 500;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  text-align: left;
+  flex: 1 1 auto;
+}
+
+body.theme-2026 .flash .close {
+  padding: 0.5rem 0.75rem;
+  opacity: 0.55;
+}
+
+body.theme-2026 .alert-success {
+  background: var(--ihm-green);
+  color: #1c5d36;
+}
+
+body.theme-2026 .alert-danger {
+  background: var(--ihm-pink);
+  color: #7a2416;
+}
+
+body.theme-2026 .alert-warning {
+  background: var(--ihm-yellow);
+  color: #6a4a00;
+}
+
+body.theme-2026 .alert-info {
+  background: var(--ihm-lilac);
+  color: #3b2a5b;
+}
+
+/* -------------------------------------------------------------------- */
+/*  Footer                                                              */
+/* -------------------------------------------------------------------- */
+
+body.theme-2026 footer {
+  padding: 1rem 2rem 1.25rem;
+  background: transparent;
+  color: var(--ihm-muted);
+}
+
+body.theme-2026 footer .footer-left p,
+body.theme-2026 footer .footer-left a {
+  color: var(--ihm-muted);
+  font-size: 0.8rem;
+}
+
+body.theme-2026 footer .footer-right a {
+  background: var(--ihm-card);
+  opacity: 1;
+  border: 1px solid var(--ihm-line);
+  color: var(--ihm-ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+}
+
+body.theme-2026 footer .footer-right a .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+body.theme-2026 footer .footer-right a .icon svg {
+  border-bottom: none;
+  vertical-align: middle;
+}
+
+body.theme-2026 footer .footer-right a:hover {
+  background: var(--ihm-accent);
+  border-color: var(--ihm-accent);
+}
+
+body.theme-2026 footer .footer-right a .icon svg {
+  fill: var(--ihm-ink);
+}
+
+body.theme-2026 footer .footer-right a:hover .icon svg {
+  fill: #fff;
+}
+
+/* -------------------------------------------------------------------- */
+/*  Pagination                                                          */
+/* -------------------------------------------------------------------- */
+
+body.theme-2026 .pagination .page-link {
+  border: none;
+  border-radius: 999px;
+  margin: 0 0.2rem;
+  color: var(--ihm-ink-soft);
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(30, 10, 0, 0.06);
+}
+
+body.theme-2026 .pagination .page-item.active .page-link {
+  background: var(--ihm-accent);
+  color: #fff;
+}
+
+body.theme-2026 .pagination .page-item.disabled .page-link {
+  background: transparent;
+  color: var(--ihm-muted);
+  box-shadow: none;
+}
+
+/* -------------------------------------------------------------------- */
+/*  Misc                                                                */
+/* -------------------------------------------------------------------- */
+
+body.theme-2026 .bootstrap-tagsinput {
+  border-radius: 999px;
+  border: 1px solid var(--ihm-line);
+  background: #fff;
+  padding: 0.4rem 0.8rem;
+}
+
+body.theme-2026 .bootstrap-tagsinput .tag {
+  background: var(--ihm-accent-soft);
+  color: var(--ihm-accent-dark);
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  font-weight: 600;
+}
+
+body.theme-2026 #bill-toolbar .pagination {
+  margin-bottom: 0;
+}
+
+body.theme-2026 hr {
+  border-top: 1px solid var(--ihm-line);
+}
+
+/* -------------------------------------------------------------------- */
+/*  Settings — download / export badges                                 */
+/* -------------------------------------------------------------------- */
+
+body.theme-2026 .badge {
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+body.theme-2026 .badge-secondary {
+  background: var(--ihm-ink);
+  color: #fff !important;
+}
+
+body.theme-2026 .badge-secondary:hover {
+  background: var(--ihm-accent);
+  color: #fff !important;
+}
+
+body.theme-2026 .badge .icon svg {
+  fill: #fff;
+  height: 0.95em;
+  width: 0.95em;
+  border-bottom: none;
+}
+
+body.theme-2026 .list-group-item {
+  background: #fff;
+  border-color: var(--ihm-line);
+}
+
+body.theme-2026 .list-group-item:first-child {
+  border-top-left-radius: var(--ihm-radius-sm);
+  border-top-right-radius: var(--ihm-radius-sm);
+}
+
+body.theme-2026 .list-group-item:last-child {
+  border-bottom-left-radius: var(--ihm-radius-sm);
+  border-bottom-right-radius: var(--ihm-radius-sm);
+}
+
+/* -------------------------------------------------------------------- */
+/*  Download mobile app page                                            */
+/*  The page ships its own stylesheet that paints <main> green and uses */
+/*  bg-dark / text-light Bootstrap utilities for the heading. Override  */
+/*  both so the page fits the 2026 look.                                */
+/* -------------------------------------------------------------------- */
+
+body.theme-2026 main.row.py-5 {
+  background: transparent !important;
+  font-family: inherit;
+}
+
+body.theme-2026 main.row.py-5 .bg-dark {
+  background: var(--ihm-card) !important;
+  color: var(--ihm-ink) !important;
+  border-radius: var(--ihm-radius);
+  box-shadow: var(--ihm-shadow);
+  padding: 2rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+body.theme-2026 main.row.py-5 .bg-dark.text-light,
+body.theme-2026 main.row.py-5 .bg-dark .text-light,
+body.theme-2026 main.row.py-5 .text-light {
+  color: var(--ihm-ink) !important;
+}
+
+body.theme-2026 main.row.py-5 h1 {
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 700;
+}
+
+body.theme-2026 main.row.py-5 h3.text-dark {
+  color: var(--ihm-ink-soft) !important;
+  font-weight: 600;
+  margin-bottom: 1.5rem !important;
+}
+
+body.theme-2026 .get-it-from {
+  width: 140px;
+  min-height: auto;
+  border: none !important;
+  background: #fff !important;
+  border-radius: var(--ihm-radius-sm);
+  box-shadow: var(--ihm-shadow);
+  padding: 0.75rem 1rem;
+  margin: 0.5rem !important;
+  object-fit: contain;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+body.theme-2026 .get-it-from:hover {
+  opacity: 1;
+  background: var(--ihm-accent-soft) !important;
+  box-shadow: 0 10px 24px rgba(242, 120, 72, 0.22);
+}
+
+/* -------------------------------------------------------------------- */
+/*  Invite page — white card for clarity                                */
+/* -------------------------------------------------------------------- */
+
+body.theme-2026 .invites-table tbody td {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--ihm-line);
+  padding: 1.25rem 0.5rem;
+  vertical-align: top;
+}
+
+body.theme-2026 .invites-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+body.theme-2026 .invites-table h3 {
+  margin-top: 0;
+  color: var(--ihm-ink);
+}
+
+body.theme-2026 .invites-table a {
+  color: var(--ihm-accent-dark);
+  word-break: break-all;
+}
