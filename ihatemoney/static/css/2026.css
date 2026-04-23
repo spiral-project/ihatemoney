@@ -632,6 +632,30 @@ body.theme-2026 .split_bills {
   margin-left: 0 !important;
 }
 
+body.theme-2026 #monthly_stats .month-bar-cell {
+  position: relative;
+}
+
+body.theme-2026 #monthly_stats .month-bar-cell::before {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--bar-pct, 0%);
+  height: 1.5rem;
+  background: var(--ihm-accent-soft);
+  border-radius: 6px;
+  z-index: 0;
+  transition: width 0.3s ease;
+}
+
+body.theme-2026 #monthly_stats .month-bar-value {
+  position: relative;
+  z-index: 1;
+  font-variant-numeric: tabular-nums;
+}
+
 body.theme-2026 tr.payer_line .balance-name {
   color: var(--ihm-positive);
   text-indent: 0;

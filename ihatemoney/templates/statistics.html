@@ -27,6 +27,11 @@
     </tbody>
   </table>
   <h2>{{ _("Expenses by month") }}</h2>
+  {% set ns = namespace(max=0) %}
+  {% for month in months %}
+    {% set v = monthly_stats[month.year][month.month] %}
+    {% if v > ns.max %}{% set ns.max = v %}{% endif %}
+  {% endfor %}
   <table id="monthly_stats" class="table table-striped">
     <thead>
       <tr>
@@ -36,9 +41,12 @@
     </thead>
     <tbody>
       {% for month in months %}
+      {% set v = monthly_stats[month.year][month.month] %}
       <tr>
         <td>{{ month|dateformat("MMMM yyyy") }}</td>
-        <td>{{ monthly_stats[month.year][month.month]|currency }}</td>
+        <td class="month-bar-cell" style="--bar-pct: {{ ((v / ns.max * 100) if ns.max else 0)|round(1) }}%">
+          <span class="month-bar-value">{{ v|currency }}</span>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
