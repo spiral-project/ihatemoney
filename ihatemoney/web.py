@@ -450,6 +450,7 @@ def edit_project():
 
         edit_form.contact_email.data = g.project.contact_email
         edit_form.default_currency.data = g.project.default_currency
+        edit_form.theme.data = g.project.theme or ""
 
     return render_template(
         "edit_project.html",

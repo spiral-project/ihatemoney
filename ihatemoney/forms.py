@@ -149,6 +149,16 @@ class EditProjectForm(FlaskForm):
             "Setting a default currency enables currency conversion between bills"
         ),
     )
+    theme = SelectField(
+        _("Theme"),
+        choices=[
+            ("", _("Instance default")),
+            ("classic", _("Classic")),
+            ("2026", "2026"),
+        ],
+        default="",
+        description=_("Visual theme used for this project"),
+    )
 
     def __init__(self, *args, **kwargs):
         if not hasattr(self, "id"):
@@ -221,6 +231,7 @@ class EditProjectForm(FlaskForm):
         project.contact_email = self.contact_email.data
         project.logging_preference = self.logging_preference
         project.switch_currency(self.default_currency.data)
+        project.theme = self.theme.data or None
 
         return project
 

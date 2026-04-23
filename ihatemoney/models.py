@@ -88,6 +88,7 @@ class Project(db.Model):
 
     query_class = ProjectQuery
     default_currency = db.Column(db.String(3))
+    theme = db.Column(db.String(16), nullable=True)
 
     @property
     def _to_serialize(self):
