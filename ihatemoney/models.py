@@ -571,16 +571,40 @@ class Project(db.Model):
 
         db.session.commit()
 
+        today = datetime.date.today()
+        everyone = ("Amina", "Georg", "Alice")
         operations = (
-            ("Georg", 200, ("Amina", "Georg", "Alice"), "Food shopping", "Expense"),
-            ("Alice", 20, ("Amina", "Alice"), "Beer !", "Expense"),
-            ("Amina", 50, ("Amina", "Alice", "Georg"), "AMAP", "Expense"),
+            # (months_ago, day, payer, amount, owers, what, bill_type)
+            (5, 4, "Georg", 180, everyone, "Food shopping", "Expense"),
+            (5, 12, "Alice", 45, ("Amina", "Alice"), "Cinema", "Expense"),
+            (5, 20, "Amina", 60, everyone, "AMAP", "Expense"),
+            (5, 27, "Georg", 35, ("Georg", "Alice"), "Brunch", "Expense"),
+            (4, 3, "Alice", 220, everyone, "Train tickets", "Expense"),
+            (4, 10, "Amina", 95, everyone, "Food shopping", "Expense"),
+            (4, 18, "Georg", 28, ("Amina", "Georg"), "Beer !", "Expense"),
+            (4, 25, "Alice", 130, everyone, "AMAP", "Expense"),
+            (3, 2, "Georg", 240, everyone, "Books", "Expense"),
+            (3, 11, "Amina", 40, ("Alice", "Amina"), "Coffee shop", "Expense"),
+            (3, 19, "Alice", 160, everyone, "Food shopping", "Expense"),
+            (2, 5, "Amina", 75, everyone, "AMAP", "Expense"),
+            (2, 14, "Georg", 55, ("Georg", "Alice"), "Concert tickets", "Expense"),
+            (2, 21, "Alice", 200, everyone, "Lovers weekend", "Expense"),
+            (2, 28, "Amina", 30, everyone, "Beer !", "Expense"),
+            (1, 6, "Georg", 110, everyone, "Food shopping", "Expense"),
+            (1, 13, "Alice", 48, ("Amina", "Alice"), "Books", "Expense"),
+            (1, 22, "Amina", 85, everyone, "AMAP", "Expense"),
+            (0, 2, "Georg", 150, everyone, "Food shopping", "Expense"),
+            (0, 8, "Alice", 22, ("Amina", "Alice", "Georg"), "Beer !", "Expense"),
+            (0, 15, "Amina", 65, everyone, "AMAP", "Expense"),
         )
-        for payer, amount, owers, what, bill_type in operations:
+        for months_ago, day, payer, amount, owers, what, bill_type in operations:
+            bill_date = today - relativedelta(months=months_ago)
+            bill_date = bill_date.replace(day=min(day, 28))
             db.session.add(
                 Bill(
                     amount=amount,
                     bill_type=bill_type,
+                    date=bill_date,
                     original_currency=project.default_currency,
                     owers=[members[name] for name in owers],
                     payer_id=members[payer].id,
