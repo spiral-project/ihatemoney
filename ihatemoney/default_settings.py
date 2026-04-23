@@ -14,6 +14,10 @@ SESSION_COOKIE_SECURE = True
 APPLICATION_ROOT = "/"
 ENABLE_CAPTCHA = False
 LEGAL_LINK = ""
+# Visual theme used by the web UI. Currently supported values are "classic"
+# (the historical green & white look) and "2026" (a warm, pastel, rounded
+# look inspired by the 2026 design mockups).
+THEME = "2026"
 SUPPORTED_LANGUAGES = [
     "az",
     "ca",

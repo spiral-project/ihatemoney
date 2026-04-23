@@ -112,6 +112,15 @@ def validate_configuration(app):
             UserWarning,
         )
 
+    available_themes = ("classic", "2026")
+    if app.config.get("THEME") not in available_themes:
+        warnings.warn(
+            f"Unknown THEME {app.config.get('THEME')!r}. "
+            f"Falling back to 'classic'. Supported values: {available_themes}.",
+            UserWarning,
+        )
+        app.config["THEME"] = "classic"
+
     if "pbkdf2:" not in app.config["ADMIN_PASSWORD"] and app.config["ADMIN_PASSWORD"]:
         # Since 2.0
         warnings.warn(
@@ -237,6 +246,18 @@ def create_app(
         ).strip()
 
     app.jinja_env.filters["currency"] = currency
+
+    @app.context_processor
+    def inject_theme():
+        """Resolve the active theme: the current project's override wins, else
+        the instance default from app config."""
+        instance_theme = app.config.get("THEME", "classic")
+        project = getattr(g, "project", None)
+        project_theme = getattr(project, "theme", None) if project else None
+        active = project_theme or instance_theme
+        if active not in ("classic", "2026"):
+            active = "classic"
+        return {"active_theme": active, "instance_theme": instance_theme}
 
     return app
 

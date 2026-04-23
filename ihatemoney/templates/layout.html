@@ -24,6 +24,9 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel=stylesheet type=text/css href="{{ url_for("static", filename='css/main.css') }}">
+    {% if active_theme == '2026' %}
+    <link rel=stylesheet type=text/css href="{{ url_for("static", filename='css/2026.css') }}">
+    {% endif %}
     {% block css %}{% endblock %}
     <script src="{{ url_for("static", filename="js/jquery-3.6.0.min.js") }}"></script>
     <script src="{{ url_for("static", filename="js/ihatemoney.js") }}"></script>
@@ -45,7 +48,7 @@
         });
     </script>
 </head>
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100 theme-{{ active_theme or 'classic' }}">
   {% if g.lang == 'fr' %}{% include "showcase.html" %}{% endif %}
   <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
