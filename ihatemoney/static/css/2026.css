@@ -40,7 +40,8 @@ body.theme-2026 {
     radial-gradient(circle at 92% 10%, var(--ihm-yellow) 0, transparent 200px),
     var(--ihm-bg);
   color: var(--ihm-ink);
-  font-family: "Comfortaa", "Nunito", system-ui, sans-serif;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-weight: 500;
 }
 
 body.theme-2026 h1,
@@ -48,9 +49,18 @@ body.theme-2026 h2,
 body.theme-2026 h3,
 body.theme-2026 h4,
 body.theme-2026 h5 {
-  font-family: "Comfortaa", "Nunito", system-ui, sans-serif;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
   color: var(--ihm-ink);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+body.theme-2026 h2,
+body.theme-2026 h3,
+body.theme-2026 h4,
+body.theme-2026 h5 {
   font-weight: 700;
+  letter-spacing: -0.015em;
 }
 
 body.theme-2026 main h2 {
@@ -101,9 +111,11 @@ body.theme-2026 .navbar::before {
 body.theme-2026 .navbar-brand {
   position: relative;
   padding-left: 2.5rem;
-  font-family: "Lobster", cursive;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.04em;
   color: var(--ihm-ink) !important;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
 }
 
 body.theme-2026 .navbar-brand::before {
@@ -120,8 +132,8 @@ body.theme-2026 .navbar-brand::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Comfortaa", sans-serif;
-  font-weight: 700;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 800;
   font-size: 1.1rem;
   box-shadow: 0 4px 10px rgba(242, 120, 72, 0.35);
 }
@@ -326,7 +338,9 @@ body.theme-2026 .home-container {
 }
 
 body.theme-2026 #header h2 {
-  font-family: "Comfortaa", serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.035em;
   font-size: 3rem;
   line-height: 1.1;
   color: var(--ihm-ink);
@@ -341,8 +355,8 @@ body.theme-2026 #header h2[data-tag]::before {
   padding: 0.25rem 0.8rem;
   border-radius: 999px;
   margin-bottom: 0.75rem;
-  font-family: "Comfortaa", sans-serif;
-  font-weight: 600;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 700;
   letter-spacing: 0.03em;
 }
 
@@ -690,7 +704,7 @@ body.theme-2026 .bill-actions > form > .delete::before,
 body.theme-2026 .bill-actions > .show::before {
   font-size: 0.9rem;
   line-height: 1;
-  font-family: "Comfortaa", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 700;
 }
 
@@ -1065,8 +1079,9 @@ body.theme-2026 main.row.py-5 .text-light {
 }
 
 body.theme-2026 main.row.py-5 h1 {
-  font-family: "Comfortaa", sans-serif;
-  font-weight: 700;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.025em;
 }
 
 body.theme-2026 main.row.py-5 h3.text-dark {
