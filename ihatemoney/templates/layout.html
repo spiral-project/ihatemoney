@@ -28,6 +28,19 @@
     <link rel=stylesheet type=text/css href="{{ url_for("static", filename='css/main.css') }}">
     {% if active_theme == '2026' %}
     <link rel=stylesheet type=text/css href="{{ url_for("static", filename='css/2026.css') }}">
+    <script>
+      // Apply the saved color-scheme preference before paint to avoid a flash
+      // of the wrong theme. The toggle in the navbar writes localStorage; CSS
+      // falls back to `prefers-color-scheme` when no preference is saved.
+      (function() {
+        try {
+          var saved = localStorage.getItem('ihm-color-scheme');
+          if (saved === 'light' || saved === 'dark') {
+            document.documentElement.setAttribute('data-color-scheme', saved);
+          }
+        } catch (e) {}
+      })();
+    </script>
     {% endif %}
     {% block css %}{% endblock %}
     <script src="{{ url_for("static", filename="js/jquery-3.6.0.min.js") }}"></script>
@@ -46,6 +59,16 @@
         $(document).ready(function(){
             $('.dropdown-toggle').dropdown();
             $('[data-toggle="tooltip"]').tooltip();
+            {% if active_theme == '2026' %}
+            $('.color-toggle').on('click', function() {
+                var saved = null;
+                try { saved = localStorage.getItem('ihm-color-scheme'); } catch (e) {}
+                var current = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                var next = current === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-color-scheme', next);
+                try { localStorage.setItem('ihm-color-scheme', next); } catch (e) {}
+            });
+            {% endif %}
             {% block js %}{% endblock %}
         });
     </script>
@@ -56,7 +79,16 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <h1><a class="navbar-brand" href="{{ url_for("main.home") }}"><span>#!</span> money?</a></h1>
+
+    {% if active_theme == '2026' %}
+    {# Mobile-only color toggle. The desktop copy is in the collapsed menu. #}
+    <button type="button" class="nav-link color-toggle d-lg-none" aria-label="{{ _('Toggle color scheme') }}">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+    {% endif %}
+
+    <h1 class="ml-auto ml-lg-0"><a class="navbar-brand" href="{{ url_for("main.home") }}"><span>#!</span> money?</a></h1>
 
     <div class="collapse navbar-collapse" id="navbarToggler">
       <ul class="navbar-nav nav-fill w-100">
@@ -69,6 +101,14 @@
         {% endif %}
       </ul>
       <ul class="navbar-nav ml-auto">
+        {% if active_theme == '2026' %}
+        <li class="nav-item d-none d-lg-block">
+          <button type="button" class="nav-link color-toggle" aria-label="{{ _('Toggle color scheme') }}">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+        </li>
+        {% endif %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="langMenuButton">
             <i class="icon globe-europe">{{ static_include("images/globe.svg") | safe }}</i>

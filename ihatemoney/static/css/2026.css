@@ -9,6 +9,9 @@
 
 :root {
   --ihm-bg: #fcefe1;
+  /* Triple-form of --ihm-bg, used inside `rgba()` for the navbar tint where
+     CSS variables can't be embedded directly. Keep in sync with --ihm-bg. */
+  --ihm-bg-rgb: 252, 239, 225;
   --ihm-bg-alt: #f4e3d4;
   --ihm-card: #fffaf3;
   --ihm-surface: #ffffff;
@@ -26,6 +29,14 @@
   --ihm-lilac: #d8c8ea;
   --ihm-yellow: #ffd98a;
   --ihm-yellow-soft: #fff2cc;
+  --ihm-row-hover: #fadfcb;
+  /* Glow color for the body's top-right radial-gradient. Overridden in
+     dark mode to a dim ember. */
+  --ihm-glow: var(--ihm-yellow);
+  /* Pill background that stays dark in both light and dark modes — used for
+     the active navbar tab and the secondary "Add" button. Tying these to
+     --ihm-ink would flip them to cream in dark mode. */
+  --ihm-pill-bg: #1f1a17;
   --ihm-radius: 28px;
   --ihm-radius-sm: 14px;
   --ihm-shadow: 0 10px 30px rgba(50, 20, 10, 0.08);
@@ -37,8 +48,12 @@
 
 body.theme-2026 {
   background:
-    radial-gradient(circle at 92% 10%, var(--ihm-yellow) 0, transparent 200px),
+    radial-gradient(circle at 92% 10%, var(--ihm-glow) 0, transparent 200px),
     var(--ihm-bg);
+  /* Pin the glow to the viewport. Without fixed/no-repeat the gradient
+     stretches with body height and drifts on scroll. */
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: var(--ihm-ink);
   font-family: "Plus Jakarta Sans", system-ui, sans-serif;
   font-weight: 500;
@@ -66,6 +81,10 @@ body.theme-2026 h5 {
 body.theme-2026 main h2 {
   font-size: 1.25rem;
   margin-top: 1.5rem;
+}
+
+body.theme-2026 main h2:first-child {
+  margin-top: 0;
 }
 
 body.theme-2026 a {
@@ -99,13 +118,25 @@ body.theme-2026 .navbar::before {
   z-index: -1;
   pointer-events: none;
   background-image: linear-gradient(to bottom,
-    rgba(252, 239, 225, 0.6) 0%,
-    rgba(252, 239, 225, 0.45) 60%,
-    rgba(252, 239, 225, 0) 100%);
+    rgba(var(--ihm-bg-rgb), 0.6) 0%,
+    rgba(var(--ihm-bg-rgb), 0.45) 60%,
+    rgba(var(--ihm-bg-rgb), 0) 100%);
   backdrop-filter: blur(10px) saturate(1.1);
   -webkit-backdrop-filter: blur(10px) saturate(1.1);
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
   mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
+}
+
+/* On expanded mobile navbar, drop the fade mask so the blur covers the
+   full panel rather than fading out behind the dropdown items. */
+@media (max-width: 991.98px) {
+  body.theme-2026 .navbar::before {
+    -webkit-mask-image: none;
+    mask-image: none;
+    background-image: linear-gradient(to bottom,
+      rgba(var(--ihm-bg-rgb), 0.85) 0%,
+      rgba(var(--ihm-bg-rgb), 0.85) 100%);
+  }
 }
 
 body.theme-2026 .navbar-brand {
@@ -154,7 +185,7 @@ body.theme-2026 .navbar-nav .nav-link {
 
 body.theme-2026 .navbar-nav .nav-item.active .nav-link,
 body.theme-2026 .navbar-nav .nav-link:hover {
-  background: var(--ihm-ink);
+  background: var(--ihm-pill-bg);
   color: #fff !important;
 }
 
@@ -167,7 +198,7 @@ body.theme-2026 .navbar-nav .dropdown-toggle {
 
 body.theme-2026 .navbar-nav .dropdown-toggle:hover,
 body.theme-2026 .navbar-nav .show > .dropdown-toggle {
-  background: #fff;
+  background: var(--ihm-surface);
   color: var(--ihm-ink) !important;
   box-shadow: 0 2px 8px rgba(30, 10, 0, 0.08);
 }
@@ -179,6 +210,40 @@ body.theme-2026 .navbar .text-white,
 body.theme-2026 .navbar-nav .projects-item .dropdown-toggle,
 body.theme-2026 .navbar-nav .projects-item .dropdown-toggle strong {
   color: var(--ihm-ink) !important;
+}
+
+/* Bootstrap's navbar-dark paints the hamburger white, invisible on cream. */
+body.theme-2026 .navbar-dark .navbar-toggler {
+  color: var(--ihm-ink);
+  border-color: var(--ihm-line);
+}
+
+body.theme-2026 .navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='%231f1a17' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Center stacked navbar items when the menu collapses. */
+@media (max-width: 991.98px) {
+  body.theme-2026 .navbar-collapse .navbar-nav {
+    text-align: center;
+    align-items: center;
+  }
+  body.theme-2026 .navbar-collapse .navbar-nav .nav-item {
+    width: auto;
+  }
+  body.theme-2026 .navbar-collapse .navbar-nav .dropdown-menu {
+    text-align: center;
+  }
+}
+
+/* Cream-stroked hamburger for dark mode. */
+@media (prefers-color-scheme: dark) {
+  html:not([data-color-scheme="light"]) body.theme-2026 .navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='%23f0e4d2' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+}
+html[data-color-scheme="dark"] body.theme-2026 .navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='%23f0e4d2' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 /* Keep the globe icon visible in every state — the base theme fills it
@@ -239,7 +304,7 @@ body.theme-2026 .btn-primary:focus {
 }
 
 body.theme-2026 .btn-secondary {
-  background: var(--ihm-ink) !important;
+  background: var(--ihm-pill-bg) !important;
   color: #fff !important;
 }
 
@@ -277,9 +342,16 @@ body.theme-2026 select,
 body.theme-2026 textarea {
   border-radius: 999px;
   border: 1px solid var(--ihm-line);
-  background: #fff;
+  background: var(--ihm-surface);
+  color: var(--ihm-ink);
   padding: 0.55rem 1rem;
   box-shadow: none;
+}
+
+/* Bootstrap's `.table` sets a hardcoded dark color that wins over `body`,
+   making cell text invisible in dark mode. Re-route through the ink token. */
+body.theme-2026 .table {
+  color: var(--ihm-ink);
 }
 
 body.theme-2026 textarea.form-control {
@@ -318,7 +390,7 @@ body.theme-2026 .input-group > .input-group-prepend > .btn {
 
 body.theme-2026 label,
 body.theme-2026 legend {
-  color: var(--ihm-muted);
+  color: var(--ihm-ink-soft);
   font-size: 0.85rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
@@ -346,6 +418,12 @@ body.theme-2026 #header h2 {
   color: var(--ihm-ink);
 }
 
+/* main.css hardcodes `#header .additional-content` to black. */
+body.theme-2026 #header .additional-content {
+  color: var(--ihm-ink);
+  font-family: inherit;
+}
+
 body.theme-2026 #header h2[data-tag]::before {
   content: "✨ " attr(data-tag);
   display: inline-block;
@@ -371,7 +449,7 @@ body.theme-2026 #header .showcase {
 }
 
 body.theme-2026 #header .showcase {
-  background: #fff !important;
+  background: var(--ihm-surface) !important;
   color: var(--ihm-ink) !important;
   border: 1px solid var(--ihm-line) !important;
   box-shadow: var(--ihm-shadow);
@@ -428,8 +506,45 @@ body.theme-2026 .home .card-body .btn-primary {
 body.theme-2026 .home .card .password-reminder {
   display: block;
   text-align: center;
-  color: var(--ihm-accent-dark);
+  color: var(--ihm-muted);
+  font-size: 0.9rem;
   margin-top: 0.5rem;
+}
+
+@media (max-width: 767.98px) {
+  body.theme-2026 #header {
+    padding-bottom: 1rem;
+  }
+  body.theme-2026 #header > .col-xs-12 {
+    max-width: 22rem;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+  }
+  body.theme-2026 #header h2 {
+    font-size: 2.4rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+  body.theme-2026 #header .tryout,
+  body.theme-2026 #header .showcase {
+    padding: 0.5rem 1.1rem;
+    font-size: 0.95rem;
+  }
+  body.theme-2026 #header .side-to-side {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  body.theme-2026 #header .showcaseimg {
+    width: 32px;
+  }
+  body.theme-2026 #header .additional-content {
+    margin-top: 0.75rem;
+  }
+  body.theme-2026 #header .additional-content .shareimg {
+    display: none;
+  }
 }
 
 /* -------------------------------------------------------------------- */
@@ -443,6 +558,50 @@ body.theme-2026 .sidebar {
   box-shadow: var(--ihm-shadow);
   color: var(--ihm-ink);
   margin-left: 1rem;
+}
+
+/* Bills before participants on mobile, where the sidebar comes first in
+   the DOM. */
+@media (max-width: 767.98px) {
+  body.theme-2026 .row {
+    flex-direction: column;
+  }
+  body.theme-2026 main.d-flex.flex-column {
+    order: 1;
+  }
+  body.theme-2026 aside.sidebar {
+    order: 2;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0.75rem;
+  }
+
+  body.theme-2026 #add-member-form {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  body.theme-2026 #add-member-form .form-control {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.9rem;
+  }
+  body.theme-2026 #add-member-form .input-group-append > .btn {
+    padding: 0 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  body.theme-2026 .identifier {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  body.theme-2026 .identifier .btn-secondary {
+    width: auto;
+    flex: 1 1 auto;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.85rem;
+    box-shadow: none;
+  }
 }
 
 @media (min-width: 768px) {
@@ -493,7 +652,27 @@ body.theme-2026 .balance tr td {
 }
 
 body.theme-2026 #sidebar .balance tr:hover td {
-  background: #fadfcb;
+  background: var(--ihm-row-hover);
+}
+
+/* Sidebar member actions — drop the PNG sprites (black silhouettes that
+   vanish on dark surfaces) and route the labels through theme tokens. */
+body.theme-2026 .balance .action button {
+  background: none !important;
+  padding-left: 0 !important;
+  font-weight: 600;
+}
+
+body.theme-2026 .balance .action.delete button {
+  color: var(--ihm-negative);
+}
+
+body.theme-2026 .balance .action.edit button {
+  color: var(--ihm-ink-soft);
+}
+
+body.theme-2026 .balance .action.reactivate button {
+  color: var(--ihm-positive);
 }
 
 body.theme-2026 .balance .balance-name {
@@ -600,6 +779,40 @@ body.theme-2026 #history_table {
   border-collapse: collapse;
 }
 
+@media (max-width: 767.98px) {
+  body.theme-2026 .container-fluid {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  body.theme-2026 main.content,
+  body.theme-2026 main.d-flex.flex-column {
+    padding: 1.5rem 1.25rem;
+    overflow-x: auto;
+  }
+  body.theme-2026 main.content.offset-1.col-10 {
+    margin-left: 0 !important;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  body.theme-2026 #bill_table,
+  body.theme-2026 #monthly_stats,
+  body.theme-2026 #history_table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    font-size: 0.9rem;
+  }
+  body.theme-2026 #bill_table th,
+  body.theme-2026 #bill_table td,
+  body.theme-2026 #monthly_stats th,
+  body.theme-2026 #monthly_stats td,
+  body.theme-2026 #history_table th,
+  body.theme-2026 #history_table td {
+    padding: 0.5rem 0.6rem;
+  }
+}
+
 body.theme-2026 #bill_table th,
 body.theme-2026 #monthly_stats th,
 body.theme-2026 #history_table th {
@@ -632,11 +845,18 @@ body.theme-2026 .split_bills.table-striped tbody tr {
 
 body.theme-2026 #bill_table tbody tr:hover td,
 body.theme-2026 .table-striped tbody tr:hover td {
-  background: #fadfcb;
+  background: var(--ihm-row-hover);
+}
+
+/* Bootstrap's `.table-hover` forces `color: #212529` on row hover, which
+   tanks contrast on the dark-mode hover background. Re-route to the ink
+   token so text stays readable in both modes. */
+body.theme-2026 .table-hover tbody tr:hover {
+  color: var(--ihm-ink);
 }
 
 body.theme-2026 tr.ower_line td {
-  background: #fadfcb !important;
+  background: var(--ihm-row-hover) !important;
 }
 
 /* Drop the classic 15px left-overhang on the stats "split_bills" table so
@@ -644,6 +864,16 @@ body.theme-2026 tr.ower_line td {
 body.theme-2026 .split_bills {
   width: 100% !important;
   margin-left: 0 !important;
+}
+
+/* Stats page: lock both tables to a fixed grid so their columns align as
+   one continuous report. Header `<th>` widths are set inline in the
+   template. */
+@media (min-width: 768px) {
+  body.theme-2026 #bill_table.split_bills,
+  body.theme-2026 #monthly_stats {
+    table-layout: fixed;
+  }
 }
 
 body.theme-2026 #monthly_stats .month-bar-cell {
@@ -680,6 +910,19 @@ body.theme-2026 tr.payer_line .balance-name {
 /*  Classic renders 16x16 PNG sprites here. Replace with CSS-only       */
 /*  glyph buttons so they look crisp on any DPI and match the theme.    */
 /* -------------------------------------------------------------------- */
+
+/* main.css imposes padding-top 10px and min-height 56px on this cell. */
+body.theme-2026 td.bill-actions {
+  justify-content: center;
+  gap: 0.4rem;
+  padding-top: 0.75rem !important;
+  min-height: 0;
+}
+
+body.theme-2026 td.bill-actions > form {
+  margin: 0;
+  display: inline-flex;
+}
 
 body.theme-2026 .bill-actions > form > .delete,
 body.theme-2026 .bill-actions > .edit,
@@ -776,9 +1019,9 @@ body.theme-2026 .modal-title {
 
 body.theme-2026 .modal-header .close {
   position: absolute;
-  top: 1.5rem;
-  right: 1.75rem;
-  background: var(--ihm-yellow);
+  top: 1.25rem;
+  right: 1.25rem;
+  background: var(--ihm-bg-alt);
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
@@ -787,28 +1030,32 @@ body.theme-2026 .modal-header .close {
   justify-content: center;
   opacity: 1;
   line-height: 1;
-  font-size: 1.25rem;
-  color: var(--ihm-ink);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--ihm-ink-soft);
   border: none;
   padding: 0;
   margin: 0;
+  text-decoration: none;
+  text-shadow: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+body.theme-2026 .modal-header .close:hover,
+body.theme-2026 .modal-header .close:focus {
+  background: var(--ihm-accent-soft);
+  color: var(--ihm-accent-dark);
+  text-decoration: none;
+  outline: none;
 }
 
 body.theme-2026 .modal-body {
   padding: 0.5rem 2rem 1.5rem !important;
 }
 
-/* Edit-bill full page — reuse the modal card look. */
-body.theme-2026 .bill-form-card {
-  background: var(--ihm-card);
-  border-radius: var(--ihm-radius);
-  box-shadow: var(--ihm-shadow);
-  padding: 1.5rem 2rem;
-  max-width: 720px;
-  margin: 1rem auto;
-}
-
-body.theme-2026 .bill-form-card legend {
+/* Edit-bill full page — `main.content` already provides the card frame,
+   so the form sits flat inside it and only the legend needs heading styling. */
+body.theme-2026 .bill-form legend {
   font-size: 2rem;
   font-weight: 700;
   border: none;
@@ -835,13 +1082,27 @@ body.theme-2026 .empty-bill h3 {
 }
 
 body.theme-2026 .empty-bill .billimg svg {
-  fill: var(--ihm-accent-soft);
+  fill: var(--ihm-accent);
+  opacity: 0.4;
+}
+
+/* `<img>`-based SVG illustrations are monochrome black, so they vanish on
+   the dark canvas. Invert them in dark mode. */
+@media (prefers-color-scheme: dark) {
+  html:not([data-color-scheme="light"]) body.theme-2026 .shareimg,
+  html:not([data-color-scheme="light"]) body.theme-2026 .showcaseimg {
+    filter: invert(0.85);
+  }
+}
+html[data-color-scheme="dark"] body.theme-2026 .shareimg,
+html[data-color-scheme="dark"] body.theme-2026 .showcaseimg {
+  filter: invert(0.85);
 }
 
 body.theme-2026 .card {
   border-radius: var(--ihm-radius-sm);
   border: 1px solid var(--ihm-line);
-  background: #fff;
+  background: var(--ihm-surface);
 }
 
 /* -------------------------------------------------------------------- */
@@ -963,7 +1224,7 @@ body.theme-2026 .pagination .page-link {
   border-radius: 999px;
   margin: 0 0.2rem;
   color: var(--ihm-ink-soft);
-  background: #fff;
+  background: var(--ihm-surface);
   box-shadow: 0 2px 6px rgba(30, 10, 0, 0.06);
 }
 
@@ -985,7 +1246,8 @@ body.theme-2026 .pagination .page-item.disabled .page-link {
 body.theme-2026 .bootstrap-tagsinput {
   border-radius: 999px;
   border: 1px solid var(--ihm-line);
-  background: #fff;
+  background: var(--ihm-surface);
+  color: var(--ihm-ink);
   padding: 0.4rem 0.8rem;
 }
 
@@ -1020,13 +1282,24 @@ body.theme-2026 .badge {
 }
 
 body.theme-2026 .badge-secondary {
-  background: var(--ihm-ink);
+  background: var(--ihm-pill-bg);
   color: #fff !important;
 }
 
 body.theme-2026 .badge-secondary:hover {
   background: var(--ihm-accent);
   color: #fff !important;
+}
+
+/* "For whom" member checkboxes — native inputs render system-default
+   white on dark surfaces, which clashes with the warm theme. Tint them
+   with the accent and align label color/contrast. */
+body.theme-2026 .form-check-input {
+  accent-color: var(--ihm-accent);
+}
+
+body.theme-2026 .form-check-label {
+  color: var(--ihm-ink);
 }
 
 body.theme-2026 .badge .icon svg {
@@ -1037,7 +1310,8 @@ body.theme-2026 .badge .icon svg {
 }
 
 body.theme-2026 .list-group-item {
-  background: #fff;
+  background: var(--ihm-surface);
+  color: var(--ihm-ink);
   border-color: var(--ihm-line);
 }
 
@@ -1094,7 +1368,7 @@ body.theme-2026 .get-it-from {
   width: 140px;
   min-height: auto;
   border: none !important;
-  background: #fff !important;
+  background: var(--ihm-surface) !important;
   border-radius: var(--ihm-radius-sm);
   box-shadow: var(--ihm-shadow);
   padding: 0.75rem 1rem;
@@ -1130,7 +1404,169 @@ body.theme-2026 .invites-table h3 {
   color: var(--ihm-ink);
 }
 
+/* QR code paths are black on transparent. Force a white quiet zone. */
+body.theme-2026 svg.qrcode {
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: var(--ihm-radius-sm);
+  box-shadow: var(--ihm-shadow);
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 body.theme-2026 .invites-table a {
   color: var(--ihm-accent-dark);
   word-break: break-all;
 }
+
+body.theme-2026 .invite-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.6rem 1rem;
+  background: var(--ihm-accent-soft);
+  color: var(--ihm-accent-dark) !important;
+  border-radius: var(--ihm-radius-sm);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  word-break: break-all;
+  text-decoration: none;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+body.theme-2026 .invite-link:hover {
+  background: var(--ihm-accent);
+  color: #fff !important;
+  box-shadow: 0 6px 16px rgba(242, 120, 72, 0.28);
+}
+
+/* Stack the invite-table cells vertically on mobile. */
+@media (max-width: 767.98px) {
+  body.theme-2026 .invites-table,
+  body.theme-2026 .invites-table tbody,
+  body.theme-2026 .invites-table tr,
+  body.theme-2026 .invites-table td {
+    display: block;
+    width: 100%;
+  }
+  body.theme-2026 .invites-table tr {
+    border-bottom: 1px solid var(--ihm-line);
+    padding: 1rem 0;
+  }
+  body.theme-2026 .invites-table tr:last-child {
+    border-bottom: none;
+  }
+  body.theme-2026 .invites-table tbody td {
+    border-bottom: none;
+    padding: 0.25rem 0;
+  }
+  body.theme-2026 .invites-table h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+  }
+  body.theme-2026 .invites-table a {
+    font-size: 0.85rem;
+  }
+  body.theme-2026 .invites-table img,
+  body.theme-2026 .invites-table svg {
+    max-width: 100%;
+    height: auto;
+  }
+  body.theme-2026 .invites textarea {
+    width: 100% !important;
+    max-width: 100%;
+  }
+}
+
+/* ====================================================================== */
+/*  Dark mode                                                             */
+/*                                                                        */
+/*  Applies in two cases:                                                 */
+/*    1. system pref says dark AND user hasn't forced light;              */
+/*    2. user manually picked dark via the navbar toggle, which sets      */
+/*       `<html data-color-scheme="dark">`.                               */
+/*                                                                        */
+/*  The pastel badge tokens (--ihm-pink/green/lilac/yellow) keep their    */
+/*  light values — they're paired with hardcoded dark text in alerts and  */
+/*  badges and would lose contrast if flipped.                            */
+/* ====================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-color-scheme="light"]) body.theme-2026 {
+    --ihm-bg: #3d2a1c;
+    --ihm-bg-rgb: 61, 42, 28;
+    --ihm-bg-alt: #2c1f14;
+    --ihm-card: #1a1209;
+    --ihm-surface: #1f160d;
+    --ihm-ink: #f0e4d2;
+    --ihm-ink-soft: #cab69a;
+    --ihm-muted: #8a755e;
+    --ihm-line: #2e2018;
+    --ihm-accent: #c97053;
+    --ihm-accent-dark: #e08a6a;
+    --ihm-accent-soft: #4a2e1d;
+    --ihm-positive: #6dd998;
+    --ihm-negative: #d96b5f;
+    --ihm-row-hover: #3d342c;
+    --ihm-pill-bg: #0d0805;
+    --ihm-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+    --ihm-glow: #6b4220;
+  }
+}
+
+html[data-color-scheme="dark"] body.theme-2026 {
+  --ihm-bg: #3d2a1c;
+  --ihm-bg-rgb: 61, 42, 28;
+  --ihm-bg-alt: #2c1f14;
+  --ihm-card: #1a1209;
+  --ihm-surface: #1f160d;
+  --ihm-ink: #f0e4d2;
+  --ihm-ink-soft: #cab69a;
+  --ihm-muted: #8a755e;
+  --ihm-line: #2e2018;
+  --ihm-accent: #c97053;
+  --ihm-accent-dark: #e08a6a;
+  --ihm-accent-soft: #4a2e1d;
+  --ihm-positive: #6dd998;
+  --ihm-negative: #d96b5f;
+  --ihm-row-hover: #3d342c;
+  --ihm-pill-bg: #0d0805;
+  --ihm-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+  --ihm-glow: #6b4220;
+}
+
+/* Manual color-scheme toggle in the navbar — match the box dimensions of
+   the adjacent dropdown pills (same padding + 1px transparent border) so
+   the icon sits on the same baseline. */
+body.theme-2026 .color-toggle {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.9rem !important;
+  line-height: 1.5;
+  color: var(--ihm-ink) !important;
+}
+
+body.theme-2026 .color-toggle svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Show the icon for the *destination* state — moon means "click to go dark". */
+body.theme-2026 .color-toggle .icon-sun { display: none; }
+body.theme-2026 .color-toggle .icon-moon { display: inline-block; }
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-color-scheme="light"]) body.theme-2026 .color-toggle .icon-sun { display: inline-block; }
+  html:not([data-color-scheme="light"]) body.theme-2026 .color-toggle .icon-moon { display: none; }
+}
+
+html[data-color-scheme="dark"] body.theme-2026 .color-toggle .icon-sun { display: inline-block; }
+html[data-color-scheme="dark"] body.theme-2026 .color-toggle .icon-moon { display: none; }
+
+html[data-color-scheme="light"] body.theme-2026 .color-toggle .icon-sun { display: none; }
+html[data-color-scheme="light"] body.theme-2026 .color-toggle .icon-moon { display: inline-block; }

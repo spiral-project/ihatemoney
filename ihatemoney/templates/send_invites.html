@@ -11,7 +11,7 @@
             </td>
             <td>
                 {{ _("The easiest way to invite people is to give them the following invitation link.<br />They will be able to access the project, manage participants, add/edit/delete bills. However, they will not have access to important settings such as changing the private code or deleting the whole project.") }}</br>
-                <a href="{{ url_for(".join_project", _external=True, project_id=g.project.id, token=g.project.generate_token()) }}">
+                <a class="invite-link" href="{{ url_for(".join_project", _external=True, project_id=g.project.id, token=g.project.generate_token()) }}">
                     {{ url_for(".join_project", _external=True, project_id=g.project.id, token=g.project.generate_token()) }}
                 </a>
             </td>

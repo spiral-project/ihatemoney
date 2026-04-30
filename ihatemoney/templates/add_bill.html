@@ -11,9 +11,7 @@
 
 {% block content %}
 
-<div class="bill-form-card">
-    <form class="form-horizontal" method="post">
-        {{ forms.add_bill(form, edit) }}
-    </form>
-</div>
+<form class="form-horizontal bill-form" method="post">
+    {{ forms.add_bill(form, edit) }}
+</form>
 {% endblock %}
