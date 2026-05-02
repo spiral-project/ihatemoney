@@ -677,8 +677,8 @@ def list_bills():
         "search": request.args.get("search", "").strip(),
         "date_from": request.args.get("date_from", "").strip(),
         "date_to": request.args.get("date_to", "").strip(),
-        "amount_min": request.args.get("amount_min", "").strip(),
-        "amount_max": request.args.get("amount_max", "").strip(),
+        "amount_min": request.args.get("amount_min", "").strip().replace(",", "."),
+        "amount_max": request.args.get("amount_max", "").strip().replace(",", "."),
         "payer": request.args.get("payer", "").strip(),
     }
 
