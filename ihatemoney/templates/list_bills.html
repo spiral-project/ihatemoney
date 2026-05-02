@@ -118,7 +118,6 @@
         {{ _("Add a new bill") }}
     </a>
 </span>
-</div>
 
     <div class="collapse {% if search_active %}show{% endif %} mb-3" id="filterCollapse">
         <div class="card card-body">
@@ -163,6 +162,8 @@
           </form>
         </div>
     </div>
+
+</div>
 
     {% if bills.total > 0 %}
         <table id="bill_table" class="col table table-striped table-hover table-responsive-sm">
