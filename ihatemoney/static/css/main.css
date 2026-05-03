@@ -442,15 +442,6 @@ footer .footer-left {
   background-color: #9bd118;
 }
 
-tr.ower_line {
-  background-color: #cbef68;
-}
-
-tr.payer_line .balance-name {
-  color: green;
-  text-indent: 5px;
-}
-
 .action {
   margin: 0;
   padding: 0;
