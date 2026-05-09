@@ -694,6 +694,19 @@ class TestBudget(IhatemoneyTestCase):
         finally:
             limiter.enabled = True
 
+    def test_authenticate_throttler(self):
+        self.post_project("raclette")
+
+        # Activate project login throttling by authenticating 4 times with a wrong passsword
+        self.client.post("/authenticate", data={"id": "raclette", "password": "wrong"})
+        self.client.post("/authenticate", data={"id": "raclette", "password": "wrong"})
+        self.client.post("/authenticate", data={"id": "raclette", "password": "wrong"})
+        resp = self.client.post(
+            "/authenticate", data={"id": "raclette", "password": "wrong"}
+        )
+
+        assert "Too many failed login attempts." in resp.data.decode()
+
     def test_manage_bills(self):
         self.post_project("raclette")
 

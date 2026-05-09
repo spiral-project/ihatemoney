@@ -179,20 +179,23 @@ def health():
     return "OK"
 
 
-def admin_limit(limit):
-    return make_response(
-        render_template(
-            "admin.html",
-            breached_limit=limit,
-            limit_message=_("Too many failed login attempts."),
+def login_limit(template_name):
+    def handler(limit):
+        return make_response(
+            render_template(
+                template_name,
+                breached_limit=limit,
+                limit_message=_("Too many failed login attempts."),
+            )
         )
-    )
+
+    return handler
 
 
 @main.route("/admin", methods=["GET", "POST"])
 @limiter.limit(
     "3/minute",
-    on_breach=admin_limit,
+    on_breach=login_limit("admin.html"),
     methods=["POST"],
 )
 def admin():
@@ -255,6 +258,11 @@ def join_project(token):
 
 
 @main.route("/authenticate", methods=["GET", "POST"])
+@limiter.limit(
+    "3/minute",
+    on_breach=login_limit("authenticate.html"),
+    methods=["POST"],
+)
 def authenticate(project_id=None):
     """Authentication form"""
     form = AuthenticationForm()
@@ -283,7 +291,14 @@ def authenticate(project_id=None):
         setattr(g, "project", project)
         return redirect(url_for(".list_bills"))
     if is_post_auth and not check_password_hash(project.password, form.password.data):
-        msg = _("This private code is not the right one")
+        if limiter.current_limit is not None:
+            msg = _(
+                "This private code is not the right one. Only %(num)d attempts left.",
+                # If the limiter is disabled, there is no current limit
+                num=limiter.current_limit.remaining,
+            )
+        else:
+            msg = _("This private code is not the right one")
         form["password"].errors = [msg]
 
     return render_template("authenticate.html", form=form)
