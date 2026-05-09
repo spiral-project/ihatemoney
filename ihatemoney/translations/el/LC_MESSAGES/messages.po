@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-02 23:07+0100\n"
+"POT-Creation-Date: 2026-05-09 11:56+0200\n"
 "PO-Revision-Date: 2021-08-01 08:34+0000\n"
 "Last-Translator: Eugenia Russell <eugenia.russell2019@gmail.com>\n"
 "Language: el\n"
@@ -46,9 +46,6 @@ msgstr "Ηλεκτρονικό ταχυδρομείο"
 
 msgid "Enable project history"
 msgstr "Ενεργοποίηση ιστορικού έργων"
-
-msgid "Use IP tracking for project history"
-msgstr "Χρήση παρακολούθησης IP για ιστορικό έργων"
 
 msgid "Default Currency"
 msgstr "Προεπιλεγμένο Νόμισμα"
@@ -387,13 +384,6 @@ msgstr "Ενεργοποίηση ιστορικού έργων"
 msgid "Deleted project history."
 msgstr "Ενεργοποίηση ιστορικού έργων"
 
-#, fuzzy
-msgid "Error deleting recorded IP addresses"
-msgstr "Διαγραφή αποθηκευμένων διευθύνσεων IP"
-
-msgid "Deleted recorded IP addresses in project history."
-msgstr ""
-
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Λυπούμαστε, δεν ήταν δυνατή η εύρεση της σελίδας που ζητήσατε."
 
@@ -547,22 +537,11 @@ msgstr "Κατεβάστε"
 msgid "Disabled Project History"
 msgstr "Απενεργοποιημένο ιστορικό έργου"
 
-msgid "Disabled Project History & IP Address Recording"
-msgstr ""
-
 msgid "Enabled Project History"
 msgstr "Ενεργοποιημένο ιστορικό έργου"
 
-msgid "Disabled IP Address Recording"
-msgstr ""
-
-msgid "Enabled Project History & IP Address Recording"
-msgstr ""
-
-msgid "Enabled IP Address Recording"
-msgstr ""
-
-msgid "History Settings Changed"
+#, fuzzy
+msgid "History Settings Changed (legacy settings)"
 msgstr "Αλλαγή ρυθμίσεων ιστορικού"
 
 #, python-format
@@ -573,14 +552,12 @@ msgstr ""
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr ""
 
-msgid "Confirm Remove IP Adresses"
-msgstr ""
+msgid "Delete Confirmation"
+msgstr "Επιβεβαίωση Διαγραφής"
 
 msgid ""
-"Are you sure you want to delete all recorded IP addresses from this "
-"project?\n"
-"                The rest of the project history will be unaffected. This "
-"action cannot be undone."
+"Are you sure you want to erase all history for this project? This action "
+"cannot be undone."
 msgstr ""
 
 #, fuzzy
@@ -589,14 +566,6 @@ msgstr "Επιβεβαίωση Διαγραφής;"
 
 msgid "Close"
 msgstr "Κλείστε"
-
-msgid "Delete Confirmation"
-msgstr "Επιβεβαίωση Διαγραφής"
-
-msgid ""
-"Are you sure you want to erase all history for this project? This action "
-"cannot be undone."
-msgstr ""
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -647,20 +616,6 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr "Κάποιος πιθανώς διέγραψε το ιστορικό του έργου."
 
-msgid ""
-"Some entries below contain IP addresses, even though this project has IP "
-"recording disabled. "
-msgstr ""
-
-msgid "Delete stored IP addresses"
-msgstr "Διαγραφή αποθηκευμένων διευθύνσεων IP"
-
-msgid "No IP Addresses to erase"
-msgstr "Δεν υπάρχουν διευθύνσεις IP προς διαγραφή"
-
-msgid "Delete Stored IP Addresses"
-msgstr "Διαγραφή αποθηκευμένων διευθύνσεων IP"
-
 msgid "No history to erase"
 msgstr "Δεν υπάρχει ιστορία για διαγραφή"
 
@@ -672,15 +627,6 @@ msgstr "Ώρα"
 
 msgid "Event"
 msgstr "Εκδήλωση"
-
-msgid "IP address recording can be enabled on the settings page"
-msgstr ""
-
-msgid "IP address recording can be disabled on the settings page"
-msgstr ""
-
-msgid "From IP"
-msgstr "Από IP"
 
 #, fuzzy, python-format
 msgid "Project %(name)s added"
@@ -1233,4 +1179,61 @@ msgstr "Περίοδος"
 
 #~ msgid "Spent"
 #~ msgstr "Ξοδεύτηκε"
+
+#~ msgid "Use IP tracking for project history"
+#~ msgstr "Χρήση παρακολούθησης IP για ιστορικό έργων"
+
+#~ msgid "Error deleting recorded IP addresses"
+#~ msgstr "Διαγραφή αποθηκευμένων διευθύνσεων IP"
+
+#~ msgid "Deleted recorded IP addresses in project history."
+#~ msgstr ""
+
+#~ msgid "Disabled Project History & IP Address Recording"
+#~ msgstr ""
+
+#~ msgid "Disabled IP Address Recording"
+#~ msgstr ""
+
+#~ msgid "Enabled Project History & IP Address Recording"
+#~ msgstr ""
+
+#~ msgid "Enabled IP Address Recording"
+#~ msgstr ""
+
+#~ msgid "Confirm Remove IP Adresses"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Are you sure you want to delete"
+#~ " all recorded IP addresses from this"
+#~ " project?\n"
+#~ "                The rest of the project"
+#~ " history will be unaffected. This "
+#~ "action cannot be undone."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Some entries below contain IP addresses,"
+#~ " even though this project has IP "
+#~ "recording disabled. "
+#~ msgstr ""
+
+#~ msgid "Delete stored IP addresses"
+#~ msgstr "Διαγραφή αποθηκευμένων διευθύνσεων IP"
+
+#~ msgid "No IP Addresses to erase"
+#~ msgstr "Δεν υπάρχουν διευθύνσεις IP προς διαγραφή"
+
+#~ msgid "Delete Stored IP Addresses"
+#~ msgstr "Διαγραφή αποθηκευμένων διευθύνσεων IP"
+
+#~ msgid "IP address recording can be enabled on the settings page"
+#~ msgstr ""
+
+#~ msgid "IP address recording can be disabled on the settings page"
+#~ msgstr ""
+
+#~ msgid "From IP"
+#~ msgstr "Από IP"
 

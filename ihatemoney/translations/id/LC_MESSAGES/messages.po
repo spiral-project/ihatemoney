@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-02 23:07+0100\n"
+"POT-Creation-Date: 2026-05-09 11:56+0200\n"
 "PO-Revision-Date: 2022-04-11 17:12+0000\n"
 "Last-Translator: Santiago José Gutiérrez Llanos "
 "<gutierrezapata17@gmail.com>\n"
@@ -48,9 +48,6 @@ msgstr "Surel"
 
 msgid "Enable project history"
 msgstr "Aktifkan riwayat proyek"
-
-msgid "Use IP tracking for project history"
-msgstr "Gunakan pelacakan IP untuk riwayat proyek"
 
 msgid "Default Currency"
 msgstr "Mata Uang Standar"
@@ -391,12 +388,6 @@ msgstr "Kesalahan saat menghapus riwayat proyek"
 msgid "Deleted project history."
 msgstr "Rriwayat proyek terhapus."
 
-msgid "Error deleting recorded IP addresses"
-msgstr "Kesalahan menghapus alamat IP yang disimpan"
-
-msgid "Deleted recorded IP addresses in project history."
-msgstr "Terhapus alamat IP yang disimpan dalam riwayat proyek."
-
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Maaf, kami tidak bisa menemukan halaman yang Anda minta."
 
@@ -540,22 +531,11 @@ msgstr "Unduh"
 msgid "Disabled Project History"
 msgstr "Nonaktifkan riwayat proyek"
 
-msgid "Disabled Project History & IP Address Recording"
-msgstr "Nonaktifkan riwayat proyek & rekaman alamat IP"
-
 msgid "Enabled Project History"
 msgstr "Riwayat Proyek yang Diaktifkan"
 
-msgid "Disabled IP Address Recording"
-msgstr "Perekaman Alamat IP Dinonaktifkan"
-
-msgid "Enabled Project History & IP Address Recording"
-msgstr "Aktifkan Riwayat Proyek & Rekaman Alamat IP"
-
-msgid "Enabled IP Address Recording"
-msgstr "Aktifkan Rekaman Alamat IP"
-
-msgid "History Settings Changed"
+#, fuzzy
+msgid "History Settings Changed (legacy settings)"
 msgstr "Setelan Riwayat Diubah"
 
 #, python-format
@@ -566,26 +546,6 @@ msgstr ""
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr ""
 
-msgid "Confirm Remove IP Adresses"
-msgstr "Konfirmasi Hapus Alamat IP"
-
-msgid ""
-"Are you sure you want to delete all recorded IP addresses from this "
-"project?\n"
-"                The rest of the project history will be unaffected. This "
-"action cannot be undone."
-msgstr ""
-"Anda yakin ingin menghapus semua alamat IP yang direkam dari proyek ini?\n"
-"                Sisa riwayat proyek tidak akan terpengaruh. Tindakan ini "
-"tidak bisa dibatalkan."
-
-#, fuzzy
-msgid "Confirm deletion"
-msgstr "Konfirmasi Hapus"
-
-msgid "Close"
-msgstr "Tutup"
-
 msgid "Delete Confirmation"
 msgstr "Hapus Konfirmasi"
 
@@ -595,6 +555,13 @@ msgid ""
 msgstr ""
 "Anda yakin ingin menghapus semua riwayat untuk proyek ini? Tindakan ini "
 "tidak bisa dibatalkan."
+
+#, fuzzy
+msgid "Confirm deletion"
+msgstr "Konfirmasi Hapus"
+
+msgid "Close"
+msgstr "Tutup"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -646,22 +613,6 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr "Seseorang mungkin membersihkan riwayat proyek."
 
-msgid ""
-"Some entries below contain IP addresses, even though this project has IP "
-"recording disabled. "
-msgstr ""
-"Beberapa entri dibawah mengandung alamat IP, walaupun proyek ini "
-"menonaktifkan rekaman alamat IP. "
-
-msgid "Delete stored IP addresses"
-msgstr "Hapus alamat IP yang disimpan"
-
-msgid "No IP Addresses to erase"
-msgstr "Tidak ada Alamat IP untuk dihapus"
-
-msgid "Delete Stored IP Addresses"
-msgstr "Hapus alamat IP yang disimpan"
-
 msgid "No history to erase"
 msgstr "Tidak ada riwayat untuk dihapus"
 
@@ -673,15 +624,6 @@ msgstr "Waktu"
 
 msgid "Event"
 msgstr "Peristiwa"
-
-msgid "IP address recording can be enabled on the settings page"
-msgstr "Perekaman alamat IP dapat diaktifkan di halaman pengaturan"
-
-msgid "IP address recording can be disabled on the settings page"
-msgstr "Perekaman alamat IP dapat dinonaktifkan di halaman pengaturan"
-
-msgid "From IP"
-msgstr "Dari IP"
 
 #, python-format
 msgid "Project %(name)s added"
@@ -1241,4 +1183,70 @@ msgstr "Periode"
 
 #~ msgid "Spent"
 #~ msgstr "Dihabiskan"
+
+#~ msgid "Use IP tracking for project history"
+#~ msgstr "Gunakan pelacakan IP untuk riwayat proyek"
+
+#~ msgid "Error deleting recorded IP addresses"
+#~ msgstr "Kesalahan menghapus alamat IP yang disimpan"
+
+#~ msgid "Deleted recorded IP addresses in project history."
+#~ msgstr "Terhapus alamat IP yang disimpan dalam riwayat proyek."
+
+#~ msgid "Disabled Project History & IP Address Recording"
+#~ msgstr "Nonaktifkan riwayat proyek & rekaman alamat IP"
+
+#~ msgid "Disabled IP Address Recording"
+#~ msgstr "Perekaman Alamat IP Dinonaktifkan"
+
+#~ msgid "Enabled Project History & IP Address Recording"
+#~ msgstr "Aktifkan Riwayat Proyek & Rekaman Alamat IP"
+
+#~ msgid "Enabled IP Address Recording"
+#~ msgstr "Aktifkan Rekaman Alamat IP"
+
+#~ msgid "Confirm Remove IP Adresses"
+#~ msgstr "Konfirmasi Hapus Alamat IP"
+
+#~ msgid ""
+#~ "Are you sure you want to delete"
+#~ " all recorded IP addresses from this"
+#~ " project?\n"
+#~ "                The rest of the project"
+#~ " history will be unaffected. This "
+#~ "action cannot be undone."
+#~ msgstr ""
+#~ "Anda yakin ingin menghapus semua alamat"
+#~ " IP yang direkam dari proyek ini?"
+#~ "\n"
+#~ "                Sisa riwayat proyek tidak "
+#~ "akan terpengaruh. Tindakan ini tidak "
+#~ "bisa dibatalkan."
+
+#~ msgid ""
+#~ "Some entries below contain IP addresses,"
+#~ " even though this project has IP "
+#~ "recording disabled. "
+#~ msgstr ""
+#~ "Beberapa entri dibawah mengandung alamat "
+#~ "IP, walaupun proyek ini menonaktifkan "
+#~ "rekaman alamat IP. "
+
+#~ msgid "Delete stored IP addresses"
+#~ msgstr "Hapus alamat IP yang disimpan"
+
+#~ msgid "No IP Addresses to erase"
+#~ msgstr "Tidak ada Alamat IP untuk dihapus"
+
+#~ msgid "Delete Stored IP Addresses"
+#~ msgstr "Hapus alamat IP yang disimpan"
+
+#~ msgid "IP address recording can be enabled on the settings page"
+#~ msgstr "Perekaman alamat IP dapat diaktifkan di halaman pengaturan"
+
+#~ msgid "IP address recording can be disabled on the settings page"
+#~ msgstr "Perekaman alamat IP dapat dinonaktifkan di halaman pengaturan"
+
+#~ msgid "From IP"
+#~ msgstr "Dari IP"
 
