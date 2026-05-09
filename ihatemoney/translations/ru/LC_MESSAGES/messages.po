@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-02 23:07+0100\n"
+"POT-Creation-Date: 2026-05-09 11:56+0200\n"
 "PO-Revision-Date: 2023-09-17 16:59+0000\n"
 "Last-Translator: Mihail Iosilevitch <yosik@tutanota.com>\n"
 "Language: ru\n"
@@ -47,9 +47,6 @@ msgstr "Email"
 
 msgid "Enable project history"
 msgstr "Включить историю проекта"
-
-msgid "Use IP tracking for project history"
-msgstr "Использовать отслеживание по IP для истории проекта"
 
 msgid "Default Currency"
 msgstr "Валюта по умолчанию"
@@ -392,12 +389,6 @@ msgstr "Ошибка при удалении истории проекта"
 msgid "Deleted project history."
 msgstr "История проекта удалена."
 
-msgid "Error deleting recorded IP addresses"
-msgstr "Ошибка при удалении записанных IP-адресов"
-
-msgid "Deleted recorded IP addresses in project history."
-msgstr "Записанные IP-адреса удалены из истории проекта."
-
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "К сожалению, нам не удалось найти страницу, которую вы запросили."
 
@@ -541,22 +532,11 @@ msgstr "Скачать"
 msgid "Disabled Project History"
 msgstr "История отключенных проектов"
 
-msgid "Disabled Project History & IP Address Recording"
-msgstr "Отключенная история проекта и запись IP-адреса"
-
 msgid "Enabled Project History"
 msgstr "Включить историю проекта"
 
-msgid "Disabled IP Address Recording"
-msgstr "Выключить запись IP-адрессов"
-
-msgid "Enabled Project History & IP Address Recording"
-msgstr "Включить историю проекта и запись IP адрессов"
-
-msgid "Enabled IP Address Recording"
-msgstr "Включить запись IP адрессов"
-
-msgid "History Settings Changed"
+#, fuzzy
+msgid "History Settings Changed (legacy settings)"
 msgstr "Настройки истории изменены"
 
 #, python-format
@@ -569,26 +549,6 @@ msgstr ""
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr "Счёт %(name)s: Атрибут «%(property_name)s» изменён на %(after)s"
 
-msgid "Confirm Remove IP Adresses"
-msgstr "Подтвердите удаление IP-адресов"
-
-msgid ""
-"Are you sure you want to delete all recorded IP addresses from this "
-"project?\n"
-"                The rest of the project history will be unaffected. This "
-"action cannot be undone."
-msgstr ""
-"Вы уверены, что хотите удалить все записанные IP-адреса из этого проекта?"
-"\n"
-"                Остальная часть истории проекта не будет затронута. Это "
-"действие не может быть отменено."
-
-msgid "Confirm deletion"
-msgstr "Подтвердить удаление"
-
-msgid "Close"
-msgstr "Закрыть"
-
 msgid "Delete Confirmation"
 msgstr "Подтверждение удаления"
 
@@ -598,6 +558,12 @@ msgid ""
 msgstr ""
 "Вы уверены, что хотите стереть историю проекта? Это действие нельзя "
 "отменить."
+
+msgid "Confirm deletion"
+msgstr "Подтвердить удаление"
+
+msgid "Close"
+msgstr "Закрыть"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -653,22 +619,6 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr "Вы можете очистить историю проекта, чтобы удалить их."
 
-msgid ""
-"Some entries below contain IP addresses, even though this project has IP "
-"recording disabled. "
-msgstr ""
-"Некоторые записи ниже содержат IP-адреса, хотя в этом проекте запись IP "
-"отключена. "
-
-msgid "Delete stored IP addresses"
-msgstr "Удалить сохраненные IP-адреса"
-
-msgid "No IP Addresses to erase"
-msgstr "Нет IP-адресов для удаления"
-
-msgid "Delete Stored IP Addresses"
-msgstr "Удалить сохраненные IP адреса"
-
 msgid "No history to erase"
 msgstr "Нечего стирать"
 
@@ -680,15 +630,6 @@ msgstr "Время"
 
 msgid "Event"
 msgstr "Событие"
-
-msgid "IP address recording can be enabled on the settings page"
-msgstr "Запись IP-адреса может быть включена на странице настроек"
-
-msgid "IP address recording can be disabled on the settings page"
-msgstr "Запись IP-адреса может быть отключена на странице настроек"
-
-msgid "From IP"
-msgstr "От IP"
 
 #, python-format
 msgid "Project %(name)s added"
@@ -1238,4 +1179,69 @@ msgstr "Период"
 
 #~ msgid "Spent"
 #~ msgstr "Потрачено"
+
+#~ msgid "Use IP tracking for project history"
+#~ msgstr "Использовать отслеживание по IP для истории проекта"
+
+#~ msgid "Error deleting recorded IP addresses"
+#~ msgstr "Ошибка при удалении записанных IP-адресов"
+
+#~ msgid "Deleted recorded IP addresses in project history."
+#~ msgstr "Записанные IP-адреса удалены из истории проекта."
+
+#~ msgid "Disabled Project History & IP Address Recording"
+#~ msgstr "Отключенная история проекта и запись IP-адреса"
+
+#~ msgid "Disabled IP Address Recording"
+#~ msgstr "Выключить запись IP-адрессов"
+
+#~ msgid "Enabled Project History & IP Address Recording"
+#~ msgstr "Включить историю проекта и запись IP адрессов"
+
+#~ msgid "Enabled IP Address Recording"
+#~ msgstr "Включить запись IP адрессов"
+
+#~ msgid "Confirm Remove IP Adresses"
+#~ msgstr "Подтвердите удаление IP-адресов"
+
+#~ msgid ""
+#~ "Are you sure you want to delete"
+#~ " all recorded IP addresses from this"
+#~ " project?\n"
+#~ "                The rest of the project"
+#~ " history will be unaffected. This "
+#~ "action cannot be undone."
+#~ msgstr ""
+#~ "Вы уверены, что хотите удалить все "
+#~ "записанные IP-адреса из этого проекта?\n"
+#~ "                Остальная часть истории "
+#~ "проекта не будет затронута. Это действие"
+#~ " не может быть отменено."
+
+#~ msgid ""
+#~ "Some entries below contain IP addresses,"
+#~ " even though this project has IP "
+#~ "recording disabled. "
+#~ msgstr ""
+#~ "Некоторые записи ниже содержат IP-адреса, "
+#~ "хотя в этом проекте запись IP "
+#~ "отключена. "
+
+#~ msgid "Delete stored IP addresses"
+#~ msgstr "Удалить сохраненные IP-адреса"
+
+#~ msgid "No IP Addresses to erase"
+#~ msgstr "Нет IP-адресов для удаления"
+
+#~ msgid "Delete Stored IP Addresses"
+#~ msgstr "Удалить сохраненные IP адреса"
+
+#~ msgid "IP address recording can be enabled on the settings page"
+#~ msgstr "Запись IP-адреса может быть включена на странице настроек"
+
+#~ msgid "IP address recording can be disabled on the settings page"
+#~ msgstr "Запись IP-адреса может быть отключена на странице настроек"
+
+#~ msgid "From IP"
+#~ msgstr "От IP"
 

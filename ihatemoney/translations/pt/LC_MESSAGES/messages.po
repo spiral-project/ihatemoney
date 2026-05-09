@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-02 23:07+0100\n"
+"POT-Creation-Date: 2026-05-09 11:56+0200\n"
 "PO-Revision-Date: 2024-05-10 07:26+0000\n"
 "Last-Translator: Gesiane Pajarinen <gesianef@hotmail.com>\n"
 "Language: pt\n"
@@ -47,9 +47,6 @@ msgstr "E-mail"
 
 msgid "Enable project history"
 msgstr "Ativar histórico do projeto"
-
-msgid "Use IP tracking for project history"
-msgstr "Usar rastreamento de IP para o histórico do projeto"
 
 msgid "Default Currency"
 msgstr "Moeda predefinida"
@@ -397,12 +394,6 @@ msgstr "Erro ao apagar o histórico do projeto"
 msgid "Deleted project history."
 msgstr "Histórico do projeto apagado."
 
-msgid "Error deleting recorded IP addresses"
-msgstr "Erro ao apagar endereços IP gravados"
-
-msgid "Deleted recorded IP addresses in project history."
-msgstr "Endereços IP gravados apagados no histórico do projeto."
-
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Desculpe, não foi possível encontrar a página que solicitou."
 
@@ -548,22 +539,11 @@ msgstr "Descarregar"
 msgid "Disabled Project History"
 msgstr "Histórico do Projeto Desativado"
 
-msgid "Disabled Project History & IP Address Recording"
-msgstr "Histórico do Projeto Desativado & Gravação de Endereço IP"
-
 msgid "Enabled Project History"
 msgstr "Histórico do Projeto Ativado"
 
-msgid "Disabled IP Address Recording"
-msgstr "Gravação do Endereço IP Desativada"
-
-msgid "Enabled Project History & IP Address Recording"
-msgstr "Histórico do Projeto Ativado & Gravação do Endereço IP"
-
-msgid "Enabled IP Address Recording"
-msgstr "Gravação do Endereço IP Ativada"
-
-msgid "History Settings Changed"
+#, fuzzy
+msgid "History Settings Changed (legacy settings)"
 msgstr "Configurações do Histórico Alteradas"
 
 #, python-format
@@ -574,26 +554,6 @@ msgstr "Fatura %(name)s: %(property_name)s alterado de %(before)s a %(after)s"
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr "Fatura %(name)s: %(property_name)s alterado a %(after)s"
 
-msgid "Confirm Remove IP Adresses"
-msgstr "Confirmar a remoção dos Endereços IP"
-
-msgid ""
-"Are you sure you want to delete all recorded IP addresses from this "
-"project?\n"
-"                The rest of the project history will be unaffected. This "
-"action cannot be undone."
-msgstr ""
-"Tem certeza que deseja apagar todos os endereços IP gravados deste "
-"projeto?\n"
-"                O resto do histórico do projeto não será afetado. Esta "
-"ação não pode ser desfeita."
-
-msgid "Confirm deletion"
-msgstr "Confirmar exclusão"
-
-msgid "Close"
-msgstr "Fechar"
-
 msgid "Delete Confirmation"
 msgstr "Deletar Confirmação"
 
@@ -603,6 +563,12 @@ msgid ""
 msgstr ""
 "Tem certeza que deseja apagar todo o histórico deste projeto? Esta ação "
 "não pode ser desfeita."
+
+msgid "Confirm deletion"
+msgstr "Confirmar exclusão"
+
+msgid "Close"
+msgstr "Fechar"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -658,22 +624,6 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr "Alguém provavelmente limpou o histórico do projeto."
 
-msgid ""
-"Some entries below contain IP addresses, even though this project has IP "
-"recording disabled. "
-msgstr ""
-"Algumas das entradas abaixo contém endereços IP, mesmo este projeto tendo"
-" a gravação de IP desativada. "
-
-msgid "Delete stored IP addresses"
-msgstr "Deletar endereços IP gravados"
-
-msgid "No IP Addresses to erase"
-msgstr "Não há endereços IP para apagar"
-
-msgid "Delete Stored IP Addresses"
-msgstr "Deletar endereços IP gravados"
-
 msgid "No history to erase"
 msgstr "Não há histórico para apagar"
 
@@ -685,15 +635,6 @@ msgstr "Tempo"
 
 msgid "Event"
 msgstr "Evento"
-
-msgid "IP address recording can be enabled on the settings page"
-msgstr "A gravação do endereço IP pode ser ativada na página de configurações"
-
-msgid "IP address recording can be disabled on the settings page"
-msgstr "A gravação do endereço IP pode ser desativada na página de configurações"
-
-msgid "From IP"
-msgstr "Do IP"
 
 #, python-format
 msgid "Project %(name)s added"
@@ -1230,4 +1171,72 @@ msgstr "Período"
 
 #~ msgid "Spent"
 #~ msgstr "Gasto"
+
+#~ msgid "Use IP tracking for project history"
+#~ msgstr "Usar rastreamento de IP para o histórico do projeto"
+
+#~ msgid "Error deleting recorded IP addresses"
+#~ msgstr "Erro ao apagar endereços IP gravados"
+
+#~ msgid "Deleted recorded IP addresses in project history."
+#~ msgstr "Endereços IP gravados apagados no histórico do projeto."
+
+#~ msgid "Disabled Project History & IP Address Recording"
+#~ msgstr "Histórico do Projeto Desativado & Gravação de Endereço IP"
+
+#~ msgid "Disabled IP Address Recording"
+#~ msgstr "Gravação do Endereço IP Desativada"
+
+#~ msgid "Enabled Project History & IP Address Recording"
+#~ msgstr "Histórico do Projeto Ativado & Gravação do Endereço IP"
+
+#~ msgid "Enabled IP Address Recording"
+#~ msgstr "Gravação do Endereço IP Ativada"
+
+#~ msgid "Confirm Remove IP Adresses"
+#~ msgstr "Confirmar a remoção dos Endereços IP"
+
+#~ msgid ""
+#~ "Are you sure you want to delete"
+#~ " all recorded IP addresses from this"
+#~ " project?\n"
+#~ "                The rest of the project"
+#~ " history will be unaffected. This "
+#~ "action cannot be undone."
+#~ msgstr ""
+#~ "Tem certeza que deseja apagar todos "
+#~ "os endereços IP gravados deste projeto?"
+#~ "\n"
+#~ "                O resto do histórico do"
+#~ " projeto não será afetado. Esta ação"
+#~ " não pode ser desfeita."
+
+#~ msgid ""
+#~ "Some entries below contain IP addresses,"
+#~ " even though this project has IP "
+#~ "recording disabled. "
+#~ msgstr ""
+#~ "Algumas das entradas abaixo contém "
+#~ "endereços IP, mesmo este projeto tendo"
+#~ " a gravação de IP desativada. "
+
+#~ msgid "Delete stored IP addresses"
+#~ msgstr "Deletar endereços IP gravados"
+
+#~ msgid "No IP Addresses to erase"
+#~ msgstr "Não há endereços IP para apagar"
+
+#~ msgid "Delete Stored IP Addresses"
+#~ msgstr "Deletar endereços IP gravados"
+
+#~ msgid "IP address recording can be enabled on the settings page"
+#~ msgstr "A gravação do endereço IP pode ser ativada na página de configurações"
+
+#~ msgid "IP address recording can be disabled on the settings page"
+#~ msgstr ""
+#~ "A gravação do endereço IP pode ser"
+#~ " desativada na página de configurações"
+
+#~ msgid "From IP"
+#~ msgstr "Do IP"
 

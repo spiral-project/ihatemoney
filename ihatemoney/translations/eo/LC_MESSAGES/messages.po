@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-02 23:07+0100\n"
+"POT-Creation-Date: 2026-05-09 11:56+0200\n"
 "PO-Revision-Date: 2021-10-01 20:35+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language: eo\n"
@@ -47,9 +47,6 @@ msgstr "Retpoŝta adreso"
 
 msgid "Enable project history"
 msgstr "Ŝalti projektan historion"
-
-msgid "Use IP tracking for project history"
-msgstr "Registri IP-adresojn en projekta historio"
 
 msgid "Default Currency"
 msgstr "Implicita valuto"
@@ -393,13 +390,6 @@ msgstr "Ŝalti projektan historion"
 msgid "Deleted project history."
 msgstr "Ŝalti projektan historion"
 
-#, fuzzy
-msgid "Error deleting recorded IP addresses"
-msgstr "Forviŝi konservitajn IP-adresojn"
-
-msgid "Deleted recorded IP addresses in project history."
-msgstr ""
-
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Pardonu, ni ne povis trovi tiun paĝon, kiun vi petis."
 
@@ -546,22 +536,11 @@ msgstr "Elŝuti"
 msgid "Disabled Project History"
 msgstr "Projekta historio estas malŝaltita"
 
-msgid "Disabled Project History & IP Address Recording"
-msgstr "Projekta historio kaj registrado de IP-adresoj estas malŝaltitaj"
-
 msgid "Enabled Project History"
 msgstr "Projekta historio estas ŝaltita"
 
-msgid "Disabled IP Address Recording"
-msgstr "Registrado de IP-adresoj estas malŝaltita"
-
-msgid "Enabled Project History & IP Address Recording"
-msgstr "Projekta historio kaj registrado de IP-adresoj estas ŝaltitaj"
-
-msgid "Enabled IP Address Recording"
-msgstr "Registrado de IP-adresoj estas ŝaltita"
-
-msgid "History Settings Changed"
+#, fuzzy
+msgid "History Settings Changed (legacy settings)"
 msgstr "Agordoj pri historio estis ŝanĝitaj"
 
 #, python-format
@@ -572,27 +551,6 @@ msgstr ""
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr ""
 
-msgid "Confirm Remove IP Adresses"
-msgstr "Konfirmi forigon de IP-adresoj"
-
-msgid ""
-"Are you sure you want to delete all recorded IP addresses from this "
-"project?\n"
-"                The rest of the project history will be unaffected. This "
-"action cannot be undone."
-msgstr ""
-"Ĉu vi certe volas forigi ĉiujn registritajn IP-adresojn de ĉi tiu "
-"projekto?\n"
-"                La resto de la projekta historio estos netuŝita. Ĉi tiu "
-"ago ne estas malfarebla."
-
-#, fuzzy
-msgid "Confirm deletion"
-msgstr "Konfirmi forigon"
-
-msgid "Close"
-msgstr "Fermi"
-
 msgid "Delete Confirmation"
 msgstr "Konfirmo de forigo"
 
@@ -602,6 +560,13 @@ msgid ""
 msgstr ""
 "Ĉu vi certe volas forviŝi ĉiom da historio de ĉi tiu projekto? Ĉi tiu ago"
 " estas malfarebla."
+
+#, fuzzy
+msgid "Confirm deletion"
+msgstr "Konfirmi forigon"
+
+msgid "Close"
+msgstr "Fermi"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -653,22 +618,6 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr "Iu verŝajne forviŝis la historion de la projekto."
 
-msgid ""
-"Some entries below contain IP addresses, even though this project has IP "
-"recording disabled. "
-msgstr ""
-"Iuj ĉi-subaj eroj enhavas IP-adresojn, kvankam registrado de IP-adresoj "
-"estis malŝaltita por ĉi tiu projekto. "
-
-msgid "Delete stored IP addresses"
-msgstr "Forviŝi konservitajn IP-adresojn"
-
-msgid "No IP Addresses to erase"
-msgstr "Neniom da forviŝeblaj IP-adresoj"
-
-msgid "Delete Stored IP Addresses"
-msgstr "Forviŝi konservitajn IP-adresojn"
-
 msgid "No history to erase"
 msgstr "Neniom da forviŝebla historio"
 
@@ -680,15 +629,6 @@ msgstr "Tempo"
 
 msgid "Event"
 msgstr "Evento"
-
-msgid "IP address recording can be enabled on the settings page"
-msgstr "Registrado de IP-adresoj estas ŝaltebla per la agorda paĝo"
-
-msgid "IP address recording can be disabled on the settings page"
-msgstr "Registrado de IP-adresoj estas malŝaltebla per la agorda paĝo"
-
-msgid "From IP"
-msgstr "Ĉe IP-adreso"
 
 #, fuzzy, python-format
 msgid "Project %(name)s added"
@@ -1212,4 +1152,71 @@ msgstr "Periodo"
 
 #~ msgid "Spent"
 #~ msgstr "Elspezita"
+
+#~ msgid "Use IP tracking for project history"
+#~ msgstr "Registri IP-adresojn en projekta historio"
+
+#~ msgid "Error deleting recorded IP addresses"
+#~ msgstr "Forviŝi konservitajn IP-adresojn"
+
+#~ msgid "Deleted recorded IP addresses in project history."
+#~ msgstr ""
+
+#~ msgid "Disabled Project History & IP Address Recording"
+#~ msgstr "Projekta historio kaj registrado de IP-adresoj estas malŝaltitaj"
+
+#~ msgid "Disabled IP Address Recording"
+#~ msgstr "Registrado de IP-adresoj estas malŝaltita"
+
+#~ msgid "Enabled Project History & IP Address Recording"
+#~ msgstr "Projekta historio kaj registrado de IP-adresoj estas ŝaltitaj"
+
+#~ msgid "Enabled IP Address Recording"
+#~ msgstr "Registrado de IP-adresoj estas ŝaltita"
+
+#~ msgid "Confirm Remove IP Adresses"
+#~ msgstr "Konfirmi forigon de IP-adresoj"
+
+#~ msgid ""
+#~ "Are you sure you want to delete"
+#~ " all recorded IP addresses from this"
+#~ " project?\n"
+#~ "                The rest of the project"
+#~ " history will be unaffected. This "
+#~ "action cannot be undone."
+#~ msgstr ""
+#~ "Ĉu vi certe volas forigi ĉiujn "
+#~ "registritajn IP-adresojn de ĉi tiu "
+#~ "projekto?\n"
+#~ "                La resto de la projekta"
+#~ " historio estos netuŝita. Ĉi tiu ago"
+#~ " ne estas malfarebla."
+
+#~ msgid ""
+#~ "Some entries below contain IP addresses,"
+#~ " even though this project has IP "
+#~ "recording disabled. "
+#~ msgstr ""
+#~ "Iuj ĉi-subaj eroj enhavas IP-"
+#~ "adresojn, kvankam registrado de IP-"
+#~ "adresoj estis malŝaltita por ĉi tiu "
+#~ "projekto. "
+
+#~ msgid "Delete stored IP addresses"
+#~ msgstr "Forviŝi konservitajn IP-adresojn"
+
+#~ msgid "No IP Addresses to erase"
+#~ msgstr "Neniom da forviŝeblaj IP-adresoj"
+
+#~ msgid "Delete Stored IP Addresses"
+#~ msgstr "Forviŝi konservitajn IP-adresojn"
+
+#~ msgid "IP address recording can be enabled on the settings page"
+#~ msgstr "Registrado de IP-adresoj estas ŝaltebla per la agorda paĝo"
+
+#~ msgid "IP address recording can be disabled on the settings page"
+#~ msgstr "Registrado de IP-adresoj estas malŝaltebla per la agorda paĝo"
+
+#~ msgid "From IP"
+#~ msgstr "Ĉe IP-adreso"
 
