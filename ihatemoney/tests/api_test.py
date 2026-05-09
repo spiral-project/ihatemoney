@@ -982,7 +982,7 @@ class TestAPI(IhatemoneyTestCase):
             "utf-8"
         )
         assert f"Project {em_surround('raclette')} added" in resp.data.decode("utf-8")
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 2
+        assert resp.data.decode("utf-8").count("<td> -- </td>") == 0
         assert "127.0.0.1" not in resp.data.decode("utf-8")
 
     def test_amount_is_null(self):

@@ -1,31 +1,12 @@
 {% extends "sidebar_table_layout.html" %}
 
 {% macro change_to_logging_preference(event) %}
-{% if event.val_after == LoggingMode.DISABLED %}
-    {% if event.val_before == LoggingMode.ENABLED %}
-        {{ _("Disabled Project History") }}
-    {% else %}
-        {{ _("Disabled Project History & IP Address Recording") }}
-    {% endif %}
-{% elif event.val_after == LoggingMode.ENABLED %}
-    {% if event.val_before == LoggingMode.DISABLED %}
-        {{ _("Enabled Project History") }}
-    {% elif event.val_before == LoggingMode.RECORD_IP %}
-        {{ _("Disabled IP Address Recording") }}
-    {% else %}
-        {{ _("Enabled Project History") }}
-    {% endif %}
-{% elif event.val_after == LoggingMode.RECORD_IP %}
-    {% if event.val_before == LoggingMode.DISABLED %}
-        {{ _("Enabled Project History & IP Address Recording") }}
-    {% elif event.val_before == LoggingMode.ENABLED %}
-        {{ _("Enabled IP Address Recording") }}
-    {% else %}
-        {{ _("Enabled Project History & IP Address Recording") }}
-    {% endif %}
+{% if event.val_after == LoggingMode.DISABLED and event.val_before == LoggingMode.ENABLED %}
+    {{ _("Disabled Project History") }}
+{% elif event.val_after == LoggingMode.ENABLED and event.val_before == LoggingMode.DISABLED %}
+    {{ _("Enabled Project History") }}
 {% else %}
-    {# Should be unreachable #}
-    {{ _("History Settings Changed") }}
+    {{ _("History Settings Changed (legacy settings)") }}
 {% endif %}
 {% endmacro %}
 
@@ -40,26 +21,6 @@
 {% endmacro %}
 
 {% macro clear_history_modals() %}
-<!-- Modal -->
-<div id="confirm-ip-delete" class="modal fade show" role="dialog">
-    <div class="modal-dialog" role="document">
-        <form class="modal-content" action="{{ url_for(".strip_ip_addresses") }}" method="post">
-            <div class="modal-header">
-                <h3 class="modal-title">{{ _('Confirm Remove IP Adresses') }}</h3>
-                <a href="#" class="close" data-dismiss="modal">&times;</a>
-            </div>
-            <div class="modal-body">
-                <p>{{ _("Are you sure you want to delete all recorded IP addresses from this project?
-                The rest of the project history will be unaffected. This action cannot be undone.") }}</p>
-                {{ forms.delete_ip_addresses(delete_form) }}
-            </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-danger">{{ _("Confirm deletion") }}</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _("Close") }}</button>
-            </div>
-        </form>
-    </div>
-</div>
 <!-- Modal -->
     <div id="confirm-erase" class="modal fade show" role="dialog">
     <div class="modal-dialog" role="document">
@@ -115,9 +76,8 @@
 
 
 {% block content %}
-    {% if current_log_pref == LoggingMode.DISABLED  or (current_log_pref != LoggingMode.RECORD_IP and any_ip_addresses) %}
+    {% if current_log_pref == LoggingMode.DISABLED %}
     <div id="history_warnings" class="card card-body bg-light">
-    {% if current_log_pref == LoggingMode.DISABLED  %}
         <p>
             <i>{{ _("This project has history disabled. New actions won't appear below.") }}
                <a href="{{ url_for(".edit_project") }}">{{ _("You can enable history on the settings page.") }}</a>
@@ -130,23 +90,10 @@
             </i>
         </p>
         {% endif %}
-    {% endif %}
-    {% if current_log_pref != LoggingMode.RECORD_IP and any_ip_addresses %}
-        <p>
-            <i>{{ _("Some entries below contain IP addresses, even though this project has IP recording disabled. ") }}
-            <a href="#" data-toggle="modal" data-keyboard="false" data-target="#confirm-ip-delete">{{ _("Delete stored IP addresses") }}</a></i>
-        </p>
-    {% endif %}
     </div>
     {% endif %}
     {{ clear_history_modals() }}
     <div class="d-flex mt-3 justify-content-end">
-        <span class="mr-2" {% if not any_ip_addresses %}data-placement="top" data-toggle="tooltip" title="{{_('No IP Addresses to erase')}}" {% endif %}>
-            <a href="#" class="btn btn-outline-danger {% if not any_ip_addresses %} disabled {% endif %}" data-toggle="modal" data-keyboard="false" data-target="#confirm-ip-delete">
-                <i class="icon icon-red plus">{{ static_include("images/x.svg") | safe }}</i>
-                {{ _("Delete Stored IP Addresses") }}
-            </a>
-        </span>
         <span {% if not history %} data-toggle="tooltip" title="{{_('No history to erase')}}" {% endif %}>
             <a href="#" class="btn btn-outline-danger {% if not history %} disabled {% endif %}" data-toggle="modal" data-keyboard="false" data-target="#confirm-erase">
                 <i class="icon icon-red plus">{{ static_include("images/x.svg") | safe }}</i>
@@ -158,15 +105,8 @@
     {% if history %}
     <table id="history_table" class="split_bills table table-striped">
         <thead><tr>
-            <th style="width: 15%">{{ _("Time") }}</th>
-            <th style="width: 65%">{{ _("Event") }}</th>
-            <th style="width: 20%">
-                <span data-toggle="tooltip" title="{% if current_log_pref != LoggingMode.RECORD_IP %}
-                                                   {{_('IP address recording can be enabled on the settings page') }}
-                                                   {% else %}
-                                                   {{_('IP address recording can be disabled on the settings page') }}
-                                                   {% endif %}">
-                {{ _("From IP") }}</span></th>
+            <th style="width: 30%">{{ _("Time") }}</th>
+            <th style="width: 70%">{{ _("Event") }}</th>
         </tr></thead>
     <tbody>
     {% for event in history %}
@@ -277,7 +217,6 @@
                 {% endif %}
                 </div>
             </td>
-            <td>{% if event.ip %}{{ event.ip }}{% else %} -- {% endif %}</td>
     </tr>
     {% endfor %}
     </tbody>

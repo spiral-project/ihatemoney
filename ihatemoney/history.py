@@ -88,7 +88,6 @@ def get_history(project, human_readable_names=True):
                 "object_type": object_type,
                 "bill_details": None,
                 "object_desc": object_str,
-                "ip": version.transaction.remote_addr,
             }
 
             if object_type == "Bill":
