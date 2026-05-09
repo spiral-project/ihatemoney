@@ -2,6 +2,12 @@
 
 This document describes changes between each past release.
 
+## 7.1.1 (unreleased)
+
+
+- Nothing changed yet.
+
+
 ## 7.1.0 (2026-05-09)
 
 ### Fixed
