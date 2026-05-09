@@ -2,11 +2,21 @@
 
 This document describes changes between each past release.
 
-## 7.0.2 (unreleased)
+## 7.1.0 (2026-05-09)
 
+### Fixed
+- Avoid listing deactivated members in the bill list (#1411)
+- Don't blindly default to the first participant as payer (#1432)
+- Fix import of pre-7.0 files with no bill_type (#1436)
 
-- Nothing changed yet.
+### Changed
+- Update translations for Basque, Spanish (Latin America) and Khmer
+- Remove participant highlighting (#1437)
+- Rate-limit project authentication endpoint (#1447)
 
+### Development stuff
+- Improve Makefile
+- Refactor code for remembering last payer/ower
 
 ## 7.0.1 (2026-03-04)
 
