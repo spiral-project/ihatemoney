@@ -192,7 +192,8 @@ class Project(db.Model):
                 "received": -1.0 * received[member.id],
                 "balance": balance[member.id],
             }
-            for member in self.active_members
+            for member in self.members
+            if member.activated or abs(balance[member.id]) > 0.01
         ]
 
     @property
