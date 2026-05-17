@@ -569,6 +569,49 @@ class TestBudget(IhatemoneyTestCase):
         assert result.count("Everyone") == 3
         assert "Everyone but" not in result
 
+    def test_members_stats_includes_deactivated_with_balance(self):
+        """members_stats should include deactivated members if their balance is non-zero."""
+        self.post_project("statproj")
+        self.login("statproj")
+
+        # add participants A, B, C
+        for name in ["A", "B", "C"]:
+            self.client.post("/statproj/members/add", data={"name": name})
+
+        proj = self.get_project("statproj")
+        ids = {m.name: m.id for m in proj.members}
+
+        # A pays 10 for A and B -> A balance +5, B balance -5
+        self.client.post(
+            "/statproj/add",
+            data={
+                "date": "2011-08-10",
+                "what": "test",
+                "payer": ids["A"],
+                "payed_for": [ids["A"], ids["B"]],
+                "bill_type": "Expense",
+                "amount": "10",
+            },
+        )
+
+        # Deactivate B (has non-zero balance)
+        self.client.post(f"/statproj/members/{ids['B']}/delete")
+
+        proj = self.get_project("statproj")
+        stats = proj.members_stats
+        names = [s["member"].name for s in stats]
+
+        # Deactivated member with non-zero balance must be included
+        assert "B" in names
+
+        # Ensure every returned stat corresponds to either an activated member
+        # or a member with a non-zero balance (threshold 0.01)
+        balance = proj.balance
+        for s in stats:
+            m = s["member"]
+            bal = balance[m.id]
+            assert m.activated or abs(bal) > 0.01
+
     def test_demo(self):
         # test that a demo project is created if none is defined
         assert [] == models.Project.query.all()
