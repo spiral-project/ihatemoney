@@ -4,15 +4,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-02 23:07+0100\n"
-"PO-Revision-Date: 2023-12-10 10:05+0000\n"
-"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
+"PO-Revision-Date: 2026-05-20 20:51+0000\n"
+"Last-Translator: onurmaden <ronur.maden@gmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-money/i-"
+"hate-money/tr/>\n"
 "Language: tr\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/tr/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2026.6.dev0\n"
 "Generated-By: Babel 2.16.0\n"
 
 #, python-format
@@ -71,11 +72,8 @@ msgstr ""
 "Bu proje, birden fazla para biriminde faturalar içerdiğinden 'para birimi"
 " yok' olarak ayarlanamaz."
 
-#, fuzzy
 msgid "Cannot change project currency because currency conversion is broken"
-msgstr ""
-"Öntanımlı para biriminin ayarlanması, faturalar arasında para birimi "
-"dönüştürmeyi etkinleştirir"
+msgstr "Kur dönüşümü yapılamadığından proje para birimi değiştirilemiyor"
 
 msgid "Compatible with Cospend"
 msgstr "Cospend ile uyumlu"
@@ -157,9 +155,8 @@ msgstr "Bu fatura ile ilgili harici bir belgenin bağlantısı"
 msgid "For whom?"
 msgstr "Kim için?"
 
-#, fuzzy
 msgid "Bill Type"
-msgstr "Fatura ögeleri"
+msgstr "Harcama türü"
 
 msgid "Submit"
 msgstr "Gönder"
@@ -174,6 +171,8 @@ msgstr "Proje öntanımlı değeri: %(currency)s"
 #, python-format
 msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
 msgstr ""
+"%(bill_currency)s para biriminden %(project_currency)s para birimine "
+"dönüştürme başarısız oldu"
 
 msgid "Name"
 msgstr "Ad"
@@ -371,17 +370,14 @@ msgstr "Fatura değiştirildi"
 msgid "%(lang)s is not a supported language"
 msgstr "%(lang)s dili desteklenmiyor"
 
-#, fuzzy
 msgid "Error creating settlement bill"
-msgstr "Fatura silinirken hata oluştu"
+msgstr "Hesap kapatma işlemi oluşturulurken hata oluştu"
 
-#, fuzzy
 msgid "Settlement"
-msgstr "Öde"
+msgstr "Hesap kapatma"
 
-#, fuzzy
 msgid "Settlement bill has been successfully added"
-msgstr "Fatura eklendi"
+msgstr "Hesap kapatma işlemi başarıyla eklendi"
 
 msgid "Error deleting project history"
 msgstr "Proje geçmişi silinirken hata oluştu"
@@ -525,7 +521,7 @@ msgid "Edit this participant"
 msgstr "Bu katılımcıyı düzenle"
 
 msgid "Save"
-msgstr ""
+msgstr "Kaydet"
 
 msgid "john.doe@example.com, mary.moe@site.com"
 msgstr "john.doe@example.com, mary.moe@site.com"
@@ -603,30 +599,25 @@ msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
 msgstr "Fatura %(name)s: %(owers_list_str)s borçlular listesinden kaldırıldı"
 
 msgid "Details of the bill (before the change)"
-msgstr ""
+msgstr "Harcama detayları (değişiklikten önce)"
 
-#, fuzzy
 msgid "Details of the bill"
-msgstr "Bu faturayı düzenle"
+msgstr "Harcama detayları"
 
-#, fuzzy
 msgid "Date:"
-msgstr "Tarih"
+msgstr "Tarih:"
 
-#, fuzzy
 msgid "Payer:"
-msgstr "Mükellefi"
+msgstr "Ödeyen:"
 
-#, fuzzy
 msgid "Amount:"
-msgstr "Miktar"
+msgstr "Miktar:"
 
 msgid "Owers:"
-msgstr ""
+msgstr "Borçlu:"
 
-#, fuzzy
 msgid "External link:"
-msgstr "Harici bağlantı"
+msgstr "Harici bağlantı:"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
@@ -1011,16 +1002,14 @@ msgstr "Kim ödüyor?"
 msgid "To whom?"
 msgstr "Kime?"
 
-#, fuzzy
 msgid "Settled?"
-msgstr "Öde"
+msgstr "Hesap kapatıldı mı?"
 
 msgid "Click here to record that the money transfer has been done"
-msgstr ""
+msgstr "Para transferi yapıldı olarak işaretlemek için tıklayın"
 
-#, fuzzy
 msgid "Register settlement"
-msgstr "Öde"
+msgstr "Hesap kapatma işlemini kaydet"
 
 msgid "Who?"
 msgstr "Kim?"
@@ -1037,18 +1026,15 @@ msgstr "yeniden etkinleştir"
 msgid "Paid"
 msgstr "Ödendi"
 
-#, fuzzy
 msgid "Expenses"
-msgstr "Aya Göre Giderler"
+msgstr "Giderler"
 
 msgid "Direct transfer"
-msgstr ""
+msgstr "Doğrudan para transferi"
 
-#, fuzzy
 msgid "Received"
-msgstr "yeniden etkinleştir"
+msgstr "Alındı"
 
-#, fuzzy
 msgid "Expenses by month"
 msgstr "Aya Göre Giderler"
 
@@ -1247,4 +1233,3 @@ msgstr "Dönem"
 
 #~ msgid "Spent"
 #~ msgstr "Harcandı"
-
