@@ -25,7 +25,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "cachetools~=6.2.4",
+    "cachetools>=6.2.4,<7.1.0",
     "debts~=0.5",  # Last update : 2019
     "email_validator~=2.3.0",
     "Flask~=3.1.2",
