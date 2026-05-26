@@ -1,9 +1,14 @@
 # I hate money
 
-[![GitHub Actions Status](https://github.com/spiral-project/ihatemoney/actions/workflows/test-docs.yml/badge.svg)](https://github.com/spiral-project/ihatemoney/actions/workflows/test-docs.yml)
+
+
+
 [![Translation status from Weblate](https://hosted.weblate.org/widgets/i-hate-money/-/i-hate-money/svg-badge.svg)](https://hosted.weblate.org/engage/i-hate-money/?utm_source=widget)
 [![Donate](https://img.shields.io/liberapay/receives/IHateMoney.svg?logo=liberapay)](https://liberapay.com/IHateMoney/donate)
+![Issues](https://img.shields.io/github/issues/spiral-project/ihatemoney?)
 [![Docker image](https://img.shields.io/badge/-Docker%20image-black?logo=docker)](https://hub.docker.com/r/ihatemoney/ihatemoney)
+![Stars](https://img.shields.io/github/stars/spiral-project/ihatemoney?style=social)
+![Forks](https://img.shields.io/github/forks/spiral-project/ihatemoney?style=social)
 
 *I hate money* is a web application made to ease shared budget
 management. It keeps track of who bought what, when, and for whom; and
@@ -16,7 +21,8 @@ helps to settle the bills.
     list](https://mailman.alwaysdata.com/postorius/lists/info.ihatemoney.org/)
     (to get updates when needed).
 
-The code is distributed under a BSD *beerware* derivative: if you meet
+> [!TIP]
+> The code is distributed under a BSD *beerware* derivative: if you meet
 the people in person and you want to pay them a craft beer, you are
 highly encouraged to do so.
 
@@ -80,3 +86,15 @@ to maintain the [hosted version](https://ihatemoney.org).
 ## Translation status
 
 [![Translation status for each language](https://hosted.weblate.org/widgets/i-hate-money/-/i-hate-money/multi-blue.svg)](https://hosted.weblate.org/engage/i-hate-money/?utm_source=widget)
+
+## License
+Yes.. IHateMoney is licensed under the © BSD 3-Clause 'beerware'! 
+
+What this means:
+- You can use it anywhere: for personal projects, commercial software, proprietary software, and everything inbetween
+- You can modify and change this code however you want
+- You can redistribute it however you like
+- You **MUST** keep the original license notice alongside the "AS IS" liability disclaimer
+- You are **NOT ALLOWED TO** use contributor names for promotion (e.g.: "Built with approval from John Doe") or use contributors to endorse your product without permission
+
+Basically: do whatever you want with this, just keep our credit, don’t claim we endorse you, and don’t sue us.
