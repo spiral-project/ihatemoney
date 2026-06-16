@@ -115,11 +115,23 @@ body {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+
+
 }
 
 .sidebar_content {
   flex: 1 1 auto;
   overflow-y: auto;
+/* Hide scrollbar on Edge and Firefox */
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+
+
+}
+
+/* Hide scrollbar on Chrome, Safari and Opera */
+.sidebar_content::-webkit-scrollbar {
+  display: none;
 }
 
 .identifier {
@@ -207,6 +219,7 @@ footer {
   width: 100%;
   font: normal 16px sans-serif;
   padding: 45px 50px;
+  background-color: #dee2e6;
 }
 
 @media (min-width: 1024px) {
