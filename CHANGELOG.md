@@ -5,7 +5,8 @@ This document describes changes between each past release.
 ## 7.1.2 (unreleased)
 ---------------------
 
-- Nothing changed yet.
+### Fixed
+- Fix first-database migration deadlock on MySQL 8 by closing the connection opened in `_pre_alembic_db` (#1457)
 
 
 ## 7.1.1 (2026-05-09)
