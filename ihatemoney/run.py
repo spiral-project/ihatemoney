@@ -36,10 +36,10 @@ def setup_database(app):
 
     def _pre_alembic_db():
         """Checks if we are migrating from a pre-alembic ihatemoney"""
-        con = db.engine.connect()
-        tables_exist = db.engine.dialect.has_table(con, "project")
-        alembic_setup = db.engine.dialect.has_table(con, "alembic_version")
-        return tables_exist and not alembic_setup
+        with db.engine.connect() as con:
+            tables_exist = db.engine.dialect.has_table(con, "project")
+            alembic_setup = db.engine.dialect.has_table(con, "alembic_version")
+            return tables_exist and not alembic_setup
 
     sqlalchemy_url = app.config.get("SQLALCHEMY_DATABASE_URI")
     if sqlalchemy_url.startswith("sqlite:////tmp"):
