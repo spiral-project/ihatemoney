@@ -154,7 +154,6 @@ class EditProjectForm(FlaskForm):
     )
     contact_email = StringField(_("Email"), validators=[DataRequired(), Email()])
     project_history = BooleanField(_("Enable project history"))
-    ip_recording = BooleanField(_("Use IP tracking for project history"))
     currency_helper = CurrencyConverter()
     default_currency = SelectField(
         _("Default Currency"),
@@ -193,10 +192,7 @@ class EditProjectForm(FlaskForm):
         if not self.project_history.data:
             return LoggingMode.DISABLED
         else:
-            if self.ip_recording.data:
-                return LoggingMode.RECORD_IP
-            else:
-                return LoggingMode.ENABLED
+            return LoggingMode.ENABLED
 
     def validate_default_currency(self, field):
         project = Project.query.get(self.id.data)
@@ -268,7 +264,6 @@ class ProjectForm(EditProjectForm):
         # request doesn't include any value the way that other fields do,
         # so we'll manually do it here
         self.project_history.data = LoggingMode.default() != LoggingMode.DISABLED
-        self.ip_recording.data = LoggingMode.default() == LoggingMode.RECORD_IP
         # Create project
         project = Project(
             name=self.name.data,
@@ -307,7 +302,6 @@ class DestructiveActionProjectForm(FlaskForm):
 
     - delete project itself
     - delete history
-    - delete IP addresses in history
 
     It asks the participant to enter the private code to confirm deletion.
     """

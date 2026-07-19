@@ -49,10 +49,6 @@ msgid "Enable project history"
 msgstr "Aktifkan sejarah projek"
 
 #, fuzzy
-msgid "Use IP tracking for project history"
-msgstr "Gunakan penjejakan IP untuk sejarah projek"
-
-#, fuzzy
 msgid "Default Currency"
 msgstr "Mata wang asal"
 
@@ -380,12 +376,6 @@ msgstr ""
 msgid "Deleted project history."
 msgstr ""
 
-msgid "Error deleting recorded IP addresses"
-msgstr ""
-
-msgid "Deleted recorded IP addresses in project history."
-msgstr ""
-
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr ""
 
@@ -530,22 +520,10 @@ msgstr ""
 msgid "Disabled Project History"
 msgstr ""
 
-msgid "Disabled Project History & IP Address Recording"
-msgstr ""
-
 msgid "Enabled Project History"
 msgstr ""
 
-msgid "Disabled IP Address Recording"
-msgstr ""
-
-msgid "Enabled Project History & IP Address Recording"
-msgstr ""
-
-msgid "Enabled IP Address Recording"
-msgstr ""
-
-msgid "History Settings Changed"
+msgid "History Settings Changed (legacy settings)"
 msgstr ""
 
 #, python-format
@@ -556,22 +534,6 @@ msgstr ""
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr ""
 
-msgid "Confirm Remove IP Adresses"
-msgstr ""
-
-msgid ""
-"Are you sure you want to delete all recorded IP addresses from this "
-"project?\n"
-"                The rest of the project history will be unaffected. This "
-"action cannot be undone."
-msgstr ""
-
-msgid "Confirm deletion"
-msgstr ""
-
-msgid "Close"
-msgstr "Tutup"
-
 msgid "Delete Confirmation"
 msgstr ""
 
@@ -579,6 +541,12 @@ msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
 msgstr ""
+
+msgid "Confirm deletion"
+msgstr ""
+
+msgid "Close"
+msgstr "Tutup"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -626,20 +594,6 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr ""
 
-msgid ""
-"Some entries below contain IP addresses, even though this project has IP "
-"recording disabled. "
-msgstr ""
-
-msgid "Delete stored IP addresses"
-msgstr ""
-
-msgid "No IP Addresses to erase"
-msgstr ""
-
-msgid "Delete Stored IP Addresses"
-msgstr ""
-
 msgid "No history to erase"
 msgstr ""
 
@@ -651,15 +605,6 @@ msgstr "Masa"
 
 msgid "Event"
 msgstr "Acara"
-
-msgid "IP address recording can be enabled on the settings page"
-msgstr ""
-
-msgid "IP address recording can be disabled on the settings page"
-msgstr ""
-
-msgid "From IP"
-msgstr "Dari IP"
 
 #, python-format
 msgid "Project %(name)s added"

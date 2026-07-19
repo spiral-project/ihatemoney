@@ -19,7 +19,6 @@ import sqlalchemy
 from sqlalchemy import orm
 from sqlalchemy.sql import func
 from sqlalchemy_continuum import make_versioned, version_class
-from sqlalchemy_continuum.plugins import FlaskPlugin
 
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.monkeypath_continuum import PatchedTransactionFactory
@@ -27,7 +26,6 @@ from ihatemoney.utils import generate_password_hash, get_members, same_bill, get
 from ihatemoney.versioning import (
     ConditionalVersioningManager,
     LoggingMode,
-    get_ip_if_allowed,
     version_privacy_predicate,
 )
 
@@ -38,18 +36,8 @@ make_versioned(
         # project's privacy preferences
         tracking_predicate=version_privacy_predicate,
         # MonkeyPatching
-        transaction_cls=PatchedTransactionFactory(),
+        transaction_cls=PatchedTransactionFactory(remote_addr=False),
     ),
-    plugins=[
-        FlaskPlugin(
-            # Redirect to our own function, which respects user preferences
-            # on IP address collection
-            remote_addr_factory=get_ip_if_allowed,
-            # Suppress the plugin's attempt to grab a user id,
-            # which imports the flask_login module (causing an error)
-            current_user_id_factory=lambda: None,
-        )
-    ],
 )
 
 
@@ -192,7 +180,8 @@ class Project(db.Model):
                 "received": -1.0 * received[member.id],
                 "balance": balance[member.id],
             }
-            for member in self.active_members
+            for member in self.members
+            if member.activated or abs(balance[member.id]) > 0.01
         ]
 
     @property

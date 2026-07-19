@@ -29,12 +29,10 @@ def demo(client):
 
 @pytest.mark.usefixtures("demo")
 class TestHistory(IhatemoneyTestCase):
-    def test_simple_create_logentry_no_ip(self):
+    def test_simple_create_logentry(self):
         resp = self.client.get("/demo/history")
         assert resp.status_code == 200
         assert f"Project {em_surround('demo')} added" in resp.data.decode("utf-8")
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 1
-        assert "127.0.0.1" not in resp.data.decode("utf-8")
 
     def change_privacy_to(self, current_password, logging_preference):
         # Change only logging_preferences
@@ -48,8 +46,6 @@ class TestHistory(IhatemoneyTestCase):
 
         if logging_preference != LoggingMode.DISABLED:
             new_data["project_history"] = "y"
-            if logging_preference == LoggingMode.RECORD_IP:
-                new_data["ip_recording"] = "y"
 
         # Disable History
         resp = self.client.post("/demo/edit", data=new_data, follow_redirects=True)
@@ -63,11 +59,6 @@ class TestHistory(IhatemoneyTestCase):
         else:
             assert '<input checked id="project_history"' in resp.data.decode("utf-8")
 
-        if logging_preference == LoggingMode.RECORD_IP:
-            assert '<input checked id="ip_recording"' in resp.data.decode("utf-8")
-        else:
-            assert '<input id="ip_recording"' in resp.data.decode("utf-8")
-
     def assert_empty_history_logging_disabled(self):
         resp = self.client.get("/demo/history")
         assert (
@@ -79,11 +70,6 @@ class TestHistory(IhatemoneyTestCase):
             "The table below reflects actions recorded prior to disabling project history."
             not in resp.data.decode("utf-8")
         )
-        assert "Some entries below contain IP addresses," not in resp.data.decode(
-            "utf-8"
-        )
-        assert "127.0.0.1" not in resp.data.decode("utf-8")
-        assert "<td> -- </td>" not in resp.data.decode("utf-8")
         assert f"Project {em_surround('demo')} added" not in resp.data.decode("utf-8")
 
     def test_project_edit(self):
@@ -114,8 +100,6 @@ class TestHistory(IhatemoneyTestCase):
         assert resp.data.decode("utf-8").index("Project renamed ") < resp.data.decode(
             "utf-8"
         ).index("Project private code changed")
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 5
-        assert "127.0.0.1" not in resp.data.decode("utf-8")
 
     def test_project_privacy_edit(self):
         resp = self.client.get("/demo/edit")
@@ -130,53 +114,11 @@ class TestHistory(IhatemoneyTestCase):
         resp = self.client.get("/demo/history")
         assert resp.status_code == 200
         assert "Disabled Project History\n" in resp.data.decode("utf-8")
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 2
-        assert "127.0.0.1" not in resp.data.decode("utf-8")
-
-        self.change_privacy_to("demo", LoggingMode.RECORD_IP)
-
-        resp = self.client.get("/demo/history")
-        assert resp.status_code == 200
-        assert "Enabled Project History & IP Address Recording" in resp.data.decode(
-            "utf-8"
-        )
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 2
-        assert resp.data.decode("utf-8").count("127.0.0.1") == 1
 
         self.change_privacy_to("demo", LoggingMode.ENABLED)
 
         resp = self.client.get("/demo/history")
         assert resp.status_code == 200
-        assert "Disabled IP Address Recording\n" in resp.data.decode("utf-8")
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 2
-        assert resp.data.decode("utf-8").count("127.0.0.1") == 2
-
-    def test_project_privacy_edit2(self):
-        self.change_privacy_to("demo", LoggingMode.RECORD_IP)
-
-        resp = self.client.get("/demo/history")
-        assert resp.status_code == 200
-        assert "Enabled IP Address Recording\n" in resp.data.decode("utf-8")
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 1
-        assert resp.data.decode("utf-8").count("127.0.0.1") == 1
-
-        self.change_privacy_to("demo", LoggingMode.DISABLED)
-
-        resp = self.client.get("/demo/history")
-        assert resp.status_code == 200
-        assert "Disabled Project History & IP Address Recording" in resp.data.decode(
-            "utf-8"
-        )
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 1
-        assert resp.data.decode("utf-8").count("127.0.0.1") == 2
-
-        self.change_privacy_to("demo", LoggingMode.ENABLED)
-
-        resp = self.client.get("/demo/history")
-        assert resp.status_code == 200
-        assert "Enabled Project History\n" in resp.data.decode("utf-8")
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 2
-        assert resp.data.decode("utf-8").count("127.0.0.1") == 2
 
     def do_misc_database_operations(self, logging_mode):
         new_data = {
@@ -190,8 +132,6 @@ class TestHistory(IhatemoneyTestCase):
         # Keep privacy settings where they were
         if logging_mode != LoggingMode.DISABLED:
             new_data["project_history"] = "y"
-            if logging_mode == LoggingMode.RECORD_IP:
-                new_data["ip_recording"] = "y"
 
         resp = self.client.post("/demo/edit", data=new_data, follow_redirects=True)
         assert resp.status_code == 200
@@ -267,9 +207,6 @@ class TestHistory(IhatemoneyTestCase):
             in resp.data.decode("utf-8")
         )
         assert "Nothing to list" not in resp.data.decode("utf-8")
-        assert "Some entries below contain IP addresses," not in resp.data.decode(
-            "utf-8"
-        )
 
         # Clear Existing Entries
         resp = self.client.post(
@@ -284,73 +221,6 @@ class TestHistory(IhatemoneyTestCase):
         self.do_misc_database_operations(LoggingMode.DISABLED)
 
         self.assert_empty_history_logging_disabled()
-
-    def test_clear_ip_records(self):
-        # Enable IP Recording
-        self.change_privacy_to("demo", LoggingMode.RECORD_IP)
-
-        # Do lots of database operations to generate IP address entries
-        self.do_misc_database_operations(LoggingMode.RECORD_IP)
-
-        # Disable IP Recording
-        self.change_privacy_to("123456", LoggingMode.ENABLED)
-
-        resp = self.client.get("/demo/history")
-        assert resp.status_code == 200
-        assert (
-            "This project has history disabled. New actions won't appear below."
-            not in resp.data.decode("utf-8")
-        )
-        assert (
-            "The table below reflects actions recorded prior to disabling project history."
-            not in resp.data.decode("utf-8")
-        )
-        assert "Nothing to list" not in resp.data.decode("utf-8")
-        assert "Some entries below contain IP addresses," in resp.data.decode("utf-8")
-        assert resp.data.decode("utf-8").count("127.0.0.1") == 12
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 1
-
-        # Generate more operations to confirm additional IP info isn't recorded
-        self.do_misc_database_operations(LoggingMode.ENABLED)
-
-        resp = self.client.get("/demo/history")
-        assert resp.status_code == 200
-        assert resp.data.decode("utf-8").count("127.0.0.1") == 12
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 7
-
-        # Ensure we can't clear IP data with a GET or with a password-less POST
-        resp = self.client.get("/demo/strip_ip_addresses")
-        assert resp.status_code == 405
-        resp = self.client.post("/demo/strip_ip_addresses", follow_redirects=True)
-        assert "Error deleting recorded IP addresses" in resp.data.decode("utf-8")
-
-        resp = self.client.get("/demo/history")
-        assert resp.status_code == 200
-        assert resp.data.decode("utf-8").count("127.0.0.1") == 12
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 7
-
-        # Clear IP Data
-        resp = self.client.post(
-            "/demo/strip_ip_addresses",
-            data={"password": "123456"},
-            follow_redirects=True,
-        )
-
-        assert resp.status_code == 200
-        assert (
-            "This project has history disabled. New actions won't appear below."
-            not in resp.data.decode("utf-8")
-        )
-        assert (
-            "The table below reflects actions recorded prior to disabling project history."
-            not in resp.data.decode("utf-8")
-        )
-        assert "Nothing to list" not in resp.data.decode("utf-8")
-        assert "Some entries below contain IP addresses," not in resp.data.decode(
-            "utf-8"
-        )
-        assert resp.data.decode("utf-8").count("127.0.0.1") == 0
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 19
 
     def test_logs_for_common_actions(self):
         # adds a member to this project
@@ -500,8 +370,7 @@ class TestHistory(IhatemoneyTestCase):
         # Should be 5 history entries at this point
         resp = self.client.get("/demo/history")
         assert resp.status_code == 200
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 5
-        assert "127.0.0.1" not in resp.data.decode("utf-8")
+        assert resp.data.decode("utf-8").count("history_icon") == 5
 
         # Edit ONLY the amount on the first bill
         self.client.post(
@@ -536,7 +405,7 @@ class TestHistory(IhatemoneyTestCase):
         ), resp.data.decode("utf-8")
 
         # Should be 6 history entries at this point
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 6
+        assert resp.data.decode("utf-8").count("history_icon") == 6
         assert "127.0.0.1" not in resp.data.decode("utf-8")
 
     def test_bill_add_remove_add(self):
@@ -562,7 +431,7 @@ class TestHistory(IhatemoneyTestCase):
 
         resp = self.client.get("/demo/history")
         assert resp.status_code == 200
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 5
+        assert resp.data.decode("utf-8").count("history_icon") == 5
         assert "127.0.0.1" not in resp.data.decode("utf-8")
         assert f"Bill {em_surround('Bill 1')} added" in resp.data.decode("utf-8")
         assert f"Bill {em_surround('Bill 1')} removed" in resp.data.decode("utf-8")
@@ -582,7 +451,7 @@ class TestHistory(IhatemoneyTestCase):
 
         resp = self.client.get("/demo/history")
         assert resp.status_code == 200
-        assert resp.data.decode("utf-8").count("<td> -- </td>") == 6
+        assert resp.data.decode("utf-8").count("history_icon") == 6
         assert "127.0.0.1" not in resp.data.decode("utf-8")
         assert f"Bill {em_surround('Bill 1')} added" in resp.data.decode("utf-8")
         assert (

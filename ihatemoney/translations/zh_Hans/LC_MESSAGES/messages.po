@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-02 23:07+0100\n"
+"POT-Creation-Date: 2026-05-09 11:56+0200\n"
 "PO-Revision-Date: 2023-12-12 13:05+0000\n"
 "Last-Translator: Jinx <me@qqays.xyz>\n"
 "Language: zh_Hans\n"
@@ -45,9 +45,6 @@ msgstr "邮箱"
 
 msgid "Enable project history"
 msgstr "启用账目历史"
-
-msgid "Use IP tracking for project history"
-msgstr "用IP追踪账目历史"
 
 msgid "Default Currency"
 msgstr "默认货币"
@@ -370,12 +367,6 @@ msgstr "删除账目历史记录时出错"
 msgid "Deleted project history."
 msgstr "已删除的账目历史记录。"
 
-msgid "Error deleting recorded IP addresses"
-msgstr "删除记录的IP地址时出错"
-
-msgid "Deleted recorded IP addresses in project history."
-msgstr "账目历史记录中的 IP 地址已移除。"
-
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "抱歉，我们无法找到您要求的页面。"
 
@@ -517,22 +508,11 @@ msgstr "下载"
 msgid "Disabled Project History"
 msgstr "禁用账目历史"
 
-msgid "Disabled Project History & IP Address Recording"
-msgstr "禁用账目历史与IP地址记录"
-
 msgid "Enabled Project History"
 msgstr "启用账目历史纪录"
 
-msgid "Disabled IP Address Recording"
-msgstr "禁用IP地址记录"
-
-msgid "Enabled Project History & IP Address Recording"
-msgstr "启用账目历史与IP地址记录"
-
-msgid "Enabled IP Address Recording"
-msgstr "启用IP地址记录"
-
-msgid "History Settings Changed"
+#, fuzzy
+msgid "History Settings Changed (legacy settings)"
 msgstr "历史设置改变"
 
 #, python-format
@@ -543,24 +523,6 @@ msgstr "账单 %(name)s： %(property_name)s 从 %(before)s 改为 %(after)s"
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr "账单 %(name)s： %(property_name)s 改为 %(after)s"
 
-msgid "Confirm Remove IP Adresses"
-msgstr "确认移除IP地址"
-
-msgid ""
-"Are you sure you want to delete all recorded IP addresses from this "
-"project?\n"
-"                The rest of the project history will be unaffected. This "
-"action cannot be undone."
-msgstr ""
-"你确定要删除此账目里所有的IP地址吗？\n"
-"账目其他内容不受影响，此操作不可撤回。"
-
-msgid "Confirm deletion"
-msgstr "确认删除"
-
-msgid "Close"
-msgstr "关闭"
-
 msgid "Delete Confirmation"
 msgstr "删除确认"
 
@@ -568,6 +530,12 @@ msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
 msgstr "确定删除此账目所有记录？此操作不可撤回。"
+
+msgid "Confirm deletion"
+msgstr "确认删除"
+
+msgid "Close"
+msgstr "关闭"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -617,20 +585,6 @@ msgstr "下表反映了禁用账目历史记录之前记录的操作。"
 msgid "You can clear the project history to remove them."
 msgstr "您可以清除账目历史记录来删除它们。"
 
-msgid ""
-"Some entries below contain IP addresses, even though this project has IP "
-"recording disabled. "
-msgstr "以下条目包含IP地址，但此账目禁用IP记录 "
-
-msgid "Delete stored IP addresses"
-msgstr "删除已储存的IP地址"
-
-msgid "No IP Addresses to erase"
-msgstr "无IP地址"
-
-msgid "Delete Stored IP Addresses"
-msgstr "删除已储存AP地址"
-
 msgid "No history to erase"
 msgstr "无历史纪录"
 
@@ -642,15 +596,6 @@ msgstr "时间"
 
 msgid "Event"
 msgstr "事件"
-
-msgid "IP address recording can be enabled on the settings page"
-msgstr "IP地址记录可在设置里启用"
-
-msgid "IP address recording can be disabled on the settings page"
-msgstr "IP地址记录可在设置里禁用"
-
-msgid "From IP"
-msgstr "从IP"
 
 #, python-format
 msgid "Project %(name)s added"
@@ -1189,4 +1134,63 @@ msgstr "期间"
 
 #~ msgid "Spent"
 #~ msgstr "花费"
+
+#~ msgid "Use IP tracking for project history"
+#~ msgstr "用IP追踪账目历史"
+
+#~ msgid "Error deleting recorded IP addresses"
+#~ msgstr "删除记录的IP地址时出错"
+
+#~ msgid "Deleted recorded IP addresses in project history."
+#~ msgstr "账目历史记录中的 IP 地址已移除。"
+
+#~ msgid "Disabled Project History & IP Address Recording"
+#~ msgstr "禁用账目历史与IP地址记录"
+
+#~ msgid "Disabled IP Address Recording"
+#~ msgstr "禁用IP地址记录"
+
+#~ msgid "Enabled Project History & IP Address Recording"
+#~ msgstr "启用账目历史与IP地址记录"
+
+#~ msgid "Enabled IP Address Recording"
+#~ msgstr "启用IP地址记录"
+
+#~ msgid "Confirm Remove IP Adresses"
+#~ msgstr "确认移除IP地址"
+
+#~ msgid ""
+#~ "Are you sure you want to delete"
+#~ " all recorded IP addresses from this"
+#~ " project?\n"
+#~ "                The rest of the project"
+#~ " history will be unaffected. This "
+#~ "action cannot be undone."
+#~ msgstr ""
+#~ "你确定要删除此账目里所有的IP地址吗？\n"
+#~ "账目其他内容不受影响，此操作不可撤回。"
+
+#~ msgid ""
+#~ "Some entries below contain IP addresses,"
+#~ " even though this project has IP "
+#~ "recording disabled. "
+#~ msgstr "以下条目包含IP地址，但此账目禁用IP记录 "
+
+#~ msgid "Delete stored IP addresses"
+#~ msgstr "删除已储存的IP地址"
+
+#~ msgid "No IP Addresses to erase"
+#~ msgstr "无IP地址"
+
+#~ msgid "Delete Stored IP Addresses"
+#~ msgstr "删除已储存AP地址"
+
+#~ msgid "IP address recording can be enabled on the settings page"
+#~ msgstr "IP地址记录可在设置里启用"
+
+#~ msgid "IP address recording can be disabled on the settings page"
+#~ msgstr "IP地址记录可在设置里禁用"
+
+#~ msgid "From IP"
+#~ msgstr "从IP"
 

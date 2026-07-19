@@ -47,9 +47,6 @@ msgstr "E-posta"
 msgid "Enable project history"
 msgstr "Proje geçmişini etkinleştir"
 
-msgid "Use IP tracking for project history"
-msgstr "Proje geçmişi için IP izlemeyi kullan"
-
 msgid "Default Currency"
 msgstr "Öntanımlı Para Birimi"
 
@@ -384,12 +381,6 @@ msgstr "Proje geçmişi silinirken hata oluştu"
 msgid "Deleted project history."
 msgstr "Proje geçmişi silindi."
 
-msgid "Error deleting recorded IP addresses"
-msgstr "Kaydedilen IP adresleri silinirken hata oluştu"
-
-msgid "Deleted recorded IP addresses in project history."
-msgstr "Proje geçmişinde kaydedilen IP adresleri silindi."
-
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Maalesef, istediğiniz sayfayı bulamadık."
 
@@ -531,22 +522,11 @@ msgstr "İndir"
 msgid "Disabled Project History"
 msgstr "Proje Geçmişi Devre Dışı"
 
-msgid "Disabled Project History & IP Address Recording"
-msgstr "Proje Geçmişi ve IP Adresi Kaydetme Devre Dışı"
-
 msgid "Enabled Project History"
 msgstr "Proje Geçmişi Etkin"
 
-msgid "Disabled IP Address Recording"
-msgstr "IP Adresi Kaydetme Devre Dışı"
-
-msgid "Enabled Project History & IP Address Recording"
-msgstr "Proje Geçmişi ve IP Adresi Kaydetme Etkin"
-
-msgid "Enabled IP Address Recording"
-msgstr "IP Adresi Kaydetme Etkin"
-
-msgid "History Settings Changed"
+#, fuzzy
+msgid "History Settings Changed (legacy settings)"
 msgstr "Geçmiş Ayarları Değişti"
 
 #, python-format
@@ -559,26 +539,6 @@ msgstr ""
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr "Fatura %(name)s: %(property_name)s, %(after)s olarak değiştirildi"
 
-msgid "Confirm Remove IP Adresses"
-msgstr "IP Adresini Kaldırmayı Onayla"
-
-msgid ""
-"Are you sure you want to delete all recorded IP addresses from this "
-"project?\n"
-"                The rest of the project history will be unaffected. This "
-"action cannot be undone."
-msgstr ""
-"Kaydedilen tüm IP adreslerini bu projeden silmek istediğinize emin "
-"misiniz?\n"
-"                Proje geçmişinin geri kalanı bundan etkilenmeyecektir. Bu"
-" işlem geri alınamaz."
-
-msgid "Confirm deletion"
-msgstr "Silmeyi onayla"
-
-msgid "Close"
-msgstr "Kapat"
-
 msgid "Delete Confirmation"
 msgstr "Onaylamayı Sil"
 
@@ -588,6 +548,12 @@ msgid ""
 msgstr ""
 "Bu proje için tüm geçmişi silmek istediğinize emin misiniz? Bu işlem geri"
 " alınamaz."
+
+msgid "Confirm deletion"
+msgstr "Silmeyi onayla"
+
+msgid "Close"
+msgstr "Kapat"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -636,22 +602,6 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr "Bunları kaldırmak için proje geçmişini temizleyebilirsiniz."
 
-msgid ""
-"Some entries below contain IP addresses, even though this project has IP "
-"recording disabled. "
-msgstr ""
-"Bu projede IP kaydetme devre dışı bırakılmış olsa da aşağıdaki bazı "
-"girdiler IP adresleri içermektedir. "
-
-msgid "Delete stored IP addresses"
-msgstr "Kaydedilen IP adreslerini sil"
-
-msgid "No IP Addresses to erase"
-msgstr "Silinecek IP adresi yok"
-
-msgid "Delete Stored IP Addresses"
-msgstr "Kaydedilen IP Adreslerini Sil"
-
 msgid "No history to erase"
 msgstr "Silinecek geçmiş yok"
 
@@ -663,15 +613,6 @@ msgstr "Zaman"
 
 msgid "Event"
 msgstr "Etkinlik"
-
-msgid "IP address recording can be enabled on the settings page"
-msgstr "IP adresi kaydetme ayarlar sayfasında etkinleştirilebilir"
-
-msgid "IP address recording can be disabled on the settings page"
-msgstr "IP adresi kaydetme ayarlar sayfasında devre dışı bırakılabilir"
-
-msgid "From IP"
-msgstr "IP'den"
 
 #, python-format
 msgid "Project %(name)s added"

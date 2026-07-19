@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-02 23:07+0100\n"
+"POT-Creation-Date: 2026-05-09 11:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Farid Gurbanov <feridqurbanov333@gmail.com>\n"
 "Language: az\n"
@@ -45,9 +45,6 @@ msgstr "E-poçt"
 
 msgid "Enable project history"
 msgstr "Layihə tarixçəsini aktiv edin"
-
-msgid "Use IP tracking for project history"
-msgstr "Layihə tarixçəsi üçün IP izləmədən istifadə edin"
 
 msgid "Default Currency"
 msgstr "Susmaya görə valyuta"
@@ -388,12 +385,6 @@ msgstr "Layihə tarixi silinərkən səhv baş verdi"
 msgid "Deleted project history."
 msgstr "Layihə tarixi silindi."
 
-msgid "Error deleting recorded IP addresses"
-msgstr "Qeyd olunan IP ünvanlar silinərkən səhv baş verdi"
-
-msgid "Deleted recorded IP addresses in project history."
-msgstr "Layihə tarixində qeyd olunan IP ünvanlar silindi."
-
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Bağışlayın, soruşduğunuz səhifəni tapa bilmədik."
 
@@ -537,22 +528,11 @@ msgstr "Yüklə"
 msgid "Disabled Project History"
 msgstr "Layihə Tarixi Deaktivdir"
 
-msgid "Disabled Project History & IP Address Recording"
-msgstr "Layihə Tarixi və IP Ünvan Qeydiyyatı Deaktivdir"
-
 msgid "Enabled Project History"
 msgstr "Layihə Tarixi Aktivdir"
 
-msgid "Disabled IP Address Recording"
-msgstr "IP Ünvan Qeydiyyatı Deaktivdir"
-
-msgid "Enabled Project History & IP Address Recording"
-msgstr "Layihə Tarixi və IP Ünvan Qeydiyyatı Aktivdir"
-
-msgid "Enabled IP Address Recording"
-msgstr "IP Ünvan Qeydiyyatı Aktivdir"
-
-msgid "History Settings Changed"
+#, fuzzy
+msgid "History Settings Changed (legacy settings)"
 msgstr "Tarix Parametrləri Dəyişdirildi"
 
 #, python-format
@@ -563,26 +543,6 @@ msgstr "Hesab %(name)s: %(property_name)s %(before)s-dən %(after)s-ə dəyişdi
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr "Hesab %(name)s: %(property_name)s, %(after)s olaraq dəyişdirildi"
 
-msgid "Confirm Remove IP Adresses"
-msgstr "IP ünvanlarının silinməsini təsdiqləyin"
-
-msgid ""
-"Are you sure you want to delete all recorded IP addresses from this "
-"project?\n"
-"                The rest of the project history will be unaffected. This "
-"action cannot be undone."
-msgstr ""
-"Bu layihədə qeyd olunan bütün IP ünvanlarını silmək istədiyinizdən "
-"əminsiniz?\n"
-"                Layihənin qalan tarixi dəyişməyəcək. Bu əməliyyatı geri "
-"qaytarmaq mümkün deyil."
-
-msgid "Confirm deletion"
-msgstr "Silinməni təsdiqləyin"
-
-msgid "Close"
-msgstr "Bağla"
-
 msgid "Delete Confirmation"
 msgstr "Silinməni Təsdiqləyin"
 
@@ -592,6 +552,12 @@ msgid ""
 msgstr ""
 "Bu layihənin bütün tarixçəsini silmək istədiyinizdən əminsiniz? Bu "
 "əməliyyat geri qaytarıla bilməz."
+
+msgid "Confirm deletion"
+msgstr "Silinməni təsdiqləyin"
+
+msgid "Close"
+msgstr "Bağla"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -643,22 +609,6 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr "Onları silmək üçün layihə tarixçəsini təmizləyə bilərsiniz."
 
-msgid ""
-"Some entries below contain IP addresses, even though this project has IP "
-"recording disabled. "
-msgstr ""
-"Bu layihədə IP ünvanlarının qeyd edilməsi söndürülsə də, aşağıdakı bəzi "
-"girişlər IP ünvanlarını ehtiva edir. "
-
-msgid "Delete stored IP addresses"
-msgstr "Saxlanılan IP ünvanlarını sil"
-
-msgid "No IP Addresses to erase"
-msgstr "Silinməsi üçün IP ünvanı yoxdur"
-
-msgid "Delete Stored IP Addresses"
-msgstr "Saxlanılan IP Ünvanlarını Sil"
-
 msgid "No history to erase"
 msgstr "Silinməsi üçün tarixçə yoxdur"
 
@@ -670,15 +620,6 @@ msgstr "Vaxt"
 
 msgid "Event"
 msgstr "Hadisə"
-
-msgid "IP address recording can be enabled on the settings page"
-msgstr "IP ünvanlarının qeyd edilməsi ayarlar səhifəsindən aktivləşdirilə bilər"
-
-msgid "IP address recording can be disabled on the settings page"
-msgstr "IP ünvanlarının qeyd edilməsi ayarlar səhifəsindən söndürülə bilər"
-
-msgid "From IP"
-msgstr "IP-dən"
 
 #, python-format
 msgid "Project %(name)s added"
@@ -1244,4 +1185,69 @@ msgstr "Dövür"
 
 #~ msgid "Spent"
 #~ msgstr "Xərcləndi"
+
+#~ msgid "Use IP tracking for project history"
+#~ msgstr "Layihə tarixçəsi üçün IP izləmədən istifadə edin"
+
+#~ msgid "Error deleting recorded IP addresses"
+#~ msgstr "Qeyd olunan IP ünvanlar silinərkən səhv baş verdi"
+
+#~ msgid "Deleted recorded IP addresses in project history."
+#~ msgstr "Layihə tarixində qeyd olunan IP ünvanlar silindi."
+
+#~ msgid "Disabled Project History & IP Address Recording"
+#~ msgstr "Layihə Tarixi və IP Ünvan Qeydiyyatı Deaktivdir"
+
+#~ msgid "Disabled IP Address Recording"
+#~ msgstr "IP Ünvan Qeydiyyatı Deaktivdir"
+
+#~ msgid "Enabled Project History & IP Address Recording"
+#~ msgstr "Layihə Tarixi və IP Ünvan Qeydiyyatı Aktivdir"
+
+#~ msgid "Enabled IP Address Recording"
+#~ msgstr "IP Ünvan Qeydiyyatı Aktivdir"
+
+#~ msgid "Confirm Remove IP Adresses"
+#~ msgstr "IP ünvanlarının silinməsini təsdiqləyin"
+
+#~ msgid ""
+#~ "Are you sure you want to delete"
+#~ " all recorded IP addresses from this"
+#~ " project?\n"
+#~ "                The rest of the project"
+#~ " history will be unaffected. This "
+#~ "action cannot be undone."
+#~ msgstr ""
+#~ "Bu layihədə qeyd olunan bütün IP "
+#~ "ünvanlarını silmək istədiyinizdən əminsiniz?\n"
+#~ "                Layihənin qalan tarixi "
+#~ "dəyişməyəcək. Bu əməliyyatı geri qaytarmaq "
+#~ "mümkün deyil."
+
+#~ msgid ""
+#~ "Some entries below contain IP addresses,"
+#~ " even though this project has IP "
+#~ "recording disabled. "
+#~ msgstr ""
+#~ "Bu layihədə IP ünvanlarının qeyd "
+#~ "edilməsi söndürülsə də, aşağıdakı bəzi "
+#~ "girişlər IP ünvanlarını ehtiva edir. "
+
+#~ msgid "Delete stored IP addresses"
+#~ msgstr "Saxlanılan IP ünvanlarını sil"
+
+#~ msgid "No IP Addresses to erase"
+#~ msgstr "Silinməsi üçün IP ünvanı yoxdur"
+
+#~ msgid "Delete Stored IP Addresses"
+#~ msgstr "Saxlanılan IP Ünvanlarını Sil"
+
+#~ msgid "IP address recording can be enabled on the settings page"
+#~ msgstr "IP ünvanlarının qeyd edilməsi ayarlar səhifəsindən aktivləşdirilə bilər"
+
+#~ msgid "IP address recording can be disabled on the settings page"
+#~ msgstr "IP ünvanlarının qeyd edilməsi ayarlar səhifəsindən söndürülə bilər"
+
+#~ msgid "From IP"
+#~ msgstr "IP-dən"
 
