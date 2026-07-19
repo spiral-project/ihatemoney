@@ -689,9 +689,9 @@ def list_bills():
         # Each item will be a (weight_sum, Bill) tuple.
         # TODO: improve this awkward result using column_property:
         # https://docs.sqlalchemy.org/en/14/orm/mapped_sql_expr.html.
-        weighted_bills = g.project.get_bill_weights_ordered().paginate(per_page=100, error_out=True)
+        weighted_bills = g.project.get_bill_weights_ordered()
     else:
-        query = Bill.query.join(Person).filter(Person.project_id == g.project.id)
+        query = g.project.get_bills_unordered()
 
         if filters["search"]:
             query = query.filter(Bill.what.ilike(f'%{filters["search"]}%'))
@@ -713,13 +713,15 @@ def list_bills():
 
         filtered_bill_ids = query.with_entities(Bill.id).all()
 
-        bills_query = g.project.get_bill_weights().filter(Bill.id.in_([bill.id for bill in filtered_bill_ids]))
-        bills_query = g.project.order_bills(bills_query)
-        weighted_bills = bills_query.paginate(per_page=100, error_out=True)
+        weighted_bills = g.project.get_bill_weights_ordered().filter(
+            Bill.id.in_([bill.id for bill in filtered_bill_ids])
+        )
+
+    paginated_bills = weighted_bills.paginate(per_page=100, error_out=True)
 
     return render_template(
         "list_bills.html",
-        bills=weighted_bills,
+        bills=paginated_bills,
         member_form=MemberForm(g.project),
         bill_form=bill_form,
         csrf_form=csrf_form,
