@@ -47,6 +47,11 @@
     {% include "helpers.js" %}
     confirm_action(".delete-bill", { exclude_classes: "action delete", add_classes: "btn btn-sm" });
 
+    const colZone = $("#filterCollapse");
+    const colButton = $("#toggle-filters");
+    colZone.on("show.bs.collapse", x => colButton.text("▲ {{ _("Hide filters") }}"));
+    colZone.on("hide.bs.collapse", x => colButton.text("▼ {{ _("Show filters") }}"));
+
 {% endblock %}
 
 {% block head %}
@@ -106,9 +111,14 @@
 </ul>
 {% endif %}
 
-<div class="d-flex flex-wrap align-items-center mr-2 mb-2">
-    <button class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
-    {{ _("Filter") }}
+<div class="d-flex flex-wrap align-items-center mr-2 mb-2" class="buttons-holder">
+    <button id="toggle-filters" class="btn btn-outline-secondary btn-light" type="button" data-toggle="collapse" data-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse" aria-label="{{ _("Toggle filters") }}">
+    {% if search_active %}
+        ▲ {{ _("Hide filters") }}
+    {% else %}
+        ▼ {{ _("Show filters") }}
+    {% endif %}
+
     </button>
 </div>
 
@@ -155,7 +165,7 @@
           <input type="text" class="form-control form-control-sm w-100" id="amount_max" name="amount_max" placeholder="{{ _('Max cost') }}" value="{{ amount_max }}">
         </div>
         <div class="col-md-8 mb-2 text-left">
-          <button type="submit" class="btn btn-sm btn-primary">{{ _("Apply filters") }}</button>
+          <button type="submit" class="btn btn-sm btn-primary">{{ _("Filter") }}</button>
           <a href="{{ url_for('main.list_bills') }}" class="btn btn-sm btn-outline-secondary ml-2">{{ _("Clear filters") }}</a>
         </div>
       </div>
