@@ -8,24 +8,24 @@ on:
 
 jobs:
   lint:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v3
     - name: Install uv and set the python version
       uses: astral-sh/setup-uv@v4
       with:
-        python-version: "3.11"
+        python-version: "3.13"
     - name: Run Lint
       run: make lint
 
   test:
     # Dependency on linting to avoid running our expensive matrix test for nothing
     needs: lint
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     # Use postgresql and MariaDB versions of Debian trixie
     services:
       postgres:
-        image: postgres:17
+        image: postgres:18
         ports:
           - 5432:5432
         env:
@@ -35,7 +35,7 @@ jobs:
         options:
           --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
       mariadb:
-        image: mariadb:11.8
+        image: mariadb:13.1
         env:
           MARIADB_ROOT_PASSWORD: ihatemoney
           MARIADB_DATABASE: ihatemoney_ci
@@ -47,7 +47,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.11", "3.12", "3.13"]
+        python-version: ["3.11", "3.12", "3.13", "3.14"]
         dependencies: [normal]
         database: [sqlite]
         # Test other databases with only a few versions of Python
@@ -108,7 +108,7 @@ jobs:
           }}
 
   docs:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v3
     - name: Install uv and set the python version
