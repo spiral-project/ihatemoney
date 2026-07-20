@@ -791,6 +791,10 @@ class Bill(db.Model):
             f"{', '.join([o.name for o in self.owers])}>"
         )
 
+    def is_even_split(self):
+        print({o.weight for o in self.owers})
+        return len({o.weight for o in self.owers}) == 1
+
 
 class Archive(db.Model):
     id = db.Column(db.Integer, primary_key=True)
