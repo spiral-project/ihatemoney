@@ -49,8 +49,8 @@
 
     const colZone = $("#filterCollapse");
     const colButton = $("#toggle-filters");
-    colZone.on("show.bs.collapse", x => colButton.text("▲ {{ _("Hide filters") }}"));
-    colZone.on("hide.bs.collapse", x => colButton.text("▼ {{ _("Show filters") }}"));
+    colZone.on("show.bs.collapse", x => colButton.text("{{ _("Hide filters") }}"));
+    colZone.on("hide.bs.collapse", x => colButton.text("{{ _("Show filters") }}"));
 
 {% endblock %}
 
@@ -114,9 +114,9 @@
 <div class="d-flex flex-wrap align-items-center mr-2 mb-2" class="buttons-holder">
     <button id="toggle-filters" class="btn btn-outline-secondary btn-light" type="button" data-toggle="collapse" data-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse" aria-label="{{ _("Toggle filters") }}">
     {% if search_active %}
-        ▲ {{ _("Hide filters") }}
+        {{ _("Hide filters") }}
     {% else %}
-        ▼ {{ _("Show filters") }}
+        {{ _("Show filters") }}
     {% endif %}
 
     </button>
