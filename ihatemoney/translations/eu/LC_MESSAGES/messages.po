@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-07-20 10:10+0200\n"
 "PO-Revision-Date: 2026-03-05 20:10+0000\n"
 "Last-Translator: Jokin <jokin_pedre@hotmail.com>\n"
 "Language: eu\n"
@@ -244,6 +244,12 @@ msgstr ""
 
 msgid "Provided token is invalid"
 msgstr "Emandako tokena okerra da"
+
+#, fuzzy, python-format
+msgid "This private code is not the right one. Only %(num)d attempts left."
+msgstr ""
+"Administratzailearen pasahitza okerra da. Geratzen den saiakera kopurua: "
+"%(num)d."
 
 msgid "This private code is not the right one"
 msgstr "Kode pribatu hau ez da zuzena"
@@ -811,6 +817,14 @@ msgstr "bakoitzak %(amount)s"
 msgid "you sure?"
 msgstr "Seguru zaude?"
 
+#, fuzzy
+msgid "Hide filters"
+msgstr "Identifikagailua:"
+
+#, fuzzy
+msgid "Show filters"
+msgstr "Fitxategia aukeratu"
+
 msgid "Invite people"
 msgstr "Jendea gonbidatu"
 
@@ -820,11 +834,52 @@ msgstr "Kontu berriagoak"
 msgid "Older bills"
 msgstr "Kontu zaharragoak"
 
+msgid "Toggle filters"
+msgstr ""
+
 msgid "You should start by adding participants"
 msgstr "Hasteko, parte hartzaileak gehitu beharko zenituzke"
 
 msgid "Add a new bill"
 msgstr "Kontu berria gehitu"
+
+msgid "Search"
+msgstr ""
+
+#, fuzzy
+msgid "Search in For what?"
+msgstr "Zer?"
+
+#, fuzzy
+msgid "Any payer"
+msgstr "Ordaintzailea"
+
+msgid "Start date"
+msgstr ""
+
+#, fuzzy
+msgid "End date"
+msgstr "Data"
+
+#, fuzzy
+msgid "Amount min"
+msgstr "Kopurua"
+
+msgid "Min cost"
+msgstr ""
+
+#, fuzzy
+msgid "Amount max"
+msgstr "Kopurua"
+
+msgid "Max cost"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Clear filters"
+msgstr ""
 
 msgid "For what?"
 msgstr "Zer?"

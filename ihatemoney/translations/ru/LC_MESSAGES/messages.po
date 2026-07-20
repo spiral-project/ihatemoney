@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-07-20 10:10+0200\n"
 "PO-Revision-Date: 2023-09-17 16:59+0000\n"
 "Last-Translator: Mihail Iosilevitch <yosik@tutanota.com>\n"
 "Language: ru\n"
@@ -251,6 +251,10 @@ msgstr "Этот пароль администратора неправильн�
 
 msgid "Provided token is invalid"
 msgstr "Предоставленный токен недействителен"
+
+#, fuzzy, python-format
+msgid "This private code is not the right one. Only %(num)d attempts left."
+msgstr "Этот пароль администратора неправильный. Осталось только %(num)d попыток."
 
 msgid "This private code is not the right one"
 msgstr "Этот приватный код не подходит"
@@ -832,6 +836,14 @@ msgstr "%(amount)s с каждого"
 msgid "you sure?"
 msgstr "вы уверены?"
 
+#, fuzzy
+msgid "Hide filters"
+msgstr "Идентификатор:"
+
+#, fuzzy
+msgid "Show filters"
+msgstr "Выбрать файл"
+
 msgid "Invite people"
 msgstr "Пригласите людей"
 
@@ -841,11 +853,52 @@ msgstr "Новые счета"
 msgid "Older bills"
 msgstr "Старые счета"
 
+msgid "Toggle filters"
+msgstr ""
+
 msgid "You should start by adding participants"
 msgstr "Вы должны начать с добавлением пользователей"
 
 msgid "Add a new bill"
 msgstr "Добавите новый счёт"
+
+msgid "Search"
+msgstr ""
+
+#, fuzzy
+msgid "Search in For what?"
+msgstr "За что?"
+
+#, fuzzy
+msgid "Any payer"
+msgstr "Плательщик"
+
+msgid "Start date"
+msgstr ""
+
+#, fuzzy
+msgid "End date"
+msgstr "Дата"
+
+#, fuzzy
+msgid "Amount min"
+msgstr "Количество"
+
+msgid "Min cost"
+msgstr ""
+
+#, fuzzy
+msgid "Amount max"
+msgstr "Количество"
+
+msgid "Max cost"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Clear filters"
+msgstr ""
 
 msgid "For what?"
 msgstr "За что?"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-07-20 10:10+0200\n"
 "PO-Revision-Date: 2022-04-11 17:12+0000\n"
 "Last-Translator: Santiago José Gutiérrez Llanos "
 "<gutierrezapata17@gmail.com>\n"
@@ -249,6 +249,10 @@ msgstr "Kata sandi admin ini tidak cocok. Hanya tinggal %(num)d percobaan lagi."
 
 msgid "Provided token is invalid"
 msgstr "Token yang disediakan tidak valid"
+
+#, fuzzy, python-format
+msgid "This private code is not the right one. Only %(num)d attempts left."
+msgstr "Kata sandi admin ini tidak cocok. Hanya tinggal %(num)d percobaan lagi."
 
 msgid "This private code is not the right one"
 msgstr "Kode pribadi ini tidak benar"
@@ -826,6 +830,14 @@ msgstr "%(amount)s masing-masing"
 msgid "you sure?"
 msgstr "Anda yakin?"
 
+#, fuzzy
+msgid "Hide filters"
+msgstr "ID:"
+
+#, fuzzy
+msgid "Show filters"
+msgstr "Pilih berkas"
+
 msgid "Invite people"
 msgstr "Undang orang"
 
@@ -835,11 +847,52 @@ msgstr "Tagihan terbaru"
 msgid "Older bills"
 msgstr "Tagihan terdahulu"
 
+msgid "Toggle filters"
+msgstr ""
+
 msgid "You should start by adding participants"
 msgstr "Anda harus mulai dengan menambahkan partisipan"
 
 msgid "Add a new bill"
 msgstr "Tambah tagihan baru"
+
+msgid "Search"
+msgstr ""
+
+#, fuzzy
+msgid "Search in For what?"
+msgstr "Untuk apa?"
+
+#, fuzzy
+msgid "Any payer"
+msgstr "Pembayar"
+
+msgid "Start date"
+msgstr ""
+
+#, fuzzy
+msgid "End date"
+msgstr "Tanggal"
+
+#, fuzzy
+msgid "Amount min"
+msgstr "Jumlah"
+
+msgid "Min cost"
+msgstr ""
+
+#, fuzzy
+msgid "Amount max"
+msgstr "Jumlah"
+
+msgid "Max cost"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Clear filters"
+msgstr ""
 
 msgid "For what?"
 msgstr "Untuk apa?"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-07-20 10:10+0200\n"
 "PO-Revision-Date: 2024-07-03 19:09+0000\n"
 "Last-Translator: Quentin PAGÈS <quentinantonin@free.fr>\n"
 "Language: ca\n"
@@ -255,6 +255,12 @@ msgstr ""
 
 msgid "Provided token is invalid"
 msgstr "El testimoni proporcionat no és vàlid"
+
+#, fuzzy, python-format
+msgid "This private code is not the right one. Only %(num)d attempts left."
+msgstr ""
+"Aquesta contrasenya d'administrador no és la correcta. Només queden "
+"%(num)d intents."
 
 msgid "This private code is not the right one"
 msgstr "Aquest codi privat no és el correcte"
@@ -839,6 +845,14 @@ msgstr "%(amount)s cadascun"
 msgid "you sure?"
 msgstr "n'estàs segur?"
 
+#, fuzzy
+msgid "Hide filters"
+msgstr "Identificador:"
+
+#, fuzzy
+msgid "Show filters"
+msgstr "Triar fitxer"
+
 msgid "Invite people"
 msgstr "Convidar gent"
 
@@ -848,11 +862,52 @@ msgstr "Factures més noves"
 msgid "Older bills"
 msgstr "Factures més antigues"
 
+msgid "Toggle filters"
+msgstr ""
+
 msgid "You should start by adding participants"
 msgstr "Hauries de començar afegint participants"
 
 msgid "Add a new bill"
 msgstr "Afegir una factura nova"
+
+msgid "Search"
+msgstr ""
+
+#, fuzzy
+msgid "Search in For what?"
+msgstr "Què va pagar?"
+
+#, fuzzy
+msgid "Any payer"
+msgstr "Pagador"
+
+msgid "Start date"
+msgstr ""
+
+#, fuzzy
+msgid "End date"
+msgstr "Data"
+
+#, fuzzy
+msgid "Amount min"
+msgstr "Import"
+
+msgid "Min cost"
+msgstr ""
+
+#, fuzzy
+msgid "Amount max"
+msgstr "Import"
+
+msgid "Max cost"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Clear filters"
+msgstr ""
 
 msgid "For what?"
 msgstr "Què va pagar?"

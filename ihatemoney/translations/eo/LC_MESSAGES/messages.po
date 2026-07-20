@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-07-20 10:10+0200\n"
 "PO-Revision-Date: 2021-10-01 20:35+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language: eo\n"
@@ -250,6 +250,10 @@ msgstr "Ĉi tiu administra pasvorto ne estas ĝusta. Restas nur %(num)d provoj."
 
 msgid "Provided token is invalid"
 msgstr ""
+
+#, fuzzy, python-format
+msgid "This private code is not the right one. Only %(num)d attempts left."
+msgstr "Ĉi tiu administra pasvorto ne estas ĝusta. Restas nur %(num)d provoj."
 
 msgid "This private code is not the right one"
 msgstr "Ĉi tiu privata kodo ne ĝustas"
@@ -832,6 +836,14 @@ msgstr "po %(amount)s"
 msgid "you sure?"
 msgstr "ĉu vi certas?"
 
+#, fuzzy
+msgid "Hide filters"
+msgstr "Identigilo:"
+
+#, fuzzy
+msgid "Show filters"
+msgstr "Elekti dosieron"
+
 msgid "Invite people"
 msgstr "Inviti homojn"
 
@@ -841,11 +853,52 @@ msgstr "Pli novaj fakturoj"
 msgid "Older bills"
 msgstr "Pli malnovaj fakturoj"
 
+msgid "Toggle filters"
+msgstr ""
+
 msgid "You should start by adding participants"
 msgstr "Vi komencu aldonante partoprenantojn"
 
 msgid "Add a new bill"
 msgstr "Aldoni novan fakturon"
+
+msgid "Search"
+msgstr ""
+
+#, fuzzy
+msgid "Search in For what?"
+msgstr "Por kio?"
+
+#, fuzzy
+msgid "Any payer"
+msgstr "Paganto"
+
+msgid "Start date"
+msgstr ""
+
+#, fuzzy
+msgid "End date"
+msgstr "Dato"
+
+#, fuzzy
+msgid "Amount min"
+msgstr "Kvanto"
+
+msgid "Min cost"
+msgstr ""
+
+#, fuzzy
+msgid "Amount max"
+msgstr "Kvanto"
+
+msgid "Max cost"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Clear filters"
+msgstr ""
 
 msgid "For what?"
 msgstr "Por kio?"

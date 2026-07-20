@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-07-20 10:10+0200\n"
 "PO-Revision-Date: 2024-07-08 15:09+0000\n"
 "Last-Translator: NtWriteCode <github@gyorffi.hu>\n"
 "Language: hu\n"
@@ -252,6 +252,12 @@ msgstr ""
 
 msgid "Provided token is invalid"
 msgstr "A megadott token érvénytelen"
+
+#, fuzzy, python-format
+msgid "This private code is not the right one. Only %(num)d attempts left."
+msgstr ""
+"Az adminisztrátori jelszó érvénytelen. Már csak %(num)d próbálkozásod "
+"maradt."
 
 msgid "This private code is not the right one"
 msgstr "Ez a titkos kód nem megfelelő"
@@ -833,6 +839,14 @@ msgstr "%(amount)s fejenként"
 msgid "you sure?"
 msgstr "biztos vagy benne?"
 
+#, fuzzy
+msgid "Hide filters"
+msgstr "Azonosító:"
+
+#, fuzzy
+msgid "Show filters"
+msgstr "Fájl kiválasztása"
+
 msgid "Invite people"
 msgstr "Résztvevők meghívása"
 
@@ -842,11 +856,52 @@ msgstr "Újabb számlák"
 msgid "Older bills"
 msgstr "Régebbi számlák"
 
+msgid "Toggle filters"
+msgstr ""
+
 msgid "You should start by adding participants"
 msgstr "Résztvevők hozzáadásával érdemes kezdeni"
 
 msgid "Add a new bill"
 msgstr "Újabb számla hozzáadása"
+
+msgid "Search"
+msgstr ""
+
+#, fuzzy
+msgid "Search in For what?"
+msgstr "Mire?"
+
+#, fuzzy
+msgid "Any payer"
+msgstr "Fizető"
+
+msgid "Start date"
+msgstr ""
+
+#, fuzzy
+msgid "End date"
+msgstr "Dátum"
+
+#, fuzzy
+msgid "Amount min"
+msgstr "Összeg"
+
+msgid "Min cost"
+msgstr ""
+
+#, fuzzy
+msgid "Amount max"
+msgstr "Összeg"
+
+msgid "Max cost"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Clear filters"
+msgstr ""
 
 msgid "For what?"
 msgstr "Mire?"
@@ -1160,7 +1215,8 @@ msgstr "Periódus"
 #~ msgstr ""
 #~ "Néhány alábbi bejegyzés IP-címeket "
 #~ "tartalmaz, annak ellenére, hogy a "
-#~ "projekt IP-felvétele le van tiltva. \n"
+#~ "projekt IP-felvétele le van tiltva."
+#~ " \n"
 
 #~ msgid "Delete stored IP addresses"
 #~ msgstr "Tárolt IP-címek törlése"

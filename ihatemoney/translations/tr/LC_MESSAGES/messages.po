@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-07-20 10:10+0200\n"
 "PO-Revision-Date: 2023-12-10 10:05+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language: tr\n"
@@ -250,6 +250,10 @@ msgstr "Bu yönetici parolası doğru değil. Yalnızca %(num)d tane deneme kald
 
 msgid "Provided token is invalid"
 msgstr "Sağlanan belirteç geçersiz"
+
+#, fuzzy, python-format
+msgid "This private code is not the right one. Only %(num)d attempts left."
+msgstr "Bu yönetici parolası doğru değil. Yalnızca %(num)d tane deneme kaldı."
 
 msgid "This private code is not the right one"
 msgstr "Bu özel kod doğru değil"
@@ -827,6 +831,14 @@ msgstr "her biri %(amount)s"
 msgid "you sure?"
 msgstr "emin misiniz?"
 
+#, fuzzy
+msgid "Hide filters"
+msgstr "Tanımlayıcı:"
+
+#, fuzzy
+msgid "Show filters"
+msgstr "Dosya seç"
+
 msgid "Invite people"
 msgstr "İnsanları davet et"
 
@@ -836,11 +848,52 @@ msgstr "Daha yeni faturalar"
 msgid "Older bills"
 msgstr "Daha eski faturalar"
 
+msgid "Toggle filters"
+msgstr ""
+
 msgid "You should start by adding participants"
 msgstr "Katılımcıları ekleyerek başlamalısınız"
 
 msgid "Add a new bill"
 msgstr "Yeni bir fatura ekle"
+
+msgid "Search"
+msgstr ""
+
+#, fuzzy
+msgid "Search in For what?"
+msgstr "Ne için?"
+
+#, fuzzy
+msgid "Any payer"
+msgstr "Mükellefi"
+
+msgid "Start date"
+msgstr ""
+
+#, fuzzy
+msgid "End date"
+msgstr "Tarih"
+
+#, fuzzy
+msgid "Amount min"
+msgstr "Miktar"
+
+msgid "Min cost"
+msgstr ""
+
+#, fuzzy
+msgid "Amount max"
+msgstr "Miktar"
+
+msgid "Max cost"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Clear filters"
+msgstr ""
 
 msgid "For what?"
 msgstr "Ne için?"

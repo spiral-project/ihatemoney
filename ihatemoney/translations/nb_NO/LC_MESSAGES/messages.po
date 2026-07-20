@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-07-20 10:10+0200\n"
 "PO-Revision-Date: 2022-02-13 16:54+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language: nb_NO\n"
@@ -254,6 +254,10 @@ msgstr "Dette administratorpassordet er ikke rett. Kun %(num)d forsøk igjen."
 
 msgid "Provided token is invalid"
 msgstr "Angitt symbol er ugyldig"
+
+#, fuzzy, python-format
+msgid "This private code is not the right one. Only %(num)d attempts left."
+msgstr "Dette administratorpassordet er ikke rett. Kun %(num)d forsøk igjen."
 
 msgid "This private code is not the right one"
 msgstr "Denne private koden er ikke rett"
@@ -857,6 +861,14 @@ msgstr "%(amount)s hver"
 msgid "you sure?"
 msgstr "er du sikker?"
 
+#, fuzzy
+msgid "Hide filters"
+msgstr "Identifikator:"
+
+#, fuzzy
+msgid "Show filters"
+msgstr "Velg fil"
+
 msgid "Invite people"
 msgstr "Inviter folk"
 
@@ -866,11 +878,52 @@ msgstr "Nyere regninger"
 msgid "Older bills"
 msgstr "Eldre regninger"
 
+msgid "Toggle filters"
+msgstr ""
+
 msgid "You should start by adding participants"
 msgstr "Du kan starte ved å legge til deltagere"
 
 msgid "Add a new bill"
 msgstr "Legg til en ny regning"
+
+msgid "Search"
+msgstr ""
+
+#, fuzzy
+msgid "Search in For what?"
+msgstr "For hva?"
+
+#, fuzzy
+msgid "Any payer"
+msgstr "Betaler"
+
+msgid "Start date"
+msgstr ""
+
+#, fuzzy
+msgid "End date"
+msgstr "Dato"
+
+#, fuzzy
+msgid "Amount min"
+msgstr "Beløp"
+
+msgid "Min cost"
+msgstr ""
+
+#, fuzzy
+msgid "Amount max"
+msgstr "Beløp"
+
+msgid "Max cost"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Clear filters"
+msgstr ""
 
 msgid "For what?"
 msgstr "For hva?"

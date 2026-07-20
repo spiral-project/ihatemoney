@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-07-20 10:10+0200\n"
 "PO-Revision-Date: 2024-07-03 19:09+0000\n"
 "Last-Translator: Quentin PAGÈS <quentinantonin@free.fr>\n"
 "Language: oc\n"
@@ -238,6 +238,10 @@ msgstr ""
 
 msgid "Provided token is invalid"
 msgstr "Aqueste geton es invalid"
+
+#, python-format
+msgid "This private code is not the right one. Only %(num)d attempts left."
+msgstr ""
 
 msgid "This private code is not the right one"
 msgstr ""
@@ -790,6 +794,12 @@ msgstr "%(amount)s cadun"
 msgid "you sure?"
 msgstr "O volètz vertadièrament ?"
 
+msgid "Hide filters"
+msgstr ""
+
+msgid "Show filters"
+msgstr ""
+
 msgid "Invite people"
 msgstr "Convidar de monde"
 
@@ -799,10 +809,51 @@ msgstr ""
 msgid "Older bills"
 msgstr ""
 
+msgid "Toggle filters"
+msgstr ""
+
 msgid "You should start by adding participants"
 msgstr ""
 
 msgid "Add a new bill"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+#, fuzzy
+msgid "Search in For what?"
+msgstr "Per qué ?"
+
+#, fuzzy
+msgid "Any payer"
+msgstr "Pagaire"
+
+msgid "Start date"
+msgstr ""
+
+#, fuzzy
+msgid "End date"
+msgstr "Data"
+
+#, fuzzy
+msgid "Amount min"
+msgstr "Soma"
+
+msgid "Min cost"
+msgstr ""
+
+#, fuzzy
+msgid "Amount max"
+msgstr "Soma"
+
+msgid "Max cost"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Clear filters"
 msgstr ""
 
 msgid "For what?"

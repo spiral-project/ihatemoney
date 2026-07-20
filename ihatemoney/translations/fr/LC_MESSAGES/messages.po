@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-07-20 10:10+0200\n"
 "PO-Revision-Date: 2026-03-04 18:37+0000\n"
 "Last-Translator: JocelynDelalande <jocelyn@crapouillou.net>\n"
 "Language: fr\n"
@@ -254,6 +254,12 @@ msgstr ""
 
 msgid "Provided token is invalid"
 msgstr "Ce jeton est invalide"
+
+#, fuzzy, python-format
+msgid "This private code is not the right one. Only %(num)d attempts left."
+msgstr ""
+"Le mot de passe administrateur⋅ice que vous avez entré n’est pas correct."
+" Plus que %(num)d tentatives."
 
 msgid "This private code is not the right one"
 msgstr "Le code d'accès n’est pas correct"
@@ -824,6 +830,14 @@ msgstr "%(amount)s chacun⋅e"
 msgid "you sure?"
 msgstr "vous confirmez ?"
 
+#, fuzzy
+msgid "Hide filters"
+msgstr "Identifiant :"
+
+#, fuzzy
+msgid "Show filters"
+msgstr "Choisir un fichier"
+
 msgid "Invite people"
 msgstr "Inviter des gens"
 
@@ -833,11 +847,52 @@ msgstr "Factures suivantes"
 msgid "Older bills"
 msgstr "Factures précédentes"
 
+msgid "Toggle filters"
+msgstr ""
+
 msgid "You should start by adding participants"
 msgstr "Vous devriez commencer par ajouter des participant⋅es"
 
 msgid "Add a new bill"
 msgstr "Nouvelle facture"
+
+msgid "Search"
+msgstr ""
+
+#, fuzzy
+msgid "Search in For what?"
+msgstr "Pour quoi ?"
+
+#, fuzzy
+msgid "Any payer"
+msgstr "Payeur"
+
+msgid "Start date"
+msgstr ""
+
+#, fuzzy
+msgid "End date"
+msgstr "Date"
+
+#, fuzzy
+msgid "Amount min"
+msgstr "Montant"
+
+msgid "Min cost"
+msgstr ""
+
+#, fuzzy
+msgid "Amount max"
+msgstr "Montant"
+
+msgid "Max cost"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Clear filters"
+msgstr ""
 
 msgid "For what?"
 msgstr "Pour quoi ?"

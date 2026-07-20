@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-07-20 10:10+0200\n"
 "PO-Revision-Date: 2023-08-04 17:05+0000\n"
 "Last-Translator: Alessandro Andro <pasandro.pasandro@gmail.com>\n"
 "Language: it\n"
@@ -252,6 +252,12 @@ msgstr ""
 
 msgid "Provided token is invalid"
 msgstr "Il token fornito non è valido"
+
+#, fuzzy, python-format
+msgid "This private code is not the right one. Only %(num)d attempts left."
+msgstr ""
+"Questa password di amministrazione non è quella corretta. Solo %(num)d "
+"tentativi rimasti."
 
 msgid "This private code is not the right one"
 msgstr "Questo codice privato non è quello corretto"
@@ -829,6 +835,14 @@ msgstr "%(amount)s ciascuno"
 msgid "you sure?"
 msgstr "sei sicuro?"
 
+#, fuzzy
+msgid "Hide filters"
+msgstr "Identificatore:"
+
+#, fuzzy
+msgid "Show filters"
+msgstr "Scegli file"
+
 msgid "Invite people"
 msgstr "Invita persone"
 
@@ -838,11 +852,52 @@ msgstr "Addebiti recenti"
 msgid "Older bills"
 msgstr "Prime spese"
 
+msgid "Toggle filters"
+msgstr ""
+
 msgid "You should start by adding participants"
 msgstr "Dovresti cominciare aggiungendo partecipanti"
 
 msgid "Add a new bill"
 msgstr "Aggiungi una nuova spesa"
+
+msgid "Search"
+msgstr ""
+
+#, fuzzy
+msgid "Search in For what?"
+msgstr "Per cosa?"
+
+#, fuzzy
+msgid "Any payer"
+msgstr "Pagatore"
+
+msgid "Start date"
+msgstr ""
+
+#, fuzzy
+msgid "End date"
+msgstr "Data"
+
+#, fuzzy
+msgid "Amount min"
+msgstr "Importo"
+
+msgid "Min cost"
+msgstr ""
+
+#, fuzzy
+msgid "Amount max"
+msgstr "Importo"
+
+msgid "Max cost"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Clear filters"
+msgstr ""
 
 msgid "For what?"
 msgstr "Per cosa?"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-07-20 10:10+0200\n"
 "PO-Revision-Date: 2020-06-14 14:41+0000\n"
 "Last-Translator: raghupalash <singhpalash0@gmail.com>\n"
 "Language: hi\n"
@@ -251,6 +251,10 @@ msgstr "यह व्यवस्थापक पासवर्ड सही �
 
 msgid "Provided token is invalid"
 msgstr ""
+
+#, fuzzy, python-format
+msgid "This private code is not the right one. Only %(num)d attempts left."
+msgstr "यह व्यवस्थापक पासवर्ड सही नहीं है। केवल %(num)d प्रयास बचे हैं।"
 
 msgid "This private code is not the right one"
 msgstr "यह निजी कोड सही नहीं है"
@@ -840,6 +844,14 @@ msgstr "%(amount)s प्रत्येक"
 msgid "you sure?"
 msgstr "आपको यकीन है?"
 
+#, fuzzy
+msgid "Hide filters"
+msgstr "पहचानकर्ता:"
+
+#, fuzzy
+msgid "Show filters"
+msgstr "फ़ाइल चुनें"
+
 msgid "Invite people"
 msgstr "लोगों को निमंत्रण भेजें"
 
@@ -849,11 +861,52 @@ msgstr "नए बिल"
 msgid "Older bills"
 msgstr "पुराने बिल"
 
+msgid "Toggle filters"
+msgstr ""
+
 msgid "You should start by adding participants"
 msgstr "शुरू करने के लिए प्रतिभागियों को जोड़ें"
 
 msgid "Add a new bill"
 msgstr "नया बिल जोड़ें"
+
+msgid "Search"
+msgstr ""
+
+#, fuzzy
+msgid "Search in For what?"
+msgstr "किस लिए?"
+
+#, fuzzy
+msgid "Any payer"
+msgstr "भुगतानकर्ता"
+
+msgid "Start date"
+msgstr ""
+
+#, fuzzy
+msgid "End date"
+msgstr "तारीख"
+
+#, fuzzy
+msgid "Amount min"
+msgstr "रकम"
+
+msgid "Min cost"
+msgstr ""
+
+#, fuzzy
+msgid "Amount max"
+msgstr "रकम"
+
+msgid "Max cost"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Clear filters"
+msgstr ""
 
 msgid "For what?"
 msgstr "किस लिए?"
