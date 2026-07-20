@@ -8,20 +8,20 @@ on:
 
 jobs:
   lint:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v3
     - name: Install uv and set the python version
       uses: astral-sh/setup-uv@v4
       with:
-        python-version: "3.11"
+        python-version: "3.13"
     - name: Run Lint
       run: make lint
 
   test:
     # Dependency on linting to avoid running our expensive matrix test for nothing
     needs: lint
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     # Use postgresql and MariaDB versions of Debian trixie
     services:
       postgres:
@@ -108,7 +108,7 @@ jobs:
           }}
 
   docs:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v3
     - name: Install uv and set the python version
