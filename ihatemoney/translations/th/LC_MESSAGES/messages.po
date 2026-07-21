@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-20 10:10+0200\n"
+"POT-Creation-Date: 2026-05-09 11:56+0200\n"
 "PO-Revision-Date: 2021-09-16 14:36+0000\n"
 "Last-Translator: PPNplus <ppnplus@protonmail.com>\n"
 "Language: th\n"
@@ -237,10 +237,6 @@ msgstr "รหัสผ่านผู้ดูแลนี้ไม่ถูก
 
 msgid "Provided token is invalid"
 msgstr ""
-
-#, fuzzy, python-format
-msgid "This private code is not the right one. Only %(num)d attempts left."
-msgstr "รหัสผ่านผู้ดูแลนี้ไม่ถูกต้อง สามารถพยายามเข้าสู่ระบบได้อีก %(num)d ครั้ง"
 
 msgid "This private code is not the right one"
 msgstr ""
@@ -793,12 +789,6 @@ msgstr ""
 msgid "you sure?"
 msgstr ""
 
-msgid "Hide filters"
-msgstr ""
-
-msgid "Show filters"
-msgstr ""
-
 msgid "Invite people"
 msgstr ""
 
@@ -808,48 +798,10 @@ msgstr ""
 msgid "Older bills"
 msgstr ""
 
-msgid "Toggle filters"
-msgstr ""
-
 msgid "You should start by adding participants"
 msgstr ""
 
 msgid "Add a new bill"
-msgstr ""
-
-msgid "Search"
-msgstr ""
-
-msgid "Search in For what?"
-msgstr ""
-
-#, fuzzy
-msgid "Any payer"
-msgstr "ผู้จ่าย"
-
-msgid "Start date"
-msgstr ""
-
-#, fuzzy
-msgid "End date"
-msgstr "วันที่"
-
-msgid "Amount min"
-msgstr ""
-
-msgid "Min cost"
-msgstr ""
-
-msgid "Amount max"
-msgstr ""
-
-msgid "Max cost"
-msgstr ""
-
-msgid "Filter"
-msgstr ""
-
-msgid "Clear filters"
 msgstr ""
 
 msgid "For what?"

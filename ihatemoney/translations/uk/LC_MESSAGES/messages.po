@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-20 10:10+0200\n"
+"POT-Creation-Date: 2026-05-09 11:56+0200\n"
 "PO-Revision-Date: 2022-09-17 10:24+0000\n"
 "Last-Translator: Dmytro Onopa <dmytro.onopa@gmail.com>\n"
 "Language: uk\n"
@@ -246,10 +246,6 @@ msgstr "Цей пароль адміністратора не вірний. За
 
 msgid "Provided token is invalid"
 msgstr ""
-
-#, fuzzy, python-format
-msgid "This private code is not the right one. Only %(num)d attempts left."
-msgstr "Цей пароль адміністратора не вірний. Залишилося тільки %(num)d спроб."
 
 msgid "This private code is not the right one"
 msgstr "Цей приватний код не підходить"
@@ -807,12 +803,6 @@ msgstr ""
 msgid "you sure?"
 msgstr ""
 
-msgid "Hide filters"
-msgstr ""
-
-msgid "Show filters"
-msgstr ""
-
 msgid "Invite people"
 msgstr ""
 
@@ -822,48 +812,10 @@ msgstr ""
 msgid "Older bills"
 msgstr ""
 
-msgid "Toggle filters"
-msgstr ""
-
 msgid "You should start by adding participants"
 msgstr ""
 
 msgid "Add a new bill"
-msgstr ""
-
-msgid "Search"
-msgstr ""
-
-msgid "Search in For what?"
-msgstr ""
-
-#, fuzzy
-msgid "Any payer"
-msgstr "Платник"
-
-msgid "Start date"
-msgstr ""
-
-#, fuzzy
-msgid "End date"
-msgstr "Дата"
-
-msgid "Amount min"
-msgstr ""
-
-msgid "Min cost"
-msgstr ""
-
-msgid "Amount max"
-msgstr ""
-
-msgid "Max cost"
-msgstr ""
-
-msgid "Filter"
-msgstr ""
-
-msgid "Clear filters"
 msgstr ""
 
 msgid "For what?"

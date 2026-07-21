@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-20 10:10+0200\n"
+"POT-Creation-Date: 2026-05-09 11:56+0200\n"
 "PO-Revision-Date: 2023-11-20 05:10+0000\n"
 "Last-Translator: Jesper <93771679+Bjorkan@users.noreply.github.com>\n"
 "Language: sv\n"
@@ -250,12 +250,6 @@ msgstr ""
 
 msgid "Provided token is invalid"
 msgstr "Symbolen som har angivits är ogiltig"
-
-#, fuzzy, python-format
-msgid "This private code is not the right one. Only %(num)d attempts left."
-msgstr ""
-"Det här lösenordet för admin är inte det rätta. Endast %(num)d försök "
-"kvar."
 
 msgid "This private code is not the right one"
 msgstr "Den här privata koden är inte den rätta"
@@ -839,14 +833,6 @@ msgstr "%(amount)s var"
 msgid "you sure?"
 msgstr "säker?"
 
-#, fuzzy
-msgid "Hide filters"
-msgstr "Identifierare:"
-
-#, fuzzy
-msgid "Show filters"
-msgstr "Välj fil"
-
 msgid "Invite people"
 msgstr "Bjud in personer"
 
@@ -856,52 +842,11 @@ msgstr "Nyare räkningar"
 msgid "Older bills"
 msgstr "Äldre räkningar"
 
-msgid "Toggle filters"
-msgstr ""
-
 msgid "You should start by adding participants"
 msgstr "Du borde börja med att lägga till deltagare"
 
 msgid "Add a new bill"
 msgstr "Lägg till en ny räkning"
-
-msgid "Search"
-msgstr ""
-
-#, fuzzy
-msgid "Search in For what?"
-msgstr "För vad?"
-
-#, fuzzy
-msgid "Any payer"
-msgstr "Betalare"
-
-msgid "Start date"
-msgstr ""
-
-#, fuzzy
-msgid "End date"
-msgstr "Datum"
-
-#, fuzzy
-msgid "Amount min"
-msgstr "Summa"
-
-msgid "Min cost"
-msgstr ""
-
-#, fuzzy
-msgid "Amount max"
-msgstr "Summa"
-
-msgid "Max cost"
-msgstr ""
-
-msgid "Filter"
-msgstr ""
-
-msgid "Clear filters"
-msgstr ""
 
 msgid "For what?"
 msgstr "För vad?"

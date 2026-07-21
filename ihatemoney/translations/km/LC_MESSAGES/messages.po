@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-20 10:10+0200\n"
+"POT-Creation-Date: 2026-05-09 11:56+0200\n"
 "PO-Revision-Date: 2026-04-11 07:09+0000\n"
 "Last-Translator: SeyhaLite <sok123230@gmail.com>\n"
 "Language: km\n"
@@ -248,10 +248,6 @@ msgstr "ពាក្យសម្ងាត់អ្នកគ្រប់គ្រ
 
 msgid "Provided token is invalid"
 msgstr "Token ដែលបានផ្តល់មិនត្រឹមត្រូវ"
-
-#, fuzzy, python-format
-msgid "This private code is not the right one. Only %(num)d attempts left."
-msgstr "ពាក្យសម្ងាត់អ្នកគ្រប់គ្រងនេះមិនត្រឹមត្រូវទេ។ នៅសល់តែ %(num)d ដងប៉ុណ្ណោះ។"
 
 msgid "This private code is not the right one"
 msgstr "លេខកូដឯកជន នេះមិនត្រឹមត្រូវទេ"
@@ -817,14 +813,6 @@ msgstr "%(amount)s ក្នុងម្នាក់"
 msgid "you sure?"
 msgstr "តើអ្នកប្រាកដមែនទេ?"
 
-#, fuzzy
-msgid "Hide filters"
-msgstr "អត្តលេខ៖"
-
-#, fuzzy
-msgid "Show filters"
-msgstr "ជ្រើសរើសឯកសារ"
-
 msgid "Invite people"
 msgstr "អញ្ជើញមនុស្ស"
 
@@ -834,52 +822,11 @@ msgstr "វិក្កយបត្រថ្មីៗ"
 msgid "Older bills"
 msgstr "វិក្កយបត្រចាស់ៗ"
 
-msgid "Toggle filters"
-msgstr ""
-
 msgid "You should start by adding participants"
 msgstr "អ្នកគួរចាប់ផ្តើមដោយការបន្ថែមអ្នកចូលរួម"
 
 msgid "Add a new bill"
 msgstr "បន្ថែមវិក្កយបត្រថ្មី"
-
-msgid "Search"
-msgstr ""
-
-#, fuzzy
-msgid "Search in For what?"
-msgstr "សម្រាប់អ្វី?"
-
-#, fuzzy
-msgid "Any payer"
-msgstr "អ្នកបង់"
-
-msgid "Start date"
-msgstr ""
-
-#, fuzzy
-msgid "End date"
-msgstr "កាលបរិច្ឆេទ"
-
-#, fuzzy
-msgid "Amount min"
-msgstr "ចំនួនទឹកប្រាក់"
-
-msgid "Min cost"
-msgstr ""
-
-#, fuzzy
-msgid "Amount max"
-msgstr "ចំនួនទឹកប្រាក់"
-
-msgid "Max cost"
-msgstr ""
-
-msgid "Filter"
-msgstr ""
-
-msgid "Clear filters"
-msgstr ""
 
 msgid "For what?"
 msgstr "សម្រាប់អ្វី?"

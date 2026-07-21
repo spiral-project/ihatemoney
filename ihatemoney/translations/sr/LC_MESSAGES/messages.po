@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-20 10:10+0200\n"
+"POT-Creation-Date: 2026-05-09 11:56+0200\n"
 "PO-Revision-Date: 2021-04-09 13:26+0000\n"
 "Last-Translator: Rastko Sarcevic <ralesarcevic@gmail.com>\n"
 "Language: sr\n"
@@ -239,10 +239,6 @@ msgid "This admin password is not the right one. Only %(num)d attempts left."
 msgstr ""
 
 msgid "Provided token is invalid"
-msgstr ""
-
-#, python-format
-msgid "This private code is not the right one. Only %(num)d attempts left."
 msgstr ""
 
 msgid "This private code is not the right one"
@@ -800,14 +796,6 @@ msgstr "%(amount)s svako"
 msgid "you sure?"
 msgstr ""
 
-#, fuzzy
-msgid "Hide filters"
-msgstr "Izaberi fajl"
-
-#, fuzzy
-msgid "Show filters"
-msgstr "Izaberi fajl"
-
 msgid "Invite people"
 msgstr ""
 
@@ -817,51 +805,11 @@ msgstr "Noviji računi"
 msgid "Older bills"
 msgstr "Stariji računi"
 
-msgid "Toggle filters"
-msgstr ""
-
 msgid "You should start by adding participants"
 msgstr ""
 
 msgid "Add a new bill"
 msgstr "Dodaj novi račun"
-
-msgid "Search"
-msgstr ""
-
-#, fuzzy
-msgid "Search in For what?"
-msgstr "Za šta?"
-
-msgid "Any payer"
-msgstr ""
-
-msgid "Start date"
-msgstr ""
-
-#, fuzzy
-msgid "End date"
-msgstr "Datum"
-
-#, fuzzy
-msgid "Amount min"
-msgstr "Iznos"
-
-msgid "Min cost"
-msgstr ""
-
-#, fuzzy
-msgid "Amount max"
-msgstr "Iznos"
-
-msgid "Max cost"
-msgstr ""
-
-msgid "Filter"
-msgstr ""
-
-msgid "Clear filters"
-msgstr ""
 
 msgid "For what?"
 msgstr "Za šta?"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-20 10:10+0200\n"
+"POT-Creation-Date: 2026-05-09 11:56+0200\n"
 "PO-Revision-Date: 2023-08-24 18:48+0000\n"
 "Last-Translator: Eryk Michalak <gnu.ewm@protonmail.com>\n"
 "Language: pl\n"
@@ -251,10 +251,6 @@ msgstr "To hasło administratora jest nieprawidłowe. Pozostało tylko %(num)d p
 
 msgid "Provided token is invalid"
 msgstr "Podany token jest niepoprawny"
-
-#, fuzzy, python-format
-msgid "This private code is not the right one. Only %(num)d attempts left."
-msgstr "To hasło administratora jest nieprawidłowe. Pozostało tylko %(num)d prób."
 
 msgid "This private code is not the right one"
 msgstr "Ten prywatny kod jest niewłaściwy"
@@ -830,14 +826,6 @@ msgstr "%(amount)s każdy"
 msgid "you sure?"
 msgstr "jesteś pewny?"
 
-#, fuzzy
-msgid "Hide filters"
-msgstr "Identyfikator:"
-
-#, fuzzy
-msgid "Show filters"
-msgstr "Wybierz plik"
-
 msgid "Invite people"
 msgstr "Zaproś ludzi"
 
@@ -847,52 +835,11 @@ msgstr "Nowsze rachunki"
 msgid "Older bills"
 msgstr "Starsze rachunki"
 
-msgid "Toggle filters"
-msgstr ""
-
 msgid "You should start by adding participants"
 msgstr "Powinieneś zacząć od dodania uczestników"
 
 msgid "Add a new bill"
 msgstr "Dodaj nowy rachunek"
-
-msgid "Search"
-msgstr ""
-
-#, fuzzy
-msgid "Search in For what?"
-msgstr "Za co?"
-
-#, fuzzy
-msgid "Any payer"
-msgstr "Płatnik"
-
-msgid "Start date"
-msgstr ""
-
-#, fuzzy
-msgid "End date"
-msgstr "Data"
-
-#, fuzzy
-msgid "Amount min"
-msgstr "Ilość"
-
-msgid "Min cost"
-msgstr ""
-
-#, fuzzy
-msgid "Amount max"
-msgstr "Ilość"
-
-msgid "Max cost"
-msgstr ""
-
-msgid "Filter"
-msgstr ""
-
-msgid "Clear filters"
-msgstr ""
 
 msgid "For what?"
 msgstr "Za co?"

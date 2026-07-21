@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-20 10:10+0200\n"
+"POT-Creation-Date: 2026-05-09 11:56+0200\n"
 "PO-Revision-Date: 2023-12-12 13:05+0000\n"
 "Last-Translator: Jinx <me@qqays.xyz>\n"
 "Language: zh_Hans\n"
@@ -239,10 +239,6 @@ msgstr "管理密码有误，只剩 %(num)d次尝试机会。"
 
 msgid "Provided token is invalid"
 msgstr "所提供的口令无效"
-
-#, fuzzy, python-format
-msgid "This private code is not the right one. Only %(num)d attempts left."
-msgstr "管理密码有误，只剩 %(num)d次尝试机会。"
 
 msgid "This private code is not the right one"
 msgstr "专用码不正确"
@@ -800,14 +796,6 @@ msgstr "每人%(amount)s"
 msgid "you sure?"
 msgstr "确定？"
 
-#, fuzzy
-msgid "Hide filters"
-msgstr "标识符："
-
-#, fuzzy
-msgid "Show filters"
-msgstr "选择文件"
-
 msgid "Invite people"
 msgstr "邀请别人"
 
@@ -817,52 +805,11 @@ msgstr "最新账单"
 msgid "Older bills"
 msgstr "最旧帐单"
 
-msgid "Toggle filters"
-msgstr ""
-
 msgid "You should start by adding participants"
 msgstr "从添加参与人开始"
 
 msgid "Add a new bill"
 msgstr "添加新帐单"
-
-msgid "Search"
-msgstr ""
-
-#, fuzzy
-msgid "Search in For what?"
-msgstr "什么东西？"
-
-#, fuzzy
-msgid "Any payer"
-msgstr "支付人"
-
-msgid "Start date"
-msgstr ""
-
-#, fuzzy
-msgid "End date"
-msgstr "日期"
-
-#, fuzzy
-msgid "Amount min"
-msgstr "数量"
-
-msgid "Min cost"
-msgstr ""
-
-#, fuzzy
-msgid "Amount max"
-msgstr "数量"
-
-msgid "Max cost"
-msgstr ""
-
-msgid "Filter"
-msgstr ""
-
-msgid "Clear filters"
-msgstr ""
 
 msgid "For what?"
 msgstr "什么东西？"

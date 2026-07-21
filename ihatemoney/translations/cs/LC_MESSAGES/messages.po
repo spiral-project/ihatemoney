@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-20 10:10+0200\n"
+"POT-Creation-Date: 2026-05-09 11:56+0200\n"
 "PO-Revision-Date: 2023-12-01 14:58+0000\n"
 "Last-Translator: Clonewayx <fillip1@seznam.cz>\n"
 "Language: cs\n"
@@ -244,10 +244,6 @@ msgstr "Toto heslo správce není správné. Zbývá pouze %(num)d pokusů."
 
 msgid "Provided token is invalid"
 msgstr "Poskytnutý token je neplatný"
-
-#, fuzzy, python-format
-msgid "This private code is not the right one. Only %(num)d attempts left."
-msgstr "Toto heslo správce není správné. Zbývá pouze %(num)d pokusů."
 
 msgid "This private code is not the right one"
 msgstr "Tento soukromý kód není správný"
@@ -817,14 +813,6 @@ msgstr "%(amount)s každý"
 msgid "you sure?"
 msgstr "jste si jisti?"
 
-#, fuzzy
-msgid "Hide filters"
-msgstr "Identifikátor:"
-
-#, fuzzy
-msgid "Show filters"
-msgstr "Vyberte soubor"
-
 msgid "Invite people"
 msgstr "Pozvat lidi"
 
@@ -834,52 +822,11 @@ msgstr "Novější účty"
 msgid "Older bills"
 msgstr "Starší účty"
 
-msgid "Toggle filters"
-msgstr ""
-
 msgid "You should start by adding participants"
 msgstr "Měli byste začít přidáním členů"
 
 msgid "Add a new bill"
 msgstr "Přidat nový účet"
-
-msgid "Search"
-msgstr ""
-
-#, fuzzy
-msgid "Search in For what?"
-msgstr "Za co?"
-
-#, fuzzy
-msgid "Any payer"
-msgstr "Platící"
-
-msgid "Start date"
-msgstr ""
-
-#, fuzzy
-msgid "End date"
-msgstr "Datum"
-
-#, fuzzy
-msgid "Amount min"
-msgstr "Množství"
-
-msgid "Min cost"
-msgstr ""
-
-#, fuzzy
-msgid "Amount max"
-msgstr "Množství"
-
-msgid "Max cost"
-msgstr ""
-
-msgid "Filter"
-msgstr ""
-
-msgid "Clear filters"
-msgstr ""
 
 msgid "For what?"
 msgstr "Za co?"

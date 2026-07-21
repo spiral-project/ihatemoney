@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-20 10:10+0200\n"
+"POT-Creation-Date: 2026-05-09 11:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Farid Gurbanov <feridqurbanov333@gmail.com>\n"
 "Language: az\n"
@@ -249,10 +249,6 @@ msgstr "Bu admin parolu düzgün deyil. Yalnız %(num)d cəhd qaldı."
 
 msgid "Provided token is invalid"
 msgstr "Təqdim edilən token etibarsızdır"
-
-#, fuzzy, python-format
-msgid "This private code is not the right one. Only %(num)d attempts left."
-msgstr "Bu admin parolu düzgün deyil. Yalnız %(num)d cəhd qaldı."
 
 msgid "This private code is not the right one"
 msgstr "Bu gizli kod düzgün deyil"
@@ -826,14 +822,6 @@ msgstr "Hər biri %(amount)s"
 msgid "you sure?"
 msgstr "əminsiniz?"
 
-#, fuzzy
-msgid "Hide filters"
-msgstr "Tanımlayıcı:"
-
-#, fuzzy
-msgid "Show filters"
-msgstr "Faylı seçin"
-
 msgid "Invite people"
 msgstr "İnsanları dəvət edin"
 
@@ -843,52 +831,11 @@ msgstr "Daha yeni hesablar"
 msgid "Older bills"
 msgstr "Daha köhnə hesablar"
 
-msgid "Toggle filters"
-msgstr ""
-
 msgid "You should start by adding participants"
 msgstr "İştirakçıları əlavə etməklə başlamalısınız"
 
 msgid "Add a new bill"
 msgstr "Yeni bir hesab əlavə et"
-
-msgid "Search"
-msgstr ""
-
-#, fuzzy
-msgid "Search in For what?"
-msgstr "Nəyə görə?"
-
-#, fuzzy
-msgid "Any payer"
-msgstr "Ödəyici"
-
-msgid "Start date"
-msgstr ""
-
-#, fuzzy
-msgid "End date"
-msgstr "Tarix"
-
-#, fuzzy
-msgid "Amount min"
-msgstr "Məbləğ"
-
-msgid "Min cost"
-msgstr ""
-
-#, fuzzy
-msgid "Amount max"
-msgstr "Məbləğ"
-
-msgid "Max cost"
-msgstr ""
-
-msgid "Filter"
-msgstr ""
-
-msgid "Clear filters"
-msgstr ""
 
 msgid "For what?"
 msgstr "Nəyə görə?"

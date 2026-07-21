@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-20 10:10+0200\n"
+"POT-Creation-Date: 2026-05-09 11:56+0200\n"
 "PO-Revision-Date: 2024-03-17 12:01+0000\n"
 "Last-Translator: Xander Jennie <xanderjennie21@gmail.com>\n"
 "Language: nl\n"
@@ -250,10 +250,6 @@ msgstr "Het admin-wachtwoord is onjuist. Je kunt het nog %(num)d keer proberen."
 
 msgid "Provided token is invalid"
 msgstr "Het opgegeven token is ongeldig"
-
-#, fuzzy, python-format
-msgid "This private code is not the right one. Only %(num)d attempts left."
-msgstr "Het admin-wachtwoord is onjuist. Je kunt het nog %(num)d keer proberen."
 
 msgid "This private code is not the right one"
 msgstr "Deze privécode is onjuist"
@@ -835,14 +831,6 @@ msgstr ""
 msgid "you sure?"
 msgstr "weet je het zeker?"
 
-#, fuzzy
-msgid "Hide filters"
-msgstr "Identificatie:"
-
-#, fuzzy
-msgid "Show filters"
-msgstr "Bestand kiezen"
-
 msgid "Invite people"
 msgstr "Anderen uitnodigen"
 
@@ -852,52 +840,11 @@ msgstr ""
 msgid "Older bills"
 msgstr ""
 
-msgid "Toggle filters"
-msgstr ""
-
 msgid "You should start by adding participants"
 msgstr "Begin met het toevoegen van deelnemers"
 
 msgid "Add a new bill"
 msgstr "Nieuwe rekening toevoegen"
-
-msgid "Search"
-msgstr ""
-
-#, fuzzy
-msgid "Search in For what?"
-msgstr "Voor wat?"
-
-#, fuzzy
-msgid "Any payer"
-msgstr "Betaler"
-
-msgid "Start date"
-msgstr ""
-
-#, fuzzy
-msgid "End date"
-msgstr "Datum"
-
-#, fuzzy
-msgid "Amount min"
-msgstr "Hoeveelheid"
-
-msgid "Min cost"
-msgstr ""
-
-#, fuzzy
-msgid "Amount max"
-msgstr "Hoeveelheid"
-
-msgid "Max cost"
-msgstr ""
-
-msgid "Filter"
-msgstr ""
-
-msgid "Clear filters"
-msgstr ""
 
 msgid "For what?"
 msgstr "Voor wat?"
