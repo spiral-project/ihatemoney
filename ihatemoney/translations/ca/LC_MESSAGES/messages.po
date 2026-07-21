@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-02 23:07+0100\n"
+"POT-Creation-Date: 2026-07-21 23:16+0200\n"
 "PO-Revision-Date: 2024-07-03 19:09+0000\n"
 "Last-Translator: Quentin PAGÈS <quentinantonin@free.fr>\n"
 "Language: ca\n"
@@ -47,9 +47,6 @@ msgstr "Correu electrònic"
 
 msgid "Enable project history"
 msgstr "Habilitar l'historial del projecte"
-
-msgid "Use IP tracking for project history"
-msgstr "Utilitzar el seguiment d'IP per a l'historial del projecte"
 
 msgid "Default Currency"
 msgstr "Moneda per defecte"
@@ -259,6 +256,12 @@ msgstr ""
 msgid "Provided token is invalid"
 msgstr "El testimoni proporcionat no és vàlid"
 
+#, fuzzy, python-format
+msgid "This private code is not the right one. Only %(num)d attempts left."
+msgstr ""
+"Aquesta contrasenya d'administrador no és la correcta. Només queden "
+"%(num)d intents."
+
 msgid "This private code is not the right one"
 msgstr "Aquest codi privat no és el correcte"
 
@@ -400,12 +403,6 @@ msgstr "S'ha produït un error en suprimir l'historial del projecte"
 
 msgid "Deleted project history."
 msgstr "S'ha suprimit l'historial del projecte."
-
-msgid "Error deleting recorded IP addresses"
-msgstr "S'ha produït un error en suprimir les adreces IP enregistrades"
-
-msgid "Deleted recorded IP addresses in project history."
-msgstr "S'han suprimit les adreces IP enregistrades a l'historial del projecte."
 
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Ho sentim, no hem pogut trobar la pàgina que has demanat."
@@ -554,22 +551,11 @@ msgstr "Descarregar"
 msgid "Disabled Project History"
 msgstr "Historial del projecte deshabilitat"
 
-msgid "Disabled Project History & IP Address Recording"
-msgstr "Historial del projecte i enregistrament d'adreces IP deshabilitats"
-
 msgid "Enabled Project History"
 msgstr "Historial del projecte habilitat"
 
-msgid "Disabled IP Address Recording"
-msgstr "Enregistrament d'adreces IP deshabilitat"
-
-msgid "Enabled Project History & IP Address Recording"
-msgstr "Historial del projecte i enregistrament d'adreces IP habilitats"
-
-msgid "Enabled IP Address Recording"
-msgstr "Enregistrament d'adreces IP habilitat"
-
-msgid "History Settings Changed"
+#, fuzzy
+msgid "History Settings Changed (legacy settings)"
 msgstr "S'ha canviat la configuració de l'historial"
 
 #, python-format
@@ -580,26 +566,6 @@ msgstr "Factura %(name)s: %(property_name)s ha canviat de %(before)s a %(after)s
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr "Factura %(name)s: %(property_name)s ha canviat a %(after)s"
 
-msgid "Confirm Remove IP Adresses"
-msgstr "Confirma l'eliminació d'adreces IP"
-
-msgid ""
-"Are you sure you want to delete all recorded IP addresses from this "
-"project?\n"
-"                The rest of the project history will be unaffected. This "
-"action cannot be undone."
-msgstr ""
-"Estàs segur que vols suprimir totes les adreces IP enregistrades d'aquest"
-" projecte?\n"
-"                La resta de l'historial del projecte no es veurà afectat."
-" Aquesta acció no es pot desfer."
-
-msgid "Confirm deletion"
-msgstr "Confirmar la supressió"
-
-msgid "Close"
-msgstr "Tancar"
-
 msgid "Delete Confirmation"
 msgstr "Confirmació de la supressió"
 
@@ -609,6 +575,12 @@ msgid ""
 msgstr ""
 "Estàs segur que vols esborrar tot l'historial d'aquest projecte? Aquesta "
 "acció no es pot desfer."
+
+msgid "Confirm deletion"
+msgstr "Confirmar la supressió"
+
+msgid "Close"
+msgstr "Tancar"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -660,22 +632,6 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr "Probablement algú ha netejat l'historial del projecte."
 
-msgid ""
-"Some entries below contain IP addresses, even though this project has IP "
-"recording disabled. "
-msgstr ""
-"Algunes de les entrades següents contenen adreces IP, tot i que aquest "
-"projecte té l'enregistrament IP deshabilitat. "
-
-msgid "Delete stored IP addresses"
-msgstr "Suprimir les adreces IP emmagatzemades"
-
-msgid "No IP Addresses to erase"
-msgstr "No hi ha adreces IP a esborrar"
-
-msgid "Delete Stored IP Addresses"
-msgstr "Suprimir les adreces IP emmagatzemades"
-
 msgid "No history to erase"
 msgstr "No hi ha historial a esborrar"
 
@@ -687,17 +643,6 @@ msgstr "Hora"
 
 msgid "Event"
 msgstr "Esdeveniment"
-
-msgid "IP address recording can be enabled on the settings page"
-msgstr "L'enregistrament d'adreces IP es pot habilitar a la pàgina de configuració"
-
-msgid "IP address recording can be disabled on the settings page"
-msgstr ""
-"L'enregistrament d'adreces IP es pot deshabilitar a la pàgina de "
-"configuració"
-
-msgid "From IP"
-msgstr "Des d'IP"
 
 #, python-format
 msgid "Project %(name)s added"
@@ -900,6 +845,14 @@ msgstr "%(amount)s cadascun"
 msgid "you sure?"
 msgstr "n'estàs segur?"
 
+#, fuzzy
+msgid "Hide filters"
+msgstr "Identificador:"
+
+#, fuzzy
+msgid "Show filters"
+msgstr "Triar fitxer"
+
 msgid "Invite people"
 msgstr "Convidar gent"
 
@@ -909,11 +862,52 @@ msgstr "Factures més noves"
 msgid "Older bills"
 msgstr "Factures més antigues"
 
+msgid "Toggle filters"
+msgstr ""
+
 msgid "You should start by adding participants"
 msgstr "Hauries de començar afegint participants"
 
 msgid "Add a new bill"
 msgstr "Afegir una factura nova"
+
+msgid "Search"
+msgstr ""
+
+#, fuzzy
+msgid "Search in For what?"
+msgstr "Què va pagar?"
+
+#, fuzzy
+msgid "Any payer"
+msgstr "Pagador"
+
+msgid "Start date"
+msgstr ""
+
+#, fuzzy
+msgid "End date"
+msgstr "Data"
+
+#, fuzzy
+msgid "Amount min"
+msgstr "Import"
+
+msgid "Min cost"
+msgstr ""
+
+#, fuzzy
+msgid "Amount max"
+msgstr "Import"
+
+msgid "Max cost"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Clear filters"
+msgstr ""
 
 msgid "For what?"
 msgstr "Què va pagar?"
@@ -1160,4 +1154,75 @@ msgstr "Període"
 
 #~ msgid "Spent"
 #~ msgstr "Gastat"
+
+#~ msgid "Use IP tracking for project history"
+#~ msgstr "Utilitzar el seguiment d'IP per a l'historial del projecte"
+
+#~ msgid "Error deleting recorded IP addresses"
+#~ msgstr "S'ha produït un error en suprimir les adreces IP enregistrades"
+
+#~ msgid "Deleted recorded IP addresses in project history."
+#~ msgstr "S'han suprimit les adreces IP enregistrades a l'historial del projecte."
+
+#~ msgid "Disabled Project History & IP Address Recording"
+#~ msgstr "Historial del projecte i enregistrament d'adreces IP deshabilitats"
+
+#~ msgid "Disabled IP Address Recording"
+#~ msgstr "Enregistrament d'adreces IP deshabilitat"
+
+#~ msgid "Enabled Project History & IP Address Recording"
+#~ msgstr "Historial del projecte i enregistrament d'adreces IP habilitats"
+
+#~ msgid "Enabled IP Address Recording"
+#~ msgstr "Enregistrament d'adreces IP habilitat"
+
+#~ msgid "Confirm Remove IP Adresses"
+#~ msgstr "Confirma l'eliminació d'adreces IP"
+
+#~ msgid ""
+#~ "Are you sure you want to delete"
+#~ " all recorded IP addresses from this"
+#~ " project?\n"
+#~ "                The rest of the project"
+#~ " history will be unaffected. This "
+#~ "action cannot be undone."
+#~ msgstr ""
+#~ "Estàs segur que vols suprimir totes "
+#~ "les adreces IP enregistrades d'aquest "
+#~ "projecte?\n"
+#~ "                La resta de l'historial "
+#~ "del projecte no es veurà afectat. "
+#~ "Aquesta acció no es pot desfer."
+
+#~ msgid ""
+#~ "Some entries below contain IP addresses,"
+#~ " even though this project has IP "
+#~ "recording disabled. "
+#~ msgstr ""
+#~ "Algunes de les entrades següents "
+#~ "contenen adreces IP, tot i que "
+#~ "aquest projecte té l'enregistrament IP "
+#~ "deshabilitat. "
+
+#~ msgid "Delete stored IP addresses"
+#~ msgstr "Suprimir les adreces IP emmagatzemades"
+
+#~ msgid "No IP Addresses to erase"
+#~ msgstr "No hi ha adreces IP a esborrar"
+
+#~ msgid "Delete Stored IP Addresses"
+#~ msgstr "Suprimir les adreces IP emmagatzemades"
+
+#~ msgid "IP address recording can be enabled on the settings page"
+#~ msgstr ""
+#~ "L'enregistrament d'adreces IP es pot "
+#~ "habilitar a la pàgina de configuració"
+
+#~ msgid "IP address recording can be disabled on the settings page"
+#~ msgstr ""
+#~ "L'enregistrament d'adreces IP es pot "
+#~ "deshabilitar a la pàgina de configuració"
+
+#~ msgid "From IP"
+#~ msgstr "Des d'IP"
 

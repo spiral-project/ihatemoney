@@ -7,17 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-03-02 23:07+0100\n"
+"POT-Creation-Date: 2026-07-21 23:16+0200\n"
 "PO-Revision-Date: 2026-03-04 18:37+0000\n"
 "Last-Translator: JocelynDelalande <jocelyn@crapouillou.net>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/i-"
-"hate-money/fr/>\n"
 "Language: fr\n"
+"Language-Team: French <https://hosted.weblate.org/projects/i-hate-money/i"
+"-hate-money/fr/>\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.17-dev\n"
 "Generated-By: Babel 2.16.0\n"
 
 #, python-format
@@ -51,9 +50,6 @@ msgstr "Email"
 
 msgid "Enable project history"
 msgstr "Activer l'historique de projet"
-
-msgid "Use IP tracking for project history"
-msgstr "Collecter les adresses IP dans l'historique de projet"
 
 msgid "Default Currency"
 msgstr "Devise par défaut"
@@ -259,6 +255,12 @@ msgstr ""
 msgid "Provided token is invalid"
 msgstr "Ce jeton est invalide"
 
+#, fuzzy, python-format
+msgid "This private code is not the right one. Only %(num)d attempts left."
+msgstr ""
+"Le mot de passe administrateur⋅ice que vous avez entré n’est pas correct."
+" Plus que %(num)d tentatives."
+
 msgid "This private code is not the right one"
 msgstr "Le code d'accès n’est pas correct"
 
@@ -391,12 +393,6 @@ msgstr "Erreur lors de la suppression de l'historique du projet"
 
 msgid "Deleted project history."
 msgstr "Historique de projet supprimé."
-
-msgid "Error deleting recorded IP addresses"
-msgstr "Erreur lors de la suppression des adresses IP enregistrées"
-
-msgid "Deleted recorded IP addresses in project history."
-msgstr "Adresses IP supprimées de l'historique du projet."
 
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Désolé, nous ne trouvons pas la page demandée."
@@ -539,22 +535,11 @@ msgstr "Télécharger"
 msgid "Disabled Project History"
 msgstr "Désactiver l'historique du projet"
 
-msgid "Disabled Project History & IP Address Recording"
-msgstr "Désactiver l'historique du projet et l'enregistrement des adresses IP"
-
 msgid "Enabled Project History"
 msgstr "Activer l'historique du projet"
 
-msgid "Disabled IP Address Recording"
-msgstr "Désactiver l'enregistrement des adresses IP"
-
-msgid "Enabled Project History & IP Address Recording"
-msgstr "Activer l'historique du projet et l’enregistrement des adresses IP"
-
-msgid "Enabled IP Address Recording"
-msgstr "Activer l'enregistrement des adresses IP"
-
-msgid "History Settings Changed"
+#, fuzzy
+msgid "History Settings Changed (legacy settings)"
 msgstr "Paramètres d'historique modifiés"
 
 #, python-format
@@ -565,26 +550,6 @@ msgstr "Facture %(name)s : %(property_name)s changé de %(before)s en %(after)s"
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr "Facture %(name)s : %(property_name)s modifié en %(after)s"
 
-msgid "Confirm Remove IP Adresses"
-msgstr "Confirmer la suppression des adresses IP"
-
-msgid ""
-"Are you sure you want to delete all recorded IP addresses from this "
-"project?\n"
-"                The rest of the project history will be unaffected. This "
-"action cannot be undone."
-msgstr ""
-"Êtes-vous sûr⋅e de vouloir supprimer toutes les adresses IP enregistrées "
-"pour ce projet ?\n"
-"Le reste de l'historique ne sera pas affecté. Cette action n'est pas "
-"réversible."
-
-msgid "Confirm deletion"
-msgstr "Confirmer la suppression"
-
-msgid "Close"
-msgstr "Fermer"
-
 msgid "Delete Confirmation"
 msgstr "Confirmation de suppression"
 
@@ -594,6 +559,12 @@ msgid ""
 msgstr ""
 "Êtes-vous sur de vouloir supprimer tout l'historique du projet ? Cette "
 "action n'est pas réversible."
+
+msgid "Confirm deletion"
+msgstr "Confirmer la suppression"
+
+msgid "Close"
+msgstr "Fermer"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -644,22 +615,6 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr "Vous pouvez supprimer l'historique du projet pour les enlever."
 
-msgid ""
-"Some entries below contain IP addresses, even though this project has IP "
-"recording disabled. "
-msgstr ""
-"Certaines entrées de l'historique contiennent une adresse IP, bien que ce"
-" projet ait désactivé l'enregistrement des adresses IP. "
-
-msgid "Delete stored IP addresses"
-msgstr "Supprimer toutes les adresses IP enregistrées"
-
-msgid "No IP Addresses to erase"
-msgstr "Aucune adresse IP à supprimer"
-
-msgid "Delete Stored IP Addresses"
-msgstr "Supprimer les adresses IP enregistrées"
-
 msgid "No history to erase"
 msgstr "Aucun historique à supprimer"
 
@@ -671,19 +626,6 @@ msgstr "Heure"
 
 msgid "Event"
 msgstr "Évènement"
-
-msgid "IP address recording can be enabled on the settings page"
-msgstr ""
-"Vous pouvez activer l'enregistrement des adresses IP dans les paramètres "
-"de la page"
-
-msgid "IP address recording can be disabled on the settings page"
-msgstr ""
-"L'enregistrement des adresses IP peut-être désactivé dans les paramètres "
-"de la page"
-
-msgid "From IP"
-msgstr "Depuis l'IP"
 
 #, python-format
 msgid "Project %(name)s added"
@@ -888,6 +830,14 @@ msgstr "%(amount)s chacun⋅e"
 msgid "you sure?"
 msgstr "vous confirmez ?"
 
+#, fuzzy
+msgid "Hide filters"
+msgstr "Identifiant :"
+
+#, fuzzy
+msgid "Show filters"
+msgstr "Choisir un fichier"
+
 msgid "Invite people"
 msgstr "Inviter des gens"
 
@@ -897,11 +847,52 @@ msgstr "Factures suivantes"
 msgid "Older bills"
 msgstr "Factures précédentes"
 
+msgid "Toggle filters"
+msgstr ""
+
 msgid "You should start by adding participants"
 msgstr "Vous devriez commencer par ajouter des participant⋅es"
 
 msgid "Add a new bill"
 msgstr "Nouvelle facture"
+
+msgid "Search"
+msgstr ""
+
+#, fuzzy
+msgid "Search in For what?"
+msgstr "Pour quoi ?"
+
+#, fuzzy
+msgid "Any payer"
+msgstr "Payeur"
+
+msgid "Start date"
+msgstr ""
+
+#, fuzzy
+msgid "End date"
+msgstr "Date"
+
+#, fuzzy
+msgid "Amount min"
+msgstr "Montant"
+
+msgid "Min cost"
+msgstr ""
+
+#, fuzzy
+msgid "Amount max"
+msgstr "Montant"
+
+msgid "Max cost"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Clear filters"
+msgstr ""
 
 msgid "For what?"
 msgstr "Pour quoi ?"
@@ -1018,8 +1009,7 @@ msgid "Settled?"
 msgstr "Remboursement ?"
 
 msgid "Click here to record that the money transfer has been done"
-msgstr ""
-"Cliquez ici pour enregistrer le fait que le remboursement a été effectué"
+msgstr "Cliquez ici pour enregistrer le fait que le remboursement a été effectué"
 
 msgid "Register settlement"
 msgstr "Enregistrer le remboursement"
@@ -1208,19 +1198,19 @@ msgstr "Période"
 #~ msgstr "Historisation du projet désactivée"
 
 #~ msgid "Disabled Project History & IP Address Recording"
-#~ msgstr "Historisation du projet et enregistrement des adresses IP désactivés"
+#~ msgstr "Désactiver l'historique du projet et l'enregistrement des adresses IP"
 
 #~ msgid "Enabled Project History"
 #~ msgstr "Historisation du projet activée"
 
 #~ msgid "Disabled IP Address Recording"
-#~ msgstr "Enregistrement des adresses IP désactivé"
+#~ msgstr "Désactiver l'enregistrement des adresses IP"
 
 #~ msgid "Enabled Project History & IP Address Recording"
-#~ msgstr "Historisation du projet et enregistrement des adresses IP activés"
+#~ msgstr "Activer l'historique du projet et l’enregistrement des adresses IP"
 
 #~ msgid "Enabled IP Address Recording"
-#~ msgstr "Enregistrement des adresses IP activé"
+#~ msgstr "Activer l'enregistrement des adresses IP"
 
 #~ msgid "History Settings Changed"
 #~ msgstr "Changement des paramètres d’historisation"
@@ -1245,12 +1235,12 @@ msgstr "Période"
 #~ " history will be unaffected. This "
 #~ "action cannot be undone."
 #~ msgstr ""
-#~ "Êtes vous sûr de supprimer toutes "
-#~ "les adresses IP enregistrées dans ce "
-#~ "projet ?\n"
-#~ "Le reste de l’historique du projet "
-#~ "restera inchangé. Cette action est "
-#~ "irréversible."
+#~ "Êtes-vous sûr⋅e de vouloir supprimer "
+#~ "toutes les adresses IP enregistrées pour"
+#~ " ce projet ?\n"
+#~ "Le reste de l'historique ne sera "
+#~ "pas affecté. Cette action n'est pas "
+#~ "réversible."
 
 #~ msgid "Close"
 #~ msgstr "Fermer"
@@ -1452,3 +1442,47 @@ msgstr "Période"
 
 #~ msgid "Spent"
 #~ msgstr "A dépensé"
+
+#~ msgid "Use IP tracking for project history"
+#~ msgstr "Collecter les adresses IP dans l'historique de projet"
+
+#~ msgid "Error deleting recorded IP addresses"
+#~ msgstr "Erreur lors de la suppression des adresses IP enregistrées"
+
+#~ msgid "Deleted recorded IP addresses in project history."
+#~ msgstr "Adresses IP supprimées de l'historique du projet."
+
+#~ msgid ""
+#~ "Some entries below contain IP addresses,"
+#~ " even though this project has IP "
+#~ "recording disabled. "
+#~ msgstr ""
+#~ "Certaines entrées de l'historique contiennent"
+#~ " une adresse IP, bien que ce "
+#~ "projet ait désactivé l'enregistrement des "
+#~ "adresses IP. "
+
+#~ msgid "Delete stored IP addresses"
+#~ msgstr "Supprimer toutes les adresses IP enregistrées"
+
+#~ msgid "No IP Addresses to erase"
+#~ msgstr "Aucune adresse IP à supprimer"
+
+#~ msgid "Delete Stored IP Addresses"
+#~ msgstr "Supprimer les adresses IP enregistrées"
+
+#~ msgid "IP address recording can be enabled on the settings page"
+#~ msgstr ""
+#~ "Vous pouvez activer l'enregistrement des "
+#~ "adresses IP dans les paramètres de "
+#~ "la page"
+
+#~ msgid "IP address recording can be disabled on the settings page"
+#~ msgstr ""
+#~ "L'enregistrement des adresses IP peut-"
+#~ "être désactivé dans les paramètres de"
+#~ " la page"
+
+#~ msgid "From IP"
+#~ msgstr "Depuis l'IP"
+

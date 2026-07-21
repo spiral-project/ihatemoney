@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-02 23:07+0100\n"
+"POT-Creation-Date: 2026-07-21 23:16+0200\n"
 "PO-Revision-Date: 2024-05-13 07:00+0000\n"
 "Last-Translator: Harshini K <harshinikondepudi@gmail.com>\n"
 "Language: te\n"
@@ -48,9 +48,6 @@ msgstr "ఇమెయిల్"
 
 msgid "Enable project history"
 msgstr "ప్రాజెక్ట్ చరిత్రను చూపించు"
-
-msgid "Use IP tracking for project history"
-msgstr "ప్రాజెక్ట్ చరిత్ర కోసం IP ట్రాకింగ్‌ని ఉపయోగించు"
 
 #, fuzzy
 msgid "Default Currency"
@@ -268,6 +265,12 @@ msgstr ""
 msgid "Provided token is invalid"
 msgstr "ఇవ్వబడ్డ టోకెన్ చెల్లుబాటు కాదు"
 
+#, fuzzy, python-format
+msgid "This private code is not the right one. Only %(num)d attempts left."
+msgstr ""
+"ఈ అడ్మిన్ పాస్‌వర్డ్ సరైనది కాదు. %(num)d ప్రయత్నాలు మాత్రమే మిగిలి "
+"ఉన్నాయి."
+
 msgid "This private code is not the right one"
 msgstr "ఈ రహస్య కోడ్ సరైనది కాదు"
 
@@ -404,12 +407,6 @@ msgid "Error deleting project history"
 msgstr ""
 
 msgid "Deleted project history."
-msgstr ""
-
-msgid "Error deleting recorded IP addresses"
-msgstr ""
-
-msgid "Deleted recorded IP addresses in project history."
 msgstr ""
 
 msgid "Sorry, we were unable to find the page you've asked for."
@@ -555,22 +552,10 @@ msgstr ""
 msgid "Disabled Project History"
 msgstr ""
 
-msgid "Disabled Project History & IP Address Recording"
-msgstr ""
-
 msgid "Enabled Project History"
 msgstr ""
 
-msgid "Disabled IP Address Recording"
-msgstr ""
-
-msgid "Enabled Project History & IP Address Recording"
-msgstr ""
-
-msgid "Enabled IP Address Recording"
-msgstr ""
-
-msgid "History Settings Changed"
+msgid "History Settings Changed (legacy settings)"
 msgstr ""
 
 #, python-format
@@ -581,28 +566,18 @@ msgstr ""
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr ""
 
-msgid "Confirm Remove IP Adresses"
-msgstr ""
-
-msgid ""
-"Are you sure you want to delete all recorded IP addresses from this "
-"project?\n"
-"                The rest of the project history will be unaffected. This "
-"action cannot be undone."
-msgstr ""
-
-msgid "Confirm deletion"
-msgstr ""
-
-msgid "Close"
-msgstr ""
-
 msgid "Delete Confirmation"
 msgstr ""
 
 msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
+msgstr ""
+
+msgid "Confirm deletion"
+msgstr ""
+
+msgid "Close"
 msgstr ""
 
 #, python-format
@@ -651,20 +626,6 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr ""
 
-msgid ""
-"Some entries below contain IP addresses, even though this project has IP "
-"recording disabled. "
-msgstr ""
-
-msgid "Delete stored IP addresses"
-msgstr ""
-
-msgid "No IP Addresses to erase"
-msgstr ""
-
-msgid "Delete Stored IP Addresses"
-msgstr ""
-
 msgid "No history to erase"
 msgstr ""
 
@@ -675,15 +636,6 @@ msgid "Time"
 msgstr ""
 
 msgid "Event"
-msgstr ""
-
-msgid "IP address recording can be enabled on the settings page"
-msgstr ""
-
-msgid "IP address recording can be disabled on the settings page"
-msgstr ""
-
-msgid "From IP"
 msgstr ""
 
 #, python-format
@@ -885,6 +837,12 @@ msgstr ""
 msgid "you sure?"
 msgstr ""
 
+msgid "Hide filters"
+msgstr ""
+
+msgid "Show filters"
+msgstr ""
+
 msgid "Invite people"
 msgstr ""
 
@@ -894,10 +852,48 @@ msgstr ""
 msgid "Older bills"
 msgstr ""
 
+msgid "Toggle filters"
+msgstr ""
+
 msgid "You should start by adding participants"
 msgstr ""
 
 msgid "Add a new bill"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Search in For what?"
+msgstr ""
+
+#, fuzzy
+msgid "Any payer"
+msgstr "చెల్లింపుదారు"
+
+msgid "Start date"
+msgstr ""
+
+#, fuzzy
+msgid "End date"
+msgstr "తేదీ"
+
+msgid "Amount min"
+msgstr ""
+
+msgid "Min cost"
+msgstr ""
+
+msgid "Amount max"
+msgstr ""
+
+msgid "Max cost"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Clear filters"
 msgstr ""
 
 msgid "For what?"
@@ -1132,5 +1128,65 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Expenses by Month"
+#~ msgstr ""
+
+#~ msgid "Use IP tracking for project history"
+#~ msgstr "ప్రాజెక్ట్ చరిత్ర కోసం IP ట్రాకింగ్‌ని ఉపయోగించు"
+
+#~ msgid "Error deleting recorded IP addresses"
+#~ msgstr ""
+
+#~ msgid "Deleted recorded IP addresses in project history."
+#~ msgstr ""
+
+#~ msgid "Disabled Project History & IP Address Recording"
+#~ msgstr ""
+
+#~ msgid "Disabled IP Address Recording"
+#~ msgstr ""
+
+#~ msgid "Enabled Project History & IP Address Recording"
+#~ msgstr ""
+
+#~ msgid "Enabled IP Address Recording"
+#~ msgstr ""
+
+#~ msgid "History Settings Changed"
+#~ msgstr ""
+
+#~ msgid "Confirm Remove IP Adresses"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Are you sure you want to delete"
+#~ " all recorded IP addresses from this"
+#~ " project?\n"
+#~ "                The rest of the project"
+#~ " history will be unaffected. This "
+#~ "action cannot be undone."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Some entries below contain IP addresses,"
+#~ " even though this project has IP "
+#~ "recording disabled. "
+#~ msgstr ""
+
+#~ msgid "Delete stored IP addresses"
+#~ msgstr ""
+
+#~ msgid "No IP Addresses to erase"
+#~ msgstr ""
+
+#~ msgid "Delete Stored IP Addresses"
+#~ msgstr ""
+
+#~ msgid "IP address recording can be enabled on the settings page"
+#~ msgstr ""
+
+#~ msgid "IP address recording can be disabled on the settings page"
+#~ msgstr ""
+
+#~ msgid "From IP"
 #~ msgstr ""
 

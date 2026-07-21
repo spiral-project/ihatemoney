@@ -1,18 +1,18 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-02 23:07+0100\n"
+"POT-Creation-Date: 2026-07-21 23:16+0200\n"
 "PO-Revision-Date: 2026-05-20 20:51+0000\n"
 "Last-Translator: onurmaden <ronur.maden@gmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-money/i-"
-"hate-money/tr/>\n"
 "Language: tr\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/i-hate-"
+"money/i-hate-money/tr/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.6.dev0\n"
 "Generated-By: Babel 2.16.0\n"
 
 #, python-format
@@ -46,9 +46,6 @@ msgstr "E-posta"
 
 msgid "Enable project history"
 msgstr "Proje geçmişini etkinleştir"
-
-msgid "Use IP tracking for project history"
-msgstr "Proje geçmişi için IP izlemeyi kullan"
 
 msgid "Default Currency"
 msgstr "Öntanımlı Para Birimi"
@@ -252,6 +249,10 @@ msgstr "Bu yönetici parolası doğru değil. Yalnızca %(num)d tane deneme kald
 msgid "Provided token is invalid"
 msgstr "Sağlanan belirteç geçersiz"
 
+#, fuzzy, python-format
+msgid "This private code is not the right one. Only %(num)d attempts left."
+msgstr "Bu yönetici parolası doğru değil. Yalnızca %(num)d tane deneme kaldı."
+
 msgid "This private code is not the right one"
 msgstr "Bu özel kod doğru değil"
 
@@ -383,12 +384,6 @@ msgstr "Proje geçmişi silinirken hata oluştu"
 
 msgid "Deleted project history."
 msgstr "Proje geçmişi silindi."
-
-msgid "Error deleting recorded IP addresses"
-msgstr "Kaydedilen IP adresleri silinirken hata oluştu"
-
-msgid "Deleted recorded IP addresses in project history."
-msgstr "Proje geçmişinde kaydedilen IP adresleri silindi."
 
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Maalesef, istediğiniz sayfayı bulamadık."
@@ -531,22 +526,11 @@ msgstr "İndir"
 msgid "Disabled Project History"
 msgstr "Proje Geçmişi Devre Dışı"
 
-msgid "Disabled Project History & IP Address Recording"
-msgstr "Proje Geçmişi ve IP Adresi Kaydetme Devre Dışı"
-
 msgid "Enabled Project History"
 msgstr "Proje Geçmişi Etkin"
 
-msgid "Disabled IP Address Recording"
-msgstr "IP Adresi Kaydetme Devre Dışı"
-
-msgid "Enabled Project History & IP Address Recording"
-msgstr "Proje Geçmişi ve IP Adresi Kaydetme Etkin"
-
-msgid "Enabled IP Address Recording"
-msgstr "IP Adresi Kaydetme Etkin"
-
-msgid "History Settings Changed"
+#, fuzzy
+msgid "History Settings Changed (legacy settings)"
 msgstr "Geçmiş Ayarları Değişti"
 
 #, python-format
@@ -559,26 +543,6 @@ msgstr ""
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr "Fatura %(name)s: %(property_name)s, %(after)s olarak değiştirildi"
 
-msgid "Confirm Remove IP Adresses"
-msgstr "IP Adresini Kaldırmayı Onayla"
-
-msgid ""
-"Are you sure you want to delete all recorded IP addresses from this "
-"project?\n"
-"                The rest of the project history will be unaffected. This "
-"action cannot be undone."
-msgstr ""
-"Kaydedilen tüm IP adreslerini bu projeden silmek istediğinize emin "
-"misiniz?\n"
-"                Proje geçmişinin geri kalanı bundan etkilenmeyecektir. Bu"
-" işlem geri alınamaz."
-
-msgid "Confirm deletion"
-msgstr "Silmeyi onayla"
-
-msgid "Close"
-msgstr "Kapat"
-
 msgid "Delete Confirmation"
 msgstr "Onaylamayı Sil"
 
@@ -588,6 +552,12 @@ msgid ""
 msgstr ""
 "Bu proje için tüm geçmişi silmek istediğinize emin misiniz? Bu işlem geri"
 " alınamaz."
+
+msgid "Confirm deletion"
+msgstr "Silmeyi onayla"
+
+msgid "Close"
+msgstr "Kapat"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -636,22 +606,6 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr "Bunları kaldırmak için proje geçmişini temizleyebilirsiniz."
 
-msgid ""
-"Some entries below contain IP addresses, even though this project has IP "
-"recording disabled. "
-msgstr ""
-"Bu projede IP kaydetme devre dışı bırakılmış olsa da aşağıdaki bazı "
-"girdiler IP adresleri içermektedir. "
-
-msgid "Delete stored IP addresses"
-msgstr "Kaydedilen IP adreslerini sil"
-
-msgid "No IP Addresses to erase"
-msgstr "Silinecek IP adresi yok"
-
-msgid "Delete Stored IP Addresses"
-msgstr "Kaydedilen IP Adreslerini Sil"
-
 msgid "No history to erase"
 msgstr "Silinecek geçmiş yok"
 
@@ -663,15 +617,6 @@ msgstr "Zaman"
 
 msgid "Event"
 msgstr "Etkinlik"
-
-msgid "IP address recording can be enabled on the settings page"
-msgstr "IP adresi kaydetme ayarlar sayfasında etkinleştirilebilir"
-
-msgid "IP address recording can be disabled on the settings page"
-msgstr "IP adresi kaydetme ayarlar sayfasında devre dışı bırakılabilir"
-
-msgid "From IP"
-msgstr "IP'den"
 
 #, python-format
 msgid "Project %(name)s added"
@@ -876,6 +821,14 @@ msgstr "her biri %(amount)s"
 msgid "you sure?"
 msgstr "emin misiniz?"
 
+#, fuzzy
+msgid "Hide filters"
+msgstr "Tanımlayıcı:"
+
+#, fuzzy
+msgid "Show filters"
+msgstr "Dosya seç"
+
 msgid "Invite people"
 msgstr "İnsanları davet et"
 
@@ -885,11 +838,52 @@ msgstr "Daha yeni faturalar"
 msgid "Older bills"
 msgstr "Daha eski faturalar"
 
+msgid "Toggle filters"
+msgstr ""
+
 msgid "You should start by adding participants"
 msgstr "Katılımcıları ekleyerek başlamalısınız"
 
 msgid "Add a new bill"
 msgstr "Yeni bir fatura ekle"
+
+msgid "Search"
+msgstr ""
+
+#, fuzzy
+msgid "Search in For what?"
+msgstr "Ne için?"
+
+#, fuzzy
+msgid "Any payer"
+msgstr "Mükellefi"
+
+msgid "Start date"
+msgstr ""
+
+#, fuzzy
+msgid "End date"
+msgstr "Tarih"
+
+#, fuzzy
+msgid "Amount min"
+msgstr "Miktar"
+
+msgid "Min cost"
+msgstr ""
+
+#, fuzzy
+msgid "Amount max"
+msgstr "Miktar"
+
+msgid "Max cost"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Clear filters"
+msgstr ""
 
 msgid "For what?"
 msgstr "Ne için?"
@@ -1232,3 +1226,70 @@ msgstr "Dönem"
 
 #~ msgid "Spent"
 #~ msgstr "Harcandı"
+
+#~ msgid "Use IP tracking for project history"
+#~ msgstr "Proje geçmişi için IP izlemeyi kullan"
+
+#~ msgid "Error deleting recorded IP addresses"
+#~ msgstr "Kaydedilen IP adresleri silinirken hata oluştu"
+
+#~ msgid "Deleted recorded IP addresses in project history."
+#~ msgstr "Proje geçmişinde kaydedilen IP adresleri silindi."
+
+#~ msgid "Disabled Project History & IP Address Recording"
+#~ msgstr "Proje Geçmişi ve IP Adresi Kaydetme Devre Dışı"
+
+#~ msgid "Disabled IP Address Recording"
+#~ msgstr "IP Adresi Kaydetme Devre Dışı"
+
+#~ msgid "Enabled Project History & IP Address Recording"
+#~ msgstr "Proje Geçmişi ve IP Adresi Kaydetme Etkin"
+
+#~ msgid "Enabled IP Address Recording"
+#~ msgstr "IP Adresi Kaydetme Etkin"
+
+#~ msgid "Confirm Remove IP Adresses"
+#~ msgstr "IP Adresini Kaldırmayı Onayla"
+
+#~ msgid ""
+#~ "Are you sure you want to delete"
+#~ " all recorded IP addresses from this"
+#~ " project?\n"
+#~ "                The rest of the project"
+#~ " history will be unaffected. This "
+#~ "action cannot be undone."
+#~ msgstr ""
+#~ "Kaydedilen tüm IP adreslerini bu "
+#~ "projeden silmek istediğinize emin misiniz?"
+#~ "\n"
+#~ "                Proje geçmişinin geri kalanı"
+#~ " bundan etkilenmeyecektir. Bu işlem geri"
+#~ " alınamaz."
+
+#~ msgid ""
+#~ "Some entries below contain IP addresses,"
+#~ " even though this project has IP "
+#~ "recording disabled. "
+#~ msgstr ""
+#~ "Bu projede IP kaydetme devre dışı "
+#~ "bırakılmış olsa da aşağıdaki bazı "
+#~ "girdiler IP adresleri içermektedir. "
+
+#~ msgid "Delete stored IP addresses"
+#~ msgstr "Kaydedilen IP adreslerini sil"
+
+#~ msgid "No IP Addresses to erase"
+#~ msgstr "Silinecek IP adresi yok"
+
+#~ msgid "Delete Stored IP Addresses"
+#~ msgstr "Kaydedilen IP Adreslerini Sil"
+
+#~ msgid "IP address recording can be enabled on the settings page"
+#~ msgstr "IP adresi kaydetme ayarlar sayfasında etkinleştirilebilir"
+
+#~ msgid "IP address recording can be disabled on the settings page"
+#~ msgstr "IP adresi kaydetme ayarlar sayfasında devre dışı bırakılabilir"
+
+#~ msgid "From IP"
+#~ msgstr "IP'den"
+

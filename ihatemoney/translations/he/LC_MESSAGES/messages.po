@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-02 23:07+0100\n"
+"POT-Creation-Date: 2026-07-21 23:16+0200\n"
 "PO-Revision-Date: 2023-07-24 07:07+0000\n"
 "Last-Translator: Nati Lintzer <nlintzer@gmail.com>\n"
 "Language: he\n"
@@ -46,9 +46,6 @@ msgstr "דוא\"ל"
 
 msgid "Enable project history"
 msgstr "אפשר היסטוריית פרויקט"
-
-msgid "Use IP tracking for project history"
-msgstr "השתמש במעקב IP עבור היסטוריית פרויקט"
 
 msgid "Default Currency"
 msgstr "מטבע ברירת המחדל"
@@ -247,6 +244,10 @@ msgstr "סיסמת המנהל הזו שגויה. נותרו %(num)d ניסיונ
 msgid "Provided token is invalid"
 msgstr "הטוקן שהוזן אינו תקין"
 
+#, fuzzy, python-format
+msgid "This private code is not the right one. Only %(num)d attempts left."
+msgstr "סיסמת המנהל הזו שגויה. נותרו %(num)d ניסיונות."
+
 msgid "This private code is not the right one"
 msgstr "קוד פרטי זה שגוי"
 
@@ -378,12 +379,6 @@ msgstr "שגיאה במחיקת הסטוריית הפרויקט"
 
 msgid "Deleted project history."
 msgstr "הסטוריית הפרויקט נמחקה."
-
-msgid "Error deleting recorded IP addresses"
-msgstr ""
-
-msgid "Deleted recorded IP addresses in project history."
-msgstr ""
 
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "מצטערים, לא הצלחנו לגשת לדף שחיפשת."
@@ -526,22 +521,10 @@ msgstr "הורד"
 msgid "Disabled Project History"
 msgstr "היסטורית פרויקט מושבתת"
 
-msgid "Disabled Project History & IP Address Recording"
-msgstr ""
-
 msgid "Enabled Project History"
 msgstr ""
 
-msgid "Disabled IP Address Recording"
-msgstr ""
-
-msgid "Enabled Project History & IP Address Recording"
-msgstr ""
-
-msgid "Enabled IP Address Recording"
-msgstr ""
-
-msgid "History Settings Changed"
+msgid "History Settings Changed (legacy settings)"
 msgstr ""
 
 #, python-format
@@ -552,28 +535,18 @@ msgstr ""
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr ""
 
-msgid "Confirm Remove IP Adresses"
-msgstr ""
-
-msgid ""
-"Are you sure you want to delete all recorded IP addresses from this "
-"project?\n"
-"                The rest of the project history will be unaffected. This "
-"action cannot be undone."
-msgstr ""
-
-msgid "Confirm deletion"
-msgstr ""
-
-msgid "Close"
-msgstr ""
-
 msgid "Delete Confirmation"
 msgstr ""
 
 msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
+msgstr ""
+
+msgid "Confirm deletion"
+msgstr ""
+
+msgid "Close"
 msgstr ""
 
 #, python-format
@@ -624,20 +597,6 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr ""
 
-msgid ""
-"Some entries below contain IP addresses, even though this project has IP "
-"recording disabled. "
-msgstr ""
-
-msgid "Delete stored IP addresses"
-msgstr ""
-
-msgid "No IP Addresses to erase"
-msgstr ""
-
-msgid "Delete Stored IP Addresses"
-msgstr ""
-
 msgid "No history to erase"
 msgstr ""
 
@@ -649,15 +608,6 @@ msgstr "זמן"
 
 msgid "Event"
 msgstr "אירוע"
-
-msgid "IP address recording can be enabled on the settings page"
-msgstr ""
-
-msgid "IP address recording can be disabled on the settings page"
-msgstr ""
-
-msgid "From IP"
-msgstr "מכתובת IP"
 
 #, python-format
 msgid "Project %(name)s added"
@@ -858,6 +808,14 @@ msgstr ""
 msgid "you sure?"
 msgstr "האם אתה בטוח?"
 
+#, fuzzy
+msgid "Hide filters"
+msgstr "מזהה:"
+
+#, fuzzy
+msgid "Show filters"
+msgstr "בחר קובץ"
+
 msgid "Invite people"
 msgstr "הזמן אנשים"
 
@@ -867,11 +825,52 @@ msgstr ""
 msgid "Older bills"
 msgstr "הוצאות ישנות"
 
+msgid "Toggle filters"
+msgstr ""
+
 msgid "You should start by adding participants"
 msgstr "כדאי להתחיל בהוספת משתמשים"
 
 msgid "Add a new bill"
 msgstr "הוסף הוצאה חדשה"
+
+msgid "Search"
+msgstr ""
+
+#, fuzzy
+msgid "Search in For what?"
+msgstr "עבור מה?"
+
+#, fuzzy
+msgid "Any payer"
+msgstr "משלם"
+
+msgid "Start date"
+msgstr ""
+
+#, fuzzy
+msgid "End date"
+msgstr "תאריך"
+
+#, fuzzy
+msgid "Amount min"
+msgstr "סכום"
+
+msgid "Min cost"
+msgstr ""
+
+#, fuzzy
+msgid "Amount max"
+msgstr "סכום"
+
+msgid "Max cost"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Clear filters"
+msgstr ""
 
 msgid "For what?"
 msgstr "עבור מה?"
@@ -1114,4 +1113,64 @@ msgstr "תקופה"
 
 #~ msgid "Spent"
 #~ msgstr ""
+
+#~ msgid "Use IP tracking for project history"
+#~ msgstr "השתמש במעקב IP עבור היסטוריית פרויקט"
+
+#~ msgid "Error deleting recorded IP addresses"
+#~ msgstr ""
+
+#~ msgid "Deleted recorded IP addresses in project history."
+#~ msgstr ""
+
+#~ msgid "Disabled Project History & IP Address Recording"
+#~ msgstr ""
+
+#~ msgid "Disabled IP Address Recording"
+#~ msgstr ""
+
+#~ msgid "Enabled Project History & IP Address Recording"
+#~ msgstr ""
+
+#~ msgid "Enabled IP Address Recording"
+#~ msgstr ""
+
+#~ msgid "History Settings Changed"
+#~ msgstr ""
+
+#~ msgid "Confirm Remove IP Adresses"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Are you sure you want to delete"
+#~ " all recorded IP addresses from this"
+#~ " project?\n"
+#~ "                The rest of the project"
+#~ " history will be unaffected. This "
+#~ "action cannot be undone."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Some entries below contain IP addresses,"
+#~ " even though this project has IP "
+#~ "recording disabled. "
+#~ msgstr ""
+
+#~ msgid "Delete stored IP addresses"
+#~ msgstr ""
+
+#~ msgid "No IP Addresses to erase"
+#~ msgstr ""
+
+#~ msgid "Delete Stored IP Addresses"
+#~ msgstr ""
+
+#~ msgid "IP address recording can be enabled on the settings page"
+#~ msgstr ""
+
+#~ msgid "IP address recording can be disabled on the settings page"
+#~ msgstr ""
+
+#~ msgid "From IP"
+#~ msgstr "מכתובת IP"
 
