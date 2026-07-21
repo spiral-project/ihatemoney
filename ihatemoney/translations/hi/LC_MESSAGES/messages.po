@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-03-02 23:07+0100\n"
 "PO-Revision-Date: 2020-06-14 14:41+0000\n"
 "Last-Translator: raghupalash <singhpalash0@gmail.com>\n"
 "Language: hi\n"
@@ -48,6 +48,9 @@ msgstr "ईमेल"
 
 msgid "Enable project history"
 msgstr "प्रोजेक्ट इतिहास सक्षम करें"
+
+msgid "Use IP tracking for project history"
+msgstr "प्रोजेक्ट इतिहास के लिए IP ट्रैकिंग का उपयोग करें"
 
 msgid "Default Currency"
 msgstr "डिफ़ॉल्ट मुद्रा"
@@ -393,6 +396,13 @@ msgstr "प्रोजेक्ट इतिहास सक्षम करे
 msgid "Deleted project history."
 msgstr "प्रोजेक्ट इतिहास सक्षम करें"
 
+#, fuzzy
+msgid "Error deleting recorded IP addresses"
+msgstr "संग्रहीत IP पते हटाएं"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr ""
+
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "क्षमा करें, हम आपके द्वारा मांगे गए पृष्ठ को खोजने में असमर्थ थे।"
 
@@ -544,11 +554,22 @@ msgstr "डाउनलोड"
 msgid "Disabled Project History"
 msgstr "प्रोजेक्ट इतिहास अक्षम किया गया"
 
+msgid "Disabled Project History & IP Address Recording"
+msgstr "प्रोजेक्ट इतिहास और IP एड्रेस रिकॉर्डिंग को अक्षम किया गया"
+
 msgid "Enabled Project History"
 msgstr "प्रोजेक्ट इतिहास सक्षम किया गया"
 
-#, fuzzy
-msgid "History Settings Changed (legacy settings)"
+msgid "Disabled IP Address Recording"
+msgstr "IP एड्रेस रिकॉर्डिंग को अक्षम किया गया"
+
+msgid "Enabled Project History & IP Address Recording"
+msgstr "प्रोजेक्ट इतिहास सक्षम किया गया और IP एड्रेस रिकॉर्ड किया गया"
+
+msgid "Enabled IP Address Recording"
+msgstr "IP एड्रेस रिकॉर्डिंग को सक्षम किया गया"
+
+msgid "History Settings Changed"
 msgstr "इतिहास सेटिंग्स बदल दी गई है"
 
 #, python-format
@@ -559,6 +580,27 @@ msgstr ""
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr ""
 
+msgid "Confirm Remove IP Adresses"
+msgstr "IP पतों को हटाने की पुष्टि करें"
+
+msgid ""
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+"क्या आप वाकई इस प्रोजेक्ट के सभी रिकॉर्ड किए गए IP पतों को हटाना चाहते "
+"हैं?\n"
+"                  परियोजना का बाकी इतिहास अप्रभावित रहेगा। इस कार्य को "
+"पूर्ववत नहीं किया जा सकता।"
+
+#, fuzzy
+msgid "Confirm deletion"
+msgstr "हटाने की पुष्टि करें"
+
+msgid "Close"
+msgstr "बंद करे"
+
 msgid "Delete Confirmation"
 msgstr "पुष्टिकरण हटाएं"
 
@@ -568,13 +610,6 @@ msgid ""
 msgstr ""
 "क्या आप वाकई इस परियोजना के लिए सभी इतिहास मिटाना चाहते हैं? इस कार्य को "
 "पूर्ववत नहीं किया जा सकता।"
-
-#, fuzzy
-msgid "Confirm deletion"
-msgstr "हटाने की पुष्टि करें"
-
-msgid "Close"
-msgstr "बंद करे"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -626,6 +661,22 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr "किसी ने शायद परियोजना के इतिहास को हटा दिया है।"
 
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr ""
+"नीचे कुछ प्रविष्टियों में IP पते हैं, भले ही इस परियोजना में IP "
+"रिकॉर्डिंग अक्षम है। "
+
+msgid "Delete stored IP addresses"
+msgstr "संग्रहीत IP पते हटाएं"
+
+msgid "No IP Addresses to erase"
+msgstr "मिटाने के लिए कोई IP पते नहीं हैं"
+
+msgid "Delete Stored IP Addresses"
+msgstr "संग्रहीत IP पते हटाएं"
+
 msgid "No history to erase"
 msgstr "मिटाने के लिए कोई इतिहास नहीं है"
 
@@ -637,6 +688,15 @@ msgstr "समय"
 
 msgid "Event"
 msgstr "घटना"
+
+msgid "IP address recording can be enabled on the settings page"
+msgstr "आईपी पता रिकॉर्डिंग को सेटिंग पेज पर सक्षम किया जा सकता है"
+
+msgid "IP address recording can be disabled on the settings page"
+msgstr "आईपी पता रिकॉर्डिंग को सेटिंग पेज पर अक्षम किया जा सकता है"
+
+msgid "From IP"
+msgstr "IP से"
 
 #, fuzzy, python-format
 msgid "Project %(name)s added"
@@ -1167,70 +1227,4 @@ msgstr "अवधि"
 
 #~ msgid "Spent"
 #~ msgstr "खर्च किया"
-
-#~ msgid "Use IP tracking for project history"
-#~ msgstr "प्रोजेक्ट इतिहास के लिए IP ट्रैकिंग का उपयोग करें"
-
-#~ msgid "Error deleting recorded IP addresses"
-#~ msgstr "संग्रहीत IP पते हटाएं"
-
-#~ msgid "Deleted recorded IP addresses in project history."
-#~ msgstr ""
-
-#~ msgid "Disabled Project History & IP Address Recording"
-#~ msgstr "प्रोजेक्ट इतिहास और IP एड्रेस रिकॉर्डिंग को अक्षम किया गया"
-
-#~ msgid "Disabled IP Address Recording"
-#~ msgstr "IP एड्रेस रिकॉर्डिंग को अक्षम किया गया"
-
-#~ msgid "Enabled Project History & IP Address Recording"
-#~ msgstr "प्रोजेक्ट इतिहास सक्षम किया गया और IP एड्रेस रिकॉर्ड किया गया"
-
-#~ msgid "Enabled IP Address Recording"
-#~ msgstr "IP एड्रेस रिकॉर्डिंग को सक्षम किया गया"
-
-#~ msgid "Confirm Remove IP Adresses"
-#~ msgstr "IP पतों को हटाने की पुष्टि करें"
-
-#~ msgid ""
-#~ "Are you sure you want to delete"
-#~ " all recorded IP addresses from this"
-#~ " project?\n"
-#~ "                The rest of the project"
-#~ " history will be unaffected. This "
-#~ "action cannot be undone."
-#~ msgstr ""
-#~ "क्या आप वाकई इस प्रोजेक्ट के सभी"
-#~ " रिकॉर्ड किए गए IP पतों को "
-#~ "हटाना चाहते हैं?\n"
-#~ "                  परियोजना का बाकी इतिहास "
-#~ "अप्रभावित रहेगा। इस कार्य को पूर्ववत "
-#~ "नहीं किया जा सकता।"
-
-#~ msgid ""
-#~ "Some entries below contain IP addresses,"
-#~ " even though this project has IP "
-#~ "recording disabled. "
-#~ msgstr ""
-#~ "नीचे कुछ प्रविष्टियों में IP पते "
-#~ "हैं, भले ही इस परियोजना में IP "
-#~ "रिकॉर्डिंग अक्षम है। "
-
-#~ msgid "Delete stored IP addresses"
-#~ msgstr "संग्रहीत IP पते हटाएं"
-
-#~ msgid "No IP Addresses to erase"
-#~ msgstr "मिटाने के लिए कोई IP पते नहीं हैं"
-
-#~ msgid "Delete Stored IP Addresses"
-#~ msgstr "संग्रहीत IP पते हटाएं"
-
-#~ msgid "IP address recording can be enabled on the settings page"
-#~ msgstr "आईपी पता रिकॉर्डिंग को सेटिंग पेज पर सक्षम किया जा सकता है"
-
-#~ msgid "IP address recording can be disabled on the settings page"
-#~ msgstr "आईपी पता रिकॉर्डिंग को सेटिंग पेज पर अक्षम किया जा सकता है"
-
-#~ msgid "From IP"
-#~ msgstr "IP से"
 

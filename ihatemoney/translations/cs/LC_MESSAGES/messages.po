@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-03-02 23:07+0100\n"
 "PO-Revision-Date: 2023-12-01 14:58+0000\n"
 "Last-Translator: Clonewayx <fillip1@seznam.cz>\n"
 "Language: cs\n"
@@ -44,6 +44,9 @@ msgstr "Email"
 
 msgid "Enable project history"
 msgstr "Povolit historii projektu"
+
+msgid "Use IP tracking for project history"
+msgstr "Použít sledování IP pro historii projektu"
 
 msgid "Default Currency"
 msgstr "Výchozí měna"
@@ -378,6 +381,12 @@ msgstr "Chyba při odstraňování historie projektu"
 msgid "Deleted project history."
 msgstr "Odstraněna historie projektu."
 
+msgid "Error deleting recorded IP addresses"
+msgstr "Chyba při odstraňování zaznamenaných IP adres"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr "Smazané zaznamenané IP adresy v historii projektu."
+
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Omlouváme se, nebyli jsme schopni najít stránku, kterou žádáte."
 
@@ -519,11 +528,22 @@ msgstr "Stáhnout"
 msgid "Disabled Project History"
 msgstr "Deaktivovaná historie projektu"
 
+msgid "Disabled Project History & IP Address Recording"
+msgstr "Deaktivovaná historie projektu & nahrávání IP adresy"
+
 msgid "Enabled Project History"
 msgstr "Povolená historie projektu"
 
-#, fuzzy
-msgid "History Settings Changed (legacy settings)"
+msgid "Disabled IP Address Recording"
+msgstr "Deaktivované nahrávání IP adresy"
+
+msgid "Enabled Project History & IP Address Recording"
+msgstr "Aktivovaná historie projektu & nahrávání IP adresy"
+
+msgid "Enabled IP Address Recording"
+msgstr "Aktivované nahrávání IP adresy"
+
+msgid "History Settings Changed"
 msgstr "Nastavení historie změněna"
 
 #, python-format
@@ -534,6 +554,25 @@ msgstr "Účet %(name)s: %(property_name)s změněn z %(before)s na %(after)s"
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr "Účet %(name)s: %(property_name)s změněno na %(after)s"
 
+msgid "Confirm Remove IP Adresses"
+msgstr "Potvrdit odstranění IP adresy"
+
+msgid ""
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+"Opravdu si přejete-li odstranit všechny zaznamenané IP adresy z tohoto "
+"projektu?\n"
+"Zbytek historie projektu bude nedotčen. Tato akce nelze zrušit."
+
+msgid "Confirm deletion"
+msgstr "Potvrdit odstranění"
+
+msgid "Close"
+msgstr "Zavřít"
+
 msgid "Delete Confirmation"
 msgstr "Potvrzení odstranění"
 
@@ -543,12 +582,6 @@ msgid ""
 msgstr ""
 "Opravdu si přejete vymazat veškerou historii tohoto projektu? Tato akce "
 "nelze zrušit."
-
-msgid "Confirm deletion"
-msgstr "Potvrdit odstranění"
-
-msgid "Close"
-msgstr "Zavřít"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -600,6 +633,22 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr "Můžete vymazat historii projektu, abyste je odstranili."
 
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr ""
+"Některé položky níže obsahují IP adresy, přestože tento projekt má "
+"deaktivované IP nahrávání. "
+
+msgid "Delete stored IP addresses"
+msgstr "Smazat uložené IP adresy"
+
+msgid "No IP Addresses to erase"
+msgstr "Žádné IP adresy ke smazání"
+
+msgid "Delete Stored IP Addresses"
+msgstr "Smazat uložené IP adresy"
+
 msgid "No history to erase"
 msgstr "Žádná historie ke smazání"
 
@@ -611,6 +660,15 @@ msgstr "Čas"
 
 msgid "Event"
 msgstr "Příležitost"
+
+msgid "IP address recording can be enabled on the settings page"
+msgstr "Nahrávání IP adresy lze aktivovat v nastavení"
+
+msgid "IP address recording can be disabled on the settings page"
+msgstr "Nahrávání IP adresy lze deaktivovat v nastavení"
+
+msgid "From IP"
+msgstr "Z IP adresy"
 
 #, python-format
 msgid "Project %(name)s added"
@@ -1201,68 +1259,4 @@ msgstr "Období"
 
 #~ msgid "Spent"
 #~ msgstr "Utraceno"
-
-#~ msgid "Use IP tracking for project history"
-#~ msgstr "Použít sledování IP pro historii projektu"
-
-#~ msgid "Error deleting recorded IP addresses"
-#~ msgstr "Chyba při odstraňování zaznamenaných IP adres"
-
-#~ msgid "Deleted recorded IP addresses in project history."
-#~ msgstr "Smazané zaznamenané IP adresy v historii projektu."
-
-#~ msgid "Disabled Project History & IP Address Recording"
-#~ msgstr "Deaktivovaná historie projektu & nahrávání IP adresy"
-
-#~ msgid "Disabled IP Address Recording"
-#~ msgstr "Deaktivované nahrávání IP adresy"
-
-#~ msgid "Enabled Project History & IP Address Recording"
-#~ msgstr "Aktivovaná historie projektu & nahrávání IP adresy"
-
-#~ msgid "Enabled IP Address Recording"
-#~ msgstr "Aktivované nahrávání IP adresy"
-
-#~ msgid "Confirm Remove IP Adresses"
-#~ msgstr "Potvrdit odstranění IP adresy"
-
-#~ msgid ""
-#~ "Are you sure you want to delete"
-#~ " all recorded IP addresses from this"
-#~ " project?\n"
-#~ "                The rest of the project"
-#~ " history will be unaffected. This "
-#~ "action cannot be undone."
-#~ msgstr ""
-#~ "Opravdu si přejete-li odstranit všechny"
-#~ " zaznamenané IP adresy z tohoto "
-#~ "projektu?\n"
-#~ "Zbytek historie projektu bude nedotčen. Tato akce nelze zrušit."
-
-#~ msgid ""
-#~ "Some entries below contain IP addresses,"
-#~ " even though this project has IP "
-#~ "recording disabled. "
-#~ msgstr ""
-#~ "Některé položky níže obsahují IP adresy,"
-#~ " přestože tento projekt má deaktivované "
-#~ "IP nahrávání. "
-
-#~ msgid "Delete stored IP addresses"
-#~ msgstr "Smazat uložené IP adresy"
-
-#~ msgid "No IP Addresses to erase"
-#~ msgstr "Žádné IP adresy ke smazání"
-
-#~ msgid "Delete Stored IP Addresses"
-#~ msgstr "Smazat uložené IP adresy"
-
-#~ msgid "IP address recording can be enabled on the settings page"
-#~ msgstr "Nahrávání IP adresy lze aktivovat v nastavení"
-
-#~ msgid "IP address recording can be disabled on the settings page"
-#~ msgstr "Nahrávání IP adresy lze deaktivovat v nastavení"
-
-#~ msgid "From IP"
-#~ msgstr "Z IP adresy"
 

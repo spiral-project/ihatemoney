@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-03-02 23:07+0100\n"
 "PO-Revision-Date: 2022-02-13 16:54+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language: nb_NO\n"
@@ -47,6 +47,9 @@ msgstr "E-post"
 
 msgid "Enable project history"
 msgstr "Skru på prosjekthistorikk"
+
+msgid "Use IP tracking for project history"
+msgstr "Bruk IP-sporing for prosjekthistorikk"
 
 msgid "Default Currency"
 msgstr "Forvalgt valuta"
@@ -406,6 +409,14 @@ msgstr "Skru på prosjekthistorikk"
 msgid "Deleted project history."
 msgstr "Slettet prosjekthistorikk."
 
+#, fuzzy
+msgid "Error deleting recorded IP addresses"
+msgstr "Kunne ikke slette registrerte IP-adresser"
+
+#, fuzzy
+msgid "Deleted recorded IP addresses in project history."
+msgstr "Slettet registrerte IP-adresser fra prosjekthistorikk."
+
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Fant ikke siden du forespurte."
 
@@ -559,11 +570,27 @@ msgstr "Last nd"
 msgid "Disabled Project History"
 msgstr "Avskrudd prosjekthistorikk"
 
+#, fuzzy
+msgid "Disabled Project History & IP Address Recording"
+msgstr "Avskrudd prosjekthistorikk og IP-adresseregistrering"
+
 msgid "Enabled Project History"
 msgstr "Påskrudd prosjekthistorikk"
 
 #, fuzzy
-msgid "History Settings Changed (legacy settings)"
+msgid "Disabled IP Address Recording"
+msgstr "Avskrudd IP-adresseregistrering"
+
+#, fuzzy
+msgid "Enabled Project History & IP Address Recording"
+msgstr "Påskrudd prosjekthistorikk og IP-adresseregistrering"
+
+#, fuzzy
+msgid "Enabled IP Address Recording"
+msgstr "Påskrudd IP-adresseregistrering"
+
+#, fuzzy
+msgid "History Settings Changed"
 msgstr "Historikkinnstillinger endret"
 
 #, python-format
@@ -574,6 +601,27 @@ msgstr "Regningen %(name)s: %(property_name)s endret fra %(before)s til %(after)
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr "Regning %(name)s: %(property_name)s endret til %(after)s"
 
+#, fuzzy
+msgid "Confirm Remove IP Adresses"
+msgstr "Bekreft fjerning av IP-adresse"
+
+#, fuzzy
+msgid ""
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+"Slett alle registrerte IP-adresser fra dette prosjektet?\n"
+"                Resten av prosjekthistorikken vil ikke bli påvirket. "
+"Dette kan ikke angres."
+
+msgid "Confirm deletion"
+msgstr "Bekreft sletting"
+
+msgid "Close"
+msgstr "Lukk"
+
 msgid "Delete Confirmation"
 msgstr "Slettingsbekreftelse"
 
@@ -582,12 +630,6 @@ msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
 msgstr "Slett all historikken i prosjektet for godt? Dette kan ikke angres."
-
-msgid "Confirm deletion"
-msgstr "Bekreft sletting"
-
-msgid "Close"
-msgstr "Lukk"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -639,6 +681,25 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr "Noen tømte antagelig prosjekthistorikken."
 
+#, fuzzy
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr ""
+"Noen oppføringer nedenfor inneholder IP-adresser, selv om dette "
+"prosjektet har IP-registrering avskrudd. "
+
+msgid "Delete stored IP addresses"
+msgstr "Slett lagrede IP-adresser"
+
+#, fuzzy
+msgid "No IP Addresses to erase"
+msgstr "Ingen IP-adresser å slette"
+
+#, fuzzy
+msgid "Delete Stored IP Addresses"
+msgstr "Slett lagrede IP-adresser"
+
 msgid "No history to erase"
 msgstr "Ingen historikk å slette"
 
@@ -650,6 +711,17 @@ msgstr "Tid"
 
 msgid "Event"
 msgstr "Hendelse"
+
+#, fuzzy
+msgid "IP address recording can be enabled on the settings page"
+msgstr "IP-adresseregistrering kan skrus på fra innstillingssiden"
+
+#, fuzzy
+msgid "IP address recording can be disabled on the settings page"
+msgstr "IP-adresseregistrering kan skrus av på innstillingssiden"
+
+msgid "From IP"
+msgstr "Fra IP"
 
 #, python-format
 msgid "Project %(name)s added"
@@ -1342,68 +1414,4 @@ msgstr "Periode"
 
 #~ msgid "Spent"
 #~ msgstr "Forbrukt"
-
-#~ msgid "Use IP tracking for project history"
-#~ msgstr "Bruk IP-sporing for prosjekthistorikk"
-
-#~ msgid "Error deleting recorded IP addresses"
-#~ msgstr "Kunne ikke slette registrerte IP-adresser"
-
-#~ msgid "Deleted recorded IP addresses in project history."
-#~ msgstr "Slettet registrerte IP-adresser fra prosjekthistorikk."
-
-#~ msgid "Disabled Project History & IP Address Recording"
-#~ msgstr "Avskrudd prosjekthistorikk og IP-adresseregistrering"
-
-#~ msgid "Disabled IP Address Recording"
-#~ msgstr "Avskrudd IP-adresseregistrering"
-
-#~ msgid "Enabled Project History & IP Address Recording"
-#~ msgstr "Påskrudd prosjekthistorikk og IP-adresseregistrering"
-
-#~ msgid "Enabled IP Address Recording"
-#~ msgstr "Påskrudd IP-adresseregistrering"
-
-#~ msgid "Confirm Remove IP Adresses"
-#~ msgstr "Bekreft fjerning av IP-adresse"
-
-#~ msgid ""
-#~ "Are you sure you want to delete"
-#~ " all recorded IP addresses from this"
-#~ " project?\n"
-#~ "                The rest of the project"
-#~ " history will be unaffected. This "
-#~ "action cannot be undone."
-#~ msgstr ""
-#~ "Slett alle registrerte IP-adresser fra dette prosjektet?\n"
-#~ "                Resten av prosjekthistorikken "
-#~ "vil ikke bli påvirket. Dette kan "
-#~ "ikke angres."
-
-#~ msgid ""
-#~ "Some entries below contain IP addresses,"
-#~ " even though this project has IP "
-#~ "recording disabled. "
-#~ msgstr ""
-#~ "Noen oppføringer nedenfor inneholder IP-"
-#~ "adresser, selv om dette prosjektet har"
-#~ " IP-registrering avskrudd. "
-
-#~ msgid "Delete stored IP addresses"
-#~ msgstr "Slett lagrede IP-adresser"
-
-#~ msgid "No IP Addresses to erase"
-#~ msgstr "Ingen IP-adresser å slette"
-
-#~ msgid "Delete Stored IP Addresses"
-#~ msgstr "Slett lagrede IP-adresser"
-
-#~ msgid "IP address recording can be enabled on the settings page"
-#~ msgstr "IP-adresseregistrering kan skrus på fra innstillingssiden"
-
-#~ msgid "IP address recording can be disabled on the settings page"
-#~ msgstr "IP-adresseregistrering kan skrus av på innstillingssiden"
-
-#~ msgid "From IP"
-#~ msgstr "Fra IP"
 

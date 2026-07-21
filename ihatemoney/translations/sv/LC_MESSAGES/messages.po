@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-03-02 23:07+0100\n"
 "PO-Revision-Date: 2023-11-20 05:10+0000\n"
 "Last-Translator: Jesper <93771679+Bjorkan@users.noreply.github.com>\n"
 "Language: sv\n"
@@ -44,6 +44,9 @@ msgstr "E-post"
 
 msgid "Enable project history"
 msgstr "Aktivera projekthistorik"
+
+msgid "Use IP tracking for project history"
+msgstr "Använd IP-spårning för projekthistorik"
 
 msgid "Default Currency"
 msgstr "Standardvaluta"
@@ -388,6 +391,12 @@ msgstr "Fel uppstod när projektets historik skulle tas bort"
 msgid "Deleted project history."
 msgstr "Projektets historik togs bort."
 
+msgid "Error deleting recorded IP addresses"
+msgstr "Fel uppstod när insamlade IP-adresser skulle tas bort"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr "Tog bort insamlade IP-adresser i projektets historik."
+
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Ledsen, men vi kunde inte hitta sidan som du frågade efter."
 
@@ -533,11 +542,22 @@ msgstr "Ladda ner"
 msgid "Disabled Project History"
 msgstr "Inaktiverade projekthistorik"
 
+msgid "Disabled Project History & IP Address Recording"
+msgstr "Inaktiverade projekthistorik och inspelning av IP-adress"
+
 msgid "Enabled Project History"
 msgstr "Aktiverade projekthistorik"
 
-#, fuzzy
-msgid "History Settings Changed (legacy settings)"
+msgid "Disabled IP Address Recording"
+msgstr "Inaktiverade inspelning av IP-adress"
+
+msgid "Enabled Project History & IP Address Recording"
+msgstr "Aktiverade projekthistorik & inspelning av IP-adress"
+
+msgid "Enabled IP Address Recording"
+msgstr "Aktiverade inspelning av IP-adress"
+
+msgid "History Settings Changed"
 msgstr "Inställningarna för historiken har ändrats"
 
 #, python-format
@@ -550,6 +570,26 @@ msgstr ""
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr "Faktura %(name)s: %(property_name)s ändrades till %(after)s"
 
+msgid "Confirm Remove IP Adresses"
+msgstr "Bekräfta borttagning av IP-adresser"
+
+msgid ""
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+"Är du säker på att du vill ta bort alla insamlade IP-adresser från det "
+"här projektet?\n"
+"                Resten av projektets historik kommer inte att drabbas. "
+"Den här åtgärden kan inte ångras."
+
+msgid "Confirm deletion"
+msgstr "Bekräfta borttagning"
+
+msgid "Close"
+msgstr "Stäng"
+
 msgid "Delete Confirmation"
 msgstr "Ta bort bekräftelse"
 
@@ -559,12 +599,6 @@ msgid ""
 msgstr ""
 "Är du säker på att du vill ta bort alla historik för det här projektet? "
 "Den här åtgärden kan inte göras ogjord."
-
-msgid "Confirm deletion"
-msgstr "Bekräfta borttagning"
-
-msgid "Close"
-msgstr "Stäng"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -618,6 +652,22 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr "Du kan rensa projektets historik för att ta bort dem."
 
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr ""
+"Några poster här nedan innehåller IP-adresser, fastän det här projektet "
+"har IP-inspelning inaktiverat. "
+
+msgid "Delete stored IP addresses"
+msgstr "Ta bort lagrade IP-adresser"
+
+msgid "No IP Addresses to erase"
+msgstr "Inga IP-adresser att ta bort"
+
+msgid "Delete Stored IP Addresses"
+msgstr "Ta bort de lagrade IP-adresserna"
+
 msgid "No history to erase"
 msgstr "Ingen historik att ta bort"
 
@@ -629,6 +679,15 @@ msgstr "Tid"
 
 msgid "Event"
 msgstr "Händelse"
+
+msgid "IP address recording can be enabled on the settings page"
+msgstr "Insamling av IP-adresser kan aktiveras på inställningssidan"
+
+msgid "IP address recording can be disabled on the settings page"
+msgstr "Insamling av IP-adresser kan inaktiveras på Inställningar-sidan"
+
+msgid "From IP"
+msgstr "Från IP"
 
 #, python-format
 msgid "Project %(name)s added"
@@ -1152,70 +1211,4 @@ msgstr "Punkt"
 
 #~ msgid "Spent"
 #~ msgstr "Spenderat"
-
-#~ msgid "Use IP tracking for project history"
-#~ msgstr "Använd IP-spårning för projekthistorik"
-
-#~ msgid "Error deleting recorded IP addresses"
-#~ msgstr "Fel uppstod när insamlade IP-adresser skulle tas bort"
-
-#~ msgid "Deleted recorded IP addresses in project history."
-#~ msgstr "Tog bort insamlade IP-adresser i projektets historik."
-
-#~ msgid "Disabled Project History & IP Address Recording"
-#~ msgstr "Inaktiverade projekthistorik och inspelning av IP-adress"
-
-#~ msgid "Disabled IP Address Recording"
-#~ msgstr "Inaktiverade inspelning av IP-adress"
-
-#~ msgid "Enabled Project History & IP Address Recording"
-#~ msgstr "Aktiverade projekthistorik & inspelning av IP-adress"
-
-#~ msgid "Enabled IP Address Recording"
-#~ msgstr "Aktiverade inspelning av IP-adress"
-
-#~ msgid "Confirm Remove IP Adresses"
-#~ msgstr "Bekräfta borttagning av IP-adresser"
-
-#~ msgid ""
-#~ "Are you sure you want to delete"
-#~ " all recorded IP addresses from this"
-#~ " project?\n"
-#~ "                The rest of the project"
-#~ " history will be unaffected. This "
-#~ "action cannot be undone."
-#~ msgstr ""
-#~ "Är du säker på att du vill "
-#~ "ta bort alla insamlade IP-adresser "
-#~ "från det här projektet?\n"
-#~ "                Resten av projektets historik"
-#~ " kommer inte att drabbas. Den här "
-#~ "åtgärden kan inte ångras."
-
-#~ msgid ""
-#~ "Some entries below contain IP addresses,"
-#~ " even though this project has IP "
-#~ "recording disabled. "
-#~ msgstr ""
-#~ "Några poster här nedan innehåller IP-"
-#~ "adresser, fastän det här projektet har"
-#~ " IP-inspelning inaktiverat. "
-
-#~ msgid "Delete stored IP addresses"
-#~ msgstr "Ta bort lagrade IP-adresser"
-
-#~ msgid "No IP Addresses to erase"
-#~ msgstr "Inga IP-adresser att ta bort"
-
-#~ msgid "Delete Stored IP Addresses"
-#~ msgstr "Ta bort de lagrade IP-adresserna"
-
-#~ msgid "IP address recording can be enabled on the settings page"
-#~ msgstr "Insamling av IP-adresser kan aktiveras på inställningssidan"
-
-#~ msgid "IP address recording can be disabled on the settings page"
-#~ msgstr "Insamling av IP-adresser kan inaktiveras på Inställningar-sidan"
-
-#~ msgid "From IP"
-#~ msgstr "Från IP"
 

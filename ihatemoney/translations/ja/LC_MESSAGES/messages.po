@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-03-02 23:07+0100\n"
 "PO-Revision-Date: 2024-06-24 15:09+0000\n"
 "Last-Translator: Khang Tran <tranchikhang@outlook.com>\n"
 "Language: ja\n"
@@ -44,6 +44,9 @@ msgstr "メールアドレス"
 
 msgid "Enable project history"
 msgstr "プロジェクトの歴史を有効にする"
+
+msgid "Use IP tracking for project history"
+msgstr "IPでプロジェクトの歴史を追跡する"
 
 msgid "Default Currency"
 msgstr "初期設定にする通貨"
@@ -372,6 +375,13 @@ msgstr "プロジェクトの歴史を有効にする"
 msgid "Deleted project history."
 msgstr "プロジェクトの歴史を削除しました。"
 
+#, fuzzy
+msgid "Error deleting recorded IP addresses"
+msgstr "保存されたIPアドレスを削除する"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr ""
+
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "申し訳ございませんが、求められるページが見つかりませんでした。"
 
@@ -521,11 +531,22 @@ msgstr "ダウンロードする"
 msgid "Disabled Project History"
 msgstr "操作できないプロジェクト歴史"
 
+msgid "Disabled Project History & IP Address Recording"
+msgstr "操作できないプロジェクトの歴史＆IPアドレス記録"
+
 msgid "Enabled Project History"
 msgstr "操作可能なプロジェクト歴史"
 
-#, fuzzy
-msgid "History Settings Changed (legacy settings)"
+msgid "Disabled IP Address Recording"
+msgstr "操作できないIPアドレス記録"
+
+msgid "Enabled Project History & IP Address Recording"
+msgstr "操作可能なプロジェクト歴史＆IPアドレス記録"
+
+msgid "Enabled IP Address Recording"
+msgstr "操作可能なIPアドレス記録"
+
+msgid "History Settings Changed"
 msgstr "歴史設定が変更された"
 
 #, python-format
@@ -536,13 +557,17 @@ msgstr ""
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr ""
 
-msgid "Delete Confirmation"
-msgstr "確認を削除する"
+msgid "Confirm Remove IP Adresses"
+msgstr "IPアドレスの取り除きを確認する"
 
 msgid ""
-"Are you sure you want to erase all history for this project? This action "
-"cannot be undone."
-msgstr "本当にこのプロジェクトの歴史をすべて消しますか。この操作は元に戻せません。"
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+"本当にこのプロジェクトから記録されたIPアドレスを全部削除したいですか。\n"
+"残りのプロジェクト歴史が影響されていません。この操作は元に戻せません。"
 
 #, fuzzy
 msgid "Confirm deletion"
@@ -550,6 +575,14 @@ msgstr "削除を確認する"
 
 msgid "Close"
 msgstr "閉じる"
+
+msgid "Delete Confirmation"
+msgstr "確認を削除する"
+
+msgid ""
+"Are you sure you want to erase all history for this project? This action "
+"cannot be undone."
+msgstr "本当にこのプロジェクトの歴史をすべて消しますか。この操作は元に戻せません。"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -600,6 +633,20 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr "プロジェクトの歴史が誰かに取り除かれたかもしれません。"
 
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr "このプロジェクトのIP記録が操作できない一方、下の入り口の一部がIPアドレスを含めています。 "
+
+msgid "Delete stored IP addresses"
+msgstr "保存されたIPアドレスを削除する"
+
+msgid "No IP Addresses to erase"
+msgstr "削除できるIPアドレスはない"
+
+msgid "Delete Stored IP Addresses"
+msgstr "保存されたIPアドレスを削除する"
+
 msgid "No history to erase"
 msgstr "削除できる歴史はない"
 
@@ -611,6 +658,15 @@ msgstr "時間"
 
 msgid "Event"
 msgstr "イベント"
+
+msgid "IP address recording can be enabled on the settings page"
+msgstr "設定ページでIPアドレス記録を編集可能にすることができる"
+
+msgid "IP address recording can be disabled on the settings page"
+msgstr "設定ページでIPアドレス記録を編集不可にすることができる"
+
+msgid "From IP"
+msgstr "IPから"
 
 #, python-format
 msgid "Project %(name)s added"
@@ -1118,63 +1174,4 @@ msgstr "期間"
 
 #~ msgid "Spent"
 #~ msgstr "使われた"
-
-#~ msgid "Use IP tracking for project history"
-#~ msgstr "IPでプロジェクトの歴史を追跡する"
-
-#~ msgid "Error deleting recorded IP addresses"
-#~ msgstr "保存されたIPアドレスを削除する"
-
-#~ msgid "Deleted recorded IP addresses in project history."
-#~ msgstr ""
-
-#~ msgid "Disabled Project History & IP Address Recording"
-#~ msgstr "操作できないプロジェクトの歴史＆IPアドレス記録"
-
-#~ msgid "Disabled IP Address Recording"
-#~ msgstr "操作できないIPアドレス記録"
-
-#~ msgid "Enabled Project History & IP Address Recording"
-#~ msgstr "操作可能なプロジェクト歴史＆IPアドレス記録"
-
-#~ msgid "Enabled IP Address Recording"
-#~ msgstr "操作可能なIPアドレス記録"
-
-#~ msgid "Confirm Remove IP Adresses"
-#~ msgstr "IPアドレスの取り除きを確認する"
-
-#~ msgid ""
-#~ "Are you sure you want to delete"
-#~ " all recorded IP addresses from this"
-#~ " project?\n"
-#~ "                The rest of the project"
-#~ " history will be unaffected. This "
-#~ "action cannot be undone."
-#~ msgstr ""
-#~ "本当にこのプロジェクトから記録されたIPアドレスを全部削除したいですか。\n"
-#~ "残りのプロジェクト歴史が影響されていません。この操作は元に戻せません。"
-
-#~ msgid ""
-#~ "Some entries below contain IP addresses,"
-#~ " even though this project has IP "
-#~ "recording disabled. "
-#~ msgstr "このプロジェクトのIP記録が操作できない一方、下の入り口の一部がIPアドレスを含めています。 "
-
-#~ msgid "Delete stored IP addresses"
-#~ msgstr "保存されたIPアドレスを削除する"
-
-#~ msgid "No IP Addresses to erase"
-#~ msgstr "削除できるIPアドレスはない"
-
-#~ msgid "Delete Stored IP Addresses"
-#~ msgstr "保存されたIPアドレスを削除する"
-
-#~ msgid "IP address recording can be enabled on the settings page"
-#~ msgstr "設定ページでIPアドレス記録を編集可能にすることができる"
-
-#~ msgid "IP address recording can be disabled on the settings page"
-#~ msgstr "設定ページでIPアドレス記録を編集不可にすることができる"
-
-#~ msgid "From IP"
-#~ msgstr "IPから"
 

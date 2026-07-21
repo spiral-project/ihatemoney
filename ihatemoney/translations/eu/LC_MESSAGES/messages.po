@@ -1,18 +1,18 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-03-02 23:07+0100\n"
 "PO-Revision-Date: 2026-03-05 20:10+0000\n"
 "Last-Translator: Jokin <jokin_pedre@hotmail.com>\n"
+"Language-Team: Basque <https://hosted.weblate.org/projects/i-hate-money/i-"
+"hate-money/eu/>\n"
 "Language: eu\n"
-"Language-Team: Basque <https://hosted.weblate.org/projects/i-hate-money/i"
-"-hate-money/eu/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.17-dev\n"
 "Generated-By: Babel 2.16.0\n"
 
 #, python-format
@@ -44,6 +44,9 @@ msgstr "Posta elektronikoa"
 
 msgid "Enable project history"
 msgstr "Aktibatu proiektuaren historia"
+
+msgid "Use IP tracking for project history"
+msgstr "Erabili IP jarraipena proiektuaren historiarentzat"
 
 msgid "Default Currency"
 msgstr "Lehenetsitako moneta"
@@ -377,6 +380,12 @@ msgstr "Ezin izan da proiektuaren historia ezabatu"
 msgid "Deleted project history."
 msgstr "Proiektuaren historia ezabatu da."
 
+msgid "Error deleting recorded IP addresses"
+msgstr "Ezin izan dira ezabatu gordetako IP helbideak"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr "Gordetako IP helbideak proiektuaren historiatik ezabatu dira."
+
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Tamalez, ezin izan dugu bilatzen duzun orrialdea topatu."
 
@@ -518,11 +527,22 @@ msgstr "Deskargatu"
 msgid "Disabled Project History"
 msgstr "Proiektuaren historia ez dago gaituta"
 
+msgid "Disabled Project History & IP Address Recording"
+msgstr "Proiektuaren historia eta IP helbideen grabazioa ez daude gaituta"
+
 msgid "Enabled Project History"
 msgstr "Poriektuaren historia gaituta dago"
 
-#, fuzzy
-msgid "History Settings Changed (legacy settings)"
+msgid "Disabled IP Address Recording"
+msgstr "IP helbideen grabazioa ez dago gaituta"
+
+msgid "Enabled Project History & IP Address Recording"
+msgstr "Proiektuaren historia eta IP helbideen grabazioa gaituta daude"
+
+msgid "Enabled IP Address Recording"
+msgstr "IP helbidearen grabazioa gaituta dago"
+
+msgid "History Settings Changed"
 msgstr "Historiaren ezarpenak aldatu egin dira"
 
 #, python-format
@@ -535,6 +555,26 @@ msgstr ""
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr "%(name)s kontua: %(property_name)s aldatu egin da %(after)s-(e)ra"
 
+msgid "Confirm Remove IP Adresses"
+msgstr "Baieztatu IP helbideen ezabatzea"
+
+msgid ""
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+"Ziur zaude proiektu honetan gordetako IP helbide guztiak ezabatu nahi "
+"dituzula?\n"
+"                Gainerako historiak ez du aldaketarik jasango. Eragiketa "
+"hau ezin da desegin."
+
+msgid "Confirm deletion"
+msgstr "Baieztatu ezabatzea"
+
+msgid "Close"
+msgstr "Itxi"
+
 msgid "Delete Confirmation"
 msgstr "Ezabatzearen egiaztapena"
 
@@ -544,12 +584,6 @@ msgid ""
 msgstr ""
 "Ziur zaude proiektuaren historia guztia ezabatu nahi duzula? Ekintza hau "
 "ezin da desegin."
-
-msgid "Confirm deletion"
-msgstr "Baieztatu ezabatzea"
-
-msgid "Close"
-msgstr "Itxi"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -598,6 +632,22 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr "Garbitzeko, proiektuaren historia ezaba dezakezu."
 
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr ""
+"Ondorengo sarreretako batzuek IP helbideak dituzte, nahiz eta proiektuak "
+"IP helbideen grabazioa gaituta ez izan. "
+
+msgid "Delete stored IP addresses"
+msgstr "Gordetako IP helbideak ezabatu"
+
+msgid "No IP Addresses to erase"
+msgstr "Ez dago IP helbiderik ezabatzeko"
+
+msgid "Delete Stored IP Addresses"
+msgstr "Ezabatu gordetako IP helbideak"
+
 msgid "No history to erase"
 msgstr "Ez dago historiarik ezabatzeko"
 
@@ -609,6 +659,15 @@ msgstr "Ordua"
 
 msgid "Event"
 msgstr "Ekintza"
+
+msgid "IP address recording can be enabled on the settings page"
+msgstr "IP helbdieen grabazioa gaitu daiteke ezarpenetan"
+
+msgid "IP address recording can be disabled on the settings page"
+msgstr "IP helbideen grabazioa desgaitu daiteke ezarpenetan"
+
+msgid "From IP"
+msgstr "Jatorrizko IPa"
 
 #, python-format
 msgid "Project %(name)s added"
@@ -981,70 +1040,3 @@ msgstr "Denbora tartea"
 
 #~ msgid "Expenses by Month"
 #~ msgstr ""
-
-#~ msgid "Use IP tracking for project history"
-#~ msgstr "Erabili IP jarraipena proiektuaren historiarentzat"
-
-#~ msgid "Error deleting recorded IP addresses"
-#~ msgstr "Ezin izan dira ezabatu gordetako IP helbideak"
-
-#~ msgid "Deleted recorded IP addresses in project history."
-#~ msgstr "Gordetako IP helbideak proiektuaren historiatik ezabatu dira."
-
-#~ msgid "Disabled Project History & IP Address Recording"
-#~ msgstr "Proiektuaren historia eta IP helbideen grabazioa ez daude gaituta"
-
-#~ msgid "Disabled IP Address Recording"
-#~ msgstr "IP helbideen grabazioa ez dago gaituta"
-
-#~ msgid "Enabled Project History & IP Address Recording"
-#~ msgstr "Proiektuaren historia eta IP helbideen grabazioa gaituta daude"
-
-#~ msgid "Enabled IP Address Recording"
-#~ msgstr "IP helbidearen grabazioa gaituta dago"
-
-#~ msgid "Confirm Remove IP Adresses"
-#~ msgstr "Baieztatu IP helbideen ezabatzea"
-
-#~ msgid ""
-#~ "Are you sure you want to delete"
-#~ " all recorded IP addresses from this"
-#~ " project?\n"
-#~ "                The rest of the project"
-#~ " history will be unaffected. This "
-#~ "action cannot be undone."
-#~ msgstr ""
-#~ "Ziur zaude proiektu honetan gordetako IP"
-#~ " helbide guztiak ezabatu nahi dituzula?"
-#~ "\n"
-#~ "                Gainerako historiak ez du "
-#~ "aldaketarik jasango. Eragiketa hau ezin "
-#~ "da desegin."
-
-#~ msgid ""
-#~ "Some entries below contain IP addresses,"
-#~ " even though this project has IP "
-#~ "recording disabled. "
-#~ msgstr ""
-#~ "Ondorengo sarreretako batzuek IP helbideak "
-#~ "dituzte, nahiz eta proiektuak IP "
-#~ "helbideen grabazioa gaituta ez izan. "
-
-#~ msgid "Delete stored IP addresses"
-#~ msgstr "Gordetako IP helbideak ezabatu"
-
-#~ msgid "No IP Addresses to erase"
-#~ msgstr "Ez dago IP helbiderik ezabatzeko"
-
-#~ msgid "Delete Stored IP Addresses"
-#~ msgstr "Ezabatu gordetako IP helbideak"
-
-#~ msgid "IP address recording can be enabled on the settings page"
-#~ msgstr "IP helbdieen grabazioa gaitu daiteke ezarpenetan"
-
-#~ msgid "IP address recording can be disabled on the settings page"
-#~ msgstr "IP helbideen grabazioa desgaitu daiteke ezarpenetan"
-
-#~ msgid "From IP"
-#~ msgstr "Jatorrizko IPa"
-

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-03-02 23:07+0100\n"
 "PO-Revision-Date: 2023-09-26 13:01+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language: es\n"
@@ -46,6 +46,9 @@ msgstr "Correo electrónico"
 
 msgid "Enable project history"
 msgstr "Habilitar historial del proyecto"
+
+msgid "Use IP tracking for project history"
+msgstr "Utilizar rastreo de IP para el historial del proyecto"
 
 msgid "Default Currency"
 msgstr "Divisa por defecto"
@@ -386,6 +389,12 @@ msgstr "Error al elimniar el historial del proyecto"
 msgid "Deleted project history."
 msgstr "Historial del proyecto eliminado."
 
+msgid "Error deleting recorded IP addresses"
+msgstr "Error al eliminar las direcciones IP registradas"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr "Direcciones IP registradas eliminadas del historial del proyecto."
+
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Lo sentimos, no podemos encontrar la página solicitada."
 
@@ -527,11 +536,24 @@ msgstr "Descargar"
 msgid "Disabled Project History"
 msgstr "Historial del proyecto desactivado"
 
+msgid "Disabled Project History & IP Address Recording"
+msgstr ""
+"Se ha desactivado el registro de direcciones IP y el historial del "
+"proyecto"
+
 msgid "Enabled Project History"
 msgstr "Historial del proyecto activado"
 
-#, fuzzy
-msgid "History Settings Changed (legacy settings)"
+msgid "Disabled IP Address Recording"
+msgstr "Se ha desactivado el registro de direcciones IP"
+
+msgid "Enabled Project History & IP Address Recording"
+msgstr "Se ha activado el historial del proyecto y el registro de direcciones IP"
+
+msgid "Enabled IP Address Recording"
+msgstr "Se ha activado el registro de direcciones IP"
+
+msgid "History Settings Changed"
 msgstr "Cambiada la configuración del historial"
 
 #, python-format
@@ -544,6 +566,26 @@ msgstr ""
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr "Factura %(name)s: %(property_name)s cambió a %(after)s"
 
+msgid "Confirm Remove IP Adresses"
+msgstr "Confirmar la eliminación de direcciones IP"
+
+msgid ""
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+"¿Estás seguro de que quieres borrar todas las direcciones IP registradas "
+"de este proyecto?\n"
+"                El resto del historial del proyecto no se verá afectado. "
+"Esta acción no se puede deshacer."
+
+msgid "Confirm deletion"
+msgstr "Confirmar la eliminación"
+
+msgid "Close"
+msgstr "Cerrar"
+
 msgid "Delete Confirmation"
 msgstr "Eliminar confirmación"
 
@@ -553,12 +595,6 @@ msgid ""
 msgstr ""
 "¿Está seguro de que desea borrar todo el historial de este proyecto? Esta"
 " acción no se puede deshacer."
-
-msgid "Confirm deletion"
-msgstr "Confirmar la eliminación"
-
-msgid "Close"
-msgstr "Cerrar"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -612,6 +648,22 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr "Puedes borrar el historial del proyecto para eliminarlos."
 
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr ""
+"Algunas de las entradas que aparecen a continuación contienen direcciones"
+" IP, a pesar de que este proyecto tiene desactivado el registro de IP. "
+
+msgid "Delete stored IP addresses"
+msgstr "Eliminar direcciones IP almacenadas"
+
+msgid "No IP Addresses to erase"
+msgstr "No hay direcciones IP para borrar"
+
+msgid "Delete Stored IP Addresses"
+msgstr "Borrar las direcciones IP almacenadas"
+
 msgid "No history to erase"
 msgstr "No hay historial que borrar"
 
@@ -623,6 +675,17 @@ msgstr "Hora"
 
 msgid "Event"
 msgstr "Evento"
+
+msgid "IP address recording can be enabled on the settings page"
+msgstr "El registro de dirección IP se puede activar en la página de configuración"
+
+msgid "IP address recording can be disabled on the settings page"
+msgstr ""
+"El registro de dirección IP se puede desactivar en la página de "
+"configuración"
+
+msgid "From IP"
+msgstr "Desde IP"
 
 #, python-format
 msgid "Project %(name)s added"
@@ -1192,83 +1255,4 @@ msgstr "Período"
 
 #~ msgid "Spent"
 #~ msgstr "Gastado"
-
-#~ msgid "Use IP tracking for project history"
-#~ msgstr "Utilizar rastreo de IP para el historial del proyecto"
-
-#~ msgid "Error deleting recorded IP addresses"
-#~ msgstr "Error al eliminar las direcciones IP registradas"
-
-#~ msgid "Deleted recorded IP addresses in project history."
-#~ msgstr "Direcciones IP registradas eliminadas del historial del proyecto."
-
-#~ msgid "Disabled Project History & IP Address Recording"
-#~ msgstr ""
-#~ "Se ha desactivado el registro de "
-#~ "direcciones IP y el historial del "
-#~ "proyecto"
-
-#~ msgid "Disabled IP Address Recording"
-#~ msgstr "Se ha desactivado el registro de direcciones IP"
-
-#~ msgid "Enabled Project History & IP Address Recording"
-#~ msgstr ""
-#~ "Se ha activado el historial del "
-#~ "proyecto y el registro de direcciones"
-#~ " IP"
-
-#~ msgid "Enabled IP Address Recording"
-#~ msgstr "Se ha activado el registro de direcciones IP"
-
-#~ msgid "Confirm Remove IP Adresses"
-#~ msgstr "Confirmar la eliminación de direcciones IP"
-
-#~ msgid ""
-#~ "Are you sure you want to delete"
-#~ " all recorded IP addresses from this"
-#~ " project?\n"
-#~ "                The rest of the project"
-#~ " history will be unaffected. This "
-#~ "action cannot be undone."
-#~ msgstr ""
-#~ "¿Estás seguro de que quieres borrar "
-#~ "todas las direcciones IP registradas de"
-#~ " este proyecto?\n"
-#~ "                El resto del historial "
-#~ "del proyecto no se verá afectado. "
-#~ "Esta acción no se puede deshacer."
-
-#~ msgid ""
-#~ "Some entries below contain IP addresses,"
-#~ " even though this project has IP "
-#~ "recording disabled. "
-#~ msgstr ""
-#~ "Algunas de las entradas que aparecen "
-#~ "a continuación contienen direcciones IP, "
-#~ "a pesar de que este proyecto tiene"
-#~ " desactivado el registro de IP. "
-
-#~ msgid "Delete stored IP addresses"
-#~ msgstr "Eliminar direcciones IP almacenadas"
-
-#~ msgid "No IP Addresses to erase"
-#~ msgstr "No hay direcciones IP para borrar"
-
-#~ msgid "Delete Stored IP Addresses"
-#~ msgstr "Borrar las direcciones IP almacenadas"
-
-#~ msgid "IP address recording can be enabled on the settings page"
-#~ msgstr ""
-#~ "El registro de dirección IP se "
-#~ "puede activar en la página de "
-#~ "configuración"
-
-#~ msgid "IP address recording can be disabled on the settings page"
-#~ msgstr ""
-#~ "El registro de dirección IP se "
-#~ "puede desactivar en la página de "
-#~ "configuración"
-
-#~ msgid "From IP"
-#~ msgstr "Desde IP"
 

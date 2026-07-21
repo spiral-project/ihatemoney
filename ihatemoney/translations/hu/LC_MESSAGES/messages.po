@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-03-02 23:07+0100\n"
 "PO-Revision-Date: 2024-07-08 15:09+0000\n"
 "Last-Translator: NtWriteCode <github@gyorffi.hu>\n"
 "Language: hu\n"
@@ -46,6 +46,9 @@ msgstr "E-mail"
 
 msgid "Enable project history"
 msgstr "Projekt előzmények bekapcsolása"
+
+msgid "Use IP tracking for project history"
+msgstr "IP nyomkövetés használata a projekt előzményekhez"
 
 msgid "Default Currency"
 msgstr "Alapértelmezett Pénznem"
@@ -388,6 +391,12 @@ msgstr "Hiba lépett fel az előzmények törlése közben"
 msgid "Deleted project history."
 msgstr "Előzmények törölve."
 
+msgid "Error deleting recorded IP addresses"
+msgstr "Hiba lépett fel az IP cím törlésekor"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr "IP címek törölve az előzményekből."
+
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Sajnáljuk, de a keresett oldalt nem találjuk."
 
@@ -533,11 +542,22 @@ msgstr "Letöltés"
 msgid "Disabled Project History"
 msgstr "Projekt előzmények kikapcsolva"
 
+msgid "Disabled Project History & IP Address Recording"
+msgstr "Projekt előzmények és IP cím rögzítés kikapcsolva"
+
 msgid "Enabled Project History"
 msgstr "Projekt előzmények bekapcsolva"
 
-#, fuzzy
-msgid "History Settings Changed (legacy settings)"
+msgid "Disabled IP Address Recording"
+msgstr "IP cím rögzítés kikapcsolva"
+
+msgid "Enabled Project History & IP Address Recording"
+msgstr "Projekt előzmények és IP cím rögzítés bekapcsolva"
+
+msgid "Enabled IP Address Recording"
+msgstr "IP cím rögzítés bekapcsolva"
+
+msgid "History Settings Changed"
 msgstr "Előzménybeállítások megváltoztatva"
 
 #, python-format
@@ -550,6 +570,26 @@ msgstr ""
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr "Számla %(name)s: %(property_name)s megváltoztatva erre: %(after)s"
 
+msgid "Confirm Remove IP Adresses"
+msgstr "Erősítsd meg az IP-címek eltávolítását"
+
+msgid ""
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+"Biztos, hogy törölni szeretnéd az összes rögzített IP-címet ebből a "
+"projektből?\n"
+"                A projekt többi előzménye nem változik. Ez a művelet nem "
+"vonható vissza."
+
+msgid "Confirm deletion"
+msgstr "Törlés megerősítése"
+
+msgid "Close"
+msgstr "Bezár"
+
 msgid "Delete Confirmation"
 msgstr "Megerősítés törlése"
 
@@ -559,12 +599,6 @@ msgid ""
 msgstr ""
 "Biztos, hogy törölni akarod a projekt minden előzményét? Ezt a műveletet "
 "nem lehet visszacsinálni."
-
-msgid "Confirm deletion"
-msgstr "Törlés megerősítése"
-
-msgid "Close"
-msgstr "Bezár"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -618,6 +652,22 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr "Törölheted a projekt előzményeit, hogy törölje azokat."
 
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr ""
+"Néhány alábbi bejegyzés IP-címeket tartalmaz, annak ellenére, hogy a "
+"projekt IP-felvétele le van tiltva. "
+
+msgid "Delete stored IP addresses"
+msgstr "Tárolt IP-címek törlése"
+
+msgid "No IP Addresses to erase"
+msgstr "Nincs törlendő IP-cím"
+
+msgid "Delete Stored IP Addresses"
+msgstr "Tárolt IP-Címek Törlése"
+
 msgid "No history to erase"
 msgstr "Nincs kitörölhető előzmény"
 
@@ -629,6 +679,15 @@ msgstr "Idő"
 
 msgid "Event"
 msgstr "Esemény"
+
+msgid "IP address recording can be enabled on the settings page"
+msgstr "Az IP-címek rögzítése a beállítások oldalon engedélyezhető"
+
+msgid "IP address recording can be disabled on the settings page"
+msgstr "Az IP-címek rögzítése letiltható a beállítások oldalon"
+
+msgid "From IP"
+msgstr "IP-ről"
 
 #, python-format
 msgid "Project %(name)s added"
@@ -1113,70 +1172,4 @@ msgstr "Periódus"
 
 #~ msgid "Spent"
 #~ msgstr "Költött"
-
-#~ msgid "Use IP tracking for project history"
-#~ msgstr "IP nyomkövetés használata a projekt előzményekhez"
-
-#~ msgid "Error deleting recorded IP addresses"
-#~ msgstr "Hiba lépett fel az IP cím törlésekor"
-
-#~ msgid "Deleted recorded IP addresses in project history."
-#~ msgstr "IP címek törölve az előzményekből."
-
-#~ msgid "Disabled Project History & IP Address Recording"
-#~ msgstr "Projekt előzmények és IP cím rögzítés kikapcsolva"
-
-#~ msgid "Disabled IP Address Recording"
-#~ msgstr "IP cím rögzítés kikapcsolva"
-
-#~ msgid "Enabled Project History & IP Address Recording"
-#~ msgstr "Projekt előzmények és IP cím rögzítés bekapcsolva"
-
-#~ msgid "Enabled IP Address Recording"
-#~ msgstr "IP cím rögzítés bekapcsolva"
-
-#~ msgid "Confirm Remove IP Adresses"
-#~ msgstr "Erősítsd meg az IP-címek eltávolítását"
-
-#~ msgid ""
-#~ "Are you sure you want to delete"
-#~ " all recorded IP addresses from this"
-#~ " project?\n"
-#~ "                The rest of the project"
-#~ " history will be unaffected. This "
-#~ "action cannot be undone."
-#~ msgstr ""
-#~ "Biztos, hogy törölni szeretnéd az összes"
-#~ " rögzített IP-címet ebből a "
-#~ "projektből?\n"
-#~ "                A projekt többi előzménye "
-#~ "nem változik. Ez a művelet nem "
-#~ "vonható vissza."
-
-#~ msgid ""
-#~ "Some entries below contain IP addresses,"
-#~ " even though this project has IP "
-#~ "recording disabled. "
-#~ msgstr ""
-#~ "Néhány alábbi bejegyzés IP-címeket "
-#~ "tartalmaz, annak ellenére, hogy a "
-#~ "projekt IP-felvétele le van tiltva. \n"
-
-#~ msgid "Delete stored IP addresses"
-#~ msgstr "Tárolt IP-címek törlése"
-
-#~ msgid "No IP Addresses to erase"
-#~ msgstr "Nincs törlendő IP-cím"
-
-#~ msgid "Delete Stored IP Addresses"
-#~ msgstr "Tárolt IP-Címek Törlése"
-
-#~ msgid "IP address recording can be enabled on the settings page"
-#~ msgstr "Az IP-címek rögzítése a beállítások oldalon engedélyezhető"
-
-#~ msgid "IP address recording can be disabled on the settings page"
-#~ msgstr "Az IP-címek rögzítése letiltható a beállítások oldalon"
-
-#~ msgid "From IP"
-#~ msgstr "IP-ről"
 

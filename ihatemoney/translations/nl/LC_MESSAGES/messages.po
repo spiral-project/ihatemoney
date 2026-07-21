@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-05-09 11:56+0200\n"
+"POT-Creation-Date: 2026-03-02 23:07+0100\n"
 "PO-Revision-Date: 2024-03-17 12:01+0000\n"
 "Last-Translator: Xander Jennie <xanderjennie21@gmail.com>\n"
 "Language: nl\n"
@@ -48,6 +48,9 @@ msgstr "E-mailadres"
 
 msgid "Enable project history"
 msgstr "Projectgeschiedenis inschakelen"
+
+msgid "Use IP tracking for project history"
+msgstr "IP-tracking voor projectgeschiedenis gebruiken"
 
 msgid "Default Currency"
 msgstr "Standaard munteenheid"
@@ -390,6 +393,13 @@ msgstr "Projectgeschiedenis inschakelen"
 msgid "Deleted project history."
 msgstr "Projectgeschiedenis inschakelen"
 
+#, fuzzy
+msgid "Error deleting recorded IP addresses"
+msgstr "Verwijder opgeslagen IP-adressen"
+
+msgid "Deleted recorded IP addresses in project history."
+msgstr ""
+
 msgid "Sorry, we were unable to find the page you've asked for."
 msgstr "Sorry, de pagina die je zoekt kan niet worden gevonden."
 
@@ -536,11 +546,22 @@ msgstr "Downloaden"
 msgid "Disabled Project History"
 msgstr "Uitgeschakelde Projectgeschiedenis"
 
+msgid "Disabled Project History & IP Address Recording"
+msgstr "Uitgeschakelde Projecthistorie & IP-Adres Vastlegging"
+
 msgid "Enabled Project History"
 msgstr "Ingeschakelde Projectgeschiedenis"
 
-#, fuzzy
-msgid "History Settings Changed (legacy settings)"
+msgid "Disabled IP Address Recording"
+msgstr ""
+
+msgid "Enabled Project History & IP Address Recording"
+msgstr ""
+
+msgid "Enabled IP Address Recording"
+msgstr ""
+
+msgid "History Settings Changed"
 msgstr "Geschiedenisinstellingen Gewijzigd"
 
 #, python-format
@@ -551,6 +572,27 @@ msgstr ""
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
 msgstr ""
 
+msgid "Confirm Remove IP Adresses"
+msgstr ""
+
+msgid ""
+"Are you sure you want to delete all recorded IP addresses from this "
+"project?\n"
+"                The rest of the project history will be unaffected. This "
+"action cannot be undone."
+msgstr ""
+"Weet je zeker dat je alle vastgelegde IP-adressen wilt verwijderen van "
+"dit project?\n"
+"De rest van de projectgeschiedenis blijft onveranderd. Deze actie kan "
+"niet ongedaan worden gemaakt."
+
+#, fuzzy
+msgid "Confirm deletion"
+msgstr "Bevestig Verwijdering"
+
+msgid "Close"
+msgstr "Sluiten"
+
 msgid "Delete Confirmation"
 msgstr "Bevestiging Verwijdering"
 
@@ -560,13 +602,6 @@ msgid ""
 msgstr ""
 "Weet je zeker dat je de gehele geschiedenis wilt verwijderen voor dit "
 "project? Deze actie kan niet ongedaan worden gemaakt."
-
-#, fuzzy
-msgid "Confirm deletion"
-msgstr "Bevestig Verwijdering"
-
-msgid "Close"
-msgstr "Sluiten"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
@@ -617,6 +652,20 @@ msgstr ""
 msgid "You can clear the project history to remove them."
 msgstr "Iemand heeft waarschijnlijk de projectgeschiedenis verwijderd."
 
+msgid ""
+"Some entries below contain IP addresses, even though this project has IP "
+"recording disabled. "
+msgstr ""
+
+msgid "Delete stored IP addresses"
+msgstr ""
+
+msgid "No IP Addresses to erase"
+msgstr "Geen IP-adressen te verwijderen"
+
+msgid "Delete Stored IP Addresses"
+msgstr "Verwijder opgeslagen IP-adressen"
+
 msgid "No history to erase"
 msgstr "Geen geschiedenis om te wissen"
 
@@ -627,6 +676,15 @@ msgid "Time"
 msgstr "Tijd"
 
 msgid "Event"
+msgstr ""
+
+msgid "IP address recording can be enabled on the settings page"
+msgstr ""
+
+msgid "IP address recording can be disabled on the settings page"
+msgstr ""
+
+msgid "From IP"
 msgstr ""
 
 #, fuzzy, python-format
@@ -1171,68 +1229,5 @@ msgstr "Periode"
 #~ msgstr "Uitgegeven"
 
 #~ msgid "Expenses by Month"
-#~ msgstr ""
-
-#~ msgid "Use IP tracking for project history"
-#~ msgstr "IP-tracking voor projectgeschiedenis gebruiken"
-
-#~ msgid "Error deleting recorded IP addresses"
-#~ msgstr "Verwijder opgeslagen IP-adressen"
-
-#~ msgid "Deleted recorded IP addresses in project history."
-#~ msgstr ""
-
-#~ msgid "Disabled Project History & IP Address Recording"
-#~ msgstr "Uitgeschakelde Projecthistorie & IP-Adres Vastlegging"
-
-#~ msgid "Disabled IP Address Recording"
-#~ msgstr ""
-
-#~ msgid "Enabled Project History & IP Address Recording"
-#~ msgstr ""
-
-#~ msgid "Enabled IP Address Recording"
-#~ msgstr ""
-
-#~ msgid "Confirm Remove IP Adresses"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Are you sure you want to delete"
-#~ " all recorded IP addresses from this"
-#~ " project?\n"
-#~ "                The rest of the project"
-#~ " history will be unaffected. This "
-#~ "action cannot be undone."
-#~ msgstr ""
-#~ "Weet je zeker dat je alle "
-#~ "vastgelegde IP-adressen wilt verwijderen "
-#~ "van dit project?\n"
-#~ "De rest van de projectgeschiedenis "
-#~ "blijft onveranderd. Deze actie kan niet"
-#~ " ongedaan worden gemaakt."
-
-#~ msgid ""
-#~ "Some entries below contain IP addresses,"
-#~ " even though this project has IP "
-#~ "recording disabled. "
-#~ msgstr ""
-
-#~ msgid "Delete stored IP addresses"
-#~ msgstr ""
-
-#~ msgid "No IP Addresses to erase"
-#~ msgstr "Geen IP-adressen te verwijderen"
-
-#~ msgid "Delete Stored IP Addresses"
-#~ msgstr "Verwijder opgeslagen IP-adressen"
-
-#~ msgid "IP address recording can be enabled on the settings page"
-#~ msgstr ""
-
-#~ msgid "IP address recording can be disabled on the settings page"
-#~ msgstr ""
-
-#~ msgid "From IP"
 #~ msgstr ""
 
