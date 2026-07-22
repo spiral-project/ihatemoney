@@ -729,3 +729,33 @@ class TestUtils:
         assert get_owers_label(['A', 'B'], ['C']) == ('list', ['C'])
         assert get_owers_label(['A', 'B', 'C'], ['A', 'B']) == ('list', ['A', 'B'])
         assert get_owers_label(['A', 'B', 'C', 'D'], ['A', 'B']) == ('list', ['A', 'B'])
+
+
+class TestInactiveMember(IhatemoneyTestCase):
+    def test_inactive_member_class(self):
+        self.post_project("demo")
+
+        self.client.post("/demo/members/add", data={"name": "Alice"})
+        self.client.post("/demo/members/add", data={"name": "Bob"})
+
+        self.client.post(
+            "/demo/add",
+            data={
+                "date": "2026-06-06",
+                "what": "Test bill",
+                "payer": 1,
+                "payed_for": [1, 2],
+                "amount": "10",
+            },
+        )
+
+        # Deactivate Alice
+        self.client.post("/demo/members/1/delete")
+
+        response = self.client.get("/demo/")
+
+        # Alice should still be listed
+        assert b"Alice" in response.data
+        # And styled as inactive
+        assert b"inactive-member" in response.data
+

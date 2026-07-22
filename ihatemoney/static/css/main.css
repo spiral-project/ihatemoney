@@ -636,3 +636,8 @@ footer .icon svg {
 .edit-project .custom-file {
   margin-bottom: 2em;
 }
+
+.inactive-member {
+    color: gray;
+    font-style: italic;
+}
