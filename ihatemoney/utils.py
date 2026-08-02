@@ -77,9 +77,7 @@ def flash_email_error(error_message, category="danger"):
         )
 
     flash(
-        "{error_message} {error_extension}".format(
-            error_message=error_message, error_extension=error_extension
-        ),
+        f"{error_message} {error_extension}",
         category=category,
     )
 
@@ -285,7 +283,7 @@ def eval_arithmetic_expression(expr):
     try:
         result = _eval(ast.parse(expr, mode="eval").body)
     except (SyntaxError, TypeError, ZeroDivisionError, KeyError):
-        raise ValueError("Error evaluating expression: {}".format(expr))
+        raise ValueError(f"Error evaluating expression: {expr}")
 
     return result
 

@@ -1281,10 +1281,10 @@ class TestBudget(IhatemoneyTestCase):
         # same as in the main table.
         order = ["jeanne", "pépé", "tata", "zorglub"]
         regex1 = r".*".join(
-            r"<td class=\"balance-name\">{}</td>".format(name) for name in order
+            fr"<td class=\"balance-name\">{name}</td>" for name in order
         )
         regex2 = r".*".join(
-            r"<td class=\"d-md-none\">{}</td>".format(name) for name in order
+            fr"<td class=\"d-md-none\">{name}</td>" for name in order
         )
         # Build the regexp ourselves to be able to pass the DOTALL flag
         # (so that ".*" matches newlines)
