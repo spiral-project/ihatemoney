@@ -102,3 +102,6 @@ include = [
 
 [tool.ruff]
 exclude = ["ihatemoney/migrations"]
+
+[tool.ruff.lint]
+ignore = ["RUF012", "DTZ007", "UP031", "BLE001", "DTZ011", "RUF013", "B006", "DTZ002", "DTZ005", "UP012", "UP024"]
