@@ -837,7 +837,7 @@ class TestBudget(IhatemoneyTestCase):
         )
 
         balance = self.get_project("raclette").balance
-        assert set(balance.values()) == set([19.0, -19.0])
+        assert set(balance.values()) == {19.0, -19.0}
 
         # Bill with negative amount
         self.client.post(
@@ -925,7 +925,7 @@ class TestBudget(IhatemoneyTestCase):
         )
         # check balance
         balance = self.get_project("rent").balance
-        assert set(balance.values()), set([500 == -500])
+        assert set(balance.values()), {500 == -500}
 
         project = self.get_project("rent")
         bob_paid = project.full_balance[2][bob]
@@ -947,7 +947,7 @@ class TestBudget(IhatemoneyTestCase):
         )
 
         balance = project.balance
-        assert set(balance.values()), set([0 == 0])
+        assert set(balance.values()), {0 == 0}
 
         # After the reimbursement, the full balance should be populated with
         # transfer items
@@ -998,7 +998,7 @@ class TestBudget(IhatemoneyTestCase):
         )
 
         balance = self.get_project("raclette").balance
-        assert set(balance.values()) == set([6, -6])
+        assert set(balance.values()) == {6, -6}
 
     def test_trimmed_members(self):
         self.post_project("raclette")
