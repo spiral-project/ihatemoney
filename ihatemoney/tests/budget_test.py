@@ -2237,7 +2237,7 @@ class TestBudget(IhatemoneyTestCase):
 
         resp = self.client.get(f"/raclette/feed/{token}.xml")
         assert resp.status_code == 200
-        assert "Last-Modified" in resp.headers.keys()
+        assert "Last-Modified" in resp.headers
         last_modified = resp.headers.get("Last-Modified")
 
         # Get a date 1 hour before the last modified date

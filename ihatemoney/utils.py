@@ -185,7 +185,7 @@ def list_of_dicts2csv(dict_to_convert):
         csv_data = [list(dict_to_convert[0].keys())]
         for dic in dict_to_convert:
             csv_data.append(
-                [escape_csv_formulae(dic[h]) for h in dict_to_convert[0].keys()]
+                [escape_csv_formulae(dic[h]) for h in dict_to_convert[0]]
             )
             # csv_data.append([dic[h] for h in dict_to_convert[0].keys()])
     except (KeyError, IndexError):
