@@ -529,4 +529,3 @@ class LogoutForm(FlaskForm):
 class EmptyForm(FlaskForm):
     """Used for CSRF validation"""
 
-    pass
