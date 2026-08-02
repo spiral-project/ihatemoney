@@ -130,17 +130,16 @@ def get_history(project, human_readable_names=True):
                             del changeset["converted_amount"]
 
                     for prop, (val_before, val_after) in changeset.items():
-                        if human_readable_names:
-                            if prop == "payer_id":
-                                prop = "payer"
-                                if val_after is not None:
-                                    val_after = describe_version(version.payer)
-                                if version.previous and val_before is not None:
-                                    val_before = describe_version(
-                                        version.previous.payer
-                                    )
-                                else:
-                                    val_after = None
+                        if human_readable_names and prop == "payer_id":
+                            prop = "payer"
+                            if val_after is not None:
+                                val_after = describe_version(version.payer)
+                            if version.previous and val_before is not None:
+                                val_before = describe_version(
+                                    version.previous.payer
+                                )
+                            else:
+                                val_after = None
 
                         next_event = common_properties.copy()
                         next_event["prop_changed"] = prop

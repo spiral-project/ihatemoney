@@ -383,7 +383,7 @@ def create_project():
 @main.route("/password-reminder", methods=["GET", "POST"])
 def remind_password():
     form = PasswordReminder()
-    if request.method == "POST":
+    if request.method == "POST": # noqa: SIM102
         if form.validate():
             # get the project
             project = Project.query.get(form.id.data)
@@ -622,7 +622,7 @@ def invite():
 
     form = InviteForm()
 
-    if request.method == "POST":
+    if request.method == "POST": # noqa: SIM102
         if form.validate():
             # send the email
             message_body = render_localized_template("invitation_mail")
@@ -734,7 +734,7 @@ def list_bills():
 def add_member():
     # FIXME manage form errors on the list_bills page
     form = MemberForm(g.project)
-    if request.method == "POST":
+    if request.method == "POST": # noqa: SIM102
         if form.validate():
             member = form.save(g.project, Person())
             db.session.add(member)
@@ -813,7 +813,7 @@ def edit_member(member_id):
 @main.route("/<project_id>/add", methods=["GET", "POST"])
 def add_bill():
     form = get_billform_for(g.project)
-    if request.method == "POST":
+    if request.method == "POST": # noqa: SIM102
         if form.validate():
             # save last selected payerin session
             if "last_selected_payer_per_project" not in session:
