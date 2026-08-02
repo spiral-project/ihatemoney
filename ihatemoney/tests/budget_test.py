@@ -1450,7 +1450,6 @@ class TestBudget(IhatemoneyTestCase):
         balance = self.get_project("raclette").balance
         for m, a in members.items():
             assert abs(a - balance[m.id]) < 0.01
-        return
 
     def test_settle_button(self):
         self.post_project("raclette")
