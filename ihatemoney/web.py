@@ -281,14 +281,14 @@ def authenticate(project_id=None):
 
     # if credentials are already in session, redirect
     if session.get(project_id):
-        setattr(g, "project", project)
+        g.project = project
         return redirect(url_for(".list_bills"))
 
     # else do form authentication authentication
     is_post_auth = request.method == "POST" and form.validate()
     if is_post_auth and check_password_hash(project.password, form.password.data):
         set_authorized_project(project)
-        setattr(g, "project", project)
+        g.project = project
         return redirect(url_for(".list_bills"))
     if is_post_auth and not check_password_hash(project.password, form.password.data):
         if limiter.current_limit is not None:

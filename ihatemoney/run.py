@@ -209,7 +209,7 @@ def create_app(
             "lang",
             request.accept_languages.best_match(app.config["SUPPORTED_LANGUAGES"]),
         )
-        setattr(g, "lang", lang)
+        g.lang = lang
         return lang
 
     if hasattr(Babel, "localeselector"):
