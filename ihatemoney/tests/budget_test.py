@@ -1500,9 +1500,7 @@ class TestBudget(IhatemoneyTestCase):
         project = self.get_project("raclette")
         transactions = project.get_transactions_to_settle_bill()
 
-        count = 0
-        for t in transactions:
-            count += 1
+        for count, t in enumerate(transactions, start=1):
             self.client.post(
                 "/raclette/settle",
                 data={
