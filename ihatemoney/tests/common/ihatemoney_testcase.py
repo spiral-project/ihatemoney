@@ -22,7 +22,7 @@ class BaseTestCase:
 
         return self.client.post(
             "/authenticate",
-            data=dict(id=project, password=password),
+            data={"id": project, "password": password},
             follow_redirects=True,
         )
 

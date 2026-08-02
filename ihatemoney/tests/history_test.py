@@ -23,7 +23,7 @@ def demo(client):
     )
     client.post(
         "/authenticate",
-        data=dict(id="demo", password="demo"),
+        data={"id": "demo", "password": "demo"},
     )
 
 

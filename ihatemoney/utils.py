@@ -289,7 +289,7 @@ def eval_arithmetic_expression(expr):
 
 
 def get_members(file):
-    members_list = list()
+    members_list = []
     for item in file:
         if (item["payer_name"], item["payer_weight"]) not in members_list:
             members_list.append((item["payer_name"], item["payer_weight"]))
