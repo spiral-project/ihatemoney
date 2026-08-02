@@ -443,7 +443,7 @@ class Project(db.Model):
                         what=b["what"],
                     )
                 except Exception as e:
-                    raise ValueError(f"Unable to import csv data: {repr(e)}")
+                    raise ValueError(f"Unable to import csv data: {e!r}")
                 db.session.add(new_bill)
         db.session.commit()
 
