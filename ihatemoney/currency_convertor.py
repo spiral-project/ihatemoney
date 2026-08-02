@@ -1,8 +1,8 @@
 import traceback
 import warnings
 
-from cachetools import TTLCache, cached
 import requests
+from cachetools import TTLCache, cached
 
 
 class Singleton(type):

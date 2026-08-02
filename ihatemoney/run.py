@@ -1,8 +1,9 @@
-from datetime import datetime
 import os
 import os.path
 import warnings
+from datetime import datetime
 
+import pytz
 from babel.dates import LOCALTZ
 from flask import Flask, g, render_template, request, session
 from flask_babel import Babel, format_currency
@@ -11,7 +12,6 @@ from flask_migrate import Migrate, stamp, upgrade
 from flask_talisman import Talisman
 from jinja2 import pass_context
 from markupsafe import Markup
-import pytz
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 from ihatemoney import default_settings

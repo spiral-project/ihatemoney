@@ -1,8 +1,8 @@
 from unittest.mock import MagicMock
 
+import pytest
 from flask import Flask
 from jinja2 import FileSystemBytecodeCache
-import pytest
 
 from ihatemoney.babel_utils import compile_catalogs
 from ihatemoney.currency_convertor import CurrencyConverter

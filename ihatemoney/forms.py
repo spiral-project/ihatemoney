@@ -1,5 +1,5 @@
-from datetime import datetime
 import decimal
+from datetime import datetime
 from re import match
 from types import SimpleNamespace
 

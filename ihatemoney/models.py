@@ -1,8 +1,9 @@
-from collections import defaultdict
 import datetime
-from enum import Enum
 import itertools
+from collections import defaultdict
+from enum import Enum
 
+import sqlalchemy
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta
 from debts import settle
@@ -15,14 +16,18 @@ from itsdangerous import (
     URLSafeSerializer,
     URLSafeTimedSerializer,
 )
-import sqlalchemy
 from sqlalchemy import orm
 from sqlalchemy.sql import func
 from sqlalchemy_continuum import make_versioned, version_class
 
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.monkeypath_continuum import PatchedTransactionFactory
-from ihatemoney.utils import generate_password_hash, get_members, same_bill, get_owers_label
+from ihatemoney.utils import (
+    generate_password_hash,
+    get_members,
+    get_owers_label,
+    same_bill,
+)
 from ihatemoney.versioning import (
     ConditionalVersioningManager,
     LoggingMode,

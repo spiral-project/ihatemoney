@@ -1,10 +1,10 @@
-from collections import defaultdict
-from datetime import datetime, timedelta, date
 import re
+from collections import defaultdict
+from datetime import date, datetime, timedelta
 from urllib.parse import unquote, urlparse, urlunparse
 
-from flask import session, url_for
 import pytest
+from flask import session, url_for
 from werkzeug.security import check_password_hash
 
 from ihatemoney import models

@@ -1,22 +1,23 @@
 import ast
 import csv
 import email.utils
-from enum import Enum
-from io import BytesIO, StringIO, TextIOWrapper
-from json import JSONEncoder, dumps
 import operator
 import os
 import re
 import smtplib
 import socket
+from enum import Enum
+from io import BytesIO, StringIO, TextIOWrapper
+from json import JSONEncoder, dumps
 
+import jinja2
 from babel import Locale
 from babel.numbers import get_currency_name, get_currency_symbol
 from flask import current_app, flash, redirect, render_template
-from flask_babel import get_locale, lazy_gettext as _
+from flask_babel import get_locale
+from flask_babel import lazy_gettext as _
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-import jinja2
 from markupsafe import Markup, escape
 from werkzeug.exceptions import HTTPException
 from werkzeug.routing import RoutingException

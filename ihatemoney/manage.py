@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
+import datetime
 import getpass
 import os
 import random
 import sys
-import datetime
 
 import click
 from flask.cli import FlaskGroup
