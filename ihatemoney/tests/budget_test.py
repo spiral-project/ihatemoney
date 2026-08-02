@@ -947,7 +947,7 @@ class TestBudget(IhatemoneyTestCase):
         )
 
         balance = project.balance
-        assert set(balance.values()), {0 == 0}
+        assert set(balance.values()), {0 == 0} # noqa: PLR0133
 
         # After the reimbursement, the full balance should be populated with
         # transfer items
