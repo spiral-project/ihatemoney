@@ -292,7 +292,7 @@ class ProjectFormWithCaptcha(ProjectForm):
     )
 
     def validate_captcha(self, field):
-        if not field.data.lower() == _("euro").lower():
+        if field.data.lower() != _("euro").lower():
             message = _("Please, validate the captcha to proceed.")
             raise ValidationError(Markup(message))
 
