@@ -110,7 +110,7 @@ def get_project_count(print_emails, bills, days):
     click.secho("Number of projects: " + str(len(projects)))
 
     if print_emails:
-        emails = set([pr.contact_email for pr in projects])
+        emails = {pr.contact_email for pr in projects}
         emails_str = ", ".join(emails)
         if len(emails) > 1:
             click.secho("Contact emails: " + emails_str)
