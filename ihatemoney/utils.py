@@ -123,7 +123,7 @@ class PrefixedWSGI(object):
             environ["SCRIPT_NAME"] = script_name
             path_info = environ["PATH_INFO"]
             if path_info.startswith(script_name):
-                environ["PATH_INFO"] = path_info[len(script_name) :]  # NOQA
+                environ["PATH_INFO"] = path_info[len(script_name) :]
 
         scheme = environ.get("HTTP_X_SCHEME", "")
         if scheme:

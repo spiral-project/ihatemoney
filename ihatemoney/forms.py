@@ -492,7 +492,7 @@ class MemberForm(FlaskForm):
                 Person.project == self.project,
                 Person.activated,
             ).all()
-        ):  # NOQA
+        ):
             raise ValidationError(_("This project already have this participant"))
 
     def save(self, project, person):
