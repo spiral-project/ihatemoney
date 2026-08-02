@@ -81,7 +81,7 @@ def import_data_7_0(request: pytest.FixtureRequest):
     yield data
 
 
-class CommonTestCase(object):
+class CommonTestCase:
 
     class Import(IhatemoneyTestCase):
 

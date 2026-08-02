@@ -99,7 +99,7 @@ class Redirect303(HTTPException, RoutingException):
         return redirect(self.new_url, 303)
 
 
-class PrefixedWSGI(object):
+class PrefixedWSGI:
     """
     Wrap the application in this middleware and configure the
     front-end server to add these headers, to let you quietly bind

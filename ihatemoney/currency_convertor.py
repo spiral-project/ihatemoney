@@ -14,7 +14,7 @@ class Singleton(type):
         return cls._instances[cls]
 
 
-class CurrencyConverter(object, metaclass=Singleton):
+class CurrencyConverter(metaclass=Singleton):
     # Get exchange rates
     no_currency = "XXX"
     api_url = "https://api.exchangerate.host/latest?base=USD"
