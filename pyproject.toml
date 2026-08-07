@@ -1,6 +1,6 @@
 [build-system]
 # Downgraded to avoid "InvalidDistribution" crash on `make release`
-requires = ["hatchling~=1.21.1"]
+requires = ["hatchling>=1.21.1,<1.30.0"]
 build-backend = "hatchling.build"
 
 [project]
