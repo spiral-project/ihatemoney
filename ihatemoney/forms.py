@@ -490,7 +490,6 @@ class MemberForm(FlaskForm):
             and Person.query.filter(
                 Person.name == field.data,
                 Person.project == self.project,
-                Person.activated,
             ).all()
         ):
             raise ValidationError(_("This project already have this participant"))
