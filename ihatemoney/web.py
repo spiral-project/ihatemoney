@@ -62,12 +62,12 @@ from ihatemoney.forms import (
 from ihatemoney.history import get_history, purge_history
 from ihatemoney.models import Bill, BillType, LoggingMode, Person, Project, db
 from ihatemoney.utils import (
-    has_claim,
     Redirect303,
     csv2list_of_dicts,
     flash_email_error,
     format_form_errors,
     generate_password_hash,
+    has_claim,
     limiter,
     list_of_dicts2csv,
     list_of_dicts2json,
