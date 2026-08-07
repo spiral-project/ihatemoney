@@ -674,6 +674,10 @@ class TestBudget(IhatemoneyTestCase):
             assert "Authentication" not in resp.data.decode("utf-8")
             assert session["authz_claims"] == ["is_admin"]
 
+            # Test that claims do not accumulate over authentication requests
+            resp = c.post("/admin?goto=%2Fraclette", data={"admin_password": "pass"})
+            assert len(session["authz_claims"]) == 1
+
     def test_authentication_with_upper_case(self):
         self.post_project("Raclette")
 
