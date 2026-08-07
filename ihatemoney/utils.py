@@ -500,7 +500,7 @@ def set_claim(session, claim_name: str):
     """
     if "authz_claims" not in session:
         session["authz_claims"] = []
-    if "claim_name" not in session["authz_claims"]:
+    if claim_name not in session["authz_claims"]:
         session["authz_claims"].append(claim_name)
 
 
