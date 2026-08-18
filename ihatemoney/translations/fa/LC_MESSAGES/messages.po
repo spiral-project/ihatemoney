@@ -1,23 +1,24 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-07-21 23:16+0200\n"
-"PO-Revision-Date: 2024-05-23 03:01+0000\n"
-"Last-Translator: Yamin Siahmargooei <yamin8000@yahoo.com>\n"
+"PO-Revision-Date: 2026-08-18 00:51+0000\n"
+"Last-Translator: Parsa Ghazipour <ghazipour@protonmail.com>\n"
 "Language: fa\n"
-"Language-Team: Persian <https://hosted.weblate.org/projects/i-hate-"
-"money/i-hate-money/fa/>\n"
+"Language-Team: Persian <https://hosted.weblate.org/projects/i-hate-money/i-"
+"hate-money/fa/>\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.16.0\n"
+"X-Generator: Weblate 2026.9.dev0\n"
 
 #, python-format
 msgid "You have just created '%(project)s' to share your expenses"
 msgstr ""
+"شما به‌تازگی '%(project)s' را برای اشتراک گذاری هزینه‌هایتان ایجاد کرده‌اید"
 
 msgid ""
 "Not a valid amount or expression. Only numbers and + - * / operators are "
@@ -27,30 +28,29 @@ msgstr "مقدار یا عبارت نامعتبر. فقط اعداد و عملی
 msgid "Project name"
 msgstr "نام پروژه"
 
-#, fuzzy
 msgid "Current private code"
-msgstr "کد خصوصی جدید"
+msgstr "کد خصوصی فعلی"
 
 msgid "Enter existing private code to edit project"
-msgstr ""
+msgstr "کد خصوصی موجود را برای ویرایش پروژه وارد کنید"
 
 msgid "New private code"
 msgstr "کد خصوصی جدید"
 
 msgid "Enter a new code if you want to change it"
-msgstr "اگر مایل به تغییر هستید یه کد جدید وارد کنید"
+msgstr "اگر مایل به تغییر هستید یک کد جدید وارد کنید"
 
 msgid "Email"
 msgstr "ایمیل"
 
 msgid "Enable project history"
-msgstr "فعال کردن تاریخچه‌ی پروژه"
+msgstr "فعال سازی تاریخچه‌ٔ پروژه"
 
 msgid "Default Currency"
-msgstr "واحد پولی پیش فرض"
+msgstr "ارز پیش‌فرض"
 
 msgid "Setting a default currency enables currency conversion between bills"
-msgstr "تنظیم واحد پولی پیش فرض امکان تبدیل ارز بین قبض‌ها رو فراهم می‌کنه"
+msgstr "تنظیم ارز پیش‌فرض تبدیل ارز بین صورتحساب‌ها را ممکن می‌سازد"
 
 msgid "Unknown error"
 msgstr "خطای ناشناخته"
@@ -62,849 +62,860 @@ msgid ""
 "This project cannot be set to 'no currency' because it contains bills in "
 "multiple currencies."
 msgstr ""
-"این پروژه نمی‌تونه به صورت «بدون واحد پولی» تنظیم بشه چون شامل قبوض با "
-"ارزهای مختلفه."
+"تنظیم این پروژه روی «بدون ارز» امکان‌پذیر نیست، چون شامل صورتحساب‌هایی با "
+"ارزهای مختلف است."
 
-#, fuzzy
 msgid "Cannot change project currency because currency conversion is broken"
-msgstr "تنظیم واحد پولی پیش فرض امکان تبدیل ارز بین قبض‌ها رو فراهم می‌کنه"
+msgstr "تغییر ارز پروژه امکان‌پذیر نیست، چون تبدیل ارز خراب است"
 
 msgid "Compatible with Cospend"
-msgstr ""
+msgstr "سازگار با Cospend"
 
 msgid "Project identifier"
-msgstr "شناسه پروژه"
+msgstr "شناسهٔ پروژه"
 
 msgid "Private code"
 msgstr "کد خصوصی"
 
 msgid "Create the project"
-msgstr "ساخت پروژه"
+msgstr "ایجاد پروژه"
 
 #, python-format
 msgid ""
 "A project with this identifier (\"%(project)s\") already exists. Please "
 "choose a new identifier"
 msgstr ""
-"پروژه‌ای با شناسه‌ی (\"%(project)s\") از قبل وجود داره. لطفا یه شناسه‌ی "
-"جدید وارد کن"
+"پروژه‌ای با این شناسه (\"%(project)s\") از قبل وجود دارد. لطفاً یک شناسهٔ جدید "
+"انتخاب کنید"
 
 msgid "Which is a real currency: Euro or Petro dollar?"
-msgstr "کدوم یکی واقعا واحد پولیه: یورو یا دلار نفتی؟"
+msgstr "کدام یک ارز واقعی است: یورو یا نون بربری؟"
 
 msgid "euro"
 msgstr "یورو"
 
 msgid "Please, validate the captcha to proceed."
-msgstr "لطفا برای ادامه کپچا رو تایید کن."
+msgstr "لطفاً کپچا را برای ادامه تأیید کنید."
 
 msgid "Enter private code to confirm deletion"
-msgstr "کد خصوصی رو برای تایید حذف وارد کن"
+msgstr "کد خصوصی را برای تأیید حذف وارد کنید"
 
 msgid "Get in"
-msgstr "بیا تو"
+msgstr "وارد شوید"
 
 msgid "Admin password"
-msgstr "گذرواژه‌ی مدیر"
+msgstr "گذرواژهٔ مدیر"
 
 msgid "Send me the code by email"
-msgstr "کد رو برام ایمیل کن"
+msgstr "کد را برایم ایمیل کنید"
 
 msgid "This project does not exists"
-msgstr "این پروژه وجود نداره"
+msgstr "این پروژه وجود ندارد"
 
 msgid "Password mismatch"
-msgstr "گذرواژه‌ها با هم نمی‌خونه"
+msgstr "عدم تطابق گذرواژه"
 
 msgid "Password"
 msgstr "گذرواژه"
 
 msgid "Password confirmation"
-msgstr "تایید گذرواژه"
+msgstr "تأیید گذرواژه"
 
 msgid "Reset password"
 msgstr "بازنشانی گذرواژه"
 
 msgid "When?"
-msgstr "چه زمانی؟"
+msgstr "چه زمان؟"
 
 msgid "What?"
 msgstr "چی؟"
 
 msgid "Who paid?"
-msgstr "چه کسی پرداخت کرد؟"
+msgstr "پرداخت‌کننده؟"
 
 msgid "How much?"
 msgstr "چقدر؟"
 
 msgid "Currency"
-msgstr "واحد پولی"
+msgstr "ارز"
 
 msgid "External link"
-msgstr "لینک خارجی"
+msgstr "پیوند خارجی"
 
 msgid "A link to an external document, related to this bill"
-msgstr "یه لینک به سند خارجی به این قبض مربوطه"
+msgstr "یک پیوند به یک سند خارجی، مرتبط با این صورتحساب"
 
 msgid "For whom?"
 msgstr "برای کی؟"
 
 msgid "Bill Type"
-msgstr ""
+msgstr "نوع صورتحساب"
 
 msgid "Submit"
 msgstr "ثبت"
 
 msgid "Submit and add a new one"
-msgstr "ثبت و اضافه کردن جدید"
+msgstr "ثبت و افزودن مورد جدید"
 
 #, python-format
 msgid "Project default: %(currency)s"
-msgstr "پیش فرض پروژه: %(currency)s"
+msgstr "پیش‌فرض پروژه: %(currency)s"
 
 #, python-format
 msgid "Failed to convert from %(bill_currency)s currency to %(project_currency)s"
-msgstr ""
+msgstr "شکست در تبدیل از ارز %(bill_currency)s به ارز %(project_currency)s"
 
 msgid "Name"
 msgstr "نام"
 
 msgid "Weights should be positive"
-msgstr "وزن باید مثبت باشه"
+msgstr "وزن‌ها باید مثبت باشند"
 
 msgid "Weight"
 msgstr "وزن"
 
 msgid "Add"
-msgstr "اضافه"
+msgstr "افزودن"
 
 msgid "The participant name is invalid"
-msgstr "نام شرکت کننده نامعتبره"
+msgstr "نام شرکت‌کننده نامعتبر است"
 
 msgid "This project already have this participant"
-msgstr "این شرکت کننده از قبل عضو پروژه هست"
+msgstr "این پروژه از قبل این شرکت‌کننده را دارد"
 
 msgid "People to notify"
-msgstr "افرادی که براشون نوتیفیکیشن ارسال میشه"
+msgstr "گیرندگان اطلاعیه"
 
 msgid "Send the invitations"
-msgstr "ارسال دعوت نامه ها"
+msgstr "ارسال دعوت‌نامه‌ها"
 
 #, python-format
 msgid "The email %(email)s is not valid"
-msgstr "ایمیل %(email)s نامعتبره"
+msgstr "ایمیل %(email)s معتبر نیست"
 
 msgid "Logout"
 msgstr "خروج"
 
 msgid "Please check the email configuration of the server."
-msgstr ""
+msgstr "پیکربندی ایمیل سرور را بررسی کنید."
 
 #, python-format
 msgid ""
 "Please check the email configuration of the server or contact the "
 "administrator: %(admin_email)s"
 msgstr ""
+"پیکربندی ایمیل سرور را بررسی کنید یا با مدیر تماس بگیرید: %(admin_email)s"
 
 #. List with two items only
 msgid "{dual_object_0} and {dual_object_1}"
-msgstr ""
+msgstr "{dual_object_0} و {dual_object_1}"
 
 #. Last two items of a list with more than 3 items
 msgid "{previous_object}, and {end_object}"
-msgstr ""
+msgstr "{previous_object}، و {end_object}"
 
 #. Two items in a middle of a list with more than 5 objects
 msgid "{previous_object}, {next_object}"
-msgstr ""
+msgstr "{previous_object}، {next_object}"
 
 #. First two items of a list with more than 3 items
 msgid "{start_object}, {next_object}"
-msgstr ""
+msgstr "{start_object}، {next_object}"
 
 msgid "No Currency"
-msgstr "بدون واحد پولی"
+msgstr "بدون ارز"
 
 #. Form error with only one error
 msgid "{prefix}: {error}"
-msgstr ""
+msgstr "{prefix}: {error}"
 
 #. Form error with a list of errors
 msgid "{prefix}:<br />{errors}"
-msgstr ""
+msgstr "{prefix}:<br />{errors}"
 
 msgid "Too many failed login attempts."
-msgstr ""
+msgstr "تعداد تلاش‌های ورود ناموفق زیاد."
 
 #, python-format
 msgid "This admin password is not the right one. Only %(num)d attempts left."
-msgstr "گذرواژه‌ی مدیر صحیح نیست. فقط %(num)d بار دیگه میشه سعی کنی."
+msgstr "گذرواژهٔ مدیر صحیح نیست. تنها %(num)d تلاش باقی مانده است."
 
 msgid "Provided token is invalid"
-msgstr "توکن وارد شده نامعتبره"
+msgstr "توکن ارائه‌شده نامعتبر است"
 
-#, fuzzy, python-format
+#, python-format
 msgid "This private code is not the right one. Only %(num)d attempts left."
-msgstr "گذرواژه‌ی مدیر صحیح نیست. فقط %(num)d بار دیگه میشه سعی کنی."
+msgstr "کد خصوصی صحیح نیست. تنها %(num)d تلاش باقی مانده است."
 
 msgid "This private code is not the right one"
-msgstr "این کد خصوصی اون کد خصوصی درست نیست"
+msgstr "کد خصوصی صحیح نیست"
 
 msgid "A reminder email has just been sent to you"
-msgstr ""
+msgstr "یک ایمیل یادآوری به تازگی برای شما ارسال شده است"
 
 msgid ""
 "We tried to send you an reminder email, but there was an error. You can "
 "still use the project normally."
 msgstr ""
+"ما سعی کردیم یک ایمیل یادآوری برای شما ارسال کنیم؛ اما خطایی رخ داد. شما "
+"همچنان می‌توانید به‌طور عادی از پروژه استفاده کنید."
 
 msgid ""
 "Sorry, there was an error while sending you an email with password reset "
 "instructions."
 msgstr ""
+"متأسفیم، هنگام ارسال ایمیل حاوی دستورالعمل‌های بازنشانی گذرواژه برای شما، "
+"خطایی رخ داد."
 
 msgid "No token provided"
-msgstr ""
+msgstr "هیچ توکنی ارائه نشده"
 
 msgid "Invalid token"
-msgstr ""
+msgstr "توکن نامعتبر"
 
 msgid "Unknown project"
-msgstr ""
+msgstr "پروژهٔ ناشناخته"
 
 msgid "Password successfully reset."
-msgstr ""
+msgstr "گذرواژه با موفقیت بازنشانی شد."
 
 msgid "Project settings have been changed successfully."
-msgstr ""
+msgstr "تنظیمات پروژه با موفقیت تغییر یافت."
 
 msgid "Unable to parse CSV"
-msgstr ""
+msgstr "خوانش CSV ممکن نیست"
 
 #, python-format
 msgid "Missing attribute: %(attribute)s"
-msgstr ""
+msgstr "ویژگی %(attribute)s یافت نشد"
 
 msgid ""
 "Cannot add bills in multiple currencies to a project without default "
 "currency"
 msgstr ""
+"امکان افزودن صورتحساب‌های با ارزهای مختلف به پروژه‌ای بدون ارز پیش‌فرض وجود "
+"ندارد"
 
 msgid "Project successfully uploaded"
-msgstr ""
+msgstr "پروژه با موفقیت بارگذاری شد"
 
 msgid "Project successfully deleted"
-msgstr ""
+msgstr "پروژه با موفقیت حذف شد"
 
 msgid "Error deleting project"
-msgstr ""
+msgstr "خطا در حذف پروژه"
 
 msgid "Unable to logout"
-msgstr ""
+msgstr "امکان خروج وجود ندارد"
 
 #, python-format
 msgid "You have been invited to share your expenses for %(project)s"
-msgstr ""
+msgstr "شما برای به اشتراک‌گذاری هزینه‌های خود در %(project)s دعوت شده‌اید"
 
 msgid "Your invitations have been sent"
-msgstr ""
+msgstr "دعوت‌نامه‌های شما ارسال شده‌اند"
 
 msgid "Sorry, there was an error while trying to send the invitation emails."
-msgstr ""
+msgstr "متأسفیم، هنگام تلاش برای ارسال ایمیل‌های دعوت، خطایی رخ داد."
 
 #, python-format
 msgid "%(member)s has been added"
-msgstr ""
+msgstr "%(member)s افزوده شده است"
 
 msgid "Error activating participant"
-msgstr ""
+msgstr "خطا در فعال‌سازی شرکت‌کننده"
 
 #, python-format
 msgid "%(name)s is part of this project again"
-msgstr ""
+msgstr "%(name)s دوباره بخشی از این پروژه است"
 
 msgid "Error removing participant"
-msgstr ""
+msgstr "خطا در حذف شرکت‌کننده"
 
 #, python-format
 msgid ""
 "Participant '%(name)s' has been deactivated. It will still appear in the "
 "list until its balance reach zero."
 msgstr ""
+"شرکت‌کننده '%(name)s' غیرفعال شده است. تا زمانی که ماندهٔ آن به صفر برسد، "
+"همچنان در لیست نمایش داده خواهد شد."
 
 #, python-format
 msgid "Participant '%(name)s' has been removed"
-msgstr ""
+msgstr "شرکت‌کننده '%(name)s' حذف شده است"
 
 #, python-format
 msgid "Participant '%(name)s' has been modified"
-msgstr ""
+msgstr "شرکت‌کننده '%(name)s' تغییر یافت"
 
 msgid "The bill has been added"
-msgstr ""
+msgstr "صورتحساب افزوده شده است"
 
 msgid "Error deleting bill"
-msgstr ""
+msgstr "خطا در حذف صورتحساب"
 
 msgid "The bill has been deleted"
-msgstr ""
+msgstr "صورتحساب حذف شده است"
 
 msgid "The bill has been modified"
-msgstr ""
+msgstr "صورتحساب تغییر داده شده است"
 
 #, python-format
 msgid "%(lang)s is not a supported language"
-msgstr ""
+msgstr "زبان %(lang)s پشتیبانی نمی‌شود"
 
 msgid "Error creating settlement bill"
-msgstr ""
+msgstr "خطا در ایجاد صورتحساب تسویه"
 
 msgid "Settlement"
-msgstr ""
+msgstr "تسویه"
 
 msgid "Settlement bill has been successfully added"
-msgstr ""
+msgstr "صورتحساب تسویه با موفقیت افزوده شده است"
 
 msgid "Error deleting project history"
-msgstr ""
+msgstr "خطا در حذف تاریخچهٔ پروژه"
 
 msgid "Deleted project history."
-msgstr ""
+msgstr "تاریخچهٔ پروژه حذف شد."
 
 msgid "Sorry, we were unable to find the page you've asked for."
-msgstr ""
+msgstr "متأسفیم، نتوانستیم صفحه‌ای که درخواست کرده‌اید را پیدا کنیم."
 
 msgid "The best thing to do is probably to get back to the main page."
-msgstr ""
+msgstr "بهترین کاری که احتمالاً می‌توان انجام داد، بازگشت به صفحهٔ اصلی است."
 
 msgid "Back to the list"
-msgstr ""
+msgstr "بازگشت به لیست"
 
 msgid "Administration tasks are currently disabled."
-msgstr ""
+msgstr "وظایف مدیریتی در حال حاضر غیرفعال هستند."
 
 msgid "Authentication"
-msgstr ""
+msgstr "احراز هویت"
 
 msgid "The project you are trying to access do not exist, do you want to"
-msgstr ""
+msgstr "پروژه‌ای که سعی در دسترسی به آن دارید وجود ندارد، آیا می‌خواهید که"
 
 msgid "create it"
-msgstr ""
+msgstr "ایجاد آن"
 
 msgid "?"
-msgstr ""
+msgstr "؟"
 
 msgid "Create a new project"
-msgstr ""
+msgstr "ایجاد یک پروژهٔ جدید"
 
 msgid "Project"
-msgstr ""
+msgstr "پروژه"
 
 msgid "Number of participants"
-msgstr ""
+msgstr "تعداد شرکت‌کنندگان"
 
 msgid "Number of bills"
-msgstr ""
+msgstr "تعداد صورتحساب‌ها"
 
 msgid "Newest bill"
-msgstr ""
+msgstr "جدیدترین صورتحساب"
 
 msgid "Oldest bill"
-msgstr ""
+msgstr "قدیمی‌ترین صورتحساب"
 
 msgid "Actions"
-msgstr ""
+msgstr "اقدامات"
 
 msgid "edit"
-msgstr ""
+msgstr "ویرایش"
 
 msgid "Delete project"
-msgstr ""
+msgstr "حذف پروژه"
 
 msgid "show"
-msgstr ""
+msgstr "نمایش"
 
 msgid "The Dashboard is currently deactivated."
-msgstr ""
+msgstr "داشبورد در حال حاضر غیرفعال است."
 
 msgid "Download Mobile Application"
-msgstr ""
+msgstr "دانلود برنامهٔ موبایل"
 
 msgid "Get it on"
-msgstr ""
+msgstr "دریافت از"
 
 msgid "Edit project"
-msgstr ""
+msgstr "ویرایش پروژه"
 
-#, fuzzy
 msgid "Import project"
-msgstr "ساخت پروژه"
+msgstr "وارد کردن پروژه"
 
 msgid "Download project's data"
-msgstr ""
+msgstr "دانلود داده‌های پروژه"
 
 msgid "Bill items"
-msgstr ""
+msgstr "موارد صورتحساب"
 
 msgid "Download the list of bills with owner, amount, reason,... "
-msgstr ""
+msgstr "دانلود فهرست صورتحساب‌ها به همراه مالک، مبلغ، دلیل، .... "
 
 msgid "Settle plans"
-msgstr ""
+msgstr "طرح‌های تسویه"
 
 msgid "Download the list of transactions needed to settle the current bills."
-msgstr ""
+msgstr "دانلود فهرست تراکنش‌های موردنیاز برای تسویهٔ صورتحساب‌های فعلی."
 
 msgid "Can't remember the password?"
-msgstr ""
+msgstr "گذرواژه را به یاد نمی‌آورید؟"
 
 msgid "Cancel"
-msgstr ""
+msgstr "لغو"
 
 msgid "Privacy Settings"
-msgstr ""
+msgstr "تنظیمات حریم خصوصی"
 
 msgid "Save changes"
-msgstr ""
+msgstr "ذخیرهٔ تغییرات"
 
 msgid "This will remove all bills and participants in this project!"
-msgstr ""
+msgstr "این کار همهٔ صورتحساب‌ها و شرکت‌کنندگان را در این پروژه حذف خواهد کرد!"
 
 msgid "Import previously exported project"
-msgstr ""
+msgstr "وارد کردن پروژهٔ صادرشدهٔ قبلی"
 
 msgid "Choose file"
-msgstr ""
+msgstr "انتخاب فایل"
 
 msgid "Edit this bill"
-msgstr ""
+msgstr "ویرایش این صورتحساب"
 
 msgid "Add a bill"
-msgstr ""
+msgstr "افزودن صورتحساب"
 
 msgid "Simple operations are allowed, e.g. (18+36.2)/3"
-msgstr ""
+msgstr "عملیات‌های ساده مجاز هستند، برای مثال (۱۸+۳۶٫۲)/۳"
 
 msgid "Everyone"
-msgstr ""
+msgstr "همه"
 
 msgid "No one"
-msgstr ""
+msgstr "هیچ‌کس"
 
 msgid "More options"
-msgstr ""
+msgstr "گزینه‌های بیشتر"
 
 msgid "Add participant"
-msgstr ""
+msgstr "افزودن شرکت‌کننده"
 
 msgid "Edit this participant"
-msgstr ""
+msgstr "ویرایش این شرکت‌کننده"
 
 msgid "Save"
-msgstr ""
+msgstr "ذخیره"
 
 msgid "john.doe@example.com, mary.moe@site.com"
-msgstr ""
+msgstr "john.doe@example.com، mary.moe@site.com"
 
 msgid "Download"
-msgstr ""
+msgstr "دانلود"
 
 msgid "Disabled Project History"
-msgstr ""
+msgstr "تاریخچهٔ پروژهٔ غیرفعال"
 
 msgid "Enabled Project History"
-msgstr ""
+msgstr "تاریخچهٔ پروژهٔ فعال"
 
 msgid "History Settings Changed (legacy settings)"
-msgstr ""
+msgstr "تنظیمات تاریخچه تغییر یافت (تنظیمات قدیمی)"
 
 #, python-format
 msgid "Bill %(name)s: %(property_name)s changed from %(before)s to %(after)s"
 msgstr ""
+"صورتحساب %(name)s: %(property_name)s از %(before)s به %(after)s تغییر یافت"
 
 #, python-format
 msgid "Bill %(name)s: %(property_name)s changed to %(after)s"
-msgstr ""
+msgstr "صورتحساب %(name)s: %(property_name)s به %(after)s تغییر یافت"
 
 msgid "Delete Confirmation"
-msgstr ""
+msgstr "تأیید حذف"
 
 msgid ""
 "Are you sure you want to erase all history for this project? This action "
 "cannot be undone."
 msgstr ""
+"آیا مطمئن هستید که می‌خواهید کل تاریخچهٔ این پروژه را پاک کنید؟ این اقدام قابل "
+"بازگردانی نیست."
 
 msgid "Confirm deletion"
-msgstr ""
+msgstr "تأیید حذف"
 
 msgid "Close"
-msgstr ""
+msgstr "بستن"
 
 #, python-format
 msgid "Bill %(name)s: added %(owers_list_str)s to owers list"
-msgstr ""
+msgstr "صورتحساب %(name)s: %(owers_list_str)s به لیست بدهکاران افزوده شد"
 
 #, python-format
 msgid "Bill %(name)s: removed %(owers_list_str)s from owers list"
-msgstr ""
+msgstr "صورتحساب %(name)s: %(owers_list_str)s از لیست بدهکاران حذف شد"
 
 msgid "Details of the bill (before the change)"
-msgstr ""
+msgstr "جزئیات صورتحساب (قبل از تغییر)"
 
 msgid "Details of the bill"
-msgstr ""
+msgstr "جزئیات صورتحساب"
 
-#, fuzzy
 msgid "Date:"
-msgstr "تاریخ"
+msgstr "تاریخ:"
 
-#, fuzzy
 msgid "Payer:"
-msgstr "پرداخت کننده"
+msgstr "پرداخت‌کننده:"
 
 msgid "Amount:"
-msgstr ""
+msgstr "مبلغ:"
 
 msgid "Owers:"
-msgstr ""
+msgstr "بدهکاران:"
 
-#, fuzzy
 msgid "External link:"
-msgstr "لینک خارجی"
+msgstr "پیوند خارجی:"
 
 msgid "This project has history disabled. New actions won't appear below."
 msgstr ""
+"این پروژه دارای تاریخچهٔ غیرفعال است. اقدامات جدید در زیر ظاهر نخواهند شد."
 
 msgid "You can enable history on the settings page."
-msgstr ""
+msgstr "شما می‌توانید تاریخچه را در صفحهٔ تنظیمات فعال کنید."
 
 msgid ""
 "The table below reflects actions recorded prior to disabling project "
 "history."
 msgstr ""
+"جدول زیر نشان‌دهندهٔ اقدامات ثبت‌شده پیش از غیرفعال‌سازی تاریخچهٔ پروژه است."
 
 msgid "You can clear the project history to remove them."
-msgstr ""
+msgstr "شما می‌توانید تاریخچهٔ پروژه را پاک کنید تا آنها را حذف کنید."
 
 msgid "No history to erase"
-msgstr ""
+msgstr "تاریخچه‌ای برای پاک کردن وجود ندارد"
 
 msgid "Clear Project History"
-msgstr ""
+msgstr "پاک‌کردن تاریخچهٔ پروژه"
 
 msgid "Time"
-msgstr ""
+msgstr "زمان"
 
 msgid "Event"
-msgstr ""
+msgstr "رویداد"
 
 #, python-format
 msgid "Project %(name)s added"
-msgstr ""
+msgstr "پروژهٔ %(name)s افزوده شد"
 
 #, python-format
 msgid "Bill %(name)s added"
-msgstr ""
+msgstr "صورتحساب %(name)s افزوده شد"
 
 #, python-format
 msgid "Participant %(name)s added"
-msgstr ""
+msgstr "شرکت‌کننده %(name)s افزوده شد"
 
 msgid "Project private code changed"
-msgstr ""
+msgstr "کد خصوصی پروژه تغییر یافت"
 
 #, python-format
 msgid "Project renamed to %(new_project_name)s"
-msgstr ""
+msgstr "پروژه به %(new_project_name)s تغییر نام داده شد"
 
 #, python-format
 msgid "Project contact email changed to %(new_email)s"
-msgstr ""
+msgstr "ایمیل تماس پروژه به %(new_email)s تغییر یافت"
 
 msgid "Project settings modified"
-msgstr ""
+msgstr "تنظیمات پروژه تغییر یافت"
 
 #, python-format
 msgid "Bill %(name)s renamed to %(new_description)s"
-msgstr ""
+msgstr "صورتحساب %(name)s به %(new_description)s تغییر نام داده شد"
 
 msgid "Payer"
-msgstr "پرداخت کننده"
+msgstr "پرداخت‌کننده"
 
 msgid "Amount"
-msgstr ""
+msgstr "مبلغ"
 
 msgid "Date"
 msgstr "تاریخ"
 
 #, python-format
 msgid "Amount in %(currency)s"
-msgstr ""
+msgstr "مبلغ به %(currency)s"
 
 #, python-format
 msgid "Bill %(name)s modified"
-msgstr ""
+msgstr "صورتحساب %(name)s تغییر یافت"
 
 #, python-format
 msgid "Participant %(name)s deactivated"
-msgstr ""
+msgstr "شرکت‌کننده %(name)s غیرفعال شد"
 
 #, python-format
 msgid "Participant %(name)s reactivated"
-msgstr ""
+msgstr "شرکت‌کننده %(name)s دوباره فعال شد"
 
 #, python-format
 msgid "Participant %(name)s renamed to %(new_name)s"
-msgstr ""
+msgstr "شرکت‌کننده %(name)s به %(new_name)s تغییر نام داد"
 
 #, python-format
 msgid "Participant %(name)s: weight changed from %(old_weight)s to %(new_weight)s"
-msgstr ""
+msgstr "شرکت‌کننده %(name)s: وزن از %(old_weight)s به %(new_weight)s تغییر یافت"
 
 #, python-format
 msgid "Participant %(name)s modified"
-msgstr ""
+msgstr "شرکت‌کننده %(name)s تغییر یافت"
 
 #, python-format
 msgid "Bill %(name)s removed"
-msgstr ""
+msgstr "صورتحساب %(name)s حذف شد"
 
 #, python-format
 msgid "Participant %(name)s removed"
-msgstr ""
+msgstr "شرکت‌کننده %(name)s حذف شد"
 
 #, python-format
 msgid "Project %(name)s changed in an unknown way"
-msgstr ""
+msgstr "پروژهٔ %(name)s به شکلی ناشناخته تغییر یافت"
 
 #, python-format
 msgid "Bill %(name)s changed in an unknown way"
-msgstr ""
+msgstr "صورتحساب %(name)s به شکلی ناشناخته تغییر یافت"
 
 #, python-format
 msgid "Participant %(name)s changed in an unknown way"
-msgstr ""
+msgstr "شرکت‌کننده %(name)s به شکلی ناشناخته تغییر یافت"
 
 msgid "Nothing to list"
-msgstr ""
+msgstr "موردی برای فهرست کردن نیست"
 
 msgid "Someone probably cleared the project history."
-msgstr ""
+msgstr "کسی احتمالاً تاریخچهٔ پروژه را پاک کرده است."
 
 msgid "Manage your shared <br />expenses, easily"
-msgstr ""
+msgstr "هزینه‌های مشترک خود را به‌راحتی <br />مدیریت کنید"
 
 msgid "Try out the demo"
-msgstr ""
+msgstr "امتحان کردن نسخهٔ نمایشی"
 
 msgid "You're sharing a house?"
-msgstr ""
+msgstr "با دوستان به تعطیلات می‌روید؟"
 
 msgid "Going on holidays with friends?"
-msgstr ""
+msgstr "هدف، تقسیم هزینه با دیگران است؟"
 
 msgid "Simply sharing money with others?"
-msgstr ""
+msgstr "در خانه‌ای به صورت مشترک زندگی می‌کنید؟"
 
 msgid "We can help!"
-msgstr ""
+msgstr "ما می‌توانیم کمک کنیم!"
 
 msgid "Log in to an existing project"
-msgstr ""
+msgstr "ورود به یک پروژهٔ موجود"
 
 msgid "Log in"
-msgstr ""
+msgstr "ورود"
 
 msgid "can't remember your password?"
-msgstr ""
+msgstr "گذرواژه را به یاد نمی‌آورید؟"
 
 msgid "Create"
-msgstr ""
+msgstr "ایجاد"
 
 msgid ""
 "Don\\'t reuse a personal password. Choose a private code and send it to "
 "your friends"
 msgstr ""
+"از یک گذرواژهٔ شخصی دوباره استفاده نکنید. یک کد خصوصی انتخاب کنید و آن را "
+"برای دوستانتان ارسال کنید"
 
 msgid "Account manager"
-msgstr ""
+msgstr "مدیر حساب"
 
 msgid "Bills"
-msgstr ""
+msgstr "صورتحساب‌ها"
 
 msgid "Settle"
-msgstr ""
+msgstr "تسویه"
 
 msgid "Statistics"
-msgstr ""
+msgstr "آمار"
 
 msgid "Languages"
-msgstr ""
+msgstr "زبان‌ها"
 
 msgid "Projects"
-msgstr ""
+msgstr "پروژه‌ها"
 
 msgid "Start a new project"
-msgstr ""
+msgstr "شروع پروژهٔ جدید"
 
 msgid "History"
-msgstr ""
+msgstr "تاریخچه"
 
 msgid "Settings"
-msgstr ""
+msgstr "تنظیمات"
 
 msgid "RSS Feed"
-msgstr ""
+msgstr "RSS Feed"
 
 msgid "Other projects :"
-msgstr ""
+msgstr "سایر پروژه‌ها:"
 
 msgid "switch to"
-msgstr ""
+msgstr "تغییر به"
 
 msgid "Dashboard"
-msgstr ""
+msgstr "داشبورد"
 
 #, python-format
 msgid "Please retry after %(date)s."
-msgstr ""
+msgstr "لطفاً پس از %(date)s دوباره تلاش کنید."
 
 msgid "Code"
-msgstr ""
+msgstr "کد"
 
 msgid "Mobile Application"
-msgstr ""
+msgstr "برنامهٔ موبایل"
 
 msgid "Documentation"
-msgstr ""
+msgstr "مستندات"
 
 msgid "Administration Dashboard"
-msgstr ""
+msgstr "داشبورد مدیریت"
 
 msgid "Legal information"
-msgstr ""
+msgstr "اطلاعات حقوقی"
 
 msgid "\"I hate money\" is free software"
-msgstr ""
+msgstr "\"I hate money\" یک نرم‌افزار آزاد است"
 
 msgid "you can contribute and improve it!"
-msgstr ""
+msgstr "می‌توانید مشارکت کنید و آن را بهبود ببخشید!"
 
 #, python-format
 msgid "%(amount)s each"
-msgstr ""
+msgstr "%(amount)s برای هر نفر"
 
 msgid "you sure?"
-msgstr ""
+msgstr "مطمئنید؟"
 
 msgid "Hide filters"
-msgstr ""
+msgstr "پنهان کردن فیلترها"
 
 msgid "Show filters"
-msgstr ""
+msgstr "نمایش فیلترها"
 
 msgid "Invite people"
-msgstr ""
+msgstr "دعوت از افراد"
 
 msgid "Newer bills"
-msgstr ""
+msgstr "صورتحساب‌های جدیدتر"
 
 msgid "Older bills"
-msgstr ""
+msgstr "صورتحساب‌های قدیمی‌تر"
 
 msgid "Toggle filters"
-msgstr ""
+msgstr "تغییر وضعیت فیلترها"
 
 msgid "You should start by adding participants"
-msgstr ""
+msgstr "شما باید با افزودن شرکت‌کنندگان شروع کنید"
 
 msgid "Add a new bill"
-msgstr ""
+msgstr "افزودن صورتحساب جدید"
 
 msgid "Search"
-msgstr ""
+msgstr "جستجو"
 
 msgid "Search in For what?"
-msgstr ""
+msgstr "جستجو در برای چی؟"
 
-#, fuzzy
 msgid "Any payer"
-msgstr "پرداخت کننده"
+msgstr "هر پرداخت‌کننده‌ای"
 
 msgid "Start date"
-msgstr ""
+msgstr "تاریخ شروع"
 
-#, fuzzy
 msgid "End date"
-msgstr "تاریخ"
+msgstr "تاریخ پایان"
 
 msgid "Amount min"
-msgstr ""
+msgstr "حداقل مبلغ"
 
 msgid "Min cost"
-msgstr ""
+msgstr "حداقل هزینه"
 
 msgid "Amount max"
-msgstr ""
+msgstr "حداکثر مبلغ"
 
 msgid "Max cost"
-msgstr ""
+msgstr "حداکثر هزینه"
 
 msgid "Filter"
-msgstr ""
+msgstr "فیلتر"
 
 msgid "Clear filters"
-msgstr ""
+msgstr "پاک کردن فیلترها"
 
 msgid "For what?"
-msgstr ""
+msgstr "برای چی؟"
 
 #, python-format
 msgid "Added on %(date)s"
-msgstr ""
+msgstr "افزوده شده در %(date)s"
 
 #, python-format
 msgid "Everyone but %(excluded)s"
-msgstr ""
+msgstr "همه به جز %(excluded)s"
 
 msgid "delete"
-msgstr ""
+msgstr "حذف"
 
 msgid "No bills"
-msgstr ""
+msgstr "بدون صورتحساب"
 
 msgid "Nothing to list yet."
-msgstr ""
+msgstr "هنوز موردی برای فهرست کردن نیست."
 
 msgid "Add your first bill"
-msgstr ""
+msgstr "نخستین صورتحساب خود را اضافه کنید"
 
 msgid "Add the first participant"
-msgstr ""
+msgstr "نخستین شرکت‌کننده را اضافه کنید"
 
 msgid "Password reminder"
-msgstr ""
+msgstr "یادآوری گذرواژه"
 
 msgid ""
 "A link to reset your password has been sent to you, please check your "
 "emails."
 msgstr ""
+"یک پیوند برای بازنشانی گذرواژهٔ شما ارسال شده است، لطفاً ایمیل خود را بررسی "
+"کنید."
 
 msgid "Return to home page"
-msgstr ""
+msgstr "بازگشت به صفحهٔ اصلی"
 
 msgid "Your projects"
-msgstr ""
+msgstr "پروژه‌های شما"
 
 msgid "Reset your password"
-msgstr ""
+msgstr "بازنشانی گذرواژهٔ خود"
 
 msgid "Invite people to join this project"
-msgstr ""
+msgstr "دعوت از افراد برای پیوستن به این پروژه"
 
 msgid "Share an invitation link"
-msgstr ""
+msgstr "اشتراک گذاری پیوند دعوت"
 
 msgid ""
 "The easiest way to invite people is to give them the following invitation"
@@ -912,24 +923,31 @@ msgid ""
 " add/edit/delete bills. However, they will not have access to important "
 "settings such as changing the private code or deleting the whole project."
 msgstr ""
+"ساده‌ترین راه برای دعوت از افراد این است که پیوند دعوت زیر را به آنها "
+"بدهید.<br />آنها قادر به دسترسی به پروژه، مدیریت شرکت‌کنندگان، افزودن/ویرایش/"
+"حذف صورتحساب‌ها خواهند بود. با این حال، به تنظیمات مهمی مانند تغییر کد خصوصی "
+"یا حذف کل پروژه دسترسی نخواهند داشت."
 
 msgid "Scan QR code"
-msgstr ""
+msgstr "اسکن کد QR"
 
 msgid "Use a mobile device with a compatible app."
-msgstr ""
+msgstr "از یک موبایل با یک برنامهٔ سازگار استفاده کنید."
 
 msgid "Send via Emails"
-msgstr ""
+msgstr "ارسال از طریق ایمیل‌ها"
 
 msgid ""
 "Specify a list of email adresses (separated by comma) of people you want "
 "to notify about the creation of this project. We will send them an email "
 "with the invitation link."
 msgstr ""
+"لیستی از آدرس‌های ایمیل (جدا شده با کاما) از افرادی که می‌خواهید دربارهٔ ایجاد "
+"این پروژه به آنها اطلاع‌رسانی کنید، مشخص کنید. ما پیوند دعوت را برای آنها از "
+"طریق ایمیل ارسال خواهیم کرد."
 
 msgid "Share Identifier & code"
-msgstr ""
+msgstr "اشتراک گذاری شناسه و کد"
 
 msgid ""
 "You can share the project identifier and the private code by any "
@@ -937,61 +955,64 @@ msgid ""
 "to the full project, including changing settings such as the private code"
 " or project email address, or even deleting the whole project."
 msgstr ""
+"شما می‌توانید شناسهٔ پروژه و کد خصوصی را از طریق هر وسیلهٔ ارتباطی به اشتراک "
+"بگذارید.<br />هر کسی که کد خصوصی را داشته باشد، به کل پروژه دسترسی خواهد داشت"
+"، از جمله تغییر تنظیماتی مانند کد خصوصی یا آدرس ایمیل پروژه، یا حتی حذف کل "
+"پروژه."
 
 msgid "Identifier:"
-msgstr ""
+msgstr "شناسه:"
 
-#, fuzzy
 msgid "Private code:"
-msgstr "کد خصوصی"
+msgstr "کد خصوصی:"
 
 msgid "the private code was defined when you created the project"
-msgstr ""
+msgstr "کد خصوصی هنگام ایجاد پروژه تعریف شد"
 
 msgid "Who pays?"
-msgstr ""
+msgstr "پرداخت‌کننده؟"
 
 msgid "To whom?"
-msgstr ""
+msgstr "به چه کسی؟"
 
 msgid "Settled?"
-msgstr ""
+msgstr "تسویه شد؟"
 
 msgid "Click here to record that the money transfer has been done"
-msgstr ""
+msgstr "برای ثبت اینکه انتقال پول انجام شده است، اینجا را کلیک کنید"
 
 msgid "Register settlement"
-msgstr ""
+msgstr "ثبت تسویه"
 
 msgid "Who?"
-msgstr ""
+msgstr "کی؟"
 
 msgid "Balance"
-msgstr ""
+msgstr "تراز"
 
 msgid "deactivate"
-msgstr ""
+msgstr "غیرفعال‌سازی"
 
 msgid "reactivate"
-msgstr ""
+msgstr "فعال‌سازی مجدد"
 
 msgid "Paid"
-msgstr ""
+msgstr "پرداخت‌شده"
 
 msgid "Expenses"
-msgstr ""
+msgstr "هزینه‌ها"
 
 msgid "Direct transfer"
-msgstr ""
+msgstr "انتقال مستقیم"
 
 msgid "Received"
-msgstr ""
+msgstr "دریافتی"
 
 msgid "Expenses by month"
-msgstr ""
+msgstr "هزینه‌ها به تفکیک ماه"
 
 msgid "Period"
-msgstr ""
+msgstr "بازه"
 
 #~ msgid "You either provided a bad token or no project identifier."
 #~ msgstr ""
@@ -1214,4 +1235,3 @@ msgstr ""
 
 #~ msgid "From IP"
 #~ msgstr ""
-
