@@ -6,8 +6,10 @@ There are multiple ways to install «Ihatemoney» on your system :
 2.  [Via Yunohost](https://github.com/YunoHost-Apps/ihatemoney_ynh) (a
     server operating system aiming to make self-hosting accessible to
     anyone)
-3.  {ref}`cloud`
-4.  {ref}`manual-installation`
+3.  [Via the MASH Ansible playbook](https://github.com/mother-of-all-self-hosting/mash-playbook/blob/main/docs/services/ihatemoney.md) (deploys
+    Ihatemoney and other self-hosted services as Docker containers)
+4.  {ref}`cloud`
+5.  {ref}`manual-installation`
 
 
 :::{note}
