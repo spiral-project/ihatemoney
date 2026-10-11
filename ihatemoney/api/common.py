@@ -1,4 +1,5 @@
 from functools import wraps
+from typing import ClassVar
 
 from flask import current_app, request
 from flask_restful import Resource, abort
@@ -9,8 +10,6 @@ from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.emails import send_creation_email
 from ihatemoney.forms import EditProjectForm, MemberForm, ProjectForm, get_billform_for
 from ihatemoney.models import Bill, Person, Project, db
-
-
 def need_auth(f):
     """Check the request for basic authentication for a given project.
 
@@ -70,7 +69,7 @@ class ProjectsHandler(Resource):
 
 
 class ProjectHandler(Resource):
-    method_decorators = [need_auth]
+    method_decorators: ClassVar[list] = [need_auth]
 
     def get(self, project):
         return project
@@ -91,7 +90,7 @@ class ProjectHandler(Resource):
 
 
 class ProjectStatsHandler(Resource):
-    method_decorators = [need_auth]
+    method_decorators: ClassVar[list] = [need_auth]
 
     def get(self, project):
         return project.members_stats
@@ -111,7 +110,7 @@ class APIMemberForm(MemberForm):
 
 
 class MembersHandler(Resource):
-    method_decorators = [need_auth]
+    method_decorators: ClassVar[list] = [need_auth]
 
     def get(self, project):
         return project.members
@@ -128,7 +127,7 @@ class MembersHandler(Resource):
 
 
 class MemberHandler(Resource):
-    method_decorators = [need_auth]
+    method_decorators: ClassVar[list] = [need_auth]
 
     def get(self, project, member_id):
         member = Person.query.get(member_id, project)
@@ -152,7 +151,7 @@ class MemberHandler(Resource):
 
 
 class BillsHandler(Resource):
-    method_decorators = [need_auth]
+    method_decorators: ClassVar[list] = [need_auth]
 
     def get(self, project):
         return project.get_bills().all()
@@ -168,7 +167,7 @@ class BillsHandler(Resource):
 
 
 class BillHandler(Resource):
-    method_decorators = [need_auth]
+    method_decorators: ClassVar[list] = [need_auth]
 
     def get(self, project, bill_id):
         bill = Bill.query.get(project, bill_id)
@@ -195,7 +194,7 @@ class BillHandler(Resource):
 
 
 class TokenHandler(Resource):
-    method_decorators = [need_auth]
+    method_decorators: ClassVar[list] = [need_auth]
 
     def get(self, project):
         if not project:

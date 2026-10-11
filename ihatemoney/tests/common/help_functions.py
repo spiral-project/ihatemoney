@@ -3,9 +3,9 @@ from markupsafe import Markup
 
 def em_surround(string, regex_escape=False):
     if regex_escape:
-        return r'<em class="font-italic">%s<\/em>' % string
+        return rf'<em class="font-italic">{string}<\/em>'
     else:
-        return '<em class="font-italic">%s</em>' % string
+        return f'<em class="font-italic">{string}</em>'
 
 
 def extract_link(data, start_prefix):

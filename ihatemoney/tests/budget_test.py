@@ -1,12 +1,12 @@
 import re
 from collections import defaultdict
-from datetime import date, datetime, timedelta
+from datetime import date, timedelta
+from email.utils import format_datetime, parsedate_to_datetime
 from urllib.parse import unquote, urlparse, urlunparse
 
 import pytest
 from flask import session, url_for
 from werkzeug.security import check_password_hash
-
 from ihatemoney import models
 from ihatemoney.currency_convertor import CurrencyConverter
 from ihatemoney.tests.common.help_functions import extract_link
@@ -412,7 +412,7 @@ class TestBudget(IhatemoneyTestCase):
 
         # remove jeanne
         self.client.post(
-            "/raclette/members/%s/delete" % self.get_project("raclette").members[-1].id
+            f"/raclette/members/{self.get_project('raclette').members[-1].id}/delete"
         )
 
         # as jeanne is not bound to any bill, he is removed
@@ -2237,10 +2237,8 @@ class TestBudget(IhatemoneyTestCase):
         last_modified = resp.headers.get("Last-Modified")
 
         # Get a date 1 hour before the last modified date
-        before = datetime.strptime(
-            last_modified, "%a, %d %b %Y %H:%M:%S %Z"
-        ) - timedelta(hours=1)
-        before_str = before.strftime("%a, %d %b %Y %H:%M:%S %Z")
+        before = parsedate_to_datetime(last_modified) - timedelta(hours=1)
+        before_str = format_datetime(before, usegmt=True)
 
         resp = self.client.get(
             f"/raclette/feed/{token}.xml",
@@ -2248,10 +2246,9 @@ class TestBudget(IhatemoneyTestCase):
         )
         assert resp.status_code == 200
 
-        after = datetime.strptime(
-            last_modified, "%a, %d %b %Y %H:%M:%S %Z"
-        ) + timedelta(hours=1)
-        after_str = after.strftime("%a, %d %b %Y %H:%M:%S %Z")
+        # Get a date 1 hour after the last modified date
+        after = parsedate_to_datetime(last_modified) + timedelta(hours=1)
+        after_str = format_datetime(after, usegmt=True)
 
         resp = self.client.get(
             f"/raclette/feed/{token}.xml",

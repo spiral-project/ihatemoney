@@ -2,6 +2,7 @@ import decimal
 from datetime import datetime
 from re import match
 from types import SimpleNamespace
+from typing import ClassVar
 
 import email_validator
 from flask import request, session
@@ -52,10 +53,7 @@ from ihatemoney.utils import (
 
 
 def strip_filter(string):
-    try:
-        return string.strip()
-    except Exception:
-        return string
+    return string.strip() if isinstance(string, str) else string
 
 
 def get_billform_for(project, set_default=True, **kwargs):
@@ -348,7 +346,7 @@ class PasswordReminder(FlaskForm):
 
 
 class ResetPasswordForm(FlaskForm):
-    password_validators = [
+    password_validators: ClassVar[list] = [
         DataRequired(),
         EqualTo("password_confirmation", message=_("Password mismatch")),
     ]
@@ -473,7 +471,9 @@ class SettlementForm(FlaskForm):
 class MemberForm(FlaskForm):
     name = StringField(_("Name"), validators=[DataRequired()], filters=[strip_filter])
 
-    weight_validators = [NumberRange(min=0.1, message=_("Weights should be positive"))]
+    weight_validators: ClassVar[list] = [
+    NumberRange(min=0.1, message=_("Weights should be positive"))
+    ]
     weight = CommaDecimalField(_("Weight"), default=1, validators=weight_validators)
     submit = SubmitField(_("Add"))
 

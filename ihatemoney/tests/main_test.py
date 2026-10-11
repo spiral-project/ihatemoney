@@ -2,7 +2,7 @@ import os
 import smtplib
 import socket
 from unittest.mock import MagicMock, patch
-
+from typing import ClassVar
 import pytest
 from sqlalchemy import orm
 from werkzeug.security import check_password_hash
@@ -682,7 +682,7 @@ class TestCaptcha(IhatemoneyTestCase):
 
 class TestCurrencyConverter:
     converter = CurrencyConverter()
-    mock_data = {
+    mock_data:ClassVar[dict] = {
         "USD": 1,
         "EUR": 0.8,
         "CAD": 1.2,
