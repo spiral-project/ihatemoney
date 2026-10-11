@@ -2,6 +2,7 @@ import datetime
 import itertools
 from collections import defaultdict
 from enum import Enum
+from typing import ClassVar
 
 import sqlalchemy
 from dateutil.parser import parse
@@ -68,7 +69,7 @@ class Project(db.Model):
             return Project.query.filter(Project.name == name).one()
 
     # Direct SQLAlchemy-Continuum to track changes to this model
-    __versioned__ = {}
+    __versioned__: ClassVar[dict] = {}
 
     id = db.Column(db.String(64), primary_key=True)
 
@@ -442,8 +443,8 @@ class Project(db.Model):
                         project_default_currency=self.default_currency,
                         what=b["what"],
                     )
-                except Exception as e:
-                    raise ValueError(f"Unable to import csv data: {e!r}")
+                except (ValueError, TypeError, KeyError, LookupError) as e:
+                    raise ValueError(f"Unable to import csv data: {e!r}") from e
                 db.session.add(new_bill)
         db.session.commit()
 
@@ -627,9 +628,8 @@ class Person(db.Model):
     query_class = PersonQuery
 
     # Direct SQLAlchemy-Continuum to track changes to this model
-    __versioned__ = {}
-
-    __table_args__ = {"sqlite_autoincrement": True}
+    __versioned__: ClassVar[dict] = {}
+    __table_args__: ClassVar[dict] = {"sqlite_autoincrement": True}
 
     id = db.Column(db.Integer, primary_key=True)
     project_id = db.Column(db.String(64), db.ForeignKey("project.id"))
@@ -698,9 +698,8 @@ class Bill(db.Model):
     query_class = BillQuery
 
     # Direct SQLAlchemy-Continuum to track changes to this model
-    __versioned__ = {}
-
-    __table_args__ = {"sqlite_autoincrement": True}
+    __versioned__: ClassVar[dict] = {}
+    __table_args__: ClassVar[dict] = {"sqlite_autoincrement": True}
 
     id = db.Column(db.Integer, primary_key=True)
 
@@ -724,15 +723,16 @@ class Bill(db.Model):
     def __init__(
         self,
         amount: float,
-        date: datetime.datetime = None,
+        date: datetime.datetime | None = None,
         external_link: str = "",
         original_currency: str = "",
-        owers: list = [],
-        payer_id: int = None,
+        owers: list | None = None,
+        payer_id: int | None = None,
         project_default_currency: str = "",
         what: str = "",
         bill_type: str = "Expense",
     ):
+        owers = [] if owers is None else owers
         super().__init__()
         self.amount = amount
         self.date = date

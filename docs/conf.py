@@ -5,7 +5,7 @@ source_suffix = ".rst"
 master_doc = "index"
 
 project = "I hate money"
-year = datetime.datetime.now().strftime("%Y")
+year = datetime.datetime.now(datetime.timezone.utc).strftime("%Y")
 copyright = f"2011-{year}, The 'I hate money' team"
 
 version = "5.0"

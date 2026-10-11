@@ -277,7 +277,7 @@ class TestHistory(IhatemoneyTestCase):
             "utf-8"
         )
         assert re.search(
-            r"Bill %s:\s* Amount changed\s* from %s\s* to %s"
+            rf"Bill {em_surround('fromage à raclette', regex_escape=True)}:\s* Amount changed\s* from {em_surround('25.0', regex_escape=True)}\s* to {em_surround('10.0', regex_escape=True)}"
             % (
                 em_surround("fromage à raclette", regex_escape=True),
                 em_surround("25.0", regex_escape=True),
@@ -285,10 +285,7 @@ class TestHistory(IhatemoneyTestCase):
             ),
             resp.data.decode("utf-8"),
         )
-        assert "Bill %s renamed to %s" % (
-            em_surround("fromage à raclette"),
-            em_surround("new thing"),
-        ) in resp.data.decode("utf-8")
+        assert f"Bill {em_surround('fromage à raclette')} renamed to {em_surround('new thing')}" in resp.data.decode("utf-8")
         assert resp.data.decode("utf-8").index(
             f"Bill {em_surround('fromage à raclette')} renamed to"
         ) < resp.data.decode("utf-8").index("Amount changed")
@@ -312,18 +309,10 @@ class TestHistory(IhatemoneyTestCase):
         resp = self.client.get("/demo/history")
         assert resp.status_code == 200
         assert re.search(
-            r"Participant %s:\s* weight changed\s* from %s\s* to %s"
-            % (
-                em_surround("zorglub", regex_escape=True),
-                em_surround("1.0", regex_escape=True),
-                em_surround("2.0", regex_escape=True),
-            ),
+            rf"Participant {em_surround('zorglub', regex_escape=True)}:\s* weight changed\s* from {em_surround('1.0', regex_escape=True)}\s* to {em_surround('2.0', regex_escape=True)}",
             resp.data.decode("utf-8"),
         )
-        assert "Participant %s renamed to %s" % (
-            em_surround("zorglub"),
-            em_surround("new name"),
-        ) in resp.data.decode("utf-8")
+        assert f"Participant {em_surround('zorglub')} renamed to {em_surround('new name')}" in resp.data.decode("utf-8")
         assert resp.data.decode("utf-8").index(
             f"Participant {em_surround('zorglub')} renamed"
         ) < resp.data.decode("utf-8").index("weight changed")

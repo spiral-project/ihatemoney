@@ -105,7 +105,7 @@ def get_project_count(print_emails, bills, days):
         for pr in Project.query.all()
         if pr.get_bills().count() > bills
         and pr.get_bills()[0].date
-        > datetime.date.today() - datetime.timedelta(days=days)
+        > datetime.datetime.now(datetime.timezone.utc).date() - datetime.timedelta(days=days)
     ]
     click.secho("Number of projects: " + str(len(projects)))
 
