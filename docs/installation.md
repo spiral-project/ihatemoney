@@ -84,6 +84,7 @@ If needed, there is a `docker-compose.yml` file available as an example on the [
 Some Paas (Platform-as-a-Service), provide a documentation or even a quick installation process to deploy and enjoy your instance within a minute:
 
   * [alwaysdata](https://www.alwaysdata.com/en/marketplace/ihatemoney/)
+  * [RepoCloud](https://repocloud.io/details/I%20Hate%20Money/)
 
 (manual-installation)=
 ## Via a manual installation
