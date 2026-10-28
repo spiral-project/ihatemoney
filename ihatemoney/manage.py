@@ -7,10 +7,11 @@ import random
 import sys
 
 import click
+from flask import Flask, has_app_context
 from flask.cli import FlaskGroup
 
 from ihatemoney.models import Project, db
-from ihatemoney.run import create_app
+from ihatemoney.run import create_app, load_configuration
 from ihatemoney.utils import create_jinja_env, generate_password_hash
 
 
@@ -33,14 +34,22 @@ def runserver(ctx):
     ctx.forward(run)
 
 
-@cli.command(name="generate_password_hash")
+@cli.command(name="generate_password_hash", with_appcontext=False)
 def password_hash():
     """Get password from user and hash it without printing it in clear text."""
     password = getpass.getpass(prompt="Password: ")
-    print(generate_password_hash(password))
+    if has_app_context():
+        print(generate_password_hash(password))
+    else:
+        app = Flask(
+            __name__, instance_path="/etc/ihatemoney", instance_relative_config=True
+        )
+        load_configuration(app)
+        with app.app_context():
+            print(generate_password_hash(password))
 
 
-@cli.command()
+@cli.command(with_appcontext=False)
 @click.argument(
     "config_file",
     type=click.Choice(

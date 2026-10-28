@@ -3,6 +3,8 @@
 # Fail the whole script on the first failure.
 set -e
 
+: "${SECRET_KEY:?Set SECRET_KEY to a unique random value before starting IHateMoney}"
+
 cat <<EOF >/etc/ihatemoney/ihatemoney.cfg
 DEBUG = $DEBUG
 ACTIVATE_ADMIN_DASHBOARD = $ACTIVATE_ADMIN_DASHBOARD

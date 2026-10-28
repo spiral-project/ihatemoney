@@ -85,11 +85,15 @@ def load_configuration(app, configuration=None):
 
 
 def validate_configuration(app):
-    if app.config["SECRET_KEY"] == default_settings.SECRET_KEY:
-        warnings.warn(
-            "Running a server without changing the SECRET_KEY can lead to"
-            + " user impersonation. Please update your configuration file.",
-            UserWarning,
+    secret_key = app.config.get("SECRET_KEY")
+    if (
+        not isinstance(secret_key, (str, bytes))
+        or not secret_key.strip()
+        or secret_key in ("tralala", b"tralala")
+    ):
+        raise RuntimeError(
+            "SECRET_KEY must be configured with a unique random value; "
+            "the former default 'tralala' is not allowed."
         )
     # Deprecations
     if "DEFAULT_MAIL_SENDER" in app.config:
