@@ -16,7 +16,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Test image # Checks we are able to run the container.
-        run: docker compose -f docker-compose.test.yml run sut
+        run: |
+          export SECRET_KEY="$(openssl rand -hex 32)"
+          docker compose -f docker-compose.test.yml run sut
 
   build_upload:
     runs-on: ubuntu-22.04

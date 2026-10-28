@@ -49,7 +49,7 @@ connection string. This will look like:
 
 ## SECRET_KEY
 
-The secret key used to encrypt cookies and generate secure tokens. They
+The secret key used to sign cookies and generate secure tokens. They
 are used to authenticate access to projects, both through the web
 interface and through the API.
 
@@ -57,8 +57,9 @@ As such, you should never use a predictible secret key: an attacker with
 the knowledge of the secret key could easily access any project and
 bypass the private code verification.
 
--   **Production value:** `ihatemoney conf-example ihatemoney.cfg`
-    sets it to something random, which should be good.
+-   **Required:** Set a unique random value. `ihatemoney generate-config ihatemoney.cfg`
+    generates one for a new configuration. Keep it stable across restarts and replicas;
+    changing it invalidates existing sessions and signed tokens.
 
 ## SESSION_COOKIE_SECURE
 
