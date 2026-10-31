@@ -329,6 +329,18 @@ class CommonTestCase:
                         list_json.sort()
                         assert list_project == list_json
 
+        def test_import_same_file_twice(self):
+            # Bills already in the project are skipped, whatever the order of their owers
+            self.post_project("raclette")
+            self.login("raclette")
+            project = self.get_project("raclette")
+
+            self.populate_data_with_currencies(["XXX", "XXX", "XXX"])
+            self.import_project("raclette", self.generate_form_data(self.data))
+            self.import_project("raclette", self.generate_form_data(self.data))
+
+            assert len(project.get_pretty_bills()) == len(self.data)
+
         def test_import_wrong_data(self):
             self.post_project("raclette")
             self.login("raclette")
