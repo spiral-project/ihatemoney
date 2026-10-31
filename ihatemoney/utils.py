@@ -313,7 +313,10 @@ def same_bill(bill1, bill2):
         "owers",
     ]
     for a in attr:
-        if bill1[a] != bill2[a]:
+        if a == "owers":
+            if sorted(bill1[a]) != sorted(bill2[a]):
+                return False
+        elif bill1[a] != bill2[a]:
             return False
     return True
 
