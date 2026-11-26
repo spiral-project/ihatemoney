@@ -302,7 +302,16 @@ things up:
 
 In order to issue a new release, follow the following steps:
 
--   Merge remaining pull requests;
+-   Merge remaining pull requests (including from weblate);
+
+-   Extract the translations:
+
+        make extract-translations
+
+    and commit the .pot and .po files. Push this on main branch.
+
+-   Translate in Weblate. You can "Commit" in "Repository maintenance"
+    and then merge the PR.
 
 -   Switch to the main branch;
 
@@ -312,10 +321,6 @@ In order to issue a new release, follow the following steps:
     `mogrify`:
 
         make compress-assets
-
--   Extract the translations:
-
-        make extract-translations
 
 -   If you're not completely sure of yourself at this point, you can
     optionally: create a new branch, push it, open a pull request, check
