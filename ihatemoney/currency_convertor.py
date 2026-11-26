@@ -1,12 +1,13 @@
 import traceback
 import warnings
+from typing import Any, ClassVar
 
 import requests
 from cachetools import TTLCache, cached
 
 
 class Singleton(type):
-    _instances = {}
+    _instances: ClassVar[dict[type, Any]] = {}
 
     def __call__(cls, *args, **kwargs):
         if cls not in cls._instances:
@@ -30,7 +31,7 @@ class CurrencyConverter(metaclass=Singleton):
             warnings.warn(
                 f"Call to {self.api_url} failed: {traceback.format_exc(limit=0).strip()}"
             )
-            # In case of any exception, let's have an empty value
+            # In case of a  ny exception, let's have an empty value
             rates = {}
         rates[self.no_currency] = 1.0
         return rates

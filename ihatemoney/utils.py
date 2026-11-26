@@ -5,7 +5,7 @@ import operator
 import os
 import re
 import smtplib
-import socket
+
 from enum import Enum
 from io import BytesIO, StringIO, TextIOWrapper
 from json import JSONEncoder, dumps
@@ -52,7 +52,7 @@ def send_email(mail_message):
     # to check for both.
     try:
         current_app.mail.send(mail_message)
-    except (smtplib.SMTPException, socket.error):
+    except (OSError, smtplib.SMTPException):
         return False
     # Email was sent successfully
     return True

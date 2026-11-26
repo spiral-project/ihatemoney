@@ -42,7 +42,7 @@ class TestAPI(IhatemoneyTestCase):
     def get_basic_auth(self, username, password=None):
         password = password or username
         base64string = (
-            base64.encodebytes(f"{username}:{password}".encode("utf-8"))
+            base64.encodebytes(f"{username}:{password}".encode())
             .decode("utf-8")
             .replace("\n", "")
         )
@@ -458,8 +458,8 @@ class TestAPI(IhatemoneyTestCase):
 
         got = json.loads(req.data.decode("utf-8"))
         assert (
-            datetime.date.today()
-            == datetime.datetime.strptime(got["creation_date"], "%Y-%m-%d").date()
+            datetime.datetime.now(datetime.timezone.utc).date()
+            == datetime.date.fromisoformat(got["creation_date"])
         )
         del got["creation_date"]
         assert expected == got
@@ -508,9 +508,9 @@ class TestAPI(IhatemoneyTestCase):
         req = self.client.get(
             "/api/projects/raclette/bills/1", headers=self.get_basic_auth("raclette")
         )
-        creation_date = datetime.datetime.strptime(
-            json.loads(req.data.decode("utf-8"))["creation_date"], "%Y-%m-%d"
-        ).date()
+        creation_date = datetime.date.fromisoformat(
+            json.loads(req.data.decode("utf-8"))["creation_date"]
+        )
 
         expected = {
             "what": "beer",
@@ -531,7 +531,7 @@ class TestAPI(IhatemoneyTestCase):
         got = json.loads(req.data.decode("utf-8"))
         assert (
             creation_date
-            == datetime.datetime.strptime(got["creation_date"], "%Y-%m-%d").date()
+            == datetime.date.fromisoformat(got["creation_date"])
         )
         del got["creation_date"]
         assert expected == got
@@ -610,8 +610,8 @@ class TestAPI(IhatemoneyTestCase):
 
             got = json.loads(req.data.decode("utf-8"))
             assert (
-                datetime.date.today()
-                == datetime.datetime.strptime(got["creation_date"], "%Y-%m-%d").date()
+                datetime.datetime.now(datetime.timezone.utc).date()
+                == datetime.date.fromisoformat(got["creation_date"])
             )
             del got["creation_date"]
             assert expected == got
@@ -717,8 +717,8 @@ class TestAPI(IhatemoneyTestCase):
 
         got = json.loads(req.data.decode("utf-8"))
         assert (
-            datetime.date.today()
-            == datetime.datetime.strptime(got["creation_date"], "%Y-%m-%d").date()
+            datetime.datetime.now(datetime.timezone.utc).date()
+            == datetime.date.fromisoformat(got["creation_date"])
         )
         del got["creation_date"]
         assert expected == got
@@ -899,9 +899,9 @@ class TestAPI(IhatemoneyTestCase):
         req = self.client.get(
             "/api/projects/raclette/bills/1", headers=self.get_basic_auth("raclette")
         )
-        creation_date = datetime.datetime.strptime(
-            json.loads(req.data.decode("utf-8"))["creation_date"], "%Y-%m-%d"
-        ).date()
+        creation_date = datetime.date.fromisoformat(
+            json.loads(req.data.decode("utf-8"))["creation_date"]
+        )
 
         # compare with the added info
         self.assertStatus(200, req)
@@ -923,7 +923,7 @@ class TestAPI(IhatemoneyTestCase):
         got = json.loads(req.data.decode("utf-8"))
         assert (
             creation_date
-            == datetime.datetime.strptime(got["creation_date"], "%Y-%m-%d").date()
+            == datetime.date.fromisoformat(got["creation_date"])
         )
         del got["creation_date"]
         assert expected == got

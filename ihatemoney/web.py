@@ -11,11 +11,11 @@ and `add_project_id` for a quick overview)
 
 import datetime
 import hashlib
+import csv
 import json
 import os
 from functools import wraps
 from urllib.parse import urlparse, urlunparse
-
 import qrcode
 import qrcode.image.svg
 from flask import (
@@ -490,8 +490,8 @@ def import_project():
             elif data.mimetype == "text/csv":
                 try:
                     bills = csv2list_of_dicts(data)
-                except Exception:
-                    raise ValueError(_("Unable to parse CSV"))
+                except (ValueError, TypeError, csv.Error):
+                    raise ValueError(_("Unable to parse CSV")) from None
             else:
                 raise ValueError("Unsupported file type")
 
@@ -700,10 +700,10 @@ def list_bills():
             query = query.filter(Bill.what.ilike(f'%{filters["search"]}%'))
 
         if filters["date_from"]:
-            query = query.filter(Bill.date >= datetime.datetime.strptime(filters["date_from"], '%Y-%m-%d').date())
+            query = query.filter(Bill.date >= datetime.date.fromisoformat(filters["date_from"]))
 
         if filters["date_to"]:
-            query = query.filter(Bill.date <= datetime.datetime.strptime(filters["date_to"], '%Y-%m-%d').date())
+            query = query.filter(Bill.date <= datetime.date.fromisoformat(filters["date_to"]))
 
         if filters["amount_min"]:
             query = query.filter(Bill.amount >= float(filters["amount_min"]))
@@ -932,7 +932,7 @@ def add_settlement_bill():
 
     settlement = Bill(
         amount=form.amount.data,
-        date=datetime.datetime.today(),
+        date=datetime.datetime.now(datetime.timezone.utc).date(),
         owers=[Person.query.get(receiver_id, g.project)],
         payer_id=sender_id,
         project_default_currency=g.project.default_currency,

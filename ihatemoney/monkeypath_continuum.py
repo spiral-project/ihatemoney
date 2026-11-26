@@ -59,10 +59,10 @@ class PatchedTransactionFactory(TransactionFactory):
                     except KeyError:
                         raise ImproperlyConfigured(
                             "Could not build relationship between Transaction"
-                            " and %s. %s was not found in declarative class "
+                            f" and {user_cls}. {user_cls} was not found in declarative class "
                             "registry. Either configure VersioningManager to "
                             "use different user class or disable this "
-                            "relationship " % (user_cls, user_cls)
+                            "relationship "
                         )
 
                 user_id = sa.Column(
@@ -80,15 +80,17 @@ class PatchedTransactionFactory(TransactionFactory):
                     for field in fields
                     if hasattr(self, field)
                 )
-                return "<Transaction %s>" % ", ".join(
-                    (
-                        "%s=%r" % (field, value)
-                        if not isinstance(value, six.integer_types)
-                        # We want the following line to ensure that longs get
-                        # shown without the ugly L suffix on python 2.x
-                        # versions
-                        else "%s=%d" % (field, value)
-                        for field, value in field_values.items()
+                return "<Transaction {}>".format(
+                    ", ".join(
+                        (
+                            "{}={!r}".format(field, value)
+                            if not isinstance(value, six.integer_types)
+                            # We want the following line to ensure that longs get
+                            # shown without the ugly L suffix on python 2.x
+                            # versions
+                            else "{}={:d}".format(field, value)
+                            for field, value in field_values.items()
+                        )
                     )
                 )
 
