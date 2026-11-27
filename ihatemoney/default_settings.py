@@ -2,7 +2,7 @@
 DEBUG = SQLACHEMY_ECHO = False
 SQLALCHEMY_DATABASE_URI = "sqlite:////tmp/ihatemoney.db"
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-SECRET_KEY = "tralala"
+SECRET_KEY = None
 SITE_NAME = "I Hate Money"
 MAIL_DEFAULT_SENDER = "Budget manager <admin@example.com>"
 SHOW_ADMIN_EMAIL = True

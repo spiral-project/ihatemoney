@@ -23,10 +23,11 @@ packaging](https://github.com/spiral-project/ihatemoney/issues/227).
 Docker images are published [on the Docker
 hub](https://hub.docker.com/r/ihatemoney/ihatemoney/).
 
-This is probably the simplest way to get something running. Once you
-have Docker installed on your system, just issue :
+This is probably the simplest way to get something running. Generate a secret
+once, store it securely, and reuse it across restarts and replicas:
 
-    docker run -d -p 8000:8000 ihatemoney/ihatemoney:latest
+    export SECRET_KEY="$(openssl rand -hex 32)"
+    docker run -d -p 8000:8000 -e SECRET_KEY="$SECRET_KEY" ihatemoney/ihatemoney:latest
 
 Ihatemoney is now available on <http://localhost:8000>.
 
@@ -35,7 +36,7 @@ passed with `-e` parameters e.g. with a secure `SECRET_KEY`, an external
 mail server and an external database:
 
     docker run -d -p 8000:8000 \
-    -e SECRET_KEY="supersecure" \
+    -e SECRET_KEY="$SECRET_KEY" \
     -e SQLALCHEMY_DATABASE_URI="mysql+pymysql://user:pass@10.42.58.250/ihm" \
     -e MAIL_SERVER=smtp.gmail.com \
     -e MAIL_PORT=465 \
@@ -48,7 +49,7 @@ If you are running this locally, you might need to disable the secure session co
 
 A volume can also be specified to persist the default database file:
 
-    docker run -d -p 8000:8000 -v /host/path/to/database:/database ihatemoney/ihatemoney
+    docker run -d -p 8000:8000 -e SECRET_KEY="$SECRET_KEY" -v /host/path/to/database:/database ihatemoney/ihatemoney
 
 To enable the Admin dashboard, first generate a hashed password with:
 
@@ -74,7 +75,7 @@ Additional gunicorn parameters can be passed using the docker `CMD`
 parameter. For example, use the following command to add more gunicorn
 workers:
 
-    docker run -d -p 8000:8000 ihatemoney/ihatemoney -w 3
+    docker run -d -p 8000:8000 -e SECRET_KEY="$SECRET_KEY" ihatemoney/ihatemoney -w 3
 
 If needed, there is a `docker-compose.yml` file available as an example on the [project repository](https://github.com/spiral-project/ihatemoney/blob/main/docker-compose.yml)
 

@@ -3,6 +3,13 @@
 # Fail the whole script on the first failure.
 set -e
 
+if [ -z "$SECRET_KEY" ]; then
+    echo "Error: SECRET_KEY is missing or empty." >&2
+    echo "Generate a key with: openssl rand -hex 32" >&2
+    echo "Set it as SECRET_KEY in your Docker environment or Compose .env file." >&2
+    exit 1
+fi
+
 cat <<EOF >/etc/ihatemoney/ihatemoney.cfg
 DEBUG = $DEBUG
 ACTIVATE_ADMIN_DASHBOARD = $ACTIVATE_ADMIN_DASHBOARD
