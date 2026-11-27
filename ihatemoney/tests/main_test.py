@@ -4,6 +4,7 @@ import socket
 from unittest.mock import MagicMock, patch
 
 import pytest
+from flask import Flask
 from sqlalchemy import orm
 from werkzeug.security import check_password_hash
 
@@ -15,7 +16,7 @@ from ihatemoney.manage import (
     get_project_count,
     password_hash,
 )
-from ihatemoney.run import load_configuration
+from ihatemoney.run import load_configuration, validate_configuration
 from ihatemoney.tests.common.ihatemoney_testcase import BaseTestCase, IhatemoneyTestCase
 from ihatemoney.utils import (
     eval_arithmetic_expression,
@@ -26,6 +27,41 @@ from ihatemoney.utils import (
 os.environ.pop("IHATEMONEY_SETTINGS_FILE_PATH", None)
 
 __HERE__ = os.path.dirname(os.path.abspath(__file__))
+
+
+@pytest.mark.parametrize("secret", [None, "", "tralala", "supersecure"])
+@pytest.mark.parametrize("debug", [False, True])
+def test_secret_key_validation(monkeypatch, secret, debug):
+    monkeypatch.delenv("FLASK_DEBUG", raising=False)
+    app = Flask(__name__)
+    load_configuration(app)
+    app.config.update(SECRET_KEY=secret, DEBUG=debug)
+    if debug:
+        with pytest.warns(UserWarning, match="insecure SECRET_KEY"):
+            validate_configuration(app)
+        assert app.secret_key == (secret or "tralala")
+    else:
+        with pytest.raises(RuntimeError, match="SECRET_KEY must be configured"):
+            validate_configuration(app)
+
+
+def test_flask_debug_allows_development_key(monkeypatch):
+    monkeypatch.setenv("FLASK_DEBUG", "1")
+    app = Flask(__name__)
+    load_configuration(app)
+    with pytest.warns(UserWarning, match="insecure SECRET_KEY"):
+        validate_configuration(app)
+    assert app.secret_key == "tralala"
+
+
+def test_configured_secret_is_preserved(monkeypatch):
+    monkeypatch.setenv("FLASK_DEBUG", "0")
+    app = Flask(__name__)
+    load_configuration(app)
+    app.secret_key = os.urandom(32).hex()
+    secret = app.secret_key
+    validate_configuration(app)
+    assert app.secret_key == secret
 
 
 class TestConfiguration(BaseTestCase):

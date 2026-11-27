@@ -60,6 +60,10 @@ bypass the private code verification.
 -   **Required:** Set a unique random value. `ihatemoney generate-config ihatemoney.cfg`
     generates one for a new configuration. Keep it stable across restarts and replicas;
     changing it invalidates existing sessions and signed tokens.
+-   **Development:** `make serve` enables debug mode and allows the development
+    key with a warning. Do not use this mode for a deployment. Outside debug
+    mode, missing keys and the published examples `tralala` and `supersecure`
+    are rejected.
 
 ## SESSION_COOKIE_SECURE
 

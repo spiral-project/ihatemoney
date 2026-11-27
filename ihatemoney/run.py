@@ -6,6 +6,7 @@ from datetime import datetime
 import pytz
 from babel.dates import LOCALTZ
 from flask import Flask, g, render_template, request, session
+from flask.cli import get_debug_flag
 from flask_babel import Babel, format_currency
 from flask_mail import Mail
 from flask_migrate import Migrate, stamp, upgrade
@@ -86,15 +87,20 @@ def load_configuration(app, configuration=None):
 
 def validate_configuration(app):
     secret_key = app.config.get("SECRET_KEY")
-    if (
-        not isinstance(secret_key, (str, bytes))
-        or not secret_key.strip()
-        or secret_key in ("tralala", b"tralala")
-    ):
-        raise RuntimeError(
-            "SECRET_KEY must be configured with a unique random value; "
-            "the former default 'tralala' is not allowed."
-        )
+    if not secret_key or secret_key in ("tralala", "supersecure"):
+        # Flask CLI applies FLASK_DEBUG after the app factory returns.
+        if app.debug or get_debug_flag():
+            app.config["SECRET_KEY"] = secret_key or "tralala"
+            warnings.warn(
+                "Using an insecure SECRET_KEY for development only. "
+                "Configure a unique random value before deploying IHateMoney.",
+                UserWarning,
+            )
+        else:
+            raise RuntimeError(
+                "SECRET_KEY must be configured with a unique random value; "
+                "the published examples 'tralala' and 'supersecure' are not allowed."
+            )
     # Deprecations
     if "DEFAULT_MAIL_SENDER" in app.config:
         # Since flask-mail  0.8
