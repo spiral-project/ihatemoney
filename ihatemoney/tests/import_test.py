@@ -1,11 +1,13 @@
 import copy
+import csv
+import io
 import json
 
 import pytest
 
 from ihatemoney.models import BillType
 from ihatemoney.tests.common.ihatemoney_testcase import IhatemoneyTestCase
-from ihatemoney.utils import list_of_dicts2csv, list_of_dicts2json
+from ihatemoney.utils import get_members, list_of_dicts2csv, list_of_dicts2json
 
 
 # Data exported with Ihatemoney 6.0
@@ -418,6 +420,7 @@ class TestExport(IhatemoneyTestCase):
                 "payer_name": "tata",
                 "payer_weight": 1.0,
                 "owers": ["jeanne"],
+                "ower_weights": [1.0],
             },
             {
                 "date": "2016-12-31",
@@ -428,6 +431,7 @@ class TestExport(IhatemoneyTestCase):
                 "payer_name": "jeanne",
                 "payer_weight": 1.0,
                 "owers": ["zorglub", "tata"],
+                "ower_weights": [2.0, 1.0],
             },
             {
                 "date": "2016-12-31",
@@ -438,6 +442,7 @@ class TestExport(IhatemoneyTestCase):
                 "payer_name": "zorglub",
                 "payer_weight": 2.0,
                 "owers": ["zorglub", "jeanne", "tata", "p\xe9p\xe9"],
+                "ower_weights": [2.0, 1.0, 1.0, 1.0],
             },
         ]
         assert json.loads(resp.data.decode("utf-8")) == expected
@@ -445,10 +450,10 @@ class TestExport(IhatemoneyTestCase):
         # generate csv export of bills
         resp = self.client.get("/raclette/export/bills.csv")
         expected = [
-            "date,what,bill_type,amount,currency,payer_name,payer_weight,owers",
-            "2017-01-01,refund,Reimbursement,XXX,13.33,tata,1.0,jeanne",
-            '2016-12-31,red wine,Expense,XXX,200.0,jeanne,1.0,"zorglub, tata"',
-            '2016-12-31,à raclette,Expense,10.0,XXX,zorglub,2.0,"zorglub, jeanne, tata, pépé"',
+            "date,what,bill_type,amount,currency,payer_name,payer_weight,owers,ower_weights",
+            "2017-01-01,refund,Reimbursement,XXX,13.33,tata,1.0,jeanne,1.0",
+            '2016-12-31,red wine,Expense,XXX,200.0,jeanne,1.0,"zorglub, tata","2.0, 1.0"',
+            '2016-12-31,à raclette,Expense,10.0,XXX,zorglub,2.0,"zorglub, jeanne, tata, pépé","2.0, 1.0, 1.0, 1.0"',
         ]
         received_lines = resp.data.decode("utf-8").split("\n")
 
@@ -687,8 +692,8 @@ class TestExport(IhatemoneyTestCase):
         # generate csv export of bills
         resp = self.client.get("/raclette/export/bills.csv")
         expected = [
-            "date,what,bill_type,amount,currency,payer_name,payer_weight,owers",
-            "2016-12-31,'=COS(36),Expense,10.0,EUR,zorglub,1.0,zorglub",
+            "date,what,bill_type,amount,currency,payer_name,payer_weight,owers,ower_weights",
+            "2016-12-31,'=COS(36),Expense,10.0,EUR,zorglub,1.0,zorglub,1.0",
         ]
         received_lines = resp.data.decode("utf-8").split("\n")
 
@@ -724,3 +729,151 @@ class TestImportCSV70(CommonTestCase.Import):
         for d in formatted_data:
             d["owers"] = ", ".join([o for o in d.get("owers", [])])
         return {"file": (list_of_dicts2csv(formatted_data), "test.csv")}
+
+
+class TestImportOwerWeights(IhatemoneyTestCase):
+    """Export/import round trips keep ower weights (issue #1481)."""
+
+    def create_weighted_project(self, project_id):
+        self.post_project(project_id)
+
+        # Alice weighs 2 but never pays; Bob weighs 1 and pays.
+        self.client.post(
+            f"/{project_id}/members/add", data={"name": "Alice", "weight": 2}
+        )
+        self.client.post(f"/{project_id}/members/add", data={"name": "Bob"})
+        self.client.post(
+            f"/{project_id}/add",
+            data={
+                "date": "2026-11-01",
+                "bill_type": "Expense",
+                "what": "Groceries",
+                "payer": 2,
+                "payed_for": [1, 2],
+                "amount": "30",
+            },
+        )
+
+    def import_file(self, project_id, filename, data):
+        self.post_project(project_id)
+        self.login(project_id)
+        self.import_project(project_id, {"file": (data, filename)})
+
+    def member_weights(self, project_id):
+        project = self.get_project(project_id)
+        return {m.name: m.weight for m in project.members}
+
+    def member_balances(self, project_id):
+        project = self.get_project(project_id)
+        return {m.name: project.balance[m.id] for m in project.members}
+
+    def test_json_round_trip_keeps_ower_weight(self):
+        self.create_weighted_project("groceries")
+        resp = self.client.get("/groceries/export/bills.json")
+        exported = json.loads(resp.data.decode("utf-8"))
+        assert exported[0]["ower_weights"] == [2.0, 1.0]
+
+        self.import_file("groceries2", "test.json", list_of_dicts2json(exported))
+
+        assert self.member_weights("groceries2") == {"Alice": 2.0, "Bob": 1.0}
+        assert self.member_balances("groceries2") == {"Alice": -20.0, "Bob": 20.0}
+
+    def test_csv_round_trip_keeps_ower_weight(self):
+        self.create_weighted_project("groceries")
+        resp = self.client.get("/groceries/export/bills.csv")
+        rows = list(csv.DictReader(io.StringIO(resp.data.decode("utf-8"))))
+        assert rows[0]["ower_weights"] == "2.0, 1.0"
+
+        self.import_file("groceries2", "test.csv", io.BytesIO(resp.data))
+
+        assert self.member_weights("groceries2") == {"Alice": 2.0, "Bob": 1.0}
+        assert self.member_balances("groceries2") == {"Alice": -20.0, "Bob": 20.0}
+
+    def test_import_twice_does_not_duplicate_bills(self):
+        # Ower order in dedupe is #1483's scope; a single ower keeps the
+        # comparison order-free, so this pins that ower_weights itself
+        # does not break dedupe.
+        self.post_project("groceries")
+        self.client.post("/groceries/members/add", data={"name": "Alice", "weight": 2})
+        self.client.post("/groceries/members/add", data={"name": "Bob"})
+        self.client.post(
+            "/groceries/add",
+            data={
+                "date": "2026-11-01",
+                "bill_type": "Expense",
+                "what": "Groceries",
+                "payer": 2,
+                "payed_for": [1],
+                "amount": "30",
+            },
+        )
+        resp = self.client.get("/groceries/export/bills.json")
+        exported = json.loads(resp.data.decode("utf-8"))
+
+        self.import_file("groceries2", "test.json", list_of_dicts2json(exported))
+        self.import_file("groceries2", "test.json", list_of_dicts2json(exported))
+
+        project = self.get_project("groceries2")
+        assert len(project.get_pretty_bills()) == 1
+        assert self.member_weights("groceries2") == {"Alice": 2.0, "Bob": 1.0}
+
+    def test_old_format_import_gives_weight_one(self):
+        # Files exported before ower_weights existed carry no weights
+        # for owers; everyone but the payer falls back to 1.
+        data = [
+            {
+                "date": "2026-11-01",
+                "what": "Groceries",
+                "amount": 30.0,
+                "bill_type": "Expense",
+                "currency": "XXX",
+                "payer_name": "Bob",
+                "payer_weight": 1.0,
+                "owers": ["Alice", "Bob"],
+            }
+        ]
+        self.import_file("groceries", "test.json", list_of_dicts2json(data))
+
+        assert self.member_weights("groceries") == {"Alice": 1.0, "Bob": 1.0}
+
+
+class TestGetMembers:
+    def bill(self, owers, payer_name="Bob", payer_weight=1.0, ower_weights=None):
+        bill = {
+            "payer_name": payer_name,
+            "payer_weight": payer_weight,
+            "owers": owers,
+        }
+        if ower_weights is not None:
+            bill["ower_weights"] = ower_weights
+        return bill
+
+    def test_missing_ower_weights_falls_back_to_one(self):
+        members = get_members([self.bill(["Alice", "Bob"])])
+        assert members == [("Bob", 1.0), ("Alice", 1)]
+
+    def test_length_mismatch_falls_back_whole_bill(self):
+        members = get_members([self.bill(["Alice", "Bob"], ower_weights=[2.0])])
+        assert members == [("Bob", 1.0), ("Alice", 1)]
+        members = get_members([self.bill(["Alice"], ower_weights=[2.0, 3.0])])
+        assert members == [("Bob", 1.0), ("Alice", 1)]
+
+    def test_invalid_entry_falls_back_to_one_for_that_entry(self):
+        for bad in ["x", 0, -1, float("nan"), float("inf"), True, None]:
+            members = get_members(
+                [self.bill(["Alice", "Bob"], ower_weights=[2.0, bad])]
+            )
+            assert members == [("Bob", 1.0), ("Alice", 2.0)]
+
+    def test_csv_string_weights_are_parsed(self):
+        members = get_members([self.bill(["Alice", "Bob"], ower_weights="2.0, 1.0")])
+        assert members == [("Bob", 1.0), ("Alice", 2.0)]
+
+    def test_payer_weight_wins_over_ower_weight(self):
+        members = get_members(
+            [
+                self.bill(["Alice"], ower_weights=[2.0]),
+                self.bill(["Bob"], payer_name="Alice", payer_weight=1.0),
+            ]
+        )
+        assert members == [("Bob", 1.0), ("Alice", 1.0)]

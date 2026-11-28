@@ -353,10 +353,11 @@ class Project(db.Model):
         bills = self.get_bills()
         pretty_bills = []
         for bill in bills:
-            if export_format == "json":
-                owers = [ower.name for ower in bill.owers]
-            else:
-                owers = ", ".join([ower.name for ower in bill.owers])
+            owers = [ower.name for ower in bill.owers]
+            weights = [ower.weight for ower in bill.owers]
+            if export_format != "json":
+                owers = ", ".join(owers)
+                weights = ", ".join(str(weight) for weight in weights)
 
             pretty_bills.append(
                 {
@@ -368,6 +369,7 @@ class Project(db.Model):
                     "payer_name": Person.query.get(bill.payer_id).name,
                     "payer_weight": Person.query.get(bill.payer_id).weight,
                     "owers": owers,
+                    "ower_weights": weights,
                 }
             )
         return pretty_bills
