@@ -1,6 +1,7 @@
 import ast
 import csv
 import email.utils
+import math
 import operator
 import os
 import re
@@ -219,6 +220,8 @@ def csv2list_of_dicts(csv_to_convert):
         r["amount"] = float(r["amount"])
         r["payer_weight"] = float(r["payer_weight"])
         r["owers"] = [o.strip() for o in r["owers"].split(",")]
+        if r.get("ower_weights"):
+            r["ower_weights"] = [w.strip() for w in r["ower_weights"].split(",")]
         result.append(r)
     return result
 
@@ -288,15 +291,40 @@ def eval_arithmetic_expression(expr):
     return result
 
 
+def ower_weights(bill):
+    """Weights aligned with bill["owers"], falling back to 1.
+
+    Bills exported before ower weights existed, and bills whose weight
+    list does not line up with the owers, give every ower a weight of 1.
+    A single unusable entry falls back to 1 for that ower only.
+    """
+    weights = bill.get("ower_weights")
+    if isinstance(weights, str):
+        weights = [w.strip() for w in weights.split(",")]
+    if not isinstance(weights, list) or len(weights) != len(bill["owers"]):
+        return [1] * len(bill["owers"])
+    result = []
+    for weight in weights:
+        try:
+            if isinstance(weight, bool):
+                raise TypeError
+            weight = float(weight)
+        except (TypeError, ValueError):
+            result.append(1)
+            continue
+        result.append(weight if math.isfinite(weight) and weight > 0 else 1)
+    return result
+
+
 def get_members(file):
     members_list = []
     for item in file:
-        if (item["payer_name"], item["payer_weight"]) not in members_list:
+        if item["payer_name"] not in [i[0] for i in members_list]:
             members_list.append((item["payer_name"], item["payer_weight"]))
     for item in file:
-        for ower in item["owers"]:
+        for ower, weight in zip(item["owers"], ower_weights(item)):
             if ower not in [i[0] for i in members_list]:
-                members_list.append((ower, 1))
+                members_list.append((ower, weight))
 
     return members_list
 
