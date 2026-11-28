@@ -2,7 +2,7 @@
 
 {%- macro weighted_bill_amount(bill, weights, currency=bill.original_currency, amount=bill.amount) %}
     {{ amount|currency(currency) }}
-    {%- if weights != 1.0 %}
+    {%- if not g.project.uses_weights and bill.owers|length > 1 %}
         ({{ _("%(amount)s each", amount=(amount / weights)|currency(currency)) }})
     {%- endif -%}
 {% endmacro -%}
